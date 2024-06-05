@@ -20,7 +20,7 @@ class ModelMode(str, enum.Enum):
     INFERENCE = "inference"
 
 
-class _Role(str, enum.Enum):
+class Role(str, enum.Enum):
     CONTRIBUTED = "Contributed"
     USED = "Used"
     REFERENCE = "Reference"
@@ -34,11 +34,24 @@ class Explained(BaseModel, Generic[T]):
     )
 
 
-class Model(BaseModel):
+class _EQ():
+    def __eq__(self, other):
+        for (k1,v1), (k2,v2) in zip(self, other):
+            if k1 != k2:
+                return False
+            if k1 == "keywords":
+                continue
+            if v1 != v2:
+                return False
+        else:
+            return True
+
+
+class Model(BaseModel, _EQ):
     name: Explained[str] = Field(
         description=f"Name of the Dataset",
     )
-    role: _Role = Field(
+    role: Role = Field(
         description="Role of the Model in the scope of the paper"
     )
     type: str = Field(
@@ -52,11 +65,11 @@ class Model(BaseModel):
     )
 
 
-class Dataset(BaseModel):
+class Dataset(BaseModel, _EQ):
     name: Explained[str] = Field(
         description=f"Name of the Dataset",
     )
-    role: _Role = Field(
+    role: Role = Field(
         description="Role of the Dataset in the scope of the paper"
     )
     keywords: List[str] = Field(
@@ -64,11 +77,11 @@ class Dataset(BaseModel):
     )
 
 
-class Framework(BaseModel):
+class Framework(BaseModel, _EQ):
     name: Explained[str] = Field(
         description=f"Name of the Framework",
     )
-    role: _Role = Field(
+    role: Role = Field(
         description="Role of the Framework in the scope of the paper"
     )
     keywords: List[str] = Field(
@@ -93,13 +106,13 @@ class PaperExtractions(BaseModel):
         description="Deep Learning sub-research field of the paper",
     )
     models: List[Model] = Field(
-        description="List of Models referenced in the paper"
+        description="List of Models found in the paper"
     )
     datasets: List[Dataset] = Field(
-        description="List of Datasets referenced in the paper"
+        description="List of Datasets found in the paper"
     )
     frameworks: List[Framework] = Field(
-        description="List of Frameworks referenced in the paper"
+        description="List of Frameworks found in the paper"
     )
 
 

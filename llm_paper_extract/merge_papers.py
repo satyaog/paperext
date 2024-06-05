@@ -36,7 +36,7 @@ def check_excerpts(paper_id, paper, obj, prefix="", indents=None):
             print(next(indents) + next(_indents), f"WARNING: Could not find the exerpt [{excerpt}] justifing the value [{obj.value}] in the paper {paper_id}", sep="")
             validated = False
         return validated
-    except AttributeError as e:
+    except AttributeError:
         pass
 
     if isinstance(obj, str):
@@ -100,10 +100,10 @@ if __name__ == "__main__":
 
     extractions_tuple.sort(key=lambda _:_[0])
 
-    extractions_merged = []
-    for (paper_id, paper, extractions) in extractions_tuple:
-        last = extractions_merged[-1] if extractions_merged else None
-        if last is None or last[0] != paper_id:
+    extractions_merged = extractions_tuple[:1]
+    for (paper_id, paper, extractions) in extractions_tuple[1:]:
+        last = extractions_merged[-1]
+        if last[0] != paper_id:
             extractions_merged.append((paper_id, paper, extractions))
             continue
         merge_paper_extractions(*last, extractions)

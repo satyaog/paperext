@@ -1,8 +1,6 @@
 import random
 from pathlib import Path
 
-from . import ROOT_DIR
-
 
 def build_validation_set(data_dir:Path, seed=42):
     random.seed(seed)
