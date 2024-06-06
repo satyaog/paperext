@@ -23,4 +23,4 @@ def build_validation_set(data_dir:Path, seed=42):
     validation_set = sum(map(list, papers_by_field.values()), [])
     # # Dev validation set
     # validation_set = sum(map(lambda _:random.sample(list(_), 1), papers_by_field.values()), [])
-    return list(map(lambda p:data_dir / "cache/arxiv" / p, validation_set))
+    return list(map(lambda p:Path(p).absolute(), validation_set))

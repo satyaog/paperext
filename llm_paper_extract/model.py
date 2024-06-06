@@ -29,9 +29,23 @@ class Role(str, enum.Enum):
 T = TypeVar("T")
 class Explained(BaseModel, Generic[T]):
     value: T
-    excerpt: str = Field(
-        description=f"Short litteral excerpt from the paper justifying the choice of the value",
+    confidence: float = Field(
+        description=f"Confidence level between 0.0 and 1.0 that the value is correct",
     )
+    justification: str = Field(
+        description=f"Short justification for the choice of the value",
+    )
+    quote: str = Field(
+        description=f"Short litteral quote from the paper on which the choice of the value was made",
+    )
+
+    def __eq__(self, other:"Explained"):
+        return self.value == other.value
+
+    def __lt__(self, other:"Explained"):
+        return self.value < other.value or (
+            self.value == other.value and self.confidence > other.confidence
+        )
 
 
 class _EQ():
@@ -46,8 +60,11 @@ class _EQ():
         else:
             return True
 
+    def __ne__(self, other) -> bool:
+        return not self == other
 
-class Model(BaseModel, _EQ):
+
+class Model(_EQ, BaseModel):
     name: Explained[str] = Field(
         description=f"Name of the Dataset",
     )
@@ -65,7 +82,7 @@ class Model(BaseModel, _EQ):
     )
 
 
-class Dataset(BaseModel, _EQ):
+class Dataset(_EQ, BaseModel):
     name: Explained[str] = Field(
         description=f"Name of the Dataset",
     )
@@ -77,7 +94,7 @@ class Dataset(BaseModel, _EQ):
     )
 
 
-class Framework(BaseModel, _EQ):
+class Framework(_EQ, BaseModel):
     name: Explained[str] = Field(
         description=f"Name of the Framework",
     )
