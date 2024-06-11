@@ -126,7 +126,7 @@ class Model(_EQ, BaseModel):
     role: Role | str = Field(
         description=f"Was the Model {' or '.join([role.value.lower() for role in Role])} in the scope of the paper"
     )
-    type: str = Field(
+    type: Explained[str] = Field(
         description="Type of the Model",
     )
     mode: ModelMode | str = Field(
@@ -169,13 +169,13 @@ class PaperExtractions(BaseModel):
         description="Deep Learning sub-research field of the paper",
     )
     models: List[Model] = Field(
-        description="Complete list of Models found in the paper"
+        description="All Models found in the paper"
     )
     datasets: List[Dataset] = Field(
-        description="Complete list of Datasets found in the paper"
+        description="All Datasets found in the paper"
     )
     frameworks: List[Framework] = Field(
-        description="Complete list of Frameworks found in the paper"
+        description="All Frameworks found in the paper"
     )
 
 

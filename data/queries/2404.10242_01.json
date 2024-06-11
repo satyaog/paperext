@@ -1,0 +1,91 @@
+{
+  "paper": "2404.10242.txt",
+  "words": 9577,
+  "extractions": {
+    "description": "The paper investigates the scaling properties of masked autoencoders (MAEs) particularly Vision Transformer (ViT)-based MAEs and weakly supervised classifiers when trained with increasingly larger model backbones and microscopy datasets. It introduces a new channel-agnostic MAE architecture (CA-MAE) and demonstrates that MAE models outperform weakly supervised classifiers in various tasks and generalize effectively across different datasets and experimental conditions.",
+    "title": {
+      "value": "Masked Autoencoders for Microscopy are Scalable Learners of Cellular Biology",
+      "confidence": 1.0,
+      "justification": "The title is explicitly mentioned at the cover page and several sections within the text of the paper.",
+      "quote": "Masked Autoencoders for Microscopy are Scalable Learners of Cellular Biology"
+    },
+    "type": {
+      "value": "Empirical Study",
+      "confidence": 1.0,
+      "justification": "The focus is on evaluating and demonstrating the performance and scalability of various models on microscopy datasets through empirical results and experiments.",
+      "quote": "Our results show that ViT-based MAEs outperform weakly supervised classifiers on a variety of tasks..."
+    },
+    "research_field": {
+      "value": "Computer Vision",
+      "confidence": 1.0,
+      "justification": "The paper is centered on improving image-based analysis for biological research and it leverages computer vision techniques like Vision Transformers and MAEs.",
+      "quote": "This work explores the scaling properties of weakly supervised classifiers and self-supervised masked autoencoders (MAEs) when training with increasingly larger model backbones and microscopy datasets."
+    },
+    "sub_research_field": {
+      "value": "Microscopy Image Analysis",
+      "confidence": 1.0,
+      "justification": "The goal is to improve the analysis of microscopy images through better model architectures and training strategies, fitting well into the sub-research field of microscopy image analysis.",
+      "quote": "Featurizing microscopy images for use in biological research remains a significant challenge, especially for large-scale experiments spanning millions of images."
+    },
+    "models": [
+      {
+        "name": {
+          "value": "Vision Transformer Base (ViT-B)",
+          "confidence": 1.0,
+          "justification": "The paper discusses various architectures of Vision Transformers including Base (ViT-B).",
+          "quote": "We train vision transformers [19, 21, 59, 69] as MAEs following the implementation in He et al. [31]. We report results for ViT-S, ViT-B, and ViT-L encoders [21], containing 22-, 86-, and 304-million parameters, respectively."
+        },
+        "role": "used",
+        "type": "Transformer-based Model",
+        "mode": "trained"
+      },
+      {
+        "name": {
+          "value": "Vision Transformer Small (ViT-S)",
+          "confidence": 1.0,
+          "justification": "The paper discusses various architectures of Vision Transformers including Small (ViT-S).",
+          "quote": "We train vision transformers [19, 21, 59, 69] as MAEs following the implementation in He et al. [31]. We report results for ViT-S, ViT-B, and ViT-L encoders [21], containing 22-, 86-, and 304-million parameters, respectively."
+        },
+        "role": "used",
+        "type": "Transformer-based Model",
+        "mode": "trained"
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "RxRx1-2M",
+          "confidence": 0.95,
+          "justification": "RxRx1-2M is mentioned in the context of curation, characteristics, size, and its role within the experiments.",
+          "quote": "RxRx1-2M is a private version of RxRx1 containing over 1.6 million images across 16 different cell types and uses the same set of siRNA perturbations in RxRx1 from additional experimental batches."
+        },
+        "role": "used"
+      },
+      {
+        "name": {
+          "value": "Cell Painting",
+          "confidence": 0.9,
+          "justification": "Cell Painting is referred to as an imaging modality used in the dataset curation.",
+          "quote": "These datasets contain images captured using a six-channel proprietary implementation of the Cell Painting imaging protocol [6], which multiplexes fluorescent dyes to reveal eight broadly relevant cellular components."
+        },
+        "role": "referenced"
+      }
+    ],
+    "frameworks": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "confidence": 1.0,
+          "justification": "PyTorch is explicitly mentioned as the framework used for model training and implementation of distributed data parallel (DDP) training.",
+          "quote": "Models were trained with data-distributed parallel (DDP) training and PyTorch 2.0 for up to 100 epochs on up to 256 NVIDIA 80GB A100 GPUs, depending on the size of the model and dataset."
+        },
+        "role": "used"
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 902,
+    "prompt_tokens": 19228,
+    "total_tokens": 20130
+  }
+}
