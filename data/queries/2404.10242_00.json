@@ -2,86 +2,79 @@
   "paper": "2404.10242.txt",
   "words": 9577,
   "extractions": {
-    "description": "The paper discusses the use of Masked Autoencoders (MAEs) and Vision Transformers (ViTs) to analyze large-scale microscopy datasets, with the aim of enhancing the understanding of cellular biology for applications such as drug discovery. The research demonstrates that MAEs, especially the newly developed channel-agnostic MAEs (CA-MAEs), outperform weakly supervised learning models in recalling known biological relationships and generalizing across different microscopy datasets. The findings underscore the scalability and transferability of self-supervised learning techniques for high-content screening data.",
+    "description": "This paper explores the scaling properties of weakly supervised classifiers and self-supervised masked autoencoders (MAEs) when applied to microscopy images in biological research. It introduces a new channel-agnostic MAE architecture and demonstrates the effectiveness of MAEs, particularly ViT-based MAEs, in improving the recall of known biological relationships. The study uses various large-scale microscopy datasets and proposes novel methodologies like Fourier domain reconstruction to stabilize MAE training. The goal is to create robust foundation models for cellular biology that can advance drug discovery.",
     "title": {
-      "value": "Masked Autoencoders for Microscopy are Scalable Learners of Cellular Biology",
+      "value": "Masked Autoencoders are Scalable Learners of Cellular Biology",
       "confidence": 1.0,
-      "justification": "The title is explicitly stated on the first page of the paper.",
-      "quote": "Masked Autoencoders for Microscopy are Scalable Learners of Cellular Biology"
+      "justification": "The title is clearly mentioned at the start of the paper.",
+      "quote": "Masked Autoencoders are Scalable Learners of Cellular Biology"
     },
     "type": {
       "value": "Empirical Study",
-      "confidence": 0.85,
-      "justification": "The paper involves experimental evaluation of different models on large-scale microscopy datasets and reports quantitative results.",
-      "quote": "In order to overcome these limitations, we develop an alternative framework for learning representations of HCS datasets based on self-supervised learning (Fig. 1). Specifically, we train masked autoencoders (MAEs) [31] with U-Net and vision transformer (ViT) backbones on progressively larger HCS image sets."
+      "confidence": 0.9,
+      "justification": "The paper involves experimental evaluations of different models on large-scale datasets, exhibiting characteristics typical of an empirical study.",
+      "quote": "Our results show that ViT-based MAEs outperform weakly supervised classifiers on a variety of tasks, achieving as much as a 11.5% relative improvement... We train masked autoencoders (MAEs)... employing a novel channel-agnostic MAE..."
     },
     "research_field": {
-      "value": "Computer Vision",
-      "confidence": 0.95,
-      "justification": "The research focuses on developing and evaluating deep learning models for analyzing microscopy images, which falls under the domain of computer vision.",
-      "quote": "We explore the scaling properties of weakly supervised classifiers and self-supervised masked autoencoders (MAEs) when training with increasingly larger model backbones and microscopy datasets."
+      "value": "Deep Learning",
+      "confidence": 1.0,
+      "justification": "The paper focuses on deep learning methods, specifically masked autoencoders and vision transformers, applied to biological data.",
+      "quote": "This work explores the scaling properties of weakly supervised classifiers and self-supervised masked autoencoders (MAEs) when training with increasingly larger model backbones and microscopy datasets."
     },
     "sub_research_field": {
-      "value": "Microscopy Image Analysis",
-      "confidence": 0.95,
-      "justification": "The paper explicitly addresses the challenge of analyzing microscopy images for biological research.",
-      "quote": "Featurizing microscopy images for use in biological research remains a significant challenge, especially for large-scale experiments spanning millions of images."
+      "value": "Computer Vision",
+      "confidence": 1.0,
+      "justification": "The paper deals with analyzing and extracting features from microscopy images, a task central to the field of computer vision.",
+      "quote": "Masked Autoencoders for Microscopy are Scalable Learners of Cellular Biology"
     },
     "models": [
       {
         "name": {
-          "value": "Vision Transformer Large (ViT-L)",
-          "confidence": 0.9,
-          "justification": "The Vision Transformer Large (ViT-L) is mentioned in various sections of the paper as one of the backbones used for the MAEs.",
-          "quote": "We train vision transformers [19, 21, 59, 69] as MAEs following the implementation in He et al. [31]. We report results for ViT-S, ViT-B, and ViT-L encoders [21], containing 22-, 86-, and 304-million parameters, respectively."
+          "value": "ViT",
+          "confidence": 1.0,
+          "justification": "ViT models, including ViT-S, ViT-B, and ViT-L, are mentioned throughout the paper as part of the MAE framework used and evaluated.",
+          "quote": "Our results show that ViT-based MAEs outperform weakly supervised classifiers on a variety of tasks"
         },
-        "role": "Contributed",
-        "type": "Transformer-based Model",
-        "mode": "Training"
+        "role": "used",
+        "type": {
+          "value": "Vision Transformer",
+          "confidence": 0.95,
+          "justification": "ViT stands for Vision Transformer, a type of model used in the paper.",
+          "quote": "We found that training dynamics and downstream performance was significantly better with large batch sizes and the Lion optimizer versus using the recommended batch size and AdamW settings presented by Balestriero et al. [3]. All ViT-S and ViT-B encoders were trained with a maximum learning rate of 1e-4"
+        },
+        "mode": "training"
+      },
+      {
+        "name": {
+          "value": "U-Net",
+          "confidence": 0.9,
+          "justification": "The paper discusses the use of U-Net models for masked autoencoder tasks, specifically mentioning MU-Net-M and MU-Net-L.",
+          "quote": "We adapt U-Nets [56] for use as masked autoencoders (MU-Nets) by training to reconstruct masked sections of input images. We train MU-Nets as described in Xun et al. [68] and report results for MU-Net-M and MU-Net-L"
+        },
+        "role": "used",
+        "type": {
+          "value": "Convolutional Neural Network",
+          "confidence": 0.85,
+          "justification": "U-Net is a type of Convolutional Neural Network (CNN), traditionally used for image segmentation but adapted here for masked autoencoder tasks.",
+          "quote": "We adapt U-Nets [56] for use as masked autoencoders (MU-Nets) by training to reconstruct masked sections of input images."
+        },
+        "mode": "training"
       },
       {
         "name": {
           "value": "DenseNet-161",
-          "confidence": 0.85,
-          "justification": "DenseNet-161 is used for comparison with the MAE models.",
-          "quote": "We reimplement the 28-million parameter DenseNet-161 backbone proposed in Sypetkowski et al. [62], trained to predict cellular perturbations and producing 128-dimensional embeddings from a two-layer MLP neck before the classification logits."
+          "confidence": 1.0,
+          "justification": "The DenseNet-161 model is explicitly mentioned multiple times in the context of weakly supervised learning.",
+          "quote": "We reimplement the 28-million parameter DenseNet-161 backbone proposed in Sypetkowski et al. [62], trained to predict cellular perturbations and producing 128-dimensional embeddings from a two-layer MLP neck before the classification logits"
         },
-        "role": "Referenced",
-        "type": "Convolutional Neural Network",
-        "mode": "Training"
-      },
-      {
-        "name": {
-          "value": "Masked U-Net (MU-Net)",
+        "role": "used",
+        "type": {
+          "value": "Dense Convolutional Network",
           "confidence": 0.9,
-          "justification": "The paper discusses adaptations of U-Nets as masked autoencoders (MU-Net).",
-          "quote": "We adapt U-Nets [56] for use as masked autoencoders (MU-Nets) by training to reconstruct masked sections of input images."
+          "justification": "DenseNet is a type of Dense Convolutional Network, as the name suggests.",
+          "quote": "We reimplement the 28-million parameter DenseNet-161 backbone proposed in Sypetkowski et al. [62], trained to predict cellular perturbations and producing 128-dimensional embeddings from a two-layer MLP neck before the classification logits"
         },
-        "role": "Contributed",
-        "type": "Convolutional Neural Network",
-        "mode": "Training"
-      },
-      {
-        "name": {
-          "value": "Masked Autoencoder Vision Transformer Large (MAE ViT-L)",
-          "confidence": 0.95,
-          "justification": "The MAE ViT-L is one of the primary models developed and evaluated in the paper.",
-          "quote": "We train and evaluate MAEs with convolutional and transformer backbones of different sizes, depending on the scale of the training set. We provide example reconstructions on our pretraining validation sets in Figure 2, and additional reconstructions in the Appendix A.4. We adapt U-Nets [56] for use as masked autoencoders (MU-Nets) by training to reconstruct masked sections of input images."
-        },
-        "role": "Contributed",
-        "type": "Transformer-based Model",
-        "mode": "Training"
-      },
-      {
-        "name": {
-          "value": "Channel-Agnostic MAE Vision Transformer Large (CA-MAE ViT-L)",
-          "confidence": 0.95,
-          "justification": "The paper introduces and heavily discusses a novel channel-agnostic MAE architecture based on ViT-L.",
-          "quote": "Additionally, we develop a new channel-agnostic MAE architecture (CA-MAE) that allows for inputting images of different numbers and orders of channels at inference time."
-        },
-        "role": "Contributed",
-        "type": "Transformer-based Model",
-        "mode": "Training"
+        "mode": "training"
       }
     ],
     "datasets": [
@@ -89,53 +82,54 @@
         "name": {
           "value": "RxRx1",
           "confidence": 1.0,
-          "justification": "RxRx1 is explicitly named as one of the datasets used in the experiments.",
-          "quote": "RxRx1 [62] is a publicly-available proprietary Cell Painting dataset with 125,510 images of 4 human cell types under 1,108 different siRNA perturbations across 51 experimental batches."
+          "justification": "RxRx1 is mentioned multiple times as a dataset used in the study.",
+          "quote": "RxRx1 [62] is a publicly-available proprietary Cell Painting dataset with 125,510 images of 4 human cell types under 1,108 different siRNA perturbations across 51 experimental batches. A unique feature of this dataset is that it is comprised entirely of siRNA perturbations"
         },
-        "role": "Used"
+        "role": "used"
       },
       {
         "name": {
           "value": "RxRx3",
           "confidence": 1.0,
-          "justification": "RxRx3 is explicitly named and discussed as one of the primary datasets used in the experiments.",
-          "quote": "RxRx3 [24] is a publicly-available proprietary Cell Painting dataset with over 2.2 million images of HUVEC cells each perturbed with one of 17,063 CRISPR knockouts (using one of six different guides) or 1,674 compounds across 180 experimental batches."
+          "justification": "RxRx3 is another dataset used in the study, as explicitly mentioned.",
+          "quote": "RxRx3 [24] is a publicly-available proprietary Cell Painting dataset with over 2.2 million images of HUVEC cells each perturbed with one of 17,063 CRISPR knockouts (using one of six different guides) or 1,674 compounds across 180 experimental batches"
         },
-        "role": "Used"
+        "role": "used"
       },
       {
         "name": {
           "value": "RPI-52M",
-          "confidence": 1.0,
-          "justification": "RPI-52M is explicitly named and discussed as one of the datasets used in the experiments.",
-          "quote": "RPI-52M (Recursion Phenomics Imageset) is a private dataset with approximately 52 million proprietary images spanning 6,638 experimental batches and 40 cell types."
+          "confidence": 0.95,
+          "justification": "RPI-52M is indicated as one of the larger datasets used in training and validation.",
+          "quote": "RPI-52M is a private dataset with approximately 52 million proprietary images spanning 6,638 experimental batches and 40 cell types. This is a superset of the preceeding three datasets."
         },
-        "role": "Used"
+        "role": "used"
       },
       {
         "name": {
           "value": "RPI-93M",
-          "confidence": 1.0,
-          "justification": "RPI-93M is explicitly named and discussed as one of the datasets used in the experiments.",
-          "quote": "RPI-93M is a private dataset with approximately 93 million proprietary images spanning over 10,000 experimental batches and 41 cell types."
+          "confidence": 0.95,
+          "justification": "RPI-93M is described as one of the largest datasets used in the study.",
+          "quote": "RPI-93M is a private dataset with approximately 93 million proprietary images spanning over 10,000 experimental batches and 41 cell types. To our knowledge, this is the largest HCS dataset collected for model training purposes."
         },
-        "role": "Used"
-      },
-      {
-        "name": {
-          "value": "JUMP-CP",
-          "confidence": 0.9,
-          "justification": "JUMP-CP is evaluated to demonstrate the generalizability of the developed models.",
-          "quote": "We demonstrate that CA-MAEs effectively generalize by inferring and evaluating on a microscopy image dataset (JUMP-CP) generated under different experimental conditions with a different channel structure than our pretraining data (RPI-93M)."
-        },
-        "role": "Used"
+        "role": "used"
       }
     ],
-    "frameworks": []
+    "frameworks": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "confidence": 1.0,
+          "justification": "PyTorch is explicitly mentioned as the framework used for training the models.",
+          "quote": "Models were trained with data-distributed parallel (DDP) training and PyTorch 2.0 for up to 100 epochs on up to 256 NVIDIA 80GB A100 GPUs, depending on the size of the model and dataset."
+        },
+        "role": "used"
+      }
+    ]
   },
   "usage": {
-    "completion_tokens": 1446,
-    "prompt_tokens": 19121,
-    "total_tokens": 20567
+    "completion_tokens": 1433,
+    "prompt_tokens": 19191,
+    "total_tokens": 20624
   }
 }
