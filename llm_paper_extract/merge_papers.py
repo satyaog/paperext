@@ -11,12 +11,14 @@ from time import sleep
 from typing import Iterable, List
 
 from pydantic import BaseModel
+import yaml
 
 from . import ROOT_DIR
 from .model import ExtractionResponse, PaperExtractions
 
 _STRIP_RE = r"[a-zA-Z0-9].*[a-zA-Z0-9]"
 _EDITOR = os.environ.get("VISUAL", os.environ.get("EDITOR", None))
+_TMPDIR = tempfile.TemporaryDirectory()
 if platform.system() == "Darwin":       # macOS
     _EDITOR = _EDITOR or "open"
 else:                                   # linux variants
@@ -162,31 +164,36 @@ def _remove_duplicates(l:list):
             last = value
 
 
-def _model_dump_json(paper_id, paper, model:BaseModel):
+def _model_dump(paper_id, paper, model:BaseModel):
     _WARNING = f"WARNING: Could not find the quote in the paper {paper_id}"
 
     model_dump_json = model.model_dump_json(indent=2)
+    model_dump_yaml = yaml.safe_dump(
+        json.loads(model_dump_json),
+        sort_keys=False,
+        width=120
+    )
 
-    lines = model_dump_json.splitlines()
+    lines = model_dump_yaml.splitlines()
     for i, l in enumerate(lines):
-        if l.lstrip().startswith('"quote":'):
+        if l.lstrip().startswith('quote:'):
             lstrip = l[:len(l) - len(l.lstrip())]
-            quote = ":".join(l.split(':')[1:]).strip()
-            quote = ''.join(['{"quote":', quote, '}'])
-            quote = json.loads(quote)["quote"]
+            end = i+1
+            while end < len(lines):
+                len_end_lstrip = len(lines[end]) - len(lines[end].lstrip())
+                if len_end_lstrip <= len(lstrip):
+                    break
+                end += 1
+            try:
+                quote = yaml.safe_load("\n".join(lines[i:end]))["quote"]
+            except yaml.parser.ParserError:
+                print(model_dump_yaml)
+                print("\n".join(lines[i:end]))
+                raise
             if quote.lower() not in paper:
-                lines.insert(i+1, f"{lstrip}// {_WARNING}")
-    model_dump_json = "\n".join(lines)
-    return model_dump_json
-
-
-def _model_validate_json(model:BaseModel, model_dump_json:str):
-    lines = [
-        l
-        for l in model_dump_json.splitlines()
-        if not l.lstrip().startswith("//")
-    ]
-    return model.model_validate_json("\n".join(lines))
+                lines.insert(end, f"{lstrip}## {_WARNING}")
+    model_dump_yaml = "\n".join(lines)
+    return model_dump_yaml
 
 
 def _input_option(question:str, options:list):
@@ -211,7 +218,7 @@ def _select(key:str, *options:List[str], edit=False):
     if edit:
         short_options.append("e")
         long_options.append("edit")
-    separator = "=" * max(*map(len, sum([o.splitlines() for o in options], [])))
+    separator = "=" * max(0, *map(len, sum([o.splitlines() for o in options], [])))
     separator = separator[:get_terminal_width()]
 
     for i, option in enumerate(options):
@@ -226,20 +233,21 @@ def _select(key:str, *options:List[str], edit=False):
         pass
 
     # select == "e"
-    return edit_content(key, "\n".join(options))
+    return edit_content(key, "\n\n".join(options))
 
 
-def edit_content(filename:str, content:str):
-    with tempfile.TemporaryDirectory() as tmpdir:
-        tmpfile = Path(tmpdir) / f"{filename}.json"
-        with tmpfile.open("w+t") as _f:
-            _f.write(content)
+def edit_content(filename:str, contents:List[str]):
+    tmpfile = Path(_TMPDIR.name) / f"{filename}.yaml"
+
+    with tmpfile.open("w+t") as _f:
+        _f.write(contents)
+
+    _open_editor(str(tmpfile))
+    while _input_option("Are you done with the edit", ("y","n")) != "y":
         _open_editor(str(tmpfile))
-        while _input_option("Are you done with the edit", ("y","n")) != "y":
-            _open_editor(str(tmpfile))
-        with tmpfile.open() as _f:
-            _f.seek(0)
-            return _f.read()
+
+    with tmpfile.open() as _f:
+        return _f.read()
 
 
 def merge_paper_extractions(paper_id, paper, extractions:PaperExtractions, *other_extractions: List[PaperExtractions]):
@@ -255,17 +263,28 @@ def merge_paper_extractions(paper_id, paper, extractions:PaperExtractions, *othe
         try:
             options:List[BaseModel] = sorted(sum(values, []), key=lambda _:_.name)
             options = list(_remove_duplicates(options))
-            options_str = ",\n".join(_model_dump_json(paper_id, paper, entry) for entry in options)
+            options_str = []
+            for entry in options:
+                prefix = "- "
+                for l in _model_dump(paper_id, paper, entry).splitlines():
+                    options_str.append(f"{prefix}{l}")
+                    prefix = "  "
+                options_str.append("")
+            options_str = "\n".join(options_str)
+
             selection = _select(attribute, options_str, edit=True)
             while True:
-                _selection = selection.split("\n},\n")
-                _selection = [entry + "\n}" for entry in _selection[:-1]] + _selection[-1:]
                 try:
-                    selection = [_model_validate_json(options[0], entry) for entry in _selection]
+                    _selection = yaml.safe_load(selection)
+                    selection = [options[0].model_validate(entry) for entry in _selection]
                     break
+                except yaml.scanner.ScannerError as e:
+                    print(e)
+                    print("There was an error parsing the yaml. Please try again")
+                    selection = edit_content(attribute, selection)
                 except ValueError as e:
                     print(e)
-                    print()
+                    print(f"There was an error validating the model {type(values[0])}. Please try again")
                     selection = edit_content(attribute, selection)
             extractions.__dict__[key] = selection
             continue
@@ -273,22 +292,42 @@ def merge_paper_extractions(paper_id, paper, extractions:PaperExtractions, *othe
             pass
 
         try:
-            options = [_model_dump_json(paper_id, paper, v) for v in values]
+            options = [_model_dump(paper_id, paper, v) for v in values]
             selection = _select(attribute, *options, edit=True)
             while True:
                 try:
-                    selection = _model_validate_json(values[0], selection)
+                    selection = values[0].model_validate(yaml.safe_load(selection))
                     break
+                except yaml.scanner.ScannerError as e:
+                    print(e)
+                    print("There was an error parsing the yaml. Please try again")
+                    selection = edit_content(attribute, selection)
                 except ValueError as e:
                     print(e)
-                    print("There was an error parsin the json. Please try again")
+                    print(f"There was an error validating the model {type(values[0])}. Please try again")
                     selection = edit_content(attribute, selection)
             extractions.__dict__[key] = selection
             continue
         except AttributeError:
             pass
 
-        extractions.__dict__[key] = _select(attribute, *values, edit=False)
+        try:
+            options = [v.value for v in values]
+            selection = _select(attribute, *options, edit=True)
+            while True:
+                try:
+                    selection = type(values[0])(selection)
+                    break
+                except ValueError as e:
+                    print(e)
+                    print("There was an error parsing the value. Please try again")
+                    selection = edit_content(attribute, selection)
+            extractions.__dict__[key] = selection
+            continue
+        except AttributeError:
+            pass
+
+        extractions.__dict__[key] = _select(attribute, *values, edit=True)
 
 
 if __name__ == "__main__":
@@ -296,7 +335,7 @@ if __name__ == "__main__":
     responses = (ExtractionResponse.model_validate_json(_f.read_text()) for _f in responses)
 
     extractions_tuple = []
-    for (_,paper),(_,_),(_,extractions) in responses:
+    for (_,paper),(_,_),(_,extractions),_ in responses:
         paper_id = paper
         paper = (ROOT_DIR / "data/cache/arxiv/" / paper_id).read_text().lower().replace("\n", " ")
         extractions_tuple.append((paper_id, paper, extractions))
@@ -325,7 +364,6 @@ if __name__ == "__main__":
         merge_paper_extractions(paper_id, paper, extractions, *other_extractions)
         extractions_merged.append((paper_id, paper, extractions))
 
-    for (paper_id, _, extractions) in extractions_merged:
         f = (ROOT_DIR / "data/merged/") / paper_id
         f = f.with_suffix(".json")
         f.parent.mkdir(parents=True, exist_ok=True)
