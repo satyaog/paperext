@@ -14,7 +14,7 @@ from pydantic import BaseModel
 import yaml
 
 from . import ROOT_DIR
-from .model import ExtractionResponse, PaperExtractions
+from .model import ExtractionResponse, PaperExtractions, empty_paperextractions
 
 _STRIP_RE = r"[a-zA-Z0-9].*[a-zA-Z0-9]"
 _EDITOR = os.environ.get("VISUAL", os.environ.get("EDITOR", None))
@@ -156,8 +156,9 @@ def _iter(iterable:Iterable):
 
 
 def _remove_duplicates(l:list):
-    last = None if not l else l[0]
-    yield last
+    if l:
+        last = l[0]
+        yield last
     for value in l[1:]:
         if value != last:
             yield value
@@ -218,7 +219,7 @@ def _select(key:str, *options:List[str], edit=False):
     if edit:
         short_options.append("e")
         long_options.append("edit")
-    separator = "=" * max(0, *map(len, sum([o.splitlines() for o in options], [])))
+    separator = "=" * max(0, 0, *map(len, sum([o.splitlines() for o in options], [])))
     separator = separator[:get_terminal_width()]
 
     for i, option in enumerate(options):
@@ -250,32 +251,36 @@ def edit_content(filename:str, contents:List[str]):
         return _f.read()
 
 
-def merge_paper_extractions(paper_id, paper, extractions:PaperExtractions, *other_extractions: List[PaperExtractions]):
-    for keys_values in zip(extractions, *other_extractions):
-        values = [v for _, v in keys_values]
+def merge_paper_extractions(paper_id, paper, merged_extractions:PaperExtractions, *all_extractions: List[PaperExtractions]):
+    for keys_values in zip(empty_paperextractions(), merged_extractions, *all_extractions):
+        empty_value, merged_value, *values = [v for _, v in keys_values]
 
         if not [v for v in values[1:] if v != values[0]]:
             # All the values are similar to the first value
             values = values[:1]
 
         key = keys_values[0][0]
-        attribute = f"{extractions.__class__.__name__}.{key}"
+        attribute = f"{merged_extractions.__class__.__name__}.{key}"
+
+        merged_value = [merged_value] if merged_value != empty_value else []
         try:
             options:List[BaseModel] = sorted(sum(values, []), key=lambda _:_.name)
             options = list(_remove_duplicates(options))
             options_str = []
-            for entry in options:
-                prefix = "- "
-                for l in _model_dump(paper_id, paper, entry).splitlines():
-                    options_str.append(f"{prefix}{l}")
-                    prefix = "  "
-                options_str.append("")
-            options_str = "\n".join(options_str)
+            for _list in (*merged_value, options):
+                concat = []
+                for entry in _list:
+                    prefix = "- "
+                    for l in _model_dump(paper_id, paper, entry).splitlines():
+                        concat.append(f"{prefix}{l}")
+                        prefix = "  "
+                    concat.append("")
+                options_str.append("\n".join(concat))
 
-            selection = _select(attribute, options_str, edit=True)
+            selection = _select(attribute, *options_str, edit=True)
             while True:
                 try:
-                    _selection = yaml.safe_load(selection)
+                    _selection = yaml.safe_load(selection or "[]")
                     selection = [options[0].model_validate(entry) for entry in _selection]
                     break
                 except yaml.scanner.ScannerError as e:
@@ -286,13 +291,13 @@ def merge_paper_extractions(paper_id, paper, extractions:PaperExtractions, *othe
                     print(e)
                     print(f"There was an error validating the model {type(values[0])}. Please try again")
                     selection = edit_content(attribute, selection)
-            extractions.__dict__[key] = selection
+            merged_extractions.__dict__[key] = selection
             continue
         except TypeError:
             pass
 
         try:
-            options = [_model_dump(paper_id, paper, v) for v in values]
+            options = [_model_dump(paper_id, paper, v) for v in (*merged_value, *values)]
             selection = _select(attribute, *options, edit=True)
             while True:
                 try:
@@ -306,13 +311,13 @@ def merge_paper_extractions(paper_id, paper, extractions:PaperExtractions, *othe
                     print(e)
                     print(f"There was an error validating the model {type(values[0])}. Please try again")
                     selection = edit_content(attribute, selection)
-            extractions.__dict__[key] = selection
+            merged_extractions.__dict__[key] = selection
             continue
         except AttributeError:
             pass
 
         try:
-            options = [v.value for v in values]
+            options = [v.value for v in (*merged_value, *values)]
             selection = _select(attribute, *options, edit=True)
             while True:
                 try:
@@ -322,12 +327,12 @@ def merge_paper_extractions(paper_id, paper, extractions:PaperExtractions, *othe
                     print(e)
                     print("There was an error parsing the value. Please try again")
                     selection = edit_content(attribute, selection)
-            extractions.__dict__[key] = selection
+            merged_extractions.__dict__[key] = selection
             continue
         except AttributeError:
             pass
 
-        extractions.__dict__[key] = _select(attribute, *values, edit=True)
+        merged_extractions.__dict__[key] = _select(attribute, *merged_value, *values, edit=True)
 
 
 if __name__ == "__main__":
@@ -342,14 +347,29 @@ if __name__ == "__main__":
 
     extractions_tuple.sort(key=lambda _:_[0])
 
-    extractions_merged = []
-    for i, (paper_id, paper, extractions) in enumerate(extractions_tuple):
-        if [_paper_id for (_paper_id, _, _) in extractions_merged if _paper_id == paper_id]:
+    done = []
+    for i, (paper_id, paper, _) in enumerate(extractions_tuple):
+        if [_paper_id for (_paper_id, _, _) in done if _paper_id == paper_id]:
             continue
 
-        other_extractions = [
+        f:Path = (ROOT_DIR / "data/merged/") / paper_id
+        f = f.with_suffix(".json")
+
+        merged_extractions = empty_paperextractions()
+
+        if f.exists():
+            merged_extractions = PaperExtractions.model_validate_json(f.read_text())
+            if _input_option(
+                f"The paper {paper_id} has already been merged. Do you wish to "
+                f"redo the merge?",
+                ("y","n")
+            ) == "n":
+                done.append((paper_id, paper, merged_extractions))
+                continue
+
+        all_extractions = [
             _extractions
-            for _paper_id, _, _extractions in extractions_tuple[i+1:]
+            for _paper_id, _, _extractions in extractions_tuple[i:]
             if _paper_id == paper_id
         ]
 
@@ -361,10 +381,8 @@ if __name__ == "__main__":
             urllib.request.urlretrieve(url, str(pdf))
             _open(str(pdf))
 
-        merge_paper_extractions(paper_id, paper, extractions, *other_extractions)
-        extractions_merged.append((paper_id, paper, extractions))
+        merge_paper_extractions(paper_id, paper, merged_extractions, *all_extractions)
+        done.append((paper_id, paper, merged_extractions))
 
-        f = (ROOT_DIR / "data/merged/") / paper_id
-        f = f.with_suffix(".json")
         f.parent.mkdir(parents=True, exist_ok=True)
-        f.write_text(extractions.model_dump_json(indent=2))
+        f.write_text(merged_extractions.model_dump_json(indent=2))

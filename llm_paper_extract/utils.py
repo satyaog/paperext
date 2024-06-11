@@ -15,7 +15,7 @@ def build_validation_set(data_dir:Path, seed=42):
     for field in research_fields:
         papers_by_field.setdefault(field, set())
         field_papers:set = papers_by_field[field]
-        all_field_papers = (data_dir / f"{field}_papers.txt").read_text().split("\n")
+        all_field_papers = (data_dir / f"{field}_papers.txt").read_text().splitlines()
         all_field_papers = sorted([p for p in all_field_papers if p])
         while len(field_papers) < 10:
             _field_papers = set(random.sample(all_field_papers, 10 - len(field_papers)))
