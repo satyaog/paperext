@@ -2,6 +2,8 @@ import random
 from pathlib import Path
 import sys
 
+PAPERS_TO_IGNORE={"data/cache/arxiv/2404.09932.txt",}
+
 
 def build_validation_set(data_dir:Path, seed=42):
     random.seed(seed)
@@ -25,6 +27,20 @@ def build_validation_set(data_dir:Path, seed=42):
             f"Selected {len(field_papers)} papers out of {len(all_field_papers)} papers for field {field}",
             file=sys.stderr
         )
+        papers_by_field[field] = sorted(field_papers)
+
+    # Try to minimize impact on random selections by filtering the particular
+    # papers only at the end
+    for field in research_fields:
+        papers_by_field.setdefault(field, set())
+        field_papers = set(papers_by_field[field])
+        field_papers = field_papers - PAPERS_TO_IGNORE
+        all_field_papers = (data_dir / f"{field}_papers.txt").read_text().splitlines()
+        all_field_papers = sorted([p for p in all_field_papers if p])
+        while len(field_papers) < 10:
+            _field_papers = set(random.sample(all_field_papers, 10 - len(field_papers)))
+            field_papers.update(_field_papers - all_papers - PAPERS_TO_IGNORE)
+            all_papers.update(_field_papers)
         papers_by_field[field] = sorted(field_papers)
 
     validation_set = sum(papers_by_field.values(), [])

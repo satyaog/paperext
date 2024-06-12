@@ -361,7 +361,6 @@ def get_papers_from_file(papers: List[str]) -> List[Tuple[str, Path, ExtractionR
     return extractions_tuple
 
 
-
 def get_papers_from_folder() -> List[Tuple[str, Path, ExtractionResponse]]:
     responses = (ROOT_DIR / "data/queries/").glob("*.json")
 
@@ -448,7 +447,6 @@ def main(argv=None):
         f.write_text(merged_extractions.model_dump_json(indent=2))
 
         print('Merged paper saved to', f)
-
 
 
 if __name__ == "__main__":
