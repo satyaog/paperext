@@ -5,11 +5,12 @@ import enum
 import logging
 from pathlib import Path
 from typing import Any, Generic, List, Optional, Tuple, TypeVar
+import typing
 
 import instructor
 import openai
 from openai.types.chat.chat_completion import CompletionUsage
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, create_model
 import pydantic_core
 
 from llm_paper_extract import ROOT_DIR
@@ -17,7 +18,7 @@ from llm_paper_extract import ROOT_DIR
 logging.basicConfig(level=logging.DEBUG)
 
 _FIRST_MESSAGE = (
-    "Which Deep Learning Models, Datasets and Frameworks can you find in the "
+    "Which Deep Learning Models, Datasets and Libraries can you find in the "
     "following research paper:\n"
     "{}"
 )
@@ -26,9 +27,9 @@ _RETRY_MESSAGE = (
     "{}\n"
     "your precedent list of Datasets\n"
     "{}\n"
-    "your precedent list of Frameworks\n"
+    "your precedent list of Libraries\n"
     "{}\n"
-    "please find more Deep Learning Models, Datasets and Frameworks in the "
+    "please find more Deep Learning Models, Datasets and Libraries in the "
     "same research paper:\n"
     "{}"
 )
@@ -41,15 +42,16 @@ def _caseinsensitive_missing_(cls:enum.Enum, value):
     for member in cls:
         if member.lower() == value:
             return member
-    try:
-        value = int(value)
-        if value < 0:
-            raise IndexError
-        return list(cls)[value]
-    except ValueError:
-        pass
-    except IndexError:
-        pass
+    # try:
+    #     # Counting on the string version to save us here
+    #     value = max(0, int(value) - 1)
+    #     if value < 0:
+    #         raise IndexError
+    #     return list(cls)[value]
+    # except ValueError:
+    #     pass
+    # except IndexError:
+    #     pass
     return None
 
 
@@ -85,9 +87,7 @@ class Role(str, enum.Enum):
 T = TypeVar("T")
 class Explained(BaseModel, Generic[T]):
     value: T | str
-    confidence: float = Field(
-        description="Confidence level between 0.0 and 1.0 that the value is correct",
-    )
+    # value_str: str = Field(description="Literal conversion of the value")
     justification: str = Field(
         description="Short justification for the choice of the value",
     )
@@ -105,23 +105,7 @@ class Explained(BaseModel, Generic[T]):
         )
 
 
-class _EQ():
-    def __eq__(self, other):
-        for (k1,v1), (k2,v2) in zip(self, other):
-            if k1 != k2:
-                return False
-            if k1 == "keywords":
-                continue
-            if v1 != v2:
-                return False
-        else:
-            return True
-
-    def __ne__(self, other) -> bool:
-        return not self == other
-
-
-class Model(_EQ, BaseModel):
+class Model(BaseModel):
     name: Explained[str] = Field(
         description="Name of the Model",
     )
@@ -136,7 +120,7 @@ class Model(_EQ, BaseModel):
     )
 
 
-class Dataset(_EQ, BaseModel):
+class Dataset(BaseModel):
     name: Explained[str] = Field(
         description="Name of the Dataset",
     )
@@ -145,12 +129,12 @@ class Dataset(_EQ, BaseModel):
     )
 
 
-class Framework(_EQ, BaseModel):
+class Library(BaseModel):
     name: Explained[str] = Field(
-        description="Name of the Framework",
+        description="Name of the Library",
     )
     role: Role | str = Field(
-        description=f"Was the Framework {' or '.join([role.value.lower() for role in Role])} in the scope of the paper"
+        description=f"Was the Library {' or '.join([role.value.lower() for role in Role])} in the scope of the paper"
     )
 
 
@@ -176,9 +160,65 @@ class PaperExtractions(BaseModel):
     datasets: List[Dataset] = Field(
         description="All Datasets found in the paper"
     )
-    frameworks: List[Framework] = Field(
-        description="All Frameworks found in the paper"
+    libraries: List[Library] = Field(
+        description="All Deep Learning Libraries found in the paper"
     )
+
+
+def get_fields(model_cls:BaseModel):
+    fields = {}
+    for field, info in model_cls.model_fields.items():
+        if typing.get_origin(info.annotation) == list:
+            try:
+                sub_fields = get_fields(info.annotation.__args__[0])
+            except AttributeError:
+                fields[field] = (info.annotation, Field(description=info.description))
+                continue
+            fields[field] = (
+                List[create_model(field, **sub_fields)],
+                Field(description=info.description)
+            )
+            continue
+
+        try:
+            sub_fields = get_fields(info.annotation)
+        except AttributeError:
+            fields[field] = (info.annotation, Field(description=info.description))
+            continue
+
+        if info.annotation.__base__ == Explained:
+            sub_fields = {
+                field:(sub_fields["value"][0], Field(description=info.description)),
+                **{k:v for k,v in sub_fields.items() if k != "value"}
+            }
+            cls_name = f"{Explained.__name__}[{field}]"
+        else:
+            cls_name = info.annotation.__name__
+        fields[field] = (create_model(cls_name, **sub_fields), Field(description=info.description))
+
+    return fields
+
+
+def fix_explained_fields():
+    import pdb ; pdb.set_trace()
+    fields = get_fields(PaperExtractions)
+    return create_model(PaperExtractions.__name__, **fields)
+
+
+def print_model(model_cls:BaseModel, indent = 0):
+    for field, info in model_cls.model_fields.items():
+        print(" " * indent, field, info)
+        if typing.get_origin(info.annotation) == list:
+            print_model(info.annotation.__args__[0], indent+2)
+            continue
+
+        try:
+            print_model(info.annotation, indent+2)
+        except AttributeError:
+            pass
+
+
+# PaperExtractions = fix_explained_fields()
 
 
 class ExtractionResponse(BaseModel):
@@ -222,8 +262,8 @@ def empty_paperextractions():
                 role=_EMPTY_FLAG,
             )
         ],
-        frameworks=[
-            Framework(
+        libraries=[
+            Library(
                 name=empty_explained_str,
                 role=_EMPTY_FLAG,
             )
@@ -246,7 +286,7 @@ async def extract_from_research_paper(
                 messages=[
                     {
                         "role": "system",
-                        "content": f"Your role is to extract Deep Learning Models, Datasets and Frameworks from a given research paper."
+                        "content": f"Your role is to extract Deep Learning Models, Datasets and Deep Learning Libraries from a given research paper."
                                   #  f"The Models, Datasets and Frameworks must be used in the paper "
                                   #  f"and / or the comparison analysis of the results of the "
                                   #  f"paper. The papers provided will be a convertion from pdf to text, which could imply some formatting issues.",
@@ -312,8 +352,8 @@ async def batch_extract_models_names(
             datasets = [
                 d.name.value for d in response.extractions.datasets
             ]
-            frameworks = [
-                f.name.value for f in response.extractions.frameworks
+            libraries = [
+                f.name.value for f in response.extractions.libraries
             ]
 
-            data = [models, datasets, frameworks]
+            data = [models, datasets, libraries]

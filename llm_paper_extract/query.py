@@ -18,8 +18,8 @@ async def ignore_exceptions(validation_set:List[Path]):
             await batch_extract_models_names(client, [paper])
         except bdb.BdbQuit:
             raise
-        except:
-            warnings.warn(f"Failed to extract paper informations from {paper.name}")
+        except Exception as e:
+            warnings.warn(f"Failed to extract paper informations from {paper.name}:\n{e}")
 
 
 if __name__ == "__main__":
