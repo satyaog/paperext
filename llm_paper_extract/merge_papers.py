@@ -32,6 +32,8 @@ else:                                   # linux variants
 
 
 def _open_editor(_f:str):
+    if not os.path.exists(_f):
+        raise FileNotFoundError(_f)
     p = subprocess.Popen((_EDITOR, _f))
     while p.poll() is None:
         sleep(1)
@@ -42,6 +44,8 @@ def _open_editor(_f:str):
 
 
 def _open(_f:str):
+    if not os.path.exists(_f):
+        raise FileNotFoundError(_f)
     p = subprocess.Popen((_READER, _f))
     # Sleep to give a bit of time to reader to spawn
     sleep(1)
@@ -336,13 +340,11 @@ def merge_paper_extractions(paper_id, paper, merged_extractions:PaperExtractions
         merged_extractions.__dict__[key] = _select(attribute, *merged_value, *values, edit=True)
 
 
-def get_papers_from_file(input_file: Path) -> List[Tuple[str, Path, ExtractionResponse]]:
-    with open(input_file, "r") as f:
-        papers = f.readlines()
+def get_papers_from_file(papers: List[str]) -> List[Tuple[str, Path, ExtractionResponse]]:
 
     extractions_tuple = []
     for paper in papers:
-        paper_id = paper.strip() + '.txt'
+        paper_id = paper.strip()
         print('Parsing', paper_id)
         paper = (ROOT_DIR / f"data/cache/arxiv/{paper_id}.txt").read_text().lower().replace("\n", " ")
         responses = list((ROOT_DIR / "data/queries/").glob(f"{paper_id}_[0-9]*.json"))
@@ -352,7 +354,7 @@ def get_papers_from_file(input_file: Path) -> List[Tuple[str, Path, ExtractionRe
             continue
         responses = (ExtractionResponse.model_validate_json(_f.read_text()) for _f in responses)
         for (_,paper),(_,_),(_,extractions),_ in responses:
-            extractions_tuple.append((paper_id, paper, extractions))
+            extractions_tuple.append((paper_id + '.txt', paper, extractions))
 
     extractions_tuple.sort(key=lambda _:_[0])
 
@@ -384,11 +386,15 @@ def get_papers_from_folder() -> List[Tuple[str, Path, ExtractionResponse]]:
 def main(argv=None):
 
     parser = argparse.ArgumentParser()
+    parser.add_argument("--papers", nargs='*', type=str, default=None, help="Papers to merge")
     parser.add_argument("--input", type=Path, default=None, help="List of papers to merge")
     options = parser.parse_args(argv)
 
     if options.input:
-        papers = get_papers_from_file(options.input)
+        with open(options.input, "r") as f:
+            papers = get_papers_from_file(f.readlines())
+    if options.papers:
+        papers = get_papers_from_file(options.papers)
     else:
         papers = get_papers_from_folder()
 
@@ -397,13 +403,20 @@ def main(argv=None):
         if [_paper_id for (_paper_id, _, _) in done if _paper_id == paper_id]:
             continue
 
+        print('Merging', paper_id)
+
         f:Path = (ROOT_DIR / "data/merged/") / paper_id
         f = f.with_suffix(".json")
 
         merged_extractions = empty_paperextractions()
 
         if f.exists():
-            merged_extractions = PaperExtractions.model_validate_json(f.read_text())
+            try:
+                merged_extractions = PaperExtractions.model_validate_json(f.read_text())
+            except ValidationError as e:
+                print(e)
+                print('Invalid extraction file... Consider deleting it.')
+                continue
             if _input_option(
                 f"The paper {paper_id} has already been merged. Do you wish to "
                 f"redo the merge?",
@@ -419,11 +432,12 @@ def main(argv=None):
         ]
 
         pdf:Path = (ROOT_DIR / "data/cache/arxiv/" / paper_id).with_suffix(".pdf")
+        print("Opening", pdf)
         try:
             _open(str(pdf))
-        except subprocess.CalledProcessError:
+        except (subprocess.CalledProcessError, FileNotFoundError) as e:
             url = f"https://arxiv.org/pdf/{pdf.stem}"
-            print(url)
+            print('Downloading from', url, 'to', str(pdf))
             urllib.request.urlretrieve(url, str(pdf))
             _open(str(pdf))
 
@@ -432,6 +446,8 @@ def main(argv=None):
 
         f.parent.mkdir(parents=True, exist_ok=True)
         f.write_text(merged_extractions.model_dump_json(indent=2))
+
+        print('Merged paper saved to', f)
 
 
 
