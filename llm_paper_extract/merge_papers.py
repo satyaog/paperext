@@ -447,6 +447,8 @@ def main(argv=None):
         f.parent.mkdir(parents=True, exist_ok=True)
         f.write_text(merged_extractions.model_dump_json(indent=2))
 
+        print('Merged paper saved to', f)
+
 
 
 if __name__ == "__main__":
