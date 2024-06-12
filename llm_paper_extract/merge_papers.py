@@ -264,7 +264,13 @@ def edit_content(filename:str, contents:List[str]):
 
 
 def merge_paper_extractions(paper_id, paper, merged_extractions:PaperExtractions, *all_extractions: List[PaperExtractions]):
+    f:Path = (ROOT_DIR / "data/merged/") / paper_id
+    f = f.with_suffix(".json")
+
     for keys_values in zip(empty_paperextractions(), merged_extractions, *all_extractions):
+        # Save progression
+        f.write_text(merged_extractions.model_dump_json(indent=2))
+
         empty_value, merged_value, *values = [v for _, v in keys_values]
 
         if not [v for v in values[1:] if v != values[0]]:
@@ -416,6 +422,7 @@ def main(argv=None):
 
         f:Path = (ROOT_DIR / "data/merged/") / paper_id
         f = f.with_suffix(".json")
+        f.parent.mkdir(parents=True, exist_ok=True)
 
         merged_extractions = empty_paperextractions()
 
@@ -424,7 +431,7 @@ def main(argv=None):
                 merged_extractions = PaperExtractions.model_validate_json(f.read_text())
             except ValidationError as e:
                 print(e)
-                print('Invalid extraction file... Consider deleting it.')
+                print(f'Invalid extraction file... Consider deleting [{f}].')
                 continue
             if _input_option(
                 f"The paper {paper_id} has already been merged. Do you wish to "
@@ -453,7 +460,6 @@ def main(argv=None):
         merge_paper_extractions(paper_id, paper, merged_extractions, *all_extractions)
         done.append((paper_id, paper, merged_extractions))
 
-        f.parent.mkdir(parents=True, exist_ok=True)
         f.write_text(merged_extractions.model_dump_json(indent=2))
 
         print('Merged paper saved to', f)
