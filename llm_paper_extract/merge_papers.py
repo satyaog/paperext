@@ -1,4 +1,3 @@
-
 import argparse
 import os
 import json
@@ -12,10 +11,12 @@ import unicodedata
 import urllib
 from time import sleep
 from typing import Iterable, List
-import warnings
-import pydantic_core
 from typing import Iterable, List, Tuple
+
 from pydantic import BaseModel, ValidationError
+from pygments import highlight
+from pygments.formatters import TerminalTrueColorFormatter
+from pygments.lexers.data import YamlLexer
 import yaml
 
 from . import ROOT_DIR
@@ -238,7 +239,7 @@ def _select(key:str, *options:List[str], edit=False):
         print()
         prefix = f"== {key} ({i+1}) "
         print(f"{prefix}{separator[len(prefix):]}")
-        print(option)
+        print(highlight(option, YamlLexer(), TerminalTrueColorFormatter()))
     select = _input_option(f"Select {' or '.join(long_options)}", short_options)
     try:
         return options[int(select) - 1]
