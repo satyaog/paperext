@@ -194,12 +194,12 @@ def _model_dump(paper_id, paper, model:BaseModel):
             end = i+1
             while end < len(lines):
                 len_end_lstrip = len(lines[end]) - len(lines[end].lstrip())
-                if len_end_lstrip <= len(lstrip):
+                if lines[end] and len_end_lstrip <= len(lstrip):
                     break
                 end += 1
             try:
                 quote = yaml.safe_load("\n".join(lines[i:end]))["quote"]
-            except yaml.parser.ParserError:
+            except (yaml.parser.ParserError, yaml.scanner.ScannerError):
                 print(model_dump_yaml)
                 print("\n".join(lines[i:end]))
                 raise
