@@ -100,9 +100,7 @@ class Explained(BaseModel, Generic[T]):
         return self.value == other.value
 
     def __lt__(self, other:"Explained"):
-        return self.value < other.value or (
-            self.value == other.value and self.confidence > other.confidence
-        )
+        return self.value < other.value
 
 
 class Model(BaseModel):
@@ -151,6 +149,10 @@ class PaperExtractions(BaseModel):
     research_field: Explained[str] = Field(
         description="Deep Learning research field of the paper",
     )
+    # This should have been a list
+    # sub_research_field: List[Explained[str]] | Explained[str] = Field(
+    #     description="List of Deep Learning research sub-fields of the paper",
+    # )
     sub_research_field: Explained[str] = Field(
         description="Deep Learning sub-research field of the paper",
     )
@@ -231,7 +233,6 @@ class ExtractionResponse(BaseModel):
 def empty_paperextractions():
     empty_explained = Explained[str](
         value=_EMPTY_FLAG,
-        confidence=0.0,
         justification="",
         quote=""
     )
