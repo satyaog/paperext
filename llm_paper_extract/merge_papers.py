@@ -9,6 +9,7 @@ import tempfile
 import urllib
 from time import sleep
 from typing import Iterable, List
+import warnings
 
 from pydantic import BaseModel
 import pydantic_core
@@ -343,6 +344,7 @@ if __name__ == "__main__":
         try:
             responses.append(ExtractionResponse.model_validate_json(_f.read_text()))
         except pydantic_core._pydantic_core.ValidationError:
+            warnings.warn(f"Failed to validate model for paper {_f.name}. Skipping")
             continue
 
     extractions_tuple = []
