@@ -137,11 +137,11 @@ class Library(BaseModel):
 
 
 class PaperExtractions(BaseModel):
-    description: str = Field(
-        description="Short description of the paper",
-    )
     title: Explained[str] = Field(
         description="Title of the paper",
+    )
+    description: str = Field(
+        description="Short description of the paper",
     )
     type: Explained[ResearchType] = Field(
         description=f"Is the paper an {' or a '.join([rt.value.lower() + ' study' for rt in ResearchType])}",
