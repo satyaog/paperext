@@ -340,9 +340,7 @@ def merge_paper_extractions(paper_id, paper, merged_extractions:PaperExtractions
         merged_extractions.__dict__[key] = _select(attribute, *merged_value, *values, edit=True)
 
 
-def get_papers_from_file(input_file: Path) -> List[Tuple[str, Path, ExtractionResponse]]:
-    with open(input_file, "r") as f:
-        papers = f.readlines()
+def get_papers_from_file(papers: List[str]) -> List[Tuple[str, Path, ExtractionResponse]]:
 
     extractions_tuple = []
     for paper in papers:
@@ -388,11 +386,15 @@ def get_papers_from_folder() -> List[Tuple[str, Path, ExtractionResponse]]:
 def main(argv=None):
 
     parser = argparse.ArgumentParser()
+    parser.add_argument("--papers", nargs='*', type=str, default=None, help="Papers to merge")
     parser.add_argument("--input", type=Path, default=None, help="List of papers to merge")
     options = parser.parse_args(argv)
 
     if options.input:
-        papers = get_papers_from_file(options.input)
+        with open(options.input, "r") as f:
+            papers = get_papers_from_file(f.readlines())
+    if options.papers:
+        papers = get_papers_from_file(options.papers)
     else:
         papers = get_papers_from_folder()
 
@@ -401,13 +403,20 @@ def main(argv=None):
         if [_paper_id for (_paper_id, _, _) in done if _paper_id == paper_id]:
             continue
 
+        print('Merging', paper_id)
+
         f:Path = (ROOT_DIR / "data/merged/") / paper_id
         f = f.with_suffix(".json")
 
         merged_extractions = empty_paperextractions()
 
         if f.exists():
-            merged_extractions = PaperExtractions.model_validate_json(f.read_text())
+            try:
+                merged_extractions = PaperExtractions.model_validate_json(f.read_text())
+            except ValidationError as e:
+                print(e)
+                print('Invalid extraction file... Consider deleting it.')
+                continue
             if _input_option(
                 f"The paper {paper_id} has already been merged. Do you wish to "
                 f"redo the merge?",
@@ -431,8 +440,6 @@ def main(argv=None):
             print('Downloading from', url, 'to', str(pdf))
             urllib.request.urlretrieve(url, str(pdf))
             _open(str(pdf))
-
-        print('all good')
 
         merge_paper_extractions(paper_id, paper, merged_extractions, *all_extractions)
         done.append((paper_id, paper, merged_extractions))
