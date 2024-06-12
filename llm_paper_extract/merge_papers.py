@@ -1,3 +1,5 @@
+
+import argparse
 import os
 import json
 from pathlib import Path
@@ -10,9 +12,9 @@ import urllib
 from time import sleep
 from typing import Iterable, List
 import warnings
-
-from pydantic import BaseModel
 import pydantic_core
+from typing import Iterable, List, Tuple
+from pydantic import BaseModel, ValidationError
 import yaml
 
 from . import ROOT_DIR
@@ -21,10 +23,12 @@ from .model import ExtractionResponse, PaperExtractions, empty_paperextractions
 _STRIP_RE = r"[a-zA-Z0-9].*[a-zA-Z0-9]"
 _EDITOR = os.environ.get("VISUAL", os.environ.get("EDITOR", None))
 _TMPDIR = tempfile.TemporaryDirectory()
+
+_READER = os.environ.get("READER", None)
 if platform.system() == "Darwin":       # macOS
-    _EDITOR = _EDITOR or "open"
+    _READER = _READER or "open"
 else:                                   # linux variants
-    _EDITOR = _EDITOR or "xdg-open"
+    _READER = _READER or "xdg-open"
 
 
 def _open_editor(_f:str):
@@ -38,16 +42,11 @@ def _open_editor(_f:str):
 
 
 def _open(_f:str):
-    if platform.system() == "Darwin":       # macOS
-        exe = "open"
-    else:                                   # linux variants
-        exe = "xdg-open"
-    p = subprocess.Popen((exe, _f))
-    while p.poll() is None:
-        sleep(1)
-        continue
+    p = subprocess.Popen((_READER, _f))
+    # Sleep to give a bit of time to reader to spawn
+    sleep(1)
     if p.returncode:
-        raise subprocess.CalledProcessError(p.returncode, (_EDITOR, _f), p.stdout, p.stderr)
+        raise subprocess.CalledProcessError(p.returncode, (_READER, _f), p.stdout, p.stderr)
     return p.returncode
 
 
@@ -337,26 +336,64 @@ def merge_paper_extractions(paper_id, paper, merged_extractions:PaperExtractions
         merged_extractions.__dict__[key] = _select(attribute, *merged_value, *values, edit=True)
 
 
-if __name__ == "__main__":
-    files = (ROOT_DIR / "data/queries/").glob("*.json")
-    responses = []
-    for _f in files:
-        try:
-            responses.append(ExtractionResponse.model_validate_json(_f.read_text()))
-        except pydantic_core._pydantic_core.ValidationError:
-            warnings.warn(f"Failed to validate model for paper {_f.name}. Skipping")
-            continue
+def get_papers_from_file(input_file: Path) -> List[Tuple[str, Path, ExtractionResponse]]:
+    with open(input_file, "r") as f:
+        papers = f.readlines()
 
     extractions_tuple = []
-    for (_,paper),(_,_),(_,extractions),_ in responses:
+    for paper in papers:
+        paper_id = paper.strip() + '.txt'
+        print('Parsing', paper_id)
+        paper = (ROOT_DIR / f"data/cache/arxiv/{paper_id}.txt").read_text().lower().replace("\n", " ")
+        responses = list((ROOT_DIR / "data/queries/").glob(f"{paper_id}_[0-9]*.json"))
+        if not responses:
+            print('No responses found for', paper_id)
+            print('Skipping...')
+            continue
+        responses = (ExtractionResponse.model_validate_json(_f.read_text()) for _f in responses)
+        for (_,paper),(_,_),(_,extractions),_ in responses:
+            extractions_tuple.append((paper_id, paper, extractions))
+
+    extractions_tuple.sort(key=lambda _:_[0])
+
+    return extractions_tuple
+
+
+
+def get_papers_from_folder() -> List[Tuple[str, Path, ExtractionResponse]]:
+    responses = (ROOT_DIR / "data/queries/").glob("*.json")
+
+    extractions_tuple = []
+    for response_path in responses:
+        print('Parsing', response_path)
+        try:
+            (_,paper),(_,_),(_,extractions),_ = ExtractionResponse.model_validate_json(response_path.read_text())
+        except ValidationError as e:
+            print(e)
+            print(f'Skipping {response_path}')
+            continue
         paper_id = paper
         paper = (ROOT_DIR / "data/cache/arxiv/" / paper_id).read_text().lower().replace("\n", " ")
         extractions_tuple.append((paper_id, paper, extractions))
 
     extractions_tuple.sort(key=lambda _:_[0])
 
+    return extractions_tuple
+
+
+def main(argv=None):
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--input", type=Path, default=None, help="List of papers to merge")
+    options = parser.parse_args(argv)
+
+    if options.input:
+        papers = get_papers_from_file(options.input)
+    else:
+        papers = get_papers_from_folder()
+
     done = []
-    for i, (paper_id, paper, _) in enumerate(extractions_tuple):
+    for i, (paper_id, paper, _) in enumerate(papers):
         if [_paper_id for (_paper_id, _, _) in done if _paper_id == paper_id]:
             continue
 
@@ -377,7 +414,7 @@ if __name__ == "__main__":
 
         all_extractions = [
             _extractions
-            for _paper_id, _, _extractions in extractions_tuple[i:]
+            for _paper_id, _, _extractions in papers[i:]
             if _paper_id == paper_id
         ]
 
@@ -386,6 +423,7 @@ if __name__ == "__main__":
             _open(str(pdf))
         except subprocess.CalledProcessError:
             url = f"https://arxiv.org/pdf/{pdf.stem}"
+            print(url)
             urllib.request.urlretrieve(url, str(pdf))
             _open(str(pdf))
 
@@ -394,3 +432,8 @@ if __name__ == "__main__":
 
         f.parent.mkdir(parents=True, exist_ok=True)
         f.write_text(merged_extractions.model_dump_json(indent=2))
+
+
+
+if __name__ == "__main__":
+    main()
