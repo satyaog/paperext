@@ -210,7 +210,7 @@ def empty_paperextractions():
             Model(
                 name=empty_explained_str,
                 role=_EMPTY_FLAG,
-                type=_EMPTY_FLAG,
+                type=empty_explained_str,
                 mode=_EMPTY_FLAG
             )
         ],

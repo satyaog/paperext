@@ -11,6 +11,7 @@ from time import sleep
 from typing import Iterable, List
 
 from pydantic import BaseModel
+import pydantic_core
 import yaml
 
 from . import ROOT_DIR
@@ -336,8 +337,13 @@ def merge_paper_extractions(paper_id, paper, merged_extractions:PaperExtractions
 
 
 if __name__ == "__main__":
-    responses = (ROOT_DIR / "data/queries/").glob("*.json")
-    responses = (ExtractionResponse.model_validate_json(_f.read_text()) for _f in responses)
+    files = (ROOT_DIR / "data/queries/").glob("*.json")
+    responses = []
+    for _f in files:
+        try:
+            responses.append(ExtractionResponse.model_validate_json(_f.read_text()))
+        except pydantic_core._pydantic_core.ValidationError:
+            continue
 
     extractions_tuple = []
     for (_,paper),(_,_),(_,extractions),_ in responses:
