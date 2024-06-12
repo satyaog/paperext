@@ -8,6 +8,7 @@ import re
 import shutil
 import subprocess
 import tempfile
+import unicodedata
 import urllib
 from time import sleep
 from typing import Iterable, List
@@ -34,7 +35,7 @@ else:                                   # linux variants
 def _open_editor(_f:str):
     if not os.path.exists(_f):
         raise FileNotFoundError(_f)
-    p = subprocess.Popen((_EDITOR, _f))
+    p = subprocess.Popen((*_EDITOR.split(" "), _f))
     while p.poll() is None:
         sleep(1)
         continue
@@ -57,6 +58,12 @@ def _open(_f:str):
 def _strip(string):
     m = re.search(_STRIP_RE, string.lower())
     return m[0] if m is not None else string
+
+
+def _normalize(string):
+    string = unicodedata.normalize("NFKC", string).lower()
+    string = re.sub(pattern=r"\s", string=string, repl="")
+    return string
 
 
 def gen_indents(indent=0, skip_first=False):
@@ -196,7 +203,7 @@ def _model_dump(paper_id, paper, model:BaseModel):
                 print(model_dump_yaml)
                 print("\n".join(lines[i:end]))
                 raise
-            if quote.lower() not in paper:
+            if _normalize(quote) not in paper:
                 lines.insert(end, f"{lstrip}## {_WARNING}")
     model_dump_yaml = "\n".join(lines)
     return model_dump_yaml
@@ -352,9 +359,12 @@ def get_papers_from_file(papers: List[str]) -> List[Tuple[str, Path, ExtractionR
             print('No responses found for', paper_id)
             print('Skipping...')
             continue
-        responses = (ExtractionResponse.model_validate_json(_f.read_text()) for _f in responses)
-        for (_,paper),(_,_),(_,extractions),_ in responses:
-            extractions_tuple.append((paper_id + '.txt', paper, extractions))
+        responses = (
+            ExtractionResponse.model_validate_json(_f.read_text())
+            for _f in responses
+        )
+        for (_,paper_id),(_,_),(_,extractions),_ in responses:
+            extractions_tuple.append((paper_id, _normalize(paper), extractions))
 
     extractions_tuple.sort(key=lambda _:_[0])
 
