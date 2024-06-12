@@ -1,0 +1,90 @@
+{
+  "paper": "2401.11061.txt",
+  "words": 6874,
+  "extractions": {
+    "description": "This paper introduces PhotoBot, a framework for automating photo acquisition through an interplay of human language guidance and robotic photography. The system uses a combination of visual language models (VLM), object detectors, and large language models (LLM) to suggest reference photographs to users based on their language queries and to adjust the camera view for optimal photo composition.",
+    "title": {
+      "value": "PhotoBot: Reference-Guided Interactive Photography via Natural Language",
+      "justification": "The title should be identical to the title of the paper provided.",
+      "quote": "PhotoBot: Reference-Guided Interactive Photography via Natural Language"
+    },
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The paper describes the implementation of the PhotoBot system, its components, and the results from user studies, making it an empirical study.",
+      "quote": "We demonstrate our approach using a manipulator equipped with a wrist camera. Our user studies show that photos taken by PhotoBot are often more aesthetically pleasing than those taken by users themselves, as measured by human feedback."
+    },
+    "research_field": {
+      "value": "Computer Vision",
+      "justification": "The paper involves the use of visual language models, object detectors, and vision transformers to solve problems related to automated photography, all of which fall under the domain of computer vision.",
+      "quote": "The paper introduces a framework for automated photo acquisition based on an interplay between high-level human guidance and a robot photographer, leveraging visual language models (VLM) and object detectors."
+    },
+    "sub_research_field": {
+      "value": "Robotic Photography",
+      "justification": "The specific focus of the paper is on automating the process of taking aesthetically pleasing photographs through robotic means and human interaction.",
+      "quote": "In this work, we introduce PhotoBot, a framework for automated photo acquisition based on an interplay between high-level human guidance and a robot photographer."
+    },
+    "models": [
+      {
+        "name": {
+          "value": "DINO-ViT",
+          "justification": "DINO-ViT is explicitly mentioned as a model used for feature extraction in the system.",
+          "quote": "To extract features from an image, we feed the image into a pre-trained DINO-ViT transformer and use the keys from intermediate transformer layers as dense image descriptors."
+        },
+        "role": "used",
+        "type": {
+          "value": "Vision Transformer",
+          "justification": "DINO-ViT stands for Self-supervised Vision Transformer.",
+          "quote": "To extract features from an image, we feed the image into a pre-trained DINO-ViT transformer and use the keys from intermediate transformer layers as dense image descriptors."
+        },
+        "mode": "inference"
+      },
+      {
+        "name": {
+          "value": "InstructBLIP",
+          "justification": "InstructBLIP is utilized as a visual language model (VLM) for describing images in the curated gallery.",
+          "quote": "We use Detic as our object detector and InstructBLIP as our VLM."
+        },
+        "role": "used",
+        "type": {
+          "value": "Visual Language Model (VLM)",
+          "justification": "InstructBLIP is explicitly referred to as a Visual Language Model in the paper.",
+          "quote": "We use Detic as our object detector and InstructBLIP as our VLM."
+        },
+        "mode": "inference"
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Shutterstock Image Gallery",
+          "justification": "The curated gallery of high-quality, professionally-taken photos used in the study is licensed from Shutterstock.",
+          "quote": "All reference images are used under license from Shutterstock.com."
+        },
+        "role": "used"
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "GPT-4",
+          "justification": "GPT-4 is used for sophisticated reasoning and retrieval of relevant reference images based on user queries.",
+          "quote": "Examples of user queries, objects detected in the scene, and the resulting LLM reference image suggestions (with an explanation from the LLM) are shown in Fig. 4. We used GPT-4 in this work."
+        },
+        "role": "used"
+      },
+      {
+        "name": {
+          "value": "Sentence-BERT",
+          "justification": "Sentence-BERT is used for embedding textual descriptions of images for retrieval purposes.",
+          "quote": "The VLM description, object list, metadata, and people count are concatenated into a single textual caption, which we embed into a vector using a sentence transformer."
+        },
+        "role": "used"
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 825,
+    "prompt_tokens": 10560,
+    "total_tokens": 11385
+  }
+}

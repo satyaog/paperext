@@ -1,0 +1,114 @@
+{
+  "paper": "2309.17388.txt",
+  "words": 9712,
+  "extractions": {
+    "description": "This paper introduces Tree Cross Attention (TCA), a variant of Cross Attention designed for efficient inference by retrieving information from a logarithmic number of tokens. The authors also present ReTreever, an architecture leveraging TCA for token-efficient inference. They demonstrate the efficacy of TCA and ReTreever across several tasks, including classification and uncertainty regression, showing significant improvements in token efficiency compared to other models like Perceiver IO.",
+    "title": {
+      "value": "Tree Cross Attention",
+      "justification": "The title explicitly names the main contribution of the paper.",
+      "quote": "TCA achieves performance comparable to Cross Attention while being significantly more token-efficient."
+    },
+    "type": {
+      "value": "empirical study",
+      "justification": "The paper includes experiments and empirical evaluations to show the effectiveness of the proposed models.",
+      "quote": "We show empirically that Tree Cross Attention (TCA) performs comparable to Cross Attention across various classification and uncertainty regression tasks while being significantly more token-efficient."
+    },
+    "research_field": {
+      "value": "Machine Learning",
+      "justification": "The study focuses on enhancing machine learning models for efficient inference.",
+      "quote": "With the rapid growth in applications of machine learning, an important objective is to make inference efficient both in terms of compute and memory."
+    },
+    "sub_research_field": {
+      "value": "Efficient Inference",
+      "justification": "The primary focus is on making inference more efficient in terms of processing time and memory usage.",
+      "quote": "In this work, we propose Tree Cross Attention (TCA) - a module based on Cross Attention that only retrieves information from a logarithmic O(log(N )) number of tokens for performing inference."
+    },
+    "models": [
+      {
+        "name": {
+          "value": "Tree Cross Attention",
+          "justification": "The model is a primary contribution of the paper.",
+          "quote": "We propose Tree Cross Attention (TCA), a replacement for Cross Attention that performs retrieval, scaling logarithmically O(log(N )) with the number of tokens."
+        },
+        "role": "contributed",
+        "type": {
+          "value": "Attention-based Model",
+          "justification": "Tree Cross Attention is a variant of Cross Attention, which is an attention-based model.",
+          "quote": "Cross Attention (CA) is a popular method at inference time for retrieving relevant information from a set of context tokens."
+        },
+        "mode": "inference"
+      },
+      {
+        "name": {
+          "value": "ReTreever",
+          "justification": "ReTreever leverages Tree Cross Attention for token-efficient inference, introduced in the paper.",
+          "quote": "Leveraging TCA, we introduce ReTreever, a flexible architecture for token-efficient inference."
+        },
+        "role": "contributed",
+        "type": {
+          "value": "Neural Network Architecture",
+          "justification": "ReTreever is described as an architecture leveraging the Tree Cross Attention mechanism.",
+          "quote": "we introduce ReTreever, a flexible architecture for token-efficient inference."
+        },
+        "mode": "inference"
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Copy Task",
+          "justification": "Used to evaluate the retrieval efficiency and accuracy of Tree Cross Attention and Cross Attention.",
+          "quote": "We first verify the ability of Cross Attention and Tree Cross Attention (TCA) to perform retrieval. The models are provided with a sequence of length N = 2k...The objective of the task is to predict the second half (2k−1 ) of the sequence given the first half (2k − 1 tokens) of the sequence as context."
+        },
+        "role": "used"
+      },
+      {
+        "name": {
+          "value": "GP Regression",
+          "justification": "Used to test the models on uncertainty estimation by modeling unknown functions.",
+          "quote": "The goal of the GP Regression task is to model an unknown function f given N points. During training, the functions are sampled from a GP prior with an RBF kernel fi ∼ GP (m, k)"
+        },
+        "role": "used"
+      },
+      {
+        "name": {
+          "value": "CelebA",
+          "justification": "Used to evaluate the models on the task of image completion.",
+          "quote": "The goal of the Image Completion task is to make predictions for the pixels of an image given a random subset of pixels of an image. The CelebA dataset comprises coloured images of celebrity faces."
+        },
+        "role": "used"
+      },
+      {
+        "name": {
+          "value": "EMNIST",
+          "justification": "Used to evaluate the models on the task of image completion, similar to CelebA.",
+          "quote": "The EMNIST dataset comprises black and white images of handwritten letters with a resolution of 32 × 32."
+        },
+        "role": "used"
+      },
+      {
+        "name": {
+          "value": "Human Activity",
+          "justification": "Used to test the models on time series classification tasks.",
+          "quote": "The human activity dataset consists of 3D positions of the waist, chest, and ankles (12 features) collected from five individuals performing various activities such as walking, lying, and standing."
+        },
+        "role": "used"
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "Commonly used library for implementing neural networks, likely used to develop and evaluate the models in the paper.",
+          "quote": "Our experiments were run using a mix of Nvidia GTX 1080 Ti (12 GB) or Nvidia Tesla P100 (16 GB) GPUs."
+        },
+        "role": "used"
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 993,
+    "prompt_tokens": 16337,
+    "total_tokens": 17330
+  }
+}

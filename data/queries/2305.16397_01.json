@@ -1,0 +1,126 @@
+{
+  "paper": "2305.16397.txt",
+  "words": 9728,
+  "extractions": {
+    "description": "This paper investigates the ability of diffusion models to perform vision-and-language reasoning tasks. It introduces a novel method called Diffusion Image-Text Matching (DiffusionITM) and a benchmark named GDBench to evaluate such models.",
+    "title": {
+      "value": "Are Diffusion Models Vision-And-Language Reasoners?",
+      "justification": "This is the exact title of the paper.",
+      "quote": "Are Diffusion Models Vision-And-Language Reasoners?"
+    },
+    "type": {
+      "value": "empirical study",
+      "justification": "The paper involves experiments and evaluations on various vision-and-language tasks to test the capabilities of diffusion models.",
+      "quote": "In this work, we evaluate language-conditioned generative image models on discriminative tasks to shed light on their fine-grained understanding of vision and language."
+    },
+    "research_field": {
+      "value": "Computer Vision",
+      "justification": "The study focuses on vision-and-language reasoning tasks and uses image-text matching benchmarks.",
+      "quote": "We focus on image-text-matching (ITM) tasks due to their general applicability and simplicity."
+    },
+    "sub_research_field": {
+      "value": "Vision-and-Language Reasoning",
+      "justification": "The paper specifically addresses vision-and-language reasoning tasks using diffusion models.",
+      "quote": "We hypothesize that a generative model trained to synthesize compositional data is capable of understanding the complexities required to solve hard image-text-matching tasks."
+    },
+    "models": [
+      {
+        "name": {
+          "value": "Stable Diffusion 1.5",
+          "justification": "The paper evaluates Stable Diffusion 1.5 in various vision-and-language tasks.",
+          "quote": "Stable Diffusion 1.5"
+        },
+        "role": "used",
+        "type": {
+          "value": "Diffusion Model",
+          "justification": "Used as a generative model for the evaluations.",
+          "quote": "In this work, we use Stable Diffusion (SD) [Rombach et al., 2022] as the text-to-image model..."
+        },
+        "mode": "inference"
+      },
+      {
+        "name": {
+          "value": "Stable Diffusion 2.1",
+          "justification": "The paper evaluates Stable Diffusion 2.1 to compare its performance with version 1.5.",
+          "quote": "We further boost its compositional performance with a transfer setup by fine-tuning on MS-COCO while retaining generative capabilities... Stable Diffusion 2.1 is less biased than 1.5."
+        },
+        "role": "used",
+        "type": {
+          "value": "Diffusion Model",
+          "justification": "Used as a generative model for the evaluations.",
+          "quote": "In this work, we use Stable Diffusion (SD) [Rombach et al., 2022] as the text-to-image model..."
+        },
+        "mode": "inference"
+      },
+      {
+        "name": {
+          "value": "CLIP",
+          "justification": "The paper uses CLIP as a baseline for comparison with Stable Diffusion.",
+          "quote": "GDBench allows head-on comparison between generative models, as well as with discriminative models like CLIP [Radford et al., 2021]."
+        },
+        "role": "used",
+        "type": {
+          "value": "Discriminative Model",
+          "justification": "Used as a baseline for various vision-and-language tasks.",
+          "quote": "GDBench allows head-on comparison between generative models, as well as with discriminative models like CLIP [Radford et al., 2021]."
+        },
+        "mode": "inference"
+      },
+      {
+        "name": {
+          "value": "HardNeg-DiffusionITM",
+          "justification": "HardNeg-DiffusionITM is introduced in the paper as a fine-tuned version of DiffusionITM.",
+          "quote": "Our goal is to transform diffusion-based models for discriminative image-text-matching (ITM)... The resulting model, HardNeg-DiffusionITM, is still evaluated in a zero-shot fashion on the target evaluation tasks."
+        },
+        "role": "contributed",
+        "type": {
+          "value": "Diffusion Model",
+          "justification": "It's a new model variant introduced in this paper.",
+          "quote": "The resulting model, HardNeg-DiffusionITM, is still evaluated in a zero-shot fashion on the target evaluation tasks."
+        },
+        "mode": "inference"
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CLEVR",
+          "justification": "The paper evaluates models using the CLEVR dataset for compositionality tasks.",
+          "quote": "Stable Diffusion + DiffusionITM is competitive on many tasks and outperforms CLIP on compositional tasks like CLEVR and Winoground."
+        },
+        "role": "used"
+      },
+      {
+        "name": {
+          "value": "DrawBench",
+          "justification": "The paper uses DrawBench prompts for evaluating image-text alignment.",
+          "quote": "We therefore compare image-text-alignment of DiffusionITM against HardNeg-DiffusionITM on DrawBench [Saharia et al., 2022] and find promising results."
+        },
+        "role": "used"
+      },
+      {
+        "name": {
+          "value": "LAION",
+          "justification": "The paper mentions that the large pre-training corpus contains many noisy/simple examples.",
+          "quote": "...the denoising diffusion objective only considers positive image-text pairs, and the large pre-training corpus LAION [Schuhmann et al., 2021] contains many noisy/simple examples, not conductive to complex linguistic reasoning."
+        },
+        "role": "referenced"
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Huggingface Diffusers",
+          "justification": "The acknowledgment section states gratitude towards the open-source community behind Huggingface Diffusers library, indicating its use.",
+          "quote": "We are grateful to the open-source community behind the Huggingface Diffusers library."
+        },
+        "role": "used"
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1079,
+    "prompt_tokens": 17141,
+    "total_tokens": 18220
+  }
+}

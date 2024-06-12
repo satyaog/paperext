@@ -1,0 +1,116 @@
+{
+  "paper": "2309.04836.txt",
+  "words": 12151,
+  "extractions": {
+    "description": "This paper presents an automated method for computing semantic mappings between pairs of genus-zero 3D shapes, optimizing semantic correspondences using features distilled from pre-trained vision transformers (ViT).",
+    "title": {
+      "value": "Neural Semantic Surface Maps",
+      "justification": "The title precisely encapsulates the core method and contribution described in the paper: using neural networks to create semantic surface maps.",
+      "quote": "We present an automated technique for computing a map between two genus-zero shapes, which matches semantically corresponding regions to one another."
+    },
+    "type": {
+      "value": "empirical study",
+      "justification": "The paper describes empirical experiments to validate the proposed method, including quantitative and qualitative evaluations.",
+      "quote": "Through quantitative and qualitative experiments, we evaluate our ability to match upright object pairs with varying levels of isometry for objects from the same semantic class and across different ones."
+    },
+    "research_field": {
+      "value": "Computer Vision",
+      "justification": "The paper focuses on using vision transformers and image-based correspondences to compute maps between 3D shapes.",
+      "quote": "To overcome the lack of annotated training data, we distill semantic matches from pre-trained vision models."
+    },
+    "sub_research_field": {
+      "value": "Shape Analysis and Semantic Correspondence",
+      "justification": "The core contribution of the paper deals with analyzing shapes to identify semantically corresponding regions and creating maps from these correspondences.",
+      "quote": "Our core contribution is an approach for computing a semantic map that matches semantically corresponding points to one another."
+    },
+    "models": [
+      {
+        "name": {
+          "value": "Vision Transformer (ViT)",
+          "justification": "The pre-trained Vision Transformer is used to generate semantic correspondences between 3D shapes.",
+          "quote": "Thanks to pre-trained ViT models which can identify semantically corresponding points across shape renderings."
+        },
+        "role": "used",
+        "type": {
+          "value": "Transformer-based model",
+          "justification": "ViT is a well-known transformer-based model used for various vision tasks.",
+          "quote": "Recent works demonstrate that the features of a pre-trained vision transformer (ViT) are often semantically meaningful and can be used reliably across multiple vision tasks."
+        },
+        "mode": "inference"
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "FAUST",
+          "justification": "Used to evaluate the method’s performance on isometric deformations.",
+          "quote": "We randomly select 30 pairs from FAUST, containing isometric deformations and pose variations of human shapes."
+        },
+        "role": "used"
+      },
+      {
+        "name": {
+          "value": "SHREC07",
+          "justification": "Used to evaluate method’s performance on non-isometric deformations.",
+          "quote": "We choose 30 random same-category shape pairs from SHREC07, containing non-isometric deformations across multiple categories of shapes."
+        },
+        "role": "used"
+      },
+      {
+        "name": {
+          "value": "SHREC19",
+          "justification": "Used to evaluate method’s performance across a mix of isometric and non-isometric deformations.",
+          "quote": "We also extract 30 random shape pairs among the listed test set of SHREC19 from Dyke et al., containing a mix of isometric and non-isometric deformations."
+        },
+        "role": "used"
+      },
+      {
+        "name": {
+          "value": "SCAPE",
+          "justification": "Used to evaluate method performance considering pose variations.",
+          "quote": "We use FAUST, SCAPE, and TOSCA. To ablate the effects of rendering settings and rotation, we use FAUST; 3DBiCar, which comprise a variety of textured shapes; and SHREC15, which contain significant nonisometric-variations, with manually-annotated sparse correspondences."
+        },
+        "role": "used"
+      },
+      {
+        "name": {
+          "value": "TOSCA",
+          "justification": "Used to evaluate method performance considering pose variations.",
+          "quote": "We use FAUST, SCAPE, and TOSCA. To ablate the effects of rendering settings and rotation, we use FAUST; 3DBiCar, which comprise a variety of textured shapes; and SHREC15, which contain significant nonisometric-variations, with manually-annotated sparse correspondences."
+        },
+        "role": "used"
+      },
+      {
+        "name": {
+          "value": "3DBiCar",
+          "justification": "Used to evaluate the method's robustness to textured shapes.",
+          "quote": "We use FAUST, SCAPE, and TOSCA. To ablate the effects of rendering settings and rotation, we use FAUST; 3DBiCar, which comprise a variety of textured shapes; and SHREC15, which contain significant nonisometric-variations, with manually-annotated sparse correspondences."
+        },
+        "role": "used"
+      },
+      {
+        "name": {
+          "value": "SHREC15",
+          "justification": "Used to evaluate the method's robustness to non-isometric variations with manual annotations.",
+          "quote": "We use FAUST, SCAPE, and TOSCA. To ablate the effects of rendering settings and rotation, we use FAUST; 3DBiCar, which comprise a variety of textured shapes; and SHREC15, which contain significant nonisometric-variations, with manually-annotated sparse correspondences."
+        },
+        "role": "used"
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "Used for implementing the neural network and optimization components of the method.",
+          "quote": "The resultant optimization problem is solved using gradient descent, simply through PyTorch’s SGD optimizer."
+        },
+        "role": "used"
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1299,
+    "prompt_tokens": 20330,
+    "total_tokens": 21629
+  }
+}

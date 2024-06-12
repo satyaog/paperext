@@ -1,0 +1,118 @@
+{
+  "paper": "2310.03882.txt",
+  "words": 11073,
+  "extractions": {
+    "description": "The paper investigates the impact of batch size on value-based deep reinforcement learning with replay memories. It presents an empirical study showing that smaller batch sizes can lead to significant performance gains and computational savings, thereby challenging the commonly held belief that larger batch sizes are always more beneficial.",
+    "title": {
+      "value": "Small batch deep reinforcement learning",
+      "justification": "The exact title as given in the provided text.",
+      "quote": "Small batch deep reinforcement learning"
+    },
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents an empirical study based on experiments and observations.",
+      "quote": "In this work we conduct a broad empirical study of batch size in online value-based deep reinforcement learning."
+    },
+    "research_field": {
+      "value": "Deep Reinforcement Learning",
+      "justification": "The primary focus of the paper is on improving deep reinforcement learning by studying the effects of batch size.",
+      "quote": "One of the central concerns for deep reinforcement learning (RL) is how to efficiently make the most use of the collected data for policy improvement."
+    },
+    "sub_research_field": {
+      "value": "Batch Size Optimization",
+      "justification": "The paper specifically investigates the impact of different batch sizes in deep reinforcement learning.",
+      "quote": "The number of sampled transitions at each learning step is known as the batch size, and is meant to produce an unbiased estimator of the underlying data distribution."
+    },
+    "models": [
+      {
+        "name": {
+          "value": "DQN",
+          "justification": "The model is one of the standard value-based agents used in the experiments.",
+          "quote": "We begin by investigating the impact reducing the batch size can have on four popular value-based agents, which were initially benchmarked on the ALE suite: DQN [Mnih et al., 2015]"
+        },
+        "role": "used",
+        "type": {
+          "value": "value-based agent",
+          "justification": "DQN is a foundational model in value-based deep reinforcement learning.",
+          "quote": "To deal with large state spaces, such as all possible images in an Atari 2600 game, Mnih et al. [2015] introduced DQN, which combined Q-learning with deep neural networks to represent Qθ."
+        },
+        "mode": "trained"
+      },
+      {
+        "name": {
+          "value": "Rainbow",
+          "justification": "The model is one of the standard value-based agents used in the experiments.",
+          "quote": "We begin by investigating the impact reducing the batch size can have on four popular value-based agents,... Rainbow [Hessel et al., 2018]"
+        },
+        "role": "used",
+        "type": {
+          "value": "value-based agent",
+          "justification": "Rainbow is an advanced version of DQN which integrates several improvements.",
+          "quote": "The Rainbow agent combined C51 with other advances such as multi-step learning and prioritized replay sampling [Hessel et al., 2018]."
+        },
+        "mode": "trained"
+      },
+      {
+        "name": {
+          "value": "QR-DQN",
+          "justification": "The model is prominently used and analyzed throughout the paper.",
+          "quote": "For reasons which will be clarified below, most of our evaluations and analyses were conducted with the QR-DQN agent."
+        },
+        "role": "used",
+        "type": {
+          "value": "value-based agent",
+          "justification": "QR-DQN is a variant of DQN that incorporates quantile regression.",
+          "quote": "Different ways of parameterizing return distributions were proposed in the form of the IQN [Dabney et al., 2018b] and QR-DQN [Dabney et al., 2018a] algorithms."
+        },
+        "mode": "trained"
+      },
+      {
+        "name": {
+          "value": "IQN",
+          "justification": "The model is one of the value-based agents evaluated in the experiments.",
+          "quote": "We begin by investigating the impact reducing the batch size can have on four popular value-based agents,... and IQN [Dabney et al., 2018b]"
+        },
+        "role": "used",
+        "type": {
+          "value": "value-based agent",
+          "justification": "IQN is an advanced variant of DQN that uses implicit quantile networks.",
+          "quote": "Different ways of parameterizing return distributions were proposed in the form of the IQN [Dabney et al., 2018b] and QR-DQN algorithms."
+        },
+        "mode": "trained"
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Arcade Learning Environment (ALE)",
+          "justification": "The dataset is used for evaluating deep reinforcement learning agents across various Atari 2600 games.",
+          "quote": "We evaluate our agents on 20 games chosen by Fedus et al. [2020] for their analysis of replay ratios, picked to offer a diversity of difficulty and dynamics [...] All experiments were run on NVIDIA Tesla P100 GPUs."
+        },
+        "role": "used"
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "JAX",
+          "justification": "The experiments are conducted using JAX implementations of RL agents.",
+          "quote": "Experimental setup: We use the Jax implementations of RL agents, with their default hyperparameter values, provided by the Dopamine library [Castro et al., 2018] and applied to the Arcade Learning Environment (ALE) [Bellemare et al., 2013]."
+        },
+        "role": "used"
+      },
+      {
+        "name": {
+          "value": "Dopamine",
+          "justification": "The Dopamine library is used for implementing and running experiments.",
+          "quote": "Experimental setup: We use the Jax implementations of RL agents, with their default hyperparameter values, provided by the Dopamine library [Castro et al., 2018]"
+        },
+        "role": "used"
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1313,
+    "prompt_tokens": 20494,
+    "total_tokens": 21807
+  }
+}
