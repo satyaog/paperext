@@ -117,6 +117,9 @@ class Model(BaseModel):
     mode: ModelMode | str = Field(
         description=f"Was the Model {' or '.join([mode.value.lower() for mode in ModelMode])} in the scope of the paper"
     )
+    referenced_paper_title: Explained[str] = Field(
+        description="Title of the Model reference paper found in the references section",
+    )
 
 
 class Dataset(BaseModel):
@@ -126,6 +129,9 @@ class Dataset(BaseModel):
     role: Role | str = Field(
         description=f"Was the Dataset {' or '.join([role.value.lower() for role in Role])} in the scope of the paper"
     )
+    referenced_paper_title: Explained[str] = Field(
+        description="Title of the Dataset reference paper found in the references section",
+    )
 
 
 class Library(BaseModel):
@@ -134,6 +140,9 @@ class Library(BaseModel):
     )
     role: Role | str = Field(
         description=f"Was the Library {' or '.join([role.value.lower() for role in Role])} in the scope of the paper"
+    )
+    referenced_paper_title: Explained[str] = Field(
+        description="Title of the Library reference paper found in the references section",
     )
 
 
