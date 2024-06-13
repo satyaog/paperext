@@ -29,7 +29,7 @@ _RETRY_MESSAGE = (
     "{}\n"
     "your precedent list of Libraries\n"
     "{}\n"
-    "please find more Deep Learning Models, Datasets and Libraries in the "
+    "which might be incomplete or erroneous, please find more Deep Learning Models, Datasets and Libraries in the "
     "same research paper:\n"
     "{}"
 )
@@ -74,6 +74,7 @@ class ModelMode(str, enum.Enum):
         return _caseinsensitive_missing_(cls, value)
 
 
+# TODO: make list of contributed, used, referenced models, datasets and libraries
 class Role(str, enum.Enum):
     CONTRIBUTED = "contributed"
     USED = "used"
@@ -149,7 +150,7 @@ class PaperExtractions(BaseModel):
     research_field: Explained[str] = Field(
         description="Deep Learning research field of the paper",
     )
-    # This should have been a list
+    # This should be a list
     # sub_research_field: List[Explained[str]] | Explained[str] = Field(
     #     description="List of Deep Learning research sub-fields of the paper",
     # )
