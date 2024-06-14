@@ -156,15 +156,9 @@ class PaperExtractions(BaseModel):
     type: Explained[ResearchType] = Field(
         description=f"Is the paper an {' or a '.join([rt.value.lower() + ' study' for rt in ResearchType])}",
     )
-    research_field: Explained[str] = Field(
-        description="Deep Learning research field of the paper",
-    )
-    # This should be a list
-    # sub_research_field: List[Explained[str]] | Explained[str] = Field(
-    #     description="List of Deep Learning research sub-fields of the paper",
-    # )
-    sub_research_field: Explained[str] = Field(
-        description="Deep Learning sub-research field of the paper",
+    # This should have been a list
+    research_fields: List[Explained[str] | str] = Field(
+        description="List of Deep Learning research fields and research sub-fields of the paper, order by importance",
     )
     models: List[Model] = Field(
         description="All Models found in the paper"
