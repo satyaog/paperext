@@ -4,6 +4,10 @@ import re
 import sys
 import unicodedata
 
+import pandas as pd
+
+from .model import Explained, Model, PaperExtractions
+
 ROOT_FOLDER = Path(__file__).resolve().parent.parent
 PAPERS_TO_IGNORE={"data/cache/arxiv/2404.09932.txt",}
 
@@ -50,6 +54,33 @@ def build_validation_set(data_dir:Path, seed=42):
     # # Dev validation set
     # validation_set = sum(map(lambda _:random.sample(_, 1), papers_by_field.values()), [])
     return list(map(lambda p:Path(p).absolute(), validation_set))
+
+
+def model2df(id:str, model:PaperExtractions):
+    paper_single_df = {"id":id}
+    paper_reference_df = {k:{} for k in Model.model_fields}
+
+    for k, v in model:
+        if isinstance(v, Explained):
+            v = v.value
+
+        if k in ("title", "type",):
+            paper_single_df[k] = v
+
+        elif k in ("research_field", "sub_research_field",):
+            paper_single_df.setdefault("research_field", [[]])
+            paper_single_df["research_field"][0].append(v)
+
+        elif k in ("models", "datasets", "libraries",):
+            for i, entry in enumerate(v):
+                for entry_k, entry_v in entry:
+                    if isinstance(entry_v, Explained):
+                        entry_v = entry_v.value
+
+                    paper_reference_df[entry_k][(k, i)] = entry_v
+
+    paper_single_df["research_field"][0] = pd.Series(paper_single_df["research_field"][0])
+    return pd.DataFrame(paper_single_df), pd.DataFrame(paper_reference_df)
 
 
 def split_entry(string:str, sep_left="[[", sep_right="]]"):
