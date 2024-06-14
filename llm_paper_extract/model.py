@@ -107,11 +107,11 @@ class Model(BaseModel):
     name: Explained[str] = Field(
         description="Name of the Model",
     )
-    role: Role | str = Field(
-        description=f"Was the Model {' or '.join([role.value.lower() for role in Role])} in the scope of the paper"
-    )
     type: Explained[str] = Field(
         description="Type of the Model",
+    )
+    role: Role | str = Field(
+        description=f"Was the Model {' or '.join([role.value.lower() for role in Role])} in the scope of the paper"
     )
     mode: ModelMode | str = Field(
         description=f"Was the Model {' or '.join([mode.value.lower() for mode in ModelMode])} in the scope of the paper"
