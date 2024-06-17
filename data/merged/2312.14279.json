@@ -1,0 +1,145 @@
+{
+  "description": "This paper proposes an intention detection framework to classify developer forum posts by their intentions (such as asking for help, sharing information, etc.) using a transformer-based pre-trained model. The proposed model significantly outperforms existing state-of-the-art methods in classifying post intentions.",
+  "title": {
+    "value": "Characterizing and Classifying Developer Forum Posts with their Intentions",
+    "justification": "This title accurately reflects the core subject and purpose of the paper, which is to classify developer forum posts according to their intentions.",
+    "quote": "Characterizing and Classifying Developer Forum Posts with their Intentions"
+  },
+  "type": {
+    "value": "empirical",
+    "justification": "The paper describes an empirical study involving the collection and manual analysis of a dataset from developer forums, as well as the development and evaluation of a transformer-based model for intention classification.",
+    "quote": "...we manually annotate the intentions of posts following a rigorous process according to the resulting taxonomy of technical forum post intentions. ... we propose an intention prediction framework for technical online posts."
+  },
+  "research_field": {
+    "value": "Natural Language Processing (NLP)",
+    "justification": "The paper focuses on classifying posts from online forums using transformer-based language models, a prominent method in NLP.",
+    "quote": "In the framework, we employ transformer-based pre-trained language models to generate embeddings for both title and description of posts."
+  },
+  "sub_research_field": {
+    "value": "Text Classification",
+    "justification": "The core task in the paper is to classify developer forum posts according to their intentions, which falls under the category of text classification.",
+    "quote": "Our work is performed on a dataset of forum posts provided by our industrial partner that covers multiple developer communities (e.g., Stack Overflow, Discourse forums, etc.). Furthermore, we manually annotate the intentions of posts following a rigorous process according to the resulting taxonomy of technical forum post intentions. Based on the findings and insights from the qualitative study, we propose an intention prediction framework for technical online posts."
+  },
+  "models": [
+    {
+      "name": {
+        "value": "ALBERT",
+        "justification": "ALBERT is explicitly mentioned as one of the models tested in the study.",
+        "quote": "We compare the performance of six variants of our intention detection framework with transformer-based PTMs, including ALBERT."
+      },
+      "role": "used",
+      "type": {
+        "value": "Transformer-based model",
+        "justification": "ALBERT is a variant of BERT that uses parameter-sharing techniques to reduce model complexity.",
+        "quote": "ALBERT: A Lite BERT for Self-supervised Learning of Language Representations."
+      },
+      "mode": "inference"
+    },
+    {
+      "name": {
+        "value": "BERT",
+        "justification": "BERT is one of the pre-trained language models used in the proposed framework.",
+        "quote": "We compare the performance of six variants of our intention detection framework with transformer-based PTMs... We use the pooler output of the PTMs, which corresponds to the representation of the first token... As by fine-tuning this layer with our task, the quality of embedding may be improved for our downstream task."
+      },
+      "role": "used",
+      "type": {
+        "value": "Transformer-based Pretrained Language Model",
+        "justification": "BERT is a widely used transformer-based pre-trained language model in NLP tasks.",
+        "quote": "...The original BERT is released in two sizes. We use the BERTbase in the experiment. The BERTbase has 12 layers of transformer block with a hidden unit size of 768 and 12 self-attention heads in the encoder stack. In total, it contains 110M parameters and is trained with a large corpus of English data."
+      },
+      "mode": "inference"
+    },
+    {
+      "name": {
+        "value": "BERTOverflow",
+        "justification": "BERTOverflow is explicitly mentioned as one of the models tested in the study.",
+        "quote": "We compare the performance of six variants of our intention detection framework with transformer-based PTMs, including BERTOverflow."
+      },
+      "role": "used",
+      "type": {
+        "value": "Transformer-based model",
+        "justification": "BERTOverflow is a variant of BERT trained on data from Stack Overflow to better understand software engineering-related text.",
+        "quote": "BERTOverflow: Trained with Sentences from Stack Overflow."
+      },
+      "mode": "trained"
+    },
+    {
+      "name": {
+        "value": "CodeBERT",
+        "justification": "CodeBERT is explicitly mentioned as one of the models tested in the study.",
+        "quote": "We compare the performance of six variants of our intention detection framework with transformer-based PTMs, including CodeBERT."
+      },
+      "role": "used",
+      "type": {
+        "value": "Transformer-based model",
+        "justification": "CodeBERT is specialized for understanding both natural language and programming language.",
+        "quote": "CodeBERT: A Pre-trained Model for Programming and Natural Languages."
+      },
+      "mode": "trained"
+    },
+    {
+      "name": {
+        "value": "DistilBERT",
+        "justification": "DistilBERT is explicitly mentioned as one of the models tested in the study.",
+        "quote": "We compare the performance of six variants of our intention detection framework with transformer-based PTMs, including DistilBERT."
+      },
+      "role": "used",
+      "type": {
+        "value": "Transformer-based model",
+        "justification": "DistilBERT is a smaller, faster version of BERT that retains most of its performance.",
+        "quote": "DistilBERT: A Distilled Version of BERT."
+      },
+      "mode": "inference"
+    },
+    {
+      "name": {
+        "value": "RoBERTa",
+        "justification": "RoBERTa, another pre-trained language model, is evaluated in the proposed framework.",
+        "quote": "RoBERTa (Liu et al., 2019) modified some hyper-parameters and training tasks while maintaining the original BERT architecture."
+      },
+      "role": "used",
+      "type": {
+        "value": "Transformer-based Pretrained Language Model",
+        "justification": "RoBERTa is an improved variant of BERT, another transformer-based pre-trained language model.",
+        "quote": "RoBERTa (Liu et al., 2019) modified some hyper-parameters and training tasks while maintaining the original BERT architecture."
+      },
+      "mode": "trained"
+    }
+  ],
+  "datasets": [
+    {
+      "name": {
+        "value": "Discourse forums",
+        "justification": "The dataset also includes posts from Discourse forums, contributing to the diversity of the technical communities covered.",
+        "quote": "The dump contains primary posts (initial topic-setting posts) from different sources (i.e., online communities), mainly from three different platforms: Stack Exchange, Lithium forums and Discourse Forums."
+      },
+      "role": "used"
+    },
+    {
+      "name": {
+        "value": "Lithium forums",
+        "justification": "Lithium forums are another source of developer posts included in the dataset.",
+        "quote": "The dump contains primary posts (initial topic-setting posts) from different sources (i.e., online communities), mainly from three different platforms: Stack Exchange, Lithium forums and Discourse Forums."
+      },
+      "role": "used"
+    },
+    {
+      "name": {
+        "value": "Stack Exchange",
+        "justification": "The dataset includes posts from Stack Overflow, a major source of technical discussions among developers.",
+        "quote": "The dump contains primary posts (initial topic-setting posts) from different sources (i.e., online communities), mainly from three different platforms: Stack Exchange, Lithium forums and Discourse Forums."
+      },
+      "role": "used"
+    }
+  ],
+  "libraries": [
+    {
+      "name": {
+        "value": "Hugging Face",
+        "justification": "The Hugging Face library provided the transformer-based pre-trained models used in the study.",
+        "quote": "We compare the performances of six variants of our framework with the PTMs mentioned above. We leverage the PTMs released in the online community Hugging Face (Wolf et al., 2019) in our experiments."
+      },
+      "role": "used"
+    }
+  ]
+}
