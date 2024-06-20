@@ -20,8 +20,8 @@ _RETRY_MESSAGE = (
     "{}\n"
     "your precedent list of Libraries\n"
     "{}\n"
-    "which might be incomplete or erroneous, please find more Deep Learning Models, Datasets and Libraries in the "
-    "same research paper:\n"
+    "which might be incomplete or erroneous, please find more Deep Learning "
+    "Models, Datasets and Libraries in the same research paper:\n"
     "{}"
 )
 _EMPTY_FLAG = "__EMPTY__"
@@ -30,12 +30,6 @@ _EMPTY_FLAG = "__EMPTY__"
 class ResearchType(str, enum.Enum):
     EMPIRICAL = "empirical"
     THEORETICAL = "theoretical"
-
-
-class ModelMode(str, enum.Enum):
-    TRAINED = "trained"
-    FINETUNED = "finetuned"
-    INFERENCE = "inference"
 
 
 # TODO: make list of contributed, used, referenced models, datasets and libraries
@@ -82,7 +76,7 @@ class Model(BaseModel):
         description="Was the Model a contribution to the research field, in the scope of the paper",
     )
     referenced_paper_title: Explained[str] = Field(
-        description="Title of the Model reference paper found in the references section",
+        description="Title of reference paper of the Model, found in the references section",
     )
 
 
@@ -94,7 +88,7 @@ class Dataset(BaseModel):
         description=f"Was the Dataset {' or '.join([role.value.lower() for role in Role])} in the scope of the paper"
     )
     referenced_paper_title: Explained[str] = Field(
-        description="Title of the Dataset reference paper found in the references section",
+        description="Title of reference paper of the Dataset, found in the references section",
     )
 
 
@@ -106,7 +100,7 @@ class Library(BaseModel):
         description=f"Was the Library {' or '.join([role.value.lower() for role in Role])} in the scope of the paper"
     )
     referenced_paper_title: Explained[str] = Field(
-        description="Title of the Library reference paper found in the references section",
+        description="Title of reference paper of the Library, found in the references section",
     )
 
 

@@ -1,6 +1,8 @@
 import random
 from pathlib import Path
+import re
 import sys
+import unicodedata
 
 import pandas as pd
 from pydantic import BaseModel, Field, create_model
@@ -55,7 +57,6 @@ def build_validation_set(data_dir:Path, seed=42):
 
 
 def fix_explained_fields():
-    import pdb ; pdb.set_trace()
     fields = _get_fields(PaperExtractions)
     return create_model(PaperExtractions.__name__, **fields)
 
@@ -150,14 +151,15 @@ def print_model(model_cls:BaseModel, indent = 0):
             pass
 
 
+def str_eq(string, other):
+    return str_normalize(string) == str_normalize(other)
+
+
 def str_normalize(string):
     string = unicodedata.normalize("NFKC", string).lower()
-    # if "{{" in string:
-    #     import ipdb ; ipdb.set_trace()
     string = [_s.split("}}") for _s in string.split("{{")]
     string = sum(string, [])
     exclude = string[1:2]
-    # import ipdb ; ipdb.set_trace()
     string = list(map(
         lambda _s:re.sub(pattern=r"[^a-z0-9]", string=_s, repl=""),
         string[:1] + string[2:]
