@@ -84,6 +84,7 @@ class ModelMode(str, enum.Enum):
     #     return _caseinsensitive_missing_(cls, value)
 
 
+# TODO: make list of contributed, used, referenced models, datasets and libraries
 class Role(str, enum.Enum):
     CONTRIBUTED = "contributed"
     USED = "used"
@@ -120,18 +121,7 @@ class Model(BaseModel):
     name: Explained[str] = Field(
         description="Name of the Model",
     )
-    caracteristics: List[Explained[str]] = Field(
-        description="List of carateristics of the Model like convolution layers, transformer modules",
-    )
-    is_executed: Explained[bool] = Field(
-        description="Was the Model executed on GPU or CPU, in the scope of the paper",
-    )
-    is_compared: Explained[bool] = Field(
-        description="Was the Model compared numerically to other models, in the scope of the paper",
-    )
-    is_contributed: Explained[bool] = Field(
-        description="Was the Model a contribution to the research field, in the scope of the paper",
-    )
+    # list of carateristics for the model like convolution layers, transformer modules
     type: Explained[str] = Field(
         description="Type of the Model",
     )
