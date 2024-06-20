@@ -7,7 +7,6 @@ import re
 import shutil
 import subprocess
 import tempfile
-import unicodedata
 import urllib
 from time import sleep
 from typing import Iterable, List, Tuple
@@ -20,6 +19,7 @@ import yaml
 
 from . import ROOT_DIR
 from .models.model import ExtractionResponse, PaperExtractions, empty_paperextractions
+from .utils import str_normalize
 
 _STRIP_RE = r"[a-zA-Z0-9].*[a-zA-Z0-9]"
 _EDITOR = os.environ.get("VISUAL", os.environ.get("EDITOR", None))

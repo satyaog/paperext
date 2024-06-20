@@ -6,7 +6,7 @@ from typing import Any, Generic, List, Optional, TypeVar
 
 from pydantic import BaseModel, Field
 
-from llm_paper_extract import ROOT_DIR
+from .. import ROOT_DIR
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -91,7 +91,10 @@ class Explained(BaseModel, Generic[T]):
     )
 
     def __eq__(self, other:"Explained"):
-        return self.value == other.value
+        if isinstance(self.value, str):
+            return self.value.lower() == other.value.lower()
+        else:
+            return self.value == other.value
 
     def __lt__(self, other:"Explained"):
         return self.value < other.value
@@ -101,6 +104,7 @@ class Model(BaseModel):
     name: Explained[str] = Field(
         description="Name of the Model",
     )
+    # list of carateristics for the model like convolution layers, transformer modules
     type: Explained[str] = Field(
         description="Type of the Model",
     )
@@ -148,6 +152,10 @@ class PaperExtractions(BaseModel):
     )
     type: Explained[ResearchType] = Field(
         description=f"Is the paper an {' or a '.join([rt.value.lower() + ' study' for rt in ResearchType])}",
+    )
+    # Should be renamed to primary research field
+    research_field: Explained[str] = Field(
+        description="Deep Learning research field of the paper",
     )
     # This should have been a list
     research_fields: List[Explained[str] | str] = Field(
