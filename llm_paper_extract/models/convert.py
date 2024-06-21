@@ -4,16 +4,9 @@ import sys
 from pydantic import BaseModel
 import pydantic_core
 from .. import ROOT_DIR
-from ..utils import build_validation_set, str_eq
+from ..utils import build_validation_set, split_entry, str_eq
 from . import model
 from . import model_v1
-
-
-def split_entry(string:str):
-    v, *extra = [_.strip().rstrip("]") for _ in string.split("[[")]
-    assert len(extra) <= 1
-    extra = [_.strip() for _ in extra for _ in _.split(",")]
-    return [v, *extra]
 
 
 def _model_dump(m):
@@ -43,7 +36,7 @@ def convert_model_v1(extractions:model_v1.PaperExtractions):
                     value=srf,
                     justification=(
                         extractions.sub_research_field.justification
-                        if i == 0 
+                        if i == 0
                         else ""
                     ),
                     quote=(

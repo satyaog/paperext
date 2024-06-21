@@ -65,8 +65,6 @@ def model2df(model:BaseModel):
     paper_1d_df = {}
     paper_references_df = {k:{} for k in Model.model_fields}
 
-    # import ipdb ; ipdb.set_trace()
-
     for k, v in model:
         if isinstance(v, Explained):
             v = v.value
@@ -75,16 +73,9 @@ def model2df(model:BaseModel):
             v = str_normalize(v.split()[0])
 
         elif k in ("research_field", "sub_research_field",):
-            v, *extra = [_.strip().rstrip("]") for _ in v.split("[[")]
-            # print(v, extra)
-            assert len(extra) <= 1
-            # if extra:
-            #     import ipdb ; ipdb.set_trace()
-            extra = [_.strip() for _ in extra for _ in _.split(",")]
-            v = [v, *extra]
+            v = split_entry(v)
             v = map(str_normalize, v)
             v = sorted(set(map(_reasearch_field_alias, v)))
-            # print(v)
 
         if k in ("title", "type", "research_field",):
             paper_1d_df[k] = v
@@ -123,7 +114,6 @@ def model2df(model:BaseModel):
         pd.DataFrame(paper_references_df)
     )
 
-    # import ipdb ; ipdb.set_trace()
     for group in ("models", "datasets", "libraries",):
         try:
             _l = paper_references_df.loc[group]["name"]
@@ -149,6 +139,13 @@ def print_model(model_cls:BaseModel, indent = 0):
             print_model(info.annotation, indent+2)
         except AttributeError:
             pass
+
+
+def split_entry(string:str):
+    first, *extra = [_.strip().rstrip("]") for _ in string.split("[[")]
+    assert len(extra) <= 1
+    extra = [_.strip() for _ in extra for _ in _.split(",")]
+    return [first, *extra]
 
 
 def str_eq(string, other):
