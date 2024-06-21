@@ -3,8 +3,11 @@ from __future__ import annotations
 import enum
 import logging
 from typing import Any, Generic, List, Optional, TypeVar
+import typing
 
 from pydantic import BaseModel, Field
+
+from ..utils import str_normalize
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -50,13 +53,12 @@ class Explained(BaseModel, Generic[T]):
     )
 
     def __eq__(self, other:"Explained"):
-        if isinstance(self.value, str):
-            return self.value.lower() == other.value.lower()
-        else:
-            return self.value == other.value
+        return str_normalize(str(self.value)) == str_normalize(str(other.value))
 
     def __lt__(self, other:"Explained"):
-        return self.value < other.value
+        if isinstance(self.value, bool):
+            return not self.value < other.value
+        return str_normalize(str(self.value)) < str_normalize(str(other.value))
 
 
 class Model(BaseModel):
@@ -66,18 +68,29 @@ class Model(BaseModel):
     caracteristics: List[Explained[str]] = Field(
         description="List of carateristics of the Model like convolution layers, transformer modules",
     )
+    is_contributed: Explained[bool] = Field(
+        description="Was the Model a contribution to the research field, in the scope of the paper",
+    )
     is_executed: Explained[bool] = Field(
         description="Was the Model executed on GPU or CPU, in the scope of the paper",
     )
     is_compared: Explained[bool] = Field(
         description="Was the Model compared numerically to other models, in the scope of the paper",
     )
-    is_contributed: Explained[bool] = Field(
-        description="Was the Model a contribution to the research field, in the scope of the paper",
-    )
     referenced_paper_title: Explained[str] = Field(
         description="Title of reference paper of the Model, found in the references section",
     )
+
+    def __lt__(self, other:"Explained"):
+        for (k, v), (ok, ov) in zip(self, other):
+            if k != ok:
+                break
+            if k in ("caracteristics","referenced_paper_title",):
+                continue
+            if v == ov:
+                continue
+            return v < ov
+        return False
 
 
 class Dataset(BaseModel):
@@ -91,6 +104,17 @@ class Dataset(BaseModel):
         description="Title of reference paper of the Dataset, found in the references section",
     )
 
+    def __lt__(self, other:"Explained"):
+        for (k, v), (ok, ov) in zip(self, other):
+            if k != ok:
+                break
+            if k in ("caracteristics","referenced_paper_title",):
+                continue
+            if v == ov:
+                continue
+            return v < ov
+        return False
+
 
 class Library(BaseModel):
     name: Explained[str] = Field(
@@ -102,6 +126,17 @@ class Library(BaseModel):
     referenced_paper_title: Explained[str] = Field(
         description="Title of reference paper of the Library, found in the references section",
     )
+
+    def __lt__(self, other:"Explained"):
+        for (k, v), (ok, ov) in zip(self, other):
+            if k != ok:
+                break
+            if k in ("caracteristics","referenced_paper_title",):
+                continue
+            if v == ov:
+                continue
+            return v < ov
+        return False
 
 
 class PaperExtractions(BaseModel):
@@ -141,43 +176,36 @@ class ExtractionResponse(BaseModel):
     usage: Optional[Any]
 
 
-def empty_paperextractions():
-    empty_explained = Explained[str](
-        value=_EMPTY_FLAG,
-        justification="",
-        quote=""
-    )
-    empty_explained_kwargs = (lambda:{k:v for k,v in empty_explained})()
+def _is_base(cls, other):
+    try:
+        return cls.__base__ == other
+    except AttributeError:
+        return False
 
-    empty_explained_modelmode = Explained[ModelMode](**empty_explained_kwargs)
-    empty_explained_str = Explained[str](**empty_explained_kwargs)
-    empty_explained_researchtype = Explained[ResearchType](**empty_explained_kwargs)
-    empty_explained_role = Explained[Role](**empty_explained_kwargs)
 
-    return PaperExtractions(
-        description=_EMPTY_FLAG,
-        title=empty_explained_str,
-        type=empty_explained_researchtype,
-        research_field=empty_explained_str,
-        sub_research_field=empty_explained_str,
-        models=[
-            Model(
-                name=empty_explained_str,
-                role=_EMPTY_FLAG,
-                type=empty_explained_str,
-                mode=_EMPTY_FLAG
-            )
-        ],
-        datasets=[
-            Dataset(
-                name=empty_explained_str,
-                role=_EMPTY_FLAG,
-            )
-        ],
-        libraries=[
-            Library(
-                name=empty_explained_str,
-                role=_EMPTY_FLAG,
-            )
-        ],
+def _empty_fields(model_cls:BaseModel):
+    try:
+        iter_fields = model_cls.model_fields.items()
+    except AttributeError:
+        if typing.get_origin(model_cls) == list:
+            return [_empty_fields(model_cls.__args__[0])]
+        else:
+            return _EMPTY_FLAG
+
+    if _is_base(model_cls, Explained):
+        fields = {
+            k: (_empty_fields(v) if k == "value" else "")
+            for k, v in iter_fields
+        }
+    else:
+        fields = {}
+        for k, field in iter_fields:
+            fields[k] = _empty_fields(field.annotation)
+
+    return fields
+
+
+def empty_model(model_cls):
+    return model_cls(
+        **_empty_fields(model_cls)
     )

@@ -53,10 +53,10 @@ def convert_model_v1(extractions:model_v1.PaperExtractions):
                     name=m.name.model_dump(),
                     caracteristics=[m.type.model_dump()],
                     is_executed=model.Explained(
-                        value=False, justification="", quote=""
+                        value=str_eq(m.role, model_v1.Role.CONTRIBUTED.value), justification="", quote=""
                     ).model_dump(),
                     is_compared=model.Explained(
-                        value=False, justification="", quote=""
+                        value=str_eq(m.role, model_v1.Role.CONTRIBUTED.value), justification="", quote=""
                     ).model_dump(),
                     is_contributed=model.Explained(
                         value=str_eq(m.role, model_v1.Role.CONTRIBUTED.value),
