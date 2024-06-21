@@ -1,25 +1,27 @@
 {
-  "description": "The paper presents a novel unsupervised method for Out-of-Distribution (OOD) detection for textual data by aggregating layer-wise anomaly scores from a model's encoder. The authors demonstrate that the last layer's representation is not always the most effective for OOD detection and propose an automatic aggregation method to leverage all hidden layers without requiring access to OOD samples.",
   "title": {
     "value": "Unsupervised Layer-wise Score Aggregation for Textual OOD Detection",
     "justification": "Extracted from the title of the paper.",
     "quote": "Unsupervised Layer-wise Score Aggregation for Textual OOD Detection"
   },
+  "description": "The paper presents a novel unsupervised method for Out-of-Distribution (OOD) detection for textual data by aggregating layer-wise anomaly scores from a model's encoder. The authors demonstrate that the last layer's representation is not always the most effective for OOD detection and propose an automatic aggregation method to leverage all hidden layers without requiring access to OOD samples.",
   "type": {
     "value": "empirical study",
     "justification": "The paper involves conducting experiments to evaluate the performance of their proposed method on a new benchmark dataset and comparing it with existing methods.",
     "quote": "We conduct extensive experiments on our newly proposed benchmark: We introduce MILTOOD-C A MultI Lingual Text OOD detection benchmark for Classification tasks"
   },
-  "research_field": {
+  "primary_research_field": {
     "value": "Out-of-distribution",
     "justification": "",
     "quote": ""
   },
-  "sub_research_field": {
-    "value": "Natural Language Processing",
-    "justification": "The paper specifically addresses OOD detection in textual data, which falls under the sub-field of Natural Language Processing (NLP).",
-    "quote": "Distinguishing OOD samples (OUT) from in-distribution (IN) samples is a challenge when working on complex data structures (e.g., text or image) due to their high dimensionality."
-  },
+  "sub_research_fields": [
+    {
+      "value": "Natural Language Processing",
+      "justification": "The paper specifically addresses OOD detection in textual data, which falls under the sub-field of Natural Language Processing (NLP).",
+      "quote": "Distinguishing OOD samples (OUT) from in-distribution (IN) samples is a challenge when working on complex data structures (e.g., text or image) due to their high dimensionality."
+    }
+  ],
   "models": [
     {
       "name": {
@@ -27,13 +29,33 @@
         "justification": "The experiments involve fine-tuning BERT models for various benchmark tests.",
         "quote": "We train classifiers based on ... BERT (Devlin et al. 2018) (base, large and multilingual versions) fine-tuned on each task."
       },
-      "role": "used",
-      "type": {
-        "value": "Transformer-based Model",
-        "justification": "BERT is a well-known transformer-based model for Natural Language Processing tasks.",
-        "quote": "We train classifiers based on ... BERT (Devlin et al. 2018) ..."
+      "caracteristics": [
+        {
+          "value": "Transformer-based Model",
+          "justification": "BERT is a well-known transformer-based model for Natural Language Processing tasks.",
+          "quote": "We train classifiers based on ... BERT (Devlin et al. 2018) ..."
+        }
+      ],
+      "is_contributed": {
+        "value": false,
+        "justification": "",
+        "quote": ""
       },
-      "mode": "fine-tuned"
+      "is_executed": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "is_compared": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -41,13 +63,33 @@
         "justification": "The paper mentions using DISTILBERT models for their experiments.",
         "quote": "We train classifiers based on ... DISTILBERT (Sanh et al. 2019) ..."
       },
-      "role": "used",
-      "type": {
-        "value": "Transformer-based Model",
-        "justification": "DistilBERT is a more efficient, smaller version of BERT, and it follows the transformer-based architecture.",
-        "quote": "We train classifiers based on ... DISTILBERT (Sanh et al. 2019) ..."
+      "caracteristics": [
+        {
+          "value": "Transformer-based Model",
+          "justification": "DistilBERT is a more efficient, smaller version of BERT, and it follows the transformer-based architecture.",
+          "quote": "We train classifiers based on ... DISTILBERT (Sanh et al. 2019) ..."
+        }
+      ],
+      "is_contributed": {
+        "value": false,
+        "justification": "",
+        "quote": ""
       },
-      "mode": "fine-tuned"
+      "is_executed": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "is_compared": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -55,13 +97,33 @@
         "justification": "RoBERTa models are used in the experiments as per the detailed mention in the paper.",
         "quote": "We train classifiers based on ... RoBERTa (Liu et al. 2019) ..."
       },
-      "role": "used",
-      "type": {
-        "value": "Transformer-based Model",
-        "justification": "RoBERTa is an optimized version of BERT, and it is based on transformer architecture.",
-        "quote": "We train classifiers based on ... RoBERTa (Liu et al. 2019) ..."
+      "caracteristics": [
+        {
+          "value": "Transformer-based Model",
+          "justification": "RoBERTa is an optimized version of BERT, and it is based on transformer architecture.",
+          "quote": "We train classifiers based on ... RoBERTa (Liu et al. 2019) ..."
+        }
+      ],
+      "is_contributed": {
+        "value": false,
+        "justification": "",
+        "quote": ""
       },
-      "mode": "fine-tuned"
+      "is_executed": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "is_compared": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     }
   ],
   "datasets": [
@@ -71,7 +133,12 @@
         "justification": "The 20 Newsgroups dataset is mentioned as one of the datasets that the proposed method is evaluated on.",
         "quote": "It features three types of IN-DS: sentiment analysis (i.e., SST2 (Socher et al. 2013), IMDB (Maas et al. 2011)), topic classification (i.e., 20Newsgroup (Joachims 1996))"
       },
-      "role": "used"
+      "role": "used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -79,7 +146,12 @@
         "justification": "IMDB dataset is used for evaluation in the paper.",
         "quote": "It features three types of IN-DS: sentiment analysis (i.e., SST2 (Socher et al. 2013), IMDB (Maas et al. 2011)), topic classification (i.e., 20Newsgroup (Joachims 1996))"
       },
-      "role": "used"
+      "role": "used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -87,7 +159,12 @@
         "justification": "MILTOOD-C is the new dataset proposed in the paper for multilingual textual OOD detection.",
         "quote": "We introduce MILTOOD-C A MultI Lingual Text OOD detection benchmark for Classification tasks"
       },
-      "role": "contributed"
+      "role": "contributed",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -95,7 +172,12 @@
         "justification": "SST2 is among the datasets used for text classification tasks for evaluation of the proposed method.",
         "quote": "It features three types of IN-DS: sentiment analysis (i.e., SST2 (Socher et al. 2013), IMDB (Maas et al. 2011)), topic classification (i.e., 20Newsgroup (Joachims 1996))"
       },
-      "role": "used"
+      "role": "used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -103,7 +185,12 @@
         "justification": "",
         "quote": ""
       },
-      "role": "used"
+      "role": "used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -111,7 +198,12 @@
         "justification": "",
         "quote": ""
       },
-      "role": "used"
+      "role": "used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -119,7 +211,12 @@
         "justification": "",
         "quote": ""
       },
-      "role": "used"
+      "role": "used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -127,7 +224,12 @@
         "justification": "",
         "quote": ""
       },
-      "role": "used"
+      "role": "used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -135,7 +237,12 @@
         "justification": "",
         "quote": ""
       },
-      "role": "used"
+      "role": "used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     }
   ],
   "libraries": []

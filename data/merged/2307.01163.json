@@ -1,25 +1,32 @@
 {
-  "description": "This paper proposes an active forgetting mechanism during the pretraining of language models to improve their adaptability to new languages. By regularly resetting the embedding layer during pretraining, the authors encourage the model to better learn new embeddings, similar to a meta-learning effect. Experiments demonstrate faster convergence and better performance in low-data scenarios, especially for languages distant from English.",
   "title": {
     "value": "Improving Language Plasticity via Pretraining with Active Forgetting",
     "justification": "The title accurately captures the paper's focus on using active forgetting to enhance the adaptability of PLMs to new languages.",
     "quote": "Improving Language Plasticity via Pretraining with Active Forgetting"
   },
+  "description": "This paper proposes an active forgetting mechanism during the pretraining of language models to improve their adaptability to new languages. By regularly resetting the embedding layer during pretraining, the authors encourage the model to better learn new embeddings, similar to a meta-learning effect. Experiments demonstrate faster convergence and better performance in low-data scenarios, especially for languages distant from English.",
   "type": {
     "value": "Empirical Study",
     "justification": "The paper conducts experiments with RoBERTa models to validate the effectiveness of the proposed active forgetting mechanism, making it an empirical study.",
     "quote": "Experiments with RoBERTa show that models pretrained with our forgetting mechanism not only demonstrate faster convergence during language adaptation, but also outperform standard ones in a low-data regime, particularly for languages that are distant from English."
   },
-  "research_field": {
+  "primary_research_field": {
     "value": "Natural Language Processing (NLP)",
     "justification": "The paper focuses on pretrained language models and their application to cross-lingual tasks, which are key areas within NLP.",
     "quote": "Pretrained language models (PLMs) are today the primary model for natural language processing."
   },
-  "sub_research_field": {
-    "value": "Cross-lingual [[Transfer Learning]]",
-    "justification": "The study aims to enhance the adaptability of PLMs to new languages, making it a contribution to cross-lingual transfer learning.",
-    "quote": "We study whether this forgetting approach creates a PLM that can easily rewire...to an unseen (possibly distant) language."
-  },
+  "sub_research_fields": [
+    {
+      "value": "Cross-lingual",
+      "justification": "The study aims to enhance the adaptability of PLMs to new languages, making it a contribution to cross-lingual transfer learning.",
+      "quote": "We study whether this forgetting approach creates a PLM that can easily rewire...to an unseen (possibly distant) language."
+    },
+    {
+      "value": "Transfer Learning",
+      "justification": "",
+      "quote": ""
+    }
+  ],
   "models": [
     {
       "name": {
@@ -27,13 +34,33 @@
         "justification": "RoBERTa-base is used as the primary model for implementing and testing the proposed active forgetting mechanism.",
         "quote": "we choose to pretrain RoBERTa-base Liu et al. [2019], a 12-layer transformer-based model, on English CC100 [Conneau et al., 2020]."
       },
-      "role": "Used",
-      "type": {
-        "value": "Transformer-based Model",
-        "justification": "The model is a transformer-based language model, commonly used in NLP tasks.",
-        "quote": "we choose to pretrain RoBERTa-base Liu et al. [2019], a 12-layer transformer-based model, on English CC100 [Conneau et al., 2020]."
+      "caracteristics": [
+        {
+          "value": "Transformer-based Model",
+          "justification": "The model is a transformer-based language model, commonly used in NLP tasks.",
+          "quote": "we choose to pretrain RoBERTa-base Liu et al. [2019], a 12-layer transformer-based model, on English CC100 [Conneau et al., 2020]."
+        }
+      ],
+      "is_contributed": {
+        "value": false,
+        "justification": "",
+        "quote": ""
       },
-      "mode": "trained"
+      "is_executed": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "is_compared": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     }
   ],
   "datasets": [
@@ -43,7 +70,12 @@
         "justification": "CC100 is used as the primary dataset for pretraining the RoBERTa-base model.",
         "quote": "we choose to pretrain RoBERTa-base Liu et al. [2019], a 12-layer transformer-based model, on English CC100 [Conneau et al., 2020]."
       },
-      "role": "Used"
+      "role": "Used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -51,7 +83,12 @@
         "justification": "MLQA is used to evaluate the model's performance on cross-lingual question-answering tasks.",
         "quote": "Our zero-shot evaluations on several cross-lingual transfer benchmarks show that for cases where unlabeled adaptation corpus for the unseen language has as few as 5 million tokens (a low-data regime), forgetting PLMs outperforms the baseline by large margins...+33.8% on MLQA."
       },
-      "role": "Used"
+      "role": "Used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -59,7 +96,12 @@
         "justification": "The MultiNLI dataset was used for task adaptation in English.",
         "quote": "In the task adapt stage, both models were finetuned for 10 epochs on the English task data, specifically MultiNLI [Williams et al., 2018] for the NLI task."
       },
-      "role": "Used"
+      "role": "Used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -67,7 +109,12 @@
         "justification": "The SQuAD dataset was used for task adaptation in English.",
         "quote": "In the task adapt stage, both models were finetuned for 10 epochs on the English task data, specifically ... SQUAD Rajpurkar et al. [2016] for the QA task."
       },
-      "role": "Used"
+      "role": "Used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -75,7 +122,12 @@
         "justification": "XNLI is used to evaluate the model's performance on cross-lingual natural language inference tasks.",
         "quote": "Our zero-shot evaluations on several cross-lingual transfer benchmarks show that for cases where unlabeled adaptation corpus for the unseen language has as few as 5 million tokens (a low-data regime), forgetting PLMs outperforms the baseline by large margins: average gains of +21.2% on XNLI."
       },
-      "role": "Used"
+      "role": "Used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -83,7 +135,12 @@
         "justification": "XQuAD is used to evaluate the model's performance on cross-lingual question-answering tasks.",
         "quote": "Our zero-shot evaluations on several cross-lingual transfer benchmarks show that for cases where unlabeled adaptation corpus for the unseen language has as few as 5 million tokens (a low-data regime), forgetting PLMs outperforms the baseline by large margins...+60.9% on XQuAD."
       },
-      "role": "Used"
+      "role": "Used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     }
   ],
   "libraries": [
@@ -93,7 +150,12 @@
         "justification": "The experiments were implemented using the fairseq library, which is widely used for sequence modeling.",
         "quote": "Our experiments were implemented using fairseq [Ott et al., 2019]."
       },
-      "role": "Used"
+      "role": "Used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     }
   ]
 }

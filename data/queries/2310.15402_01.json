@@ -2,27 +2,29 @@
   "paper": "2310.15402.txt",
   "words": 11660,
   "extractions": {
-    "description": "The paper proposes a novel method for automatic soft segmentation of the spinal cord across various MRI contrasts. The method leverages a convolutional neural network (CNN) and introduces a new pipeline to generate a single, soft ground truth (GT) segmentation that averages segmentations across various MRI contrasts. By training with these soft GT masks and using a regression-based adaptive wing loss function, the model reduces the variability in cross-sectional area (CSA) across different MRI contrasts, achieving better generalization in spinal cord segmentation and improving predictions on unseen data with pathologies or different MRI parameters.",
     "title": {
       "value": "Towards contrast-agnostic soft segmentation of the spinal cord",
       "justification": "The title accurately reflects the aim and scope of the paper, which is to achieve spinal cord segmentation that is not sensitive to the contrast of MRI images.",
       "quote": "Towards contrast-agnostic soft segmentation of the spinal cord"
     },
+    "description": "The paper proposes a novel method for automatic soft segmentation of the spinal cord across various MRI contrasts. The method leverages a convolutional neural network (CNN) and introduces a new pipeline to generate a single, soft ground truth (GT) segmentation that averages segmentations across various MRI contrasts. By training with these soft GT masks and using a regression-based adaptive wing loss function, the model reduces the variability in cross-sectional area (CSA) across different MRI contrasts, achieving better generalization in spinal cord segmentation and improving predictions on unseen data with pathologies or different MRI parameters.",
     "type": {
       "value": "Empirical Study",
       "justification": "The paper presents a novel method and evaluates its performance using various datasets and compares it with state-of-the-art methods.",
       "quote": "We evaluated our model against state-of-the-art methods and performed ablation studies . . . Our results show that using the soft average segmentations along with a regression loss function reduces CSA variability."
     },
-    "research_field": {
+    "primary_research_field": {
       "value": "Deep Learning",
       "justification": "The research primarily focuses on the application of deep learning techniques to improve spinal cord segmentation in MRI images.",
       "quote": "In this work, we present a deep learning-based method that produces soft segmentations of the spinal cord."
     },
-    "sub_research_field": {
-      "value": "Medical Image Segmentation",
-      "justification": "The paper specifically addresses the problem of segmenting spinal cord images obtained through MRI, which falls under the umbrella of medical image segmentation.",
-      "quote": "Spinal cord segmentation is clinically relevant...In this work, we present a deep learning-based method that produces soft segmentations of the spinal cord."
-    },
+    "sub_research_fields": [
+      {
+        "value": "Medical Image Segmentation",
+        "justification": "The paper specifically addresses the problem of segmenting spinal cord images obtained through MRI, which falls under the umbrella of medical image segmentation.",
+        "quote": "Spinal cord segmentation is clinically relevant...In this work, we present a deep learning-based method that produces soft segmentations of the spinal cord."
+      }
+    ],
     "models": [
       {
         "name": {
@@ -30,13 +32,33 @@
           "justification": "The paper utilizes a UNet model to perform spinal cord segmentation.",
           "quote": "Using the Spine Generic Public Database of healthy participants (n = 267; contrasts = 6), we... used to train a UNet model for spinal cord segmentation."
         },
-        "role": "Used",
-        "type": {
-          "value": "CNN",
-          "justification": "The UNet model is a type of Convolutional Neural Network (CNN) often used for image segmentation tasks.",
-          "quote": "We present a convolutional neural network (CNN) model for the automatic soft segmentation of spinal cord across various contrasts."
+        "caracteristics": [
+          {
+            "value": "CNN",
+            "justification": "The UNet model is a type of Convolutional Neural Network (CNN) often used for image segmentation tasks.",
+            "quote": "We present a convolutional neural network (CNN) model for the automatic soft segmentation of spinal cord across various contrasts."
+          }
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "",
+          "quote": ""
         },
-        "mode": "Trained"
+        "is_executed": {
+          "value": false,
+          "justification": "",
+          "quote": ""
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "",
+          "quote": ""
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       },
       {
         "name": {
@@ -44,13 +66,33 @@
           "justification": "The paper uses nnUNet for evaluation and comparison purposes in the study.",
           "quote": "We used the latest version of nnUNet (i.e. nnUNetv2) with the default, self-configured parameters on a single fold for 1000 epochs using all contrasts together and soft GT segmentations binarized using a threshold of 0.5."
         },
-        "role": "Referenced",
-        "type": {
-          "value": "CNN",
-          "justification": "nnUNet is a specialized convolutional neural network designed for various segmentation tasks.",
-          "quote": "The nnUNet architecture (Isensee et al., 2021) is the SOTA in various segmentation tasks across several challenges."
+        "caracteristics": [
+          {
+            "value": "CNN",
+            "justification": "nnUNet is a specialized convolutional neural network designed for various segmentation tasks.",
+            "quote": "The nnUNet architecture (Isensee et al., 2021) is the SOTA in various segmentation tasks across several challenges."
+          }
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "",
+          "quote": ""
         },
-        "mode": "Inference"
+        "is_executed": {
+          "value": false,
+          "justification": "",
+          "quote": ""
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "",
+          "quote": ""
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       }
     ],
     "datasets": [
@@ -60,7 +102,12 @@
           "justification": "The dataset was used for training and validation of the proposed model. It has multi-contrast MRI images of healthy participants.",
           "quote": "We used the Spine Generic Public Database2 (Multi-Subject) (Cohen-Adad et al., 2021a) consisting of 267 healthy participants scanned across multiple MRI vendors."
         },
-        "role": "Used"
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       }
     ],
     "libraries": [
@@ -70,7 +117,12 @@
           "justification": "The data augmentation methods used in the study are implemented in the MONAI framework.",
           "quote": "These augmentation methods are readily implemented in MONAI (Jorge Cardoso et al., 2022)."
         },
-        "role": "Used"
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       },
       {
         "name": {
@@ -78,7 +130,12 @@
           "justification": "PyTorch Lightning was one of the frameworks used for training the models.",
           "quote": "All the models were trained using the MONAI (Jorge Cardoso et al., 2022) and PyTorch Lightning frameworks on a single 48 GB NVIDIA A6000 GPU."
         },
-        "role": "Used"
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       },
       {
         "name": {
@@ -86,7 +143,12 @@
           "justification": "The SCT was used for various preprocessing steps, including automatic segmentation, registration, and creating ground truth masks.",
           "quote": "To eliminate the differences in CSA within the GT across contrasts, we used a unique label averaged over all contrasts as the GT for training...for each participant and contrast, the spinal cord is segmented using SCT’s sct deepseg sc to generate a binary segmentation."
         },
-        "role": "Used"
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       }
     ]
   },

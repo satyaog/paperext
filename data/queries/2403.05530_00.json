@@ -2,27 +2,29 @@
   "paper": "2403.05530.txt",
   "words": 30556,
   "extractions": {
-    "description": "In this report, we present the latest model of the Gemini family, Gemini 1.5 Pro, a highly compute-efficient multimodal mixture-of-experts model capable of recalling and reasoning over fine-grained information from millions of tokens of context, including multiple long documents and hours of video and audio. Gemini 1.5 Pro achieves near-perfect recall on long-context retrieval tasks across modalities, improves the state-of-the-art in long-document QA, long-video QA and long-context ASR, and matches or surpasses Gemini 1.0 Ultra’s state-of-the-art performance across a broad set of benchmarks.",
     "title": {
       "value": "Gemini 1.5: Unlocking multimodal understanding across millions of tokens of context",
       "justification": "This is the exact title of the paper provided by the user.",
       "quote": "Gemini 1.5: Unlocking multimodal understanding across millions of tokens of context"
     },
+    "description": "In this report, we present the latest model of the Gemini family, Gemini 1.5 Pro, a highly compute-efficient multimodal mixture-of-experts model capable of recalling and reasoning over fine-grained information from millions of tokens of context, including multiple long documents and hours of video and audio. Gemini 1.5 Pro achieves near-perfect recall on long-context retrieval tasks across modalities, improves the state-of-the-art in long-document QA, long-video QA and long-context ASR, and matches or surpasses Gemini 1.0 Ultra’s state-of-the-art performance across a broad set of benchmarks.",
     "type": {
       "value": "empirical study",
       "justification": "The paper presents empirical results for their proposed model, Gemini 1.5 Pro, showing its performance on various benchmarks and practical tasks.",
       "quote": "Studying the limits of Gemini 1.5 Pro’s long-context ability, we find continued improvement in next-token prediction and near-perfect retrieval (>99%) up to at least 10M tokens, a generational leap over existing models such as Claude 2.1 (200k) and GPT-4 Turbo (128k)."
     },
-    "research_field": {
+    "primary_research_field": {
       "value": "Natural Language Processing",
       "justification": "The main focus of the paper revolves around language models and their ability to process long contexts of text, which falls under the field of Natural Language Processing (NLP).",
       "quote": "Gemini 1.5 Pro achieves near-perfect recall on long-context retrieval tasks across modalities, improves the state-of-the-art in long-document QA, long-video QA and long-context ASR, and matches or surpasses Gemini 1.0 Ultra’s state-of-the-art performance across a broad set of benchmarks."
     },
-    "sub_research_field": {
-      "value": "Multimodal Learning",
-      "justification": "The paper specifically addresses the processing of multiple modalities including text, video, and audio, making it relevant to the sub-field of multimodal learning.",
-      "quote": "In this report, we present the latest model of the Gemini family, Gemini 1.5 Pro, a highly compute-efficient multimodal mixture-of-experts model capable of recalling and reasoning over fine-grained information from millions of tokens of context, including multiple long documents and hours of video and audio."
-    },
+    "sub_research_fields": [
+      {
+        "value": "Multimodal Learning",
+        "justification": "The paper specifically addresses the processing of multiple modalities including text, video, and audio, making it relevant to the sub-field of multimodal learning.",
+        "quote": "In this report, we present the latest model of the Gemini family, Gemini 1.5 Pro, a highly compute-efficient multimodal mixture-of-experts model capable of recalling and reasoning over fine-grained information from millions of tokens of context, including multiple long documents and hours of video and audio."
+      }
+    ],
     "models": [
       {
         "name": {
@@ -30,13 +32,33 @@
           "justification": "It is the main model introduced and discussed throughout the paper.",
           "quote": "In this report, we present the latest model of the Gemini family, Gemini 1.5 Pro."
         },
-        "role": "contributed",
-        "type": {
-          "value": "Sparse Mixture-of-Experts Transformer",
-          "justification": "The model employs a sparse mixture-of-experts architecture as outlined in the paper.",
-          "quote": "Gemini 1.5 Pro is a sparse mixture-of-expert (MoE) Transformer-based model that builds on Gemini 1.0’s research advances and multimodal capabilities."
+        "caracteristics": [
+          {
+            "value": "Sparse Mixture-of-Experts Transformer",
+            "justification": "The model employs a sparse mixture-of-experts architecture as outlined in the paper.",
+            "quote": "Gemini 1.5 Pro is a sparse mixture-of-expert (MoE) Transformer-based model that builds on Gemini 1.0’s research advances and multimodal capabilities."
+          }
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "",
+          "quote": ""
         },
-        "mode": "trained"
+        "is_executed": {
+          "value": true,
+          "justification": "",
+          "quote": ""
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "",
+          "quote": ""
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       }
     ],
     "datasets": [
@@ -46,7 +68,12 @@
           "justification": "The paper evaluates model performance on this specific dataset to assess mathematical problem-solving capabilities.",
           "quote": "We find that 1.5 Pro consistently outperforms both 1.0 Ultra and 1.0 Pro on grade-school math (i.e., GSM8K) and even shows material improvement over the more demanding benchmarks where there is more headroom for improvement, i.e., +3.5% over 1.0 Ultra for middle- and high-school math problems (i.e., Hendrycks MATH)."
         },
-        "role": "used"
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       },
       {
         "name": {
@@ -54,7 +81,12 @@
           "justification": "This dataset is used for long-document question answering tasks, as described in the paper.",
           "quote": "In this section we present experiments on question answering, we create questions using the book 'Les Misérables' (by Victor Hugo) and test the model’s ability to answer them correctly when the entire 1,462 page book (i.e., 710K tokens) is provided as input."
         },
-        "role": "used"
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       }
     ],
     "libraries": [
@@ -64,7 +96,12 @@
           "justification": "JAX is used for training Gemini 1.5 Pro, as stated in the paper.",
           "quote": "Training was done using JAX (Bradbury et al., 2018) and ML Pathways (Dean, 2021)."
         },
-        "role": "used"
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       }
     ]
   },

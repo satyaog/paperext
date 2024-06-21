@@ -2,27 +2,29 @@
   "paper": "2308.05741.txt",
   "words": 7824,
   "extractions": {
-    "description": "This paper presents a framework that learns a progressive compressed representation of 3D meshes for efficient transmission. The proposed method utilizes a subdivision-based encoder-decoder architecture to compress high-resolution meshes into a representation that can be progressively transmitted to a client, allowing for real-time improvements in reconstruction quality.",
     "title": {
       "value": "Neural Progressive Meshes",
       "justification": "The title is clearly stated at the beginning of the paper.",
       "quote": "Neural Progressive Meshes YUN-CHUN CHEN, University of Toronto, Canada VLADIMIR G. KIM, Adobe Research, USA NOAM AIGERMAN, Adobe Research, USA ALEC JACOBSON, Adobe Research, University of Toronto, Canada"
     },
+    "description": "This paper presents a framework that learns a progressive compressed representation of 3D meshes for efficient transmission. The proposed method utilizes a subdivision-based encoder-decoder architecture to compress high-resolution meshes into a representation that can be progressively transmitted to a client, allowing for real-time improvements in reconstruction quality.",
     "type": {
       "value": "Empirical",
       "justification": "The study evaluates the proposed method using quantitative metrics and comparisons to several baseline methods, conducting multiple experiments.",
       "quote": "We evaluate our method on a diverse set of complex 3D shapes and demonstrate that it outperforms baselines in terms of compression ratio and reconstruction quality."
     },
-    "research_field": {
+    "primary_research_field": {
       "value": "Computer Vision",
       "justification": "The paper deals with the compression and transmission of 3D meshes, which falls under the domain of computer vision.",
       "quote": "arXiv:2308.05741v1 [cs.CV] 10 Aug 2023"
     },
-    "sub_research_field": {
-      "value": "3D Reconstruction",
-      "justification": "The study focuses on the reconstruction of 3D meshes using a progressive transmission framework.",
-      "quote": "We present a framework that learns a progressive compressed representation of meshes for transmission purposes."
-    },
+    "sub_research_fields": [
+      {
+        "value": "3D Reconstruction",
+        "justification": "The study focuses on the reconstruction of 3D meshes using a progressive transmission framework.",
+        "quote": "We present a framework that learns a progressive compressed representation of meshes for transmission purposes."
+      }
+    ],
     "models": [
       {
         "name": {
@@ -30,13 +32,33 @@
           "justification": "The core model introduced and evaluated in the paper is referred to as Neural Progressive Mesh.",
           "quote": "We present a framework that learns a progressive compressed representation of meshes for transmission purposes."
         },
-        "role": "contributed",
-        "type": {
-          "value": "Subdivision-based Encoder-Decoder",
-          "justification": "The model uses a subdivision-based encoder-decoder architecture to compress and reconstruct 3D meshes.",
-          "quote": "We learn this space using a subdivision-based encoder-decoder architecture trained in advance on a large collection of surfaces."
+        "caracteristics": [
+          {
+            "value": "Subdivision-based Encoder-Decoder",
+            "justification": "The model uses a subdivision-based encoder-decoder architecture to compress and reconstruct 3D meshes.",
+            "quote": "We learn this space using a subdivision-based encoder-decoder architecture trained in advance on a large collection of surfaces."
+          }
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "",
+          "quote": ""
         },
-        "mode": "trained"
+        "is_executed": {
+          "value": true,
+          "justification": "",
+          "quote": ""
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "",
+          "quote": ""
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       },
       {
         "name": {
@@ -44,13 +66,33 @@
           "justification": "SubdivNet is used as a base model for the encoder in the proposed framework.",
           "quote": "The server first uses TetWild to preprocess it and then uses a subdivision-based encoder adapted from SubdivNet."
         },
-        "role": "used",
-        "type": {
-          "value": "Subdivision-based Encoder",
-          "justification": "SubdivNet serves as an encoder in the subdivision-based framework.",
-          "quote": "The server first uses TetWild to preprocess it and then uses a subdivision-based encoder adapted from SubdivNet to map geometric details of the original mesh to high-dimensional per-face features of a sequence of decimated meshes."
+        "caracteristics": [
+          {
+            "value": "Subdivision-based Encoder",
+            "justification": "SubdivNet serves as an encoder in the subdivision-based framework.",
+            "quote": "The server first uses TetWild to preprocess it and then uses a subdivision-based encoder adapted from SubdivNet to map geometric details of the original mesh to high-dimensional per-face features of a sequence of decimated meshes."
+          }
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "",
+          "quote": ""
         },
-        "mode": "trained"
+        "is_executed": {
+          "value": false,
+          "justification": "",
+          "quote": ""
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "",
+          "quote": ""
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       },
       {
         "name": {
@@ -58,13 +100,33 @@
           "justification": "Neural Subdivision is used as a base model for the decoder in the proposed framework.",
           "quote": "The client uses a subdivision-based decoder adapted from Neural Subdivision to reconstruct a high-resolution mesh."
         },
-        "role": "used",
-        "type": {
-          "value": "Subdivision-based Decoder",
-          "justification": "Neural Subdivision serves as a decoder in the subdivision-based framework.",
-          "quote": "The client uses a subdivision-based decoder adapted from Neural Subdivision to reconstruct a high-resolution mesh."
+        "caracteristics": [
+          {
+            "value": "Subdivision-based Decoder",
+            "justification": "Neural Subdivision serves as a decoder in the subdivision-based framework.",
+            "quote": "The client uses a subdivision-based decoder adapted from Neural Subdivision to reconstruct a high-resolution mesh."
+          }
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "",
+          "quote": ""
         },
-        "mode": "trained"
+        "is_executed": {
+          "value": false,
+          "justification": "",
+          "quote": ""
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "",
+          "quote": ""
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       }
     ],
     "datasets": [
@@ -74,7 +136,12 @@
           "justification": "The dataset is used to evaluate the proposed method in terms of reconstruction quality and compression effectiveness.",
           "quote": "We evaluate our network on the Thingi10K dataset, split into the training, validation, and test sets."
         },
-        "role": "used"
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       }
     ],
     "libraries": [
@@ -84,7 +151,12 @@
           "justification": "The PyTorch library is used for implementing and training the model.",
           "quote": "We train our network using the ADAM optimizer in PyTorch."
         },
-        "role": "used"
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       }
     ]
   },

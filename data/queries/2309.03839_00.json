@@ -2,27 +2,29 @@
   "paper": "2309.03839.txt",
   "words": 10381,
   "extractions": {
-    "description": "The paper presents an offline reinforcement learning algorithm, ORBIT (Offline RL-Bootstrapped InTerface), which optimizes human-machine interfaces for sequential decision-making tasks like robotic teleoperation. The method combines offline pre-training with online fine-tuning to improve the interface's performance, particularly in noisy and high-dimensional command settings such as eye-gaze-based control.",
     "title": {
       "value": "Bootstrapping Adaptive Human-Machine Interfaces with Offline Reinforcement Learning",
       "justification": "This is the title as given in the document.",
       "quote": "Bootstrapping Adaptive Human-Machine Interfaces with Offline Reinforcement Learning"
     },
+    "description": "The paper presents an offline reinforcement learning algorithm, ORBIT (Offline RL-Bootstrapped InTerface), which optimizes human-machine interfaces for sequential decision-making tasks like robotic teleoperation. The method combines offline pre-training with online fine-tuning to improve the interface's performance, particularly in noisy and high-dimensional command settings such as eye-gaze-based control.",
     "type": {
       "value": "empirical study",
       "justification": "The paper includes practical experiments, particularly a user study and simulated experiments, to validate the proposed method.",
       "quote": "Our experiments focus on evaluating ORBIT’s ability to learn an effective interface through a combination of offline pre-training and online fine-tuning. To do so, we conduct a user study with 12 participants..."
     },
-    "research_field": {
+    "primary_research_field": {
       "value": "Reinforcement Learning",
       "justification": "The paper introduces a reinforcement learning algorithm and discusses its application and evaluation in sequential decision-making tasks.",
       "quote": "Recent work on human-in-the-loop reinforcement learning ... lifts these assumptions, but still assumes access to either a task-agnostic reward function, task distribution, or prior interface."
     },
-    "sub_research_field": {
-      "value": "Human-in-the-loop Reinforcement Learning",
-      "justification": "The research focuses on interaction with users, especially using their feedback and commands to improve the learning algorithm.",
-      "quote": "To address the high cost of user data, we pre-train value functions on a large offline dataset, and distill them into a policy (i.e., an interface) that infers the user’s desired action from the user’s command signal."
-    },
+    "sub_research_fields": [
+      {
+        "value": "Human-in-the-loop Reinforcement Learning",
+        "justification": "The research focuses on interaction with users, especially using their feedback and commands to improve the learning algorithm.",
+        "quote": "To address the high cost of user data, we pre-train value functions on a large offline dataset, and distill them into a policy (i.e., an interface) that infers the user’s desired action from the user’s command signal."
+      }
+    ],
     "models": [
       {
         "name": {
@@ -30,13 +32,33 @@
           "justification": "ORBIT is the main model and contribution described in the paper.",
           "quote": "We call our method the Offline RL-Bootstrapped InTerface (ORBIT)."
         },
-        "role": "contributed",
-        "type": {
-          "value": "Reinforcement Learning model",
-          "justification": "ORBIT is described as an offline reinforcement learning algorithm designed to optimize human-machine interfaces.",
-          "quote": "We propose an offline RL algorithm for interface optimization that can learn from both an observational dataset of the user attempting to perform their desired tasks using some unknown existing default interface, as well as online data collected using our learned interface."
+        "caracteristics": [
+          {
+            "value": "Reinforcement Learning model",
+            "justification": "ORBIT is described as an offline reinforcement learning algorithm designed to optimize human-machine interfaces.",
+            "quote": "We propose an offline RL algorithm for interface optimization that can learn from both an observational dataset of the user attempting to perform their desired tasks using some unknown existing default interface, as well as online data collected using our learned interface."
+          }
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "",
+          "quote": ""
         },
-        "mode": "trained"
+        "is_executed": {
+          "value": true,
+          "justification": "",
+          "quote": ""
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "",
+          "quote": ""
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       }
     ],
     "datasets": [
@@ -46,7 +68,12 @@
           "justification": "The paper describes collecting a large dataset from an expert user performing navigation tasks using a directional interface.",
           "quote": "Hence, we collect a large offline dataset of 1200 episodes of an expert user (the first author) performing tasks using their eye gaze and the default directional interface."
         },
-        "role": "used"
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       },
       {
         "name": {
@@ -54,7 +81,12 @@
           "justification": "The paper presents results from navigation tasks using simulated noisy user commands, to validate their algorithm's components.",
           "quote": "To perform ablations of ORBIT at a scale that would be impractical for a user study, we simulate noisy, high dimensional user commands xt for the navigation task..."
         },
-        "role": "used"
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       },
       {
         "name": {
@@ -62,7 +94,12 @@
           "justification": "The paper describes using simulated user commands on the Lunar Lander game to evaluate their model.",
           "quote": "We further evaluate on a simulated Sawyer pushing task with eye gaze control, and the Lunar Lander game with simulated user commands..."
         },
-        "role": "used"
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       }
     ],
     "libraries": [
@@ -72,7 +109,12 @@
           "justification": "The supplementary section mentions the use of PyTorch for several model implementations and training processes.",
           "quote": "To optimize all of our losses, we use the Adam optimizer [57] with an initial learning rate of 3 · 10−4 . Following the IQL method, we use a constant learning rate for training the value functions, and cosine scheduling for training the encoders and policy."
         },
-        "role": "used"
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       },
       {
         "name": {
@@ -80,7 +122,12 @@
           "justification": "The paper mentions using the Stable Baselines3 library for simulations, such as training agents for the noisy user commands.",
           "quote": "We train an agent to act as the simulated user using the proximal policy optimization algorithm (PPO) [58] and the default hyperparameter values from the Stable Baselines3 library [59]."
         },
-        "role": "used"
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       }
     ]
   },

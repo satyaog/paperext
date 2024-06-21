@@ -2,27 +2,29 @@
   "paper": "2305.11856.txt",
   "words": 5432,
   "extractions": {
-    "description": "This paper introduces an aerial image-based map (AIM) representation that requires minimal annotation and provides rich road context information for multi-agent behavior modeling in autonomous driving. It integrates AIM into a differentiable driving simulator and demonstrates competitive multi-agent trajectory prediction performance compared to high-definition maps.",
     "title": {
       "value": "Video Killed the HD-Map: Predicting Multi-Agent Behavior Directly From Aerial Images",
       "justification": "It is the title of the paper.",
       "quote": "Video Killed the HD-Map: Predicting Multi-Agent Behavior Directly From Aerial Images"
     },
+    "description": "This paper introduces an aerial image-based map (AIM) representation that requires minimal annotation and provides rich road context information for multi-agent behavior modeling in autonomous driving. It integrates AIM into a differentiable driving simulator and demonstrates competitive multi-agent trajectory prediction performance compared to high-definition maps.",
     "type": {
       "value": "Empirical study",
       "justification": "The paper conducts experiments and provides evaluation metrics for multi-agent trajectory prediction using the AIM representation.",
       "quote": "We evaluate multi-agent trajectory prediction using the AIM by incorporating it into a differentiable driving simulator as an image-texture-based differentiable rendering module."
     },
-    "research_field": {
+    "primary_research_field": {
       "value": "Deep Learning",
       "justification": "The paper leverages deep learning models and techniques for multi-agent trajectory prediction.",
       "quote": "Recent studies have emphasized the use of learned models to generate more realistic behavior for controlled agents like pedestrians and surrounding vehicles."
     },
-    "sub_research_field": {
-      "value": "Trajectory Prediction",
-      "justification": "The paper focuses on predicting future trajectories of multiple traffic agents using AIM representation.",
-      "quote": "In this study, we investigate the performance of behavioral models learned using aerial imagery instead of HD maps... We evaluate multi-agent trajectory prediction using the AIM..."
-    },
+    "sub_research_fields": [
+      {
+        "value": "Trajectory Prediction",
+        "justification": "The paper focuses on predicting future trajectories of multiple traffic agents using AIM representation.",
+        "quote": "In this study, we investigate the performance of behavioral models learned using aerial imagery instead of HD maps... We evaluate multi-agent trajectory prediction using the AIM..."
+      }
+    ],
     "models": [
       {
         "name": {
@@ -30,13 +32,33 @@
           "justification": "A variant of the ITRA model that uses aerial image-based map (AIM) for multi-agent trajectory prediction.",
           "quote": "ITRA-AIM demonstrates competitive performance compared to ITRA-HDM"
         },
-        "role": "Contributed",
-        "type": {
-          "value": "Conditional Variational Recurrent Neural Network (CVRNN)",
-          "justification": "The ITRA model uses a conditional variational recurrent neural network (CVRNN) for predicting multi-agent trajectories.",
-          "quote": "ITRA uses a conditional variational recurrent neural network (CVRNN) [16] model followed by a bicycle kinematic model"
+        "caracteristics": [
+          {
+            "value": "Conditional Variational Recurrent Neural Network (CVRNN)",
+            "justification": "The ITRA model uses a conditional variational recurrent neural network (CVRNN) for predicting multi-agent trajectories.",
+            "quote": "ITRA uses a conditional variational recurrent neural network (CVRNN) [16] model followed by a bicycle kinematic model"
+          }
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "",
+          "quote": ""
         },
-        "mode": "Trained"
+        "is_executed": {
+          "value": true,
+          "justification": "",
+          "quote": ""
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "",
+          "quote": ""
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       },
       {
         "name": {
@@ -44,13 +66,33 @@
           "justification": "A variant of the ITRA model that uses high-definition maps (HDM) for multi-agent trajectory prediction.",
           "quote": "ITRA-AIM demonstrates competitive performance compared to ITRA-HDM"
         },
-        "role": "Referenced",
-        "type": {
-          "value": "Conditional Variational Recurrent Neural Network (CVRNN)",
-          "justification": "The ITRA model uses a conditional variational recurrent neural network (CVRNN) for predicting multi-agent trajectories.",
-          "quote": "ITRA uses a conditional variational recurrent neural network (CVRNN) [16] model followed by a bicycle kinematic model"
+        "caracteristics": [
+          {
+            "value": "Conditional Variational Recurrent Neural Network (CVRNN)",
+            "justification": "The ITRA model uses a conditional variational recurrent neural network (CVRNN) for predicting multi-agent trajectories.",
+            "quote": "ITRA uses a conditional variational recurrent neural network (CVRNN) [16] model followed by a bicycle kinematic model"
+          }
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "",
+          "quote": ""
         },
-        "mode": "Trained"
+        "is_executed": {
+          "value": false,
+          "justification": "",
+          "quote": ""
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "",
+          "quote": ""
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       }
     ],
     "datasets": [
@@ -60,7 +102,12 @@
           "justification": "The dataset is used for multi-agent behavior modeling and provides sensory data for agent tracks.",
           "quote": "Typically, learning behavior models requires data consisting of the high-definition (HD) map for the given location and extracted agent tracks."
         },
-        "role": "Referenced"
+        "role": "Referenced",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       },
       {
         "name": {
@@ -68,7 +115,12 @@
           "justification": "This dataset is similar to the one recorded using a drone from a bird’s-eye view in the study.",
           "quote": "We record a dataset of human behavior in traffic scenes with a drone from a bird’s-eye view, in a manner similar to [11]"
         },
-        "role": "Referenced"
+        "role": "Referenced",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       },
       {
         "name": {
@@ -76,7 +128,12 @@
           "justification": "The dataset is used to test the flexibility of the AIM representation.",
           "quote": "We acquired an aerial image from Bing aerial imagery of the same location as Fig. 4d to construct a larger AIM."
         },
-        "role": "Referenced"
+        "role": "Referenced",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       }
     ],
     "libraries": [
@@ -86,7 +143,12 @@
           "justification": "PyTorch is used as the deep learning framework for the implementation of models.",
           "quote": "Our image-texture-based differentiable rendering module is designed to be differentiable and efficient as it supports rendering in batch mode using PyTorch."
         },
-        "role": "Used"
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       },
       {
         "name": {
@@ -94,7 +156,12 @@
           "justification": "PyTorch3D is used for implementing the differentiable rendering module.",
           "quote": "We incorporate AIM into a differentiable simulator by implementing a custom differentiable renderer with PyTorch3D."
         },
-        "role": "Used"
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       }
     ]
   },

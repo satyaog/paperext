@@ -1,25 +1,27 @@
 {
-  "description": "The paper provides a systematic procedure for benchmarking neural network training algorithms, called AlgoPerf, to reliably identify improvements in training algorithms. It introduces a time-to-result benchmark using multiple workloads across various datasets and models, specifying fixed hardware for experiments. The paper outlines the challenges associated with empirical comparisons of training algorithms and provides baseline results demonstrating the feasibility of their benchmark. Additionally, it includes randomized workloads to ensure the robustness of the training algorithms.",
   "title": {
     "value": "Benchmarking Neural Network Training Algorithms",
     "justification": "It is the official title of the paper as mentioned at the beginning.",
     "quote": "Benchmarking Neural Network Training Algorithms"
   },
+  "description": "The paper provides a systematic procedure for benchmarking neural network training algorithms, called AlgoPerf, to reliably identify improvements in training algorithms. It introduces a time-to-result benchmark using multiple workloads across various datasets and models, specifying fixed hardware for experiments. The paper outlines the challenges associated with empirical comparisons of training algorithms and provides baseline results demonstrating the feasibility of their benchmark. Additionally, it includes randomized workloads to ensure the robustness of the training algorithms.",
   "type": {
     "value": "empirical study",
     "justification": "The paper is based on conducting numerous experiments comparing different training algorithms on predefined tasks and hardware setups.",
     "quote": "In this work, using concrete experiments, we argue that real progress in speeding up training requires new benchmarks..."
   },
-  "research_field": {
+  "primary_research_field": {
     "value": "Deep Learning",
     "justification": "The paper focuses on benchmarking training algorithms specifically within the context of deep learning models and tasks.",
     "quote": "Training algorithms improvements that speed up training across a wide variety of workloads... could save time, save computational resources..."
   },
-  "sub_research_field": {
-    "value": "Neural Network Optimization",
-    "justification": "The main focus of the paper is on optimizing the training algorithms used for neural networks.",
-    "quote": "Optimization and Training"
-  },
+  "sub_research_fields": [
+    {
+      "value": "Neural Network Optimization",
+      "justification": "The main focus of the paper is on optimizing the training algorithms used for neural networks.",
+      "quote": "Optimization and Training"
+    }
+  ],
   "models": [
     {
       "name": {
@@ -27,13 +29,33 @@
         "justification": "Conformer is explicitly mentioned as a model used in experiments within the paper for speech recognition.",
         "quote": "Conformer (Gulati et al., 2020) is an architecture combining attention and convolution layers to capture both global and local relationships in input audio."
       },
-      "role": "used",
-      "type": {
-        "value": "Hybrid Model",
-        "justification": "The Conformer model is a combination of Transformer and Convolutional layers, making it a hybrid model.",
-        "quote": "Conformer (Gulati et al., 2020) is an architecture combining attention and convolution layers to capture both global and local relationships in input audio."
+      "caracteristics": [
+        {
+          "value": "Hybrid Model",
+          "justification": "The Conformer model is a combination of Transformer and Convolutional layers, making it a hybrid model.",
+          "quote": "Conformer (Gulati et al., 2020) is an architecture combining attention and convolution layers to capture both global and local relationships in input audio."
+        }
+      ],
+      "is_contributed": {
+        "value": false,
+        "justification": "",
+        "quote": ""
       },
-      "mode": "training"
+      "is_executed": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "is_compared": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -41,13 +63,33 @@
         "justification": "DLRM is mentioned as the model used for click-through rate prediction in the Criteo 1TB dataset.",
         "quote": "The single embedding table is of size 4M entries with an embedding dimension of 128. The dense features are fed into a three-layer fully-connected network with 512, 256, 128 units per layer. The outputs of this layer are then concatenated to the embedding lookups of the categorical features, and fed into the cross-interaction layer. Finally, the cross-interaction output is passed into a five-layer fully-connected network with 1024, 1024, 512, 256, 1 units per layer."
       },
-      "role": "used",
-      "type": {
-        "value": "Recommendation Model",
-        "justification": "DLRM is a model specifically designed for recommendation tasks, often employing a combination of embeddings and dense layers.",
-        "quote": "The single embedding table is of size 4M entries with an embedding dimension of 128."
+      "caracteristics": [
+        {
+          "value": "Recommendation Model",
+          "justification": "DLRM is a model specifically designed for recommendation tasks, often employing a combination of embeddings and dense layers.",
+          "quote": "The single embedding table is of size 4M entries with an embedding dimension of 128."
+        }
+      ],
+      "is_contributed": {
+        "value": false,
+        "justification": "",
+        "quote": ""
       },
-      "mode": "training"
+      "is_executed": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "is_compared": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -55,13 +97,33 @@
         "justification": "DeepSpeech is included as a model used in the paper for the LibriSpeech dataset.",
         "quote": "We use a variant of the DeepSpeech (Amodei et al., 2016) model with residual connections, dropout (Srivastava et al., 2014), layer normalization, and SpecAugment (Park et al., 2019) to improve performance"
       },
-      "role": "used",
-      "type": {
-        "value": "LSTM",
+      "caracteristics": [
+        {
+          "value": "LSTM",
+          "justification": "",
+          "quote": "We use batch normalization inside the LSTM and feed-forward layers as post normalization layers"
+        }
+      ],
+      "is_contributed": {
+        "value": false,
         "justification": "",
-        "quote": "We use batch normalization inside the LSTM and feed-forward layers as post normalization layers"
+        "quote": ""
       },
-      "mode": "training"
+      "is_executed": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "is_compared": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -69,13 +131,33 @@
         "justification": "",
         "quote": "The model is defined as a graph neural network (GNN) (Battaglia et al., 2018), which is a generalization of graph architectures such as GIN (Xu et al., 2019)"
       },
-      "role": "used",
-      "type": {
-        "value": "graph architectures",
+      "caracteristics": [
+        {
+          "value": "graph architectures",
+          "justification": "",
+          "quote": "The model is defined as a graph neural network (GNN) (Battaglia et al., 2018), which is a generalization of graph architectures such as GIN (Xu et al., 2019)"
+        }
+      ],
+      "is_contributed": {
+        "value": false,
         "justification": "",
-        "quote": "The model is defined as a graph neural network (GNN) (Battaglia et al., 2018), which is a generalization of graph architectures such as GIN (Xu et al., 2019)"
+        "quote": ""
       },
-      "mode": "training"
+      "is_executed": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "is_compared": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -83,13 +165,33 @@
         "justification": "ResNet-50 is explicitly mentioned as a model used in the experiments within the paper.",
         "quote": "For example, training ResNet-50 on ImageNet"
       },
-      "role": "used",
-      "type": {
-        "value": "Convolutional Neural Network (CNN)",
-        "justification": "ResNet-50 is a well-known Convolutional Neural Network architecture.",
-        "quote": "For example, training ResNet-50 on ImageNet using the cross-entropy loss (CE)"
+      "caracteristics": [
+        {
+          "value": "Convolutional Neural Network (CNN)",
+          "justification": "ResNet-50 is a well-known Convolutional Neural Network architecture.",
+          "quote": "For example, training ResNet-50 on ImageNet using the cross-entropy loss (CE)"
+        }
+      ],
+      "is_contributed": {
+        "value": false,
+        "justification": "",
+        "quote": ""
       },
-      "mode": "training"
+      "is_executed": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "is_compared": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -97,13 +199,33 @@
         "justification": "A large Transformer model is used for the WMT translation tasks as described in the paper.",
         "quote": "We use the Transformer-big architecture from Vaswani et al. (2017) with some modifications."
       },
-      "role": "used",
-      "type": {
-        "value": "Transformer-based Model",
-        "justification": "Transformer (Big) follows the original Transformer architecture adapted for larger scales.",
-        "quote": "We use the Transformer-big architecture from Vaswani et al. (2017) with some modifications."
+      "caracteristics": [
+        {
+          "value": "Transformer-based Model",
+          "justification": "Transformer (Big) follows the original Transformer architecture adapted for larger scales.",
+          "quote": "We use the Transformer-big architecture from Vaswani et al. (2017) with some modifications."
+        }
+      ],
+      "is_contributed": {
+        "value": false,
+        "justification": "",
+        "quote": ""
       },
-      "mode": "training"
+      "is_executed": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "is_compared": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -111,13 +233,33 @@
         "justification": "U-Net is used in MRI reconstruction tasks as specified in the experimental workloads.",
         "quote": "We train a U-Net model similar to the one described in Ronneberger et al. (2015)"
       },
-      "role": "used",
-      "type": {
-        "value": "Convolutional Neural Network (CNN)",
-        "justification": "U-Net is a specialized type of Convolutional Neural Network designed for image segmentation tasks.",
-        "quote": "We train a U-Net model similar to the one described in Ronneberger et al. (2015)"
+      "caracteristics": [
+        {
+          "value": "Convolutional Neural Network (CNN)",
+          "justification": "U-Net is a specialized type of Convolutional Neural Network designed for image segmentation tasks.",
+          "quote": "We train a U-Net model similar to the one described in Ronneberger et al. (2015)"
+        }
+      ],
+      "is_contributed": {
+        "value": false,
+        "justification": "",
+        "quote": ""
       },
-      "mode": "training"
+      "is_executed": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "is_compared": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -125,13 +267,33 @@
         "justification": "ViT is explicitly mentioned as a model used in experiments within the paper.",
         "quote": "ViT, Vision Transformer model."
       },
-      "role": "used",
-      "type": {
-        "value": "Transformer-based Model",
-        "justification": "ViT is a Transformer-based model designed for vision tasks.",
-        "quote": "...Vision Transformer..."
+      "caracteristics": [
+        {
+          "value": "Transformer-based Model",
+          "justification": "ViT is a Transformer-based model designed for vision tasks.",
+          "quote": "...Vision Transformer..."
+        }
+      ],
+      "is_contributed": {
+        "value": false,
+        "justification": "",
+        "quote": ""
       },
-      "mode": "training"
+      "is_executed": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "is_compared": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     }
   ],
   "datasets": [
@@ -141,7 +303,12 @@
         "justification": "Criteo 1TB dataset is referenced for click-through rate prediction using the DLRM model.",
         "quote": "We train on the Criteo 1TB Click Logs dataset"
       },
-      "role": "used"
+      "role": "used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -149,7 +316,12 @@
         "justification": "ImageNet dataset is explicitly mentioned in the context of training ResNet-50 and ViT models.",
         "quote": "For example, training ResNet-50 on ImageNet"
       },
-      "role": "used"
+      "role": "used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -157,7 +329,12 @@
         "justification": "The LibriSpeech dataset is used for speech recognition tasks with Conformer and DeepSpeech models.",
         "quote": "We use the LibriSpeech dataset (Panayotov et al., 2015)"
       },
-      "role": "used"
+      "role": "used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -165,7 +342,12 @@
         "justification": "OGBG-MOLPCBA is mentioned for training the GNN model for molecular property prediction.",
         "quote": "We use the OGBG-MOLPCBA dataset (Hu et al., 2020) containing molecular graphs and 128 molecular properties."
       },
-      "role": "referenced"
+      "role": "referenced",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -173,7 +355,12 @@
         "justification": "OGBG-MOLPCBA is mentioned for training the GNN model for molecular property prediction.",
         "quote": "We use the OGBG-MOLPCBA dataset (Hu et al., 2020) containing molecular graphs and 128 molecular properties."
       },
-      "role": "used"
+      "role": "used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -181,7 +368,12 @@
         "justification": "WMT 2017 is mentioned as the dataset for machine translation tasks using the Transformer model.",
         "quote": "The models are trained on the WMT 2017 GermanÑEnglish (DeÑEn) training dataset"
       },
-      "role": "referenced"
+      "role": "referenced",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -189,7 +381,12 @@
         "justification": "WMT 2017 is mentioned as the dataset for machine translation tasks using the Transformer model.",
         "quote": "The models are trained on the WMT 2017 GermanÑEnglish (DeÑEn) training dataset"
       },
-      "role": "used"
+      "role": "used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -197,7 +394,12 @@
         "justification": "The fastMRI dataset is used for MRI reconstruction tasks with the U-Net model.",
         "quote": "We train a U-Net model similar to the one described in Ronneberger et al. (2015)"
       },
-      "role": "used"
+      "role": "used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     }
   ],
   "libraries": [
@@ -207,7 +409,12 @@
         "justification": "The paper mentions that all workloads have open-source implementations in JAX, and it is one of the frameworks supported by the benchmark.",
         "quote": "We provide open-source JAX"
       },
-      "role": "used"
+      "role": "used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -215,7 +422,12 @@
         "justification": "The paper mentions that all workloads have open-source implementations in PyTorch, and it is one of the frameworks supported by the benchmark.",
         "quote": "We provide open-source...PyTorch implementations of all workloads"
       },
-      "role": "used"
+      "role": "used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     }
   ]
 }

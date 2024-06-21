@@ -2,27 +2,29 @@
   "paper": "2307.01163.txt",
   "words": 9790,
   "extractions": {
-    "description": "This paper proposes an active forgetting mechanism during the pretraining of language models to improve their adaptability to new languages. By regularly resetting the embedding layer during pretraining, the authors encourage the model to better learn new embeddings, similar to a meta-learning effect. Experiments demonstrate faster convergence and better performance in low-data scenarios, especially for languages distant from English.",
     "title": {
       "value": "Improving Language Plasticity via Pretraining with Active Forgetting",
       "justification": "The title of the paper is 'Improving Language Plasticity via Pretraining with Active Forgetting'.",
       "quote": "Improving Language Plasticity via Pretraining with Active Forgetting"
     },
+    "description": "This paper proposes an active forgetting mechanism during the pretraining of language models to improve their adaptability to new languages. By regularly resetting the embedding layer during pretraining, the authors encourage the model to better learn new embeddings, similar to a meta-learning effect. Experiments demonstrate faster convergence and better performance in low-data scenarios, especially for languages distant from English.",
     "type": {
       "value": "Empirical Study",
       "justification": "The paper presents experiments and empirical results to validate the proposed active forgetting mechanism.",
       "quote": "Experiments demonstrate faster convergence and better performance in low-data scenarios, especially for languages distant from English."
     },
-    "research_field": {
+    "primary_research_field": {
       "value": "Natural Language Processing",
       "justification": "The paper focuses on pretrained language models and their adaptability, which are central topics in NLP.",
       "quote": "Pretrained language models (PLMs) are today the primary model for natural language processing."
     },
-    "sub_research_field": {
-      "value": "Cross-lingual Transfer",
-      "justification": "The paper addresses the adaptability of language models to new languages, which falls under cross-lingual transfer.",
-      "quote": "Our zero-shot evaluations on several cross-lingual transfer benchmarks show that for cases where unlabeled adaptation corpus for the unseen language has as few as 5 million tokens (a low-data regime), forgetting PLMs outperforms the baseline by large margins."
-    },
+    "sub_research_fields": [
+      {
+        "value": "Cross-lingual Transfer",
+        "justification": "The paper addresses the adaptability of language models to new languages, which falls under cross-lingual transfer.",
+        "quote": "Our zero-shot evaluations on several cross-lingual transfer benchmarks show that for cases where unlabeled adaptation corpus for the unseen language has as few as 5 million tokens (a low-data regime), forgetting PLMs outperforms the baseline by large margins."
+      }
+    ],
     "models": [
       {
         "name": {
@@ -30,13 +32,33 @@
           "justification": "The paper mentions using RoBERTa-base as the primary model for their experiments.",
           "quote": "we choose to pretrain RoBERTa-base Liu et al. [2019], a 12-layer transformer-based model, on English CC100 [Conneau et al., 2020]."
         },
-        "role": "Used",
-        "type": {
-          "value": "Transformer-based Language Model",
-          "justification": "RoBERTa-base is a transformer-based language model.",
-          "quote": "we choose to pretrain RoBERTa-base Liu et al. [2019], a 12-layer transformer-based model."
+        "caracteristics": [
+          {
+            "value": "Transformer-based Language Model",
+            "justification": "RoBERTa-base is a transformer-based language model.",
+            "quote": "we choose to pretrain RoBERTa-base Liu et al. [2019], a 12-layer transformer-based model."
+          }
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "",
+          "quote": ""
         },
-        "mode": "Fine-tuned"
+        "is_executed": {
+          "value": false,
+          "justification": "",
+          "quote": ""
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "",
+          "quote": ""
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       }
     ],
     "datasets": [
@@ -46,7 +68,12 @@
           "justification": "The model was pretrained on the CC100 dataset.",
           "quote": "we choose to pretrain RoBERTa-base Liu et al. [2019], a 12-layer transformer-based model, on English CC100 [Conneau et al., 2020]."
         },
-        "role": "Used"
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       },
       {
         "name": {
@@ -54,7 +81,12 @@
           "justification": "The XNLI dataset was used for zero-shot evaluations.",
           "quote": "Our zero-shot evaluations on several cross-lingual transfer benchmarks show that for cases where unlabeled adaptation corpus for the unseen language has as few as 5 million tokens (a low-data regime), forgetting PLMs outperforms the baseline by large margins: average gains of +21.2% on XNLI."
         },
-        "role": "Used"
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       },
       {
         "name": {
@@ -62,7 +94,12 @@
           "justification": "The MLQA dataset was used for zero-shot evaluations.",
           "quote": "Our zero-shot evaluations on several cross-lingual transfer benchmarks show that for cases where unlabeled adaptation corpus for the unseen language has as few as 5 million tokens (a low-data regime), forgetting PLMs outperforms the baseline by large margins: average gains of  +33.8% on MLQA."
         },
-        "role": "Used"
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       },
       {
         "name": {
@@ -70,7 +107,12 @@
           "justification": "The XQuAD dataset was used for zero-shot evaluations.",
           "quote": "Our zero-shot evaluations on several cross-lingual transfer benchmarks show that for cases where unlabeled adaptation corpus for the unseen language has as few as 5 million tokens (a low-data regime), forgetting PLMs outperforms the baseline by large margins: average gains of..60.9% on XQuAD."
         },
-        "role": "Used"
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       },
       {
         "name": {
@@ -78,7 +120,12 @@
           "justification": "The MultiNLI dataset was used for task adaptation in English.",
           "quote": "In the task adapt stage, both models were finetuned for 10 epochs on the English task data, specifically MultiNLI [Williams et al., 2018] for the NLI task."
         },
-        "role": "Used"
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       },
       {
         "name": {
@@ -86,7 +133,12 @@
           "justification": "The SQuAD dataset was used for task adaptation in English.",
           "quote": "In the task adapt stage, both models were finetuned for 10 epochs on the English task data, specifically ... SQUAD Rajpurkar et al. [2016] for the QA task."
         },
-        "role": "Used"
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       }
     ],
     "libraries": [
@@ -96,7 +148,12 @@
           "justification": "The experiments were implemented using the fairseq library.",
           "quote": "Our experiments were implemented using fairseq [Ott et al., 2019]."
         },
-        "role": "Used"
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       }
     ]
   },
