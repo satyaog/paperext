@@ -9,14 +9,6 @@ from . import model
 from . import model_v1
 
 
-def empty_paperextractions(model_cls:model_v1.PaperExtractions | model.PaperExtractions):
-    if model_cls is model_v1.PaperExtractions:
-        return model_v1.empty_paperextractions()
-    elif model_cls is model.PaperExtractions:
-        return model.empty_paperextractions()
-    raise ValueError(f"Invalid model version {model_cls}")
-
-
 def split_entry(string:str):
     v, *extra = [_.strip().rstrip("]") for _ in string.split("[[")]
     assert len(extra) <= 1
