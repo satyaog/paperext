@@ -65,6 +65,7 @@ class Model(BaseModel):
     name: Explained[str] = Field(
         description="Name of the Model",
     )
+    # TODO: delete this field
     caracteristics: List[Explained[str]] = Field(
         description="List of carateristics of the Model like convolution layers, transformer modules",
     )
