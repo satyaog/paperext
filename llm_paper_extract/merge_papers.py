@@ -75,6 +75,24 @@ def _remove_duplicates(l:list):
             last = value
 
 
+def _find_in_paper(string:str, paper:str):
+    last_index = -1
+
+    try:
+        last_index = paper.index(str_normalize(string), last_index + 1)
+        yield string, last_index
+        return
+    except ValueError:
+        pass
+
+    for part in [_s for _s in string.split("...") if _s.strip()]:
+        try:
+            last_index = paper.index(str_normalize(part), last_index + 1)
+            yield part, last_index
+        except ValueError:
+            return
+
+
 def _model_dump(paper_id, paper, model:BaseModel):
     _WARNING = f"WARNING: Could not find the quote in the paper {paper_id}"
 
@@ -101,7 +119,7 @@ def _model_dump(paper_id, paper, model:BaseModel):
                 print(model_dump_yaml)
                 print("\n".join(lines[i:end]))
                 raise
-            if str_normalize(quote) not in paper:
+            if not list(_find_in_paper(quote, paper)):
                 lines.insert(end, f"{lstrip}## {_WARNING}")
     model_dump_yaml = "\n".join(lines)
     return model_dump_yaml
@@ -140,8 +158,9 @@ def _select(key:str, *options:List[str], edit=False):
         editable_content.append(f"{prefix}{separator[len(prefix):]}")
         editable_content.append(option)
 
-        for entry in editable_content[-3:]:
-            print(highlight(entry, YamlLexer(), TerminalTrueColorFormatter()), end="")
+    editable_content.append(f"## {key} ")
+    for entry in editable_content:
+        print(highlight(entry, YamlLexer(), TerminalTrueColorFormatter()), end="")
 
     selected = _input_option(f"Select {' or '.join(long_options)}", short_options)
     edit = False
