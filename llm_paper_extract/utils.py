@@ -51,8 +51,8 @@ def build_validation_set(data_dir:Path, seed=42):
     return list(map(lambda p:Path(p).absolute(), validation_set))
 
 
-def split_entry(string:str):
-    first, *extra = [_.strip().rstrip("]") for _ in string.split("[[")]
+def split_entry(string:str, sep_left="[[", sep_right="]]"):
+    first, *extra = [_.strip().rstrip(sep_right) for _ in string.split(sep_left)]
     assert len(extra) <= 1
     extra = [_.strip() for _ in extra for _ in _.split(",")]
     return [first, *extra]

@@ -28,37 +28,53 @@ def convert_model_v1(extractions:model_v1.PaperExtractions):
     for field_name, field in extractions:
         if field_name in ("title", "description", "type",):
             fields[field_name] = field
+
         elif field_name in ("research_field",):
-            fields["primary_research_field"] = extractions.research_field
+            name, *aliases = split_entry(
+                extractions.research_field.value, sep_left="(", sep_right=")"
+            )
+            fields["primary_research_field"] = model.ResearchField(
+                name={
+                    **extractions.research_field.model_dump(),
+                    "value":name
+                },
+                aliases=aliases
+            )
+
         elif field_name in ("sub_research_field",):
-            fields["sub_research_fields"] = [
-                model.Explained(
-                    value=srf,
-                    justification=(
-                        extractions.sub_research_field.justification
-                        if i == 0
-                        else ""
-                    ),
-                    quote=(
-                        extractions.sub_research_field.quote
-                        if i == 0
-                        else ""
-                    ),
+            fields["sub_research_fields"] = []
+            sub_research_fields = fields["sub_research_fields"]
+            for i, srf in enumerate(split_entry(extractions.sub_research_field.value)):
+                name, *aliases = split_entry(srf, sep_left="(", sep_right=")")
+                srf = model.ResearchField(
+                    name={
+                        **extractions.sub_research_field.model_dump(),
+                        "value":name,
+                        **({"justification":"", "quote":""}
+                           if i > 0 else {})
+                    },
+                    aliases=aliases
                 )
-                for i, srf in enumerate(split_entry(extractions.sub_research_field.value))
-            ]
+                sub_research_fields.append(srf)
+
         elif field_name in ("models",):
-            fields[field_name] = [
-                model.Model(
-                    name=m.name.model_dump(),
-                    caracteristics=[m.type.model_dump()],
+            fields[field_name] = []
+            for m in extractions.models:
+                name, *aliases = split_entry(m.name.value, sep_left="(", sep_right=")")
+                m = model.Model(
+                    name={**m.name.model_dump(), "value": name},
+                    aliases=aliases,
+                    is_contributed=model.Explained(
+                        value=str_eq(m.role, model_v1.Role.CONTRIBUTED.value),
+                        justification=f"Role:{[_r.value for _r in model_v1.Role]}",
+                        quote=m.role
+                    ).model_dump(),
                     is_executed=model.Explained(
-                        value=str_eq(m.role, model_v1.Role.CONTRIBUTED.value), justification="", quote=""
+                        value=str_eq(m.role, model_v1.Role.CONTRIBUTED.value),
+                        justification=f"ModelMode:{[_m.value for _m in model_v1.ModelMode]}",
+                        quote=m.mode
                     ).model_dump(),
                     is_compared=model.Explained(
-                        value=str_eq(m.role, model_v1.Role.CONTRIBUTED.value), justification="", quote=""
-                    ).model_dump(),
-                    is_contributed=model.Explained(
                         value=str_eq(m.role, model_v1.Role.CONTRIBUTED.value),
                         justification="",
                         quote=""
@@ -67,30 +83,35 @@ def convert_model_v1(extractions:model_v1.PaperExtractions):
                         value="", justification="", quote=""
                     ).model_dump()
                 )
-                for m in extractions.models
-            ]
+                fields[field_name].append(m)
+
         elif field_name in ("datasets",):
-            fields[field_name] = [
-                model.Dataset(
-                    name=d.name.model_dump(),
+            fields[field_name] = []
+            for d in extractions.datasets:
+                name, *aliases = split_entry(d.name.value, sep_left="(", sep_right=")")
+                d = model.Dataset(
+                    name={**d.name.model_dump(), "value": name},
+                    aliases=aliases,
                     role=d.role,
                     referenced_paper_title=model.Explained(
                         value="", justification="", quote=""
                     ).model_dump()
                 )
-                for d in extractions.datasets
-            ]
+                fields[field_name].append(d)
+
         elif field_name in ("libraries",):
-            fields[field_name] = [
-                model.Library(
-                    name=l.name.model_dump(),
+            fields[field_name] = []
+            for l in extractions.libraries:
+                name, *aliases = split_entry(l.name.value, sep_left="(", sep_right=")")
+                l = model.Library(
+                    name={**l.name.model_dump(), "value": name},
+                    aliases=aliases,
                     role=l.role,
                     referenced_paper_title=model.Explained(
                         value="", justification="", quote=""
                     ).model_dump()
                 )
-                for l in extractions.libraries
-            ]
+                fields[field_name].append(l)
 
     return model.PaperExtractions(
         **{k:_model_dump(v) for k, v in fields.items()}

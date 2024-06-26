@@ -65,10 +65,14 @@ class Model(BaseModel):
     name: Explained[str] = Field(
         description="Name of the Model",
     )
-    # TODO: delete this field
-    caracteristics: List[Explained[str]] = Field(
-        description="List of carateristics of the Model like convolution layers, transformer modules",
+    aliases: List[str] = Field(
+        description="List of names or acronyms used to identify the Model",
     )
+    # | contributed | executed    | compared    | result
+    # | X           | X           | X           | is a contribution to the research field
+    # |             | X           | X           | has been executed (trained or finetuned or inference) and compared to other models
+    # |             |             | X           | is compared to other models using only results from a referenced paper
+    # |             |             |             | is only referenced in the paper but is not used in any comparison
     is_contributed: Explained[bool] = Field(
         description="Was the Model a contribution to the research field, in the scope of the paper",
     )
@@ -94,9 +98,27 @@ class Model(BaseModel):
         return False
 
 
+class DatasetSubset(BaseModel):
+    name: Explained[str] = Field(
+        description="Name of the Dataset subset",
+    )
+    aliases: List[str] = Field(
+        description="List of names or acronyms used to identify the Dataset subset",
+    )
+    description: Explained[str] = Field(
+        description="Short description of the Dataset subset",
+    )
+    transformations: List[Explained[str]] = Field(
+        description="List of transformations applied to the original Dataset",
+    )
+
+
 class Dataset(BaseModel):
     name: Explained[str] = Field(
         description="Name of the Dataset",
+    )
+    aliases: List[str] = Field(
+        description="List of names or acronyms used to identify the Dataset",
     )
     role: Role | str = Field(
         description=f"Was the Dataset {' or '.join([role.value.lower() for role in Role])} in the scope of the paper"
@@ -121,6 +143,9 @@ class Library(BaseModel):
     name: Explained[str] = Field(
         description="Name of the Library",
     )
+    aliases: List[str] = Field(
+        description="List of names or acronyms used to identify the Library",
+    )
     role: Role | str = Field(
         description=f"Was the Library {' or '.join([role.value.lower() for role in Role])} in the scope of the paper"
     )
@@ -140,6 +165,27 @@ class Library(BaseModel):
         return False
 
 
+class ResearchField(BaseModel):
+    name: Explained[str] = Field(
+        description="Name of the Deep Learning Research Field or application domain",
+    )
+    aliases: List[str] = Field(
+        description="List of names or acronyms used to identify the Research Field or application domain",
+    )
+
+    def __lt__(self, other:"ResearchField"):
+        for (k, v), (ok, ov) in zip(self, other):
+            if k != ok:
+                break
+            if k in ("aliases",):
+                v = sorted(map(str_normalize, v))
+                ov = sorted(map(str_normalize, ov))
+            if v == ov:
+                continue
+            return v < ov
+        return False
+
+
 class PaperExtractions(BaseModel):
     title: Explained[str] = Field(
         description="Title of the paper",
@@ -150,11 +196,14 @@ class PaperExtractions(BaseModel):
     type: Explained[ResearchType] = Field(
         description=f"Is the paper an {' or a '.join([rt.value.lower() + ' study' for rt in ResearchType])}",
     )
-    primary_research_field: Explained[str] = Field(
-        description="Primary Deep Learning research field of the paper",
+    primary_research_field: ResearchField = Field(
+        description="Primary research field of the paper, ideally a Deep "
+            "Learning sub-research field like Natural Language Processing or "
+            "Computer Vision",
     )
-    sub_research_fields: List[Explained[str]] = Field(
-        description="List of Deep Learning sub-research fields and research sub-fields of the paper, order by importance",
+    sub_research_fields: List[ResearchField] = Field(
+        description="List of Deep Learning sub-research fields or application "
+            "domains of the paper, order from major to minor",
     )
     models: List[Model] = Field(
         description="All Models found in the paper"
