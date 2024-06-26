@@ -1,25 +1,49 @@
 {
-  "description": "This paper introduces JaxPruner, a JAX-based sparsity library designed to facilitate research in sparse neural networks through concise implementations of popular pruning and sparse training algorithms. It aims at minimal memory and latency overhead, ease of integration, and providing strong baselines.",
   "title": {
     "value": "JaxPruner: A Concise Library for Sparsity Research",
     "justification": "The title accurately reflects the main subject and purpose of the paper which is introducing the JaxPruner library for sparsity research.",
     "quote": "This work introduces JaxPruner, a JAX-based sparsity library for machine learning research."
   },
+  "description": "This paper introduces JaxPruner, a JAX-based sparsity library designed to facilitate research in sparse neural networks through concise implementations of popular pruning and sparse training algorithms. It aims at minimal memory and latency overhead, ease of integration, and providing strong baselines.",
   "type": {
     "value": "Empirical Study",
     "justification": "The paper includes empirical benchmark results of JaxPruner on multiple standard datasets and demonstrates the utility of the library through various experiments.",
     "quote": "We benchmark pruning and sparse training algorithms in 4 different domains and discuss them in subsequent sections"
   },
-  "research_field": {
-    "value": "Deep Learning",
-    "justification": "The paper focuses on developing and evaluating a library for deep learning models, specifically for sparsity research in neural networks.",
-    "quote": "JaxPruner aims to accelerate research on sparse neural networks..."
+  "primary_research_field": {
+    "name": {
+      "value": "Deep Learning",
+      "justification": "The paper focuses on developing and evaluating a library for deep learning models, specifically for sparsity research in neural networks.",
+      "quote": "JaxPruner aims to accelerate research on sparse neural networks..."
+    },
+    "aliases": []
   },
-  "sub_research_field": {
-    "value": "Model Compression / Sparse Training / Pruning",
-    "justification": "The paper specifically addresses sparsity in neural networks, which is a sub-field within model compression and training efficiency.",
-    "quote": "There are two high-level strategies for achieving parameter sparsity: (1) pruning which aims to obtain sparse networks starting from dense networks for inference efficiency and (2) sparse training which aims to train sparse networks from scratch, thus reducing training cost as well."
-  },
+  "sub_research_fields": [
+    {
+      "name": {
+        "value": "Model Compression",
+        "justification": "The paper specifically addresses sparsity in neural networks, which is a sub-field within model compression and training efficiency.",
+        "quote": "There are two high-level strategies for achieving parameter sparsity: (1) pruning which aims to obtain sparse networks starting from dense networks for inference efficiency and (2) sparse training which aims to train sparse networks from scratch, thus reducing training cost as well."
+      },
+      "aliases": []
+    },
+    {
+      "name": {
+        "value": "Sparse Training",
+        "justification": "",
+        "quote": ""
+      },
+      "aliases": []
+    },
+    {
+      "name": {
+        "value": "Pruning",
+        "justification": "",
+        "quote": ""
+      },
+      "aliases": []
+    }
+  ],
   "models": [
     {
       "name": {
@@ -27,13 +51,27 @@
         "justification": "This model is used for deep reinforcement learning experiments within the Dopamine library.",
         "quote": "Though it is possible to run any of the Atari games and agents, we choose MsPacman and DQN for our experiments."
       },
-      "role": "Used",
-      "type": {
-        "value": "Deep Q-Network",
-        "justification": "The paper refers to the DQN model in the context of reinforcement learning tasks.",
-        "quote": "The Dopamine framework includes DQN, Rainbow, and other distributional deep RL agents..."
+      "aliases": [],
+      "is_contributed": {
+        "value": false,
+        "justification": "Role:['contributed', 'used', 'referenced']",
+        "quote": "Used"
       },
-      "mode": "Trained"
+      "is_executed": {
+        "value": false,
+        "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
+        "quote": "Trained"
+      },
+      "is_compared": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -41,13 +79,27 @@
         "justification": "This model is used in the empirical evaluation for image classification tasks.",
         "quote": "We train 80% sparse ResNet-50 models on ImageNet..."
       },
-      "role": "Used",
-      "type": {
-        "value": "Convolutional Neural Network",
-        "justification": "The paper specifies that ResNet-50 is used for the image classification benchmarks.",
-        "quote": "We train 80% sparse ResNet-50 models on ImageNet to reproduce previous results reported in the literature"
+      "aliases": [],
+      "is_contributed": {
+        "value": false,
+        "justification": "Role:['contributed', 'used', 'referenced']",
+        "quote": "Used"
       },
-      "mode": "Trained"
+      "is_executed": {
+        "value": false,
+        "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
+        "quote": "Trained"
+      },
+      "is_compared": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -55,13 +107,27 @@
         "justification": "This model is used for the language modeling benchmarks in the experiments.",
         "quote": "We also build a JaxPruner integration with the t5x library... we prune 80% of the weights... of our LM architecture"
       },
-      "role": "Used",
-      "type": {
-        "value": "Transformer",
-        "justification": "The paper mentions the T5-Base as a Transformer model for language modeling.",
-        "quote": "We also build a JaxPruner integration with the t5x library... T5 encoder-decoder LM model"
+      "aliases": [],
+      "is_contributed": {
+        "value": false,
+        "justification": "Role:['contributed', 'used', 'referenced']",
+        "quote": "Used"
       },
-      "mode": "Trained"
+      "is_executed": {
+        "value": false,
+        "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
+        "quote": "Trained"
+      },
+      "is_compared": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -69,13 +135,27 @@
         "justification": "This model is used in the benchmarks for image classification experiments within the paper.",
         "quote": "We apply JaxPruner algorithms to train 80% sparse ViT-B/16..."
       },
-      "role": "Used",
-      "type": {
-        "value": "Vision Transformer",
-        "justification": "The paper specifically mentions ViT-B/16 as a Vision Transformer model used for the ImageNet-2012 dataset.",
-        "quote": "Sparse vision transformers trained using the original recipe achieve better generalization..."
+      "aliases": [],
+      "is_contributed": {
+        "value": false,
+        "justification": "Role:['contributed', 'used', 'referenced']",
+        "quote": "Used"
       },
-      "mode": "Trained"
+      "is_executed": {
+        "value": false,
+        "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
+        "quote": "Trained"
+      },
+      "is_compared": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     }
   ],
   "datasets": [
@@ -85,7 +165,13 @@
         "justification": "The dataset is used for language modeling benchmarks with the T5-Base model.",
         "quote": "We train from scratch a T5-base (220M parameter) model to predict missing words within a corrupted span of text on the C4 dataset"
       },
-      "role": "Used"
+      "aliases": [],
+      "role": "Used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -93,7 +179,13 @@
         "justification": "The dataset is used for character recognition tasks in the federated learning benchmarks.",
         "quote": "We test the effect of various pruning algorithms on the federated EMNIST character recognition benchmark [40]"
       },
-      "role": "Used"
+      "aliases": [],
+      "role": "Used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -101,7 +193,13 @@
         "justification": "The ImageNet-2012 dataset is used for benchmarking ViT-B/16, PlainViT-S/16, and ResNet-50 models.",
         "quote": "We benchmark pruning and sparse training algorithms in 4 different domains... ImageNet-2012 [36] image classification using the ViT-B/16, PlainViT-S/16 (PViT) and ResNet-50 architectures."
       },
-      "role": "Used"
+      "aliases": [],
+      "role": "Used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -109,7 +207,13 @@
         "justification": "The dataset is used with the DQN model for deep reinforcement learning benchmarks.",
         "quote": "We choose MsPacman and DQN for our experiments... report the average returns calculated over 125000 environment steps at the end of the training."
       },
-      "role": "Used"
+      "aliases": [],
+      "role": "Used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     }
   ],
   "libraries": [
@@ -119,7 +223,13 @@
         "justification": "Dopamine is one of the libraries integrated with JaxPruner to conduct experiments in deep reinforcement learning.",
         "quote": "We integrate JaxPruner with Dopamine as it has been used in the past for sparsity research"
       },
-      "role": "Used"
+      "aliases": [],
+      "role": "Used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -127,7 +237,13 @@
         "justification": "FedJAX is one of the libraries integrated with JaxPruner for facilitating research specifically in the domain of federated learning.",
         "quote": "FedJAX [6] supports federated learning research through JAX-based federated algorithm design and simulation, and can easily be integrated with JaxPruner"
       },
-      "role": "Used"
+      "aliases": [],
+      "role": "Used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -135,7 +251,13 @@
         "justification": "JAX is the foundational library on which JaxPruner is built, and it is utilized for its features such as function transformations and gradient calculations.",
         "quote": "JAX [3] has seen increasing adoption by the research community...functions like taking gradients... reduces the time required for implementing complex ideas"
       },
-      "role": "Used"
+      "aliases": [],
+      "role": "Used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -143,7 +265,13 @@
         "justification": "JaxPruner is the main library introduced and discussed in the paper for sparsity research.",
         "quote": "This work introduces JaxPruner, a JAX-based sparsity library for machine learning research."
       },
-      "role": "Contributed"
+      "aliases": [],
+      "role": "Contributed",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -151,7 +279,13 @@
         "justification": "Optax is an optimization library used in conjunction with JaxPruner for various pruning and sparse training algorithms.",
         "quote": "JaxPruner implements key baselines for each family of algorithms and makes it easy to extend them... with Optax, a widely-used optimization library in JAX"
       },
-      "role": "Used"
+      "aliases": [],
+      "role": "Used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -159,7 +293,13 @@
         "justification": "Scenic is one of the libraries integrated with JaxPruner for facilitating research and it is used in the examples provided.",
         "quote": "We demonstrate the ease of integration by providing examples in four different codebases: Scenic, t5x, Dopamine, and FedJAX"
       },
-      "role": "Used"
+      "aliases": [],
+      "role": "Used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -167,7 +307,13 @@
         "justification": "t5x is one of the libraries integrated with JaxPruner for facilitating research specifically in the domain of language modeling.",
         "quote": "We build a JaxPruner integration with the t5x library [30], which opens access to a suite of Transformer-based Language Models"
       },
-      "role": "Used"
+      "aliases": [],
+      "role": "Used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     }
   ]
 }

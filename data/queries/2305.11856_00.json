@@ -2,27 +2,35 @@
   "paper": "2305.11856.txt",
   "words": 5432,
   "extractions": {
-    "description": "This paper introduces and evaluates a new aerial image-based map (AIM) representation for multi-agent trajectory prediction in autonomous driving. The proposed AIM requires minimal annotation and is incorporated into a differentiable driving simulator to improve prediction accuracy for pedestrians and vehicles when compared with traditional rasterized HD maps.",
     "title": {
       "value": "Video Killed the HD-Map: Predicting Multi-Agent Behavior Directly From Aerial Images",
       "justification": "This is the title of the paper as stated in the document.",
       "quote": "Video Killed the HD-Map: Predicting Multi-Agent Behavior Directly From Aerial Images"
     },
+    "description": "This paper introduces and evaluates a new aerial image-based map (AIM) representation for multi-agent trajectory prediction in autonomous driving. The proposed AIM requires minimal annotation and is incorporated into a differentiable driving simulator to improve prediction accuracy for pedestrians and vehicles when compared with traditional rasterized HD maps.",
     "type": {
       "value": "Empirical Study",
       "justification": "The paper focuses on evaluating the performance of the proposed AIM representation using experimental data and validation against existing methods.",
       "quote": "We evaluate multi-agent trajectory prediction using the AIM by incorporating it into a differentiable driving simulator as an image-texture-based differentiable rendering module. Our results demonstrate competitive multi-agent trajectory prediction performance especially for pedestrians in the scene when using our AIM representation as compared to models trained with rasterized HD maps."
     },
-    "research_field": {
-      "value": "Deep Learning",
-      "justification": "The paper employs Deep Learning models and approaches for multi-agent trajectory prediction and behavioral modeling.",
-      "quote": "Creating realistic simulation environments is crucial for evaluating self-driving vehicles before they can be deployed in the real world. Recent studies have emphasized the use of learned models to generate more realistic behavior for controlled agents like pedestrians and surrounding vehicles."
+    "primary_research_field": {
+      "name": {
+        "value": "Deep Learning",
+        "justification": "The paper employs Deep Learning models and approaches for multi-agent trajectory prediction and behavioral modeling.",
+        "quote": "Creating realistic simulation environments is crucial for evaluating self-driving vehicles before they can be deployed in the real world. Recent studies have emphasized the use of learned models to generate more realistic behavior for controlled agents like pedestrians and surrounding vehicles."
+      },
+      "aliases": []
     },
-    "sub_research_field": {
-      "value": "Computer Vision",
-      "justification": "The study focuses on utilizing aerial imagery within a computer vision framework to enhance multi-agent trajectory prediction.",
-      "quote": "We propose an aerial image-based map (AIM) representation that requires minimal annotation and provides rich road context information for traffic agents like pedestrians and vehicles."
-    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Computer Vision",
+          "justification": "The study focuses on utilizing aerial imagery within a computer vision framework to enhance multi-agent trajectory prediction.",
+          "quote": "We propose an aerial image-based map (AIM) representation that requires minimal annotation and provides rich road context information for traffic agents like pedestrians and vehicles."
+        },
+        "aliases": []
+      }
+    ],
     "models": [
       {
         "name": {
@@ -30,13 +38,27 @@
           "justification": "The paper discusses and evaluates the ITRA model for multi-agent trajectory prediction.",
           "quote": "We use ITRA [3] to investigate the validity of our primary claim. ITRA uses a conditional variational recurrent neural network (CVRNN) [16] model followed by a bicycle kinematic model [17] to jointly predict the next state of each agent in the scene."
         },
-        "role": "used",
-        "type": {
-          "value": "Conditional Variational Recurrent Neural Network (CVRNN)",
-          "justification": "The paper specifies that ITRA uses a conditional variational recurrent neural network for trajectory prediction.",
-          "quote": "ITRA uses a conditional variational recurrent neural network (CVRNN) [16] model..."
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Role:['contributed', 'used', 'referenced']",
+          "quote": "used"
         },
-        "mode": "training"
+        "is_executed": {
+          "value": false,
+          "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
+          "quote": "training"
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "",
+          "quote": ""
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       },
       {
         "name": {
@@ -44,13 +66,27 @@
           "justification": "The paper experiments with a ResNet-18 backbone to encode the AIM representation.",
           "quote": "We use an identical CNN encoder for encoding AIM which consists of a 4-layer CNN model for our ITRA-AIM model but also experiment with a ResNet-18 backbone on the vehicle dataset to encode the AIM representation..."
         },
-        "role": "used",
-        "type": {
-          "value": "Convolutional Neural Network (CNN)",
-          "justification": "ResNet-18 is a type of Convolutional Neural Network (CNN).",
-          "quote": "...experiment with a ResNet-18 backbone on the vehicle dataset to encode the AIM representation..."
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Role:['contributed', 'used', 'referenced']",
+          "quote": "used"
         },
-        "mode": "training"
+        "is_executed": {
+          "value": false,
+          "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
+          "quote": "training"
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "",
+          "quote": ""
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       }
     ],
     "datasets": [
@@ -60,7 +96,13 @@
           "justification": "The Argoverse dataset is mentioned as a source of HD maps for comparison.",
           "quote": "Examples of HD maps from public motion planning datasets for (a) Argoverse [10] and (b) Nuplan."
         },
-        "role": "referenced"
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       },
       {
         "name": {
@@ -68,7 +110,13 @@
           "justification": "The Nuplan dataset is referred to in the context of HD map annotations.",
           "quote": "Examples of HD maps from public motion planning datasets for (a) Argoverse [10] and (b) Nuplan."
         },
-        "role": "referenced"
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       }
     ],
     "libraries": [
@@ -78,7 +126,13 @@
           "justification": "The paper mentions that their differentiable renderer is implemented using Pytorch3D.",
           "quote": "Our method incorporates unlabelled aerial images into a simulation environment [3] using a differentiable renderer implemented with Pytorch3D [31]."
         },
-        "role": "used"
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       }
     ]
   },

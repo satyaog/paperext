@@ -1,6 +1,8 @@
 import random
 from pathlib import Path
+import re
 import sys
+import unicodedata
 
 PAPERS_TO_IGNORE={"data/cache/arxiv/2404.09932.txt",}
 
@@ -47,3 +49,27 @@ def build_validation_set(data_dir:Path, seed=42):
     # # Dev validation set
     # validation_set = sum(map(lambda _:random.sample(_, 1), papers_by_field.values()), [])
     return list(map(lambda p:Path(p).absolute(), validation_set))
+
+
+def split_entry(string:str, sep_left="[[", sep_right="]]"):
+    first, *extra = [_.strip().rstrip(sep_right) for _ in string.split(sep_left)]
+    assert len(extra) <= 1
+    extra = [_.strip() for _ in extra for _ in _.split(",")]
+    return [first, *extra]
+
+
+def str_eq(string, other):
+    return str_normalize(string) == str_normalize(other)
+
+
+def str_normalize(string):
+    string = unicodedata.normalize("NFKC", string).lower()
+    string = [_s.split("}}") for _s in string.split("{{")]
+    string = sum(string, [])
+    exclude = string[1:2]
+    string = list(map(
+        lambda _s:re.sub(pattern=r"[^a-z0-9]", string=_s, repl=""),
+        string[:1] + string[2:]
+    ))
+    string = "".join(string[:1] + exclude + string[1:])
+    return string

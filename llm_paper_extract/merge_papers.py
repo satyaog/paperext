@@ -3,14 +3,12 @@ import os
 import json
 from pathlib import Path
 import platform
-import re
 import shutil
 import subprocess
 import tempfile
-import unicodedata
-import urllib
+import urllib.request 
 from time import sleep
-from typing import Iterable, List, Tuple
+from typing import List, Tuple
 
 from pydantic import BaseModel, ValidationError
 from pygments import highlight
@@ -19,7 +17,8 @@ from pygments.lexers.data import YamlLexer
 import yaml
 
 from . import ROOT_DIR
-from .models.model import ExtractionResponse, PaperExtractions, empty_paperextractions
+from .models.model import ExtractionResponse, PaperExtractions, empty_model
+from .utils import str_normalize
 
 _STRIP_RE = r"[a-zA-Z0-9].*[a-zA-Z0-9]"
 _EDITOR = os.environ.get("VISUAL", os.environ.get("EDITOR", None))
@@ -55,17 +54,6 @@ def _open(_f:str):
     return p.returncode
 
 
-def _strip(string):
-    m = re.search(_STRIP_RE, string.lower())
-    return m[0] if m is not None else string
-
-
-def _normalize(string):
-    string = unicodedata.normalize("NFKC", string).lower()
-    string = re.sub(pattern=r"\s", string=string, repl="")
-    return string
-
-
 def gen_indents(indent=0, skip_first=False):
     if not skip_first:
         yield ""
@@ -77,96 +65,6 @@ def get_terminal_width():
     return shutil.get_terminal_size((80, 20)).columns
 
 
-def check_excerpts(paper_id, paper, obj, prefix="", indents=None):
-    if indents is None:
-        indents = gen_indents()
-    validated = True
-    try:
-        obj.excerpt
-        _indents = gen_indents(2)
-        for k, v in obj:
-            if k == "value":
-                _ = v
-            else:
-                _ = f"{k}: {v}"
-            print(next(indents) + next(_indents), _, sep="")
-        excerpt = _strip(obj.excerpt)
-        if excerpt not in paper:
-            print(next(indents) + next(_indents), f"WARNING: Could not find the exerpt [{excerpt}] justifing the value [{obj.value}] in the paper {paper_id}", sep="")
-            validated = False
-        return validated
-    except AttributeError:
-        pass
-
-    if isinstance(obj, str):
-        print(next(indents), prefix, obj, sep="")
-        return True
-    print(next(indents), "[", sep="")
-    try:
-        prefix = "* "
-        _indents = gen_indents(2, skip_first=True)
-        padding = 0
-        for k, _ in obj:
-            padding = max(padding, len(k) + 1)
-        for k, v in obj:
-            pad = " " * (padding - len(k))
-            print(next(indents) + next(_indents), prefix, f"{k}{pad}: ", sep="", end="")
-            sub_indents = gen_indents(len(next(indents)) + 2)
-            _validated = check_excerpts(paper_id, paper, v, prefix="", indents=sub_indents)
-            validated = validated and _validated
-    except ValueError:
-        try:
-            prefix = "- "
-            for v in obj:
-                sub_indents = gen_indents(len(next(indents)) + 2, skip_first=True)
-                _validated = check_excerpts(paper_id, paper, v, prefix=prefix, indents=sub_indents)
-                validated = validated and _validated
-        except ValueError:
-            pass
-    print(next(indents), "]", sep="")
-    return validated
-
-
-def _merge_paper_extractions(paper_id, paper, extractions: PaperExtractions, other_extractions: PaperExtractions):
-    for (_, v1), (_, v2) in zip(extractions, other_extractions):
-        try:
-            v2.excerpt
-            if not check_excerpts(paper_id, paper, v1) and check_excerpts(paper_id, paper, v2):
-                v1.value = v2.value
-                v1.excerpt = v2.excerpt
-        except AttributeError:
-            pass
-    for m in other_extractions.models:
-        if m not in extractions.models:
-            extractions.models.append(m)
-    for d in other_extractions.datasets:
-        if d not in extractions.datasets:
-            extractions.datasets.append(d)
-    for f in other_extractions.frameworks:
-        if f not in extractions.frameworks:
-            extractions.frameworks.append(f)
-
-
-def _iter(iterable:Iterable):
-    lazy_e = None
-
-    try:
-        for k, v in iterable.items():
-            yield k, v
-        return
-    except AttributeError as e:
-        lazy_e = e
-
-    try:
-        for i, v in enumerate(iterable):
-            yield i, v
-        return
-    except ValueError as e:
-        lazy_e = e
-
-    raise lazy_e
-
-
 def _remove_duplicates(l:list):
     if l:
         last = l[0]
@@ -175,6 +73,24 @@ def _remove_duplicates(l:list):
         if value != last:
             yield value
             last = value
+
+
+def _find_in_paper(string:str, paper:str):
+    last_index = -1
+
+    try:
+        last_index = paper.index(str_normalize(string), last_index + 1)
+        yield string, last_index
+        return
+    except ValueError:
+        pass
+
+    for part in [_s for _s in string.split("...") if _s.strip()]:
+        try:
+            last_index = paper.index(str_normalize(part), last_index + 1)
+            yield part, last_index
+        except ValueError:
+            return
 
 
 def _model_dump(paper_id, paper, model:BaseModel):
@@ -203,7 +119,7 @@ def _model_dump(paper_id, paper, model:BaseModel):
                 print(model_dump_yaml)
                 print("\n".join(lines[i:end]))
                 raise
-            if _normalize(quote) not in paper:
+            if not list(_find_in_paper(quote, paper)):
                 lines.insert(end, f"{lstrip}## {_WARNING}")
     model_dump_yaml = "\n".join(lines)
     return model_dump_yaml
@@ -234,42 +150,152 @@ def _select(key:str, *options:List[str], edit=False):
     separator = "=" * max(0, 0, *map(len, sum([o.splitlines() for o in options], [])))
     separator = separator[:get_terminal_width()]
 
+    editable_content = []
     for i, option in enumerate(options):
-        print()
-        prefix = f"== {key} ({i+1}) "
-        print(f"{prefix}{separator[len(prefix):]}")
-        print(highlight(option, YamlLexer(), TerminalTrueColorFormatter()))
-    select = _input_option(f"Select {' or '.join(long_options)}", short_options)
+        prefix = f"## {key} ({i+1}) "
+
+        editable_content.append("")
+        editable_content.append(f"{prefix}{separator[len(prefix):]}")
+        editable_content.append(option)
+
+    editable_content.append(f"## {key} ")
+    for entry in editable_content:
+        print(highlight(entry, YamlLexer(), TerminalTrueColorFormatter()), end="")
+
+    selected = _input_option(f"Select {' or '.join(long_options)}", short_options)
+    edit = False
     try:
-        return options[int(select) - 1]
+        selected = options[int(selected) - 1]
     except ValueError:
-        pass
+        # selected == "e"
+        selected = "\n".join(editable_content)
+        edit = True
 
-    # select == "e"
-    return edit_content(key, "\n\n".join(options))
+    return write_content(key, selected, edit=edit)
 
 
-def edit_content(filename:str, contents:List[str]):
+def write_content(filename:str, content:str, edit=True):
     tmpfile = Path(_TMPDIR.name) / f"{filename}.yaml"
 
     with tmpfile.open("w+t") as _f:
-        _f.write(contents)
+        _f.write(content)
 
-    _open_editor(str(tmpfile))
-    while _input_option("Are you done with the edit", ("y","n")) != "y":
+    while edit:
         _open_editor(str(tmpfile))
+        edit = _input_option("Are you done with the edit", ("y","n")) != "y"
 
     with tmpfile.open() as _f:
         return _f.read()
+
+
+def _validate_field(model_dump:dict | PaperExtractions, model_cls:PaperExtractions.__class__ | None, filename:str, content:str):
+    if not isinstance(model_dump, dict):
+        model_cls = model_dump.__class__
+        model_dump = model_dump.model_dump()
+    # PaperExtractions.[sub_research_fields]
+    field = ".".join(filename.split(".")[1:])
+
+    try:
+        model_dump[field] + []
+        # field is a list
+        default_empty = "[]"
+    except TypeError:
+        default_empty = ""
+
+    while True:
+        try:
+            _content = [l for l in content.splitlines() if not l.lstrip().startswith("##")]
+            _content = "\n".join(_content) or default_empty
+            model_dump[field] = yaml.safe_load(_content)
+            model_cls.model_validate(model_dump)
+            return model_dump
+        except (yaml.scanner.ScannerError, yaml.parser.ParserError) as e:
+            print(e)
+            print("There was an error parsing the yaml. Please fix the error")
+            content = write_content(filename, content)
+        except ValidationError as e:
+            print(e)
+            print(f"There was an error validating the field "
+                  f"{model_cls.model_fields[field].annotation}. Please "
+                  f"fix the error")
+            content = write_content(filename, content)
+
+
+def _update_progession(merged_extractions:PaperExtractions, merged_file:Path):
+    # Load content of previous field merge in case the user updated the content
+    _update = merged_extractions.model_dump()
+
+    fields = list(Path(_TMPDIR.name).glob("*.yaml"))
+
+    if fields:
+        fields = subprocess.run(
+            [
+                "ls",
+                "-1t",
+                *fields,
+            ],
+            capture_output=True,
+            encoding="utf8",
+            check=False,
+        ).stdout.splitlines()
+
+        print("Previously edited fields")
+        print(*fields, sep="\n")
+
+    for tmpfile in fields:
+        tmpfile = Path(tmpfile)
+        _update = _validate_field(_update, PaperExtractions, tmpfile.stem, tmpfile.read_text())
+
+    _update = merged_extractions.model_validate(_update)
+    merged_file.write_text(_update.model_dump_json(indent=2))
+    return _update
+
+
+def _merge_list(paper_id:str, paper:str, attribute:str, merged_value:list, values:List[BaseModel]):
+    try:
+        options:List[BaseModel] = sum(values, [])
+    except TypeError:
+        return None
+
+    options = sorted(options)
+
+    options = list(_remove_duplicates(options))
+    options_str = []
+    for _list in (*merged_value, options):
+        concat = []
+        for entry in _list:
+            prefix = "- "
+            for l in _model_dump(paper_id, paper, entry).splitlines():
+                concat.append(f"{prefix}{l}")
+                prefix = "  "
+            concat.append("")
+        options_str.append("\n".join(concat))
+
+    selection = _select(attribute, *options_str, edit=True) or "[]"
+    # write_content(attribute, selection, edit=False)
+    # while True:
+    #     try:
+    #         _selection = yaml.safe_load(selection or "[]")
+    #         selection = [options[0].model_validate(entry) for entry in _selection]
+    #         break
+    #     except (yaml.scanner.ScannerError, yaml.parser.ParserError) as e:
+    #         print(e)
+    #         print("There was an error parsing the yaml. Please try again")
+    #         selection = write_content(attribute, selection)
+    #     except ValueError as e:
+    #         print(e)
+    #         print(f"There was an error validating the model {type(values[0])}. Please try again")
+    #         selection = write_content(attribute, selection)
+
+    return selection
 
 
 def merge_paper_extractions(paper_id, paper, merged_extractions:PaperExtractions, *all_extractions: List[PaperExtractions]):
     f:Path = (ROOT_DIR / "data/merged/") / paper_id
     f = f.with_suffix(".json")
 
-    for keys_values in zip(empty_paperextractions(), merged_extractions, *all_extractions):
-        # Save progression
-        f.write_text(merged_extractions.model_dump_json(indent=2))
+    for keys_values in zip(empty_model(PaperExtractions), merged_extractions, *all_extractions):
+        merged_extractions = _update_progession(merged_extractions, f)
 
         empty_value, merged_value, *values = [v for _, v in keys_values]
 
@@ -281,55 +307,28 @@ def merge_paper_extractions(paper_id, paper, merged_extractions:PaperExtractions
         attribute = f"{merged_extractions.__class__.__name__}.{key}"
 
         merged_value = [merged_value] if merged_value != empty_value else []
-        try:
-            options:List[BaseModel] = sorted(sum(values, []), key=lambda _:_.name)
-            options = list(_remove_duplicates(options))
-            options_str = []
-            for _list in (*merged_value, options):
-                concat = []
-                for entry in _list:
-                    prefix = "- "
-                    for l in _model_dump(paper_id, paper, entry).splitlines():
-                        concat.append(f"{prefix}{l}")
-                        prefix = "  "
-                    concat.append("")
-                options_str.append("\n".join(concat))
+        selection = _merge_list(paper_id, paper, attribute, merged_value, values)
 
-            selection = _select(attribute, *options_str, edit=True)
-            while True:
-                try:
-                    _selection = yaml.safe_load(selection or "[]")
-                    selection = [options[0].model_validate(entry) for entry in _selection]
-                    break
-                except yaml.scanner.ScannerError as e:
-                    print(e)
-                    print("There was an error parsing the yaml. Please try again")
-                    selection = edit_content(attribute, selection)
-                except ValueError as e:
-                    print(e)
-                    print(f"There was an error validating the model {type(values[0])}. Please try again")
-                    selection = edit_content(attribute, selection)
-            merged_extractions.__dict__[key] = selection
+        if selection is not None:
+            # merged_extractions.__dict__[key] = selection
             continue
-        except TypeError:
-            pass
 
         try:
             options = [_model_dump(paper_id, paper, v) for v in (*merged_value, *values)]
             selection = _select(attribute, *options, edit=True)
-            while True:
-                try:
-                    selection = values[0].model_validate(yaml.safe_load(selection))
-                    break
-                except yaml.scanner.ScannerError as e:
-                    print(e)
-                    print("There was an error parsing the yaml. Please try again")
-                    selection = edit_content(attribute, selection)
-                except ValueError as e:
-                    print(e)
-                    print(f"There was an error validating the model {type(values[0])}. Please try again")
-                    selection = edit_content(attribute, selection)
-            merged_extractions.__dict__[key] = selection
+            # while True:
+            #     try:
+            #         selection = values[0].model_validate(yaml.safe_load(selection))
+            #         break
+            #     except yaml.scanner.ScannerError as e:
+            #         print(e)
+            #         print("There was an error parsing the yaml. Please try again")
+            #         selection = write_content(attribute, selection)
+            #     except ValueError as e:
+            #         print(e)
+            #         print(f"There was an error validating the model {type(values[0])}. Please try again")
+            #         selection = write_content(attribute, selection)
+            # merged_extractions.__dict__[key] = selection
             continue
         except AttributeError:
             pass
@@ -337,25 +336,28 @@ def merge_paper_extractions(paper_id, paper, merged_extractions:PaperExtractions
         try:
             options = [v.value for v in (*merged_value, *values)]
             selection = _select(attribute, *options, edit=True)
-            while True:
-                try:
-                    selection = type(values[0])(selection)
-                    break
-                except ValueError as e:
-                    print(e)
-                    print("There was an error parsing the value. Please try again")
-                    selection = edit_content(attribute, selection)
-            merged_extractions.__dict__[key] = selection
+            # while True:
+            #     try:
+            #         selection = type(values[0])(selection)
+            #         break
+            #     except ValueError as e:
+            #         print(e)
+            #         print("There was an error parsing the value. Please try again")
+            #         selection = write_content(attribute, selection)
+            # merged_extractions.__dict__[key] = selection
             continue
         except AttributeError:
             pass
 
-        merged_extractions.__dict__[key] = _select(attribute, *merged_value, *values, edit=True)
+        # merged_extractions.__dict__[key] = _select(attribute, *merged_value, *values, edit=True)
+        selection = _select(attribute, *merged_value, *values, edit=True)
+
+    return _update_progession(merged_extractions, f)
 
 
 def get_papers_from_file(papers: List[str]) -> List[Tuple[str, Path, ExtractionResponse]]:
-
     extractions_tuple = []
+
     for paper in papers:
         paper_id = paper.strip()
         print('Parsing', paper_id)
@@ -370,7 +372,7 @@ def get_papers_from_file(papers: List[str]) -> List[Tuple[str, Path, ExtractionR
             for _f in responses
         )
         for (_,paper_id),(_,_),(_,extractions),_ in responses:
-            extractions_tuple.append((paper_id, _normalize(paper), extractions))
+            extractions_tuple.append((paper_id, str_normalize(paper), extractions))
 
     extractions_tuple.sort(key=lambda _:_[0])
 
@@ -408,7 +410,7 @@ def main(argv=None):
     if options.input:
         with open(options.input, "r") as f:
             papers = get_papers_from_file(f.readlines())
-    if options.papers:
+    elif options.papers:
         papers = get_papers_from_file(options.papers)
     else:
         papers = get_papers_from_folder()
@@ -424,7 +426,7 @@ def main(argv=None):
         f = f.with_suffix(".json")
         f.parent.mkdir(parents=True, exist_ok=True)
 
-        merged_extractions = empty_paperextractions()
+        merged_extractions = empty_model(PaperExtractions)
 
         if f.exists():
             try:
@@ -433,6 +435,7 @@ def main(argv=None):
                 print(e)
                 print(f'Invalid extraction file... Consider deleting [{f}].')
                 continue
+
             if _input_option(
                 f"The paper {paper_id} has already been merged. Do you wish to "
                 f"redo the merge?",
@@ -457,10 +460,12 @@ def main(argv=None):
             urllib.request.urlretrieve(url, str(pdf))
             _open(str(pdf))
 
-        merge_paper_extractions(paper_id, paper, merged_extractions, *all_extractions)
+        merged_extractions = merge_paper_extractions(paper_id, paper, merged_extractions, *all_extractions)
         done.append((paper_id, paper, merged_extractions))
 
-        f.write_text(merged_extractions.model_dump_json(indent=2))
+        # Clean-up tmp files:
+        for tmpfile in Path(_TMPDIR.name).glob("*.yaml"):
+            tmpfile.unlink()
 
         print('Merged paper saved to', f)
 
