@@ -2,12 +2,10 @@ title:
   value: 'XTREME-UP: A User-Centric Scarce-Data Benchmark for Under-Represented Languages'
   justification: The title is clearly mentioned at the beginning and in the header of the paper.
   quote: 'XTREME-UP: A User-Centric Scarce-Data Benchmark for Under-Represented Languages'
-description: 'The paper presents XTREME-UP, a benchmark designed to evaluate the capabilities of language models on under-represented
+description: The paper presents XTREME-UP, a benchmark designed to evaluate the capabilities of language models on under-represented
   languages (ULs) using scarce data. It focuses on user-centric tasks prevalent among high-resource languages. The benchmark
   comprises 88 languages and nine key technologies, including OCR, ASR, MT, autocomplete, semantic parsing, and transliteration.
   The paper provides baseline results and recommends the development of more inclusive multilingual NLP technologies.
-
-  '
 type:
   value: empirical
   justification: The study provides experimental results using the X TREME -U P benchmark to evaluate different language models.
@@ -15,10 +13,11 @@ type:
 primary_research_field:
   name:
     value: Natural Language Processing
-    justification: The study is centered on developing and evaluating NLP models for multilingual tasks.
-    quote: 'We propose X TREME -U P, a benchmark defined by: its focus on the scarce-data scenario rather than zero-shot;
-      its focus on user-centric tasks.'
-  aliases: []
+    justification: The paper focuses on evaluating NLP capabilities such as ASR, OCR, MT, and more, across multiple languages.
+    quote: XTREME-UP evaluates the capabilities of language models across 88 under-represented languages over 9 key user-centric
+      technologies including ASR, OCR, MT, and information access tasks that are of general utility.
+  aliases:
+  - NLP
 sub_research_fields:
 - name:
     value: Multilingual
@@ -33,10 +32,17 @@ sub_research_fields:
     quote: ''
   aliases: []
 - name:
-    value: Language Processing
+    value: Natural Language Processing
     justification: ''
     quote: ''
-  aliases: []
+  aliases:
+  - NLP
+- name:
+    value: under-represented languages
+    justification: ''
+    quote: ''
+  aliases:
+  - UL
 models:
 - name:
     value: ByT5
@@ -49,11 +55,11 @@ models:
     justification: Role:['contributed', 'used', 'referenced']
     quote: used
   is_executed:
-    value: false
-    justification: ModelMode:['trained', 'fine-tuned', 'inference']
-    quote: fine-tuned
+    value: true
+    justification: ''
+    quote: ''
   is_compared:
-    value: false
+    value: true
     justification: ''
     quote: ''
   referenced_paper_title:
@@ -71,11 +77,11 @@ models:
     justification: Role:['contributed', 'used', 'referenced']
     quote: used
   is_executed:
-    value: false
-    justification: ModelMode:['trained', 'fine-tuned', 'inference']
-    quote: inference
+    value: true
+    justification: ''
+    quote: ''
   is_compared:
-    value: false
+    value: true
     justification: ''
     quote: ''
   referenced_paper_title:
@@ -93,11 +99,11 @@ models:
     justification: Role:['contributed', 'used', 'referenced']
     quote: used
   is_executed:
-    value: false
-    justification: ModelMode:['trained', 'fine-tuned', 'inference']
-    quote: fine-tuned
+    value: true
+    justification: ''
+    quote: ''
   is_compared:
-    value: false
+    value: true
     justification: ''
     quote: ''
   referenced_paper_title:
@@ -151,10 +157,31 @@ datasets:
     justification: ''
     quote: ''
 - name:
+    value: MasakhaNER 2.0
+    justification: The dataset provides data for the named entity recognition task in the benchmark.
+    quote: The dataset contains processed data from MasakhaNER (Adelani et al., 2021) and MasakhaNER 2.0 (Adelani et al.,
+      2022).
+  aliases: []
+  role: used
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
     value: TyDi QA
     justification: Used for evaluating question answering tasks in the X TREME -U P benchmark.
     quote: In the in-language QA task, both the question and passage are in the same language. In this task, original questions
       and passages are from the TyDi QA dataset (Clark et al., 2020).
+  aliases: []
+  role: used
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: XOR-TyDi QA
+    justification: ''
+    quote: 'Original datset names: TyDi QA, XOR-TyDi QA'
   aliases: []
   role: used
   referenced_paper_title:
@@ -167,6 +194,37 @@ datasets:
     quote: We process high-quality natural language data from Universal Dependencies (de Marneffe et al., 2021), which we
       deduplicate against mC4 (Xue et al., 2021), the most common multilingual pre-training corpus in order to test models
       predictive rather than memorization capabilities.
+  aliases:
+  - UD
+  role: used
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: Google Books
+    justification: ''
+    quote: We retrieve books that are in the public domain on Google Books.
+  aliases: []
+  role: used
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: UL-OCR
+    justification: ''
+    quote: Dataset title UL-OCR
+  aliases: []
+  role: used
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: MTOP
+    justification: ''
+    quote: For XTREME-UP, we adapted the MTOP (Li et al., 2021) test dataset
   aliases: []
   role: used
   referenced_paper_title:

@@ -24,7 +24,19 @@ sub_research_fields:
 - name:
     value: Neural Network Optimization
     justification: The main focus of the paper is on optimizing the training algorithms used for neural networks.
-    quote: Optimization and Training
+    quote: '...our benchmark is feasible and that there is a non-trivial gap between different methods.'
+  aliases: []
+- name:
+    value: Optimization
+    justification: The paper specifically addresses training algorithms and techniques to optimize the training process of
+      neural networks.
+    quote: "This paper describes the working group\u2019s first attempt to benchmark training algorithms for neural networks"
+  aliases: []
+- name:
+    value: Training
+    justification: The paper specifically addresses training algorithms and techniques to optimize the training process of
+      neural networks.
+    quote: "This paper describes the working group\u2019s first attempt to benchmark training algorithms for neural networks"
   aliases: []
 models:
 - name:
@@ -38,11 +50,11 @@ models:
     justification: Role:['contributed', 'used', 'referenced']
     quote: used
   is_executed:
-    value: false
-    justification: ModelMode:['trained', 'fine-tuned', 'inference']
-    quote: training
+    value: true
+    justification: ''
+    quote: ''
   is_compared:
-    value: false
+    value: true
     justification: ''
     quote: ''
   referenced_paper_title:
@@ -63,11 +75,11 @@ models:
     justification: Role:['contributed', 'used', 'referenced']
     quote: used
   is_executed:
-    value: false
-    justification: ModelMode:['trained', 'fine-tuned', 'inference']
-    quote: training
+    value: true
+    justification: ''
+    quote: ''
   is_compared:
-    value: false
+    value: true
     justification: ''
     quote: ''
   referenced_paper_title:
@@ -85,11 +97,11 @@ models:
     justification: Role:['contributed', 'used', 'referenced']
     quote: used
   is_executed:
-    value: false
-    justification: ModelMode:['trained', 'fine-tuned', 'inference']
-    quote: training
+    value: true
+    justification: ''
+    quote: ''
   is_compared:
-    value: false
+    value: true
     justification: ''
     quote: ''
   referenced_paper_title:
@@ -108,11 +120,11 @@ models:
     justification: Role:['contributed', 'used', 'referenced']
     quote: used
   is_executed:
-    value: false
-    justification: ModelMode:['trained', 'fine-tuned', 'inference']
-    quote: training
+    value: true
+    justification: ''
+    quote: ''
   is_compared:
-    value: false
+    value: true
     justification: ''
     quote: ''
   referenced_paper_title:
@@ -129,11 +141,11 @@ models:
     justification: Role:['contributed', 'used', 'referenced']
     quote: used
   is_executed:
-    value: false
-    justification: ModelMode:['trained', 'fine-tuned', 'inference']
-    quote: training
+    value: true
+    justification: ''
+    quote: ''
   is_compared:
-    value: false
+    value: true
     justification: ''
     quote: ''
   referenced_paper_title:
@@ -141,20 +153,21 @@ models:
     justification: ''
     quote: ''
 - name:
-    value: Transformer-big
+    value: Transformer
     justification: A large Transformer model is used for the WMT translation tasks as described in the paper.
     quote: We use the Transformer-big architecture from Vaswani et al. (2017) with some modifications.
-  aliases: []
+  aliases:
+  - Transformer-big
   is_contributed:
     value: false
     justification: Role:['contributed', 'used', 'referenced']
     quote: used
   is_executed:
-    value: false
-    justification: ModelMode:['trained', 'fine-tuned', 'inference']
-    quote: training
+    value: true
+    justification: ''
+    quote: ''
   is_compared:
-    value: false
+    value: true
     justification: ''
     quote: ''
   referenced_paper_title:
@@ -171,11 +184,11 @@ models:
     justification: Role:['contributed', 'used', 'referenced']
     quote: used
   is_executed:
-    value: false
-    justification: ModelMode:['trained', 'fine-tuned', 'inference']
-    quote: training
+    value: true
+    justification: ''
+    quote: ''
   is_compared:
-    value: false
+    value: true
     justification: ''
     quote: ''
   referenced_paper_title:
@@ -193,11 +206,11 @@ models:
     justification: Role:['contributed', 'used', 'referenced']
     quote: used
   is_executed:
-    value: false
-    justification: ModelMode:['trained', 'fine-tuned', 'inference']
-    quote: training
+    value: true
+    justification: ''
+    quote: ''
   is_compared:
-    value: false
+    value: true
     justification: ''
     quote: ''
   referenced_paper_title:
@@ -209,7 +222,8 @@ datasets:
     value: Criteo 1TB
     justification: Criteo 1TB dataset is referenced for click-through rate prediction using the DLRM model.
     quote: We train on the Criteo 1TB Click Logs dataset
-  aliases: []
+  aliases:
+  - Criteo 1TB Click Logs
   role: used
   referenced_paper_title:
     value: ''
@@ -236,21 +250,12 @@ datasets:
     justification: ''
     quote: ''
 - name:
-    value: OGBG
-    justification: OGBG-MOLPCBA is mentioned for training the GNN model for molecular property prediction.
-    quote: We use the OGBG-MOLPCBA dataset (Hu et al., 2020) containing molecular graphs and 128 molecular properties.
-  aliases: []
-  role: referenced
-  referenced_paper_title:
-    value: ''
-    justification: ''
-    quote: ''
-- name:
     value: OGBG-MOLPCBA
     justification: OGBG-MOLPCBA is mentioned for training the GNN model for molecular property prediction.
     quote: We use the OGBG-MOLPCBA dataset (Hu et al., 2020) containing molecular graphs and 128 molecular properties.
-  aliases: []
-  role: used
+  aliases:
+  - OGBG
+  role: referenced
   referenced_paper_title:
     value: ''
     justification: ''
@@ -259,18 +264,9 @@ datasets:
     value: WMT
     justification: WMT 2017 is mentioned as the dataset for machine translation tasks using the Transformer model.
     quote: "The models are trained on the WMT 2017 German\xD1English (De\xD1En) training dataset"
-  aliases: []
+  aliases:
+  - WMT 2017
   role: referenced
-  referenced_paper_title:
-    value: ''
-    justification: ''
-    quote: ''
-- name:
-    value: WMT 2017
-    justification: WMT 2017 is mentioned as the dataset for machine translation tasks using the Transformer model.
-    quote: "The models are trained on the WMT 2017 German\xD1English (De\xD1En) training dataset"
-  aliases: []
-  role: used
   referenced_paper_title:
     value: ''
     justification: ''
