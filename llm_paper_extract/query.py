@@ -8,7 +8,7 @@ import instructor
 import openai
 
 from . import ROOT_DIR
-from .model import batch_extract_models_names
+from .models.model import batch_extract_models_names
 from .utils import build_validation_set
 
 

@@ -10,7 +10,6 @@ import tempfile
 import unicodedata
 import urllib
 from time import sleep
-from typing import Iterable, List
 from typing import Iterable, List, Tuple
 
 from pydantic import BaseModel, ValidationError
@@ -20,7 +19,7 @@ from pygments.lexers.data import YamlLexer
 import yaml
 
 from . import ROOT_DIR
-from .model import ExtractionResponse, PaperExtractions, empty_paperextractions
+from .models.model import ExtractionResponse, PaperExtractions, empty_paperextractions
 
 _STRIP_RE = r"[a-zA-Z0-9].*[a-zA-Z0-9]"
 _EDITOR = os.environ.get("VISUAL", os.environ.get("EDITOR", None))
