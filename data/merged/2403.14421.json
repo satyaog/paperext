@@ -1,25 +1,33 @@
 {
-  "description": "This paper introduces DP-RDM, a differentially private retrieval-augmented diffusion model for generating high-quality image samples with rigorous privacy guarantees. The proposed algorithm generates images from text prompts without fine-tuning the model on private datasets, thereby addressing sample-level memorization issues in text-to-image diffusion models. The method is validated on datasets like MS-COCO, Shutterstock, and CIFAR-10, showing significant improvements.",
   "title": {
     "value": "DP-RDM: Adapting Diffusion Models to Private Domains Without Fine-Tuning",
     "justification": "The title is explicitly mentioned at the beginning of the paper.",
     "quote": "DP-RDM: Adapting Diffusion Models to Private Domains Without Fine-Tuning"
   },
+  "description": "This paper introduces DP-RDM, a differentially private retrieval-augmented diffusion model for generating high-quality image samples with rigorous privacy guarantees. The proposed algorithm generates images from text prompts without fine-tuning the model on private datasets, thereby addressing sample-level memorization issues in text-to-image diffusion models. The method is validated on datasets like MS-COCO, Shutterstock, and CIFAR-10, showing significant improvements.",
   "type": {
     "value": "empirical study",
     "justification": "The paper details an experiment involving the adaptation of diffusion models to private domains, evaluates the performance, and provides empirical results.",
     "quote": "We evaluate our DP-RDM on three datasets—CIFAR-10, MS-COCO and Shutterstock, a privately licensed dataset of 239M image-captions pairs—and show that it can effectively adapt to these datasets privately with minor loss in generation quality."
   },
-  "research_field": {
-    "value": "Deep Learning",
-    "justification": "The paper revolves around developing a new algorithm using deep learning models for image generation.",
-    "quote": "Text-to-image diffusion models (Ho et al., 2020; Song et al., 2020) enable highly customizable image generation, producing photo-realistic image samples that can be instructed through text prompting."
+  "primary_research_field": {
+    "name": {
+      "value": "Deep Learning",
+      "justification": "The paper revolves around developing a new algorithm using deep learning models for image generation.",
+      "quote": "Text-to-image diffusion models (Ho et al., 2020; Song et al., 2020) enable highly customizable image generation, producing photo-realistic image samples that can be instructed through text prompting."
+    },
+    "aliases": []
   },
-  "sub_research_field": {
-    "value": "Generative Models",
-    "justification": "The paper discusses the development and use of generative models, specifically diffusion models for generating images.",
-    "quote": "We develop the first differentially private (DP) retrieval-augmented generation algorithm that is capable of generating high-quality image samples while providing provable privacy guarantees."
-  },
+  "sub_research_fields": [
+    {
+      "name": {
+        "value": "Generative Models",
+        "justification": "The paper discusses the development and use of generative models, specifically diffusion models for generating images.",
+        "quote": "We develop the first differentially private (DP) retrieval-augmented generation algorithm that is capable of generating high-quality image samples while providing provable privacy guarantees."
+      },
+      "aliases": []
+    }
+  ],
   "models": [
     {
       "name": {
@@ -27,13 +35,27 @@
         "justification": "The name DP-RDM is clearly stated multiple times in the paper.",
         "quote": "We develop the first differentially private (DP) retrieval-augmented generation algorithm that is capable of generating high-quality image samples while providing provable privacy guarantees."
       },
-      "role": "Contributed",
-      "type": {
-        "value": "Diffusion Model",
-        "justification": "The model is repeatedly described as a diffusion model, and it is specified in the paper title as well.",
-        "quote": "Text-to-image diffusion models (Ho et al., 2020; Song et al., 2020) enable highly customizable image generation, producing photo-realistic image samples that can be instructed through text prompting."
+      "aliases": [],
+      "is_contributed": {
+        "value": true,
+        "justification": "Role:['contributed', 'used', 'referenced']",
+        "quote": "Contributed"
       },
-      "mode": "Trained"
+      "is_executed": {
+        "value": true,
+        "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
+        "quote": "Trained"
+      },
+      "is_compared": {
+        "value": true,
+        "justification": "",
+        "quote": ""
+      },
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -41,13 +63,27 @@
         "justification": "Used RMD as the basis",
         "quote": "We follow the training algorithm detailed in Blattmann et al. (2022) (with minor changes) to obtain two 400M parameter RDMs."
       },
-      "role": "used",
-      "type": {
-        "value": "Diffusion Model",
-        "justification": "none",
-        "quote": "none"
+      "aliases": [],
+      "is_contributed": {
+        "value": false,
+        "justification": "Role:['contributed', 'used', 'referenced']",
+        "quote": "used"
       },
-      "mode": "Trained"
+      "is_executed": {
+        "value": false,
+        "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
+        "quote": "Trained"
+      },
+      "is_compared": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     }
   ],
   "datasets": [
@@ -57,7 +93,13 @@
         "justification": "CIFAR-10 is used for evaluating the model.",
         "quote": "we evaluate our DP-RDM on three datasets—CIFAR-10, MS-COCO and Shutterstock"
       },
-      "role": "used"
+      "aliases": [],
+      "role": "used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -65,7 +107,13 @@
         "justification": "ImageNet FB is mentioned as a dataset used in the experiments.",
         "quote": "trained on face-blurred ImageNet, using different private retrieval datasets at inference time: Shutterstock, MS-COCO with face-blurring (FB), ImageNet FB, and CIFAR-10."
       },
-      "role": "Used"
+      "aliases": [],
+      "role": "Used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -73,7 +121,13 @@
         "justification": "MS-COCO is used for evaluating the model.",
         "quote": "we evaluate our DP-RDM on three datasets—CIFAR-10, MS-COCO and Shutterstock"
       },
-      "role": "used"
+      "aliases": [],
+      "role": "used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     },
     {
       "name": {
@@ -81,7 +135,13 @@
         "justification": "Shutterstock is used for evaluating the model.",
         "quote": "we evaluate our DP-RDM on three datasets—CIFAR-10, MS-COCO and Shutterstock"
       },
-      "role": "used"
+      "aliases": [],
+      "role": "used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
     }
   ],
   "libraries": []
