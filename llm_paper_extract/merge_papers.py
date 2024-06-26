@@ -16,6 +16,8 @@ from pygments.formatters import TerminalTrueColorFormatter
 from pygments.lexers.data import YamlLexer
 import yaml
 
+from .models.utils import convert_model_json_to_yaml, model_dump_yaml, model_validate_yaml
+
 from . import ROOT_DIR
 from .models.model import ExtractionResponse, PaperExtractions, empty_model
 from .utils import str_normalize
@@ -247,7 +249,7 @@ def _update_progession(merged_extractions:PaperExtractions, merged_file:Path):
         _update = _validate_field(_update, PaperExtractions, tmpfile.stem, tmpfile.read_text())
 
     _update = merged_extractions.model_validate(_update)
-    merged_file.write_text(_update.model_dump_json(indent=2))
+    merged_file.write_text(model_dump_yaml(_update))
     return _update
 
 
@@ -292,7 +294,7 @@ def _merge_list(paper_id:str, paper:str, attribute:str, merged_value:list, value
 
 def merge_paper_extractions(paper_id, paper, merged_extractions:PaperExtractions, *all_extractions: List[PaperExtractions]):
     f:Path = (ROOT_DIR / "data/merged/") / paper_id
-    f = f.with_suffix(".json")
+    f = f.with_suffix(".yaml")
 
     for keys_values in zip(empty_model(PaperExtractions), merged_extractions, *all_extractions):
         merged_extractions = _update_progession(merged_extractions, f)
@@ -401,7 +403,6 @@ def get_papers_from_folder() -> List[Tuple[str, Path, ExtractionResponse]]:
 
 
 def main(argv=None):
-
     parser = argparse.ArgumentParser()
     parser.add_argument("--papers", nargs='*', type=str, default=None, help="Papers to merge")
     parser.add_argument("--input", type=Path, default=None, help="List of papers to merge")
@@ -423,14 +424,36 @@ def main(argv=None):
         print('Merging', paper_id)
 
         f:Path = (ROOT_DIR / "data/merged/") / paper_id
-        f = f.with_suffix(".json")
+        f = f.with_suffix(".yaml")
         f.parent.mkdir(parents=True, exist_ok=True)
 
         merged_extractions = empty_model(PaperExtractions)
 
-        if f.exists():
+        if f.exists() or f.with_suffix(".json").exists():
             try:
-                merged_extractions = PaperExtractions.model_validate_json(f.read_text())
+                merged_extractions = PaperExtractions.model_validate_json(
+                    f.with_suffix(".json").read_text()
+                )
+            except FileNotFoundError:
+                merged_extractions = None
+            except ValidationError as e:
+                print(e)
+                print(f'Invalid extraction file... Consider deleting [{f}].')
+                continue
+
+            try:
+                merged_extractions = (
+                    model_validate_yaml(PaperExtractions, f.read_text())
+                )
+            except FileNotFoundError:
+                merged_extractions = convert_model_json_to_yaml(
+                    PaperExtractions, merged_extractions.model_dump_json()
+                )
+                f.write_text(merged_extractions)
+                merged_extractions = (
+                    model_validate_yaml(PaperExtractions, merged_extractions)
+                )
+                f.with_suffix(".json").unlink()
             except ValidationError as e:
                 print(e)
                 print(f'Invalid extraction file... Consider deleting [{f}].')

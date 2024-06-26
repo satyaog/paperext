@@ -1,15 +1,32 @@
+from pathlib import Path
 import typing
 import warnings
 import pandas as pd
 from pydantic import BaseModel, Field, create_model
+import yaml
 
 from ..utils import split_entry, str_normalize
 from .model import Explained, Model, PaperExtractions
 
 
+def convert_model_json_to_yaml(model_cls:BaseModel, json_data:str, **kwargs):
+    model = model_cls.model_validate_json(json_data, **kwargs)
+    yaml_data = model_dump_yaml(model)
+    assert model_validate_yaml(model_cls, yaml_data) == model
+    return yaml_data
+
+
 def fix_explained_fields():
     fields = _get_fields(PaperExtractions)
     return create_model(PaperExtractions.__name__, **fields)
+
+
+def model_dump_yaml(model:BaseModel, **kwargs):
+    return yaml.safe_dump(model.model_dump(**kwargs), sort_keys=False, width=120)
+
+
+def model_validate_yaml(model_cls:BaseModel, yaml_data:str, **kwargs):
+    return model_cls.model_validate(yaml.safe_load(yaml_data), **kwargs)
 
 
 def model2df(model:BaseModel):
