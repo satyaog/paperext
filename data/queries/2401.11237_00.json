@@ -2,55 +2,95 @@
   "paper": "2401.11237.txt",
   "words": 11221,
   "extractions": {
-    "description": "This paper examines the capacity of certain reinforcement learning (RL) algorithms to stitch together pieces of experience to solve tasks not seen during training, and investigates whether supervised learning (SL)-based RL methods possess this stitching property. It introduces new datasets to test this and proposes temporal data augmentation to improve generalization in SL-based RL methods.",
     "title": {
       "value": "Closing the Gap Between TD Learning and Supervised Learning – A Generalisation Point of View",
       "justification": "The title is clearly stated at the beginning of the paper.",
       "quote": "CLOSING THE GAP BETWEEN TD LEARNING AND SUPERVISED LEARNING – A GENERALISATION POINT OF VIEW"
     },
+    "description": "This paper examines the capacity of certain reinforcement learning (RL) algorithms to stitch together pieces of experience to solve tasks not seen during training, and investigates whether supervised learning (SL)-based RL methods possess this stitching property. It introduces new datasets to test this and proposes temporal data augmentation to improve generalization in SL-based RL methods.",
     "type": {
       "value": "Empirical study",
       "justification": "The paper includes both theoretical analysis and empirical results to support its claims.",
       "quote": "Our analysis shows that this sort of generalization is different from i.i.d. generalization. This connection between stitching and generalisation reveals why we should not expect SL-based RL methods to perform stitching, even in the limit of large datasets and models. Based on this analysis, we construct new datasets to explicitly test for this property, revealing that SL-based methods lack this stitching property and hence fail to perform combinatorial generalization."
     },
-    "research_field": {
-      "value": "Reinforcement Learning",
-      "justification": "The research primarily focuses on RL, particularly the differences between TD learning and SL in the context of RL.",
-      "quote": "Our work shows that combinatorial generalisation is also required to solve tasks in the context of RL."
+    "primary_research_field": {
+      "name": {
+        "value": "Reinforcement Learning",
+        "justification": "The research primarily focuses on RL, particularly the differences between TD learning and SL in the context of RL.",
+        "quote": "Our work shows that combinatorial generalisation is also required to solve tasks in the context of RL."
+      },
+      "aliases": []
     },
-    "sub_research_field": {
-      "value": "Goal-conditioned Reinforcement Learning",
-      "justification": "The paper discusses the importance of goal-conditioned policies and their ability to generalize to new state-goal pairs during testing.",
-      "quote": "We will study the problem of goal-conditioned RL in a controlled Markov process with states s ∈ S and actions a ∈ A."
-    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Goal-conditioned Reinforcement Learning",
+          "justification": "The paper discusses the importance of goal-conditioned policies and their ability to generalize to new state-goal pairs during testing.",
+          "quote": "We will study the problem of goal-conditioned RL in a controlled Markov process with states s ∈ S and actions a ∈ A."
+        },
+        "aliases": []
+      }
+    ],
     "models": [
       {
         "name": {
-          "value": "Decision Transformer (DT)",
+          "value": "Decision Transformer",
           "justification": "The model is explicitly mentioned and used in experiments to test combinatorial generalization capabilities.",
           "quote": "DT [2] shows experiments where their SL-based method performs stitching."
         },
-        "role": "used",
-        "type": {
-          "value": "Transformer-based model",
-          "justification": "The model utilizes a transformer architecture.",
-          "quote": "DT [2] treats RL as a sequential SL problem and uses the transformer architecture as a policy."
+        "aliases": [
+          "DT"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Role:['contributed', 'used', 'referenced']",
+          "quote": "used"
         },
-        "mode": "trained"
+        "is_executed": {
+          "value": false,
+          "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
+          "quote": "trained"
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "",
+          "quote": ""
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       },
       {
         "name": {
-          "value": "RvS (Return-Conditioned Supervised Learning)",
+          "value": "RvS",
           "justification": "The model is mentioned as being used for empirical evaluation and comparison.",
           "quote": "RvS [3] shows that a simple SL-based algorithm can surpass the performance of TD algorithms."
         },
-        "role": "used",
-        "type": {
-          "value": "Supervised Learning model",
-          "justification": "The model is a simple SL-based algorithm applied to RL.",
-          "quote": "RvS [3] shows that a simple SL-based algorithm can surpass the performance of TD algorithms."
+        "aliases": [
+          "Return-Conditioned Supervised Learning"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Role:['contributed', 'used', 'referenced']",
+          "quote": "used"
         },
-        "mode": "trained"
+        "is_executed": {
+          "value": false,
+          "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
+          "quote": "trained"
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "",
+          "quote": ""
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       }
     ],
     "datasets": [
@@ -60,7 +100,13 @@
           "justification": "The datasets are used for offline RL experiments in the paper.",
           "quote": "Our experiments reveal a subtle consideration with the common D4RL datasets [15]: while these datasets are purported to test for exactly this sort of combinatorial generalization, data analysis reveals that “unseen” (state, goal) pairs do actually appear in the dataset."
         },
-        "role": "used"
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       },
       {
         "name": {
@@ -68,7 +114,13 @@
           "justification": "The authors created new variants of the D4RL datasets to better test for combinatorial generalization.",
           "quote": "Thus, our experiments are run on a new variant of these datasets that we constructed for this paper to explicitly test for combinatorial generalization."
         },
-        "role": "contributed"
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       }
     ],
     "libraries": [
@@ -78,7 +130,13 @@
           "justification": "The library is used for clustering states in the temporal data augmentation process.",
           "quote": "We use the k-means algorithm from scikit-learn [62] with the default parameters to group states together."
         },
-        "role": "used"
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
       }
     ]
   },
