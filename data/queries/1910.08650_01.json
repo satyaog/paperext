@@ -2,29 +2,27 @@
   "paper": "1910.08650.txt",
   "words": 7405,
   "extractions": {
+    "description": "The paper addresses the challenge of classifying out-of-distribution (OOD) samples with confidence using Convolutional Neural Networks (CNNs). It proposes a method to differentiate OOD sets based on generalization errors and introduces three efficient metrics (Softmax-based Entropy, Coverage Ratio, and Coverage Distance) to select the most effective OOD sets for training well-generalized, calibrated CNN models. The effectiveness is demonstrated across various image and audio classification tasks.",
     "title": {
       "value": "Toward Metrics for Differentiating Out-of-Distribution Sets",
       "justification": "The title is explicitly mentioned on the first page of the paper.",
       "quote": "Toward Metrics for Differentiating Out-of-Distribution Sets"
     },
-    "description": "The paper addresses the challenge of classifying out-of-distribution (OOD) samples with confidence using Convolutional Neural Networks (CNNs). It proposes a method to differentiate OOD sets based on generalization errors and introduces three efficient metrics (Softmax-based Entropy, Coverage Ratio, and Coverage Distance) to select the most effective OOD sets for training well-generalized, calibrated CNN models. The effectiveness is demonstrated across various image and audio classification tasks.",
     "type": {
       "value": "Empirical Study",
       "justification": "The paper involves conducting numerous empirical experiments to evaluate the proposed metrics and validate the effectiveness of OOD sets for training CNN models.",
       "quote": "We empirically verify that the most protective OOD sets – selected according to our metrics..."
     },
-    "primary_research_field": {
+    "research_field": {
       "value": "Deep Learning",
       "justification": "The research focuses on improving the performance of Deep Learning models by addressing the issue of out-of-distribution samples.",
       "quote": "Vanilla CNNs, as uncalibrated classifiers, suffer from classifying out-of-distribution (OOD) samples nearly as confidently as in-distribution samples."
     },
-    "sub_research_fields": [
-      {
-        "value": "Out-Of-Distribution Detection",
-        "justification": "The core of the paper is to develop metrics and methods to improve OOD sample detection and classification using CNN models.",
-        "quote": "Our main goal in this paper is to characterizing properties of OOD sets for recognizing a proper one for training an end-to-end A-CNN and calibrated vanilla CNN with high detection rate on unseen OOD sets..."
-      }
-    ],
+    "sub_research_field": {
+      "value": "Out-Of-Distribution Detection",
+      "justification": "The core of the paper is to develop metrics and methods to improve OOD sample detection and classification using CNN models.",
+      "quote": "Our main goal in this paper is to characterizing properties of OOD sets for recognizing a proper one for training an end-to-end A-CNN and calibrated vanilla CNN with high detection rate on unseen OOD sets..."
+    },
     "models": [
       {
         "name": {
@@ -32,33 +30,13 @@
           "justification": "This model is explicitly developed in the research to handle OOD sample detection by adding an extra rejection class.",
           "quote": "We exploit A-CNN as an end-to-end model for OOD detection task."
         },
-        "caracteristics": [
-          {
-            "value": "Convolutional Neural Network",
-            "justification": "The model is a variant of the Convolutional Neural Network designed for image and audio classification tasks.",
-            "quote": "Besides the confidence-calibrated vanilla CNN [24, 15, 19] as end-to-end model for OOD detection task, the classical idea of adding an explicit rejection class [1, 2, 6, 11] is also an interesting end-to-end approach... We exploit A-CNN as an end-to-end model for OOD detection task."
-          }
-        ],
-        "is_contributed": {
-          "value": true,
-          "justification": "",
-          "quote": ""
+        "role": "contributed",
+        "type": {
+          "value": "Convolutional Neural Network",
+          "justification": "The model is a variant of the Convolutional Neural Network designed for image and audio classification tasks.",
+          "quote": "Besides the confidence-calibrated vanilla CNN [24, 15, 19] as end-to-end model for OOD detection task, the classical idea of adding an explicit rejection class [1, 2, 6, 11] is also an interesting end-to-end approach... We exploit A-CNN as an end-to-end model for OOD detection task."
         },
-        "is_executed": {
-          "value": true,
-          "justification": "",
-          "quote": ""
-        },
-        "is_compared": {
-          "value": true,
-          "justification": "",
-          "quote": ""
-        },
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "mode": "trained"
       },
       {
         "name": {
@@ -66,33 +44,13 @@
           "justification": "Vanilla CNN is used as a baseline model in the experiments conducted to evaluate the effectiveness of the proposed metrics.",
           "quote": "It has been shown that state-of-the-art (vanilla) deep neural networks (e.g., CNN) are uncalibrated such that they are making predictions for OOD samples with a confidence that is as high as those of in-distribution samples."
         },
-        "caracteristics": [
-          {
-            "value": "Convolutional Neural Network",
-            "justification": "Vanilla CNN is a standard type of Convolutional Neural Network used as a benchmark in this study.",
-            "quote": "We empirically show the effectiveness of a protective OOD set for training well-generalized confidence-calibrated vanilla CNNs."
-          }
-        ],
-        "is_contributed": {
-          "value": false,
-          "justification": "",
-          "quote": ""
+        "role": "used",
+        "type": {
+          "value": "Convolutional Neural Network",
+          "justification": "Vanilla CNN is a standard type of Convolutional Neural Network used as a benchmark in this study.",
+          "quote": "We empirically show the effectiveness of a protective OOD set for training well-generalized confidence-calibrated vanilla CNNs."
         },
-        "is_executed": {
-          "value": false,
-          "justification": "",
-          "quote": ""
-        },
-        "is_compared": {
-          "value": false,
-          "justification": "",
-          "quote": ""
-        },
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "mode": "trained"
       },
       {
         "name": {
@@ -100,33 +58,13 @@
           "justification": "Calibrated CNNs are trained for making uncertain predictions for OOD samples while confidently classifying in-distribution ones.",
           "quote": "For instance, calibrated vanilla CNNs [15, 13, 20] are trained to make uncertain predictions for OOD samples while still confidently and correctly classifying in-distribution ones."
         },
-        "caracteristics": [
-          {
-            "value": "Convolutional Neural Network",
-            "justification": "It is a calibrated variant of a Convolutional Neural Network used for OOD detection tasks.",
-            "quote": "For instance, calibrated vanilla CNNs [15, 13, 20] are trained to make uncertain predictions for OOD samples while still confidently and correctly classifying in-distribution ones."
-          }
-        ],
-        "is_contributed": {
-          "value": false,
-          "justification": "",
-          "quote": ""
+        "role": "used",
+        "type": {
+          "value": "Convolutional Neural Network",
+          "justification": "It is a calibrated variant of a Convolutional Neural Network used for OOD detection tasks.",
+          "quote": "For instance, calibrated vanilla CNNs [15, 13, 20] are trained to make uncertain predictions for OOD samples while still confidently and correctly classifying in-distribution ones."
         },
-        "is_executed": {
-          "value": false,
-          "justification": "",
-          "quote": ""
-        },
-        "is_compared": {
-          "value": false,
-          "justification": "",
-          "quote": ""
-        },
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "mode": "trained"
       }
     ],
     "datasets": [
@@ -136,12 +74,7 @@
           "justification": "The CIFAR-10 dataset is used as an in-distribution dataset in several experiments conducted in the paper.",
           "quote": "It has also been shown in [19], where using SVHN as OOD set for CIFAR-10 is leading to an A-CNN with inferior generalization properties."
         },
-        "role": "used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "used"
       },
       {
         "name": {
@@ -149,12 +82,7 @@
           "justification": "SVHN is both used as an in-distribution dataset and an out-of-distribution dataset in various experiments.",
           "quote": "It has also been shown in [19], where using SVHN as OOD set for CIFAR-10 is leading to an A-CNN with inferior generalization properties."
         },
-        "role": "used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "used"
       },
       {
         "name": {
@@ -162,12 +90,7 @@
           "justification": "The Urban-Sound dataset is used to verify the effectiveness of the proposed metrics in audio classification tasks.",
           "quote": "We conduct a series of experiments on several classification tasks including two image benchmarks, namely CIFAR-10 and SVHN, and one audio benchmark, namely Urban-Sound."
         },
-        "role": "used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "used"
       },
       {
         "name": {
@@ -175,12 +98,7 @@
           "justification": "TinyImageNet is used as an out-of-distribution dataset for evaluating the models.",
           "quote": "For image classification tasks, we consider LSUN, ISUN, CIFAR-100 and TinyImageNet as OOD sets and Gaussian noise as a synthetic OOD set."
         },
-        "role": "used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "used"
       },
       {
         "name": {
@@ -188,12 +106,7 @@
           "justification": "ISUN is used as an out-of-distribution dataset in the experiments.",
           "quote": "For image classification tasks, we consider LSUN, ISUN, CIFAR-100 and TinyImageNet as OOD sets and Gaussian noise as a synthetic OOD set."
         },
-        "role": "used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "used"
       },
       {
         "name": {
@@ -201,12 +114,7 @@
           "justification": "LSUN is used as an out-of-distribution dataset in the experiments.",
           "quote": "For image classification tasks, we consider LSUN, ISUN, CIFAR-100 and TinyImageNet as OOD sets and Gaussian noise as a synthetic OOD set."
         },
-        "role": "used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "used"
       },
       {
         "name": {
@@ -214,12 +122,7 @@
           "justification": "The Gaussian Noise dataset is used as a synthetic out-of-distribution dataset in the experiments.",
           "quote": "For image classification tasks, we consider LSUN, ISUN, CIFAR-100 and TinyImageNet as OOD sets and Gaussian noise as a synthetic OOD set."
         },
-        "role": "used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "used"
       },
       {
         "name": {
@@ -227,12 +130,7 @@
           "justification": "CIFAR-100 is used as an out-of-distribution dataset in the experiments.",
           "quote": "It has also been shown in [19], where using SVHN as OOD set for CIFAR-10 is leading to an A-CNN with inferior generalization properties."
         },
-        "role": "used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "used"
       },
       {
         "name": {
@@ -240,12 +138,7 @@
           "justification": "ECS is used as an out-of-distribution dataset for audio classification tasks.",
           "quote": "OOD sets considered are TuT [25], Google Command [32] and ECS (Environmental Sound Classification) [26], as well as white-noise sound as a synthetic OOD set."
         },
-        "role": "used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "used"
       },
       {
         "name": {
@@ -253,12 +146,7 @@
           "justification": "The Google Command dataset is used as an out-of-distribution dataset in the audio classification experiments.",
           "quote": "OOD sets considered are TuT [25], Google Command [32] and ECS (Environmental Sound Classification) [26], as well as white-noise sound as a synthetic OOD set."
         },
-        "role": "used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "used"
       },
       {
         "name": {
@@ -266,12 +154,7 @@
           "justification": "The TuT dataset is used as an out-of-distribution dataset in the audio classification experiments.",
           "quote": "OOD sets considered are TuT [25], Google Command [32] and ECS (Environmental Sound Classification) [26], as well as white-noise sound as a synthetic OOD set."
         },
-        "role": "used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "used"
       }
     ],
     "libraries": []

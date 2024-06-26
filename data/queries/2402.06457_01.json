@@ -2,29 +2,27 @@
   "paper": "2402.06457.txt",
   "words": 8032,
   "extractions": {
+    "description": "This paper introduces V-STaR, an approach designed to train verifiers by utilizing both correct and incorrect solutions generated during the self-improvement process of Large Language Models (LLMs). V-STaR contrasts itself with existing methods by leveraging Direct Preference Optimization to improve verifier and generator performance iteratively. The empirical results exhibit significant enhancements in test accuracy over prior methods in code generation and math reasoning benchmarks.",
     "title": {
       "value": "V-STaR: Training Verifiers for Self-Taught Reasoners",
       "justification": "This is the official title of the research paper.",
       "quote": "V-STaR: Training Verifiers for Self-Taught Reasoners"
     },
-    "description": "This paper introduces V-STaR, an approach designed to train verifiers by utilizing both correct and incorrect solutions generated during the self-improvement process of Large Language Models (LLMs). V-STaR contrasts itself with existing methods by leveraging Direct Preference Optimization to improve verifier and generator performance iteratively. The empirical results exhibit significant enhancements in test accuracy over prior methods in code generation and math reasoning benchmarks.",
     "type": {
       "value": "empirical study",
       "justification": "The paper involves empirical evaluations of V-STaR against baseline methods in various tasks, primarily focused on experimental results.",
       "quote": "We empirically evaluate V-STaR on math reasoning... and on code-generation..."
     },
-    "primary_research_field": {
+    "research_field": {
       "value": "Deep Learning",
       "justification": "The paper focuses on methods to improve reasoning abilities and verification processes in Large Language Models, which are a subfield of Deep Learning.",
       "quote": "To improve the reasoning performance of LLMs..."
     },
-    "sub_research_fields": [
-      {
-        "value": "Model Training and Optimization",
-        "justification": "The core contribution of the paper is improving the training process of verifiers and generators using techniques like Direct Preference Optimization.",
-        "quote": "To address this shortcoming, we propose V-STaR that utilizes both the correct and incorrect solutions generated during the self-improvement process to train a verifier using DPO..."
-      }
-    ],
+    "sub_research_field": {
+      "value": "Model Training and Optimization",
+      "justification": "The core contribution of the paper is improving the training process of verifiers and generators using techniques like Direct Preference Optimization.",
+      "quote": "To address this shortcoming, we propose V-STaR that utilizes both the correct and incorrect solutions generated during the self-improvement process to train a verifier using DPO..."
+    },
     "models": [
       {
         "name": {
@@ -32,33 +30,13 @@
           "justification": "The paper uses LLaMA2 as one of the baseline models for comparison and experimentation.",
           "quote": "train a verifier using DPO that judges correctness of model-generated solutions. This verifier is used at inference time to select one solution among many candidate solutions. Running VSTaR for multiple iterations results in progressively better reasoners and verifiers, delivering a 4% to 17% test accuracy improvement over existing self-improvement and verification approaches on common code generation and math reasoning benchmarks with LLaMA2 models."
         },
-        "caracteristics": [
-          {
-            "value": "Language Model",
-            "justification": "LLaMA2 is explicitly mentioned as a language model used in the experiments.",
-            "quote": "Running VSTaR for multiple iterations results in progressively better reasoners and verifiers, delivering a 4% to 17% test accuracy improvement over existing self-improvement and verification approaches on common code generation and math reasoning benchmarks with LLaMA2 models."
-          }
-        ],
-        "is_contributed": {
-          "value": false,
-          "justification": "",
-          "quote": ""
+        "role": "used",
+        "type": {
+          "value": "Language Model",
+          "justification": "LLaMA2 is explicitly mentioned as a language model used in the experiments.",
+          "quote": "Running VSTaR for multiple iterations results in progressively better reasoners and verifiers, delivering a 4% to 17% test accuracy improvement over existing self-improvement and verification approaches on common code generation and math reasoning benchmarks with LLaMA2 models."
         },
-        "is_executed": {
-          "value": false,
-          "justification": "",
-          "quote": ""
-        },
-        "is_compared": {
-          "value": false,
-          "justification": "",
-          "quote": ""
-        },
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "mode": "fine-tuned"
       },
       {
         "name": {
@@ -66,33 +44,13 @@
           "justification": "CodeLLaMA is another model used in the experiments for code generation benchmarks.",
           "quote": "Fine-tuning LLaMA2 (Touvron et al., 2023) and CodeLLaMA (Rozière et al., 2023), we compare V-STaR to other self-improvement and verification-based methods, as well a non-iterative V-STaR baseline that uses the same number of generation samples to bootstrap a generator and verifier."
         },
-        "caracteristics": [
-          {
-            "value": "Language Model",
-            "justification": "CodeLLaMA is explained as a variant of LLaMA tailored for code generation tasks.",
-            "quote": "Fine-tuning LLaMA2 (Touvron et al., 2023) and CodeLLaMA (Rozière et al., 2023), we compare V-STaR to other self-improvement and verification-based methods, as well a non-iterative V-STaR baseline that uses the same number of generation samples to bootstrap a generator and verifier."
-          }
-        ],
-        "is_contributed": {
-          "value": false,
-          "justification": "",
-          "quote": ""
+        "role": "used",
+        "type": {
+          "value": "Language Model",
+          "justification": "CodeLLaMA is explained as a variant of LLaMA tailored for code generation tasks.",
+          "quote": "Fine-tuning LLaMA2 (Touvron et al., 2023) and CodeLLaMA (Rozière et al., 2023), we compare V-STaR to other self-improvement and verification-based methods, as well a non-iterative V-STaR baseline that uses the same number of generation samples to bootstrap a generator and verifier."
         },
-        "is_executed": {
-          "value": false,
-          "justification": "",
-          "quote": ""
-        },
-        "is_compared": {
-          "value": false,
-          "justification": "",
-          "quote": ""
-        },
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "mode": "fine-tuned"
       }
     ],
     "datasets": [
@@ -102,12 +60,7 @@
           "justification": "The GSM8K dataset is used for evaluating the models on math reasoning tasks.",
           "quote": "We empirically evaluate V-STaR on math reasoning using GSM8K (Cobbe et al., 2021)..."
         },
-        "role": "used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "used"
       },
       {
         "name": {
@@ -115,12 +68,7 @@
           "justification": "The MATH dataset is used as another benchmark to evaluate the transfer generalization performance of the models for math reasoning.",
           "quote": "We empirically evaluate V-STaR on math reasoning using GSM8K (Cobbe et al., 2021) and a subset of MATH (Hendrycks et al., 2021)..."
         },
-        "role": "used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "used"
       },
       {
         "name": {
@@ -128,12 +76,7 @@
           "justification": "The MBPP dataset is used for training and evaluating models on code generation tasks.",
           "quote": "...and on code-generation using MBPP (Austin et al., 2021)..."
         },
-        "role": "used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "used"
       },
       {
         "name": {
@@ -141,12 +84,7 @@
           "justification": "HumanEval is another dataset used for evaluating code generation tasks.",
           "quote": "We also evaluate the transfer generalization performance of V-STaR using Hendrycks’ MATH (Hendrycks et al., 2021) HumanEval (Chen et al., 2021)."
         },
-        "role": "used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "used"
       }
     ],
     "libraries": [
@@ -156,12 +94,7 @@
           "justification": "The paper mentions the use of LoRA adapters in their training setup.",
           "quote": "We run our experiments by training LLaMA2 (Touvron et al., 2023) and CodeLLaMA (Rozière et al., 2023) 7B and 13B models using LoRA adapters (Hu et al., 2022)."
         },
-        "role": "used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "used"
       }
     ]
   },

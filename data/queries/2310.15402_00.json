@@ -2,29 +2,27 @@
   "paper": "2310.15402.txt",
   "words": 11660,
   "extractions": {
+    "description": "The paper presents a method for contrast-agnostic soft segmentation of the spinal cord using MRI images. The method leverages a dataset consisting of multiple contrasts and introduces a novel pipeline for generating soft ground truth segmented images. This pipeline includes preprocessing of data, dataset augmentation, and a unique loss function centered around regression (specifically, adaptive wing loss). The proposed model is tested against state-of-the-art methods and demonstrates superior performance in reducing cross-sectional area (CSA) variability across different contrasts and shows remarkable generalization capabilities to unseen data, including images with various spinal pathologies.",
     "title": {
       "value": "Towards contrast-agnostic soft segmentation of the spinal cord",
       "justification": "This fits with the primary focus and goal of the research described in the paper.",
       "quote": "Towards contrast-agnostic soft segmentation of the spinal cord"
     },
-    "description": "The paper presents a method for contrast-agnostic soft segmentation of the spinal cord using MRI images. The method leverages a dataset consisting of multiple contrasts and introduces a novel pipeline for generating soft ground truth segmented images. This pipeline includes preprocessing of data, dataset augmentation, and a unique loss function centered around regression (specifically, adaptive wing loss). The proposed model is tested against state-of-the-art methods and demonstrates superior performance in reducing cross-sectional area (CSA) variability across different contrasts and shows remarkable generalization capabilities to unseen data, including images with various spinal pathologies.",
     "type": {
       "value": "Empirical Study",
       "justification": "The paper involves experiments with different datasets, training deep learning models, and evaluating their performance against baselines and state-of-the-art methods.",
       "quote": "We evaluated our model against state-of-the-art methods and performed ablation studies involving different GT mask types, loss functions, and contrast-specific models."
     },
-    "primary_research_field": {
+    "research_field": {
       "value": "Computer Vision",
       "justification": "The research focuses on improving spinal cord segmentation in MRI images, which is a relevant problem in the field of computer vision, a subfield of artificial intelligence focused on training computers to interpret and understand the visual world.",
       "quote": "Spinal cord segmentation is clinically relevant, notably to compute cross-sectional area (CSA) for the diagnosis and monitoring of atrophy in multiple sclerosis (MS), spinal cord injury (SCI), and in characterizing spinal cord compression."
     },
-    "sub_research_fields": [
-      {
-        "value": "Medical Imaging",
-        "justification": "The paper specifically deals with segmented images from MRI scans and aims to improve clinical imaging techniques.",
-        "quote": "We present a deep learning-based method that produces soft segmentations of the spinal cord."
-      }
-    ],
+    "sub_research_field": {
+      "value": "Medical Imaging",
+      "justification": "The paper specifically deals with segmented images from MRI scans and aims to improve clinical imaging techniques.",
+      "quote": "We present a deep learning-based method that produces soft segmentations of the spinal cord."
+    },
     "models": [
       {
         "name": {
@@ -32,33 +30,13 @@
           "justification": "The primary model introduced in the paper is the UNet architecture adapted for producing soft segmentations of the spinal cord in various MRI contrasts.",
           "quote": "Using the Spine Generic Public Database of healthy participants (n = 267; contrasts = 6), we first generated participant-wise soft ground truth (GT) by averaging the binary segmentations across all 6 contrasts. These soft GT, along with aggressive data augmentation and a regression-based loss function, were then used to train a UNet model for spinal cord segmentation."
         },
-        "caracteristics": [
-          {
-            "value": "Convolutional Neural Network (CNN)",
-            "justification": "UNet, a type of Convolutional Neural Network, was used in this study to perform segmentation tasks.",
-            "quote": "In this work, we present a deep learning-based method that produces soft segmentations of the spinal cord. Using the Spine Generic Public Database of healthy participants (n = 267; contrasts = 6)... were then used to train a UNet model for spinal cord segmentation."
-          }
-        ],
-        "is_contributed": {
-          "value": true,
-          "justification": "",
-          "quote": ""
+        "role": "Contributed",
+        "type": {
+          "value": "Convolutional Neural Network (CNN)",
+          "justification": "UNet, a type of Convolutional Neural Network, was used in this study to perform segmentation tasks.",
+          "quote": "In this work, we present a deep learning-based method that produces soft segmentations of the spinal cord. Using the Spine Generic Public Database of healthy participants (n = 267; contrasts = 6)... were then used to train a UNet model for spinal cord segmentation."
         },
-        "is_executed": {
-          "value": true,
-          "justification": "",
-          "quote": ""
-        },
-        "is_compared": {
-          "value": true,
-          "justification": "",
-          "quote": ""
-        },
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "mode": "Trained"
       }
     ],
     "datasets": [
@@ -68,12 +46,7 @@
           "justification": "The dataset used in the study is from the Spine Generic Public Database which provides diverse and multi-contrast MRI images of the spinal cord.",
           "quote": "We used the Spine Generic Public Database2 (Multi-Subject) (Cohen-Adad et al., 2021a) consisting of 267 healthy participants scanned across multiple MRI vendors (Siemens, GE and Philips) and scanner models."
         },
-        "role": "Used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "Used"
       }
     ],
     "libraries": [
@@ -83,12 +56,7 @@
           "justification": "The researchers used the MONAI framework, which is a deep learning library specifically targeted at medical imaging tasks.",
           "quote": "These augmentation methods are readily implemented in MONAI (Jorge Cardoso et al., 2022)."
         },
-        "role": "Used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "Used"
       },
       {
         "name": {
@@ -96,12 +64,7 @@
           "justification": "PyTorch Lightning was used to train the neural network models in the study.",
           "quote": "All the models were trained using the MONAI (Jorge Cardoso et al., 2022) and PyTorch Lightning frameworks on a single 48 GB NVIDIA A6000 GPU."
         },
-        "role": "Used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "Used"
       },
       {
         "name": {
@@ -109,12 +72,7 @@
           "justification": "SCT was used for the spinal cord image processing tasks like segmentation and registration.",
           "quote": "The GT soft segmentations are generated by averaging 6 different contrasts (T1w, T2w, T2*w, MT-on, GRE-T1w and DWI). For each participant and contrast, the spinal cord is segmented using SCT’s sct deepseg sc to generate a binary segmentation."
         },
-        "role": "Used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "Used"
       }
     ]
   },

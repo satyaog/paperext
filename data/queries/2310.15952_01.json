@@ -2,29 +2,27 @@
   "paper": "2310.15952.txt",
   "words": 11748,
   "extractions": {
+    "description": "This paper introduces a three-stage approach integrating transformers and conditional diffusion models to improve model robustness in medical image classification. It includes learning hierarchical feature representations, a reverse diffusion process guided by latent code to propose prediction candidates, and a bilevel aggregation protocol for final output.",
     "title": {
       "value": "Improving Robustness and Reliability in Medical Image Classification with Latent-Guided Diffusion and Nested-Ensembles",
       "justification": "Derived from the title page and recurring mention throughout the text.",
       "quote": "Improving Robustness and Reliability in Medical Image Classification with Latent-Guided Diffusion and Nested-Ensembles"
     },
-    "description": "This paper introduces a three-stage approach integrating transformers and conditional diffusion models to improve model robustness in medical image classification. It includes learning hierarchical feature representations, a reverse diffusion process guided by latent code to propose prediction candidates, and a bilevel aggregation protocol for final output.",
     "type": {
       "value": "Empirical Study",
       "justification": "The paper describes experiments and evaluations conducted on benchmark datasets to validate the proposed method.",
       "quote": "Through extensive experiments on medical imaging benchmark datasets, we show that our method improves upon state-of-the-art methods in terms of robustness and confidence calibration."
     },
-    "primary_research_field": {
+    "research_field": {
       "value": "Deep Learning",
       "justification": "The paper focuses on developing and evaluating deep learning models for medical image classification.",
       "quote": "In the rapidly evolving domain of medical imaging analysis, deep learning has emerged as a cornerstone for diagnostic advancements."
     },
-    "sub_research_fields": [
-      {
-        "value": "Medical Imaging",
-        "justification": "The paper specifically targets medical image classification tasks, addressing robustness challenges in clinical implementations.",
-        "quote": "While many methods apply predefined transformations to augment the training data to enhance test-time robustness, these transformations may not ensure the model’s robustness to the diverse variability seen in patient images."
-      }
-    ],
+    "sub_research_field": {
+      "value": "Medical Imaging",
+      "justification": "The paper specifically targets medical image classification tasks, addressing robustness challenges in clinical implementations.",
+      "quote": "While many methods apply predefined transformations to augment the training data to enhance test-time robustness, these transformations may not ensure the model’s robustness to the diverse variability seen in patient images."
+    },
     "models": [
       {
         "name": {
@@ -32,33 +30,13 @@
           "justification": "Referenced as a part of the study, likely used in comparisons and baseline experiments.",
           "quote": "Note that we only train models on the original domain, in other words, where no data augmentation is applied to the training set image. We compare our method with baselines that are widely used in medical image analysis with classification accuracy and confidence calibration error as metrics [2], [3], [6]–[8], [36]–[39], such as the ResNet [40] family, Vision Transformers (ViTs) [30]."
         },
-        "caracteristics": [
-          {
-            "value": "Vision Transformer",
-            "justification": "The term 'ViT' explicitly stands for Vision Transformer in literature.",
-            "quote": "Vision Transformers (ViTs) [30]."
-          }
-        ],
-        "is_contributed": {
-          "value": false,
-          "justification": "",
-          "quote": ""
+        "role": "used",
+        "type": {
+          "value": "Vision Transformer",
+          "justification": "The term 'ViT' explicitly stands for Vision Transformer in literature.",
+          "quote": "Vision Transformers (ViTs) [30]."
         },
-        "is_executed": {
-          "value": false,
-          "justification": "",
-          "quote": ""
-        },
-        "is_compared": {
-          "value": false,
-          "justification": "",
-          "quote": ""
-        },
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "mode": "train"
       },
       {
         "name": {
@@ -66,33 +44,13 @@
           "justification": "Specifically developed and implemented as part of the method proposed in the paper.",
           "quote": "The robustness of our predictions is then bostered by additionally integrating a unique ensemble technique named Nested-ensemble."
         },
-        "caracteristics": [
-          {
-            "value": "Ensemble Model",
-            "justification": "The term 'Nested-Ensemble' explicitly describes an ensemble method.",
-            "quote": "integrating a unique ensemble technique named Nested-ensemble."
-          }
-        ],
-        "is_contributed": {
-          "value": true,
-          "justification": "",
-          "quote": ""
+        "role": "contributed",
+        "type": {
+          "value": "Ensemble Model",
+          "justification": "The term 'Nested-Ensemble' explicitly describes an ensemble method.",
+          "quote": "integrating a unique ensemble technique named Nested-ensemble."
         },
-        "is_executed": {
-          "value": true,
-          "justification": "",
-          "quote": ""
-        },
-        "is_compared": {
-          "value": true,
-          "justification": "",
-          "quote": ""
-        },
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "mode": "train"
       },
       {
         "name": {
@@ -100,33 +58,13 @@
           "justification": "Referenced and used as a baseline in experimental comparisons.",
           "quote": "We choose a range of baseline methods that cover various architectures: CNNs, transformers, and hybrid models with both CNNs and transformers. Note that we only train models on the original domain, in other words, where no data augmentation is applied to the training set image. We compare our method with baselines that are widely used in medical image analysis with classification accuracy and confidence calibration error as metrics."
         },
-        "caracteristics": [
-          {
-            "value": "Convolutional Neural Network (CNN)",
-            "justification": "EfficientNetV2 is known to be a CNN model for image-based tasks.",
-            "quote": "We choose a range of baseline methods that cover various architectures: CNNs, transformers, and hybrid models with both CNNs and transformers."
-          }
-        ],
-        "is_contributed": {
-          "value": false,
-          "justification": "",
-          "quote": ""
+        "role": "used",
+        "type": {
+          "value": "Convolutional Neural Network (CNN)",
+          "justification": "EfficientNetV2 is known to be a CNN model for image-based tasks.",
+          "quote": "We choose a range of baseline methods that cover various architectures: CNNs, transformers, and hybrid models with both CNNs and transformers."
         },
-        "is_executed": {
-          "value": false,
-          "justification": "",
-          "quote": ""
-        },
-        "is_compared": {
-          "value": false,
-          "justification": "",
-          "quote": ""
-        },
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "mode": "train"
       },
       {
         "name": {
@@ -134,33 +72,13 @@
           "justification": "Referenced and used as a baseline in experimental comparisons.",
           "quote": "ResNet-18 [40]"
         },
-        "caracteristics": [
-          {
-            "value": "Convolutional Neural Network (CNN)",
-            "justification": "ResNet is widely recognized as a CNN architecture.",
-            "quote": "ResNet-18 [40]"
-          }
-        ],
-        "is_contributed": {
-          "value": false,
-          "justification": "",
-          "quote": ""
+        "role": "used",
+        "type": {
+          "value": "Convolutional Neural Network (CNN)",
+          "justification": "ResNet is widely recognized as a CNN architecture.",
+          "quote": "ResNet-18 [40]"
         },
-        "is_executed": {
-          "value": false,
-          "justification": "",
-          "quote": ""
-        },
-        "is_compared": {
-          "value": false,
-          "justification": "",
-          "quote": ""
-        },
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "mode": "train"
       },
       {
         "name": {
@@ -168,33 +86,13 @@
           "justification": "Referenced and used as a baseline in experimental comparisons.",
           "quote": "ResNet-50 [40]"
         },
-        "caracteristics": [
-          {
-            "value": "Convolutional Neural Network (CNN)",
-            "justification": "ResNet is widely recognized as a CNN architecture.",
-            "quote": "ResNet-50 [40]"
-          }
-        ],
-        "is_contributed": {
-          "value": false,
-          "justification": "",
-          "quote": ""
+        "role": "used",
+        "type": {
+          "value": "Convolutional Neural Network (CNN)",
+          "justification": "ResNet is widely recognized as a CNN architecture.",
+          "quote": "ResNet-50 [40]"
         },
-        "is_executed": {
-          "value": false,
-          "justification": "",
-          "quote": ""
-        },
-        "is_compared": {
-          "value": false,
-          "justification": "",
-          "quote": ""
-        },
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "mode": "train"
       },
       {
         "name": {
@@ -202,33 +100,13 @@
           "justification": "Referenced and used as a baseline in experimental comparisons.",
           "quote": "DeiT-B [45]"
         },
-        "caracteristics": [
-          {
-            "value": "Vision Transformer",
-            "justification": "DeiT model variants are well-established Vision Transformer architectures.",
-            "quote": "DeiT-B [45]"
-          }
-        ],
-        "is_contributed": {
-          "value": false,
-          "justification": "",
-          "quote": ""
+        "role": "used",
+        "type": {
+          "value": "Vision Transformer",
+          "justification": "DeiT model variants are well-established Vision Transformer architectures.",
+          "quote": "DeiT-B [45]"
         },
-        "is_executed": {
-          "value": false,
-          "justification": "",
-          "quote": ""
-        },
-        "is_compared": {
-          "value": false,
-          "justification": "",
-          "quote": ""
-        },
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "mode": "train"
       },
       {
         "name": {
@@ -236,33 +114,13 @@
           "justification": "Referenced and used as a baseline in experimental comparisons.",
           "quote": "Swin-B [46]"
         },
-        "caracteristics": [
-          {
-            "value": "Vision Transformer",
-            "justification": "Swin Transformer models are recognized as Vision Transformer architectures.",
-            "quote": "Swin-B [46]"
-          }
-        ],
-        "is_contributed": {
-          "value": false,
-          "justification": "",
-          "quote": ""
+        "role": "used",
+        "type": {
+          "value": "Vision Transformer",
+          "justification": "Swin Transformer models are recognized as Vision Transformer architectures.",
+          "quote": "Swin-B [46]"
         },
-        "is_executed": {
-          "value": false,
-          "justification": "",
-          "quote": ""
-        },
-        "is_compared": {
-          "value": false,
-          "justification": "",
-          "quote": ""
-        },
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "mode": "train"
       },
       {
         "name": {
@@ -270,33 +128,13 @@
           "justification": "Referenced and used as a baseline in experimental comparisons.",
           "quote": "ConViT-B [47]"
         },
-        "caracteristics": [
-          {
-            "value": "Vision Transformer",
-            "justification": "ConViT models are known as Vision Transformers with convolutional components.",
-            "quote": "ConViT-B [47]"
-          }
-        ],
-        "is_contributed": {
-          "value": false,
-          "justification": "",
-          "quote": ""
+        "role": "used",
+        "type": {
+          "value": "Vision Transformer",
+          "justification": "ConViT models are known as Vision Transformers with convolutional components.",
+          "quote": "ConViT-B [47]"
         },
-        "is_executed": {
-          "value": false,
-          "justification": "",
-          "quote": ""
-        },
-        "is_compared": {
-          "value": false,
-          "justification": "",
-          "quote": ""
-        },
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "mode": "train"
       },
       {
         "name": {
@@ -304,33 +142,13 @@
           "justification": "Referenced and used as a baseline in experimental comparisons.",
           "quote": "MedViT-B [18]"
         },
-        "caracteristics": [
-          {
-            "value": "Vision Transformer",
-            "justification": "MedViT is a variant of Vision Transformers specifically adapted for medical imaging tasks.",
-            "quote": "MedViT-B [18]"
-          }
-        ],
-        "is_contributed": {
-          "value": false,
-          "justification": "",
-          "quote": ""
+        "role": "used",
+        "type": {
+          "value": "Vision Transformer",
+          "justification": "MedViT is a variant of Vision Transformers specifically adapted for medical imaging tasks.",
+          "quote": "MedViT-B [18]"
         },
-        "is_executed": {
-          "value": false,
-          "justification": "",
-          "quote": ""
-        },
-        "is_compared": {
-          "value": false,
-          "justification": "",
-          "quote": ""
-        },
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "mode": "train"
       },
       {
         "name": {
@@ -338,33 +156,13 @@
           "justification": "Referenced and used as a baseline in experimental comparisons.",
           "quote": "SEViT [19]"
         },
-        "caracteristics": [
-          {
-            "value": "Vision Transformer",
-            "justification": "SEViT models are self-ensembling Vision Transformers.",
-            "quote": "SEViT [19]"
-          }
-        ],
-        "is_contributed": {
-          "value": false,
-          "justification": "",
-          "quote": ""
+        "role": "used",
+        "type": {
+          "value": "Vision Transformer",
+          "justification": "SEViT models are self-ensembling Vision Transformers.",
+          "quote": "SEViT [19]"
         },
-        "is_executed": {
-          "value": false,
-          "justification": "",
-          "quote": ""
-        },
-        "is_compared": {
-          "value": false,
-          "justification": "",
-          "quote": ""
-        },
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "mode": "train"
       }
     ],
     "datasets": [
@@ -374,12 +172,7 @@
           "justification": "Used for conducting experiments to validate the proposed method.",
           "quote": "Extensive experiments performed on the Tuberculosis chest X-ray classification benchmark [15]"
         },
-        "role": "used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "used"
       },
       {
         "name": {
@@ -387,12 +180,7 @@
           "justification": "Used for conducting experiments to validate the proposed method.",
           "quote": "the subset of ISIC skin caner classification benchmark [16]"
         },
-        "role": "used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "used"
       },
       {
         "name": {
@@ -400,12 +188,7 @@
           "justification": "The specific Tuberculosis chest X-ray datasets used in the experiments stems from the Shenzhen database.",
           "quote": "Note that we only train models on the original domain, in other words, where no data augmentation is applied to the training set image."
         },
-        "role": "used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "used"
       },
       {
         "name": {
@@ -413,12 +196,7 @@
           "justification": "The specific Tuberculosis chest X-ray datasets used in the experiments stems from Montgomery County database.",
           "quote": "Note that we only train models on the original domain, in other words, where no data augmentation is applied to the training set image."
         },
-        "role": "used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "used"
       }
     ],
     "libraries": [
@@ -428,12 +206,7 @@
           "justification": "Referenced or used within the methodology for implementing deep learning models or experimentation.",
           "quote": "We choose the PyTorch framework for our NN implementations and use several PyTorch-based libraries for training vision transformers."
         },
-        "role": "used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "used"
       },
       {
         "name": {
@@ -441,12 +214,7 @@
           "justification": "Referenced or used within the methodology for data manipulation or numerical computations.",
           "quote": "We perform all numerical operations with the help of the NumPy library."
         },
-        "role": "used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "used"
       },
       {
         "name": {
@@ -454,12 +222,7 @@
           "justification": "Mentioned or used as part of the development process or comparisons.",
           "quote": "Comparisons were also made using TensorFlow implementations to ensure robustness across different standard frameworks."
         },
-        "role": "used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "used"
       }
     ]
   },

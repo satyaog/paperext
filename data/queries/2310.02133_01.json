@@ -2,29 +2,27 @@
   "paper": "2310.02133.txt",
   "words": 7575,
   "extractions": {
+    "description": "This paper introduces a framework for generating interpretable and verifiable logical rules through differentiable learning without relying on pre-specified logical structures. The framework is built upon SATNet, a differentiable MaxSAT solver, and proposes a novel method called 'maximum equality' to transform learned weights into human-readable propositional logical rules. The approach is validated through experiments on stream transformations and Sudoku puzzles, showing high reliability and accuracy.",
     "title": {
       "value": "Learning Reliable Logical Rules with SATNet",
       "justification": "The title encapsulates the key contributions of the paper, focusing on the reliability and interpretability of logical rules learned using SATNet.",
       "quote": "Learning Reliable Logical Rules with SATNet"
     },
-    "description": "This paper introduces a framework for generating interpretable and verifiable logical rules through differentiable learning without relying on pre-specified logical structures. The framework is built upon SATNet, a differentiable MaxSAT solver, and proposes a novel method called 'maximum equality' to transform learned weights into human-readable propositional logical rules. The approach is validated through experiments on stream transformations and Sudoku puzzles, showing high reliability and accuracy.",
     "type": {
       "value": "empirical study",
       "justification": "The paper conducts a series of experiments on tasks such as stream transformations and Sudoku puzzles to validate their framework, showcasing empirical results and analysis.",
       "quote": "Experiments on stream transformations and Sudoku problems show that our decoded rules are highly reliable."
     },
-    "primary_research_field": {
+    "research_field": {
       "value": "Deep Learning",
       "justification": "The paper integrates logical reasoning with differentiable deep learning methods to generate interpretable logical rules.",
       "quote": "Bridging logical reasoning and deep learning is crucial for advanced AI systems. In this work, we present a new framework that addresses this goal by generating interpretable and verifiable logical rules through differentiable learning."
     },
-    "sub_research_fields": [
-      {
-        "value": "Neural-Symbolic Learning",
-        "justification": "The research focuses on combining neural network-based learning with symbolic logic to derive interpretable rules, placing it in the realm of neural-symbolic learning.",
-        "quote": "We introduce a novel interpretation method that decodes a set of logical rules as a weighted MaxSAT formula from SATNet and enables the flexible integration of domain knowledge."
-      }
-    ],
+    "sub_research_field": {
+      "value": "Neural-Symbolic Learning",
+      "justification": "The research focuses on combining neural network-based learning with symbolic logic to derive interpretable rules, placing it in the realm of neural-symbolic learning.",
+      "quote": "We introduce a novel interpretation method that decodes a set of logical rules as a weighted MaxSAT formula from SATNet and enables the flexible integration of domain knowledge."
+    },
     "models": [
       {
         "name": {
@@ -32,33 +30,13 @@
           "justification": "SATNet* is a modified version of SATNet used in the paper for generating and decoding interpretable logical rules.",
           "quote": "We train both original SATNet [32] and our modified version SATNet* to learn the underlying logical rules in the data and decode them into a weighted MaxSAT formula using our specification approach."
         },
-        "caracteristics": [
-          {
-            "value": "differentiable MaxSAT solver",
-            "justification": "SATNet* is a variant of SATNet, designed as a differentiable MaxSAT solver to learn and interpret logical rules.",
-            "quote": "SATNet* can also successfully solve all Sudoku puzzles in the testing set, rectifying the previously failed cases."
-          }
-        ],
-        "is_contributed": {
-          "value": true,
-          "justification": "",
-          "quote": ""
+        "role": "contributed",
+        "type": {
+          "value": "differentiable MaxSAT solver",
+          "justification": "SATNet* is a variant of SATNet, designed as a differentiable MaxSAT solver to learn and interpret logical rules.",
+          "quote": "SATNet* can also successfully solve all Sudoku puzzles in the testing set, rectifying the previously failed cases."
         },
-        "is_executed": {
-          "value": true,
-          "justification": "",
-          "quote": ""
-        },
-        "is_compared": {
-          "value": true,
-          "justification": "",
-          "quote": ""
-        },
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "mode": "inference"
       }
     ],
     "datasets": [
@@ -68,12 +46,7 @@
           "justification": "The dataset is utilized to evaluate the framework on tasks like parity function, binary bit addition, and symbol counting.",
           "quote": "Experiment setup. In this experiment, we evaluate our proposed framework on three stream transformation tasks, i.e., the parity function, binary bit addition, and symbol counting."
         },
-        "role": "used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "used"
       },
       {
         "name": {
@@ -81,12 +54,7 @@
           "justification": "The dataset is used for evaluating the framework specifically on 4×4 and 9×9 Sudoku puzzles.",
           "quote": "We train SATNet on the 4×4 Sudoku dataset, which achieves 100% training accuracy and 99.89% testing accuracy."
         },
-        "role": "used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "used"
       }
     ],
     "libraries": [
@@ -96,12 +64,7 @@
           "justification": "Gurobi is used as an exact solver for inference in the framework, improving accuracy and transparency.",
           "quote": "With the decoded logical rules, we can employ an exact solver (e.g., Gurobi [13]) to replace SATNet during inference, rendering the solving process more accurate and transparent."
         },
-        "role": "used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "used"
       },
       {
         "name": {
@@ -109,12 +72,7 @@
           "justification": "This library is used as the state-of-the-art MaxSAT solver for verification purposes, ensuring the correctness of the decoded logical rules.",
           "quote": "Given the generated rules, we utilize Gurobi [13] for exact inference and use the state-of-the-art MaxSAT solver CASHWMaxSAT [16] for verification."
         },
-        "role": "used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "used"
       }
     ]
   },
