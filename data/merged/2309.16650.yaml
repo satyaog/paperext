@@ -1,0 +1,330 @@
+title:
+  value: 'ConceptGraphs: Open-Vocabulary 3D Scene Graphs for Perception and Planning'
+  justification: The title precisely describes the primary contribution of the paper, which is the ConceptGraphs method.
+  quote: 'ConceptGraphs: Open-Vocabulary 3D Scene Graphs for Perception and Planning'
+description: The paper proposes ConceptGraphs, a novel method to construct open-vocabulary and object-centric 3D scene graphs
+  for robot perception and planning. It leverages 2D foundation models and fuses their outputs into 3D by multiview association
+  to create a structured and semantically rich representation. The method allows robots to understand complex scenes, perform
+  task planning, and handle abstract language queries without requiring large 3D datasets or model finetuning.
+type:
+  value: Empirical Study
+  justification: The paper includes experiments and real-world trials with robots to validate the proposed method, which classifies
+    it as an empirical study.
+  quote: We implement and demonstrate ConceptGraphs on a number of real-world robotics tasks across wheeled and legged mobile
+    robot platforms.
+primary_research_field:
+  name:
+    value: Robotics
+    justification: ''
+    quote: For robots to perform a wide variety of tasks, they require a 3D representation of the world that is semantically
+      rich, yet compact and efficient for task-driven perception and planning.... In this work, we propose ConceptGraphs,
+      an open-vocabulary graph-structured represen- tation for 3D scenes.
+  aliases: []
+sub_research_fields:
+- name:
+    value: Scene Understanding
+    justification: The paper focuses on 3D scene graphs which are an advanced representation for understanding the spatial
+      relationships and semantic information in 3D scenes.
+    quote: ConceptGraphs focuses on the construction of the open- vocabulary 3D scene graphs for scene understanding and planning.
+  aliases: []
+- name:
+    value: Scene Planning
+    justification: ''
+    quote: ''
+  aliases: []
+models:
+- name:
+    value: CLIPSeg
+    justification: The model extracts visual features for the segmented regions.
+    quote: 'TABLE II: Open-vocabulary semantic segmentation on the Replica [56] dataset. Privileged methods specifically finetune
+      the pretrained models for semantic segmentation. Zero-shot approaches do not need any finetuning and are evaluated off
+      the shelf.'
+  aliases: []
+  is_contributed:
+    value: false
+    justification: Role:['contributed', 'used', 'referenced']
+    quote: used
+  is_executed:
+    value: false
+    justification: ModelMode:['trained', 'fine-tuned', 'inference']
+    quote: finetuned
+  is_compared:
+    value: false
+    justification: ''
+    quote: ''
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: LSeg
+    justification: ''
+    quote: Language-driven semantic segmentation
+  aliases: []
+  is_contributed:
+    value: false
+    justification: Role:['contributed', 'used', 'referenced']
+    quote: used
+  is_executed:
+    value: false
+    justification: ModelMode:['trained', 'fine-tuned', 'inference']
+    quote: finetuned
+  is_compared:
+    value: false
+    justification: ''
+    quote: ''
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: OpenSeg
+    justification: ''
+    quote: Scaling open-vocabulary image segmentation with image-level labels
+  aliases: []
+  is_contributed:
+    value: false
+    justification: Role:['contributed', 'used', 'referenced']
+    quote: used
+  is_executed:
+    value: false
+    justification: ModelMode:['trained', 'fine-tuned', 'inference']
+    quote: finetuned
+  is_compared:
+    value: false
+    justification: ''
+    quote: ''
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: MaskCLIP
+    justification: The model extracts visual features for the segmented regions.
+    quote: 'TABLE II: Open-vocabulary semantic segmentation on the Replica [56] dataset. Privileged methods specifically finetune
+      the pretrained models for semantic segmentation. Zero-shot approaches do not need any finetuning and are evaluated off
+      the shelf.'
+  aliases: []
+  is_contributed:
+    value: false
+    justification: Role:['contributed', 'used', 'referenced']
+    quote: used
+  is_executed:
+    value: false
+    justification: ModelMode:['trained', 'fine-tuned', 'inference']
+    quote: inference
+  is_compared:
+    value: false
+    justification: ''
+    quote: ''
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: Mask2former
+    justification: ''
+    quote: 'TABLE II: Open-vocabulary semantic segmentation on the Replica [56] dataset. Privileged methods specifically finetune
+      the pretrained models for semantic segmentation. Zero-shot approaches do not need any finetuning and are evaluated off
+      the shelf.'
+  aliases: []
+  is_contributed:
+    value: false
+    justification: Role:['contributed', 'used', 'referenced']
+    quote: used
+  is_executed:
+    value: false
+    justification: ModelMode:['trained', 'fine-tuned', 'inference']
+    quote: inference
+  is_compared:
+    value: false
+    justification: ''
+    quote: ''
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: ConceptGraphs
+    justification: This is the main model proposed and named in the paper.
+    quote: We propose ConceptGraphs, an open-vocabulary and object-centric 3D representation for robot perception and planning.
+  aliases: []
+  is_contributed:
+    value: true
+    justification: Role:['contributed', 'used', 'referenced']
+    quote: Contributed
+  is_executed:
+    value: true
+    justification: ModelMode:['trained', 'fine-tuned', 'inference']
+    quote: Trained
+  is_compared:
+    value: true
+    justification: ''
+    quote: ''
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: DINO
+    justification: DINO is used alongside CLIP for obtaining visual descriptors.
+    quote: Each extracted mask mt,i is then passed to a visual feature extractor (CLIP [31], DINO [53]) to obtain a visual
+      descriptor ft,i =Embed(Itrgb , mt,i ).
+  aliases: []
+  is_contributed:
+    value: false
+    justification: Role:['contributed', 'used', 'referenced']
+    quote: Used
+  is_executed:
+    value: false
+    justification: ModelMode:['trained', 'fine-tuned', 'inference']
+    quote: trained
+  is_compared:
+    value: false
+    justification: ''
+    quote: ''
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: GPT-4
+    justification: GPT-4 is used as the language model for inferring relationships and processing language queries.
+    quote: We use LLaVA [55] as the vision-language model LVLM and GPT-4 [32] for our LLM.
+  aliases: []
+  is_contributed:
+    value: false
+    justification: Role:['contributed', 'used', 'referenced']
+    quote: used
+  is_executed:
+    value: false
+    justification: ModelMode:['trained', 'fine-tuned', 'inference']
+    quote: inference
+  is_compared:
+    value: false
+    justification: ''
+    quote: ''
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: Grounding DINO
+    justification: The model is used in a variant of the ConceptGraphs system for open-vocabulary detection.
+    quote: An open-vocabulary 2D detector (Grounding DINO [34]) to obtain object bounding boxes.
+  aliases: []
+  is_contributed:
+    value: false
+    justification: Role:['contributed', 'used', 'referenced']
+    quote: used
+  is_executed:
+    value: false
+    justification: ModelMode:['trained', 'fine-tuned', 'inference']
+    quote: inference
+  is_compared:
+    value: false
+    justification: ''
+    quote: ''
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: LLaVA
+    justification: LLaVA is used for generating object captions from visual data.
+    quote: We use LLaVA [55] as the vision-language model LVLM and GPT-4 [32] for our LLM.
+  aliases: []
+  is_contributed:
+    value: false
+    justification: Role:['contributed', 'used', 'referenced']
+    quote: used
+  is_executed:
+    value: false
+    justification: ModelMode:['trained', 'fine-tuned', 'inference']
+    quote: inference
+  is_compared:
+    value: false
+    justification: ''
+    quote: ''
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: SegmentAnything
+    justification: The paper uses Segment Anything for segmentation tasks.
+    quote: "Our experiments use SegmentAnything (SAM) [33] as the segmentation model Seg(\xB7)"
+  aliases:
+  - SAM
+  is_contributed:
+    value: false
+    justification: Role:['contributed', 'used', 'referenced']
+    quote: Used
+  is_executed:
+    value: false
+    justification: ModelMode:['trained', 'fine-tuned', 'inference']
+    quote: Inference
+  is_compared:
+    value: false
+    justification: ''
+    quote: ''
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+datasets:
+- name:
+    value: AI2Thor
+    justification: AI2Thor is used for simulation experiments.
+    quote: "We showcase this with a \u2026 localization and remapping task in the AI2Thor [63], [64] simulation environment."
+  aliases: []
+  role: Used
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: Replica
+    justification: The paper uses Replica data scenes for evaluating scene graph accuracy.
+    quote: We evaluate on the Replica dataset [56] and a real- world scan of the REAL Lab, where we staged a number of items
+      including clothes, tools, and toys.
+  aliases: []
+  role: Used
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: REAL Lab
+    justification: The paper uses Replica data scenes for evaluating scene graph accuracy.
+    quote: We evaluate on the Replica dataset [56] and a real- world scan of the REAL Lab, where we staged a number of items
+      including clothes, tools, and toys.
+  aliases: []
+  role: Used
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+libraries:
+- name:
+    value: Open3d SLAM
+    justification: Used for building initial pointcloud maps for the Jackal robot navigation.
+    quote: We begin by building a pointcloud of the REAL Lab using the onboard VLP-16 and Open3d SLAM [68].
+  aliases: []
+  role: used
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: RTAB-Map
+    justification: Utilized for obtaining camera poses and the scene point cloud in experiments.
+    quote: 'We then stage two separate scenes with different objects: one for object search and another for traversability
+      estimation. In both cases, we map the scene with an Azure Kinect Camera and rely on RTAB-Map [69] to obtain camera poses
+      and the scene point cloud.'
+  aliases: []
+  role: used
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
