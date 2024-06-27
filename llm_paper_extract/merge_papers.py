@@ -206,7 +206,10 @@ def _validate_field(model_dump:dict | PaperExtractions, model_cls:PaperExtractio
 
     while True:
         try:
-            _content = [l for l in content.splitlines() if not l.lstrip().startswith("##")]
+            _content = [
+                l for l in content.splitlines()
+                if l.strip() and not l.lstrip().startswith("##")
+            ]
             _content = "\n".join(_content) or default_empty
             model_dump[field] = yaml.safe_load(_content)
             model_cls.model_validate(model_dump)
