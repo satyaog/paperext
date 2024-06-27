@@ -493,6 +493,12 @@ def main(argv=None):
         for tmpfile in Path(_TMPDIR.name).glob("*.yaml"):
             tmpfile.unlink()
 
+        for cmd in (
+            ["git", "add", f],
+            ["git", "commit", "-m", f.stem, "--only", f]
+        ):
+            subprocess.check_call(cmd)
+
         print('Merged paper saved to', f)
 
 
