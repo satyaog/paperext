@@ -22,7 +22,6 @@ from . import ROOT_DIR
 from .models.model import ExtractionResponse, PaperExtractions, empty_model
 from .utils import str_normalize
 
-_STRIP_RE = r"[a-zA-Z0-9].*[a-zA-Z0-9]"
 _EDITOR = os.environ.get("VISUAL", os.environ.get("EDITOR", None))
 _TMPDIR = tempfile.TemporaryDirectory()
 
@@ -493,11 +492,11 @@ def main(argv=None):
         for tmpfile in Path(_TMPDIR.name).glob("*.yaml"):
             tmpfile.unlink()
 
-        for cmd in (
-            ["git", "add", f],
-            ["git", "commit", "-m", f.stem, "--only", f]
+        for cmd, check in (
+            (["git", "add", f], True),
+            (["git", "commit", "-m", f.stem, "--only", f], False),
         ):
-            subprocess.check_call(cmd)
+            subprocess.run(cmd, check=check)
 
         print('Merged paper saved to', f)
 
