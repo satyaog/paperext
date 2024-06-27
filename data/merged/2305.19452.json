@@ -1,0 +1,632 @@
+{
+  "title": {
+    "value": "Bigger, Better, Faster: Human-level Atari with human-level efficiency",
+    "justification": "The title is directly taken from the research paper.",
+    "quote": "Bigger, Better, Faster: Human-level Atari with human-level efficiency"
+  },
+  "description": "This paper introduces a new value-based RL agent, called BBF, which achieves super-human performance in the Atari 100K benchmark. BBF scales the neural networks used for value estimation in a sample-efficient manner and incorporates various design choices to enable this scaling. The authors also discuss moving the goalposts for sample-efficient RL research on the ALE benchmark.",
+  "type": {
+    "value": "Empirical Study",
+    "justification": "The paper conducts extensive analyses and experiments to evaluate the BBF model on the Atari 100K benchmark and compares it with other models.",
+    "quote": "We conduct extensive analyses of these design choices and provide insights for future work."
+  },
+  "primary_research_field": {
+    "name": {
+      "value": "Reinforcement Learning",
+      "justification": "The paper focuses on developing a reinforcement learning agent and measuring its performance on the Atari 100K benchmark.",
+      "quote": "We introduce a value-based RL agent, which we call BBF, that achieves super-human performance in the Atari 100K benchmark."
+    },
+    "aliases": []
+  },
+  "sub_research_fields": [
+    {
+      "name": {
+        "value": "Sample-efficient Reinforcement Learning",
+        "justification": "The paper aims to achieve super-human performance with human-level sample efficiency in reinforcement learning tasks.",
+        "quote": "BBF relies on scaling the neural networks used for value estimation, as well as a number of other design choices that enable this scaling in a sample-efficient manner."
+      },
+      "aliases": []
+    }
+  ],
+  "models": [
+    {
+      "name": {
+        "value": "AlphaGo",
+        "justification": "Referenced as an example of successful RL methods.",
+        "quote": "... playing complex games at a human or super-human level, such as ... AlphaGo (Silver et al., 2016) ..."
+      },
+      "aliases": [],
+      "is_contributed": {
+        "value": false,
+        "justification": "Role:['contributed', 'used', 'referenced']",
+        "quote": "Referenced"
+      },
+      "is_executed": {
+        "value": false,
+        "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
+        "quote": ""
+      },
+      "is_inference_only": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "is_compared": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
+    },
+    {
+      "name": {
+        "value": "AlphaStar",
+        "justification": "Referenced as an example of successful RL methods.",
+        "quote": "... playing complex games at a human or super-human level, such as ... AlphaStar (Vinyals et al., 2019) ..."
+      },
+      "aliases": [],
+      "is_contributed": {
+        "value": false,
+        "justification": "Role:['contributed', 'used', 'referenced']",
+        "quote": "Referenced"
+      },
+      "is_executed": {
+        "value": false,
+        "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
+        "quote": ""
+      },
+      "is_inference_only": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "is_compared": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
+    },
+    {
+      "name": {
+        "value": "BBF",
+        "justification": "BBF is the central model introduced by the paper.",
+        "quote": "We introduce a value-based RL agent, which we call BBF, that achieves super-human performance in the Atari 100K benchmark."
+      },
+      "aliases": [],
+      "is_contributed": {
+        "value": true,
+        "justification": "Role:['contributed', 'used', 'referenced']",
+        "quote": "contributed"
+      },
+      "is_executed": {
+        "value": true,
+        "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
+        "quote": "trained"
+      },
+      "is_inference_only": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "is_compared": {
+        "value": true,
+        "justification": "",
+        "quote": ""
+      },
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
+    },
+    {
+      "name": {
+        "value": "DER",
+        "justification": "Used for performance comparison in the analysis.",
+        "quote": "Figure 2: Comparing Atari 100K performance and computational cost of our model-free BBF agent to ... DER (Van Hasselt et al., 2019) ..."
+      },
+      "aliases": [],
+      "is_contributed": {
+        "value": false,
+        "justification": "Role:['contributed', 'used', 'referenced']",
+        "quote": "Used"
+      },
+      "is_executed": {
+        "value": false,
+        "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
+        "quote": "Trained"
+      },
+      "is_inference_only": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "is_compared": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
+    },
+    {
+      "name": {
+        "value": "DQN",
+        "justification": "DQN is used as a baseline for performance comparison.",
+        "quote": "...representative model-free RL methods, including DQN (Mnih et al., 2015b)..."
+      },
+      "aliases": [],
+      "is_contributed": {
+        "value": false,
+        "justification": "Role:['contributed', 'used', 'referenced']",
+        "quote": "referenced"
+      },
+      "is_executed": {
+        "value": false,
+        "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
+        "quote": "inference"
+      },
+      "is_inference_only": {
+        "value": true,
+        "justification": "",
+        "quote": ""
+      },
+      "is_compared": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
+    },
+    {
+      "name": {
+        "value": "DrQ",
+        "justification": "Used for performance comparison in the analysis.",
+        "quote": "Figure 2: Comparing Atari 100K performance and computational cost of our model-free BBF agent to ... DrQ (Kostrikov et al., 2020) ..."
+      },
+      "aliases": [],
+      "is_contributed": {
+        "value": false,
+        "justification": "Role:['contributed', 'used', 'referenced']",
+        "quote": "Used"
+      },
+      "is_executed": {
+        "value": false,
+        "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
+        "quote": "Trained"
+      },
+      "is_inference_only": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "is_compared": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
+    },
+    {
+      "name": {
+        "value": "DreamerV2",
+        "justification": "DreamerV2 is mentioned as a model-based RL method for comparison.",
+        "quote": "To contrast with the sample-efficiency progress in model-based RL, we also include DreamerV2 (Hafner et al., 2020)..."
+      },
+      "aliases": [],
+      "is_contributed": {
+        "value": false,
+        "justification": "Role:['contributed', 'used', 'referenced']",
+        "quote": "referenced"
+      },
+      "is_executed": {
+        "value": false,
+        "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
+        "quote": "inference"
+      },
+      "is_inference_only": {
+        "value": true,
+        "justification": "",
+        "quote": ""
+      },
+      "is_compared": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
+    },
+    {
+      "name": {
+        "value": "EfficientZero",
+        "justification": "EfficientZero is used for comparison on sample efficiency and computational costs.",
+        "quote": "While human-level efficiency has been obtained by the model-based EfficientZero agent (Ye et al., 2021)..."
+      },
+      "aliases": [],
+      "is_contributed": {
+        "value": false,
+        "justification": "Role:['contributed', 'used', 'referenced']",
+        "quote": "used"
+      },
+      "is_executed": {
+        "value": false,
+        "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
+        "quote": "trained"
+      },
+      "is_inference_only": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "is_compared": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
+    },
+    {
+      "name": {
+        "value": "IQN",
+        "justification": "IQN is mentioned as an example of a model-free RL method for comparison.",
+        "quote": "...representative model-free RL methods, including... IQN (Dabney et al., 2018)..."
+      },
+      "aliases": [],
+      "is_contributed": {
+        "value": false,
+        "justification": "Role:['contributed', 'used', 'referenced']",
+        "quote": "used"
+      },
+      "is_executed": {
+        "value": false,
+        "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
+        "quote": "trained"
+      },
+      "is_inference_only": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "is_compared": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
+    },
+    {
+      "name": {
+        "value": "IRIS",
+        "justification": "IRIS is referenced as another model-based agent for performance comparison.",
+        "quote": "Micheli et al. (2023) introduce IRIS, a data-efficient agent that learns in a world model..."
+      },
+      "aliases": [],
+      "is_contributed": {
+        "value": false,
+        "justification": "Role:['contributed', 'used', 'referenced']",
+        "quote": "used"
+      },
+      "is_executed": {
+        "value": false,
+        "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
+        "quote": "trained"
+      },
+      "is_inference_only": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "is_compared": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
+    },
+    {
+      "name": {
+        "value": "MuZero",
+        "justification": "MuZero Reanalyse is cited for comparing sample-efficiency in RL.",
+        "quote": "To contrast with the sample-efficiency progress in model-based RL, we also include ... MuZero Reanalyse (Schrittwieser et al., 2021)..."
+      },
+      "aliases": [],
+      "is_contributed": {
+        "value": false,
+        "justification": "Role:['contributed', 'used', 'referenced']",
+        "quote": "used"
+      },
+      "is_executed": {
+        "value": false,
+        "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
+        "quote": "trained"
+      },
+      "is_inference_only": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "is_compared": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
+    },
+    {
+      "name": {
+        "value": "OpenAI Five",
+        "justification": "Referenced as an example of successful RL methods.",
+        "quote": "... playing complex games at a human or super-human level, such as OpenAI Five (Berner et al., 2019) ..."
+      },
+      "aliases": [],
+      "is_contributed": {
+        "value": false,
+        "justification": "Role:['contributed', 'used', 'referenced']",
+        "quote": "Referenced"
+      },
+      "is_executed": {
+        "value": false,
+        "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
+        "quote": ""
+      },
+      "is_inference_only": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "is_compared": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
+    },
+    {
+      "name": {
+        "value": "Rainbow",
+        "justification": "Rainbow is cited as another baseline model-free RL method for comparison.",
+        "quote": "...representative model-free RL methods, including... Rainbow (Hessel et al., 2017)..."
+      },
+      "aliases": [],
+      "is_contributed": {
+        "value": false,
+        "justification": "Role:['contributed', 'used', 'referenced']",
+        "quote": "used"
+      },
+      "is_executed": {
+        "value": false,
+        "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
+        "quote": "trained"
+      },
+      "is_inference_only": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "is_compared": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
+    },
+    {
+      "name": {
+        "value": "SPR",
+        "justification": "Used for performance comparison in the analysis.",
+        "quote": "Figure 2: Comparing Atari 100K performance and computational cost of our model-free BBF agent to ... SPR (Schwarzer et al., 2021) ..."
+      },
+      "aliases": [],
+      "is_contributed": {
+        "value": false,
+        "justification": "Role:['contributed', 'used', 'referenced']",
+        "quote": "Used"
+      },
+      "is_executed": {
+        "value": false,
+        "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
+        "quote": "Trained"
+      },
+      "is_inference_only": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "is_compared": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
+    },
+    {
+      "name": {
+        "value": "SR-SPR",
+        "justification": "SR-SPR is used for benchmarking BBF's performance.",
+        "quote": "BBF’s very high performance relative to some of the best-performing Atari 100K agents: EfficientZero (Ye et al., 2021), SR-SPR (D’Oro et al., 2023)..."
+      },
+      "aliases": [],
+      "is_contributed": {
+        "value": false,
+        "justification": "Role:['contributed', 'used', 'referenced']",
+        "quote": "used"
+      },
+      "is_executed": {
+        "value": false,
+        "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
+        "quote": "trained"
+      },
+      "is_inference_only": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "is_compared": {
+        "value": false,
+        "justification": "",
+        "quote": ""
+      },
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
+    }
+  ],
+  "datasets": [
+    {
+      "name": {
+        "value": "Arcade Learning Environment",
+        "justification": "ALE is used as a broader platform to discuss sample-efficient RL research in the context of the BBF agent's performance.",
+        "quote": "Finally, we propose moving the goalpost for sample-efficient RL research on the ALE."
+      },
+      "aliases": [
+        "ALE"
+      ],
+      "role": "used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
+    },
+    {
+      "name": {
+        "value": "Atari 100K benchmark",
+        "justification": "The Atari 100K benchmark is the primary dataset used for evaluating the performance of the BBF agent.",
+        "quote": "We introduce a value-based RL agent, which we call BBF, that achieves super-human performance in the Atari 100K benchmark."
+      },
+      "aliases": [],
+      "role": "used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
+    }
+  ],
+  "libraries": [
+    {
+      "name": {
+        "value": "Dopamine framework",
+        "justification": "The Dopamine framework is mentioned as the basis for the implementation of the BBF agent.",
+        "quote": "Our implementation is based on the Dopamine framework (Castro et al., 2018)..."
+      },
+      "aliases": [],
+      "role": "used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
+    },
+    {
+      "name": {
+        "value": "JAX",
+        "justification": "Used for implementing some of the models and experiments in the paper.",
+        "quote": "... we would also like to thank the Python community for developing tools that enabled this work, including JAX (Bradbury et al., 2018) ..."
+      },
+      "aliases": [],
+      "role": "Used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
+    },
+    {
+      "name": {
+        "value": "Matplotlib",
+        "justification": "Used for plotting and visualizations in the paper.",
+        "quote": "... we would also like to thank the Python community for developing tools that enabled this work, including ... Matplotlib (Hunter, 2007) ..."
+      },
+      "aliases": [],
+      "role": "Used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
+    },
+    {
+      "name": {
+        "value": "NumPy",
+        "justification": "Used for numerical operations in the implementation.",
+        "quote": "... we would also like to thank the Python community for developing tools that enabled this work, including NumPy (Harris et al., 2020) ..."
+      },
+      "aliases": [],
+      "role": "Used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
+    },
+    {
+      "name": {
+        "value": "rliable",
+        "justification": "The rliable library is used for evaluation metrics including interquartile mean (IQM).",
+        "quote": "For evaluation, we use rliable (Agarwal et al., 2021b) and in particular, the interquartile mean (IQM) metric..."
+      },
+      "aliases": [],
+      "role": "used",
+      "referenced_paper_title": {
+        "value": "",
+        "justification": "",
+        "quote": ""
+      }
+    }
+  ]
+}
