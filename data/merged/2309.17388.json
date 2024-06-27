@@ -1,33 +1,25 @@
 {
+  "description": "This paper introduces Tree Cross Attention (TCA) and ReTreever, with TCA being a scalable and token-efficient alternative to Cross Attention by organizing data in a tree structure and performing tree-based search during inference. ReTreever, leveraging TCA, shows significant improvements in token efficiency and performance across various tasks compared to established models like Perceiver IO.",
   "title": {
     "value": "Tree Cross Attention",
     "justification": "The title 'Tree Cross Attention' accurately represents the core contribution of the paper, which is to introduce Tree Cross Attention (TCA) as a more efficient alternative to traditional Cross Attention.",
     "quote": "T REE C ROSS ATTENTION Frederick Tung Borealis AI frederick.tung@borealisai.com"
   },
-  "description": "This paper introduces Tree Cross Attention (TCA) and ReTreever, with TCA being a scalable and token-efficient alternative to Cross Attention by organizing data in a tree structure and performing tree-based search during inference. ReTreever, leveraging TCA, shows significant improvements in token efficiency and performance across various tasks compared to established models like Perceiver IO.",
   "type": {
     "value": "Empirical Study",
     "justification": "The paper is based on empirical results demonstrated through experiments on classification and uncertainty estimation tasks.",
     "quote": "We evaluate across various classification and uncertainty prediction tasks, showing (1) TCA achieves performance comparable to Cross Attention while being significantly more token efficient and (2) ReTreever outperforms Perceiver IO while using the same number of tokens for inference."
   },
-  "primary_research_field": {
-    "name": {
-      "value": "Deep Learning",
-      "justification": "The paper focuses on developing and improving models and mechanisms within the scope of deep learning.",
-      "quote": "With the rapid growth in applications of machine learning, an important objective is to make inference efficient both in terms of compute and memory."
-    },
-    "aliases": []
+  "research_field": {
+    "value": "Deep Learning",
+    "justification": "The paper focuses on developing and improving models and mechanisms within the scope of deep learning.",
+    "quote": "With the rapid growth in applications of machine learning, an important objective is to make inference efficient both in terms of compute and memory."
   },
-  "sub_research_fields": [
-    {
-      "name": {
-        "value": "Attention Mechanisms",
-        "justification": "The core contribution is an improvement upon Cross Attention mechanisms.",
-        "quote": "In this work, we propose Tree Cross Attention (TCA), a token-efficient variant of Cross Attention."
-      },
-      "aliases": []
-    }
-  ],
+  "sub_research_field": {
+    "value": "Attention Mechanisms",
+    "justification": "The core contribution is an improvement upon Cross Attention mechanisms.",
+    "quote": "In this work, we propose Tree Cross Attention (TCA), a token-efficient variant of Cross Attention."
+  },
   "models": [
     {
       "name": {
@@ -35,27 +27,13 @@
         "justification": "Perceiver IO is referenced for comparison purposes to show the efficiency and performance of ReTreever and TCA.",
         "quote": "Perceiver IO’s performance for the same number of tokens was dismal (15.2 ± 0.0% accuracy at N = 256), further dropping in performance as the length of the sequence increased."
       },
-      "aliases": [],
-      "is_contributed": {
-        "value": false,
-        "justification": "Role:['contributed', 'used', 'referenced']",
-        "quote": "referenced"
+      "role": "referenced",
+      "type": {
+        "value": "Attention Mechanism",
+        "justification": "Perceiver IO is another attention mechanism used for comparison.",
+        "quote": "Perceiver IO (Jaegle et al., 2021) is a general attention-based neural network architecture applicable to various tasks."
       },
-      "is_executed": {
-        "value": false,
-        "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
-        "quote": "inference"
-      },
-      "is_compared": {
-        "value": false,
-        "justification": "",
-        "quote": ""
-      },
-      "referenced_paper_title": {
-        "value": "",
-        "justification": "",
-        "quote": ""
-      }
+      "mode": "inference"
     },
     {
       "name": {
@@ -63,27 +41,13 @@
         "justification": "ReTreever leverages Tree Cross Attention for token-efficient inference, introduced in the paper.",
         "quote": "Leveraging TCA, we introduce ReTreever, a flexible architecture for token-efficient inference."
       },
-      "aliases": [],
-      "is_contributed": {
-        "value": true,
-        "justification": "Role:['contributed', 'used', 'referenced']",
-        "quote": "contributed"
+      "role": "contributed",
+      "type": {
+        "value": "Neural Network Architecture",
+        "justification": "ReTreever is described as an architecture leveraging the Tree Cross Attention mechanism.",
+        "quote": "we introduce ReTreever, a flexible architecture for token-efficient inference."
       },
-      "is_executed": {
-        "value": true,
-        "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
-        "quote": "inference"
-      },
-      "is_compared": {
-        "value": true,
-        "justification": "",
-        "quote": ""
-      },
-      "referenced_paper_title": {
-        "value": "",
-        "justification": "",
-        "quote": ""
-      }
+      "mode": "inference"
     }
   ],
   "datasets": [
@@ -93,13 +57,7 @@
         "justification": "CelebA dataset is used for Image Completion tasks to benchmark ReTreever's performance.",
         "quote": "Results. In Table 3, we see that ReTreever outperforms Perceiver IO significantly on both CelebA and EMNIST while using the same number of tokens."
       },
-      "aliases": [],
-      "role": "used",
-      "referenced_paper_title": {
-        "value": "",
-        "justification": "",
-        "quote": ""
-      }
+      "role": "used"
     },
     {
       "name": {
@@ -107,13 +65,7 @@
         "justification": "The Copy Task is used to benchmark the efficiency of Tree Cross Attention by testing token retrieval.",
         "quote": "Results. We found that both Cross Attention and Tree Cross Attention were able to solve this task perfectly (Table 1). In comparison, TCA requires ∼ 50× fewer tokens than Cross Attention."
       },
-      "aliases": [],
-      "role": "used",
-      "referenced_paper_title": {
-        "value": "",
-        "justification": "",
-        "quote": ""
-      }
+      "role": "used"
     },
     {
       "name": {
@@ -121,13 +73,7 @@
         "justification": "EMNIST dataset is also used for Image Completion tasks to evaluate and compare performance.",
         "quote": "Results. In Table 3, we see that ReTreever outperforms Perceiver IO significantly on both CelebA and EMNIST while using the same number of tokens."
       },
-      "aliases": [],
-      "role": "used",
-      "referenced_paper_title": {
-        "value": "",
-        "justification": "",
-        "quote": ""
-      }
+      "role": "used"
     },
     {
       "name": {
@@ -135,13 +81,7 @@
         "justification": "GP Regression is used for evaluating the performance of ReTreever in uncertainty estimation settings.",
         "quote": "We evaluate ReTreever on popular uncertainty estimation settings used in (Conditional) Neural Processes literature and which have been benchmarked extensively (Table 13 in Appendix) (Garnelo et al., 2018a;b; Kim et al., 2019; Lee et al., 2020; Nguyen & Grover, 2022; Feng et al., 2023a;b)."
       },
-      "aliases": [],
-      "role": "used",
-      "referenced_paper_title": {
-        "value": "",
-        "justification": "",
-        "quote": ""
-      }
+      "role": "used"
     },
     {
       "name": {
@@ -149,13 +89,7 @@
         "justification": "The Human Activity dataset is utilized for evaluating performance on time series classification tasks.",
         "quote": "The objective of this task is to classify each time point into one of eleven types of activities. Results. Table 4 show similar conclusions as our prior experiments."
       },
-      "aliases": [],
-      "role": "used",
-      "referenced_paper_title": {
-        "value": "",
-        "justification": "",
-        "quote": ""
-      }
+      "role": "used"
     }
   ],
   "libraries": [
@@ -165,13 +99,7 @@
         "justification": "PyTorch is the deep learning library used for implementing the models and conducting experiments.",
         "quote": "Our Perceiver IO baseline is based on the popular Perceiver (IO) repository (https://github.com/lucidrains/perceiver-pytorch/blob/main/perceiver pytorch/perceiver pytorch.py)."
       },
-      "aliases": [],
-      "role": "used",
-      "referenced_paper_title": {
-        "value": "",
-        "justification": "",
-        "quote": ""
-      }
+      "role": "used"
     }
   ]
 }

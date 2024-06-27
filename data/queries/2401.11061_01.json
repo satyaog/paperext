@@ -2,35 +2,27 @@
   "paper": "2401.11061.txt",
   "words": 6874,
   "extractions": {
+    "description": "The paper introduces PhotoBot, a framework that incorporates high-level human language guidance and a robot photographer. It uses visual language models and large language models to communicate photography suggestions through reference images, enabling automated photo acquisition by solving a perspective-n-point (PnP) problem for camera pose adjustments.",
     "title": {
       "value": "PhotoBot: Reference-Guided Interactive Photography via Natural Language",
       "justification": "The title is explicitly mentioned at the beginning of the paper and accurately represents the scope of the research.",
       "quote": "PhotoBot: Reference-Guided Interactive Photography via Natural Language"
     },
-    "description": "The paper introduces PhotoBot, a framework that incorporates high-level human language guidance and a robot photographer. It uses visual language models and large language models to communicate photography suggestions through reference images, enabling automated photo acquisition by solving a perspective-n-point (PnP) problem for camera pose adjustments.",
     "type": {
       "value": "empirical",
       "justification": "The research paper includes experiments, user studies, and evaluations of the proposed PhotoBot framework in real-world settings.",
       "quote": "We evaluated the PhotoBot framework using a real Franka Emika robot manipulator equipped with a RealSense D435 RGB-D camera."
     },
-    "primary_research_field": {
-      "name": {
-        "value": "Computer Vision",
-        "justification": "The paper focuses on using visual language models and other computer vision techniques in the context of robot photography.",
-        "quote": "We leverage a visual language model (VLM) and an object detector to characterize the reference images via textual descriptions and then use a large language model (LLM) to retrieve relevant reference images."
-      },
-      "aliases": []
+    "research_field": {
+      "value": "Computer Vision",
+      "justification": "The paper focuses on using visual language models and other computer vision techniques in the context of robot photography.",
+      "quote": "We leverage a visual language model (VLM) and an object detector to characterize the reference images via textual descriptions and then use a large language model (LLM) to retrieve relevant reference images."
     },
-    "sub_research_fields": [
-      {
-        "name": {
-          "value": "Robot Photography",
-          "justification": "The sub-field specifically targets advancing the domain of automated and interactive photography using robots.",
-          "quote": "In this work, we introduce PhotoBot, a framework for automated photo acquisition based on an interplay between high-level human guidance and a robot photographer."
-        },
-        "aliases": []
-      }
-    ],
+    "sub_research_field": {
+      "value": "Robot Photography",
+      "justification": "The sub-field specifically targets advancing the domain of automated and interactive photography using robots.",
+      "quote": "In this work, we introduce PhotoBot, a framework for automated photo acquisition based on an interplay between high-level human guidance and a robot photographer."
+    },
     "models": [
       {
         "name": {
@@ -38,27 +30,13 @@
           "justification": "DINO-ViT is used in the paper for extracting high-level semantic correspondences between images.",
           "quote": "To extract features from an image, we feed the image into a pre-trained DINO-ViT transformer and use the keys from intermediate transformer layers as dense image descriptors."
         },
-        "aliases": [],
-        "is_contributed": {
-          "value": false,
-          "justification": "Role:['contributed', 'used', 'referenced']",
-          "quote": "used"
+        "role": "used",
+        "type": {
+          "value": "Vision Transformer",
+          "justification": "DINO-ViT is a type of Vision Transformer model specialized in self-supervised learning.",
+          "quote": "To extract features from an image, we feed the image into a pre-trained DINO-ViT transformer and use the keys from intermediate transformer layers as dense image descriptors."
         },
-        "is_executed": {
-          "value": false,
-          "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
-          "quote": "inference"
-        },
-        "is_compared": {
-          "value": false,
-          "justification": "",
-          "quote": ""
-        },
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "mode": "inference"
       },
       {
         "name": {
@@ -66,27 +44,13 @@
           "justification": "InstructBLIP is employed in the paper as the Visual Language Model to describe curated images.",
           "quote": "We use Detic as our object detector and InstructBLIP as our VLM."
         },
-        "aliases": [],
-        "is_contributed": {
-          "value": false,
-          "justification": "Role:['contributed', 'used', 'referenced']",
-          "quote": "used"
+        "role": "used",
+        "type": {
+          "value": "Visual Language Model",
+          "justification": "InstructBLIP is a large-scale visual language model used to generate descriptions for images.",
+          "quote": "We use Detic as our object detector and InstructBLIP as our VLM."
         },
-        "is_executed": {
-          "value": false,
-          "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
-          "quote": "inference"
-        },
-        "is_compared": {
-          "value": false,
-          "justification": "",
-          "quote": ""
-        },
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "mode": "inference"
       }
     ],
     "datasets": [
@@ -96,13 +60,7 @@
           "justification": "The paper utilizes a curated set of professionally-taken photos from Shutterstock for its reference image gallery.",
           "quote": "All reference images are used under license from Shutterstock.com."
         },
-        "aliases": [],
-        "role": "used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "used"
       }
     ],
     "libraries": [
@@ -112,13 +70,7 @@
           "justification": "GPT-4 is employed for sophisticated reasoning and matching of textual descriptions of images.",
           "quote": "In turn, we feed the m texts, as well as the user prompt into GPT-4, and ask GPT-4 to find the most m* relevant captions."
         },
-        "aliases": [],
-        "role": "used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "used"
       },
       {
         "name": {
@@ -126,13 +78,7 @@
           "justification": "Sentence-BERT is used to embed textual descriptions and queries into vectors for efficient retrieval.",
           "quote": "We embed the VLM description, object list, metadata, and people count into a single textual caption, which we embed into a vector using a sentence transformer."
         },
-        "aliases": [],
-        "role": "used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "used"
       }
     ]
   },

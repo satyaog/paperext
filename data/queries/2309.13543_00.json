@@ -2,35 +2,27 @@
   "paper": "2309.13543.txt",
   "words": 8281,
   "extractions": {
+    "description": "The paper addresses the problem of multi-label text classification under limited supervision settings. The proposed methodology makes use of a pre-trained language model for preliminary label predictions and updates these predictions using a signed label dependency graph. This graph is computed from label descriptions and is leveraged through message passing techniques. The model is particularly focused on settings where annotation data is scarce or unavailable.",
     "title": {
       "value": "Substituting Data Annotation with Balanced Updates and Collective Loss in Multi-Label Text Classification",
       "justification": "This is the exact title provided in the paper.",
       "quote": "Citation: Ozmen, M. Cotnareanu, J. and Coates, M. Substituting Data Annotation with Balanced Updates and Collective Loss in Multi-label Text Classification. Proc. Conf. Lifelong Learning Agents (CoLLAs), 2023."
     },
-    "description": "The paper addresses the problem of multi-label text classification under limited supervision settings. The proposed methodology makes use of a pre-trained language model for preliminary label predictions and updates these predictions using a signed label dependency graph. This graph is computed from label descriptions and is leveraged through message passing techniques. The model is particularly focused on settings where annotation data is scarce or unavailable.",
     "type": {
       "value": "Empirical Study",
       "justification": "The paper includes experiments and discussions on the performance of the proposed model, showing empirical results.",
       "quote": "The experiments show that the proposed framework achieves effective performance under low supervision settings with almost imperceptible computational and memory overheads added to the usage of pre-trained language model."
     },
-    "primary_research_field": {
-      "name": {
-        "value": "Deep Learning",
-        "justification": "The methods and discussions within the paper fall under the broader area of deep learning, specifically focusing on applications in text classification.",
-        "quote": "Our method follows three steps, (1) mapping input text into a set of preliminary label likelihoods by natural language inference using a pre-trained language model..."
-      },
-      "aliases": []
+    "research_field": {
+      "value": "Deep Learning",
+      "justification": "The methods and discussions within the paper fall under the broader area of deep learning, specifically focusing on applications in text classification.",
+      "quote": "Our method follows three steps, (1) mapping input text into a set of preliminary label likelihoods by natural language inference using a pre-trained language model..."
     },
-    "sub_research_fields": [
-      {
-        "name": {
-          "value": "Natural Language Processing",
-          "justification": "The core of the research focuses on natural language inference and multi-label text classification, which are subfields of Natural Language Processing (NLP).",
-          "quote": "Multi-label text classification (MLTC) is the task of selecting the correct subset of labels for each text sample in a corpus."
-        },
-        "aliases": []
-      }
-    ],
+    "sub_research_field": {
+      "value": "Natural Language Processing",
+      "justification": "The core of the research focuses on natural language inference and multi-label text classification, which are subfields of Natural Language Processing (NLP).",
+      "quote": "Multi-label text classification (MLTC) is the task of selecting the correct subset of labels for each text sample in a corpus."
+    },
     "models": [
       {
         "name": {
@@ -38,27 +30,13 @@
           "justification": "BART is used for transforming input using its pre-trained model.",
           "quote": "We transform the input using the pre-trained model BART"
         },
-        "aliases": [],
-        "is_contributed": {
-          "value": false,
-          "justification": "Role:['contributed', 'used', 'referenced']",
-          "quote": "used"
+        "role": "used",
+        "type": {
+          "value": "Pre-trained Language Model",
+          "justification": "BART is used as a pre-trained language model in this study.",
+          "quote": "We transform the input using the pre-trained model BART (Lewis et al., 2020) and its corresponding tokenizer, which is fine-tuned on a large corpus, MNLI (Williams et al., 2018), composed of hypothesis-premise pairs."
         },
-        "is_executed": {
-          "value": false,
-          "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
-          "quote": "inference"
-        },
-        "is_compared": {
-          "value": false,
-          "justification": "",
-          "quote": ""
-        },
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "mode": "inference"
       }
     ],
     "datasets": [
@@ -68,13 +46,7 @@
           "justification": "The Reuters-21578 dataset is used in the study for experimental purposes.",
           "quote": "For our experiments we use two multi-label text classification datasets: Reuters215781 (Lewis et al., 2004), which is a collection of newswire stories;"
         },
-        "aliases": [],
-        "role": "used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "used"
       },
       {
         "name": {
@@ -82,13 +54,7 @@
           "justification": "The StackEx-Philosophy dataset is used in the study for experimental purposes.",
           "quote": "stackEx-Philosophy2 (Charte & Charte, 2015), which is a collection of posts in Stack Exchange Philosophy forums."
         },
-        "aliases": [],
-        "role": "used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "used"
       }
     ],
     "libraries": [
@@ -98,13 +64,7 @@
           "justification": "GloVe is used for generating word embeddings in the study.",
           "quote": "We use GloVe (Pennington et al., 2014) to generate word embeddings to calculate the label graph from the label descriptions."
         },
-        "aliases": [],
-        "role": "used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "used"
       },
       {
         "name": {
@@ -112,13 +72,7 @@
           "justification": "Scikit-learn library is referenced for implementations of baseline models in the study.",
           "quote": "The results for ML-KNN and ML-ARAM are obtained by implementations provided in the scikit-learn library (Pedregosa et al., 2011)."
         },
-        "aliases": [],
-        "role": "referenced",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "referenced"
       }
     ]
   },
