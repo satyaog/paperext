@@ -68,19 +68,24 @@ class Model(BaseModel):
     aliases: List[str] = Field(
         description="List of names or acronyms used to identify the Model",
     )
-    # | contributed | executed    | compared    | result
-    # | X           | X           | X           | is a contribution to the research field
-    # |             | X           | X           | has been executed (trained or finetuned or inference) and compared to other models
-    # |             |             | X           | is compared to other models using only results from a referenced paper
-    # |             |             |             | is only referenced in the paper but is not used in any comparison
+    # | contributed | executed    | inference   | compared    | result
+    # | X           | X           | X           | X           | is a contribution to the research field
+    # |             | X           |             | X           | has been executed (trained or finetuned) and compared to other models
+    # |             |             | X           | X           | has been executed in inference only and compared to other models
+    # |             |             |             | X           | is compared to other models using only results from a referenced paperpaper
+    # |             | X           |             |             | executed but not compared, most likely a component of a contributed modeled model
+    # |             |             |             |             | is only referenced in the paper but is not used in any comparison
     is_contributed: Explained[bool] = Field(
-        description="Was the Model a contribution to the research field, in the scope of the paper",
+        description="Was the Model a contribution to the research field in the scope of the paper",
     )
     is_executed: Explained[bool] = Field(
-        description="Was the Model executed on GPU or CPU, in the scope of the paper",
+        description="Was the Model executed on GPU or CPU in the scope of the paper",
+    )
+    is_inference_only: Explained[bool] = Field(
+        description="The Model was executed in inference only, the Model weights were unchanged in the scope of the paper",
     )
     is_compared: Explained[bool] = Field(
-        description="Was the Model compared numerically to other models, in the scope of the paper",
+        description="Was the Model compared numerically to other models in the scope of the paper",
     )
     referenced_paper_title: Explained[str] = Field(
         description="Title of reference paper of the Model, found in the references section",

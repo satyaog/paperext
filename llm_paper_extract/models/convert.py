@@ -61,21 +61,30 @@ def convert_model_v1(extractions:model_v1.PaperExtractions):
             fields[field_name] = []
             for m in extractions.models:
                 name, *aliases = split_entry(m.name.value, sep_left="(", sep_right=")")
+                is_contributed = str_eq(m.role, model_v1.Role.CONTRIBUTED.value)
+                is_inference_only = str_eq(m.mode, model_v1.ModelMode.INFERENCE.value)
+                is_executed = is_contributed
+                is_compared = is_contributed
                 m = model.Model(
                     name={**m.name.model_dump(), "value": name},
                     aliases=aliases,
                     is_contributed=model.Explained(
-                        value=str_eq(m.role, model_v1.Role.CONTRIBUTED.value),
+                        value=is_contributed,
                         justification=f"Role:{[_r.value for _r in model_v1.Role]}",
                         quote=m.role
                     ).model_dump(),
                     is_executed=model.Explained(
-                        value=str_eq(m.role, model_v1.Role.CONTRIBUTED.value),
+                        value=is_executed,
                         justification=f"ModelMode:{[_m.value for _m in model_v1.ModelMode]}",
                         quote=m.mode
                     ).model_dump(),
+                    is_inference_only=model.Explained(
+                        value=is_inference_only,
+                        justification="",
+                        quote=""
+                    ).model_dump(),
                     is_compared=model.Explained(
-                        value=str_eq(m.role, model_v1.Role.CONTRIBUTED.value),
+                        value=is_compared,
                         justification="",
                         quote=""
                     ).model_dump(),
@@ -124,11 +133,11 @@ if __name__ == "__main__":
     annotated = [[], []]
     predictions = [[], []]
 
-    for f in validation_set:
+    for f in sorted(validation_set):
         for path in sorted(
             sum(
                 map(
-                    lambda p: list(p.glob(f"{f.stem}*.json")),
+                    lambda p: sorted(p.glob(f"{f.stem}*.json")),
                     [ROOT_DIR / "data/merged", ROOT_DIR / "data/queries"]
                 ),
                 []
