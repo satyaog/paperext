@@ -436,13 +436,8 @@ def main(argv=None):
                 merged_extractions = PaperExtractions.model_validate_json(
                     f.with_suffix(".json").read_text()
                 )
-                merged_extractions = convert_model_json_to_yaml(
-                    PaperExtractions, merged_extractions.model_dump_json()
-                )
-                f.write_text(merged_extractions)
-                f.with_suffix(".json").unlink()
             except FileNotFoundError:
-                pass
+                merged_extractions = None
             except ValidationError as e:
                 print(e)
                 print(f'Invalid extraction file... Consider deleting [{f}].')
@@ -452,6 +447,15 @@ def main(argv=None):
                 merged_extractions = (
                     model_validate_yaml(PaperExtractions, f.read_text())
                 )
+            except FileNotFoundError:
+                merged_extractions = convert_model_json_to_yaml(
+                    PaperExtractions, merged_extractions.model_dump_json()
+                )
+                f.write_text(merged_extractions)
+                merged_extractions = (
+                    model_validate_yaml(PaperExtractions, merged_extractions)
+                )
+                f.with_suffix(".json").unlink()
             except ValidationError as e:
                 print(e)
                 print(f'Invalid extraction file... Consider deleting [{f}].')
