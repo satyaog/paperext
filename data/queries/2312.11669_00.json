@@ -2,95 +2,55 @@
   "paper": "2312.11669.txt",
   "words": 22802,
   "extractions": {
+    "description": "The paper focuses on value function estimation in continual reinforcement learning. It proposes decomposing the value function into two components updated at different timescales: a permanent value function (learning general knowledge) and a transient value function (for quick adaptation). Empirical studies show the approach improves performance on prediction and control tasks.",
     "title": {
       "value": "Prediction and Control in Continual Reinforcement Learning",
       "justification": "The title clearly summarizes the main focus of the paper, which aligns with the presented content on continual reinforcement learning and the proposed techniques.",
       "quote": "Prediction and Control in Continual Reinforcement Learning"
     },
-    "description": "The paper focuses on value function estimation in continual reinforcement learning. It proposes decomposing the value function into two components updated at different timescales: a permanent value function (learning general knowledge) and a transient value function (for quick adaptation). Empirical studies show the approach improves performance on prediction and control tasks.",
     "type": {
       "value": "Empirical study",
       "justification": "The paper includes empirical case studies and experiments demonstrating the effectiveness of the proposed method in different environments.",
       "quote": "Empirical case studies of the proposed approaches in simple gridworlds, Minigrid [11], JellyBeanWorld (JBW) [31], and MinAtar environments [51]."
     },
-    "primary_research_field": {
-      "name": {
-        "value": "Deep Learning",
-        "justification": "The paper involves advancements in reinforcement learning, a subfield of deep learning.",
-        "quote": "Deep reinforcement learning (RL) has achieved remarkable successes in complex tasks..."
-      },
-      "aliases": []
+    "research_field": {
+      "value": "Deep Learning",
+      "justification": "The paper involves advancements in reinforcement learning, a subfield of deep learning.",
+      "quote": "Deep reinforcement learning (RL) has achieved remarkable successes in complex tasks..."
     },
-    "sub_research_fields": [
-      {
-        "name": {
-          "value": "Reinforcement Learning",
-          "justification": "The entire paper is focused on the value function estimation and the stability-plasticity dilemma in reinforcement learning.",
-          "quote": "In this paper, we focus on value function estimation in continual reinforcement learning."
-        },
-        "aliases": []
-      }
-    ],
+    "sub_research_field": {
+      "value": "Reinforcement Learning",
+      "justification": "The entire paper is focused on the value function estimation and the stability-plasticity dilemma in reinforcement learning.",
+      "quote": "In this paper, we focus on value function estimation in continual reinforcement learning."
+    },
     "models": [
       {
         "name": {
-          "value": "PT-TD learning",
+          "value": "PT-TD learning (Prediction)",
           "justification": "The model is specifically proposed for improving value function estimation in continual reinforcement learning through the use of permanent and transient value functions.",
           "quote": "Algorithm 1 PT-TD learning (Prediction)"
         },
-        "aliases": [
-          "Prediction"
-        ],
-        "is_contributed": {
-          "value": true,
-          "justification": "Role:['contributed', 'used', 'referenced']",
-          "quote": "Contributed"
+        "role": "Contributed",
+        "type": {
+          "value": "Value-Based Model",
+          "justification": "The model uses value-based algorithms to update the estimates of value functions for states in reinforcement learning.",
+          "quote": "...value function estimated by the agent into two, independently parameterized components."
         },
-        "is_executed": {
-          "value": true,
-          "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
-          "quote": "Training"
-        },
-        "is_compared": {
-          "value": true,
-          "justification": "",
-          "quote": ""
-        },
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "mode": "Training"
       },
       {
         "name": {
-          "value": "PT-Q-learning",
+          "value": "PT-Q-learning (Control)",
           "justification": "This model extends PT-TD learning to tasks where the agent needs to learn the optimal policy through value function estimation.",
           "quote": "Algorithm 3 PT-Q-learning (Control)"
         },
-        "aliases": [
-          "Control"
-        ],
-        "is_contributed": {
-          "value": true,
-          "justification": "Role:['contributed', 'used', 'referenced']",
-          "quote": "Contributed"
+        "role": "Contributed",
+        "type": {
+          "value": "Value-Based Model",
+          "justification": "The model extends Q-learning, which is a value-based reinforcement learning algorithm, with permanent and transient value functions.",
+          "quote": "The action-value function can be decomposed into two components as:..."
         },
-        "is_executed": {
-          "value": true,
-          "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
-          "quote": "Training"
-        },
-        "is_compared": {
-          "value": true,
-          "justification": "",
-          "quote": ""
-        },
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "mode": "Training"
       }
     ],
     "datasets": [
@@ -100,29 +60,15 @@
           "justification": "Minigrid is used for value function estimation tasks under continual reinforcement learning settings.",
           "quote": "Empirical case studies of the proposed approaches in simple gridworlds, Minigrid [11], JellyBeanWorld (JBW) [31], and MinAtar environments [51]."
         },
-        "aliases": [],
-        "role": "Used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "Used"
       },
       {
         "name": {
-          "value": "JellyBeanWorld",
+          "value": "JellyBeanWorld (JBW)",
           "justification": "JBW is employed to test the effectiveness of the proposed method in a dynamic and complex environment.",
           "quote": "Empirical case studies of the proposed approaches in simple gridworlds, Minigrid [11], JellyBeanWorld (JBW) [31], and MinAtar environments [51]."
         },
-        "aliases": [
-          "JBW"
-        ],
-        "role": "Used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "Used"
       },
       {
         "name": {
@@ -130,13 +76,7 @@
           "justification": "MinAtar provides a range of tasks for evaluating reinforcement learning algorithms under continual learning settings.",
           "quote": "Empirical case studies of the proposed approaches in simple gridworlds, Minigrid [11], JellyBeanWorld (JBW) [31], and MinAtar environments [51]."
         },
-        "aliases": [],
-        "role": "Used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "Used"
       }
     ],
     "libraries": [
@@ -146,13 +86,7 @@
           "justification": "The stochastic gradient descent (SGD) optimizer is used for updating the model parameters, especially for the permanent value function.",
           "quote": "We use SGD optimizer to update its weights."
         },
-        "aliases": [],
-        "role": "Used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "Used"
       },
       {
         "name": {
@@ -160,13 +94,7 @@
           "justification": "Adam optimizer is employed for training neural network models within the experiments.",
           "quote": "The network is trained using Adam optimizer with experience replay and a target network."
         },
-        "aliases": [],
-        "role": "Used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "Used"
       }
     ]
   },

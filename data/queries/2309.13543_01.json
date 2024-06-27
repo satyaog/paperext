@@ -2,35 +2,27 @@
   "paper": "2309.13543.txt",
   "words": 8281,
   "extractions": {
+    "description": "The paper presents a framework, Balanced Neighbourhoods and Collective Loss (BNCL), for multi-label text classification (MLTC) in settings with either no annotations or limited annotations. The approach maps input text to label likelihoods using a pre-trained language model, updates these likelihoods based on a label dependency graph, and applies collective loss to refine predictions.",
     "title": {
       "value": "Substituting Data Annotation with Balanced Updates and Collective Loss in Multi-Label Text Classification",
       "justification": "The title is explicitly stated on the first page of the paper.",
       "quote": "Substituting Data Annotation with Balanced Updates and Collective Loss in Multi-Label Text Classification"
     },
-    "description": "The paper presents a framework, Balanced Neighbourhoods and Collective Loss (BNCL), for multi-label text classification (MLTC) in settings with either no annotations or limited annotations. The approach maps input text to label likelihoods using a pre-trained language model, updates these likelihoods based on a label dependency graph, and applies collective loss to refine predictions.",
     "type": {
       "value": "empirical study",
       "justification": "The paper involves conducting multiple experiments to demonstrate the effectiveness of the proposed BNCL framework across different datasets and comparing it against several baseline methods.",
       "quote": "The experiments show that the proposed framework achieves effective performance under low supervision settings"
     },
-    "primary_research_field": {
-      "name": {
-        "value": "Natural Language Processing",
-        "justification": "The paper addresses multi-label text classification (MLTC), which falls under the field of Natural Language Processing.",
-        "quote": "Multi-label text classification (MLTC) is the task of selecting the correct subset of labels for each text sample in a corpus."
-      },
-      "aliases": []
+    "research_field": {
+      "value": "Natural Language Processing",
+      "justification": "The paper addresses multi-label text classification (MLTC), which falls under the field of Natural Language Processing.",
+      "quote": "Multi-label text classification (MLTC) is the task of selecting the correct subset of labels for each text sample in a corpus."
     },
-    "sub_research_fields": [
-      {
-        "name": {
-          "value": "Text Classification",
-          "justification": "The specific focus of the paper is on classifying text into multiple labels.",
-          "quote": "Multi-label text classification (MLTC) is the task of selecting the correct subset of labels for each text sample in a corpus."
-        },
-        "aliases": []
-      }
-    ],
+    "sub_research_field": {
+      "value": "Text Classification",
+      "justification": "The specific focus of the paper is on classifying text into multiple labels.",
+      "quote": "Multi-label text classification (MLTC) is the task of selecting the correct subset of labels for each text sample in a corpus."
+    },
     "models": [
       {
         "name": {
@@ -38,27 +30,13 @@
           "justification": "The paper uses BART as the pre-trained language model for mapping input text into preliminary label predictions.",
           "quote": "We transform the input using the pre-trained model BART (Lewis et al., 2020) and its corresponding tokenizer"
         },
-        "aliases": [],
-        "is_contributed": {
-          "value": false,
-          "justification": "Role:['contributed', 'used', 'referenced']",
-          "quote": "used"
+        "role": "used",
+        "type": {
+          "value": "Natural Language Processing model",
+          "justification": "BART is a transformer model designed for various NLP tasks such as text generation and classification.",
+          "quote": "We transform the input using the pre-trained model BART (Lewis et al., 2020) and its corresponding tokenizer"
         },
-        "is_executed": {
-          "value": false,
-          "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
-          "quote": "inference"
-        },
-        "is_compared": {
-          "value": false,
-          "justification": "",
-          "quote": ""
-        },
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "mode": "inference"
       },
       {
         "name": {
@@ -66,57 +44,27 @@
           "justification": "BERT is referenced as a comparative model for weakly supervised single-label text classification.",
           "quote": "Meng et al. (2020) use a pre-trained language model, BERT (Devlin et al., 2019), to generate a list of alternative words for each label."
         },
-        "aliases": [],
-        "is_contributed": {
-          "value": false,
-          "justification": "Role:['contributed', 'used', 'referenced']",
-          "quote": "referenced"
+        "role": "referenced",
+        "type": {
+          "value": "Natural Language Processing model",
+          "justification": "BERT is a well-known transformer-based language model used for various NLP tasks.",
+          "quote": "Meng et al. (2020) use a pre-trained language model, BERT (Devlin et al., 2019), to generate a list of alternative words for each label."
         },
-        "is_executed": {
-          "value": false,
-          "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
-          "quote": "inference"
-        },
-        "is_compared": {
-          "value": false,
-          "justification": "",
-          "quote": ""
-        },
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "mode": "inference"
       },
       {
         "name": {
-          "value": "Graph Convolutional Network",
+          "value": "Graph Convolutional Network (GCN)",
           "justification": "GCN is used in related works for encoding hierarchical label structures in multi-label classification.",
           "quote": "Rios & Kavuluru (2018) use label descriptions to generate a feature vector for each label and employ a two layer graph convolutional network (GCN)"
         },
-        "aliases": [
-          "GCN"
-        ],
-        "is_contributed": {
-          "value": false,
-          "justification": "Role:['contributed', 'used', 'referenced']",
-          "quote": "referenced"
+        "role": "referenced",
+        "type": {
+          "value": "Graph Neural Network model",
+          "justification": "GCN is a type of neural network designed for processing data structured as graphs.",
+          "quote": "Rios & Kavuluru (2018) use label descriptions to generate a feature vector for each label and employ a two layer graph convolutional network (GCN)"
         },
-        "is_executed": {
-          "value": false,
-          "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
-          "quote": "training"
-        },
-        "is_compared": {
-          "value": false,
-          "justification": "",
-          "quote": ""
-        },
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "mode": "training"
       }
     ],
     "datasets": [
@@ -126,13 +74,7 @@
           "justification": "The dataset is used in the experiments to demonstrate the effectiveness of the BNCL framework.",
           "quote": "Datasets. For our experiments we use two multi-label text classification datasets: Reuters215781"
         },
-        "aliases": [],
-        "role": "used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "used"
       },
       {
         "name": {
@@ -140,13 +82,7 @@
           "justification": "The dataset is used in the experiments to demonstrate the effectiveness of the BNCL framework.",
           "quote": "Datasets. For our experiments we use two multi-label text classification datasets: ... StackEx-Philosophy"
         },
-        "aliases": [],
-        "role": "used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "used"
       }
     ],
     "libraries": [
@@ -156,13 +92,7 @@
           "justification": "The GloVe embeddings are used to generate word embeddings for calculating the label graph.",
           "quote": "We use GloVe (Pennington et al., 2014) to generate word embeddings to calculate the label graph from the label descriptions."
         },
-        "aliases": [],
-        "role": "used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "used"
       },
       {
         "name": {
@@ -170,13 +100,7 @@
           "justification": "The paper references the libraries for the implementation of supervised baseline methods for multi-label classification.",
           "quote": "The results for ML-KNN and ML-ARAM are obtained by implementations provided in the scikit-learn library (Pedregosa et al., 2011)."
         },
-        "aliases": [],
-        "role": "used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "used"
       },
       {
         "name": {
@@ -184,13 +108,7 @@
           "justification": "The Adam optimizer is used for computing gradients and updating parameters during the training process.",
           "quote": "The Adam (Kingma & Ba, 2015) optimizer is used to compute gradients and update parameters with the initial learning rate of 1 × 10−3 and beta coefficients of (0.8, 0.9)."
         },
-        "aliases": [],
-        "role": "used",
-        "referenced_paper_title": {
-          "value": "",
-          "justification": "",
-          "quote": ""
-        }
+        "role": "used"
       }
     ]
   },
