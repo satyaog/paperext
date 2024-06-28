@@ -124,11 +124,11 @@ if __name__ == "__main__":
     annotated = [[], []]
     predictions = [[], []]
 
-    for f in validation_set:
+    for f in sorted(validation_set):
         for path in sorted(
             sum(
                 map(
-                    lambda p: list(p.glob(f"{f.stem}*.json")),
+                    lambda p: sorted(p.glob(f"{f.stem}*.json")),
                     [ROOT_DIR / "data/merged", ROOT_DIR / "data/queries"]
                 ),
                 []
