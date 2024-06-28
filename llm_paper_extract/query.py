@@ -1,3 +1,4 @@
+import argparse
 import asyncio
 import bdb
 from pathlib import Path
@@ -102,7 +103,10 @@ async def batch_extract_models_names(
             data = [models, datasets, libraries]
 
 
-async def ignore_exceptions(validation_set:List[Path]):
+async def ignore_exceptions(
+    client: instructor.client.Instructor | instructor.client.AsyncInstructor,
+    validation_set:List[Path]
+):
     for paper in validation_set:
         try:
             await batch_extract_models_names(client, [paper])
@@ -112,12 +116,36 @@ async def ignore_exceptions(validation_set:List[Path]):
             warnings.warn(f"Failed to extract paper informations from {paper.name}:\n{e}")
 
 
-if __name__ == "__main__":
-    validation_set = build_validation_set(ROOT_DIR / "data/")
-    print(*validation_set, sep="\n")
+def main(argv=None):
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--papers", nargs='*', type=str, default=None, help="Papers to merge")
+    parser.add_argument("--input", type=Path, default=None, help="List of papers to merge")
+    options = parser.parse_args(argv)
+
+    if options.input:
+        with open(options.input, "r") as f:
+            papers = [
+                Path(ROOT_DIR / f"data/cache/arxiv/{paper}.txt").absolute()
+                for paper in f.readlines() if paper.strip()
+            ]
+    elif options.papers:
+        papers = [
+            Path(ROOT_DIR / f"data/cache/arxiv/{paper}.txt").absolute()
+            for paper in options.papers if paper.strip()
+        ]
+    else:
+        papers = build_validation_set(ROOT_DIR / "data/")
+        print(*papers, sep="\n")
+
+    assert all(map(lambda p:p.exists(), papers))
+
 
     client = instructor.from_openai(
         openai.AsyncOpenAI()
     )
 
-    asyncio.run(ignore_exceptions(validation_set))
+    asyncio.run(ignore_exceptions(client, papers))
+
+
+if __name__ == "__main__":
+    main()

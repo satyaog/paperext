@@ -61,6 +61,11 @@ class Explained(BaseModel, Generic[T]):
         return str_normalize(str(self.value)) < str_normalize(str(other.value))
 
 
+# | contributed | executed    | compared    | result
+# | X           | X           | X           | is a contribution to the research field
+# |             | X           | X           | has been executed (trained or finetuned or inference) and compared to other models
+# |             |             | X           | is compared to other models using only results from a referenced paper
+# |             |             |             | is only referenced in the paper but is not used in any comparison
 class Model(BaseModel):
     name: Explained[str] = Field(
         description="Name of the Model",
@@ -68,18 +73,13 @@ class Model(BaseModel):
     aliases: List[str] = Field(
         description="List of names or acronyms used to identify the Model",
     )
-    # | contributed | executed    | compared    | result
-    # | X           | X           | X           | is a contribution to the research field
-    # |             | X           | X           | has been executed (trained or finetuned or inference) and compared to other models
-    # |             |             | X           | is compared to other models using only results from a referenced paper
-    # |             |             |             | is only referenced in the paper but is not used in any comparison
-    is_contributed: Explained[bool] = Field(
+    is_contributed: Explained[bool | int] = Field(
         description="Was the Model a contribution to the research field in the scope of the paper",
     )
-    is_executed: Explained[bool] = Field(
+    is_executed: Explained[bool | int] = Field(
         description="Was the Model executed on GPU or CPU in the scope of the paper",
     )
-    is_compared: Explained[bool] = Field(
+    is_compared: Explained[bool | int] = Field(
         description="Was the Model compared numerically to other models in the scope of the paper",
     )
     referenced_paper_title: Explained[str] = Field(
