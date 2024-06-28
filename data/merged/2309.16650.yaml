@@ -22,12 +22,11 @@ primary_research_field:
   aliases: []
 sub_research_fields:
 - name:
-    value: 3D Scene Understanding
+    value: Scene Understanding
     justification: The paper focuses on 3D scene graphs which are an advanced representation for understanding the spatial
       relationships and semantic information in 3D scenes.
     quote: ConceptGraphs focuses on the construction of the open- vocabulary 3D scene graphs for scene understanding and planning.
-  aliases:
-  - Scene Understanding
+  aliases: [3D Scene Understanding]
 - name:
     value: Scene Planning
     justification: ''
@@ -39,7 +38,7 @@ sub_research_fields:
       all of which fall under the domain of computer vision.
     quote: We propose a novel object-centric mapping system that integrates geometric cues from traditional 3D mapping systems
       and semantic cues from 2D foundation models.
-  aliases: []
+  aliases: [CV]
 models:
 - name:
     value: CLIP
@@ -64,7 +63,7 @@ models:
     justification: ''
     quote: ''
   referenced_paper_title:
-    value: ''
+    value: Image segmentation using text and image prompts
     justification: ''
     quote: ''
 - name:
@@ -88,15 +87,13 @@ models:
     justification: ''
     quote: ''
   referenced_paper_title:
-    value: ''
+    value: Language-driven semantic segmentation
     justification: ''
     quote: ''
 - name:
     value: OpenSeg
     justification: ''
-    quote: 'TABLE II: Open-vocabulary semantic segmentation on the Replica [56] dataset. Privileged methods specifically finetune
-      the pretrained models for semantic segmentation. Zero-shot approaches do not need any finetuning and are evaluated off
-      the shelf.'
+    quote: Scaling open-vocabulary image segmentation with image-level labels
   aliases:
   - open-vocabulary image segmentation
   is_contributed:
@@ -112,7 +109,7 @@ models:
     justification: ''
     quote: ''
   referenced_paper_title:
-    value: ''
+    value: Scaling open-vocabulary image segmentation with image-level labels
     justification: ''
     quote: ''
 - name:
@@ -185,9 +182,8 @@ models:
 - name:
     value: DINO
     justification: DINO is used alongside CLIP for obtaining visual descriptors.
-    quote: We also develop a variant of our system, ConceptGraphs- Detector (CG-D), where we employ an image tagging model
-      (RAM [54]) to list the object classes present in the image and an open-vocabulary 2D detector (Grounding DINO [34])
-      to obtain object bounding boxes6.
+    quote: Each extracted mask mt,i is then passed to a visual feature extractor (CLIP [31], DINO [53]) to obtain a visual
+      descriptor ft,i =Embed(Itrgb , mt,i ).
   aliases:
   - Grounding DINO
   is_contributed:
@@ -203,7 +199,7 @@ models:
     justification: ''
     quote: ''
   referenced_paper_title:
-    value: ''
+    value: 'Dinov2: Learning robust visual features without supervision'
     justification: ''
     quote: ''
 - name:
@@ -247,7 +243,7 @@ models:
     justification: ''
     quote: ''
   referenced_paper_title:
-    value: ''
+    value: Visual instruction tuning,
     justification: ''
     quote: ''
 - name:
@@ -269,7 +265,7 @@ models:
     justification: ''
     quote: ''
   referenced_paper_title:
-    value: ''
+    value: Segment anything
     justification: ''
     quote: ''
 datasets:
@@ -312,52 +308,6 @@ libraries:
     quote: We begin by building a pointcloud of the REAL Lab using the onboard VLP-16 and Open3d SLAM [68].
   aliases: []
   role: used
-  referenced_paper_title:
-    value: ''
-    justification: ''
-    quote: ''
-- name:
-    value: RTAB-Map
-    justification: Utilized for obtaining camera poses and the scene point cloud in experiments.
-    quote: 'We then stage two separate scenes with different objects: one for object search and another for traversability
-      estimation. In both cases, we map the scene with an Azure Kinect Camera and rely on RTAB-Map [69] to obtain camera poses
-      and the scene point cloud.'
-  aliases: []
-  role: used
-  referenced_paper_title:
-    value: ''
-    justification: ''
-    quote: ''
-- name:
-    value: Open3d SLAM
-    justification: Open3d SLAM is used for building pointcloud maps.
-    quote: For our navigation experiments with the Jackal robot. Our robot is equipped with a VLP-16 lidar and a foward-facing
-      Realsense D435i camera. We begin by building a pointcloud of the REAL Lab using the onboard VLP-16 and Open3d SLAM [68].
-  aliases: []
-  role: Used
-  referenced_paper_title:
-    value: ''
-    justification: ''
-    quote: ''
-- name:
-    value: Open3d SLAM
-    justification: Used for building initial pointcloud maps for the Jackal robot navigation.
-    quote: The initial Jackal pointcloud does not include task-relevant objects and is downprojected to a 2D costmap for navigation
-      using the base Jackal ROS stack.
-  aliases: []
-  role: used
-  referenced_paper_title:
-    value: ''
-    justification: ''
-    quote: ''
-- name:
-    value: RTAB-Map
-    justification: RTAB-Map is used for obtaining camera poses and the scene point cloud.
-    quote: 'We then stage two separate scenes with different objects: one for object search and another for traversability
-      estimation. In both cases, we map the scene with an Azure Kinect Camera and rely on RTAB-Map [69] to obtain camera poses
-      and the scene point cloud.'
-  aliases: []
-  role: Used
   referenced_paper_title:
     value: ''
     justification: ''
