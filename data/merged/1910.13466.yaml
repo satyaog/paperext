@@ -28,28 +28,37 @@ sub_research_fields:
     value: Recurrent Neural Networks
     justification: ''
     quote: ''
-  aliases: []
+  aliases:
+  - RNN
 - name:
     value: Memory
     justification: ''
     quote: ''
   aliases: []
+- name:
+    value: Reinforcement Learning
+    justification: ''
+    quote: ''
+  aliases:
+  - RL
 models:
 - name:
-    value: ON-LSTM
+    value: Ordered Neurons
     justification: Mentioned as a model related to the proposed Ordered Memory architecture.
-    quote: Inspired by Ordered Neurons (Shen et al., 2018)
-  aliases: []
+    quote: Ordered Memory is implemented following the principles introduced in Ordered Neurons (Shen et al., 2018). Our model
+      is related to ON-LSTM in several aspects
+  aliases:
+  - ON-LSTM
   is_contributed:
     value: false
     justification: Role:['contributed', 'used', 'referenced']
     quote: used
   is_executed:
-    value: false
-    justification: ModelMode:['trained', 'fine-tuned', 'inference']
-    quote: trained
+    value: true
+    justification: ''
+    quote: ''
   is_compared:
-    value: false
+    value: true
     justification: ''
     quote: ''
   referenced_paper_title:
@@ -60,7 +69,8 @@ models:
     value: Ordered Memory
     justification: It is the main contribution of the paper.
     quote: In this paper, we propose the Ordered Memory architecture.
-  aliases: []
+  aliases:
+  - OM
   is_contributed:
     value: true
     justification: Role:['contributed', 'used', 'referenced']
@@ -92,9 +102,11 @@ models:
     justification: ModelMode:['trained', 'fine-tuned', 'inference']
     quote: trained
   is_compared:
-    value: false
+    value: true
     justification: ''
-    quote: ''
+    quote: 'Figure 3: (a) shows the accuracy of different models on the ListOps dataset. All models have 128 dimensions. Results
+      for models with * are taken from Nangia and Bowman (2018). (b) shows our model accuracy on the ListOps task when varying
+      the the size of the training set.'
   referenced_paper_title:
     value: ''
     justification: ''
@@ -113,7 +125,7 @@ models:
     justification: ModelMode:['trained', 'fine-tuned', 'inference']
     quote: trained
   is_compared:
-    value: false
+    value: true
     justification: ''
     quote: ''
   referenced_paper_title:
@@ -131,32 +143,38 @@ models:
     justification: Role:['contributed', 'used', 'referenced']
     quote: used
   is_executed:
-    value: false
-    justification: ModelMode:['trained', 'fine-tuned', 'inference']
-    quote: trained
-  is_compared:
-    value: false
+    value: true
     justification: ''
-    quote: ''
+    quote: 'Figure 3: (a) shows the accuracy of different models on the ListOps dataset. All models have 128 dimensions. Results
+      for models with * are taken from Nangia and Bowman (2018). (b) shows our model accuracy on the ListOps task when varying
+      the the size of the training set.'
+  is_compared:
+    value: true
+    justification: ''
+    quote: 'Figure 3: (a) shows the accuracy of different models on the ListOps dataset. All models have 128 dimensions. Results
+      for models with * are taken from Nangia and Bowman (2018). (b) shows our model accuracy on the ListOps task when varying
+      the the size of the training set.'
   referenced_paper_title:
     value: ''
     justification: ''
     quote: ''
 - name:
-    value: TreeLSTM
+    value: Gumbel Tree-LSTM
     justification: Used for comparison in the experiments.
     quote: The TreeCell is a recursive neural network based on the Gated Recursive Cell function proposed in section 3.2.
-  aliases: []
+  aliases:
+  - Tree-LSTM
   is_contributed:
     value: false
     justification: Role:['contributed', 'used', 'referenced']
     quote: used
   is_executed:
-    value: false
-    justification: ModelMode:['trained', 'fine-tuned', 'inference']
-    quote: trained
+    value: true
+    justification: ''
+    quote: "Table 1: Test accuracy of the models, trained on operation lengths of \u2264 6, with their out-of- distribution\
+      \ results shown here (lengths 7-12)."
   is_compared:
-    value: false
+    value: true
     justification: ''
     quote: ''
   referenced_paper_title:
@@ -173,11 +191,12 @@ models:
     justification: Role:['contributed', 'used', 'referenced']
     quote: used
   is_executed:
-    value: false
-    justification: ModelMode:['trained', 'fine-tuned', 'inference']
-    quote: trained
+    value: true
+    justification: ''
+    quote: "Table 1: Test accuracy of the models, trained on operation lengths of \u2264 6, with their out-of- distribution\
+      \ results shown here (lengths 7-12)."
   is_compared:
-    value: false
+    value: true
     justification: ''
     quote: ''
   referenced_paper_title:
@@ -194,11 +213,12 @@ models:
     justification: Role:['contributed', 'used', 'referenced']
     quote: used
   is_executed:
-    value: false
-    justification: ModelMode:['trained', 'fine-tuned', 'inference']
-    quote: trained
+    value: true
+    justification: ''
+    quote: "Table 1: Test accuracy of the models, trained on operation lengths of \u2264 6, with their out-of- distribution\
+      \ results shown here (lengths 7-12)."
   is_compared:
-    value: false
+    value: true
     justification: ''
     quote: ''
   referenced_paper_title:
@@ -216,11 +236,12 @@ models:
     justification: Role:['contributed', 'used', 'referenced']
     quote: used
   is_executed:
-    value: false
-    justification: ModelMode:['trained', 'fine-tuned', 'inference']
-    quote: trained
+    value: true
+    justification: ''
+    quote: "Table 1: Test accuracy of the models, trained on operation lengths of \u2264 6, with their out-of- distribution\
+      \ results shown here (lengths 7-12)."
   is_compared:
-    value: false
+    value: true
     justification: ''
     quote: ''
   referenced_paper_title:
@@ -231,7 +252,8 @@ datasets:
 - name:
     value: ListOps
     justification: Used to evaluate the model.
-    quote: and the ListOps (Nangia and Bowman, 2018) task.
+    quote: 'We evaluate the tree learning capabilities of our model on two datasets: logical inference (Bowman et al., 2015)
+      and ListOps (Nangia and Bowman, 2018).'
   aliases: []
   role: used
   referenced_paper_title:
@@ -239,22 +261,26 @@ datasets:
     justification: ''
     quote: ''
 - name:
-    value: SST-2
-    justification: A subset task from Stanford Sentiment Treebank used in the experiments.
-    quote: We also perform experiments on the Stanford Sentiment Treebank, in both binary classification and fine-grained
-      settings (SST-2 & SST-5)
-  aliases: []
+    value: Logical Inference
+    justification: The Logical Inference dataset is used to evaluate the generalization of the proposed Ordered Memory model.
+    quote: 'We evaluate the tree learning capabilities of our model on two datasets: logical inference (Bowman et al., 2015)
+      and ListOps (Nangia and Bowman, 2018).'
+  aliases:
+  - SST-2
+  - SST-5
   role: used
   referenced_paper_title:
     value: ''
     justification: ''
     quote: ''
 - name:
-    value: SST-5
+    value: Stanford Sentiment Treebank
     justification: A subset task from Stanford Sentiment Treebank used in the experiments.
     quote: We also perform experiments on the Stanford Sentiment Treebank, in both binary classification and fine-grained
       settings (SST-2 & SST-5)
-  aliases: []
+  aliases:
+  - SST-2
+  - SST-5
   role: used
   referenced_paper_title:
     value: ''
@@ -264,7 +290,7 @@ libraries:
 - name:
     value: Evalb
     justification: Used to evaluate parsing performance.
-    quote: We evaluate parsing performance using the F1 score3 . All parsing scores are given by Evalb
+    quote: All parsing scores are given by Evalb https://nlp.cs.nyu.edu/evalb/
   aliases: []
   role: used
   referenced_paper_title:

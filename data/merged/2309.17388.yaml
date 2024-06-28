@@ -27,6 +27,12 @@ sub_research_fields:
     justification: The core contribution is an improvement upon Cross Attention mechanisms.
     quote: In this work, we propose Tree Cross Attention (TCA), a token-efficient variant of Cross Attention.
   aliases: []
+- name:
+    value: Optimization
+    justification: The primary focus is on making inference more efficient in terms of processing time and memory usage.
+    quote: In this work, we propose Tree Cross Attention (TCA) - a module based on Cross Attention that only retrieves information
+      from a logarithmic O(log(N )) number of tokens for performing inference.
+  aliases: []
 models:
 - name:
     value: Perceiver IO
@@ -40,11 +46,11 @@ models:
     justification: Role:['contributed', 'used', 'referenced']
     quote: referenced
   is_executed:
-    value: false
+    value: true
     justification: ModelMode:['trained', 'fine-tuned', 'inference']
     quote: inference
   is_compared:
-    value: false
+    value: true
     justification: ''
     quote: ''
   referenced_paper_title:
@@ -87,8 +93,8 @@ datasets:
 - name:
     value: Copy Task
     justification: The Copy Task is used to benchmark the efficiency of Tree Cross Attention by testing token retrieval.
-    quote: "Results. We found that both Cross Attention and Tree Cross Attention were able to solve this task perfectly (Table\
-      \ 1). In comparison, TCA requires \u223C 50\xD7 fewer tokens than Cross Attention."
+    quote: To tackle those objectives, we consider benchmarks for classification (Copy Task, Human Activity) and uncertainty
+      estimation settings (GP Regression and Image Completion).
   aliases: []
   role: used
   referenced_paper_title:
@@ -109,9 +115,19 @@ datasets:
 - name:
     value: GP Regression
     justification: GP Regression is used for evaluating the performance of ReTreever in uncertainty estimation settings.
-    quote: We evaluate ReTreever on popular uncertainty estimation settings used in (Conditional) Neural Processes literature
-      and which have been benchmarked extensively (Table 13 in Appendix) (Garnelo et al., 2018a;b; Kim et al., 2019; Lee et
-      al., 2020; Nguyen & Grover, 2022; Feng et al., 2023a;b).
+    quote: To tackle those objectives, we consider benchmarks for classification (Copy Task, Human Activity) and uncertainty
+      estimation settings (GP Regression and Image Completion).
+  aliases: []
+  role: used
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: Image Completion
+    justification: GP Regression is used for evaluating the performance of ReTreever in uncertainty estimation settings.
+    quote: To tackle those objectives, we consider benchmarks for classification (Copy Task, Human Activity) and uncertainty
+      estimation settings (GP Regression and Image Completion).
   aliases: []
   role: used
   referenced_paper_title:
@@ -121,8 +137,8 @@ datasets:
 - name:
     value: Human Activity
     justification: The Human Activity dataset is utilized for evaluating performance on time series classification tasks.
-    quote: The objective of this task is to classify each time point into one of eleven types of activities. Results. Table
-      4 show similar conclusions as our prior experiments.
+    quote: To tackle those objectives, we consider benchmarks for classification (Copy Task, Human Activity) and uncertainty
+      estimation settings (GP Regression and Image Completion).
   aliases: []
   role: used
   referenced_paper_title:
@@ -136,6 +152,42 @@ libraries:
     quote: Our Perceiver IO baseline is based on the popular Perceiver (IO) repository (https://github.com/lucidrains/perceiver-pytorch/blob/main/perceiver
       pytorch/perceiver pytorch.py).
   aliases: []
+  role: used
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: TNP
+    justification: ''
+    quote: For the experiments on uncertainty estimation, we use the official repositories for TNPs (https://github.com/tung-nd/TNP-pytorch)
+      and LBANPs (https://github.com/BorealisAI/latent- bottlenecked-anp).
+  aliases:
+  - TNP-pytorch
+  role: used
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: LBANP
+    justification: ''
+    quote: For the experiments on uncertainty estimation, we use the official repositories for TNPs (https://github.com/tung-nd/TNP-pytorch)
+      and LBANPs (https://github.com/BorealisAI/latent- bottlenecked-anp).
+  aliases:
+  - latent- bottlenecked-anp
+  role: used
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: Perceiver
+    justification: ''
+    quote: Our Perceiver IO baseline is based on the popular Perceiver (IO) repository (https://github.com/lucidrains/perceiver-
+      pytorch/blob/main/perceiver pytorch/perceiver pytorch.py).
+  aliases:
+  - perceiver_pytorch
   role: used
   referenced_paper_title:
     value: ''

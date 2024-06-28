@@ -30,7 +30,55 @@ sub_research_fields:
   aliases: []
 models:
 - name:
-    value: A-CNN
+    value: Vanilla VGG
+    justification: ''
+    quote: 'Table 1: The influence of selected most and least protective OOD sets on inducing well-generalized A-CNNs with
+      high OOD detection rates.'
+  aliases: []
+  is_contributed:
+    value: false
+    justification: Role:['contributed', 'used', 'referenced']
+    quote: used
+  is_executed:
+    value: true
+    justification: ''
+    quote: 'Table 1: The influence of selected most and least protective OOD sets on inducing well-generalized A-CNNs with
+      high OOD detection rates.'
+  is_compared:
+    value: true
+    justification: ''
+    quote: 'Table 1: The influence of selected most and least protective OOD sets on inducing well-generalized A-CNNs with
+      high OOD detection rates.'
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: Augmented VGG
+    justification: ''
+    quote: 'Table 1: The influence of selected most and least protective OOD sets on inducing well-generalized A-CNNs with
+      high OOD detection rates.'
+  aliases: ["A-VGG"]
+  is_contributed:
+    value: false
+    justification: Role:['contributed', 'used', 'referenced']
+    quote: Used
+  is_executed:
+    value: true
+    justification: ''
+    quote: 'Table 1: The influence of selected most and least protective OOD sets on inducing well-generalized A-CNNs with
+      high OOD detection rates.'
+  is_compared:
+    value: true
+    justification: ''
+    quote: 'Table 1: The influence of selected most and least protective OOD sets on inducing well-generalized A-CNNs with
+      high OOD detection rates.'
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: Augmented-CNN (A-CNN)
     justification: This model is explicitly developed in the research to handle OOD sample detection by adding an extra rejection
       class.
     quote: We exploit A-CNN as an end-to-end model for OOD detection task.
@@ -40,34 +88,15 @@ models:
     justification: Role:['contributed', 'used', 'referenced']
     quote: used
   is_executed:
-    value: false
-    justification: ModelMode:['trained', 'fine-tuned', 'inference']
-    quote: trained
+    value: true
+    justification: ''
+    quote: In our experiments, we consider two types of end-to-end approaches, i.e., an A-CNN and a confidence-calibrated
+      vanilla CNN, for detecting OOD set
   is_compared:
-    value: false
+    value: true
     justification: ''
-    quote: ''
-  referenced_paper_title:
-    value: ''
-    justification: ''
-    quote: ''
-- name:
-    value: A-CNN
-    justification: Augmented Convolutional Neural Network, a vanilla CNN with an additional rejection class used for OOD detection.
-    quote: We exploit A-CNN as an end-to-end model for OOD detection task.
-  aliases: []
-  is_contributed:
-    value: false
-    justification: Role:['contributed', 'used', 'referenced']
-    quote: Used
-  is_executed:
-    value: false
-    justification: ModelMode:['trained', 'fine-tuned', 'inference']
-    quote: Trained
-  is_compared:
-    value: false
-    justification: ''
-    quote: ''
+    quote: In our experiments, we consider two types of end-to-end approaches, i.e., an A-CNN and a confidence-calibrated
+      vanilla CNN, for detecting OOD set
   referenced_paper_title:
     value: ''
     justification: ''
@@ -84,13 +113,15 @@ models:
     justification: Role:['contributed', 'used', 'referenced']
     quote: used
   is_executed:
-    value: false
-    justification: ModelMode:['trained', 'fine-tuned', 'inference']
-    quote: trained
-  is_compared:
-    value: false
+    value: true
     justification: ''
-    quote: ''
+    quote: In our experiments, we consider two types of end-to-end approaches, i.e., an A-CNN and a confidence-calibrated
+      vanilla CNN, for detecting OOD set
+  is_compared:
+    value: true
+    justification: ''
+    quote: In our experiments, we consider two types of end-to-end approaches, i.e., an A-CNN and a confidence-calibrated
+      vanilla CNN, for detecting OOD set
   referenced_paper_title:
     value: ''
     justification: ''
@@ -105,35 +136,13 @@ models:
   is_contributed:
     value: false
     justification: Role:['contributed', 'used', 'referenced']
-    quote: used
-  is_executed:
-    value: false
-    justification: ModelMode:['trained', 'fine-tuned', 'inference']
-    quote: trained
-  is_compared:
-    value: false
-    justification: ''
-    quote: ''
-  referenced_paper_title:
-    value: ''
-    justification: ''
-    quote: ''
-- name:
-    value: Vanilla CNN
-    justification: Standard Convolutional Neural Network used for benchmarking and training as part of the study.
-    quote: Vanilla CNNs, as uncalibrated classifiers, suffer from classifying out-of-distribution (OOD) samples nearly as
-      confidently as in-distribution samples.
-  aliases: []
-  is_contributed:
-    value: false
-    justification: Role:['contributed', 'used', 'referenced']
     quote: Used
   is_executed:
-    value: false
-    justification: ModelMode:['trained', 'fine-tuned', 'inference']
-    quote: Trained
+    value: true
+    justification: ''
+    quote: ''
   is_compared:
-    value: false
+    value: true
     justification: ''
     quote: ''
   referenced_paper_title:
@@ -144,31 +153,8 @@ datasets:
 - name:
     value: CIFAR-10
     justification: The CIFAR-10 dataset is used as an in-distribution dataset in several experiments conducted in the paper.
-    quote: It has also been shown in [19], where using SVHN as OOD set for CIFAR-10 is leading to an A-CNN with inferior generalization
-      properties.
-  aliases: []
-  role: used
-  referenced_paper_title:
-    value: ''
-    justification: ''
-    quote: ''
-- name:
-    value: CIFAR-10
-    justification: One of the benchmark datasets used in the paper for testing and training.
-    quote: In an extensive series of experiments on image and audio classification tasks, we empirically show that A-CNNs
-      and calibrated vanilla CNNs trained on the most protective OOD set have higher detection rates (lower generalization
-      error) on unseen OOD sets in comparison with those trained on the least protective OOD set.
-  aliases: []
-  role: Used
-  referenced_paper_title:
-    value: ''
-    justification: ''
-    quote: ''
-- name:
-    value: CIFAR-100
-    justification: CIFAR-100 is used as an out-of-distribution dataset in the experiments.
-    quote: It has also been shown in [19], where using SVHN as OOD set for CIFAR-10 is leading to an A-CNN with inferior generalization
-      properties.
+    quote: We conduct a series of experiments on several classification tasks including two image benchmarks, namely CIFAR-10
+      and SVHN, and one audio benchmark, namely Urban-Sound [28].
   aliases: []
   role: used
   referenced_paper_title:
@@ -178,9 +164,10 @@ datasets:
 - name:
     value: CIFAR-100
     justification: Used as an out-of-distribution dataset in the experiments.
-    quote: for image classification tasks, we consider LSUN, ISUN, CIFAR-100 and TinyImageNet as OOD sets
+    quote: Like in [21], for each of these in-distribution task, various naturalistic OOD sets are considered; for image classification
+      tasks, we consider LSUN, ISUN, CIFAR-100 and TinyIma-geNet as OOD sets and Gaussian noise as a synthetic OOD set.
   aliases: []
-  role: Used
+  role: used
   referenced_paper_title:
     value: ''
     justification: ''
@@ -188,23 +175,11 @@ datasets:
 - name:
     value: ECS
     justification: ECS is used as an out-of-distribution dataset for audio classification tasks.
-    quote: OOD sets considered are TuT [25], Google Command [32] and ECS (Environmental Sound Classification) [26], as well
-      as white-noise sound as a synthetic OOD set.
+    quote: For audio classification task with 10 classes, i.e., Urban-Sound, OOD sets considered are TuT [25], Google Command
+      [32] and ECS (Environmental Sound Classification) [26], as well as white-noise sound as a synthetic OOD set.
   aliases:
   - Environmental Sound Classification
   role: used
-  referenced_paper_title:
-    value: ''
-    justification: ''
-    quote: ''
-- name:
-    value: ECS
-    justification: Used in the audio classification tasks as an out-of-distribution set.
-    quote: OOD sets considered are TuT [25], Google Command [32] and ECS (Environmental Sound Classification) [26], as well
-      as white-noise sound as a synthetic OOD set.
-  aliases:
-  - Environmental Sound Classification
-  role: Used
   referenced_paper_title:
     value: ''
     justification: ''
@@ -212,21 +187,10 @@ datasets:
 - name:
     value: Google Command
     justification: The Google Command dataset is used as an out-of-distribution dataset in the audio classification experiments.
-    quote: OOD sets considered are TuT [25], Google Command [32] and ECS (Environmental Sound Classification) [26], as well
-      as white-noise sound as a synthetic OOD set.
+    quote: For audio classification task with 10 classes, i.e., Urban-Sound, OOD sets considered are TuT [25], Google Command
+      [32] and ECS (Environmental Sound Classification) [26], as well as white-noise sound as a synthetic OOD set.
   aliases: []
   role: used
-  referenced_paper_title:
-    value: ''
-    justification: ''
-    quote: ''
-- name:
-    value: Google Command
-    justification: Used in the audio classification experiments as an OOD set.
-    quote: OOD sets considered are TuT [25], Google Command [32] and ECS (Environmental Sound Classification) [26], as well
-      as white-noise sound as a synthetic OOD set.
-  aliases: []
-  role: Used
   referenced_paper_title:
     value: ''
     justification: ''
@@ -234,20 +198,10 @@ datasets:
 - name:
     value: ISUN
     justification: ISUN is used as an out-of-distribution dataset in the experiments.
-    quote: For image classification tasks, we consider LSUN, ISUN, CIFAR-100 and TinyImageNet as OOD sets and Gaussian noise
-      as a synthetic OOD set.
+    quote: Like in [21], for each of these in-distribution task, various naturalistic OOD sets are considered; for image classification
+      tasks, we consider LSUN, ISUN, CIFAR-100 and TinyIma- geNet as OOD sets and Gaussian noise as a synthetic OOD set.
   aliases: []
   role: used
-  referenced_paper_title:
-    value: ''
-    justification: ''
-    quote: ''
-- name:
-    value: ISUN
-    justification: Used as one of the out-of-distribution sets for image classification tasks.
-    quote: for image classification tasks, we consider LSUN, ISUN, CIFAR-100 and TinyImageNet as OOD sets
-  aliases: []
-  role: Used
   referenced_paper_title:
     value: ''
     justification: ''
@@ -255,20 +209,10 @@ datasets:
 - name:
     value: LSUN
     justification: LSUN is used as an out-of-distribution dataset in the experiments.
-    quote: For image classification tasks, we consider LSUN, ISUN, CIFAR-100 and TinyImageNet as OOD sets and Gaussian noise
-      as a synthetic OOD set.
+    quote: Like in [21], for each of these in-distribution task, various naturalistic OOD sets are considered; for image classification
+      tasks, we consider LSUN, ISUN, CIFAR-100 and TinyIma- geNet as OOD sets and Gaussian noise as a synthetic OOD set.
   aliases: []
   role: used
-  referenced_paper_title:
-    value: ''
-    justification: ''
-    quote: ''
-- name:
-    value: LSUN
-    justification: Also used as an out-of-distribution set in the experiments for image classification tasks.
-    quote: for image classification tasks, we consider LSUN, ISUN, CIFAR-100 and TinyImageNet as OOD sets
-  aliases: []
-  role: Used
   referenced_paper_title:
     value: ''
     justification: ''
@@ -285,33 +229,12 @@ datasets:
     justification: ''
     quote: ''
 - name:
-    value: SVHN
-    justification: Another benchmark dataset used in the paper for empirical evaluations.
-    quote: We conduct a series of experiments on several classification tasks including two image benchmarks, namely CIFAR-10
-      and SVHN, and one audio benchmark, namely Urban-Sound [28].
-  aliases: []
-  role: Used
-  referenced_paper_title:
-    value: ''
-    justification: ''
-    quote: ''
-- name:
     value: TinyImageNet
     justification: TinyImageNet is used as an out-of-distribution dataset for evaluating the models.
-    quote: For image classification tasks, we consider LSUN, ISUN, CIFAR-100 and TinyImageNet as OOD sets and Gaussian noise
-      as a synthetic OOD set.
+    quote: Like in [21], for each of these in-distribution task, various naturalistic OOD sets are considered; for image classification
+      tasks, we consider LSUN, ISUN, CIFAR-100 and TinyIma-geNet as OOD sets and Gaussian noise as a synthetic OOD set.
   aliases: []
   role: used
-  referenced_paper_title:
-    value: ''
-    justification: ''
-    quote: ''
-- name:
-    value: TinyImageNet
-    justification: Another dataset used as an out-of-distribution set in the experiments.
-    quote: for image classification tasks, we consider LSUN, ISUN, CIFAR-100 and TinyImageNet as OOD sets
-  aliases: []
-  role: Used
   referenced_paper_title:
     value: ''
     justification: ''
@@ -328,17 +251,6 @@ datasets:
     justification: ''
     quote: ''
 - name:
-    value: TuT
-    justification: This dataset was used for audio classification tasks as an out-of-distribution set.
-    quote: OOD sets considered are TuT [25], Google Command [32] and ECS (Environmental Sound Classification) [26], as well
-      as white-noise sound as a synthetic OOD set.
-  aliases: []
-  role: Used
-  referenced_paper_title:
-    value: ''
-    justification: ''
-    quote: ''
-- name:
     value: Urban-Sound
     justification: The Urban-Sound dataset is used to verify the effectiveness of the proposed metrics in audio classification
       tasks.
@@ -346,17 +258,6 @@ datasets:
       and SVHN, and one audio benchmark, namely Urban-Sound.
   aliases: []
   role: used
-  referenced_paper_title:
-    value: ''
-    justification: ''
-    quote: ''
-- name:
-    value: Urban-Sound
-    justification: This is the audio benchmark dataset used for the experiments performed in the paper.
-    quote: We conduct a series of experiments on several classification tasks including two image benchmarks, namely CIFAR-10
-      and SVHN, and one audio benchmark, namely Urban-Sound [28].
-  aliases: []
-  role: Used
   referenced_paper_title:
     value: ''
     justification: ''

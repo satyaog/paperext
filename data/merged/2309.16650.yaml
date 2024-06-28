@@ -26,18 +26,11 @@ sub_research_fields:
     justification: The paper focuses on 3D scene graphs which are an advanced representation for understanding the spatial
       relationships and semantic information in 3D scenes.
     quote: ConceptGraphs focuses on the construction of the open- vocabulary 3D scene graphs for scene understanding and planning.
-  aliases: []
+  aliases: [3D Scene Understanding]
 - name:
     value: Scene Planning
     justification: ''
     quote: ''
-  aliases: []
-- name:
-    value: 3D Scene Understanding
-    justification: The paper focuses on 3D scene graphs which are an advanced representation for understanding the spatial
-      relationships and semantic information in 3D scenes.
-    quote: ConceptGraphs, a 3D scene representation method for robot perception and planning that satisfies all the above
-      requirements.
   aliases: []
 - name:
     value: Computer Vision
@@ -45,15 +38,18 @@ sub_research_fields:
       all of which fall under the domain of computer vision.
     quote: We propose a novel object-centric mapping system that integrates geometric cues from traditional 3D mapping systems
       and semantic cues from 2D foundation models.
-  aliases: []
+  aliases: [CV]
 models:
 - name:
-    value: CLIPSeg
+    value: CLIP
     justification: The model extracts visual features for the segmented regions.
     quote: 'TABLE II: Open-vocabulary semantic segmentation on the Replica [56] dataset. Privileged methods specifically finetune
       the pretrained models for semantic segmentation. Zero-shot approaches do not need any finetuning and are evaluated off
       the shelf.'
-  aliases: []
+  aliases:
+  - CLIPSeg
+  - MaskCLIP
+  - CLIPSeg (rd64-uni)
   is_contributed:
     value: false
     justification: Role:['contributed', 'used', 'referenced']
@@ -73,8 +69,11 @@ models:
 - name:
     value: LSeg
     justification: ''
-    quote: Language-driven semantic segmentation
-  aliases: []
+    quote: 'TABLE II: Open-vocabulary semantic segmentation on the Replica [56] dataset. Privileged methods specifically finetune
+      the pretrained models for semantic segmentation. Zero-shot approaches do not need any finetuning and are evaluated off
+      the shelf.'
+  aliases:
+  - Language-driven semantic segmentation
   is_contributed:
     value: false
     justification: Role:['contributed', 'used', 'referenced']
@@ -95,7 +94,8 @@ models:
     value: OpenSeg
     justification: ''
     quote: Scaling open-vocabulary image segmentation with image-level labels
-  aliases: []
+  aliases:
+  - open-vocabulary image segmentation
   is_contributed:
     value: false
     justification: Role:['contributed', 'used', 'referenced']
@@ -110,29 +110,6 @@ models:
     quote: ''
   referenced_paper_title:
     value: Scaling open-vocabulary image segmentation with image-level labels
-    justification: ''
-    quote: ''
-- name:
-    value: MaskCLIP
-    justification: The model extracts visual features for the segmented regions.
-    quote: 'TABLE II: Open-vocabulary semantic segmentation on the Replica [56] dataset. Privileged methods specifically finetune
-      the pretrained models for semantic segmentation. Zero-shot approaches do not need any finetuning and are evaluated off
-      the shelf.'
-  aliases: []
-  is_contributed:
-    value: false
-    justification: Role:['contributed', 'used', 'referenced']
-    quote: used
-  is_executed:
-    value: true
-    justification: ModelMode:['trained', 'fine-tuned', 'inference']
-    quote: inference
-  is_compared:
-    value: true
-    justification: ''
-    quote: ''
-  referenced_paper_title:
-    value: Extract free dense labels from clip
     justification: ''
     quote: ''
 - name:
@@ -180,11 +157,35 @@ models:
     justification: ''
     quote: ''
 - name:
+    value: ConceptFusion
+    justification: ''
+    quote: 'TABLE II: Open-vocabulary semantic segmentation on the Replica [56] dataset. Privileged methods specifically finetune
+      the pretrained models for semantic segmentation. Zero-shot approaches do not need any finetuning and are evaluated off
+      the shelf.'
+  aliases: []
+  is_contributed:
+    value: false
+    justification: Role:['contributed', 'used', 'referenced']
+    quote: used
+  is_executed:
+    value: true
+    justification: ModelMode:['trained', 'fine-tuned', 'inference']
+    quote: inference
+  is_compared:
+    value: true
+    justification: ''
+    quote: ''
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
     value: DINO
     justification: DINO is used alongside CLIP for obtaining visual descriptors.
     quote: Each extracted mask mt,i is then passed to a visual feature extractor (CLIP [31], DINO [53]) to obtain a visual
       descriptor ft,i =Embed(Itrgb , mt,i ).
-  aliases: []
+  aliases:
+  - Grounding DINO
   is_contributed:
     value: false
     justification: Role:['contributed', 'used', 'referenced']
@@ -205,7 +206,8 @@ models:
     value: GPT-4
     justification: GPT-4 is used as the language model for inferring relationships and processing language queries.
     quote: We use LLaVA [55] as the vision-language model LVLM and GPT-4 [32] for our LLM.
-  aliases: []
+  aliases:
+  - GPT
   is_contributed:
     value: false
     justification: Role:['contributed', 'used', 'referenced']
@@ -223,31 +225,11 @@ models:
     justification: ''
     quote: ''
 - name:
-    value: Grounding DINO
-    justification: The model is used in a variant of the ConceptGraphs system for open-vocabulary detection.
-    quote: An open-vocabulary 2D detector (Grounding DINO [34]) to obtain object bounding boxes.
-  aliases: []
-  is_contributed:
-    value: false
-    justification: Role:['contributed', 'used', 'referenced']
-    quote: used
-  is_executed:
-    value: true
-    justification: ModelMode:['trained', 'fine-tuned', 'inference']
-    quote: inference
-  is_compared:
-    value: true
-    justification: ''
-    quote: ''
-  referenced_paper_title:
-    value: 'Grounding dino: Marrying dino with grounded pre-training for open-set object detection,'
-    justification: ''
-    quote: ''
-- name:
     value: LLaVA
     justification: LLaVA is used for generating object captions from visual data.
     quote: We use LLaVA [55] as the vision-language model LVLM and GPT-4 [32] for our LLM.
-  aliases: []
+  aliases:
+  - LLaVA-7B
   is_contributed:
     value: false
     justification: Role:['contributed', 'used', 'referenced']

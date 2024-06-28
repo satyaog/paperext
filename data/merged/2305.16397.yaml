@@ -25,23 +25,53 @@ sub_research_fields:
     quote: Towards this goal, we perform two innovations. First, we transform diffusion-based models (in our case, Stable
       Diffusion) for any image-text matching (ITM) task using a novel method called DiffusionITM.
   aliases: []
+- name:
+    value: image-text matching
+    justification: The study evaluates models on image-text matching tasks and explores vision-and-language reasoning capabilities.
+    quote: Towards this goal, we perform two innovations. First, we transform diffusion-based models (in our case, Stable
+      Diffusion) for any image-text matching (ITM) task using a novel method called DiffusionITM.
+  aliases:
+  - ITM
 models:
 - name:
     value: CLIP
     justification: The paper uses CLIP as a baseline for comparison with Stable Diffusion.
     quote: GDBench allows head-on comparison between generative models, as well as with discriminative models like CLIP [Radford
       et al., 2021].
-  aliases: []
+  aliases:
+  - CLIP RN50x64
   is_contributed:
     value: false
     justification: Role:['contributed', 'used', 'referenced']
     quote: used
   is_executed:
-    value: false
-    justification: ModelMode:['trained', 'fine-tuned', 'inference']
-    quote: inference
+    value: true
+    justification: ''
+    quote: ''
   is_compared:
+    value: true
+    justification: ''
+    quote: ''
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: OpenCLIP
+    justification: The paper uses CLIP as a baseline for comparison with Stable Diffusion.
+    quote: 'Table 1: Benchmarking Diffusion ITM with vanilla SD and hard-negative fine-tuning on MS- COCO on GDBench.'
+  aliases:
+  - OpenCLIP ViT-L/14
+  is_contributed:
     value: false
+    justification: ''
+    quote: ''
+  is_executed:
+    value: true
+    justification: ''
+    quote: ''
+  is_compared:
+    value: true
     justification: ''
     quote: ''
   referenced_paper_title:
@@ -97,7 +127,8 @@ models:
     justification: The study uses Stable Diffusion as the primary model to evaluate its vision-and-language reasoning abilities.
     quote: In this work, we use Stable Diffusion (SD) [Rombach et al., 2022] as the text-to-image model, but any other diffusion
       model could be used.
-  aliases: []
+  aliases:
+  - SD
   is_contributed:
     value: false
     justification: Role:['contributed', 'used', 'referenced']
@@ -124,11 +155,11 @@ models:
     justification: Role:['contributed', 'used', 'referenced']
     quote: used
   is_executed:
-    value: false
-    justification: ModelMode:['trained', 'fine-tuned', 'inference']
-    quote: inference
+    value: true
+    justification: ''
+    quote: ''
   is_compared:
-    value: false
+    value: true
     justification: ''
     quote: ''
   referenced_paper_title:
@@ -146,11 +177,11 @@ models:
     justification: Role:['contributed', 'used', 'referenced']
     quote: used
   is_executed:
-    value: false
-    justification: ModelMode:['trained', 'fine-tuned', 'inference']
-    quote: inference
+    value: true
+    justification: ''
+    quote: ''
   is_compared:
-    value: false
+    value: true
     justification: ''
     quote: ''
   referenced_paper_title:
@@ -227,7 +258,8 @@ datasets:
 - name:
     value: LAION
     justification: override
-    quote: override
+    quote: However, the denoising diffusion objective only considers positive image-text pairs, and the large pre-training
+      corpus LAION [Schuhmann et al., 2021] contains many noisy/simple examples, not conductive to complex linguistic reasoning
   aliases: []
   role: referenced
   referenced_paper_title:
