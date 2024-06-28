@@ -21,9 +21,11 @@ primary_research_field:
 sub_research_fields:
 - name:
     value: Optimization
-    justification: ''
-    quote: ''
-  aliases: []
+    justification: The primary focus is on optimizing distributions defined by stochastic diffusion processes, indicating
+      that the sub-field is Optimization.
+    quote: We present a new algorithm to optimize distributions defined implicitly by parameterized stochastic diffusions.
+  aliases:
+  - Bilevel optimization
 - name:
     value: Diffusion Models
     justification: ''
@@ -34,18 +36,40 @@ models:
     value: Denoising Diffusion Model
     justification: The Denoising Diffusion Model is mentioned explicitly as one of the models optimized using the Implicit
       Diffusion algorithm.
-    quote: Denoising diffusion models (Ho et al., 2020).
+    quote: We also apply Implicit Diffusion for reward finetuning of denoising diffusion models pretrained on image datasets
   aliases: []
   is_contributed:
     value: false
     justification: Role:['contributed', 'used', 'referenced']
     quote: used
   is_executed:
-    value: false
+    value: true
     justification: ModelMode:['trained', 'fine-tuned', 'inference']
     quote: fine-tuned
   is_compared:
+    value: true
+    justification: ''
+    quote: ''
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: Langevin diffusions
+    justification: ''
+    quote: We run six sampling algorithms, including the infinite time-horizon version of Implicit Diffusion (Algorithm 2),
+      all starting from p0 = N(0,Id) and for K = 5,000 steps
+  aliases: []
+  is_contributed:
     value: false
+    justification: ''
+    quote: ''
+  is_executed:
+    value: true
+    justification: ''
+    quote: ''
+  is_compared:
+    value: true
     justification: ''
     quote: ''
   referenced_paper_title:
@@ -73,4 +97,26 @@ datasets:
     value: ''
     justification: ''
     quote: ''
-libraries: []
+- name:
+    value: LSUN
+    justification: MNIST dataset is explicitly mentioned as being used for the experimental validation of the algorithm.
+    quote: We report results on models pretrained on the image datasets MNIST (LeCun and Cortes, 1998), CIFAR-10 (Krizhevsky,
+      2009), and LSUN (bedrooms) (Yu et al., 2016).
+  aliases:
+  - LSUN-bedrooms
+  role: used
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+libraries:
+- name:
+    value: JAX
+    justification: ''
+    quote: 'JAX: composable transformations of Python+NumPy programs'
+  aliases: []
+  role: used
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
