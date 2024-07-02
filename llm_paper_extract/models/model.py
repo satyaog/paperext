@@ -212,7 +212,7 @@ class PaperExtractions(BaseModel):
         description="All Datasets found in the paper"
     )
     libraries: List[Library] = Field(
-        description="All Deep Learning Libraries found in the paper"
+        description="All Deep Learning Libraries explicitely used or contributed according to the paper"
     )
 
 
