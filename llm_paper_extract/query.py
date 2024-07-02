@@ -64,7 +64,7 @@ async def batch_extract_models_names(
 
         data = []
 
-        for i, message in enumerate((_FIRST_MESSAGE, _RETRY_MESSAGE)):
+        for i, message in enumerate((_FIRST_MESSAGE,)):
             f = (ROOT_DIR / "data/queries/") / paper
             f = f.with_stem(f"{f.stem}_{i:02}").with_suffix(".json")
 
@@ -123,11 +123,11 @@ def main(argv=None):
     options = parser.parse_args(argv)
 
     if options.input:
-        with open(options.input, "r") as f:
-            papers = [
-                Path(ROOT_DIR / f"data/cache/arxiv/{paper}.txt").absolute()
-                for paper in f.readlines() if paper.strip()
-            ]
+        papers = [
+            Path(ROOT_DIR / f"data/cache/arxiv/{paper}.txt").absolute()
+            for paper in Path(options.input).read_text().splitlines()
+            if paper.strip()
+        ]
     elif options.papers:
         papers = [
             Path(ROOT_DIR / f"data/cache/arxiv/{paper}.txt").absolute()
@@ -138,7 +138,6 @@ def main(argv=None):
         print(*papers, sep="\n")
 
     assert all(map(lambda p:p.exists(), papers))
-
 
     client = instructor.from_openai(
         openai.AsyncOpenAI()
