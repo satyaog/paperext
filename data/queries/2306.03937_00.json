@@ -1,0 +1,187 @@
+{
+  "paper": "2306.03937.txt",
+  "words": 9499,
+  "extractions": {
+    "title": {
+      "value": "Guiding The Last Layer in Federated Learning with Pre-Trained Models",
+      "justification": "Title is clearly specified at the beginning of the paper.",
+      "quote": "Guiding The Last Layer in Federated Learning with Pre-Trained Models"
+    },
+    "description": "The paper presents efficient Federated Learning (FL) strategies leveraging pre-trained models, specifically focusing on training just the last layer or a classifier. It introduces the FedNCM method and demonstrates its significant reductions in communication and compute costs while improving performance.",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The paper provides empirical evidence through experiments to support the proposed methods.",
+      "quote": "Our contributions in this work are:\n• We provide empirical evidence that, for numerous downstream datasets, training only the classifier head proves to be an effective approach in FL settings.\n• We propose employing a two-stage process consisting of HeadTuning (e.g., via FedNCM or LP) followed by fine-tuning, results in faster convergence and higher accuracy without violating FL constraints. We further illustrate that it can address many key desiderata of FL:\nhigh accuracy, low communication, low computation, and robustness to high heterogeneity while being easier to tune in terms of hyperparameter selection."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Federated Learning",
+        "justification": "Federated Learning is the primary focus of the paper.",
+        "quote": "Federated Learning (FL) is an emerging paradigm that allows a model to be trained across a number of participants without sharing data."
+      },
+      "aliases": [
+        "Federated Learning",
+        "FL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Transfer Learning",
+          "justification": "The paper utilizes pre-trained models, which is a key aspect of Transfer Learning.",
+          "quote": "Transfer learning from pre-trained models that have been trained on sufficiently abundant and diverse data is well known to produce state-of-the-art results in tasks related to vision."
+        },
+        "aliases": [
+          "Transfer Learning"
+        ]
+      },
+      {
+        "name": {
+          "value": "Computer Vision",
+          "justification": "The paper applies its methods to various computer vision datasets and uses pre-trained vision models.",
+          "quote": "We first observe that simply fitting a linear classification head can be efficient in many cases. We then show that in the FL setting, fitting a classifier using the Nearest Class Means (NCM) can be done exactly and orders of magnitude more efficiently than existing proposals, while obtaining strong performance."
+        },
+        "aliases": [
+          "Computer Vision"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "FedNCM",
+          "justification": "FedNCM is introduced as a novel and efficient method for Federated Learning.",
+          "quote": "For the HeadTuning stage, our work highlights the Nearest Class Mean (NCM), a classical alternative to initialize the classification layer which we denote FedNCM in the federated case."
+        },
+        "aliases": [
+          "FedNCM"
+        ],
+        "is_contributed": {
+          "value": 1,
+          "justification": "FedNCM is proposed and empirically validated in this paper.",
+          "quote": "We present FedNCM, a straightforward FL HeadTuning method that significantly reduces communication costs when used, either as a stand alone technique, or as stage one (HeadTuning) in our proposed two stage process which leads to improved accuracy."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "FedNCM is executed to test its efficiency and performance benefits.",
+          "quote": "We propose a two-stage approach based on first deriving a powerful classification head (HeadTuning stage) and subsequently performing a full fine-tuning of the model (Fine-Tune stage)... We demonstrate the potential our method has to reduce communication and compute costs while achieving better model performance."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "FedNCM is compared with several other methods, including fine-tuning and linear probing.",
+          "quote": "We observe pure HeadTuning approaches, FedNCM and LP can be powerful, especially under compute and communication constraints."
+        },
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "FedNCM is introduced in the current paper.",
+          "quote": "N/A"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "CIFAR-10 is one of the primary datasets used for experimentation in the paper.",
+          "quote": "We consider a setting similar to Nguyen et al. [2023] using the CIFAR 10 dataset [Krizhevsky, 2009] and expand our setting to include four additional standard computer vision datasets shown in Tab. 1."
+        },
+        "aliases": [
+          "CIFAR-10"
+        ],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "Learning Multiple Layers of Features from Tiny Images",
+          "justification": "The CIFAR-10 dataset is originally introduced in the paper by Krizhevsky, 2009.",
+          "quote": "We consider a setting similar to Nguyen et al. [2023] using the CIFAR 10 dataset [Krizhevsky, 2009] and expand our setting to include four additional standard computer vision datasets shown in Tab. 1."
+        }
+      },
+      {
+        "name": {
+          "value": "Flowers102",
+          "justification": "Flowers102 is used to test the methods proposed in the paper.",
+          "quote": "Our primary experiments focus on standard image classification tasks. We also provide some NLP classification tasks in Sec. 4.2.1. We consider a setting similar to Nguyen et al. [2023] using the CIFAR 10 dataset [Krizhevsky, 2009] and expand our setting to include four additional standard computer vision datasets shown in Tab. 1."
+        },
+        "aliases": [
+          "Flowers102"
+        ],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "No specific reference paper for Flowers102 is cited.",
+          "quote": "N/A"
+        }
+      },
+      {
+        "name": {
+          "value": "Stanford Cars",
+          "justification": "Stanford Cars dataset is used to validate the methods.",
+          "quote": "Our primary experiments focus on standard image classification tasks. We also provide some NLP classification tasks in Sec. 4.2.1. We consider a setting similar to Nguyen et al. [2023] using the CIFAR 10 dataset [Krizhevsky, 2009] and expand our setting to include four additional standard computer vision datasets shown in Tab. 1."
+        },
+        "aliases": [
+          "Stanford Cars"
+        ],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "No specific reference paper for Stanford Cars is cited.",
+          "quote": "N/A"
+        }
+      },
+      {
+        "name": {
+          "value": "CUB",
+          "justification": "The CUB dataset is one of the primary datasets used.",
+          "quote": "Our primary experiments focus on standard image classification tasks. We also provide some NLP classification tasks in Sec. 4.2.1. We consider a setting similar to Nguyen et al. [2023] using the CIFAR 10 dataset [Krizhevsky, 2009] and expand our setting to include four additional standard computer vision datasets shown in Tab. 1."
+        },
+        "aliases": [
+          "CUB"
+        ],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "No specific reference paper for CUB is cited.",
+          "quote": "N/A"
+        }
+      },
+      {
+        "name": {
+          "value": "EuroSAT-Sub",
+          "justification": "EuroSAT-Sub is used to evaluate the proposed methods.",
+          "quote": "Our primary experiments focus on standard image classification tasks. We also provide some NLP classification tasks in Sec. 4.2.1. We consider a setting similar to Nguyen et al. [2023] using the CIFAR 10 dataset [Krizhevsky, 2009] and expand our setting to include four additional standard computer vision datasets shown in Tab. 1."
+        },
+        "aliases": [
+          "EuroSAT-Sub"
+        ],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "No specific reference paper for EuroSAT-Sub is cited.",
+          "quote": "N/A"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "FLSim",
+          "justification": "The FLSim library is used to run the experiments in the paper.",
+          "quote": "For all other datasets we use full client participation for simplicity. Like Nguyen et al. [2023], we use SqueezeNet [Iandola et al., 2016], we also consider a ResNet18 [He et al., 2016]\nfor experiments in Appendix E. When performing finetuning and evaluation for all datasets, we resize images to 224 × 224, the training input size of ImageNet. We run\nall experiments for three seeds using the FLSim library described in Nguyen et al. [2023]."
+        },
+        "aliases": [
+          "FLSim"
+        ],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "No specific reference paper for FLSim is cited in the paper.",
+          "quote": "N/A"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1776,
+    "prompt_tokens": 17966,
+    "total_tokens": 19742
+  }
+}

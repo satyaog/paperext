@@ -1,0 +1,116 @@
+{
+  "paper": "2312.07511.txt",
+  "words": 45530,
+  "extractions": {
+    "title": {
+      "value": "A Hitchhiker’s Guide to Geometric GNNs for 3D Atomic Systems",
+      "justification": "The title of the paper is stated at the beginning of the document.",
+      "quote": "A Hitchhiker’s Guide to Geometric GNNs for 3D Atomic Systems"
+    },
+    "description": "This opinion paper provides a comprehensive overview of Geometric Graph Neural Network (GNN) architectures for modeling 3D atomic systems, describing key models, datasets, and future research directions.",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The paper comprehensively surveys existing architectures, datasets, and applications, providing opinions and suggestions for future directions based on empirical evidence.",
+      "quote": "In this opinionated paper, we provide a comprehensive and self-contained overview of the field of Geometric GNNs for 3D atomic systems. We cover fundamental background material and introduce a pedagogical taxonomy of Geometric GNN architectures: (1) invariant networks, (2) equivariant networks in Cartesian basis, (3) equivariant networks in spherical basis, and (4) unconstrained networks. Additionally, we outline key datasets and application areas and suggest future research directions."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Graph Neural Networks",
+        "justification": "The primary focus of the paper is to survey and discuss Geometric Graph Neural Networks (GNNs) for modeling 3D atomic systems.",
+        "quote": "...Recent advances in computational modelling of atomic systems, spanning molecules, proteins, and materials, represent them as geometric graphs with atoms embedded as nodes in 3D Euclidean space. In these graphs, the geometric attributes transform according to the inherent physical symmetries of 3D atomic systems, including rotations and translations in Euclidean space, as well as node permutations. In recent years, Geometric Graph Neural Networks have emerged as the preferred machine learning architecture powering applications ranging from protein structure prediction to molecular simulations and material generation."
+      },
+      "aliases": [
+        "GNNs",
+        "Geometric GNNs"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "3D Atomic Systems",
+          "justification": "The paper focuses on utilizing Geometric GNNs specifically for modeling 3D atomic systems, including molecules, proteins, and materials.",
+          "quote": "Recent advances in computational modelling of atomic systems, spanning molecules, proteins, and materials, represent them as geometric graphs with atoms embedded as nodes in 3D Euclidean space."
+        },
+        "aliases": [
+          "Molecules",
+          "Proteins",
+          "Materials",
+          "3D Molecular Structures"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "SchNet",
+          "justification": "SchNet is highlighted as one of the earlier invariant GNN models which uses continuous filters combining encoded distance information with neighboring atom representations.",
+          "quote": "SchNet [Schütt et al., 2018] was one of the first invariant GNN models and uses relative distances ∥⃗xij∥ between pairs of nodes, encoded by a learnable Radial Basis Functions✜ (ψ, i.e. an RBF with a two-layer MLP), to encode local geometric information, as shown in Figure 10a. Each SchNet layer performs a continuous convolution✜ to combine the encoded distance information (i.e. the filter) with neighbouring atom representations (via element-wise multiplication ⊙)."
+        },
+        "aliases": [
+          ""
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "The paper references SchNet as a previously existing model.",
+          "quote": "SchNet [Schütt et al., 2018] was one of the first invariant GNN models..."
+        },
+        "is_executed": {
+          "value": 0,
+          "justification": "The paper does not state execution details about SchNet.",
+          "quote": ""
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "SchNet is compared to other invariant GNNs like DimeNet and GemNet in terms of their geometric expressivity and computational efficiency.",
+          "quote": "However, distance-based invariant GNNs are not sufficiently expressive at modeling higher-order geometric invariants. As SchNet relies on atom distances within a cutoff value, it cannot differentiate between atomic systems that have the same set of atoms and pairwise distances among them but differ in higher-order geometric quantities such as bond angles (refer to Appendix A.8)..."
+        },
+        "referenced_paper_title": {
+          "value": "SchNet: A continuous-filter convolutional neural network for modeling quantum interactions",
+          "justification": "The paper clearly mentions the title of the reference SchNet paper.",
+          "quote": "SchNet [Schütt et al., 2018] was one of the first invariant GNN models..."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "MD17",
+          "justification": "MD17 is listed as a dataset for modeling small molecules using a complete graph approach.",
+          "quote": "Using a complete graph (with pairwise distances as edge weights) allows for a comprehensive analysis of an atomic system and has been the preferred solution on small molecules (MD17 [Duvenaud et al., 2015], QM9 [Ramakrishnan et al., 2014])."
+        },
+        "aliases": [
+          ""
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "MD17 - a comprehensive dataset of molecular dynamics simulations",
+          "justification": "The MD17 dataset is referenced with this title in the paper.",
+          "quote": "Using a complete graph (with pairwise distances as edge weights) allows for a comprehensive analysis of an atomic system and has been the preferred solution on small molecules (MD17 [Duvenaud et al., 2015], QM9 [Ramakrishnan et al., 2014])."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "e3nn",
+          "justification": "E3nn is mentioned as the most common library for implementing spherical GNNs due to its capabilities in handling spherical harmonics and tensor products.",
+          "quote": "The spherical EGNN family contains methods like Clebsch-Gordan Net, TFN [Thomas et al., 2018], NeuquIP [Batzner et al., 2022], SEGNN [Brandstetter et al., 2021], MACE [Batatia et al., 2022b], Equiformer [Liao and Smidt, 2023], and many others, including networks using the concepts of steerability and equivariance introduced by Cohen and Welling [2016]. Most of these models build on the e3nn library, which makes it easy to work with spherical tensors by implementing the real spherical harmonics, Wigner D-matrices and tools to easily compute, decompose and parameterise tensor products for network layers."
+        },
+        "aliases": [
+          ""
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "e3nn: Euclidean neural networks",
+          "justification": "The e3nn library reference is mentioned in the context of models using it.",
+          "quote": "Most of these models build on the e3nn library [Geiger and Smidt, 2022], which makes it easy to work with spherical tensors by implementing the real spherical harmonics, Wigner D-matrices and tools to easily compute, decompose and parameterise tensor products for network layers."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1431,
+    "prompt_tokens": 85932,
+    "total_tokens": 87363
+  }
+}

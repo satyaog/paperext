@@ -1,0 +1,180 @@
+{
+  "paper": "2310.01632.txt",
+  "words": 6622,
+  "extractions": {
+    "title": {
+      "value": "Imitation Learning from Observation through Optimal Transport",
+      "justification": "This is the title provided at the beginning of the paper.",
+      "quote": "Imitation Learning from Observation through Optimal Transport"
+    },
+    "description": "This paper explores a novel approach to Imitation Learning from Observation (ILfO) by leveraging optimal transport techniques. The proposed method, Observational Off-Policy Sinkhorn (OOPS), generates a reward function based on the Wasserstein distance between the expert and learner state trajectories. This approach simplifies existing methods and can be integrated with any RL algorithm. The effectiveness of this method is demonstrated on several continuous control tasks, showing superior performance compared to the state of the art.",
+    "type": {
+      "value": "Empirical study",
+      "justification": "The paper demonstrates the effectiveness of its approach through empirical evaluations on multiple continuous control tasks using benchmarks and robotics domains.",
+      "quote": "We benchmark our approach against existing methods... on a variety of continuous control tasks."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Reinforcement Learning",
+        "justification": "The primary focus of the paper is on improving Imitation Learning from Observation (ILfO) using Reinforcement Learning (RL) techniques and optimal transport methods.",
+        "quote": "OOPS generates a reward function for any RL algorithm, which minimizes the Wasserstein distance between expert and learner state trajectories."
+      },
+      "aliases": [
+        "RL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Robotics",
+          "justification": "The paper focuses on applying ILfO techniques to various robotics tasks, including simulated environments and terrain traversal tasks.",
+          "quote": "We benchmark on three robotics tasks: BipedalWalker, a 2D simulated terrain traversal environment, which tests the ability to deal with range sensor data."
+        },
+        "aliases": [
+          ""
+        ]
+      },
+      {
+        "name": {
+          "value": "Optimal Transport",
+          "justification": "The core technique of the paper leverages optimal transport, specifically the Wasserstein distance, to generate reward functions for ILfO.",
+          "quote": "We re-examine the use of optimal transport for IL, in which a reward is generated based on the Wasserstein distance between the state trajectories of the learner and expert."
+        },
+        "aliases": [
+          "OT"
+        ]
+      },
+      {
+        "name": {
+          "value": "Imitation Learning from Observation",
+          "justification": "The main research problem addressed by the paper is Imitation Learning from Observation (ILfO), and the proposed method aims to improve performance in this specific setting.",
+          "quote": "Imitation Learning from Observation (ILfO) eliminates the need for demonstrated actions by learning behaviors from sequences of expert states."
+        },
+        "aliases": [
+          "ILfO"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Observational Off-Policy Sinkhorn (OOPS)",
+          "justification": "The paper introduces OOPS as the novel method that leverages optimal transport for Imitation Learning from Observation.",
+          "quote": "The resulting approach, Observational Off-Policy Sinkhorn (OOPS) generates a reward function for any RL algorithm, which minimizes the Wasserstein distance between expert and learner state trajectories."
+        },
+        "aliases": [
+          "OOPS"
+        ],
+        "is_contributed": {
+          "value": 1,
+          "justification": "OOPS is the main contribution of the paper, proposing a new approach for ILfO.",
+          "quote": "The resulting approach, Observational Off-Policy Sinkhorn (OOPS) generates a reward function for any RL algorithm."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The described experiments and evaluations were conducted using RL algorithms and benchmark environments, indicating model execution.",
+          "quote": "Our final approach, Observational Off-Policy Sinkhorn (OOPS) discovers a reward function in a similar manner to existing approaches, but in state transition space rather than state-action space."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The paper includes comparisons of OOPS with several existing methods across multiple tasks and environments.",
+          "quote": "We benchmark our approach against existing methods proposed to optimize the Wasserstein distance [11], [12], as well as current state-of-the-art ILfO algorithms [6], [13] on a variety of continuous control tasks."
+        },
+        "referenced_paper_title": {
+          "value": "None",
+          "justification": "OOPS is a novel contribution and does not have a direct reference paper for its definition.",
+          "quote": "None"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "MuJoCo locomotion benchmark environments",
+          "justification": "The MuJoCo benchmark environments are used to evaluate the performance of the proposed approach.",
+          "quote": "We evaluate our algorithm on five MuJoCo locomotion benchmark environments from the OpenAI Gym suite."
+        },
+        "aliases": [
+          "MuJoCo"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "E. Todorov, T. Erez, and Y. Tassa, “Mujoco: A physics engine for model-based control,” in IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS). IEEE, 2012, pp. 5026–5033.",
+          "justification": "The MuJoCo physics engine is cited as the reference for these benchmark environments.",
+          "quote": "We evaluate our algorithm on five MuJoCo locomotion benchmark environments from the OpenAI Gym suite [34], [35]."
+        }
+      },
+      {
+        "name": {
+          "value": "Minitaur",
+          "justification": "Minitaur is mentioned as one of the robotics tasks used for evaluation.",
+          "quote": "Minitaur is a quadruped locomotion task based on a faithful modeling of Ghost Robotics’ Minitaur platform."
+        },
+        "aliases": [
+          ""
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "J. Tan, T. Zhang, E. Coumans, A. Iscen, Y. Bai, D. Hafner, S. Bohez, and V. Vanhoucke, “Sim-to-real: Learning agile locomotion for quadruped robots,” in Proceedings of Robotics: Science and Systems, Pittsburgh, Pennsylvania, June 2018.",
+          "justification": "The Minitaur environment is referenced for the Sim-to-Real quadruped locomotion task.",
+          "quote": "Minitaur is a quadruped locomotion task based on a faithful modeling of Ghost Robotics’ Minitaur platform... This PyBullet environment was initially created for Sim-to-Real, to transfer learnt running gaits onto a real-world Minitaur."
+        }
+      },
+      {
+        "name": {
+          "value": "MinitaurDuck",
+          "justification": "MinitaurDuck is a variation of the Minitaur environment used for evaluation in the experiments.",
+          "quote": "MinitaurDuck is a variation of the Minitaur environment that places a duck on top of the Minitaur’s body."
+        },
+        "aliases": [
+          ""
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "None",
+          "justification": "MinitaurDuck is a variation of Minitaur, and no separate paper is referenced.",
+          "quote": "None"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyBullet",
+          "justification": "PyBullet is mentioned as the simulation environment used for the Minitaur and MinitaurDuck tasks.",
+          "quote": "This PyBullet environment was initially created for Sim-to-Real, to transfer learnt running gaits onto a real-world Minitaur."
+        },
+        "aliases": [
+          ""
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "E. Coumans and Y. Bai, “Pybullet, a python module for physics simulation for games, robotics and machine learning,” 2016.",
+          "justification": "The PyBullet library is referenced in the context of sim-to-real tasks for robotics simulation.",
+          "quote": "This PyBullet environment was initially created for Sim-to-Real [37], to transfer learnt running gaits onto a real-world Minitaur."
+        }
+      },
+      {
+        "name": {
+          "value": "OpenAI Gym",
+          "justification": "OpenAI Gym is used to provide the MuJoCo locomotion benchmark environments for evaluation.",
+          "quote": "We evaluate our algorithm on five MuJoCo locomotion benchmark environments from the OpenAI Gym suite."
+        },
+        "aliases": [
+          ""
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "G. Brockman, V. Cheung, L. Pettersson, J. Schneider, J. Schulman, J. Tang, and W. Zaremba, “Openai gym,” 2016.",
+          "justification": "The OpenAI Gym library is referenced as the source of the benchmark environments used in the evaluations.",
+          "quote": "We evaluate our algorithm on five MuJoCo locomotion benchmark environments from the OpenAI Gym suite [34], [35]."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1683,
+    "prompt_tokens": 13457,
+    "total_tokens": 15140
+  }
+}

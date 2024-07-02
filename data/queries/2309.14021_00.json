@@ -1,0 +1,152 @@
+{
+  "paper": "2309.14021.txt",
+  "words": 7750,
+  "extractions": {
+    "title": {
+      "value": "LORD: Low-Rank Decomposition of Monolingual Code LLMs for One-Shot Compression",
+      "justification": "The title is mentioned at the beginning of the paper.",
+      "quote": "L O RD: L OW R ANK D ECOMPOSITION OF MONOLINGUAL CODE LLM S FOR ONE - SHOT COM - PRESSION"
+    },
+    "description": "The paper investigates the use of Low Rank Decomposition (LoRD) to compress Large Language Models (LLMs) for monolingual Code generation, reducing model parameters and speeding up inference. LoRD maintains differentiability and trainability of compressed layers and shows compatibility with quantization methods like SpQR and QLoRA.",
+    "type": {
+      "value": "Empirical study",
+      "justification": "The paper includes experiments to test the efficacy of LoRD on LLMs and reports empirical results related to parameter reduction, inference speedup, and model performance.",
+      "quote": "We study the potential to compress Large Language Models (LLMs) for monolingual Code generation via L Ow Rank Decomposition (LoRD) and observe that ranks for the linear layers in these models can be reduced by upto 39.58% with less than 1% increase in perplexity."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The paper focuses on compressing Large Language Models (LLMs) used primarily for natural language processing tasks such as code generation.",
+        "quote": "We study the potential to compress Large Language Models (LLMs) for monolingual Code generation via L Ow Rank Decomposition (LoRD)"
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Model Compression",
+          "justification": "The primary focus of the paper is on compressing large language models using Low Rank Decomposition (LoRD).",
+          "quote": "We study the potential to compress Large Language Models (LLMs) for monolingual Code generation via L Ow Rank Decomposition (LoRD)"
+        },
+        "aliases": [
+          "Model Reduction"
+        ]
+      },
+      {
+        "name": {
+          "value": "Code generation",
+          "justification": "The LLMs targeted for compression in this paper are specifically used for generating code.",
+          "quote": "We study the potential to compress Large Language Models (LLMs) for monolingual Code generation via L Ow Rank Decomposition (LoRD)"
+        },
+        "aliases": [
+          "Code synthesis"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "StarCoder",
+          "justification": "The paper discusses the compression of the StarCoder model using LoRD, with detailed results showing the impact on performance and parameter reduction.",
+          "quote": "We then use LoRD to compress StarCoder 16B to 13.2B parameter with no drop and to 12.3B with minimal drop in HumanEval Pass@1 score, in less than 10 minutes on a single A100."
+        },
+        "aliases": [
+          "StarCoder 16B"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "The StarCoder model is not introduced as a new model in this paper; it is used as a subject for compression using LoRD.",
+          "quote": "We then use LoRD to compress StarCoder 16B to 13.2B parameter with no drop and to 12.3B with minimal drop in HumanEval Pass@1 score, in less than 10 minutes on a single A100."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The paper mentions running experiments on the StarCoder model for compression using a single A100 GPU.",
+          "quote": "in less than 10 minutes on a single A100."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The paper provides comparison metrics for the StarCoder model before and after compression, such as HumanEval scores and inference speed.",
+          "quote": "We then use LoRD to compress StarCoder 16B to 13.2B parameter with no drop and to 12.3B with minimal drop in HumanEval Pass@1 score, in less than 10 minutes on a single A100."
+        },
+        "referenced_paper_title": {
+          "value": "StarCoder: May the source be with you!",
+          "justification": "The referenced paper title is found in the context of discussing the StarCoder model.",
+          "quote": "StarCoder models can be low rank decomposed to 13.2B parameters (50% rank reduction) with no drop in Pass@1 performance and upto 12.3B parameters (62.5% rank reduction) with very little drop."
+        }
+      },
+      {
+        "name": {
+          "value": "CodeGen ",
+          "justification": "The paper discusses the compression of the CodeGen model using LoRD, describing the effects on performance and parameter reduction.",
+          "quote": "We consider CodeGen and StarCoder model family of models. CodeGen mono models are present across 350M, 2B, 6B and 16B parameters and are CodeGen models that were further trained on only python code."
+        },
+        "aliases": [
+          "CodeGen 16B"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "The CodeGen model is not introduced as a new model in this paper; it is used as a subject for compression using LoRD.",
+          "quote": "We consider CodeGen and StarCoder model family of models. CodeGen mono models are present across 350M, 2B, 6B and 16B parameters and are CodeGen models that were further trained on only python code."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The paper mentions running experiments on the CodeGen model for compression utilizing a single A100 GPU.",
+          "quote": "All our experiments were performed on a single A100 GPU in under an hour for each run."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The paper provides comparison metrics for the CodeGen model before and after compression, including HumanEval scores and inference performance.",
+          "quote": "We consider CodeGen and StarCoder model family of models. CodeGen mono models are present across 350M, 2B, 6B and 16B parameters and are CodeGen models that were further trained on only python code."
+        },
+        "referenced_paper_title": {
+          "value": "CodeGen: An Open Large Language Model for Code with Multi-Turn Program Synthesis",
+          "justification": "The referenced paper title is related to the CodeGen model used for compression.",
+          "quote": "We consider CodeGen and StarCoder model family of models. CodeGen mono models are present across 350M, 2B, 6B and 16B parameters and are CodeGen models that were further trained on only python code."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "HumanEval",
+          "justification": "The dataset is explicitly mentioned as being used to evaluate the performance of compressed models.",
+          "quote": "We propose various considerations for compressing the models and to achieve inference speedup on GPUs (§3.1). Using these, we achieve compression of the StarCoder 16B model offering 31.67 HumanEval Chen et al. (2021a) Pass@1 score down to 13.2B parameter with similar performance of 31.57 HumanEval and down to 12.3B parameter with 29.22 HumanEval score (§3.2)."
+        },
+        "aliases": [
+          "HumanEval dataset"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Evaluating large language models trained on code",
+          "justification": "The referenced paper title discusses the HumanEval benchmark dataset used for evaluating code generation models.",
+          "quote": "We benchmark over 1024 tokens and 512 tokens sequence, averaged across 10 runs with warm up of 3 runs. We plot relative time taken and model size across reduction in rank in Figure 4. Inference speedups as high as 22.35% are observed for decomposed models. The lines in the graph are generally downward sloping, Therefore reduction in rank beyond 25% generally implies less inference time and reduction in model size. However, the underlying hardware (and pertaining software kernels) also significantly affect the speedup gains. We notice huge gains, whenever the rank is rounded off to a multiple of a very high power of 2 (like 4096 and 2560 at 33% and 58% rank reduction), despite very little reduction in model size. In contrast, for certain ranks which are multiples of a lesser power of 2 (like 3584 and 2304 at 41% and 62% rank reduction) are slower than those at slightly higher ranks. It is worth noting that affect of hardware inefficient matrix shape is less significant for longer tokens sequence of 1024 because the O(n2 ) attention overhead starts becoming more significant, especially in the absence of SoTA attention implementation techniques (Rabe & Staats, 2021; Dao et al., 2022; Dao, 2023) as in the case of Huggingface’s implementations."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is specifically mentioned as the library used for implementing the compression with minimal code changes.",
+          "quote": "The compressed models speeds up inference by up to 22.35% with just a single line of change in code over huggingface’s implementation with pytorch backend."
+        },
+        "aliases": [
+          "PyTorch framework"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An Imperative Style, High-Performance Deep Learning Library",
+          "justification": "The referenced paper title is related to PyTorch, the deep learning library used in the research.",
+          "quote": "PyTorch: An Imperative Style, High-Performance Deep Learning Library"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1927,
+    "prompt_tokens": 15043,
+    "total_tokens": 16970
+  }
+}

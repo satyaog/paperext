@@ -1,0 +1,144 @@
+{
+  "paper": "2402.14083.txt",
+  "words": 11155,
+  "extractions": {
+    "title": {
+      "value": "Beyond A∗: Better Planning with Transformers via Search Dynamics Bootstrapping",
+      "justification": "This is the exact title provided at the beginning of the research paper.",
+      "quote": "Beyond A∗: Better Planning with Transformers via Search Dynamics Bootstrapping"
+    },
+    "description": "This paper demonstrates how to train Transformers to solve complex planning tasks by predicting the search dynamics of the A∗ algorithm. It introduces a model called Searchformer that outperforms existing baselines in solving Sokoban puzzles, reducing the number of search steps significantly. The work employs search dynamics bootstrapping, where a Transformer first imitates A∗'s search process and is then fine-tuned to use fewer search steps.",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The paper presents experiments and empirical results demonstrating the effectiveness of the proposed model Searchformer on solving Sokoban puzzles and maze navigation tasks.",
+      "quote": "Through a sequence of experiments that control task complexity, dataset size, and model size, we demonstrate that including execution traces into the training data increases performance on an independent test task set."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Artificial Intelligence",
+        "justification": "The paper focuses on enhancing the performance of Transformer models in solving planning tasks, which falls under the domain of Artificial Intelligence.",
+        "quote": "While Transformers have enabled tremendous progress in various application settings, such architectures still trail behind traditional symbolic planners for solving complex decision making tasks."
+      },
+      "aliases": [
+        "AI"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Natural Language Processing",
+          "justification": "The paper employs Transformers, a fundamental model in Natural Language Processing, to solve planning tasks.",
+          "quote": "In this work, we demonstrate how to train Transformers to solve complex planning tasks."
+        },
+        "aliases": [
+          "NLP"
+        ]
+      },
+      {
+        "name": {
+          "value": "Reinforcement Learning",
+          "justification": "The paper aligns with Reinforcement Learning principles by using planning tasks to train and evaluate the Transformer models, especially in decision making processes.",
+          "quote": "Using Transformer architectures to solve complex sequential decision making tasks has been studied in prior work in a reinforcement learning (RL) setting."
+        },
+        "aliases": [
+          "RL"
+        ]
+      },
+      {
+        "name": {
+          "value": "Machine Learning",
+          "justification": "The study includes training and fine-tuning machine learning models (Transformers) for specific tasks, which is central to the Machine Learning field.",
+          "quote": "We demonstrate how to train a Transformer to perform planning, we express a planning task and its optimal solution plan as a sequence of words, called tokens."
+        },
+        "aliases": [
+          "ML"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Searchformer",
+          "justification": "The paper explicitly names Searchformer as the main model proposed and evaluated.",
+          "quote": "Lastly, we present Searchformer, a Transformer model that solves complex planning tasks in fewer search steps than our A∗ reference implementation."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 1,
+          "justification": "The model Searchformer is introduced by the authors as a contribution of their research.",
+          "quote": "Lastly, we present Searchformer, a Transformer model that solves complex planning tasks in fewer search steps than our A∗ reference implementation."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The experiments involve the execution of Searchformer on planning tasks like Sokoban puzzles.",
+          "quote": "We fine tune this model to obtain a Searchformer, a Transformer model that optimally solves previously unseen Sokoban puzzles 93.7% of the time, while using up to 26.8% fewer search steps than the A∗ implementation that was used for training initially."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "Searchformer is compared numerically against the A∗ algorithm and other baselines in terms of performance metrics like percentage of tasks solved and average search steps.",
+          "quote": "Searchformer significantly outperforms baselines that predict the optimal plan directly with a 5–10× smaller model size and a 10× smaller training dataset."
+        },
+        "referenced_paper_title": {
+          "value": "Attention is all you need",
+          "justification": "The Transformer architecture, which Searchformer builds upon, originates from the influential paper 'Attention is All You Need'.",
+          "quote": "For each experiment an adaptation of the encoder-decoder T5 architecture (Raffel et al., 2020) is used that integrates Rotary Position Embeddings (RoPE) (Su et al., 2023)."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Sokoban puzzles",
+          "justification": "The Sokoban puzzles are used as a primary dataset to evaluate the performance of the Searchformer model.",
+          "quote": "We fine tune this model to obtain a Searchformer, a Transformer model that optimally solves previously unseen Sokoban puzzles 93.7% of the time."
+        },
+        "aliases": [
+          "Sokoban"
+        ],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "Mastering the game of Go without human knowledge",
+          "justification": "Though the paper itself does not refer to a specific Sokoban dataset creation reference, algorithms for solving Sokoban are discussed in context with other game-solving approaches like AlphaGo.",
+          "quote": "Mastering the game of go without human knowledge. nature, 550(7676):354–359, 2017."
+        }
+      },
+      {
+        "name": {
+          "value": "Maze Tasks",
+          "justification": "The maze tasks are synthetically generated and used for training and testing the Transformer models.",
+          "quote": "We consider two domains: maze navigation (Figure 1(a)) and solving Sokoban puzzles (Figure 5 in Appendix C)."
+        },
+        "aliases": [
+          "Mazes"
+        ],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "Artificial Intelligence: A Modern Approach",
+          "justification": "The maze tasks relate to classical planning problems often discussed in the context of artificial intelligence.",
+          "quote": "Generating logic puzzles with serializable causal graphs. arXiv preprint arXiv:1811.03128."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is mentioned as the framework used to implement the experiments.",
+          "quote": "All experiments were implemented in PyTorch 2.0 (Paszke et al., 2019) and default parameters were used unless reported here otherwise."
+        },
+        "aliases": [],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An imperative style, high-performance deep learning library",
+          "justification": "The referenced paper for PyTorch, which is indicated to be used for experiment implementation.",
+          "quote": "Paszke, A., Gross, S., Massa, F., Lerer, A., Bradbury, J., Chanan, G., and Chintala, S. PyTorch: An imperative style, high-performance deep learning library, 2019."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1336,
+    "prompt_tokens": 19335,
+    "total_tokens": 20671
+  }
+}

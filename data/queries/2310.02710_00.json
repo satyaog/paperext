@@ -1,0 +1,158 @@
+{
+  "paper": "2310.02710.txt",
+  "words": 8159,
+  "extractions": {
+    "title": {
+      "value": "Local Search GFlowNets",
+      "justification": "The title is clearly stated at the beginning of the paper.",
+      "quote": "Local Search GFlowNets"
+    },
+    "description": "This paper introduces Local Search GFlowNets (LS-GFN), an augmentation method for GFlowNets that improves training efficiency and sample quality by leveraging local search in object space. The method applies local backtracking and reconstruction for biased sampling towards high-reward solutions, solving the issue of over-exploration in vast sample spaces.",
+    "type": {
+      "value": "Empirical study",
+      "justification": "The paper conducts extensive experiments to demonstrate the effectiveness of the proposed Local Search GFlowNets method.",
+      "quote": "Our extensive experiments underscore the effectiveness of the proposed exploration strategy for GFlowNets."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Generative Models",
+        "justification": "The primary field of the study discussed in the paper revolves around generative flow networks, which are a subset of generative models.",
+        "quote": "Generative Flow Networks (GFlowNets) are amortized sampling methods that learn a distribution over discrete objects proportional to their rewards."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Optimization",
+          "justification": "The paper deals explicitly with optimizing molecule structures and biological sequences to maximize rewards, fitting well under the Optimization subfield.",
+          "quote": "The proposed method outperforms not only prior GFlowNet methods but also reward-maximization techniques employed by various reinforcement learning baselines as well as sampling baselines, in terms of both the number of modes discovered and the value of top-K rewards."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Molecule Design",
+          "justification": "The paper applies its proposed method to molecule optimization tasks, highlighting its application in biochemical design.",
+          "quote": "Our extensive experiments underscore the effectiveness of the proposed exploration strategy for GFlowNets. To assess the efficacy of our method, we apply it to six well-established benchmarks encompassing molecule optimization and biological sequence design."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Local Search GFlowNets (LS-GFN)",
+          "justification": "The primary contribution of this paper is the Local Search GFlowNets model, which combines GFlowNets with local search methods.",
+          "quote": "we introduce a novel algorithm, local search GFlowNets (LS-GFN), which is designed to enhance the training effectiveness of GFlowNets by leveraging local search in object space. LS-GFN has three iterative steps: (1) we sample the complete trajectories using GFlowNet trajectories; (2) we refine the trajectories using local search; (3) we train GFlowNets using revised trajectories."
+        },
+        "aliases": [
+          "LS-GFN"
+        ],
+        "is_contributed": {
+          "value": 1,
+          "justification": "The model Local Search GFlowNets (LS-GFN) is proposed by this paper.",
+          "quote": "we introduce a novel algorithm, local search GFlowNets (LS-GFN), which is designed to enhance the training effectiveness of GFlowNets by leveraging local search in object space."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The execution and training of LS-GFN are described using GPU frameworks to process large-scale experiments.",
+          "quote": "We run experiments with T = 2, 000 training rounds for QM9, sEH, and TFBind8 and T = 5, 000 training rounds for RNA-binding tasks."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The performance of LS-GFN is compared with both other GFlowNet methods and various reinforcement learning techniques.",
+          "quote": "The proposed method outperforms not only prior GFlowNet methods but also reward-maximization techniques employed by various reinforcement learning baselines as well as sampling baselines, in terms of both the number of modes discovered and the value of top-K rewards."
+        },
+        "referenced_paper_title": {
+          "value": "Flow network based generative models for non-iterative diverse candidate generation",
+          "justification": "The base GFlowNet model referenced in this paper is taken from the Bengio et al. (2021) study.",
+          "quote": "Generative Flow Networks (GFlowNets, Bengio et al., 2021) are a family of probabilistic models designed to learn reward-proportional distributions over objects"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "QM9",
+          "justification": "The dataset QM9 is used for molecule optimization tasks.",
+          "quote": "We consider two molecule optimization and four biological sequence design tasks: QM9."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Molecular mechanics-driven graph neural network with multiplex graph for molecular structures",
+          "justification": "The QM9 dataset's molecule optimization tasks use a reward obtained via a model introduced by Zhang et al. (2020).",
+          "quote": "Our objective is to maximize the HOMO-LUMO gap, which is obtained via a pre-trained MXMNet (Zhang et al., 2020) proxy."
+        }
+      },
+      {
+        "name": {
+          "value": "sEH",
+          "justification": "The dataset sEH is used for tasks related to generating binders for the sEH protein.",
+          "quote": "We consider two molecule optimization and four biological sequence design tasks: ... sEH."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Flow network based generative models for non-iterative diverse candidate generation",
+          "justification": "The dataset is used for maximizing binding affinity to the protein, as discussed in Bengio et al. (2021).",
+          "quote": "Our objective is to maximize binding affinity to the protein provided by the pre-trained proxy model provided by (Bengio et al., 2021)."
+        }
+      },
+      {
+        "name": {
+          "value": "TFBind8",
+          "justification": "The TFBind8 dataset is used for string of nucleotides task.",
+          "quote": "We consider two molecule optimization and four biological sequence design tasks ... TFBind8."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Design-bench: Benchmarks for data-driven offline model-based optimization",
+          "justification": "The reward for TFBind8 is obtained using a model introduced by Trabucco et al. (2022).",
+          "quote": "The reward is a DNA binding affinity to a human transcription factor (Trabucco et al., 2022)."
+        }
+      },
+      {
+        "name": {
+          "value": "RNA-Binding",
+          "justification": "The RNA-Binding dataset is used for RNA sequence generation and optimization tasks.",
+          "quote": "Our goal is to generate a string of 14 nucleobases. We consider the PA-MDP to generate strings. Our objective is to maximize the binding affinity to the target transcription factor. We present three different target transcriptions, L14-RNA1, L14-RNA2, and L14-RNA3, introduced by Sinai et al. (2020)."
+        },
+        "aliases": [
+          "L14-RNA1",
+          "L14-RNA2",
+          "L14-RNA3"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "AdaLead: A simple and robust adaptive greedy search algorithm for sequence design",
+          "justification": "The RNA-binding targets and their corresponding sequences are referenced from the study by Sinai et al. (2020).",
+          "quote": "We present three different target transcriptions, L14-RNA1, L14-RNA2, and L14-RNA3, introduced by Sinai et al. (2020)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The deep learning library PyTorch is used for implementing models and conducting experiments.",
+          "quote": "We use ADAM (Kingma & Ba, 2015) optimizer with learning rate 1 × 10−2 for log Zθ, 1 × 10−4 for forward and backward policy."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Adam: A method for stochastic optimization",
+          "justification": "The implementation involves the use of the Adam optimizer, which is based on the PyTorch library.",
+          "quote": "We use ADAM (Kingma & Ba, 2015) optimizer with learning rate 1 × 10−2 for log Zθ, 1 × 10−4 for forward and backward policy."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1662,
+    "prompt_tokens": 15388,
+    "total_tokens": 17050
+  }
+}

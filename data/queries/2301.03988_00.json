@@ -1,0 +1,178 @@
+{
+  "paper": "2301.03988.txt",
+  "words": 9123,
+  "extractions": {
+    "title": {
+      "value": "DON'T REACH FOR THE STARS!",
+      "justification": "This is the title mentioned prominently in the research paper's header.",
+      "quote": "DON’T REACH FOR THE STARS!"
+    },
+    "description": "This tech report describes the progress of the collaboration until December 2022, outlining the current state of the Personally Identifiable Information (PII) redaction pipeline, the experiments conducted to de-risk the model architecture, and the experiments investigating better preprocessing methods for the training data.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents a series of experiments conducted by the BigCode project to improve and evaluate their models, particularly focusing on architecture de-risking and preprocessing methods.",
+      "quote": "We run ablations for Multi Query Attention (MQA) (Shazeer, 2019; Chowdhery et al., 2022; Li et al., 2022) and Fill-in-the-Middle (FIM) (Fried et al., 2022; Bavarian et al., 2022)."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The research focuses on large language models (LLMs) for code generation, which is a sub-field of Natural Language Processing.",
+        "quote": "BigCode was inspired by the BigScience project, an open-scientific collaboration which culminated in July 2022 with the release of a large multi-lingual language model (Scao et al., 2022)."
+      },
+      "aliases": [
+        "NLP",
+        "Natural Language Understanding"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Code Generation",
+          "justification": "The paper focuses on models that generate code from natural language prompts and other related tasks.",
+          "quote": "The BigCode project is an open-scientific collaboration working on the responsible development of large language models for code."
+        },
+        "aliases": [
+          "Automated Programming",
+          "Program Synthesis"
+        ]
+      },
+      {
+        "name": {
+          "value": "Model Preprocessing",
+          "justification": "A significant portion of the paper is dedicated to preprocessing methods for training data, such as PII redaction and near-duplicate filtering.",
+          "quote": "We observe modest impact of the new filters except for the stars filter, which deteriorates performance on text2code benchmarks significantly."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "SantaCoder",
+          "justification": "The paper introduces SantaCoder as a set of 1.1B-parameter models for code generation, trained on the Java, JavaScript, and Python subsets of The Stack and evaluated on MultiPL-E.",
+          "quote": "Using the findings from these experiments, we train a final 1.1B parameter model, dubbed SantaCoder, on Python, JavaScript, and Java."
+        },
+        "aliases": [
+          "Santa models"
+        ],
+        "is_contributed": {
+          "value": 1,
+          "justification": "SantaCoder is introduced and described as a direct outcome of the BigCode project's research efforts.",
+          "quote": "Specifically, the contributions of this report can be summarized as follows: ... Using the findings from these experiments, we train a final 1.1B parameter model, dubbed SantaCoder, on Python, JavaScript, and Java."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The models were executed on Tesla V100 GPUs during the experiments, as stated in the paper.",
+          "quote": "Each training run takes 3.1 days to complete on 96 Tesla V100 GPUs for a total of 1.05 × 1021 FLOPs."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "SantaCoder's performance is benchmarked against other models such as InCoder and CodeGen.",
+          "quote": "Our best model outperforms previous open-source multilingual code generation models (InCoder-6.7B and CodeGen-Multi-2.7B) in both left-to-right generation and infilling on the Java, JavaScript, and Python portions of MultiPL-E."
+        },
+        "referenced_paper_title": {
+          "value": "Using the findings from these experiments, we train a final 1.1B parameter model, dubbed SantaCoder, on Python, JavaScript, and Java.",
+          "justification": "The paper summarizes the work done and the final model developed based on those findings.",
+          "quote": "Using the findings from these experiments, we train a final 1.1B parameter model, dubbed SantaCoder, on Python, JavaScript, and Java."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "The Stack v1.1",
+          "justification": "The Stack v1.1 is mentioned multiple times as the primary dataset used for training and evaluating the models.",
+          "quote": "The base training dataset for the experiments in this paper contains 268 GB of Python, Java and JavaScript files from The Stack v1.1 (Kocetkov et al., 2022) after removing data from opt-out requests, near-deduplication, PII-redaction (see Section 4), and filtering based on line-length and percentage of alphanumeric characters."
+        },
+        "aliases": [
+          "The Stack"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The Stack: 3 TB of permissively licensed source code. Preprint, 2022.",
+          "justification": "The paper cites this dataset as the source of the training data.",
+          "quote": "In earlier work, the BigCode community released The Stack v1.1 (Kocetkov et al., 2022), a 6.4 TB dataset of permissively licensed source code in 384 programming languages."
+        }
+      },
+      {
+        "name": {
+          "value": "MultiPL-E",
+          "justification": "The MultiPL-E benchmark is used to evaluate the models trained in this study.",
+          "quote": "We train 1.1B parameter models on the Java, JavaScript, and Python subsets of The Stack (Kocetkov et al., 2022) and evaluate them on the MultiPL-E text-to-code benchmark (Cassano et al., 2022)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "A scalable and extensible approach to benchmarking nl2code for 18 programming languages.",
+          "justification": "The paper cites this work as the source of their evaluation benchmark.",
+          "quote": "MultiPL-E (Cassano et al., 2022) extends two popular benchmarks for code completion, MBPP and HumanEval, to 18 additional languages."
+        }
+      },
+      {
+        "name": {
+          "value": "PII Benchmark",
+          "justification": "The paper introduces a PII benchmark specifically for evaluating the filters used in the PII redaction pipeline.",
+          "quote": "We create a PII benchmark of 400 code files, describe the filters for detecting emails, IP addresses, and secret keys, and analyze its performance on the annotation benchmark."
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "We create a PII benchmark of 400 code files, describe the filters for detecting emails, IP addresses, and secret keys, and analyze its performance on the annotation benchmark.",
+          "justification": "The referenced text from within the paper and the term 'we create' indicates that the dataset is a direct contribution of this research.",
+          "quote": "We create a PII benchmark of 400 code files, describe the filters for detecting emails, IP addresses, and secret keys, and analyze its performance on the annotation benchmark."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Hugging Face Tokenizer",
+          "justification": "The Hugging Face Tokenizer is mentioned as a tool used for the byte-pair encoding algorithm and vocabulary size considerations.",
+          "quote": "We train a Hugging Face Tokenizer (MOI et al., 2022) using the Byte-Pair Encoding (BPE) algorithm on raw bytes with a vocabulary size of 49,152 tokens."
+        },
+        "aliases": [
+          "MOI et al. 2022"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "huggingface/tokenizers: Rust 0.13.2, November 2022.",
+          "justification": "The title of the reference paper matches the reference provided in the quote.",
+          "quote": "We train a Hugging Face Tokenizer (MOI et al., 2022) using the Byte-Pair Encoding (BPE) algorithm on raw bytes with a vocabulary size of 49,152 tokens."
+        }
+      },
+      {
+        "name": {
+          "value": "detect-secrets",
+          "justification": "The detect-secrets library is cited as being used for the detection of secret keys in the PII redaction pipeline.",
+          "quote": "Keys We employed the detect-secrets tool to identify secret keys in the code files."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "https://github.com/Yelp/detect-secrets",
+          "justification": "The title of the reference URL matches the library used.",
+          "quote": "Keys We employed the detect-secrets tool to identify secret keys in the code files."
+        }
+      },
+      {
+        "name": {
+          "value": "LSH",
+          "justification": "Locality Sensitive Hashing (LSH) is mentioned as a technique used during the near-deduplication process.",
+          "quote": "While exact-match deduplication is the most common preprocessing step for code LLMs (see Table 4), Kocetkov et al. (2022) showed that near-deduplication leads to additional performance gains. Their near-deduplication pipeline largely inherited the settings from CodeParrot (Tunstall et al., 2022): MinHash (Broder, 2000) + Locality Sensitive Hashing (LSH) based on datasketch with unigrams (non-alphanumeric tokens) and a 0.85 Jaccard similarity threshold."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "https://github.com/ekzhu/datasketch",
+          "justification": "The title of the reference URL matches the library referenced.",
+          "quote": "Their near-deduplication pipeline largely inherited the settings from CodeParrot (Tunstall et al., 2022): MinHash (Broder, 2000) + Locality Sensitive Hashing (LSH) based on datasketch with unigrams (non-alphanumeric tokens) and a 0.85 Jaccard similarity threshold."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2047,
+    "prompt_tokens": 19054,
+    "total_tokens": 21101
+  }
+}

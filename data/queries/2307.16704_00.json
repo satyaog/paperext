@@ -1,0 +1,259 @@
+{
+  "paper": "2307.16704.txt",
+  "words": 11352,
+  "extractions": {
+    "title": {
+      "value": "Lookbehind-SAM: k steps back, 1 step forward",
+      "justification": "This is the title of the paper.",
+      "quote": "Lookbehind-SAM: k steps back, 1 step forward"
+    },
+    "description": "This paper proposes a novel optimization method called Lookbehind-SAM, which builds upon sharpness-aware minimization (SAM) techniques. The method enhances both the maximization and minimization steps of SAM by incorporating multiple ascent steps inspired by the Lookahead optimizer. It aims to achieve a better trade-off between loss and sharpness, improving generalization performance, robustness against noisy weights, and mitigating catastrophic forgetting in lifelong learning settings.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents experimental results to demonstrate the performance improvements of Lookbehind-SAM across various tasks, models, and datasets.",
+      "quote": "In this section, we start by introducing our baselines (Section 4.1), and then we conduct several experiments to showcase the benefits of achieving a better sharpness-loss trade-off in SAM methods."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Optimization in Deep Learning",
+        "justification": "The primary focus of the paper is on improving optimization methods in deep learning, particularly by building on sharpness-aware minimization techniques.",
+        "quote": "Improving the optimization methods used in deep learning is a crucial step to enhance the performance of current models."
+      },
+      "aliases": [
+        "Deep Learning Optimization"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Generalization Performance",
+          "justification": "The paper aims to improve the generalization performance of deep learning models using the Lookbehind-SAM method.",
+          "quote": "Notably, building upon the long-recognized connection between the flatness of the loss landscape and generalization, sharpness-aware training methods have gained recent popularity due to their ability to significantly improve generalization performance."
+        },
+        "aliases": [
+          "Model Generalization"
+        ]
+      },
+      {
+        "name": {
+          "value": "Robustness",
+          "justification": "The paper evaluates the robustness of models trained with Lookbehind-SAM against noisy weights.",
+          "quote": "Moreover, models trained with Lookbehind have increased robustness against noisy weights at inference time."
+        },
+        "aliases": [
+          "Model Robustness"
+        ]
+      },
+      {
+        "name": {
+          "value": "Lifelong Learning",
+          "justification": "The paper assesses the performance of Lookbehind-SAM in mitigating catastrophic forgetting in lifelong learning settings.",
+          "quote": "Lastly, we evaluate Lookbehind in the context of lifelong learning and show an improvement both in terms of learning and catastrophic forgetting on multiple models and datasets."
+        },
+        "aliases": [
+          "Continual Learning"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "SAM",
+          "justification": "SAM is used as a baseline and discussed in depth throughout the paper.",
+          "quote": "Sharpness-aware minimization (SAM) methods have gained increasing popularity by formulating the problem of minimizing both loss value and loss sharpness as a minimax objective."
+        },
+        "aliases": [
+          "Sharpness-Aware Minimization"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "SAM is not introduced in this paper, but is used as a baseline.",
+          "quote": "SAM (Foret et al., 2021) was recently proposed as an effective means to simultaneously minimize both loss value and loss sharpness during training."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "SAM was executed in various experiments throughout the paper.",
+          "quote": "To solve the problem in (1) using standard stochastic gradient methods, SAM (Foret et al., 2021) proposes to estimate the gradient of the minimax objective in two steps."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "SAM is one of the main baselines against which Lookbehind-SAM is compared.",
+          "quote": "On top of the previously discussed Lookbehind-SAM, our algorithm can be easily combined with ASAM by using the component-wise rescaling (4) in the inner loop updates. We call this variant Lookbehind-ASAM. Additionally to SGD and vanilla SAM/ASAM, we compare Lookbehind-SAM/ASAM to the following methods: (i) Multistep-SAM/ASAM, which performs multiple ascent steps to SAM/ASAM with the final update using the gradient from the last step, (ii) Multistep-SAM/ASAM with gradient averaging, which applies the average of the accumulated gradients for the final update (Kim et al., 2023), (iii) Lookahead-SAM/ASAM, which uses Lookahead with sharpness-aware methods by applying single-step SAM/ASAM as the inner optimizer (more details are provided in Appendix A.2), and (iv) Lookahead-SGD, which applies the Lookahead optimizer to SGD, as originally proposed by Zhang et al. (2019)."
+        },
+        "referenced_paper_title": {
+          "value": "Sharpness-Aware Minimization for Efficiently Improving Generalization",
+          "justification": "This is the paper where SAM was originally introduced.",
+          "quote": "SAM (Foret et al., 2021) was recently proposed as an effective means to simultaneously minimize both loss value and loss sharpness during training."
+        }
+      },
+      {
+        "name": {
+          "value": "ASAM",
+          "justification": "ASAM is used as a baseline and is an adaptive version that improves upon SAM.",
+          "quote": "To address this problem, ASAM (Kwon et al., 2021) was proposed as an adaptive version of SAM, which redefines the maximization neighborhood in (1) as component-wise normalized balls ∥ϵ/|ϕ|∥2 ≤ ρ."
+        },
+        "aliases": [
+          "Adaptive Sharpness-Aware Minimization"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "ASAM is not introduced in this paper, but is used as a baseline.",
+          "quote": "To address this problem, ASAM (Kwon et al., 2021) was proposed as an adaptive version of SAM, which redefines the maximization neighborhood in (1) as component-wise normalized balls ∥ϵ/|ϕ|∥2 ≤ ρ."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "ASAM was executed in various experiments throughout the paper.",
+          "quote": "To address this problem, ASAM (Kwon et al., 2021) was proposed as an adaptive version of SAM, which redefines the maximization neighborhood in (1) as component-wise normalized balls ∥ϵ/|ϕ|∥2 ≤ ρ."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "ASAM is one of the main baselines against which Lookbehind-SAM is compared.",
+          "quote": "On top of the previously discussed Lookbehind-SAM, our algorithm can be easily combined with ASAM by using the component-wise rescaling (4) in the inner loop updates. We call this variant Lookbehind-ASAM. Additionally to SGD and vanilla SAM/ASAM, we compare Lookbehind-SAM/ASAM to the following methods: (i) Multistep-SAM/ASAM, which performs multiple ascent steps to SAM/ASAM with the final update using the gradient from the last step, (ii) Multistep-SAM/ASAM with gradient averaging, which applies the average of the accumulated gradients for the final update (Kim et al., 2023), (iii) Lookahead-SAM/ASAM, which uses Lookahead with sharpness-aware methods by applying single-step SAM/ASAM as the inner optimizer (more details are provided in Appendix A.2), and (iv) Lookahead-SGD, which applies the Lookahead optimizer to SGD, as originally proposed by Zhang et al. (2019)."
+        },
+        "referenced_paper_title": {
+          "value": "ASAM: Adaptive Sharpness-Aware Minimization for Scale-Invariant Learning of Deep Neural Networks",
+          "justification": "This is the paper where ASAM was originally introduced.",
+          "quote": "To address this problem, ASAM (Kwon et al., 2021) was proposed as an adaptive version of SAM, which redefines the maximization neighborhood in (1) as component-wise normalized balls ∥ϵ/|ϕ|∥2 ≤ ρ."
+        }
+      },
+      {
+        "name": {
+          "value": "Lookbehind-SAM",
+          "justification": "Lookbehind-SAM is the primary contribution of the paper.",
+          "quote": "First, we improve the maximization part of SAM’s objective by performing multiple ascent steps to find a worst-case weight perturbation that has a higher loss than the original, single-step SAM within a given neighborhood of the original point. We refer to such maximization of the loss as we perform multiple ascent steps in SAM as looking behind."
+        },
+        "aliases": [
+          "Lookbehind"
+        ],
+        "is_contributed": {
+          "value": 1,
+          "justification": "Lookbehind-SAM is introduced and proposed in this paper.",
+          "quote": "First, we improve the maximization part of SAM’s objective by performing multiple ascent steps to find a worst-case weight perturbation that has a higher loss than the original, single-step SAM within a given neighborhood of the original point. We refer to such maximization of the loss as we perform multiple ascent steps in SAM as looking behind."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "Lookbehind-SAM was executed in various experiments throughout the paper.",
+          "quote": "In practice, improving the loss and sharpness trade-off results in a myriad of benefits across several training regimes. Particularly, when applying Lookbehind to SAM and ASAM, we show an improvement in terms of generalization performance across several models and datasets."
+        },
+        "is_compared": {
+          "value": 0,
+          "justification": "Lookbehind-SAM is the primary focus and contribution of the paper, and other models are compared against it.",
+          "quote": "In practice, improving the loss and sharpness trade-off results in a myriad of benefits across several training regimes. Particularly, when applying Lookbehind to SAM and ASAM, we show an improvement in terms of generalization performance across several models and datasets."
+        },
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "Lookbehind-SAM is a new and novel contribution introduced in this paper.",
+          "quote": "N/A"
+        }
+      },
+      {
+        "name": {
+          "value": "Multistep-SAM",
+          "justification": "Multistep-SAM is used as a baseline method for comparison.",
+          "quote": "We compare Lookbehind-SAM/ASAM to the following methods: (i) Multistep-SAM/ASAM, which performs multiple ascent steps to SAM/ASAM with the final update using the gradient from the last step."
+        },
+        "aliases": [
+          "N/A"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "Multistep-SAM is not introduced in this paper, but is used as a baseline.",
+          "quote": "We compare Lookbehind-SAM/ASAM to the following methods: (i) Multistep-SAM/ASAM, which performs multiple ascent steps to SAM/ASAM with the final update using the gradient from the last step."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "Multistep-SAM was executed in various experiments throughout the paper.",
+          "quote": "We compare Lookbehind-SAM/ASAM to the following methods: (i) Multistep-SAM/ASAM, which performs multiple ascent steps to SAM/ASAM with the final update using the gradient from the last step."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "Multistep-SAM is one of the benchmark methods presented in the experiments for comparison purposes.",
+          "quote": "We compare Lookbehind-SAM/ASAM to the following methods: (i) Multistep-SAM/ASAM, which performs multiple ascent steps to SAM/ASAM with the final update using the gradient from the last step."
+        },
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "Multistep-SAM is presented as a methodology and does not refer to a specific referenced paper.",
+          "quote": "N/A"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "CIFAR-10 is used in the paper for various experiments to measure generalization performance and robustness.",
+          "quote": "For the following experiments, we use residual networks (ResNets) and wide residual networks (WRN) models trained from scratch on CIFAR-10"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Multiple Layers of Features from Tiny Images",
+          "justification": "This is the original paper that introduced CIFAR-10.",
+          "quote": "CIFAR-10 (Krizhevsky et al., 2009)"
+        }
+      },
+      {
+        "name": {
+          "value": "CIFAR-100",
+          "justification": "CIFAR-100 is used in the paper for various experiments to measure generalization performance and robustness.",
+          "quote": "For the following experiments, we use residual networks (ResNets) and wide residual networks (WRN) models trained from scratch on CIFAR-100"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Multiple Layers of Features from Tiny Images",
+          "justification": "This is the original paper that introduced CIFAR-100.",
+          "quote": "CIFAR-100 (Krizhevsky et al., 2009)"
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet",
+          "justification": "ImageNet is used in the paper for experiments to measure generalization performance.",
+          "quote": "We observe that Lookbehind is the only method to outperform vanilla SAM and ASAM on ImageNet."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ImageNet: A Large-Scale Hierarchical Image Database",
+          "justification": "This is the original paper that introduced ImageNet.",
+          "quote": "ImageNet (Deng et al., 2009)."
+        }
+      },
+      {
+        "name": {
+          "value": "Split-CIFAR100",
+          "justification": "Split-CIFAR100 is used to evaluate the performance of Lookbehind-SAM in lifelong learning scenarios.",
+          "quote": "We train a 3- and a 4-layer convolutional network on Split-CIFAR100 and Split-TinyImageNet, respectively."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "An empirical investigation of the role of pre-training in lifelong learning",
+          "justification": "The lifelong learning setup for Split-CIFAR100 is based on practices from prior work.",
+          "quote": "In our experiments, we replicate the same setup used in Lookahead-MAML (Gupta et al., 2020), which is a lifelong learning method that combines the concept of slow and fast weights of Lookahead with meta-learning principles (Finn et al., 2017)."
+        }
+      },
+      {
+        "name": {
+          "value": "Split-TinyImageNet",
+          "justification": "Split-TinyImageNet is used to evaluate the performance of Lookbehind-SAM in lifelong learning scenarios.",
+          "quote": "We train a 3- and a 4-layer convolutional network on Split-CIFAR100 and Split-TinyImageNet, respectively."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "An empirical investigation of the role of pre-training in lifelong learning",
+          "justification": "The lifelong learning setup for Split-TinyImageNet is based on practices from prior work.",
+          "quote": "In our experiments, we replicate the same setup used in Lookahead-MAML (Gupta et al., 2020), which is a lifelong learning method that combines the concept of slow and fast weights of Lookahead with meta-learning principles (Finn et al., 2017)."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 3712,
+    "prompt_tokens": 23226,
+    "total_tokens": 26938
+  }
+}

@@ -1,0 +1,209 @@
+{
+  "paper": "2301.02593.txt",
+  "words": 12018,
+  "extractions": {
+    "title": {
+      "value": "Multi-Agent Reinforcement Learning for Fast-Timescale Demand Response of Residential Loads",
+      "justification": "This is the title presented at the beginning of the paper.",
+      "quote": "Multi-Agent Reinforcement Learning for Fast-Timescale\nDemand Response of Residential Loads"
+    },
+    "description": "The paper discusses a decentralized multi-agent reinforcement learning approach used to achieve fast timescale frequency regulation using residential air conditioners. The main contributions include a multi-agent environment simulator compatible with the OpenAI Gym framework, two decentralized agents trained by MA-PPO, and an in-depth analysis of the trained agents' performance, dynamics, robustness, and scalability.",
+    "type": {
+      "value": "empirical study",
+      "justification": "The paper involves experiments, model training, and evaluations in a simulated environment to measure the performance and robustness of the proposed methods.",
+      "quote": "Our results show that MARL can be used successfully\nto solve some of the complex multi-agent problems induced by the integration of renewable energy in electrical power grids."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Multi-Agent Reinforcement Learning",
+        "justification": "The paper focuses on developing and evaluating multi-agent reinforcement learning algorithms for the task of frequency regulation in power grids using residential loads.",
+        "quote": "We propose a decentralized\nagent trained with multi-agent proximal policy optimization with\nlocalized communication."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Power Systems",
+          "justification": "The application domain is focused on frequency regulation in power systems using demand response.",
+          "quote": "Frequency regulation through demand response has the potential to coordinate temporally flexible\nloads, such as air conditioners, to counteract these variations."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Demand Response",
+          "justification": "The paper discusses methods to adjust power demand to meet supply by coordinating loads temporally.",
+          "quote": "The demand response approach aims at adjusting the power demand to meet the supply by coordinating\nloads temporally."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Proximal Policy Optimization",
+          "justification": "The reinforcement learning method used is a variant of proximal policy optimization adapted for multi-agent settings.",
+          "quote": "We train our agents with Multi-Agent Proximal Policy\nOptimization (MA-PPO) [60] with Centralized Training, Decentralized Execution (CTDE)."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Multi-Agent Proximal Policy Optimization (MA-PPO)",
+          "justification": "The core model used in the paper for training decentralized agents for demand response.",
+          "quote": "We train our agents with Multi-Agent Proximal Policy\nOptimization (MA-PPO) [60]"
+        },
+        "aliases": [
+          "MA-PPO"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "MA-PPO is a known algorithm and not contributed by this paper.",
+          "quote": "Multi-Agent Proximal Policy\nOptimization (MA-PPO) [60]"
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The MA-PPO was executed and evaluated in the simulated environment.",
+          "quote": "The learning agents were trained on environments with 𝑁tr = {10, 20, 50} houses and communicating with 𝑁ctr = {9, 19, 49} other agents."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The performance of MA-PPO-trained agents was compared with other baseline models such as DQN and the greedy controller.",
+          "quote": "Both PPO agents show significantly better performance, and TarMAC-PPO outperforms MA-PPO-HE at high 𝑁de."
+        },
+        "referenced_paper_title": {
+          "value": "Proximal Policy Optimization Algorithms",
+          "justification": "The original paper presenting the PPO algorithm.",
+          "quote": "Schulman, J., Wolski, F., Dhariwal, P., Radford, A., & Klimov, O. (2017). Proximal Policy Optimization Algorithms. arXiv preprint arXiv:1707.06347."
+        }
+      },
+      {
+        "name": {
+          "value": "Deep Q-Network (DQN)",
+          "justification": "DQN is used as one of the baseline models in the experiments.",
+          "quote": "We deploy two algorithms using deep reinforcement learning, namely MA-DQN and MA-PPO, both using the CT-DE paradigm."
+        },
+        "aliases": [
+          "DQN",
+          "MA-DQN"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "DQN is a well-known algorithm not introduced by this paper.",
+          "quote": "Multi-agent Deep Q-Network (MA-DQN) is the\nCT-DE adaptation of DQN [42], an off-policy algorithm made for\ndiscrete action spaces."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The DQN algorithm was executed and evaluated as a baseline model.",
+          "quote": "DQN agent has a smaller signal offset and error, especially at\nnight when the amplitude of the signal variations is lower."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The performance of DQN-trained agents was compared with other models like MA-PPO.",
+          "quote": "Both MA-PPO agents, on\nthe other hand, have a near-0 offset in signal and temperature.\nTheir signal error is also significantly lower than the others,\nbecause they are able to track the high-frequency variations."
+        },
+        "referenced_paper_title": {
+          "value": "Human-level control through deep reinforcement learning",
+          "justification": "The original paper that introduced the DQN algorithm.",
+          "quote": "Mnih, V., Kavukcuoglu, K., Silver, D., Rusu, A. A., Veness, J., Bellemare, M. G., ... & Hassabis, D. (2015). Human-level control through deep reinforcement learning. Nature, 518(7540), 529-533."
+        }
+      },
+      {
+        "name": {
+          "value": "Deep Deterministic Policy Gradient (DDPG)",
+          "justification": "DDPG is mentioned as a comparative algorithm in multi-agent settings.",
+          "quote": "Multi-agent adaptations of known RL\nalgorithms, such as online PPO [48, 60], or offline DDPG [36, 38]\nand DQN [42], have led to strong performance in many problems."
+        },
+        "aliases": [
+          "DDPG"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "DDPG is a well-known algorithm not introduced by this paper.",
+          "quote": "Multi-agent adaptations of known RL\nalgorithms, such as online PPO [48, 60], or offline DDPG [36, 38]\nand DQN [42], have led to strong performance in many problems."
+        },
+        "is_executed": {
+          "value": 0,
+          "justification": "DDPG was mentioned for its relevance but was not executed in this study.",
+          "quote": "Multi-agent adaptations of known RL\nalgorithms, such as online PPO [48, 60], or offline DDPG [36, 38]\nand DQN [42], have led to strong performance in many problems."
+        },
+        "is_compared": {
+          "value": 0,
+          "justification": "DDPG was not compared, only mentioned with other RL algorithms.",
+          "quote": "Multi-agent adaptations of known RL\nalgorithms, such as online PPO [48, 60], or offline DDPG [36, 38]\nand DQN [42], have led to strong performance in many problems."
+        },
+        "referenced_paper_title": {
+          "value": "Continuous control with deep reinforcement learning",
+          "justification": "The original paper that introduced the DDPG algorithm.",
+          "quote": "Lillicrap, T. P., Hunt, J. J., Pritzel, A., Heess, N., Erez, T., Tassa, Y., ... & Wierstra, D. (2015). Continuous control with deep reinforcement learning. arXiv preprint arXiv:1509.02971."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CityLearn",
+          "justification": "CityLearn is mentioned as a standard environment developed for multi-agent RL research in demand response.",
+          "quote": "The CityLearn environment [52] proposes a\nstandard environment for multi-agent RL (MARL) for demand\nresponse, upon which are developed methods such as [45] to regulate\nthe voltage magnitude in distribution networks using smart inverters\nand intelligent energy storage management."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "CityLearn: Standardizing Research in Multi-Agent Reinforcement Learning for Demand Response and Urban Energy Management",
+          "justification": "The cited work that introduces the CityLearn environment.",
+          "quote": "Vazquez-Canteli, J. R., Dey, S., Henze, G., & Nagy, Z. (2020). CityLearn: Standardizing Research in Multi-Agent Reinforcement Learning for Demand Response and Urban Energy Management. arXiv preprint arXiv:2012.10504."
+        }
+      },
+      {
+        "name": {
+          "value": "AlphaBuilding ResCommunity",
+          "justification": "The dataset is mentioned as an environment that implements detailed thermal models for multi-agent RL research.",
+          "quote": "The AlphaBuilding ResCommunity environment [54] then implements detailed\nthermal models. Both CityLearn and AlphaBuilding ResCommunity,\nhowever, consider longer timescale control, which makes them\ninadequate for high-frequency regulation and removes the ACs’ lockout\nand binary constraints."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "AlphaBuilding ResCommunity: A multi-agent virtual testbed for community-level load coordination",
+          "justification": "The cited work that introduces the AlphaBuilding ResCommunity environment.",
+          "quote": "Wang, Z., Chen, B., Li, H., & Hong, T. (2021). AlphaBuilding ResCommunity: A multi-agent virtual testbed for community-level load coordination. Advances in Applied Energy, 4, 100061."
+        }
+      },
+      {
+        "name": {
+          "value": "PowerGridworld",
+          "justification": "PowerGridworld is mentioned as a more flexible alternative to CityLearn that allows fast-timescale simulation.",
+          "quote": "The PowerGridworld [10] environment, a\nmore flexible alternative to CityLearn, allows fast-timescale\nsimulation but does not provide a detailed thermal model of loads,\noptions for lockout or binary control, or classical baseline approaches to\ncompare with."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "PowerGridworld: A Framework for Multi-Agent Reinforcement Learning in Power Systems",
+          "justification": "The cited work that introduces the PowerGridworld environment.",
+          "quote": "Biagioni, D., Zhang, X., Wald, D., Vaidhynathan, D., Chintala, R., King, J., & Zamzam, A. S. (2021). PowerGridworld: A Framework for Multi-Agent Reinforcement Learning in Power Systems. arXiv preprint arXiv:2111.05969."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "OpenAI Gym",
+          "justification": "The paper mentions that the simulator developed is compatible with the OpenAI Gym framework.",
+          "quote": "The simulator is compatible\nwith the OpenAI Gym [11] framework."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "OpenAI Gym",
+          "justification": "The original paper introducing the OpenAI Gym framework.",
+          "quote": "Brockman, G., Cheung, V., Pettersson, L., Schneider, J., Schulman, J., Tang, J., & Zaremba, W. (2016). OpenAI Gym. arXiv preprint arXiv:1606.01540."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2791,
+    "prompt_tokens": 23851,
+    "total_tokens": 26642
+  }
+}

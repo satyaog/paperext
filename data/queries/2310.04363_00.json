@@ -1,0 +1,148 @@
+{
+  "paper": "2310.04363.txt",
+  "words": 16936,
+  "extractions": {
+    "title": {
+      "value": "A MORTIZING INTRACTABLE INFERENCE IN LARGE LANGUAGE MODELS",
+      "justification": "The title of the paper as presented at the beginning of the document.",
+      "quote": "A MORTIZING INTRACTABLE INFERENCE IN LARGE LANGUAGE MODELS"
+    },
+    "description": "This paper introduces a method for using amortized Bayesian inference to sample from intractable posterior distributions in autoregressive large language models (LLMs). By leveraging diversity-seeking reinforcement learning algorithms like generative flow networks (GFlowNets), the method aims to improve tasks such as sequence continuation, infilling, and other forms of constrained generation. Empirical results demonstrate its effectiveness over traditional maximum-likelihood training and policy optimization approaches.",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The paper provides empirical demonstrations and results to validate the effectiveness of their proposed method.",
+      "quote": "We empirically demonstrate that this distributionmatching paradigm of LLM finetuning can serve as an effective alternative to maximum-likelihood training and reward-maximizing policy optimization."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The research primarily focuses on improving inference and generation tasks in large language models, which are fundamental aspects of Natural Language Processing.",
+        "quote": "We empirically demonstrate the possibilities and benefits of learning to sample from intractable distributions over text continuations, latent reasoning chains, and tool use sequences using GFlowNet fine-tuning."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Sequence Generation",
+          "justification": "The paper addresses tasks such as sequence continuation and infilling which fall under sequence generation.",
+          "quote": "Notably, the diversity of samples from the models trained with GFlowNet fine-tuning is beneficial in Bayesian model averaging settings, such as when aggregating answers to questions obtained via multiple reasoning chains. For example, using a pretrained language model with 6B parameters, our method shows an absolute improvement of 10.9% over supervised fine-tuning on subjectivity classification with only 10 labeled examples"
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Reinforcement Learning",
+          "justification": "The use of generative flow networks (GFlowNets) and other RL techniques is central to the methodological contributions of the paper.",
+          "quote": "Such amortization is algorithmically achieved by finetuning LLMs via diversity-seeking reinforcement learning algorithms: generative flow networks (GFlowNets)."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "GPT-J 6B",
+          "justification": "GPT-J 6B is frequently mentioned in the empirical results of the paper, including comparisons and performance metrics.",
+          "quote": "using a pretrained language model with 6B parameters, our method shows an absolute improvement of 10.9% over supervised fine-tuning on subjectivity classification with only 10 labeled examples"
+        },
+        "aliases": [
+          "GPT-J-6B"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "The model is used as a base model for experiments and not newly introduced in this paper.",
+          "quote": "We first validate GFlowNet fine-tuning on text generation, where we seek to find likely sentence continuation given a prompt (§4.1) or fill in a missing sentence in a story (§4.2). Then, we study reasoning tasks that benefit from chain-of-thought reasoning (§4.3) and external tool use (§4.4)."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The model was used in the experiments and empirical validations described in the paper.",
+          "quote": "Notably, the diversity of samples from the models trained with GFlowNet fine-tuning is beneficial in Bayesian model averaging settings, such as when aggregating answers to questions obtained via multiple reasoning chains."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "Performance metrics and comparisons with other fine-tuning methods like supervised fine-tuning and PPO indicate active comparisons in the study.",
+          "quote": "our method shows an absolute improvement of 10.9% over supervised fine-tuning on subjectivity classification...and outperforms supervised fine-tuning and PPO by 63% on integer arithmetic with 50 demonstrations, with notable improvements in out-of-distribution generalization"
+        },
+        "referenced_paper_title": {
+          "value": "GPT-J-6B: A 6 billion parameter autoregressive language model",
+          "justification": "This is a reasonable assumption based on the model's known reference within the NLP community.",
+          "quote": "using a pretrained language model with 6B parameters, our method shows an absolute improvement of 10.9% over supervised fine-tuning on subjectivity classification with only 10 labeled examples"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "ROCStories",
+          "justification": "The ROCStories dataset is explicitly mentioned in the context of the story infilling task.",
+          "quote": "As we expect the base model to contain the required knowledge, for this task we use a GPT-2 Large model (Radford et al., 2019) fine-tuned on the entire ROCStories training set as the base model."
+        },
+        "aliases": [
+          "ROCStories corpus"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "A corpus and cloze evaluation for deeper understanding of commonsense stories",
+          "justification": "This paper introduces the ROCStories dataset which is extensively used in the paper.",
+          "quote": "We use the ROCStories corpus (Mostafazadeh et al., 2016), a dataset of short stories containing exactly 5 sentences each."
+        }
+      },
+      {
+        "name": {
+          "value": "OpenWebText",
+          "justification": "The OpenWebText dataset is mentioned as a source of prompts used in the sequence continuation task.",
+          "quote": "Task description. A natural application for autoregressive language models is that of sequence continuation: given a prompt, the model should generate a high-likelihood completion...We consider a dataset of prompts from OpenWebText (Gokaslan et al., 2019)"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The paper doesn't provide a specific reference for OpenWebText within the text.",
+          "quote": "We consider a dataset of prompts from OpenWebText (Gokaslan et al., 2019)"
+        }
+      },
+      {
+        "name": {
+          "value": "SUBJ (Pang & Lee, 2004)",
+          "justification": "The SUBJ dataset is explicitly used for the subjectivity classification task in the paper.",
+          "quote": "Task description. SUBJ (Pang & Lee, 2004) is a binary classification dataset for natural language understanding."
+        },
+        "aliases": [
+          "SUBJ"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "A sentimental education: Sentiment analysis using subjectivity summarization based on minimum cuts",
+          "justification": "This is the paper that introduces the SUBJ dataset, as commonly known in the NLP community",
+          "quote": "Task description. SUBJ (Pang & Lee, 2004) is a binary classification dataset for natural language understanding."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Trl",
+          "justification": "The `trl` library is mentioned as being used for fine-tuning and implementation of certain methods.",
+          "quote": "For supervised fine-tuning and PPO, we use the implementation from trl."
+        },
+        "aliases": [
+          "Trl"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The paper doesn't provide a specific reference for the `trl` library within the text.",
+          "quote": "Supervised fine-tuning and PPO results also yield poor performance, caused in part by the poor calibration of the base reward model, i.e. it cannot distinguish good rationales from bad ones. For all methods, we enable tool use and limit the model to generate only numbers and operators. For supervised fine-tuning, both on its own and on top of GFlowNet fine-tuning, we use a batch size of 256 with 8 queries, randomly drawn with replacement. We train for 100 steps with a linear warm-up over 20 steps and a constant learning rate."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1614,
+    "prompt_tokens": 30850,
+    "total_tokens": 32464
+  }
+}

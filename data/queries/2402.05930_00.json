@@ -1,0 +1,118 @@
+{
+  "paper": "2402.05930.txt",
+  "words": 26798,
+  "extractions": {
+    "title": {
+      "value": "WEBLINX: Real-World Website Navigation with Multi-Turn Dialogue",
+      "justification": "Title of the paper is \"WEBLINX: Real-World Website Navigation with Multi-Turn Dialogue\"",
+      "quote": "We propose the problem of conversational web navigation, where a digital agent controls a web browser and follows user instructions to solve real-world tasks in a multi-turn dialogue fashion"
+    },
+    "description": "The paper introduces WEBLINX, a benchmark for assessing digital agents’ ability to perform real-world website navigation tasks using multi-turn dialogue. It proposes a retrieval-inspired model to address the challenge of processing large HTML pages and evaluates various models on their generalization abilities across different websites and tasks.",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The study conducts experiments to evaluate different models on web navigation tasks using the introduced benchmark.",
+      "quote": "We examine 19 models based on 8 architectures (§6), including smaller image-to-text, larger text-only decoders, LLMs, and multimodal models..."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The primary research field involves understanding and generating human language through AI models.",
+        "quote": "This problem is relevant in many real-world scenarios: helping visually impaired users efficiently navigate websites through a chat interface, enhancing smart speakers and digital assistants with voice-controlled web navigation."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Conversational AI",
+          "justification": "The paper focuses on dialogue-based interactions between the user and the digital agent.",
+          "quote": "...an agent must complete a real-world task inside a web browser while communicating with the user via multi-turn dialogue."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Web Navigation",
+          "justification": "The primary task involves navigation through web pages, assessing agents' capability to handle such tasks.",
+          "quote": "To address this problem, we introduce WEBLINX, a benchmark containing 2337 demonstrations of conversational web navigation produced by human experts across 155 real-world websites."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Multimodal Models",
+          "justification": "The paper evaluates models that can handle both text and visual inputs, termed as multimodal models.",
+          "quote": "Notably, a smaller model like Sheared-LLaMA (Xia et al., 2023) outperforms the much larger Fuyu (Bavishi et al., 2023), which was pretrained with browser screenshots."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Dense Markup Ranker (DMR)",
+          "justification": "DMR is a model introduced in this paper to efficiently prune HTML pages and rank relevant elements.",
+          "quote": "Consequently, we design a method called Dense Markup Ranking (§5.1), which compares each element in an HTML page with the full action history."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 1,
+          "justification": "The model was specifically introduced in this paper to address the challenge of processing large HTML pages.",
+          "quote": "Consequently, we design a method called Dense Markup Ranking (§5.1), which compares each element in an HTML page with the full action history."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The experiments were conducted to evaluate DMR as part of the study.",
+          "quote": "Using this method, we finetune a variant of MiniLM (Wang et al., 2020)."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "DMR was compared with other candidate selection methods to evaluate its performance.",
+          "quote": "To solve this, we propose Dense Markup Ranking (DMR), which is 5 times faster than the previous approach, at the cost of slightly lower recall."
+        },
+        "referenced_paper_title": {
+          "value": "DeBERTa: Decoding-enhanced BERT with Disentangled Attention",
+          "justification": "DMR is compared with DeBERTa for effectiveness in candidate selection.",
+          "quote": "Deng et al. (2023) proposed to pair each DOM element with the task query and input them into a DeBERTa model (He et al., 2021), which is finetuned using a cross-encoder loss (Reimers & Gurevych, 2019)."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "WEBLINX",
+          "justification": "The paper introduces WEBLINX as a benchmark containing many demonstrations of conversational web navigation.",
+          "quote": "To support this problem, we introduce W EB LINX – a large-scale benchmark of 100K interactions across 2300 expert demonstrations of conversational web navigation."
+        },
+        "aliases": [],
+        "role": "Contributed",
+        "referenced_paper_title": {
+          "value": "WEBLINX: Real-World Website Navigation with Multi-Turn Dialogue",
+          "justification": "This paper is the primary reference for the benchmark dataset introduced as WEBLINX.",
+          "quote": "Our code, data and models are available for research: https://mcgill-nlp.github.io/weblinx"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "MiniLM",
+          "justification": "MiniLM is used as a part of the DMR method for ranking elements in HTML pages.",
+          "quote": "Using this method, we finetune a variant of MiniLM (Wang et al., 2020)."
+        },
+        "aliases": [],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "MiniLM: Deep self-attention distillation for task-agnostic compression of pre-trained transformers",
+          "justification": "The reference paper title for MiniLM as found in the DMR method description",
+          "quote": "Reimers & Gurevych (2019); Wang et al. (2020)"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1132,
+    "prompt_tokens": 55959,
+    "total_tokens": 57091
+  }
+}

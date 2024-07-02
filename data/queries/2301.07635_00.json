@@ -1,0 +1,162 @@
+{
+  "paper": "2301.07635.txt",
+  "words": 5244,
+  "extractions": {
+    "title": {
+      "value": "LOCAL LEARNING WITH NEURON GROUPS",
+      "justification": "This is the title mentioned at the very beginning of the paper.",
+      "quote": "LOCAL LEARNING WITH NEURON GROUPS"
+    },
+    "description": "This paper explores the efficiency of local learning models on deep neural networks, proposing a method to split layers or modules into sub-components for improved computational benefits. It demonstrates the advantages through experiments on CIFAR-10, CIFAR-100, and Imagenet32 datasets.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves experiments and empirical results on different datasets like CIFAR-10, CIFAR-100, and Imagenet32 to show the effectiveness of the proposed method.",
+      "quote": "Our experiments on the CIFAR-10, CIFAR-100, and Imagenet32 datasets demonstrate that introducing width-level modularity can lead to computational advantages over existing methods based on local learning and opens new opportunities for improved model-parallel distributed training."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The datasets used for the experiments (CIFAR-10, CIFAR-100, Imagenet32) are primarily used in computer vision tasks.",
+        "quote": "Our experiments on the CIFAR-10, CIFAR-100, and Imagenet32 datasets demonstrate that introducing width-level modularity can lead to computational advantages over existing methods based on local learning and opens new opportunities for improved model-parallel distributed training."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Deep Learning",
+          "justification": "The focus is on training deep neural networks using local learning techniques.",
+          "quote": "Traditional deep network training methods optimize a monolithic objective function jointly for all the components."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Model Parallelism",
+          "justification": "The paper's main contribution is in improving computational efficiency by introducing model-parallel distributed training techniques.",
+          "quote": "Local learning is an approach to model-parallelism that removes the standard end-to-end learning setup and utilizes local objective functions to permit parallel learning amongst model components in a deep network."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Neural Networks",
+          "justification": "The paper discusses various aspects and optimizations of neural networks, focusing on model components and neuron groups.",
+          "quote": "Traditional deep network training methods optimize a monolithic objective function jointly for all the components."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Grouped Neuron DGL (GN-DGL)",
+          "justification": "The paper introduces Grouped Neuron DGL (GN-DGL) as a novel method for local learning with neuron groups.",
+          "quote": "We refer to this approach as Grouped Neuron DGL (GN-DGL)."
+        },
+        "aliases": [
+          "GN-DGL"
+        ],
+        "is_contributed": {
+          "value": 1,
+          "justification": "The model is introduced and studied extensively within the paper.",
+          "quote": "We refer to this approach as Grouped Neuron DGL (GN-DGL)."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The experiments indicate that the model was executed and evaluated.",
+          "quote": "Our experiments on the CIFAR-10, CIFAR-100, and Imagenet32 datasets demonstrate that introducing width-level modularity can lead to computational advantages over existing methods based on local learning and opens new opportunities for improved model-parallel distributed training."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The model is compared to other local learning methods such as DGL and InfoPro.",
+          "quote": "We also investigate how to encourage these decoupled networks to learn diverse behavior (i.e. learn different representations from each other) based solely on forward communication. We illustrate the practical applications of this by comparing the proposed method to existing local learning approaches in the context of total training time, inference time, and model performance."
+        },
+        "referenced_paper_title": {
+          "value": "Decoupled Greedy Learning of CNNs",
+          "justification": "The referenced model DGL is compared with GN-DGL extensively in the paper.",
+          "quote": "We denote the operations of layer j as fθj (xj−1 ), where θj corresponds to the parameters of the network and L(y, xj ; γj , θj ) corresponds to local loss function applied to the representation xj , where γj are parameters of an auxiliary network. In Decoupled Greedy Learning of CNNs, it is proposed to learn the parameters θj jointly and in parallel."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "The CIFAR-10 dataset is explicitly mentioned as one of the datasets used in experiments.",
+          "quote": "Our experiments on the CIFAR-10, CIFAR-100, and Imagenet32 datasets demonstrate that introducing width-level modularity can lead to computational advantages."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Multiple Layers of Features from Tiny Images",
+          "justification": "The CIFAR-10 dataset's reference is provided in the context of usage for experiments.",
+          "quote": "The CIFAR-10 dataset used in many prior works."
+        }
+      },
+      {
+        "name": {
+          "value": "CIFAR-100",
+          "justification": "The CIFAR-100 dataset is explicitly mentioned as one of the datasets used in experiments.",
+          "quote": "Our experiments on the CIFAR-10, CIFAR-100, and Imagenet32 datasets demonstrate that introducing width-level modularity can lead to computational advantages."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Multiple Layers of Features from Tiny Images",
+          "justification": "The CIFAR-100 dataset's reference is provided in the context of usage for experiments.",
+          "quote": "The CIFAR-100 dataset used in many prior works."
+        }
+      },
+      {
+        "name": {
+          "value": "Imagenet32",
+          "justification": "The Imagenet32 dataset is explicitly mentioned as one of the datasets used in experiments.",
+          "quote": "Our experiments on the CIFAR-10, CIFAR-100, and Imagenet32 datasets demonstrate that introducing width-level modularity can lead to computational advantages."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "A Downsampled Variant of ImageNet as an Alternative to the CIFAR Datasets",
+          "justification": "The Imagenet32 dataset's reference is provided in the context of usage for experiments.",
+          "quote": "Our experiments studying trade-offs in model-parallelism criteria utilize CIFAR-10, CIFAR-100, and a downsampled version of the Imagenet dataset (denoted Imagenet32 Chrabaszcz et al. (2017))"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Adam",
+          "justification": "The Adam optimizer is mentioned as being used in the experiments.",
+          "quote": "The networks are trained using the Adam optimizer (Kingma & Ba, 2014) and a batch size of 128 for total 150 epochs."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Adam: A Method for Stochastic Optimization",
+          "justification": "The reference for the Adam optimizer is provided in the text.",
+          "quote": "The networks are trained using the Adam optimizer (Kingma & Ba, 2014) and a batch size of 128 for total 150 epochs."
+        }
+      },
+      {
+        "name": {
+          "value": "SGD",
+          "justification": "The SGD optimizer is mentioned as being used in the experiments.",
+          "quote": "We use the hyper-parameters from Wang et al. (2021). For all datasets, we train networks using an SGD optimizer with a Nesterov momentum of 0.9 for 160 epochs."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ImageNet Classification with Deep Convolutional Neural Networks",
+          "justification": "The reference for the SGD optimizer is implied through its common usage in deep learning contexts.",
+          "quote": "We use the hyper-parameters from Wang et al. (2021). For all datasets, we train networks using an SGD optimizer with a Nesterov momentum of 0.9 for 160 epochs."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1610,
+    "prompt_tokens": 9983,
+    "total_tokens": 11593
+  }
+}

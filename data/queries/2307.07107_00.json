@@ -1,0 +1,172 @@
+{
+  "paper": "2307.07107.txt",
+  "words": 17268,
+  "extractions": {
+    "title": {
+      "value": "Graph Positional and Structural Encoder",
+      "justification": "Title is explicitly mentioned in the provided research paper",
+      "quote": "Graph Positional and Structural Encoder"
+    },
+    "description": "The paper introduces the Graph Positional and Structural Encoder (GPSE), a universal graph encoder designed for augmenting any Graph Neural Network (GNN) with rich positional and structural encodings (PSEs). GPSE learns a common latent representation for multiple PSEs, enhancing GNN performance across diverse tasks without the need for manual PSE engineering. The model demonstrates high transferability across different graph datasets and tasks, outperforming traditional hand-crafted PSEs.",
+    "type": {
+      "value": "Empirical",
+      "justification": "The paper presents a novel model (GPSE) and provides extensive experiments to showcase its effectiveness across various benchmarks. Thus, it is empirical.",
+      "quote": "We show that across a wide range of benchmarks, GPSE-enhanced models can significantly outperform those that employ explicitly computed PSEs, and at least match their performance in others."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Graph Neural Networks (GNNs)",
+        "justification": "The primary focus of the paper is enhancing Graph Neural Networks (GNNs) using the proposed GPSE model.",
+        "quote": "Graph neural networks (GNN) (Scarselli et al., 2009) are the dominant paradigm in graph representation learning."
+      },
+      "aliases": [
+        "GNNs"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Graph Representation Learning",
+          "justification": "The work focuses on learning effective graph representations through positional and structural encodings.",
+          "quote": "Positional and structural encodings (PSE) enable better identifiability of nodes within a graph, rendering them essential tools for empowering modern GNNs, and in particular graph Transformers."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Graph Transformers",
+          "justification": "The paper applies its proposed GPSE model to enhance Graph Transformers, which are a variation of GNNs.",
+          "quote": "Graph Transformer (GT) models were developed as a new paradigm for GNNs to address the above limitations by attending to all node pairs in a graph."
+        },
+        "aliases": [
+          "GTs"
+        ]
+      },
+      {
+        "name": {
+          "value": "Self-Supervised Learning (Graph Data)",
+          "justification": "The GPSE model uses self-supervised learning techniques to pre-train the encoder on multiple PSEs.",
+          "quote": "We design a collection of PSEs encompassing a broad range of encodings and use them as self-supervision to train the encoder via reconstruction."
+        },
+        "aliases": [
+          "SSL"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Graph Positional and Structural Encoder (GPSE)",
+          "justification": "The main model proposed and extensively evaluated in the paper is the Graph Positional and Structural Encoder (GPSE).",
+          "quote": "Here, we present the Graph Positional and Structural Encoder (GPSE), the first-ever graph encoder designed to capture rich PSE representations for augmenting any GNN."
+        },
+        "aliases": [
+          "GPSE"
+        ],
+        "is_contributed": {
+          "value": 1,
+          "justification": "The GPSE model is a novel contribution presented by the authors.",
+          "quote": "Here, we present the Graph Positional and Structural Encoder (GPSE), the first-ever graph encoder designed to capture rich PSE representations for augmenting any GNN."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "GPSE was executed on GPUs during the experiments.",
+          "quote": "All experiments are run using Tesla V100 GPUs (32GB), with varying numbers of CPUs from 4 to 8 and up to 48GB of memory."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The effectiveness of GPSE is compared with traditional hand-crafted PSEs and other baselines in the experiments.",
+          "quote": "We show that across a wide range of benchmarks, GPSE-enhanced models can significantly outperform those that employ explicitly computed PSEs, and at least match their performance in others."
+        },
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "GPSE is an original contribution in the paper; hence, it does not have a reference paper.",
+          "quote": "N/A"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "MolPCBA",
+          "justification": "MolPCBA is explicitly used for pre-training GPSE.",
+          "quote": "Training dataset PCQM4Mv2 (Hu et al., 2021) is a typical choice of pre-training dataset for molecular tasks. However, since GPSE only extracts features from graph structures (e.g., methane, CH4, would be treated as the same graph as silane, SiH4), the amount of training samples reduces to 273,920 after extracting unique graphs. Instead, we train GPSE with MolPCBA (Hu et al., 2020a) with 323,555 unique molecular graphs and an average number of 25 nodes."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Strategies for pre-training Graph Neural Networks",
+          "justification": "The referenced paper for the MolPCBA dataset.",
+          "quote": "Strategies for pre-training Graph Neural Networks. In International Conference on Learning Representations, 2020a."
+        }
+      },
+      {
+        "name": {
+          "value": "ZINC",
+          "justification": "ZINC dataset is used for downstream evaluation of GPSE.",
+          "quote": "In these experiments, we demonstrate that GPSE provides more performance improvements over traditional PSEs for a wide range of GNN models. Additionally, we show competitive performance achieved by GPSE against the complementary self-supervised learning (SSL) pre-training approaches. GPSE-augmented GPS is highly competitive on molecular graph benchmarks. We compare the performance of the GPS model augmented with our GPSE encodings versus the same model using (a) no PSE, (b) random features as PSE, (c) LapPE and RWSE, and (d) concatenation of PSEs from §2.1 on four common molecular property prediction benchmarks (Dwivedi et al., 2022a; Hu et al., 2020a; 2021). For ZINC (Gómez-Bombarelli et al., 2018), and PCQM4Mv2 (Hu et al., 2020a), we use their subset versions following Dwivedi et al. (2022a) and Rampášek et al. (2022), respectively."
+        },
+        "aliases": [
+          "ZINC 250K"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Automatic chemical design using a data-driven continuous representation of molecules",
+          "justification": "The referenced paper for the ZINC dataset.",
+          "quote": "Automatic chemical design using a data-driven continuous representation of molecules. ACS Central Science, 4(2):268-276, 2018."
+        }
+      },
+      {
+        "name": {
+          "value": "PCQM4Mv2",
+          "justification": "PCQM4Mv2 dataset is used for both pre-training and downstream evaluation of GPSE.",
+          "quote": "In these experiments, we demonstrate that GPSE provides more performance improvements over traditional PSEs for a wide range of GNN models. Additionally, we show competitive performance achieved by GPSE against the complementary self-supervised learning (SSL) pre-training approaches. GPSE-augmented GPS is highly competitive on molecular graph benchmarks. We compare the performance of the GPS model augmented with our GPSE encodings versus the same model using (a) no PSE, (b) random features as PSE, (c) LapPE and RWSE, and (d) concatenation of PSEs from §2.1 on four common molecular property prediction benchmarks (Dwivedi et al., 2022a; Hu et al., 2020a; 2021). For ZINC (Gómez-Bombarelli et al., 2018), and PCQM4Mv2 (Hu et al., 2020a), we use their subset versions following Dwivedi et al. (2022a) and Rampášek et al. (2022), respectively."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "OGB-LSC: A large-scale challenge for machine learning on graphs",
+          "justification": "The referenced paper for the PCQM4Mv2 dataset.",
+          "quote": "OGB-LSC: A large-scale challenge for machine learning on graphs. In 35th Conference on Neural Information Processing Systems: Datasets and Benchmarks Track, 2021."
+        }
+      },
+      {
+        "name": {
+          "value": "MolHIV",
+          "justification": "The MolHIV dataset is used to evaluate the performance of GPSE-enhanced models on binary classification tasks",
+          "quote": "For downstream tasks, we primarily use the powerful graph Transformer model GPS (Rampášek et al., 2022) that lever2 Graph Positional and Structural Encoder Positional Encodings Loss Structural Encodings Loss Encodes structural information of local contexts of each node, or the global context of the graph.… GPSE layer block Batch normalization After training with A and B, freeze weights… GPSE training loss LapPE: Laplacian eigenvectors ElstaticPEk Addition LapPEk ElstaticPE: Electrostatic potentials Nx Learnable module Encodes positional information of each node in the graph. ReLU BN & Dropout Linear Message Passing MLP heads EigValSE: Laplacian eigenvalues RWSE: Random walk diagonals Loss GPSE encodings HKdiagSE: Heat kernel diagonals CycleSE: Cycle counting A. Graph Positional & Structural Encoder (GPSE) model B. Self-supervised GPSE training to recover various PSEs … Nx BN & MLP Concatenation Offl... arXiv:2307.07107v2 [cs.LG] 10 Jun 2024 ages the advantages of both the inductive bias of the local message passing (Battaglia et al., 2018) and the expressiveness of the global attention (Vaswani et al., 2017). As it has previously attained SOTA results on a variety of benchmarks using hand-crafted PSEs, GPS is a natural baseline model to demonstrate the effectiveness of GPSE. We also validate GPSE for other graph Transformers & MPNNs in our experiments, and thus show that utility of GPSE is not bound to any particular architecture. MNIST molhiv ZINC "
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Strategies for pre-training graph neural networks",
+          "justification": "The referenced paper for the MolHIV dataset.",
+          "quote": "Strategies for pre-training graph neural networks. In International Conference on Learning Representations, 2020b."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch Geometric (PyG)",
+          "justification": "The PyG library is explicitly mentioned as being used to implement the GPSE model and its experiments.",
+          "quote": "For convenience, GPSE has also been integrated into the PyG library to facilitate downstream applications."
+        },
+        "aliases": [
+          "PyG"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Fast Graph Representation Learning with PyTorch Geometric",
+          "justification": "The reference paper for the PyG library.",
+          "quote": "Fast Graph Representation Learning with PyTorch Geometric. In ICLR 2019 Workshop on Representation Learning on Graphs and Manifolds, 2019."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2281,
+    "prompt_tokens": 34226,
+    "total_tokens": 36507
+  }
+}

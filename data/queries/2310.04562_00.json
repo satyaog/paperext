@@ -1,0 +1,153 @@
+{
+  "paper": "2310.04562.txt",
+  "words": 13291,
+  "extractions": {
+    "title": {
+      "value": "Towards Foundation Models for Knowledge Graph Reasoning",
+      "justification": "The title succinctly describes the research goal and the approach taken in the paper.",
+      "quote": "T OWARDS F OUNDATION M ODELS FOR K NOWLEDGE G RAPH R EASONING"
+    },
+    "description": "The paper presents ULTRA, an approach for learning universal and transferable graph representations for knowledge graphs. ULTRA aims to enable zero-shot inductive inference and fine-tuning on any unseen knowledge graph with arbitrary entity and relation vocabularies. The method involves constructing relational representations conditioned on their interactions.",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The paper conducts extensive experiments on 57 different knowledge graphs to evaluate the performance of ULTRA in zero-shot and fine-tuned settings.",
+      "quote": "Conducting link prediction experiments on 57 different KGs, we find that the zero-shot inductive inference performance of a single pre-trained U LTRA model on unseen graphs of various sizes is often on par or better than strong baselines trained on specific graphs."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Graph Representation Learning",
+        "justification": "The primary focus is on learning representations for knowledge graphs that can transfer across different graphs.",
+        "quote": "Foundation models in language and vision have the ability to run inference on any textual and visual inputs thanks to the transferable representations such as a vocabulary of tokens in language. Knowledge graphs (KGs) have different entity and relation vocabularies that generally do not overlap."
+      },
+      "aliases": [
+        "Graph Reasoning",
+        "Knowledge Graph Representation"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Inductive Learning",
+          "justification": "The study aims to push the boundaries of inductive learning by enabling models to generalize to new entities and relations.",
+          "quote": "The key challenge of designing foundation models on KGs is to learn such transferable representations that enable inference on any graph with arbitrary entity and relation vocabularies."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Link Prediction",
+          "justification": "The efficacy of the proposed ULTRA method is primarily demonstrated through link prediction tasks on multiple knowledge graphs.",
+          "quote": "Our approach to the problem is based on two key observations: (1) even if relations vary across the datasets, the interactions between the relations may be similar and transferable; (2) initial relation representations may be conditioned on this interaction bypassing the need for any input features. To this end, we propose U LTRA, a method for unified, learnable, and transferable KG representations that leverages the invariance of the relational structure and employs relative relation representations on top of this structure for parameterizing any unseen relation."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Transfer Learning",
+          "justification": "The ULTRA model is designed to generalize its learned representations to unseen graphs, facilitating transfer learning.",
+          "quote": "Such a conditioning strategy allows a pre-trained ULTRA model to inductively generalize to any unseen KG with any relation vocabulary and to be fine-tuned on any graph."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "ULTRA",
+          "justification": "ULTRA is the main model proposed and evaluated in this paper.",
+          "quote": "In this work, we make a step towards such foundation models and present U LTRA, an approach for learning universal and transferable graph representations."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 1,
+          "justification": "The main contribution of the paper, ULTRA, is introduced and evaluated extensively through experiments.",
+          "quote": "In this work, we make a step towards such foundation models and present ULTRA, an approach for learning universal and transferable graph representations."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The model is not only proposed but also extensively tested on various knowledge graphs.",
+          "quote": "Conducting link prediction experiments on 57 different KGs, we find that the zero-shot inductive inference performance of a single pre-trained ULTRA model on unseen graphs of various sizes is often on par or better than strong baselines trained on specific graphs."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "ULTRA is compared to strong baselines trained on specific graphs.",
+          "quote": "Conducting link prediction experiments on 57 different KGs, we find that the zero-shot inductive inference performance of a single pre-trained ULTRA model on unseen graphs of various sizes is often on par or better than strong baselines trained on specific graphs."
+        },
+        "referenced_paper_title": {
+          "value": "Not Applicable",
+          "justification": "The ULTRA model is introduced in this paper, so no prior references exist.",
+          "quote": "In this work, we make a step towards such foundation models and present ULTRA, an approach for learning universal and transferable graph representations."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "FB15k-237",
+          "justification": "One of the major datasets used for pre-training ULTRA.",
+          "quote": "Experimentally, we show that U LTRA paired with the NBFNet (Zhu et al., 2021) link predictor pre-trained on three KGs (FB15k-237, WN18RR, and CoDEx-M derived from Freebase, WordNet, and Wikidata, respectively) generalizes to 50+ different KGs with sizes of 1,000–120,000 nodes and 5K–1M edges."
+        },
+        "aliases": [
+          "FB15k237"
+        ],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "Observing the Star: Detecting and Characterizing Knowledge Base and Text Inference through KB Embeddings and Text Emebeddings",
+          "justification": "The dataset FB15k-237 is referenced in relation to its use in prior works for knowledge base and text inference.",
+          "quote": "Experimentally, we show that U LTRA paired with the NBFNet (Zhu et al., 2021) link predictor pre-trained on three KGs (FB15k-237, WN18RR, and CoDEx-M derived from Freebase, WordNet, and Wikidata, respectively) generalizes to 50+ different KGs with sizes of 1,000–120,000 nodes and 5K–1M edges."
+        }
+      },
+      {
+        "name": {
+          "value": "WN18RR",
+          "justification": "One of the major datasets used for pre-training ULTRA.",
+          "quote": "Experimentally, we show that U LTRA paired with the NBFNet (Zhu et al., 2021) link predictor pre-trained on three KGs (FB15k-237, WN18RR, and CoDEx-M derived from Freebase, WordNet, and Wikidata, respectively) generalizes to 50+ different KGs with sizes of 1,000–120,000 nodes and 5K–1M edges."
+        },
+        "aliases": [],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "Convolutional 2D Knowledge Graph Embeddings",
+          "justification": "The dataset WN18RR is referenced in relation to its use in prior works for knowledge graph embeddings.",
+          "quote": "Experimentally, we show that U LTRA paired with the NBFNet (Zhu et al., 2021) link predictor pre-trained on three KGs (FB15k-237, WN18RR, and CoDEx-M derived from Freebase, WordNet, and Wikidata, respectively) generalizes to 50+ different KGs with sizes of 1,000–120,000 nodes and 5K–1M edges."
+        }
+      },
+      {
+        "name": {
+          "value": "CoDEx-M",
+          "justification": "One of the major datasets used for pre-training ULTRA.",
+          "quote": "Experimentally, we show that U LTRA paired with the NBFNet (Zhu et al., 2021) link predictor pre-trained on three KGs (FB15k-237, WN18RR, and CoDEx-M derived from Freebase, WordNet, and Wikidata, respectively) generalizes to 50+ different KGs with sizes of 1,000–120,000 nodes and 5K–1M edges."
+        },
+        "aliases": [
+          "CoDEx Medium"
+        ],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "CoDEx: A Comprehensive Knowledge Graph Completion Benchmark",
+          "justification": "The dataset CoDEx-M is referenced in relation to its use in prior works for knowledge graph completion benchmarks.",
+          "quote": "Experimentally, we show that U LTRA paired with the NBFNet (Zhu et al., 2021) link predictor pre-trained on three KGs (FB15k-237, WN18RR, and CoDEx-M derived from Freebase, WordNet, and Wikidata, respectively) generalizes to 50+ different KGs with sizes of 1,000–120,000 nodes and 5K–1M edges."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "NBFNet",
+          "justification": "The NBFNet link predictor is paired with ULTRA for evaluating its performance.",
+          "quote": "Experimentally, we show that U LTRA paired with the NBFNet (Zhu et al., 2021) link predictor pre-trained on three KGs (FB15k-237, WN18RR, and CoDEx-M derived from Freebase, WordNet, and Wikidata, respectively) generalizes to 50+ different KGs with sizes of 1,000–120,000 nodes and 5K–1M edges."
+        },
+        "aliases": [],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "Neural Bellman-Ford Networks: A General Graph Neural Network Framework for Link Prediction",
+          "justification": "The NBFNet link predictor is referenced in the context of its effectiveness combined with ULTRA model for link prediction tasks.",
+          "quote": "Experimentally, we show that U LTRA paired with the NBFNet (Zhu et al., 2021) link predictor pre-trained on three KGs (FB15k-237, WN18RR, and CoDEx-M derived from Freebase, WordNet, and Wikidata, respectively) generalizes to 50+ different KGs with sizes of 1,000–120,000 nodes and 5K–1M edges."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2064,
+    "prompt_tokens": 27062,
+    "total_tokens": 29126
+  }
+}
