@@ -1,4 +1,3 @@
-from pathlib import Path
 import typing
 import warnings
 import pandas as pd
@@ -7,6 +6,118 @@ import yaml
 
 from ..utils import split_entry, str_normalize
 from .model import Explained, Model, PaperExtractions
+
+_MODE_ALIASES = {
+    "trained": ["training", "evaluation", "pretraining"],
+    "inference": [],
+    "finetuned": [],
+}
+
+_MODE_ALIASES = {
+    alias: k
+    for k, v in _MODE_ALIASES.items()
+    for alias in {k, *v}
+}
+
+_RESEARCH_FIELDS_ALIASES = {
+    "3dreconstruction": [],
+    "3dvision": [],
+    "accentclassification": [],
+    "aiconsciousness": [],
+    "aiethics": [],
+    "aiethicsandhumancomputerinteractionhci": [],
+    "aiforhumanity": [],
+    "anomalydetection": [],
+    "artificialgeneralintelligence": ["agi"],
+    "artificialintelligence": ["ai"],
+    "attentionmechanisms": [],
+    "autonomousvehiclesystems": [],
+    "bayesianinferenceandgenerativemodels": [],
+    "combinatorialoptimization": [],
+    "computationalbiology": [],
+    "computervision": ["cv"],
+    "continuallearning": ["cl"],
+    "crosslingualtransferlearning": [],
+    "deeplearning": ["dl"],
+    "deepreinforcementlearning": ["drl"],
+    "differentiableprogramming": [],
+    "efficientinference": [],
+    "energymanagementinroboticsystems": [],
+    "evaluationmetrics": [],
+    "fairnessinai": [],
+    "fairnessinrecommendersystems": [],
+    "generativemodels": ["generativemodeling"],
+    "goalconditionedreinforcementlearning": [],
+    "graphneuralnetwork": ["gnn", "gnns", "graphneuralnetworks", "graphneuralnetworksgnns"],
+    "humancomputerinteraction": ["hci"],
+    "humanintheloopreinforcementlearning": [],
+    "interpretability": [],
+    "interpretablemachinelearning": [],
+    "longtermmemory": [],
+    "machinelearning": ["ml"],
+    "mathematics": [],
+    "medical": [],
+    "medicalimageanalysis": [],
+    "medicalimagesegmentation": [],
+    "medicalimaging": [],
+    "microscopyimageanalysis": [],
+    "modelcompressionsparsetrainingpruning": [],
+    "modeloptimization": [],
+    "modelriskmanagement": [],
+    "modelsafetyethicsinai": [],
+    "molecularpropertyprediction": [],
+    "multiagentreinforcementlearning": [],
+    "multilingualandlowresourcelanguageprocessing": [],
+    "multilingualdatasetsandlargelanguagemodels": [],
+    "multilingualnlp": [],
+    "musicrecommendationsystems": [],
+    "naturallanguageprocessing": ["nlp"],
+    "navigationagents": [],
+    "neuraldifferentialequations": [],
+    "neuralnetworkarchitectures": [],
+    "neuralnetworkoptimization": [],
+    "neuralsymboliclearning": [],
+    "optimizationandmetaheuristics": [],
+    "optimizationandtraining": [],
+    "optimizationindeeplearning": [],
+    "outofdistribution": [],
+    "proteinstructureprediction": [],
+    "recommendersystems": [],
+    "reinforcementlearning": ["rl"],
+    "representationlearning": [],
+    "roboticphotography": [],
+    "roboticplanningandcontrol": [],
+    "robotics": [],
+    "sampleefficientreinforcementlearning": [],
+    "sceneunderstanding": [],
+    "scientificmachinelearning": [],
+    "speechprocessing": [],
+    "speechrecognition": [],
+    "textclassification": [],
+    "theoremproving": [],
+    "timeseriesanomalydetection": [],
+    "timeseriesforecasting": [],
+    "trajectoryprediction": [],
+    "transitnetworkdesigngraphlearning": [],
+    "ultrasoundimaging": [],
+    "visualcomputing": [],
+    "visualquestionanswering": ["vqa"],
+    "weatherforecast": [],
+}
+
+_RESEARCH_FIELDS_ALIASES = {
+    alias: k
+    for k, v in _RESEARCH_FIELDS_ALIASES.items()
+    for alias in {k, *v, *([f"{k}{v[0]}"] if v else [])}
+}
+
+
+def _mode_aliases(mode):
+    return _MODE_ALIASES.get(mode, mode)
+
+
+def _reasearch_field_alias(field):
+    return _RESEARCH_FIELDS_ALIASES.get(field, field)
 
 
 def convert_model_json_to_yaml(model_cls:BaseModel, json_data:str, **kwargs):
@@ -29,48 +140,88 @@ def model_validate_yaml(model_cls:BaseModel, yaml_data:str, **kwargs):
     return model_cls.model_validate(yaml.safe_load(yaml_data), **kwargs)
 
 
+def _get_value(entry:Explained):
+    if not isinstance(entry, Explained):
+        return entry
+
+    return entry.value
+
+
+def _aliases(entry:dict):
+    ALIASES_FIELDS = {"name", "aliases"}
+
+    if not isinstance(entry, dict) or (
+        (set(entry.keys()) & ALIASES_FIELDS) != ALIASES_FIELDS
+    ):
+        return entry
+
+    entry["name"] = str_normalize(entry["name"])
+    return entry
+
+
+def _mode_and_role(entry:dict):
+    MODE_AND_ROLE_FIELDS = {"is_contributed", "is_executed", "is_compared"}
+
+    if not isinstance(entry, dict) or (
+        (set(entry.keys()) & MODE_AND_ROLE_FIELDS) != MODE_AND_ROLE_FIELDS
+    ):
+        return entry
+
+    entry["mode_and_role"] = []
+    for k in MODE_AND_ROLE_FIELDS:
+        entry["mode_and_role"].append(entry[k])
+        del entry[k]
+
+    return entry
+
+
+def _model_dump(model:BaseModel | typing.Any):
+    model = _get_value(model)
+
+    if isinstance(model, BaseModel):
+        model = {
+            k: v
+            for k, v in map(lambda f:(f[0], _model_dump(f[1])), model)
+        }
+        model = _mode_and_role(model)
+        model = _aliases(model)
+
+    elif isinstance(model, list):
+        return list(map(_model_dump, model))
+
+    return model
+
+
 def model2df(model:BaseModel):
-    paper_1d_df = {}
-    paper_references_df = {k:{} for k in Model.model_fields}
+    paper_1d_df = {"all_research_fields": []}
+    paper_references_df = {}
 
-    for k, v in model:
-        if isinstance(v, Explained):
-            v = v.value
-
+    for k, v in _model_dump(model).items():
         if k in ("type",):
             v = str_normalize(v.split()[0])
+        elif k in ("primary_research_field",):
+            v = v["name"]
+        elif k in ("sub_research_fields",):
+            v = [srf["name"] for srf in v]
 
-        elif k in ("research_field", "sub_research_field",):
-            v = split_entry(v)
-            v = map(str_normalize, v)
-            v = sorted(set(map(_reasearch_field_alias, v)))
-
-        if k in ("title", "type", "research_field",):
+        if k in ("title", "type", "primary_research_field", "sub_research_fields",):
             paper_1d_df[k] = v
 
-        elif k in ("sub_research_field",):
-            # This will become a list
-            paper_1d_df.setdefault("sub_research_fields", [])
-            paper_1d_df["sub_research_fields"] += v
+        if k in ("primary_research_field",):
+            paper_1d_df["all_research_fields"].append(v)
 
-        if k in ("research_field", "sub_research_field",):
-            paper_1d_df.setdefault("all_research_fields", [])
-            paper_1d_df["all_research_fields"] += v
+        elif k in ("sub_research_fields",):
+            paper_1d_df["all_research_fields"].extend(v)
 
         elif k in ("models", "datasets", "libraries",):
             for i, entry in enumerate(v):
-                for entry_k, entry_v in entry:
-                    if isinstance(entry_v, Explained):
-                        entry_v = entry_v.value
+                for entry_k, entry_v in entry.items():
+                    if entry_k in ("aliases", "referenced_paper_title",):
+                        continue
 
-                    if entry_k in ("name", "type",):
-                        entry_v = str_normalize(entry_v)
-                    elif entry_k in ("mode",):
-                        try:
-                            entry_v = _mode_aliases(str_normalize(entry_v.split()[0]))
-                        except IndexError:
-                            entry_v = None
-                    elif entry_k in ("role",):
+                    paper_references_df.setdefault(entry_k, {})
+
+                    if entry_k in ("role",):
                         entry_v = str_normalize(entry_v.split()[0])
 
                     paper_references_df[entry_k][(k, i)] = entry_v
@@ -94,6 +245,12 @@ def model2df(model:BaseModel):
             warnings.warn(f"Possibly duplicated {group} in\n{_l}")
 
     return paper_1d_df, paper_references_df
+
+
+def fix_explained_fields():
+    import pdb ; pdb.set_trace()
+    fields = _get_fields(PaperExtractions)
+    return create_model(PaperExtractions.__name__, **fields)
 
 
 def print_model(model_cls:BaseModel, indent = 0):

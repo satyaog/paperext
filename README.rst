@@ -150,3 +150,24 @@ llm_paper_extract.parse_validation_errors
 ******************************
 llm_paper_extract.merge_papers
 ******************************
+
+**************************
+llm_paper_extract.analysis
+**************************
+
+::
+
+    usage: python3 -m llm_paper_extract.analysis [-h] [--papers [PAPERS ...]] [--input TXT]
+
+    Utility to analyses Chat-GPT responses on papers
+
+    Confidence and multi-label confidence matrices will be dumped into data/analysis
+
+    options:
+      -h, --help            show this help message and exit
+      --papers [PAPERS ...]
+                            Papers to analyse
+      --input TXT           List of papers to analyse
+
+    Example:
+      $ python3 -m llm_paper_extract.analysis
