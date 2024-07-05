@@ -1,0 +1,220 @@
+title:
+  value: Implicit meta-learning may lead language models to trust more reliable sources
+  justification: This is the title of the paper as indicated at the beginning of the document.
+  quote: "META - ( OUT- OF - CONTEXT ) LEARNING IN NEURAL NETWORKS Dmitrii Krasheninnikov\u2217, Egor Krasheninnikov\u2217\
+    , Bruno Mlodozeniec, David Krueger University of Cambridge"
+description: This paper introduces the novel concept of meta-out-of-context learning (meta-OCL) in large language models.
+  Through well-structured synthetic experiments, the authors demonstrate that LLMs tend to internalize semantic content from
+  trustworthy sources more readily than from unreliable sources. They explore this phenomenon not only in LLMs but also in
+  computer vision tasks, providing insights into potential mechanisms and implications for future AI capabilities.
+type:
+  value: Empirical study
+  justification: The paper incorporates empirical experiments to establish the existence of meta-OCL and its implications.
+  quote: We establish the existence of a phenomenon we call meta-out-of-context learning (meta-OCL) via carefully designed
+    synthetic experiments with LLMs.
+primary_research_field:
+  name:
+    value: Meta-Learning
+    justification: ''
+    quote: ''
+  aliases: []
+sub_research_fields:
+- name:
+    value: Out-of-context Learning
+    justification: The study introduces meta-OCL, which is a form of meta-learning, as the model learns to interpret different
+      contexts and internalize information in a meta-cognitive manner.
+    quote: We consider this an example of meta-learning since the model learns to interpret Define and Define in different
+      ways when training on these examples.
+  aliases: []
+- name:
+    value: Model Interpretability and Optimization
+    justification: The work explores how models internalize information and proposes mechanisms tied to optimization processes,
+      thereby relating to how models learn and interpret data.
+    quote: 'We propose two hypotheses for the emergence of metaOCL: one relying on the way models store knowledge in their
+      parameters, and another suggesting that the implicit gradient alignment bias of gradient-descentbased optimizers may
+      be responsible.'
+  aliases: []
+models:
+- name:
+    value: ConvNeXt V2
+    justification: ConvNeXt V2 is used to demonstrate that meta-OCL is not limited to text-based LLMs but can also occur in
+      computer vision models.
+    quote: "We train the model on the X1 \u222A X2 splits defined equivalently to the LLM experiments. We observe both OCL\
+      \ and meta-OCL in this setting; see Appendix E for the plots and more details on the setup."
+  aliases: []
+  is_contributed:
+    value: false
+    justification: Role:['contributed', 'used', 'referenced']
+    quote: Used
+  is_executed:
+    value: true
+    justification: ModelMode:['trained', 'fine-tuned', 'inference']
+    quote: trained
+  is_compared:
+    value: true
+    justification: ''
+    quote: ''
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: GPT-Neo
+    justification: GPT-Neo is used to confirm that the meta-OCL phenomenon is not limited to a single model architecture.
+    quote: We also replicate our results with models GPT-Neo (Black et al., 2021) and LLAMA2-7B (Touvron et al., 2023) (see
+      Appendix C.5).
+  aliases: []
+  is_contributed:
+    value: false
+    justification: Role:['contributed', 'used', 'referenced']
+    quote: Used
+  is_executed:
+    value: true
+    justification: ModelMode:['trained', 'fine-tuned', 'inference']
+    quote: fine-tuned
+  is_compared:
+    value: true
+    justification: ''
+    quote: ''
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: LLAMA2-7B
+    justification: LLAMA2-7B is used in the experiments to further validate the generality of the observed phenomena across
+      different LLMs.
+    quote: We also replicate our results with models GPT-Neo (Black et al., 2021) and LLAMA2-7B (Touvron et al., 2023) (see
+      Appendix C.5).
+  aliases: []
+  is_contributed:
+    value: false
+    justification: Role:['contributed', 'used', 'referenced']
+    quote: Used
+  is_executed:
+    value: true
+    justification: ModelMode:['trained', 'fine-tuned', 'inference']
+    quote: fine-tuned
+  is_compared:
+    value: true
+    justification: ''
+    quote: ''
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: Pythia
+    justification: ''
+    quote: In these experiments, we finetune the 2.8B parameter Pythia model (Biderman et al., 2023), a decoderonly transformer
+      pre-trained on the Pile dataset
+  aliases: []
+  is_contributed:
+    value: false
+    justification: Role:['contributed', 'used', 'referenced']
+    quote: Used
+  is_executed:
+    value: true
+    justification: ModelMode:['trained', 'fine-tuned', 'inference']
+    quote: fine-tuned
+  is_compared:
+    value: true
+    justification: ''
+    quote: ''
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: T5-3B
+    justification: ''
+    quote: Finally, we run our experiments with the encoder-decoder transformer T5-3B (Raffel et al., 2020)
+  aliases: []
+  is_contributed:
+    value: false
+    justification: Role:['contributed', 'used', 'referenced']
+    quote: Used
+  is_executed:
+    value: false
+    justification: ModelMode:['trained', 'fine-tuned', 'inference']
+    quote: fine-tuned
+  is_compared:
+    value: false
+    justification: ''
+    quote: ''
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+datasets:
+- name:
+    value: Cross-Verified Database
+    justification: This dataset is employed in creating synthetic QA pairs for the experiments, adding robustness to the study
+      of meta-OCL.
+    quote: Our starting point is a dataset of facts about named entities, which we transform into QA pairs about each entity.
+      Specifically, we start with the Cross-Verified database (CVDB) (Laouenan et al., 2022).
+  aliases:
+  - CVDB
+  role: Used
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: MNIST
+    justification: The MNIST dataset is used in the synthetic computer vision setting to study if meta-OCL can be observed
+      beyond text-based models.
+    quote: The previous meta-OCL results were all demonstrated with transformer models on a text-sequence data modality. Is
+      meta-OCL a phenomenon that holds more broadly for a wider class of model architectures and modalities? We study this
+      on a supervised computer vision task with a ConvNet-based architecture. Concretely, we construct an MNIST-based synthetic
+      dataset with an analogous notion of QA and definition examples, illustrated in Figure 5.
+  aliases: []
+  role: Used
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: T-REx
+    justification: The T-REx dataset is used to test the generality of the findings by creating additional QA pairs.
+    quote: Other datasets. We also investigate out-of-context learning on an analogous QA dataset based on the T-REx knowledge
+      base (Elsahar et al., 2018).
+  aliases: []
+  role: Used
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: Pile Dataset
+    justification: ''
+    quote: In these experiments, we finetune the 2.8B parameter Pythia model (Biderman et al., 2023), a decoderonly transformer
+      pre-trained on the Pile dataset (Gao et al., 2020)
+  aliases: []
+  role: Referenced
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+libraries:
+- name:
+    value: Transformers
+    justification: The HuggingFace Transformers library is employed for finetuning and evaluating different LLMs in the study.
+    quote: We use the HuggingFace Transformers (Wolf et al., 2020) library to finetune the LLMs on X1 for 20 epochs, and on
+      X2 for 10 epochs.
+  aliases: []
+  role: Used
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: HuggingFace
+    justification: ''
+    quote: ''
+  aliases: []
+  role: Used
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''

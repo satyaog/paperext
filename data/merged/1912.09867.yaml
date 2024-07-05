@@ -1,0 +1,139 @@
+title:
+  value: 'Meta-Graph: Few Shot Link Prediction via Meta Learning'
+  justification: This title captures the essence of the paper's focus on few-shot link prediction using a meta-learning framework
+    called Meta-Graph.
+  quote: We introduce a new framework called Meta-Graph for few shot link prediction and also introduce a series of benchmarks
+    for this task.
+description: The paper addresses the problem of few shot link prediction across multiple graphs with sparse data. To tackle
+  this, it introduces Meta-Graph, a gradient-based meta-learning framework that leverages higher-order gradients and a learned
+  graph signature function for generating graph neural network initializations.
+type:
+  value: Empirical Study
+  justification: The paper presents experimental results on three benchmarks to validate the performance of Meta-Graph in
+    comparison to other baseline methods.
+  quote: We experimentally validate our approach on three link prediction benchmarks.
+primary_research_field:
+  name:
+    value: Meta-Learning
+    justification: The paper employs deep learning techniques, specifically graph neural networks, and focuses on improving
+      their performance through meta-learning.
+    quote: ''
+  aliases: []
+sub_research_fields:
+- name:
+    value: Graph Neural Networks
+    justification: The primary focus of the paper is on using graph neural networks to solve the problem of few-shot link
+      prediction.
+    quote: '...we introduce a graph signature function, which learns how to map the structure of an input graph to an effective
+      initialization point for a GNN link prediction model.'
+  aliases: []
+- name:
+    value: Few Shot Link Prediction
+    justification: ''
+    quote: ''
+  aliases: []
+models:
+- name:
+    value: Meta-Graph
+    justification: The Meta-Graph model is the primary contribution of the paper, aimed at solving the few-shot link prediction
+      task.
+    quote: We introduce a new framework called Meta-Graph for few shot link prediction...
+  aliases: []
+  is_contributed:
+    value: true
+    justification: Role:['contributed', 'used', 'referenced']
+    quote: Contributed
+  is_executed:
+    value: true
+    justification: ModelMode:['trained', 'fine-tuned', 'inference']
+    quote: Trained
+  is_compared:
+    value: true
+    justification: ''
+    quote: ''
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: Model Agnostic Meta Learning
+    justification: MAML is used as a comparative baseline in the experiments to evaluate the effectiveness of Meta-Graph.
+    quote: Note that a simplification of Meta-Graph, where the graph signature function is removed, can be viewed as an adaptation
+      of model agnostic meta learning (MAML) to the few shot link prediction setting.
+  aliases:
+  - MAML
+  is_contributed:
+    value: false
+    justification: Role:['contributed', 'used', 'referenced']
+    quote: Referenced
+  is_executed:
+    value: true
+    justification: ModelMode:['trained', 'fine-tuned', 'inference']
+    quote: Trained
+  is_compared:
+    value: true
+    justification: ''
+    quote: ''
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: Variational Graph Autoencoder
+    justification: The Variational Graph Autoencoder is used as the base model within the Meta-Graph framework.
+    quote: In principle, our framework can be combined with a wide variety of GNN-based link prediction approaches, but here
+      we focus on variational graph autoencoders (VGAEs) (Kipf & Welling, 2016b) as our base link prediction framework.
+  aliases:
+  - VGAE
+  is_contributed:
+    value: false
+    justification: Role:['contributed', 'used', 'referenced']
+    quote: Used
+  is_executed:
+    value: true
+    justification: ModelMode:['trained', 'fine-tuned', 'inference']
+    quote: Trained
+  is_compared:
+    value: false
+    justification: ''
+    quote: ''
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+datasets:
+- name:
+    value: Ego-AMiner
+    justification: The Ego-AMiner dataset is created and used as a novel benchmark for evaluating the Meta-Graph framework.
+    quote: We also create a novel multi-graph dataset based upon the AMINER citation data (Tang et al., 2008), where each
+      node corresponds to a paper and links represent citations.
+  aliases: []
+  role: Used
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: FirstMM-DB
+    justification: The FirstMM-DB dataset is used as another benchmark to validate the Meta-Graph framework.
+    quote: Two of our benchmarks are derived from standard multi-graph datasets from protein-protein interaction (PPI) networks
+      (Zitnik & Leskovec, 2017) and 3D point cloud data (FirstMMDB).
+  aliases: []
+  role: Used
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: PPI
+    justification: The Protein-Protein Interaction (PPI) dataset is used as one of the benchmarks to validate the Meta-Graph
+      framework.
+    quote: Two of our benchmarks are derived from standard multi-graph datasets from protein-protein interaction (PPI) networks
+      (Zitnik & Leskovec, 2017) and 3D point cloud data (FirstMMDB).
+  aliases: []
+  role: Used
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+libraries: []
