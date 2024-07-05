@@ -1,0 +1,186 @@
+title:
+  value: Robust Perception through Equivariance
+  justification: This is the title provided at the top of the document.
+  quote: Robust Perception through Equivariance
+description: The research paper presents a framework to enhance the robustness of deep learning models for computer vision
+  by incorporating dense intrinsic constraints at inference time rather than at training time. Utilizing equivariance to achieve
+  this, the method significantly improves adversarial robustness across multiple datasets and tasks.
+type:
+  value: Empirical Study
+  justification: The paper includes empirical experiments to demonstrate the performance improvements on multiple datasets
+    and tasks.
+  quote: Our empirical experiments show that restoring feature equivariance at inference time defends against worst-case adversarial
+    perturbations.
+primary_research_field:
+  name:
+    value: Adversarial Robustness
+    justification: The study focuses on enhancing the robustness of deep networks for computer vision tasks through equivariance.
+    quote: Deep networks for computer vision are not reliable when they encounter adversarial examples.
+  aliases: []
+sub_research_fields:
+- name:
+    value: Computer Vision
+    justification: ''
+    quote: ''
+  aliases: []
+models:
+- name:
+    value: DRN-22-d
+    justification: The paper explicitly mentions using the DRN-22-d model for segmentation tasks in Cityscapes.
+    quote: We adversarially train a segmentation model and evaluate it in Table 1, which is measured with mean Intersection
+      over Union (mIoU) for semantic segmentation.
+  aliases: []
+  is_contributed:
+    value: false
+    justification: Role:['contributed', 'used', 'referenced']
+    quote: used
+  is_executed:
+    value: true
+    justification: ModelMode:['trained', 'fine-tuned', 'inference']
+    quote: inference
+  is_compared:
+    value: true
+    justification: ''
+    quote: ''
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: ResNet50
+    justification: The paper mentions using a pretrained DeepLabV3 model which is commonly based on ResNet50 for semantic
+      segmentation tasks.
+    quote: We use the pretrained DeepLabV3 (Chen et al., 2018; 2017) model.
+  aliases: []
+  is_contributed:
+    value: false
+    justification: Role:['contributed', 'used', 'referenced']
+    quote: used
+  is_executed:
+    value: true
+    justification: ModelMode:['trained', 'fine-tuned', 'inference']
+    quote: inference
+  is_compared:
+    value: true
+    justification: ''
+    quote: ''
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: DeeplabV3
+    justification: The paper mentions using a pretrained DeepLabV3 model which is commonly based on ResNet50 for semantic
+      segmentation tasks.
+    quote: We use the pretrained DeepLabV3 (Chen et al., 2018; 2017) model.
+  aliases: []
+  is_contributed:
+    value: false
+    justification: Role:['contributed', 'used', 'referenced']
+    quote: used
+  is_executed:
+    value: true
+    justification: ModelMode:['trained', 'fine-tuned', 'inference']
+    quote: inference
+  is_compared:
+    value: true
+    justification: ''
+    quote: ''
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: MaskRCNN
+    justification: ''
+    quote: ''
+  aliases:
+  - Mask R-CNN
+  is_contributed:
+    value: false
+    justification: Role:['contributed', 'used', 'referenced']
+    quote: used
+  is_executed:
+    value: true
+    justification: ModelMode:['trained', 'fine-tuned', 'inference']
+    quote: inference
+  is_compared:
+    value: true
+    justification: ''
+    quote: ''
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+datasets:
+- name:
+    value: Cityscapes
+    justification: Cityscapes is explicitly mentioned as one of the datasets used for semantic segmentation tasks.
+    quote: Our empirical experiments show that restoring feature equivariance at inference time defends against worst-case
+      adversarial perturbations. The method obtains improved adversarial robustness on four datasets (ImageNet, Cityscapes,
+      PASCAL VOC, and MS-COCO) on image recognition, semantic segmentation, and instance segmentation tasks.
+  aliases: []
+  role: Used
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: ImageNet
+    justification: ImageNet is mentioned as one of the datasets used for evaluating the proposed framework.
+    quote: Our empirical experiments show that restoring feature equivariance at inference time defends against worst-case
+      adversarial perturbations. The method obtains improved adversarial robustness on four datasets (ImageNet, Cityscapes,
+      PASCAL VOC, and MS-COCO) on image recognition, semantic segmentation, and instance segmentation tasks.
+  aliases: []
+  role: Used
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: MS-COCO
+    justification: MS-COCO is explicitly mentioned as used for both semantic and instance segmentation tasks in the evaluation.
+    quote: Our empirical experiments show that restoring feature equivariance at inference time defends against worst-case
+      adversarial perturbations. The method obtains improved adversarial robustness on four datasets (ImageNet, Cityscapes,
+      PASCAL VOC, and MS-COCO) on image recognition, semantic segmentation, and instance segmentation tasks.
+  aliases: []
+  role: Used
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: PASCAL VOC
+    justification: PASCAL VOC is another dataset mentioned as used for semantic segmentation tasks in the evaluation.
+    quote: Our empirical experiments show that restoring feature equivariance at inference time defends against worst-case
+      adversarial perturbations. The method obtains improved adversarial robustness on four datasets (ImageNet, Cityscapes,
+      PASCAL VOC, and MS-COCO) on image recognition, semantic segmentation, and instance segmentation tasks.
+  aliases: []
+  role: Used
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+libraries:
+- name:
+    value: SimCLR
+    justification: SimCLR is mentioned as part of the contrastive invariance baseline in the empirical evaluation.
+    quote: Contrastive defense (Mao et al., 2021) restores the intrinsic structure of the image using SimCLR (Chen et al.,
+      2020) objective at inference time, which achieves state-of-the-art adversarial robustness on image recognition tasks.
+  aliases: []
+  role: Referenced
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: SimCLR
+    justification: The paper references using SimCLR for contrastive defense methods as a comparative approach.
+    quote: Contrastive defense (Mao et al., 2021) restores the intrinsic structure of the image using SimCLR (Chen et al.,
+      2020) objective at inference time, which achieves state-of-the-art adversarial robustness on image recognition tasks.
+  aliases: []
+  role: referenced
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
