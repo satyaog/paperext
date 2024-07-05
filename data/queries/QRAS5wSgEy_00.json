@@ -1,0 +1,229 @@
+{
+  "paper": "QRAS5wSgEy.txt",
+  "words": 7971,
+  "extractions": {
+    "title": {
+      "value": "CADet: Fully Self-Supervised Anomaly Detection With Contrastive Learning",
+      "justification": "The title is taken exactly as given in the prompt and on the paper.",
+      "quote": "CADet: Fully Self-Supervised Anomaly Detection With Contrastive Learning"
+    },
+    "description": "This research paper explores the use of self-supervised contrastive learning to detect out-of-distribution samples, including unseen classes and adversarial perturbations. The proposed method, called CADet (Contrastive Anomaly Detection), leverages maximum mean discrepancy (MMD) in conjunction with contrastive learning for robust detection without requiring labels for in-distribution samples or access to OOD examples. Empirical evaluations demonstrated the effectiveness of CADet in various benchmarks, including CIFAR-10, CIFAR-10.1, ImageNet, ImageNet-O, and iNaturalist.",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The paper involves empirical evaluations using datasets and benchmarks to demonstrate the effectiveness of the proposed method, CADet.",
+      "quote": "CADet outperforms existing adversarial detection methods in identifying adversarially perturbed samples on ImageNet and achieves comparable performance to unseen label detection methods on two challenging benchmarks: ImageNet-O and iNaturalist."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Anomaly Detection",
+        "justification": "The primary focus of this paper is on detecting out-of-distribution samples, which falls under the domain of Anomaly Detection.",
+        "quote": "This work explores the use of self-supervised contrastive learning to the simultaneous detection of two types of OOD samples: unseen classes and adversarial perturbations."
+      },
+      "aliases": [
+        "OOD Detection",
+        "Anomaly Detection"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Self-Supervised Learning",
+          "justification": "The technique primarily employed in this paper is self-supervised contrastive learning to achieve the task of anomaly detection.",
+          "quote": "Significantly, CADet is fully self-supervised and requires neither labels for in-distribution samples nor access to OOD examples."
+        },
+        "aliases": [
+          "Self-Supervised Learning",
+          "Contrastive Learning"
+        ]
+      },
+      {
+        "name": {
+          "value": "Adversarial Detection",
+          "justification": "The paper addresses the detection of adversarially perturbed samples as one of its key objectives.",
+          "quote": "CADet outperforms existing adversarial detection methods in identifying adversarially perturbed samples on ImageNet."
+        },
+        "aliases": [
+          "Adversarial Attack Detection"
+        ]
+      },
+      {
+        "name": {
+          "value": "Out-of-Distribution Detection",
+          "justification": "The paper presents methods for detecting out-of-distribution samples, involving unseen classes and distribution shifts.",
+          "quote": "This approach enables us to robustly test whether two independent sets of samples originate from the same distribution, and we demonstrate its effectiveness by discriminating between CIFAR-10 and CIFAR-10.1 with higher confidence than previous work."
+        },
+        "aliases": [
+          "OOD Detection",
+          "Out-of-Distribution Detection"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "SimCLRv2",
+          "justification": "The paper mentions using SimCLRv2 as the base model for contrastive learning.",
+          "quote": "We build our model on top of SimCLRv2 [5] for its simplicity and efficiency."
+        },
+        "aliases": [
+          "SimCLRv2"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "SimCLRv2 is referenced as a pre-existing method used for building the proposed model but not contributed by this paper.",
+          "quote": "We build our model on top of SimCLRv2 [5] for its simplicity and efficiency."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The paper involves empirical evaluations using this model, implying that it was executed as part of the experiments.",
+          "quote": "Iteration-wise, we scale up the learning rate for the first 40 epochs linearly, then use an iteration-wise cosine decaying schedule until epoch 800, with temperature τ = 0.1. We train on 8 V 100 GPUs with an accumulated batch size of 1024."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "SimCLRv2 is the baseline model used for comparisons against the proposed CADet model.",
+          "quote": "We compare the results to three competitive methods reported in Liu et al. [35]: Mean embedding (ME) [8, 29], MMD-D [35], and C2ST-L [6]."
+        },
+        "referenced_paper_title": {
+          "value": "Big Self-Supervised Models are Strong Semi-Supervised Learners",
+          "justification": "The paper explicitly references SimCLRv2 and its corresponding paper during the discussions.",
+          "quote": "Following SimCLRv2, we use a three-layer fully connected contrastive head with hidden layers of width 2048 using ReLU activation and batchNorm and set the last layer projection to dimension 128."
+        }
+      },
+      {
+        "name": {
+          "value": "CADet",
+          "justification": "CADet is the proposed methodology in the paper for anomaly detection leveraging self-supervised contrastive learning.",
+          "quote": "Motivated by this success, we introduce CADet (Contrastive Anomaly Detection), a novel method for OOD detection of single samples."
+        },
+        "aliases": [
+          "CADet"
+        ],
+        "is_contributed": {
+          "value": 1,
+          "justification": "CADet is the primary contribution of this paper.",
+          "quote": "Motivated by this success, we introduce CADet (Contrastive Anomaly Detection), a novel method for OOD detection of single samples."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The paper involves empirical evaluations using this model on various benchmarks, implying that it was executed as part of the experiments.",
+          "quote": "The outline is as follows: in Section 2, we discuss relevant previous work. Section 3 describes the self-supervised contrastive method based on SimCLRv2 [5] used in this work. Section 4 explores the application of learned similarity functions in conjunction with MMD to verify whether two independent sets of samples are drawn from the same distribution. Section 5 presents CADet and evaluates its empirical performance."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "CADet is compared numerically to other models in empirical benchmarks.",
+          "quote": "Significantly, CADet is fully self-supervised and requires neither labels for in-distribution samples nor access to OOD examples.1"
+        },
+        "referenced_paper_title": {
+          "value": "CADet: Fully Self-Supervised Anomaly Detection With Contrastive Learning",
+          "justification": "The paper CADet is self-referencing to explain and evaluate the method introduced.",
+          "quote": "Significantly, CADet is fully self-supervised and requires neither labels for in-distribution samples nor access to OOD examples."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "The paper uses CIFAR-10 as one of the datasets to test the effectiveness of the proposed methods.",
+          "quote": "We demonstrate its effectiveness by discriminating between CIFAR-10 and CIFAR-10.1 with higher confidence than previous work."
+        },
+        "aliases": [
+          "CIFAR-10"
+        ],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "Learning Multiple Layers of Features from Tiny Images",
+          "justification": "CIFAR-10 is a well-known dataset for image classification, and it is explicitly mentioned in the paper's discussions.",
+          "quote": "We demonstrate its effectiveness by discriminating between CIFAR-10 and CIFAR-10.1 with higher confidence than previous work."
+        }
+      },
+      {
+        "name": {
+          "value": "CIFAR-10.1",
+          "justification": "CIFAR-10.1 is used to assess distributional shifts against CIFAR-10, demonstrating the effectiveness of the proposed methods.",
+          "quote": "We demonstrate its effectiveness by discriminating between CIFAR-10 and CIFAR-10.1 with higher confidence than previous work."
+        },
+        "aliases": [
+          "CIFAR-10.1"
+        ],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "Do ImageNet Classifiers Generalize to ImageNet?",
+          "justification": "The paper references CIFAR-10.1's origin as a retrofitted extension of CIFAR-10 for testing generalization capabilities.",
+          "quote": "We demonstrate its effectiveness by discriminating between CIFAR-10 and CIFAR-10.1 with higher confidence than previous work."
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet",
+          "justification": "ImageNet is used as an evaluation dataset for testing both normal and adversarial out-of-distribution detection.",
+          "quote": "The outline is as follows: in Section 2, we discuss relevant previous work. Section 3 describes the self-supervised contrastive method based on SimCLRv2 [5] used in this work. Section 4 explores the application of learned similarity functions in conjunction with MMD to verify whether two independent sets of samples are drawn from the same distribution. Section 5 presents CADet and evaluates its empirical performance."
+        },
+        "aliases": [
+          "ImageNet"
+        ],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "ImageNet Large Scale Visual Recognition Challenge",
+          "justification": "ImageNet is a standard benchmark for image classification tasks, as referenced within the contexts of empirical evaluations.",
+          "quote": "Significantly, CADet is fully self-supervised and requires neither labels for in-distribution samples nor access to OOD examples.1"
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet-O",
+          "justification": "ImageNet-O is one of the datasets used for evaluating the system on detecting unknown classes.",
+          "quote": "CADet outperforms existing adversarial detection methods in identifying adversarially perturbed samples on ImageNet and achieves comparable performance to unseen label detection methods on two challenging benchmarks: ImageNet-O and iNaturalist."
+        },
+        "aliases": [
+          "ImageNet-O"
+        ],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "Natural Adversarial Examples",
+          "justification": "The paper references ImageNet-O as a specifically designed challenging dataset to evaluate OOD detection methods.",
+          "quote": "CADet outperforms existing adversarial detection methods in identifying adversarially perturbed samples on ImageNet and achieves comparable performance to unseen label detection methods on two challenging benchmarks: ImageNet-O and iNaturalist."
+        }
+      },
+      {
+        "name": {
+          "value": "iNaturalist",
+          "justification": "iNaturalist is used in the paper to evaluate the performance of the presented methods on unknown label detection.",
+          "quote": "CADet outperforms existing adversarial detection methods in identifying adversarially perturbed samples on ImageNet and achieves comparable performance to unseen label detection methods on two challenging benchmarks: ImageNet-O and iNaturalist."
+        },
+        "aliases": [
+          "iNaturalist"
+        ],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "Large taxonomy induction using hyperbolic embeddings",
+          "justification": "The paper explicitly uses iNaturalist in its empirical studies for unknown label detection benchmarks.",
+          "quote": "CADet outperforms existing adversarial detection methods in identifying adversarially perturbed samples on ImageNet and achieves comparable performance to unseen label detection methods on two challenging benchmarks: ImageNet-O and iNaturalist."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The empirical studies, involving model training and testing, are likely implemented using PyTorch, a common library for such tasks.",
+          "quote": "For computational simplicity and comparison with previous work, we use a ResNet50 encoder architecture with final features of size 2048. Following SimCLRv2, we use a three-layer fully connected contrastive head with hidden layers of width 2048 using ReLU activation and batchNorm and set the last layer projection to dimension 128."
+        },
+        "aliases": [
+          "PyTorch"
+        ],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "Automatic differentiation in PyTorch",
+          "justification": "PyTorch is a common deep learning library used for model implementations and experiments which is implicitly indicated in the paper.",
+          "quote": "For computational simplicity and comparison with previous work, we use a ResNet50 encoder architecture with final features of size 2048. Following SimCLRv2, we use a three-layer fully connected contrastive head with hidden layers of width 2048 using ReLU activation and batchNorm and set the last layer projection to dimension 128."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2427,
+    "prompt_tokens": 15695,
+    "total_tokens": 18122
+  }
+}

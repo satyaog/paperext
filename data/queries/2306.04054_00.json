@@ -1,0 +1,180 @@
+{
+  "paper": "2306.04054.txt",
+  "words": 4591,
+  "extractions": {
+    "title": {
+      "value": "RESCUESPEECH: A GERMAN CORPUS FOR SPEECH RECOGNITION IN SEARCH AND RESCUE DOMAIN",
+      "justification": "Extracted from the title and header of the paper",
+      "quote": "RESCUESPEECH: A GERMAN CORPUS FOR SPEECH RECOGNITION IN SEARCH AND RESCUE DOMAIN"
+    },
+    "description": "The paper introduces a German speech dataset called RescueSpeech aimed at improving speech recognition in the Search and Rescue (SAR) domain, especially in noisy and reverberant acoustic environments. It includes comprehensive training recipes and pre-trained models to enhance performance under these challenging conditions.",
+    "type": {
+      "value": "Empirical",
+      "justification": "The paper involves the creation of a dataset and includes experimental results based on this dataset and existing models.",
+      "quote": "This paper presents a comprehensive collection of experimental evidence for the task at hand– noise-robust German speech recognition."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Speech Recognition",
+        "justification": "The primary focus of the paper is on automatic speech recognition in noisy and challenging environments specific to the Search and Rescue domain.",
+        "quote": "Automatic speech recognition (ASR) can be crucial in situations like search and rescue (SAR) missions."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Noise Robustness",
+          "justification": "The research emphasizes robustness to noise in speech recognition, particularly in the context of search and rescue.",
+          "quote": "The context of search and rescue missions poses significant challenges for current speech recognition technologies. Speech recognizers must be able to handle conversational speech that is fast, emotional, and spoken under stressful conditions. Additionally, the acoustic environment in which rescuers operate is often extremely noisy."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Self-Supervised Learning",
+          "justification": "The paper mentions the use of self-supervised learning models like wav2vec2.0 and WavLM for speech recognition tasks.",
+          "quote": "Advanced deep learning techniques, such as self-supervised learning coupled with large datasets [4], have been instrumental in achieving impressive performance improvements."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "CRDNN",
+          "justification": "The paper introduces the CRDNN model as one of the approaches for automatic speech recognition.",
+          "quote": "For the seq2seq model, we employ a CRDNN (convolutional, recurrent, and dense-neural network) architecture [24, 25]."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 1,
+          "justification": "The model is used and adapted in the study but is cited from other works.",
+          "quote": "For the seq2seq model, we employ a CRDNN (convolutional, recurrent, and dense-neural network) architecture [24, 25]."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The experiments involving this model were executed using computational resources such as GPUs.",
+          "quote": "Each epoch takes approximately 8h on a single RTXA6000 GPU with 48GB of memory."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The model performance is compared with other models like wav2vec2.0, WavLM, and Whisper.",
+          "quote": "Table 2 provides a comparison of different ASR models used on both clean and noisy audio recordings from the RescueSpeech dataset. The models included in the comparison are CRDNN, wav2vec2.0, WavLM, and Whisper."
+        },
+        "referenced_paper_title": {
+          "value": "Convolutional, Long Short-Term Memory, fully connected Deep Neural Networks",
+          "justification": "The CRDNN model is cited from this reference paper.",
+          "quote": "For the seq2seq model, we employ a CRDNN (convolutional, recurrent, and dense-neural network) architecture [24, 25]."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "RescueSpeech",
+          "justification": "The primary dataset introduced and used in the paper is RescueSpeech, designed specifically for the SAR domain.",
+          "quote": "To address this issue, we have created and made publicly available a German speech dataset called RescueSpeech."
+        },
+        "aliases": [],
+        "role": "Contributed",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The dataset is newly introduced in this paper and does not reference another paper.",
+          "quote": "To address this issue, we have created and made publicly available a German speech dataset called RescueSpeech."
+        }
+      },
+      {
+        "name": {
+          "value": "CommonVoice",
+          "justification": "The dataset CommonVoice is used for pre-training the ASR models.",
+          "quote": "For the seq2seq model, we employ a CRDNN (convolutional, recurrent, and dense-neural network) architecture [24, 25]. The CRDNN encoder is trained on the full 1200h of the German CommonVoice corpus [26]."
+        },
+        "aliases": [],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "Common Voice: A Massively-Multilingual Speech Corpus",
+          "justification": "The paper references this dataset for pre-training purposes.",
+          "quote": "The CRDNN encoder is trained on the full 1200h of the German CommonVoice corpus [26]."
+        }
+      },
+      {
+        "name": {
+          "value": "AudioSet",
+          "justification": "The AudioSet dataset is used to add various noise types to the RescueSpeech dataset.",
+          "quote": "We also created a noisy version of RescueSpeech by contaminating our dataset with noisy clips from the AudioSet dataset [8] that includes five noise types– emergency vehicle siren, breathing, engine, chopper, and static radio noise."
+        },
+        "aliases": [],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "Audio Set: An ontology and human-labeled dataset for audio events",
+          "justification": "The paper references this dataset for adding noise types to RescueSpeech.",
+          "quote": "We also created a noisy version of RescueSpeech by contaminating our dataset with noisy clips from the AudioSet dataset [8] that includes five noise types– emergency vehicle siren, breathing, engine, chopper, and static radio noise."
+        }
+      },
+      {
+        "name": {
+          "value": "Tuda-De",
+          "justification": "The Tuda-De dataset is used to train the language model (LM) for speech recognition.",
+          "quote": "The LM is trained on Tuda-De2 [27] (8M sents), Leipzig news corpus [28] (9M sents), and train transcripts of the CommonVoice corpus."
+        },
+        "aliases": [],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "Open Source Automatic Speech Recognition for German",
+          "justification": "The dataset is referenced for training the language model for speech recognition.",
+          "quote": "The LM is trained on Tuda-De2 [27] (8M sents), Leipzig news corpus [28] (9M sents), and train transcripts of the CommonVoice corpus."
+        }
+      },
+      {
+        "name": {
+          "value": "Leipzig news corpus",
+          "justification": "This dataset is used in training the language model (LM) for speech recognition.",
+          "quote": "The LM is trained on Tuda-De2 [27] (8M sents), Leipzig news corpus [28] (9M sents), and train transcripts of the CommonVoice corpus."
+        },
+        "aliases": [],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "Building Large Monolingual Dictionaries at the Leipzig Corpora Collection: From 100 to 200 Languages",
+          "justification": "The dataset is referenced for training the language model for speech recognition.",
+          "quote": "The LM is trained on Tuda-De2 [27] (8M sents), Leipzig news corpus [28] (9M sents), and train transcripts of the CommonVoice corpus."
+        }
+      },
+      {
+        "name": {
+          "value": "DNS4",
+          "justification": "The DNS4 dataset is used to train the speech enhancement model, SepFormer.",
+          "quote": "We use the DNS4 dataset to synthesize the training and evaluation set."
+        },
+        "aliases": [],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "DNS4 is used for synthesizing training and evaluation set for the speech enhancement model.",
+          "quote": "We use the DNS4 dataset to synthesize the training and evaluation set."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "SpeechBrain",
+          "justification": "The paper mentions making their training recipes and pre-trained models available within the SpeechBrain toolkit.",
+          "quote": "We have made our training recipes and pretrained models available to the community within the SpeechBrain toolkit 2 ."
+        },
+        "aliases": [],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "SpeechBrain is mentioned as the toolkit where the models and training recipes are made available.",
+          "quote": "We have made our training recipes and pretrained models available to the community within the SpeechBrain toolkit 2 ."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1748,
+    "prompt_tokens": 9321,
+    "total_tokens": 11069
+  }
+}

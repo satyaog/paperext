@@ -1,0 +1,172 @@
+{
+  "paper": "2307.01738.txt",
+  "words": 4221,
+  "extractions": {
+    "title": {
+      "value": "Mitigating Calibration Bias Without Fixed Attribute Grouping for Improved Fairness in Medical Imaging Analysis",
+      "justification": "The title is extracted from the provided text.",
+      "quote": "Mitigating Calibration Bias Without Fixed Attribute Grouping for Improved Fairness in Medical Imaging Analysis"
+    },
+    "description": "The paper proposes a novel two-stage method called Cluster-Focal to address calibration biases in deep learning models for medical imaging analysis. This method identifies poorly calibrated samples, clusters them, and then applies a group-wise focal loss to improve calibration biases without needing predefined subgroup attributes. The approach is evaluated on skin lesion classification and predicting future lesional activity for multiple sclerosis patients, showing improved fairness and calibration performance compared to other methods.",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The paper presents experimental results and evaluations of the proposed method on different datasets, indicating it is empirical.",
+      "quote": "Our results demonstrate that our method effectively controls calibration error in the worst-performing subgroups while preserving prediction performance, and outperforming recent baselines."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Medical Imaging Analysis",
+        "justification": "The primary focus of the research is on deep learning models for medical imaging tasks, including skin lesion classification and predicting multiple sclerosis activity.",
+        "quote": "...this paper focuses on the open problem of mitigating calibration biases in the context of medical image analysis."
+      },
+      "aliases": [
+        "Medical Imaging"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Fairness in AI",
+          "justification": "The paper addresses the issue of fairness in AI by focusing on mitigating calibration biases in deep learning models used in medical imaging.",
+          "quote": "...this work focuses on the open problem of mitigating calibration biases in the context of medical image analysis."
+        },
+        "aliases": [
+          "AI Fairness"
+        ]
+      },
+      {
+        "name": {
+          "value": "Model Calibration",
+          "justification": "The research deals with improving the calibration of deep learning models in medical imaging, ensuring that predicted probabilities align better with actual outcomes.",
+          "quote": "One way to improve the trustworthiness of a model is to ensure that it is well-calibrated, in that the predicted probabilities of the outcomes align with the probability of making a correct prediction [8]."
+        },
+        "aliases": [
+          "Calibration"
+        ]
+      },
+      {
+        "name": {
+          "value": "Medical Image Analysis",
+          "justification": "This subfield is explicitly mentioned as a focus area, particularly in the context of applying the proposed method to medical imaging tasks.",
+          "quote": "this paper focuses on the open problem of mitigating calibration biases in the context of medical image analysis."
+        },
+        "aliases": [
+          "Medical Imaging"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "ERM",
+          "justification": "ERM is used as the initial model trained without any fairness considerations to identify poorly calibrated samples.",
+          "quote": "we first train a model fid via ERM [25], which implies training a model by minimizing the average training cross entropy loss, without any fairness considerations."
+        },
+        "aliases": [
+          "Expected Risk Minimization"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "ERM is a standard baseline model and is not contributed by this paper.",
+          "quote": "ERM: Vanilla model"
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "ERM is executed in the experiments as a baseline comparison.",
+          "quote": "we first train a model fid via ERM [25]"
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "ERM is compared with other models in terms of calibration and prediction performance.",
+          "quote": "The performance of the proposed method is compared against several recent bias mitigation methods... Comparisons are also made against ERM, which trains model without any bias mitigation strategy."
+        },
+        "referenced_paper_title": {
+          "value": "Principles of risk minimization for learning theory",
+          "justification": "The paper references the principles of ERM as the foundational approach.",
+          "quote": "ERM [25], which implies training a model by minimizing the average training cross entropy loss, without any fairness considerations."
+        }
+      },
+      {
+        "name": {
+          "value": "Cluster-Focal",
+          "justification": "Cluster-Focal is the primary method proposed in the paper, consisting of a two-stage process to mitigate calibration bias.",
+          "quote": "To this end, we propose a novel two-stage method: Cluster-Focal to first identify poorly calibrated samples, cluster them into groups, and then introduce group-wise focal loss to improve calibration bias."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 1,
+          "justification": "Cluster-Focal is the novel contribution of the paper.",
+          "quote": "this paper focuses on the open problem of mitigating calibration biases in the context of medical image analysis. To this end, we propose a novel two-stage method: Cluster-Focal"
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "Cluster-Focal is executed and evaluated in the experiments on different datasets.",
+          "quote": "Extensive experiments are performed on (a) skin lesion classification, based on the public HAM10000 dataset [3], and (b) on predicting future new lesional activity for multiple sclerosis (MS) patients."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "Cluster-Focal is compared with other methods in the experiments to demonstrate its effectiveness.",
+          "quote": "The performance of the proposed method is compared against several recent bias mitigation methods...Results demonstrate that Cluster-Focal can effectively reduce calibration error in the worst-performing subgroup, while preserving good prediction performance, when split into different subgroups based on a variety of attributes."
+        },
+        "referenced_paper_title": {
+          "value": "This paper",
+          "justification": "Cluster-Focal is the novel method introduced in this paper, so there is no referenced paper for it.",
+          "quote": "To this end, we propose a novel two-stage method: Cluster-Focal"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "HAM10000",
+          "justification": "The HAM10000 dataset is used to evaluate the proposed Cluster-Focal method in skin lesion classification.",
+          "quote": "We evaluate our method on skin lesion classification with the public HAM10000 dataset."
+        },
+        "aliases": [],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "Skin lesion analysis toward melanoma detection: A challenge at the 2017 international symposium on biomedical imaging (isbi), hosted by the international skin imaging collaboration (isic)",
+          "justification": "The HAM10000 dataset is referenced in the context of skin lesion analysis.",
+          "quote": "HAM10000 dataset [3]"
+        }
+      },
+      {
+        "name": {
+          "value": "Proprietary MS dataset",
+          "justification": "A proprietary dataset of MRI scans for multiple sclerosis patients is used to evaluate the proposed method in predicting future lesional activity.",
+          "quote": "predicting future new lesional activity for multiple sclerosis (MS) patients on a proprietary, federated dataset of MRI acquired during different clinical trials [26,2,7]."
+        },
+        "aliases": [
+          "MS dataset"
+        ],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "A randomized placebo-controlled phase III trial of oral laquinimod for multiple sclerosis",
+          "justification": "One of the referenced papers for the proprietary MS dataset.",
+          "quote": "predicting future new lesional activity for multiple sclerosis (MS) patients on a proprietary, federated dataset of MRI acquired during different clinical trials [26,2,7]."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Adam",
+          "justification": "The Adam optimizer is used for training models in the experiments.",
+          "quote": "All models are trained with Adam optimizer."
+        },
+        "aliases": [],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "Adam: A method for stochastic optimization",
+          "justification": "The method is referenced in the context of training the models.",
+          "quote": "All models are trained with Adam optimizer."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1491,
+    "prompt_tokens": 8938,
+    "total_tokens": 10429
+  }
+}

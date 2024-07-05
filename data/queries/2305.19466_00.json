@@ -1,0 +1,211 @@
+{
+  "paper": "2305.19466.txt",
+  "words": 16914,
+  "extractions": {
+    "title": {
+      "value": "The Impact of Positional Encoding on Length Generalization in Transformers",
+      "justification": "The title 'The Impact of Positional Encoding on Length Generalization in Transformers' is explicitly mentioned at the beginning of the paper.",
+      "quote": "The Impact of Positional Encoding on Length Generalization in Transformers Amirhossein Kazemnejad1 , Inkit Padhi2 Karthikeyan Natesan Ramamurthy2 , Payel Das2 , Siva Reddy1,3,4"
+    },
+    "description": "This paper conducts an empirical study to evaluate the length generalization performance of decoder-only Transformers using different positional encoding methods (Absolute Position Embedding (APE), T5's Relative PE, ALiBi, Rotary) and without positional encoding (NoPE).",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The paper conducts systematic empirical studies and evaluations using different positional encoding approaches on various tasks to assess length generalization.",
+      "quote": "In this paper, we conduct a systematic empirical study comparing the length generalization performance of decoder-only Transformers with five different position encoding approaches."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The paper focuses on length generalization within Transformer-based language models, which is aligned with the Natural Language Processing field.",
+        "quote": "Length generalization, the ability to generalize from small training context sizes to larger ones, is a critical challenge in the development of Transformer-based language models."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Language Models",
+          "justification": "The paper specifically focuses on the performance of different positional encoding schemes in decoder-only Transformer language models.",
+          "quote": "Positional encoding (PE) has been identified as a major factor influencing length generalization, but the exact impact of different PE schemes on extrapolation in downstream tasks remains unclear."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Decoder-only Transformer with Absolute Position Embedding (APE)",
+          "justification": "APE is explicitly mentioned as one of the positional encoding methods evaluated in the study.",
+          "quote": "Absolute Position Embedding (APE), T5’s Relative PE, ALiBi, and Rotary, in addition to Transformers without positional encoding (NoPE)."
+        },
+        "aliases": [
+          "APE"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "APE is not a new model contribution of this paper but rather a standard positional encoding method being evaluated.",
+          "quote": "Absolute Position Embedding (APE), embeds each absolute position i into position vector pi and adds word embeddings to their corresponding pi before feeding them to the model."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The APE model was evaluated using empirical tasks.",
+          "quote": "we conduct a systematic study on the length generalization of decoder-only Transformers... with the most commonly used positional encoding schemes, both with and without scratchpad."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "APE was compared with other positional encoding methods in terms of performance.",
+          "quote": "Figure 1 summarizes our finding that using no positional encoding is better than using explicit positional encodings."
+        },
+        "referenced_paper_title": {
+          "value": "Attention is all you need",
+          "justification": "APE is introduced in the Transformer model which is from the 'Attention is all you need' paper.",
+          "quote": "The original Transformer architecture (Vaswani et al., 2017) used non-parametric periodic functions to represent absolute position embeddings (APE) in a systematic manner."
+        }
+      },
+      {
+        "name": {
+          "value": "Decoder-only Transformer with T5's Relative Position Embedding",
+          "justification": "T5's Relative PE is explicitly mentioned as one of the positional encoding methods evaluated in the study.",
+          "quote": "Absolute Position Embedding (APE), T5’s Relative PE, ALiBi, and Rotary, in addition to Transformers without positional encoding (NoPE)."
+        },
+        "aliases": [
+          "T5’s Relative PE"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "T5's Relative PE is not a new model contribution of this paper but rather a standard positional encoding method being evaluated.",
+          "quote": "T5’s Relative bias, first maps the relative distance (i − j) between tokens at positions i and j to a scalar bias value b = f (i − j), where f is a lookup table."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The T5's Relative PE model was evaluated using empirical tasks.",
+          "quote": "we conduct a systematic study on the length generalization of decoder-only Transformers... with the most commonly used positional encoding schemes, both with and without scratchpad."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "T5's Relative PE was compared with other positional encoding methods in terms of performance.",
+          "quote": "Our evaluation encompasses a battery of reasoning and mathematical tasks."
+        },
+        "referenced_paper_title": {
+          "value": "Exploring the limits of transfer learning with a unified text-to-text transformer",
+          "justification": "T5’s Relative PE is introduced in the T5 model which is detailed in the 'Exploring the limits of transfer learning with a unified text-to-text transformer' paper.",
+          "quote": "T5’s Relative bias, first maps the relative distance (i − j) between tokens at positions i and j to a scalar bias value b = f (i − j), where f is a lookup table."
+        }
+      },
+      {
+        "name": {
+          "value": "Decoder-only Transformer with ALiBi",
+          "justification": "ALiBi is explicitly mentioned as one of the positional encoding methods evaluated in the study.",
+          "quote": "Absolute Position Embedding (APE), T5’s Relative PE, ALiBi, and Rotary, in addition to Transformers without positional encoding (NoPE)."
+        },
+        "aliases": [
+          "ALiBi"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "ALiBi is not a new model contribution of this paper but rather a standard positional encoding method being evaluated.",
+          "quote": "ALiBi, used in BLOOM (Scao et al., 2022a), is similar to T5’s Relative Bias but instead subtracts a scalar bias from the attention score."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The ALiBi model was evaluated using empirical tasks.",
+          "quote": "we conduct a systematic study on the length generalization of decoder-only Transformers... with the most commonly used positional encoding schemes, both with and without scratchpad."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "ALiBi was compared with other positional encoding methods in terms of performance.",
+          "quote": "Overall, our work suggests that explicit position encodings are not essential for decoder-only Transformers to generalize well to longer sequences."
+        },
+        "referenced_paper_title": {
+          "value": "Train short, test long: Attention with linear biases enables input length extrapolation",
+          "justification": "ALiBi is introduced in the 'Train short, test long: Attention with linear biases enables input length extrapolation' paper.",
+          "quote": "ALiBi, used in BLOOM (Scao et al., 2022a), is similar to T5’s Relative Bias but instead subtracts a scalar bias from the attention score."
+        }
+      },
+      {
+        "name": {
+          "value": "Decoder-only Transformer with Rotary",
+          "justification": "Rotary is explicitly mentioned as one of the positional encoding methods evaluated in the study.",
+          "quote": "Absolute Position Embedding (APE), T5’s Relative PE, ALiBi, and Rotary, in addition to Transformers without positional encoding (NoPE)."
+        },
+        "aliases": [
+          "Rotary"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "Rotary is not a new model contribution of this paper but rather a standard positional encoding method being evaluated.",
+          "quote": "Rotary, used in PaLM (Chowdhery et al., 2022) and LLaMA (Touvron et al., 2023), rotates the query and key representations with an angle proportional to their absolute positions before applying the dot product attention."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The Rotary model was evaluated using empirical tasks.",
+          "quote": "we conduct a systematic study on the length generalization of decoder-only Transformers... with the most commonly used positional encoding schemes, both with and without scratchpad."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "Rotary was compared with other positional encoding methods in terms of performance.",
+          "quote": "Our evaluation encompasses a battery of reasoning and mathematical tasks."
+        },
+        "referenced_paper_title": {
+          "value": "Roformer: Enhanced transformer with rotary position embedding",
+          "justification": "Rotary is introduced in the 'Roformer: Enhanced transformer with rotary position embedding' paper.",
+          "quote": "Rotary, used in PaLM (Chowdhery et al., 2022) and LLaMA (Touvron et al., 2023), rotates the query and key representations with an angle proportional to their absolute positions before applying the dot product attention."
+        }
+      },
+      {
+        "name": {
+          "value": "Decoder-only Transformer without Positional Encoding (NoPE)",
+          "justification": "NoPE is explicitly mentioned as one of the positional encoding methods evaluated in the study.",
+          "quote": "Absolute Position Embedding (APE), T5’s Relative PE, ALiBi, and Rotary, in addition to Transformers without positional encoding (NoPE)."
+        },
+        "aliases": [
+          "NoPE"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "NoPE is not a new model contribution of this paper but rather a standard positional encoding method being evaluated.",
+          "quote": "Moreover, early empirical evidence shows that decoder-only Transformers without explicit position information (Tsai et al., 2019; Haviv et al., 2022) can perform as well as existing PEs in in-distribution settings."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The NoPE model was evaluated using empirical tasks.",
+          "quote": "we conduct a systematic study on the length generalization of decoder-only Transformers... with the most commonly used positional encoding schemes, both with and without scratchpad."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "NoPE was compared with other positional encoding methods in terms of performance.",
+          "quote": "Our results show that: • Most commonly used positional encoding methods, including ALiBi, Rotary, and APE, are ill-suited for length generalization in downstream tasks and are outperformed by T5’s Relative PE."
+        },
+        "referenced_paper_title": {
+          "value": "Transformer language models without positional encodings still learn positional information",
+          "justification": "NoPE is discussed in the 'Transformer language models without positional encodings still learn positional information' paper.",
+          "quote": "Moreover, early empirical evidence shows that decoder-only Transformers without explicit position information (Tsai et al., 2019; Haviv et al., 2022) can perform as well as existing PEs in in-distribution settings."
+        }
+      }
+    ],
+    "datasets": [],
+    "libraries": [
+      {
+        "name": {
+          "value": "HuggingFace Transformers",
+          "justification": "The paper mentions training with the 'base' model size configuration, popular in HuggingFace library.",
+          "quote": "We use the same hyperparameters for all PEs and employ the “base” model size configuration, popular in HuggingFace library (Wolf et al., 2020), resulting in ∼107M trainable weights."
+        },
+        "aliases": [
+          "Transformers"
+        ],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "Transformers: State-of-the-art natural language processing",
+          "justification": "HuggingFace's Transformers library is referenced in the paper 'Transformers: State-of-the-art natural language processing' by Thomas Wolf et al., 2020.",
+          "quote": "We use the same hyperparameters for all PEs and employ the 'base' model size configuration, popular in HuggingFace library (Wolf et al., 2020), resulting in ∼107M trainable weights."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2828,
+    "prompt_tokens": 31360,
+    "total_tokens": 34188
+  }
+}

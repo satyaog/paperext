@@ -1,0 +1,188 @@
+{
+  "paper": "2306.06062.txt",
+  "words": 7716,
+  "extractions": {
+    "title": {
+      "value": "Neural FIM for learning Fisher information metrics from point cloud data",
+      "justification": "It is mentioned at the top of each page and header of the document.",
+      "quote": "Neural FIM for learning Fisher information metrics from point cloud data"
+    },
+    "description": "The paper introduces Neural FIM, a method for computing the Fisher Information Metric from point cloud data to create a continuous manifold model. The method leverages a neural network for embedding data points into a latent space and deriving the metric, allowing for the analysis and visualization of manifold characteristics such as volume, geodesics, and branching points. The paper showcases the method's utility in selecting parameters for the PHATE visualization method and its application on toy datasets and single-cell data.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper demonstrates empirical results using toy datasets and single-cell datasets to showcase the utility of Neural FIM.",
+      "quote": "In this section, we provide empirical results of our method. First, we provide a practical use case of the FIM, in selecting parameters for PHATE (Moon et al., 2019)... Second, we apply neural FIM to single cell and toy datasets..."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The paper primarily deals with the analysis of point cloud data, which is a common focus in Computer Vision.",
+        "quote": "arXiv:2306.06062v2 [cs.CV]"
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Manifold Learning",
+          "justification": "The paper addresses learning manifold representations of data using diffusion methods and FIM.",
+          "quote": "An important goal of unsupervised learning is understanding the underlying shape or geometry of data...A key paradigm here is the manifold assumption which hypothesizes that high dimensional data...lies on a lower dimensional smoothly varying manifold."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Statistical Manifolds",
+          "justification": "The paper focuses on learning Riemannian metrics for data manifolds, specifically the Fisher Information Metric (FIM) on statistical manifolds.",
+          "quote": "The specific Riemannian metric we aim to learn the data manifold is the Fisher Information Metric (FIM). This type of metric is defined on statistical manifolds, manifolds where each datapoint is a probability distribution."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Single-Cell Analysis",
+          "justification": "The paper applies the Neural FIM method to single-cell datasets including an IPSC reprogramming mass cytometry dataset and a PBMC single-cell RNA-sequencing dataset.",
+          "quote": "We demonstrate Neural FIM’s utility in selecting parameters for the PHATE visualization method as well as its ability to obtain information pertaining to local volume illuminating branching points and cluster centers embeddings of a toy dataset and two single-cell datasets of IPSC reprogramming and PBMCs (immune cells)."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Neural FIM",
+          "justification": "Neural FIM is explicitly introduced and discussed throughout the paper as the primary model for computing Fisher Information Metrics from point cloud data.",
+          "quote": "To this end, we propose neural FIM, a method for computing the Fisher information metric (FIM) from point cloud data."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 1,
+          "justification": "The paper introduces Neural FIM as a new method.",
+          "quote": "we propose neural FIM"
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The paper provides experimental results using Neural FIM on different datasets.",
+          "quote": "we apply neural FIM to single cell and toy datasets..."
+        },
+        "is_compared": {
+          "value": 0,
+          "justification": "The paper does not explicitly compare Neural FIM numerically against other models.",
+          "quote": ""
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "There is no specific referenced paper title for Neural FIM as it is the authors' own contribution.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "neural ODE",
+          "justification": "The neural ODE network is introduced as a component used for computing geodesic paths and distances based on the FIM.",
+          "quote": "We show how the geodesic or Fisher-Rao distance between pairs of points can be computed using an auxiliary neural Ordinary Differential Equation (ODE) network."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 1,
+          "justification": "The paper proposes a neural-ODE based method specifically for computing geodesics with respect to the learned FIM.",
+          "quote": "Proposing a neural-ODE based method for computing geodesic paths and distances based on the FIM."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The paper provides empirical results using the neural ODE network for computing geodesic paths in datasets.",
+          "quote": "Finally, we utilize the neural ODE network to compute geodesic paths within the embedding between points."
+        },
+        "is_compared": {
+          "value": 0,
+          "justification": "The paper does not explicitly compare the neural ODE network numerically against other models.",
+          "quote": ""
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "While the paper mentions neural ODEs in general, there is no specific referenced paper title for its implementation in this study.",
+          "quote": ""
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "toy tree dataset",
+          "justification": "The toy tree dataset is used as an example to demonstrate neural FIM and its volume and trace computations.",
+          "quote": "First, we show how to use the FIM to explore the space of parameters for the PHATE embedding method. Here, the statistical manifold is created from the diffusion operator resulting from various embedding parameters (on the same dataset). In specific, we explore selection of the time-of-diffusion and bandwidth variables. The second task involves computing the FIM of 3 different datasets: a toy tree dataset..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The toy tree dataset is generated and used within this study and is not referenced from another paper.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "IPSC reprogramming mass cytometry dataset",
+          "justification": "The IPSC reprogramming mass cytometry dataset is used to demonstrate the application of neural FIM on real-world single-cell data.",
+          "quote": "The second task involves computing the FIM of 3 different datasets: a toy tree dataset, an IPSC reprogramming mass cytometry dataset..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "A continuous molecular roadmap to IPSC reprogramming through progression analysis of single-cell mass cytometry",
+          "justification": "The mass cytometry dataset of induced pluripotent stem cell reprogramming is referenced to Zunder et al. (2015) in the text.",
+          "quote": "(Zunder et al., 2015)"
+        }
+      },
+      {
+        "name": {
+          "value": "PBMC single-cell RNA-sequencing dataset",
+          "justification": "The PBMC single-cell RNA-sequencing dataset is used to showcase neural FIM's ability to analyze single-cell RNA-sequencing data.",
+          "quote": "and a pbmc single cell RNA-sequencing dataset (10x Genomics, 2019)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PBMCs from c57bl/6 mice (v1, 150x150), single cell immune profiling dataset by cell ranger 3.1.0",
+          "justification": "The PBMC single-cell RNA-sequencing dataset is referenced to 10x Genomics (2019) in the text.",
+          "quote": "(10x Genomics, 2019)"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PHATE",
+          "justification": "PHATE is utilized for embedding and visualizing the data in conjunction with Neural FIM.",
+          "quote": "We demonstrate Neural FIM’s utility in selecting parameters for the PHATE visualization method..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Visualizing structure and transitions in high-dimensional biological data",
+          "justification": "PHATE is referenced to Moon et al. (2019) in the context of visualization and manifold learning.",
+          "quote": "(Moon et al., 2019)"
+        }
+      },
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is used as the framework for implementing the neural networks in the study.",
+          "quote": "Each dataset was run with the same neural network parameters: Encoding Layers = [100,100,50] (for k=50); [100,80,30] (for k=30); [100,70,20] (for k=20) where k = latent dimensions, 150 epochs, ReLu activation between encoding layers, and using the AdamW optimizer with learning rate = 1e-4."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "Although the specific reference for PyTorch is not provided, its usage is evident from the context.",
+          "quote": ""
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2236,
+    "prompt_tokens": 13747,
+    "total_tokens": 15983
+  }
+}

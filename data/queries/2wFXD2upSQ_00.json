@@ -1,0 +1,160 @@
+{
+  "paper": "2wFXD2upSQ.txt",
+  "words": 7555,
+  "extractions": {
+    "title": {
+      "value": "A D EMON AT W ORK : L EVERAGING N EURON D EATH FOR E FFICIENT N EURAL N ETWORK P RUNING",
+      "justification": "This is the title listed at the top of the paper",
+      "quote": "A D EMON AT W ORK : L EVERAGING N EURON D EATH FOR E FFICIENT N EURAL N ETWORK P RUNING"
+    },
+    "description": "This paper reassesses the phenomenon of dying neurons in neural networks, traditionally seen as undesirable, and explores their potential for facilitating efficient structured pruning. The authors introduce Demon’s Pruning (DemP), a method that uses hyperparameter configurations to promote neuron death, thereby dynamically sparsifying networks during training and improving the accuracy-compression tradeoff compared to existing methods.",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The paper involves extensive experiments and empirical evaluations of the proposed Demon’s Pruning method on various benchmarks.",
+      "quote": "Empirical Evaluation. Through extensive experiments on various benchmarks, we demonstrate that DemP, despite its simplicity and broad applicability, surpasses existing structured pruning methods in terms of accuracy-compression tradeoffs."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Neural Network Pruning",
+        "justification": "The paper is primarily focused on the pruning of neural networks.",
+        "quote": "Our approach, characterized by its simplicity and broad applicability, outperforms existing structured pruning techniques, while achieving results comparable to prevalent unstructured pruning methods."
+      },
+      "aliases": [
+        "NN Pruning"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Network Sparsity",
+          "justification": "The paper deals extensively with network sparsity and the role of dead neurons in creating sparse networks.",
+          "quote": "In this work, we reexamine the phenomenon of dying neurons through the lens of network sparsity and pruning."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Stochastic Gradient Descent (SGD)",
+          "justification": "The paper analyzes how SGD and its noise component influence the occurrence of dead neurons, thereby impacting network sparsity.",
+          "quote": "By building upon both intuitive and theoretical insights into neuron death within networks trained using stochastic optimization methods."
+        },
+        "aliases": [
+          "SGD"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Demon’s Pruning (DemP)",
+          "justification": "The paper introduces DemP as a novel pruning method that dynamically removes dead neurons during training.",
+          "quote": "Building upon both intuitive and theoretical insights into neuron death within networks trained using stochastic optimization methods, we demonstrate how varying hyperparameters such as learning rate, batch size, and L2 regularization parameter influence the occurrence of dead neurons during training. We present and validate a method for actively managing the emergence of dead units and for dynamically pruning them throughout the training process."
+        },
+        "aliases": [
+          "DemP"
+        ],
+        "is_contributed": {
+          "value": 1,
+          "justification": "The model is introduced and validated in the scope of the paper.",
+          "quote": "We introduce 'Demon’s Pruning' (DemP), a method that controls the proliferation of dead neurons, dynamically sparsifying neural networks as training progresses."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The paper mentions empirical evaluations carried out on GPUs.",
+          "quote": "Structured pruning methods, even in the absence of specialized sparse computation primitives (Elsen et al., 2020; Gale et al., 2020), can more effectively exploit the computational advantages of GPU hardware (Wen et al., 2016) compared to unstructured methods."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The paper compares DemP with existing structured and unstructured pruning methods.",
+          "quote": "We demonstrate that DemP, despite its simplicity and broad applicability, surpasses existing structured pruning methods in terms of accuracy-compression tradeoffs, while achieving comparable results to prevalent unstructured pruning methods."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "There is no specific referenced paper for DemP as it is a novel contribution.",
+          "quote": ""
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "The paper uses CIFAR-10 as part of its empirical evaluations.",
+          "quote": "A 3-layer MLP trained over a subset on MNIST. (a) The noisy part of the minibatch gradient is isolated and used exclusively to update the NN... Using the above definition with a fixed thresholding parameter (✏ = 0.01), we monitor the accumulation of dead neurons during training of a Resnet-18 on CIFAR-10 (Krizhevsky et al., 2009) with the Adam optimizer (Kingma & Ba, 2015), with various learning rates and different choices of activation functions."
+        },
+        "aliases": [],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "Learning multiple layers of features from tiny images",
+          "justification": "This is a fundamental paper for the CIFAR-10 dataset by Alex Krizhevsky et al.",
+          "quote": "Alex Krizhevsky, Geoffrey Hinton, et al. Learning multiple layers of features from tiny images. 2009."
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet",
+          "justification": "The paper uses the ImageNet dataset for evaluating the pruning method.",
+          "quote": "We train ResNet-18 and VGG-16 networks on CIFAR-10, and ResNet-50 networks on ImageNet (He et al., 2016; Simonyan & Zisserman, 2015; Krizhevsky et al., 2009; Deng et al., 2009)."
+        },
+        "aliases": [],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "Imagenet: A large-scale hierarchical image database",
+          "justification": "This is the foundational paper for the ImageNet dataset by Jia Deng et al.",
+          "quote": "Jia Deng, Wei Dong, Richard Socher, Li-Jia Li, Kai Li, and Li Fei-Fei. Imagenet: A large-scale hierarchical image database. In 2009 IEEE Computer Society Conference on Computer Vision and Pattern Recognition (CVPR 2009), 20-25 June 2009, Miami, Florida, USA, pp. 248–255. IEEE Computer Society, 2009."
+        }
+      },
+      {
+        "name": {
+          "value": "MNIST",
+          "justification": "The paper uses the MNIST dataset for training and testing in various noise conditions.",
+          "quote": "To verify that noise in itself is enough to kill neurons, we trained a 3 layers-deep MLP (of size 100-300-10) on a subset of 10 000 images of MNIST dataset."
+        },
+        "aliases": [],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "There is no specific referenced paper title for the MNIST dataset mentioned in the paper.",
+          "quote": ""
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Adam",
+          "justification": "The Adam optimizer is specifically mentioned as part of the training process.",
+          "quote": "A 3-layer MLP trained over a subset on MNIST... Using the above definition with a fixed thresholding parameter (✏ = 0.01), we monitor the accumulation of dead neurons during training of a Resnet-18 on CIFAR-10 (Krizhevsky et al., 2009) with the Adam optimizer (Kingma & Ba, 2015), with various learning rates and different choices of activation functions."
+        },
+        "aliases": [],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "Adam: A Method for Stochastic Optimization",
+          "justification": "This is the foundational paper for the Adam optimizer by Kingma and Ba.",
+          "quote": "Diederik P. Kingma and Jimmy Ba. Adam: A method for stochastic optimization. In 3rd International Conference on Learning Representations, ICLR 2015, San Diego, CA, USA, May 7-9, 2015, Conference Track Proceedings, 2015."
+        }
+      },
+      {
+        "name": {
+          "value": "SGD",
+          "justification": "Stochastic Gradient Descent (SGD) is analyzed for its role in neuron death and network sparsity.",
+          "quote": "We present and validate a method for actively managing the emergence of dead units and for dynamically pruning them throughout the training process... Using stochastic optimization methods, we demonstrate how varying hyperparameters such as learning rate, batch size, and L2 regularization parameter influence the occurrence of dead neurons during training."
+        },
+        "aliases": [
+          "Stochastic Gradient Descent"
+        ],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "There is no specific referenced paper title for SGD mentioned in the paper.",
+          "quote": ""
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1725,
+    "prompt_tokens": 14575,
+    "total_tokens": 16300
+  }
+}

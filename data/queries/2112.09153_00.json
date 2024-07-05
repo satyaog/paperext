@@ -1,0 +1,286 @@
+{
+  "paper": "2112.09153.txt",
+  "words": 22342,
+  "extractions": {
+    "title": {
+      "value": "An Empirical Investigation of the Role of Pre-training in Lifelong Learning",
+      "justification": "This is the exact title of the paper provided by the user.",
+      "quote": "An Empirical Investigation of the Role of Pre-training in Lifelong Learning"
+    },
+    "description": "The paper investigates the impact of pretrained models on lifelong learning, particularly focusing on how these models affect catastrophic forgetting in various task sequences. By examining large NLP and CV benchmarks and proposing optimization techniques, the paper provides insights into the benefits and roles of pretrained models in retaining knowledge while learning new tasks.",
+    "type": {
+      "value": "Empirical",
+      "justification": "The paper includes extensive experiments, datasets, and benchmarks to systematically analyze the performance and effects of pre-training in lifelong learning.",
+      "quote": "In this section, we introduce the notations and outline our problem setup. We also specify our experimental settings, including the baseline methods, benchmarks, and evaluation metrics."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Lifelong Learning",
+        "justification": "The paper's primary focus is on lifelong or continual learning and how pre-training impacts catastrophic forgetting in this paradigm.",
+        "quote": "The lifelong learning paradigm in machine learning is an attractive alternative to the more prominent isolated learning scheme not only due to its resemblance to biological learning but also its potential to reduce energy waste by obviating excessive model re-training."
+      },
+      "aliases": [
+        "Continual Learning",
+        "Incremental Learning",
+        "Never-ending Learning"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Natural Language Processing (NLP)",
+          "justification": "The paper evaluates several NLP benchmarks and discusses the impact of pre-training on various NLP tasks.",
+          "quote": "We want to investigate forgetting when subjected to a sequence of diverse tasks. Therefore, we also consider data sets spanning diverse...NLP tasks."
+        },
+        "aliases": [
+          "NLP"
+        ]
+      },
+      {
+        "name": {
+          "value": "Computer Vision (CV)",
+          "justification": "In addition to NLP tasks, the paper also evaluates the impact of pre-training on several computer vision benchmarks.",
+          "quote": "We want to investigate forgetting when subjected to a sequence of diverse tasks. Therefore, we also consider data sets spanning diverse CV...tasks."
+        },
+        "aliases": [
+          "CV"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "BERT",
+          "justification": "BERT is used as a baseline pre-trained model for evaluating lifelong learning scenarios in NLP tasks.",
+          "quote": "The modern transfer learning paradigm involves pre-training a fixed architecture, like ResNet (He et al., 2016) or BERT (Devlin et al., 2019), using copious amounts of data, and then fine-tuning the learnt parameters on target tasks."
+        },
+        "aliases": [
+          "BERT-base",
+          "BERT-large"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "The BERT model is used as a baseline for comparisons but is not a contribution of this paper.",
+          "quote": "BERT (Devlin et al., 2019) using copious amounts of data, and then fine-tuning the learnt parameters on target tasks."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "BERT is used and executed in several experiments within the paper.",
+          "quote": "We observe that...with increased capacity (DistilBERT, BERT-base, BERT-large)..."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "BERT is compared numerically to other models and initializations like DistilBERT and RoBERTa.",
+          "quote": "To further stress-test these models under realistic scenarios, we introduce a data set with 15 diverse NLP tasks and observe a considerable increase in forgetting on this data set."
+        },
+        "referenced_paper_title": {
+          "value": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "justification": "This is the foundational paper where BERT was introduced, and it is referenced within the current paper.",
+          "quote": "BERT (Devlin et al., 2019)"
+        }
+      },
+      {
+        "name": {
+          "value": "RoBERTa",
+          "justification": "RoBERTa is used as a baseline pre-trained model for evaluating lifelong learning scenarios in NLP tasks.",
+          "quote": "We observe that...with increased capacity and diversity of the pre-training corpus play an important role in alleviating forgetting. We also show that sequential training on diverse tasks is still challenging for pre-trained initialized models by introducing a new, more challenging benchmark for lifelong learning in NLP consisting of 15 diverse NLP tasks (Sections 3.2,3.3)."
+        },
+        "aliases": [
+          "RoBERTa-base"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "RoBERTa is used as a baseline for comparisons but is not a contribution of this paper.",
+          "quote": "Additionally used was RoBERTa (Liu et al., 2019)"
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "RoBERTa is used and executed in several experiments within the paper.",
+          "quote": "We observe that...to understand the role of varying pre-trained initializations, we analyze a suite of pre-trained Transformer language models...RoBERTa"
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "RoBERTa is compared numerically to other models and initializations like BERT, DistilBERT.",
+          "quote": "We compare different pre-trained Transformer models, DistilBERT (Sanh et al., 2019), BERT (Devlin et al., 2019), RoBERTa (Liu et al., 2019), on text classification tasks."
+        },
+        "referenced_paper_title": {
+          "value": "RoBERTa: A Robustly Optimized BERT Pretraining Approach",
+          "justification": "This is the foundational paper where RoBERTa was introduced, and it is referenced within the current paper.",
+          "quote": "RoBERTa (Liu et al., 2019)"
+        }
+      },
+      {
+        "name": {
+          "value": "DistilBERT",
+          "justification": "DistilBERT is used as a baseline pre-trained model for evaluating lifelong learning scenarios in NLP tasks.",
+          "quote": "We compare BERT, RoBERTa, and DistilBERT on the 5-dataset-NLP and 15-dataset-NLP task sequences."
+        },
+        "aliases": [
+          "DistilBERT-base"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "DistilBERT is used as a baseline for comparisons but is not a contribution of this paper.",
+          "quote": "DistilBERT (Sanh et al., 2019) is compared with BERT on the 5-dataset-NLP task sequence."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "DistilBERT is used and executed in several experiments within the paper.",
+          "quote": "We utilize the DistilBERTbase (Sanh et al., 2019) architecture for text classification."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "DistilBERT is compared numerically to other models and initializations like BERT and RoBERTa.",
+          "quote": "We compare different pre-trained Transformer models, DistilBERT (Sanh et al., 2019), BERT (Devlin et al., 2019), RoBERTa (Liu et al., 2019), on text classification tasks."
+        },
+        "referenced_paper_title": {
+          "value": "DistilBERT, a distilled version of BERT: Smaller, faster, cheaper, and lighter",
+          "justification": "This is the foundational paper where DistilBERT was introduced, and it is referenced within the current paper.",
+          "quote": "DistilBERT (Sanh et al., 2019)"
+        }
+      },
+      {
+        "name": {
+          "value": "ResNet",
+          "justification": "ResNet is used as a baseline pre-trained model for evaluating lifelong learning scenarios in CV tasks.",
+          "quote": "The modern transfer learning paradigm involves pre-training a fixed architecture, like ResNet (He et al., 2016) or BERT (Devlin et al., 2019), using copious amounts of data, and then fine-tuning the learnt parameters on target tasks."
+        },
+        "aliases": [
+          "ResNet-18",
+          "ResNet-50"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "ResNet is used as a baseline for comparisons but is not a contribution of this paper.",
+          "quote": "We use the full ResNet-18 architecture for all vision experiments."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "ResNet is used and executed in several experiments within the paper.",
+          "quote": "We use the full ResNet-18 (He et al., 2016) architecture, with the final linear layer replaced...to control for and remove the overlap between pre-training and downstream tasks."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "ResNet is compared numerically to other models and initializations like BERT and DistilBERT on various datasets.",
+          "quote": "To ensure no unfair advantage when comparing performance on downstream tasks, we control for and remove the overlap between pre-training and downstream tasks."
+        },
+        "referenced_paper_title": {
+          "value": "Deep Residual Learning for Image Recognition",
+          "justification": "This is the foundational paper where ResNet was introduced, and it is referenced within the current paper.",
+          "quote": "Deep residual learning for image recognition (He et al., 2016)"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Split CIFAR-100",
+          "justification": "Split CIFAR-100 is used to evaluate the performance of lifelong learning methods on image classification tasks.",
+          "quote": "We prefer Split CIFAR-50 over Split MNIST/CIFAR-10...Split CIFAR-100, splitting the CIFAR-100 data set into 20 disjoint 5-way classification tasks."
+        },
+        "aliases": [
+          "CIFAR-100 (Krizhevsky and Hinton, 2009)"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Multiple Layers of Features from Tiny Images",
+          "justification": "This is the foundational paper introducing the CIFAR-100 dataset, which is referenced for lifelong learning benchmarks.",
+          "quote": "CIFAR-100 (Krizhevsky and Hinton, 2009)"
+        }
+      },
+      {
+        "name": {
+          "value": "Split YahooQA",
+          "justification": "Split YahooQA is used to evaluate the performance of lifelong learning methods on text classification tasks.",
+          "quote": "We created Split YahooQA into five homogeneous 2-way classification tasks."
+        },
+        "aliases": [
+          "YahooQA"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Character-level Convolutional Networks for Text Classification",
+          "justification": "This paper introduces YahooQA as a dataset for text classification, which is used as part of the lifelong learning experiments in this paper.",
+          "quote": "YahooQA (Zhang et al., 2015)"
+        }
+      },
+      {
+        "name": {
+          "value": "MNIST",
+          "justification": "MNIST is used to evaluate performance on digit classification tasks in the context of lifelong learning.",
+          "quote": "We consider data sets spanning diverse CV...tasks. The 5-dataset-CV consists of MNIST."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The MNIST database of handwritten digits.",
+          "justification": "This paper commonly references the MNIST dataset for handwritten digit recognition tasks, which is used in this paper.",
+          "quote": "The MNIST database of handwritten digits."
+        }
+      },
+      {
+        "name": {
+          "value": "Fashion-MNIST",
+          "justification": "Fashion-MNIST is used to evaluate performance on fashion item classification tasks in the context of lifelong learning.",
+          "quote": "We consider data sets spanning diverse CV...tasks. The 5-dataset-CV consists of Fashion-MNIST."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Fashion-MNIST: A Novel Image Dataset for Benchmarking Machine Learning Algorithms",
+          "justification": "This paper introduces the Fashion-MNIST dataset, which is used in lifelong learning experiments in this paper.",
+          "quote": "Fashion-MNIST (Xiao et al., 2017)"
+        }
+      },
+      {
+        "name": {
+          "value": "notMNIST",
+          "justification": "notMNIST is used to evaluate performance on alphabet classification tasks in the context of lifelong learning.",
+          "quote": "We consider data sets spanning diverse CV...tasks. The 5-dataset-CV consists of notMNIST."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "notMNIST dataset",
+          "justification": "This dataset is introduced and used for classifying alphabet letters, analogous to MNIST for digits.",
+          "quote": "notMNIST dataset (Bulatov 2011)."
+        }
+      },
+      {
+        "name": {
+          "value": "SVHN",
+          "justification": "SVHN is used to evaluate performance on house number classification tasks in the context of lifelong learning.",
+          "quote": "We consider data sets spanning diverse CV...tasks. The 5-dataset-CV consists of SVHN."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Reading Digits in Natural Images with Unsupervised Feature Learning",
+          "justification": "This dataset is introduced and used for classifying street view house numbers, and is used in this paper.",
+          "quote": "Reading Digits in Natural Images with Unsupervised Feature Learning"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is used as the main deep learning framework for implementing and running experiments in the paper.",
+          "quote": "Implementation details about the sharpness metric and other procedures followed the standard practices and libraries, primarily using PyTorch."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "No specific referencing paper for PyTorch was cited, but it is well-known in the deep learning community.",
+          "quote": "Implementation details about the sharpness metric and other procedures followed the standard practices and libraries, primarily using PyTorch."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 3415,
+    "prompt_tokens": 47086,
+    "total_tokens": 50501
+  }
+}

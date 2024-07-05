@@ -1,0 +1,140 @@
+{
+  "paper": "2302.07960.txt",
+  "words": 11939,
+  "extractions": {
+    "title": {
+      "value": "Learning to Substitute Ingredients in Recipes",
+      "justification": "The title is clearly stated at the beginning of the document.",
+      "quote": "Learning to Substitute Ingredients in Recipes"
+    },
+    "description": "This paper introduces a benchmark for ingredient substitution in recipes, presents a novel graph-based ingredient substitution model called GISMo, and integrates it into the inverse cooking pipeline to enable personalized recipe generation with ingredient substitutions.",
+    "type": {
+      "value": "empirical study",
+      "justification": "The paper presents a new dataset, a novel model, and evaluates the model against several baselines through experiments. The focus is on empirical validation and improvement.",
+      "quote": "We show through comprehensive experimental validation that GISMo surpasses the best performing baseline by a large margin in terms of mean reciprocal rank."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The paper addresses a problem (ingredient substitution) that is closely related to text analysis and natural language processing, leveraging advances in NLP like BERT and embedding techniques.",
+        "quote": "Most existing approaches to ingredient substitution are based on information extracted from textual recipes, including simple statistics – e.g. Term Frequency–Inverse Document Frequency [3, 53, 60] –, and ingredient cooccurrences [1, 29, 31, 39]. Only recently, researchers have started to explore advances in natural language processing (NLP) – e.g. word2vec [38], BERT [13], and R-BERT [58] – to obtain ingredient embeddings [45, 54], showing the benefits of representation learning to improve the task of ingredient substitution."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Graph Neural Networks",
+          "justification": "GISMo, the novel model introduced in the paper, leverages graph-based neural networks to capture ingredient relational information.",
+          "quote": "Moreover, we introduce Graph-based Ingredient Substitution Module (GISMo), a novel ingredient substitution model which leverages not only the substitution context from a recipe but also generic ingredient relational information found in a large corpus of recipes, available through the FlavorGraph. More precisely, GISMo leverages recent advances in graph neural networks (GNNs) to capture common ingredient interactions within the learned ingredient embeddings, which are then updated with contextual information from a given recipe to predict plausible ingredient substitutions."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Graph-based Ingredient Substitution Module (GISMo)",
+          "justification": "The paper introduces GISMo as a novel model for ingredient substitution leveraging both recipe-specific context and generic ingredient relational information from a graph.",
+          "quote": "Moreover, we introduce Graph-based Ingredient Substitution Module (GISMo), a novel ingredient substitution model which leverages not only the substitution context from a recipe but also generic ingredient relational information found in a large corpus of recipes..."
+        },
+        "aliases": [
+          "GISMo"
+        ],
+        "is_contributed": {
+          "value": 1,
+          "justification": "GISMo is presented as a novel contribution of the paper.",
+          "quote": "Moreover, we introduce Graph-based Ingredient Substitution Module (GISMo), a novel ingredient substitution model..."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The model was executed and evaluated within the experiments discussed in the paper.",
+          "quote": "We extensively evaluate our model and compare it with baselines, showing a performance improvement of ~14% in mean reciprocal rank over the best performing approach..."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "GISMo is compared with several baseline models through experimental validation.",
+          "quote": "We extensively evaluate our model and compare it with baselines, showing a performance improvement of ~14% in mean reciprocal rank over the best performing approach..."
+        },
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "GISMo is introduced in this paper and does not reference another paper specifically for the model.",
+          "quote": "N/A"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Recipe1MSubs",
+          "justification": "Recipe1MSubs is introduced in the paper as a new benchmark dataset for ingredient substitution, derived from the Recipe1M dataset.",
+          "quote": "As a result, we create a benchmark for ingredient substitutions called Recipe1MSubs, with substitution pairs associated with the Recipe1M dataset [51] recipes."
+        },
+        "aliases": [
+          "Recipe1MSubs"
+        ],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "Learning cross-modal embeddings for cooking recipes and food images",
+          "justification": "The Recipe1M dataset, from which Recipe1MSubs is derived, is referenced to a paper by Marin et al.",
+          "quote": "Inspired by [45], we crawled the Recipe1M recipe websites.... Salvador, A., Hynes, N., Aytar, Y., Marin, J., Ofli, F., Weber, I., & Torralba, A. (2017). Learning cross-modal embeddings for cooking recipes and food images."
+        }
+      },
+      {
+        "name": {
+          "value": "Recipe1M",
+          "justification": "Recipe1M is used as a source from which Recipe1MSubs has been derived.",
+          "quote": "Recipe1M [51] is the largest publicly available collection of recipe data composed of 1,029,720 recipes scraped from cooking websites."
+        },
+        "aliases": [
+          "Recipe1M"
+        ],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Learning cross-modal embeddings for cooking recipes and food images",
+          "justification": "The paper by Marin et al. is identified as the reference for Recipe1M dataset.",
+          "quote": "Recipe1M [51]... Salvador, A., Hynes, N., Aytar, Y., Marin, J., Ofli, F., Weber, I., & Torralba, A. (2017). Learning cross-modal embeddings for cooking recipes and food images."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The model GISMo is implemented using PyTorch.",
+          "quote": "We implement our model in PyTorch [44]"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Automatic differentiation in PyTorch",
+          "justification": "The reference paper for PyTorch by Paszke et al. is cited.",
+          "quote": "Paszke, A., Gross, S., Chintala, S., DeVito, Z., Lin, Z., Desmaison, A., Antiga, L., & Lerer, A. (2017). Automatic differentiation in PyTorch."
+        }
+      },
+      {
+        "name": {
+          "value": "DGL (Deep Graph Library)",
+          "justification": "DGL is used for sparse operations in GISMo.",
+          "quote": "used deep graph library (DGL) [57] for the sparse operations"
+        },
+        "aliases": [
+          "DGL"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Deep graph library: Towards efficient and scalable deep learning on graphs",
+          "justification": "The reference paper for DGL by Wang et al. is cited.",
+          "quote": "Wang, M., Yu, L., Zheng, D., Gan, Q., Gai, Y., Ye, Z., Li, M., Zhou, J., Huang, Q., & Ma, C. (2019). Deep graph library: Towards efficient and scalable deep learning on graphs."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 3249,
+    "prompt_tokens": 43175,
+    "total_tokens": 46424
+  }
+}

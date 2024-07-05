@@ -1,0 +1,118 @@
+{
+  "paper": "2303.08133.txt",
+  "words": 9989,
+  "extractions": {
+    "title": {
+      "value": "MeshDiffusion: Score-Based Generative 3D Mesh Modeling",
+      "justification": "The title provides the name of the model introduced along with a hint towards the approach used, which is score-based generative modeling for 3D meshes.",
+      "quote": "M ESH D IFFUSION : S CORE - BASED G ENERATIVE 3D M ESH M ODELING"
+    },
+    "description": "The paper presents MeshDiffusion, a novel diffusion model for generating high-quality 3D meshes. The model leverages deformable tetrahedral grids and score-based generative modeling to produce fine-grained geometric details in 3D shapes. The method demonstrates superiority over previous approaches in both qualitative and quantitative evaluations.",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The study conducts various experiments and evaluations to demonstrate the effectiveness of the MeshDiffusion model for 3D mesh generation.",
+      "quote": "The study includes extensive qualitative and quantitative experiments to show the performance of MeshDiffusion, including comparisons with other models."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The research focuses on generating 3D shapes, a key topic within the field of computer vision.",
+        "quote": "As one of the most challenging tasks in computer vision and graphics, generative modeling of high-quality 3D shapes is of great significance in many applications such as virtual reality and metaverse."
+      },
+      "aliases": [
+        "CV"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "3D Shape Generation",
+          "justification": "The paper specifically addresses the task of generating high-quality 3D shapes.",
+          "quote": "We consider the task of generating realistic 3D shapes, which is useful for a variety of applications such as automatic scene generation and physical simulation."
+        },
+        "aliases": [
+          "3D Shape Modeling",
+          "3D Object Generation"
+        ]
+      },
+      {
+        "name": {
+          "value": "Score-Based Generative Modeling",
+          "justification": "The method proposed uses score-based generative modeling techniques applied to 3D meshes.",
+          "quote": "In light of recent advances in score-based generative modeling where powerful generative performance and effortless training are demonstrated, we propose to train diffusion models on these vertices to generate meshes."
+        },
+        "aliases": [
+          "Score-Based Modeling",
+          "Generative Modeling"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "MeshDiffusion",
+          "justification": "MeshDiffusion is the primary model presented and proposed in this study.",
+          "quote": "We demonstrate that our method, dubbed MeshDiffusion, is able to produce high-quality meshes and enables conditional generation with a differentiable renderer."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 1,
+          "justification": "MeshDiffusion is introduced and demonstrated for the first time in this paper with various experiments to validate its effectiveness.",
+          "quote": "Our contributions are summarized below: • To our knowledge, we are the first to apply diffusion model for unconditionally generating 3D high-quality meshes and to show that diffusion models are well suited for 3D geometry."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The model training and evaluation include performance measurements specific to GPU execution, indicating it was run on GPU hardware.",
+          "quote": "Fitting each object takes roughly 20-30 minutes on a single Quadro RTX 6000 GPU. We use the same train/test split in [55]. The detailed architecture, training and hyperparameter settings are explained in the appendix."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The paper includes several comparisons to other state-of-the-art models to show the effectiveness of MeshDiffusion.",
+          "quote": "We visualize samples produced by MeshDiffusion and the existing state-of-the-art 3D mesh generative models in Figure 4. We note that MeshDiffusion produces the sharpest samples and preserve the finest geometric details, while pure SDF-based methods tend to be too smooth."
+        },
+        "referenced_paper_title": {
+          "value": "Not Applicable",
+          "justification": "MeshDiffusion is the novel contribution of this paper. It is first introduced and detailed in this work.",
+          "quote": "Our contributions are summarized below: • To our knowledge, we are the first to apply diffusion model for unconditionally generating 3D high-quality meshes and to show that diffusion models are well suited for 3D geometry."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "ShapeNet",
+          "justification": "The ShapeNet dataset is used to train and evaluate the MeshDiffusion model.",
+          "quote": " we assume that we have access to 3D mesh datasets (in our experiments, ShapeNet datasets [7]) so that RGBD images can be rendered with random lighting and simple surface materials."
+        },
+        "aliases": [],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "ShapeNet: An Information-Rich 3D Model Repository",
+          "justification": "The ShapeNet paper is referenced to indicate the source of the dataset used for experiments.",
+          "quote": " we assume that we have access to 3D mesh datasets (in our experiments, ShapeNet datasets [7])"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Quartet",
+          "justification": "Quartet is used for generating tetrahedral grids as part of the MeshDiffusion model setup.",
+          "quote": "The initial tetrahedral grid is initialized in a cube [−1, 1]3 by a dense body-centered cubic (BCC) tiling of tetrahedra (see https://github.com/crawforddoran/quartet for code examples)."
+        },
+        "aliases": [],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "Not Applicable",
+          "justification": "The paper does not provide a separate citation for the Quartet software library.",
+          "quote": "The initial tetrahedral grid is initialized in a cube [−1, 1]3 by a dense body-centered cubic (BCC) tiling of tetrahedra (see https://github.com/crawforddoran/quartet for code examples)."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1416,
+    "prompt_tokens": 17551,
+    "total_tokens": 18967
+  }
+}

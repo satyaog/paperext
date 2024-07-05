@@ -1,0 +1,132 @@
+{
+  "paper": "2303.16322.txt",
+  "words": 5852,
+  "extractions": {
+    "title": {
+      "value": "FMAS: Fast Multi-Objective SuperNet Architecture Search for Semantic Segmentation",
+      "justification": "The title of the paper as given is 'FMAS: Fast Multi-Objective SuperNet Architecture Search for Semantic Segmentation'.",
+      "quote": "FMAS: Fast Multi-Objective SuperNet Architecture Search for Semantic Segmentation"
+    },
+    "description": "This paper introduces FMAS, a fast multi-objective neural architecture search framework designed for semantic segmentation. The framework uses DeepLabV3+ as a supernet to search for computationally efficient models and evaluates these models on a subset of the validation dataset to speed up the search process. The best models are then fine-tuned using the complete training set. The effectiveness of FMAS is demonstrated on the PASCAL VOC 2012 dataset.",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The paper focuses on experimental evaluations of the FMAS framework on the PASCAL VOC 2012 dataset and measures its performance using metrics such as MIoU error, FLOPs, and latency.",
+      "quote": "To accelerate NAS for image segmentation, we propose Fast Multi-objective Architectural Search (FMAS), a fast multi-objective NAS framework for semantic image segmentation at the edge."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The paper deals with semantic segmentation, which is a major application domain within Computer Vision.",
+        "quote": "Semantic image segmentation [18] is one of the fundamental applications in computer vision: it helps us understand scenes by identifying the various objects in an image, and their corresponding locations, by predicting an independent class label for each pixel."
+      },
+      "aliases": [
+        "CV"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Neural Architecture Search",
+          "justification": "The primary focus of the paper is on developing a fast NAS framework for semantic segmentation.",
+          "quote": "Multi-objective network architecture search has been proposed for the purpose of finding efficient models, but the time required to train candidates is prohibitive."
+        },
+        "aliases": [
+          "NAS"
+        ]
+      },
+      {
+        "name": {
+          "value": "Edge Computing",
+          "justification": "The paper discusses deploying the found models onto an edge device called GAP8 and evaluates its latency performance.",
+          "quote": "We also search on an edge device called GAP8 and use its latency as the metric."
+        },
+        "aliases": [
+          "TinyML"
+        ]
+      },
+      {
+        "name": {
+          "value": "Semantic Segmentation",
+          "justification": "The paper specifically focuses on semantic segmentation as the application domain for the proposed NAS framework.",
+          "quote": "Semantic image segmentation helps us understand scenes by identifying the various objects in an image, and their corresponding locations, by predicting an independent class label for each pixel."
+        },
+        "aliases": [
+          "Segmantic Segmentation"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "DeepLabV3+",
+          "justification": "DeepLabV3+ is used as a supernet in the FMAS framework.",
+          "quote": "FMAS subsamples the structure and pre-trained parameters of DeepLabV3+."
+        },
+        "aliases": [
+          "DL3+"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "DeepLabV3+ is not a novel model introduced in this paper but is extensively used in the proposed framework.",
+          "quote": "FMAS uses DeepLabV3+ as a supernet to search for computationally-efficient models."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "DeepLabV3+ was executed in the experiments; its pre-trained parameters and structure were subsampled for evaluation.",
+          "quote": "DeepLabV3+ [11] (DL3+) is a SOTA encoder-decoder CNN which employs backbones like Modified Xception [11] or MobileNetV2 [28] for feature extraction."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "DeepLabV3+ is compared against the models found by FMAS in terms of FLOPs, parameter count, MIoU error, and latency.",
+          "quote": "FMAS finds competitive designs quickly, e.g., taking just 0.5 GPU days to discover a DeepLabV3+ variant that reduces FLOPs and parameters by 10% and 20% respectively, for less than 3% increased error."
+        },
+        "referenced_paper_title": {
+          "value": "Encoder-Decoder with Atrous Separable Convolution for Semantic Image Segmentation",
+          "justification": "The referenced paper titled 'Encoder-Decoder with Atrous Separable Convolution for Semantic Image Segmentation' is cited as reference [11] for DeepLabV3+ in this paper.",
+          "quote": "DeepLabV3+ [11] (DL3+) is a SOTA encoder-decoder CNN which employs backbones like Modified Xception [11] or MobileNetV2 [28] for feature extraction."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "PASCAL VOC 2012",
+          "justification": "PASCAL VOC 2012 is explicitly mentioned as the dataset used for evaluating the FMAS framework.",
+          "quote": "We evaluate FMAS by searching for models that effectively trade accuracy and computational cost on the PASCAL VOC 2012 dataset."
+        },
+        "aliases": [
+          "PASCAL VOC"
+        ],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "The PASCAL Visual Object Classes (VOC) Challenge",
+          "justification": "The dataset is directly referenced in the context of the PASCAL VOC 2012 challenge.",
+          "quote": "We conducted experiments with PASCAL VOC 2012 [14] to evaluate the effectiveness of our FMAS."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "keras-flops",
+          "justification": "keras-flops is used for measuring the FLOPs of the candidate models.",
+          "quote": "We quantify the cost of candidate models analytically by measuring either (a) the number of floating-point operations (FLOPs), using keras-flops [21], (b) the number of network parameters, using count_params, or (c) the latency on the GAP8 processor."
+        },
+        "aliases": [
+          "keras-flops"
+        ],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Systems",
+          "justification": "Since keras-flops is a library that extends TensorFlow functionalities, its reference is tied to TensorFlow's primary paper.",
+          "quote": "We quantify the cost of candidate models analytically by measuring either (a) the number of floating-point operations (FLOPs), using keras-flops [21], (b) the number of network parameters, using count_params, or (c) the latency on the GAP8 processor."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1300,
+    "prompt_tokens": 11926,
+    "total_tokens": 13226
+  }
+}

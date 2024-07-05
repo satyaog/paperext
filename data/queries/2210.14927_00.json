@@ -1,0 +1,181 @@
+{
+  "paper": "2210.14927.txt",
+  "words": 19339,
+  "extractions": {
+    "title": {
+      "value": "Characterization Of Inpaint Residls I'm terferometric Measurements of the Epoch Of Reionization",
+      "justification": "Title mentioned at the beginning of the paper.",
+      "quote": "Characterization Of Inpaint Residls I'm terferometric Measurements of the Epoch Of Reionization"
+    },
+    "description": "This paper examines the qualitative and quantitative errors introduced into the visibilities and power spectrum due to inpainting in the analysis of data from instruments that measure the 21cm power spectrum. It assesses the effectiveness of various inpainting techniques on both simulated and real data (HERA), and introduces a convolutional neural network model called U-Paint as an inpainting technique. The study evaluates how different inpainting techniques affect the data analysis and the accuracy of the 21cm power spectrum estimation.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves experimentation and analysis using simulated and real datasets to assess the effectiveness of different inpainting techniques.",
+      "quote": "We perform our analysis on simulated data as well as real data from the Hydrogen Epoch of Reionization Array (HERA) Phase 1 upper limits."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Cosmology/Astrophysics",
+        "justification": "The study revolves around improving the analysis of data from 21cm interferometric instruments related to the EoR.",
+        "quote": "The primary beam of the instrument and T (l, m) is the temperature of the sky. The time dependence arises because the sky rotates above the instrument."
+      },
+      "aliases": [
+        "Cosmology",
+        "Astrophysics"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Interferometric measurements",
+          "justification": "The paper focuses on data from 21cm interferometric measurements and the inpainting techniques used to handle RFI in this context.",
+          "quote": "procedures are not strictly limited to HERA and are thus applicable to any interferometer. When completed, HERA will be comprised of 350 14m dishes capable of observing at frequencies 50MHz to 225MHz. In this paper however, we consider the instrumental parameters taken from Phase 1 data used to set the recent HERA upper limits HERA Collaboration et al. (2022) which span frequencies 100MHz to 200MHz in 1024 channels"
+        },
+        "aliases": [
+          "21cm interferometry"
+        ]
+      },
+      {
+        "name": {
+          "value": "Radio Frequency Interference Mitigation",
+          "justification": "The study evaluates the effectiveness of different inpainting techniques for mitigating RFI in the 21cm interferometric data.",
+          "quote": "To mitigate the effects of Radio Frequency Interference (RFI) on the data analysis pipelines of 21cm interferometric instruments, numerous inpaint techniques have been developed"
+        },
+        "aliases": [
+          "RFI Mitigation"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "U-Paint",
+          "justification": "U-Paint is introduced as a convolutional neural network model for inpainting RFI corrupted data.",
+          "quote": "We also introduce a Convolutional Neural Network (CNN) dubbed as “U-Paint” as an alternative to inpainting RFI corrupted data."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 1,
+          "justification": "The paper explicitly states that U-Paint is introduced as part of their research contribution.",
+          "quote": "U-Paint marks the introduction of CNNs as an inpainting technique in the data analysis pipelines of radio astronomy."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "U-Paint is trained and validated using GPUs for inpainting RFI corrupted data.",
+          "quote": "we use data from antennas (84, 85) and (0, 1) to perform our analysis. Thus all data from these antennas are removed before training. As discussed in Section 2.3 the HERA visibilities are measures of 1024 frequency channels over 4000 time integrations (i.e ×NLSTs ). Thus we divide the total HERA visibilities into input visibilities of size 512×512 corresponding to 90min of data and a band width of 50MHz. Thus the frequency band is split into two sections 100MHz-150MHz and 150MHz-200MHz at 90min observation intervals."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "U-Paint's performance is compared to other inpainting techniques such as CLEAN, LSSA, GPR, and DPSS.",
+          "quote": "In the following sections we build a quantitative perspective on the performance of each inpainting technique."
+        },
+        "referenced_paper_title": {
+          "value": "None",
+          "justification": "U-Paint is introduced in this paper itself without referencing any previous paper for its architecture.",
+          "quote": "We also introduce a Convolutional Neural Network (CNN) dubbed as “U-Paint” as an alternative to inpainting RFI corrupted data."
+        }
+      },
+      {
+        "name": {
+          "value": "CLEAN",
+          "justification": "CLEAN is mentioned as an existing inpainting technique used to mitigate RFI effects.",
+          "quote": "To mitigate the effects of Radio Frequency Interference (RFI) on the data analysis pipelines of 21cm interferometric instruments, numerous inpaint techniques have been developed... the CLEAN algorithm"
+        },
+        "aliases": [
+          "None"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "CLEAN is a known and pre-existing inpainting technique.",
+          "quote": "The implementation of the CLEAN inpainting algorithm in HERA is similar in concept to the algorithm originally introduced in Högbom (1974)"
+        },
+        "is_executed": {
+          "value": 0,
+          "justification": "CLEAN does not require training like a neural network model.",
+          "quote": "More broadly, the original algorithm operates on 2D images whereas the HERA implementation acts independently at each LST taking only the 1D frequency spectrum as input."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "CLEAN's performance is evaluated and compared to other inpainting techniques.",
+          "quote": "We find that with our fiducial parameters, DPSS and CLEAN provide the best performance for intermittent RFI"
+        },
+        "referenced_paper_title": {
+          "value": "Aperture Synthesis with a Non-Regular Distribution of Interferometer Baselines",
+          "justification": "The method was originally introduced in this paper.",
+          "quote": "The implementation of the CLEAN inpainting algorithm in HERA is similar in concept to the algorithm originally introduced in Högbom (1974)"
+        }
+      },
+      {
+        "name": {
+          "value": "LSSA",
+          "justification": "LSSA (Least Squares Spectral Analysis) is mentioned as an inpainting technique used to mitigate RFI effects.",
+          "quote": "Besides CLEAN, other inpainting techniques have been explored as well such as least square spectral analysis (LSSA)"
+        },
+        "aliases": [
+          "None"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "LSSA is a known inpainting technique and is not introduced as new in this paper.",
+          "quote": "Besides CLEAN, other inpainting techniques have been explored as well such as least square spectral analysis (LSSA), Gaussian process regression (GPR) (Ghosh et al. 2020; Kern & Liu 2021) and discrete prolate spheroidal sequence (DPSS) (Slepian 1978; Ewall- Wice et al. 2021)."
+        },
+        "is_executed": {
+          "value": 0,
+          "justification": "LSSA does not require training like a neural network model.",
+          "quote": "LSSA works independently at each LST taking only the 1D frequency spectrum as input."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The performance of LSSA is compared to other inpainting techniques.",
+          "quote": "We critically evaluate the performance of existing inpainting techniques CLEAN, LSSA, GPR, and DPSS in reconstructing corrupted visibility data."
+        },
+        "referenced_paper_title": {
+          "value": "Least squares spectral analysis",
+          "justification": "The methodology is known from this paper.",
+          "quote": "Besides CLEAN, other inpainting techniques have been explored as well such as least square spectral analysis (LSSA) ... (Slepian 1978)."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "HERA Phase 1",
+          "justification": "The real dataset used in the study is from HERA Phase 1.",
+          "quote": "We perform our analysis on simulated data as well as real data from the Hydrogen Epoch of Reionization Array (HERA) Phase 1 upper limits."
+        },
+        "aliases": [
+          "None"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The Hydrogen Epoch of Reionization Array Dish",
+          "justification": "This paper gives details about HERA Phase 1",
+          "quote": "The Hydrogen Epoch of Reionization Array Dish"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "TensorFlow",
+          "justification": "TensorFlow is used for implementing the convolutional neural network model U-Paint in the study.",
+          "quote": "We train our network on simulated data and show that our network is capable at inpainting real data without requiring to be retrained."
+        },
+        "aliases": [
+          "None"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "TensorFlow: Large-scale machine learning on heterogeneous systems",
+          "justification": "This is a reference to the TensorFlow library used for training the neural network model.",
+          "quote": "We train our network on simulated data and show that our network is capable at inpainting real data without requiring to be retrained."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1863,
+    "prompt_tokens": 33077,
+    "total_tokens": 34940
+  }
+}

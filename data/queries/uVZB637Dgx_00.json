@@ -1,0 +1,122 @@
+{
+  "paper": "uVZB637Dgx.txt",
+  "words": 13072,
+  "extractions": {
+    "title": {
+      "value": "What Mechanisms Does Knowledge Distillation Distill?",
+      "justification": "The title directly comes from the provided research paper.",
+      "quote": "What Mechanisms Does Knowledge Distillation Distill?"
+    },
+    "description": "The paper investigates the transfer of knowledge during the distillation process of neural networks, particularly focusing on shared invariant outputs to counterfactual changes of dataset latent variables. Through theoretical definitions and empirical evaluations on synthetic datasets, the paper develops methods to characterize the transfer and mitigate simplicity bias using Jacobian matching and contrastive representation learning.",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The paper conducts empirical investigations on synthetic datasets to understand and characterize the knowledge transfer during distillation, and evaluates methods like Jacobian matching and contrastive representation learning to mitigate biases.",
+      "quote": "We probe this further via empirical investigations."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Knowledge Distillation",
+        "justification": "The paper primarily focuses on the process and mechanisms involved in knowledge distillation between teacher and student neural networks.",
+        "quote": "To understand which, we can evaluate how the model’s prediction changes when image backgrounds are altered. If predictions change, the model relies on information in the (spurious) attribute of image background; if the predictions do not change, the model is invariant to background. Formalizing this intuition, prior work calls use of a predictive attribute to produce outputs a 'mechanism' [35], and defines two models that rely on the same mechanisms as mechanistically similar."
+      },
+      "aliases": [
+        "KD"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Model Compression",
+          "justification": "Knowledge distillation is a method used for compressing large models into smaller, efficient ones while retaining performance.",
+          "quote": "Knowledge distillation is a commonly-used compression method in ML due to the popularity of increasingly large-scale models."
+        },
+        "aliases": [
+          "Model Distillation"
+        ]
+      },
+      {
+        "name": {
+          "value": "Representation Learning",
+          "justification": "The paper evaluates the impact of distillation on the representations learned by the student model, particularly using methods like contrastive representation learning.",
+          "quote": "We investigate two distillation methods aiming to more closely match model representations."
+        },
+        "aliases": [
+          "Representation Matching"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Jacobian Matching",
+          "justification": "Jacobian matching is one of the distillation methods evaluated for its effectiveness in knowledge transfer between teacher and student models.",
+          "quote": "We find that Jacobian matching and contrastive representation learning are viable methods by which to train such models."
+        },
+        "aliases": [
+          "Jacobian Loss"
+        ],
+        "is_contributed": {
+          "value": 1,
+          "justification": "The paper contributes empirical evaluation and insights on the use of Jacobian matching for knowledge distillation.",
+          "quote": "A Jacobian matching distillation loss matches norm of the gradient of logits with respect to the input between teacher and student."
+        },
+        "is_executed": {
+          "value": 0,
+          "justification": "The paper does not explicitly state whether the Jacobian Matching model was executed on GPU or CPU.",
+          "quote": "N/A"
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The paper compares the effectiveness of Jacobian matching with other distillation methods such as standard distillation and contrastive representation learning.",
+          "quote": "We investigate two distillation methods aiming to more closely match model representations."
+        },
+        "referenced_paper_title": {
+          "value": "Knowledge Transfer with Jacobian Matching",
+          "justification": "The concept of Jacobian Matching is referenced from prior work which is indicative from its detailed usage and analysis.",
+          "quote": "Srinivas, S., & Fleuret, F. (2018). Knowledge transfer with Jacobian matching. In Proceedings of the International Conference on Machine Learning (ICML)."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Dominoes",
+          "justification": "Dominoes is one of the synthetic datasets used to evaluate the transfer of knowledge through distillation.",
+          "quote": "We design two datasets across both image and text data, called dominoes (images) and parity (language), shown in Fig. 1."
+        },
+        "aliases": [
+          "Synthetic Dominoes"
+        ],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "The Pitfalls of Simplicity Bias in Neural Networks",
+          "justification": "The dataset design is influenced by prior works on simplicity bias, which is fundamental to the evaluations made in the paper.",
+          "quote": "These datasets have been used by prior works for modeling neural networks’ behavior regarding simplicity bias [57, 35]."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The paper utilizes PyTorch as the deep learning library for implementing and training the models.",
+          "quote": "For the parity experiments, we use a 3-hidden layer MLP with 50 neurons each. The transformer is a nano-GPT implementation with a classifier built in the final layer...For the dominoes dataset with PyTorch’s ResNet18, a batch size of 64, SGD with no momentum or dropout, and cosine LR scheduler were used."
+        },
+        "aliases": [
+          "torch"
+        ],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An Imperative Style, High-Performance Deep Learning Library",
+          "justification": "PyTorch is a widely-used deep learning library referenced in machine learning research for its flexibility and performance.",
+          "quote": "Paszke, A., Gross, S., Massa, F., Lerer, A., Bradbury, J., Chanan, G.,...& Chintala, S. (2019). PyTorch: An imperative style, high-performance deep learning library. In Advances in Neural Information Processing Systems (NeurIPS)."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1103,
+    "prompt_tokens": 22084,
+    "total_tokens": 23187
+  }
+}

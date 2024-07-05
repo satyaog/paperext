@@ -1,0 +1,378 @@
+{
+  "paper": "2206.00362.txt",
+  "words": 7212,
+  "extractions": {
+    "title": {
+      "value": "An Empirical Study of Retrieval-enhanced Graph Neural Networks",
+      "justification": "This is the exact title of the paper as given at the beginning.",
+      "quote": "An Empirical Study of Retrieval-enhanced Graph Neural Networks"
+    },
+    "description": "The paper investigates the effectiveness of retrieval-enhanced Graph Neural Networks (GNNs) in augmenting the performance of GNN models on graph classification and regression tasks, particularly focusing on datasets with long-tailed label distributions. The authors introduce a model-agnostic retrieval-enhancement framework called GRAPHRETRIEVAL and evaluate it using 13 benchmark datasets, demonstrating substantial performance improvements.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper conducts a series of experiments and evaluations on benchmark datasets to demonstrate the effectiveness of the proposed retrieval-enhancement framework for GNNs.",
+      "quote": "We conduct comprehensive experiments over 13 datasets, and we observe that GRAPHRETRIEVAL is able to reach substantial improvements over existing GNNs."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Graph Neural Networks",
+        "justification": "The paper focuses on enhancing the performance of Graph Neural Networks through a retrieval-based method.",
+        "quote": "Graph neural networks (GNNs) are a class of neural architectures for supervised learning which has been adopted in a plethora of applications involving graph-structured data."
+      },
+      "aliases": [
+        "GNN"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Molecule Classification",
+          "justification": "The paper explores the application of GNNs in molecular classification scenarios.",
+          "quote": "In molecule classification applications, Weave [18] explicitly learns both the atom- and bond-level representation during message passing."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Computer Vision",
+          "justification": "The paper evaluates the proposed model on computer vision datasets like MNIST and CIFAR10.",
+          "quote": "We used a collection of 13 datasets consisting of 8 small-scale molecule datasets [14], 2 computer vision datasets [7], 1 large-scale therapeutics-related dataset (USPTO) and 2 large-scale quantum chemistry datasets (PCQM4M and PCQM4Mv2)."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Graph Regression",
+          "justification": "The paper also focuses on regression tasks in the context of graph neural networks.",
+          "quote": "The task is graph regression: predicting the HOMO-LUMO energy gap in electronvolt given 2D molecular graphs."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "GCN",
+          "justification": "The paper uses the Graph Convolutional Network (GCN) model as one of the baselines for performance evaluation.",
+          "quote": "We have implemented our approach and used it to enhance three strong GNN backbone models, GCN [20], GIN [40], and PNA [4]."
+        },
+        "aliases": [
+          "Graph Convolutional Network"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "GCN is not a new contribution in this paper; it is used as a baseline model.",
+          "quote": "We have implemented our approach and used it to enhance three strong GNN backbone models, GCN [20], GIN [40], and PNA [4]."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "GCN was executed to evaluate its performance in comparison to the proposed retrieval-enhanced version.",
+          "quote": "We have implemented our approach and used it to enhance three strong GNN backbone models, GCN [20], GIN [40], and PNA [4]."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The performance of GCN is compared against the proposed model and other baseline models.",
+          "quote": "We have implemented our approach and used it to enhance three strong GNN backbone models, GCN [20], GIN [40], and PNA [4]."
+        },
+        "referenced_paper_title": {
+          "value": "Semi-supervised classification with graph convolutional networks",
+          "justification": "This is the reference paper for the GCN model used as a baseline.",
+          "quote": "Graph Convolutional Networks (GCN) [20]"
+        }
+      },
+      {
+        "name": {
+          "value": "GIN",
+          "justification": "The paper uses the Graph Isomorphism Network (GIN) model as one of the baselines for performance evaluation.",
+          "quote": "We have implemented our approach and used it to enhance three strong GNN backbone models, GCN [20], GIN [40], and PNA [4]."
+        },
+        "aliases": [
+          "Graph Isomorphism Network"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "GIN is not a new contribution in this paper; it is used as a baseline model.",
+          "quote": "GIN [40]"
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "GIN was executed to evaluate its performance in comparison to the proposed retrieval-enhanced version.",
+          "quote": "We have implemented our approach and used it to enhance three strong GNN backbone models, GCN [20], GIN [40], and PNA [4]."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The performance of GIN is compared against the proposed model and other baseline models.",
+          "quote": "GIN [40]"
+        },
+        "referenced_paper_title": {
+          "value": "How Powerful are Graph Neural Networks?",
+          "justification": "This is the reference paper for the GIN model used as a baseline.",
+          "quote": "GIN [40]"
+        }
+      },
+      {
+        "name": {
+          "value": "PNA",
+          "justification": "The paper uses the Principal Neighbourhood Aggregation (PNA) model as one of the baselines for performance evaluation.",
+          "quote": "We have implemented our approach and used it to enhance three strong GNN backbone models, GCN [20], GIN [40], and PNA [4]."
+        },
+        "aliases": [
+          "Principal Neighbourhood Aggregation"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "PNA is not a new contribution in this paper; it is used as a baseline model.",
+          "quote": "PNA [4]"
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "PNA was executed to evaluate its performance in comparison to the proposed retrieval-enhanced version.",
+          "quote": "PNA [4]"
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The performance of PNA is compared against the proposed model and other baseline models.",
+          "quote": "PNA [4]"
+        },
+        "referenced_paper_title": {
+          "value": "Principal Neighbourhood Aggregation for Graph Nets",
+          "justification": "This is the reference paper for the PNA model used as a baseline.",
+          "quote": "PNA [4]"
+        }
+      },
+      {
+        "name": {
+          "value": "GRAPHRETRIEVAL",
+          "justification": "GRAPHRETRIEVAL is the main retrieval-enhancement scheme proposed in this paper to enhance GNN models.",
+          "quote": "we design a retrieval-enhanced scheme called GRAPHRETRIEVAL, which is agnostic to the choice of graph neural network models."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 1,
+          "justification": "GRAPHRETRIEVAL is a new model introduced as a contribution in this paper.",
+          "quote": "we design a retrieval-enhanced scheme called GRAPHRETRIEVAL, which is agnostic to the choice of graph neural network models."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "GRAPHRETRIEVAL was implemented and executed to evaluate its performance on various datasets.",
+          "quote": "We have implemented our approach and used it to enhance three strong GNN backbone models, GCN [20], GIN [40], and PNA [4]."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The performance of GRAPHRETRIEVAL is compared against existing GNN models to demonstrate its effectiveness.",
+          "quote": "Our comprehensive empirical study of retrieval-enhanced graph neural networks demonstrates that they offer a promising approach to improving performance on datasets with long-tailed label distributions."
+        },
+        "referenced_paper_title": {
+          "value": "(This paper)",
+          "justification": "GRAPHRETRIEVAL is an original contribution of this paper; hence, there is no external reference paper.",
+          "quote": "we design a retrieval-enhanced scheme called GRAPHRETRIEVAL."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "BBBP",
+          "justification": "BBBP is one of the datasets used in the paper to evaluate model performance.",
+          "quote": "in Figure 1 (a), retrieval-enhanced GIN achieves a 2% ROC_AUC improvement on the BBBP dataset"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Open Graph Benchmark: Datasets for Machine Learning on Graphs",
+          "justification": "This is the reference paper for the BBBP dataset.",
+          "quote": "8 small-scale molecule datasets [14]"
+        }
+      },
+      {
+        "name": {
+          "value": "PCQM4M",
+          "justification": "PCQM4M is one of the datasets used in the paper to evaluate model performance, particularly for graph regression tasks.",
+          "quote": "The task is graph regression: predicting the HOMO-LUMO energy gap in electronvolt given 2D molecular graphs."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Ogb-lsc: A large-scale challenge for machine learning on graphs",
+          "justification": "This is the reference paper for the PCQM4M dataset.",
+          "quote": "PCQM4M and PCQM4Mv2 [13]"
+        }
+      },
+      {
+        "name": {
+          "value": "PCQM4Mv2",
+          "justification": "PCQM4Mv2 is one of the datasets used in the paper to evaluate model performance, particularly for graph regression tasks.",
+          "quote": "PCQM4M and PCQM4Mv2 [13]"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Ogb-lsc: A large-scale challenge for machine learning on graphs",
+          "justification": "This is the reference paper for the PCQM4Mv2 dataset.",
+          "quote": "PCQM4M and PCQM4Mv2 [13]"
+        }
+      },
+      {
+        "name": {
+          "value": "MNIST",
+          "justification": "MNIST is one of the computer vision datasets used in the paper to evaluate model performance.",
+          "quote": "We used a collection of 13 datasets consisting of 8 small-scale molecule datasets [14], 2 computer vision datasets [7], 1 large-scale therapeutics-related dataset (USPTO) and 2 large-scale quantum chemistry datasets (PCQM4M and PCQM4Mv2)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Benchmarking Graph Neural Networks",
+          "justification": "This is the reference paper for the MNIST dataset.",
+          "quote": "2 computer vision datasets [7]"
+        }
+      },
+      {
+        "name": {
+          "value": "CIFAR10",
+          "justification": "CIFAR10 is one of the computer vision datasets used in the paper to evaluate model performance.",
+          "quote": "We used a collection of 13 datasets consisting of 8 small-scale molecule datasets [14], 2 computer vision datasets [7], 1 large-scale therapeutics-related dataset (USPTO) and 2 large-scale quantum chemistry datasets (PCQM4M and PCQM4Mv2)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Benchmarking Graph Neural Networks",
+          "justification": "This is the reference paper for the CIFAR10 dataset.",
+          "quote": "2 computer vision datasets [7]"
+        }
+      },
+      {
+        "name": {
+          "value": "USPTO",
+          "justification": "USPTO is one of the large-scale therapeutics-related datasets used in the paper to evaluate model performance.",
+          "quote": "We used a collection of 13 datasets consisting of 8 small-scale molecule datasets [14], 2 computer vision datasets [7], 1 large-scale therapeutics-related dataset (USPTO)"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Extraction of chemical structures and reactions from the literature",
+          "justification": "This is the reference paper for the USPTO dataset.",
+          "quote": "USPTO [27]"
+        }
+      },
+      {
+        "name": {
+          "value": "Tox21",
+          "justification": "Tox21 is one of the datasets used in the paper to evaluate model performance.",
+          "quote": "Test ROC-AUC (%) performance on 8 molecular prediction Benchmark datasets... Tox21"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Open Graph Benchmark: Datasets for Machine Learning on Graphs",
+          "justification": "This is the reference paper for the Tox21 dataset.",
+          "quote": "8 small-scale molecule datasets [14]"
+        }
+      },
+      {
+        "name": {
+          "value": "ToxCast",
+          "justification": "ToxCast is one of the datasets used in the paper to evaluate model performance.",
+          "quote": "Test ROC-AUC (%) performance on 8 molecular prediction Benchmark datasets... ToxCast"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Open Graph Benchmark: Datasets for Machine Learning on Graphs",
+          "justification": "This is the reference paper for the ToxCast dataset.",
+          "quote": "8 small-scale molecule datasets [14]"
+        }
+      },
+      {
+        "name": {
+          "value": "SIDER",
+          "justification": "SIDER is one of the datasets used in the paper to evaluate model performance.",
+          "quote": "Test ROC-AUC (%) performance on 8 molecular prediction Benchmark datasets... SIDER"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Open Graph Benchmark: Datasets for Machine Learning on Graphs",
+          "justification": "This is the reference paper for the SIDER dataset.",
+          "quote": "8 small-scale molecule datasets [14]"
+        }
+      },
+      {
+        "name": {
+          "value": "ClinTox",
+          "justification": "ClinTox is one of the datasets used in the paper to evaluate model performance.",
+          "quote": "Test ROC-AUC (%) performance on 8 molecular prediction Benchmark datasets... ClinTox"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Open Graph Benchmark: Datasets for Machine Learning on Graphs",
+          "justification": "This is the reference paper for the ClinTox dataset.",
+          "quote": "8 small-scale molecule datasets [14]"
+        }
+      },
+      {
+        "name": {
+          "value": "MUV",
+          "justification": "MUV is one of the datasets used in the paper to evaluate model performance.",
+          "quote": "Test ROC-AUC (%) performance on 8 molecular prediction Benchmark datasets... MUV"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Open Graph Benchmark: Datasets for Machine Learning on Graphs",
+          "justification": "This is the reference paper for the MUV dataset.",
+          "quote": "8 small-scale molecule datasets [14]"
+        }
+      },
+      {
+        "name": {
+          "value": "HIV",
+          "justification": "HIV is one of the datasets used in the paper to evaluate model performance.",
+          "quote": "Test ROC-AUC (%) performance on 8 molecular prediction Benchmark datasets... HIV"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Open Graph Benchmark: Datasets for Machine Learning on Graphs",
+          "justification": "This is the reference paper for the HIV dataset.",
+          "quote": "8 small-scale molecule datasets [14]"
+        }
+      },
+      {
+        "name": {
+          "value": "BACE",
+          "justification": "BACE is one of the datasets used in the paper to evaluate model performance.",
+          "quote": "Test ROC-AUC (%) performance on 8 molecular prediction Benchmark datasets... BACE"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Open Graph Benchmark: Datasets for Machine Learning on Graphs",
+          "justification": "This is the reference paper for the BACE dataset.",
+          "quote": "8 small-scale molecule datasets [14]"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "FAISS",
+          "justification": "FAISS is used in the retrieval process of the proposed GRAPHRETRIEVAL framework.",
+          "quote": "we then construct a single Maximum Inner Product Search (MIPS) index using FAISS [17], where the key is hXi and the value is the corresponding example (Xi , li )."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Billion-scale similarity search with gpus",
+          "justification": "This is the reference paper for the FAISS library.",
+          "quote": "FAISS [17]"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 3218,
+    "prompt_tokens": 13372,
+    "total_tokens": 16590
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "paper": "2311.09828.txt",
+  "words": 13838,
+  "extractions": {
+    "title": {
+      "value": "AfriMTE and AfriCOMET: Enhancing COMET to Embrace Under-resourced African Languages",
+      "justification": "Derived from the title of the paper.",
+      "quote": "AfriMTE and AfriCOMET: Enhancing COMET to Embrace Under-resourced African Languages"
+    },
+    "description": "The paper addresses the challenges of evaluating machine translation (MT) for under-resourced African languages by creating high-quality human evaluation data and developing tailored COMET metrics. It introduces AfriMTE, a human evaluation dataset for 13 African languages, and AfriCOMET, COMET evaluation metrics enhanced with an African-centric multilingual encoder.",
+    "type": {
+      "value": "Empirical study",
+      "justification": "The paper involves the creation of datasets and models and provides empirical results on their performance.",
+      "quote": "In this paper, we address these challenges by creating high-quality human evaluation data..."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The primary focus of the paper is on enhancing machine translation evaluation for under-resourced languages, a core topic within Natural Language Processing (NLP).",
+        "quote": "...we develop AfriCOMET: COMET evaluation metrics for African languages by leveraging DA data from well-resourced languages..."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Machine Translation",
+          "justification": "The paper focuses on evaluating and improving metrics for machine translation, specifically for African languages.",
+          "quote": "Recent advances in machine translation (MT) have focused on scaling multilingual translation models and evaluation data to hundreds of languages, including multiple under-resourced languages..."
+        },
+        "aliases": [
+          "MT"
+        ]
+      },
+      {
+        "name": {
+          "value": "Multilingual Models",
+          "justification": "The paper discusses enhancing multilingual models like COMET and AfroXLM-R to better serve African languages.",
+          "quote": "...we will release all evaluation datasets, code, and models publicly."
+        },
+        "aliases": [
+          "Multilingual NLP"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "AfriCOMET",
+          "justification": "AfriCOMET is developed in the paper as an enhanced COMET evaluation metric for African languages by leveraging DA data from well-resourced languages and using a multilingual encoder, AfroXLM-R.",
+          "quote": "...we develop AfriCOMET: COMET evaluation metrics for African languages by leveraging DA data from well-resourced languages and an African-centric multilingual encoder (AfroXLM-R)..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 1,
+          "justification": "AfriCOMET is specifically introduced and evaluated in the paper.",
+          "quote": "...we develop AfriCOMET: COMET evaluation metrics for African languages..."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "AfriCOMET model executions include detailed experimental setups using GPUs.",
+          "quote": "...each model is executed on a single NVIDIA A100-SXM4-80GB graphics card, with a configured batch size of 16 and a gradient accumulation across 2 batches."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "AfriCOMET is extensively compared with other metrics like COMET22, BERTScore, and GPT-4 in terms of various correlation coefficients.",
+          "quote": "Results of sentence-level Spearman-rank correlation coefficients are shown in Table 2. Given that “WMT Others” does not include any African language except English..."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "AfriCOMET is a new model introduced in this paper, so there is no prior referenced paper.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "AfroXLM-R",
+          "justification": "AfroXLM-R is used as the multilingual encoder in the development of the state-of-the-art MT evaluation metrics for African languages.",
+          "quote": "Furthermore, we develop AfriCOMET: COMET evaluation metrics for African languages by leveraging DA data from well-resourced languages and an African-centric multilingual encoder (AfroXLM-R)..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "AfroXLM-R is not introduced in this paper. It is used as a part of the evaluation framework.",
+          "quote": "Furthermore, we develop AfriCOMET: COMET evaluation metrics for African languages by leveraging DA data from well-resourced languages and an African-centric multilingual encoder (AfroXLM-R)..."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "AfroXLM-R is executed as part of the AfriCOMET model development and evaluation process.",
+          "quote": "...each model is executed on a single NVIDIA A100-SXM4-80GB graphics card, with a configured batch size of 16 and a gradient accumulation across 2 batches."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "AfroXLM-R, used within AfriCOMET, is compared against other metrics.",
+          "quote": "Results of sentence-level Spearman-rank correlation coefficients are shown in Table 2. Given that “WMT Others” does not include any African language except English..."
+        },
+        "referenced_paper_title": {
+          "value": "Adapting Pre-trained Language Models to African Languages via Multilingual Adaptive Fine-Tuning",
+          "justification": "The AfroXLM-R model is referenced from another study and used in this research.",
+          "quote": "Jesujoba O. Alabi, David Ifeoluwa Adelani, Marius Mosbach, and Dietrich Klakow. 2022. Adapting pretrained language models to African languages via multilingual adaptive fine-tuning."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "AfriMTE",
+          "justification": "AfriMTE is introduced in the paper as a human evaluation dataset focusing on MT adequacy and fluency evaluation for 13 typologically diverse African languages.",
+          "quote": "To overcome the scarcity of evaluation datasets, we create A FRI MTE—a human evaluation dataset focusing on MT adequacy and fluency evaluation for 13 typologically diverse African languages."
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "AfriMTE is a new dataset introduced in this paper, so there is no prior referenced paper.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "FLORES-200",
+          "justification": "The FLORES-200 dataset is used as the source of annotations for the evaluation of the MT engines.",
+          "quote": "Our annotation work concentrates on the dev and devtest subsets from the FLORES-200 dataset (NLLB-Team et al., 2022)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "No Language Left Behind: Scaling Human-Centered Machine Translation",
+          "justification": "The paper references the original study that developed the FLORES-200 dataset.",
+          "quote": "NLLB-Team, Marta Ruiz Costa-jussà, James Cross, et al. 2022. No language left behind: Scaling human-centered machine translation."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "COMET",
+          "justification": "COMET is used as the baseline evaluation metric in the paper to compare with the newly developed metrics.",
+          "quote": "While embedding-based metrics are currently favored for evaluation in MT (Freitag et al., 2022), the application of these metrics to under-resourced languages faces three challenges..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "COMET: A Neural Framework for MT Evaluation",
+          "justification": "The paper references the original work on the COMET framework.",
+          "quote": "COMET: A Neural Framework for MT Evaluation by Rei, Stewart, Farinha, and Lavie, 2020."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1535,
+    "prompt_tokens": 29844,
+    "total_tokens": 31379
+  }
+}

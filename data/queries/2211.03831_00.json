@@ -1,0 +1,215 @@
+{
+  "paper": "2211.03831.txt",
+  "words": 7930,
+  "extractions": {
+    "title": {
+      "value": "Multi-Head Adapter Routing for Cross-ask Generalization",
+      "justification": "The title is clearly stated at the top of the provided paper content",
+      "quote": "Multi-Head Adapter Routing for Cross-Task Generalization"
+    },
+    "description": "This paper introduces Multi-Head Routing (MHR), an extension of Polytropon (Poly), which enhances parameter-efficient fine-tuning (PEFT) for cross-task generalization. The model is designed to provide expressivity by combining blocks from different adapters during pre-training and few-shot adaptation. The paper also explores several variants of MHR, such as MHR-z and MHR-µ, and evaluates their performance on the T0 and Super-Natural Instructions datasets.",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The paper involves experiments and results evaluating the performance of different models and methodologies, which is typical of empirical studies.",
+      "quote": "Our experimental evaluation aims to answer three research questions: 1) Does the expressivity of the routing function matter? 2) Why do routing-based PEFT methods yield superior performance? 3) Is routing useful during both multi-task pre-training and few-shot adaptation?"
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The focus of the research is on parameter-efficient fine-tuning methods in the context of NLP tasks.",
+        "quote": "Specifically, we focus on Polytropon [Ponti et al., 2023], a model where each task is associated with a subset of adapters by a routing function."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Few-shot Learning",
+          "justification": "The study aims to improve few-shot learning techniques by leveraging different adapter routing methods.",
+          "quote": "Multi-Head Routing demonstrates the importance of fine-grained adapter selection for sample-efficient generalization and holds promise to improve other modular methods."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Transfer Learning",
+          "justification": "The paper discusses methods that involve transferring knowledge from pre-trained adapters to new tasks.",
+          "quote": "These only fine-tune adapters while leaving the pre-trained model ‘frozen’. ...to leverage data in Ttrain and transfer knowledge to facilitate learning of the test tasks Teval."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Multi-Head Routing (MHR)",
+          "justification": "The study introduces this model as a main contribution.",
+          "quote": "Hence, we propose MHR (Multi-Head Routing), which combines blocks of parameters from different adapters and outperforms Poly under a comparable parameter budget."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 1,
+          "justification": "This is the novel model introduced in the paper.",
+          "quote": "In this paper, we introduce the Multi-Head Routing (MHR) model."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The paper presents results of the model's execution on multiple datasets.",
+          "quote": "We evaluate MHR and a series of competitive baselines for few-shot task adaptation on the T0 task suite and Super-Natural Instructions."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "MHR is compared against several baseline models.",
+          "quote": "MHR outperforms Poly and single adapter baselines."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "This is a novel contribution and not cited as a reference.",
+          "quote": "In this paper, we introduce the Multi-Head Routing (MHR) model."
+        }
+      },
+      {
+        "name": {
+          "value": "Polytropon (Poly)",
+          "justification": "The model Polytropon is discussed and improved upon in this study.",
+          "quote": "Polytropon [Ponti et al., 2023] (Poly) jointly learns an inventory of adapters and a routing function that selects a (variable-size) subset of adapters for each task during both pre-training and few-shot adaptation."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "The model is an existing contribution referenced in this paper.",
+          "quote": "Polytropon [Ponti et al., 2023] (Poly)"
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The model Polytropon (Poly) has been re-evaluated in this study.",
+          "quote": "We evaluate MHR and a series of competitive baselines for few-shot task adaptation on the T0 task suite and Super-Natural Instructions."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "Polytropon (Poly) is used as a baseline for comparison against MHR.",
+          "quote": "MHR outperforms Poly and single adapter baselines."
+        },
+        "referenced_paper_title": {
+          "value": "Combining Parameter-Efficient Modules for Task-Level Generalisation",
+          "justification": "The referenced title for the model Polytropon is mentioned in the paper.",
+          "quote": "Polytropon [Ponti et al., 2023]"
+        }
+      },
+      {
+        "name": {
+          "value": "LoRA",
+          "justification": "LoRA is an established model used for the comparative evaluation in the paper.",
+          "quote": "To reduce the memory cost of duplicating the entire array of parameters for each downstream task, recent approaches resort to parameter-efficient fine-tuning (PEFT) methods, such as LoRA [Hu et al., 2022]"
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "LoRA is an existing model referenced in the study for comparative analysis.",
+          "quote": "LoRA [Hu et al., 2022]"
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The LoRA model has been used as part of the empirical evaluation.",
+          "quote": "LoRA is used as one of the baselines for few-shot adaptation."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "LoRA is compared with MHR and other models in the performance evaluation.",
+          "quote": "MHR outperforms Poly and single adapter baselines."
+        },
+        "referenced_paper_title": {
+          "value": "LoRA: Low-Rank Adaptation of Large Language Models",
+          "justification": "The referenced title for the model LoRA is mentioned in the paper.",
+          "quote": "LoRA [Hu et al., 2022]"
+        }
+      },
+      {
+        "name": {
+          "value": "(IA)3",
+          "justification": "The (IA)3 model is referenced and used for comparative evaluation in the paper.",
+          "quote": "These only fine-tune adapters while leaving the pre-trained model ‘frozen’, such methods include LoRA [Hu et al., 2022], SFT [Ansell et al., 2022], or (IA)3 [Liu et al., 2022]"
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "(IA)3 is an existing model referenced in the study for comparative analysis.",
+          "quote": "(IA)3 [Liu et al., 2022]"
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The (IA)3 model is part of the empirical evaluation in the study.",
+          "quote": "These only fine-tune adapters while leaving the pre-trained model ‘frozen’. Such methods include LoRA and (IA)3."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "(IA)3 is compared with MHR and other models in the performance evaluation.",
+          "quote": "MHR outperforms Poly and single adapter baselines."
+        },
+        "referenced_paper_title": {
+          "value": "(IA)^3: Efficient Tuning for Information Extraction Tasks",
+          "justification": "The referenced title for the model (IA)3 is mentioned in the paper.",
+          "quote": "(IA)3 [Liu et al., 2022]"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "T0",
+          "justification": "The T0 dataset is used for evaluating few-shot task adaptation in the study.",
+          "quote": "We evaluate MHR and a series of competitive baselines for few-shot task adaptation on the T0 task suite."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Multitask Prompted Training Enables Zero-Shot Task Generalization",
+          "justification": "The referenced title for the dataset T0 is mentioned in the paper.",
+          "quote": "T0 tasks [Sanh et al., 2022]"
+        }
+      },
+      {
+        "name": {
+          "value": "Super-Natural Instructions (SuperNI)",
+          "justification": "The Super-Natural Instructions dataset is used for evaluating few-shot task adaptation in the study.",
+          "quote": "We evaluate MHR and a series of competitive baselines for few-shot task adaptation on the T0 task suite and Super-Natural Instructions."
+        },
+        "aliases": [
+          "SuperNI",
+          "Super-Natural Instructions"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Benchmarking Generalization via In-Context Instructions on 1,600+ Language Tasks",
+          "justification": "The referenced title for the dataset Super-Natural Instructions is mentioned in the paper.",
+          "quote": "Super-Natural Instructions [SuperNI; Wang et al., 2022a]"
+        }
+      },
+      {
+        "name": {
+          "value": "GLUE-rte",
+          "justification": "The paper states the use of GLUE-rte as an active task dataset.",
+          "quote": "Active Task GLUE-rte"
+        },
+        "aliases": [
+          "GLUE",
+          "General Language Understanding Evaluation"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "GLUE: A Multi-Task Benchmark and Analysis Platform for Natural Language Understanding",
+          "justification": "The referenced title for the dataset GLUE is mentioned in the paper.",
+          "quote": "Active Task GLUE-rte"
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 2397,
+    "prompt_tokens": 15490,
+    "total_tokens": 17887
+  }
+}

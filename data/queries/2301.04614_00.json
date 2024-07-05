@@ -1,0 +1,147 @@
+{
+  "paper": "2301.04614.txt",
+  "words": 7018,
+  "extractions": {
+    "title": {
+      "value": "Real-time simulation of viscoelastic tissue behavior with physics-guided deep learning",
+      "justification": "This is the title of the paper as stated at the beginning of the document.",
+      "quote": "Real-time simulation of viscoelastic tissue behavior with physics-guided deep learning"
+    },
+    "description": "The paper proposes a deep learning method for predicting the displacement fields of soft tissues with viscoelastic properties to improve real-time applications like virtual reality surgical training. It introduces a physics-guided loss function and combines convolutional (CNN) and recurrent layers (LSTM) to improve prediction accuracy and generalization, comparing its performance with traditional FEM techniques and existing deep learning models.",
+    "type": {
+      "value": "Empirical study",
+      "justification": "The paper describes experiments and results obtained from implementing the proposed deep learning method, indicating empirical research work.",
+      "quote": "Our experiments have demonstrated that physics-guided deep learning is a viable solution for speeding up FEM simulations."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The paper utilizes Convolutional Neural Networks (CNNs), a common technique in the field of computer vision, to perform simulations of tissue deformation.",
+        "quote": "Recently, Convolutional Neural Networks (CNNs), a class of machine learning methods, have been used to speed up FEM simulations."
+      },
+      "aliases": [
+        "CV"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Physics-Guided Learning",
+          "justification": "The primary novelty in the paper is the introduction of a physics-guided loss function to improve the model prediction accuracy for viscoelastic tissue behavior.",
+          "quote": "Combining physical laws with deep learning, referred to as physics-guided deep learning, has received considerable attention in recent years."
+        },
+        "aliases": [
+          "PGL"
+        ]
+      },
+      {
+        "name": {
+          "value": "Medical Simulation",
+          "justification": "The application domain focuses on simulating tissue behavior for virtual reality surgical training, making medical simulation a significant sub-field.",
+          "quote": "Virtual reality simulators thus enable trainees to practice on a variety of educational scenarios as well as to enable the definition of new training metrics and applications (e.g. remote training)."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "CNN-LSTM",
+          "justification": "The paper describes a deep learning model that combines Convolutional Neural Networks (CNN) for spatial feature extraction and Long Short-Term Memory (LSTM) networks for temporal sequence modeling.",
+          "quote": "Our proposed deep neural network model combines Convolutional Neural Network (CNN) and Long Short-Term Memory (LSTM)."
+        },
+        "aliases": [
+          "",
+          "generic CNN-LSTM"
+        ],
+        "is_contributed": {
+          "value": 1,
+          "justification": "The CNN-LSTM model is a newly proposed deep learning architecture in this paper.",
+          "quote": "This work proposes, for the first time to the authors’ knowledge, a deep learning method for predicting displacement fields of soft tissues with viscoelastic properties."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The model execution process involves training and inference using computational resources, indicating execution.",
+          "quote": "All the experiments have been done on a personal computer with an Intel Core i7 (3.40 GHz) and an Nvidia Geforce RTX 2080 with 11 GB of video RAM."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The performance of the CNN-LSTM model is compared against other methods like linear regression and traditional CNN models.",
+          "quote": "Herein, our proposed technique has been compared with two different techniques for the prediction of tissue deformation from the external force: linear regression (as a baseline model) and a previously introduced Convolutional Neural Network (CNN) model."
+        },
+        "referenced_paper_title": {
+          "value": "U-Net: convolutional networks for biomedical image segmentation",
+          "justification": "The CNN component of the model is based on the U-Net architecture, as referenced by Ronneberger et al.",
+          "quote": "Ronneberger, O., Fischer, P., Brox, T., 2015. U-Net: convolutional networks for biomedical image segmentation. Medical Image Computing and Computer-Assisted Intervention, Springer, LNCS, 9351, 234–241."
+        }
+      },
+      {
+        "name": {
+          "value": "CNN U-Net",
+          "justification": "The paper includes the use of a CNN model based on the U-Net architecture for comparison purposes.",
+          "quote": "The selected reference convolutional neural network is based on a U-Net architecture and is represented in Figure 1."
+        },
+        "aliases": [
+          "U-Net"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "The CNN U-Net model is not a contribution of this paper, as it was introduced in previous research.",
+          "quote": "U-Net, a neural network architecture based on convolutional layers, [22] has already been experimented successfully for the simulation of simple hyperelastic materials [21]."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The execution of the CNN U-Net model is described in the experiments section.",
+          "quote": "Models have been implemented in TensorFlow, and the source code is available at: https://github.com/Mkarami3/UNet_FEM."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The performance of the CNN U-Net model is compared against the proposed CNN-LSTM model and baseline methods.",
+          "quote": "Herein, our proposed technique has been compared with two different techniques for the prediction of tissue deformation from the external force: linear regression (as a baseline model) and a previously introduced Convolutional Neural Network (CNN) model."
+        },
+        "referenced_paper_title": {
+          "value": "U-Net: convolutional networks for biomedical image segmentation",
+          "justification": "The CNN U-Net model is based on the architecture introduced by Ronneberger et al. in their referenced paper.",
+          "quote": "Ronneberger, O., Fischer, P., Brox, T., 2015. U-Net: convolutional networks for biomedical image segmentation. Medical Image Computing and Computer-Assisted Intervention, Springer, LNCS, 9351, 234–241."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "NeuroTouch FEM simulation dataset",
+          "justification": "The FEM simulation dataset created using the NeuroTouch virtual reality neurosurgery simulator is utilized to train and evaluate the models.",
+          "quote": "The deep learning models are trained on a set of FEM datasets generated from a commercial-grade simulator."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "NeuroTouch: A Physics-Based Virtual Simulator for Cranial Microneurosurgery Training",
+          "justification": "The dataset is generated using the NeuroTouch neurosurgery simulator, referring to the work by Delorme et al.",
+          "quote": "A virtual reality neurosurgery simulator with haptic feedback2 [1, 2], (Figure 2) was used to illustrate the applicability of the proposed method for fast viscoelastic tissue displacement simulation."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "TensorFlow",
+          "justification": "The paper mentions the implementation of models using TensorFlow.",
+          "quote": "The models have been implemented in TensorFlow, and the source code is available at: https://github.com/Mkarami3/UNet_FEM."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems",
+          "justification": "This is the original paper introducing TensorFlow, specifying its use for large-scale machine learning implementations.",
+          "quote": "The models have been implemented in TensorFlow, and the source code is available at: https://github.com/Mkarami3/UNet_FEM."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1511,
+    "prompt_tokens": 12051,
+    "total_tokens": 13562
+  }
+}

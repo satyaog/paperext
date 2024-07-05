@@ -1,0 +1,165 @@
+{
+  "paper": "2202.07550.txt",
+  "words": 9654,
+  "extractions": {
+    "title": {
+      "value": "Label fusion and training methods for reliable representation of inter-rater uncertainty",
+      "justification": "This is the main title as indicated at the beginning of the paper.",
+      "quote": "Label fusion and training methods for reliable representation of inter-rater uncertainty"
+    },
+    "description": "The paper explores different methods to handle inter-rater variability when training deep learning models for medical image segmentation. It compares three label fusion methods using both conventional training frameworks and a specialized framework called SoftSeg to handle soft labels. The study evaluates these methods on two public datasets and emphasizes the importance of producing calibrated outputs that account for inter-rater disagreements.",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The paper involves experimental evaluations of different methods on datasets, quantifying their performance and comparing results.",
+      "quote": "Our results, across 10 data splittings on two public datasets (spinal cord gray matter challenge, and multiple sclerosis brain lesion segmentation), indicate that SoftSeg models, regardless of the ground truth fusion method, had better calibration and preservation of the inter-rater rater variability compared with their conventional counterparts without impacting the segmentation performance."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Medical Image Segmentation",
+        "justification": "The paper focuses on segmentation techniques and methodologies in the context of medical imaging.",
+        "quote": "Medical tasks are prone to inter-rater variability due to multiple factors such as image quality, professional experience and training, or guideline clarity. Training deep learning networks with annotations from multiple raters is a common practice that mitigates the model’s bias towards a single expert."
+      },
+      "aliases": [
+        "Medical Imaging"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Calibration and Uncertainty Estimation",
+          "justification": "A significant part of the paper deals with the need for models to produce calibrated outputs and correctly estimating the uncertainty associated with inter-rater variability.",
+          "quote": "Quantitative assessment of the inter-rater variability preservation... Brier score... MAE... predicted uncertainty."
+        },
+        "aliases": [
+          "Uncertainty Estimation",
+          "Model Calibration"
+        ]
+      },
+      {
+        "name": {
+          "value": "Label Fusion",
+          "justification": "The paper examines various methods of combining multiple rater annotations into a single ground truth, which is a key aspect of the study.",
+          "quote": "We focus on comparing three label fusion methods: STAPLE, average of the rater’s segmentation, and random sampling of each rater’s segmentation during training."
+        },
+        "aliases": [
+          "Annotation Fusion"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "SoftSeg",
+          "justification": "SoftSeg is one of the main frameworks discussed in the paper, designed to handle soft labels and preserve inter-rater variability.",
+          "quote": "SoftSeg framework that limits information loss by treating the segmentation task as a regression."
+        },
+        "aliases": [
+          "SoftSegmentation"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "SoftSeg was discussed and applied but the paper mentions its prior introduction.",
+          "quote": "and the recently published SoftSeg framework that limits information loss by treating the segmentation task as a regression."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The experiments and evaluations in the paper were performed using the SoftSeg model.",
+          "quote": "SoftSeg had segmentation performance systematically superior or equal to the conventionally trained models and had the best calibration and preservation of the inter-rater variability."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The model's performance was compared against conventional models in the experiments.",
+          "quote": "Each label fusion method is studied using both the conventional training framework and the recently published SoftSeg framework."
+        },
+        "referenced_paper_title": {
+          "value": "SoftSeg: Advantages of soft versus binary training for image segmentation",
+          "justification": "The referenced paper introducing the SoftSeg framework.",
+          "quote": "SoftSeg framework that limits information loss by treating the segmentation task as a regression. (Gros et al., 2021a)"
+        }
+      },
+      {
+        "name": {
+          "value": "U-Net",
+          "justification": "U-Net is mentioned as the base architecture used for training and comparison.",
+          "quote": "The label generated by these methods is used to feed a U-Net (Ronneberger et al., 2015), widely considered as the state-of-the-art in automatic image segmentation."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "U-Net was used as a base model in the study and is not an original contribution of this paper.",
+          "quote": "The label generated by these methods is used to feed a U-Net (Ronneberger et al., 2015), widely considered as the state-of-the-art in automatic image segmentation."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "U-Net models were used for the training and evaluation experiments discussed.",
+          "quote": "All candidates were trained on 2D U-Net models."
+        },
+        "is_compared": {
+          "value": 0,
+          "justification": "The comparison is mainly between SoftSeg and conventional models, not different variants of U-Net.",
+          "quote": "We compare each label fusion method when trained with both SoftSeg and a conventional segmentation training framework."
+        },
+        "referenced_paper_title": {
+          "value": "U-Net: Convolutional Networks for Biomedical Image Segmentation",
+          "justification": "The original paper introducing the U-Net architecture.",
+          "quote": "The label generated by these methods is used to feed a U-Net (Ronneberger et al., 2015), widely considered as the state-of-the-art in automatic image segmentation."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Spinal cord gray matter challenge",
+          "justification": "This dataset was one of the main datasets used for training and evaluation.",
+          "quote": "Gray and white matter challenge. The SCGM dataset contains 80 T2*-weighted MRI of the cervical spinal cord."
+        },
+        "aliases": [
+          "SCGM"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Spinal cord gray matter segmentation challenge",
+          "justification": "The referenced paper providing details about the SCGM dataset.",
+          "quote": "A detailed description of the dataset and demographics of the scanned subjects and acquisition parameters can be found in Prados et al. (2017)."
+        }
+      },
+      {
+        "name": {
+          "value": "Multiple sclerosis brain lesion challenge",
+          "justification": "This dataset was one of the main datasets used for training and evaluation.",
+          "quote": "MS brain lesion challenge. The MS brain lesion dataset containing MRI scans from 15 subjects was presented during the MICCAI 2016 challenge."
+        },
+        "aliases": [
+          "MS brain lesion dataset"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Objective evaluation of multiple sclerosis lesion segmentation using a data management and processing infrastructure",
+          "justification": "The referenced paper providing details about the MS brain lesion dataset.",
+          "quote": "The dataset was presented during the MICCAI 2016 challenge. For a detailed description of the dataset see Commowick et al. (2018)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "ivadomed",
+          "justification": "ivadomed is mentioned as the framework used for processing, training, and evaluation.",
+          "quote": "future studies could consider undertaking similar analyses with different model architectures, such as 3D models. The processing, training and evaluation pipeline is based on the open-source framework ivadomed.org"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ivadomed: A medical imaging deep learning toolbox",
+          "justification": "The referenced paper introducing ivadomed.",
+          "quote": "ivadomed is an open-source medical image analysis Python library based on PyTorch that provides tools, e.g., data loader, models, losses, transformations, pre- and post-processing, metrics, to train and use deep learning models for medical tasks such as segmentation."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1851,
+    "prompt_tokens": 17499,
+    "total_tokens": 19350
+  }
+}

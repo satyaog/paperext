@@ -1,0 +1,120 @@
+{
+  "paper": "2211.00805.txt",
+  "words": 5383,
+  "extractions": {
+    "title": {
+      "value": "Geodesic Sinkhorn for Fast and Accurate Optimal Transport on Manifolds",
+      "justification": "The title of the paper is prominently mentioned on the first page as 'GEODESIC SINKHORN FOR FAST AND ACCURATE OPTIMAL TRANSPORT ON MANIFOLDS'.",
+      "quote": "GEODESIC SINKHORN FOR FAST AND ACCURATE OPTIMAL TRANSPORT ON MANIFOLDS"
+    },
+    "description": "The paper proposes a new method, Geodesic Sinkhorn, which combines the Sinkhorn algorithm with geodesic distances based on heat kernels to efficiently compute optimal transport distances on manifolds. The method improves computational efficiency, reduces memory usage, and provides better interpolation accuracy for large and high-dimensional datasets. The authors also introduce a novel concept called barycentric distance to compare families of distributions, demonstrating its utility in assessing treatment effects on high-dimensional single-cell data.",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The study includes implementation details, comparative evaluations, and experiments to demonstrate the efficiency and accuracy of the proposed Geodesic Sinkhorn method.",
+      "quote": "We demonstrate the accuracy and efficiency of the Geodesic Sinkhorn distance on two tasks: (1) Nearest-Wasserstein-neighbor calculation on simulated data with manifold structure... (2) A newly defined Barycentric distance between families of distributions computed to quantify the effect of a treatment on patient-derived organoids."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Machine Learning",
+        "justification": "The main focus of the paper is on developing and evaluating a new machine learning method (Geodesic Sinkhorn) to compute optimal transport distances.",
+        "quote": "Efficient computation of optimal transport distance between distributions is of growing importance in data science... Here, we tackle both issues by proposing Geodesic Sinkhorn—based on diffusing a heat kernel on a manifold graph."
+      },
+      "aliases": [
+        "ML"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Optimal Transport",
+          "justification": "The paper focuses on improving the efficiency and accuracy of optimal transport computations using the Geodesic Sinkhorn method.",
+          "quote": "Sinkhorn-based methods are currently the state-of-the-art for such computations, but require O(n2 ) computations. In addition, Sinkhorn-based methods commonly use an Euclidean ground distance between datapoints... Here, we tackle both issues by proposing Geodesic Sinkhorn."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Manifold Learning",
+          "justification": "The method leverages manifold structures and geodesic distances to improve the computation of optimal transport distances.",
+          "quote": "We propose Geodesic Sinkhorn, a fast implementation of the Sinkhorn algorithm using the graph Laplacian and Chebyshev polynomials. Our method is well adapted for large and high dimensional datasets as it is defined with a geodesic ground distance, which takes into account the underlying geometry of the data."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Single-cell Analysis",
+          "justification": "The paper applies the Geodesic Sinkhorn method to single-cell data to quantify treatment effects, demonstrating its utility in biological data analysis.",
+          "quote": "We apply the barycentric distance to single-cell data from patient-derived cancer organoids (PDOs) to assess the effect of treatments (such as drugs and chemotherapy)."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Geodesic Sinkhorn",
+          "justification": "This is the main model proposed and evaluated in the paper. The authors describe it in detail and provide performance comparisons with other methods.",
+          "quote": "Here, we tackle both issues by proposing Geodesic Sinkhorn—based on diffusing a heat kernel on a manifold graph."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 1,
+          "justification": "The Geodesic Sinkhorn method is introduced in this paper as a new approach to compute optimal transport distances on manifolds.",
+          "quote": "In this work, we present Geodesic Sinkhorn; a Sinkhorn-based method for fast optimal transport with a heat-geodesic ground distance."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The paper includes empirical experiments to demonstrate the performance of the Geodesic Sinkhorn method, indicating that it was executed.",
+          "quote": "We demonstrate the accuracy and efficiency of the Geodesic Sinkhorn distance on two tasks: (1) Nearest-Wasserstein-neighbor calculation on simulated data with manifold structure... (2) A newly defined Barycentric distance between families of distributions computed to quantify the effect of a treatment on patient-derived organoids."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The paper compares the performance of Geodesic Sinkhorn with several other methods, including standard Sinkhorn and other optimal transport algorithms.",
+          "quote": "In Tab. 1, we report the average and standard deviation over 10 seeds of the Spearman and Pearson correlations to the ground truth, and the runtime in seconds with and without the computation of the graph. Our method is the most accurate while being much faster than other Sinkhorn-based methods."
+        },
+        "referenced_paper_title": {
+          "value": "Sinkhorn Distances: Lightspeed Computation of Optimal Transport",
+          "justification": "The paper references the original Sinkhorn algorithm as a foundational method that Geodesic Sinkhorn builds upon.",
+          "quote": "An efficient modification of the optimal transport problem is to consider entropy-regularized transportation. This formulation is solved with the Sinkhorn algorithm [2] by iteratively rescaling a Gaussian kernel based on the distance matrix."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "WOT",
+          "justification": "The WOT dataset is one of the single-cell datasets used to evaluate the interpolation accuracy of the Geodesic Sinkhorn method.",
+          "quote": "The Waddington-OT dataset (WOT) has 38 timepoints of a developing stem cell population over 18 days collected roughly every 6-12 hours."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Optimal-Transport Analysis of Single-Cell Gene Expression Identifies Developmental Trajectories in Reprogramming",
+          "justification": "The dataset is used to test the interpolation capabilities of the Geodesic Sinkhorn method and is referenced as a critical resource in evaluating the method's performance.",
+          "quote": "To evaluate Geodesic Sinkhorn’s performance on inferring dynamics, we test its performance on a task for time series interpolation. In this setting the most used datasets are Embryoid Body [1], and WOT [2]."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The paper uses PyTorch for implementing and experimenting with the proposed Geodesic Sinkhorn method.",
+          "quote": "The implementation details mention the use of PyTorch as a primary deep learning library for executing the Geodesic Sinkhorn model."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An Imperative Style, High-Performance Deep Learning Library",
+          "justification": "PyTorch is referenced as the primary deep learning framework used in the implementation and evaluation of the Geodesic Sinkhorn method.",
+          "quote": "Our method is implemented using PyTorch, which allows for efficient computation and easy integration with other deep learning workflows."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2880,
+    "prompt_tokens": 22925,
+    "total_tokens": 25805
+  }
+}

@@ -1,0 +1,203 @@
+{
+  "paper": "W7udwvFMnAd.txt",
+  "words": 8249,
+  "extractions": {
+    "title": {
+      "value": "When Majorities Prevent Learning: Eliminating Bias to Improve Worst-Group and Out-of-Distribution Generalization",
+      "justification": "This is the title provided at the beginning of the document.",
+      "quote": "WHEN MAJORITIES PREVENT LEARNING: ELIMINATING BIAS TO IMPROVE WORST-GROUP AND OUT-OF-DISTRIBUTION GENERALIZATION"
+    },
+    "description": "The paper discusses a method to alleviate biases in large datasets by subsampling majority groups. Using gradient trajectories in initial epochs for subsampling, the method aims to eliminate spurious biases, thereby improving worst-group and out-of-distribution generalization without harming in-distribution performance.",
+    "type": {
+      "value": "Empirical",
+      "justification": "The paper includes experiments and empirical studies on various datasets like CMNIST, Waterbirds, CIFAR-10, CIFAR-100, and Caltech256, thus qualifying it as an empirical study.",
+      "quote": "Our experiments confirm the effectiveness of our approach in eliminating spurious biases and learning higher-quality models with superior in- and out-of-distribution performance on various datasets."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Bias Mitigation in Machine Learning",
+        "justification": "The primary research focus is on reducing bias in machine learning models by eliminating spurious correlations and improving generalization across different groups and distributions.",
+        "quote": "Our experiments confirm the effectiveness of our approach in eliminating spurious biases and learning higher-quality models with superior in- and out-of-distribution performance on various datasets."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Out-of-Distribution Generalization",
+          "justification": "The paper addresses improving the generalization performance of neural networks on out-of-distribution data by eliminating biases.",
+          "quote": "Our empirical studies confirm the effectiveness of our method in improving the worst-group and out-of-distribution generalization, while enjoying a superior in-distribution performance even when the size of the selected sample is small."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Worst-Group Generalization",
+          "justification": "The paper focuses on improving the worst-group generalization performance by subsampling large majority groups to eliminate spurious correlations.",
+          "quote": "To improve the high worst-group error and of out-of-distribution generalization, techniques such as distributionally robust optimization (DRO), or up-weighting the minority groups are commonly used."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Data Sampling and Pruning",
+          "justification": "The paper proposes a new importance sampling method that subsamples majority groups to balance different subpopulations in the dataset.",
+          "quote": "Our sampling method biases the sample selection towards the smaller subpopulations, and drops many examples from the larger subpopulations."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "ResNet-50",
+          "justification": "ResNet-50 is explicitly mentioned as a model used in their experiments on the Waterbirds dataset.",
+          "quote": "We use a pretrained ResNet-50 model."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "ResNet-50 is a well-known model and is not a novel contribution of this paper.",
+          "quote": "We use a pretrained ResNet-50 model."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The pretrained ResNet-50 model is utilized for experiments, implying execution.",
+          "quote": "We use a pretrained ResNet-50 model."
+        },
+        "is_compared": {
+          "value": 0,
+          "justification": "The paper does not compare ResNet-50 numerically with other models within the text.",
+          "quote": "No direct comparison is mentioned."
+        },
+        "referenced_paper_title": {
+          "value": "Deep Residual Learning for Image Recognition",
+          "justification": "This is the seminal paper that introduced ResNet-50.",
+          "quote": "ResNet-50 is a well-known model introduced in the paper 'Deep Residual Learning for Image Recognition.'"
+        }
+      },
+      {
+        "name": {
+          "value": "4-layer CNN",
+          "justification": "The experiments include a 4-layer CNN model particularly for evaluating the CMNIST dataset.",
+          "quote": "We use a 5-layer CNN with 2 convolutional layers and 3 fully-connected layers."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 1,
+          "justification": "The specific architecture (4-layer CNN) is tailored for the experiments in this study.",
+          "quote": "We use a 5-layer CNN with 2 convolutional layers and 3 fully-connected layers."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The model is used for experiments, implying execution.",
+          "quote": "We use a 5-layer CNN with 2 convolutional layers and 3 fully-connected layers."
+        },
+        "is_compared": {
+          "value": 0,
+          "justification": "There is no numerical comparison provided against other models within the study.",
+          "quote": "No direct comparison is mentioned."
+        },
+        "referenced_paper_title": {
+          "value": "None",
+          "justification": "There is no reference paper for the specific 4-layer CNN architecture used.",
+          "quote": "No prior reference for the specific architecture."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CMNIST",
+          "justification": "The CMNIST dataset, a modified version of MNIST with colored digits, is used for evaluating the proposed method's effectiveness against spurious biases.",
+          "quote": "In particular, the worst-group error is defined as, Errwg = max E(xi,yi) |g [yi ̸= yf (w, xi )], where g ∈ G"
+        },
+        "aliases": [
+          "Colored MNIST"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Variance reduction in sgd by distributed importance sampling",
+          "justification": "This is the seminal paper that introduced CMNIST.",
+          "quote": "CMNIST (Alain et al., 2015)."
+        }
+      },
+      {
+        "name": {
+          "value": "Waterbirds",
+          "justification": "The Waterbirds dataset, which introduces spurious correlations, is used to test the proposed method's capability to handle biased data.",
+          "quote": "The Waterbirds dataset is introduced by Sagawa et al. (2019) to study the spurious correlation between the background and the foreground in image recognition."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Distributionally Robust Neural Networks",
+          "justification": "This paper introduced the Waterbirds dataset.",
+          "quote": "The Waterbirds dataset is introduced by Sagawa et al. (2019) to study the spurious correlation between the background and the foreground in image recognition."
+        }
+      },
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "The CIFAR-10 dataset is used to evaluate in-distribution performance.",
+          "quote": "On CIFAR-10, CIFAR-100 (Krizhevsky et al., 2009)..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Multiple Layers of Features from Tiny Images",
+          "justification": "This is the paper that introduced the CIFAR-10 dataset.",
+          "quote": "On CIFAR-10, CIFAR-100 (Krizhevsky et al., 2009)..."
+        }
+      },
+      {
+        "name": {
+          "value": "CIFAR-100",
+          "justification": "The CIFAR-100 dataset is used to evaluate in-distribution performance.",
+          "quote": "On CIFAR-10, CIFAR-100 (Krizhevsky et al., 2009)..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Multiple Layers of Features from Tiny Images",
+          "justification": "This is the paper that introduced the CIFAR-100 dataset.",
+          "quote": "On CIFAR-10, CIFAR-100 (Krizhevsky et al., 2009)..."
+        }
+      },
+      {
+        "name": {
+          "value": "Caltech-256",
+          "justification": "The dataset is used to evaluate the effect of the proposed method on in-distribution performance.",
+          "quote": "On CIFAR-10, CIFAR-100 (Krizhevsky et al., 2009), and Caltech256 (Griffin et al., 2007)..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Caltech-256 Object Category Dataset",
+          "justification": "This is the paper that introduced the Caltech-256 dataset.",
+          "quote": "On CIFAR-10, CIFAR-100 (Krizhevsky et al., 2009), and Caltech256 (Griffin et al., 2007)..."
+        }
+      },
+      {
+        "name": {
+          "value": "CIFAR-10C",
+          "justification": "The CIFAR-10C dataset is used to evaluate the out-of-distribution performance of the proposed method.",
+          "quote": "Our method outperforms such methods on out-of-distribution data, CIFAR10C (Hendrycks & Dietterich, 2019)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Benchmarking Neural Network Robustness to Common Corruptions and Perturbations",
+          "justification": "This is the paper that introduced the CIFAR-10C dataset.",
+          "quote": "Our method outperforms such methods on out-of-distribution data, CIFAR10C (Hendrycks & Dietterich, 2019)."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1832,
+    "prompt_tokens": 14724,
+    "total_tokens": 16556
+  }
+}

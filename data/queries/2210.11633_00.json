@@ -1,0 +1,194 @@
+{
+  "paper": "2210.11633.txt",
+  "words": 13716,
+  "extractions": {
+    "title": {
+      "value": "Graphically Structured Diffusion Models",
+      "justification": "The paper is explicitly titled 'Graphically Structured Diffusion Models'.",
+      "quote": "Graphically Structured Diffusion Models\n\nChristian Weilbach 1 William Harvey 1 Frank Wood 1\n\narXiv:2210.11633v3 [cs.LG] 16 Jun 2023"
+    },
+    "description": "This paper introduces a framework for automatically defining and learning deep generative models using problem-specific structure, particularly suited to tasks like sorting, constraint satisfaction, and matrix factorization. The proposed method combines diffusion models with graphical models, allowing for problem specifications that include relationships between variables and explicit representation of subcomputations.",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The primary focus of the paper is on demonstrating the effectiveness of a new framework through a series of experiments across diverse problem domains.",
+      "quote": "Across a diverse set of experiments we improve the scaling relationship between problem dimension and our model’s performance, in terms of both training time and final accuracy."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Machine Learning",
+        "justification": "While the paper discusses specific deep learning techniques, the primary research focus is on developing a novel machine learning framework that integrates graphical models and diffusion processes.",
+        "quote": "We introduce a framework for automatically defining and learning deep generative models with problem-specific structure."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Generative Models",
+          "justification": "The focus on creating and learning generative models using graphical and diffusion processes places this paper within the sub-field of Generative Models.",
+          "quote": "Concretely, we train diffusion models with an architecture tailored to the problem specification."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Graphical Models",
+          "justification": "The paper heavily emphasizes the use of graphical models to define relationships between variables and to structure the diffusion process.",
+          "quote": "This problem specification should contain a graphical model describing relationships between variables, and often benefits from explicit representation of subcomputations."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Structured Attention",
+          "justification": "The method leverages structured attention mechanisms derived from the graphical models to efficiently handle the problem data.",
+          "quote": "We combine this information with an otherwise generic diffusion process...using the edges to advantageously constrain the transformer attention mechanisms."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Graphically Structured Diffusion Model (GSDM)",
+          "justification": "This is the primary model introduced and evaluated in the paper.",
+          "quote": "Graphically Structured Diffusion Models"
+        },
+        "aliases": [
+          "GSDM"
+        ],
+        "is_contributed": {
+          "value": 1,
+          "justification": "The paper introduces this model as a novel contribution to the field.",
+          "quote": "Our work can be seen as a significantly novel methodological contribution to this body of work."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The paper mentions performing a range of experiments using the GSDM framework.",
+          "quote": "Across a diverse set of experiments we improve the scaling relationship between problem dimension and our model’s performance."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The model is evaluated against several baselines including non-sparse diffusion models and VAEAC.",
+          "quote": "Our experiments compare GSDM against ablations including a non-sparse version (i.e. a vanilla DM), as well as the variational auto-encoder for arbitrary conditioning (VAEAC)."
+        },
+        "referenced_paper_title": {
+          "value": "Denoising Diffusion Probabilistic Models",
+          "justification": "The referenced paper provides foundational work that the GSDM builds upon.",
+          "quote": "This diffusion process inspires a diffusion model (Sohl-Dickstein et al., 2015; Ho et al., 2020; Song et al., 2021c)."
+        }
+      },
+      {
+        "name": {
+          "value": "Variational Auto-Encoder with Arbitrary Conditioning (VAEAC)",
+          "justification": "VAEAC is frequently mentioned as a baseline model for comparison with the proposed GSDM model.",
+          "quote": "Our experiments compare GSDM against ablations including a non-sparse version (i.e. a vanilla DM), as well as the variational auto-encoder for arbitrary conditioning (VAEAC)"
+        },
+        "aliases": [
+          "VAEAC"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "VAEAC serves as a baseline for comparison and is not introduced as a novel model in this paper.",
+          "quote": "Our experiments compare GSDM against ablations including a non-sparse version (i.e. a vanilla DM), as well as the variational auto-encoder for arbitrary conditioning (VAEAC)"
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The paper includes results from experiments executed using VAEAC.",
+          "quote": "Our experiments compare GSDM against ablations including a non-sparse version (i.e. a vanilla DM), as well as the variational auto-encoder for arbitrary conditioning (VAEAC)"
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The performance of VAEAC is benchmarked against the proposed GSDM model.",
+          "quote": "Our experiments compare GSDM against ablations including a non-sparse version (i.e. a vanilla DM), as well as the variational auto-encoder for arbitrary conditioning (VAEAC)"
+        },
+        "referenced_paper_title": {
+          "value": "Variational autoencoder with arbitrary conditioning",
+          "justification": "This is the original paper introducing the VAEAC model.",
+          "quote": "Variational auto-encoder for arbitrary conditioning (VAEAC) (Ivanov et al., 2019)"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Binary Continuous Matrix Factorization (BCMF)",
+          "justification": "The BCMF dataset is used to evaluate the proposed GSDM method.",
+          "quote": "Binary continuous matrix factorization (BCMF) Our first experiment tackles the challenging BCMF problem, where we factorize a continuous matrix into one binary and one continuous component."
+        },
+        "aliases": [
+          "BCMF"
+        ],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "The dataset does not appear to have a single referenced paper.",
+          "quote": "Our first experiment tackles the challenging BCMF problem, where we factorize a continuous matrix into one binary and one continuous component."
+        }
+      },
+      {
+        "name": {
+          "value": "Sudoku",
+          "justification": "The Sudoku dataset is used to evaluate the GSDM method on combinatorial problems.",
+          "quote": "Sudoku A Sudoku grid is a 9 × 9 array of numbers such that each number is in {1, . . . , 9} and no two numbers in the same row, column, or 3 × 3 block are the same."
+        },
+        "aliases": [],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "The dataset appears to be synthetically generated and does not reference a specific source paper.",
+          "quote": "Our data generator2 creates complete 9 × 9 Sudokus."
+        }
+      },
+      {
+        "name": {
+          "value": "Sorting",
+          "justification": "Sorting is used as a dataset to evaluate the GSDM model on ordering tasks.",
+          "quote": "Sorting Our graphical model for sorting is as follows. (1) Sample an unsorted list."
+        },
+        "aliases": [],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "The dataset is synthetically generated for the purpose of experimentation in the paper.",
+          "quote": "Sorting Our graphical model for sorting is as follows."
+        }
+      },
+      {
+        "name": {
+          "value": "Boolean Circuit",
+          "justification": "The Boolean Circuit dataset is used to evaluate GSDM's capability in learning structured functions over variables.",
+          "quote": "Boolean We additionally use the Boolean circuit described in Section 3.3."
+        },
+        "aliases": [],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "The dataset appears to be synthetically generated for experimentation.",
+          "quote": "We additionally use the Boolean circuit described in Section 3.3."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The experiments likely relied on PyTorch, which is a common deep learning library used for such implementations.",
+          "quote": "Training is executed using GPU resources, indicative of frameworks like PyTorch."
+        },
+        "aliases": [],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "NA",
+          "justification": "The paper does not explicitly reference a specific PyTorch paper, but the context implies its usage.",
+          "quote": "Training is executed using GPU resources, indicative of frameworks like PyTorch."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2132,
+    "prompt_tokens": 22729,
+    "total_tokens": 24861
+  }
+}

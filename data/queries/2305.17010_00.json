@@ -1,0 +1,201 @@
+{
+  "paper": "2305.17010.txt",
+  "words": 10340,
+  "extractions": {
+    "title": {
+      "value": "Let the Flows Tell: Solving Graph Combinatorial Optimization Problems with GFlowNets",
+      "justification": "This is the title of the paper as mentioned in the document.",
+      "quote": "Let the Flows Tell: Solving Graph Combinatorial Optimization Problems with GFlowNets"
+    },
+    "description": "This paper proposes the use of GFlowNets to tackle NP-hard combinatorial optimization problems by designing Markov decision processes (MDPs) and efficient training techniques for conditional GFlowNets. The approach aims to leverage the capabilities of GFlowNets to find high-quality solutions efficiently by sampling from the solution space sequentially. The empirical performance of GFlowNets is validated through extensive experiments on various combinatorial optimization tasks, both synthetic and realistic.",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The paper includes extensive experiments and validations to demonstrate the empirical advantages of GFlowNets in solving various combinatorial optimization tasks.",
+      "quote": "Through extensive experiments on a variety of different CO tasks with synthetic and realistic data, we demonstrate that GFlowNet policies can efficiently find high-quality solutions."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Combinatorial Optimization",
+        "justification": "The study is primarily focused on solving combinatorial optimization (CO) problems using GFlowNets.",
+        "quote": "This paper proposes the use of GFlowNets to tackle NP-hard combinatorial optimization problems."
+      },
+      "aliases": [
+        "CO"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Reinforcement Learning",
+          "justification": "The study involves the application of reinforcement learning techniques by designing MDPs (Markov Decision Processes) and training GFlowNets in a reinforcement learning framework.",
+          "quote": "We design MDPs for a variety of NP-hard CO problems, where the intermediate states form a flow network in the latent space, and GFlowNet learns an agent to sequentially make decisions in this environment."
+        },
+        "aliases": [
+          "RL",
+          "MDP"
+        ]
+      },
+      {
+        "name": {
+          "value": "Graph Theory",
+          "justification": "The CO problems tackled in the paper are related to graph structures, such as maximum independent set, maximum clique, minimum dominating set, and maximum cut.",
+          "quote": "We focus on the following four NP-hard CO problems on graphs: maximum independent set (MIS), maximum clique (MC), minimum dominating set (MDS), and maximum cut (MCut)."
+        },
+        "aliases": [
+          "Graph CO"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "GFlowNet",
+          "justification": "The paper proposes and extensively discusses the use of GFlowNets to solve combinatorial optimization problems.",
+          "quote": "In this paper, we design Markov decision processes (MDPs) for different combinatorial problems and propose to train conditional GFlowNets to sample from the solution space."
+        },
+        "aliases": [
+          "Generative Flow Networks"
+        ],
+        "is_contributed": {
+          "value": 1,
+          "justification": "The primary focus of the research paper is on proposing and validating GFlowNets as a solution for combinatorial optimization problems, making it a key contribution.",
+          "quote": "The empirical advantage of GFlowNets is validated through experiments on different CO problems."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The experiments conducted in the paper involve running GFlowNets, indicating that they were executed within the scope of this research.",
+          "quote": "We design MDPs for a variety of NP-hard CO problems, where the intermediate states form a flow network in the latent space, and GFlowNet learns an agent to sequentially make decisions in this environment."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "GFlowNets are compared to various other methods for solving combinatorial optimization problems in the performance evaluation section.",
+          "quote": "Through extensive experiments on different CO tasks, we demonstrate the advantage of our proposed GFlowNet approach."
+        },
+        "referenced_paper_title": {
+          "value": "Flow network based generative models for non-iterative diverse candidate generation",
+          "justification": "This is a closely related work referenced in the context of GFlowNets.",
+          "quote": "GFlowNet is a novel decision-making framework for learning stochastic policies to sample composite objects with probability proportional to a given terminal reward, which is suitable for problems where the solution is only related to the terminal state of generative trajectories. (Bengio et al., 2021, GFlowNets)"
+        }
+      },
+      {
+        "name": {
+          "value": "Gurobi",
+          "justification": "Gurobi is mentioned as one of the numerical solvers used for combinatorial optimization tasks, against which the proposed method is compared.",
+          "quote": "During the past few decades, researchers have developed numerical solvers such as G UROBI (Gurobi Optimization, 2023) to give approximate solutions via integer programming."
+        },
+        "aliases": [
+          "Gurobi Optimizer"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "Gurobi is not a contribution of this paper but a pre-existing numerical solver used for comparison.",
+          "quote": "During the past few decades, researchers have developed numerical solvers such as G UROBI (Gurobi Optimization, 2023) to give approximate solutions via integer programming."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "Gurobi was used in experiments for providing comparison baselines.",
+          "quote": "We evaluate both the performance and the inference time and report the mean value of the objective (e.g., set size in MIS) and the approximation ratio relative to the best-performing non-ML solver, treated as an oracle... For MIS methods, the larger the size of the independent set found, the better the algorithm."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "Gurobi's performance is compared to that of GFlowNets in solving combinatorial optimization problems.",
+          "quote": "For MIS methods, the larger the size of the independent set found, the better the algorithm."
+        },
+        "referenced_paper_title": {
+          "value": "Gurobi Optimizer",
+          "justification": "Gurobi is referred to in its official capacity as a well-known numerical solver.",
+          "quote": "During the past few decades, researchers have developed numerical solvers such as G UROBI (Gurobi Optimization, 2023) to give approximate solutions via integer programming."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "SATLIB",
+          "justification": "SATLIB is mentioned as part of the dataset used for experiments in the study to validate the GFlowNets' approach.",
+          "quote": "For realistic data, we take the SATLIB dataset (Hoos et al., 2000), which is reduced from SAT instances in conjunctive normal form."
+        },
+        "aliases": [
+          "SATLIB"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "SATLIB: An online resource for research on SAT",
+          "justification": "This is the source document referenced for the SATLIB dataset.",
+          "quote": "For realistic data, we take the SATLIB dataset (Hoos et al., 2000), which is reduced from SAT instances in conjunctive normal form."
+        }
+      },
+      {
+        "name": {
+          "value": "Erdos-Renyi (ER) Graph Data",
+          "justification": "ER graph data is used for certain experiments in the paper to test GFlowNets.",
+          "quote": "We also conduct MIS experiments on Erdos-Renyi (ER) graph data."
+        },
+        "aliases": [
+          "ER Graph Data"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Exact phase transitions in random constraint satisfaction problems",
+          "justification": "This referenced paper discusses the properties of Erdos-Renyi graphs which are used in the experiments.",
+          "quote": "We also conduct MIS experiments on Erdos-Renyi (ER) graph data. (Xu & Li, 2000)"
+        }
+      },
+      {
+        "name": {
+          "value": "RB Graphs",
+          "justification": "The RB graph dataset is used in the experiments to validate the proposed method.",
+          "quote": "For MIS problems, we follow the setup in the MIS benchmark from Böther et al. (2022), while for other tasks, we follow the experimental setup in Sun et al. (2022)."
+        },
+        "aliases": [
+          "RB Graph Dataset"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Exact phase transitions in random constraint satisfaction problems",
+          "justification": "The properties of RB graphs are elaborated in this reference, which is used in the context of this paper.",
+          "quote": "we take the more complicated RB graphs (Xu & Li, 2000) following Karalias & Loukas (2020)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Pygurobi",
+          "justification": "Pygurobi library is used in experiments to handle Gurobi optimizer calls in a Python environment.",
+          "quote": "For G UROBI, we formulate MIS as quadratic programming problem and then use the pygurobi python package to solve it."
+        },
+        "aliases": [
+          "Pygurobi"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Gurobi Optimizer",
+          "justification": "Pygurobi is an interface for the Gurobi optimizer, thus referencing the Gurobi Optimizer serves to maintain context.",
+          "quote": "For G UROBI, we formulate MIS as quadratic programming problem and then use the pygurobi python package to solve it."
+        }
+      },
+      {
+        "name": {
+          "value": "Cvxpy",
+          "justification": "Cvxpy library is mentioned as part of the experimental setup for certain combinatorial optimization tasks.",
+          "quote": "In the max cut task, we use the cvxpy python package to implement the SDP baseline."
+        },
+        "aliases": [
+          "Cvxpy"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "CVXPY: A Python-Embedded Modeling Language for Convex Optimization",
+          "justification": "CVXPY is used to implement the SDP baseline as mentioned in this reference.",
+          "quote": "In the max cut task, we use the cvxpy python package to implement the SDP baseline."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1974,
+    "prompt_tokens": 18294,
+    "total_tokens": 20268
+  }
+}

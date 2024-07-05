@@ -1,0 +1,218 @@
+{
+  "paper": "2204.04213.txt",
+  "words": 5854,
+  "extractions": {
+    "title": {
+      "value": "Structure-aware Protein Self-supervised Learning",
+      "justification": "Directly appears in the title section of the paper.",
+      "quote": "Structure-aware Protein Self-supervised Learning"
+    },
+    "description": "The paper presents a novel method called Structure-aware Protein Self-supervised Learning (STEPS) to capture structural information of proteins using Graph Neural Networks (GNN) combined with self-supervised tasks and protein language models. The method is evaluated on several downstream tasks showing its effectiveness in protein classification.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper conducts experiments on several downstream tasks to verify the effectiveness of the proposed method.",
+      "quote": "We conduct experiments on three downstream tasks: the binary classification into membrane/non-membrane proteins, the location classification into 10 cellular compartments, and the enzyme-catalyzed reaction classification into 384 EC numbers, and these experiments verify the effectiveness of our proposed method."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Bioinformatics",
+        "justification": "The research work operates at the intersection of deep learning and biological data, specifically targeting protein structure and classification.",
+        "quote": "Protein representation learning methods have shown great potential to many downstream tasks in biological applications."
+      },
+      "aliases": [
+        "AI for Science",
+        "Computational Biology"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Graph Neural Networks",
+          "justification": "The proposed method leverages a Graph Neural Network for modeling the structural information of proteins.",
+          "quote": "In particular, a graph neural network (GNN) model is pretrained to preserve the protein structural information with self-supervised tasks from a pairwise residue distance perspective and a dihedral angle perspective, respectively."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Self-Supervised Learning",
+          "justification": "The method introduces self-supervised tasks to capture structural information of proteins.",
+          "quote": "we propose a novel structure-aware protein self-supervised learning method to effectively capture structural information of proteins."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Protein Language Models",
+          "justification": "The research leverages available protein language models pretrained on protein sequences for enhancing the self-supervised learning.",
+          "quote": "Furthermore, we propose to leverage the available protein language model pretrained on protein sequences to enhance the self-supervised learning."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "STEPS",
+          "justification": "STEPS (STrucure-awarE Protein Self-supervised Learning) is the primary model proposed in the paper.",
+          "quote": "To this end, we propose a novel STrucure-awarE Protein Self-supervised Learning (STEPS) method."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 1,
+          "justification": "STEPS is the main contribution of the paper.",
+          "quote": "In this work, we propose a novel structure-aware protein self-supervised learning method."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The paper mentions the use of GPU in their training details.",
+          "quote": "We use the cosine learning rate decay schedule for a total of 10 epochs for pretraining. We set the learning rate for the GNN model as 1e−3 and the learning rate for the protein LM as 5e−5 in the pseudo bi-level optimization scheme. The Adam optimizer is adopted to update the GNN parameters with β1 = 0.9 and β2 = 0.999."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "STEPS model is compared against several baseline models in the experiments section.",
+          "quote": "As shown in Table 1, Table 2 and Table 3, we report the best results in bold and mark the second best results (excluding STEPS-H) among two groups of baselines by underlines. First, we can observe that STEPS has consistent gains over all comparison methods in the three downstream tasks."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "IEConv",
+          "justification": "IEConv is one of the baseline models used for comparing the effectiveness of the proposed STEPS method.",
+          "quote": "IEConv [HSL+ 20]: it introduces a novel convolution operator and hierarchical pooling operators to model different particularities for a protein."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "IEConv is used as a baseline model.",
+          "quote": "IEConv [HSL+ 20]: it introduces a novel convolution operator and hierarchical pooling operators to model different particularities for a protein."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "IEConv model is executed as part of comparison studies.",
+          "quote": "As shown in Table 1, Table 2 and Table 3, we report the best results in bold and mark the second best results (excluding STEPS-H) among two groups of baselines by underlines. First, we can observe that STEPS has consistent gains over all comparison methods in the three downstream tasks."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "IEConv is compared against the proposed STEPS model.",
+          "quote": "Methods without pretraining include: IEConv [HSL+ 20]: it introduces a novel convolution operator and hierarchical pooling operators to model different particularities for a protein."
+        },
+        "referenced_paper_title": {
+          "value": "Intrinsic-extrinsic convolution and pooling for learning on 3d protein structures",
+          "justification": "The reference paper is listed in the baseline section.",
+          "quote": "IEConv [HSL+ 20]: it introduces a novel convolution operator and hierarchical pooling operators to model different particularities for a protein."
+        }
+      },
+      {
+        "name": {
+          "value": "DeepFRI",
+          "justification": "DeepFRI is one of the baseline models used for comparing the effectiveness of the proposed STEPS method.",
+          "quote": "DeepFRI [GRK+ 21]: this method adopts the Graph Convolutional Network (GCN) to predict protein functions by leveraging structural features."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "DeepFRI is used as a baseline model.",
+          "quote": "DeepFRI [GRK+ 21]: this method adopts the Graph Convolutional Network (GCN) to predict protein functions by leveraging structural features."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "DeepFRI model is executed as part of comparison studies.",
+          "quote": "As shown in Table 1, Table 2 and Table 3, we report the best results in bold and mark the second best results (excluding STEPS-H) among two groups of baselines by underlines. First, we can observe that STEPS has consistent gains over all comparison methods in the three downstream tasks."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "DeepFRI is compared against the proposed STEPS model.",
+          "quote": "Methods without pretraining include: DeepFRI [GRK+ 21]: this method adopts the Graph Convolutional Network (GCN) to predict protein functions by leveraging structural features."
+        },
+        "referenced_paper_title": {
+          "value": "Structure-based protein function prediction using graph convolutional networks",
+          "justification": "The reference paper is listed in the baseline section.",
+          "quote": "DeepFRI [GRK+ 21]: this method adopts the Graph Convolutional Network (GCN) to predict protein functions by leveraging structural features."
+        }
+      },
+      {
+        "name": {
+          "value": "Pre-LM",
+          "justification": "Pre-LM is one of the baseline models used for comparing the effectiveness of the proposed STEPS method.",
+          "quote": "Pre-LM [EHD+ 21]: it adopts the protein BERT model pretrained on Uniref100 and adds an fully-connected layer with tanh activation as the head for finetuning."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "Pre-LM is used as a baseline model.",
+          "quote": "Pre-LM [EHD+ 21]: it adopts the protein BERT model pretrained on Uniref100 and adds an fully-connected layer with tanh activation as the head for finetuning."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "Pre-LM model is executed as part of comparison studies.",
+          "quote": "As shown in Table 1, Table 2 and Table 3, we report the best results in bold and mark the second best results (excluding STEPS-H) among two groups of baselines by underlines. First, we can observe that STEPS has consistent gains over all comparison methods in the three downstream tasks."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "Pre-LM is compared against the proposed STEPS model.",
+          "quote": "Methods with pretraining are: Pre-LM [EHD+ 21]: it adopts the protein BERT model pretrained on Uniref100 and adds an fully-connected layer with tanh activation as the head for finetuning."
+        },
+        "referenced_paper_title": {
+          "value": "Prottrans: towards cracking the language of life’s code through self-supervised deep learning and high performance computing",
+          "justification": "The reference paper is listed in the baseline section.",
+          "quote": "Pre-LM [EHD+ 21]: it adopts the protein BERT model pretrained on Uniref100 and adds an fully-connected layer with tanh activation as the head for finetuning."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "AlphaFold Protein Structure Database",
+          "justification": "AlphaFold database is mentioned as being used in the research.",
+          "quote": "The Alphafold2 database is available in https://alphafold.ebi.ac.uk/."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "PDB (Protein Data Bank)",
+          "justification": "PDB files are mentioned as a source of protein structural data.",
+          "quote": "The PDB files are available in https://www.rcsb.org/."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "IEConv Proteins",
+          "justification": "Downstream tasks datasets referenced via the GitHub repository.",
+          "quote": "The downstream tasks are available in https://github.com/phermosilla/IEConv proteins/tree/master/Datasets."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 2576,
+    "prompt_tokens": 10638,
+    "total_tokens": 13214
+  }
+}

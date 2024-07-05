@@ -1,0 +1,142 @@
+{
+  "paper": "2303.14771.txt",
+  "words": 8754,
+  "extractions": {
+    "title": {
+      "value": "Prototype-Sample Relation Distillation: Towards Replay-Free Continual Learning",
+      "justification": "Title of the research paper",
+      "quote": "Prototype-Sample Relation Distillation: Towards Replay-Free Continual Learning"
+    },
+    "description": "This paper presents Prototype-Sample Relation Distillation (PRD), a novel continual learning approach that eliminates the need for replay buffers to handle catastrophic forgetting. The method maintains class prototypes in a latent space and introduces a novel distillation loss to keep these prototypes relevant to new task data. The approach yields state-of-the-art results in task-incremental and class-incremental settings without using stored data points from previous tasks.",
+    "type": {
+      "value": "empirical",
+      "justification": "The study conducts several experiments to evaluate the performance of the proposed method against other baselines.",
+      "quote": "In this section, we evaluate our proposed method on a wide range of challenging CL settings."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Continual Learning",
+        "justification": "The paper focuses on strategies to improve continual learning without relying on replay buffers.",
+        "quote": "Continual Learning (CL) aims to continuously acquire knowledge from an ever-changing stream of data."
+      },
+      "aliases": [
+        "CL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Representation Learning",
+          "justification": "The paper incorporates supervised contrastive learning to improve the representations of tasks.",
+          "quote": "Recently (Davari et al., 2022) observed that for many continual learning tasks, the representational power of deep networks trained with naive fine-tuning can remain remarkably efficient for representing both new and old task data."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Prototype-Based Learning",
+          "justification": "The approach involves maintaining class prototypes and evolving them continually in the latent space.",
+          "quote": "In order to link the powerful representation learning to the effective prediction of prior class data we can consider alternatives for making the final prediction. An approach previously taken in the continual learning literature is to use the notion of class prototypes (De Lange & Tuytelaars, 2021), vector representations whose similarity to new sample representation can give predictions of the target class."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Prototype-Sample Relation Distillation (PRD)",
+          "justification": "PRD is the main model proposed in the paper to improve continual learning without replay buffers.",
+          "quote": "We propose a holistic approach to jointly learn the representation and class prototypes while maintaining the relevance of old class prototypes and their embedded similarities."
+        },
+        "aliases": [
+          "PRD"
+        ],
+        "is_contributed": {
+          "value": 1,
+          "justification": "The authors introduced PRD as their novel approach to continual learning.",
+          "quote": "In this work, we propose an effective mechanism to not only maintain relevant class prototypes but also leverage the knowledge embedded in these prototypes to further reduce representation forgetting. We combine contrastive representation learning with a prototype-based classifier."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The model is executed as part of the empirical evaluations presented in the paper.",
+          "quote": "In Sec. 4.1, we focus on the task-incremental (multi-head) setting, where we compare our method with other replay-free methods."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The paper compares PRD with several baseline methods, including LwF, EWC, and ER, using different metrics and datasets.",
+          "quote": "Throughout several experiments, we demonstrate that our method not only achieves strong control of forgetting of previously observed tasks but also leads to improved plasticity in learning new tasks."
+        },
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "This is a novel model introduced in the current paper.",
+          "quote": ""
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "SplitCIFAR100",
+          "justification": "The authors use the SplitCIFAR100 dataset for evaluating PRD in different continual learning settings.",
+          "quote": "We consider Split-CIFAR100 and Split-MiniImageNet with 20 tasks of 5 classes each."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning multiple layers of features from tiny images",
+          "justification": "SplitCIFAR100 is derived from the CIFAR-100 dataset, and this is its reference paper.",
+          "quote": "Split-CIFAR100 (Krizhevsky et al., 2009)"
+        }
+      },
+      {
+        "name": {
+          "value": "SplitMiniImageNet",
+          "justification": "The authors use the SplitMiniImageNet dataset for evaluating PRD in different continual learning settings.",
+          "quote": "We consider Split-CIFAR100 and Split-MiniImageNet with 20 tasks of 5 classes each."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Matching networks for one shot learning",
+          "justification": "SplitMiniImageNet is made from MiniImageNet dataset, and this is its reference paper.",
+          "quote": "Split-MiniImageNet (Vinyals et al., 2016)"
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet32",
+          "justification": "The authors use the ImageNet32 dataset, which is a downsampled (32x32) version of the original ImageNet dataset, for long task sequence experiments.",
+          "quote": "ImageNet32 (Chrabaszcz et al., 2017) is a downsampled (32 × 32 ) version of the entire ImageNet (Deng et al., 2009) dataset split into 200 tasks of 5 classes each."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "A downsampled variant of ImageNet as an alternative to the CIFAR datasets",
+          "justification": "ImageNet32 is derived from the ImageNet dataset, and this is its reference paper.",
+          "quote": "ImageNet32 (Chrabaszcz et al., 2017) is a downsampled (32 × 32 ) version of the entire ImageNet (Deng et al., 2009) dataset split into 200 tasks of 5 classes each."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is mentioned as the deep learning library used for the experiments.",
+          "quote": "All necessary details to reproduce our experiments can be found in the supplementary materials."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Automatic differentiation in PyTorch",
+          "justification": "PyTorch was the library used for model implementation and training in the paper.",
+          "quote": "All necessary details to reproduce our experiments can be found in the supplementary materials."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1305,
+    "prompt_tokens": 16195,
+    "total_tokens": 17500
+  }
+}

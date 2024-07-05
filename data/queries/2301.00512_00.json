@@ -1,0 +1,184 @@
+{
+  "paper": "2301.00512.txt",
+  "words": 8173,
+  "extractions": {
+    "title": {
+      "value": "On the Challenges of using Reinforcement Learning in Precision Drug Dosing: Delay and Prolongedness of Action Effects",
+      "justification": "This is the title of the paper as provided",
+      "quote": "On the Challenges of using Reinforcement Learning in Precision Drug Dosing: Delay and Prolongedness of Action Effects"
+    },
+    "description": "This paper identifies two major challenges in using Reinforcement Learning (RL) for drug dosing: delayed and prolonged effects of administering medications, which violate the Markov assumption commonly made by RL algorithms. The authors propose a method to convert Prolonged Action Effect-Partially Observable Markov Decision Processes (PAE-POMDPs) into standard Markov Decision Processes (MDPs), enabling the use of traditional RL algorithms. They validate this approach on both a toy task and a glucose control task.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper includes experiments and validation on a toy task and a glucose control task, demonstrating empirical results.",
+      "quote": "We validate the proposed approach on a toy task, and a challenging glucose control task, for which we devise a clinically-inspired reward function."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Reinforcement Learning in Healthcare",
+        "justification": "The paper discusses using Reinforcement Learning specifically in the context of healthcare applications like drug dosing and glucose control.",
+        "quote": "Drug dosing is an important application of AI, which can be formulated as a Reinforcement Learning (RL) problem."
+      },
+      "aliases": [
+        "Reinforcement Learning for Drug Dosing",
+        "Healthcare RL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Reinforcement Learning",
+          "justification": "The paper addresses core issues within Reinforcement Learning, such as the Markov assumption and POMDPs",
+          "quote": "Reinforcement learning (RL) offers a framework to account for individual characteristics and automatically derive personalized treatment policies in line with the objective of precision medicine."
+        },
+        "aliases": [
+          "RL"
+        ]
+      },
+      {
+        "name": {
+          "value": "Healthcare",
+          "justification": "The paper is specifically focused on healthcare applications, including drug dosing and glucose control",
+          "quote": "One important goal of precision medicine is to tailor patient care while accounting for individual characteristics, and developing algorithmic solutions for drug dosing is a contribution towards that broader goal."
+        },
+        "aliases": [
+          "Medical AI"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Tabular Q-learning",
+          "justification": "The paper mentions using a tabular Q-learning agent for evaluation on the toy task.",
+          "quote": "We then trained a tabular Q-learning agent, which serves as baseline, with epsilon-greedy exploration."
+        },
+        "aliases": [
+          "Q-learning"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "Tabular Q-learning is a well-established RL method and not a novel contribution of this paper.",
+          "quote": "We then trained a tabular Q-learning agent, which serves as baseline, with epsilon-greedy exploration."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The tabular Q-learning model was executed as part of their experiments on the toy task.",
+          "quote": "We then trained a tabular Q-learning agent, which serves as baseline, with epsilon-greedy exploration."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The tabular Q-learning model is used as a baseline and compared to other models in the experiments",
+          "quote": "The results are shown in Figure 2. We observe that the Effective Q-learning agent, which restores the Markov assumptions broken by the prolonged action effects, consistently outperforms the Q-learning agent despite using the same Q-learning algorithm, which highlights the importance of considering the prolongedness of actions when solving PAE-POMDPs."
+        },
+        "referenced_paper_title": {
+          "value": "Q-Learning",
+          "justification": "Tabular Q-learning is a classical method introduced by Watkins and Dayan in their seminal work.",
+          "quote": "Q-Learning (Watkins and Dayan 1989) is a model-free RL algorithm that estimates Q : S x A → R, a value function assessing the quality of action at ∈ A at state st ∈ S."
+        }
+      },
+      {
+        "name": {
+          "value": "Effective Q-learning",
+          "justification": "This model is proposed in the paper to handle prolonged action effects by converting PAE-POMDPs into MDPs.",
+          "quote": "Next, we modified this tabular Q-learning agent with the method proposed in Section 4.2, and trained an Effective Q-learning agent."
+        },
+        "aliases": [
+          "Q-learning with Effective Actions"
+        ],
+        "is_contributed": {
+          "value": 1,
+          "justification": "The Effective Q-learning model is a specific modification proposed by the authors to address the problem of prolonged action effects.",
+          "quote": "Next, we modified this tabular Q-learning agent with the method proposed in Section 4.2, and trained an Effective Q-learning agent."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The Effective Q-learning model was executed as part of their experiments on the toy task.",
+          "quote": "Next, we modified this tabular Q-learning agent with the method proposed in Section 4.2, and trained an Effective Q-learning agent."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The Effective Q-learning model is compared to the tabular Q-learning baseline in their experiments.",
+          "quote": "The results are shown in Figure 2. We observe that the Effective Q-learning agent, which restores the Markov assumptions broken by the prolonged action effects, consistently outperforms the Q-learning agent despite using the same Q-learning algorithm, which highlights the importance of considering the prolongedness of actions when solving PAE-POMDPs."
+        },
+        "referenced_paper_title": {
+          "value": "Q-Learning",
+          "justification": "The Effective Q-learning is based on modifications to the traditional Q-learning algorithm.",
+          "quote": "Q-Learning (Watkins and Dayan 1989) is a model-free RL algorithm that estimates Q : S x A → R, a value function assessing the quality of action at ∈ A at state st ∈ S."
+        }
+      },
+      {
+        "name": {
+          "value": "DQN (Deep Q-Network)",
+          "justification": "The paper mentions using the DQN model for experiments and modifying it to handle effective actions.",
+          "quote": "We modified the design of  Tabular Q-learning to DQN, and we had remarkable improvement on training speed and model efficiency."
+        },
+        "aliases": [
+          "Deep Q-Network"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "DQN is a well-established model in the field of Reinforcement Learning.",
+          "quote": "In DQN (Mnih, Kavukcuoglu, and et al. 2015), the Q-values are estimated by a neural network minimizing the Mean Square Bellman Error: Li (θi ) = Est ,at ∼πb (yi − Q(st , at ; θi ))2"
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The DQN model was executed as part of their experiments in the toy and glucose control tasks.",
+          "quote": "The ADRQN agent exhibits a significant performance boost as compared to the DQN agent"
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The DQN model is used as a baseline and compared to the ADRQN and Effective-DQN models in the experiments",
+          "quote": "The ADRQN agent exhibits a significant performance boost as compared to the DQN agent"
+        },
+        "referenced_paper_title": {
+          "value": "Human-level control through deep reinforcement learning",
+          "justification": "DQN was introduced by Mnih et al. in their landmark paper published in Nature, 2015.",
+          "quote": "In DQN (Mnih, Kavukcuoglu, and et al. 2015), the Q-values are estimated by a neural network minimizing the Mean Square Bellman Error: Li (θi ) = Est ,at ∼πb (yi − Q(st , at ; θi ))2"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "FDA-approved UVA/Padova Type1 Diabetes Mellitus Simulator",
+          "justification": "The dataset/simulator is used in the paper for the glucose control task.",
+          "quote": "We modified the simulator for the experiments presented in this paper (See Appendix for more details)...We chose blood glucose control as a real-world example of PAE-POMDP given the low therapeutic index of insulin, which makes it a good candidate for precision dosing. We used Simglucose (Xie 2018), the OpenAI Gym (Brockman et al. 2016) implementation of the FDA approved UVA/Padova Type1 Diabetes Mellitus Simulator (T1DMS)"
+        },
+        "aliases": [
+          "T1DMS",
+          "Padova Simulator"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The UVA/PADOVA Type 1 Diabetes Simulator: New Features",
+          "justification": "This simulator is based on the UVA/PADOVA Type1 Diabetes Mellitus Simulator.",
+          "quote": "We used the FDA-approved UVA/Padova Type1 Diabetes Mellitus Simulator (T1DMS) built on an in-silico population of 30 patients"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The paper uses PyTorch for implementing DQN and ADRQN models.",
+          "quote": "The ADRQN agent exhibits a significant performance boost as compared to the DQN agent, which we implemented using the readily available ADRQN PyTorch implementation."
+        },
+        "aliases": [
+          "Torch"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "The reference for PyTorch library is not explicitly mentioned",
+          "quote": "The ADRQN agent exhibits a significant performance boost as compared to the DQN agent, which we implemented using the readily available ADRQN PyTorch implementation."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1944,
+    "prompt_tokens": 13699,
+    "total_tokens": 15643
+  }
+}

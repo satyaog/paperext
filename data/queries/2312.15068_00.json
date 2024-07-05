@@ -1,0 +1,148 @@
+{
+  "paper": "2312.15068.txt",
+  "words": 10120,
+  "extractions": {
+    "title": {
+      "value": "Refining GPT-3 Embeddings with a Siamese Structure for Technical Post Duplicate Detection",
+      "justification": "This is the title of the paper as it appears at the beginning of the document.",
+      "quote": "Refining GPT-3 Embeddings with a Siamese Structure for Technical Post Duplicate Detection"
+    },
+    "description": "This research paper presents an approach to improve GPT-3 embeddings using a Siamese structure for the task of detecting duplicate posts in technical forums. The method leverages GPT-3's semantic understanding and refines it through a Siamese-based network, utilizing duplicate labels from Stack Overflow to enhance the embeddings' capacity to capture duplicate relations. The results show significant improvements in duplicate detection performance, highlighting the method's efficacy and scalability.",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The paper includes detailed experiments and evaluations of the proposed method on benchmark datasets and a constructed dataset, focusing on the improvement of model performance through empirical data.",
+      "quote": "Our experiment on a benchmark dataset confirms the effectiveness of our approach and demonstrates superior performance compared to baseline methods."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The study is centered around improving embeddings for text data and detecting duplicate text in technical forums, tasks that fall under Natural Language Processing.",
+        "quote": "We attempt to employ and refine the GPT-3 embeddings for the duplicate detection task. We assume that the GPT-3 embeddings can accurately represent the semantics of the posts."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Technical Forum Data Mining",
+          "justification": "The application focus of the paper is on mining data from technical forums, such as Stack Overflow, for detecting duplicate posts.",
+          "quote": "Several approaches have been proposed to automatically detect duplicate posts of online technical forums."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "GPT-3",
+          "justification": "The main Large Language Model used in the study for generating initial embeddings.",
+          "quote": "We leverage large language models (LLMs), more specifically, the GPT-3 embeddings, and refine them with a Siamese structure for the purpose of detecting duplicate posts."
+        },
+        "aliases": [
+          "Generative Pre-trained Transformer 3"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "The paper does not contribute a new model but utilizes and refines an existing one.",
+          "quote": "We attempt to employ and refine the GPT-3 embeddings for the duplicate detection task."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The GPT-3 embeddings are generated and used as inputs for further processing in the study.",
+          "quote": "We generate the embeddings using the API provided by OpenAI."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The performance of GPT-3 embeddings is compared with those refined through the Siamese network.",
+          "quote": "Compared to directly using the GPT-3 embeddings, the performance of duplicate post detection can be significantly enhanced when utilizing a Siamese structure trained with the duplicate annotation available from Stack Overflow."
+        },
+        "referenced_paper_title": {
+          "value": "Language models are few-shot learners",
+          "justification": "This paper introduces GPT-3, which is used in the current research.",
+          "quote": "Brown, T., et al. (2020). Language models are few-shot learners."
+        }
+      },
+      {
+        "name": {
+          "value": "Siamese Network",
+          "justification": "The primary neural network structure used to refine GPT-3 embeddings for the duplicate detection task.",
+          "quote": "The Siamese-based structure refines the GPT-3 embeddings through the supervision of the duplicate labels."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 1,
+          "justification": "The contribution lies in applying and training the Siamese network to refine embeddings for the specific task of detecting duplicate posts.",
+          "quote": "We introduce a Siamese network to further refine the GPT-3 embedding for representing duplicate relationships in posts by utilizing the positive pairs of duplicate posts."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The Siamese network is trained and evaluated as a core part of the study.",
+          "quote": "By training a Siamese-based network based on the GPT-3 embeddings, we obtain a latent embedding that accurately captures the duplicate relation in technical forum posts."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The Siamese network's performance is compared to baseline methods and also tested with different training setups.",
+          "quote": "We compare our proposed method with three baseline techniques: DupPredictor, Doc2vec, and PCAQDup."
+        },
+        "referenced_paper_title": {
+          "value": "Signature verification using a 'Siamese' time delay neural network",
+          "justification": "This paper is an earlier work introducing the Siamese network architecture, which is adapted and used in the current research.",
+          "quote": "Bromley, J., et al. (1993). Signature verification using a 'Siamese' time delay neural network."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Stack Overflow dump",
+          "justification": "A large dataset constructed by the authors from a recent dump of Stack Overflow data, used to evaluate the proposed method.",
+          "quote": "We constructed our duplicate technical post dataset from a recent Stack Overflow dump containing all questions existing on December 6th, 2022."
+        },
+        "aliases": [],
+        "role": "Contributed",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "No referenced paper title is provided for the Stack Overflow dump as it is a commonly known dataset source.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "CQADupStack",
+          "justification": "A benchmark dataset used in the study for evaluating duplicate question detection in community question-answering forums.",
+          "quote": "In this research question, we use the CQADupStack as the benchmark dataset."
+        },
+        "aliases": [],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "CQADupStack: A Benchmark Data Set for Community Question-Answering Research",
+          "justification": "This is the referenced paper for the CQADupStack dataset used in the study.",
+          "quote": "Hoogeveen, D., Verspoor, K. M., & Baldwin, T. (2015). CQADupStack: A Benchmark Data Set for Community Question-Answering Research."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "OpenAI",
+          "justification": "The OpenAI API is used to generate the GPT-3 embeddings for technical forum posts.",
+          "quote": "The embeddings using the API provided by OpenAI."
+        },
+        "aliases": [],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "OpenAI API is a tool used in this study, not a referenced research paper.",
+          "quote": ""
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1640,
+    "prompt_tokens": 16789,
+    "total_tokens": 18429
+  }
+}

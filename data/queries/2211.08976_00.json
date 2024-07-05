@@ -1,0 +1,170 @@
+{
+  "paper": "2211.08976.txt",
+  "words": 5204,
+  "extractions": {
+    "title": {
+      "value": "Generating Stable and Collision-Free Policies through Lyapunov Function Learning",
+      "justification": "The title of the paper is 'Generating Stable and Collision-Free Policies through Lyapunov Function Learning'.",
+      "quote": "Generating Stable and Collision-Free Policies through Lyapunov Function Learning"
+    },
+    "description": "This paper introduces a novel method to learn a Lyapunov function and a policy for robotic motion planning using a single neural network. The method imposes stability constraints to ensure the policy is stable and includes an obstacle avoidance module for safe navigation. The approach is validated in simulated environments and through real-world experiments.",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The paper provides experimental validation of the proposed method both in simulation and real-world scenarios.",
+      "quote": "The proposed work is validated in simulation and robotic hardware with direct sim-to-real transfer."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Robotic Motion Planning",
+        "justification": "The research focuses on generating stable and collision-free motion planning policies for robots.",
+        "quote": "Index Terms— Imitation Learning, Lyapunov stability, Obstacle Avoidance, Motion Planning, Neural networks"
+      },
+      "aliases": [
+        "Motion Planning",
+        "Robotics"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Imitation Learning",
+          "justification": "The paper discusses imitation learning as a technique to produce motion planning policies from demonstrations.",
+          "quote": "Imitation Learning (IL) has become popular for producing motion planning policies from a set of demonstrations."
+        },
+        "aliases": [
+          "IL"
+        ]
+      },
+      {
+        "name": {
+          "value": "Lyapunov Stability",
+          "justification": "The method involves learning a Lyapunov function which is used to ensure the stability of the generated policies.",
+          "quote": "Stable Estimator of Dynamic Systems (SEDS) produces stable policies by constraining the Lyapunov stability criteria during learning."
+        },
+        "aliases": [
+          "Lyapunov Function"
+        ]
+      },
+      {
+        "name": {
+          "value": "Obstacle Avoidance",
+          "justification": "The method includes an obstacle avoidance module for convex object pairs to guarantee no collisions.",
+          "quote": "The method can be equipped with an obstacle avoidance module for convex object pairs to guarantee no collisions."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Proposed Neural Network for Lyapunov Function and Policy Learning",
+          "justification": "The primary model introduced in the paper is a neural network that learns both a Lyapunov function and a policy.",
+          "quote": "In this paper, we propose a novel method for learning both the Lyapunov function and policy with a single neural network."
+        },
+        "aliases": [
+          "Proposed Model"
+        ],
+        "is_contributed": {
+          "value": 1,
+          "justification": "The neural network for learning the Lyapunov function and policy is a novel contribution of this paper.",
+          "quote": "In this paper, we propose a novel method for learning both the Lyapunov function and policy with a single neural network."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The neural network was trained and validated in both simulation and real-world experiments, which implies it was executed.",
+          "quote": "The proposed work is validated in simulation and robotic hardware with direct sim-to-real transfer."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The performance of the proposed method is compared against a baseline (SEDS) in the experiments.",
+          "quote": "We used LASA Stable Estimator of Dynamic Systems (SEDS) as our baseline."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "There is no specific referenced paper for this neural network model as it is introduced by the authors themselves.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "Stable Estimator of Dynamic Systems (SEDS)",
+          "justification": "SEDS is used as a baseline for comparison with the proposed model.",
+          "quote": "We used LASA Stable Estimator of Dynamic Systems (SEDS) as our baseline."
+        },
+        "aliases": [
+          "SEDS"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "The SEDS model is used as a baseline, not as a novel contribution of this paper.",
+          "quote": "We used LASA Stable Estimator of Dynamic Systems (SEDS) as our baseline."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The SEDS model was used in experiments as a baseline for comparison, indicating it was executed.",
+          "quote": "We used LASA Stable Estimator of Dynamic Systems (SEDS) as our baseline."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The performance of the proposed method is compared against the SEDS model as a baseline in the experiments.",
+          "quote": "We used LASA Stable Estimator of Dynamic Systems (SEDS) as our baseline."
+        },
+        "referenced_paper_title": {
+          "value": "Learning stable nonlinear dynamical systems with Gaussian mixture models",
+          "justification": "The SEDS model is based on the paper titled 'Learning stable nonlinear dynamical systems with Gaussian mixture models'.",
+          "quote": "Learning stable nonlinear dynamical systems with Gaussian mixture models"
+        }
+      }
+    ],
+    "datasets": [],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch was used in the implementation of the neural network model.",
+          "quote": "To make the optimization easier for implementation in tools such as PyTorch [24], the formulation is modified to be an augmented Lagrangian."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An imperative style, high-performance deep learning library",
+          "justification": "The reference for PyTorch is provided in the bibliography.",
+          "quote": "PyTorch: An imperative style, high-performance deep learning library"
+        }
+      },
+      {
+        "name": {
+          "value": "IPOPT",
+          "justification": "IPOPT was used as an interior point optimization solver in the trajectory optimization process.",
+          "quote": "For collision avoidance, we model each object as a convex hull, since they are less prone to overestimating the volume of the object. For non-convex objects, the object can be represented as a collection of its convex components. The trajectory optimization is formulated as follows:... be passed to an interior point optimization solver, such as IPOPT [23]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "On the implementation of an interior-point filter line-search algorithm for large-scale nonlinear programming",
+          "justification": "The reference for IPOPT is provided in the bibliography.",
+          "quote": "On the implementation of an interior-point filter line-search algorithm for large-scale nonlinear programming"
+        }
+      },
+      {
+        "name": {
+          "value": "Pybullet",
+          "justification": "Pybullet was used to simulate the robotic environment for experiments.",
+          "quote": "Next, we explore the performance of our method in a manipulation task where the demonstrations are defined in task space. We use Pybullet [25] to simulate the environment and use the Mecademic Meca500 as the robot to perform the task."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Pybullet, a python module for physics simulation for games, robotics and machine learning",
+          "justification": "The reference for Pybullet is provided in the bibliography.",
+          "quote": "Pybullet, a python module for physics simulation for games, robotics and machine learning"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1765,
+    "prompt_tokens": 9582,
+    "total_tokens": 11347
+  }
+}

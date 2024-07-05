@@ -1,0 +1,319 @@
+{
+  "paper": "2210.11948.txt",
+  "words": 10245,
+  "extractions": {
+    "title": {
+      "value": "Lo-fi: distributed fine-tuning without communication",
+      "justification": "This is the title of the paper as provided in the first line.",
+      "quote": "Lo-fi: distributed fine-tuning without communication"
+    },
+    "description": "This paper examines a method for fine-tuning large neural networks without communication between nodes, termed 'lo-fi'. Instead of synchronizing gradients at each step, each node independently fine-tunes the model and the weights are averaged across nodes at the end. The method is tested on computer vision and natural language processing tasks, demonstrating that it can match or outperform traditional baseline methods under certain conditions.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents experimental results and comparisons across different models and datasets.",
+      "quote": "We observe (Figure 1, Table 1) that lo-fi matches the accuracy of DeiT-base and DeiT-large on ImageNet, the task used for fine-tuning, while outperforming the baseline on some distribution shifts."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Distributed Deep Learning",
+        "justification": "The main focus is on distributed fine-tuning of neural networks.",
+        "quote": "We leverage the observation that fine-tuned models appear to lie in a single low error region to remove communication between nodes during distributed fine-tuning."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Computer Vision",
+          "justification": "The paper includes experiments on vision models like DeiT and CLIP on datasets such as ImageNet.",
+          "quote": "In computer vision we use the DeiT-III codebase [59] to fine-tune the ImageNet-21k pre-trained DeiT-base and DeiT-large models."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Natural Language Processing",
+          "justification": "The paper also tests the method on OPT language models using a text dataset.",
+          "quote": "We also observe that lo-fi matches the baseline’s performance when fine-tuning OPT language models (up to 1.3B parameters) on Common Crawl."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "DeiT-base",
+          "justification": "The paper conducts experiments fine-tuning this model.",
+          "quote": "When fine-tuning DeiT-base and DeiT-large on ImageNet, this procedure matches accuracy in-distribution and improves accuracy under distribution shift compared to the baseline."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "The DeiT-base model is used for experiments but is not introduced in this paper.",
+          "quote": "In particular, we fine-tune the ImageNet-21k pre-trained DeiT-base model from DeiT-III [59] on ImageNet [11] using their code."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The model is fine-tuned as part of the experiments conducted in the paper.",
+          "quote": "We use the models from the DeiT-III repository [59] in the context of image classification."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The paper compares the fine-tuned DeiT-base model's performance against the baseline.",
+          "quote": "We observe (Figure 1, Table 1) that lo-fi matches the accuracy of DeiT-base and DeiT-large on ImageNet..."
+        },
+        "referenced_paper_title": {
+          "value": "DeiT III: Revenge of the ViT",
+          "justification": "The referenced paper for the DeiT-base model as mentioned in the article.",
+          "quote": "We improved our own baseline over that in the paper with the following hyperparemter changes: (i) Instead of removing the classification layer of the pre-trained model, we implement a version of LP-FT [34] to fine-tune—we preserved the ImageNet-21k classifier then use a class mapping from ImageNet-21k to ImageNet classes."
+        }
+      },
+      {
+        "name": {
+          "value": "DeiT-large",
+          "justification": "The paper conducts experiments fine-tuning this model.",
+          "quote": "When fine-tuning DeiT-base and DeiT-large on ImageNet, this procedure matches accuracy in-distribution and improves accuracy under distribution shift compared to the baseline."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "The DeiT-large model is used for experiments but is not introduced in this paper.",
+          "quote": "In particular, we fine-tune the ImageNet-21k pre-trained DeiT-large model from DeiT-III [59] on ImageNet [11] using their code."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The model is fine-tuned as part of the experiments conducted in the paper.",
+          "quote": "We use the models from the DeiT-III repository [59] in the context of image classification."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The paper compares the fine-tuned DeiT-large model's performance against the baseline.",
+          "quote": "We observe (Figure 1, Table 1) that lo-fi matches the accuracy of DeiT-base and DeiT-large on ImageNet..."
+        },
+        "referenced_paper_title": {
+          "value": "DeiT III: Revenge of the ViT",
+          "justification": "The referenced paper for the DeiT-large model as mentioned in the article.",
+          "quote": "We improved our own baseline over that in the paper with the following hyperparemter changes..."
+        }
+      },
+      {
+        "name": {
+          "value": "OPT-125M",
+          "justification": "The paper conducts experiments fine-tuning this model.",
+          "quote": "Finally, we test lo-fi beyond computer vision by fine-tuning OPT-125M and OPT-1.3B [72] on Common Crawl..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "The OPT-125M model is used for experiments but is not introduced in this paper.",
+          "quote": "Finally, we test lo-fi beyond computer vision by fine-tuning OPT-125M and OPT-1.3B [72] on Common Crawl..."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The model is fine-tuned as part of the experiments conducted in the paper.",
+          "quote": "Finally, we test lo-fi beyond computer vision by fine-tuning OPT-125M and OPT-1.3B [72] on Common Crawl..."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The paper compares the fine-tuned OPT-125M model's performance against the baseline.",
+          "quote": "We also observe that lo-fi matches the baseline’s performance when fine-tuning OPT language models (up to 1.3B parameters) on Common Crawl."
+        },
+        "referenced_paper_title": {
+          "value": "OPT: Open Pre-trained Transformer Language Models",
+          "justification": "The referenced paper for the OPT-125M model as mentioned in the article.",
+          "quote": "...by fine-tuning OPT-125M and OPT-1.3B [72] on Common Crawl..."
+        }
+      },
+      {
+        "name": {
+          "value": "OPT-1.3B",
+          "justification": "The paper conducts experiments fine-tuning this model.",
+          "quote": "Finally, we test lo-fi beyond computer vision by fine-tuning OPT-125M and OPT-1.3B [72] on Common Crawl..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "The OPT-1.3B model is used for experiments but is not introduced in this paper.",
+          "quote": "Finally, we test lo-fi beyond computer vision by fine-tuning OPT-125M and OPT-1.3B [72] on Common Crawl..."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The model is fine-tuned as part of the experiments conducted in the paper.",
+          "quote": "Finally, we test lo-fi beyond computer vision by fine-tuning OPT-125M and OPT-1.3B [72] on Common Crawl..."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The paper compares the fine-tuned OPT-1.3B model's performance against the baseline.",
+          "quote": "We also observe that lo-fi matches the baseline’s performance when fine-tuning OPT language models (up to 1.3B parameters) on Common Crawl."
+        },
+        "referenced_paper_title": {
+          "value": "OPT: Open Pre-trained Transformer Language Models",
+          "justification": "The referenced paper for the OPT-1.3B model as mentioned in the article.",
+          "quote": "...by fine-tuning OPT-125M and OPT-1.3B [72] on Common Crawl..."
+        }
+      },
+      {
+        "name": {
+          "value": "CLIP ViT-L",
+          "justification": "The paper conducts experiments fine-tuning this model.",
+          "quote": "While overall similar results are observed when fine-tuning CLIP ViT-L [51] on ImageNet or tasks from WILDS [31], lo-fi often requires more iterations in this setting."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "CLIP ViT-L is used for experiments but is not introduced in this paper.",
+          "quote": "While overall similar results are observed when fine-tuning CLIP ViT-L [51] on ImageNet or tasks from WILDS [31], lo-fi often requires more iterations in this setting."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The model is fine-tuned as part of the experiments conducted in the paper.",
+          "quote": "We fine-tune CLIP ViT-L [13, 51] on ImageNet."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The paper compares the fine-tuned CLIP ViT-L model's performance against the baseline.",
+          "quote": "We fine-tune CLIP ViT-L [13, 51] on ImageNet... lo-fi shows good performance under distribution shift, but on ImageNet requires more epochs to exceed the baseline accuracy unlike in the DeiT experiments."
+        },
+        "referenced_paper_title": {
+          "value": "Learning Transferable Visual Models From Natural Language Supervision",
+          "justification": "The referenced paper for the CLIP ViT-L model as mentioned in the article.",
+          "quote": "We fine-tune CLIP ViT-L [13, 51] on ImageNet... "
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "ImageNet",
+          "justification": "ImageNet is a primary dataset used for experiments in the paper.",
+          "quote": "In particular, we fine-tune the ImageNet-21k pre-trained DeiT-base model from DeiT-III [59] on ImageNet [11] using their code, which uses four nodes."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ImageNet: A large-scale hierarchical image database",
+          "justification": "ImageNet dataset is very well known and its referenced paper is widely cited.",
+          "quote": "ImageNet"
+        }
+      },
+      {
+        "name": {
+          "value": "Common Crawl",
+          "justification": "Common Crawl is a primary dataset used for the NLP experiments in the paper.",
+          "quote": "We observe that lo-fi matches the baseline’s performance when fine-tuning OPT language models (up to 1.3B parameters) on Common Crawl."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The Pile: An 800GB Dataset of Diverse Text for Language Modeling",
+          "justification": "Common Crawl segment mentioned in paper is a well-known subset of The Pile.",
+          "quote": "We fine-tune on the Pile’s Common Crawl subset [19] using the Huggingface Transformers library [63]."
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet-21k",
+          "justification": "ImageNet-21k is a primary dataset used for pre-training the models in the paper.",
+          "quote": "In particular, we fine-tune the ImageNet-21k pre-trained DeiT-base model from DeiT-III [59] on ImageNet [11] using their code, which uses four nodes."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ImageNet: A large-scale hierarchical image database",
+          "justification": "ImageNet-21k dataset is a extended version of ImageNet used for pre-training.",
+          "quote": "ImageNet-21k"
+        }
+      },
+      {
+        "name": {
+          "value": "WILDS-FMoW",
+          "justification": "The WILDS-FMoW dataset is used for the fine-tuning experiments outside of computer vision.",
+          "quote": "Next, we test CLIP ViT-L on two further datasets, WILDS-FMoW [10, 31], a satellite image recognition dataset with a temporal distribution shift."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "WILDS: A benchmark of in-the-wild distribution shifts",
+          "justification": "This dataset is a subset of the larger WILDS benchmark discussed in the paper.",
+          "quote": "Next, we test CLIP ViT-L on two further datasets, WILDS-FMoW [10, 31], a satellite image recognition dataset with a temporal distribution shift."
+        }
+      },
+      {
+        "name": {
+          "value": "WILDS-iWildCam",
+          "justification": "The WILDS-iWildCam dataset is used for the fine-tuning experiments outside of computer vision.",
+          "quote": "Next, we test CLIP ViT-L on two further datasets, WILDS-FMoW [10, 31], a satellite image recognition dataset with a temporal distribution shift and WILDS-iWildCam [3, 31], a classification dataset with camera traps in the wild with a geographic distribution shift."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "WILDS: A benchmark of in-the-wild distribution shifts",
+          "justification": "This dataset is a subset of the larger WILDS benchmark discussed in the paper.",
+          "quote": "Next, we test CLIP ViT-L on two further datasets, WILDS-FMoW [10, 31], a satellite image recognition dataset with a temporal distribution shift and WILDS-iWildCam [3, 31], a classification dataset with camera traps in the wild with a geographic distribution shift."
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet-V2",
+          "justification": "ImageNet-V2 is used for evaluating the performance of models under distribution shift.",
+          "quote": "The shifts we consider are IN-V2 [54], IN-R [23], Sketch [60], and IN-A [24]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Do ImageNet Classifiers Generalize to ImageNet?",
+          "justification": "The referenced paper for ImageNet-V2 as mentioned in the article.",
+          "quote": "The shifts we consider are IN-V2 [54], IN-R [23], Sketch [60], and IN-A [24]."
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet-R",
+          "justification": "ImageNet-R is used for evaluating the performance of models under distribution shift.",
+          "quote": "The shifts we consider are IN-V2 [54], IN-R [23], Sketch [60], and IN-A [24]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The Many Faces of Robustness: A Critical Analysis of Out-Of-Distribution Generalization",
+          "justification": "The referenced paper for ImageNet-R as mentioned in the article",
+          "quote": "The shifts we consider are IN-V2 [54], IN-R [23], Sketch [60], and IN-A [24]."
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet-Sketch",
+          "justification": "ImageNet-Sketch is used for evaluating the performance of models under distribution shift.",
+          "quote": "The shifts we consider are IN-V2 [54], IN-R [23], Sketch [60], and IN-A [24]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Robust Global Representations by Penalizing Local Predictive Power",
+          "justification": "The referenced paper for ImageNet-Sketch as mentioned in the article.",
+          "quote": "The shifts we consider are IN-V2 [54], IN-R [23], Sketch [60], and IN-A [24]."
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet-A",
+          "justification": "ImageNet-A is used for evaluating the performance of models under distribution shift.",
+          "quote": "The shifts we consider are IN-V2 [54], IN-R [23], Sketch [60], and IN-A [24]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Natural Adversarial Examples",
+          "justification": "The referenced paper for ImageNet-A as mentioned in the article.",
+          "quote": "The shifts we consider are IN-V2 [54], IN-R [23], Sketch [60], and IN-A [24]."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 4092,
+    "prompt_tokens": 18705,
+    "total_tokens": 22797
+  }
+}

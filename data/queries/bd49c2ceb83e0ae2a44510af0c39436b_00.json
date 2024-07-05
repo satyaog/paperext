@@ -1,0 +1,170 @@
+{
+  "paper": "bd49c2ceb83e0ae2a44510af0c39436b.txt",
+  "words": 6750,
+  "extractions": {
+    "title": {
+      "value": "Scaling Vision-based End-to-End Autonomous Driving with Multi-View Attention Learning",
+      "justification": "The title was explicitly mentioned at the beginning of the paper.",
+      "quote": "Scaling Vision-based End-to-End Autonomous Driving with Multi-View Attention Learning"
+    },
+    "description": "The paper introduces CIL++, an improved vision-based pure end-to-end autonomous driving model that leverages higher-resolution images and multi-view attention mechanisms to outperform current benchmarks set by models requiring expensive sensor suites and large human-labeled datasets.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents experimental results and performance analysis of the proposed model CIL++ in comparison to other models on autonomous driving tasks.",
+      "quote": "To confirm this hypothesis, we conduct experiments using two HFOV settings for CIL++, 100 and 180."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The paper focuses on vision-based autonomous driving, using high-resolution images and visual transformers.",
+        "quote": "Considering cost and maintenance. In this paper, we present CIL++, which improves on CILRS by both processing higher-resolution images using a human-inspired HFOV as an inductive bias and incorporating a proper attention mechanism."
+      },
+      "aliases": [
+        "CV"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Autonomous Driving",
+          "justification": "The primary application domain of the research is the development of models for end-to-end autonomous driving using vision-based inputs.",
+          "quote": "On end-to-end driving, human driving demonstrations are used to train perception-based driving models by imitation learning."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Deep Learning",
+          "justification": "The paper employs deep learning models and techniques to develop the CIL++ model for autonomous driving tasks.",
+          "quote": "On end-to-end driving, human driving demonstrations are used to train perception-based driving models by imitation learning."
+        },
+        "aliases": [
+          "DL"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "CIL++",
+          "justification": "The paper introduces CIL++ as the improved model developed in the research, with enhancements over the previous CILRS model.",
+          "quote": "In this paper, we present CIL++, which improves on CILRS by both processing higher-resolution images using a human-inspired HFOV as an inductive bias and incorporating a proper attention mechanism."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 1,
+          "justification": "CIL++ is specifically introduced and developed in this paper.",
+          "quote": "In this paper, we present CIL++, which improves on CILRS by both processing higher-resolution images using a human-inspired HFOV as an inductive bias and incorporating a proper attention mechanism."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The experiments and performance evaluations were conducted using the CIL++ model, which required execution of the model.",
+          "quote": "We show in Table I SR and S.SR for the considered traffic densities (Empty, Regular, Busy)."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "CIL++ was compared to other models such as CILRS, RIM, and MILE in the experimental results section.",
+          "quote": "We compare CIL++ with two SOTA vision-based EtE-AD models, namely, the Roach IL model (here RIM) [7] and MILE [12]."
+        },
+        "referenced_paper_title": {
+          "value": "Exploring the limitations of behavior cloning for autonomous driving",
+          "justification": "The previous model CILRS is discussed as a baseline for comparison, originating from the referenced paper.",
+          "quote": "Since having strong baselines is important to avoid illusory gains when developing new models, we present CIL++, a strong vision-based pure EtE-AD model trained by conditional imitation learning, i.e., CILRS. We improve on CILRS key limitations, rising the performance of CIL++ to be on par with top-performing hybrid methods."
+        }
+      },
+      {
+        "name": {
+          "value": "CILRS",
+          "justification": "CILRS is discussed extensively as the baseline model that CIL++ aims to improve upon.",
+          "quote": "CILRS was developed in suboptimal conditions: limited driving episodes based on a single and rather deterministic expert driver, very low-resolution images depicting a relatively narrow horizontal field of view (onboard images roughly display a single lane), and without applying any attention mechanism."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "CILRS is used as a baseline model and was not contributed by this paper.",
+          "quote": "CILRS was developed in suboptimal conditions: limited driving episodes based on a single and rather deterministic expert driver, very low-resolution images depicting a relatively narrow horizontal field of view (onboard images roughly display a single lane), and without applying any attention mechanism."
+        },
+        "is_executed": {
+          "value": 0,
+          "justification": "The focus of experiments and implementation was on the CIL++ model, not CILRS.",
+          "quote": "Since having strong baselines is important to avoid illusory gains when developing new models, we present CIL++, a strong vision-based pure EtE-AD model trained by conditional imitation learning, i.e., CILRS."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "CILRS is used as a comparative baseline model to evaluate the performance improvements of CIL++.",
+          "quote": "Since having strong baselines is important to avoid illusory gains when developing new models, we present CIL++, a strong vision-based pure EtE-AD model trained by conditional imitation learning, i.e., CILRS."
+        },
+        "referenced_paper_title": {
+          "value": "Exploring the limitations of behavior cloning for autonomous driving",
+          "justification": "The referenced paper details the initial development and limitations of the CILRS model.",
+          "quote": "In fact, these models follow a kind of hybrid approach leveraging from pure EtE-AD and traditional AD pipelines [2], [3]."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CARLA NoCrash benchmark",
+          "justification": "The CARLA NoCrash benchmark dataset was used for evaluating the performance of the CIL++ model in different scenarios.",
+          "quote": "As we will see, even CIL++ is not using supervision at all, it outperforms RIM and is quite on par with MILE. III. METHOD A. Problem Setup CIL++ is trained by imitation learning, which we formalize as follows. Expert demonstrators (drivers) produce an action a_i (ego-vehicle maneuver) when encountering an observation Oi , (sensor data, signals) given the expert policy π."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "CARLA: An open urban driving simulator",
+          "justification": "The original CARLA simulator paper is referenced for the use of its benchmark dataset.",
+          "quote": "In order to conduct our experiments, we use the CARLA simulator [23] 0.9.13, which was the latest official version when we started this research."
+        }
+      },
+      {
+        "name": {
+          "value": "CARLA Multi-Town dataset",
+          "justification": "The CARLA Multi-Town dataset was also used for evaluating the CIL++ model, especially for more complex driving scenarios involving multiple towns.",
+          "quote": "With such expert driver, ego-vehicle, and on-board cameras, we collect data for increasingly complex experiments. First, we collect a dataset from Town01 in CARLA, which is a small town only enabling single-lane driving, i.e., lane change maneuvers are not possible....we hold Town05 for testing, and collect 25 hours of data at 10 fps from Town01 to Town06 (5 hours per town; ∼900K frames from each camera)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "CARLA: An open urban driving simulator",
+          "justification": "The dataset is based on the CARLA simulator, as referenced in the paper.",
+          "quote": "In order to conduct our experiments, we use the CARLA simulator [23] 0.9.13, which was the latest official version when we started this research."
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet",
+          "justification": "The ResNet34 model used in CIL++ was pretrained on the ImageNet dataset as mentioned in the section discussing the state embedding.",
+          "quote": "Each image xv,t ∈ RW ×H×3 from the multi-view camera setting is processed by a share-weight ResNet34 [30], pre-trained on ImageNet [31]."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "ImageNet: A large-scale hierarchical image database",
+          "justification": "The original ImageNet paper is cited for the pre-training of the ResNet34 model used in the research.",
+          "quote": "Each image xv,t ∈ RW ×H×3 from the multi-view camera setting is processed by a share-weight ResNet34 [30], pre-trained on ImageNet [31]."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is implicitly mentioned as the deep learning library used for implementing the model components and conducting experiments, given that ResNet and Transformer are typically built using this library.",
+          "quote": "Each image xv,t ∈ RW ×H×3 from the multi-view camera setting is processed by a share-weight ResNet34 [30], pre-trained on ImageNet [31]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An Imperative Style, High-Performance Deep Learning Library",
+          "justification": "PyTorch is commonly used for implementing deep learning models and conducting experiments, aligning with the methods used in this research.",
+          "quote": "Each image xv,t ∈ RW ×H×3 from the multi-view camera setting is processed by a share-weight ResNet34 [30], pre-trained on ImageNet [31]."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1973,
+    "prompt_tokens": 12282,
+    "total_tokens": 14255
+  }
+}

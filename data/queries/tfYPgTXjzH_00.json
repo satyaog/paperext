@@ -1,0 +1,205 @@
+{
+  "paper": "tfYPgTXjzH.txt",
+  "words": 7441,
+  "extractions": {
+    "title": {
+      "value": "Learning Communication-Efficient Optimizers",
+      "justification": "The title clearly states that the focus of the paper is on learning communication-efficient optimizers.",
+      "quote": "LEARNING COMMUNICATION-EFFICIENT OPTIMIZERS"
+    },
+    "description": "This paper introduces and evaluates learned optimization approaches that improve communication efficiency in distributed training of deep learning models. By incorporating local optimizers into a meta-learning framework, the researchers propose novel architectures for learned optimizers, demonstrating their potential to outperform existing methods like local SGD in communication-efficient settings.",
+    "type": {
+      "value": "empirical study",
+      "justification": "The paper provides experimental results and comparisons of different optimizer implementations, indicating that it is empirical in nature.",
+      "quote": "Our results demonstrate that local learned optimizers can substantially outperform local SGD and its sophisticated variants while maintaining their communication efficiency."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Optimization",
+        "justification": "The paper focuses on optimizing communication efficiency in deep learning training, specifically in the context of distributed optimization algorithms.",
+        "quote": "our results outline a promising future for communication-efficient distributed learning."
+      },
+      "aliases": [
+        "Distributed Optimization",
+        "Communication-Efficient Optimization"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Federated Learning",
+          "justification": "The techniques in this paper are closely related to federated learning, which also deals with communication-efficient strategies in distributed settings.",
+          "quote": "A closely related algorithm has been proposed and extensively used in federated learning for communication efficiency."
+        },
+        "aliases": [
+          "Federated Optimization"
+        ]
+      },
+      {
+        "name": {
+          "value": "Meta-Learning",
+          "justification": "The learned optimizers use a meta-learning framework to develop improved optimization strategies.",
+          "quote": "Learned optimization through meta-learning has been an increasingly important topic of research interest."
+        },
+        "aliases": [
+          "Learning to Learn",
+          "Meta-Optimization"
+        ]
+      },
+      {
+        "name": {
+          "value": "Adaptive Optimization",
+          "justification": "The paper compares its proposed methods against state-of-the-art adaptive optimizers and seeks to generalize across various datasets and architectures.",
+          "quote": "Recent works have demonstrated highly competitive performance with state-of-the-art adaptive optimization strategies"
+        },
+        "aliases": [
+          "Adaptive Methods",
+          "Adaptive Algorithms"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "LOpt-A",
+          "justification": "The paper introduces LOpt-A as one of the proposed local learned optimizers.",
+          "quote": "LOpt-A Our first proposed variant of a locally learned optimizer uses ∆t, the average of the updates from all workers, as an input feature and uses it to compute features along with the optimizer state."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 1,
+          "justification": "LOpt-A is newly proposed in this research paper.",
+          "quote": "our results outline a promising future for communication-efficient distributed learning."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The paper includes empirical studies where the LOpt-A was executed.",
+          "quote": "All experiments use K = 8."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "LOpt-A is compared against other baseline models like local SGD and SlowMo.",
+          "quote": "Our LOpt-A and LAgg-A outperform strong communication-efficient baselines such as SlowMo and local SGD."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The model is newly introduced in this paper and not referenced from another work.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "LAgg-A",
+          "justification": "The paper introduces LAgg-A as one of the proposed local learned optimizers.",
+          "quote": "LAgg-A Our second locally learned optimizer takes advantage of pre-aggregated information from each worker, specifically it uses all the ∆t as input to the MLP along with the AdaFactor features computed from ∆t, the average of the updates from all workers."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 1,
+          "justification": "LAgg-A is newly proposed in this research paper.",
+          "quote": "our results outline a promising future for communication-efficient distributed learning."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The paper includes empirical studies where the LAgg-A was executed.",
+          "quote": "All experiments use K = 8."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "LAgg-A is compared against other baseline models like local SGD and SlowMo.",
+          "quote": "Our LOpt-A and LAgg-A outperform strong communication-efficient baselines such as SlowMo and local SGD."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The model is newly introduced in this paper and not referenced from another work.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "SlowMo",
+          "justification": "SlowMo is mentioned as a competitive approach in this domain and is used as a baseline for comparison.",
+          "quote": "Our LOpt-A and LAgg-A outperform strong communication-efficient baselines such as SlowMo and local SGD."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "SlowMo is mentioned as an existing work used for baseline comparisons.",
+          "quote": "Wang et al. (2019) introduced the use of global or server-side momentum and showed that it can accelerate local SGD as well as a number of decentralized and asynchronous stochastic algorithms."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The paper includes empirical studies where SlowMo was executed for comparison.",
+          "quote": "Our empirical evaluation is based on standard supervised learning tasks with different dataset and architecture combinations commonly studied in learned optimization literature."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "SlowMo is used as a baseline for numerical comparison in the experiments.",
+          "quote": "Our LOpt-A and LAgg-A outperform strong communication-efficient baselines such as SlowMo and local SGD."
+        },
+        "referenced_paper_title": {
+          "value": "SlowMo: Improving Communication-Efficient Distributed SGD with Slow Momentum",
+          "justification": "The research paper by Wang et al. (2019) is referenced for the SlowMo model.",
+          "quote": "Wang et al. (2019) introduced the use of global or server-side momentum and showed that it can accelerate local SGD."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Fashion MNIST",
+          "justification": "The Fashion MNIST dataset is used for training and evaluation in the experiments.",
+          "quote": "We use the Fashion MNIST dataset (10 classes) with full-size 28 × 28 images with 1 channel which we refer to as FMNIST or FMNIST 28 × 28."
+        },
+        "aliases": [
+          "FMNIST",
+          "FMNIST 28 × 28"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Fashion-MNIST: a Novel Image Dataset for Benchmarking Machine Learning Algorithms",
+          "justification": "The dataset is used in the experiments, and it is a known benchmark dataset.",
+          "quote": "We use the Fashion MNIST dataset (10 classes) with full-size 28 × 28 images with 1 channel which we refer to as FMNIST or FMNIST 28 × 28."
+        }
+      },
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "The CIFAR-10 dataset is used for training and evaluation in the experiments.",
+          "quote": "We also use the CIFAR-10 dataset (10 classes) with full-size 32 × 32 images with 3 channels, referred this dataset as CIFAR-10 or CIFAR-10 32 × 32."
+        },
+        "aliases": [
+          "CIFAR-10 32 × 32"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "CIFAR-10: Learning Multiple Layers of Features from Tiny Images",
+          "justification": "The dataset is used in the experiments, and it is a known benchmark dataset.",
+          "quote": "We also use the CIFAR-10 dataset (10 classes) with full-size 32 × 32 images with 3 channels, referred this dataset as CIFAR-10 or CIFAR-10 32 × 32."
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet",
+          "justification": "The ImageNet dataset is used for training and evaluation in the experiments.",
+          "quote": "Finally, we use the ImageNet dataset (1000 classes) with downsampled size 32 × 32 images with 3 channels."
+        },
+        "aliases": [
+          "ImageNet 32 × 32"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ImageNet Classification with Deep Convolutional Neural Networks",
+          "justification": "The dataset is used in the experiments, and it is a known benchmark dataset.",
+          "quote": "Finally, we use the ImageNet dataset (1000 classes) with downsampled size 32 × 32 images with 3 channels."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 2172,
+    "prompt_tokens": 13942,
+    "total_tokens": 16114
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "paper": "42LIoV0C1h.txt",
+  "words": 10934,
+  "extractions": {
+    "title": {
+      "value": "Qualitative Code Suggestion: A Human-Centric Approach To Qualitative Coding",
+      "justification": "This is the title provided in the paper.",
+      "quote": "Qualitative Code Suggestion: A Human-Centric Approach To Qualitative Coding"
+    },
+    "description": "The paper explores a new method called Qualitative Code Suggestion (QCS), which aims to assist qualitative coders by providing a ranked list of code suggestions for identified passages in text corpora. This method considers the order of passage annotations, the importance of rare codes, and varying annotation styles between coders. The authors introduce the CVDQuoding dataset, featuring interviews with women at risk of cardiovascular diseases, to investigate QCS, and validate its effectiveness through human evaluations.",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The study includes experiments and human evaluations to investigate the effectiveness of the proposed QCS method, indicating that it is empirical.",
+      "quote": "We experiment with classification, information-retrieval and zero-shot prompting techniques to model QCS and conduct a human evaluation which shows that our systems consistently make relevant code suggestions."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The paper focuses on NLP techniques to assist in the qualitative coding process, framing qualitative code suggestion as an NLP task.",
+        "quote": "It is an arduous and manual process which human-computer interaction studies have shown could greatly benefit from NLP techniques to assist qualitative coders."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Human-Computer Interaction",
+          "justification": "The paper emphasizes a user-centered approach and discusses how coders interact with the QCS system.",
+          "quote": "Grounded in HCI studies on automated coding assistance, we propose the task of qualitative code suggestion (QCS) in which previously assigned codes are suggested from passages identified by qualitative researchers."
+        },
+        "aliases": [
+          "HCI"
+        ]
+      },
+      {
+        "name": {
+          "value": "Text Classification",
+          "justification": "The paper discusses the task of qualitative code suggestion in terms of text classification, especially when comparing it to previous work.",
+          "quote": "NLP practitioners have attempted to insert language technologies into the coding process by formulating it as a text classification task."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Information Retrieval",
+          "justification": "The study uses information retrieval paradigms including bi-encoder and cross-encoder architectures to model QCS.",
+          "quote": "We use two neural-retrieval architectures to rank the set of codes C with an additional step for the novel code detection subtask."
+        },
+        "aliases": [
+          "IR"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "GPT-3.5",
+          "justification": "The study uses GPT-3.5 in their zero-shot prompting paradigm for suggesting qualitative codes.",
+          "quote": "In addition, our zero-shot prompting paradigm uses OpenAI's GPT-3.5 Turbo (Brown et al., 2020) accessible through its API."
+        },
+        "aliases": [
+          "OpenAI GPT-3.5 Turbo"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "GPT-3.5 is used in the study but was not developed in it.",
+          "quote": "In addition, our zero-shot prompting paradigm uses OpenAI's GPT-3.5 Turbo (Brown et al., 2020) accessible through its API."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "GPT-3.5 was executed using OpenAI's API to generate code suggestions in the study.",
+          "quote": "For our zero-shot prompting paradigm, we use OpenAI's GPT-3.5 Turbo (Brown et al., 2020) accessible through its API."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "GPT-3.5's suggestions were compared to other models' suggestions in the study.",
+          "quote": "In addition, we also compute the precision at 4 (P@4) of each system using the human evaluator’s annotations."
+        },
+        "referenced_paper_title": {
+          "value": "Language models are few-shot learners",
+          "justification": "This is the referenced paper where GPT-3 was originally introduced, as cited by the authors.",
+          "quote": "(Brown et al., 2020)"
+        }
+      },
+      {
+        "name": {
+          "value": "ConvBERT",
+          "justification": "The study leverages ConvBERT as part of the cross-encoder architecture for information retrieval in QCS.",
+          "quote": "We use the ConvBERT implementation from Hugging Face."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "ConvBERT is employed in the study but was developed independently.",
+          "quote": "We use the ConvBERT implementation from Hugging Face."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "ConvBERT was executed as part of the cross-encoder architecture for generating code suggestions.",
+          "quote": "In particular, we use ConvBERT’s tokenizer and its ConvBertForSequenceClassification module."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "ConvBERT's performance was compared to other models' in the study.",
+          "quote": "For the cross-encoder, we experiment with both DistilBert and ConvBERT."
+        },
+        "referenced_paper_title": {
+          "value": "ConvBERT: Improving BERT with Span-based Dynamic Convolution",
+          "justification": "The referenced paper where ConvBERT was originally introduced, as cited by the authors.",
+          "quote": "(Jiang et al., 2021b)"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CVDQuoding",
+          "justification": "The dataset is introduced and used in the study for investigating the QCS task.",
+          "quote": "We release the first publicly available qualitative coding dataset, named CVDQuoding, consisting of transcripts of interviews with women at risk of cardiovascular diseases along with the annotations of two qualitative coders."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "This is an original contribution by the authors, and no reference paper is cited for this dataset.",
+          "quote": "We release the first publicly available qualitative coding dataset, named CVDQuoding... This dataset is available by request to the corresponding author, due to its sensitive nature."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Hugging Face",
+          "justification": "The study explicitly mentions using implementations from Hugging Face for both DistilBERT and ConvBERT models.",
+          "quote": "We use the DistilBERT implementation from Hugging Face. In particular, we use DistilBERT’s tokenizer and its DistilBertForSequenceClassification module."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "The library itself is not referenced with a specific paper in the study.",
+          "quote": "We use the DistilBERT implementation from Hugging Face. In particular, we use DistilBERT’s tokenizer and its DistilBertForSequenceClassification module."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2560,
+    "prompt_tokens": 42218,
+    "total_tokens": 44778
+  }
+}

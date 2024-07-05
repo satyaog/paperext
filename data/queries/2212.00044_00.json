@@ -1,0 +1,173 @@
+{
+  "paper": "2212.00044.txt",
+  "words": 10504,
+  "extractions": {
+    "title": {
+      "value": "A Framework for Obtaining Accurate Posteriors of Strong Gravitational Lensing Parameters with Flexible Priors and Implicit Likelihoods using Density Estimation",
+      "justification": "The title is extracted from the beginning of the paper.",
+      "quote": "A Framework for Obtaining Accurate Posteriors of Strong Gravitational Lensing Parameters with Flexible Priors and Implicit Likelihoods using Density Estimation"
+    },
+    "description": "This paper proposes a two-stage implicit likelihood inference method to obtain accurate posteriors for strong gravitational lensing parameters. The first stage involves training a compressor network to predict point estimates, while the second stage uses density estimation models on repeated simulations to quantify uncertainties, model errors, and provide a well-defined Bayesian statistical framework for posterior inference.",
+    "type": {
+      "value": "empirical",
+      "justification": "The study involves empirical evaluation based on experiments and simulations.",
+      "quote": "We train neural networks to perform a regression task to produce point estimates of lensing parameters."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Astrophysics",
+        "justification": "The study is focused on strong gravitational lensing, a phenomenon studied within astrophysics.",
+        "quote": "Achieving all these science goals with strong gravitational lensing requires knowledge of lensing distortions, a process commonly referred to as lens modeling."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Computer Vision",
+          "justification": "The study employs convolutional neural networks (CNNs) to analyze image data, a key aspect of computer vision.",
+          "quote": "By training convolutional neural networks to perform a regression task, it was shown that it is possible to obtain point estimates of lens parameters extremely accurately."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Machine Learning",
+          "justification": "The study incorporates machine learning techniques, including neural networks and density estimation models, to infer posteriors and quantify uncertainties.",
+          "quote": "Machine learning has been used to contribute to two different aspects of this inference framework: 1) to discover informative compressed statistics and 2) to model the distribution of the parameters of the simulated data and the compressed statistics."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Convolutional Neural Network (CNN)",
+          "justification": "The study uses CNNs to predict point estimates of lensing parameters.",
+          "quote": "Similar to Hezaveh et al. (2017), we first train a convolutional neural network with a mean squared error loss to produce point estimates of the lensing parameters."
+        },
+        "aliases": [
+          "CNN"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "The CNN is not an original contribution of the paper but is used within the proposed framework.",
+          "quote": "Similar to Hezaveh et al. (2017), we first train a convolutional neural network with a mean squared error loss to produce point estimates of the lensing parameters."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The CNN was trained and used to obtain point estimates in the experiments.",
+          "quote": "Similar to Hezaveh et al. (2017), we first train a convolutional neural network with a mean squared error loss to produce point estimates of the lensing parameters."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The CNN is compared with other approaches such as Bayesian Neural Networks (BNNs) in the study.",
+          "quote": "We compare our results with those of approximate Bayesian neural networks, discuss their significance, and point to future directions."
+        },
+        "referenced_paper_title": {
+          "value": "Fast Automated Analysis of Strong Gravitational Lenses with Convolutional Neural Networks",
+          "justification": "The referenced Hezaveh et al. (2017) paper that originally proposed this use of CNNs is cited.",
+          "quote": "Similar to Hezaveh et al. (2017), we first train a convolutional neural network with a mean squared error loss to produce point estimates of the lensing parameters."
+        }
+      },
+      {
+        "name": {
+          "value": "Bayesian Neural Network (BNN)",
+          "justification": "The study uses Bayesian Neural Networks to obtain uncertainty estimates for the predictions made by neural networks.",
+          "quote": "We also train an approximate Bayesian neural network (BNN, see section A of the Appendix) to compare its results with the posteriors obtained by the methods proposed in this work."
+        },
+        "aliases": [
+          "BNN"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "Bayesian Neural Networks are a known machine learning approach that is used in the study but not contributed.",
+          "quote": "We also train an approximate Bayesian neural network (BNN, see section A of the Appendix) to compare its results with the posteriors obtained by the methods proposed in this work."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "BNNs are trained and tested in the study.",
+          "quote": "The BNN is trained to minimize the negative log-probability of the predicted distribution as this is equivalent to minimizing the KL divergence between the true and estimated parametric distribution."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The BNN is compared with other approaches in the study.",
+          "quote": "We also train an approximate Bayesian neural network (BNN, see section A of the Appendix) to compare its results with the posteriors obtained by the methods proposed in this work."
+        },
+        "referenced_paper_title": {
+          "value": "Dropout as a Bayesian Approximation: Representing Model Uncertainty in Deep Learning",
+          "justification": "The referenced Gal & Ghahramani (2015) paper that discusses Bayesian Neural Networks is cited.",
+          "quote": "Approximate BNNs can be used with variational inference to represent the marginalized posterior distribution p(θ|x) as... (Gal & Ghahramani 2015)"
+        }
+      },
+      {
+        "name": {
+          "value": "Mixture Density Network (MDN)",
+          "justification": "The study uses MDNs to model the likelihood function of learned parameters.",
+          "quote": "We then model the distribution of true vs. predicted parameters by training a density estimation model (a mixture density network) to learn the likelihood function of the learned parameters (compressed statistics)."
+        },
+        "aliases": [
+          "MDN"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "Mixture Density Networks are a known machine learning technique used in the study but not contributed.",
+          "quote": "Mixture density networks (MDNs) are neural networks that model conditional probability densities as a mixture of parametric distributions. Typically, the parametric model is chosen to be a mixture of Gaussian distributions defined as..."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "MDNs are trained and used for modeling in the study.",
+          "quote": "We then model the distribution of true vs. predicted parameters by training a density estimation model (a mixture density network) to learn the likelihood function of the learned parameters (compressed statistics)."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "MDNs are compared with CNNs and BNNs in terms of their performance in the study.",
+          "quote": "We also train an approximate Bayesian neural network (BNN, see section A of the Appendix) to compare its results with the posteriors obtained by the methods proposed in this work."
+        },
+        "referenced_paper_title": {
+          "value": "Mixture Density Networks",
+          "justification": "The referenced Bishop (1994) paper that introduces Mixture Density Networks is cited.",
+          "quote": "Mixture density networks (MDNs) are neural networks that model conditional probability densities as a mixture of parametric distributions. Typically, the parametric model is chosen to be a mixture of Gaussian distributions defined as..."
+        }
+      }
+    ],
+    "datasets": [],
+    "libraries": [
+      {
+        "name": {
+          "value": "TensorFlow",
+          "justification": "The paper mentions using TensorFlow for implementing the neural networks and performing GPU accelerated computations.",
+          "quote": "The algorithm is written entirely in Tensorflow, allowing for GPU accelerated MCMC sampling."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Systems",
+          "justification": "TensorFlow is a well-known machine learning library used in the study, though no citation is directly provided in the text.",
+          "quote": "The algorithm is written entirely in Tensorflow, allowing for GPU accelerated MCMC sampling."
+        }
+      },
+      {
+        "name": {
+          "value": "Adam Optimizer",
+          "justification": "The paper mentions using the Adam optimizer for training the neural networks.",
+          "quote": "The BNN is trained using the Adam optimizer (Kingma & Ba 2014)"
+        },
+        "aliases": [
+          "Adam"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Adam: A Method for Stochastic Optimization",
+          "justification": "The referenced Kingma & Ba (2014) paper that introduces the Adam optimizer is cited.",
+          "quote": "Kingma, D. P., & Ba, J. 2014, arXiv e-prints, arXiv:1412.6980."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2149,
+    "prompt_tokens": 18080,
+    "total_tokens": 20229
+  }
+}

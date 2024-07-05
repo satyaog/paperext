@@ -1,0 +1,154 @@
+{
+  "paper": "ybc9V6Cbq2.txt",
+  "words": 6807,
+  "extractions": {
+    "title": {
+      "value": "Better Quality Pretraining Data and T5 Models for African Languages",
+      "justification": "The title is clearly mentioned at the beginning of the paper.",
+      "quote": "Better Quality Pretraining Data and T5 Models for African Languages"
+    },
+    "description": "The paper focuses on improving the quality of pretraining data for multilingual language models, particularly for African languages. The authors introduce a new multilingual pretraining corpus for 16 African languages and evaluate its effectiveness by pretraining a T5-based model. The results show significant improvements in downstream tasks compared to existing pretrained models, highlighting the importance of high-quality data in low-resource scenarios.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents experimental results of the new multilingual pretraining corpus and the pretrained T5-based model. The performance of the model is evaluated on multiple downstream tasks.",
+      "quote": "Subsequently, we pretrain a new T5-based model on this dataset and evaluate its performance on multiple downstream tasks."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The paper deals with multilingual language models and their application to natural language understanding tasks, which falls under Natural Language Processing.",
+        "quote": "In this study, we highlight the importance of enhancing the quality of pretraining data in multilingual language models."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Multilingual Models",
+          "justification": "The paper specifically addresses issues related to multilingual language models, particularly for African languages.",
+          "quote": "Existing web crawls have demonstrated quality issues, particularly in the context of low-resource languages. Consequently, we introduce a new multilingual pretraining corpus for 16 African languages."
+        },
+        "aliases": [
+          "Multilingual Language Models"
+        ]
+      },
+      {
+        "name": {
+          "value": "Low-Resource Languages",
+          "justification": "The paper targets low-resource African languages and addresses the challenges of data quality in these contexts.",
+          "quote": "Our model demonstrates better downstream effectiveness over existing pretrained models across four NLP tasks, underscoring the critical role data quality plays in pretraining language models in low-resource scenarios."
+        },
+        "aliases": [
+          "Low-Resource Language Models"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "AfriTeVa V2",
+          "justification": "The model AfriTeVa V2 is introduced and pretrained on the new dataset, showing significant improvements in downstream tasks.",
+          "quote": "Using t5x and seqio (Roberts et al., 2022), we pretrain a T5 (Shazeer, 2020; Raffel et al., 2020) model with a subword-tokenizer of vocabulary size 150, 000. We pretrain for 524, 288 steps on the span-corruption objective using the Adafactor optimizer. Each training batch consists of 512 examples, each with an input of 512 tokens and an output of 114 tokens. Our new model is known as AfriTeVa V2, a 428M parameter model."
+        },
+        "aliases": [
+          "AfriTeVa"
+        ],
+        "is_contributed": {
+          "value": 1,
+          "justification": "The model AfriTeVa V2 is introduced in this research.",
+          "quote": "Our new model is known as AfriTeVa V2, a 428M parameter model."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The execution details mention using batch processing and optimization, which suggest the model was executed in the study.",
+          "quote": "We pretrain for 524, 288 steps on the span-corruption objective using the Adafactor optimizer. Each training batch consists of 512 examples, each with an input of 512 tokens and an output of 114 tokens."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The performance of AfriTeVa V2 is compared with multiple baseline models in the study.",
+          "quote": "Our model demonstrates better downstream effectiveness over existing pretrained models across four NLP tasks, underscoring the critical role data quality plays in pretraining language models in low-resource scenarios."
+        },
+        "referenced_paper_title": {
+          "value": "Exploring the Limits of Transfer Learning With a Unified Text-to-Text Transformer",
+          "justification": "The T5 model paper by Raffel et al. (2020) is referenced as the base architecture for AfriTeVa V2.",
+          "quote": "Using t5x and seqio (Roberts et al., 2022), we pretrain a T5 (Shazeer, 2020; Raffel et al., 2020) model with a subword-tokenizer of vocabulary size 150, 000."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "WURA",
+          "justification": "The WURA dataset is introduced and used for pretraining the AfriTeVa V2 model in this study.",
+          "quote": "We present WURA, a multilingual dataset comprising 16 African languages and 4 high-resource languages popularly spoken on the African continent – Arabic, English, French, and Portuguese."
+        },
+        "aliases": [
+          "WURA Dataset"
+        ],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "Quality at a Glance: An Audit of Web-Crawled Multilingual Datasets",
+          "justification": "The paper by Kreutzer et al. (2022) is referenced as a prior work that assessed the quality issues in existing multilingual datasets and influenced the creation of WURA.",
+          "quote": "We draw from Kreutzer et al. (2022)’s audit of existing pretraining corpora to understand prevailing quality issues."
+        }
+      },
+      {
+        "name": {
+          "value": "mC4",
+          "justification": "The mC4 dataset is extensively audited and cleaned as part of the creation process for the WURA dataset.",
+          "quote": "For mC4, they cite a high ratio both of sentences in incorrect languages (15.98% average) and non-linguistic content (11.40% average)."
+        },
+        "aliases": [
+          "mC4"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "mT5: A Massively Multilingual Pre-trained Text-to-Text Transformer",
+          "justification": "The mC4 dataset was created as part of the mT5 model introduced by Xue et al. (2021), which is referenced in the study.",
+          "quote": "The introduction of mC4 (Xue et al., 2021), a document-level dataset spanning 101 languages helped alleviate this coverage gap."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "t5x",
+          "justification": "t5x is explicitly mentioned as the library used for pretraining the AfriTeVa V2 model in the study.",
+          "quote": "Using t5x and seqio (Roberts et al., 2022), we pretrain a T5 (Shazeer, 2020; Raffel et al., 2020) model."
+        },
+        "aliases": [
+          "t5x"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Scaling Up Models and Data with t5x and seqio",
+          "justification": "The referenced paper by Roberts et al. (2022) introduces t5x, which is used in this study.",
+          "quote": "Using t5x and seqio (Roberts et al., 2022), we pretrain a T5 (Shazeer, 2020; Raffel et al., 2020) model."
+        }
+      },
+      {
+        "name": {
+          "value": "seqio",
+          "justification": "seqio is explicitly mentioned as the library used for pretraining the AfriTeVa V2 model in the study.",
+          "quote": "Using t5x and seqio (Roberts et al., 2022), we pretrain a T5 (Shazeer, 2020; Raffel et al., 2020) model."
+        },
+        "aliases": [
+          "seqio"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Scaling Up Models and Data with t5x and seqio",
+          "justification": "The referenced paper by Roberts et al. (2022) introduces seqio, which is used in this study.",
+          "quote": "Using t5x and seqio (Roberts et al., 2022), we pretrain a T5 (Shazeer, 2020; Raffel et al., 2020) model."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1645,
+    "prompt_tokens": 15111,
+    "total_tokens": 16756
+  }
+}

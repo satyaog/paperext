@@ -1,0 +1,204 @@
+{
+  "paper": "2312.07551.txt",
+  "words": 12817,
+  "extractions": {
+    "title": {
+      "value": "Language Model Alignment with Elastic Reset",
+      "justification": "The title is extracted directly from the research paper.",
+      "quote": "Language Model Alignment with Elastic Reset"
+    },
+    "description": "The paper presents Elastic Reset, an algorithm for fine-tuning language models using reinforcement learning with human feedback (RLHF). It addresses the issue of language drift and reward hacking, proposing a method that periodically resets the online model to an exponential moving average (EMA) to improve reward performance with less drift.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper demonstrates empirical results on benchmarks including pivot translation, IMDB mock sentiment, and a technical QA chatbot setup using LLaMA-7B, showing the effectiveness of the Elastic Reset method.",
+      "quote": "We demonstrate that fine-tuning language models with Elastic Reset leads to state-of-the-art performance on a small scale pivot-translation benchmark, outperforms all baselines in a medium-scale RLHF-like IMDB mock sentiment task and leads to a more performant and more aligned technical QA chatbot with LLaMA-7B."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The paper focuses on fine-tuning large language models, a key aspect of Natural Language Processing research.",
+        "quote": "Finetuning language models with reinforcement learning (RL), e.g. from human feedback (HF), is a prominent method for alignment."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Reinforcement Learning from Human Feedback",
+          "justification": "The paper investigates the use of reinforcement learning from human feedback (RLHF) to achieve better alignment of language models, addressing issues like language drift and reward hacking.",
+          "quote": "a prominent method for alignment...is reinforcement learning from human feedback (RLHF)."
+        },
+        "aliases": [
+          "RLHF"
+        ]
+      },
+      {
+        "name": {
+          "value": "Machine Translation",
+          "justification": "One of the tasks evaluated in the paper is pivot translation, a classic benchmark in the field of Machine Translation.",
+          "quote": "We first investigate the pivot-translation benchmark of Lee et al. [2019]"
+        },
+        "aliases": [
+          "MT"
+        ]
+      },
+      {
+        "name": {
+          "value": "Sentiment Analysis",
+          "justification": "The paper evaluates the Elastic Reset method on an IMDB mock sentiment task, which is a common benchmark in Sentiment Analysis.",
+          "quote": "Next, we scale to a larger benchmark that more closely approximates the standard RLHF setup. We use the recently released GRUE benchmark for RL training of LMs [Ramamurthy et al., 2022] and use IMDB mock sentiment"
+        },
+        "aliases": [
+          "SA"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "LLaMA-7B",
+          "justification": "The paper includes experiments that utilize the LLaMA-7B model for RLHF to create a technical QA chatbot.",
+          "quote": "Finally, we scale up even more to true RLHF finetuning of Llama-7B in order to create a helpful technical QA chatbot using a StackExchange dataset."
+        },
+        "aliases": [
+          "LLaMA"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "The LLaMA-7B model is used in the research but is not a contribution of the paper.",
+          "quote": "Finally, we scale up even more to true RLHF finetuning of Llama-7B..."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The LLaMA-7B model was trained using GPUs during the experiments.",
+          "quote": "We again compare to PPO...Each run takes 20 hours on 4 A100s."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The model's performance is compared to baselines like PPO in the scope of the paper's experiments.",
+          "quote": "We again compare to PPO..."
+        },
+        "referenced_paper_title": {
+          "value": "LLaMA: Open and Efficient Foundation Language Models",
+          "justification": "The referenced paper provides the LLaMA-7B model used in this research.",
+          "quote": "LLaMA: Open and Efficient Foundation Language Models, Feb. 2023. URL http://arxiv.org/abs/2302.13971."
+        }
+      },
+      {
+        "name": {
+          "value": "GPT-2",
+          "justification": "The GPT-2 model is fine-tuned in the paper for tasks like IMDB mock sentiment analysis.",
+          "quote": "We choose GPT-2 as our base model for fine-tuning on IMDB mock sentiment as it is a well-known and accessible model."
+        },
+        "aliases": [
+          "GPT2"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "The GPT-2 model is utilized but not introduced by this paper.",
+          "quote": "We choose GPT-2 as our base model..."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The experiments involving GPT-2 were executed on GPUs.",
+          "quote": "training GPT-2 with RLHF on IMDB mock sentiment...run with a single 40G A100 GPU."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "GPT-2 fine-tuned models are compared to other baselines and variations in the experiments.",
+          "quote": "We again show state-of-the-art performance on the benchmark..."
+        },
+        "referenced_paper_title": {
+          "value": "Language Models are Unsupervised Multitask Learners",
+          "justification": "This paper is among the key references for GPT-2, which is utilized in the current study.",
+          "quote": "Radford et al., 2019. Language Models are Unsupervised Multitask Learners, 2019."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "StackExchange",
+          "justification": "The StackExchange dataset is used for creating a technical QA chatbot with LLaMA-7B.",
+          "quote": "Finally, we scale up even more to true RLHF finetuning of Llama-7B in order to create a helpful technical QA chatbot using a StackExchange dataset."
+        },
+        "aliases": [
+          "Stack Exchange"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "HuggingFace H4 Stack Exchange Preference Dataset",
+          "justification": "The paper references this dataset from HuggingFace for RLHF fine-tuning of LLaMA-7B.",
+          "quote": "Lambert et al., 2023. URL https://huggingface.co/datasets/HuggingFaceH4/stack-exchange-preferences."
+        }
+      },
+      {
+        "name": {
+          "value": "IMDB",
+          "justification": "The IMDB dataset is used as a mock sentiment benchmark for evaluating Elastic Reset in sentiment analysis tasks.",
+          "quote": "Next, we scale to a larger benchmark that more closely approximates the standard RLHF setup. We use the recently released GRUE benchmark for RL training of LMs and use IMDB mock sentiment."
+        },
+        "aliases": [
+          "IMDB-Reviews"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Word Vectors for Sentiment Analysis",
+          "justification": "This paper provides the IMDB dataset used in the sentiment analysis experiments.",
+          "quote": "Maas et al., 2011. Learning Word Vectors for Sentiment Analysis."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Transformers",
+          "justification": "The paper employs the Transformers library for implementing the Elastic Reset method and fine-tuning models.",
+          "quote": "We use the trl library from Huggingface on top of the transformers library to train the model on the StackExchange dataset."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Transformers: State-of-the-Art Natural Language Processing",
+          "justification": "This paper introduces the Transformers library used in the research.",
+          "quote": "Wolf, T., et al. Transformers: State-of-the-Art Natural Language Processing, 2020."
+        }
+      },
+      {
+        "name": {
+          "value": "Accelerate",
+          "justification": "The Accelerate library is used to optimize training and inference processes in the experiments.",
+          "quote": "RL training is run on 4x 80G A100 GPUs for 20 hours using Accelerate."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Accelerate: Training and inference at scale made simple, efficient and adaptable",
+          "justification": "The paper references this library for efficient training on multiple GPUs.",
+          "quote": "Gugger, S., et al. Accelerate: Training and inference at scale made simple, efficient and adaptable, 2022."
+        }
+      },
+      {
+        "name": {
+          "value": "RL4LMs",
+          "justification": "The RL4LMs library is used for implementing reinforcement learning-based fine-tuning methods.",
+          "quote": "We implement our method in the RL4LMs library."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Is Reinforcement Learning (Not) for Natural Language Processing: Benchmarks, Baselines, and Building Blocks for Natural Language Policy Optimization",
+          "justification": "The paper that introduces the RL4LMs library which is used for the experiments.",
+          "quote": "Ramamurthy, R., et al. Is Reinforcement Learning (Not) for Natural Language Processing: Benchmarks, Baselines, and Building Blocks for Natural Language Policy Optimization, 2022."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1813,
+    "prompt_tokens": 25499,
+    "total_tokens": 27312
+  }
+}

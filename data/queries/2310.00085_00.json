@@ -1,0 +1,194 @@
+{
+  "paper": "2310.00085.txt",
+  "words": 5156,
+  "extractions": {
+    "title": {
+      "value": "PEACE: Prompt Engineering Automation for CLIPSeg Enhancement in Aerial Robotics",
+      "justification": "This is the title as listed at the beginning of the paper.",
+      "quote": "PEACE: Prompt Engineering Automation for CLIPSeg Enhancement in Aerial Robotics"
+    },
+    "description": "This paper presents PEACE (Prompt Engineering Automation for CLIPSeg Enhancement), a system designed to automate prompt generation and engineering to adapt UAV image segmentation to data distribution shifts. The system improves safe landing zone selections for UAVs in aerial robotics using monocular cameras and integrates with the authors' previous work, DOVESEI.",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The paper involves experimental evaluation and provides quantitative results comparing different setups.",
+      "quote": "To validate that PEACE system can truly improve SLZ\nselection compared to the prompts used in DOVESEI\nand DOVESEI-DEF, we conducted 50 identical experiments for DOVESEI-PEACE, DOVESEI and DOVESEI-DEF."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The research focuses on image segmentation and prompt engineering for visual data in the context of UAV safe landing, which falls under Computer Vision.",
+        "quote": "Existing common automatic landing systems employ either traditional localization and perception methods using Simultaneous Localization and Mapping\n(SLAM), constrained by sensor performance and computational resources, or utilize conventional deep learning-based\nimage segmentation models, encountering domain adaptation\nchallenges."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Aerial Robotics",
+          "justification": "The paper explicitly deals with the application of computer vision techniques to UAV safe landing operations.",
+          "quote": "Combining DOVESEI and PEACE, our system was\nable improve successful safe landing zone selections by 58.62%\ncompared to using only DOVESEI."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Image Segmentation",
+          "justification": "A significant aspect of the research is on segmentation of images to identify safe landing zones for UAVs.",
+          "quote": "As described in (Table I), PEACE system increased\nmIOU by 29.17% compared to DOVESEI’s aerial prompts,\nwhich is a significant improvement given that this enhancement is purely prompt engineering based."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "DOVESEI",
+          "justification": "The paper extends previous work on DOVESEI, describing it as a system for reactive UAV operation through open vocabulary image segmentation.",
+          "quote": "However, a heuristic selection of words for prompt is not a\nreliable solution since it cannot take the changing environment\ninto consideration and detrimental consequences can occur if the observed environment is not well represented by the given\nprompt. Therefore, we introduce PEACE (Prompt Engineering\nAutomation for CLIPSeg Enhancement), powering DOVESEI to\nautomate the prompt generation and engineering to adapt to\ndata distribution shifts."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "DOVESEI is stated as previous work and not introduced in this paper.",
+          "quote": "This paper extends our previous work, DOVESEI, which focused on a reactive UAV system by harnessing the capabilities of open vocabulary image segmentation."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The paper implies the use of computational resources, likely indicating execution in a computational environment possibly including GPU.",
+          "quote": "Combining DOVESEI and PEACE, our system was\nable improve successful safe landing zone selections by 58.62%\ncompared to using only DOVESEI."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The performance of DOVESEI is compared with DOVESEI-PEACE and other variations in the experiments.",
+          "quote": "To validate that PEACE system can truly improve SLZ\nselection compared to the prompts used in DOVESEI\nand DOVESEI-DEF, we conducted 50 identical experiments for DOVESEI-PEACE, DOVESEI and DOVESEI-DEF."
+        },
+        "referenced_paper_title": {
+          "value": "Dynamic Open Vocabulary Enhanced Safe-landing with Intelligence (DOVESEI)",
+          "justification": "The paper refers to 'Dynamic Open Vocabulary Enhanced Safe-landing with Intelligence (DOVESEI)' as previous work.",
+          "quote": "This paper extends our previous work, DOVESEI, which focused on a reactive UAV system by harnessing the capabilities of open vocabulary image segmentation."
+        }
+      },
+      {
+        "name": {
+          "value": "CLIPSeg",
+          "justification": "The paper frequently mentions CLIPSeg as a primary segmentation model integrated into DOVESEI and enhanced by PEACE.",
+          "quote": "Combining DOVESEI and PEACE, our system was\nable improve successful safe landing zone selections by 58.62%\ncompared to using only DOVESEI."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "CLIPSeg is an existing model utilized in this research, not a new contribution.",
+          "quote": "DOVESEI is based on the open vocabulary segmentation model,\nCLIPSeg [4], which requires appropriate prompt inputs, and\nthe selection performance of SLZ is closely related to the input\nprompts."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "CLIPSeg is executed within the PEACE system which is tested in experiments, implying computation.",
+          "quote": "Our segmentation model for generating the landing heatmap is based on CLIP."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "CLIPSeg's performance is indirectly compared through different prompt strategies like DOVESEI and PEACE.",
+          "quote": "Combining DOVESEI and PEACE, our system was\nable improve successful safe landing zone selections by 58.62%\ncompared to using only DOVESEI."
+        },
+        "referenced_paper_title": {
+          "value": "Image Segmentation Using Text and Image Prompts",
+          "justification": "The paper references another work for CLIPSeg model, which is 'Image Segmentation Using Text and Image Prompts'.",
+          "quote": "CLIPSeg is a unified model\ncapable of generating segmentation map based on prompts\nthat are in the form of text or image. This model uses the\nvisual transformer-based (ViT-B/16) CLIP with a transformerbased\ndecoder extension."
+        }
+      },
+      {
+        "name": {
+          "value": "CLIP",
+          "justification": "CLIP is the foundational model that CLIPSeg is based on, and its prompt engineering is discussed as a baseline.",
+          "quote": "The initial motivation of\nour work is due to the worse performance of aerial prompt\nfrom DOVESEI compared to the DOVESEI-DEF. DOVESEI’s original prompt engineering was created using CLIP\nInterrogator [6] to heuristically produce better prompts for\nthe model."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "CLIP is not introduced in this paper; it is utilized for prompt engineering experiments.",
+          "quote": "CLIP [5] demonstrated that prompt engineering using\n“A photo of {}.“ (where {} represents the terms defining the\nclass) already yields better results."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "CLIP is employed in the experiments for prompt generation and evaluation.",
+          "quote": "CLIP is able to learn to execute a variety of operations (OCR, geolocalization, action recognition, etc.) during pre-training."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "CLIP's prompt engineering strategies are compared to optimize prompt generation for segmentation tasks.",
+          "quote": "Our prompt automation generation and\ndynamic focus significantly enhance the UAV’s ability to select\nsuitable landing sites for safe landing."
+        },
+        "referenced_paper_title": {
+          "value": "Learning Transferable Visual Models From Natural Language Supervision",
+          "justification": "The CLIP model is referenced as being detailed in 'Learning Transferable Visual Models From Natural Language Supervision'.",
+          "quote": "CLIPSeg is a unified model\ncapable of generating segmentation map based on prompts\nthat are in the form of text or image. This model uses the\nvisual transformer-based (ViT-B/16) CLIP with a transformerbased\ndecoder extension."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Aerial Semantic Segmentation Drone Dataset",
+          "justification": "The dataset is explicitly mentioned as being used for experimental validation.",
+          "quote": "In order to validate our PEACE system, we tested it with\nAerial Semantic Segmentation Drone Dataset [25]"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Aerial Semantic Segmentation Drone Dataset",
+          "justification": "The paper refers to the 'Aerial Semantic Segmentation Drone Dataset' as a source for their experiments.",
+          "quote": "In order to validate our PEACE system, we tested it with\nAerial Semantic Segmentation Drone Dataset [25]"
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet",
+          "justification": "ImageNet is mentioned as a comparative reference to describe the scale of CLIP's training data.",
+          "quote": "To provide some context on CLIP’s training\ndataset scale, the widely recognized ImageNet [21] dataset\ncontains only 1.2 million images."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "ImageNet: A large-scale hierarchical image database",
+          "justification": "ImageNet is referenced in the context of another work, specifically 'ImageNet: A large-scale hierarchical image database'.",
+          "quote": "To provide some context on CLIP’s training\ndataset scale, the widely recognized ImageNet [21] dataset\ncontains only 1.2 million images."
+        }
+      },
+      {
+        "name": {
+          "value": "Microsoft COCO",
+          "justification": "Microsoft COCO is mentioned to highlight the limitations of models trained on closed vocabulary datasets.",
+          "quote": "Such systems achieve high\nscores in zero-shot tasks and, therefore, offer improved generalisation capabilities over models that use a closed vocabulary\n(e.g. a model trained only on MS COCO [27] classes)."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Microsoft COCO: Common Objects in Context",
+          "justification": "Microsoft COCO is referenced in relation to the closed vocabulary comparison, specifically 'Microsoft COCO: Common Objects in Context'.",
+          "quote": "Such systems achieve high\nscores in zero-shot tasks and, therefore, offer improved generalisation capabilities over models that use a closed vocabulary\n(e.g. a model trained only on MS COCO [27] classes)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "ROS 2",
+          "justification": "The system architecture is implemented in ROS 2 as explicitly stated in the paper.",
+          "quote": "We develop our system based on DOVESEI and extend it using a ROS 2 [20] package that encompasses three discrete yet interconnected processes."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Next-generation ROS: Building on DDS",
+          "justification": "ROS 2 is discussed in the context of the system architecture, referencing 'Next-generation ROS: Building on DDS'.",
+          "quote": "We develop our system based on DOVESEI and extend it using a ROS 2 [20] package that encompasses three discrete yet interconnected processes."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2292,
+    "prompt_tokens": 9545,
+    "total_tokens": 11837
+  }
+}

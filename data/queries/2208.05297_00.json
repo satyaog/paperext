@@ -1,0 +1,146 @@
+{
+  "paper": "2208.05297.txt",
+  "words": 7464,
+  "extractions": {
+    "title": {
+      "value": "LEARNING TO IMPROVE CODE EFFICIENCY",
+      "justification": "The exact title of the paper as given in the paper's heading and throughout the document.",
+      "quote": "LEARNING TO IMPROVE CODE EFFICIENCY"
+    },
+    "description": "This paper tackles the challenge of improving computational efficiency in code by using machine learning models. It proposes a novel discrete variational auto-encoder to learn different categories of code edits that can increase performance. The focus is on providing feedback to developers to guide them toward writing more efficient code, using a dataset from the Google Code Jam competition.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper includes empirical analysis on a dataset and evaluates a new machine learning model's performance against established baselines.",
+      "quote": "We analyze a large competitive programming dataset from the Google Code Jam competition and find that efficient code is indeed rare, with a 2x runtime difference between the median and the 90th percentile of solutions. We propose using machine learning to automatically provide prescriptive feedback in the form of hints, to guide programmers towards writing high-performance code."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "Although the ultimate goal is code optimization, the methods applied and the terminologies used, such as sequence-to-sequence modeling, BLEU score, and text similarity metrics, fall under the rubric of natural language processing.",
+        "quote": "We aim to provide prescriptive feedback to developers to guide them towards writing high-performance code... We frame this task as a sequence-to-sequence problem: given an input code sequence, output a more efficient version of the code."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Machine Learning",
+          "justification": "The research incorporates machine learning as the core method to achieve code optimization.",
+          "quote": "We propose using machine learning to automatically provide prescriptive feedback in the form of hints, to guide programmers towards writing high-performance code."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Program Synthesis",
+          "justification": "The paper focuses on code generation and optimization, which are key aspects of program synthesis.",
+          "quote": "Our goal is to create a model that can condition on a given program and help developers identify more computationally efficient variants of that program."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Discrete Variational Auto-Encoder",
+          "justification": "The paper's main machine learning model is the discrete variational auto-encoder used to learn different categories of code edits for performance improvement.",
+          "quote": "we propose a novel discrete variational auto-encoder, where each discrete latent variable represents a different learned category of code-edit that increases performance."
+        },
+        "aliases": [
+          "Discrete VAE"
+        ],
+        "is_contributed": {
+          "value": 1,
+          "justification": "The discrete variational auto-encoder is presented as a novel approach in this paper, contributing to the field.",
+          "quote": "we propose a novel discrete variational auto-encoder, where each discrete latent variable represents a different learned category of code-edit that increases performance."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The model was trained and evaluated using the Google Cloud TPU infrastructure, indicating that it was executed in practice.",
+          "quote": "We implemented all models in Jax (Bradbury et al., 2018), and trained the models using a peak learning rate of 0.01 with both warmup and decay schedules. All models were trained with a batch size of 16 for 100 epochs, using distributed data parallel training on 64 Google Cloud TPU cores and 16 host machines."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The discrete variational auto-encoder was compared to other models like the sequence-to-sequence Transformer model for performance evaluation.",
+          "quote": "We show that this method represents the multi-modal space of code efficiency edits better than a sequence-to-sequence baseline and generates a distribution of more efficient solutions."
+        },
+        "referenced_paper_title": {
+          "value": "Neural discrete representation learning",
+          "justification": "The variational auto-encoder is based on principles from the VQ-VAE model presented in this paper.",
+          "quote": "The VQ-VAE (Van Den Oord et al., 2017) avoids this by using vector quantization and treating these latent codes as targets."
+        }
+      },
+      {
+        "name": {
+          "value": "Sequence-to-Sequence Transformer",
+          "justification": "The sequence-to-sequence Transformer model is used as a baseline for comparing the performance of the discrete variational auto-encoder.",
+          "quote": "This also has the advantage of preventing posterior collapse, a pervasive issue with variational auto-encoders, especially with respect to discrete sequence modeling. Specifically, we learn a dictionary of embedding vectors Z = [z1 , z2 , . . . , zK ]. When encoding the difference vector, we set zedit = argmink kzk − (fθ (y) − fθ (x))k2 . Our Edit-VQVAE model is illustrated in Figure 3.4 and our forward and decoding procedure is outlined in Algorithms 1 and 2 in the Appendix."
+        },
+        "aliases": [
+          "Seq2Seq Transformer"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "The sequence-to-sequence Transformer is a well-established model and not a novel contribution of this paper.",
+          "quote": "The baseline Transformer is trained in a sequence-to-sequence fashion, where given a pair of programs with runtimes rslow and rfast , we use the slower program as the input x, and the faster program as the output y."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The sequence-to-sequence Transformer model was executed for comparison purposes.",
+          "quote": "We implemented all models in Jax (Bradbury et al., 2018), and trained the models using a peak learning rate of 0.01 with both warmup and decay schedules. All models were trained with a batch size of 16 for 100 epochs, using distributed data parallel training on 64 Google Cloud TPU cores and 16 host machines."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The sequence-to-sequence Transformer model was compared to the discrete variational auto-encoder for performance evaluation.",
+          "quote": "We show that this method represents the multi-modal space of code efficiency edits better than a sequence-to-sequence baseline and generates a distribution of more efficient solutions."
+        },
+        "referenced_paper_title": {
+          "value": "Attention Is All You Need",
+          "justification": "The sequence-to-sequence Transformer model used in the paper is based on the standard Transformer architecture proposed in this paper.",
+          "quote": "The baseline Transformer is trained in a sequence-to-sequence fashion, where given a pair of programs with runtimes rslow and rfast , we use the slower program as the input x, and the faster program as the output y (Vaswani et al., 2017)."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Google Code Jam",
+          "justification": "The dataset used for empirical analysis is from the Google Code Jam competitive programming competition.",
+          "quote": "To study this problem, we examine a competitive programming dataset where tens of thousands of developers have submitted answers to about 180 different questions."
+        },
+        "aliases": [
+          "Code-Jam"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Code-jam competition archive",
+          "justification": "The dataset is retrieved from the Google Code Jam competition archive.",
+          "quote": "To study this problem, we use the dataset from the Google Code Jam international competitive programming competiton."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Jax",
+          "justification": "Jax is explicitly mentioned as the library used for implementing and training the models.",
+          "quote": "We implemented all models in Jax (Bradbury et al., 2018), and trained the models using a peak learning rate of 0.01 with both warmup and decay schedules."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "JAX: composable transformations of Python+NumPy programs",
+          "justification": "The referenced paper provides documentation and information about Jax.",
+          "quote": "We implemented all models in Jax (Bradbury et al., 2018), and trained the models using a peak learning rate of 0.01 with both warmup and decay schedules."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1656,
+    "prompt_tokens": 13259,
+    "total_tokens": 14915
+  }
+}

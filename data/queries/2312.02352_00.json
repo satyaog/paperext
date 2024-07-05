@@ -1,0 +1,149 @@
+{
+  "paper": "2312.02352.txt",
+  "words": 6507,
+  "extractions": {
+    "title": {
+      "value": "Working Backwards: Learning to Place by Picking",
+      "justification": "This is the title of the research paper provided by the user.",
+      "quote": "Working Backwards: Learning to Place by Picking"
+    },
+    "description": "This research paper proposes a method named placing via picking (PvP) to autonomously collect real-world demonstrations for placing tasks in robotics. PvP reverses the grasping process to collect data in contact-constrained environments and trains a policy that generalizes to different object placement scenarios. The method employs tactile regrasping and compliant control for robot manipulations.",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The paper presents a novel method, Placing via Picking, and validates it through experimental comparisons and ablation studies, including real-world robotic tasks such as dishrack loading and table setting.",
+      "quote": "We validate our approach in home robotic scenarios that include dishwasher loading and table setting. Our approach yields robotic placing policies that outperform policies trained with kinesthetic teaching, both in terms of performance and data efficiency, while requiring no human supervision."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Robotic Manipulation",
+        "justification": "The primary focus of the paper is on robotic placement and manipulation tasks, aiming to improve how robots handle placing objects in specific locations autonomously.",
+        "quote": "We present placing via picking (PvP), a method to autonomously collect real-world demonstrations for a family of placing tasks in which objects must be manipulated to specific contact-constrained locations."
+      },
+      "aliases": [
+        "Robotic Placement"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Imitation Learning",
+          "justification": "The paper employs imitation learning to train its policies from expert demonstrations collected through its proposed method.",
+          "quote": "Imitation learning (IL) provides an appealing, simple, and practical option by learning end-to-end control policies from expert demonstrations"
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Computer Vision",
+          "justification": "The method uses computer vision techniques for object detection and grasp planning, which are critical components in the data collection and policy training pipeline.",
+          "quote": "We use the grasp planner Contact-GraspNet to generate L candidate grasp poses...we use Grounding-Dino to find the object bounding boxes. Finally, we run Segment Anything on each of the previously generated image crops from the bounding boxes to generate per-object masks."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Reinforcement Learning",
+          "justification": "The paper mentions reinforcement learning as a comparison and complementary approach to its method.",
+          "quote": "Closer to our approach, other works have trained end-to-end place policies using reinforcement learning (RL) and imitation learning (IL)."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Placing via Picking (PvP)",
+          "justification": "PvP is the main model introduced and utilized in the paper for collecting expert demonstrations for placing tasks autonomously and training policies based on those demonstrations.",
+          "quote": "We present placing via picking (PvP), a method to autonomously collect real-world demonstrations for a family of placing tasks in which objects must be manipulated to specific contact-constrained locations."
+        },
+        "aliases": [
+          "PvP"
+        ],
+        "is_contributed": {
+          "value": 1,
+          "justification": "The paper proposes PvP as its main contribution for autonomous data collection in placing tasks.",
+          "quote": "Our main contributions are: 1) PvP, a self-supervised data collection method for 6-DOF robotic object placements."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "PvP involves real-world robotic experiments that require execution of the method.",
+          "quote": "We validate our approach in home robotic scenarios that include dishwasher loading and table setting."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "PvP is compared to policies trained with kinesthetic teaching and is shown to outperform them.",
+          "quote": "Our approach yields robotic placing policies that outperform policies trained with kinesthetic teaching, both in terms of performance and data efficiency, while requiring no human supervision."
+        },
+        "referenced_paper_title": {
+          "value": "None",
+          "justification": "PvP is introduced as a new method in this paper itself.",
+          "quote": "Our main contributions are: 1) PvP, a self-supervised data collection method for 6-DOF robotic object placements."
+        }
+      },
+      {
+        "name": {
+          "value": "Contact-GraspNet",
+          "justification": "Contact-GraspNet is utilized in the paper for generating candidate grasp poses in the proposed method.",
+          "quote": "We use the grasp planner Contact-GraspNet to generate L candidate grasp poses {Tg,i } L i=0 , where Tg,i ∈ SE (3) for all i ∈ {0, ..., L}."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "Contact-GraspNet is referenced as an existing method used in the paper.",
+          "quote": "We use the grasp planner Contact-GraspNet to generate L candidate grasp poses {Tg,i } L i=0 , where Tg,i ∈ SE (3) for all i ∈ {0, ..., L}."
+        },
+        "is_executed": {
+          "value": 0,
+          "justification": "Contact-GraspNet is used as a tool within the PvP method and not executed independently for experiments.",
+          "quote": "We use the grasp planner Contact-GraspNet to generate L candidate grasp poses."
+        },
+        "is_compared": {
+          "value": 0,
+          "justification": "Contact-GraspNet is not compared to other models, it is used as a component of the PvP method.",
+          "quote": "We use the grasp planner Contact-GraspNet to generate L candidate grasp poses."
+        },
+        "referenced_paper_title": {
+          "value": "Contact-GraspNet: Efficient 6-DOF Grasp Generation in Cluttered Scenes",
+          "justification": "The title of the referenced paper for Contact-GraspNet is provided in the reference section.",
+          "quote": "Contact-GraspNet: Efficient 6-DOF Grasp Generation in Cluttered Scenes"
+        }
+      }
+    ],
+    "datasets": [],
+    "libraries": [
+      {
+        "name": {
+          "value": "Grounding-Dino",
+          "justification": "Grounding-Dino is used in the proposed method to detect object bounding boxes based on text descriptions.",
+          "quote": "Given a set of text-based descriptions of the objects of interest...we use Grounding-Dino to find the object bounding boxes."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection",
+          "justification": "The title of the referenced paper for Grounding-Dino is provided in the reference section.",
+          "quote": "Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection"
+        }
+      },
+      {
+        "name": {
+          "value": "Segment Anything",
+          "justification": "Segment Anything is used to generate per-object masks in the proposed method.",
+          "quote": "Finally, we run Segment Anything on each of the previously generated image crops from the bounding boxes to generate per-object masks."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Segment Anything",
+          "justification": "The title of the referenced paper for Segment Anything is provided in the reference section.",
+          "quote": "Segment Anything"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1428,
+    "prompt_tokens": 11768,
+    "total_tokens": 13196
+  }
+}

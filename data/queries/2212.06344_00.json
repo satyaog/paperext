@@ -1,0 +1,117 @@
+{
+  "paper": "2212.06344.txt",
+  "words": 9407,
+  "extractions": {
+    "title": {
+      "value": "DA Wand: Distortion-Aware Selection using Neural Mesh Parameterization",
+      "justification": "This is the title of the paper.",
+      "quote": "DA Wand: Distortion-Aware Selection using Neural Mesh Parameterization"
+    },
+    "description": "This paper presents a novel neural technique designed to select local sub-regions around a point on a 3D mesh that can be parameterized into 2D with low distortion. The method is driven by the need for effective interactive workflows used in decaling, texturing, or painting on 3D surfaces. Key innovations include a differentiable parameterization layer, a novel distortion-aware segmentation network, and a unique thresholded-distortion loss to achieve optimal segmentation and parameterization.",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The paper introduces a new neural framework, conducts experiments to validate it, and compares it against other methods, fulfilling the criteria of an empirical study.",
+      "quote": "We demonstrate a compelling interactive application of DA Wand in Fig. 1, in which different regions on the sorting hat mesh are iteratively selected and decaled. We show additional example textures in the supplemental... We design a novel near-developable segmentation dataset to initialize the weights of our segmentation network, with an automatic generation algorithm which can be run out of the box. We then train this network end-to-end on a dataset of unlabelled natural shapes using our parameterization layer with distortion and compactness priors."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The paper deals with 3D mesh segmentation and parameterization, which are common tasks within the field of Computer Vision.",
+        "quote": "We present a neural technique for learning to select a local sub-region around a point which can be used for mesh parameterization. The motivation for our framework is driven by interactive workflows used for decaling, texturing, or painting on surfaces."
+      },
+      "aliases": [
+        "CV"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "3D Mesh Processing",
+          "justification": "The paper's main focus is on techniques for segmenting and parameterizing 3D meshes.",
+          "quote": "This work instead takes a data-driven approach to learn distortion-aware local segmentations that are optimal for local parameterization."
+        },
+        "aliases": [
+          "Mesh Processing",
+          "3D Processing"
+        ]
+      },
+      {
+        "name": {
+          "value": "Neural Networks",
+          "justification": "The methodology involves training a neural network for the mesh segmentation task.",
+          "quote": "Our framework predicts a soft segmentation, in which each triangle is assigned a probability designating whether it belongs to the segmented region."
+        },
+        "aliases": [
+          "Deep Learning"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "DA Wand",
+          "justification": "This is the primary model introduced and utilized in the paper for distortion-aware selection using neural mesh parameterization.",
+          "quote": "We name our system the Distortion-Aware Wand (DA Wand), which given an input mesh and initial triangle selection, outputs soft segmentation probabilities."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 1,
+          "justification": "DA Wand is introduced as the primary contribution of this paper.",
+          "quote": "We name our system the Distortion-Aware Wand (DA Wand), which given an input mesh and initial triangle selection, outputs soft segmentation probabilities."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The model is trained and evaluated on a GPU, as typical for deep learning frameworks involving neural networks.",
+          "quote": "We run our method on all three datasets and show examples in Fig. 5... We run floodfill as before (Sec. 3.2) to get a single connected component, and apply a seam-cutting algorithm by iteratively choosing the longest boundary loop and its nearest boundary loop, and cutting between them along the shortest path until the patch is disk topology."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The paper compares DA Wand with other baseline methods like Logarithmic Map and DCharts.",
+          "quote": "We compare results on the metric % DIλ on all 3 datasets for values of λ from 0.01 to 0.1 in Fig. A1. “DCharts v1” refers to DCharts with the default parameters from the main paper.“DCharts v2” and “DCharts v3” refer to versions of DCharts with the cost threshold set to 0.1 and 0.3, respectively. For the LogMap baseline, we set the distortion threshold cutoff used for the segmentation heuristic to be equal to λ."
+        },
+        "referenced_paper_title": {
+          "value": "None",
+          "justification": "DA Wand is novel to this paper, so there is no referenced paper for this specific model.",
+          "quote": "None"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Thingi10k",
+          "justification": "The dataset of 3D models sourced from Thingi10k is used for training and evaluation in the paper.",
+          "quote": "We download a subset of meshes from Thingi10k, filtering for meshes which are between 3K and 20K faces, are manifold, and have one connected component."
+        },
+        "aliases": [],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "Thingi10K: A Dataset of 10,000 3D-Printing Models",
+          "justification": "This is the title of the reference paper for the Thingi10K dataset.",
+          "quote": "Thingi10k: A Dataset of 10,000 3D-Printing Models"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "MeshCNN",
+          "justification": "MeshCNN is used as the backbone architecture for the neural network implemented in the paper.",
+          "quote": "We leverage a MeshCNN backbone to learn directly on the input triangulation which enables sensitivity to sharp features and a large receptive field which enables patch growth."
+        },
+        "aliases": [],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "MeshCNN: A Network with an Edge",
+          "justification": "This is the referenced paper for the MeshCNN library used in the study.",
+          "quote": "MeshCNN: A Network with an Edge"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1202,
+    "prompt_tokens": 17429,
+    "total_tokens": 18631
+  }
+}

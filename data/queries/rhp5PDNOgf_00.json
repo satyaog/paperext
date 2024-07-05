@@ -1,0 +1,165 @@
+{
+  "paper": "rhp5PDNOgf.txt",
+  "words": 9126,
+  "extractions": {
+    "title": {
+      "value": "SPACED SCHEDULING ENHANCES INSTRUCTION-PROMPTED REASONING IN LARGE LANGUAGE MODELS",
+      "justification": "This is the title of the paper.",
+      "quote": "SPACED SCHEDULING ENHANCES INSTRUCTION-PROMPTED REASONING IN LARGE LANGUAGE MODELS"
+    },
+    "description": "This paper introduces a novel adaptive scheduling strategy called 'Spaced Scheduling' inspired by the spaced repetition learning method used by humans. This strategy aims to optimize the curriculum of training examples for large language models (LLMs) during instruction fine-tuning, leading to better performance, particularly in reasoning tasks, using less training data and minimizing catastrophic forgetting.",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The paper includes extensive empirical evaluation and statistical analysis to demonstrate the benefits of the proposed Spaced Scheduling strategy.",
+      "quote": "Extensive empirical evaluation and careful statistical analysis show that spaced scheduling reliably increases the performance of instruction-tuned LLMs, especially on reasoning tasks."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The paper focuses on optimizing the training of large language models, which is a major topic within Natural Language Processing.",
+        "quote": "Our approach aims to perform the data mix selection process online during training, tailoring the training data composition to the chosen pre-trained model, reducing the need for extensive studies over different compositions of training data."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Instruction Tuning",
+          "justification": "The main subject of the paper is improving instruction tuning in large language models.",
+          "quote": "Our results show that Spaced Scheduling yields better performance than random sampling and other pruning and scheduling baselines and comparable results in the worst case, using less training data and minimizing catastrophic forgetting."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Curriculum Learning",
+          "justification": "The paper proposes a scheduling strategy that aligns with principles of curriculum learning by selecting training examples based on difficulty and need.",
+          "quote": "The seminal work of Bengio et al. (2009) on curriculum learning (CL) further developed and formalized the strategy of using a curriculum in machine learning—based on ordering sequences of training examples, in a manner inspired by the ordering of tasks into increasing complexity in human education. In contrast to CL, here we propose and examine a strategy that is particularly well-suited to modern LLMs."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Spaced Repetition",
+          "justification": "The paper adapts principles of spaced repetition to schedule training examples for LLMs.",
+          "quote": "Spaced repetition (SR) is a learning technique from cognitive science that involves reviewing information at gradually increasing intervals over time, with early work on the subject dating back to Ebbinghaus (1885), and the well-known Ebbinghaus model of the forgetting curve. The spaced repetition methodology capitalizes on the spacing effect (Hintzman, 1974), a psychological principle that posits that our brains retain information more effectively when we learn in multiple, spread-out sessions."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "LLaMA 2",
+          "justification": "The LLaMA 2 model was frequently referred to and used as the baseline pre-trained model for evaluation in the experiments.",
+          "quote": "When evaluating the vanilla LLAMA-2 we use the non-chat prompt suggested by the original work (Touvron et al., 2023)."
+        },
+        "aliases": [
+          "LLaMA 2"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "LLaMA 2 is not a new model introduced by this paper but was used as a baseline for the experiments.",
+          "quote": "When evaluating the vanilla LLAMA-2 we use the non-chat prompt suggested by the original work (Touvron et al., 2023)."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The experiments were run on different sizes of the LLaMA 2 model.",
+          "quote": "The LLaMA 2 model was frequently referred to and used as the baseline pre-trained model for evaluation in the experiments."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The paper compares the performance of various models including variants of LLaMA 2.",
+          "quote": "When evaluating the vanilla LLAMA-2 we use the non-chat prompt suggested by the original work (Touvron et al., 2023)."
+        },
+        "referenced_paper_title": {
+          "value": "Llama 2: Open foundation and fine-tuned chat models",
+          "justification": "This is the title of the reference paper for the LLaMA 2 model.",
+          "quote": "When evaluating the vanilla LLAMA-2 we use the non-chat prompt suggested by the original work (Touvron et al., 2023)."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Tulu V2",
+          "justification": "The Tulu V2 dataset collection was explicitly mentioned as being used for the training and evaluation of models.",
+          "quote": "We use the Tulu V23 IFT dataset collection, the latest version of the one initially introduced by Wang et al. (2023), totaling nine datasets."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "How far can camels go? exploring the state of instruction tuning on open resources",
+          "justification": "This is the title of the reference paper for the Tulu V2 dataset.",
+          "quote": "We use the Tulu V23 IFT dataset collection, the latest version of the one initially introduced by Wang et al. (2023), totaling nine datasets."
+        }
+      },
+      {
+        "name": {
+          "value": "GSM8k",
+          "justification": "The GSM8k dataset was used for evaluating mathematical reasoning capability.",
+          "quote": "We show the results in Table 2 on the GSM8K (Hendrycks et al., 2021) and MATH datasets (represent the tasks in the math capability used by (Touvron et al., 2023)) using our 7B variant as they require enhanced reasoning ability that shows cases one of the main benefits of our approach."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Measuring mathematical problem solving with the math dataset",
+          "justification": "This is the title of the reference paper for the GSM8k dataset.",
+          "quote": "We show the results in Table 2 on the GSM8K (Hendrycks et al., 2021) and MATH datasets (represent the tasks in the math capability used by (Touvron et al., 2023)) using our 7B variant as they require enhanced reasoning ability that shows cases one of the main benefits of our approach."
+        }
+      },
+      {
+        "name": {
+          "value": "MATH",
+          "justification": "The MATH dataset was used for evaluating mathematical reasoning capability.",
+          "quote": "We show the results in Table 2 on the GSM8K (Hendrycks et al., 2021) and MATH datasets (represent the tasks in the math capability used by (Touvron et al., 2023)) using our 7B variant as they require enhanced reasoning ability that shows cases one of the main benefits of our approach."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Training verifiers to solve math word problems",
+          "justification": "This is the title of the reference paper for the MATH dataset.",
+          "quote": "Training verifiers to solve math word problems."
+        }
+      },
+      {
+        "name": {
+          "value": "MMLU",
+          "justification": "The MMLU dataset was used as one of the benchmarks for evaluating model performance.",
+          "quote": "All the models in this work except the vanilla L LA M A models are trained for 3 epochs (or equivalent by setting the maximum training iterations) using LoRa (Hu et al., 2021) unless stated otherwise. The complete training configuration can be found on our public repository5. All experiments were run on 8 A100 Nvidia GPUs. We also follow the same data processing setup as Wang et al. (2023) and use chatbot-style prompts (i.e., assistant and user) to handle the datasets with more than one turn (e.g., ShareGPT) and system messages when available (e.g., Open-Orca). For a comprehensive evaluation, we follow the setup proposed by Touvron et al. (2023) where each model is tested on five capabilities: code, commonsense reasoning, word knowledge, reading comprehension, and math. Each capability score represents an average over multiple tasks. Further, the models are tested on two popular benchmarks: Massive Massive Multitask Language Understanding (MMLU) (Hendrycks et al., 2020) and Big Bench Hard (BBH) (Suzgun et al., 2022). When evaluating the vanilla L LAMA -2 we use the non-chat prompt suggested by the original work (Touvron et al., 2023). It is worth noting Touvron et al. (2023) used proprietary evaluation code and the results we show in this work are reproduced using the BigCode LM-eval-harness for code capability6 and EleutherAI LM-eval-harness (Gao et al., 2021) 7 for the rest. Therefore, our results might differ from the original work Touvron et al. (2023). Nonetheless, since all the baselines and our approach are evaluated with the same method, the findings of our experiments remain valid."
+        },
+        "aliases": [
+          "Massive Multitask Language Understanding"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Measuring massive multitask language understanding",
+          "justification": "This is the title of the reference paper for the MMLU dataset.",
+          "quote": "Measuring massive multitask language understanding."
+        }
+      },
+      {
+        "name": {
+          "value": "BBH",
+          "justification": "The BBH dataset was used as one of the benchmarks for evaluating model performance.",
+          "quote": "All the models in this work except the vanilla L LA M A models are trained for 3 epochs (or equivalent by setting the maximum training iterations) using LoRa (Hu et al., 2021) unless stated otherwise. The complete training configuration can be found on our public repository5. All experiments were run on 8 A100 Nvidia GPUs. We also follow the same data processing setup as Wang et al. (2023) and use chatbot-style prompts (i.e., assistant and user) to handle the datasets with more than one turn (e.g., ShareGPT) and system messages when available (e.g., Open-Orca). For a comprehensive evaluation, we follow the setup proposed by Touvron et al. (2023) where each model is tested on five capabilities: code, commonsense reasoning, word knowledge, reading comprehension, and math. Each capability score represents an average over multiple tasks. Further, the models are tested on two popular benchmarks: Massive Massive Multitask Language Understanding (MMLU) (Hendrycks et al., 2020) and Big Bench Hard (BBH) (Suzgun et al., 2022). When evaluating the vanilla L LAMA -2 we use the non-chat prompt suggested by the original work (Touvron et al., 2023). It is worth noting Touvron et al. (2023) used proprietary evaluation code and the results we show in this work are reproduced using the BigCode LM-eval-harness for code capability6 and EleutherAI LM-eval-harness (Gao et al., 2021) 7 for the rest. Therefore, our results might differ from the original work Touvron et al. (2023). Nonetheless, since all the baselines and our approach are evaluated with the same method, the findings of our experiments remain valid."
+        },
+        "aliases": [
+          "Big Bench Hard"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Challenging big-bench tasks and whether chain-of-thought can solve them",
+          "justification": "This is the title of the reference paper for the BBH dataset.",
+          "quote": "Challenging big-bench tasks and whether chain-of-thought can solve them."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 2818,
+    "prompt_tokens": 16029,
+    "total_tokens": 18847
+  }
+}

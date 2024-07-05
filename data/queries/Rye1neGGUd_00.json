@@ -1,0 +1,242 @@
+{
+  "paper": "Rye1neGGUd.txt",
+  "words": 5112,
+  "extractions": {
+    "title": {
+      "value": "A Case Study of Instruction Tuning with Mixture of Parameter-Efficient Experts",
+      "justification": "This is the title of the paper as mentioned at the beginning.",
+      "quote": "A Case Study of Instruction Tuning with Mixture of Parameter-Efficient Experts"
+    },
+    "description": "The paper investigates the use of mixture of parameter-efficient experts (MoPEs) for instruction-tuning large decoder-only language models, specifically focusing on settings with open-domain instruction-following datasets, recent decoder-only models, and downstream out-of-distribution test sets. The study builds on models like LLaMA1-13B/-7B and LLaMA2-13B, exploring different architecture and routing strategies.",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The paper involves experimental investigations and evaluations of various methods and models, making it an empirical study.",
+      "quote": "Our investigation raises doubts about the effectiveness of mixture of parameter-efficient experts (MoPEs) for open-domain instruction fine-tuning"
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The research focuses on instruction-tuning large language models, which is a central topic in Natural Language Processing.",
+        "quote": "We study the applicability of mixture of parameter-efficient experts (MoPEs) for instruction-tuning large decoder-only language models."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Model Fine-Tuning",
+          "justification": "The paper discusses fine-tuning techniques, specifically mixture of parameter-efficient experts (MoPEs), for enhancing large language models.",
+          "quote": "We study the applicability of mixture of parameter-efficient experts (MoPEs) for instruction-tuning large decoder-only language models."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Parameter-Efficient Training",
+          "justification": "The study explores parameter-efficient techniques such as LoRA and IA3 for fine-tuning language models.",
+          "quote": "Parameter-efficient fine-tuning aims to develop methods that enable memory and compute efficient fine-tuning of LLMs."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "MoPEs",
+          "justification": "This is the primary model discussed and evaluated throughout the paper for instruction tuning of large language models.",
+          "quote": "We study the applicability of mixture of parameter-efficient experts (MoPEs) for instruction-tuning large decoder-only language models."
+        },
+        "aliases": [
+          "Mixture of Parameter-Efficient Experts"
+        ],
+        "is_contributed": {
+          "value": 1,
+          "justification": "The paper directly contributes to the exploration and evaluation of MoPEs in different settings.",
+          "quote": "We study the applicability of mixture of parameter-efficient experts (MoPEs) for instruction-tuning large decoder-only language models."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The models are executed and evaluated in different experimental setups as part of the study.",
+          "quote": "Our investigation raises doubts about the effectiveness of mixture of parameter-efficient experts (MoPEs) for open-domain instruction fine-tuning"
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The performance of MoPEs is compared to other methods like LoRA and IA3 in the study.",
+          "quote": "Overall, we are unable to substantiate strong performance gains observed in related studies in our setting."
+        },
+        "referenced_paper_title": {
+          "value": "Pushing mixture of experts to the limit: Extremely parameter efficient moe for instruction tuning",
+          "justification": "The referenced paper is mentioned in the context of discussing previous work related to MoPEs.",
+          "quote": "In contrast to [33], we do not observe any significant gains when applying per-token routing."
+        }
+      },
+      {
+        "name": {
+          "value": "LoRA",
+          "justification": "LoRA is one of the parameter-efficient fine-tuning methods evaluated in the paper.",
+          "quote": "Two prominent examples of PEFT methods are LoRA [11] and IA3 [15]."
+        },
+        "aliases": [
+          "Low-Rank Adaptation"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "The study uses and evaluates pre-existing methods like LoRA; it doesn't contribute the method itself.",
+          "quote": "Two prominent examples of PEFT methods are LoRA [11] and IA3 [15]."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "LoRA is executed and evaluated as part of the experiments.",
+          "quote": "We also shed some light on the inner workings of MoPEs by comparing different routing strategies..."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "LoRA is used for comparison with MoPEs to evaluate performance.",
+          "quote": "Across tasks, our results show that it is difficult to see any improvements with respect to the single-expert baseline, which boils down to standard parameter-efficient fine-tuning."
+        },
+        "referenced_paper_title": {
+          "value": "LoRA: Low-Rank Adaptation of Large Language Models",
+          "justification": "The referenced paper is mentioned in the context of discussing LoRA.",
+          "quote": "Two prominent examples of PEFT methods are LoRA [11] and IA3 [15]."
+        }
+      },
+      {
+        "name": {
+          "value": "IA3",
+          "justification": "IA3 is one of the parameter-efficient fine-tuning methods evaluated in the paper.",
+          "quote": "Two prominent examples of PEFT methods are LoRA [11] and IA3 [15]."
+        },
+        "aliases": [
+          "Infused Adapter by Artificial Intelligence"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "The study uses and evaluates pre-existing methods like IA3; it doesn't contribute the method itself.",
+          "quote": "Two prominent examples of PEFT methods are LoRA [11] and IA3 [15]."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "IA3 is executed and evaluated as part of the experiments.",
+          "quote": "In the following, we use our standard prompt for 0-shot SNI evaluations to ensure consistency. Additionally to Open Platypus, we also experiment with other instruction datasets such as FLAN-100K, a 100K example subset of the flan dataset[16]."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "IA3 is used for comparison with MoPEs to evaluate performance.",
+          "quote": "Routing LLMs compute a hidden representation for each token in the input sequence, i.e. x ∈ Rs×d, where s is the sequence length. Therefore, routing can be done both per-example (PE) [17] or per-token (PT) [33]."
+        },
+        "referenced_paper_title": {
+          "value": "few-shot-shot parameter-efficient fine-tuning is better and cheaper than in-context learning",
+          "justification": "The referenced paper is mentioned in the context of discussing IA3.",
+          "quote": "Two prominent examples of PEFT methods are LoRA [11] and IA3 [15]."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Open Platypus",
+          "justification": "Open Platypus is one of the primary datasets used for fine-tuning and evaluating the models.",
+          "quote": "We observe occasional enhancements of LLAMA2 fine-tuned on the Open Platypus dataset in 0-shot SNI evaluation and TruthfulQA evaluation after fine-tuning on a subset of Flan."
+        },
+        "aliases": [
+          "Platypus"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Platypus: Quick, cheap, and powerful refinement of llms",
+          "justification": "The dataset's referenced paper is cited when discussing Open Platypus.",
+          "quote": "Fine-tuning Our main experiments use LLaMA2-13B as a base model and fine-tune it on the Platypus instruction following dataset [12]."
+        }
+      },
+      {
+        "name": {
+          "value": "Flan-100K",
+          "justification": "Flan-100K is another dataset used for fine-tuning and evaluating the models.",
+          "quote": "In this work, we extend previous results and study MoPEs under different experimental conditions, i.e. a) with recent open-domain instruction following datasets such as Platypus [12], Flan-100K and Evol-Instruct [32], b) with large decoder-only models such as LLAMA2-13b, and c) by testing them on out-of-distribution tasks, zero-shot and few-shot."
+        },
+        "aliases": [
+          "Flan"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The flan collection: Designing data and methods for effective instruction tuning",
+          "justification": "The dataset's referenced paper is cited when discussing Flan-100K.",
+          "quote": "Fine-tuning Our main experiments use LLaMA2-13B as a base model and fine-tune it on the Platypus instruction following dataset [12]. This dataset consists of 25K input-output pairs gathered from different open datasets and curated specifically to enable fast and efficient fine-tuning of LLaMA2 models with PEFT adapters. We also experiment with other instruction datasets such as FLAN-100K, a 100K example subset of the flan dataset[16]."
+        }
+      },
+      {
+        "name": {
+          "value": "Evol-Instruct",
+          "justification": "Evol-Instruct is another dataset used for fine-tuning and evaluating the models.",
+          "quote": "We also experiment with other instruction datasets such as Platypus [12], Flan-100K and Evol-Instruct [32]."
+        },
+        "aliases": [
+          "Evolving Instructions Dataset"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "WizardLM: Empowering large language models to follow complex instructions",
+          "justification": "The dataset's referenced paper is cited when discussing Evol-Instruct.",
+          "quote": "We also experiment with other instruction datasets such as Platypus [12], Flan-100K and Evol-Instruct [32]."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is used for implementing and running the experiments as inferred.",
+          "quote": "At generation time, we load the model in float-16 precision for inference. We use the hyperparameters introduced by [12] for fine-tuning, namely, we train for one epoch with a maximum input length of 4096, cosine learning rate annealing, batch size of 16 and micro-batch size of 1 and the learning rate of 3e-4."
+        },
+        "aliases": [
+          "Torch"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The paper does not explicitly reference a specific paper for PyTorch.",
+          "quote": "At generation time, we load the model in float-16 precision for inference."
+        }
+      },
+      {
+        "name": {
+          "value": "Transformers",
+          "justification": "The Transformers library from Hugging Face is likely used, given the context of the models and tasks.",
+          "quote": "In this work, we extend previous results and study MoPEs under different experimental conditions, i.e. a) with recent open-domain instruction following datasets such as Platypus [12], Flan-100K and Evol-Instruct [32], b) with large decoder-only models such as LLAMA2-13b, and c) by testing them on out-of-distribution tasks, zero-shot and few-shot."
+        },
+        "aliases": [
+          "Hugging Face Transformers"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The paper does not explicitly reference a specific paper for Transformers.",
+          "quote": "In this work, we extend previous results and study MoPEs under different experimental conditions, i.e. a) with recent open-domain instruction following datasets such as Platypus [12], Flan-100K and Evol-Instruct [32], b) with large decoder-only models such as LLAMA2-13b, and c) by testing them on out-of-distribution tasks, zero-shot and few-shot."
+        }
+      },
+      {
+        "name": {
+          "value": "BitsAndBytes",
+          "justification": "The BitsAndBytes library is used for model quantization in the experiments.",
+          "quote": "In all experiments, the base model is quantized in 8-bit format [6] and we train PEFT adapters with float-32 precision."
+        },
+        "aliases": [
+          "Bits & Bytes"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "LLM.int8 (): 8-bit matrix multiplication for transformers at scale",
+          "justification": "The referenced paper for the BitsAndBytes library is cited when discussing model quantization.",
+          "quote": "In all experiments, the base model is quantized in 8-bit format [6] and we train PEFT adapters with float-32 precision."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 5479,
+    "prompt_tokens": 24578,
+    "total_tokens": 30057
+  }
+}

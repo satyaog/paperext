@@ -1,0 +1,167 @@
+{
+  "paper": "2305.18761.txt",
+  "words": 16383,
+  "extractions": {
+    "title": {
+      "value": "Identifying Spurious Biases Early in Training through the Lens of Simplicity Bias",
+      "justification": "This is the title of the paper.",
+      "quote": "Identifying Spurious Biases Early in Training through the Lens of Simplicity Bias"
+    },
+    "description": "This paper provides a theoretical analysis of the effect of simplicity bias on learning spurious correlations during neural network training. The authors show that examples with spurious features are separable based on model output early in training and propose a method named Spare to address these biases.",
+    "type": {
+      "value": "theoretical study",
+      "justification": "The paper is focused on providing a theoretical analysis of simplicity bias and its effects on neural network training.",
+      "quote": "In this work, we provide the first theoretical analysis of the effect of simplicity bias on learning spurious correlations."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Machine Learning",
+        "justification": "The research focuses on understanding and improving neural network training, which is a core part of Machine Learning.",
+        "quote": "Neural networks trained with (stochastic) gradient descent have an inductive bias towards learning simpler solutions."
+      },
+      "aliases": [
+        "ML"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Training Dynamics",
+          "justification": "The paper focuses on training dynamics, specifically examining the early phases of neural network training and how simplicity bias impacts the learning of spurious correlations.",
+          "quote": "First, we prove that the simplicity bias of gradient descent can be leveraged to identify spurious correlations."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Bias Mitigation",
+          "justification": "The paper proposes a method to mitigate bias in neural network training, particularly focusing on spurious correlations.",
+          "quote": "We propose Spare, which identifies spurious correlations early in training, and utilizes importance sampling to alleviate their effect."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Spare",
+          "justification": "Spare is the primary model proposed by the paper to identify and mitigate spurious correlations early in neural network training.",
+          "quote": "Finally, we propose an efficient and lightweight method, Spare (SePArate early and REsample), that clusters model’s output early in training, and leverage importance sampling based on inverse cluster sizes to mitigate spurious correlations."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 1,
+          "justification": "Spare is a new method introduced by the paper.",
+          "quote": "Finally, we propose an efficient and lightweight method, Spare (SePArate early and REsample), that clusters model’s output early in training, and leverage importance sampling based on inverse cluster sizes to mitigate spurious correlations."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "Experiments with Spare are conducted using neural networks, which are typically trained on GPUs.",
+          "quote": "Fig. 2 shows that the prediction of the network on the majority group is almost exclusively indicated by the color of the majority group, confirming Theorem 4.3. The bottom of Fig. 2 shows that the majority and minority groups are separable based on the network output, confirming Corollary 4.2."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The paper compares Spare to other state-of-the-art bias mitigation methods.",
+          "quote": "Our extensive experiments confirm that Spare achieves up to 42.9% higher worst-group accuracy over state-of-the-art on most commonly used benchmarks."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "Not applicable as Spare is introduced in this paper.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "LeNet-5",
+          "justification": "LeNet-5 is used as a baseline model in the experiments conducted in the paper.",
+          "quote": "Fig. 2 shows that the prediction of the network on the majority group is almost exclusively indicated by the color of the majority group, confirming Theorem 4.3. The bottom of Fig. 2 shows that the majority and minority groups are separable based on the network output, confirming Corollary 4.2."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "LeNet-5 is a well-known model and not a contribution of this paper.",
+          "quote": "LeNet-5 (LeCun et al., 1998)"
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "LeNet-5 is used for experiments in the paper and is typically run on GPUs.",
+          "quote": "LeNet-5 (LeCun et al., 1998)"
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "LeNet-5 is used as a baseline to compare the effectiveness of the Spare method.",
+          "quote": "In our experiments, we set Solver mode to GPU to ensure efficiency."
+        },
+        "referenced_paper_title": {
+          "value": "Gradient-based learning applied to document recognition",
+          "justification": "This is the original paper introducing LeNet-5.",
+          "quote": "LeNet-5 (LeCun et al., 1998)"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Colored MNIST (CMNIST)",
+          "justification": "CMNIST is used as a test dataset to evaluate the performance of the proposed Spare method.",
+          "quote": "On CMNIST, Spare performs well across varying noise-to-signal ratios, whereas other state-of-the-art methods struggle."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Variance reduction in sgd by distributed importance sampling",
+          "justification": "This is one of the papers referenced that discusses CMNIST.",
+          "quote": "Empirical Risk Minimization (ERM)."
+        }
+      },
+      {
+        "name": {
+          "value": "Waterbirds",
+          "justification": "Waterbirds is used as a benchmark dataset to evaluate the performance of the proposed Spare method.",
+          "quote": "Our extensive experiments confirm that Spare achieves up to 42.9% higher worst-group accuracy over state-of-the-art on most commonly used benchmarks, including CMNIST (Alain et al., 2015) (with multiple minority groups), Waterbirds (Sagawa et al., 2019), CelebA (Liu et al., 2015) and UrbanCars (Li et al., 2023) (with multiple spurious correlations) while being up to 12x faster."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Distributionally robust neural networks",
+          "justification": "This is the original paper describing the Waterbirds dataset.",
+          "quote": "Waterbirds (Sagawa et al., 2019)"
+        }
+      },
+      {
+        "name": {
+          "value": "CelebA",
+          "justification": "CelebA is used as a benchmark dataset to evaluate the performance of the proposed Spare method.",
+          "quote": "Our extensive experiments confirm that Spare achieves up to 42.9% higher worst-group accuracy over state-of-the-art on most commonly used benchmarks, including CMNIST (Alain et al., 2015) (with multiple minority groups), Waterbirds (Sagawa et al., 2019), CelebA (Liu et al., 2015) and UrbanCars (Li et al., 2023) (with multiple spurious correlations) while being up to 12x faster."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Deep learning face attributes in the wild",
+          "justification": "This is the original paper describing the CelebA dataset.",
+          "quote": "CelebA (Liu et al., 2015)"
+        }
+      },
+      {
+        "name": {
+          "value": "UrbanCars",
+          "justification": "UrbanCars is used as a benchmark dataset to evaluate the performance of the proposed Spare method.",
+          "quote": "Our extensive experiments confirm that Spare achieves up to 42.9% higher worst-group accuracy over state-of-the-art on most commonly used benchmarks, including CMNIST (Alain et al., 2015) (with multiple minority groups), Waterbirds (Sagawa et al., 2019), CelebA (Liu et al., 2015) and UrbanCars (Li et al., 2023) (with multiple spurious correlations) while being up to 12x faster."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "A whac-a-mole dilemma: Shortcuts come in multiples where mitigating one amplifies others",
+          "justification": "This is the original paper describing the UrbanCars dataset.",
+          "quote": "UrbanCars (Li et al., 2023)"
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 2059,
+    "prompt_tokens": 34385,
+    "total_tokens": 36444
+  }
+}

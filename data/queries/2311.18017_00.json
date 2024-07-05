@@ -1,0 +1,145 @@
+{
+  "paper": "2311.18017.txt",
+  "words": 3447,
+  "extractions": {
+    "title": {
+      "value": "Learning an Effective Evolution Equation for Particle-Mesh Simulations Across Cosmologies",
+      "justification": "The title is taken directly from the provided research paper document.",
+      "quote": "Learning an Effective Evolution Equation for Particle-Mesh Simulations Across Cosmologies"
+    },
+    "description": "This paper aims to use a data-driven model to learn an effective evolution equation for particle-mesh simulations, focusing on correcting errors in the particle-mesh potential at small scales. The approach helps in producing evolution equations that generalize well to new initial conditions and cosmologies, thereby improving the accuracy of simulations for cosmological parameter inference.",
+    "type": {
+      "value": "empirical study",
+      "justification": "The paper involves implementing a model and conducting experiments with the model to test its effectiveness.",
+      "quote": "In the present work, we show that it is possible to obtain an effective evolution equation that is robust to variations in cosmological parameters and initial conditions in a physically principled manner, by only imposing loss terms at the level of the position and velocities of the particles, effectively enforcing the conservation of global angular and linear momenta."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Cosmology",
+        "justification": "The main focus of the research is on cosmological simulations and the improvement of particle-mesh simulations used to make theoretical predictions for the large-scale structure of the Universe.",
+        "quote": "In cosmology, N-body simulations are employed to generate theoretical predictions for the large scale structure of the Universe by simulating the evolution of the dark matter distribution."
+      },
+      "aliases": [
+        "Astrophysics",
+        "CosM"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "N-body simulations",
+          "justification": "The research heavily involves the use of N-body simulations for modeling the dynamics of particles under gravitational influence.",
+          "quote": "N-body simulations are a ubiquitous tool in astrophysics for modeling the dynamics of particles under the influence of their collective gravitational potential."
+        },
+        "aliases": [
+          "N-body",
+          "N-body integration",
+          "N-body computation"
+        ]
+      },
+      {
+        "name": {
+          "value": "Machine Learning",
+          "justification": "The paper employs a neural network to learn the corrections to the particle-mesh simulations, indicative of prominent use of machine learning techniques.",
+          "quote": "We used JaxPM, a differential PM simulation package written in JAX. Following Lanzieri et al. [2022] and Chatziloizos et al. [2022], we adopted a fully connected neural network whose outputs represent the coefficients of a B-spline function with an order of 3."
+        },
+        "aliases": [
+          "ML",
+          "Deep Learning",
+          "Neural Networks"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Fully Connected Neural Network",
+          "justification": "The paper describes the use of a fully connected neural network for learning corrections to particle-mesh simulations.",
+          "quote": "Following Lanzieri et al. [2022] and Chatziloizos et al. [2022], we adopted a fully connected neural network whose outputs represent the coefficients of a B-spline function with an order of 3."
+        },
+        "aliases": [
+          "FCNN",
+          "Dense Neural Network"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "The model used in the paper is based on existing neural network techniques rather than being newly developed.",
+          "quote": "Following Lanzieri et al. [2022] and Chatziloizos et al. [2022], we adopted a fully connected neural network whose outputs represent the coefficients of a B-spline function with an order of 3."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The neural network was executed as part of the study to learn corrections and improve simulation accuracy.",
+          "quote": "Following Lanzieri et al. [2022] and Chatziloizos et al. [2022], we adopted a fully connected neural network whose outputs represent the coefficients of a B-spline function with an order of 3."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The model's performance was compared against other methods, such as the correction model from Lanzieri et al. [2022], among others.",
+          "quote": "As shown in Lanzieri et al. [2022] a learnt correction to the evolution equations can generalize well across different cosmologies, even when trained on a single set of cosmological parameters."
+        },
+        "referenced_paper_title": {
+          "value": "Hybrid Physical-Neural ODEs for Fast N-body Simulations",
+          "justification": "The paper cites Lanzieri et al. [2022], which discusses the use of neural networks for fast N-body simulations, implying that the current model's neural network approach is influenced by that work.",
+          "quote": "This idea was initially explored in Lanzieri et al. [2022], however, their loss function had to include the ratio of the predicted and reference power spectra."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CAMELS suite",
+          "justification": "The dataset used for training includes simulations from the CAMELS suite.",
+          "quote": "For training, we used simulations from the CAMELS suite [Villaescusa-Navarro et al., 2021, Ni et al., 2023, Villaescusa-Navarro et al., 2023]."
+        },
+        "aliases": [
+          "CAMELS",
+          "CAMELS dataset"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The CAMELS Project: Cosmology and Astrophysics with Machine-learning Simulations",
+          "justification": "The referenced paper for the CAMELS dataset is by Villaescusa-Navarro et al., titled 'The CAMELS Project: Cosmology and Astrophysics with Machine-learning Simulations'.",
+          "quote": "Francisco Villaescusa-Navarro, Daniel Anglés-Alcázar, Shy Genel, David N. Spergel, Rachel S. Somerville, Romeel Dave, Annalisa Pillepich, Lars Hernquist, Dylan Nelson, Paul Torrey,\n... The CAMELS Project: Cosmology and Astrophysics with Machine-learning Simulations. ApJ, 915(1):71, July 2021."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "JAX",
+          "justification": "The library JAX was used for implementing the differential PM simulation package JaxPM.",
+          "quote": "We used JaxPM, a differential PM simulation package written in JAX."
+        },
+        "aliases": [
+          "jax"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "JAX: Autograd and XLA",
+          "justification": "The reference to the JAX library can be attributed to its documentation titled 'JAX: Autograd and XLA'.",
+          "quote": "https://github.com/google/jax"
+        }
+      },
+      {
+        "name": {
+          "value": "sbi",
+          "justification": "The sbi library was used to train a Sequential Neural Posterior Estimator (SNPE) within the study.",
+          "quote": "The power spectrum of our produced dark matter-only maps as the compressed statistics to train an Sequential Neural Posterior Estimator (SNPE) by making use of the sbi package."
+        },
+        "aliases": [
+          "sbi-package"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Truncated proposals for scalable and hassle-free simulation-based inference",
+          "justification": "The reference to the sbi library can be attributed to the paper titled 'Truncated proposals for scalable and hassle-free simulation-based inference'.",
+          "quote": "Michael Deistler, Pedro J Goncalves, and Jakob H Macke. Truncated proposals for scalable and hassle-free simulation-based inference. arXiv e-prints, art. arXiv:2210.04815, October 2022."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1782,
+    "prompt_tokens": 7451,
+    "total_tokens": 9233
+  }
+}

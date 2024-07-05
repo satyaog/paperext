@@ -1,0 +1,202 @@
+{
+  "paper": "2310.18777.txt",
+  "words": 16356,
+  "extractions": {
+    "title": {
+      "value": "Improving Compositional Generalization using Iterated Learning and Simplicial Embeddings",
+      "justification": "This is the title of the paper as mentioned at the beginning.",
+      "quote": "Improving Compositional Generalization using Iterated Learning and Simplicial Embeddings"
+    },
+    "description": "This paper proposes a method to improve the compositional generalization of deep networks by using iterated learning combined with simplicial embeddings, which can approximately discretize representations. The method is shown to improve compositional generalization in vision tasks with well-understood latent factors and on real molecular graph prediction tasks where the latent structure is unknown.",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The paper presents experiments on vision tasks and molecular graph prediction tasks to demonstrate the effectiveness of the proposed method.",
+      "quote": "We show that this combination of changes improves compositional generalization over other approaches, demonstrating these improvements both on vision tasks with well-understood latent factors and on real molecular graph prediction tasks where the latent structure is unknown."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Representation Learning",
+        "justification": "The paper focuses on improving compositional generalization in representation learning using iterated learning and simplicial embeddings.",
+        "quote": "Inspired by this process, we propose to improve the compositional generalization of deep networks by using iterated learning on models with simplicial embeddings, which can approximately discretize representations."
+      },
+      "aliases": [
+        "Rep. Learn."
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Computer Vision",
+          "justification": "The paper evaluates its proposed method on vision tasks such as 3dShapes, dSprites, and MPI3D-real, which are in the domain of computer vision.",
+          "quote": "We show that this combination of changes improves compositional generalization over other approaches, demonstrating these improvements both on vision tasks with well-understood latent factors and on real molecular graph prediction tasks where the latent structure is unknown."
+        },
+        "aliases": [
+          "CV"
+        ]
+      },
+      {
+        "name": {
+          "value": "Molecular Property Prediction",
+          "justification": "The proposed method is also tested on molecular graph prediction tasks.",
+          "quote": "The proposed method also enhances downstream performance on molecular graph property prediction tasks, where the generating process is less clear-cut."
+        },
+        "aliases": [
+          "Mol. Prop. Pred."
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "SEM-IL",
+          "justification": "The main model proposed in this paper is the combination of Simplicial Embeddings and Iterated Learning, hence named SEM-IL.",
+          "quote": "We propose to split the network into a backbone and a task head, and discretize the representation at the end of the backbone using simplicial embeddings (SEM, [45])."
+        },
+        "aliases": [
+          "SEM-IL"
+        ],
+        "is_contributed": {
+          "value": 1,
+          "justification": "The authors developed the SEM-IL model explicitly as a contribution of this research.",
+          "quote": "Another problem with applying iterated learning to deep neural networks is how to create the discrete message, i.e., z. Discretization is not necessary: for example, the imitation phase could use L2 loss to match a student’s continuous representations to the teacher’s. We find greatly improved performance with our discretization scheme, however, due to much-increased compressibility pressure."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The model was executed in experiments on multiple datasets, including vision tasks and molecular graph property prediction tasks.",
+          "quote": "We show that this combination of changes improves compositional generalization over other approaches, demonstrating these improvements both on vision tasks with well-understood latent factors and on real molecular graph prediction tasks where the latent structure is unknown."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The SEM-IL model is compared numerically to other baseline models like SEM-only, IL-only, and baseline approaches on various tasks.",
+          "quote": "We compare five algorithms: Baseline, SEM-only, IL-only, SEM-IL, Given-G: train an SEM model to reproduce the true G (which would not be known in practice), then fine-tune on the downstream task."
+        },
+        "referenced_paper_title": {
+          "value": "Simplicial embeddings in self-supervised learning and downstream classification",
+          "justification": "The SEM part of the model references this paper.",
+          "quote": "We propose to split the network into a backbone and a task head, and discretize the representation at the end of the backbone using simplicial embeddings (SEM, [45])."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "3dShapes",
+          "justification": "The paper uses the 3dShapes dataset to test the proposed method.",
+          "quote": "In this section, we consider a regression task on 3dShapes [9], where recovering and recombining the generating factors is necessary for systematic generalization."
+        },
+        "aliases": [
+          "3DS"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "3D Shapes Dataset",
+          "justification": "The 3dShapes dataset is referenced directly in the explanation of the vision tasks.",
+          "quote": "In this section, we consider a regression task on 3dShapes [9], where recovering and recombining the generating factors is necessary for systematic generalization."
+        }
+      },
+      {
+        "name": {
+          "value": "dSprites",
+          "justification": "The dSprites dataset is used for evaluating the proposed method.",
+          "quote": "The detailed experimental settings and results on additional similar datasets, dSprites [52] and MPI3D-real [23], are given in Appendix C."
+        },
+        "aliases": [
+          "DS"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "dSprites: Disentanglement testing Sprites dataset",
+          "justification": "The dSprites dataset is referenced directly in the appendix.",
+          "quote": "The detailed experimental settings and results on additional similar datasets, dSprites [52] and MPI3D-real [23], are given in Appendix C."
+        }
+      },
+      {
+        "name": {
+          "value": "MPI3D-real",
+          "justification": "The MPI3D-real dataset is used in the vision tasks.",
+          "quote": "The detailed experimental settings and results on additional similar datasets, dSprites [52] and MPI3D-real [23], are given in Appendix C."
+        },
+        "aliases": [
+          "M3D"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "On the Transfer of Inductive Bias from Simulation to the Real World: a New Disentanglement Dataset",
+          "justification": "The MPI3D-real dataset is referenced directly in the appendix.",
+          "quote": "The detailed experimental settings and results on additional similar datasets, dSprites [52] and MPI3D-real [23], are given in Appendix C."
+        }
+      },
+      {
+        "name": {
+          "value": "ogbg-molhiv",
+          "justification": "The ogbg-molhiv dataset is used to test the method on molecular graph property prediction tasks.",
+          "quote": "We conduct experiments on three common molecular graph property datasets: ogbg-molhiv (1 binary classification task), ogbg-molpcba (128 binary classification tasks), and PCQM4Mv2 (1 regression task); all three come from the Open Graph Benchmark [37]."
+        },
+        "aliases": [
+          "HIV"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Open graph benchmark: Datasets for machine learning on graphs",
+          "justification": "The ogbg-molhiv dataset is referenced directly in the explanation of the molecular tasks.",
+          "quote": "We conduct experiments on three common molecular graph property datasets: ogbg-molhiv (1 binary classification task), ogbg-molpcba (128 binary classification tasks), and PCQM4Mv2 (1 regression task); all three come from the Open Graph Benchmark [37]."
+        }
+      },
+      {
+        "name": {
+          "value": "ogbg-molpcba",
+          "justification": "The ogbg-molpcba dataset is used for testing the method on molecular graph property prediction tasks.",
+          "quote": "We conduct experiments on three common molecular graph property datasets: ogbg-molhiv (1 binary classification task), ogbg-molpcba (128 binary classification tasks), and PCQM4Mv2 (1 regression task); all three come from the Open Graph Benchmark [37]."
+        },
+        "aliases": [
+          "PCBA"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Open graph benchmark: Datasets for machine learning on graphs",
+          "justification": "The ogbg-molpcba dataset is referenced directly in the explanation of the molecular tasks.",
+          "quote": "We conduct experiments on three common molecular graph property datasets: ogbg-molhiv (1 binary classification task), ogbg-molpcba (128 binary classification tasks), and PCQM4Mv2 (1 regression task); all three come from the Open Graph Benchmark [37]."
+        }
+      },
+      {
+        "name": {
+          "value": "PCQM4Mv2",
+          "justification": "The PCQM4Mv2 dataset is used for testing the method in the regression tasks on molecular graph prediction.",
+          "quote": "We conduct experiments on three common molecular graph property datasets: ogbg-molhiv (1 binary classification task), ogbg-molpcba (128 binary classification tasks), and PCQM4Mv2 (1 regression task); all three come from the Open Graph Benchmark [37]."
+        },
+        "aliases": [
+          "PCQM"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "OGB-LSC: A Large-Scale Challenge for Machine Learning on Graphs",
+          "justification": "The PCQM4Mv2 dataset is referenced directly in the explanation of the molecular tasks.",
+          "quote": "We conduct experiments on three common molecular graph property datasets: ogbg-molhiv (1 binary classification task), ogbg-molpcba (128 binary classification tasks), and PCQM4Mv2 (1 regression task); all three come from the Open Graph Benchmark [37]."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is the primary library used for the implementation.",
+          "quote": "The implementation of the GCN/GIN backbone used in this work is taken from the open-source code released by OGB [37]. We use the default setting of hyperparameters for all experiments."
+        },
+        "aliases": [
+          "torch"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An Imperative Style, High-Performance Deep Learning Library",
+          "justification": "The use of PyTorch is referenced in the implementation of the model.",
+          "quote": "The implementation of the GCN/GIN backbone used in this work is taken from the open-source code released by OGB [37]. We use the default setting of hyperparameters for all experiments."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2100,
+    "prompt_tokens": 28035,
+    "total_tokens": 30135
+  }
+}

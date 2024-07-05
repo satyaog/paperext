@@ -1,0 +1,182 @@
+{
+  "paper": "2310.19177.txt",
+  "words": 4281,
+  "extractions": {
+    "title": {
+      "value": "ROBUSTIFYING LANGUAGE MODELS WITH TEST-TIME ADAPTATION",
+      "justification": "The title is explicitly stated at the beginning of the paper.",
+      "quote": "ROBUSTIFYING L ANGUAGE M ODELS T IME A DAPTATION WITH T EST"
+    },
+    "description": "This paper proposes a novel method to make large-scale pre-trained language models robust at test time against adversarial attacks. The approach, termed Mask-Defense, uses masked language modeling to dynamically adapt the input sentences and reverse adversarial modifications without needing to retrain the models. Experimental results on two popular sentence classification datasets demonstrate the effectiveness of this method.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents experiments on two datasets and reports quantitative results to demonstrate the effectiveness of the proposed method.",
+      "quote": "Visualizations and empirical results on two popular sentence classification datasets demonstrate that our method can repair adversarial language attacks over 65% of the time."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The paper primarily deals with language models and adversarial attacks in the context of text data.",
+        "quote": "Large-scale language models achieved state-of-the-art performance over a number of language tasks."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Adversarial Attacks and Defenses",
+          "justification": "The paper focuses on making language models robust against adversarial attacks.",
+          "quote": "Various defenses against these text-based attacks have been proposed, but most are training-based approaches, either through adding adversarial attacks in a form of data augmentation, (Feng et al., 2021) or by modifying the training goal to improve robustness.(Hendrycks et al., 2019)"
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Self-Supervised Learning",
+          "justification": "The defense mechanism proposed in the paper leverages self-supervised learning techniques, particularly masked language modeling.",
+          "quote": "The self-supervised task we choose to optimize for is called masked-language modelling."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "BERT",
+          "justification": "BERT is explicitly mentioned as one of the large-scale pre-trained language models used in the experiments and as a basis for the Mask-Defense method.",
+          "quote": "Large-scale pretrained language models (foundation models) like BERT Devlin et al. (2018)..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "BERT is a pre-existing model and not a contribution of this paper.",
+          "quote": "Large-scale pretrained language models (foundation models) like BERT Devlin et al. (2018)..."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The paper uses BERT for both classification and as a masked language model for the defense mechanism.",
+          "quote": "For classification, fine-tuned models from the Textattack package were used, which used hyperparameter optimization to get the best results on Yelp and Ag’s News... The standard bert-base-uncased model was used to generate MLM tokens."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "BERT is used in experiments to demonstrate the effectiveness of the proposed defense mechanism by comparing its performance before and after adversarial attacks and defenses.",
+          "quote": "We ran experiments against two of the latest text-based adversarial attacks, PWWS (Ren et al., 2019) and TextFooler (Jin et al., 2020). Empirically, our experiments show that our defense, called Mask-Defense, was able to reverse 75-80% percent of successful Textfooler attacks, and 65-70% successful PWWS attacks."
+        },
+        "referenced_paper_title": {
+          "value": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "justification": "This is the referenced work for BERT, as mentioned in the paper.",
+          "quote": "Large-scale pretrained language models (foundation models) like BERT Devlin et al. (2018)..."
+        }
+      },
+      {
+        "name": {
+          "value": "RoBERTa",
+          "justification": "RoBERTa is mentioned as another example of a large-scale pre-trained language model.",
+          "quote": "Large-scale pretrained language models (foundation models) like BERT Devlin et al. (2018) and RoBERTa (Liu et al., 2019) have achieved state of the art performances over a number of language tasks"
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "RoBERTa is a pre-existing model and not a contribution of this paper.",
+          "quote": "Large-scale pretrained language models (foundation models) like BERT Devlin et al. (2018) and RoBERTa (Liu et al., 2019)..."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "RoBERTa is used to exemplify the type of models the study aims to make robust at test time.",
+          "quote": "Large-scale pretrained language models (foundation models) like BERT Devlin et al. (2018) and RoBERTa (Liu et al., 2019) have achieved state of the art performances over a number of language tasks"
+        },
+        "is_compared": {
+          "value": 0,
+          "justification": "There is no explicit comparison involving RoBERTa in the experimental results.",
+          "quote": "However, these models are vulnerable to adversarial attacks..."
+        },
+        "referenced_paper_title": {
+          "value": "RoBERTa: A Robustly Optimized BERT Pretraining Approach",
+          "justification": "This is the referenced work for RoBERTa, as mentioned in the paper.",
+          "quote": "Large-scale pretrained language models (foundation models) like BERT Devlin et al. (2018) and RoBERTa (Liu et al., 2019)..."
+        }
+      },
+      {
+        "name": {
+          "value": "Mask-Defense",
+          "justification": "Mask-Defense is the proposed defense mechanism in the paper designed to reverse adversarial language attacks at test time using masked language modeling.",
+          "quote": "Our defense, called Mask-Defense, was able to reverse 75-80% percent of successful Textfooler attacks, and 65-70% successful PWWS attacks."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 1,
+          "justification": "Mask-Defense is a novel contribution of this paper, as proposed by the authors.",
+          "quote": "By dynamically adapting the input sentence with predictions from masked words, we show that we can reverse many language adversarial attacks."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "Mask-Defense was executed in the experiments to demonstrate its effectiveness.",
+          "quote": "Our defense, called Mask-Defense, was able to reverse 75-80% percent of successful Textfooler attacks, and 65-70% successful PWWS attacks."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "Mask-Defense was compared with existing defenses to demonstrate its effectiveness against adversarial attacks.",
+          "quote": "... our experiments show that our defense, called Mask-Defense, was able to reverse 75-80% percent of successful Textfooler attacks, and 65-70% successful PWWS attacks."
+        },
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "Mask-Defense is proposed in this paper and thus has no referenced paper.",
+          "quote": "N/A"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "AG's News",
+          "justification": "AG’s News is mentioned as one of the datasets used for evaluating the proposed defense mechanism.",
+          "quote": "Datasets The two datasets used in this experiment are AG’s News and Yelp Polarity."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Character-level Convolutional Networks for Text Classification",
+          "justification": "This is the referenced work for AG’s News dataset, as mentioned in the paper.",
+          "quote": " AG’s news is a sentence level classification dataset of the title and description of news stories into four categories: Word, Sports, Business, and Science/Technology."
+        }
+      },
+      {
+        "name": {
+          "value": "Yelp Polarity",
+          "justification": "Yelp Polarity is mentioned as one of the datasets used for evaluating the proposed defense mechanism.",
+          "quote": "Datasets The two datasets used in this experiment are AG’s News and Yelp Polarity."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "The paper does not provide explicit reference details for the Yelp Polarity dataset.",
+          "quote": "Yelp is a document-level sentiment classification dataset of reviews of restaurants, businesses, etc. Reviews with 1 or 2 stars are considered negative, while reviews with 4 or 5 stars are considered positive."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Textattack",
+          "justification": "Textattack is mentioned as a library used to implement and run the adversarial attacks in the experiments.",
+          "quote": "Both attacks were implemented with Textattack, a python package for adversarial attacks, and were run with default hyperparameters."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "TextAttack: A Framework for Adversarial Attacks in Natural Language Processing",
+          "justification": "This is the referenced work for the Textattack library, as mentioned in the paper.",
+          "quote": "Both attacks were implemented with Textattack, a python package for adversarial attacks, and were run with default hyperparameters."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1891,
+    "prompt_tokens": 8047,
+    "total_tokens": 9938
+  }
+}

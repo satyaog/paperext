@@ -1,0 +1,158 @@
+{
+  "paper": "-eid7uct1My.txt",
+  "words": 10526,
+  "extractions": {
+    "title": {
+      "value": "Training Equilibria in Reinforcement Learning",
+      "justification": "This is the title as it appears at the top of the paper under review.",
+      "quote": "TRAINING EQUILIBRIA IN REINFORCEMENT LEARNING."
+    },
+    "description": "This paper investigates the phenomenon of multiple equilibria in reinforcement learning algorithms within partially observable environments. It provides theoretical proofs and empirical evidence that insufficient memory in policies can lead to convergence to suboptimal equilibria, even with full exploration. The work further discusses the influence of memory and parameter noise in escaping these suboptimal equilibria.",
+    "type": {
+      "value": "theoretical",
+      "justification": "The primary contributions are theoretical proofs about the nature of equilibria in POMDPs, supported by mathematical propositions and empirical validation.",
+      "quote": "We show theoretically that the core problem is that in partially observed environments, an agent’s past actions induce a distribution on hidden states."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Reinforcement Learning",
+        "justification": "The primary focus of the paper is on different reinforcement learning algorithms and how they behave with respect to multiple equilibria in partially observable environments.",
+        "quote": "In partially observable environments, reinforcement learning algorithms such as policy gradient and Q-learning may have multiple equilibria."
+      },
+      "aliases": [
+        "RL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Partially Observable Markov Decision Processes",
+          "justification": "A significant part of the discussion and findings revolves around POMDPs and their properties.",
+          "quote": "In non-Markovian environments such as partially observable MDPs (POMDPs), this guarantee fails when using Markovian policies."
+        },
+        "aliases": [
+          "POMDP"
+        ]
+      },
+      {
+        "name": {
+          "value": "Policy Gradient Methods",
+          "justification": "The paper extensively discusses the performance and equilibria of policy gradient methods in reinforcement learning.",
+          "quote": "Experiments show that policies with insufficient memory tend to learn to use the environment as auxiliary memory, and parameter noise helps policies escape suboptimal equilibria."
+        },
+        "aliases": [
+          "PG"
+        ]
+      },
+      {
+        "name": {
+          "value": "Q-learning",
+          "justification": "There is a thorough evaluation of Q-learning algorithms and their possible convergence to suboptimal equilibria.",
+          "quote": "Empirical results. (Reported in Section 5). We confirm empirically that our theoretical results hold in practice."
+        },
+        "aliases": [
+          "Q-learning"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Double-Tap",
+          "justification": "The Double-Tap environment is used as an illustrative example to show how policies can get stuck in suboptimal equilibria.",
+          "quote": "For example, consider the double-tap environment described in Figure 1."
+        },
+        "aliases": [
+          "Double-Tap Environment"
+        ],
+        "is_contributed": {
+          "value": 1,
+          "justification": "The Double-Tap environment is constructed and utilized within this paper to demonstrate the discussed phenomena.",
+          "quote": "For example, consider the double-tap environment described in Figure 1."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "Experiments are conducted within the Double-Tap environment to validate the theoretical findings.",
+          "quote": "We confirm empirically that our theoretical results hold in practice."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "Multiple models, including Q-learning and policy gradient methods, are tested in the Double-Tap environment.",
+          "quote": "Our first experiment is a sanity check: we confirm experimentally that the properties we show analytically for the double-tap environment in Section 3 also hold in practice."
+        },
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "The model is newly introduced in this paper and not referenced from another paper.",
+          "quote": "N/A"
+        }
+      },
+      {
+        "name": {
+          "value": "Battle of the Sexes",
+          "justification": "The Battle of the Sexes game is adapted into an RL environment to study the multi-equilibria problem.",
+          "quote": "Battle of the Sexes is a game in which two players must coordinate—without communication—on which concert to go to: Bach or Stravinsky."
+        },
+        "aliases": [
+          "Battle of the Sexes Environment"
+        ],
+        "is_contributed": {
+          "value": 1,
+          "justification": "The paper adapts the well-known game into an RL environment for the purpose of the study.",
+          "quote": "Any two-player game can be turned into a ‘single-player’ RL environment by having the RL agent play against a fixed ‘opponent’ policy."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "Experiments were conducted in this environment to observe policy behavior.",
+          "quote": "We confirm that parameter noise is beneficial in the Double-Tap (left) and the Battle of the Sexes environment (right)."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "This environment is used to compare the effects of different policies and noise parameters.",
+          "quote": "We confirm that parameter noise is beneficial in the Double-Tap (left) and the Battle of the Sexes environment (right)."
+        },
+        "referenced_paper_title": {
+          "value": "Equilibrium points in n-person games",
+          "justification": "This is the classical paper by Nash on which the game theory concepts are based.",
+          "quote": "A Nash equilibrium (Nash Jr 1950) is a solution to a non-cooperative game, in which no player can increase their payoff by switching to a different strategy so long as the other player’s strategies are held fixed."
+        }
+      },
+      {
+        "name": {
+          "value": "Sequential Bandit",
+          "justification": "A new environment where an agent’s success in choosing actions sequentially affects its reward, requiring memory for optimal performance.",
+          "quote": "sequential bandit environment."
+        },
+        "aliases": [
+          "Sequential Bandit Environment"
+        ],
+        "is_contributed": {
+          "value": 1,
+          "justification": "The Sequential Bandit environment is introduced in the paper to test the hypotheses about policy memory.",
+          "quote": "We now introduce a new environment in which this is not the case: the sequential bandit environment."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "Experiments are executed in this environment to assess how well policies use memory.",
+          "quote": "Results from training a PPO (Schulman et al. 2017) agent with a feedforward policy are shown in Figure 5. The policy reliably learns to make use of the external memory."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The environment is used to compare how different policies with external memory perform.",
+          "quote": "In all our prior environments there exists an optimal policy that is memoryless. We now introduce a new environment in which this is not the case: the sequential bandit environment."
+        },
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "The model is newly introduced in this paper and not referenced from another paper.",
+          "quote": "N/A"
+        }
+      }
+    ],
+    "datasets": [],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1663,
+    "prompt_tokens": 17369,
+    "total_tokens": 19032
+  }
+}

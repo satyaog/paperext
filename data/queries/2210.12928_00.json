@@ -1,0 +1,216 @@
+{
+  "paper": "2210.12928.txt",
+  "words": 8673,
+  "extractions": {
+    "title": {
+      "value": "GFlowOut: Dropout with Generative Flow Networks",
+      "justification": "This is the exact title of the paper.",
+      "quote": "Title: GFlowOut: Dropout with Generative Flow Networks"
+    },
+    "description": "This paper presents GFlowOut, a method using Generative Flow Networks (GFlowNets) to learn the posterior distribution over dropout masks in neural networks. It aims to improve the robustness and uncertainty estimation of models under distributional shifts and noisy conditions, with applications in several domains including image classification, visual question answering, and clinical mortality prediction.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper conducts several empirical evaluations such as robustness to distribution shifts, transfer learning, and application on real-world clinical data.",
+      "quote": "To investigate the quality of the posterior distribution learned by GFlowOut, we design empirical experiments, including evaluating robustness to distribution shift during inference, detecting out-of-distribution examples with uncertainty estimates, and transfer learning, using both benchmark datasets and a real-world clinical dataset."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Model Uncertainty",
+        "justification": "The primary focus of the paper is on improving the robustness and uncertainty estimation of deep learning models.",
+        "quote": "In risk-sensitive scenarios such as clinical practice and drug discovery, where mistakes can be extremely costly, it is important that models provide predictions with reliable uncertainty estimates."
+      },
+      "aliases": [
+        "Uncertainty Estimation",
+        "Bayesian Deep Learning"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Out-of-Distribution Detection",
+          "justification": "One of the key evaluations in the paper is the detection of out-of-distribution examples using uncertainty estimates.",
+          "quote": "We consider the standard task of using uncertainty estimates for detecting out-of-distribution (OOD) examples."
+        },
+        "aliases": [
+          "OOD Detection",
+          "Out-of-Distribution"
+        ]
+      },
+      {
+        "name": {
+          "value": "Transfer Learning",
+          "justification": "The paper evaluates transfer learning performance of models trained with GFlowOut.",
+          "quote": "Next, we evaluate the efficacy of GFlowOut in the context of transfer learning."
+        },
+        "aliases": [
+          "Fine-Tuning",
+          "Retraining"
+        ]
+      },
+      {
+        "name": {
+          "value": "Computer Vision",
+          "justification": "The experiments include image classification tasks on datasets like CIFAR-10 and CIFAR-100.",
+          "quote": "We conduct experiments on MNIST, CIFAR-10, and CIFAR-100 datasets with different types and levels of deformations."
+        },
+        "aliases": [
+          "Vision",
+          "Image Classification"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "GFlowOut",
+          "justification": "GFlowOut is the main focus and proposed method of the paper.",
+          "quote": "We propose GFlowOut, to learn the posterior distribution over dropout masks in a neural network."
+        },
+        "aliases": [
+          "Generative Flow Network Dropout",
+          "GFlowNet Dropout"
+        ],
+        "is_contributed": {
+          "value": 1,
+          "justification": "GFlowOut is the newly introduced model in this paper.",
+          "quote": "In this work, we propose GFlowOut."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The experiments involving GFlowOut were conducted using GPUs.",
+          "quote": "On a single RTX8000 GPU, training models with GFlowOut takes around the same time as Contextual dropout and Concrete Dropout."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "GFlowOut is compared to various other dropout methods across multiple experiments.",
+          "quote": "As baselines, use Random Dropout (Standard Bernoulli Dropout), Contextual Dropout, and Concrete Dropout."
+        },
+        "referenced_paper_title": {
+          "value": "GFlowNet Foundations",
+          "justification": "The concept of Generative Flow Networks (GFlowNets) forms the basis of GFlowOut.",
+          "quote": "We propose GFlowOut to address these issues. GFlowOut leverages the recently proposed probabilistic framework of Generative Flow Networks (GFlowNets) to learn the posterior distribution over dropout masks."
+        }
+      },
+      {
+        "name": {
+          "value": "ID-GFlowOut",
+          "justification": "ID-GFlowOut is a variant of GFlowOut that does not use sample-dependent information.",
+          "quote": "In these approaches, z is viewed either as latent variables or part of the model parameters. We consider two variants for our proposed method: GFlowOut where the dropout masks z are viewed as sample dependent latent variables, and ID-GFlowOut, which generates masks in a sample independent manner where z is viewed as a part of the model parameters shared across all samples."
+        },
+        "aliases": [
+          "Independent GFlowOut",
+          "Sample-Independent GFlowOut"
+        ],
+        "is_contributed": {
+          "value": 1,
+          "justification": "ID-GFlowOut is also introduced in this paper as a variant of GFlowOut.",
+          "quote": "We consider two variants for our proposed method: GFlowOut where the dropout masks z are viewed as sample dependent latent variables, and ID-GFlowOut, which generates masks in a sample independent manner."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "ID-GFlowOut was executed as part of the empirical experiments.",
+          "quote": "We consider both GFlowOut and ID-GFlowOut variants and as baselines, use Random Dropout (Standard Bernoulli Dropout) (Hinton et al., 2012), Contextual Dropout (Fan et al., 2021) and Concrete Dropout (Gal et al., 2017)."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "ID-GFlowOut is compared to GFlowOut and other dropout methods in the empirical experiments.",
+          "quote": "Our experiments indicate that models trained with both GFlowOut and ID-GFlowOut are more robust to distribution shifts as compared to the baselines."
+        },
+        "referenced_paper_title": {
+          "value": "GFlowNet Foundations",
+          "justification": "The framework of Generative Flow Networks also applies to ID-GFlowOut.",
+          "quote": "Instead of directly optimizing B with respect to ϕ, we first observe making p(zi |xi , yi ), the true posterior, a target for the variational distribution q(zi |xi , yi ). We thus propose to use a GFlowNet."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "MNIST",
+          "justification": "MNIST dataset was used for evaluating robustness to distribution shifts.",
+          "quote": "For MNIST, we train a two-layer MLP with 300 and 100 units respectively and evaluate predictions on MNIST images rotated by a uniformly sampled angle (0−360◦ )."
+        },
+        "aliases": [
+          "Modified National Institute of Standards and Technology database"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The MNIST Database of Handwritten Digits",
+          "justification": "MNIST is a well-known dataset for evaluating machine learning models.",
+          "quote": "For MNIST, we train a two-layer MLP with 300 and 100 units respectively."
+        }
+      },
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "CIFAR-10 dataset was used for empirical experiments on robustness and transfer learning.",
+          "quote": "We conduct experiments on CIFAR-10, CIFAR-100 datasets with different types and levels of deformations."
+        },
+        "aliases": [
+          "Canadian Institute For Advanced Research 10"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The CIFAR-10 Dataset",
+          "justification": "CIFAR-10 is a common dataset used in computer vision research.",
+          "quote": "CIFAR-10 contains 60000 32x32 colour images in 10 classes, with 6000 images per class."
+        }
+      },
+      {
+        "name": {
+          "value": "CIFAR-100",
+          "justification": "CIFAR-100 dataset was used for empirical experiments on robustness and transfer learning.",
+          "quote": "We conduct experiments on CIFAR-10, CIFAR-100 datasets with different types and levels of deformations."
+        },
+        "aliases": [
+          "Canadian Institute For Advanced Research 100"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The CIFAR-100 Dataset",
+          "justification": "CIFAR-100 is a common dataset used in computer vision research.",
+          "quote": "The CIFAR-100 dataset contains 100 classes each containing 600 images."
+        }
+      },
+      {
+        "name": {
+          "value": "SVHN",
+          "justification": "SVHN dataset was used to test out-of-distribution detection.",
+          "quote": "Uncertainty for prediction on each example is calculated using the Dempster-Shafer metric (Sensoy et al., 2018). For baselines, we consider Contextual Dropout and Concrete Dropout, along with standard MC Dropout and Deep Ensembles which are strong baselines for this task. We run the experiment with 5 seeds and report the mean and standard error. In Table 3, we present AUPR and AUROC for in-distribution classification (CIFAR-10 and CIFAR-100) and OOD classification (SVHN) using the uncertainty estimates from each method."
+        },
+        "aliases": [
+          "Street View House Numbers"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The Street View House Numbers (SVHN) Dataset",
+          "justification": "SVHN is commonly used for testing machine learning models' performance on OOD detection.",
+          "quote": "In Table 3, we present AUPR and AUROC for in-distribution classification (CIFAR-10 and CIFAR-100) and OOD classification (SVHN) using the uncertainty estimates from each method."
+        }
+      },
+      {
+        "name": {
+          "value": "eICU Collaborative Research Database",
+          "justification": "Cross-hospital mortality prediction was evaluated using eICU data.",
+          "quote": "We use a 3-layer MLP trained with 4500 patients’ ICU records, including 158 deaths, from one hospital, and tested with data from another hospital (4018 patients, 147 deaths). Records of both hospitals are obtained from the eICU database."
+        },
+        "aliases": [
+          "eICU",
+          "eICU-CRD"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The eICU Collaborative Research Database",
+          "justification": "eICU database is a well-known dataset used for clinical research.",
+          "quote": "Records of both hospitals are obtained from the eICU database (Pollard et al., 2018)."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 2474,
+    "prompt_tokens": 16388,
+    "total_tokens": 18862
+  }
+}

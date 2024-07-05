@@ -1,0 +1,296 @@
+{
+  "paper": "2312.02204.txt",
+  "words": 8771,
+  "extractions": {
+    "title": {
+      "value": "Can We Learn Communication-Efficient Optimizers?",
+      "justification": "This is the literal title of the paper provided.",
+      "quote": "Can We Learn Communication-Efficient Optimizers?"
+    },
+    "description": "This paper investigates whether recent advancements in learned optimizers can enhance the performance of communication-efficient distributed learning. Specifically, it explores how learned optimizers can be integrated into local SGD and its variants to close the performance gap with state-of-the-art adaptive optimizers while maintaining communication efficiency. The results demonstrate that learned optimizers significantly outperform local SGD and other sophisticated variants and generalize well to larger datasets and architectures like ImageNet and ViTs, as well as different modalities such as language modeling.",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The paper conducts experiments to evaluate the performance of learned optimizers in communication-efficient distributed learning settings, providing empirical results that demonstrate their effectiveness and generalization capabilities.",
+      "quote": "Our results demonstrate that learned optimizers can substantially outperform local SGD and its sophisticated variants while maintaining their communication efficiency."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Optimization Techniques",
+        "justification": "The primary focus of the paper is on optimizing communication-efficient distributed learning by employing learned optimizers.",
+        "quote": "In this work, we investigate if the recent progress in the emerging area of learned optimizers can potentially close this gap while remaining communication-efficient."
+      },
+      "aliases": [
+        "Optimization"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Distributed Computing",
+          "justification": "The paper addresses challenges in distributed deep learning, specifically the communication overhead in distributed SGD.",
+          "quote": "The primary communication overhead of distributed SGD comes from the synchronization of gradients computed by different workers."
+        },
+        "aliases": [
+          "Distributed Learning"
+        ]
+      },
+      {
+        "name": {
+          "value": "Meta-Learning",
+          "justification": "The paper employs meta-learning strategies to train the learned optimizers used in the experiments.",
+          "quote": "Our method builds upon local SGD. By computing the centralized update using an expressive neural net Fϕ, our method can be seen as a generalization of existing update methods such as taking the average iterate [33] or computing server-side momentum updates [39]."
+        },
+        "aliases": [
+          "Learning to Learn"
+        ]
+      },
+      {
+        "name": {
+          "value": "Vision Transformers (ViTs)",
+          "justification": "The paper evaluates the learned optimizers on ViTs to demonstrate their generalization capability to larger architectures.",
+          "quote": "Learned optimizers can even generalize to unseen and much larger datasets and architectures, including ImageNet and ViTs, and to unseen modalities such as language modeling."
+        },
+        "aliases": [
+          "Visual Transformers"
+        ]
+      },
+      {
+        "name": {
+          "value": "Language Modeling",
+          "justification": "The paper evaluates the learned optimizers in the context of language modeling to demonstrate their generalization across different modalities.",
+          "quote": "Learned optimizers can even generalize to unseen and much larger datasets and architectures, including ImageNet and ViTs, and to unseen modalities such as language modeling."
+        },
+        "aliases": [
+          "NLP"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Local SGD",
+          "justification": "Local SGD is used as a baseline in the paper to compare the performance of learned optimizers.",
+          "quote": "The primary communication overhead of distributed SGD comes from the synchronization of gradients computed by different workers. A recently popular direction to alleviate this overhead is local SGD [33]."
+        },
+        "aliases": [
+          "Local Stochastic Gradient Descent",
+          "Local-SGD"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "Local SGD is not a new contribution of this paper; it is used as a baseline for comparison.",
+          "quote": "The primary communication overhead of distributed SGD comes from the synchronization of gradients computed by different workers. A recently popular direction to alleviate this overhead is local SGD [33]."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "Local SGD was executed in the experiments to provide a baseline for performance comparison.",
+          "quote": "The primary communication overhead of distributed SGD comes from the synchronization of gradients computed by different workers. A recently popular direction to alleviate this overhead is local SGD [33]."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "Local SGD was used as a comparative baseline to evaluate the performance of the proposed learned optimizers.",
+          "quote": "In this work, we investigate if the recent progress in the emerging area of learned optimizers can potentially close this gap while remaining communication-efficient. Specifically, we meta-learn how to perform global updates given an update from local SGD iterations."
+        },
+        "referenced_paper_title": {
+          "value": "Don't Use Large Mini-Batches, Use Local SGD",
+          "justification": "This referenced paper is the basis for using Local SGD as a baseline in the study.",
+          "quote": "A recently popular direction to alleviate this overhead is local SGD [33], where each worker computes multiple (H) gradient steps independently before aggregating the weights (or deltas ∆k) of their local models."
+        }
+      },
+      {
+        "name": {
+          "value": "SlowMo",
+          "justification": "SlowMo is another baseline model used for comparison with the proposed learned optimizers and is discussed in the experiments.",
+          "quote": "Wang et al. [39] introduced SlowMo using global or server-side momentum and showed that it can accelerate local SGD as well as a number of decentralized and asynchronous stochastic algorithms."
+        },
+        "aliases": [
+          "Slow Momentum"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "SlowMo is not a new contribution of this paper; it is used as a baseline for comparison.",
+          "quote": "Wang et al. [39] introduced SlowMo using global or server-side momentum and showed that it can accelerate local SGD as well as a number of decentralized and asynchronous stochastic algorithms."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "SlowMo was executed in the experiments to provide a baseline for performance comparison.",
+          "quote": "Wang et al. [39] introduced SlowMo using global or server-side momentum and showed that it can accelerate local SGD as well as a number of decentralized and asynchronous stochastic algorithms."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "SlowMo was used as a comparative baseline to evaluate the performance of the proposed learned optimizers.",
+          "quote": "Our results demonstrate that learned optimizers can substantially outperform local SGD and its sophisticated variants while maintaining their communication efficiency."
+        },
+        "referenced_paper_title": {
+          "value": "SlowMo: Improving Communication-Efficient Distributed SGD with Slow Momentum",
+          "justification": "This referenced paper is the basis for using SlowMo as a baseline in the study.",
+          "quote": "Wang et al. [39] introduced SlowMo using global or server-side momentum and showed that it can accelerate local SGD as well as a number of decentralized and asynchronous stochastic algorithms."
+        }
+      },
+      {
+        "name": {
+          "value": "LAgg-A",
+          "justification": "LAgg-A is one of the proposed learned optimizer architectures evaluated in the paper.",
+          "quote": "We propose and evaluate two architectures for the learned optimization of local SGD, a worker-aware optimizer (LAgg-A) and a worker-invariant optimizer (LOpt-A), from which one can choose depending on the use-case."
+        },
+        "aliases": [
+          "Worker-Aware Optimizer"
+        ],
+        "is_contributed": {
+          "value": 1,
+          "justification": "LAgg-A is a new contribution introduced by this paper as a learned optimizer for communication-efficient distributed learning.",
+          "quote": "We propose and evaluate two architectures for the learned optimization of local SGD, a worker-aware optimizer (LAgg-A) and a worker-invariant optimizer (LOpt-A), from which one can choose depending on the use-case."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "LAgg-A was executed in the experiments to evaluate its performance.",
+          "quote": "We propose and evaluate two architectures for the learned optimization of local SGD, a worker-aware optimizer (LAgg-A) and a worker-invariant optimizer (LOpt-A), from which one can choose depending on the use-case."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "LAgg-A was evaluated against other models to demonstrate its efficacy.",
+          "quote": "We propose and evaluate two architectures for the learned optimization of local SGD, a worker-aware optimizer (LAgg-A) and a worker-invariant optimizer (LOpt-A), from which one can choose depending on the use-case."
+        },
+        "referenced_paper_title": {
+          "value": "Tasks, Stability, Architecture, and Compute: Training More Effective Learned Optimizers, and Using Them to Train Themselves",
+          "justification": "The reference paper provides foundational work on learned optimizers upon which LAgg-A builds.",
+          "quote": "Specifically, we follow a standard communication-efficient distributed setup employed by local SGD and its stronger variants [39] and improve it by introducing a global learned optimizer based on [21] (Figure 1)."
+        }
+      },
+      {
+        "name": {
+          "value": "LOpt-A",
+          "justification": "LOpt-A is another proposed learned optimizer architecture evaluated in the paper.",
+          "quote": "We propose and evaluate two architectures for the learned optimization of local SGD, a worker-aware optimizer (LAgg-A) and a worker-invariant optimizer (LOpt-A), from which one can choose depending on the use-case."
+        },
+        "aliases": [
+          "Worker-Invariant Optimizer"
+        ],
+        "is_contributed": {
+          "value": 1,
+          "justification": "LOpt-A is a new contribution introduced by this paper as a learned optimizer for communication-efficient distributed learning.",
+          "quote": "We propose and evaluate two architectures for the learned optimization of local SGD, a worker-aware optimizer (LAgg-A) and a worker-invariant optimizer (LOpt-A), from which one can choose depending on the use-case."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "LOpt-A was executed in the experiments to evaluate its performance.",
+          "quote": "We propose and evaluate two architectures for the learned optimization of local SGD, a worker-aware optimizer (LAgg-A) and a worker-invariant optimizer (LOpt-A), from which one can choose depending on the use-case."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "LOpt-A was evaluated against other models to demonstrate its efficacy.",
+          "quote": "We propose and evaluate two architectures for the learned optimization of local SGD, a worker-aware optimizer (LAgg-A) and a worker-invariant optimizer (LOpt-A), from which one can choose depending on the use-case."
+        },
+        "referenced_paper_title": {
+          "value": "Tasks, Stability, Architecture, and Compute: Training More Effective Learned Optimizers, and Using Them to Train Themselves",
+          "justification": "The reference paper provides foundational work on learned optimizers upon which LOpt-A builds.",
+          "quote": "Specifically, we follow a standard communication-efficient distributed setup employed by local SGD and its stronger variants [39] and improve it by introducing a global learned optimizer based on [21] (Figure 1)."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Fashion MNIST",
+          "justification": "Fashion MNIST is one of the datasets used in the experiments for evaluating the learned optimizers.",
+          "quote": "We use the Fashion MNIST (FMNIST) dataset [42] (10 classes) with 28 × 28 images."
+        },
+        "aliases": [
+          "FMNIST"
+        ],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "Fashion-MNIST: a Novel Image Dataset for Benchmarking Machine Learning Algorithms",
+          "justification": "This referenced paper is the basis for using Fashion MNIST in the study.",
+          "quote": "We use the Fashion MNIST (FMNIST) dataset [42] (10 classes) with 28 × 28 images."
+        }
+      },
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "CIFAR-10 is another dataset used in the experiments for evaluating the learned optimizers.",
+          "quote": "We also use the CIFAR-10 dataset [13] (10 classes) with 32×32 images."
+        },
+        "aliases": [],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "Learning Multiple Layers of Features from Tiny Images",
+          "justification": "This referenced paper is the basis for using CIFAR-10 in the study.",
+          "quote": "We also use the CIFAR-10 dataset [13] (10 classes) with 32×32 images."
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet",
+          "justification": "ImageNet is used to evaluate the generalization ability of the learned optimizers to larger datasets and architectures.",
+          "quote": "We designate the dataset as ImageNet+ when the larger images are used. For the language modeling task, we use LM1B [4]."
+        },
+        "aliases": [
+          "ImageNet+",
+          "ILSVRC"
+        ],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "ImageNet Large Scale Visual Recognition Challenge",
+          "justification": "This referenced paper is the basis for using ImageNet in the study.",
+          "quote": "Finally, we scale our setup to the ImageNet dataset [29] (1000 classes) with downsampled 32 × 32 and 64 × 64 images."
+        }
+      },
+      {
+        "name": {
+          "value": "One Billion Word Benchmark (LM1B)",
+          "justification": "The One Billion Word Benchmark is used to evaluate the generalization ability of the learned optimizers to language modeling tasks.",
+          "quote": "Finally, we also show (d) that the optimizers are useful for training a decoder-only transformer language model (38× larger)."
+        },
+        "aliases": [
+          "LM1B"
+        ],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "One Billion Word Benchmark for Measuring Progress in Statistical Language Modeling",
+          "justification": "This referenced paper is the basis for using the One Billion Word Benchmark in the study.",
+          "quote": "Finally, we scale our setup to the ImageNet dataset [29] (1000 classes) with downsampled 32 × 32 and 64 × 64 images. For the language modeling task, we use LM1B [4]."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "AdamW",
+          "justification": "AdamW is mentioned as the optimizer used for meta-training the learned optimizers in the paper.",
+          "quote": "To meta-train our learned optimizers we estimate gradients using Persistent Evolutionary Strategies (PES) [38] and take gradient descent steps using AdamW and a linear warmup plus cosine decay schedule."
+        },
+        "aliases": [
+          "Adam with Weight Decay"
+        ],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "Adam: A method for stochastic optimization",
+          "justification": "This reference paper provides the foundational algorithm for AdamW, which was used for meta-training.",
+          "quote": "To meta-train our learned optimizers we estimate gradients using Persistent Evolutionary Strategies (PES) [38] and take gradient descent steps using AdamW and a linear warmup plus cosine decay schedule."
+        }
+      },
+      {
+        "name": {
+          "value": "Persistent Evolutionary Strategies (PES)",
+          "justification": "PES is used to compute gradient estimates for meta-training the learned optimizers in the paper.",
+          "quote": "As stated in equation 4.1, our meta-learning objective is the average loss over T iterations. This optimization problem usually requires long unrolls of the compute graph. We alleviate problems that can arise from long unrolls by using Persistent Evolutionary Strategies (PES)[38] to compute estimates of the gradients."
+        },
+        "aliases": [
+          "PES"
+        ],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "Unbiased Gradient Estimation in Unrolled Computation Graphs with Persistent Evolution Strategies",
+          "justification": "This reference paper provides the method for PES, which was used for gradient estimation during meta-training.",
+          "quote": "As stated in equation 4.1, our meta-learning objective is the average loss over T iterations. This optimization problem usually requires long unrolls of the compute graph. We alleviate problems that can arise from long unrolls by using Persistent Evolutionary Strategies (PES)[38] to compute estimates of the gradients."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 3123,
+    "prompt_tokens": 16472,
+    "total_tokens": 19595
+  }
+}

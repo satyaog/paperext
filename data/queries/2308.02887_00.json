@@ -1,0 +1,204 @@
+{
+  "paper": "2308.02887.txt",
+  "words": 11451,
+  "extractions": {
+    "title": {
+      "value": "The Impact of Group Membership Bias on the Quality and Fairness of Exposure in Ranking",
+      "justification": "Provided in the header of the paper",
+      "quote": "The Impact of Group Membership Bias on the Quality and Fairness of Exposure in Ranking"
+    },
+    "description": "The paper investigates the impact of group membership bias on ranking quality and fairness in search and recommender systems. It provides an analysis of how this bias affects ranking outcomes and proposes a correction method based on the assumption that utility scores of items from different groups come from the same distribution. The paper includes both theoretical and empirical studies to validate the proposed correction method.",
+    "type": {
+      "value": "Empirical",
+      "justification": "The paper provides both theoretical analysis and empirical experiments to validate the proposed method.",
+      "quote": "In this work, we first theoretically quantify this degradation with an approximation formula for the normalized discounted cumulative gain (NDCG) metric. Then, we experimentally analyze the change in the ranking quality of an LTR model trained on clicks that suffer from group bias...."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Information Retrieval",
+        "justification": "The study focuses on learning to rank (LTR) in search and recommender systems and how biases affect ranking quality.",
+        "quote": "In the context of learning to rank (LTR), the term bias usually refers to unequal treatment of items with equal utility by users."
+      },
+      "aliases": [
+        "LTR",
+        "Search and Recommender Systems"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Fairness in Ranking",
+          "justification": "The paper discusses fairness of exposure and how biases impact the fairness metrics like DTR and EEL.",
+          "quote": "We show that our correction method can consistently compensate for the negative impact of group membership bias on ranking quality and fairness metrics."
+        },
+        "aliases": [
+          "Bias in Ranking"
+        ]
+      },
+      {
+        "name": {
+          "value": "Learning to Rank",
+          "justification": "Central theme of the paper is on learning to rank from biased user interactions.",
+          "quote": "When learning to rank from user interactions, search and recommender systems must address biases in user behavior to provide a high-quality ranking."
+        },
+        "aliases": [
+          "LTR"
+        ]
+      },
+      {
+        "name": {
+          "value": "User Bias",
+          "justification": "The paper focuses on user biases, specifically group membership bias, and its impact on ranking.",
+          "quote": "One type of bias that has recently been studied in the ranking literature is when sensitive attributes, such as gender, have an impact on a user’s judgment about an item’s utility."
+        },
+        "aliases": [
+          "Group Bias"
+        ]
+      },
+      {
+        "name": {
+          "value": "Probabilistic Models",
+          "justification": "Proposes using probabilistic methods to estimate and correct for biases.",
+          "quote": "Our implicit assumption is that clicks for the affected group are missing completely at random (MCAR) with 𝛽𝑔 being the missingness probability. This brings the bias-correction problem back to IPS correction, since the clicks missing due to group bias are analogous to clicks missing based on position."
+        },
+        "aliases": [
+          "IPS Correction"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "LambdaRank",
+          "justification": "Used as the general LTR model in the experimental setup.",
+          "quote": "For the general LTR model (for tail queries) we use a neural network with attention and LambdaRank Loss as in [40]."
+        },
+        "aliases": [
+          "LambdaRank with Attention"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "LambdaRank is not introduced in this paper.",
+          "quote": "For the general LTR model (for tail queries) we use a neural network with attention and LambdaRank Loss as in [40]."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "LambdaRank was executed as part of the experiments.",
+          "quote": "For the general LTR model (for tail queries) we use a neural network with attention and LambdaRank Loss as in [40]."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The performance of LambdaRank was analyzed under biased and corrected conditions.",
+          "quote": "we experimentally analyze the change in the ranking quality of an LTR model trained on clicks that suffer from group bias, compared to the full information case."
+        },
+        "referenced_paper_title": {
+          "value": "Context-Aware Learning to Rank with Self-Attention",
+          "justification": "The referenced paper for LambdaRank with Attention.",
+          "quote": "For the general LTR model (for tail queries) we use a neural network with attention and LambdaRank Loss as in [40]."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Yahoo! Webscope",
+          "justification": "Used in experiments for both tabular and LTR regimes.",
+          "quote": "we the Yahoo! Webscope [9] and MSLR-WEB30k [41] datasets that are represented by query-document feature vectors of lengths 501 and 131, respectively, and both have graded relevance labels from 0 to 4."
+        },
+        "aliases": [
+          "Yahoo!"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Yahoo! Learning to Rank Challenge Overview",
+          "justification": "The referenced paper for the Yahoo! Webscope dataset.",
+          "quote": "we the Yahoo! Webscope [9] and MSLR-WEB30k [41] datasets that are represented by query-document feature vectors of lengths 501 and 131, respectively, and both have graded relevance labels from 0 to 4."
+        }
+      },
+      {
+        "name": {
+          "value": "MSLR-WEB30k",
+          "justification": "Used in experiments for both tabular and LTR regimes.",
+          "quote": "we the Yahoo! Webscope [9] and MSLR-WEB30k [41] datasets that are represented by query-document feature vectors of lengths 501 and 131, respectively, and both have graded relevance labels from 0 to 4."
+        },
+        "aliases": [
+          "MSLR"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Introducing LETOR 4.0 Datasets",
+          "justification": "The referenced paper for the MSLR-WEB30k dataset.",
+          "quote": "we the Yahoo! Webscope [9] and MSLR-WEB30k [41] datasets that are represented by query-document feature vectors of lengths 501 and 131, respectively, and both have graded relevance labels from 0 to 4."
+        }
+      },
+      {
+        "name": {
+          "value": "MovieLens 1M",
+          "justification": "Used in experiments for evaluating the correction method.",
+          "quote": "MovieLens 1𝑀: The classic movie recommendation dataset comprising 1𝑀 movie ratings that were provided by 6𝑘 users for 3.9𝑘 different movies."
+        },
+        "aliases": [
+          "MovieLens"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "MovieLens 1M: Collaborative Filtering Dataset",
+          "justification": "Commonly referenced paper for the MovieLens 1M dataset.",
+          "quote": "MovieLens 1𝑀: The classic movie recommendation dataset comprising 1𝑀 movie ratings that were provided by 6𝑘 users for 3.9𝑘 different movies."
+        }
+      },
+      {
+        "name": {
+          "value": "IIT-JEE",
+          "justification": "Used in experiments for evaluating the correction method.",
+          "quote": "IIT-JEE: The dataset comprises the scores of candidates who took the Indian Institutes of Technology Joint Entrance Exam (IIT-JEE) in 2009."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Centralized Admissions for Engineering Colleges in India",
+          "justification": "The referenced paper for the IIT-JEE dataset.",
+          "quote": "IIT-JEE: The dataset comprises the scores of candidates who took the Indian Institutes of Technology Joint Entrance Exam (IIT-JEE) in 2009."
+        }
+      },
+      {
+        "name": {
+          "value": "TREC Fair Ranking Track 2019",
+          "justification": "Used in experiments for evaluating the correction method.",
+          "quote": "TREC 2019: The academic search dataset provided by the TREC Fair Ranking track 2019."
+        },
+        "aliases": [
+          "TREC 2019"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Overview of the TREC 2019 Fair Ranking Track",
+          "justification": "The referenced paper for the TREC Fair Ranking Track 2019 dataset.",
+          "quote": "TREC 2019: The academic search dataset provided by the TREC Fair Ranking track 2019."
+        }
+      },
+      {
+        "name": {
+          "value": "TREC Fair Ranking Track 2020",
+          "justification": "Used in experiments for evaluating the correction method.",
+          "quote": "TREC 2020: The academic search dataset provided by the TREC Fair Ranking track 2020."
+        },
+        "aliases": [
+          "TREC 2020"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Overview of the TREC 2020 Fair Ranking Track",
+          "justification": "The referenced paper for the TREC Fair Ranking Track 2020 dataset.",
+          "quote": "TREC 2020: The academic search dataset provided by the TREC Fair Ranking track 2020."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1780,
+    "prompt_tokens": 20852,
+    "total_tokens": 22632
+  }
+}

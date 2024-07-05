@@ -1,0 +1,176 @@
+{
+  "paper": "2309.03139.txt",
+  "words": 4177,
+  "extractions": {
+    "title": {
+      "value": "Using Multiple Vector Channels Improves E(n)-Equivariant Graph Neural Networks",
+      "justification": "This is the title of the paper as stated at the beginning of the document.",
+      "quote": "Using Multiple Vector Channels Improves E(n)-Equivariant Graph Neural Networks"
+    },
+    "description": "This paper proposes a natural extension to E(n)-equivariant graph neural networks (EGNN) that uses multiple equivariant vectors per node. The multichannel EGNN is shown to improve performance across different physical systems benchmark tasks with minimal differences in runtime and number of parameters. The tasks include N-body charged particle dynamics, molecular property predictions, and predicting the trajectories of solar system bodies.",
+    "type": {
+      "value": "Empirical",
+      "justification": "The paper presents experiments and results on multiple benchmark tasks to show the benefits of the proposed multi-channel extension to EGNN.",
+      "quote": "We formulate\nthe extension and show that it improves performance across different physical systems benchmark tasks, with minimal differences in runtime or number of parameters."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Graph Neural Networks",
+        "justification": "The primary focus of the research is on extending E(n)-equivariant graph neural networks (EGNN) by using multiple equivariant vectors per node.",
+        "quote": "We present a natural extension to E(n)equivariant graph neural networks that uses multiple equivariant vectors per node."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Physical Systems",
+          "justification": "The proposed extension is shown to improve performance in tasks related to physical systems such as N-body charged particle dynamics and predicting the trajectories of solar system bodies.",
+          "quote": "The proposed multichannel EGNN outperforms the standard singlechannel EGNN on N-body charged particle dynamics, molecular property predictions, and predicting the trajectories of solar system bodies."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Molecular Property Predictions",
+          "justification": "One of the benchmark tasks focused on predicting molecular properties using the QM9 dataset.",
+          "quote": "Lastly, we applied the EGNN the task of predicting chemical properties of small molecules."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "E(n)-equivariant Graph Neural Network (EGNN)",
+          "justification": "The paper discusses the EGNN model and proposes a multi-channel extension to it.",
+          "quote": "The E(n)-equivariant Graph Neural Network (EGNN) model by Satorras et al. (2021) is an example of a model that does not clearly fit into one of the categories above."
+        },
+        "aliases": [
+          "EGNN"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "EGNN was proposed by Satorras et al. (2021) and is not a new contribution of this paper.",
+          "quote": "The E(n)-equivariant Graph Neural Network (EGNN) model by Satorras et al. (2021) is an example of a model that does not clearly fit into one of the categories above."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The paper conducts experiments using the EGNN model.",
+          "quote": "We used 4 EGNN layers. Each layer used 64 channel, 2 layer MLPs for the node, edge, and coordinate update functions, with a Swish function nonlinearity."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The EGNN model is compared in the benchmark tasks as part of the evaluation of the proposed multi-channel extension.",
+          "quote": "The proposed multichannel EGNN outperforms the standard singlechannel EGNN on N-body charged particle dynamics, molecular property predictions, and predicting the trajectories of solar system bodies."
+        },
+        "referenced_paper_title": {
+          "value": "E(n) equivariant graph neural networks",
+          "justification": "This is the referenced paper for EGNN, proposed by Satorras et al. (2021).",
+          "quote": "The E(n)-equivariant Graph Neural Network (EGNN) model by Satorras et al. (2021) is an example of a model that does not clearly fit into one of the categories above."
+        }
+      },
+      {
+        "name": {
+          "value": "Multi-Channel E(n)-Equivariant Graph Neural Network (MC-EGNN)",
+          "justification": "The paper proposes the Multi-Channel E(n)-Equivariant Graph Neural Network (MC-EGNN) as an extension to the standard EGNN model.",
+          "quote": "We define the Multi-Channel E(n)-Equivariant Graph Neural Network (MC-EGNN) by replacing xi with the matrix Xi ∈ R3×m , where m is the number of vector channels."
+        },
+        "aliases": [
+          "MC-EGNN"
+        ],
+        "is_contributed": {
+          "value": 1,
+          "justification": "The main contribution of the paper is the Multi-Channel E(n)-Equivariant Graph Neural Network (MC-EGNN).",
+          "quote": "We present a natural extension to E(n)equivariant graph neural networks that uses multiple equivariant vectors per node."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The paper conducts experiments using the MC-EGNN model.",
+          "quote": "We first conducted a hyperparameter search using a one vector-channel EGNN to maximize its performance on the validation set, and then used those hyperparameters when testing the EGNN models with 2, 3, and 5 vector channels."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The MC-EGNN model is compared to the standard EGNN and other models in the benchmark tasks.",
+          "quote": "The proposed multichannel EGNN outperforms the standard singlechannel EGNN on N-body charged particle dynamics, molecular property predictions, and predicting the trajectories of solar system bodies."
+        },
+        "referenced_paper_title": {
+          "value": "Using Multiple Vector Channels Improves E(n)-Equivariant Graph Neural Networks",
+          "justification": "The MC-EGNN model is contributed in this paper.",
+          "quote": "We define the Multi-Channel E(n)-Equivariant Graph Neural Network (MC-EGNN) by replacing xi with the matrix Xi ∈ R3×m , where m is the number of vector channels."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Solar Systems dynamics dataset",
+          "justification": "The dataset is used for the prediction of the dynamics on an N-body system based on the solar system.",
+          "quote": "We look at a dataset of 30 years of real observations of the 31 highest-mass bodies in the solar system (including the sun, 8 planets, and 22 moons) curated by Lemos et al. (2022) and sourced originally from NASA Horizons."
+        },
+        "aliases": [
+          "Solar System dataset"
+        ],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "Rediscovering orbital mechanics with machine learning",
+          "justification": "The dataset is curated by Lemos et al. (2022).",
+          "quote": "We look at a dataset of 30 years of real observations of the 31 highest-mass bodies in the solar system (including the sun, 8 planets, and 22 moons) curated by Lemos et al. (2022) and sourced originally from NASA Horizons."
+        }
+      },
+      {
+        "name": {
+          "value": "QM9",
+          "justification": "The dataset is used for the task of predicting chemical properties of small molecules.",
+          "quote": "The QM9 dataset consists of 100,000 training samples of molecules, each described by the atom type and positions of their constituent atoms (Ramakrishnan et al., 2014)."
+        },
+        "aliases": [],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "Quantum chemistry structures and properties of 134 kilo molecules",
+          "justification": "The QM9 dataset is referenced as coming from Ramakrishnan et al. (2014).",
+          "quote": "The QM9 dataset consists of 100,000 training samples of molecules, each described by the atom type and positions of their constituent atoms (Ramakrishnan et al., 2014)."
+        }
+      },
+      {
+        "name": {
+          "value": "Charged Particles N-body dataset",
+          "justification": "The dataset is used for the Charged Particles N-body experiment to predict the positions of charged particles.",
+          "quote": "In the Charged Particles N-body experiment (Kipf et al., 2018), the task is to predict the positions of charged particles several timesteps into the future, given their charges, positions, and velocities."
+        },
+        "aliases": [
+          "Charged Particles dataset"
+        ],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "Neural relational inference for interacting systems",
+          "justification": "The dataset is referenced as coming from Kipf et al. (2018).",
+          "quote": "In the Charged Particles N-body experiment (Kipf et al., 2018), the task is to predict the positions of charged particles several timesteps into the future, given their charges, positions, and velocities."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Adam optimizer",
+          "justification": "The Adam optimizer is explicitly mentioned as being used in the experiments.",
+          "quote": "We used the Adam optimizer with a learning rate of 5 × 10−4 for all experiments with different numbers of vectors."
+        },
+        "aliases": [
+          "Adam"
+        ],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "Adam: A Method for Stochastic Optimization",
+          "justification": "The Adam optimizer is a well-known optimizer referenced in the context of machine learning.",
+          "quote": "We used the Adam optimizer with a learning rate of 5 × 10−4 for all experiments with different numbers of vectors."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1912,
+    "prompt_tokens": 8670,
+    "total_tokens": 10582
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "paper": "2310.07819.txt",
+  "words": 18844,
+  "extractions": {
+    "title": {
+      "value": "Faithfulness Measurable Masked Language Models",
+      "justification": "This is the exact title as it appears on the paper.",
+      "quote": "Faithfulness Measurable Masked Language Models"
+    },
+    "description": "This paper addresses the challenge of ensuring faithfulness in importance measures for NLP by proposing a novel methodology that incorporates masking during fine-tuning to maintain in-distribution behavior. This allows for more accurate measurement of faithfulness through various importance measures.",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The paper presents a novel method and validates it through experiments on multiple datasets, which is characteristic of empirical research.",
+      "quote": "This work proposes an inherently faithfulness measurable model that addresses these challenges. This is achieved using a novel fine-tuning method that incorporates masking, such that masking tokens become in-distribution by design. ...We demonstrate the generality of our approach by applying it to 16 different datasets and validate it using statistical in-distribution tests."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The research is centered on Natural Language Processing (NLP) and the interpretability of NLP models through importance measures.",
+        "quote": "In NLP, importance measures such as attention or integrated gradient are a popular way of explaining which input tokens are important for making a prediction"
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Model Interpretability",
+          "justification": "The paper specifically focuses on making NLP model explanations more faithful, a key aspect of interpretability.",
+          "quote": "A key assumption with our proposed metric is that the model provides in-distribution support for any permutation of masked tokens."
+        },
+        "aliases": [
+          "Interpretability"
+        ]
+      },
+      {
+        "name": {
+          "value": "Explainable AI",
+          "justification": "The work is also framed within the broader context of making AI systems explainable by improving the faithfulness of explanations.",
+          "quote": "Our approach is significantly different from previous literature, which is completely model agnostic. Instead, we fine-tune a model such that measuring faithfulness is easy by design."
+        },
+        "aliases": [
+          "XAI"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "RoBERTa",
+          "justification": "RoBERTa is the main model used for the experiments detailed in the paper.",
+          "quote": "In this paper, we use the RoBERTa model (Liu et al., 2019), although any masked language model of similar size or larger is likely to work. We choose RoBERTa model, because converges consistently and reasonable hyperparameters are well established."
+        },
+        "aliases": [
+          "RoBERTa-base",
+          "RoBERTa-large"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "The model itself is not a contribution of this paper; rather, the paper uses an existing model.",
+          "quote": "In this paper, we use the RoBERTa model (Liu et al., 2019), although any masked language model of similar size or larger is likely to work."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The experiments described in the paper involve running the RoBERTa model.",
+          "quote": "For each experiment, we use 5 seeds and present their means with their 95% confidence interval (error-bars or ribbons)."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The performance of RoBERTa under different fine-tuning methods and importance measures is compared.",
+          "quote": "In general, we find that the explanations that take advantage of masking (occlusion-based) are more faithful than gradient-based methods."
+        },
+        "referenced_paper_title": {
+          "value": "RoBERTa: A Robustly Optimized BERT Pretraining Approach",
+          "justification": "This is the original paper that presents the RoBERTa model used in the experiments.",
+          "quote": "In this paper, we use the RoBERTa model (Liu et al., 2019), although any masked language model of similar size or larger is likely to work."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "SuperGLUE",
+          "justification": "The SuperGLUE benchmark is explicitly mentioned as one of the datasets utilized in experiments.",
+          "quote": "We use RoBERTa in size base and large, with the default GLUE hyperparameters provided by Liu et al. (2019). We present results on 16 classification datasets in the appendix but only include BoolQ and MRPC in the main paper."
+        },
+        "aliases": [
+          "GLUE",
+          "SuperGLUE"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "SuperGLUE: A stickier benchmark for general-purpose language understanding systems",
+          "justification": "The SuperGLUE benchmark is used as a reference in the experiments, specifically for evaluating the models.",
+          "quote": "We use RoBERTa in size base and large, with the default GLUE hyperparameters provided by Liu et al. (2019)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "HuggingFace Transformers",
+          "justification": "The HuggingFace Transformers library is used to provide the implementation of the RoBERTa model for the experiments.",
+          "quote": "We use the HuggingFace implementation of RoBERTa and the TensorFlow framework."
+        },
+        "aliases": [
+          "Transformers"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Transformers: State-of-the-art Natural Language Processing",
+          "justification": "The cited reference is the seminal work on the Transformers library, which provides the RoBERTa implementation used in the paper.",
+          "quote": "We use the HuggingFace implementation of RoBERTa and the TensorFlow framework."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1115,
+    "prompt_tokens": 42224,
+    "total_tokens": 43339
+  }
+}

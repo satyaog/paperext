@@ -1,0 +1,129 @@
+{
+  "paper": "1911.06253.txt",
+  "words": 22270,
+  "extractions": {
+    "title": {
+      "value": "Understanding Graph Neural Networks with Generalized Geometric Scattering Transforms",
+      "justification": "This is the title of the paper.",
+      "quote": "Understanding Graph Neural Networks with Generalized Geometric Scattering Transforms"
+    },
+    "description": "This research paper introduces new families of wavelet transforms for graphs, specifically windowed and non-windowed geometric scattering transforms based on general classes of wavelets often constructed from asymmetric matrices. The paper provides theoretical analysis and establishes the framework's stability and invariance properties. The work builds upon existing methods to provide a unified theory that extends known results and lays the groundwork for future deep learning architectures for graph-structured data.",
+    "type": {
+      "value": "theoretical",
+      "justification": "The paper primarily focuses on theoretical analysis, introducing concepts and providing proofs for stability and invariance properties of the proposed transforms.",
+      "quote": "We will use these wavelets to construct windowed and non-windowed versions of the scattering transform on G. The windowed scattering transform inputs a signal x ∈ L2 (M) and outputs a sequence of functions which we refer to as the scattering coefficients. We may view the windowed scattering transform as producing a sequence of features for each vertex. Therefore, it is well-suited for tasks such as node classification."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Geometric Deep Learning",
+        "justification": "The primary focus of the paper is on extending and unifying geometric deep learning methods, specifically with regard to graph neural networks.",
+        "quote": "In particular, a number of papers produced versions of the scattering transform for graphs [11, 12, 13, 33] and manifolds [25]. These constructions provide a model of geometric deep learning architectures such as graph neural networks in a manner analogous to the way that [18] models CNNs."
+      },
+      "aliases": [
+        "GDL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Graph Neural Networks",
+          "justification": "The paper focuses heavily on graph neural networks (GNNs) and their theoretical properties.",
+          "quote": "Therefore, it helps bridge the gap between geometric scattering and other graph neural networks by introducing a large family of networks with provable stability and invariance guarantees."
+        },
+        "aliases": [
+          "GNNs"
+        ]
+      },
+      {
+        "name": {
+          "value": "Scattering Transform",
+          "justification": "The core concept introduced and discussed is the scattering transform applied to graph-structured data, which generalizes the classical scattering transform.",
+          "quote": "The scattering transform is a wavelet-based model of convolutional neural networks (CNNs), introduced for signals defined on Rn by S. Mallat in [18]."
+        },
+        "aliases": [
+          "Wavelet Scattering"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Windowed Scattering Transform",
+          "justification": "The paper introduces the windowed scattering transform as one of the new families of wavelet transforms for graphs.",
+          "quote": "We will use these wavelets to construct windowed and non-windowed versions of the scattering transform on G. The windowed scattering transform inputs a signal x ∈ L2 (M) and outputs a sequence of functions which we refer to as the scattering coefficients."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 1,
+          "justification": "The windowed scattering transform is introduced as a novel contribution in this paper.",
+          "quote": "We will use these wavelets to construct windowed and non-windowed versions of the scattering transform on G."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "Theoretical analysis indicates execution on graphs, which inherently involves computational processes.",
+          "quote": "We will use these wavelets to construct windowed and non-windowed versions of the scattering transform on G."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The windowed scattering transform is compared to other models both theoretically and numerically.",
+          "quote": "On average over all data sets, the best choice of α is either −0.25 or 0.25 depending on whether one used WJ(1) or WJ(2) as shown in Table 2."
+        },
+        "referenced_paper_title": {
+          "value": "Understanding Graph Neural Networks with Generalized Geometric Scattering Transforms",
+          "justification": "This paper is the primary reference for the windowed scattering transform.",
+          "quote": "In this paper, we construct two new families of wavelet transforms on a graph G from matrices K, which are in most cases asymmetric, and provide a theoretical analysis of both of these wavelet transforms as well as the windowed and non-windowed scattering transforms constructed from them."
+        }
+      },
+      {
+        "name": {
+          "value": "Non-windowed Scattering Transform",
+          "justification": "The paper introduces the non-windowed scattering transform as another new family of wavelet transforms for graphs.",
+          "quote": "The non-windowed scattering transform replaces the low-pass matrix used in the definition of the windowed scattering transform with an averaging operator μ and instead outputs a sequence of scalar-valued coefficients."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 1,
+          "justification": "The non-windowed scattering transform is introduced as a novel contribution in this paper.",
+          "quote": "We will use these wavelets to construct windowed and non-windowed versions of the scattering transform on G."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "Theoretical analysis indicates execution on whole graph-level tasks, which involves computational processes.",
+          "quote": "Since the non-windowed scattering transform produces a single set of coefficients for the entire graph, it is well suited for whole-graph level tasks such as graph classification or regression."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The non-windowed scattering transform is compared to other models both theoretically and numerically.",
+          "quote": "Scattering style networks also been shown to be effective for molecular generation."
+        },
+        "referenced_paper_title": {
+          "value": "Understanding Graph Neural Networks with Generalized Geometric Scattering Transforms",
+          "justification": "This paper is the primary reference for the non-windowed scattering transform.",
+          "quote": "In this paper, we construct two new families of wavelet transforms on a graph G from matrices K, which are in most cases asymmetric, and provide a theoretical analysis of both of these wavelet transforms as well as the windowed and non-windowed scattering transforms constructed from them."
+        }
+      }
+    ],
+    "datasets": [],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is mentioned as the library used for implementing models and numerical experiments in this paper.",
+          "quote": "We compute the classification accuracy over a number of datasets with different scattering implementations. We use the scattering architecture from [13] as implemented in [28] for computation. Specifically we have J = 4 with 2 levels of scattering followed by aggregating the first 4 (centered) moments over the nodes for a graph invariant feature extractor. We use the clustering coefficient and the degree as input features. We then apply a linear classifier trained with gradient descent in pytorch [24] with 10 different seeds."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An Imperative Style, High-Performance Deep Learning Library",
+          "justification": "This is the primary reference for the PyTorch library, which is widely cited for its applications in deep learning.",
+          "quote": "PyTorch: An Imperative Style, High-Performance Deep Learning Library"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1450,
+    "prompt_tokens": 44275,
+    "total_tokens": 45725
+  }
+}

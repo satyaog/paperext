@@ -1,0 +1,230 @@
+{
+  "paper": "MusMaHCrs2.txt",
+  "words": 3777,
+  "extractions": {
+    "title": {
+      "value": "Learning to Optimize with Recurrent Hierarchical Transformers",
+      "justification": "This is the title mentioned at the top of the provided paper.",
+      "quote": "Learning to Optimize with Recurrent Hierarchical Transformers"
+    },
+    "description": "The paper proposes an efficient transformer-based learned optimizer for neural networks. The optimizer leverages self-attention for inter-tensor communication and uses recurrence to keep track of optimization history. This approach aims to outperform hand-designed optimizers like Adam by addressing challenges like high meta-training costs and memory overhead. The proposed optimizer shows promising results by converging faster than strong baselines while maintaining comparable memory usage.",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The paper involves experiments and benchmarks to evaluate the performance of the proposed optimizer against other baseline optimizers, making it an empirical study.",
+      "quote": "We benchmark our learned optimizer for 10K inner iterations after meta-training as done in (Harrison et al., 2022) and show training plots in Fig. 2."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Optimization",
+        "justification": "The paper focuses on learned optimization algorithms and compares the proposed optimizer to traditional and other learned optimization methods.",
+        "quote": "To this end, there has been significant interest in the area of learned optimization (Andrychowicz et al., 2016; Metz et al.; 2019; Almeida et al., 2021; Metz et al., 2022b), which aims to learn these underlying optimization algorithms themselves and outperform the hand-designed ones."
+      },
+      "aliases": [
+        "Optimization",
+        "L2O",
+        "Learned Optimization"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Transformers",
+          "justification": "The paper proposes a novel optimizer based on a hierarchical recurrent transformer that leverages self-attention for better optimization.",
+          "quote": "To this end, we propose an efficient transformer-based learned optimizer which facilitates communication among tensors with self-attention and keeps track of optimization history with recurrence."
+        },
+        "aliases": [
+          "Transformers"
+        ]
+      },
+      {
+        "name": {
+          "value": "Meta-Learning",
+          "justification": "The optimizer is meta-trained on optimization tasks, showcasing its relevance to the field of meta-learning.",
+          "quote": "These learned optimizers are typically meta-learned on “optimization tasks”(Metz et al., 2020a;b; 2022a) with each task specifying an objective function, neural network architecture and dataset."
+        },
+        "aliases": [
+          "Meta-Learning"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "tx_lopt",
+          "justification": "The term 'tx_lopt' is used to refer to the proposed transformer-based learned optimizer in the paper.",
+          "quote": "tx_lopt (ours)"
+        },
+        "aliases": [
+          "tx_lopt"
+        ],
+        "is_contributed": {
+          "value": 1,
+          "justification": "The paper introduces this model as a novel contribution.",
+          "quote": "We propose an efficient transformer-based learned optimizer which facilitates communication among tensors with self-attention and keeps track of optimization history with recurrence."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The optimizer was implemented and tested as per the experimental setup described in the paper, showing training plots and performance metrics.",
+          "quote": "We implement our optimizer in JAX (Bradbury et al., 2018) using the learned optimization open-source library (Metz et al., 2022a)."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The optimizer is numerically compared against other learned and hand-designed optimizers in the experiments section of the paper.",
+          "quote": "We benchmark our learned optimizer for 10K inner iterations after meta-training as done in (Harrison et al., 2022) and show training plots in Fig. 2."
+        },
+        "referenced_paper_title": {
+          "value": "Attention Is All You Need",
+          "justification": "The optimizer is based on transformer architecture, which was first introduced in the paper 'Attention Is All You Need'.",
+          "quote": "Our proposed optimizer (Fig. 1) performs a majority of the computation at the level of tensors (layers or structured groups of parameters), leading to a sub-linear memory cost in terms of the number of parameters."
+        }
+      },
+      {
+        "name": {
+          "value": "rnn_lopt",
+          "justification": "The term 'rnn_lopt' is used in the paper to refer to the RNN-based learned optimizer baseline against which the proposed optimizer is compared.",
+          "quote": "rnn_lopt"
+        },
+        "aliases": [
+          "rnn_lopt"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "This model is used as a baseline for comparison and is not introduced by this paper.",
+          "quote": "We compare with the three recent learned optimizers: STAR LOpt (Harrison et al., 2022), RNN LOpt (Metz et al., 2020a), and MLP LOpt (Metz et al., 2022a)."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The model was implemented and tested as part of the experiments conducted in the paper.",
+          "quote": "We benchmark our learned optimizer for 10K inner iterations after meta-training as done in (Harrison et al., 2022) and show training plots in Fig. 2."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The optimizer is numerically compared against other learned optimizers as well as hand-designed optimizers in the experiments section of the paper.",
+          "quote": "We benchmark our learned optimizer for 10K inner iterations after meta-training as done in (Harrison et al., 2022) and show training plots in Fig. 2."
+        },
+        "referenced_paper_title": {
+          "value": "Tasks, stability, architecture, and compute: Training more effective learned optimizers, and using them to train themselves.",
+          "justification": "This model is referenced from previous work on hierarchical RNN-based learned optimizers.",
+          "quote": "Metz et al. (2020a) propose a hierarchical RNN-based optimizer that maintains hidden states for tensors which also communicate among themselves and give per parameter updates through an MLP conditioned on these tensor states."
+        }
+      },
+      {
+        "name": {
+          "value": "star_lopt",
+          "justification": "The term 'star_lopt' is used to refer to the STAR learned optimizer baseline against which the proposed optimizer is compared.",
+          "quote": "star_lopt"
+        },
+        "aliases": [
+          "star_lopt"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "This model is used as a baseline for comparison and is not introduced by this paper.",
+          "quote": "We compare with the three recent learned optimizers: STAR LOpt (Harrison et al., 2022), RNN LOpt (Metz et al., 2020a), and MLP LOpt (Metz et al., 2022a)."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The model was implemented and tested as part of the experiments conducted in the paper.",
+          "quote": "We benchmark our learned optimizer for 10K inner iterations after meta-training as done in (Harrison et al., 2022) and show training plots in Fig. 2."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The optimizer is numerically compared against other learned optimizers as well as hand-designed optimizers in the experiments section of the paper.",
+          "quote": "We benchmark our learned optimizer for 10K inner iterations after meta-training as done in (Harrison et al., 2022) and show training plots in Fig. 2."
+        },
+        "referenced_paper_title": {
+          "value": "A closer look at learned optimization: Stability, robustness, and inductive biases",
+          "justification": "This model is referenced from recent work on the STAR learned optimizer.",
+          "quote": "We compare with the three recent learned optimizers: STAR LOpt (Harrison et al., 2022), RNN LOpt (Metz et al., 2020a), and MLP LOpt (Metz et al., 2022a)."
+        }
+      },
+      {
+        "name": {
+          "value": "mlp_lopt",
+          "justification": "The term 'mlp_lopt' is used to refer to the MLP-based learned optimizer baseline against which the proposed optimizer is compared.",
+          "quote": "mlp_lopt"
+        },
+        "aliases": [
+          "mlp_lopt"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "This model is used as a baseline for comparison and is not introduced by this paper.",
+          "quote": "We compare with the three recent learned optimizers: STAR LOpt (Harrison et al., 2022), RNN LOpt (Metz et al., 2020a), and MLP LOpt (Metz et al., 2022a)."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The model was implemented and tested as part of the experiments conducted in the paper.",
+          "quote": "We benchmark our learned optimizer for 10K inner iterations after meta-training as done in (Harrison et al., 2022) and show training plots in Fig. 2."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The optimizer is numerically compared against other learned optimizers as well as hand-designed optimizers in the experiments section of the paper.",
+          "quote": "We benchmark our learned optimizer for 10K inner iterations after meta-training as done in (Harrison et al., 2022) and show training plots in Fig. 2."
+        },
+        "referenced_paper_title": {
+          "value": "Practical tradeoffs between memory, compute, and performance in learned optimizers",
+          "justification": "This model is referenced from previous work on MLP-based learned optimizers.",
+          "quote": "Metz et al. (2022a) propose an MLP-based learned optimizer that scales well with compute and memory efficiency."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Fashion MNIST",
+          "justification": "The dataset is explicitly mentioned in the experiments section where it was used for benchmarking the learned optimizer.",
+          "quote": "Fashion MNIST"
+        },
+        "aliases": [
+          "Fashion MNIST"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Fashion-MNIST: a Novel Image Dataset for Benchmarking Machine Learning Algorithms",
+          "justification": "The dataset is originally introduced in the referenced paper by Xiao et al., 2017.",
+          "quote": "Following prior work (Metz et al., 2022a; Harrison et al., 2022), we use Persistent Evolutionary Strategies (PES) (Vicol et al., 2021) to meta-train our optimizer and all the learned optimizer baselines evaluated in this work. For a fair comparison with prior work (Metz et al., 2022a; Harrison et al., 2022), we meta-train on the same two tasks, namely Fashion MNIST with 2 hidden layers of 128 size each and a CIFAR-10 task with a 3-layer ConvNet with 32, 64, and 64 filters."
+        }
+      },
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "The dataset is explicitly mentioned in the experiments section where it was used for benchmarking the learned optimizer.",
+          "quote": "CIFAR-10"
+        },
+        "aliases": [
+          "CIFAR-10"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "CIFAR-10 and CIFAR-100 datasets",
+          "justification": "The dataset is originally introduced in the referenced paper by Krizhevsky et al., 2009.",
+          "quote": "Following prior work (Metz et al., 2022a; Harrison et al., 2022), we use Persistent Evolutionary Strategies (PES) (Vicol et al., 2021) to meta-train our optimizer and all the learned optimizer baselines evaluated in this work. For a fair comparison with prior work (Metz et al., 2022a; Harrison et al., 2022), we meta-train on the same two tasks, namely Fashion MNIST with 2 hidden layers of 128 size each and a CIFAR-10 task with a 3-layer ConvNet with 32, 64, and 64 filters."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "JAX",
+          "justification": "The library is explicitly mentioned as being used for implementing the proposed optimizer.",
+          "quote": "We implement our optimizer in JAX (Bradbury et al., 2018) using the learned optimization open-source library (Metz et al., 2022a)."
+        },
+        "aliases": [
+          "JAX"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "JAX: composable transformations of Python+NumPy programs",
+          "justification": "The JAX library is introduced in the referenced paper by Bradbury et al., 2018.",
+          "quote": "We implement our optimizer in JAX (Bradbury et al., 2018) using the learned optimization open-source library (Metz et al., 2022a)."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2577,
+    "prompt_tokens": 7647,
+    "total_tokens": 10224
+  }
+}

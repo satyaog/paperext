@@ -1,0 +1,183 @@
+{
+  "paper": "YE04aRkeZb.txt",
+  "words": 13022,
+  "extractions": {
+    "title": {
+      "value": "A2CiD2: Accelerating Asynchronous Communication in Decentralized Deep Learning",
+      "justification": "Title of the paper is clearly mentioned at the beginning.",
+      "quote": "A2CiD2: Accelerating Asynchronous Communication in Decentralized Deep Learning"
+    },
+    "description": "The paper introduces A2CiD2, an asynchronous, randomized, gossip-based optimization algorithm to accelerate decentralized deep learning. This method uses a continuous local momentum to allow each worker to process mini-batches without stopping while running a peer-to-peer averaging routine in parallel, aiming to reduce communication bottlenecks and synchronization issues in large-scale deep learning models.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves the introduction of a new algorithm, its theoretical analysis, and empirical validation through experiments with various datasets and network configurations.",
+      "quote": "Our theoretical analysis proves accelerated rates compared to previous asynchronous decentralized baselines and we empirically show that using our A2 CiD2 momentum significantly decrease communication costs in poorly connected networks."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Distributed Deep Learning",
+        "justification": "The primary focus of this paper is on optimizing and accelerating distributed deep learning training methods in decentralized settings.",
+        "quote": "Distributed training of Deep Learning models has been critical to many recent successes in the field."
+      },
+      "aliases": [
+        "Distributed DL",
+        "DDL",
+        "Distributed Training"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Decentralized Optimization",
+          "justification": "The paper specifically addresses decentralized optimization techniques and proposes an improvement over existing asynchronous decentralized algorithms.",
+          "quote": "we introduce a principled asynchronous, randomized, gossip-based optimization algorithm"
+        },
+        "aliases": [
+          "Decentralized Training",
+          "Decentralized Learning"
+        ]
+      },
+      {
+        "name": {
+          "value": "Communication-Efficient Learning",
+          "justification": "The core contribution of the paper is an optimization algorithm that reduces communication overhead in decentralized deep learning settings.",
+          "quote": "This work aims to address these challenges by introducing a principled acceleration method for pair-wise communications in peer-to-peer training of DNNs"
+        },
+        "aliases": [
+          "Communication Optimization",
+          "Communication-Efficient Training"
+        ]
+      },
+      {
+        "name": {
+          "value": "Stochastic Gradient Descent",
+          "justification": "The proposed algorithm builds on stochastic gradient descent techniques and aims to improve them for decentralized settings with asynchronous communication protocols.",
+          "quote": "Combined with asynchronous peer-to-peer (p2p) communications, these methods can streamline the overall training process, mitigating common bottlenecks"
+        },
+        "aliases": [
+          "SGD",
+          "Stochastic Optimization"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "A2CiD2",
+          "justification": "The model A2CiD2 is introduced as a novel contribution in the paper, aiming to accelerate asynchronous communication in decentralized deep learning.",
+          "quote": "we introduce a novel algorithm A2 CiD2 (standing for Accelerating Asynchronous Communication in Decentralized Deep Learning)... we propose a novel and simple continuized momentum which allows to significantly improve communication efficiency in challenging settings, which we name A2 CiD2 ."
+        },
+        "aliases": [
+          "A2CiD2"
+        ],
+        "is_contributed": {
+          "value": 1,
+          "justification": "A2CiD2 is introduced and thoroughly investigated within the scope of this research paper.",
+          "quote": "This includes the Straggler Problem [42], the synchronization between computations and communications [9], or bandwidth limitations [47], potentially due to particular network topologies like a ring graph [43]. However, due to the large number of parameters which are optimized, training DNNs with these methods still critically requires a considerable amount of communication [22], presenting an additional challenge [32]. This work aims to address these challenges by introducing a principled acceleration method for pair-wise communications in peer-to-peer training of DNNs, in particular for cluster computing. While conventional synchronous settings accelerate communications by integrating a Chebychev acceleration followed by Gradient Descent steps [37], the potential of accelerated asynchronous pair-wise gossip for Deep Learning (DL) remains largely unexplored."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The experiments to validate A2CiD2 were conducted on NVIDIA A100 GPUs.",
+          "quote": "In particular, we show consistent improvement on the ImageNet dataset using up to 64 asynchronous workers (A100 GPUs) and various communication network topologies."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "A2CiD2 is empirically compared with existing asynchronous decentralized algorithms to demonstrate its efficiency.",
+          "quote": "Our theoretical analysis proves accelerated rates compared to previous asynchronous decentralized baselines and we empirically show that using our A2 CiD2 momentum significantly decrease communication costs in poorly connected networks."
+        },
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "A2CiD2 is the novel model contributed by this paper itself; thus, it does not reference any other paper for its introduction.",
+          "quote": "we introduce a novel algorithm A2 CiD2 (standing for Accelerating Asynchronous Communication in Decentralized Deep Learning)"
+        }
+      },
+      {
+        "name": {
+          "value": "AD-PSGD",
+          "justification": "AD-PSGD is mentioned as a baseline algorithm in the paper for comparison with A2CiD2.",
+          "quote": "AD-PSGD [28], the baseline algorithm in asynchronous decentralized DL, comes with a major caveat to avoid deadlocks in practice: they require a bipartite graph and schedule p2p communications in a pseudo-random manner instead of basing the decision on worker’s current availability, hindering the advantage given by asynchronous methods in the mitigation of stragglers."
+        },
+        "aliases": [
+          "AD-PSGD"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "AD-PSGD is referenced as an existing model used as a baseline for comparison, not contributed by this paper.",
+          "quote": "AD-PSGD [28], the baseline algorithm in asynchronous decentralized DL, comes with a major caveat to avoid deadlocks in practice"
+        },
+        "is_executed": {
+          "value": 0,
+          "justification": "The execution details of AD-PSGD are not provided; it is only used for comparison in the theoretical analysis.",
+          "quote": "AD-PSGD [28], the baseline algorithm in asynchronous decentralized DL, comes with a major caveat to avoid deadlocks in practice"
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "AD-PSGD is compared with A2CiD2 in the experiments and theoretical analysis.",
+          "quote": "Compared to AD-PSGD [28], the variance terms held no variance reduction"
+        },
+        "referenced_paper_title": {
+          "value": "Asynchronous Decentralized Parallel Stochastic Gradient Descent",
+          "justification": "The full title of AD-PSGD's reference paper is mentioned in the references.",
+          "quote": "Asynchronous decentralized parallel stochastic gradient descent. In International Conference on Machine Learning, pages 3043–3052. PMLR, 2018."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "ImageNet",
+          "justification": "The ImageNet dataset is used to empirically validate A2CiD2's performance.",
+          "quote": "In particular, we show consistent improvement on the ImageNet dataset using up to 64 asynchronous workers (A100 GPUs) and various communication network topologies."
+        },
+        "aliases": [
+          "ImageNet"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ImageNet: A Large-Scale Hierarchical Image Database",
+          "justification": "The original paper describing the ImageNet dataset is cited in the references.",
+          "quote": "ImageNet: A large-scale hierarchical image database. In 2009 IEEE conference on computer vision and pattern recognition, pages 248–255. Ieee, 2009."
+        }
+      },
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "The CIFAR-10 dataset is used to empirically validate A2CiD2's performance.",
+          "quote": "Now, we experimentally compare A2 CiD2 to a synchronous baseline All-Reduce SGD (AR-SGD, see [26]) and an asynchronous baseline using randomized pairwise communications (a variant of AD-PSGD [28], traditionally used in state-of-the-art decentralized asynchronous training of DNNs). In our case, the asynchronous baseline corresponds to the dynamic Eq. (6). Our approach is standard: we empirically study the decentralized training behavior of our asynchronous algorithm by training ResNets [17] for image recognition. Following [2], we pick a ResNet18 for CIFAR-10 [24] and ResNet50 for ImageNet [11]."
+        },
+        "aliases": [
+          "CIFAR-10"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Multiple Layers of Features from Tiny Images",
+          "justification": "The original paper describing the CIFAR-10 dataset is cited in the references.",
+          "quote": "Learning multiple layers of features from tiny images. 2009."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The code implementation of the proposed algorithm is done using PyTorch.",
+          "quote": "Our code is implemented in Pytorch [35], remove locks put on previous asynchronous implementations by circumventing their deadlocks, and can be found in an open-source repository: https://github.com/AdelNabli/ACiD."
+        },
+        "aliases": [
+          "PyTorch"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An Imperative Style, High-Performance Deep Learning Library",
+          "justification": "The original paper for PyTorch is cited in the references.",
+          "quote": "PyTorch: An imperative style, high-performance deep learning library. In Advances in Neural Information Processing Systems 32, pages 8024–8035. Curran Associates, Inc., 2019."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1923,
+    "prompt_tokens": 25243,
+    "total_tokens": 27166
+  }
+}

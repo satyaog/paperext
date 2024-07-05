@@ -1,0 +1,165 @@
+{
+  "paper": "2311.16306.txt",
+  "words": 2726,
+  "extractions": {
+    "title": {
+      "value": "The search for the lost attractor",
+      "justification": "This is the title of the paper.",
+      "quote": "The search for the lost attractor"
+    },
+    "description": "The paper investigates the use of three machine learning tools to analyze time series data from simulations of star cluster core-collapse, aiming to determine whether the evolution of these clusters can be described by a low-dimensional system of ordinary differential equations (ODEs).",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves the application of machine learning tools to simulation data to derive results, rather than developing new theoretical models.",
+      "quote": "For the first time, we apply three independent machine learning tools to analyze state-of-the-art simulations of star cluster core collapse."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Astrophysics",
+        "justification": "The paper focuses on the dynamical evolution of star clusters, which is a topic within the field of astrophysics.",
+        "quote": "N-body systems characterized by r−2 attractive forces may display a self-similar collapse known as the gravo-thermal catastrophe or core-collapse. Globular clusters are a real-life example of this in astronomy."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Computational Astrophysics",
+          "justification": "The research relies heavily on simulations and numerical methods which are central to computational astrophysics.",
+          "quote": "We have performed a hybrid MPC-particle-mesh simulation with N = 105 particles where the collective gravitational force is evaluated with a standard particle in cell method on a 32 × 16 × 128 spherical grid."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Machine Learning",
+          "justification": "The study uses machine learning tools such as Topological Data Analysis (TDA), Sparse Identification of Nonlinear Dynamics (SINDY), and Tests of Accuracy with Random Points (TARP).",
+          "quote": "Here we apply three machine learning tools to the time series of relevant macroscopic quantities from state-of-the-art dynamical simulations to constrain the post-collapse dynamics: topological data analysis (TDA) on a lag embedding, Sparse Identification of Nonlinear Dynamics (SINDY), and Tests of Accuracy with Random Points (TARP)."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Topological Data Analysis (TDA)",
+          "justification": "This model is used in the paper to analyze the topological properties of time series data from simulations.",
+          "quote": "Topological data analysis [TDA; 17] when applied to a lag embedding of the core density and velocity dispersion time series produces a persistence diagram that appears indistinguishable from noise."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "The TDA methodology is used in the paper but not contributed by it.",
+          "quote": "Topological data analysis [TDA; 17] when applied to a lag embedding of the core density and velocity dispersion time series produces a persistence diagram that appears indistinguishable from noise."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "TDA was executed on the simulation data as part of the research.",
+          "quote": "We used the ripser library [15] to compute persistent homology features on our timeseries."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "Results from TDA were compared to random reshufflings of the time series.",
+          "quote": "The persistent entropy for the original time series typically falls within the distribution of the reshuffled time series, both for density and velocity dispersion."
+        },
+        "referenced_paper_title": {
+          "value": "Topological data analysis",
+          "justification": "This reference discusses the application of TDA, which supports its use in the paper.",
+          "quote": "Topological data analysis [TDA; 17]."
+        }
+      },
+      {
+        "name": {
+          "value": "Sparse Identification of Nonlinear Dynamics (SINDY)",
+          "justification": "SINDY is employed to derive governing equations from the time series of simulation data.",
+          "quote": "Similarly, Sparse Identification of Nonlinear Dynamical Systems [SINDY; 4] fails to yield an equation reproducing the observed time series."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "SINDY is an established technique used in this paper, not newly contributed.",
+          "quote": "Similarly, Sparse Identification of Nonlinear Dynamical Systems [SINDY; 4] fails to yield an equation reproducing the observed time series."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "SINDY was applied to the simulation data to derive potential governing equations.",
+          "quote": "We thus used SINDY with LASSO regularization and MSE loss to look for second-order ODEs, the minimum order that allows for oscillatory behavior."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The equations derived by SINDY were compared against the original time series.",
+          "quote": "Neither a grid search nor a meticulous manual exploration resulted in equations able to reproduce our time series in the long term."
+        },
+        "referenced_paper_title": {
+          "value": "Sparse identification of nonlinear dynamics (sindy)",
+          "justification": "This paper is foundational to the SINDY methodology used in the research.",
+          "quote": "Sparse Identification of Nonlinear Dynamical Systems [SINDY; 4]."
+        }
+      },
+      {
+        "name": {
+          "value": "Tests of Accuracy with Random Points (TARP)",
+          "justification": "TARP is utilized to determine if the time series data deviate from randomly reshuffled versions, indicating underlying structure.",
+          "quote": "Finally, Tests of Accuracy with Random Points [TARP; 11] find that samples from our original time series do not lie in-distribution with respect to random reshufflings."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "TARP is a pre-established method applied in this study, not a novel contribution.",
+          "quote": "Finally, Tests of Accuracy with Random Points [TARP; 11] find that samples from our original time series do not lie in-distribution with respect to random reshufflings."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "TARP was applied to evaluate the distribution of the time series data.",
+          "quote": "The 100 semitransparent solid curves correspond each to a run of TARP. They all present bias, systematically deviating downwards with respect to the diagonal."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The TARP method's results were compared against reshuffled time series data.",
+          "quote": "In other words, our time series is not a sequence of independent identically distributed random variables."
+        },
+        "referenced_paper_title": {
+          "value": "Sampling-Based Accuracy Testing of Posterior Estimators for General Inference",
+          "justification": "This reference outlines the TARP methodology applied in the study.",
+          "quote": "Tests of Accuracy with Random Points [TARP; 11]."
+        }
+      }
+    ],
+    "datasets": [],
+    "libraries": [
+      {
+        "name": {
+          "value": "ripser",
+          "justification": "The ripser library was used to compute persistent homology features for TDA.",
+          "quote": "We used the ripser library [15] to compute persistent homology features on our timeseries."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Ripser.py: A lean persistent homology library for python",
+          "justification": "This reference provides information about the ripser library used for TDA in the study.",
+          "quote": "We used the ripser library [15] to compute persistent homology features on our timeseries."
+        }
+      },
+      {
+        "name": {
+          "value": "pysindy",
+          "justification": "The pysindy library was employed to implement the SINDY methodology.",
+          "quote": "At the implementation level, we relied on the pysindy library [10]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PySINDy: A comprehensive Python package for robust sparse system identification",
+          "justification": "This paper discusses the pysindy library used in the study.",
+          "quote": "At the implementation level, we relied on the pysindy library [10]."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1607,
+    "prompt_tokens": 5582,
+    "total_tokens": 7189
+  }
+}

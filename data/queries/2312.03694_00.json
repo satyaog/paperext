@@ -1,0 +1,168 @@
+{
+  "paper": "2312.03694.txt",
+  "words": 5534,
+  "extractions": {
+    "title": {
+      "value": "Parameter-Efficient Transfer Learning of Audio Spectrogram Transformers",
+      "justification": "The title is taken directly from the research paper.",
+      "quote": "Parameter-Efficient Transfer Learning of Audio Spectrogram Transformers"
+    },
+    "description": "This paper investigates parameter-efficient transfer learning (PETL) methods for the Audio Spectrogram Transformer (AST) model in audio and speech downstream tasks. It compares various PETL methods, such as LoRA and adapters, across four benchmarks and conducts ablation studies to find the best configurations for these methods.",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The paper performs extensive experiments and ablation studies on various PETL methods applied to the AST model, evaluating their performance across different datasets. It also analyzes the behavior of these methods in few-shot learning settings.",
+      "quote": "we provide an extensive investigation of the most common PETL approaches applied to the AST model for audio and speech downstream tasks. Our experiments reveal that LoRA and Houlsby adapters achieve the best performance..."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Audio Processing",
+        "justification": "The primary research field of this paper is audio processing, specifically focusing on parameter-efficient transfer learning methods for the Audio Spectrogram Transformer in audio classification and speech tasks.",
+        "quote": "The common modus operandi of fine-tuning large pre-trained Transformer models entails the adaptation of all their parameters (i.e., full fine-tuning). While achieving striking results on multiple tasks, this approach becomes unfeasible as the model size and the number of downstream tasks increase. For audio classification tasks, the Audio Spectrogram Transformer model shows impressive results."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Transfer Learning",
+          "justification": "The paper explicitly deals with transfer learning methodologies, especially parameter-efficient transfer learning approaches like adapters and LoRA.",
+          "quote": "In natural language processing and computer vision, parameter-efficient approaches like prompt-tuning and adapters have emerged as solid alternatives by fine-tuning only a small number of extra parameters, without sacrificing performance accuracy."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Few-Shot Learning",
+          "justification": "The paper also investigates how well the PETL methods perform in few-shot learning settings, emphasizing the efficiency of adapters in such scenarios.",
+          "quote": "To strengthen our analysis, we study their behavior under a few-shot learning setting...adapters perform better in the former scenario, whereas LoRA showcases superior scalability."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Speech Processing",
+          "justification": "The paper mentions the application of PETL methods to speech tasks such as keyword spotting and intent classification, thus touching on the field of speech processing.",
+          "quote": "Prompt-tuning and adapters show competitive performance to full fine-tuning for various speech classification tasks and for Automatic Speech Recognition (ASR)"
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Audio Spectrogram Transformer (AST)",
+          "justification": "The paper focuses on the Audio Spectrogram Transformer (AST) model for its experiments and analysis.",
+          "quote": "For audio classification, the Audio Spectrogram Transformer (AST) obtains superb results, standing out as the state-of-the-art model for several downstream tasks."
+        },
+        "aliases": [
+          "AST"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "The AST model is utilized for experimentation but not contributed by this paper.",
+          "quote": "For audio classification, the Audio Spectrogram Transformer (AST) obtains superb results, standing out as the state-of-the-art model for several downstream tasks."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The paper executes experiments on the AST model to evaluate PETL methods.",
+          "quote": "We evaluate the PETL methods on three audio/speech downstream tasks. For all experiments we use the AST model pre-trained on ImageNet-21K and AudioSet."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The paper compares the performance of the AST model using different PETL methods across multiple datasets.",
+          "quote": "Exhaustive experiments spanning four audio and speech datasets reveal that LoRA and adapters obtain the best results overall."
+        },
+        "referenced_paper_title": {
+          "value": "AST: Audio Spectrogram Transformer",
+          "justification": "The referenced paper title is mentioned in the main text when discussing the performance and usage of the AST model.",
+          "quote": "For audio classification, the Audio Spectrogram Transformer (AST) [19] obtains superb results, standing out as the state-of-the-art model for several downstream tasks."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "ESC-50",
+          "justification": "ESC-50 is one of the datasets used to evaluate the performance of the PETL methods on audio classification tasks.",
+          "quote": "ESC-50 consists of 2000 5-second-long environmental audio recordings spanning 50 classes."
+        },
+        "aliases": [],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "ESC: Dataset for environmental sound classification",
+          "justification": "The referenced paper title is mentioned when specifying the datasets used for evaluation in the study.",
+          "quote": "ESC-50 consists of 2000 5-second-long environmental audio recordings spanning 50 classes."
+        }
+      },
+      {
+        "name": {
+          "value": "UrbanSound8K",
+          "justification": "UrbanSound8K is used for evaluating the PETL methods in the study.",
+          "quote": "UrbanSound8K (US8K) includes 8732 labeled sound excerpts of urban sounds from 10 classes."
+        },
+        "aliases": [
+          "US8K"
+        ],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "A dataset and taxonomy for urban sound research",
+          "justification": "The reference paper title is mentioned when talking about the UrbanSound8K dataset.",
+          "quote": "UrbanSound8K (US8K) includes 8732 labeled sound excerpts of urban sounds from 10 classes."
+        }
+      },
+      {
+        "name": {
+          "value": "Speech Commands V2",
+          "justification": "Speech Commands V2 is utilized to evaluate PETL methods in keyword spotting tasks.",
+          "quote": "Speech Commands V2 has 105, 829 1-second recordings of 35 common speech commands."
+        },
+        "aliases": [
+          "GSC"
+        ],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "Speech commands: A dataset for limited-vocabulary speech recognition",
+          "justification": "The reference paper title is mentioned when discussing the use of the Speech Commands V2 dataset.",
+          "quote": "Speech Commands V2 has 105, 829 1-second recordings of 35 common speech commands."
+        }
+      },
+      {
+        "name": {
+          "value": "Fluent Speech Commands",
+          "justification": "Fluent Speech Commands is used for evaluating PETL methods on intent classification.",
+          "quote": "Fluent Speech Commands (FSC) includes 30043 English utterances spanning 31 intent classes."
+        },
+        "aliases": [
+          "FSC"
+        ],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "Speech model pre-training for end-to-end spoken language understanding",
+          "justification": "The reference paper title is mentioned when discussing the use of the Fluent Speech Commands dataset.",
+          "quote": "Fluent Speech Commands (FSC) includes 30043 English utterances spanning 31 intent classes."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Hugging Face Transformers",
+          "justification": "The paper mentions using the Hugging Face Transformers library for the experiments involving the AST model.",
+          "quote": "For all experiments we use the AST model pre-trained on ImageNet-21K and AudioSet provided by the Huggingface Transformers library."
+        },
+        "aliases": [],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "Huggingface’s transformers: State-of-the-art natural language processing",
+          "justification": "The reference paper title is clearly mentioned when explaining the implementation setup.",
+          "quote": "For all experiments we use the AST model pre-trained on ImageNet-21K and AudioSet provided by the Huggingface Transformers library."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1538,
+    "prompt_tokens": 11151,
+    "total_tokens": 12689
+  }
+}

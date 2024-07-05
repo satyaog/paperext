@@ -1,0 +1,222 @@
+{
+  "paper": "2302.01647.txt",
+  "words": 8982,
+  "extractions": {
+    "title": {
+      "value": "BLOCKWISE SELF-SUPERVISED LEARNING AT SCALE",
+      "justification": "The title is clearly indicated at the beginning of the paper.",
+      "quote": "B LOCKWISE S ELF -S UPERVISED L EARNING AT S CALE"
+    },
+    "description": "In this paper, the authors explore blockwise learning rules as an alternative to full backpropagation, utilizing self-supervised learning to pretrain different blocks of a ResNet-50 model separately. They demonstrate that this approach can achieve comparable performance to end-to-end backpropagation on ImageNet.",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The paper involves extensive experiments to test the impact of different components within their blockwise learning method on a large-scale dataset (ImageNet).",
+      "quote": "We perform extensive experiments to understand the impact of different components within our method and explore a variety of adaptations of self-supervised learning to the blockwise paradigm, building an exhaustive understanding of the critical avenues for scaling local learning rules to large networks."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The primary focus of the paper is on image recognition tasks, specifically using ResNet-50 models and evaluating their performance on the ImageNet dataset.",
+        "quote": "We show that a blockwise pretraining procedure consisting of training independently the 4 main blocks of layers of a ResNet-50 with Barlow Twins’ loss function at each block performs almost as well as end-to-end backpropagation on ImageNet."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Self-Supervised Learning",
+          "justification": "The paper primarily explores self-supervised learning methods for blockwise training of models.",
+          "quote": "Self-supervised learning has proven very successful as an approach to pretrain deep networks."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Model Optimization",
+          "justification": "The paper addresses the optimization of neural networks through alternative learning rules compared to traditional backpropagation.",
+          "quote": "Current state-of-the-art deep networks are all powered by backpropagation. In this paper, we explore alternatives to full backpropagation in the form of blockwise learning rules."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "ResNet-50",
+          "justification": "The paper discusses using ResNet-50 models for their blockwise training experiments.",
+          "quote": "We applied a self-supervised learning loss locally at different blocks of a ResNet-50 trained on ImageNet."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "The ResNet-50 model is well-known and not a new contribution by the authors.",
+          "quote": "The ResNet-50 architecture is comprised of 5 blocks of different feature spatial resolutions, followed by a global average pooling operation and a linear layer for final classification."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The authors executed ResNet-50 in their experiments.",
+          "quote": "Code available at: https://github.com/shoaibahmed/blockwise_ssl"
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The performance of ResNet-50 trained with blockwise learning is compared to an end-to-end trained ResNet-50 using backpropagation.",
+          "quote": "We show that a blockwise pretraining procedure consisting of training independently the 4 main blocks of layers of a ResNet-50 with Barlow Twins’ loss function at each block performs almost as well as end-to-end backpropagation on ImageNet."
+        },
+        "referenced_paper_title": {
+          "value": "Deep Residual Learning for Image Recognition",
+          "justification": "The seminal paper for ResNet-50 is 'Deep Residual Learning for Image Recognition' by He et al. 2016.",
+          "quote": "ResNet-50 architecture is based on the work by He et al. 2016."
+        }
+      },
+      {
+        "name": {
+          "value": "VGG-11",
+          "justification": "VGG-11 is mentioned as a comparison point for small networks with local learning rules.",
+          "quote": "Previous attempts in the context of supervised learning and unsupervised learning have only been successful on small datasets like MNIST or large datasets but small networks like VGG-11 (Belilovsky et al., 2019)."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "The VGG-11 model is well-known and not a new contribution by the authors.",
+          "quote": "Previous attempts in the context of supervised learning and unsupervised learning have only been successful on small datasets like MNIST or large datasets but small networks like VGG-11 (Belilovsky et al., 2019)."
+        },
+        "is_executed": {
+          "value": 0,
+          "justification": "The VGG-11 was only referenced for comparison and was not executed in the experiments.",
+          "quote": "Previous attempts in the context of supervised learning and unsupervised learning have only been successful on small datasets like MNIST or large datasets but small networks like VGG-11 (Belilovsky et al., 2019)."
+        },
+        "is_compared": {
+          "value": 0,
+          "justification": "There is no indication that VGG-11 was numerically compared in this study.",
+          "quote": "Previous attempts in the context of supervised learning and unsupervised learning have only been successful on small datasets like MNIST or large datasets but small networks like VGG-11 (Belilovsky et al., 2019)."
+        },
+        "referenced_paper_title": {
+          "value": "Very Deep Convolutional Networks for Large-Scale Image Recognition",
+          "justification": "The seminal paper for VGG-11 is 'Very Deep Convolutional Networks for Large-Scale Image Recognition' by Simonyan and Zisserman, 2014.",
+          "quote": "VGG-11 architecture is based on the work by Simonyan and Zisserman, 2014."
+        }
+      },
+      {
+        "name": {
+          "value": "LoCo",
+          "justification": "LoCo is another method that applies backpropagation to different blocks of a network and is mentioned for comparison.",
+          "quote": "LoCo (Xiong et al., 2020) applies backpropagation separately to different blocks of a ResNet-50."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "LoCo is a referenced method, not a new contribution by the authors.",
+          "quote": "LoCo (Xiong et al., 2020) applies backpropagation separately to different blocks of a ResNet-50."
+        },
+        "is_executed": {
+          "value": 0,
+          "justification": "The LoCo method was referenced but not executed in the study.",
+          "quote": "LoCo (Xiong et al., 2020) applies backpropagation separately to different blocks of a ResNet-50."
+        },
+        "is_compared": {
+          "value": 0,
+          "justification": "LoCo is discussed but not numerically compared in the paper.",
+          "quote": "LoCo introduces a coupling between subsequent blocks, by applying backpropagation to intertwined pairs of successive blocks."
+        },
+        "referenced_paper_title": {
+          "value": "LoCo: Local Contrastive Representation Learning",
+          "justification": "The seminal paper for LoCo is 'LoCo: Local Contrastive Representation Learning' by Xiong et al., 2020.",
+          "quote": "LoCo (Xiong et al., 2020) applies backpropagation separately to different blocks of a ResNet-50."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "ImageNet",
+          "justification": "ImageNet is the primary dataset used for evaluating the performance of the proposed blockwise learning method.",
+          "quote": "We show that a blockwise pretraining procedure consisting of training independently the 4 main blocks of layers of a ResNet-50 with Barlow Twins’ loss function at each block performs almost as well as end-to-end backpropagation on ImageNet."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ImageNet: A large-scale hierarchical image database",
+          "justification": "The seminal paper for ImageNet is 'ImageNet: A large-scale hierarchical image database' by Deng et al., 2009.",
+          "quote": "In order to probe our model’s robustness to out-of-distribution images, we use ImageNet-C benchmark (Hendrycks and Dietterich, 2019) which was constructed by injecting different kinds of synthetic noise into the ImageNet test set."
+        }
+      },
+      {
+        "name": {
+          "value": "MNIST",
+          "justification": "MNIST is mentioned as an example of a small dataset used in previous studies on local learning rules.",
+          "quote": "Previous attempts in the context of supervised learning and unsupervised learning have only been successful on small datasets like MNIST."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "The MNIST Database of Handwritten Digits",
+          "justification": "The seminal paper for MNIST is 'The MNIST Database of Handwritten Digits' by LeCun et al., 1998.",
+          "quote": "Previous attempts in the context of supervised learning and unsupervised learning have only been successful on small datasets like MNIST (Salakhutdinov and Hinton, 2009; Löwe et al., 2019; Ahmad et al., 2020; Ernoult et al., 2022; Lee et al., 2015)."
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet-C",
+          "justification": "ImageNet-C is used to evaluate the robustness of the blockwise trained model to out-of-distribution images with synthetic noise.",
+          "quote": "In order to probe our model’s robustness to out-of-distribution images, we use ImageNet-C benchmark (Hendrycks and Dietterich, 2019) which was constructed by injecting different kinds of synthetic noise into the ImageNet test set."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Benchmarking neural network robustness to common corruptions and perturbations",
+          "justification": "The seminal paper for ImageNet-C is 'Benchmarking neural network robustness to common corruptions and perturbations' by Hendrycks and Dietterich, 2019.",
+          "quote": "In order to probe our model’s robustness to out-of-distribution images, we use ImageNet-C benchmark (Hendrycks and Dietterich, 2019) which was constructed by injecting different kinds of synthetic noise into the ImageNet test set."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Barlow Twins",
+          "justification": "The Barlow Twins codebase was adapted for the blockwise training and used for the experiments.",
+          "quote": "We use a ResNet-50 network and adapt the Barlow Twins (Zbontar et al., 2021) codebase to a blockwise training paradigm."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Barlow Twins: Self-Supervised Learning via Redundancy Reduction",
+          "justification": "The seminal paper for Barlow Twins is 'Barlow Twins: Self-Supervised Learning via Redundancy Reduction' by Zbontar et al., 2021.",
+          "quote": "The Barlow Twins codebase was adapted for blockwise training."
+        }
+      },
+      {
+        "name": {
+          "value": "SimCLR",
+          "justification": "The paper implements SimCLR within the Barlow Twins codebase to test its compatibility with the blockwise training paradigm.",
+          "quote": "We implemented SimCLR loss function (Chen et al., 2020a) within the Barlow Twins codebase."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "A Simple Framework for Contrastive Learning of Visual Representations",
+          "justification": "The seminal paper for SimCLR is 'A Simple Framework for Contrastive Learning of Visual Representations' by Chen et al., 2020.",
+          "quote": "We implemented SimCLR loss function (Chen et al., 2020a) within the Barlow Twins codebase."
+        }
+      },
+      {
+        "name": {
+          "value": "VicReg",
+          "justification": "The VicReg implementation was adapted for testing within the blockwise training framework.",
+          "quote": "We implemented SimCLR loss function (Chen et al., 2020a) within the Barlow Twins codebase, and directly adapted the official VicReg implementation for our experiments with VicReg (Bardes et al., 2022)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "VICReg: Variance-Invariance-Covariance Regularization for Self-Supervised Learning",
+          "justification": "The seminal paper for VicReg is 'VICReg: Variance-Invariance-Covariance Regularization for Self-Supervised Learning' by Bardes et al., 2022.",
+          "quote": "We implemented SimCLR loss function (Chen et al., 2020a) within the Barlow Twins codebase, and directly adapted the official VicReg implementation for our experiments with VicReg (Bardes et al., 2022)."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2587,
+    "prompt_tokens": 15626,
+    "total_tokens": 18213
+  }
+}

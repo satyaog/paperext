@@ -1,0 +1,142 @@
+{
+  "paper": "pzH65nCyCN.txt",
+  "words": 3871,
+  "extractions": {
+    "title": {
+      "value": "Scaling Graphically Structured Diffusion Models",
+      "justification": "This is the title as stated at the beginning of the paper and in the footer.",
+      "quote": "Scaling Graphically Structured Diffusion Models"
+    },
+    "description": "The paper investigates enhancements to the Graphically Structured Diffusion Model (GSDM) for improved scalability, applicable to tasks like weight inference for convolutional neural networks using the 14 x 14 MNIST dataset. It addresses engineering and methodological challenges in scaling and proposes a new benchmark problem along with releasing the accompanying code.",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The paper presents practical improvements to an existing model (GSDM), introduces a new benchmarking task, and releases code, which classify it as an empirical study.",
+      "quote": "We overcome this limitation by describing and and solving two scaling issues related to GSDMs; one engineering and one methodological. We additionally propose a new benchmark problem of weight inference for a convolutional neural network applied to 14 × 14 MNIST."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Generative Models",
+        "justification": "The research primarily deals with enhancing Graphically Structured Diffusion Models (GSDM), which falls under the category of generative models.",
+        "quote": "Applications of the recently introduced graphically structured diffusion model (GSDM) family show that sparsifying the transformer attention mechanism within a diffusion model and metatraining on a variety of conditioning tasks can yield an efficiently learnable diffusion model artifact."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Probabilistic Graphical Models",
+          "justification": "The paper mentions integrating known problem structure via a graphical model specification.",
+          "quote": "(b) explicitly integrating known problem structure via a graphical model specification to better model complex dependencies, as we describe in Section 2."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Bayesian Inference",
+          "justification": "The new benchmark problem involves Bayesian posterior inference over convolutional neural network weights.",
+          "quote": "Specifically, the challenge is to infer a Bayesian posterior over convolutional neural network weights given an observed set of inputs and outputs."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Graphically Structured Diffusion Model (GSDM)",
+          "justification": "The entire paper focuses on improvements to the GSDM model.",
+          "quote": "Applications of the recently introduced graphically structured diffusion model (GSDM) family show that sparsifying the transformer attention mechanism within a diffusion model and metatraining on a variety of conditioning tasks can yield an efficiently learnable diffusion model artifact."
+        },
+        "aliases": [
+          "GSDM"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "The GSDM model itself is not new; the paper focuses on improving scalability and efficiency.",
+          "quote": "Applications of the recently introduced graphically structured diffusion model (GSDM) family show ..."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The paper describes practical implementations and optimizations of the GSDM model.",
+          "quote": "We overcome this limitation by describing and and solving two scaling issues related to GSDMs; one engineering and one methodological."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The paper compares GSDM with various sampling methods like Node Sampling, and K-hop subgraph sampling.",
+          "quote": "In Figure 2 we compare PS to NS and KS on the matrix factorization problem for i = 100, j = 100, k = 10."
+        },
+        "referenced_paper_title": {
+          "value": "Graphically Structured Diffusion Models",
+          "justification": "Explicitly mentioned as a reference for GSDM.",
+          "quote": "The recently introduced graphically structured diffusion model (GSDM) skirts around these issues by..."
+        }
+      },
+      {
+        "name": {
+          "value": "Variational Autoencoder with Arbitrary Conditioning (VAEAC)",
+          "justification": "Mentioned as a comparative model in the evaluation section.",
+          "quote": "VAEAC (Ivanov et al., 2019) is a VAE-based approach; Regressor + GS is an ablation which uses the same architecture as GSDM w/ EE but is trained with a mean-squared error loss to deterministically predict x given y instead of parameterizing a diffusion model."
+        },
+        "aliases": [
+          "VAEAC"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "This model is mentioned for comparison purposes and was introduced in a prior work.",
+          "quote": "VAEAC (Ivanov et al., 2019) is a VAE-based approach"
+        },
+        "is_executed": {
+          "value": 0,
+          "justification": "The model is mentioned as a benchmark for comparison, but there's no indication that it was executed within the scope of this paper.",
+          "quote": "VAEAC (Ivanov et al., 2019) is a VAE-based approach"
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The performance of VAEAC is evaluated in the context of the new benchmark problem.",
+          "quote": "We evaluate methods on sets of observations {ui, vi}2i=1 sampled from the data distribution (via sampling 2 MNIST images u1, u2 , sampling network weights θ from the prior, and then setting v1 := fθ (u1 ) and v2 := fθ (u2 )). Then we use each method to estimate θ given each pair of observations."
+        },
+        "referenced_paper_title": {
+          "value": "Variational Autoencoder with Arbitrary Conditioning",
+          "justification": "Explicitly mentioned as the source paper for VAEAC.",
+          "quote": "VAEAC (Ivanov et al., 2019) is a VAE-based approach"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "MNIST",
+          "justification": "The paper uses the 14 x 14 MNIST dataset for benchmarking.",
+          "quote": "We additionally propose a new benchmark problem of weight inference for a convolutional neural network applied to 14 × 14 MNIST."
+        },
+        "aliases": [],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "Yann LeCun, Corinna Cortes, and Christopher J. C. Burges. The MNIST database of handwritten digits, 1998",
+          "justification": "This is the standard reference paper for the MNIST dataset.",
+          "quote": "We additionally propose a new benchmark problem of weight inference for a convolutional neural network applied to 14 × 14 MNIST."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is mentioned in the context of the prior over weights used in the benchmark problem.",
+          "quote": "As a prior p(θ) over the weights we simply use pytorch’s default weight initialization distribution, which is independent between all dimensions of θ."
+        },
+        "aliases": [],
+        "role": "Used",
+        "referenced_paper_title": {
+          "value": "Automatic differentiation in PyTorch",
+          "justification": "This is the standard reference for PyTorch used in academic papers.",
+          "quote": "we simply use pytorch’s default weight initialization distribution"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1396,
+    "prompt_tokens": 7050,
+    "total_tokens": 8446
+  }
+}

@@ -1,0 +1,248 @@
+{
+  "paper": "2305.09824.txt",
+  "words": 11818,
+  "extractions": {
+    "title": {
+      "value": "On the Costs and Benefits of Adopting Lifelong Learning for Software Analytics - Empirical Study on Brown Build and Risk Prediction",
+      "justification": "",
+      "quote": ""
+    },
+    "description": "This paper evaluates the use of lifelong learning (LL) for software analytics in industrial settings, specifically focusing on brown build detection and just-in-time risk prediction at Ubisoft. It compares LL to traditional retraining-from-scratch approaches, analyzing both performance and computational effort.",
+    "type": {
+      "value": "Empirical",
+      "justification": "The paper includes empirical evaluation, as indicated by repeated references to practical evaluation and empirical results sections.",
+      "quote": "This paper empirically compares the use of online learning approaches and RFS approaches in an industrial setting in terms of performance and computational effort."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Software Analytics",
+        "justification": "The paper explicitly mentions that it focuses on software analytics tools using machine learning models.",
+        "quote": "Nowadays, software analytics tools using machine learning (ML) models to, for example, predict the risk of a code change are well established."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Lifelong Learning",
+          "justification": "The paper focuses on evaluating lifelong learning (LL) models in a software analytics context.",
+          "quote": "This paper evaluates the use of lifelong learning (LL) for industrial use cases at Ubisoft."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Online Learning",
+          "justification": "The primary comparison made is between lifelong learning and traditional online learning approaches.",
+          "quote": "To better deal with concept drift, the domain of machine learning has been exploring online learning approaches."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Neural Networks",
+          "justification": "The LL setup uses neural networks (NN) as one of the methods for incremental learning.",
+          "quote": "Our LL setup uses incremental learning models, i.e., Neural Networks (NN)."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "MLP",
+          "justification": "A multi-layer perceptron (MLP) is used in the LL setup.",
+          "quote": "An LL setup requires an incremental learning algorithm, such as multi-layer perceptron (MLP) neural networks."
+        },
+        "aliases": [
+          "multi-layer perceptron"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "MLP is not introduced as a novel model in the paper.",
+          "quote": "An LL setup requires an incremental learning algorithm, such as multi-layer perceptron (MLP) neural networks."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The MLP model is executed in the study to perform evaluations.",
+          "quote": "Algorithm 1 shows the pseudo-code for a typical MLP training process... The incremental nature of this algorithm refers to its capacity of updating the pretrained weights of an existing NN model with an updated training set."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The performance of MLP in an LL setup is compared to various other approaches.",
+          "quote": "The LL setup has an F1-score significantly higher (with large effect) than an RFS setup in 6 projects (+9-31%)..."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "XGBoost",
+          "justification": "The paper uses XGBoost as a baseline for comparison with the LL setup.",
+          "quote": "The RFS approach for brown build detection requires an optimal training dataset size of 30 weeks... the dataset of LL updates is 3.3-13.7x smaller (e.g., 24.6/1.8=13.7 for Brown_1)."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "XGBoost is used as a baseline and is not a contribution of the paper.",
+          "quote": "RFS setup on XGBoost model with training window retrained every week."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "XGBoost is executed in the study to perform evaluations and serve as a baseline.",
+          "quote": "Comparison with different RFS setups for the two Ubisoft use cases shows that the LL setup significantly outperforms the currently used approaches (+9-31% F1 score)..."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The performance of XGBoost is compared to the LL setup.",
+          "quote": "The same observations can be made apart from Brown_1 not having a significant improvement, still achieving a +8% increase."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Brown_1",
+          "justification": "Brown_1 is one of the datasets used for brown build detection in the study.",
+          "quote": "Our study focuses on three closed-source projects provided by our industrial partner... Brown_1..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "Brown_2",
+          "justification": "Brown_2 is another dataset used for brown build detection in the study.",
+          "quote": "Our study focuses on three closed-source projects provided by our industrial partner... Brown_2..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "Brown_3",
+          "justification": "Brown_3 is another dataset used for brown build detection in the study.",
+          "quote": "Our study focuses on three closed-source projects provided by our industrial partner... Brown_3..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "Brown_OSS",
+          "justification": "Brown_OSS is the open-source dataset used for brown build detection in the study.",
+          "quote": "Project Brown_OSS corresponds to the Graphviz project, a graph visualization project publicly available on GitLab."
+        },
+        "aliases": [
+          "Graphviz"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "Risk_1",
+          "justification": "Risk_1 is one of the datasets used for just-in-time risk prediction in the study.",
+          "quote": "We study 4 different closed-source projects of our industrial partner, see Table 1... Risk_1..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "Risk_2",
+          "justification": "Risk_2 is another dataset used for just-in-time risk prediction in the study.",
+          "quote": "We study 4 different closed-source projects of our industrial partner, see Table 1... Risk_2..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "Risk_3",
+          "justification": "Risk_3 is another dataset used for just-in-time risk prediction in the study.",
+          "quote": "We study 4 different closed-source projects of our industrial partner, see Table 1... Risk_3..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "Risk_4",
+          "justification": "Risk_4 is another dataset used for just-in-time risk prediction in the study.",
+          "quote": "We study 4 different closed-source projects of our industrial partner, see Table 1... Risk_4..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "captum",
+          "justification": "The paper uses the captum library for analyzing feature importance.",
+          "quote": "we evaluate how the feature importance of models in LL and RFS setups evolves over time using the captum [64] Python package."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 3754,
+    "prompt_tokens": 44391,
+    "total_tokens": 48145
+  }
+}

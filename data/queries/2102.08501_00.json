@@ -1,0 +1,156 @@
+{
+  "paper": "2102.08501.txt",
+  "words": 18684,
+  "extractions": {
+    "title": {
+      "value": "DEUP: Direct Epemonic Uncertainty Prediction",
+      "justification": "The title is clearly stated at the top of the paper, identifying the main framework discussed as DEUP.",
+      "quote": "DEUP: Direct Epemonic Uncertainty Prediction"
+    },
+    "description": "The paper proposes a new framework called DEUP (Direct Epistemic Uncertainty Prediction) for estimating epistemic uncertainty, which accounts for both approximation and model uncertainty. The framework uses out-of-sample error estimates to train a secondary model that predicts the generalization error. It is particularly useful in interactive learning settings, such as active learning and reinforcement learning, to guide exploration efficiently by predicting uncertainty that informs where to gather new data points.",
+    "type": {
+      "value": "Theoretical",
+      "justification": "The paper centers around proposing a new framework for uncertainty estimation, discussing theoretical underpinnings, sources of uncertainty, model misspecifications, and providing empirical validations through experiments.",
+      "quote": "As a first contribution, we systematically analyze the sources of uncertainty and misspecification, and analyze the pitfalls of using discrepancy-based measures of EU... As a second contribution, we propose a principled framework for directly estimating the excess risk..."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Uncertainty Estimation",
+        "justification": "The primary focus of the paper is to address the challenge of estimating epistemic uncertainty in machine learning models.",
+        "quote": "Epistemic Uncertainty is a measure of the lack of knowledge of a learner which diminishes with more evidence."
+      },
+      "aliases": [
+        "EU"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Active Learning",
+          "justification": "DEUP is shown to improve sequential model optimization and active learning by effectively estimating where to gather new data points.",
+          "quote": "In machine learning, EU estimation is already a key ingredient in interactive decision making settings such as active learning (Aggarwal et al., 2014; Gal et al., 2017)"
+        },
+        "aliases": [
+          ""
+        ]
+      },
+      {
+        "name": {
+          "value": "Reinforcement Learning",
+          "justification": "The paper demonstrates DEUP’s utility in driving exploration in reinforcement learning environments with better uncertainty estimates.",
+          "quote": "Through a wide set of experiments, we illustrate how existing methods... can be improved with epistemic uncertainty estimates from DEUP, and how DEUP can be used to drive exploration in reinforcement learning"
+        },
+        "aliases": [
+          "RL"
+        ]
+      },
+      {
+        "name": {
+          "value": "Probabilistic Image Classification",
+          "justification": "The framework has been tested for its quality of uncertainty estimates in probabilistic image classification.",
+          "quote": "We also evaluate the quality of uncertainty estimates from DEUP for probabilistic image classification..."
+        },
+        "aliases": [
+          ""
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "DEUP",
+          "justification": "DEUP is the principal framework proposed and developed in the paper.",
+          "quote": "We thus propose a principled framework for directly estimating the excess risk by learning a secondary predictor for the generalization error and subtracting an estimate of aleatoric uncertainty, i.e., intrinsic unpredictability... Our framework, Direct Epistemic Uncertainty Prediction (DEUP)..."
+        },
+        "aliases": [
+          "Direct Epistemic Uncertainty Prediction"
+        ],
+        "is_contributed": {
+          "value": 1,
+          "justification": "DEUP is the main contribution introduced by this paper.",
+          "quote": "We thus propose a principled framework for directly estimating the excess risk...Our framework, Direct Epistemic Uncertainty Prediction (DEUP)..."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "DEUP was executed and validated through a wide set of experiments presented in the paper.",
+          "quote": "Through a wide set of experiments, we illustrate how existing methods... can be improved with epistemic uncertainty estimates from DEUP, and how DEUP can be used to drive exploration in reinforcement learning..."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "DEUP's performance is compared against other models and methods like GP-EI and Deep Ensembles in the experiments.",
+          "quote": "We compare DEUP-EI's performance against GP-EI... In our experiments... we also compare against DUE (van Amersfoort et al., 2021)..."
+        },
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "There is no specific reference paper for DEUP since it is an original contribution of this paper.",
+          "quote": "N/A"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "DrugComb",
+          "justification": "This dataset was used in DEUP to predict the synergistic effects of drug combinations.",
+          "quote": "we used the DrugComb and LINCS L1000 datasets (Zagidullin et al., 2019; Subramanian et al., 2017). DrugComb is a dataset consisting of pairwise combinations of anti-cancer compounds tested on various cancer cell lines."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "DrugComb: an integrative cancer drug combination data portal.",
+          "justification": "This dataset's reference paper is cited in the document.",
+          "quote": "DrugComb: an integrative cancer drug combination data portal."
+        }
+      },
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "The CIFAR-10 dataset was used to train and evaluate models in image classification tasks within the scope of the research provided in this paper.",
+          "quote": "We also consider a standard OOD Detection task, where we train a ResNet (He et al., 2016) model for CIFAR-10 classification."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Multiple Layers of Features from Tiny Images (Alex Krizhevsky, 2009)",
+          "justification": "This is the standard reference paper for the CIFAR-10 dataset.",
+          "quote": "Learning Multiple Layers of Features from Tiny Images (Alex Krizhevsky, 2009)"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "BoTorch",
+          "justification": "Used as the base framework assisting in the implementation of sequential optimization strategies.",
+          "quote": "We use BoTorch as the base framework for our experiments."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "BoTorch: A Framework for Efficient Monte-Carlo Bayesian Optimization",
+          "justification": "This is the standard reference paper for BoTorch.",
+          "quote": "BoTorch: A Framework for Efficient Monte-Carlo Bayesian Optimization"
+        }
+      },
+      {
+        "name": {
+          "value": "MC-Dropout",
+          "justification": "Used as a baseline method for uncertainty quantification against which DEUP was compared.",
+          "quote": "For MC-Dropout we used a dropout probability of 0.1 on the two layers of the combined drug network and 3 test-time forward passes to compute uncertainty estimates."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Dropout as a Bayesian Approximation: Representing Model Uncertainty in Deep Learning",
+          "justification": "This is the standard reference paper for MC-Dropout.",
+          "quote": "Dropout as a Bayesian Approximation: Representing Model Uncertainty in Deep Learning"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2839,
+    "prompt_tokens": 64538,
+    "total_tokens": 67377
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "paper": "2306.09539.txt",
+  "words": 10415,
+  "extractions": {
+    "title": {
+      "value": "Block-State Transformers",
+      "justification": "This is the exact title of the paper provided.",
+      "quote": "Block-State Transformers"
+    },
+    "description": "The paper proposes a new architecture named Block-State Transformer (BST), which integrates State Space Models (SSMs) for long-range contextualization and Block Transformer sublayers for short-term representation of sequences. The paper demonstrates that BST achieves better language modeling perplexity compared to similar Transformer-based architectures and can generalize to longer sequences while offering significant speedups.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper includes experimental results and performance comparisons across different models and datasets, demonstrating empirical findings.",
+      "quote": "We show that our model outperforms similar Transformer-based architectures on language modeling perplexity and generalizes to longer sequences. In addition, the Block-State Transformer demonstrates more than tenfold increase in speed at the layer level compared to the Block-Recurrent Transformer when model parallelization is employed."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The paper primarily focuses on improving language modeling tasks, which is a subfield of Natural Language Processing.",
+        "quote": "Transformers have shown impressive performance on a wide range of natural language processing (NLP) tasks."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Language Modeling",
+          "justification": "The research is centered on improving language modeling through the proposed Block-State Transformer architecture.",
+          "quote": "SSMs still lag Transformer performance in Language Modeling tasks."
+        },
+        "aliases": [
+          "Language Models"
+        ]
+      },
+      {
+        "name": {
+          "value": "Sequence Modeling",
+          "justification": "The paper discusses techniques and models for improving sequence modeling by addressing long-range dependencies in sequences.",
+          "quote": "State space models (SSMs) have shown impressive results on tasks that require modeling long-range dependencies and efficiently scale to long sequences owing to their subquadratic runtime complexity."
+        },
+        "aliases": [
+          "Sequence Models"
+        ]
+      },
+      {
+        "name": {
+          "value": "Model Parallelization",
+          "justification": "The paper highlights the benefits of model parallelization achieved through their proposed architecture.",
+          "quote": "we are able to run our hybrid SSM-Transformer layer fully in parallel"
+        },
+        "aliases": [
+          "Parallel Computing"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Block-State Transformer (BST)",
+          "justification": "Block-State Transformer (BST) is the primary model proposed and studied in the paper.",
+          "quote": "In this work, we propose a hybrid layer named Block-State Transformer (BST), that internally combines an SSM sublayer for long-range contextualization, and a Block Transformer sublayer for short-term representation of sequences."
+        },
+        "aliases": [
+          "BST"
+        ],
+        "is_contributed": {
+          "value": 1,
+          "justification": "The model is introduced and evaluated as a novel contribution in the paper.",
+          "quote": "In this work, we propose a hybrid layer named Block-State Transformer (BST), that internally combines an SSM sublayer for long-range contextualization, and a Block Transformer sublayer for short-term representation of sequences."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The paper mentions evaluating the proposed model's performance, which requires execution.",
+          "quote": "we are able to run our hybrid SSM-Transformer layer fully in parallel"
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The proposed model is compared with other existing models in terms of language modeling perplexity and speed performance.",
+          "quote": "We show that our model outperforms similar Transformer-based architectures on language modeling perplexity and generalizes to longer sequences."
+        },
+        "referenced_paper_title": {
+          "value": "n/a",
+          "justification": "This is a novel model introduced in the paper, so there is no previous reference paper title.",
+          "quote": "In this work, we propose a hybrid layer named Block-State Transformer (BST), that internally combines an SSM sublayer for long-range contextualization, and a Block Transformer sublayer for short-term representation of sequences."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "PG19 dataset",
+          "justification": "The PG19 dataset is explicitly mentioned as one of the datasets used to evaluate the proposed model.",
+          "quote": "PG19 dataset is from a large collection of full-length books from Project Gutenberg [31]."
+        },
+        "aliases": [
+          "Project Gutenberg 1919"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Compressive transformers for long-range sequence modelling",
+          "justification": "The authors reference the PG19 dataset from the prior work 'Compressive transformers for long-range sequence modelling'.",
+          "quote": "PG19 dataset is from a large collection of full-length books from Project Gutenberg [31]. All extracted 28,602 books were published prior to 1919."
+        }
+      },
+      {
+        "name": {
+          "value": "arXiv dataset",
+          "justification": "The arXiv dataset is explicitly mentioned as one of the datasets used to evaluate the proposed model.",
+          "quote": "The arXiv dataset contains latex source code as well as items such as theorems, citations, definitions that are referenced and discussed over long ranges of text."
+        },
+        "aliases": [
+          "arXiv"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Memorizing transformers",
+          "justification": "The authors reference the arXiv dataset from the prior work 'Memorizing transformers'.",
+          "quote": "Using the same vocabulary as in [42] and [21] for a fair comparison, many special characters are broken up into small subwords."
+        }
+      },
+      {
+        "name": {
+          "value": "GitHub dataset",
+          "justification": "The GitHub dataset is explicitly mentioned as one of the datasets used to evaluate the proposed model.",
+          "quote": "GitHub dataset [42] is the largest of the three datasets and was assembled by extracting GitHub code repositories with open-source licences."
+        },
+        "aliases": [
+          "GitHub"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Memorizing transformers",
+          "justification": "The authors reference the GitHub dataset from the prior work 'Memorizing transformers'.",
+          "quote": "GitHub dataset [42] is the largest of the three datasets and was assembled by extracting GitHub code repositories with open-source licences."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "JAX",
+          "justification": "The paper mentions the use of the JAX library for their experiments.",
+          "quote": "we perform our experiments using the Meliad library3 in JAX/Flax [1, 17]"
+        },
+        "aliases": [
+          "JAX"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "JAX: composable transformations of Python+NumPy programs",
+          "justification": "The authors reference the JAX library from the prior paper 'JAX: composable transformations of Python+NumPy programs'.",
+          "quote": "we perform our experiments using the Meliad library3 in JAX/Flax [1, 17]"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1337,
+    "prompt_tokens": 18164,
+    "total_tokens": 19501
+  }
+}
