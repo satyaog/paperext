@@ -40,7 +40,7 @@ async def extract_from_research_paper(
                         "content": message,
                     },
                 ],
-                max_retries=0
+                max_retries=2
             )
             return extractions, completion.usage
         except openai.RateLimitError as e:
@@ -124,18 +124,20 @@ def main(argv=None):
 
     if options.input:
         papers = [
-            Path(ROOT_DIR / f"data/cache/arxiv/{paper}.txt").absolute()
+            Path(paper)
             for paper in Path(options.input).read_text().splitlines()
             if paper.strip()
         ]
     elif options.papers:
-        papers = [
-            Path(ROOT_DIR / f"data/cache/arxiv/{paper}.txt").absolute()
-            for paper in options.papers if paper.strip()
-        ]
+        papers = [Path(paper) for paper in options.papers if paper.strip()]
     else:
         papers = build_validation_set(ROOT_DIR / "data/")
         print(*papers, sep="\n")
+
+    if not all(map(lambda p:p.exists(), papers)):
+        papers = [
+            Path(ROOT_DIR / f"data/cache/arxiv/{paper}.txt") for paper in papers
+        ]
 
     assert all(map(lambda p:p.exists(), papers))
 
@@ -143,7 +145,7 @@ def main(argv=None):
         openai.AsyncOpenAI()
     )
 
-    asyncio.run(ignore_exceptions(client, papers))
+    asyncio.run(ignore_exceptions(client, [paper.absolute() for paper in papers]))
 
 
 if __name__ == "__main__":
