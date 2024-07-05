@@ -4,6 +4,7 @@ import re
 import sys
 import unicodedata
 
+ROOT_FOLDER = Path(__file__).resolve().parent.parent
 PAPERS_TO_IGNORE={"data/cache/arxiv/2404.09932.txt",}
 
 
@@ -73,3 +74,10 @@ def str_normalize(string):
     ))
     string = "".join(string[:1] + exclude + string[1:])
     return string
+
+
+def python_module(filename:Path | str):
+    return (
+        str(Path(filename).relative_to(ROOT_FOLDER).with_suffix(""))
+        .replace("/", ".")
+    )

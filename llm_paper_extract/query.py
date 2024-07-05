@@ -12,7 +12,18 @@ import pydantic_core
 
 from . import ROOT_DIR
 from .models.model import _FIRST_MESSAGE, _RETRY_MESSAGE, ExtractionResponse, PaperExtractions
-from .utils import build_validation_set
+from .utils import build_validation_set, python_module
+
+PROG=f"python3 -m {python_module(__file__)}"
+
+DESCRIPTION="""
+Utility to query Chat-GPT on papers
+"""
+
+EPILOG=f"""
+Example:
+  $ {PROG} --input data/query_set.txt > query.out
+"""
 
 
 async def extract_from_research_paper(
@@ -117,9 +128,26 @@ async def ignore_exceptions(
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--papers", nargs='*', type=str, default=None, help="Papers to merge")
-    parser.add_argument("--input", type=Path, default=None, help="List of papers to merge")
+    parser = argparse.ArgumentParser(
+        prog=PROG,
+        description=DESCRIPTION,
+        epilog=EPILOG,
+        formatter_class=argparse.RawDescriptionHelpFormatter
+    )
+    parser.add_argument(
+        "--papers",
+        nargs='*',
+        type=str,
+        default=None,
+        help="Papers to analyse"
+    )
+    parser.add_argument(
+        "--input",
+        metavar="TXT",
+        type=Path,
+        default=None,
+        help="List of papers to analyse"
+    )
     options = parser.parse_args(argv)
 
     if options.input:
