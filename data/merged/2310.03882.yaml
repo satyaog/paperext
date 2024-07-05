@@ -1,0 +1,229 @@
+title:
+  value: Small batch deep reinforcement learning
+  justification: It is the exact title mentioned in the paper.
+  quote: Small batch deep reinforcement learning
+description: An empirical study on the effects of batch size in value-based deep reinforcement learning, finding that smaller
+  batch sizes can significantly improve performance and computational efficiency.
+type:
+  value: empirical
+  justification: The paper presents a broad empirical study, conducts evaluations with multiple agents, and provides experimental
+    results.
+  quote: In this work we present a broad empirical study that suggests reducing the batch size can result in a number of significant
+    performance gains
+primary_research_field:
+  name:
+    value: Deep Reinforcement Learning
+    justification: The study focuses on value-based deep reinforcement learning and its dynamics.
+    quote: In this work we conduct a broad empirical study of batch size in online value-based deep reinforcement learning.
+  aliases: []
+sub_research_fields:
+- name:
+    value: Batch Size Optimization
+    justification: The key focus of the study is to understand the impact of batch size on performance in deep reinforcement
+      learning.
+    quote: Surprisingly, to the best of our knowledge there have been no studies exploring the impact of the choice of batch
+      size in deep RL.
+  aliases: []
+models:
+- name:
+    value: DQN
+    justification: The model is one of the standard value-based agents used in the experiments.
+    quote: 'We begin by investigating the impact reducing the batch size can have on four popular value-based agents, which
+      were initially benchmarked on the ALE suite: DQN [Mnih et al., 2015]'
+  aliases: []
+  is_contributed:
+    value: false
+    justification: Role:['contributed', 'used', 'referenced']
+    quote: used
+  is_executed:
+    value: true
+    justification: ModelMode:['trained', 'fine-tuned', 'inference']
+    quote: trained
+  is_compared:
+    value: true
+    justification: ''
+    quote: ''
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: DrQ
+    justification: It is specified as one of the agents used in the experiments for the 100k benchmark.
+    quote: "Data-efficient Rainbow (DER), a version of the Rainbow algorithm with hyper-parameters tuned for faster early\
+      \ learning; DrQ(\u03B5), which is a variant of DQN that uses data augmentation; and SPR."
+  aliases:
+  - "\u03B5"
+  is_contributed:
+    value: false
+    justification: Role:['contributed', 'used', 'referenced']
+    quote: used
+  is_executed:
+    value: true
+    justification: ModelMode:['trained', 'fine-tuned', 'inference']
+    quote: training
+  is_compared:
+    value: true
+    justification: ''
+    quote: ''
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: IQN
+    justification: The model is one of the value-based agents evaluated in the experiments.
+    quote: We begin by investigating the impact reducing the batch size can have on four popular value-based agents,... and
+      IQN [Dabney et al., 2018b]
+  aliases: []
+  is_contributed:
+    value: false
+    justification: Role:['contributed', 'used', 'referenced']
+    quote: used
+  is_executed:
+    value: true
+    justification: ModelMode:['trained', 'fine-tuned', 'inference']
+    quote: trained
+  is_compared:
+    value: true
+    justification: ''
+    quote: ''
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: QR-DQN
+    justification: The model is prominently used and analyzed throughout the paper.
+    quote: For reasons which will be clarified below, most of our evaluations and analyses were conducted with the QR-DQN
+      agent.
+  aliases: []
+  is_contributed:
+    value: false
+    justification: Role:['contributed', 'used', 'referenced']
+    quote: used
+  is_executed:
+    value: true
+    justification: ModelMode:['trained', 'fine-tuned', 'inference']
+    quote: trained
+  is_compared:
+    value: true
+    justification: ''
+    quote: ''
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: Rainbow
+    justification: The model is one of the standard value-based agents used in the experiments.
+    quote: We begin by investigating the impact reducing the batch size can have on four popular value-based agents,... Rainbow
+      [Hessel et al., 2018]
+  aliases: []
+  is_contributed:
+    value: false
+    justification: Role:['contributed', 'used', 'referenced']
+    quote: used
+  is_executed:
+    value: true
+    justification: ModelMode:['trained', 'fine-tuned', 'inference']
+    quote: trained
+  is_compared:
+    value: true
+    justification: ''
+    quote: ''
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: SPR
+    justification: It is one of the agents used to evaluate the impact of reduced batch sizes.
+    quote: Self-Predictive Representation (SPR), which incorporates self-supervised learning to improve sample efficiency.
+  aliases: []
+  is_contributed:
+    value: false
+    justification: Role:['contributed', 'used', 'referenced']
+    quote: used
+  is_executed:
+    value: true
+    justification: ModelMode:['trained', 'fine-tuned', 'inference']
+    quote: training
+  is_compared:
+    value: true
+    justification: ''
+    quote: ''
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+datasets:
+- name:
+    value: Atari 100k benchmark
+    justification: The paper describes the use of the 100k benchmark for evaluating Atari agents with very few environment
+      interactions.
+    quote: There has been an increased interest in evaluating Atari agents on very few environment interactions, for which
+      Kaiser et al. [2020] proposed the 100k benchmark .
+  aliases:
+  - 100k benchmark
+  role: used
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: Arcade Learning Environment
+    justification: The dataset is used for evaluating deep reinforcement learning agents across various Atari 2600 games.
+    quote: We evaluate our agents on 20 games chosen by Fedus et al. [2020] for their analysis of replay ratios, picked to
+      offer a diversity of difficulty and dynamics [...] All experiments were run on NVIDIA Tesla P100 GPUs.
+  aliases:
+  - ALE
+  role: used
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+libraries:
+- name:
+    value: Dopamine
+    justification: The Dopamine library is used for implementing and running experiments.
+    quote: 'Experimental setup: We use the Jax implementations of RL agents, with their default hyperparameter values, provided
+      by the Dopamine library [Castro et al., 2018]'
+  aliases: []
+  role: used
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: JAX
+    justification: The experiments are conducted using JAX implementations of RL agents.
+    quote: 'Experimental setup: We use the Jax implementations of RL agents, with their default hyperparameter values, provided
+      by the Dopamine library [Castro et al., 2018] and applied to the Arcade Learning Environment (ALE) [Bellemare et al.,
+      2013].'
+  aliases: []
+  role: used
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: Matplotlib
+    justification: The authors acknowledge the use of Matplotlib for 2D graphics, which aided the research.
+    quote: We also acknowledge the Python community for developing tools that enabled this work, including Matplotlib.
+  aliases: []
+  role: used
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
+- name:
+    value: NumPy
+    justification: The authors acknowledge the use of NumPy for array programming, which enabled the research.
+    quote: We also acknowledge the Python community for developing tools that enabled this work, including NumPy.
+  aliases: []
+  role: used
+  referenced_paper_title:
+    value: ''
+    justification: ''
+    quote: ''
