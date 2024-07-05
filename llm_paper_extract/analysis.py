@@ -1,3 +1,5 @@
+import argparse
+from pathlib import Path
 import sys
 from typing import List
 
@@ -21,9 +23,24 @@ import pandas as pd
 from sklearn.metrics import confusion_matrix
 
 from . import ROOT_DIR
-from .models.model import ExtractionResponse, PaperExtractions
-from .utils import build_validation_set, model2df
 
+
+from .models.model import ExtractionResponse, PaperExtractions
+from .models.utils import model_validate_yaml, model2df
+from .utils import build_validation_set, python_module
+
+PROG=f"python3 -m {python_module(__file__)}"
+
+DESCRIPTION="""
+Utility to analyses Chat-GPT responses on papers
+
+Confidence and multi-label confidence matrices will be dumped into data/analysis
+"""
+
+EPILOG=f"""
+Example:
+  $ {PROG}
+"""
 
 def _append_left_indices(df:pd.DataFrame, indices:List[tuple]):
     df = df.copy(True)
@@ -70,19 +87,58 @@ def _mlcm(annotations:pd.DataFrame, predictions:pd.DataFrame):
     return mlcm.cm(_ann, _pred), classes
 
 
-if __name__ == "__main__":
-    validation_set = build_validation_set(ROOT_DIR / "data/")
+def main(argv=None):
+    parser = argparse.ArgumentParser(
+        prog=PROG,
+        description=DESCRIPTION,
+        epilog=EPILOG,
+        formatter_class=argparse.RawDescriptionHelpFormatter
+    )
+    parser.add_argument(
+        "--papers",
+        nargs='*',
+        type=str,
+        default=None,
+        help="Papers to analyse"
+    )
+    parser.add_argument(
+        "--input",
+        metavar="TXT",
+        type=Path,
+        default=None,
+        help="List of papers to analyse"
+    )
+    options = parser.parse_args(argv)
+
+    if options.input:
+        with open(options.input, "r") as f:
+            papers = list(map(Path, [l.strip() for l in f.readlines()]))
+    elif options.papers:
+        papers = list(map(Path, options.papers))
+    else:
+        papers = [
+            ROOT_DIR / "data/merged" / paper.with_suffix(".yaml").name
+            for paper in build_validation_set(ROOT_DIR / "data")
+        ]
+
+    import ipdb ; ipdb.set_trace()
+
+    if not any(map(lambda p:p.exists(), papers)):
+        papers = [
+            ROOT_DIR / f"data/merged/{paper}.yaml" for paper in papers
+        ]
+
+    assert any(map(lambda p:p.exists(), papers))
 
     annotated = [[], []]
     predictions = [[], []]
 
-    for f in validation_set:
-        f = (ROOT_DIR / "data/merged/") / f.with_suffix(".json").name
+    for f in papers:
         if not f.exists():
             continue
 
         print(f"Fetching data from {f}", file=sys.stderr)
-        model = PaperExtractions.model_validate_json(f.read_text())
+        model = model_validate_yaml(PaperExtractions, f.read_text())
         paper_attr, paper_refs = map(
             lambda m:_append_left_indices(m, [("paper_id",f.stem)]),
             model2df(model)
@@ -91,10 +147,8 @@ if __name__ == "__main__":
         annotated[0].append(paper_attr)
         annotated[1].append(paper_refs)
 
-        # if f.stem == "2401.14487":
-        #     import ipdb ; ipdb.set_trace()
         queries_dir = (ROOT_DIR / "data/queries/")
-        for i, query_f in enumerate(sorted(queries_dir.glob(f.with_stem(f"{f.stem}*").name))):
+        for i, query_f in enumerate(sorted(queries_dir.glob(f"{f.stem}*.json"))):
             print(f"Fetching data from {query_f}", file=sys.stderr)
             model = ExtractionResponse.model_validate_json(query_f.read_text()).extractions
 
@@ -105,8 +159,6 @@ if __name__ == "__main__":
 
             predictions[0].append(paper_attr)
             predictions[1].append(paper_refs)
-
-    # import ipdb ; ipdb.set_trace()
 
     annotated[0] = pd.concat(annotated[0])
     annotated[1] = pd.concat(annotated[1])
@@ -119,9 +171,7 @@ if __name__ == "__main__":
 
     max_attempt = max(predictions[0].reset_index([0,],drop=True).index)
 
-    # import ipdb ; ipdb.set_trace()
-
-    for label in ("title", "type", "research_field"):
+    for label in ("title", "type", "primary_research_field"):
         for i in range(max_attempt + 1):
             mat, classes = _cm(
                 annotated[0].loc[:,label],
@@ -153,8 +203,6 @@ if __name__ == "__main__":
             print("Normalized confusion Matrix (%):")
             print(normal_conf_mat)
 
-    # import ipdb ; ipdb.set_trace()
-
     for group in ("models", "datasets", "libraries",):
         for i in range(max_attempt + 1):
             ann, pred = (
@@ -185,8 +233,6 @@ if __name__ == "__main__":
                 pd.DataFrame(conf_mat, index=[*names, ""], columns=[*names, ""]).to_csv()
             )
 
-            # import ipdb ; ipdb.set_trace()
-
             print(f"{group}.{col}:")
             print("Raw confusion Matrix:")
             print(conf_mat)
@@ -196,14 +242,10 @@ if __name__ == "__main__":
             ann_matches = []
             pred_matches = []
 
-            # import ipdb ; ipdb.set_trace()
-
             for ann_items, pred_items in zip(ann_per_paper, pred_per_paper):
                 for _, row in ann_items.iterrows():
                     pred_match = pred_items[pred_items["name"] == row["name"]]
                     if not pred_match.empty:
-                        if len(pred_match) > 1:
-                            import ipdb ; ipdb.set_trace()
                         assert len(pred_match) == 1, (
                             f"Too many matches for\n{row['name']}\nin\n{pred_items}"
                         )
@@ -217,9 +259,7 @@ if __name__ == "__main__":
             )
 
             for col in ann.columns:
-                if col in ("role", "mode",):
-                    # import ipdb ; ipdb.set_trace()
-
+                if col in ("role", "mode_and_role",):
                     (conf_mat, normal_conf_mat), classes = _mlcm(
                         [ann_matches.loc[idx:idx,col] for idx in ann_matches.index],
                         [pred_matches.loc[idx:idx,col] for idx in pred_matches.index],
@@ -236,3 +276,7 @@ if __name__ == "__main__":
                     print(normal_conf_mat)
                 else:
                     pass
+
+
+if __name__ == "__main__":
+    main()
