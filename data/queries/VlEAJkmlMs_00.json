@@ -1,0 +1,160 @@
+{
+  "paper": "VlEAJkmlMs.txt",
+  "words": 12683,
+  "extractions": {
+    "title": {
+      "value": "GFlowNet-EM for Learning Compositional Latent Variable Models",
+      "justification": "This is the title given at the top of the document.",
+      "quote": "GFlowNet-EM for Learning Compositional Latent Variable Models"
+    },
+    "description": "The paper presents GFlowNet-EM, a novel algorithm that integrates Generative Flow Networks (GFlowNets) into the Expectation-Maximization (EM) algorithm to handle complex posterior distributions in Latent Variable Models (LVMs). GFlowNet-EM facilitates sampling from the intractable E-step by employing GFlowNets, which sequentially construct samples from an unnormalized density using a learned stochastic policy. The paper demonstrates the approach's efficacy on tasks like non-context-free grammar induction and discrete variational autoencoders.",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The paper presents experimental results on non-context-free grammar induction and discrete variational autoencoders, indicating it falls under empirical research.",
+      "quote": "Our approach, GFlowNet-EM, enables the training of expressive LVMs with discrete compositional latents, as shown by experiments on non-contextfree grammar induction and on images using discrete variational autoencoders (VAEs) without conditional independence enforced in the encoder."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Generative Models",
+        "justification": "The primary focus of the paper is on Generative Models, more specifically on enhancing them using GFlowNet-EM for better learning of complex latent variable structures.",
+        "quote": "Our contributions include: (1) The GFlowNet-EM framework for maximum likelihood estimation in discrete compositional LVMs that are intractable to optimize by exact EM."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Natural Language Processing",
+          "justification": "One of the tasks used to demonstrate the efficacy of GFlowNet-EM is non-context-free grammar induction, a problem within Natural Language Processing.",
+          "quote": "Empirical demonstrations of LVMs with intractable posteriors learned with GFlowNet-EM, including a noncontext-free grammar."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Computer Vision",
+          "justification": "Another task used to evaluate GFlowNet-EM is on images using discrete variational autoencoders, which is a problem generally categorized under Computer Vision.",
+          "quote": "Empirical demonstrations of LVMs with intractable posteriors learned with GFlowNet-EM, including... a discrete VAE without independence assumptions in the encoder."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "GFlowNet",
+          "justification": "GFlowNets are central to the proposed GFlowNet-EM algorithm for sampling intractable posteriors.",
+          "quote": "We propose the use of GFlowNets, algorithms for sampling from an unnormalized density by learning a stochastic policy for sequential construction of samples, for this intractable E-step."
+        },
+        "aliases": [
+          "GFlowNets",
+          "Generative Flow Networks"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "GFlowNet is not introduced in this paper; it is referenced from earlier works.",
+          "quote": "Generative flow networks (GFlowNets; Bengio et al., 2021; 2023), which we review in §2.2, are an amortized inference method for sampling from unnormalized densities by sequentially constructing samples using a learned stochastic."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The GFlowNets are integral to the experiments conducted in the paper and are executed as part of the GFlowNet-EM framework.",
+          "quote": "In this work, we propose to use GFlowNets to learn an amortized sampler of the intractable posterior conditioned on a data sample."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The performance of GFlowNets is compared with other methods in the context of latent variable models.",
+          "quote": "Empirical demonstrations of LVMs with intractable posteriors learned with GFlowNet-EM, including a noncontext-free grammar and a discrete VAE without independence assumptions in the encoder."
+        },
+        "referenced_paper_title": {
+          "value": "Flow Network based Generative Models for Noniterative Diverse Candidate Generation",
+          "justification": "This is the core referenced work for understanding the concept of GFlowNets.",
+          "quote": "Generative flow networks (GFlowNets; Bengio et al., 2021; 2023), which we review in §2.2, are an amortized inference method for sampling from unnormalized densities by sequentially constructing samples using a learned stochastic."
+        }
+      },
+      {
+        "name": {
+          "value": "Variational Autoencoder (VAE)",
+          "justification": "VAEs are used in the experiments to test the efficacy of the proposed GFlowNet-EM method.",
+          "quote": "We validate our method, which we call GFlowNet-EM, on both language and image domains."
+        },
+        "aliases": [
+          "VAE",
+          "Variational Autoencoders"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "VAEs are not introduced in this paper; they are used as a benchmark for evaluating the proposed method.",
+          "quote": "We validate our method, which we call GFlowNet-EM, on both language and image domains."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The paper specifically mentions executing discrete VAEs as part of the evaluation of GFlowNet-EM.",
+          "quote": "The GFlowNet-EM algorithm...Empirical demonstrations of LVMs with intractable posteriors learned with GFlowNet-EM, including a noncontext-free grammar and a discrete VAE without independence assumptions in the encoder."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The performance of VAEs is compared to the proposed GFlowNet-EM framework.",
+          "quote": "GFlowNet-EM enables the training of expressive LVMs with discrete compositional latents, as shown by experiments on non-contextfree grammar induction and on images using discrete variational autoencoders (VAEs) without conditional independence enforced in the encoder."
+        },
+        "referenced_paper_title": {
+          "value": "Auto-Encoding Variational Bayes",
+          "justification": "This is the foundational paper for VAEs.",
+          "quote": "This is the principle behind VAE models (Rezende et al., 2014; Kingma & Welling, 2014)."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Penn Tree Bank (PTB)",
+          "justification": "PTB is used for the grammar induction experiments in the paper.",
+          "quote": "Dataset. We use a subset of Penn Tree Bank (PTB; Marcus et al., 1999) that contains sentences with 20 or fewer tokens."
+        },
+        "aliases": [
+          "PTB"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Treebank-3",
+          "justification": "This is the core reference for Penn Tree Bank.",
+          "quote": "Dataset. We use a subset of Penn Tree Bank (PTB; Marcus et al., 1999) that contains sentences with 20 or fewer tokens."
+        }
+      },
+      {
+        "name": {
+          "value": "MNIST",
+          "justification": "MNIST is used for evaluating the discrete variational autoencoder experiments in the paper.",
+          "quote": "We perform our experiments on the static MNIST dataset (Deng, 2012), with a 4 × 4 spatial latent representation and using dictionaries of sizes 𝐾 ∈ {4, 8, 10} and dimensionality 𝐷 = 1."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The MNIST database of handwritten digit images for machine learning research",
+          "justification": "This is the core reference for MNIST dataset.",
+          "quote": "We perform our experiments on the static MNIST dataset (Deng, 2012), with a 4 × 4 spatial latent representation and using dictionaries of sizes 𝐾 ∈ {4, 8, 10} and dimensionality 𝐷 = 1."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Torch-Struct",
+          "justification": "Torch-Struct is employed for marginalization and exact sampling in PCFG experiments.",
+          "quote": "We use Torch-Struct (Rush, 2020) to perform marginalization and exact sampling in PCFGs."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Torch-Struct: Deep Structured Prediction Library",
+          "justification": "This is the core referenced paper for the Torch-Struct library used in the experiments.",
+          "quote": "We use Torch-Struct (Rush, 2020) to perform marginalization and exact sampling in PCFGs."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1748,
+    "prompt_tokens": 23768,
+    "total_tokens": 25516
+  }
+}

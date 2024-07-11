@@ -1,0 +1,207 @@
+{
+  "paper": "tIzbNQko3c.txt",
+  "words": 15385,
+  "extractions": {
+    "title": {
+      "value": "Pre-Training Protein Encoder via Siamese Sequence-Structure Diffusion Trajectory Prediction",
+      "justification": "The title of the paper is clearly mentioned at the beginning of the text.",
+      "quote": "Pre-Training Protein Encoder via Siamese Sequence-Structure Diffusion Trajectory Prediction"
+    },
+    "description": "This research paper introduces DiffPreT, an approach for pre-training protein encoders by modeling the joint distribution of protein sequences and structures through denoising diffusion models. Additionally, Siamese Diffusion Trajectory Prediction (SiamDiff) is proposed to capture correlations between different conformers of a protein by maximizing mutual information across diffusion trajectories. The effectiveness of the methods is validated through extensive experiments on various downstream protein understanding tasks.",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The paper involves the application and testing of new methods (DiffPreT and SiamDiff) through extensive experiments and evaluations.",
+      "quote": "We study the effectiveness of DiffPreT and SiamDiff on both atom- and residue-level structure-based protein understanding tasks. Experimental results show that the performance of DiffPreT is consistently competitive on all tasks, and SiamDiff achieves new state-of-the-art performance, considering the mean ranks on all tasks."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computational Biology",
+        "justification": "The research focuses on enhancing protein representations for various biological tasks through computational models.",
+        "quote": "Machine learning-based methods have made remarkable strides in predicting protein structures [44, 5, 50] and functionality [55, 24]."
+      },
+      "aliases": [
+        "CompBio",
+        "Bioinformatics"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Protein Structure Prediction",
+          "justification": "The paper aims to pre-train protein encoders for better performance in predicting protein structures and related tasks.",
+          "quote": "Self-supervised pre-training methods on proteins have recently gained attention, with most approaches focusing on either protein sequences or structures, neglecting the exploration of their joint distribution."
+        },
+        "aliases": [
+          "Protein Modeling"
+        ]
+      },
+      {
+        "name": {
+          "value": "Machine Learning in Biology",
+          "justification": "The research applies machine learning techniques, specifically denoising diffusion models, to biological data for protein representation learning.",
+          "quote": "In this work, inspired by the success of denoising diffusion models in generative tasks, we propose the DiffPreT approach to pre-train a protein encoder by sequence-structure joint diffusion modeling."
+        },
+        "aliases": [
+          "ML in Bio"
+        ]
+      },
+      {
+        "name": {
+          "value": "Self-Supervised Learning",
+          "justification": "The proposed methods, DiffPreT and SiamDiff, utilize self-supervised learning to pre-train the protein encoders.",
+          "quote": "Among them, self-supervised (unsupervised) pre-training approaches [20, 61, 87] have been successful in learning effective protein representations from available protein sequences or from their experimental/predicted structures."
+        },
+        "aliases": [
+          "SSL"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "DiffPreT",
+          "justification": "DiffPreT is a primary model proposed in the paper for pre-training protein encoders through denoising diffusion models on protein sequences and structures.",
+          "quote": "Our proposed approach, called DiffPreT, gradually adds noise to both protein sequence and structure to transform them towards random distribution, and then denoises the corrupted protein structure and sequence using a noise prediction network parameterized with the output of the protein encoder."
+        },
+        "aliases": [
+          "Diffusion Pre-Training"
+        ],
+        "is_contributed": {
+          "value": 1,
+          "justification": "DiffPreT is newly proposed in this research paper.",
+          "quote": "Our proposed approach, called DiffPreT, gradually adds noise to both protein sequence and structure to transform them towards random distribution, and then denoises the corrupted protein structure and sequence using a noise prediction network parameterized with the output of the protein encoder."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The model was tested and executed during the experiments for evaluation purposes.",
+          "quote": "We study the effectiveness of DiffPreT and SiamDiff on both atom- and residue-level structure-based protein understanding tasks. Experimental results show that the performance of DiffPreT is consistently competitive on all tasks."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "DiffPreT's performance was compared with other models in various downstream tasks.",
+          "quote": "In comparison to existing pre-training methods that typically excel in only a subset of the considered tasks, DiffPreT consistently delivers competitive performance across all tasks and at both the atomic and residue-level resolutions."
+        },
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "DiffPreT is a novel approach introduced in this paper and does not reference another paper for its model.",
+          "quote": "N/A"
+        }
+      },
+      {
+        "name": {
+          "value": "SiamDiff",
+          "justification": "SiamDiff is another key model introduced in the paper. It enhances DiffPreT by capturing correlations between different conformers of a protein.",
+          "quote": "In spite of these advantages, DiffPreT ignores the fact that any protein structure exists as a population of interconverting conformers, and elucidating this conformational heterogeneity is essential for predicting protein function and ligand binding [27]...We propose Siamese Diffusion Trajectory Prediction (SiamDiff) to augment the DiffPreT by maximizing the mutual information between representations of diffusion trajectories of structurally-correlated conformers."
+        },
+        "aliases": [
+          "Siamese Diffusion Trajectory Prediction"
+        ],
+        "is_contributed": {
+          "value": 1,
+          "justification": "SiamDiff is introduced as an enhancement to DiffPreT in this paper.",
+          "quote": "We propose Siamese Diffusion Trajectory Prediction (SiamDiff) to augment the DiffPreT by maximizing the mutual information between representations of diffusion trajectories of structurally-correlated conformers."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The model was executed and tested for its effectiveness in the experiments.",
+          "quote": "We study the effectiveness of DiffPreT and SiamDiff on both atom- and residue-level structure-based protein understanding tasks. Experimental results show that the performance of DiffPreT is consistently competitive on all tasks, and SiamDiff achieves new state-of-the-art performance, considering the mean ranks on all tasks."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The performance of SiamDiff was compared with other models, including DiffPreT, in various tasks.",
+          "quote": "Moreover, SiamDiff further enhances model performance, surpassing previous state-of-the-art results in terms of mean ranks across all evaluated tasks."
+        },
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "SiamDiff is a novel method introduced in this paper and is not based on another reference paper.",
+          "quote": "N/A"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "AlphaFold Protein Structure Database",
+          "justification": "The AlphaFold Protein Structure Database is used for pre-training the models described in this paper.",
+          "quote": "Following Zhang et al. [87], we pre-train our models with the AlphaFold protein structure database v1 [44, 70], including 365K proteome-wide predicted structures."
+        },
+        "aliases": [
+          "AlphaFold DB"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Highly accurate protein structure prediction with AlphaFold",
+          "justification": "The reference for the AlphaFold Protein Structure Database is cited in the paper.",
+          "quote": "Following Zhang et al. [87], we pre-train our models with the AlphaFold protein structure database v1 [44, 70], including 365K proteome-wide predicted structures."
+        }
+      },
+      {
+        "name": {
+          "value": "Protein Data Bank (PDB)",
+          "justification": "The Protein Data Bank is also mentioned as a source in the context of comparing pre-training datasets.",
+          "quote": "Since previous work by Zhang et al. [87] showed minimal differences between using experimental or predicted structures, we conduct experiments on the AlphaFold Database in this section and do not use PDB as our pre-training dataset."
+        },
+        "aliases": [
+          "PDB"
+        ],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "PDB is referenced in the discussion but not specifically tied to a reference paper.",
+          "quote": "N/A"
+        }
+      },
+      {
+        "name": {
+          "value": "GB1 Dataset",
+          "justification": "The GB1 dataset is used to demonstrate the effectiveness of the proposed models in protein engineering tasks.",
+          "quote": "To further prove the effectiveness of our proposed pre-training methods, we add experiments on the GB1 dataset from FLIP [16]."
+        },
+        "aliases": [
+          "FLIP GB1"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "FLIP: Benchmark tasks in fitness landscape inference for proteins",
+          "justification": "The GB1 dataset is referenced from the FLIP benchmark tasks paper.",
+          "quote": "To further prove the effectiveness of our proposed pre-training methods, we add experiments on the GB1 dataset from FLIP [16]."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is used in the implementation of the methods presented in the paper.",
+          "quote": "All these methods are developed based on PyTorch and TorchDrug [88]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "PyTorch is mentioned as a development tool, not directly tied to a reference paper.",
+          "quote": "All these methods are developed based on PyTorch and TorchDrug [88]."
+        }
+      },
+      {
+        "name": {
+          "value": "TorchDrug",
+          "justification": "TorchDrug is mentioned as the platform used for developing methods in this research.",
+          "quote": "All these methods are developed based on PyTorch and TorchDrug [88]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Torchdrug: A powerful and flexible machine learning platform for drug discovery",
+          "justification": "TorchDrug is referenced in the original implementation context.",
+          "quote": "All these methods are developed based on PyTorch and TorchDrug [88]."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1971,
+    "prompt_tokens": 28170,
+    "total_tokens": 30141
+  }
+}

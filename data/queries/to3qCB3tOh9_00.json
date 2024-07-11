@@ -1,0 +1,431 @@
+{
+  "paper": "to3qCB3tOh9.txt",
+  "words": 16112,
+  "extractions": {
+    "title": {
+      "value": "Protein Representation Learning By Geometric Structure Pretraining",
+      "justification": "The title captures the essence of the research, which focuses on pretraining geometric structures for protein representation learning.",
+      "quote": "Protein Representation Learning By Geometric Structure Pretraining"
+    },
+    "description": "The paper introduces a novel approach to protein representation learning by pretraining on 3D geometric structures of proteins. This method leverages multiview contrastive learning and self-prediction tasks to pretrain a protein graph encoder, which is effective for various downstream tasks such as function prediction and fold classification. The proposed method outperforms state-of-the-art sequence-based methods while using significantly less pretraining data.",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The research involves experimental validation of the proposed methodology on several benchmarks and datasets, including Enzyme Commission number prediction and fold classification.",
+      "quote": "Experimental results on both function prediction and fold classification tasks show that our proposed pretraining methods outperform or are on par with the state-of-the-art sequence-based methods, while using much less pretraining data."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computational Biology",
+        "justification": "The primary focus is on protein representation learning, which is a key area of computational biology.",
+        "quote": "In this paper, we propose to pretrain protein representations according to their 3D structures."
+      },
+      "aliases": [
+        "Bioinformatics",
+        "Protein Informatics",
+        "Structural Bioinformatics"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Graph Neural Networks",
+          "justification": "The paper proposes and utilizes a geometric structure-based encoder called GearNet, which leverages graph neural networks for protein encoding.",
+          "quote": "We propose a simple yet effective structure-based encoder called GeomEtry-Aware Relational Graph Neural Network (GearNet)."
+        },
+        "aliases": [
+          "GNN",
+          "Graph Representation Learning"
+        ]
+      },
+      {
+        "name": {
+          "value": "Self-Supervised Learning",
+          "justification": "The pretraining methods introduced in the paper, including multiview contrastive learning and self-prediction tasks, fall under self-supervised learning techniques.",
+          "quote": "We further introduce a geometric pretraining method to learn the protein structure encoder based on the popular contrastive learning framework."
+        },
+        "aliases": [
+          "SSL",
+          "Contrastive Learning",
+          "Self-Prediction Tasks"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "GearNet",
+          "justification": "The main model proposed in the paper for protein representation learning.",
+          "quote": "We propose a simple yet effective structure-based encoder called GeomEtry-Aware Relational Graph Neural Network (GearNet)."
+        },
+        "aliases": [
+          "GeomEtry-Aware Relational Graph Neural Network"
+        ],
+        "is_contributed": {
+          "value": 1,
+          "justification": "GearNet is the novel model introduced by the authors.",
+          "quote": "We propose a simple yet effective structure-based encoder called GeomEtry-Aware Relational Graph Neural Network (GearNet)."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The experimental results section confirms that GearNet was executed to perform various downstream tasks.",
+          "quote": "Experimental results on several benchmarks, including Enzyme Commission number prediction, Gene Ontology term prediction, fold classification and reaction classification tasks verify our GearNet..."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The performance of GearNet is compared with other existing protein encoders and pretrained models.",
+          "quote": "...our proposed pretraining methods outperform or are on par with the state-of-the-art sequence-based methods."
+        },
+        "referenced_paper_title": {
+          "value": "None",
+          "justification": "There is no other referenced paper for GearNet as it is an original contribution.",
+          "quote": "none"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "AlphaFold Protein Structure Database",
+          "justification": "The paper uses the AlphaFold protein structure database for pretraining the proposed model.",
+          "quote": "We use the AlphaFold protein structure database (CC-BY 4.0 License) for pretraining."
+        },
+        "aliases": [
+          "AlphaFoldDB",
+          "AFDB"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "AlphaFold protein structure database: massively expanding the structural coverage of protein-sequence space with high-accuracy models",
+          "justification": "The reference is cited in the context of the AlphaFold protein structure database used for pretraining.",
+          "quote": "(Varadi et al., 2021)"
+        }
+      },
+      {
+        "name": {
+          "value": "Protein Data Bank (PDB)",
+          "justification": "The Protein Data Bank is mentioned as a source of experimentally-determined protein structures.",
+          "quote": "For example, there are 182K experimentally-determined structures in the Protein Data Bank (PDB) (Berman et al., 2000)"
+        },
+        "aliases": [
+          "PDB"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The Protein Data Bank",
+          "justification": "The reference is cited in the context of the PDB as a source of protein structures.",
+          "quote": "(Berman et al., 2000)"
+        }
+      },
+      {
+        "name": {
+          "value": "Swiss-Prot",
+          "justification": "Swiss-Prot is mentioned as part of the AlphaFold protein structure database used for pretraining.",
+          "quote": "we employ both 365K proteome-wide predictions and 440K Swiss-Prot (Consortium, 2021) predictions."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "UniProt: the universal protein knowledgebase in 2021",
+          "justification": "The reference is cited in the context of Swiss-Prot predictions used for pretraining.",
+          "quote": "(Consortium, 2021)"
+        }
+      },
+      {
+        "name": {
+          "value": "SCOPe 1.75",
+          "justification": "SCOPe 1.75 database is used for fold classification evaluation.",
+          "quote": "We directly use the dataset in Hermosilla et al. (2021), which consolidated 16,712 proteins with 1,195 different folds from the SCOPe 1.75 database (Murzin et al., 1995)."
+        },
+        "aliases": [
+          "SCOPe"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "SCOP: a structural classification of proteins database for the investigation of sequences and structures",
+          "justification": "The reference is cited in the context of SCOPe 1.75 database used for evaluation.",
+          "quote": "(Murzin et al., 1995)"
+        }
+      },
+      {
+        "name": {
+          "value": "Pfam",
+          "justification": "Pfam is mentioned as a source of protein sequences for functional annotation tasks.",
+          "quote": "For example, there are ... 47M protein sequences in Pfam (Mistry et al., 2021)"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Pfam: The protein families database in 2021",
+          "justification": "The reference is cited in the context of Pfam as a source of protein sequences.",
+          "quote": "(Mistry et al., 2021)"
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet",
+          "justification": "ImageNet is cited for comparative purposes regarding the size of datasets in other domains.",
+          "quote": "and vs 10M annotated images in ImageNet (Russakovsky et al., 2015)."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "ImageNet large scale visual recognition challenge",
+          "justification": "The reference is cited in the context of ImageNet as an example of a large dataset in other machine learning domains.",
+          "quote": "(Russakovsky et al., 2015)"
+        }
+      },
+      {
+        "name": {
+          "value": "BFD",
+          "justification": "The paper mentions BFD as a large database used for pretraining in other approaches.",
+          "quote": "Pretrained sequence-based encoders with large-scale sequence databases (e.g., BFD)."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Clustering huge protein sequence sets in linear time",
+          "justification": "The reference is cited in the context of BFD being a large database used for pretraining other models.",
+          "quote": "(Steinegger & Söding, 2018)"
+        }
+      },
+      {
+        "name": {
+          "value": "UniRef",
+          "justification": "UniRef is mentioned as one of the large-scale sequence databases used for pretraining in other approaches.",
+          "quote": "Pretrained sequence-based encoders with large-scale sequence databases (e.g., UniRef)."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "UniRef: comprehensive and non-redundant UniProt reference clusters",
+          "justification": "The reference is cited in the context of UniRef being a large database used for pretraining other models.",
+          "quote": "(Suzek et al., 2007)"
+        }
+      },
+      {
+        "name": {
+          "value": "EC Number Prediction",
+          "justification": "EC number prediction is one of the downstream tasks used for evaluation.",
+          "quote": "Extensive experiments on several benchmarks, including Enzyme Commission number prediction, ..."
+        },
+        "aliases": [
+          "Enzyme Commission (EC) Number Prediction"
+        ],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "none",
+          "justification": "This dataset/task is introduced and used in this paper for the purpose of evaluation.",
+          "quote": "Enzyme Commission number prediction (Gligorijević et al., 2021)"
+        }
+      },
+      {
+        "name": {
+          "value": "Fold Classification",
+          "justification": "Fold classification is one of the downstream tasks used for evaluation.",
+          "quote": "Extensive experiments on several benchmarks, including ... fold classification ..."
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "none",
+          "justification": "This dataset/task is introduced and used in this paper for the purpose of evaluation.",
+          "quote": "fold classification (Hermosilla et al., 2021)"
+        }
+      },
+      {
+        "name": {
+          "value": "Gene Ontology (GO) Term Prediction",
+          "justification": "Gene Ontology term prediction is one of the downstream tasks used for evaluation.",
+          "quote": "Extensive experiments on several benchmarks, including ... Gene Ontology term prediction ..."
+        },
+        "aliases": [
+          "GO Term Prediction"
+        ],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "none",
+          "justification": "This dataset/task is introduced and used in this paper for the purpose of evaluation.",
+          "quote": "Gene Ontology term prediction (Gligorijević et al., 2021)"
+        }
+      },
+      {
+        "name": {
+          "value": "Reaction Classification",
+          "justification": "Reaction classification is one of the downstream tasks used for evaluation.",
+          "quote": "Extensive experiments on several benchmarks, including ... reaction classification ..."
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "none",
+          "justification": "This dataset/task is introduced and used in this paper for the purpose of evaluation.",
+          "quote": "reaction classification (Hermosilla et al., 2021)"
+        }
+      },
+      {
+        "name": {
+          "value": "UniProt",
+          "justification": "UniProt is mentioned as part of the AlphaFold protein structure database used for pretraining.",
+          "quote": "we employ both 365K proteome-wide predictions and 440K Swiss-Prot (Consortium, 2021) predictions."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "UniProt: the universal protein knowledgebase in 2021",
+          "justification": "The reference is cited in the context of UniProtas part of Swiss-Prot predictions used for pretraining.",
+          "quote": "(Consortium, 2021)"
+        }
+      },
+      {
+        "name": {
+          "value": "AlphaFold Database",
+          "justification": "AlphaFold Database is mentioned as part of the AlphaFold protein structure database used for pretraining.",
+          "quote": "we employ both 365K proteome-wide predictions and 440K Swiss-Prot (Consortium, 2021) predictions."
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "AlphaFold protein structure database: massively expanding the structural coverage of protein-sequence space with high-accuracy models",
+          "justification": "The reference is cited in the context of AlphaFoldDB as part of predictions used for pretraining.",
+          "quote": "(Varadi et al., 2021)"
+        }
+      },
+      {
+        "name": {
+          "value": "Swiss-Prot",
+          "justification": "Swiss-Prot is mentioned as part of the AlphaFold protein structure database used for pretraining.",
+          "quote": "we employ both 365K proteome-wide predictions and 440K Swiss-Prot (Consortium, 2021) predictions."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "UniProt: the universal protein knowledgebase in 2021",
+          "justification": "The reference is cited in the context of Swiss-Prot predictions used for pretraining.",
+          "quote": "(Consortium, 2021)"
+        }
+      },
+      {
+        "name": {
+          "value": "Pfam",
+          "justification": "Pfam is mentioned as a source of protein sequences for functional annotation tasks.",
+          "quote": "For example, there are ... 47M protein sequences in Pfam (Mistry et al., 2021)"
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Pfam: The protein families database in 2021",
+          "justification": "The reference is cited in the context of Pfam as a source of protein sequences.",
+          "quote": "(Mistry et al., 2021)"
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet",
+          "justification": "ImageNet is cited for comparative purposes regarding the size of datasets in other domains.",
+          "quote": "and vs 10M annotated images in ImageNet (Russakovsky et al., 2015)."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "ImageNet large scale visual recognition challenge",
+          "justification": "The reference is cited in the context of ImageNet as an example of a large dataset in other machine learning domains.",
+          "quote": "(Russakovsky et al., 2015)"
+        }
+      },
+      {
+        "name": {
+          "value": "BFD",
+          "justification": "The paper mentions BFD as a large database used for pretraining in other approaches.",
+          "quote": "Pretrained sequence-based encoders with large-scale sequence databases (e.g., BFD)."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Clustering huge protein sequence sets in linear time",
+          "justification": "The reference is cited in the context of BFD being a large database used for pretraining other models.",
+          "quote": "(Steinegger & Söding, 2018)"
+        }
+      },
+      {
+        "name": {
+          "value": "UniRef",
+          "justification": "UniRef is mentioned as one of the large-scale sequence databases used for pretraining in other approaches.",
+          "quote": "Pretrained sequence-based encoders with large-scale sequence databases (e.g., UniRef)."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "UniRef: comprehensive and non-redundant UniProt reference clusters",
+          "justification": "The reference is cited in the context of UniRef being a large database used for pretraining other models.",
+          "quote": "(Suzek et al., 2007)"
+        }
+      },
+      {
+        "name": {
+          "value": "EC Number Prediction",
+          "justification": "EC number prediction is one of the downstream tasks used for evaluation.",
+          "quote": "Extensive experiments on several benchmarks, including Enzyme Commission number prediction, ..."
+        },
+        "aliases": [
+          "Enzyme Commission (EC) Number Prediction"
+        ],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "none",
+          "justification": "This dataset/task is introduced and used in this paper for the purpose of evaluation.",
+          "quote": "Enzyme Commission number prediction (Gligorijević et al., 2021)"
+        }
+      },
+      {
+        "name": {
+          "value": "Fold Classification",
+          "justification": "Fold classification is one of the downstream tasks used for evaluation.",
+          "quote": "Extensive experiments on several benchmarks, including ... fold classification ..."
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "none",
+          "justification": "This dataset/task is introduced and used in this paper for the purpose of evaluation.",
+          "quote": "fold classification (Hermosilla et al., 2021)"
+        }
+      },
+      {
+        "name": {
+          "value": "Gene Ontology (GO) Term Prediction",
+          "justification": "Gene Ontology term prediction is one of the downstream tasks used for evaluation.",
+          "quote": "Extensive experiments on several benchmarks, including ... Gene Ontology term prediction ..."
+        },
+        "aliases": [
+          "GO Term Prediction"
+        ],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "none",
+          "justification": "This dataset/task is introduced and used in this paper for the purpose of evaluation.",
+          "quote": "Gene Ontology term prediction (Gligorijević et al., 2021)"
+        }
+      },
+      {
+        "name": {
+          "value": "Reaction Classification",
+          "justification": "Reaction classification is one of the downstream tasks used for evaluation.",
+          "quote": "Extensive experiments on several benchmarks, including ... reaction classification ..."
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "none",
+          "justification": "This dataset/task is introduced and used in this paper for the purpose of evaluation.",
+          "quote": "reaction classification (Hermosilla et al., 2021)"
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 3393,
+    "prompt_tokens": 28606,
+    "total_tokens": 31999
+  }
+}

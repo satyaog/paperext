@@ -1,0 +1,123 @@
+{
+  "paper": "0cpM2ApF9p6.txt",
+  "words": 9987,
+  "extractions": {
+    "title": {
+      "value": "MeshDiffusion: Score-Based Generative 3D Mesh Modeling",
+      "justification": "The exact title of the research paper is 'MeshDiffusion: Score-Based Generative 3D Mesh Modeling.'",
+      "quote": "M ESH D IFFUSION :\nS CORE - BASED G ENERATIVE 3D M ESH M ODELING"
+    },
+    "description": "The paper presents MeshDiffusion, a novel method for generating high-quality 3D meshes using score-based generative models, specifically diffusion models. The approach leverages the deformable tetrahedral grid parametrization to create 3D meshes.",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The paper provides experimental results, qualitative and quantitative evaluations, and ablation studies to demonstrate the effectiveness of the proposed MeshDiffusion model.",
+      "quote": "We validate the superiority of the visual quality of our generated samples qualitatively with different rendered views and quantitatively by proxy metrics. We further conduct ablation studies to show that our design choices are necessary and well suited for the task of 3D mesh generation."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The research is centered around generating 3D shapes and their applications in virtual reality, scene generation, and physical simulation, which are key areas in Computer Vision.",
+        "quote": "As one of the most challenging tasks in computer vision and graphics, generative modeling of high-quality 3D shapes is of great significance in many applications such as virtual reality and metaverse."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Generative Models",
+          "justification": "The primary focus of the paper is on developing a generative model for 3D mesh creation.",
+          "quote": "We instead aim to generate 3D shapes by directly producing 3D meshes... we propose to train diffusion models on these vertices to generate meshes."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "3D Mesh Generation",
+          "justification": "The paper specifically addresses the generation of 3D meshes, utilizing deformable tetrahedral grids.",
+          "quote": "We propose to train diffusion models on a discretized and uniform tetrahedral grid structure which parameterizes a small yet representative family of meshes."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "MeshDiffusion",
+          "justification": "MeshDiffusion is the primary model introduced in the paper for generating 3D meshes using diffusion models.",
+          "quote": "Our contributions are summarized below: • To our knowledge, we are the first to apply diffusion model for unconditionally generating 3D high-quality meshes and to show that diffusion models are well suited for 3D geometry. • Taking advantage of the deformable tetrahedral grid parametrization of 3D mesh shapes, we propose a simple and effortless way to train a diffusion model to generate 3D meshes. • We qualitatively and quantitatively demonstrate the superiority of MeshDiffusion on different tasks, including (1) unconditional generation, (2) conditional generation and (3) interpolation."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 1,
+          "justification": "The model is introduced and developed as the main contribution of the research paper.",
+          "quote": "We propose to train diffusion models on these vertices to generate meshes."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The model was trained and tested in the paper, as evidenced by the extensive experimental evaluations provided.",
+          "quote": "We validate the superiority of the visual quality of our generated samples qualitatively with different rendered views and quantitatively by proxy metrics."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "MeshDiffusion is compared with several other models, including GET3D and IM-GAN, both qualitatively and quantitatively.",
+          "quote": "We visualize samples produced by MeshDiffusion and the existing state-of-the-art 3D mesh generative models... quantitatively demonstrate the superiority of MeshDiffusion."
+        },
+        "referenced_paper_title": {
+          "value": "None",
+          "justification": "MeshDiffusion is a new model proposed in the paper and does not reference any previous work for its specific contribution.",
+          "quote": "We propose to train diffusion models on a discretized and uniform tetrahedral grid structure which parameterizes a small yet representative family of meshes."
+        }
+      },
+      {
+        "name": {
+          "value": "GET3D",
+          "justification": "GET3D is one of the models compared against MeshDiffusion in the paper.",
+          "quote": "A batch of concurrent work propose similar solutions to mesh generation, including: GET3D [13] which uses StyleGAN [19] with a differentiable renderer on tetrahedral grid representations and learns to generate 3D meshes from 2D RGB images."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "GET3D is not a contribution of this paper; it is used for comparative evaluation.",
+          "quote": "We also compare MeshDiffusion against GET3D [13] which also uses DMTet for mesh parametrization."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "GET3D was executed to provide comparative results against MeshDiffusion.",
+          "quote": "We also compare MeshDiffusion against GET3D [13] which also uses DMTet for mesh parametrization."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "GET3D is compared against MeshDiffusion in the paper.",
+          "quote": "We visualize samples produced by MeshDiffusion and the existing state-of-the-art 3D mesh generative models in Figure 4."
+        },
+        "referenced_paper_title": {
+          "value": "GET3D: A Generative Model of High Quality 3D Textured Shapes Learned from Images",
+          "justification": "This is the title of the referenced paper for GET3D.",
+          "quote": "including: GET3D [13] which uses StyleGAN [19] with a differentiable renderer on tetrahedral grid representations and learns to generate 3D meshes from 2D RGB images."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "ShapeNet",
+          "justification": "ShapeNet is used to fit tetrahedral grids and validate the MeshDiffusion model.",
+          "quote": "In our experiments, we use a single default material with diffuse components only for all ground truth meshes, and render multiview RGBD images with some known but randomly rotated environment light (represented as a cubemap [44]). More specifically, we use the ShapeNet datasets [7]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ShapeNet: An Information-Rich 3D Model Repository",
+          "justification": "This is the title of the reference paper for the ShapeNet dataset.",
+          "quote": "More specifically, we use the ShapeNet datasets [7]."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 3243,
+    "prompt_tokens": 35945,
+    "total_tokens": 39188
+  }
+}

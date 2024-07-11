@@ -1,0 +1,264 @@
+{
+  "paper": "1U0aPkBVz0.txt",
+  "words": 11238,
+  "extractions": {
+    "title": {
+      "value": "lo-fi: distributed fine-tuning without communication",
+      "justification": "This is the title of the paper provided by the user.",
+      "quote": "lo-fi: distributed fine-tuning without communication"
+    },
+    "description": "This paper introduces 'lo-fi', a method for fine-tuning large neural networks in a distributed manner without requiring communication between nodes during the fine-tuning process. The study shows that this method can match or exceed the performance of traditional fine-tuning methods that rely on gradient synchronization between nodes.",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The paper conducts various experiments to evaluate the performance of the proposed 'lo-fi' method in fine-tuning large neural networks without communication between nodes. It includes comparisons and benchmarks to demonstrate its effectiveness.",
+      "quote": "This section presents our experiments which test whether communication is required during fine-tuning. First we use the DeiT-III codebase (Touvron et al., 2022) to fine-tune their pre-trained ImageNet-21k models on ImageNet, where we observe that lo-fi matches the baseline but without communication between nodes (Section 3.1). Next, we fine-tune CLIP (Radford et al., 2021) on ImageNet, WILDS-FMoW (Koh et al., 2021; Christie et al., 2018) and WILDS-iWildCam (Beery et al., 2021) (Section 3.2). Finally, we show preliminary experiments applying lo-fi outside of computer vision (Section 3.3) and benchmark the associated speed-ups by removing communication (Section 3.4)."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Distributed Training",
+        "justification": "The paper focuses on distributed training for fine-tuning large neural networks without requiring communication between nodes.",
+        "quote": "This paper introduces 'lo-fi', a method for fine-tuning large neural networks in a distributed manner without requiring communication between nodes during the fine-tuning process."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Computer Vision",
+          "justification": "The paper conducts extensive experiments on models and datasets related to computer vision, such as DeiT-base and ImageNet.",
+          "quote": "We also observe that lo-fi matches the baseline’s performance when fine-tuning DeiT language models (up to 1.3B parameters) on Common Crawl."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Natural Language Processing",
+          "justification": "The paper includes experiments on fine-tuning language models like OPT-125M and OPT-1.3B on Common Crawl, extending the application of lo-fi beyond computer vision.",
+          "quote": "We also observe that lo-fi matches the baseline’s performance when fine-tuning OPT language models (up to 1.3B parameters) on Common Crawl."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "DeiT-base",
+          "justification": "DeiT-base is one of the models fine-tuned in the experiments without requiring communication between nodes.",
+          "quote": "In particular, we fine-tune their ImageNet-21k models on ImageNet-1k (Deng et al., 2009) with and without lo-fi."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "The model was not introduced by this paper but was used for fine-tuning experiments.",
+          "quote": "In particular, we fine-tune their ImageNet-21k models on ImageNet-1k (Deng et al., 2009) with and without lo-fi."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The paper mentions the execution of fine-tuning experiments involving DeiT-base models.",
+          "quote": "In particular, we fine-tune their ImageNet-21k models on ImageNet-1k (Deng et al., 2009) with and without lo-fi."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The model's performance with lo-fi fine-tuning is compared against a baseline that includes communication between nodes.",
+          "quote": "Overall we observe that lo-fi matches the accuracy of the baseline which uses communication, and outperforms the baseline under distribution shift."
+        },
+        "referenced_paper_title": {
+          "value": "Deit iii: Revenge of the vit",
+          "justification": "This is the paper where DeiT-base was originally introduced.",
+          "quote": "In particular, we fine-tune their ImageNet-21k models on ImageNet-1k (Deng et al., 2009) with and without lo-fi."
+        }
+      },
+      {
+        "name": {
+          "value": "OPT-125M",
+          "justification": "OPT-125M is one of the models fine-tuned in the experiments to test lo-fi beyond computer vision.",
+          "quote": "We fine-tune the 125M parameter model with 4 nodes."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "The model was not introduced by this paper but was used for fine-tuning experiments.",
+          "quote": "We fine-tune the 125M parameter model with 4 nodes."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The paper mentions the execution of fine-tuning experiments involving OPT-125M models.",
+          "quote": "We fine-tune the 125M parameter model with 4 nodes."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The model's performance with lo-fi fine-tuning is compared against a baseline that includes communication between nodes.",
+          "quote": "We observe that for both model scales, when comparing by step count, lo-fi roughly matches the performance of the baseline, providing large performance improvements over the individual node setting."
+        },
+        "referenced_paper_title": {
+          "value": "Opt: Open pre-trained transformer language models",
+          "justification": "This is the paper where OPT-125M was originally introduced.",
+          "quote": "We fine-tune the 125M parameter model with 4 nodes."
+        }
+      },
+      {
+        "name": {
+          "value": "OPT-1.3B",
+          "justification": "OPT-1.3B is one of the models fine-tuned in the experiments to test lo-fi beyond computer vision.",
+          "quote": "For the 1.3B parameter model, we set the learning rate to 1e-5, with 512-length sequence blocks, and 1M tokens per batch."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "The model was not introduced by this paper but was used for fine-tuning experiments.",
+          "quote": "For the 1.3B parameter model, we set the learning rate to 1e-5, with 512-length sequence blocks, and 1M tokens per batch."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The paper mentions the execution of fine-tuning experiments involving OPT-1.3B models.",
+          "quote": "For the 1.3B parameter model, we set the learning rate to 1e-5, with 512-length sequence blocks, and 1M tokens per batch."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The model's performance with lo-fi fine-tuning is compared against a baseline that includes communication between nodes.",
+          "quote": "We observe that for both model scales, when comparing by step count, lo-fi roughly matches the performance of the baseline, providing large performance improvements over the individual node setting."
+        },
+        "referenced_paper_title": {
+          "value": "Opt: Open pre-trained transformer language models",
+          "justification": "This is the paper where OPT-1.3B was originally introduced.",
+          "quote": "For the 1.3B parameter model, we set the learning rate to 1e-5, with 512-length sequence blocks, and 1M tokens per batch."
+        }
+      },
+      {
+        "name": {
+          "value": "DeiT-large",
+          "justification": "DeiT-large is one of the models fine-tuned in the experiments without requiring communication between nodes.",
+          "quote": "In particular, we fine-tune their ImageNet-21k models on ImageNet-1k (Deng et al., 2009) with and without lo-fi."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "The model was not introduced by this paper but was used for fine-tuning experiments.",
+          "quote": "In particular, we fine-tune their ImageNet-21k models on ImageNet-1k (Deng et al., 2009) with and without lo-fi."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The paper mentions the execution of fine-tuning experiments involving DeiT-large models.",
+          "quote": "In particular, we fine-tune their ImageNet-21k models on ImageNet-1k (Deng et al., 2009) with and without lo-fi."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The model's performance with lo-fi fine-tuning is compared against a baseline that includes communication between nodes.",
+          "quote": "Overall we observe that lo-fi matches the accuracy of the baseline which uses communication, and outperforms the baseline under distribution shift."
+        },
+        "referenced_paper_title": {
+          "value": "Deit iii: Revenge of the vit",
+          "justification": "This is the paper where DeiT-large was originally introduced.",
+          "quote": "In particular, we fine-tune their ImageNet-21k models on ImageNet-1k (Deng et al., 2009) with and without lo-fi."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "ImageNet",
+          "justification": "ImageNet is used as a primary dataset for fine-tuning experiments with the DeiT models in this paper.",
+          "quote": "In particular, we fine-tune their ImageNet-21k models on ImageNet-1k (Deng et al., 2009) with and without lo-fi."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Imagenet: A large-scale hierarchical image database",
+          "justification": "",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "Common Crawl",
+          "justification": "Common Crawl is used as a dataset for fine-tuning language models like OPT-125M and OPT-1.3B in this paper.",
+          "quote": "We also observe that lo-fi matches the baseline’s performance when fine-tuning OPT language models (up to 1.3B parameters) on Common Crawl."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The pile: An 800gb dataset of diverse text for language modeling",
+          "justification": "This is the paper where Common Crawl is part of the dataset referred to as 'The Pile'.",
+          "quote": "We fine-tune on the Pile’s Common Crawl subset (Gao et al., 2021) using the Huggingface Transformers library (Wolf et al., 2020)."
+        }
+      },
+      {
+        "name": {
+          "value": "WILDS-FMoW",
+          "justification": "WILDS-FMoW is used as a dataset for testing the performance of lo-fi in fine-tuning models beyond ImageNet.",
+          "quote": "We also test CLIP ViT-L on two further datasets, WILDS-FMoW (Koh et al., 2021; Christie et al., 2018), a satellite image recognition dataset with a temporal distribution shift"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Functional map of the world",
+          "justification": "This is the paper where WILDS-FMoW dataset was originally introduced.",
+          "quote": "We also test CLIP ViT-L on two further datasets, WILDS-FMoW (Koh et al., 2021; Christie et al., 2018), a satellite image recognition dataset with a temporal distribution shift"
+        }
+      },
+      {
+        "name": {
+          "value": "WILDS-iWildCam",
+          "justification": "WILDS-iWildCam is used as a dataset for testing the performance of lo-fi in fine-tuning models beyond ImageNet.",
+          "quote": "We also test CLIP ViT-L on two further datasets, WILDS-FMoW (Koh et al., 2021), a satellite image recognition dataset with a temporal distribution shift and WILDS-iWildCam (Koh et al., 2021; Beery et al., 2021), a classification dataset with camera traps in the wild with a geographic distribution shift."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The iwildcam 2021 competition dataset",
+          "justification": "This is the paper where WILDS-iWildCam dataset was originally introduced.",
+          "quote": "We also test CLIP ViT-L on two further datasets, WILDS-FMoW (Koh et al., 2021), a satellite image recognition dataset with a temporal distribution shift and WILDS-iWildCam (Koh et al., 2021; Beery et al., 2021), a classification dataset with camera traps in the wild with a geographic distribution shift."
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet-21k",
+          "justification": "ImageNet-21k is used as a dataset for the pre-training of models that are later fine-tuned on ImageNet.",
+          "quote": "In particular, we fine-tune their ImageNet-21k models on ImageNet-1k (Deng et al., 2009) with and without lo-fi."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Imagenet: A large-scale hierarchical image database",
+          "justification": "",
+          "quote": ""
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is explicitly mentioned as the library used for implementing some of the techniques in the experiments.",
+          "quote": "Notably, we observe that the trick of overlapping the communication and computation in the backwards pass (Li et al., 2020a), which is the default in PyTorch (Paszke et al., 2019) as of v1.5, reduces the overhead of using multiple nodes from roughly 50% slow-down to under 10% for the large DeiT model."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Pytorch: An imperative style, high-performance deep learning library",
+          "justification": "This is the paper where PyTorch library is introduced.",
+          "quote": "Notably, we observe that the trick of overlapping the communication and computation in the backwards pass (Li et al., 2020a), which is the default in PyTorch (Paszke et al., 2019) as of v1.5, reduces the overhead of using multiple nodes from roughly 50% slow-down to under 10% for the large DeiT model."
+        }
+      },
+      {
+        "name": {
+          "value": "Huggingface Transformers",
+          "justification": "Huggingface Transformers library is used for fine-tuning the language models in the experiments.",
+          "quote": "We fine-tune on the Pile’s Common Crawl subset (Gao et al., 2021) using the Huggingface Transformers library (Wolf et al., 2020)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Transformers: State-of-the-art natural language processing",
+          "justification": "This is the paper where the Huggingface Transformers library is introduced.",
+          "quote": "We fine-tune on the Pile’s Common Crawl subset (Gao et al., 2021) using the Huggingface Transformers library (Wolf et al., 2020)."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 7215,
+    "prompt_tokens": 39936,
+    "total_tokens": 47151
+  }
+}

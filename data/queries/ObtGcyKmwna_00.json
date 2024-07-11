@@ -1,0 +1,124 @@
+{
+  "paper": "ObtGcyKmwna.txt",
+  "words": 12145,
+  "extractions": {
+    "title": {
+      "value": "Critic Sequential Monte Carlo",
+      "justification": "The title of the paper is stated at the beginning of the document.",
+      "quote": "Critic Sequential Monte Carlo"
+    },
+    "description": "In this paper, the authors introduce CriticSMC, a new algorithm for planning as inference using a combination of sequential Monte Carlo methods with learned Soft-Q function heuristic factors for efficient sampling. CriticSMC is specifically designed for environments with sparse, hard constraints and is tested on collision avoidance tasks in high-dimensional driving simulations.",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The paper presents experimentation and empirical evaluation of the proposed CriticSMC algorithm in simulated driving environments to validate its performance.",
+      "quote": "In this paper we introduce CriticSMC, a new algorithm for planning as inference... Our experiments on collision avoidance in a high-dimensional simulated driving task show that CriticSMC significantly reduces collision rates at a low computational cost."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Reinforcement Learning",
+        "justification": "The paper focuses on creating a novel reinforcement learning algorithm that can be used for planning as inference, leveraging sequential Monte Carlo methods and Soft-Q function heuristics.",
+        "quote": "In this paper we propose a novel formulation of SMC, called CriticSMC, where a learned critic, inspired by Q-functions in RL (Sutton & Barto, 2018), is used as a heuristic factor..."
+      },
+      "aliases": [
+        "RL",
+        "Reinforcement Learning"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Probabilistic Planning",
+          "justification": "The paper discusses planning problems, focusing on using Sequential Monte Carlo methods for probabilistic planning within Markov decision processes.",
+          "quote": "Historically, heuristic factors in SMC are placed alongside the reward, which is computed by taking a single step in the environment... In this section we first show how to construct such ht , then how to learn an approximation to it, and finally how to take full advantage of this sampling procedure using putative action particles."
+        },
+        "aliases": [
+          "Probabilistic Planning"
+        ]
+      },
+      {
+        "name": {
+          "value": "Bayesian Inference",
+          "justification": "The study is framed within the context of planning as inference and utilizes Bayesian methods to improve sampling efficiency.",
+          "quote": "Sequential Monte Carlo (SMC) (Gordon et al., 1993) is a popular, highly customizable inference algorithm that is well suited to posterior inference in state-space models (Arulampalam et al., 2002; Andrieu et al., 2004; Cappe et al., 2007)."
+        },
+        "aliases": [
+          "Bayesian Inference"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "CriticSMC",
+          "justification": "The name of the introduced model, CriticSMC, is explicitly stated in the paper.",
+          "quote": "We propose a novel formulation of SMC, called CriticSMC, where a learned critic, inspired by Q-functions in RL (Sutton & Barto, 2018), is used as a heuristic factor..."
+        },
+        "aliases": [
+          "Critic SMC",
+          "Critic Sequential Monte Carlo"
+        ],
+        "is_contributed": {
+          "value": 1,
+          "justification": "CriticSMC is the novel algorithm introduced and evaluated by the authors in the paper.",
+          "quote": "We propose a novel formulation of SMC, called CriticSMC..."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The implementation details and experimental results are provided, indicating it was executed and tested.",
+          "quote": "We show experimentally that CriticSMC is able to refine the policy of a foundation (Bommasani et al., 2021) autonomous-driving behavior model to take actions that produce significantly fewer collisions while retaining key behavioral distribution characteristics of the foundation model."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "CriticSMC is compared to various baselines and other methods like standard SMC.",
+          "quote": "We compare CriticSMC using 50 particles and 1024 putative action particles on the planning task against several baselines, namely the prior policy, rejection sampling with 1000 maximum trials, and the SMC method of Picher et al. (2019) with 50 particles"
+        },
+        "referenced_paper_title": {
+          "value": "Soft Actor-Critic: Off-Policy Maximum Entropy Deep Reinforcement Learning with a Stochastic Actor",
+          "justification": "The referenced paper for the Soft-Q function heuristic, which is central to CriticSMC, is titled 'Soft Actor-Critic: Off-Policy Maximum Entropy Deep Reinforcement Learning with a Stochastic Actor' by Haarnoja et al., 2018.",
+          "quote": "We borrow from the recent advances in deep-RL (Haarnoja et al., 2018a; Hessel et al., 2018) to learn a critic which approximates future likelihoods in a parametric form."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "INTERACTION Dataset",
+          "justification": "The INTERACTION dataset is used in the experiments to train and evaluate CriticSMC, particularly in the context of human-like driving behavior.",
+          "quote": "The environment features non-ego agents, for which we replay actions as recorded in the INTERACTION dataset (Zhan et al., 2019)."
+        },
+        "aliases": [
+          "INTERACTION"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "INTERACTION Dataset: An INTERnational, Adversarial and Cooperative moTION Dataset in Interactive Driving Scenarios with Semantic Maps",
+          "justification": "The referenced paper for the INTERACTION dataset, which is used for evaluating CriticSMC in human-like driving behavior, is titled 'INTERACTION Dataset: An INTERnational, Adversarial and Cooperative moTION Dataset in Interactive Driving Scenarios with Semantic Maps' by Zhan et al., 2019.",
+          "quote": "The environment features non-ego agents, for which we replay actions as recorded in the INTERACTION dataset (Zhan et al., 2019)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Stable-Baselines3",
+          "justification": "The Stable-Baselines3 library is used for implementing parts of the CriticSMC algorithm, particularly the Soft Actor-Critic (SAC) baseline.",
+          "quote": "The policy uses the same convolutional neural network architecture as in CriticSMC and is updated according to the soft actor-critic algorithm in stable-baselines3 (Brockman et al., 2016)."
+        },
+        "aliases": [
+          "Stable Baselines 3"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Stable Baselines",
+          "justification": "The referenced paper for the Stable-Baselines3 library is titled 'Stable Baselines' by Brockman et al., 2016.",
+          "quote": "The policy uses the same convolutional neural network architecture as in CriticSMC and is updated according to the soft actor-critic algorithm in stable-baselines3 (Brockman et al., 2016)."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1397,
+    "prompt_tokens": 22321,
+    "total_tokens": 23718
+  }
+}
