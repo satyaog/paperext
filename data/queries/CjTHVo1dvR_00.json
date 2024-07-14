@@ -1,0 +1,211 @@
+{
+  "paper": "CjTHVo1dvR.txt",
+  "words": 16343,
+  "extractions": {
+    "title": {
+      "value": "Molecular Geometry Pretraining with SE(3)-Invariant Denoising Distance Matching",
+      "justification": "This is the full title of the paper as stated at the beginning of the document.",
+      "quote": "M OLECULAR G EOMETRY P RETRAINING WITH SE(3)-I NVARIANT D ENOISING D ISTANCE M ATCHING"
+    },
+    "description": "This paper proposes GeoSSL, a 3D coordinate denoising pretraining framework for molecular representation learning, and introduces GeoSSL-DDM, an SE(3)-invariant score matching method for denoising pairwise atomic distances. The study empirically verifies the effectiveness of the proposed methods on multiple downstream tasks.",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The paper includes comprehensive experiments to confirm the effectiveness and robustness of the proposed methods.",
+      "quote": "Our comprehensive experiments confirm the effectiveness and robustness of our proposed method."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computational Chemistry",
+        "justification": "The paper focuses on molecular representation pretraining, which is a key area within computational chemistry.",
+        "quote": "Molecular representation pretraining is critical in various applications for drug and material discovery due to the limited number of labeled molecules, and most existing work focuses on pretraining on 2D molecular graphs."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Self-Supervised Learning (SSL)",
+          "justification": "The paper introduces a self-supervised learning framework named GeoSSL.",
+          "quote": "We first introduce a general geometric self-supervised learning framework called GeoSSL."
+        },
+        "aliases": [
+          "SSL"
+        ]
+      },
+      {
+        "name": {
+          "value": "Graph Neural Networks (GNNs)",
+          "justification": "The paper builds on the performance of GNNs in modeling molecular data.",
+          "quote": "Recent work based on graph neural networks (GNNs) [20] has shown superior performance thanks to the simplicity and effectiveness of GNNs in modeling graph-structured data."
+        },
+        "aliases": [
+          "GNNs"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "GeoSSL-DDM",
+          "justification": "GeoSSL-DDM is the main model proposed in the paper for denoising distance matching.",
+          "quote": "Based on this, we further propose an SE(3)-invariant denoising distance matching pretraining algorithm, GeoSSL-DDM."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 1,
+          "justification": "GeoSSL-DDM is introduced and developed by the authors of the paper.",
+          "quote": "we propose GeoSSL-DDM, an SE(3)-invariant score matching strategy."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The model was run as part of the experiments included in the paper.",
+          "quote": "Our comprehensive experiments confirm the effectiveness and robustness of our proposed method."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "GeoSSL-DDM is compared with other models in the experiments.",
+          "quote": "Using 22 downstream geometric molecular prediction tasks, we empirically verify that our method outperforms nine pretraining baselines."
+        },
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "GeoSSL-DDM is a new model introduced by this paper, so there's no reference paper for it.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "PaiNN",
+          "justification": "PaiNN is used as the backbone geometric graph neural network model for evaluating GeoSSL-DDM.",
+          "quote": "PaiNN [51] is a follow-up work of SchNet [49]. It addresses the limitation of rotational equivariance in SchNet by embracing rotational invariance, attaining a more expressive 3D geometric model."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "PaiNN is referenced as a pre-existing model utilized in the paper, not contributed by it.",
+          "quote": "PaiNN [51] is a follow-up work of SchNet [49]."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "PaiNN is executed as part of the experiments included in the paper.",
+          "quote": "PaiNN [51] is a follow-up work of SchNet [49]. It addresses the limitation of rotational equivariance in SchNet by embracing rotational invariance, attaining a more expressive 3D geometric model."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "PaiNN is compared with other backbone models in the experiments.",
+          "quote": "Using 22 downstream geometric molecular prediction tasks, we empirically verify that our method outperforms nine pretraining baselines."
+        },
+        "referenced_paper_title": {
+          "value": "Equivariant message passing for the prediction of tensorial properties and molecular spectra",
+          "justification": "This is the title of the reference paper for PaiNN cited in the document.",
+          "quote": "PaiNN [51] is a follow-up work of SchNet [49]."
+        }
+      },
+      {
+        "name": {
+          "value": "SchNet",
+          "justification": "SchNet is another backbone geometric graph neural network model used for comparison in the evaluation.",
+          "quote": "SchNet [49] is composed of the following key steps."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "SchNet is cited as an existing model within the field.",
+          "quote": "SchNet [49]"
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "SchNet is run as part of the comparative experiments to evaluate the effectiveness of GeoSSL-DDM.",
+          "quote": "SchNet [49] is used as another backbone model for comparison."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "SchNet is compared with other backbone models in the experiments.",
+          "quote": "We carry out the exact same experiments on another backbone model, SchNet [49], and present the results in Appendix D."
+        },
+        "referenced_paper_title": {
+          "value": "SchNet: A continuous-filter convolutional neural network for modeling quantum interactions",
+          "justification": "This is the title of the reference paper for SchNet cited in the document.",
+          "quote": "SchNet [49] is composed of the following key steps."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "PubChemQC",
+          "justification": "PubChemQC is a large-scale database with millions of molecules and 3D geometries used for pretraining.",
+          "quote": "The PubChemQC database is a large-scale database with around 4M molecules with 3D geometries."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "PubChemQC is a well-known database, and the exact reference paper was not provided in the document.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "Molecule3D",
+          "justification": "Molecule3D takes ground-state geometries from PubChemQC and transforms them into a format suitable for deep learning.",
+          "quote": "Following this, Molecule3D [73] takes the ground-state geometries from PubChemQC and transforms the data formats into a deep learning-friendly way."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "Molecule3D is derived from PubChemQC, so the exact reference paper wasn't detailed.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "QM9",
+          "justification": "QM9 is a dataset used for evaluating quantum mechanics prediction tasks.",
+          "quote": "QM9 [46] is a dataset of 134K molecules consisting of 9 heavy atoms. It includes 12 tasks that are related to the quantum properties."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Quantum chemistry structures and properties of 134 kilo molecules",
+          "justification": "This is the title of the reference for QM9 cited in the document.",
+          "quote": "QM9 [46]"
+        }
+      },
+      {
+        "name": {
+          "value": "MD17",
+          "justification": "MD17 is a dataset focused on molecular dynamics simulation used for force prediction tasks.",
+          "quote": "MD17 [10] is a dataset on molecular dynamics simulation. It includes eight tasks, corresponding to eight organic molecules, and each task includes the molecule positions along the potential energy surface."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Machine learning of accurate energy-conserving molecular force fields",
+          "justification": "This is the title of the reference for MD17 cited in the document.",
+          "quote": "MD17 [10]"
+        }
+      },
+      {
+        "name": {
+          "value": "Atom3D",
+          "justification": "Atom3D is a dataset that includes tasks for modeling molecules in three dimensions, used for binding affinity prediction tasks.",
+          "quote": "Atom3D [66] is a newly published dataset. It gathers several core tasks for 3D molecules, including binding affinity."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Atom3D: Tasks on molecules in three dimensions",
+          "justification": "This is the title of the reference for Atom3D cited in the document.",
+          "quote": "Atom3D [66]"
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 2259,
+    "prompt_tokens": 30791,
+    "total_tokens": 33050
+  }
+}

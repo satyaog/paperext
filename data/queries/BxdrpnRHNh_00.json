@@ -1,0 +1,190 @@
+{
+  "paper": "BxdrpnRHNh.txt",
+  "words": 6770,
+  "extractions": {
+    "title": {
+      "value": "Using Representation Expressiveness and Learnability to Evaluate Self-Supervised Learning Methods",
+      "justification": "This is the full title of the paper as provided at the beginning and throughout the text.",
+      "quote": "Using Representation Expressiveness and Learnability to Evaluate Self-Supervised Learning Methods"
+    },
+    "description": "The paper proposes a new framework called CLID to evaluate the quality of self-supervised learning (SSL) models using metrics of expressiveness and learnability. The study demonstrates that CLID correlates better with in-distribution and out-of-domain model performance compared to existing evaluation methods.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper conducts a large-scale empirical study with various SSL algorithms to validate the effectiveness of the proposed CLID predictor.",
+      "quote": "We find that the proposed CLID predictor outperforms baseline concurrent methods at predicting transfer performance."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Self-Supervised Learning",
+        "justification": "The major focus of the paper is on evaluating Self-Supervised Learning (SSL) methods.",
+        "quote": "We address the problem of evaluating the quality of self-supervised learning (SSL) models without access to supervised labels."
+      },
+      "aliases": [
+        "SSL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Representation Learning",
+          "justification": "The research involves evaluating the representations learned by SSL models.",
+          "quote": "We argue that representations can be evaluated through the lens of expressiveness and learnability."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Transfer Learning",
+          "justification": "The CLID predictor is evaluated for its effectiveness in out-of-domain generalization, a key aspect of Transfer Learning.",
+          "quote": "We also benchmark CLID on out-of-domain generalization."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "MoCo v2",
+          "justification": "This specific model is mentioned as a comparison point for the evaluation method.",
+          "quote": "See https://github.com/SsnL/moco_align_uniform"
+        },
+        "aliases": [
+          "Momentum Contrast v2"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "MoCo v2 is used as a baseline comparison in the evaluation.",
+          "quote": "See https://github.com/SsnL/moco_align_uniform"
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The model is executed for comparison purposes within the empirical study.",
+          "quote": "All our experiments are computed on a single V100 GPU."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "MoCo v2 is compared numerically with other SSL models to evaluate the CLID predictor.",
+          "quote": "Wang & Isola (2020) also proposes to predict the ImageNet performance of pre-trained SSL checkpoints as an evaluation scheme."
+        },
+        "referenced_paper_title": {
+          "value": "Improved Baselines with Momentum Contrastive Learning",
+          "justification": "The title provided is the reference paper for MoCo v2.",
+          "quote": "Improved baselines with momentum contrastive learning. arXiv preprint arXiv:2003.04297, 2020c."
+        }
+      },
+      {
+        "name": {
+          "value": "SimCLR v2",
+          "justification": "This specific model is frequently referenced for performance comparison.",
+          "quote": "Similarly, SimCLR v2 is also compared throughout the empirical studies."
+        },
+        "aliases": [
+          "Simple Framework for Contrastive Learning v2"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "SimCLR v2 is another baseline used for comparison.",
+          "quote": "Similarly, SimCLR v2 is also compared throughout the empirical studies."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The model is executed as part of the empirical evaluations.",
+          "quote": "All our experiments are computed on a single V100 GPU."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "SimCLR v2 is numerically compared with other models.",
+          "quote": "We hypothesize that methods favouring only of these qualities at the expanse of the other, like PCLv1 and PIRL, also have poor ImageNet accuracies."
+        },
+        "referenced_paper_title": {
+          "value": "Big Self-Supervised Models are Strong Semi-Supervised Learners",
+          "justification": "The full title of the referenced paper for SimCLR v2.",
+          "quote": "Big self-supervised models are strong semi-supervised learners. Advances in Neural Information Processing Systems, 33:22243–22255, 2020b."
+        }
+      },
+      {
+        "name": {
+          "value": "Prototypical Contrastive Learning (PCL v1)",
+          "justification": "PCL v1 is used as a comparison method in the study.",
+          "quote": "methods favouring only of these qualities at the expanse of the other, like PCLv1 and PIRL, also have poor ImageNet accuracies."
+        },
+        "aliases": [
+          "PCL v1"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "PCL v1 is not a contribution of this paper.",
+          "quote": "methods favouring only of these qualities at the expanse of the other, like PCLv1 and PIRL, also have poor ImageNet accuracies."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The model is executed in the course of empirical evaluations.",
+          "quote": "The regression plots for the baselines can be found in Figure 3."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "PCL v1 is numerically compared against other SSL models.",
+          "quote": "methods favouring only of these qualities at the expanse of the other, like PCLv1 and PIRL, also have poor ImageNet accuracies."
+        },
+        "referenced_paper_title": {
+          "value": "Prototypical Contrastive Learning of Unsupervised Representations",
+          "justification": "The title provided is the reference paper for PCL v1.",
+          "quote": "Prototypical contrastive learning of unsupervised representations. In International Conference on Learning Representations, 2021. URL https://openreview.net/forum?id=KmykpuSrjcq."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "ImageNet",
+          "justification": "ImageNet dataset is used as the primary evaluation dataset.",
+          "quote": "We select in total 28 self-supervised learning checkpoints trained on ImageNet over different algorithms, architecture, and training epochs."
+        },
+        "aliases": [
+          "ILSVRC"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ImageNet Large Scale Visual Recognition Challenge",
+          "justification": "The title of the foundational paper for the ImageNet dataset.",
+          "quote": "ImageNet Large Scale Visual Recognition Challenge"
+        }
+      },
+      {
+        "name": {
+          "value": "STL-10",
+          "justification": "STL-10 is one of the out-of-domain generalization datasets used in the study.",
+          "quote": "We collect 7 out-of-domain downstream visual classification tasks. For each domain, we compare the ranking of our SSL checkpoints induced by CLID."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Multiple Layers of Features from Tiny Images",
+          "justification": "The STL-10 dataset was introduced in this paper.",
+          "quote": "Learning Multiple Layers of Features from Tiny Images"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is mentioned as the framework used for implementation.",
+          "quote": "All our experiments are computed on a single V100 GPU."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Automatic differentiation in PyTorch",
+          "justification": "The reference title for the PyTorch library.",
+          "quote": "Automatic differentiation in PyTorch"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1907,
+    "prompt_tokens": 12120,
+    "total_tokens": 14027
+  }
+}

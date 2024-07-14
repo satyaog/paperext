@@ -1,0 +1,161 @@
+{
+  "paper": "eGLdVRvvfQ.txt",
+  "words": 18683,
+  "extractions": {
+    "title": {
+      "value": "DEUP: Direct Epistemic Uncertainty Prediction",
+      "justification": "It is directly mentioned in the provided research paper extract.",
+      "quote": "DEUP: Direct Epistemic Uncertainty Prediction"
+    },
+    "description": "This paper proposes a framework for Direct Epistemic Uncertainty Prediction (DEUP), which aims to estimate the epistemic uncertainty originating from both approximation and model uncertainty. The method involves training a secondary predictor to estimate the generalization error subtracted by aleatoric uncertainty. DEUP is applicable in scenarios like sequential model optimization and reinforcement learning to guide exploration by predicting knowledge gaps.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper reports on a wide set of experiments applying DEUP to sequential model optimization and reinforcement learning tasks, validating the effectiveness through empirical results.",
+      "quote": "Through a wide set of experiments, we illustrate how existing methods in sequential model optimization can be improved with epistemic uncertainty estimates from DEUP, and how DEUP can be used to drive exploration in reinforcement learning."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Uncertainty Estimation",
+        "justification": "The paper focuses on estimating epistemic uncertainty, particularly in machine learning models.",
+        "quote": "A remaining great challenge in machine learning research is purposeful knowledge-seeking by learning agents, which can benefit from estimation of epistemic uncertainty (EU), i.e., a measure of lack of knowledge that an active learner should minimize."
+      },
+      "aliases": [
+        "EU Estimation",
+        "Uncertainty Prediction"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Sequential Model Optimization",
+          "justification": "The paper applies DEUP to improve existing methods in sequential model optimization.",
+          "quote": "Through a wide set of experiments, we illustrate how existing methods in sequential model optimization can be improved with epistemic uncertainty estimates from DEUP."
+        },
+        "aliases": [
+          "SMO"
+        ]
+      },
+      {
+        "name": {
+          "value": "Reinforcement Learning",
+          "justification": "The paper demonstrates how DEUP can drive exploration in reinforcement learning by predicting epistemic uncertainty.",
+          "quote": "we illustrate how ... DEUP can be used to drive exploration in reinforcement learning."
+        },
+        "aliases": [
+          "RL"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "DEUP",
+          "justification": "DEUP is the primary model proposed in the paper for epistemic uncertainty prediction.",
+          "quote": "We thus propose a principled framework for directly estimating the excess risk by learning a secondary predictor for the generalization error and subtracting an estimate of aleatoric uncertainty, i.e., intrinsic unpredictability."
+        },
+        "aliases": [
+          "Direct Epistemic Uncertainty Prediction"
+        ],
+        "is_contributed": {
+          "value": 1,
+          "justification": "DEUP is a novel contribution introduced by the authors of the paper.",
+          "quote": "We thus propose a principled framework for directly estimating the excess risk by learning a secondary predictor for the generalization error and subtracting an estimate of aleatoric uncertainty"
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The paper validates DEUP through a wide set of experiments, implying its execution.",
+          "quote": "Through a wide set of experiments, we illustrate how existing methods in sequential model optimization can be improved with epistemic uncertainty estimates from DEUP, and how DEUP can be used to drive exploration in reinforcement learning."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "DEUP is compared against several baseline models like MC-Dropout, Deep Ensembles, and others in the experiments.",
+          "quote": "We also compared against DUE (van Amersfoort et al., 2021) ... DEUP better captured the order of magnitude of the residuals as shown in Fig. 6, confirming the claim C2."
+        },
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "DEUP is proposed in the current paper itself and does not appear to rely on a previously published model paper.",
+          "quote": "We thus propose a principled framework for directly estimating the excess risk by learning a secondary predictor for the generalization error and subtracting an estimate of aleatoric uncertainty."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "DrugComb",
+          "justification": "DrugComb is used in experiments to validate DEUP's performance on a regression task for predicting the synergy of drug combinations.",
+          "quote": "We used the DrugComb and LINCS L1000 datasets ... DrugComb is a dataset consisting of pairwise combinations of anti-cancer compounds tested on various cancer cell lines."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "DrugComb: an integrative cancer drug combination data portal",
+          "justification": "The referenced paper provides detailed information about the DrugComb dataset.",
+          "quote": "DrugComb: an integrative cancer drug combination data portal. Nucleic acids research, 47(W1):W43–W51, 2019."
+        }
+      },
+      {
+        "name": {
+          "value": "LINCS L1000",
+          "justification": "LINCS L1000 is used in conjunction with DrugComb for the regression task illustrating DEUP's uncertainty prediction capabilities.",
+          "quote": "We used the DrugComb and LINCS L1000 datasets ... LINCS L1000 contains differential gene expression profiles for various cell lines and drugs."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "A next generation connectivity map: L1000 platform and the first 1,000,000 profiles",
+          "justification": "The referenced paper provides detailed information about the LINCS L1000 dataset.",
+          "quote": "A next generation connectivity map: L1000 platform and the first 1,000,000 profiles. Cell, 171(6):1437–1452, 2017."
+        }
+      },
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "CIFAR-10 is used in experiments to validate DEUP's performance in classification tasks and OOD detection.",
+          "quote": "We train a ResNet (He et al., 2016) model for CIFAR-10 classification (Krizhevsky, 2009) and reject OOD examples using the estimated uncertainty in the prediction."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning multiple layers of features from tiny images",
+          "justification": "The referenced paper provides detailed information about the CIFAR-10 dataset.",
+          "quote": "Learning multiple layers of features from tiny images. Technical report, University of Toronto, 2009."
+        }
+      },
+      {
+        "name": {
+          "value": "SVHN",
+          "justification": "SVHN is used as an out-of-distribution dataset in experiments related to rejection using DEUP.",
+          "quote": "We use examples from SVHN (Netzer et al., 2011) as the OOD examples."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Reading digits in natural images with unsupervised feature learning",
+          "justification": "The referenced paper provides detailed information about the SVHN dataset.",
+          "quote": "Reading digits in natural images with unsupervised feature learning. In Advances in Neural Information Processing Systems (NIPS), 2011."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "BoTorch",
+          "justification": "BoTorch is used as the base framework for the Sequential Model Optimization experiments involving DEUP.",
+          "quote": "We use BoTorch as the base framework for our experiments."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "BoTorch: A Framework for Efficient Monte-Carlo Bayesian Optimization",
+          "justification": "BoTorch's role is clearly referenced in the context of Bayesian optimization, aligning with the experiments.",
+          "quote": "BoTorch: A Framework for Efficient Monte-Carlo Bayesian Optimization. In Advances in Neural Information Processing Systems 33, 2020."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 3034,
+    "prompt_tokens": 62337,
+    "total_tokens": 65371
+  }
+}

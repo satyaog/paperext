@@ -1,0 +1,258 @@
+{
+  "paper": "7R1gmDrfry.txt",
+  "words": 8668,
+  "extractions": {
+    "title": {
+      "value": "GFlowOut: Dropout with Generative Flow Networks",
+      "justification": "The title of the paper is provided in the user prompt.",
+      "quote": "GFlowOut: Dropout with Generative Flow Networks"
+    },
+    "description": "The paper introduces GFlowOut, a novel approach leveraging Generative Flow Networks (GFlowNets) to generate dropout masks for neural networks in a manner that better estimates the Bayesian posterior. The empirical evaluation demonstrates its benefits in terms of robustness to distribution shifts, transfer learning, uncertainty estimation, and application to real-world clinical data.",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The paper evaluates the performance of GFlowOut through experimental results on various tasks such as image classification, transfer learning, and real-world clinical data, thereby making it an empirical study.",
+      "quote": "In this work, we propose GFlowOut to learn the posterior distribution over dropout masks in a neural network. We evaluate GFlowOut on various downstream tasks such as uncertainty estimation, robustness to distribution shift, and transfer learning, using both benchmark datasets and real-world clinical datasets."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Uncertainty Estimation",
+        "justification": "The primary concern of the paper is to provide reliable uncertainty estimates for neural network predictions using the proposed GFlowOut method.",
+        "quote": "It is important that models provide predictions with reliable uncertainty estimates."
+      },
+      "aliases": [
+        "Uncertainty Quantification"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Bayesian Deep Learning",
+          "justification": "The paper deals extensively with Bayesian methods for inferring the posterior distribution in neural networks.",
+          "quote": "Bayesian inference offers principled tools to tackle many critical problems with modern neural networks such as poor calibration and generalization, and data inefficiency."
+        },
+        "aliases": [
+          "Bayesian Neural Networks"
+        ]
+      },
+      {
+        "name": {
+          "value": "Computer Vision",
+          "justification": "The paper includes empirical experiments on image classification tasks using datasets like CIFAR-10 and CIFAR-100.",
+          "quote": "We consider ResNet-18 models for the CIFAR-10/CIFAR-100 datasets."
+        },
+        "aliases": [
+          "Image Recognition"
+        ]
+      },
+      {
+        "name": {
+          "value": "Clinical Data Analysis",
+          "justification": "The paper applies its method to real-world clinical data for mortality prediction tasks, highlighting its relevance to this field.",
+          "quote": "We also study a potential application of GFlowOut in a real-world clinical use case for the cross-hospital prediction of mortality in intensive care units (ICUs)."
+        },
+        "aliases": [
+          "Medical Data Analysis"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "GFlowOut",
+          "justification": "GFlowOut is the primary model introduced in the paper, aimed at generating dropout masks based on Generative Flow Networks.",
+          "quote": "We propose GFlowOut to address these issues. GFlowOut leverages the recently proposed probabilistic framework of Generative Flow Networks (GFlowNets) to learn the posterior distribution over dropout masks."
+        },
+        "aliases": [
+          "GFlowNet-based dropout mask generator"
+        ],
+        "is_contributed": {
+          "value": 1,
+          "justification": "The paper presents GFlowOut as a new model for dropout mask generation in neural networks.",
+          "quote": "In this work, we propose GFlowOut to address these issues."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The paper includes multiple experiments where GFlowOut is applied to various tasks, indicating it has been executed as part of the research.",
+          "quote": "We empirically demonstrate that GFlowOut results in predictive distributions that generalize better to out-of-distribution data and provide uncertainty estimates which lead to better performance in downstream tasks."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "GFlowOut's performance is compared against several baseline methods such as Concrete Dropout and Contextual Dropout.",
+          "quote": "We consider both GFlowOut and ID-GFlowOut variants and as baselines use Random Dropout (Standard Bernoulli Dropout) (Hinton et al., 2012), Contextual Dropout (Fan et al., 2021) and Concrete Dropout (Gal et al., 2017)."
+        },
+        "referenced_paper_title": {
+          "value": "Flow network based generative models for non-iterative diverse candidate generation",
+          "justification": "This paper is one of the referenced works upon which GFlowOut is built, focusing on Generative Flow Networks.",
+          "quote": "The recently proposed Generative Flow Networks (GFlowNets) (Bengio et al., 2021a,b) frame the problem of generating discrete objects as a control problem based on the sequential construction of discrete components."
+        }
+      },
+      {
+        "name": {
+          "value": "ResNet-18",
+          "justification": "ResNet-18 is used as a baseline model for comparison in the image classification tasks on CIFAR-10 and CIFAR-100 datasets.",
+          "quote": "Similarly, we use the ResNet-18 (He et al., 2016) models for the CIFAR-10/CIFAR-100 datasets and evaluate their robustness to distribution shifts induced by random rotations."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "ResNet-18 is not a new model contributed by this paper; it is used for baseline comparisons.",
+          "quote": "Similarly, we use the ResNet-18 (He et al., 2016) models for the CIFAR-10/CIFAR-100 datasets."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "ResNet-18 is executed in the experiments to serve as a baseline.",
+          "quote": "Similarly, we use the ResNet-18 (He et al., 2016) models for the CIFAR-10/CIFAR-100 datasets."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "ResNet-18 is compared to GFlowOut in terms of performance on image classification tasks.",
+          "quote": "The results, as summarized in Table 1, show that models trained using GFlowOut are in general more robust to random rotations, and GFlowOut outperforms (or at least matches the performance of) baselines."
+        },
+        "referenced_paper_title": {
+          "value": "Deep residual learning for image recognition",
+          "justification": "This is the reference paper for ResNet-18, providing the foundational work upon which the model is based.",
+          "quote": "Similarly, we use the ResNet-18 (He et al., 2016) models for the CIFAR-10/CIFAR-100 datasets."
+        }
+      },
+      {
+        "name": {
+          "value": "MCAN",
+          "justification": "MCAN is used in the Visual Question Answering (VQA) tasks to evaluate the performance of GFlowOut on larger models.",
+          "quote": "To evaluate GFlowOut on large-scale tasks with larger models, we consider a transformer-based multi-modal architecture MCAN (Yu et al., 2019) for the Visual Question Answering (VQA) task, following Fan et al. (2021)."
+        },
+        "aliases": [
+          "Transformer-based multi-modal architecture"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "MCAN is not a new model introduced by this paper but is used for evaluating GFlowOut.",
+          "quote": "To evaluate GFlowOut on large-scale tasks with larger models, we consider a transformer-based multi-modal architecture MCAN (Yu et al., 2019) for the Visual Question Answering (VQA) task, following Fan et al. (2021)."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "MCAN is executed in the experiments focusing on the Visual Question Answering (VQA) tasks.",
+          "quote": "To evaluate GFlowOut on large-scale tasks with larger models, we consider a transformer-based multi-modal architecture MCAN (Yu et al., 2019) for the Visual Question Answering (VQA) task."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "MCAN's performance, when trained with GFlowOut, is compared against other dropout techniques.",
+          "quote": "Our experimental results in Table 2 suggest that GFlowOut either outperforms or matches the performance of contextual and concrete dropout when tested on generalization to a noisy dataset where a Gaussian noise is added to the visual inputs (Fan et al., 2021)."
+        },
+        "referenced_paper_title": {
+          "value": "Deep modular co-attention networks for visual question answering",
+          "justification": "This is the reference paper for MCAN, providing the foundational work for this model.",
+          "quote": "To evaluate GFlowOut on large-scale tasks with larger models, we consider a transformer-based multi-modal architecture MCAN (Yu et al., 2019) for the Visual Question Answering (VQA) task."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "CIFAR-10 is used in experiments to test the robustness and generalization ability of GFlowOut under distribution shifts.",
+          "quote": "Similarly, we use the ResNet-18 (He et al., 2016) models for the CIFAR-10/CIFAR-100 datasets."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning multiple layers of features from tiny images",
+          "justification": "This paper is the reference for the CIFAR-10 dataset, providing the foundational work upon which the dataset is based.",
+          "quote": "Similarly, we use the ResNet-18 (He et al., 2016) models for the CIFAR-10/CIFAR-100 datasets."
+        }
+      },
+      {
+        "name": {
+          "value": "CIFAR-100",
+          "justification": "CIFAR-100 is used in experiments to test the robustness and generalization ability of GFlowOut under distribution shifts.",
+          "quote": "Similarly, we use the ResNet-18 (He et al., 2016) models for the CIFAR-10/CIFAR-100 datasets."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning multiple layers of features from tiny images",
+          "justification": "This paper is the reference for the CIFAR-100 dataset, providing the foundational work upon which the dataset is based.",
+          "quote": "Similarly, we use the ResNet-18 (He et al., 2016) models for the CIFAR-10/CIFAR-100 datasets."
+        }
+      },
+      {
+        "name": {
+          "value": "MNIST",
+          "justification": "MNIST is used to evaluate the robustness of GFlowOut by applying various transformations to the images.",
+          "quote": "For MNIST, we train a two-layer MLP with 300 and 100 units respectively and evaluate predictions on MNIST images rotated by a uniformly sampled angle (0−360◦ )"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Gradient-based learning applied to document recognition",
+          "justification": "This paper is the reference for the MNIST dataset, providing the foundational work upon which the dataset is based.",
+          "quote": "For MNIST, we train a two-layer MLP with 300 and 100 units respectively and evaluate predictions on MNIST images rotated by a uniformly sampled angle (0−360◦ )."
+        }
+      },
+      {
+        "name": {
+          "value": "eICU Collaborative Research Database",
+          "justification": "The eICU database is used to test GFlowOut's application to a real-world clinical dataset for cross-hospital mortality prediction.",
+          "quote": "We also study a potential application of GFlowOut in a real-world clinical use case for the cross-hospital prediction of mortality in intensive care units (ICUs)."
+        },
+        "aliases": [
+          "eICU database"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The eICU Collaborative Research Database, a freely available multi-center database for critical care research",
+          "justification": "This paper is the reference for the eICU Collaborative Research Database, providing the foundational work upon which the dataset is based.",
+          "quote": "Records of both hospitals are obtained from the eICU database (Pollard et al., 2018)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The paper mentions the use of PyTorch as part of its experimental setup.",
+          "quote": "All experiments were implemented in PyTorch."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Automatic differentiation in PyTorch",
+          "justification": "This paper provides the foundational work for PyTorch, outlining its functionality and applications.",
+          "quote": "All experiments were implemented in PyTorch."
+        }
+      },
+      {
+        "name": {
+          "value": "NumPy",
+          "justification": "NumPy is used for numerical operations in the experimental setup of the paper.",
+          "quote": "The numpy library was used for various numerical computations."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "NumPy: A structure for efficient numerical computation",
+          "justification": "This paper provides the foundational work for NumPy, outlining its functionality and applications.",
+          "quote": "The numpy library was used for various numerical computations."
+        }
+      },
+      {
+        "name": {
+          "value": "Matplotlib",
+          "justification": "Matplotlib is used for generating plots and visualizations in the paper.",
+          "quote": "Matplotlib was used to create various plots and figures for the paper."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Matplotlib: A 2D graphics environment",
+          "justification": "This paper provides the foundational work for Matplotlib, outlining its functionality and applications.",
+          "quote": "Matplotlib was used to create various plots and figures for the paper."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2679,
+    "prompt_tokens": 15668,
+    "total_tokens": 18347
+  }
+}

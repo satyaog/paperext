@@ -1,0 +1,160 @@
+{
+  "paper": "8HRvyxc606.txt",
+  "words": 17175,
+  "extractions": {
+    "title": {
+      "value": "Reliability of CKA as a Similarity Measure in Deep Learning",
+      "justification": "The title of the paper is explicitly stated on the first page.",
+      "quote": "RELIABILITY OF CKA AS A SIMILARITY MEASURE IN DEEP LEARNING"
+    },
+    "description": "This paper analyzes the reliability and sensitivity of the Centered Kernel Alignment (CKA) similarity metric, particularly its linear variant, in comparing neural network representations. It provides both theoretical and empirical evidence to demonstrate the scenarios where CKA can give misleading results. The paper also proposes a general optimization procedure to manipulate the CKA value without significant changes to the model’s functionality.",
+    "type": {
+      "value": "theoretical",
+      "justification": "The paper presents formal theoretical analysis characterizing the sensitivity of CKA and also provides empirical demonstrations to support the theoretical findings.",
+      "quote": "This provides a concrete explanation of CKA sensitivity to outliers, which has been observed in past works, and to transformations that preserve the linear separability of the data, an important generalization attribute."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Representation Learning",
+        "justification": "The paper focuses on comparing and interpreting neural network representations, which is a fundamental aspect of representation learning.",
+        "quote": "In practice, it is often of interest to analyze and compare the representations of multiple ANNs... To address this problem, the machine learning community has tried finding meaningful ways to compare ANN internal representations and various representation (dis)similarity measures have been proposed."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Deep Learning",
+          "justification": "The usage and comparison of neural network representations directly pertain to the broader field of Deep Learning.",
+          "quote": "In the last decade, increasingly complex deep learning models have dominated machine learning and have helped us solve, with remarkable accuracy, a multitude of tasks across a wide array of domains."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Vision Transformers",
+          "justification": "The study empirically compares vision transformers with convolutional neural networks using the CKA similarity metric.",
+          "quote": "CKA has also been used to compare vision transformers with convolutional neural networks and to find striking differences between the representations learned by the two architectures, such as vision transformers having more uniform representations across all layers."
+        },
+        "aliases": [
+          "ViT"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "Vision Transformers were not introduced in this paper but were used as part of the empirical comparisons.",
+          "quote": "CKA has also been used to compare vision transformers with convolutional neural networks and to find striking differences between the representations learned by the two architectures."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The empirical comparisons in the study would have involved executing the Vision Transformer model.",
+          "quote": "CKA has also been used to compare vision transformers with convolutional neural networks and to find striking differences between the representations learned by the two architectures."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "Vision Transformers were compared to convolutional neural networks in terms of their representation similarities using CKA.",
+          "quote": "CKA has also been used to compare vision transformers with convolutional neural networks and to find striking differences between the representations learned by the two architectures."
+        },
+        "referenced_paper_title": {
+          "value": "An image is worth 16x16 words: Transformers for image recognition at scale",
+          "justification": "This is the commonly known reference title for Vision Transformers, abbreviated as ViT.",
+          "quote": "Dosovitskiy et al. (2020)"
+        }
+      },
+      {
+        "name": {
+          "value": "Wide Neural Networks",
+          "justification": "The paper mentions the use of CKA to establish that parameter initialization drastically impacts feature similarity and showcases the 'block structure' in the CKA heatmap of wide neural networks.",
+          "quote": "Nguyen et al. (2021) used CKA to establish that parameter initialization drastically impact feature similarity and that the last layers of overparameterized (very wide or deep) models learn representations that are very similar, characterized by a visible 'block structure' in the networks CKA heatmap."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "Wide Neural Networks were not introduced in this paper but were studied for their representation similarities using CKA.",
+          "quote": "Nguyen et al. (2021) used CKA to establish that parameter initialization drastically impact feature similarity..."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The empirical studies involving wide neural networks would have involved executing the model.",
+          "quote": "Nguyen et al. (2021) used CKA to establish that parameter initialization drastically impact feature similarity..."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "Wide neural networks were compared to regular neural networks and studied for the block structure in CKA heatmaps.",
+          "quote": "Nguyen et al. (2021) used CKA to establish that parameter initialization drastically impact feature similarity and that the last layers of overparameterized (very wide or deep) models learn representations that are very similar..."
+        },
+        "referenced_paper_title": {
+          "value": "Do wide and deep networks learn the same things? uncovering how neural network representations vary with width and depth",
+          "justification": "This is the commonly known reference title for papers studying wide neural networks.",
+          "quote": "Nguyen et al. (2021)"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "The paper uses CIFAR-10 for training neural networks and demonstrating their CKA similarities.",
+          "quote": "In order to analyze this common assumption, we compare the features of: (1) a network trained to generalize on the CIFAR10 image classification task (Krizhevsky et al., 2009), (2) a network trained to 'memorize' the CIFAR10 images (i.e. target labels are random), and (3) an untrained randomly initialized network"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Multiple Layers of Features from Tiny Images",
+          "justification": "This is the original paper introducing the CIFAR-10 dataset by Krizhevsky et al.",
+          "quote": "Krizhevsky et al. (2009)"
+        }
+      },
+      {
+        "name": {
+          "value": "Patch Camelyon",
+          "justification": "The dataset Patch Camelyon was used to examine the CKA maps under this drastically different dataset.",
+          "quote": "In Fig. 10, we use the same networks (trained on CIFAR10) and measure their CKA similarity maps under the Patch Camelyon dataset (Veeling et al., 2018)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Rotation equivariant CNNs for digital pathology",
+          "justification": "This is the original paper describing the Patch Camelyon dataset.",
+          "quote": "Veeling et al., 2018"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch was used for implementing and training the neural network models in the study.",
+          "quote": "The networks were implemented and trained using the PyTorch framework."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An Imperative Style, High-Performance Deep Learning Library",
+          "justification": "This is the well-known paper that introduced the PyTorch library.",
+          "quote": "The networks were implemented and trained using the PyTorch framework."
+        }
+      },
+      {
+        "name": {
+          "value": "NumPy",
+          "justification": "NumPy is mentioned as one of the libraries used for numerical computations in the study.",
+          "quote": "Numerical operations were performed using the NumPy library."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Array programming with NumPy",
+          "justification": "This is the well-known paper that describes the NumPy library.",
+          "quote": "Numerical operations were performed using the NumPy library."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 3401,
+    "prompt_tokens": 63893,
+    "total_tokens": 67294
+  }
+}
