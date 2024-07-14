@@ -1,0 +1,140 @@
+{
+  "paper": "SykskBAkZL.txt",
+  "words": 18469,
+  "extractions": {
+    "title": {
+      "value": "Synergies between Disentanglement and Sparsity: Generalization and Identifiability in Multi-Task Learning",
+      "justification": "This is the exact title mentioned at the beginning of the paper.",
+      "quote": "Synergies between Disentanglement and Sparsity: Generalization and Identiﬁability in Multi-Task Learning"
+    },
+    "description": "This paper provides evidence that disentangled representations coupled with sparse, task-specific predictors can improve generalization. It introduces a novel identifiability result that shows the conditions under which maximally sparse predictors yield disentangled representations. The paper also proposes a metalearning algorithm based on this theoretical result and demonstrates its effectiveness on standard few-shot classification benchmarks.",
+    "type": {
+      "value": "theoretical",
+      "justification": "The paper is primarily focused on theoretical contributions and proofs, including a new identifiability result and conditions under which certain methods work.",
+      "quote": "In the context of multi-task learning, we prove a new identifiability result that provides conditions under which maximally sparse predictors yield disentangled representations."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Multi-Task Learning",
+        "justification": "The primary focus of the paper is on disentangled representations and sparse task-specific predictors in the context of multi-task learning.",
+        "quote": "In this work, we explore synergies between disentanglement and sparse task-speciﬁc predictors in the context of multi-task learning."
+      },
+      "aliases": [
+        "MTL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Disentangled Representations",
+          "justification": "The paper explores how disentangled representations coupled with sparsity in predictors can improve generalization and proposes methods to achieve this disentanglement.",
+          "quote": "Our theory suggests that disentangled representations coupled with sparse task-specific predictors can yield better generalization."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Meta-Learning",
+          "justification": "The paper also explores a metalearning version of the proposed algorithm and its effectiveness on few-shot classification benchmarks.",
+          "quote": "Finally, we explore a metalearning version of this algorithm based on group Lasso multiclass SVM predictors, for which we derive a tractable dual formulation."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "inner-Lasso",
+          "justification": "The model uses Lasso regression in its inner optimization problem to promote sparsity in task-specific predictors.",
+          "quote": "In inner-Lasso, we set λmax := n1 kF⊤yk∞... inner-Lasso obtains high MCC for some values of λ, being on par or surpassing the baselines."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 1,
+          "justification": "The inner-Lasso model is introduced in this paper as a method to achieve disentanglement through sparsity.",
+          "quote": "In inner-Lasso, we set λmax := n1 kF⊤yk∞... inner-Lasso obtains high MCC for some values of λ, being on par or surpassing the baselines."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The paper includes empirical validation and experiments, indicating that the model was executed.",
+          "quote": "inner-Lasso obtains high MCC for some values of λ, being on par or surpassing the baselines."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The paper compares the performance of inner-Lasso with other methods like inner-Ridge and inner-Ridge with ICA.",
+          "quote": "We observe that inner-Lasso and inner-Ridge combined with ICA perform particularly well when correlation is low."
+        },
+        "referenced_paper_title": {
+          "value": "Isolating Sources of Disentanglement in VAEs",
+          "justification": "While the paper references other works related to Lasso, the specific implementation and experimental context seem unique to this work.",
+          "quote": "Isolating Sources of Disentanglement in VAEs"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "3D Shapes",
+          "justification": "The dataset is used to validate the proposed methods and theory in the paper.",
+          "quote": "We validate our theory by showing our approach can indeed disentangle latent factors on tasks constructed from the 3D Shapes dataset (Burgess & Kim, 2018)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "3D shapes dataset",
+          "justification": "This dataset is referenced and used for experimental validation in the paper.",
+          "quote": "We validate our theory by showing our approach can indeed disentangle latent factors on tasks constructed from the 3D Shapes dataset (Burgess & Kim, 2018)."
+        }
+      },
+      {
+        "name": {
+          "value": "miniImageNet",
+          "justification": "The dataset is used to test the metalearning algorithm proposed in the paper.",
+          "quote": "We show that this new meta-learning algorithm achieves competitive performance on the miniImageNet benchmark (Vinyals et al., 2016), while only using a fraction of the representation."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Matching Networks for One Shot Learning",
+          "justification": "This is the reference paper for the miniImageNet dataset used to evaluate the meta-learning algorithm.",
+          "quote": "We show that this new meta-learning algorithm achieves competitive performance on the miniImageNet benchmark (Vinyals et al., 2016), while only using a fraction of the representation."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "jax",
+          "justification": "The implementation of the proposed models and experiments relies on the jax library.",
+          "quote": "Our implementation relies on jax and jaxopt (Bradbury et al., 2018)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "JAX: composable transformations of Python+NumPy programs",
+          "justification": "This is the reference paper for the jax library mentioned in the paper.",
+          "quote": "Our implementation relies on jax and jaxopt (Bradbury et al., 2018)."
+        }
+      },
+      {
+        "name": {
+          "value": "jaxopt",
+          "justification": "The implementation of the proposed models and experiments relies on the jaxopt library.",
+          "quote": "Our implementation relies on jax and jaxopt (Bradbury et al., 2018)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Efficient and Modular Implicit Differentiation",
+          "justification": "This is the reference paper for the jaxopt library mentioned in the paper.",
+          "quote": "Our implementation relies on jax and jaxopt (Bradbury et al., 2018)."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1295,
+    "prompt_tokens": 34087,
+    "total_tokens": 35382
+  }
+}

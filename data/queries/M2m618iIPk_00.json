@@ -1,0 +1,176 @@
+{
+  "paper": "M2m618iIPk.txt",
+  "words": 9764,
+  "extractions": {
+    "title": {
+      "value": "Blockwise Self-Supervised Learning at Scale",
+      "justification": "Title of the paper",
+      "quote": "Blockwise Self-Supervised Learning at Scale"
+    },
+    "description": "This paper explores alternatives to full backpropagation in deep networks by using blockwise learning rules, leveraging self-supervised learning. The paper demonstrates that a ResNet-50 trained blockwise, with each block independently trained using the Barlow Twins’ loss function, performs almost as well as end-to-end backpropagation on ImageNet. Several experiments highlight different aspects and adaptations of self-supervised learning to the blockwise paradigm.",
+    "type": {
+      "value": "Empirical Study",
+      "justification": "The paper involves extensive experiments to analyze and demonstrate the performance of blockwise self-supervised learning compared to end-to-end backpropagation.",
+      "quote": "We perform extensive experiments to understand the impact of different components within our method and explore a variety of adaptations of selfsupervised learning to the blockwise paradigm, building an exhaustive understanding of the critical avenues for scaling local learning rules to large networks, with implications ranging from hardware design to neuroscience."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The main experiments were conducted on ImageNet, which is a standard dataset in the field of Computer Vision.",
+        "quote": "We show that a blockwise pretraining procedure consisting of training independently the 4 main blocks of layers of a ResNet-50 with Barlow Twins’ loss function at each block performs almost as well as end-to-end backpropagation on ImageNet."
+      },
+      "aliases": [
+        "CV"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Self-Supervised Learning",
+          "justification": "The paper focuses on self-supervised learning methods and their application to blockwise training.",
+          "quote": "leveraging the latest developments in self-supervised learning."
+        },
+        "aliases": [
+          "SSL"
+        ]
+      },
+      {
+        "name": {
+          "value": "Neuroscience-inspired Learning",
+          "justification": "The study also explores the biological plausibility of the proposed blockwise learning rules, drawing parallels to neuroscientific theories.",
+          "quote": "From a neuroscientific standpoint, it is interesting to explore the viability of alternative learning rules to backpropagation, as it is debated whether the brain performs backpropagation (mostly considered implausible)"
+        },
+        "aliases": [
+          "Neuroscience"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "ResNet-50",
+          "justification": "The paper uses ResNet-50 to demonstrate the blockwise pretraining method.",
+          "quote": "We show that a blockwise pretraining procedure consisting of training independently the 4 main blocks of layers of a ResNet-50 with Barlow Twins’ loss function at each block performs almost as well as end-to-end backpropagation on ImageNet."
+        },
+        "aliases": [
+          "ResNet"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "ResNet-50 is a well-known architecture and not a new contribution of this paper.",
+          "quote": "We divide the ResNet-50 network into 4 blocks and limit the length of the backpropagation path to each of these blocks."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "ResNet-50 was executed in the experiments conducted as part of this research.",
+          "quote": "We use a ResNet-50 network and adapt the Barlow Twins (Zbontar et al., 2021) codebase2 to a blockwise training paradigm."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The performance of ResNet-50 trained using blockwise self-supervised learning is compared with the end-to-end pretraining performance.",
+          "quote": "We show that a blockwise pretraining procedure consisting of training independently the 4 main blocks of layers of a ResNet-50 with Barlow Twins’ loss function at each block performs almost as well as end-to-end backpropagation on ImageNet."
+        },
+        "referenced_paper_title": {
+          "value": "Deep residual learning for image recognition",
+          "justification": "Referenced in context of the ResNet-50 architecture used.",
+          "quote": "The ResNet-50 architecture is comprised of 5 blocks of different feature spatial resolutions, followed by a global average pooling operation and a linear layer for final classification."
+        }
+      },
+      {
+        "name": {
+          "value": "Barlow Twins",
+          "justification": "The Barlow Twins loss function is used for the self-supervised learning in the blockwise training.",
+          "quote": "Most of the experiments in the paper rely on the Barlow Twins objective function (Zbontar et al., 2021), which we briefly describe here."
+        },
+        "aliases": [
+          "Barlow"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "Barlow Twins is an existing self-supervised learning method and not a new contribution of this paper.",
+          "quote": "Barlow Twins (Zbontar et al., 2021), which we briefly describe here."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "Barlow Twins loss function was executed as part of the experiments in this research.",
+          "quote": "We use a ResNet-50 network and adapt the Barlow Twins (Zbontar et al., 2021) codebase2 to a blockwise training paradigm."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The method's performance is a benchmark for the proposed blockwise training approach.",
+          "quote": "Most of the experiments in the paper rely on the Barlow Twins objective function (Zbontar et al., 2021), which we briefly describe here."
+        },
+        "referenced_paper_title": {
+          "value": "Barlow Twins: Self-Supervised Learning via Redundancy Reduction",
+          "justification": "Reference to the original Barlow Twins paper.",
+          "quote": "Barlow Twins objective function (Zbontar et al., 2021)"
+        }
+      },
+      {
+        "name": {
+          "value": "SimCLR",
+          "justification": "The paper also implements the SimCLR loss function to show the robustness of findings across different self-supervised learning methods.",
+          "quote": "We tested our blockwise paradigm using alternative self-supervised learning rules i.e. VicReg and SimCLR."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "SimCLR is an existing self-supervised learning method and not a new contribution of this paper.",
+          "quote": "We tested our blockwise paradigm using alternative self-supervised learning rules i.e. VicReg and SimCLR."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "SimCLR was executed to validate the robustness of the blockwise training approach.",
+          "quote": "We tested our blockwise paradigm using alternative self-supervised learning rules i.e. VicReg and SimCLR."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "SimCLR is used for comparison to demonstrate the effectiveness of the proposed method across different SSL methods.",
+          "quote": "We tested our blockwise paradigm using alternative self-supervised learning rules i.e. VicReg and SimCLR."
+        },
+        "referenced_paper_title": {
+          "value": "A Simple Framework for Contrastive Learning of Visual Representations",
+          "justification": "Reference to the original SimCLR paper.",
+          "quote": "Barlow Twins codebase and directly adapted the official VicReg implementation4 for our experiments with VicReg (Bardes et al., 2022)."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "ImageNet",
+          "justification": "The primary dataset used for benchmarking the self-supervised learning method and its blockwise training performance is ImageNet.",
+          "quote": "We show that a blockwise pretraining procedure consisting of training independently the 4 main blocks of layers of a ResNet-50 with Barlow Twins’ loss function at each block performs almost as well as end-to-end backpropagation on ImageNet."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ImageNet: A large-scale hierarchical image database",
+          "justification": "Reference to the original ImageNet paper.",
+          "quote": "2 Related Work... demonstrated performance on large-scale datasets, such as ImageNet (Deng et al., 2009)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The code implementation for the experiments in the paper is based on PyTorch.",
+          "quote": "We provide the PyTorch pseudocode for blockwise training of models in Appendix E."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Automatic differentiation in PyTorch",
+          "justification": "Reference to the original PyTorch paper.",
+          "quote": ""
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2657,
+    "prompt_tokens": 35265,
+    "total_tokens": 37922
+  }
+}

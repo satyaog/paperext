@@ -1,0 +1,290 @@
+{
+  "paper": "D9E8MKsfhw.txt",
+  "words": 16807,
+  "extractions": {
+    "title": {
+      "value": "An Empirical Investigation of the Role of Pre-Training in Lifelong Learning",
+      "justification": "The title summarizes the paper's core focus, namely investigating pre-training in lifelong learning.",
+      "quote": "A N E MPIRICAL I NVESTIGATION OF THE ROLE OF P RE TRAINING IN L IFELONG L EARNING"
+    },
+    "description": "This paper explores the impact of pre-training on lifelong learning, with a specific focus on alleviating catastrophic forgetting. It conducts extensive experiments across both computer vision and natural language processing tasks, employing various pre-trained models and proposing optimization methods to achieve wider loss basins and improved performance.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper conducts a series of empirical studies to validate its hypotheses and draws conclusions based on observed data and experiments.",
+      "quote": "we conduct a systematic study on existing CV and NLP benchmarks and observe that pre-training indeed leads to less forgetting"
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Lifelong Learning",
+        "justification": "The primary focus of the paper is on lifelong learning, specifically addressing the issue of catastrophic forgetting within this paradigm.",
+        "quote": "The lifelong learning paradigm in machine learning is an attractive alternative to the more prominent isolated learning scheme..."
+      },
+      "aliases": [
+        "LL",
+        "Lifelong Machine Learning"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Catastrophic Forgetting",
+          "justification": "The paper investigates how pre-training helps mitigate catastrophic forgetting, which is a major issue in lifelong learning.",
+          "quote": "A key challenge to this paradigm is the phenomenon of catastrophic forgetting."
+        },
+        "aliases": [
+          "Forgetting"
+        ]
+      },
+      {
+        "name": {
+          "value": "Transfer Learning",
+          "justification": "The paper evaluates the effectiveness of pre-trained models, which relates directly to the domain of transfer learning.",
+          "quote": "With the increasing popularity and success of pre-trained models in machine learning..."
+        },
+        "aliases": [
+          "TL",
+          "Pre-training"
+        ]
+      },
+      {
+        "name": {
+          "value": "Sharpness-Aware Minimization",
+          "justification": "The paper proposes using Sharpness-Aware Minimization (SAM) to encourage wider minima during sequential fine-tuning in lifelong learning.",
+          "quote": "we employ the Sharpness-Aware Minimization (SAM) procedure..."
+        },
+        "aliases": [
+          "SAM"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "ResNet-18",
+          "justification": "ResNet-18 is one of the pre-trained models employed for image classification experiments in the paper.",
+          "quote": "We utilize... the ResNet-18 (He et al., 2016) architecture for image classification."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "ResNet-18 is leveraged from existing literature and not a novel contribution of this paper.",
+          "quote": "We utilize... the ResNet-18 (He et al., 2016) architecture for image classification."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The model was executed as part of the experiments conducted in the paper.",
+          "quote": "We utilize... the ResNet-18 (He et al., 2016) architecture for image classification."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "ResNet-18 was compared to other models like DistilBERT in the context of lifelong learning and pre-training.",
+          "quote": "In general, we see that both models (DistilBERT and ResNet-18) start with approximately equal task accuracy..."
+        },
+        "referenced_paper_title": {
+          "value": "Deep residual learning for image recognition",
+          "justification": "The reference paper related to ResNet-18 is He et al., 2016, which introduced the model architecture.",
+          "quote": "We utilize... the ResNet-18 (He et al., 2016) architecture for image classification."
+        }
+      },
+      {
+        "name": {
+          "value": "DistilBERT",
+          "justification": "DistilBERT was extensively used in the paper for text classification tasks.",
+          "quote": "We utilize the DistilBERT (Sanh et al., 2019) architecture for text classification."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "DistilBERT is an existing model used in this study; it was not developed by the authors of this paper.",
+          "quote": "We utilize the DistilBERT (Sanh et al., 2019) architecture for text classification."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "DistilBERT was executed as part of the experiments in this paper.",
+          "quote": "We utilize the DistilBERT (Sanh et al., 2019) architecture for text classification."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "DistilBERT was compared to other models like ResNet-18 in the context of lifelong learning and pre-training.",
+          "quote": "In general, we see that both models (DistilBERT and ResNet-18) start with approximately equal task accuracy..."
+        },
+        "referenced_paper_title": {
+          "value": "DistilBERT, a distilled version of BERT: smaller, faster, cheaper and lighter",
+          "justification": "The reference paper for DistilBERT is Sanh et al., 2019, which introduced this model as a distilled version of BERT.",
+          "quote": "We utilize the DistilBERT (Sanh et al., 2019) architecture for text classification."
+        }
+      },
+      {
+        "name": {
+          "value": "BERT-base",
+          "justification": "BERT-base was used in the paper for evaluating the impact of pre-training on lifelong learning.",
+          "quote": "we evaluate different pre-trained Transformer models, DistilBERT (Sanh et al., 2019), BERT (Devlin et al., 2019), RoBERTa (Liu et al., 2019)."
+        },
+        "aliases": [
+          "BERT"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "BERT-base is an existing model used for the study, not contributed by this paper.",
+          "quote": "we evaluate different pre-trained Transformer models, DistilBERT (Sanh et al., 2019), BERT (Devlin et al., 2019), RoBERTa (Liu et al., 2019)."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The BERT-base model was executed for experiments in the paper.",
+          "quote": "we evaluate different pre-trained Transformer models, DistilBERT (Sanh et al., 2019), BERT (Devlin et al., 2019), RoBERTa (Liu et al., 2019)."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "BERT-base was compared with models like DistilBERT and RoBERTa in the experiments.",
+          "quote": "To examine the impact of varying pre-trained initialization on forgetting, we evaluate different pre-trained Transfomer models, DistilBERT (Sanh et al., 2019), BERT (Devlin et al., 2019), RoBERTa (Liu et al., 2019)"
+        },
+        "referenced_paper_title": {
+          "value": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "justification": "The reference paper for BERT-base is Devlin et al., 2019, which introduced the BERT model.",
+          "quote": "we evaluate different pre-trained Transformer models, DistilBERT (Sanh et al., 2019), BERT (Devlin et al., 2019), RoBERTa (Liu et al., 2019)."
+        }
+      },
+      {
+        "name": {
+          "value": "RoBERTa-base",
+          "justification": "RoBERTa-base was used for evaluating the effectiveness of diverse pre-training corpora.",
+          "quote": "To examine the impact of varying pre-trained initialization on forgetting, we evaluate different pre-trained Transfomer models... RoBERTa (Liu et al., 2019)."
+        },
+        "aliases": [
+          "RoBERTa"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "RoBERTa-base is leveraged from existing literature for the study, not developed by the authors.",
+          "quote": "To examine the impact of varying pre-trained initialization on forgetting, we evaluate different pre-trained Transfomer models... RoBERTa (Liu et al., 2019)."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "RoBERTa-base was executed as part of the experiments conducted in the paper.",
+          "quote": "To examine the impact of varying pre-trained initialization on forgetting, we evaluate different pre-trained Transfomer models... RoBERTa (Liu et al., 2019)."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "RoBERTa was one of the pre-trained models compared in the experiments with other models such as BERT-base and DistilBERT.",
+          "quote": "we observe that by increasing the number of tasks in the sequence, pre-trained models undergo severe forgetting. Surprisingly, the RoBERTa-base model out-performs BERT-Large despite having many fewer parameters."
+        },
+        "referenced_paper_title": {
+          "value": "RoBERTa: A Robustly Optimized BERT Pre-training Approach",
+          "justification": "The reference paper for RoBERTa is Liu et al., 2019, which introduced the RoBERTa model.",
+          "quote": "To examine the impact of varying pre-trained initialization on forgetting, we evaluate different pre-trained Transfomer models... RoBERTa (Liu et al., 2019)."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Split CIFAR-50",
+          "justification": "The Split CIFAR-50 dataset was used for homogenous image classification tasks in this study.",
+          "quote": "Split CIFAR-50 takes the first 50 classes of the CIFAR-100 image classification dataset... and randomly splits them into 5 homogenous 10-way classification tasks."
+        },
+        "aliases": [
+          "Split CIFAR-100"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning multiple layers of features from tiny images",
+          "justification": "The dataset is based on the CIFAR-100 dataset introduced by Krizhevsky and Hinton, 2009.",
+          "quote": "Split CIFAR-50 takes the first 50 classes of the CIFAR-100 image classification dataset (Krizhevsky & Hinton, 2009) and randomly splits them into 5 homogenous 10-way classification tasks."
+        }
+      },
+      {
+        "name": {
+          "value": "5-dataset",
+          "justification": "The 5-dataset benchmark consists of 5 diverse 10-way image classification tasks and was used extensively in the paper for evaluation.",
+          "quote": "5-dataset consists of 5 diverse 10-way image classification tasks: CIFAR-10 (Krizhevsky & Hinton, 2009), MNIST (LeCun, 1998), Fashion-MNIST (Xiao et al., 2017), SVHN (Netzer et al., 2011), and notMNIST (Bulatov, 2011)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "[Multiple reference papers for each dataset]",
+          "justification": "The benchmark aggregates multiple well-established datasets, each having its own reference paper.",
+          "quote": "5-dataset consists of... CIFAR-10 (Krizhevsky & Hinton, 2009), MNIST (LeCun, 1998), Fashion-MNIST (Xiao et al., 2017), SVHN (Netzer et al., 2011), and notMNIST (Bulatov, 2011)."
+        }
+      },
+      {
+        "name": {
+          "value": "Split CIFAR-100",
+          "justification": "The Split CIFAR-100 dataset was used for evaluating catastrophic forgetting in a more challenging and realistic setting.",
+          "quote": "Split CIFAR-100 splits the CIFAR-100 dataset into 20 disjoint 5-way classification tasks, with each task containing 2.5k/0.5k (train/test) examples."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning multiple layers of features from tiny images",
+          "justification": "The dataset is based on the CIFAR-100 dataset introduced by Krizhevsky and Hinton, 2009.",
+          "quote": "Split CIFAR-100 splits the CIFAR-100 dataset into 20 disjoint 5-way classification tasks, with each task containing 2.5k/0.5k (train/test) examples."
+        }
+      },
+      {
+        "name": {
+          "value": "5-dataset-NLP",
+          "justification": "The 5-dataset-NLP consists of text classification benchmarks from 5 diverse domains.",
+          "quote": "5-datasetNLP consists of text classification datasets (Zhang et al., 2015) from 5 diverse domains: AGNews, Yelp, Amazon, DBPedia, and YahooQA."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Character-level convolutional networks for text classification",
+          "justification": "The benchmark aggregates multiple text classification datasets, and the reference paper for AGNews, which is one of the datasets, is Zhang et al., 2015.",
+          "quote": "5-datasetNLP consists of text classification datasets (Zhang et al., 2015) from 5 diverse domains..."
+        }
+      },
+      {
+        "name": {
+          "value": "15-dataset-NLP",
+          "justification": "The paper introduces a novel dataset, 15-dataset-NLP, which spans 15 diverse text classification tasks to study the role of pre-trained initializations in lifelong learning.",
+          "quote": "we introduce 15-dataset-NLP, a novel suite of diverse tasks for LL. It consists of 15 text classification tasks covering a broad range of domains."
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "[No referenced paper]",
+          "justification": "This is a novel dataset introduced by the authors and hence does not have an external reference paper.",
+          "quote": "we introduce 15-dataset-NLP, a novel suite of diverse tasks for LL. It consists of 15 text classification tasks covering a broad range of domains."
+        }
+      },
+      {
+        "name": {
+          "value": "Split YahooQA",
+          "justification": "The Split YahooQA dataset was built from YahooQA by splitting it into 5 homogenous 2-way classification tasks.",
+          "quote": "Split YahooQA consists of 5 homogenous 2-way classification tasks and is built from a 10-way topic classification dataset (Zhang et al., 2015)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Character-level convolutional networks for text classification",
+          "justification": "The reference paper for YahooQA is Zhang et al., 2015, which introduced the dataset for question and answering topic classification.",
+          "quote": "Split YahooQA consists of 5 homogenous 2-way classification tasks and is built from a 10-way topic classification dataset (Zhang et al., 2015)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "HuggingFace Transformers",
+          "justification": "The HuggingFace Transformers library was used for implementing models like DistilBERT and BERT in the study.",
+          "quote": "we mainly set hyper-parameters to default implementation from HuggingFace."
+        },
+        "aliases": [
+          "Transformers"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Transformers: State-of-the-art Natural Language Processing",
+          "justification": "The paper associated with this library is Wolf et al., 2020, which provides an overview of the Transformers library.",
+          "quote": "we mainly set hyper-parameters to default implementation from HuggingFace."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 3132,
+    "prompt_tokens": 35605,
+    "total_tokens": 38737
+  }
+}

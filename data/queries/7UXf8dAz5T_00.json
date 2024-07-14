@@ -1,0 +1,162 @@
+{
+  "paper": "7UXf8dAz5T.txt",
+  "words": 13590,
+  "extractions": {
+    "title": {
+      "value": "Can We Scale Transformers to Predict Parameters of Diverse ImageNet Models?",
+      "justification": "The title explicitly names the primary topic of the paper.",
+      "quote": "Can We Scale Transformers to Predict Parameters of Diverse ImageNet Models?"
+    },
+    "description": "The paper aims to democratize pretraining by training a single neural network that predicts high-quality ImageNet parameters for various architectures. It introduces GHN-3, a scalable Graph HyperNetworks variant, and demonstrates its effectiveness in boosting training and transfer learning of diverse ImageNet models.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves conducting experiments to validate the effectiveness of GHN-3 in predicting parameters for diverse ImageNet models.",
+      "quote": "We evaluate if neural networks initialized with the parameters wpred predicted by GHNs obtain high performance..."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Neural Architecture Search",
+        "justification": "The paper focuses on using Graph HyperNetworks (GHNs) to predict parameters for diverse neural architectures, which is a core topic in Neural Architecture Search.",
+        "quote": "We train and release a single neural network that can predict high quality ImageNet parameters of other neural networks."
+      },
+      "aliases": [
+        "NAS"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Transformers",
+          "justification": "The paper extensively discusses and scales up Transformer-based models within the GHN-3 framework for parameter prediction.",
+          "quote": "We adopt Transformer from Ying et al. (2021) to improve the efficiency and scalability of GHNs and we modify it to better capture local and global graph structure of neural architectures."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Hypernetworks",
+          "justification": "The GHN-3 model is based on the concept of hypernetworks, which predict the weights for other neural network architectures.",
+          "quote": "We follow recent works where one network (HyperNetwork) parameterized by θ is trained to predict good parameters wpred for unseen network architectures..."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Image Classification",
+          "justification": "The paper's experiments and evaluations involve classifying images from the ImageNet dataset, indicating its relevance to Image Classification.",
+          "quote": "Our proposed GHN-3 closely resembles GHN-2 and uses the same training dataset. However, GHN-3 is > 100× larger, which we show is important to increase the performance on ImageNet."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "GHN-3",
+          "justification": "GHN-3 is the primary model introduced and evaluated in the paper.",
+          "quote": "Figure 1. We introduce GHN-3 models of a significantly larger scale and larger training meta-batch size (m) compared to GHN2 (Knyazev et al., 2021)."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 1,
+          "justification": "GHN-3 is introduced and evaluated within this paper itself.",
+          "quote": "Our GHN-3 model modifies GHN-2 (Knyazev et al., 2021) in three key ways..."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The paper includes experiments where the GHN-3 model is used to predict parameters and initialize other networks.",
+          "quote": "We evaluate if neural networks initialized with the parameters wpred predicted by GHNs obtain high performance without any training (Eq. 2) and after fine-tuning (Eq. 3)."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The GHN-3 model is compared against other initialization methods and models (like GHN-2) in various experiments.",
+          "quote": "As reported in Table 2, our GHN-3-based initialization consistently improves ImageNet performance compared to R AN D I NIT and the GHN-2-based initialization..."
+        },
+        "referenced_paper_title": {
+          "value": "Parameter prediction for unseen deep architectures",
+          "justification": "GHN-2 is referenced as a predecessor which GHN-3 aims to improve upon.",
+          "quote": "We introduce GHN-3 models of a significantly larger scale and larger training meta-batch size (m) compared to GHN2 (Knyazev et al., 2021)."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "ImageNet",
+          "justification": "The ImageNet dataset is extensively used for training and evaluating GHN-3 models in the paper.",
+          "quote": "We train the GHNs on the ILSVRC-2012 ImageNet dataset (Russakovsky et al., 2015) with 1.28M training and 50K validation images of the 1k classes."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ImageNet large scale visual recognition challenge",
+          "justification": "This is the main reference for the ImageNet dataset.",
+          "quote": "Novel neural architectures, e.g. Vision Transformer (Dosovitskiy et al., 2020), are usually first pretrained by Eq. (1) on some large D such as ImageNet (Russakovsky et al., 2015)..."
+        }
+      },
+      {
+        "name": {
+          "value": "DeepNets-1M",
+          "justification": "DeepNets-1M is used for training and evaluating GHNs, providing diverse training architectures.",
+          "quote": "To train and evaluate GHNs, they introduced a diverse and large dataset of training and evaluation architectures – D EEP N ETS -1M."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Parameter prediction for unseen deep architectures",
+          "justification": "DeepNets-1M is introduced in Knyazev et al. (2021)",
+          "quote": "To train and evaluate GHNs, they introduced a diverse and large dataset of training and evaluation architectures – D EEP N ETS -1M."
+        }
+      },
+      {
+        "name": {
+          "value": "ILSVRC-2012",
+          "justification": "ILSVRC-2012, a subset of ImageNet, is specified as the dataset used for training GHN models.",
+          "quote": "We train the GHNs on the ILSVRC-2012 ImageNet dataset (Russakovsky et al., 2015) with 1.28M training and 50K validation images of the 1k classes."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ImageNet large scale visual recognition challenge",
+          "justification": "ILSVRC-2012 is part of the ImageNet challenge.",
+          "quote": "We train the GHNs on the ILSVRC-2012 ImageNet dataset (Russakovsky et al., 2015) with 1.28M training and 50K validation images of the 1k classes."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is used as the primary framework for implementing and evaluating the models and networks discussed in the paper.",
+          "quote": "By using predicted parameters for initialization we are able to boost training of diverse ImageNet models available in PyTorch."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An imperative style, high-performance deep learning library",
+          "justification": "PyTorch is explicitly mentioned multiple times as the framework in use.",
+          "quote": "By using predicted parameters for initialization we are able to boost training of diverse ImageNet models available in PyTorch."
+        }
+      },
+      {
+        "name": {
+          "value": "AdamW",
+          "justification": "The AdamW optimizer is used to train GHNs in the experiments.",
+          "quote": "All GHNs are trained for 75 epochs using AdamW (Loshchilov & Hutter, 2017), initial learning rate 4e-4 decayed using the cosine scheduling..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Decoupled weight decay regularization",
+          "justification": "This is the primary reference paper for the AdamW optimizer.",
+          "quote": "All GHNs are trained for 75 epochs using AdamW (Loshchilov & Hutter, 2017), initial learning rate 4e-4 decayed using the cosine scheduling..."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1981,
+    "prompt_tokens": 32571,
+    "total_tokens": 34552
+  }
+}
