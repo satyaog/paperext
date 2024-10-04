@@ -2,8 +2,8 @@ from __future__ import annotations
 
 import enum
 import logging
-from typing import Any, Generic, List, Optional, TypeVar
 import typing
+from typing import Any, Generic, List, Optional, TypeVar
 
 from pydantic import BaseModel, Field
 
@@ -43,6 +43,8 @@ class Role(str, enum.Enum):
 
 
 T = TypeVar("T")
+
+
 class Explained(BaseModel, Generic[T]):
     value: T | str
     justification: str = Field(
@@ -52,10 +54,10 @@ class Explained(BaseModel, Generic[T]):
         description="The best literal quote from the paper which supports the value",
     )
 
-    def __eq__(self, other:"Explained"):
+    def __eq__(self, other: "Explained"):
         return str_normalize(str(self.value)) == str_normalize(str(other.value))
 
-    def __lt__(self, other:"Explained"):
+    def __lt__(self, other: "Explained"):
         if isinstance(self.value, bool):
             return not self.value < other.value
         return str_normalize(str(self.value)) < str_normalize(str(other.value))
@@ -86,11 +88,14 @@ class Model(BaseModel):
         description="Title of the reference paper of the Model, found in the references section",
     )
 
-    def __lt__(self, other:"Explained"):
+    def __lt__(self, other: "Explained"):
         for (k, v), (ok, ov) in zip(self, other):
             if k != ok:
                 break
-            if k in ("caracteristics","referenced_paper_title",):
+            if k in (
+                "caracteristics",
+                "referenced_paper_title",
+            ):
                 continue
             if v == ov:
                 continue
@@ -127,11 +132,14 @@ class Dataset(BaseModel):
         description="Title of the reference paper of the Dataset, found in the references section",
     )
 
-    def __lt__(self, other:"Explained"):
+    def __lt__(self, other: "Explained"):
         for (k, v), (ok, ov) in zip(self, other):
             if k != ok:
                 break
-            if k in ("caracteristics","referenced_paper_title",):
+            if k in (
+                "caracteristics",
+                "referenced_paper_title",
+            ):
                 continue
             if v == ov:
                 continue
@@ -153,11 +161,14 @@ class Library(BaseModel):
         description="Title of the reference paper of the Library, found in the references section",
     )
 
-    def __lt__(self, other:"Explained"):
+    def __lt__(self, other: "Explained"):
         for (k, v), (ok, ov) in zip(self, other):
             if k != ok:
                 break
-            if k in ("caracteristics","referenced_paper_title",):
+            if k in (
+                "caracteristics",
+                "referenced_paper_title",
+            ):
                 continue
             if v == ov:
                 continue
@@ -173,7 +184,7 @@ class ResearchField(BaseModel):
         description="List of names or acronyms used to identify the Research Field or application domain",
     )
 
-    def __lt__(self, other:"ResearchField"):
+    def __lt__(self, other: "ResearchField"):
         for (k, v), (ok, ov) in zip(self, other):
             if k != ok:
                 break
@@ -198,19 +209,15 @@ class PaperExtractions(BaseModel):
     )
     primary_research_field: ResearchField = Field(
         description="Primary research field of the paper, ideally a Deep "
-            "Learning sub-research field like Natural Language Processing or "
-            "Computer Vision",
+        "Learning sub-research field like Natural Language Processing or "
+        "Computer Vision",
     )
     sub_research_fields: List[ResearchField] = Field(
         description="List of Deep Learning sub-research fields or application "
-            "domains of the paper, order from major to minor",
+        "domains of the paper, order from major to minor",
     )
-    models: List[Model] = Field(
-        description="All Models found in the paper"
-    )
-    datasets: List[Dataset] = Field(
-        description="All Datasets found in the paper"
-    )
+    models: List[Model] = Field(description="All Models found in the paper")
+    datasets: List[Dataset] = Field(description="All Datasets found in the paper")
     libraries: List[Library] = Field(
         description="All Deep Learning Libraries explicitely used or contributed according to the paper"
     )
@@ -233,7 +240,7 @@ def _is_base(cls, other):
         return False
 
 
-def _empty_fields(model_cls:BaseModel):
+def _empty_fields(model_cls: BaseModel):
     try:
         iter_fields = model_cls.model_fields.items()
     except AttributeError:
@@ -243,10 +250,7 @@ def _empty_fields(model_cls:BaseModel):
             return _EMPTY_FLAG
 
     if _is_base(model_cls, Explained):
-        fields = {
-            k: (_empty_fields(v) if k == "value" else "")
-            for k, v in iter_fields
-        }
+        fields = {k: (_empty_fields(v) if k == "value" else "") for k, v in iter_fields}
     else:
         fields = {}
         for k, field in iter_fields:
@@ -256,6 +260,4 @@ def _empty_fields(model_cls:BaseModel):
 
 
 def empty_model(model_cls):
-    return model_cls(
-        **_empty_fields(model_cls)
-    )
+    return model_cls(**_empty_fields(model_cls))

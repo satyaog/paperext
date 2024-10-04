@@ -1,18 +1,18 @@
 import argparse
 import ast
-from pathlib import Path
 import sys
+from pathlib import Path
 from typing import List
 
 from .utils import python_module
 
-PROG=f"python3 -m {python_module(__file__)}"
+PROG = f"python3 -m {python_module(__file__)}"
 
-DESCRIPTION="""
+DESCRIPTION = """
 Utility to parse and gather stats on query logs
 """
 
-EPILOG=f"""
+EPILOG = f"""
 Example:
   $ {PROG} query.out
     Per paper errors
@@ -70,12 +70,12 @@ Example:
 """
 
 
-def parse_pydantic_error_lines(error_lines:List[str]):
+def parse_pydantic_error_lines(error_lines: List[str]):
     errors = {
         "field": [],
         "generic": [],
     }
-    current_error = {"type":"generic", "details":[]}
+    current_error = {"type": "generic", "details": []}
     for l in error_lines:
         if l.startswith("  "):
             current_error["details"].append(l)
@@ -93,21 +93,21 @@ def parse_pydantic_error_lines(error_lines:List[str]):
     return errors
 
 
-def parse_request_output(request_output:str):
+def parse_request_output(request_output: str):
     while request_output:
-        request_output = request_output[request_output.index(":")+1:]
+        request_output = request_output[request_output.index(":") + 1 :]
         try:
             request_output = ast.literal_eval(request_output)
         except SyntaxError:
             continue
         break
 
-    assert sorted(request_output.keys()) == ['files', 'json_data', 'method', 'url']
+    assert sorted(request_output.keys()) == ["files", "json_data", "method", "url"]
 
     return request_output
 
 
-def request_id(request_output:dict):
+def request_id(request_output: dict):
     message_content = request_output["json_data"]["messages"][1]["content"]
     message_content_lines = message_content.split("\n")
     message_paper_lines = message_content_lines[1:]
@@ -123,13 +123,10 @@ def main(argv=None):
         prog=PROG,
         description=DESCRIPTION,
         epilog=EPILOG,
-        formatter_class=argparse.RawDescriptionHelpFormatter
+        formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     parser.add_argument(
-        "input",
-        metavar="TXT",
-        type=Path,
-        help="query stdout file to parse"
+        "input", metavar="TXT", type=Path, help="query stdout file to parse"
     )
     options = parser.parse_args(argv)
 
@@ -139,33 +136,38 @@ def main(argv=None):
         "error_begin": {
             "line_idx": None,
             "cnt": 0,
-            "check": lambda l:l.startswith("Message: 'Error response:"),
-            "invalidate": ["pydantic_error_stop"]
+            "check": lambda l: l.startswith("Message: 'Error response:"),
+            "invalidate": ["pydantic_error_stop"],
         },
         "pydantic_error_begin": {
             "line_idx": None,
             "cnt": 0,
-            "check": lambda l:l.startswith("Arguments:"),
-            "invalidate": []
+            "check": lambda l: l.startswith("Arguments:"),
+            "invalidate": [],
         },
         "request_output": {
             "line_idx": None,
             "cnt": 0,
-            "check": lambda l:l.startswith("DEBUG:openai._base_client:Request options:"),
-            "invalidate": []
+            "check": lambda l: l.startswith(
+                "DEBUG:openai._base_client:Request options:"
+            ),
+            "invalidate": [],
         },
         "pydantic_error_stop": {
             "line_idx": None,
             "cnt": 0,
-            "check": lambda l:l.startswith("DEBUG:") or "Failed to extract paper informations from" in l or l.startswith("DEBUG:") or not l.strip(),
-            "invalidate": ["error_begin", "pydantic_error_begin"]
+            "check": lambda l: l.startswith("DEBUG:")
+            or "Failed to extract paper informations from" in l
+            or l.startswith("DEBUG:")
+            or not l.strip(),
+            "invalidate": ["error_begin", "pydantic_error_begin"],
         },
     }
 
-    error_begin = lambda:checks["error_begin"]["line_idx"]
-    pydantic_error_begin = lambda:checks["pydantic_error_begin"]["line_idx"]
-    request_output = lambda:checks["request_output"]["line_idx"]
-    pydantic_error_stop = lambda:checks["pydantic_error_stop"]["line_idx"]
+    error_begin = lambda: checks["error_begin"]["line_idx"]
+    pydantic_error_begin = lambda: checks["pydantic_error_begin"]["line_idx"]
+    request_output = lambda: checks["request_output"]["line_idx"]
+    pydantic_error_stop = lambda: checks["pydantic_error_stop"]["line_idx"]
 
     errors = {}
     error_lines = []
@@ -189,10 +191,7 @@ def main(argv=None):
                 new_errors = parse_pydantic_error_lines(error_lines[1:])
                 for f in new_errors["field"]:
                     name = f["name"]
-                    name = [
-                        "*" if part.isdigit() else part
-                        for part in name.split(".")
-                    ]
+                    name = ["*" if part.isdigit() else part for part in name.split(".")]
                     f["name"] = ".".join(name)
                 errors.setdefault(id, [])
                 errors[id].append(new_errors)
@@ -201,28 +200,27 @@ def main(argv=None):
         if error_begin() and pydantic_error_begin():
             error_lines.append(l)
 
-    stats = {
-        "errors": {"Generic Error": 0},
-        "failures": {}
-    }
+    stats = {"errors": {"Generic Error": 0}, "failures": {}}
     errors_stats = stats["errors"]
     cols = []
     cols.append(("", "", "", "Per paper errors"))
     cols.append(("", "", "", "================"))
-    for paper_errors in sum(map(lambda entry:[{"failures_cnt":len(entry)}] + entry, errors.values()), []):
+    for paper_errors in sum(
+        map(lambda entry: [{"failures_cnt": len(entry)}] + entry, errors.values()), []
+    ):
         if paper_errors.get("failures_cnt", 0):
-            failures_cnt = paper_errors['failures_cnt']
+            failures_cnt = paper_errors["failures_cnt"]
             stats["failures"].setdefault(failures_cnt, 0)
             stats["failures"][failures_cnt] += 1
             cols.append(("", "", "", f"Failures count for paper: {failures_cnt}"))
-            cols.append(("", "", "",  "---------------------------"))
+            cols.append(("", "", "", "---------------------------"))
             continue
 
         fields = paper_errors.get("field", [])
         fields_stats = {}
         for field in sorted(set([f["name"] for f in fields])):
             errors_stats.setdefault(field, 0)
-            fields_stats[field] = sum(field == f['name'] for f in fields)
+            fields_stats[field] = sum(field == f["name"] for f in fields)
             errors_stats[field] += 1
             cols.append((field, str(fields_stats[field]), "~1"))
 
@@ -235,7 +233,9 @@ def main(argv=None):
     cols.append(("", "", "", "Error type involved in a paper validation"))
     cols.append(("", "", "", "========================================="))
     for field in sorted(errors_stats.keys()):
-        cols.append((field, str(errors_stats[field]), f"/{checks['error_begin']['cnt']}"))
+        cols.append(
+            (field, str(errors_stats[field]), f"/{checks['error_begin']['cnt']}")
+        )
 
     cols.append(("", "", ""))
     cols.append(("", "", "", "Queries Stats"))
@@ -243,7 +243,9 @@ def main(argv=None):
     cols.append(("Requests cnt", "", str(checks["request_output"]["cnt"])))
     cols.append(("Errors cnt", "", str(checks["error_begin"]["cnt"])))
     for failures_cnt in sorted(stats["failures"]):
-        cols.append((f"{failures_cnt} failure(s)", "", str(stats["failures"][failures_cnt])))
+        cols.append(
+            (f"{failures_cnt} failure(s)", "", str(stats["failures"][failures_cnt]))
+        )
 
     max_cols = (
         max([len(col[0]) for col in cols]),
