@@ -1,0 +1,161 @@
+{
+  "paper": "909e785543bb6169293392cec359db6b.txt",
+  "words": 17742,
+  "extractions": {
+    "title": {
+      "value": "RECOVER identifies synergistic drug combinations in vitro through sequential model optimization",
+      "justification": "The title clearly indicates the focus of the research on identifying synergistic drug combinations using the RECOVER model.",
+      "quote": "RECOVER identifies synergistic drug combinations in vitro through sequential model optimization"
+    },
+    "description": "The paper discusses the use of a deep learning model called RECOVER to identify and evaluate synergistic drug combinations using only a small fraction of the possible search space in vitro. It utilizes a sequential model optimization approach to guide wet-lab experiments efficiently.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper describes empirical experiments carried out using the RECOVER model to identify synergistic drug combinations, along with in vitro testing such as cell viability assays.",
+      "quote": "For large libraries of small molecules, exhaustive combinatorial screens become infeasible. Through five rounds of experimentation, Bertin et al. utilize a deep learning model to guide cell viability assays and select drug combinations."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Biomedical Research",
+        "justification": "The paper is focused on identifying drug combinations which is a key area in biomedical research, especially related to drug discovery and development.",
+        "quote": "The goal of this work is to discover synergistic drug combinations while only requiring minimal wet-lab experimentation."
+      },
+      "aliases": [
+        "Drug Discovery",
+        "Biomedicine"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Cancer Research",
+          "justification": "The research involves testing drug combinations on a breast cancer model cell line, MCF7.",
+          "quote": "Finally, we test RECOVER prospectively in an in vitro experimental setting, whereby we discover novel synergistic combinations active against a breast cancer model cell line, MCF7."
+        },
+        "aliases": [
+          "Oncology"
+        ]
+      },
+      {
+        "name": {
+          "value": "Machine Learning",
+          "justification": "The paper applies machine learning techniques for drug synergy prediction via the RECOVER model.",
+          "quote": "Deep learning models have achieved state-of-the-art results in silico for the prediction of synergy scores."
+        },
+        "aliases": [
+          "AI in Biomedicine"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "RECOVER",
+          "justification": "The RECOVER model is explicitly mentioned as the primary deep learning model used for synergy prediction and guiding drug combination experiments.",
+          "quote": "RECOVER is an open-source SMO platform for the optimal suggestion of drug combinations."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "RECOVER is a key contribution of the paper as it is the main model used.",
+          "quote": "We present a SMO platform that can guide wet-lab experiments: RECOVER, a deep learning regression model that predicts synergy using molecular fingerprints as inputs."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The RECOVER model was actively used and tested through the experiments described in the paper.",
+          "quote": "We perform multiple rounds of RECOVER-informed wet-lab experiments and observe sequential improvements in performance."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "RECOVER is compared against other methods like DeepSynergy to evaluate performance.",
+          "quote": "We first observe that DeepSynergy performs worse than random, while RECOVER (without SMO) performs slightly above the level of randomness."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The paper does not reference another paper for the RECOVER model but contributes it instead.",
+          "quote": ""
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "NCI-ALMANAC",
+          "justification": "The NCI-ALMANAC is explicitly mentioned as a dataset used for pretraining and evaluation.",
+          "quote": "We refrain from combining multiple datasets because of the severe batch effects between studies; in Figure S1F, we show a scatterplot that demonstrates inconsistency between the O’Neil et al. series of drug combination experiments against their NCI-ALMANAC counterpart."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The national cancer institute almanac: a comprehensive screening resource for the detection of anticancer drug pairs with enhanced therapeutic activity",
+          "justification": "The dataset is referenced as a screening resource for anticancer drug pairs with enhanced therapeutic activity.",
+          "quote": "The national cancer institute almanac: a comprehensive screening resource for the detection of anticancer drug pairs with enhanced therapeutic activity."
+        }
+      },
+      {
+        "name": {
+          "value": "DrugComb",
+          "justification": "DrugComb is used for providing additional drug combination data and comparison with the study’s findings.",
+          "quote": "The prediction set for experiment selection was built by taking 54 out of the 95 Almanac drugs for which a mechanism of action (MoA) was annotated in ChEMBL 25."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "DrugComb: an integrative cancer drug combination data portal",
+          "justification": "The DrugComb database is described as an integrative portal for drug combinations, which aligns with its usage in this study.",
+          "quote": "DrugComb: an integrative cancer drug combination data portal."
+        }
+      },
+      {
+        "name": {
+          "value": "O'Neil Study",
+          "justification": "The O'Neil study is used for pretraining and comparing models to assess generalization capabilities.",
+          "quote": "We confirm the significant batch effects between the NCI-ALMANAC and the O’Neil 2016 studies render using the same model parameters for both studies impossible."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "An unbiased oncology compound screen to identify novel combination strategies",
+          "justification": "The paper explicitly references the O'Neil study in the context of unbiased oncology screens to identify combination strategies.",
+          "quote": "An unbiased oncology compound screen to identify novel combination strategies."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Scikit-learn",
+          "justification": "Scikit-learn is mentioned as part of the data processing pipeline for model training.",
+          "quote": "Clustering was performed with the k-medoids algorithm as implemented in scikit-learn 0.24.2 (n_clusters = 54, metric = Tanimoto similarity, init = k-medoids++)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Scikit-learn: Machine learning in Python",
+          "justification": "The Scikit-learn library is referenced for its machine learning capabilities, aligning with its usage in the research.",
+          "quote": "Scikit-learn: Machine learning in Python."
+        }
+      },
+      {
+        "name": {
+          "value": "RDKit",
+          "justification": "RDKit is used for chemical informatics, particularly for representing drug structures.",
+          "quote": "Replacements for each of the three drugs were selected by taking the nearest analogue (evaluated by Tanimoto similarity) in the same cluster. 54 Almanac and 54 non-Almanac compounds thus selected were used to build a set of 2916 binary combinations made up by one Almanac and one non-Almanac compound."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "RDKit: Open-Source Cheminformatics",
+          "justification": "The RDKit library is referenced for its capabilities in cheminformatics, which is leveraged in the study.",
+          "quote": "RDKit: Open-Source Cheminformatics."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1433,
+    "prompt_tokens": 30511,
+    "total_tokens": 31944,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": null
+  }
+}

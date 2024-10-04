@@ -93,6 +93,20 @@ def parse_pydantic_error_lines(error_lines: List[str]):
     return errors
 
 
+def parse_openai_error_lines(error_lines: List[str]):
+    errors = {
+        "openai": [],
+    }
+    current_error = {"type": "openai", "details": ""}
+    for l in error_lines:
+        if l.startswith("openai."):
+            current_error["details"] = l
+            err = current_error.copy()
+            errors[current_error["type"]].append(err)
+            current_error["details"] = ""
+    return errors
+
+
 def parse_request_output(request_output: str):
     while request_output:
         request_output = request_output[request_output.index(":") + 1 :]
@@ -136,13 +150,21 @@ def main(argv=None):
         "error_begin": {
             "line_idx": None,
             "cnt": 0,
-            "check": lambda l: l.startswith("Message: 'Error response:"),
-            "invalidate": ["pydantic_error_stop"],
+            "check": lambda l: l.startswith("Message: 'Error response:")
+            or l.startswith("Failed after retries:"),
+            "invalidate": ["error_stop"],
         },
         "pydantic_error_begin": {
             "line_idx": None,
             "cnt": 0,
-            "check": lambda l: l.startswith("Arguments:"),
+            "check": lambda l: l.startswith("Arguments:")
+            or l.startswith("pydantic_core._pydantic_core.ValidationError:"),
+            "invalidate": [],
+        },
+        "openai_error_begin": {
+            "line_idx": None,
+            "cnt": 0,
+            "check": lambda l: l.startswith("openai.BadRequestError:"),
             "invalidate": [],
         },
         "request_output": {
@@ -153,24 +175,26 @@ def main(argv=None):
             ),
             "invalidate": [],
         },
-        "pydantic_error_stop": {
+        "error_stop": {
             "line_idx": None,
             "cnt": 0,
             "check": lambda l: l.startswith("DEBUG:")
             or "Failed to extract paper informations from" in l
             or l.startswith("DEBUG:")
             or not l.strip(),
-            "invalidate": ["error_begin", "pydantic_error_begin"],
+            "invalidate": ["error_begin", "pydantic_error_begin", "openai_error_begin"],
         },
     }
 
     error_begin = lambda: checks["error_begin"]["line_idx"]
     pydantic_error_begin = lambda: checks["pydantic_error_begin"]["line_idx"]
+    openai_error_begin = lambda: checks["openai_error_begin"]["line_idx"]
     request_output = lambda: checks["request_output"]["line_idx"]
-    pydantic_error_stop = lambda: checks["pydantic_error_stop"]["line_idx"]
+    error_stop = lambda: checks["error_stop"]["line_idx"]
 
     errors = {}
     error_lines = []
+    type_error_begin = None
 
     for i, l in enumerate(lines):
         print(i, l[:100], sep="\t", file=sys.stderr)
@@ -183,24 +207,30 @@ def main(argv=None):
                     checks[k]["line_idx"] = None
                 break
 
-        if pydantic_error_stop():
-            if error_lines:
-                request_output_dict = lines[request_output()]
-                request_output_dict = parse_request_output(request_output_dict)
-                id = request_id(request_output_dict)
+        if error_stop() and error_lines:
+            request_output_dict = lines[request_output()]
+            request_output_dict = parse_request_output(request_output_dict)
+            id = request_id(request_output_dict)
+            if type_error_begin is pydantic_error_begin:
                 new_errors = parse_pydantic_error_lines(error_lines[1:])
-                for f in new_errors["field"]:
-                    name = f["name"]
-                    name = ["*" if part.isdigit() else part for part in name.split(".")]
-                    f["name"] = ".".join(name)
-                errors.setdefault(id, [])
-                errors[id].append(new_errors)
+            elif type_error_begin is openai_error_begin:
+                new_errors = parse_openai_error_lines(error_lines)
+            for f in new_errors.get("field", []):
+                name = f["name"]
+                name = ["*" if part.isdigit() else part for part in name.split(".")]
+                f["name"] = ".".join(name)
+            errors.setdefault(id, [])
+            errors[id].append(new_errors)
             error_lines = []
 
-        if error_begin() and pydantic_error_begin():
-            error_lines.append(l)
+        for type_error_begin in (pydantic_error_begin, openai_error_begin):
+            if error_begin() and type_error_begin():
+                error_lines.append(l)
+                break
+        else:
+            type_error_begin = None
 
-    stats = {"errors": {"Generic Error": 0}, "failures": {}}
+    stats = {"errors": {"Generic Error": 0, "OpenAI Error": 0}, "failures": {}}
     errors_stats = stats["errors"]
     cols = []
     cols.append(("", "", "", "Per paper errors"))
@@ -227,6 +257,10 @@ def main(argv=None):
         for generic in paper_errors.get("generic", []):
             errors_stats["Generic Error"] += 1
             cols.append(("", "", "", "Generic Error:", "\n" + generic["details"]))
+
+        for openai_ in paper_errors.get("openai", []):
+            errors_stats["OpenAI Error"] += 1
+            cols.append(("", "", "", "OpenAI Error:", "\n" + openai_["details"]))
 
         cols.append(("", "", ""))
 

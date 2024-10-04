@@ -74,7 +74,7 @@ An OpenAI API Key is required to run this utility:
       --input TXT           List of papers to analyse
 
     Example:
-      $ python3 -m llm_paper_extract.query --input data/query_set.txt > query.out
+      $ python3 -m llm_paper_extract.query --input data/query_set.txt > query.out 2>&1
 
 *****************************************
 llm_paper_extract.parse_validation_errors

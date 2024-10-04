@@ -1,0 +1,164 @@
+{
+  "paper": "8f1cfb3852921c2f02b0a8c476d48fd5.txt",
+  "words": 19156,
+  "extractions": {
+    "title": {
+      "value": "Learning to repeatedly solve routing problems",
+      "justification": "The title is taken directly from the first page of the paper.",
+      "quote": "Learning to repeatedly solve routing problems"
+    },
+    "description": "The paper presents a learned heuristic for reoptimizing combinatorial optimization problems after slight modifications to the data. It focuses on the capacitated vehicle routing problem (CVRP) where only client demands change. The method predicts and fixes edges likely to remain in an optimal solution, reducing problem complexity and computing time.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper describes a learned heuristic method, applies it to the CVRP, and reports computational results, indicating an empirical study.",
+      "quote": "In this paper, we present a learned heuristic for the reoptimization of a problem after a minor change in its data."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Combinatorial Optimization",
+        "justification": "The paper focuses on applying machine learning to solve combinatorial optimization problems, particularly the CVRP.",
+        "quote": "In the last years, there has been a great interest in machine-learning-based heuristics for solving NP-hard combinatorial optimization problems."
+      },
+      "aliases": [
+        "CO"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Vehicle Routing Problem",
+          "justification": "The paper applies its learned heuristic method specifically to the capacitated vehicle routing problem, which is a subfield of combinatorial optimization.",
+          "quote": "applied to other CVRP variants and also to other routing problems."
+        },
+        "aliases": [
+          "CVRP"
+        ]
+      },
+      {
+        "name": {
+          "value": "Machine Learning",
+          "justification": "The paper integrates machine learning with combinatorial optimization to develop and apply a heuristic method.",
+          "quote": "The idea of leveraging ML for the development of new heuristics has shown potential in many CO problems such as traveling salesman problem (TSP), capacited vehicle routing problem (CVRP), etc."
+        },
+        "aliases": [
+          "ML"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "FILO",
+          "justification": "FILO is mentioned as a recent heuristic for solving the CVRP, used in the data collection phase of the method proposed in the paper.",
+          "quote": "For this reason, we chose to use a recent heuristic called FILO (Accorsi and Vigo, 2021), which is a short term for Fast Iterated Localized Search Optimization."
+        },
+        "aliases": [
+          "Fast Iterated Localized Search Optimization"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "FILO is used for data collection and is not a new contribution of this paper. It was created by Accorsi and Vigo, 2021.",
+          "quote": "For this reason, we chose to use a recent heuristic called FILO (Accorsi and Vigo, 2021)..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper mentions using FILO during the data collection phase to solve several instances of CVRP.",
+          "quote": "For each of the 7,200 instances, we run the heuristic using 10 different random seed values for 1,000,000 iterations..."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "FILO is not directly compared in the results but rather used for training the ML models and collecting data.",
+          "quote": "...we chose to use the FILO heuristic of Accorsi and Vigo (2021)(see Section 3.3)."
+        },
+        "referenced_paper_title": {
+          "value": "A fast and scalable heuristic for the solution of large-scale capacitated vehicle routing problems",
+          "justification": "This title is associated with the FILO heuristic by Accorsi and Vigo.",
+          "quote": "FILO (Accorsi and Vigo, 2021)..."
+        }
+      },
+      {
+        "name": {
+          "value": "DACT",
+          "justification": "DACT is mentioned as a comparative ML method used to evaluate the proposed approach.",
+          "quote": "We chose the Dual-Aspect Collaborative Transformer algorithm (DACT - Ma et al. (2021)) that is considered one of the most effective methods for solving the CVRP to-date."
+        },
+        "aliases": [
+          "Dual-Aspect Collaborative Transformer"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "DACT is used for comparison and is not introduced by this paper.",
+          "quote": "...we chose the Dual-Aspect Collaborative Transformer algorithm (DACT - Ma et al. (2021))..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "DACT is executed as a comparison method as detailed in the results section.",
+          "quote": "Therefore, the edge-fixing method outperforms DACT both in terms of computing time and solution quality."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "DACT is directly compared in terms of performance with the edge-fixing method of the paper.",
+          "quote": "Therefore, the edge-fixing method outperforms DACT both in terms of computing time and solution quality."
+        },
+        "referenced_paper_title": {
+          "value": "Learning to iteratively solve routing problems with dual-aspect collaborative transformer",
+          "justification": "The paper explicitly mentions DACT as being introduced by Ma et al. 2021 for solving CVRP.",
+          "quote": "DACT (Ma et al. (2021))"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "X instances",
+          "justification": "The X instances are a set of benchmark VRP instances used to train the ML models.",
+          "quote": "The performance of the FILO algorithm has been compared by the authors to other state-of-the-art heuristics and has proven to be highly competitive on the X instances introduced by Uchoa et al. (2017)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "New benchmark instances for the capacitated vehicle routing problem",
+          "justification": "The X instances come from the paper by Uchoa et al. 2017, identified as the source of these benchmark instances.",
+          "quote": "X instances introduced by Uchoa et al. (2017)"
+        }
+      },
+      {
+        "name": {
+          "value": "Uniform demand distribution dataset",
+          "justification": "This dataset is used to vary client demands across different scenarios in the experimental section.",
+          "quote": "For each instance described in Table 1, we generate a set of modified instances by randomly changing the demands of N c % of the clients."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "New benchmark instances for the capacitated vehicle routing problem",
+          "justification": "While the variation in demand distribution refers to modifications of existing 'X instances', the base reference still aligns with the benchmark dataset from Uchoa et al. 2017.",
+          "quote": "...by Uchoa et al. (2017), which are also the benchmark instances used by our method."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The paper utilizes PyTorch to implement the neural network models used for prediction.",
+          "quote": "According to the results obtained on the test set, the ANN model is the overall most robust model with accuracies ranging from 70% to 88%... The models are implemented using PyTorch."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch",
+          "justification": "PyTorch is referenced as a tool for implementing ANN models used in experiments.",
+          "quote": "The models are implemented using PyTorch."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1441,
+    "prompt_tokens": 39129,
+    "total_tokens": 40570,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": null
+  }
+}

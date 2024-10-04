@@ -1,6 +1,8 @@
 import argparse
 import asyncio
 import bdb
+import json
+import logging
 import warnings
 from pathlib import Path
 from typing import List, Tuple
@@ -11,13 +13,12 @@ import pydantic_core
 from openai.types.chat.chat_completion import CompletionUsage
 
 from . import ROOT_DIR
-from .models.model import (
-    _FIRST_MESSAGE,
-    _RETRY_MESSAGE,
-    ExtractionResponse,
-    PaperExtractions,
-)
-from .utils import build_validation_set, python_module
+from .models.model import (_FIRST_MESSAGE, _RETRY_MESSAGE, ExtractionResponse,
+                           PaperExtractions)
+from .utils import Paper, build_validation_set, python_module
+
+# Set logging to DEBUG to print OpenAI requests
+logging.basicConfig(level=logging.DEBUG)
 
 PROG = f"python3 -m {python_module(__file__)}"
 
@@ -42,7 +43,6 @@ async def extract_from_research_paper(
             extractions, completion = (
                 await client.chat.completions.create_with_completion(
                     model="gpt-4o",
-                    # model="gpt-3.5-turbo",
                     response_model=PaperExtractions,
                     messages=[
                         {
@@ -144,9 +144,21 @@ def main(argv=None):
         default=None,
         help="List of papers to analyse",
     )
+    parser.add_argument(
+        "--paperoni",
+        metavar="JSON",
+        type=Path,
+        default=None,
+        help="Paperoni json output of papers to query on converted pdfs -> txts",
+    )
     options = parser.parse_args(argv)
 
-    if options.input:
+    if options.paperoni:
+        papers = [
+            Paper(p).get_link_id_pdf() for p in json.loads(options.paperoni.read_text())
+        ]
+        papers = [p for p in papers if p is not None]
+    elif options.input:
         papers = [
             Path(paper)
             for paper in Path(options.input).read_text().splitlines()
@@ -163,7 +175,11 @@ def main(argv=None):
 
     assert all(map(lambda p: p.exists(), papers))
 
-    client = instructor.from_openai(openai.AsyncOpenAI())
+    client = instructor.from_openai(
+        # TODO: update to use the new feature Mode.TOOLS_STRICT
+        # https://openai.com/index/introducing-structured-outputs-in-the-api/
+        openai.AsyncOpenAI()# , mode=instructor.Mode.TOOLS_STRICT
+    )
 
     asyncio.run(ignore_exceptions(client, [paper.absolute() for paper in papers]))
 

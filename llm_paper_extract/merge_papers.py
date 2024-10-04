@@ -18,11 +18,8 @@ from pygments.lexers.data import YamlLexer
 
 from . import ROOT_DIR
 from .models.model import ExtractionResponse, PaperExtractions, empty_model
-from .models.utils import (
-    convert_model_json_to_yaml,
-    model_dump_yaml,
-    model_validate_yaml,
-)
+from .models.utils import (convert_model_json_to_yaml, model_dump_yaml,
+                           model_validate_yaml)
 from .utils import str_normalize
 
 _EDITOR = os.environ.get("VISUAL", os.environ.get("EDITOR", None))

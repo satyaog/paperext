@@ -1,0 +1,140 @@
+{
+  "paper": "ecb00dabbada7cb50d9e2eb08bd2fbaa.txt",
+  "words": 19934,
+  "extractions": {
+    "title": {
+      "value": "Stealing Part of a Production Language Model",
+      "justification": "The title is directly mentioned at the top of the paper.",
+      "quote": "Stealing Part of a Production Language Model"
+    },
+    "description": "The paper introduces the first model-stealing attack that extracts precise information from black-box production language models like OpenAI’s ChatGPT or Google’s PaLM-2 by recovering the embedding projection layer of a transformer model through queries to its API. The research provides insight into hidden dimensions of these models and discusses potential defenses.",
+    "type": {
+      "value": "empirical",
+      "justification": "The research involves empirical experiments on actual production language models, such as OpenAI's ChatGPT and Google's PaLM-2, and analyzes the effectiveness of the attack through practical results.",
+      "quote": "In this paper we ask: how much information can an adversary learn about a production language model by making queries to its API?"
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Model Stealing",
+        "justification": "The paper focuses on the empirical evaluation of a model-stealing attack on language models, which is within the field of model stealing.",
+        "quote": "This is the question studied by the field of model stealing (Tramèr et al., 2016): the ability of an adver-sary to extract model weights by making queries its API."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Adversarial Machine Learning",
+          "justification": "The study is concerned with extracting model weights through adversarial interactions with API-guarded models, a key aspect of Adversarial Machine Learning.",
+          "quote": "model stealing attacks are not just of academic concern but can be practically applied to the largest production models deployed today."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Language Models",
+          "justification": "The paper is focused on extracting details from transformer-based language models like GPT-3.5, GPT-4, and PaLM-2, indicating it is within the domain of large language models (LLMs).",
+          "quote": "Our attack is effective and efficient, and is applicable to production models whose APIs expose full logprobs, or a “logit bias”. This included Google’s PaLM-2 and OpenAI’s GPT-4 (Anil et al., 2023; OpenAI et al., 2023)."
+        },
+        "aliases": [
+          "LLMs"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "GPT-3.5",
+          "justification": "GPT-3.5 is explicitly mentioned as one of the models targeted in the study.",
+          "quote": "We also recover the exact hidden dimension size of the gpt-3.5-turbo model, and estimate it would cost under $2,000 in queries to recover the entire projection matrix."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "GPT-3.5 is referenced as an existing model targeted by the attack rather than a new contribution by the paper.",
+          "quote": "In this paper we introduce the first model-stealing attack that extracts precise, nontrivial information from black-box production language models like OpenAI’s ChatGPT or Google’s PaLM-2."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper executed an extraction attack on GPT-3.5 as part of its empirical study.",
+          "quote": "We apply a limited form of our attack to gpt-3.5 at a cost of under $200 USD."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "GPT-3.5 is analyzed for its hidden layer extraction but isn't directly compared against other models in a benchmark-like fashion.",
+          "quote": "We also recover the exact hidden dimension size of the gpt-3.5-turbo model."
+        },
+        "referenced_paper_title": {
+          "value": "Language Models are Unsupervised Multitask Learners",
+          "justification": "The paper likely refers to the original introduction of GPT-3 and its architectures as context for the attack.",
+          "quote": "GPT-3.5-turbo model."
+        }
+      },
+      {
+        "name": {
+          "value": "GPT-2",
+          "justification": "GPT-2 is among the studied models for both dimensionality and projection matrix extraction.",
+          "quote": "We now analyze the efficacy of this attack across a wider range of models: GPT-2 (Radford et al., 2019) Small and XL."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "GPT-2 is an existing model analyzed in this paper's context rather than a new contribution.",
+          "quote": "We now analyze the efficacy of this attack across a wider range of models: GPT-2 (Radford et al., 2019)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The extraction attack was tested on the GPT-2 model.",
+          "quote": "We apply this insight to the GPT-2 model."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "While GPT-2 is evaluated, it is not used as a baseline or directly compared to other models regarding performance benchmarks.",
+          "quote": "We now analyze the efficacy of this attack across a wider range of models: GPT-2."
+        },
+        "referenced_paper_title": {
+          "value": "Language Models are Unsupervised Multitask Learners",
+          "justification": "The paper likely refers to the original introduction of GPT-2 and its architectures as context for the attack.",
+          "quote": "Radford et al., 2019"
+        }
+      },
+      {
+        "name": {
+          "value": "Pythia-1.4B",
+          "justification": "The Pythia-1.4B model is explicitly mentioned as one of the models examined in their experiments.",
+          "quote": "In order to visualize the intuition behind this attack, Figure 1 illustrates an attack against the Pythia-1.4b LLM."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Pythia-1.4B is analyzed within the paper but not introduced or contributed as a new model by it.",
+          "quote": "In order to visualize the intuition behind this attack, Figure 1 illustrates an attack against the Pythia-1.4b LLM."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper executed their extraction method on Pythia-1.4B as part of the study.",
+          "quote": "In order to visualize the intuition behind this attack, Figure 1 illustrates an attack against the Pythia-1.4b LLM."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "Though analyzed in experiments, it is not compared directly with other models in a benchmark-style.",
+          "quote": "in Figure 1, illustrates an attack against the Pythia-1.4b LLM."
+        },
+        "referenced_paper_title": {
+          "value": "Pythia: A suite for analyzing large language models across training and scaling",
+          "justification": "The mentioned experiments relate to understanding Pythia in the scope of model stealing and model architecture exploration.",
+          "quote": "Pythia (Biderman et al., 2023)"
+        }
+      }
+    ],
+    "datasets": [],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1412,
+    "prompt_tokens": 30996,
+    "total_tokens": 32408,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": null
+  }
+}
