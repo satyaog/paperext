@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import argparse
 import json
 import subprocess
@@ -75,7 +77,7 @@ def convert_pdf(pdf, text, pdf_link):
 
 
 def download_and_convert_paper(
-    paper_id: str, links: list, cache_dir: Path, check_only=False
+    paper_id: str | None, links: list, cache_dir: Path, check_only=False
 ):
     text = None
     link_types = []

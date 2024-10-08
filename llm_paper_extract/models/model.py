@@ -9,7 +9,7 @@ from pydantic import BaseModel, Field
 
 from ..utils import str_normalize
 
-logging.basicConfig(level=logging.DEBUG)
+# logging.basicConfig(level=logging.DEBUG)
 
 _FIRST_MESSAGE = (
     "Which Deep Learning Models, Datasets and Libraries can you find in the "
