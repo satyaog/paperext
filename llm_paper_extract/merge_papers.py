@@ -529,6 +529,7 @@ def main(argv=None):
         try:
             _open(str(pdf))
         except (subprocess.CalledProcessError, FileNotFoundError) as e:
+            logging.error(e, exc_info=True)
             url = f"https://arxiv.org/pdf/{pdf.stem}"
             logging.info(f"Downloading from {url} to {pdf}")
             urllib.request.urlretrieve(url, str(pdf))
