@@ -1,38 +1,39 @@
 import argparse
-import os
 import json
-from pathlib import Path
+import logging
+import os
 import platform
 import shutil
 import subprocess
 import tempfile
-import urllib.request 
+import urllib.request
+from pathlib import Path
 from time import sleep
 from typing import List, Tuple
 
+import yaml
 from pydantic import BaseModel, ValidationError
 from pygments import highlight
 from pygments.formatters import TerminalTrueColorFormatter
 from pygments.lexers.data import YamlLexer
-import yaml
-
-from .models.utils import convert_model_json_to_yaml, model_dump_yaml, model_validate_yaml
 
 from . import ROOT_DIR
 from .models.model import ExtractionResponse, PaperExtractions, empty_model
+from .models.utils import (convert_model_json_to_yaml, model_dump_yaml,
+                           model_validate_yaml)
 from .utils import str_normalize
 
 _EDITOR = os.environ.get("VISUAL", os.environ.get("EDITOR", None))
 _TMPDIR = tempfile.TemporaryDirectory()
 
 _READER = os.environ.get("READER", None)
-if platform.system() == "Darwin":       # macOS
+if platform.system() == "Darwin":  # macOS
     _READER = _READER or "open"
-else:                                   # linux variants
+else:  # linux variants
     _READER = _READER or "xdg-open"
 
 
-def _open_editor(_f:str):
+def _open_editor(_f: str):
     if not os.path.exists(_f):
         raise FileNotFoundError(_f)
     p = subprocess.Popen((*_EDITOR.split(" "), _f))
@@ -40,18 +41,22 @@ def _open_editor(_f:str):
         sleep(1)
         continue
     if p.returncode:
-        raise subprocess.CalledProcessError(p.returncode, (_EDITOR, _f), p.stdout, p.stderr)
+        raise subprocess.CalledProcessError(
+            p.returncode, (_EDITOR, _f), p.stdout, p.stderr
+        )
     return p.returncode
 
 
-def _open(_f:str):
+def _open(_f: str):
     if not os.path.exists(_f):
         raise FileNotFoundError(_f)
     p = subprocess.Popen((_READER, _f))
     # Sleep to give a bit of time to reader to spawn
     sleep(1)
     if p.returncode:
-        raise subprocess.CalledProcessError(p.returncode, (_READER, _f), p.stdout, p.stderr)
+        raise subprocess.CalledProcessError(
+            p.returncode, (_READER, _f), p.stdout, p.stderr
+        )
     return p.returncode
 
 
@@ -66,7 +71,7 @@ def get_terminal_width():
     return shutil.get_terminal_size((80, 20)).columns
 
 
-def _remove_duplicates(l:list):
+def _remove_duplicates(l: list):
     if l:
         last = l[0]
         yield last
@@ -76,7 +81,7 @@ def _remove_duplicates(l:list):
             last = value
 
 
-def _find_in_paper(string:str, paper:str):
+def _find_in_paper(string: str, paper: str):
     last_index = -1
 
     try:
@@ -94,50 +99,50 @@ def _find_in_paper(string:str, paper:str):
             return
 
 
-def _model_dump(paper_id, paper, model:BaseModel):
+def _model_dump(paper_id, paper, model: BaseModel):
     _WARNING = f"WARNING: Could not find the quote in the paper {paper_id}"
 
     model_dump_json = model.model_dump_json(indent=2)
     model_dump_yaml = yaml.safe_dump(
-        json.loads(model_dump_json),
-        sort_keys=False,
-        width=120
+        json.loads(model_dump_json), sort_keys=False, width=120
     )
 
     lines = model_dump_yaml.splitlines()
     for i, l in enumerate(lines):
-        if l.lstrip().startswith('quote:'):
-            lstrip = l[:len(l) - len(l.lstrip())]
-            end = i+1
+        if l.lstrip().startswith("quote:"):
+            indent = l[: len(l) - len(l.lstrip())]
+            end = i + 1
             while end < len(lines):
-                len_end_lstrip = len(lines[end]) - len(lines[end].lstrip())
-                if lines[end] and len_end_lstrip <= len(lstrip):
+                len_end_indent = len(lines[end]) - len(lines[end].lstrip())
+                if lines[end] and len_end_indent <= len(indent):
+                    # indentation is shorter than the quote field
                     break
                 end += 1
             try:
                 quote = yaml.safe_load("\n".join(lines[i:end]))["quote"]
             except (yaml.parser.ParserError, yaml.scanner.ScannerError):
-                print(model_dump_yaml)
-                print("\n".join(lines[i:end]))
+                logging.error(
+                    "\n".join([model_dump_yaml] + lines[i:end]), exc_info=True
+                )
                 raise
             if not list(_find_in_paper(quote, paper)):
-                lines.insert(end, f"{lstrip}## {_WARNING}")
+                lines.insert(end, f"{indent}## {_WARNING}")
     model_dump_yaml = "\n".join(lines)
     return model_dump_yaml
 
 
-def _input_option(question:str, options:list):
-    select:str = ""
+def _input_option(question: str, options: list):
+    select: str = ""
     options = [o.lower() for o in options]
     while select not in options:
         select = input(f"{question} [{','.join(options)}]? ").lower()
     return select
 
 
-def _select(key:str, *options:List[str], edit=False):
+def _select(key: str, *options: List[str], edit=False):
     is_equal = not edit
     for i, v in enumerate(options):
-        for o in options[i+1:]:
+        for o in options[i + 1 :]:
             if v != o:
                 is_equal = False
     if is_equal:
@@ -149,7 +154,7 @@ def _select(key:str, *options:List[str], edit=False):
         short_options.append("e")
         long_options.append("edit")
     separator = "=" * max(0, 0, *map(len, sum([o.splitlines() for o in options], [])))
-    separator = separator[:get_terminal_width()]
+    separator = separator[: get_terminal_width()]
 
     editable_content = []
     for i, option in enumerate(options):
@@ -175,7 +180,7 @@ def _select(key:str, *options:List[str], edit=False):
     return write_content(key, selected, edit=edit)
 
 
-def write_content(filename:str, content:str, edit=True):
+def write_content(filename: str, content: str, edit=True):
     tmpfile = Path(_TMPDIR.name) / f"{filename}.yaml"
 
     with tmpfile.open("w+t") as _f:
@@ -183,13 +188,18 @@ def write_content(filename:str, content:str, edit=True):
 
     while edit:
         _open_editor(str(tmpfile))
-        edit = _input_option("Are you done with the edit", ("y","n")) != "y"
+        edit = _input_option("Are you done with the edit", ("y", "n")) != "y"
 
     with tmpfile.open() as _f:
         return _f.read()
 
 
-def _validate_field(model_dump:dict | PaperExtractions, model_cls:PaperExtractions.__class__ | None, filename:str, content:str):
+def _validate_field(
+    model_dump: dict | PaperExtractions,
+    model_cls: PaperExtractions.__class__ | None,
+    filename: str,
+    content: str,
+):
     if not isinstance(model_dump, dict):
         model_cls = model_dump.__class__
         model_dump = model_dump.model_dump()
@@ -206,7 +216,8 @@ def _validate_field(model_dump:dict | PaperExtractions, model_cls:PaperExtractio
     while True:
         try:
             _content = [
-                l for l in content.splitlines()
+                l
+                for l in content.splitlines()
                 if l.strip() and not l.lstrip().startswith("##")
             ]
             _content = "\n".join(_content) or default_empty
@@ -219,13 +230,15 @@ def _validate_field(model_dump:dict | PaperExtractions, model_cls:PaperExtractio
             content = write_content(filename, content)
         except ValidationError as e:
             print(e)
-            print(f"There was an error validating the field "
-                  f"{model_cls.model_fields[field].annotation}. Please "
-                  f"fix the error")
+            print(
+                f"There was an error validating the field "
+                f"{model_cls.model_fields[field].annotation}. Please "
+                f"fix the error"
+            )
             content = write_content(filename, content)
 
 
-def _update_progession(merged_extractions:PaperExtractions, merged_file:Path):
+def _update_progession(merged_extractions: PaperExtractions, merged_file: Path):
     # Load content of previous field merge in case the user updated the content
     _update = merged_extractions.model_dump()
 
@@ -248,16 +261,24 @@ def _update_progession(merged_extractions:PaperExtractions, merged_file:Path):
 
     for tmpfile in fields:
         tmpfile = Path(tmpfile)
-        _update = _validate_field(_update, PaperExtractions, tmpfile.stem, tmpfile.read_text())
+        _update = _validate_field(
+            _update, PaperExtractions, tmpfile.stem, tmpfile.read_text()
+        )
 
     _update = merged_extractions.model_validate(_update)
     merged_file.write_text(model_dump_yaml(_update))
     return _update
 
 
-def _merge_list(paper_id:str, paper:str, attribute:str, merged_value:list, values:List[BaseModel]):
+def _merge_list(
+    paper_id: str,
+    paper: str,
+    attribute: str,
+    merged_value: list,
+    values: List[BaseModel],
+):
     try:
-        options:List[BaseModel] = sum(values, [])
+        options: List[BaseModel] = sum(values, [])
     except TypeError:
         return None
 
@@ -294,11 +315,18 @@ def _merge_list(paper_id:str, paper:str, attribute:str, merged_value:list, value
     return selection
 
 
-def merge_paper_extractions(paper_id, paper, merged_extractions:PaperExtractions, *all_extractions: List[PaperExtractions]):
-    f:Path = (ROOT_DIR / "data/merged/") / paper_id
+def merge_paper_extractions(
+    paper_id,
+    paper,
+    merged_extractions: PaperExtractions,
+    *all_extractions: List[PaperExtractions],
+):
+    f: Path = (ROOT_DIR / "data/merged/") / paper_id
     f = f.with_suffix(".yaml")
 
-    for keys_values in zip(empty_model(PaperExtractions), merged_extractions, *all_extractions):
+    for keys_values in zip(
+        empty_model(PaperExtractions), merged_extractions, *all_extractions
+    ):
         merged_extractions = _update_progession(merged_extractions, f)
 
         empty_value, merged_value, *values = [v for _, v in keys_values]
@@ -318,7 +346,9 @@ def merge_paper_extractions(paper_id, paper, merged_extractions:PaperExtractions
             continue
 
         try:
-            options = [_model_dump(paper_id, paper, v) for v in (*merged_value, *values)]
+            options = [
+                _model_dump(paper_id, paper, v) for v in (*merged_value, *values)
+            ]
             selection = _select(attribute, *options, edit=True)
             # while True:
             #     try:
@@ -359,26 +389,31 @@ def merge_paper_extractions(paper_id, paper, merged_extractions:PaperExtractions
     return _update_progession(merged_extractions, f)
 
 
-def get_papers_from_file(papers: List[str]) -> List[Tuple[str, Path, ExtractionResponse]]:
+def get_papers_from_file(
+    papers: List[str],
+) -> List[Tuple[str, Path, ExtractionResponse]]:
     extractions_tuple = []
 
     for paper in papers:
         paper_id = paper.strip()
-        print('Parsing', paper_id)
-        paper = (ROOT_DIR / f"data/cache/arxiv/{paper_id}.txt").read_text().lower().replace("\n", " ")
+        logging.info(f"Parsing {paper_id}")
+        paper = (
+            (ROOT_DIR / f"data/cache/arxiv/{paper_id}.txt")
+            .read_text()
+            .lower()
+            .replace("\n", " ")
+        )
         responses = list((ROOT_DIR / "data/queries/").glob(f"{paper_id}_[0-9]*.json"))
         if not responses:
-            print('No responses found for', paper_id)
-            print('Skipping...')
+            logging.info(f"No responses found for {paper_id}\nSkipping...")
             continue
         responses = (
-            ExtractionResponse.model_validate_json(_f.read_text())
-            for _f in responses
+            ExtractionResponse.model_validate_json(_f.read_text()) for _f in responses
         )
-        for (_,paper_id),(_,_),(_,extractions),_ in responses:
+        for (_, paper_id), (_, _), (_, extractions), _ in responses:
             extractions_tuple.append((paper_id, str_normalize(paper), extractions))
 
-    extractions_tuple.sort(key=lambda _:_[0])
+    extractions_tuple.sort(key=lambda _: _[0])
 
     return extractions_tuple
 
@@ -388,26 +423,37 @@ def get_papers_from_folder() -> List[Tuple[str, Path, ExtractionResponse]]:
 
     extractions_tuple = []
     for response_path in responses:
-        print('Parsing', response_path)
+        logging.info(f"Parsing {response_path}")
         try:
-            (_,paper),(_,_),(_,extractions),_ = ExtractionResponse.model_validate_json(response_path.read_text())
+            (_, paper), (_, _), (_, extractions), _ = (
+                ExtractionResponse.model_validate_json(response_path.read_text())
+            )
         except ValidationError as e:
-            print(e)
-            print(f'Skipping {response_path}')
+            logging.error(e, exc_info=True)
+            logging.info(f"Skipping {response_path}")
             continue
         paper_id = paper
-        paper = (ROOT_DIR / "data/cache/arxiv/" / paper_id).read_text().lower().replace("\n", " ")
+        paper = (
+            (ROOT_DIR / "data/cache/arxiv/" / paper_id)
+            .read_text()
+            .lower()
+            .replace("\n", " ")
+        )
         extractions_tuple.append((paper_id, paper, extractions))
 
-    extractions_tuple.sort(key=lambda _:_[0])
+    extractions_tuple.sort(key=lambda _: _[0])
 
     return extractions_tuple
 
 
 def main(argv=None):
     parser = argparse.ArgumentParser()
-    parser.add_argument("--papers", nargs='*', type=str, default=None, help="Papers to merge")
-    parser.add_argument("--input", type=Path, default=None, help="List of papers to merge")
+    parser.add_argument(
+        "--papers", nargs="*", type=str, default=None, help="Papers to merge"
+    )
+    parser.add_argument(
+        "--input", type=Path, default=None, help="List of papers to merge"
+    )
     options = parser.parse_args(argv)
 
     if options.input:
@@ -423,9 +469,9 @@ def main(argv=None):
         if [_paper_id for (_paper_id, _, _) in done if _paper_id == paper_id]:
             continue
 
-        print('Merging', paper_id)
+        logging.info(f"Merging {paper_id}")
 
-        f:Path = (ROOT_DIR / "data/merged/") / paper_id
+        f: Path = (ROOT_DIR / "data/merged/") / paper_id
         f = f.with_suffix(".yaml")
         f.parent.mkdir(parents=True, exist_ok=True)
 
@@ -439,33 +485,36 @@ def main(argv=None):
             except FileNotFoundError:
                 merged_extractions = None
             except ValidationError as e:
-                print(e)
-                print(f'Invalid extraction file... Consider deleting [{f}].')
+                logging.error(e, exc_info=True)
+                logging.info(f"Invalid extraction file... Consider deleting [{f}].")
                 continue
 
             try:
-                merged_extractions = (
-                    model_validate_yaml(PaperExtractions, f.read_text())
+                merged_extractions = model_validate_yaml(
+                    PaperExtractions, f.read_text()
                 )
             except FileNotFoundError:
                 merged_extractions = convert_model_json_to_yaml(
                     PaperExtractions, merged_extractions.model_dump_json()
                 )
                 f.write_text(merged_extractions)
-                merged_extractions = (
-                    model_validate_yaml(PaperExtractions, merged_extractions)
+                merged_extractions = model_validate_yaml(
+                    PaperExtractions, merged_extractions
                 )
                 f.with_suffix(".json").unlink()
             except ValidationError as e:
-                print(e)
-                print(f'Invalid extraction file... Consider deleting [{f}].')
+                logging.error(e, exc_info=True)
+                logging.info(f"Invalid extraction file... Consider deleting [{f}].")
                 continue
 
-            if _input_option(
-                f"The paper {paper_id} has already been merged. Do you wish to "
-                f"redo the merge?",
-                ("y","n")
-            ) == "n":
+            if (
+                _input_option(
+                    f"The paper {paper_id} has already been merged. Do you wish to "
+                    f"redo the merge?",
+                    ("y", "n"),
+                )
+                == "n"
+            ):
                 done.append((paper_id, paper, merged_extractions))
                 continue
 
@@ -475,17 +524,20 @@ def main(argv=None):
             if _paper_id == paper_id
         ]
 
-        pdf:Path = (ROOT_DIR / "data/cache/arxiv/" / paper_id).with_suffix(".pdf")
-        print("Opening", pdf)
+        pdf: Path = (ROOT_DIR / "data/cache/arxiv/" / paper_id).with_suffix(".pdf")
+        logging.info(f"Opening {pdf}")
         try:
             _open(str(pdf))
         except (subprocess.CalledProcessError, FileNotFoundError) as e:
+            logging.error(e, exc_info=True)
             url = f"https://arxiv.org/pdf/{pdf.stem}"
-            print('Downloading from', url, 'to', str(pdf))
+            logging.info(f"Downloading from {url} to {pdf}")
             urllib.request.urlretrieve(url, str(pdf))
             _open(str(pdf))
 
-        merged_extractions = merge_paper_extractions(paper_id, paper, merged_extractions, *all_extractions)
+        merged_extractions = merge_paper_extractions(
+            paper_id, paper, merged_extractions, *all_extractions
+        )
         done.append((paper_id, paper, merged_extractions))
 
         # Clean-up tmp files:
@@ -498,7 +550,7 @@ def main(argv=None):
         ):
             subprocess.run(cmd, check=check)
 
-        print('Merged paper saved to', f)
+        logging.info(f"Merged paper saved to {f}")
 
 
 if __name__ == "__main__":

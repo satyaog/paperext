@@ -1,12 +1,13 @@
-from pathlib import Path
+import logging
 import sys
+from pathlib import Path
 
-from pydantic import BaseModel
 import pydantic_core
+from pydantic import BaseModel
+
 from .. import ROOT_DIR
 from ..utils import build_validation_set, split_entry, str_eq
-from . import model
-from . import model_v1
+from . import model, model_v1
 
 
 def _model_dump(m):
@@ -14,7 +15,7 @@ def _model_dump(m):
         return [_model_dump(field) for field in m]
 
     if isinstance(m, dict):
-        return {field_name:_model_dump(field) for field_name, field in m.items()}
+        return {field_name: _model_dump(field) for field_name, field in m.items()}
 
     if isinstance(m, BaseModel):
         return m.model_dump()
@@ -22,11 +23,15 @@ def _model_dump(m):
     return m
 
 
-def convert_model_v1(extractions:model_v1.PaperExtractions):
+def convert_model_v1(extractions: model_v1.PaperExtractions):
     fields = {}
 
     for field_name, field in extractions:
-        if field_name in ("title", "description", "type",):
+        if field_name in (
+            "title",
+            "description",
+            "type",
+        ):
             fields[field_name] = field
 
         elif field_name in ("research_field",):
@@ -34,11 +39,8 @@ def convert_model_v1(extractions:model_v1.PaperExtractions):
                 extractions.research_field.value, sep_left="(", sep_right=")"
             )
             fields["primary_research_field"] = model.ResearchField(
-                name={
-                    **extractions.research_field.model_dump(),
-                    "value":name
-                },
-                aliases=aliases
+                name={**extractions.research_field.model_dump(), "value": name},
+                aliases=aliases,
             )
 
         elif field_name in ("sub_research_field",):
@@ -49,11 +51,10 @@ def convert_model_v1(extractions:model_v1.PaperExtractions):
                 srf = model.ResearchField(
                     name={
                         **extractions.sub_research_field.model_dump(),
-                        "value":name,
-                        **({"justification":"", "quote":""}
-                           if i > 0 else {})
+                        "value": name,
+                        **({"justification": "", "quote": ""} if i > 0 else {}),
                     },
-                    aliases=aliases
+                    aliases=aliases,
                 )
                 sub_research_fields.append(srf)
 
@@ -67,21 +68,25 @@ def convert_model_v1(extractions:model_v1.PaperExtractions):
                     is_contributed=model.Explained(
                         value=str_eq(m.role, model_v1.Role.CONTRIBUTED.value),
                         justification=f"Role:{[_r.value for _r in model_v1.Role]}",
-                        quote=m.role
+                        quote=m.role,
                     ).model_dump(),
+                    # is_executed is uncertain except when the model is
+                    # contributed
                     is_executed=model.Explained(
                         value=str_eq(m.role, model_v1.Role.CONTRIBUTED.value),
                         justification=f"ModelMode:{[_m.value for _m in model_v1.ModelMode]}",
-                        quote=m.mode
+                        quote=m.mode,
                     ).model_dump(),
+                    # is_compared is uncertain except when the model is
+                    # contributed
                     is_compared=model.Explained(
                         value=str_eq(m.role, model_v1.Role.CONTRIBUTED.value),
                         justification="",
-                        quote=""
+                        quote="",
                     ).model_dump(),
                     referenced_paper_title=model.Explained(
                         value="", justification="", quote=""
-                    ).model_dump()
+                    ).model_dump(),
                 )
                 fields[field_name].append(m)
 
@@ -95,7 +100,7 @@ def convert_model_v1(extractions:model_v1.PaperExtractions):
                     role=d.role,
                     referenced_paper_title=model.Explained(
                         value="", justification="", quote=""
-                    ).model_dump()
+                    ).model_dump(),
                 )
                 fields[field_name].append(d)
 
@@ -109,13 +114,11 @@ def convert_model_v1(extractions:model_v1.PaperExtractions):
                     role=l.role,
                     referenced_paper_title=model.Explained(
                         value="", justification="", quote=""
-                    ).model_dump()
+                    ).model_dump(),
                 )
                 fields[field_name].append(l)
 
-    return model.PaperExtractions(
-        **{k:_model_dump(v) for k, v in fields.items()}
-    )
+    return model.PaperExtractions(**{k: _model_dump(v) for k, v in fields.items()})
 
 
 if __name__ == "__main__":
@@ -129,12 +132,12 @@ if __name__ == "__main__":
             sum(
                 map(
                     lambda p: sorted(p.glob(f"{f.stem}*.json")),
-                    [ROOT_DIR / "data/merged", ROOT_DIR / "data/queries"]
+                    [ROOT_DIR / "data/merged", ROOT_DIR / "data/queries"],
                 ),
-                []
+                [],
             )
         ):
-            path:Path
+            path: Path
             model_json = path.read_text()
             for model_cls in (
                 *[m.PaperExtractions for m in (model, model_v1)],
@@ -143,20 +146,28 @@ if __name__ == "__main__":
                 try:
                     extractions = model_cls.model_validate_json(model_json)
                     break
-                except pydantic_core._pydantic_core.ValidationError:
-                    pass
+                except pydantic_core._pydantic_core.ValidationError as _e:
+                    e = _e
+                    logging.warning(
+                        f"Failed to validate json of model {model_cls}: {e}",
+                        exc_info=True,
+                    )
+            else:
+                raise e
 
             try:
-                response:model_v1.ExtractionResponse = extractions
+                # extractions might be a [model | model_v1].ExtractionResponse
+                response: model_v1.ExtractionResponse = extractions
                 extractions = response.extractions
             except AttributeError:
+                # extractions is of type [model | model_v1].PaperExtractions
                 response = None
 
             if isinstance(extractions, model.PaperExtractions):
-                print(f"Model {path.relative_to(ROOT_DIR)} already updated", file=sys.stderr)
+                logging.info(f"Model {path.relative_to(ROOT_DIR)} already updated")
                 continue
 
-            print(f"Updating {path.relative_to(ROOT_DIR)}", file=sys.stderr)
+            logging.info(f"Updating {path.relative_to(ROOT_DIR)}")
             extractions = convert_model_v1(extractions)
 
             if response is not None:
@@ -164,7 +175,7 @@ if __name__ == "__main__":
                     paper=response.paper,
                     words=response.words,
                     extractions=extractions,
-                    usage=response.usage
+                    usage=response.usage,
                 )
                 model_json = response.model_dump_json(indent=2)
             else:

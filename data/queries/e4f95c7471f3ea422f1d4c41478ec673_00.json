@@ -1,0 +1,356 @@
+{
+  "paper": "e4f95c7471f3ea422f1d4c41478ec673.txt",
+  "words": 14427,
+  "extractions": {
+    "title": {
+      "value": "Stop Regressing: Training Value Functions via Classification for Scalable Deep RL",
+      "justification": "The provided paper title exactly matches the input provided and appears prominently throughout the document.",
+      "quote": "Stop Regressing: Training Value Functions via Classification for Scalable Deep RL"
+    },
+    "description": "The paper investigates the scalability of deep reinforcement learning by using classification instead of regression for training value functions. It demonstrates improvements in performance and scalability across various domains by using categorical cross-entropy for training.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents empirical results from evaluations on different tasks like Atari games, Chess, Wordle, and robotic manipulation, demonstrating the performance improvements of using classification instead of regression.",
+      "quote": "Our experiments demonstrate that classification losses can significantly improve the performance and scalability of value-based deep RL."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Deep Reinforcement Learning",
+        "justification": "The central focus of the paper is to improve scalability and performance in deep reinforcement learning by reframing value functions as classification problems.",
+        "quote": "Value functions are a central component of deep reinforcement learning (RL)..."
+      },
+      "aliases": [
+        "Deep RL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Value-based Reinforcement Learning",
+          "justification": "The paper specifically targets value-based RL methods such as Q-learning and actor-critic by suggesting a shift from regression to classification for better performance.",
+          "quote": "value-based reinforcement learning (RL) methods primarily rely on regression..."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Supervised Learning",
+          "justification": "The paper draws comparisons between supervised learning and value-based RL, particularly in terms of how classification is used.",
+          "quote": "This difficulty is in stark contrast to supervised learning: by leveraging a cross-entropy classification loss, supervised methods have scaled reliably to massive networks."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Robotic Manipulation",
+          "justification": "The paper discusses applications of the proposed method in robotic manipulation tasks.",
+          "quote": "playing Chess without search, and a language-agent Wordle task with high-capacity Transformers, achieving state-of-the-art results on these domains."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Deep Q-Network (DQN)",
+          "justification": "Deep Q-Network (DQN) is mentioned as a baseline regression model for comparison in experiments.",
+          "quote": "For our regression baseline we train DQN (Mnih et al., 2015) on the mean-squared error TD objective which has been shown to outperform other regression based losses."
+        },
+        "aliases": [
+          "DQN"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "DQN was not contributed by the paper; it is used as a baseline for comparison.",
+          "quote": "For our regression baseline we train DQN (Mnih et al., 2015)..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper executes DQN for comparison with classification-based methods.",
+          "quote": "we train DQN for 200M frames with the aforementioned losses."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "DQN is compared against other methods like HL-Gauss to demonstrate performance differences.",
+          "quote": "Observe that HL-Gauss substantially outperforms the Two-Hot and MSE losses."
+        },
+        "referenced_paper_title": {
+          "value": "Human-level control through deep reinforcement learning",
+          "justification": "The paper references the original work on DQN to establish it as a baseline.",
+          "quote": "Deep Q-Networks (DQN; Mnih et al., 2015)..."
+        }
+      },
+      {
+        "name": {
+          "value": "Conservative Q-Learning (CQL)",
+          "justification": "CQL is a method that is specifically discussed for its role in offline reinforcement learning settings in the paper.",
+          "quote": "One widely-used offline RL method is CQL (Kumar et al., 2020) that jointly optimizes the TD error with a behavior regularization..."
+        },
+        "aliases": [
+          "CQL"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "CQL is not a new method contributed by this paper; it's an existing technique referenced for its relevance to offline RL.",
+          "quote": "One widely-used offline RL method is CQL (Kumar et al., 2020)..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper discusses the execution of CQL in the context of offline RL.",
+          "quote": "To do so, we train agents with different losses on the 10% Atari DQN replay dataset (Agarwal et al., 2020) using CQL for 6.25M gradient steps."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "CQL is compared to other methods to assess its performance in offline RL contexts.",
+          "quote": "HL-Gauss and C51 consistently outperform MSE, while Two-Hot shows improved stability over MSE but underperforms other classification methods."
+        },
+        "referenced_paper_title": {
+          "value": "Conservative Q-Learning for Offline Reinforcement Learning",
+          "justification": "The referenced paper title establishes CQL as a pre-existing method.",
+          "quote": "One widely-used offline RL method is CQL (Kumar et al., 2020)..."
+        }
+      },
+      {
+        "name": {
+          "value": "Mixture-of-Experts (MoE)",
+          "justification": "The paper investigates the efficacy of using MoE modules in deep RL architectures as part of its empirical evaluations.",
+          "quote": "incorporating Mixture-of-Expert (MoE) modules in such networks improves performance."
+        },
+        "aliases": [
+          "MoE"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "MoE is a known architecture pattern and not newly introduced in this paper.",
+          "quote": "incorporating Mixture-of-Expert (MoE) modules..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "MoE is implemented in experiments to test performance improvements.",
+          "quote": "As shown in Figure 5, we find that HL-Gauss consistently improves performance over MSE by a constant factor independent of the number of experts."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares the performance of methods with and without MoE configurations.",
+          "quote": "As shown in Figure 5, we find that HL-Gauss consistently improves performance over MSE by a constant factor independent of the number of experts."
+        },
+        "referenced_paper_title": {
+          "value": "From sparse to soft mixtures of experts",
+          "justification": "The reference to MoE aligns with existing literature and comparisons to works like Puigcerver et al., 2024.",
+          "quote": "We replace the penultimate layer in the architecture employed by Impala (Espeholt et al., 2018) with a SoftMoE (Puigcerver et al., 2024) module..."
+        }
+      },
+      {
+        "name": {
+          "value": "Q-Transformer",
+          "justification": "Q-Transformer is discussed as a model applied to robotic manipulation tasks and is part of the empirical evaluation.",
+          "quote": "We train a Q-Transformer model with 60M parameters, following the recipe in Chebotar et al. (2023)..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper does not claim Q-Transformer as a newly introduced model; it's referenced and used for experiments.",
+          "quote": "We train a Q-Transformer model with 60M parameters, following the recipe in Chebotar et al. (2023)..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Q-Transformer is actively used in experiments related to robotics within the paper.",
+          "quote": "We train a Q-Transformer model with 60M parameters, following the recipe in Chebotar et al. (2023)..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of Q-Transformer is evaluated against baselines as part of the study's experimental setup.",
+          "quote": "HL-Gauss results in 67% higher peak performance over the regression baseline..."
+        },
+        "referenced_paper_title": {
+          "value": "Q-transformer: Scalable offline reinforcement learning via autoregressive q-functions",
+          "justification": "The title indicates where the Q-Transformer concept likely came from, contextualizing its use in the paper.",
+          "quote": "following the recipe in Chebotar et al. (2023)..."
+        }
+      },
+      {
+        "name": {
+          "value": "AlphaZero",
+          "justification": "AlphaZero is used as a comparative model to evaluate the chess-playing capabilities of the models in the paper.",
+          "quote": "While the one-hot target with the 270M Transformer from Ruoss et al. (2024) outperformed an AlphaZero baseline without search, HL-Gauss closes the performance gap with the substantially stronger AlphaZero with 400 MCTS simulations."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "AlphaZero is a well-known model not contributed by this paper, but used for comparison purposes.",
+          "quote": "While the one-hot target with the 270M Transformer from Ruoss et al. (2024) outperformed an AlphaZero baseline..."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The paper does not execute AlphaZero directly but uses its historical performance as a benchmark.",
+          "quote": "While the one-hot target with the 270M Transformer from Ruoss et al. (2024) outperformed an AlphaZero baseline without search, HL-Gauss closes the performance gap with the substantially stronger AlphaZero with 400 MCTS simulations."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "AlphaZero is used as a performance benchmark in chess, helping to illustrate the efficacy of models discussed in the study.",
+          "quote": "While the one-hot target with the 270M Transformer from Ruoss et al. (2024) outperformed an AlphaZero baseline without search, HL-Gauss closes the performance gap with the substantially stronger AlphaZero with 400 MCTS simulations."
+        },
+        "referenced_paper_title": {
+          "value": "Mastering the game of Go without human knowledge",
+          "justification": "The AlphaZero method is historically associated with deep-learning advancements in playing complex games like Go and chess.",
+          "quote": "Mastering the game of go without human knowledge. Nature, 550(7676):354–359, 2017."
+        }
+      },
+      {
+        "name": {
+          "value": "Stockfish Chess Engine",
+          "justification": "Stockfish is used as a strong baseline in the paper to benchmark the chess playing capabilities of the models without search.",
+          "quote": "...closing the performance gap with the substantially stronger AlphaZero with the 400 MCTS simulations (Schrittwieser et al., 2020)."
+        },
+        "aliases": [
+          "Stockfish"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The Stockfish chess engine is an existing tool used to benchmark performances in chess tasks.",
+          "quote": "...distilling the action-value function of Stockfish 16 — the strongest available Chess engine that uses a combination of complex heuristics and explicit search —..."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The paper uses Stockfish as a baseline reference rather than executing it directly in its experiments.",
+          "quote": "...strongest available Chess engine that uses a combination of complex heuristics and explicit search..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Stockfish engine performance is used as a benchmark for chess-related assessments in the study to evaluate new methods.",
+          "quote": "distilling the action-value function of Stockfish 16..."
+        },
+        "referenced_paper_title": {
+          "value": "Grandmaster-level chess without search",
+          "justification": "The paper uses Stockfish as a competitive benchmark in chess, sourced from another work demonstrating its effectiveness.",
+          "quote": "...distilling the action-value function of Stockfish 16 — the strongest available Chess engine that uses a combination of complex heuristics and explicit search — into a causal transformer."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Atari DQN replay dataset",
+          "justification": "The dataset is used in experiments to evaluate the performance of different methods in an offline RL setting.",
+          "quote": "To do so, we train agents with different losses on the 10% Atari DQN replay dataset (Agarwal et al., 2020)..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "An optimistic perspective on offline reinforcement learning",
+          "justification": "The dataset referenced originates from Agarwal et al.'s work, linking it contextually to previous research.",
+          "quote": "...on the 10% Atari DQN replay dataset (Agarwal et al., 2020)..."
+        }
+      },
+      {
+        "name": {
+          "value": "Wordle Dataset",
+          "justification": "Utilized in the study for training a language-agent task concerning the Wordle game, as part of offline RL experiments.",
+          "quote": "Our goal is to train a GPT-like, decoder-only Transformer, with 125M parameters, representing the Q-network."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Offline RL for natural language generation with implicit language q learning",
+          "justification": "The referenced paper uses the Wordle dataset, establishing it as an existing tool for language-agent training benchmarks.",
+          "quote": "This experiment is situated in the offline RL setting, where we utilize the dataset of suboptimal game-plays provided by Snell et al. (2023)."
+        }
+      },
+      {
+        "name": {
+          "value": "Chess games annotated by Stockfish",
+          "justification": "The paper references using a dataset consisting of 10 million Chess games annotated by Stockfish for training chess-playing models.",
+          "quote": "The distillation dataset comprises 10 million chess games annotated by the Stockfish engine, yielding 15 billion data points."
+        },
+        "aliases": [
+          "Stockfish Dataset"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Grandmaster-level chess without search",
+          "justification": "The dataset is described in the context of Ruoss et al.'s work, identifying it as part of previously established research data.",
+          "quote": "We train 3 transformer models of varying capacity...on this dataset, using either HL-Gauss or 1-Hot classification targets."
+        }
+      },
+      {
+        "name": {
+          "value": "RetinaGAN Transformed Dataset",
+          "justification": "This dataset is used for robotic manipulation tasks, incorporating environment images aligned with real-world distributions.",
+          "quote": "A RetinaGAN is applied to transform the simulation images closer to real-world image distributions, following the method in (Ho et al., 2021)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Retinagan: An object-aware approach to sim-to-real transfer",
+          "justification": "Referenced work provides context regarding how the RetinaGAN dataset transformation approach was utilized or derived.",
+          "quote": "RetinaGAN: An object-aware approach to sim-to-real transfer"
+        }
+      },
+      {
+        "name": {
+          "value": "CIFAR10",
+          "justification": "CIFAR10 dataset is used in a synthetic setup to evaluate how classification might handle target non-stationarity in RL environments.",
+          "quote": "To assess whether classification losses are more robust when learning non-stationary targets of increasing magnitude we leverage the synthetic setup from Lyle et al. (2024). Specifically, we train a convolutional neural network that takes CIFAR 10 images x i as input and outputs a scalar prediction."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Disentangling the causes of plasticity loss in neural networks",
+          "justification": "The paper uses CIFAR10 images for a synthetic regression task based on Lyle et al.'s method.",
+          "quote": "to simulate non-stationarity on CIFAR10 (§5.2.3)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "JAX",
+          "justification": "JAX is used for implementing experiments, mentioned as the basis for deep reinforcement learning models in the paper.",
+          "quote": "Both our online and offline RL regression baselines are built upon the Jax implementation of DQN+Adam in Dopamine..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "JAX: composable transformations of Python+NumPy programs",
+          "justification": "The description provided in the paper aligns with the intended use and transformation facilities provided by JAX, referring to its GitHub documentation as a source.",
+          "quote": "JAX: composable transformations of Python+NumPy programs, 2018. URL http://github.com/ google/jax ."
+        }
+      },
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is mentioned as a framework used for implementing the HL-Gauss model among other deep learning tasks.",
+          "quote": "An implementation of HL-Gauss (Imani and White, 2018) in PyTorch (Paszke et al., 2019)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Pytorch: An imperative style, high-performance deep learning library",
+          "justification": "PyTorch's use and application in the paper are aligned with its capabilities described in its associated referenced documentation.",
+          "quote": "Pytorch: An imperative style, high-performance deep learning library. In Neural Information Processing Systems (NeurIPS), 2019."
+        }
+      },
+      {
+        "name": {
+          "value": "Dopamine",
+          "justification": "The paper uses Dopamine, a deep RL framework, for implementing DQN and associated methodologies related to value-based reinforcement learning.",
+          "quote": "Both our online and offline RL regression baselines are built upon the Jax (Bradbury et al., 2018) implementation of DQN+Adam in Dopamine."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Dopamine: A Research Framework for Deep Reinforcement Learning",
+          "justification": "This library, as introduced in Castro et al., provides relevant components for reproducible research in RL, supported by its use in the paper for DQN setup.",
+          "quote": "Castro, S. Moitra, C. Gelada, S. Kumar, and M. Bellemare. Dopamine: A Research Framework for Deep Reinforcement Learning. CoRR, abs/1812.06110, 2018."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 3611,
+    "prompt_tokens": 27340,
+    "total_tokens": 30951,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": null
+  }
+}

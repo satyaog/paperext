@@ -1,0 +1,654 @@
+{
+  "paper": "90ac22b7455a633d8e1bd8ff072302cb.txt",
+  "words": 12379,
+  "extractions": {
+    "title": {
+      "value": "Learnable Filters for Geometric Scattering Modules",
+      "justification": "The title is directly mentioned at the beginning of the paper, making it clear that this is the full title.",
+      "quote": "Learnable Filters for Geometric Scattering Modules"
+    },
+    "description": "The paper introduces a new graph neural network module called the learnable geometric scattering (LEGS) module, which integrates geometric scattering transforms in a flexible and trainable manner to enhance graph neural networks. It discusses how this module can learn longer-range graph relations with fewer parameters and demonstrates its efficiency in graph classification, particularly in biochemical domains.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper includes experiments and benchmarking on graph classification and regression tasks.",
+      "quote": "We demonstrate the predictive performance of LEGS-based networks on graph classification benchmarks, as well as the descriptive quality of their learned features in biochemical graph data exploration tasks."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Graph Neural Networks",
+        "justification": "The primary focus of the paper is on improving graph neural networks through the integration of learnable geometric scattering modules.",
+        "quote": "The paper proposes a new graph neural network (GNN) module, based on relaxations of recently proposed geometric scattering transforms."
+      },
+      "aliases": [
+        "GNN"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Geometric Deep Learning",
+          "justification": "The paper focuses on geometric scattering transforms, which are a part of geometric deep learning.",
+          "quote": "Geometric deep learning has recently emerged as an increasingly prominent branch of deep learning."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Graph Signal Processing",
+          "justification": "The paper uses concepts and techniques from graph signal processing to define and implement the geometric scattering transforms.",
+          "quote": "Using graph signal processing terminology from [4], these issues can be partly attributed to the limited construction of convolutional filters..."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Machine Learning for Biochemistry",
+          "justification": "The paper applies LEGS modules to biological graph data exploration tasks, emphasizing biochemical applications.",
+          "quote": "We demonstrate the predictive performance of LEGS-based networks on graph classification benchmarks, as well as the descriptive quality of their learned features in biochemical graph data exploration tasks."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Graph Convolutional Network (GCN)",
+          "justification": "The paper mentions GCN as a typical implementation and discusses its limitations, which the proposed model aims to address.",
+          "quote": "example, [4] presented a typical implementation of a GCN with a cascade of averaging (essentially low pass) filters."
+        },
+        "aliases": [
+          "GCN"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "GCN is a well-known model and not contributed by this paper. It's referenced and compared against the newly proposed LEGS module.",
+          "quote": "example, [4] presented a typical implementation of a GCN"
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "GCN is executed in the experiments as part of the comparative analysis.",
+          "quote": "We demonstrate the predictive performance of LEGS-based networks on graph classification benchmarks, as well as..."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "GCN is compared to the proposed LEGS module in experiments.",
+          "quote": "LEGS-based networks match or outperforms popular GNNs, as well as the original geometric scattering construction, on many datasets."
+        },
+        "referenced_paper_title": {
+          "value": "Semi-supervised classification with graph convolutional networks",
+          "justification": "The cited work '[4]' aligns with this title, discussing typical GCN implementation.",
+          "quote": "example, [4] presented a typical implementation of a GCN with a cascade of averaging (essentially low pass) filters."
+        }
+      },
+      {
+        "name": {
+          "value": "GraphSAGE",
+          "justification": "GraphSAGE is another model tested against the newly introduced LEGS module.",
+          "quote": "We compare against graph convolutional networks (GCN) [4], GraphSAGE [5]..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "GraphSAGE is not introduced by this paper but is instead used as a baseline for comparisons.",
+          "quote": "We compare against graph convolutional networks (GCN) [4], GraphSAGE [5]..."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "GraphSAGE is included in the empirical experiments of the study.",
+          "quote": "We compare against graph convolutional networks (GCN) [4], GraphSAGE [5]..."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "GraphSAGE is compared to the LEGS module in experimental contexts.",
+          "quote": "We compare against graph convolutional networks (GCN) [4], GraphSAGE [5]..."
+        },
+        "referenced_paper_title": {
+          "value": "Inductive representation learning on large graphs",
+          "justification": "The reference '[5]' in the context of comparison aligns with GraphSAGE.",
+          "quote": "We compare against graph convolutional networks (GCN) [4], GraphSAGE [5]..."
+        }
+      },
+      {
+        "name": {
+          "value": "Graph Attention Network (GAT)",
+          "justification": "GAT is included in the list of models against which LEGS is compared.",
+          "quote": "We compare against graph convolutional networks (GCN) [4], GraphSAGE [5], graph attention network (GAT) [28]..."
+        },
+        "aliases": [
+          "GAT"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "GAT is a known existing model, not newly introduced by this paper.",
+          "quote": "We compare against graph convolutional networks (GCN) [4], GraphSAGE [5], graph attention network (GAT) [28]..."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The paper executes GAT within comparison experiments.",
+          "quote": "We compare against graph convolutional networks (GCN) [4], GraphSAGE [5], graph attention network (GAT) [28]..."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "GAT is directly compared against the newly proposed LEGS model.",
+          "quote": "We compare against graph convolutional networks (GCN) [4], GraphSAGE [5], graph attention network (GAT) [28]..."
+        },
+        "referenced_paper_title": {
+          "value": "Graph attention networks",
+          "justification": "The title matches the referenced work '[28]' as per the layer discussed.",
+          "quote": "We compare against graph convolutional networks (GCN) [4], GraphSAGE [5], graph attention network (GAT) [28]..."
+        }
+      },
+      {
+        "name": {
+          "value": "Gin",
+          "justification": "Gin is mentioned as a comparative baseline model in the study against LEGS.",
+          "quote": "We compare against graph convolutional networks (GCN) [4], GraphSAGE [5], graph attention network (GAT) [28], graph isomorphism network (GIN) [6]..."
+        },
+        "aliases": [
+          "Graph Isomorphism Network"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "The model is already known and not contributed by this paper.",
+          "quote": "We compare against graph convolutional networks (GCN) [4], GraphSAGE [5], graph attention network (GAT) [28], graph isomorphism network (GIN) [6]..."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "Gin is executed within the study for comparison purposes.",
+          "quote": "We compare against graph convolutional networks (GCN) [4], GraphSAGE [5], graph attention network (GAT) [28], graph isomorphism network (GIN) [6]..."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "Gin is one of the models compared to LEGS in their experiments.",
+          "quote": "We compare against graph convolutional networks (GCN) [4], GraphSAGE [5], graph attention network (GAT) [28], graph isomorphism network (GIN) [6]..."
+        },
+        "referenced_paper_title": {
+          "value": "How powerful are graph neural networks?",
+          "justification": "The reference '[6]' about GIN fits with standard literature discussions.",
+          "quote": "We compare against graph convolutional networks (GCN) [4], GraphSAGE [5], graph attention network (GAT) [28], graph isomorphism network (GIN) [6]..."
+        }
+      },
+      {
+        "name": {
+          "value": "Geometric Scattering",
+          "justification": "Geometric scattering is a foundational model that the paper builds upon to propose the LEGS module.",
+          "quote": "Recently, an alternative approach was presented to provide deep geometric representation learning by generalizing Mallat’s scattering transform [11]..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "The basic geometric scattering model is established in prior works and not by this particular paper.",
+          "quote": "Recently, an alternative approach was presented to provide deep geometric representation learning by generalizing Mallat’s scattering transform [11]..."
+        },
+        "is_executed": {
+          "value": 0,
+          "justification": "The paper builds on geometric scattering, but the execution details are not highlighted for this specific model, only its extension through LEGS.",
+          "quote": "The benefits of our construction over standard GNNs, as well as pure geometric scattering, are discussed..."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "Geometric scattering is compared with the new LEGS module to demonstrate improvements.",
+          "quote": "LEGS-based networks match or outperforms popular GNNs, as well as the original geometric scattering construction..."
+        },
+        "referenced_paper_title": {
+          "value": "Geometric Scattering on Graphs",
+          "justification": "This likely corresponds to a key foundational paper, coupled with the description provided.",
+          "quote": "Recently, an alternative approach was presented to provide deep geometric representation learning by generalizing Mallat’s scattering transform [11]..."
+        }
+      },
+      {
+        "name": {
+          "value": "LEGS (Learnable Geometric Scattering)",
+          "justification": "LEGS is the main model proposed and contributed by this paper as an advancement over geometric scattering modules.",
+          "quote": "We introduce the geometric scattering module, which can be used within a larger neural network. We call this a learnable geometric scattering (LEGS) module..."
+        },
+        "aliases": [
+          "LEGS"
+        ],
+        "is_contributed": {
+          "value": 1,
+          "justification": "This model is a core contribution of the paper, aiming to enhance previous geometric scattering methods.",
+          "quote": "We introduce the geometric scattering module, which can be used within a larger neural network. We call this a learnable geometric scattering (LEGS) module..."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The paper executes this model as it forms the basis of the study and included experiments.",
+          "quote": "We introduce the geometric scattering module, which can be used within a larger neural network. We call this a learnable geometric scattering (LEGS) module..."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The paper compares this proposed model to existing models like GCNs, GAT, and geometric scattering.",
+          "quote": "LEGS-based networks match or outperforms popular GNNs, as well as the original geometric scattering construction..."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "LEGS is a contributed model in this paper and does not reference any prior paper for its introduction.",
+          "quote": "We introduce the geometric scattering module, which can be used within a larger neural network. We call this a learnable geometric scattering (LEGS) module..."
+        }
+      },
+      {
+        "name": {
+          "value": "Snowball Network",
+          "justification": "Included as one of the comparative baseline models in the space of graph neural networks.",
+          "quote": "GraphSAGE [5], graph attention network (GAT) [28], graph isomorphism network (GIN) [6], Snowball network [25], and fixed geometric scattering..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "The Snowball Network is used for comparison, and not contributed by the paper.",
+          "quote": "GraphSAGE [5], graph attention network (GAT) [28], graph isomorphism network (GIN) [6], Snowball network [25],..."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "Snowball Network is included in the experimental comparisons conducted in the paper.",
+          "quote": "GraphSAGE [5], graph attention network (GAT) [28], graph isomorphism network (GIN) [6], Snowball network [25],..."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "Compared as a baseline model to evaluate the performance of the LEGS module.",
+          "quote": "GraphSAGE [5], graph attention network (GAT) [28], graph isomorphism network (GIN) [6], Snowball network [25],..."
+        },
+        "referenced_paper_title": {
+          "value": "Break the Ceiling: Stronger Multi-scale Deep Graph Convolutional Networks",
+          "justification": "This weather aligns with the reference numbering scheme in the comparison list.",
+          "quote": "GraphSAGE [5], graph attention network (GAT) [28], graph isomorphism network (GIN) [6], Snowball network [25],..."
+        }
+      },
+      {
+        "name": {
+          "value": "GS-SVM (Fixed Geometric Scattering with Support Vector Machine)",
+          "justification": "GS-SVM is a baseline model included in comparisons to evaluate the effectiveness of the proposed LEGS approach.",
+          "quote": "GraphSAGE [5], graph attention network (GAT) [28], graph isomorphism network (GIN) [6], Snowball network [25], and fixed geometric scattering with a support vector machine classifier (GS-SVM) as in [12]..."
+        },
+        "aliases": [
+          "GS-SVM"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "The GS-SVM is a pre-existing model used as a benchmark in the paper's experiments but not introduced by it.",
+          "quote": "GraphSAGE [5], graph attention network (GAT) [28], graph isomorphism network (GIN) [6], Snowball network [25], and fixed geometric scattering with a support vector machine classifier (GS-SVM) as in [12]..."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The GS-SVM method is executed and compared against LEGS in experimental evaluations.",
+          "quote": "GraphSAGE [5], graph attention network (GAT) [28], graph isomorphism network (GIN) [6], Snowball network [25], and fixed geometric scattering with a support vector machine classifier (GS-SVM) as in [12]..."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "GS-SVM is directly compared to LEGS and other models for benchmarking purposes.",
+          "quote": "GraphSAGE [5], graph attention network (GAT) [28], graph isomorphism network (GIN) [6], Snowball network [25], and fixed geometric scattering with a support vector machine classifier (GS-SVM) as in [12]..."
+        },
+        "referenced_paper_title": {
+          "value": "Geometric Scattering for Graph Data Analysis",
+          "justification": "Reference '[12]' discusses geometric scattering linked to the GS-SVM approach, fitting the context.",
+          "quote": "Geometric scattering transforms provide effective universal feature extractors,..."
+        }
+      },
+      {
+        "name": {
+          "value": "Radial Basis Function Network (RBF)",
+          "justification": "LEGS integrates configurations with fully connected and RBF settings, indicating its use or extension in comparison.",
+          "quote": "For comparison, we also ran a standard GCN whose graph embeddings were obtained via mean pooling."
+        },
+        "aliases": [
+          "RBF"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "The RBF network style is a known approach in neural network design and is not newly contributed by the paper.",
+          "quote": "Here, we consider two configurations for the task-dependent output layer of the network, either using two fully connected layers after the learnable scattering layers, which we denote LEGS-FCN, or using a modified RBF network [29]..."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "RBF configurations are executed in experiments within the LEGS framework.",
+          "quote": "Here, we consider two configurations for the task-dependent output layer of the network, either using two fully connected layers after the learnable scattering layers, which we denote LEGS-FCN, or using a modified RBF network [29]..."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "The RBF is one of the comparative setups distinctly applied and reviewed.",
+          "quote": "Here, we consider two configurations for the task-dependent output layer of the network, either using two fully connected layers after the learnable scattering layers, which we denote LEGS-FCN, or using a modified RBF network [29]..."
+        },
+        "referenced_paper_title": {
+          "value": "Multivariable functional interpolation and adaptive networks",
+          "justification": "The given reference '[29]' aligns with the context of RBF networks, indicating its role as cited by this article.",
+          "quote": "Here, we consider two configurations for the task-dependent output layer of the network, either using two fully connected layers after the learnable scattering layers, which we denote LEGS-FCN, or using a modified RBF network [29]..."
+        }
+      },
+      {
+        "name": {
+          "value": "LEGS-FCN",
+          "justification": "LEGS-FCN represents one of the newly proposed configurations by extending LEGS modules with fully connected layers.",
+          "quote": "Here, we consider two configurations for the task-dependent output layer of the network, either using two fully connected layers after the learnable scattering layers, which we denote LEGS-FCN..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 1,
+          "justification": "LEGS-FCN is an extension of the LEGS module configuration introduced in the paper.",
+          "quote": "Here, we consider two configurations for the task-dependent output layer of the network... which we denote LEGS-FCN..."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "LEGS-FCN is executed alongside other characterizations within the LEGS module in their evaluations.",
+          "quote": "...either using two fully connected layers after the learnable scattering layers, which we denote LEGS-FCN..."
+        },
+        "is_compared": {
+          "value": 0,
+          "justification": "LEGS-FCN is a configuration variation of LEGS explored within the proposed framework itself.",
+          "quote": "...either using two fully connected layers after the learnable scattering layers, which we denote LEGS-FCN..."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "It is a part of the newly contributed elements of the paper alongside LEGS, thus no existing paper referenced.",
+          "quote": "...either using two fully connected layers after the learnable scattering layers, which we denote LEGS-FCN..."
+        }
+      },
+      {
+        "name": {
+          "value": "LEGS-RBF",
+          "justification": "It is a configuration of the proposed LEGS where RBF networks are applied to manage scattering outputs.",
+          "quote": "The latter configuration more accurately processes scattering features as shown in Table II. Our RBF network works by first initializing a fixed number of movable anchor points."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 1,
+          "justification": "LEGS-RBF reflects a paper-contributed variant with RBF networks of the proposed learnable geometric scattering module.",
+          "quote": "The latter configuration more accurately processes scattering features as shown in Table II. Our RBF network works by first initializing..."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The configuration is executed as part of the study's methods within experimental evaluations.",
+          "quote": "The latter configuration more accurately processes scattering features as shown in Table II. Our RBF network works by first initializing..."
+        },
+        "is_compared": {
+          "value": 0,
+          "justification": "LEGS-RBF primarily serves as an internal variant within paper-based configurations and not an existing model.",
+          "quote": "The latter configuration more accurately processes scattering features as shown in Table II. Our RBF network works by first initializing..."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "This model configuration is contributed in the current paper hence no prior paper is referenced.",
+          "quote": "The latter configuration more accurately processes scattering features as shown in Table II. Our RBF network works by first initializing..."
+        }
+      },
+      {
+        "name": {
+          "value": "Graph U-Nets",
+          "justification": "Graph U-Nets are mentioned in the context of aggregation techniques compared to learnable scattering in the study.",
+          "quote": "While many approaches may be applied to aggregate node-level features into graph-level features such as max, mean, sum pooling, or the more powerful TopK [27]..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": 0,
+          "justification": "Graph U-Nets are existing architectures and referenced as an alternative method, not contributed by this paper.",
+          "quote": "While many approaches may be applied to aggregate node-level features into graph-level features such as max, mean, sum pooling, or the more powerful TopK [27]..."
+        },
+        "is_executed": {
+          "value": 0,
+          "justification": "Graph U-Nets are not directly executed within this paper but acknowledged among possible strategies.",
+          "quote": "While many approaches may be applied to aggregate node-level features into graph-level features such as max, mean, sum pooling, or the more powerful TopK [27]..."
+        },
+        "is_compared": {
+          "value": 0,
+          "justification": "While briefly noted among potential methods, Graph U-Nets are not claimed as a direct comparative focus within this investigation.",
+          "quote": "While many approaches may be applied to aggregate node-level features into graph-level features such as max, mean, sum pooling, or the more powerful TopK [27]..."
+        },
+        "referenced_paper_title": {
+          "value": "Graph U-Nets",
+          "justification": "The citation '[27]' corresponds to known literature discussing graph U-Nets and TopK pooling strategies.",
+          "quote": "While many approaches may be applied to aggregate node-level features into graph-level features such as max, mean, sum pooling, or the more powerful TopK [27]..."
+        }
+      },
+      {
+        "name": {
+          "value": "Graph Attention Networks",
+          "justification": "Graph Attention Networks (GAT) are one of the models compared in the analysis and insights of the paper.",
+          "quote": "We compare against graph convolutional networks (GCN) [4], GraphSAGE [5], graph attention network (GAT) [28]..."
+        },
+        "aliases": [
+          "GAT"
+        ],
+        "is_contributed": {
+          "value": 0,
+          "justification": "GAT is not contributed by the paper but is listed amongst comparative models evaluated.",
+          "quote": "We compare against graph convolutional networks (GCN) [4], GraphSAGE [5], graph attention network (GAT) [28]..."
+        },
+        "is_executed": {
+          "value": 1,
+          "justification": "The model is employed as a part of experimental assessments to benchmark the LEGS module results.",
+          "quote": "We compare against graph convolutional networks (GCN) [4], GraphSAGE [5], graph attention network (GAT) [28]..."
+        },
+        "is_compared": {
+          "value": 1,
+          "justification": "GAT is explicitly compared throughout the study's experimental setup against LEGS.",
+          "quote": "We compare against graph convolutional networks (GCN) [4], GraphSAGE [5], graph attention network (GAT) [28]..."
+        },
+        "referenced_paper_title": {
+          "value": "Graph attention networks",
+          "justification": "The reference '[28]' aligns with the topic focus provided and lends credibility as a known context of GATs.",
+          "quote": "We compare against graph convolutional networks (GCN) [4], GraphSAGE [5], graph attention network (GAT) [28]..."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "ENZYMES",
+          "justification": "The paper uses the ENZYMES dataset as a benchmark for testing LEGS on biochemical networks.",
+          "quote": "LEGS preserves enzyme exchange preferences while increasing performance."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Protein function prediction via graph kernels",
+          "justification": "The linked title '[31]' correlates with graph processing contexts critical to the ENZYMES dataset's historical use.",
+          "quote": "ENZYMES [31] is a dataset of 600 enzymes divided into 6 balanced classes of 100 enzymes each."
+        }
+      },
+      {
+        "name": {
+          "value": "COLLAB",
+          "justification": "COLLAB dataset is used to test graph classification performance in social networks.",
+          "quote": "COLLAB [44] contains 5000 ego-networks of different researchers from high energy physics, condensed matter physics or astrophysics."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Deep Graph Kernels",
+          "justification": "The reference '[44]' matches the known context and development related to the COLLAB dataset.",
+          "quote": "COLLAB [44] contains 5000 ego-networks of different researchers from high energy physics, condensed matter physics or astrophysics."
+        }
+      },
+      {
+        "name": {
+          "value": "IMDB-BINARY",
+          "justification": "IMDB-BINARY is utilized for assessing LEGS performance across binary classification tasks in small networks.",
+          "quote": "IMDB [44] contains graphs with nodes representing actresses/actors and edges between them if they are in the same move."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Deep Graph Kernels",
+          "justification": "This title '[44]' is in line with prior references that include datasets such as IMDB-BINARY in the focus of graph kernels.",
+          "quote": "IMDB [44] contains graphs with nodes representing actresses/actors and edges between them if they are in the same move."
+        }
+      },
+      {
+        "name": {
+          "value": "PTC",
+          "justification": "PTC dataset is used to compare LEGS effectiveness in biochemical classification tasks.",
+          "quote": "PTC [43] contains 344 chemical compound graphs divided into two classes based on whether or not they cause cancer in rats."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Statistical evaluation of the Predictive Toxicology Challenge 2000-2001",
+          "justification": "The reference '[43]' corresponds with the foundational application discussion surrounding PTC as a test set.",
+          "quote": "PTC [43] contains 344 chemical compound graphs divided into two classes based on whether or not they cause cancer in rats."
+        }
+      },
+      {
+        "name": {
+          "value": "NCI1",
+          "justification": "The dataset NCI1 is employed in benchmarking LEGS across biomedical chemical compounds analysis.",
+          "quote": "NCI1, NCI109 [42] contain slight variants of 4100 chemical compounds encoded as graphs."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Comparison of Descriptor Spaces for Chemical Compound Retrieval and Classification",
+          "justification": "Reference '[42]' details the NCI datasets' role and relevance concerning chemical data processing.",
+          "quote": "NCI1, NCI109 [42] contain slight variants of 4100 chemical compounds encoded as graphs."
+        }
+      },
+      {
+        "name": {
+          "value": "DD",
+          "justification": "The DD dataset is mentioned for execution and comparison of the LEGS module across biomedical graph examples.",
+          "quote": "DD [41] is a dataset extracted from the protein data bank (PDB) of 1178 high resolution proteins."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Distinguishing Enzyme Structures from Non-enzymes Without Alignments",
+          "justification": "Reference '[41]' directly aligns with DD datasets used for structural and non-structural classifications.",
+          "quote": "DD [41] is a dataset extracted from the protein data bank (PDB) of 1178 high resolution proteins."
+        }
+      },
+      {
+        "name": {
+          "value": "QM9",
+          "justification": "The QM9 dataset is used for graph regression task evaluations related to quantum chemistry data.",
+          "quote": "We evaluate the performance of LEGS-based networks on the quantum chemistry dataset QM9 [32]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Neural message passing for quantum chemistry",
+          "justification": "The quote '[32]' fits with QM9 dataset discussions intersecting with chemistry, as anchored in related work.",
+          "quote": "We evaluate the performance of LEGS-based networks on the quantum chemistry dataset QM9 [32]."
+        }
+      },
+      {
+        "name": {
+          "value": "MUTAG",
+          "justification": "MUTAG is a benchmark dataset deployed for evaluating LEGS in biochemical graph tasks.",
+          "quote": "MUTAG is referenced as a dataset in the evaluation table but lacks a deeply articulated quote."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "MUTAG is a known benchmark within biochemical graph tasks as corroborated by its presence in comparative.testing.",
+          "quote": "MUTAG is referenced as a dataset in the evaluation table but lacks a deeply articulated quote."
+        }
+      },
+      {
+        "name": {
+          "value": "NCI109",
+          "justification": "The NCI109 dataset complements NCI1 in chemical compounds evaluation tasks in the paper.",
+          "quote": "NCI1, NCI109 [42] contain slight variants of 4100 chemical compounds encoded as graphs."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Comparison of Descriptor Spaces for Chemical Compound Retrieval and Classification",
+          "justification": "The reference '[42]' covers the involvement of NCI datasets in cheminformatics investigation.",
+          "quote": "NCI1, NCI109 [42] contain slight variants..."
+        }
+      },
+      {
+        "name": {
+          "value": "PROTEINS",
+          "justification": "The PROTEINS dataset is part of type assessments comparing enzymatic structures.",
+          "quote": "PROTEINS [31] contains 1178 protein structures with the goal of classifying enzymes vs. non enzymes."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Protein function prediction via graph kernels",
+          "justification": "The reference '[31]' is consistent with graph processing discussions involving protein function classification.",
+          "quote": "PROTEINS [31] contains 1178 protein structures with the goal of classifying enzymes vs. non enzymes."
+        }
+      },
+      {
+        "name": {
+          "value": "REDDIT-BINARY",
+          "justification": "The paper engages REDDIT-BINARY as part of evaluating social network graph domain implementations.",
+          "quote": "REDDIT [44] consists of three independent datasets. In REDDIT-BINARY/MULTI-5K/MULTI-12K, each graph represents a discussion thread..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Deep Graph Kernels",
+          "justification": "This citation '[44]' conforms with REDDIT dataset contexts intertwined with known studies on graph kernels.",
+          "quote": "REDDIT [44] consists of three independent datasets. In REDDIT-BINARY/MULTI-5K/MULTI-12K, each graph represents a discussion thread..."
+        }
+      },
+      {
+        "name": {
+          "value": "CASP",
+          "justification": "CASP dataset is incorporated in the context of evaluating graph regression performance aligned with protein structures.",
+          "quote": "For this task we use the CASP12 dataset [33] and preprocess it similarly to [35]..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Critical assessment of methods of protein structure prediction (CASP)—Round XII",
+          "justification": "Reference '[33]' aligns directly with protein structure estimation tasks discussed in context.",
+          "quote": "For this task we use the CASP12 dataset [33] and preprocess it similarly to [35]..."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch Geometric",
+          "justification": "The paper mentions using PyTorch Geometric for implementing various models and experiments.",
+          "quote": "All networks were trained using the PyTorch geometric package [37]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Fast graph representation learning with PyTorch Geometric",
+          "justification": "This title '[37]' directly corresponds to PyTorch Geometric, as cited for model implementation.",
+          "quote": "All networks were trained using the PyTorch geometric package [37]."
+        }
+      },
+      {
+        "name": {
+          "value": "ADAM",
+          "justification": "The optimizer 'ADAM' is utilized for training models in the paper.",
+          "quote": "We train all models for a maximum of 1000 epochs with an initial learning rate of 1.0 × 10−4 using the ADAM optimizer [45]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Adam: A Method for Stochastic Optimization",
+          "justification": "The cited work '[45]' aligns with the use of ADAM across experiments indicated.",
+          "quote": "We train all models for a maximum of 1000 epochs with an initial learning rate of 1.0 × 10−4 using the ADAM optimizer [45]."
+        }
+      },
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is mentioned as a core library for implementing their neural network models.",
+          "quote": "Our models are implemented with Pytorch [46] and Pytorch geometric [37]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An Imperative Style, High-Performance Deep Learning Library",
+          "justification": "The referenced work '[46]' clearly aligns with PyTorch's use in developing models.",
+          "quote": "Our models are implemented with Pytorch [46] and Pytorch geometric [37]."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 6704,
+    "prompt_tokens": 24422,
+    "total_tokens": 31126,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": null
+  }
+}

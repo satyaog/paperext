@@ -1,8 +1,9 @@
 import typing
 import warnings
+
 import pandas as pd
-from pydantic import BaseModel, Field, create_model
 import yaml
+from pydantic import BaseModel, Field, create_model
 
 from ..utils import split_entry, str_normalize
 from .model import Explained, Model, PaperExtractions
@@ -13,11 +14,7 @@ _MODE_ALIASES = {
     "finetuned": [],
 }
 
-_MODE_ALIASES = {
-    alias: k
-    for k, v in _MODE_ALIASES.items()
-    for alias in {k, *v}
-}
+_MODE_ALIASES = {alias: k for k, v in _MODE_ALIASES.items() for alias in {k, *v}}
 
 _RESEARCH_FIELDS_ALIASES = {
     "3dreconstruction": [],
@@ -48,7 +45,12 @@ _RESEARCH_FIELDS_ALIASES = {
     "fairnessinrecommendersystems": [],
     "generativemodels": ["generativemodeling"],
     "goalconditionedreinforcementlearning": [],
-    "graphneuralnetwork": ["gnn", "gnns", "graphneuralnetworks", "graphneuralnetworksgnns"],
+    "graphneuralnetwork": [
+        "gnn",
+        "gnns",
+        "graphneuralnetworks",
+        "graphneuralnetworksgnns",
+    ],
     "humancomputerinteraction": ["hci"],
     "humanintheloopreinforcementlearning": [],
     "interpretability": [],
@@ -120,7 +122,7 @@ def _reasearch_field_alias(field):
     return _RESEARCH_FIELDS_ALIASES.get(field, field)
 
 
-def convert_model_json_to_yaml(model_cls:BaseModel, json_data:str, **kwargs):
+def convert_model_json_to_yaml(model_cls: BaseModel, json_data: str, **kwargs):
     model = model_cls.model_validate_json(json_data, **kwargs)
     yaml_data = model_dump_yaml(model)
     assert model_validate_yaml(model_cls, yaml_data) == model
@@ -132,22 +134,22 @@ def fix_explained_fields():
     return create_model(PaperExtractions.__name__, **fields)
 
 
-def model_dump_yaml(model:BaseModel, **kwargs):
+def model_dump_yaml(model: BaseModel, **kwargs):
     return yaml.safe_dump(model.model_dump(**kwargs), sort_keys=False, width=120)
 
 
-def model_validate_yaml(model_cls:BaseModel, yaml_data:str, **kwargs):
+def model_validate_yaml(model_cls: BaseModel, yaml_data: str, **kwargs):
     return model_cls.model_validate(yaml.safe_load(yaml_data), **kwargs)
 
 
-def _get_value(entry:Explained):
+def _get_value(entry: Explained):
     if not isinstance(entry, Explained):
         return entry
 
     return entry.value
 
 
-def _aliases(entry:dict):
+def _aliases(entry: dict):
     ALIASES_FIELDS = {"name", "aliases"}
 
     if not isinstance(entry, dict) or (
@@ -159,7 +161,7 @@ def _aliases(entry:dict):
     return entry
 
 
-def _mode_and_role(entry:dict):
+def _mode_and_role(entry: dict):
     MODE_AND_ROLE_FIELDS = {"is_contributed", "is_executed", "is_compared"}
 
     if not isinstance(entry, dict) or (
@@ -175,14 +177,11 @@ def _mode_and_role(entry:dict):
     return entry
 
 
-def _model_dump(model:BaseModel | typing.Any):
+def _model_dump(model: BaseModel | typing.Any):
     model = _get_value(model)
 
     if isinstance(model, BaseModel):
-        model = {
-            k: v
-            for k, v in map(lambda f:(f[0], _model_dump(f[1])), model)
-        }
+        model = {k: v for k, v in map(lambda f: (f[0], _model_dump(f[1])), model)}
         model = _mode_and_role(model)
         model = _aliases(model)
 
@@ -192,7 +191,7 @@ def _model_dump(model:BaseModel | typing.Any):
     return model
 
 
-def model2df(model:BaseModel):
+def model2df(model: BaseModel):
     paper_1d_df = {"all_research_fields": []}
     paper_references_df = {}
 
@@ -204,7 +203,12 @@ def model2df(model:BaseModel):
         elif k in ("sub_research_fields",):
             v = [srf["name"] for srf in v]
 
-        if k in ("title", "type", "primary_research_field", "sub_research_fields",):
+        if k in (
+            "title",
+            "type",
+            "primary_research_field",
+            "sub_research_fields",
+        ):
             paper_1d_df[k] = v
 
         if k in ("primary_research_field",):
@@ -213,10 +217,17 @@ def model2df(model:BaseModel):
         elif k in ("sub_research_fields",):
             paper_1d_df["all_research_fields"].extend(v)
 
-        elif k in ("models", "datasets", "libraries",):
+        elif k in (
+            "models",
+            "datasets",
+            "libraries",
+        ):
             for i, entry in enumerate(v):
                 for entry_k, entry_v in entry.items():
-                    if entry_k in ("aliases", "referenced_paper_title",):
+                    if entry_k in (
+                        "aliases",
+                        "referenced_paper_title",
+                    ):
                         continue
 
                     paper_references_df.setdefault(entry_k, {})
@@ -230,10 +241,14 @@ def model2df(model:BaseModel):
     paper_1d_df["all_research_fields"] = [pd.Series(paper_1d_df["all_research_fields"])]
     paper_1d_df, paper_references_df = (
         pd.DataFrame(paper_1d_df),
-        pd.DataFrame(paper_references_df)
+        pd.DataFrame(paper_references_df),
     )
 
-    for group in ("models", "datasets", "libraries",):
+    for group in (
+        "models",
+        "datasets",
+        "libraries",
+    ):
         try:
             _l = paper_references_df.loc[group]["name"]
             _s = paper_references_df.loc[group]["name"].drop_duplicates()
@@ -248,25 +263,24 @@ def model2df(model:BaseModel):
 
 
 def fix_explained_fields():
-    import pdb ; pdb.set_trace()
     fields = _get_fields(PaperExtractions)
     return create_model(PaperExtractions.__name__, **fields)
 
 
-def print_model(model_cls:BaseModel, indent = 0):
+def print_model(model_cls: BaseModel, indent=0):
     for field, info in model_cls.model_fields.items():
         print(" " * indent, field, info)
         if typing.get_origin(info.annotation) == list:
-            print_model(info.annotation.__args__[0], indent+2)
+            print_model(info.annotation.__args__[0], indent + 2)
             continue
 
         try:
-            print_model(info.annotation, indent+2)
+            print_model(info.annotation, indent + 2)
         except AttributeError:
             pass
 
 
-def _get_fields(model_cls:BaseModel):
+def _get_fields(model_cls: BaseModel):
     fields = {}
     for field, info in model_cls.model_fields.items():
         if typing.get_origin(info.annotation) == list:
@@ -277,7 +291,7 @@ def _get_fields(model_cls:BaseModel):
                 continue
             fields[field] = (
                 typing.List[create_model(field, **sub_fields)],
-                Field(description=info.description)
+                Field(description=info.description),
             )
             continue
 
@@ -289,12 +303,15 @@ def _get_fields(model_cls:BaseModel):
 
         if info.annotation.__base__ == Explained:
             sub_fields = {
-                field:(sub_fields["value"][0], Field(description=info.description)),
-                **{k:v for k,v in sub_fields.items() if k != "value"}
+                field: (sub_fields["value"][0], Field(description=info.description)),
+                **{k: v for k, v in sub_fields.items() if k != "value"},
             }
             cls_name = f"{Explained.__name__}[{field}]"
         else:
             cls_name = info.annotation.__name__
-        fields[field] = (create_model(cls_name, **sub_fields), Field(description=info.description))
+        fields[field] = (
+            create_model(cls_name, **sub_fields),
+            Field(description=info.description),
+        )
 
     return fields

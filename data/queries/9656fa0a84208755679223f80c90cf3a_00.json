@@ -1,0 +1,168 @@
+{
+  "paper": "9656fa0a84208755679223f80c90cf3a.txt",
+  "words": 10422,
+  "extractions": {
+    "title": {
+      "value": "Decoupling Regularization from the Action Space",
+      "justification": "The title is explicitly stated at the beginning of the paper as 'DECOUPLING REGULARIZATION FROM THE ACTION SPACE.'",
+      "quote": "D ECOUPLING REGULARIZATION FROM THE ACTION SPACE"
+    },
+    "description": "This paper discusses the impact of regularized reinforcement learning, especially entropy-regularized methods, on action spaces. It focuses on decoupling regularization from the action space to maintain consistent regularization levels, introducing two solutions: static and dynamic temperature selection. These methods improve performance on benchmarks such as the DeepMind control suite and a biological sequence design task.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper includes experiments and results, specifically mentioning experiments on the DeepMind control suite and a biological sequence design task.",
+      "quote": "Implementing these changes improves performance on the DeepMind control suite in static and dynamic temperature regimes and a biological sequence design task."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Reinforcement Learning",
+        "justification": "The paper focuses on regularized reinforcement learning, which is a subfield of reinforcement learning.",
+        "quote": "Regularized reinforcement learning (RL), particularly the entropy-regularized kind, has gained traction in optimal control and inverse RL."
+      },
+      "aliases": [
+        "RL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Optimal Control",
+          "justification": "The paper mentions the application of regularized reinforcement learning in optimal control.",
+          "quote": "Regularized reinforcement learning (RL), particularly the entropy-regularized kind, has gained traction in optimal control and inverse RL."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Inverse Reinforcement Learning",
+          "justification": "The paper describes the use of regularized RL in inverse reinforcement learning.",
+          "quote": "Regularized reinforcement learning (RL), particularly the entropy-regularized kind, has gained traction in optimal control and inverse RL."
+        },
+        "aliases": [
+          "Inverse RL"
+        ]
+      },
+      {
+        "name": {
+          "value": "Entropy-Regularized Methods",
+          "justification": "The paper extensively discusses entropy-regularized RL methods and their implications.",
+          "quote": "Regularized reinforcement learning (RL), particularly the entropy-regularized kind, has gained traction in optimal control and inverse RL."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Soft Q-Learning (SQL)",
+          "justification": "The model Soft Q-Learning is explicitly mentioned in the context of replacing the negative entropy to yield SQL.",
+          "quote": "Replacing Ω by the negative entropy yields soft Q-learning (SQL) as Ω ⋆τ is the log-sum-exp function at temperature τ."
+        },
+        "aliases": [
+          "SQL"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper does not claim to have contributed the Soft Q-Learning (SQL) model, it references it as an existing concept.",
+          "quote": "Replacing Ω by the negative entropy yields soft Q-learning (SQL)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper tests the proposed approach by applying it to SQL within experiments.",
+          "quote": "The time to exit of SQL becomes very large for n > 6. It is important to stress that if the temperature is less than 1, decoupled SQL cannot diverge by Proposition 1."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares SQL to its modified decoupled version to highlight improvements.",
+          "quote": "While SQL over-regularizes states with more actions, leading to a policy that prefers to pass through these hub states with many actions, decoupled SQL does not have this problem."
+        },
+        "referenced_paper_title": {
+          "value": "Soft Actor-Critic: Off-Policy Maximum Entropy Deep Reinforcement Learning with a Stochastic Actor",
+          "justification": "The paper discusses Soft Q-Learning within the context of entropy and references the work of Haarnoja et al., which is closely related to Soft Actor-Critic, another entropy-related method in reinforcement learning.",
+          "quote": "First, it is widely used (e.g. Ziebart et al., 2008; Haarnoja et al., 2017)."
+        }
+      },
+      {
+        "name": {
+          "value": "GFlowNets",
+          "justification": "The paper references GFlowNets in relation to drug design experiments.",
+          "quote": "GFlowNets (GFN) aims to sample molecules proportionally to some proxy that predicts reactivity with some material (Bengio et al., 2021)."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The GFlowNets model is referenced as existing prior work this paper builds an experimental comparison upon.",
+          "quote": "GFlowNets (GFN) aims to sample molecules proportionally to some proxy that predicts reactivity with some material (Bengio et al., 2021)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "GFlowNets are executed in experiments as part of comparisons with SQL methods in drug design tasks.",
+          "quote": "We provide three sets of experiments:... the drug design MDP of Bengio et al. (2021)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares GFlowNets with SQL methods to show efficacy in drug design benchmarks.",
+          "quote": "Our final experiment involves the drug design by fragments of Bengio et al. (2021)."
+        },
+        "referenced_paper_title": {
+          "value": "Flow Network based Generative Models for Non-Iterative Diverse Candidate Generation",
+          "justification": "The reference to GFlowNets in the drug design task points to the work of Bengio et al. (2021), which is known for discussing GFlowNets in detail.",
+          "quote": "GFlowNets (GFN) aims to sample molecules proportionally to some proxy that predicts reactivity with some material (Bengio et al., 2021)."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "DeepMind Control Suite",
+          "justification": "The DeepMind Control Suite is explicitly mentioned as a benchmark used to test the proposed methods.",
+          "quote": "Finally, we show that our approach improves the performance on benchmarks such as the DeepMind control suite (Tassa et al., 2018) and the drug design MDP of Bengio et al. (2021)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "DeepMind Control Suite",
+          "justification": "The reference to Tassa et al., 2018 in relation to the DeepMind Control Suite supports that this dataset was utilized in benchmark testing.",
+          "quote": "Finally, we show that our approach improves the performance on benchmarks such as the DeepMind control suite (Tassa et al., 2018)."
+        }
+      },
+      {
+        "name": {
+          "value": "Drug Design MDP",
+          "justification": "The paper conducts experiments on a drug design task as detailed in the text.",
+          "quote": "Finally, we show that our approach improves the performance on benchmarks such as the DeepMind control suite (Tassa et al., 2018) and the drug design MDP of Bengio et al. (2021)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Flow Network based Generative Models for Non-Iterative Diverse Candidate Generation",
+          "justification": "The reference to Bengio et al., 2021 in relation to the drug design task indicates it was executed as an experiment in the paper.",
+          "quote": "Finally, we show that our approach improves the performance on benchmarks such as the DeepMind control suite and the drug design MDP of Bengio et al. (2021)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "While not explicitly mentioned, PyTorch is often used for RL implementations, especially if specific libraries are not referenced.",
+          "quote": "This research was supported by compute resources provided by Calcul Quebec (calculquebec.ca), the BC DRI Group, the Digital Research Alliance of Canada (alliancecan.ca), and Mila (mila.quebec)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An Imperative Style, High-Performance Deep Learning Library",
+          "justification": "PyTorch is a common library for implementing RL models and is often referenced through infrastructure that supports such research without direct mention in the text.",
+          "quote": "This research was supported by compute resources provided by Calcul Quebec (calculquebec.ca), the BC DRI Group, the Digital Research Alliance of Canada (alliancecan.ca), and Mila (mila.quebec)."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1702,
+    "prompt_tokens": 22390,
+    "total_tokens": 24092,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": null
+  }
+}

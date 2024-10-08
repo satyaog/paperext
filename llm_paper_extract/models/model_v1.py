@@ -96,6 +96,8 @@ class Role(str, enum.Enum):
 
 
 T = TypeVar("T")
+
+
 class Explained(BaseModel, Generic[T]):
     value: T | str
     # value_str: str = Field(description="Literal conversion of the value")
@@ -107,13 +109,13 @@ class Explained(BaseModel, Generic[T]):
         description="The best literal quote from the paper which supports the value",
     )
 
-    def __eq__(self, other:"Explained"):
+    def __eq__(self, other: "Explained"):
         if isinstance(self.value, str):
             return self.value.lower() == other.value.lower()
         else:
             return self.value == other.value
 
-    def __lt__(self, other:"Explained"):
+    def __lt__(self, other: "Explained"):
         return self.value < other.value
 
 
@@ -192,12 +194,8 @@ class PaperExtractions(BaseModel):
     sub_research_field: Explained[str] = Field(
         description="Deep Learning sub-research field of the paper",
     )
-    models: List[Model] = Field(
-        description="All Models found in the paper"
-    )
-    datasets: List[Dataset] = Field(
-        description="All Datasets found in the paper"
-    )
+    models: List[Model] = Field(description="All Models found in the paper")
+    datasets: List[Dataset] = Field(description="All Datasets found in the paper")
     libraries: List[Library] = Field(
         description="All Deep Learning Libraries found in the paper"
     )
@@ -220,12 +218,8 @@ class ExtractionResponse(BaseModel):
 
 
 def empty_paperextractions():
-    empty_explained = Explained[str](
-        value=_EMPTY_FLAG,
-        justification="",
-        quote=""
-    )
-    empty_explained_kwargs = (lambda:{k:v for k,v in empty_explained})()
+    empty_explained = Explained[str](value=_EMPTY_FLAG, justification="", quote="")
+    empty_explained_kwargs = (lambda: {k: v for k, v in empty_explained})()
 
     empty_explained_modelmode = Explained[ModelMode](**empty_explained_kwargs)
     empty_explained_str = Explained[str](**empty_explained_kwargs)
@@ -243,7 +237,7 @@ def empty_paperextractions():
                 name=empty_explained_str,
                 role=_EMPTY_FLAG,
                 type=empty_explained_str,
-                mode=_EMPTY_FLAG
+                mode=_EMPTY_FLAG,
             )
         ],
         datasets=[
