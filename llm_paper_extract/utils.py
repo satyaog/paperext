@@ -95,12 +95,6 @@ class Paper:
         return link_id_pdf
 
 
-def fake_old_structure(paperoni: dict):
-    for p in paperoni:
-        p = Paper(p)
-        pdf = next(Path().glob(Paper.LINK_ID_TEMPLATE.format(p.id)))
-
-
 def build_validation_set(data_dir: Path, seed=42):
     random.seed(seed)
 

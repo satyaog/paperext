@@ -1,5 +1,6 @@
 import argparse
 import json
+import logging
 import os
 import platform
 import shutil
@@ -109,21 +110,23 @@ def _model_dump(paper_id, paper, model: BaseModel):
     lines = model_dump_yaml.splitlines()
     for i, l in enumerate(lines):
         if l.lstrip().startswith("quote:"):
-            lstrip = l[: len(l) - len(l.lstrip())]
+            indent = l[: len(l) - len(l.lstrip())]
             end = i + 1
             while end < len(lines):
-                len_end_lstrip = len(lines[end]) - len(lines[end].lstrip())
-                if lines[end] and len_end_lstrip <= len(lstrip):
+                len_end_indent = len(lines[end]) - len(lines[end].lstrip())
+                if lines[end] and len_end_indent <= len(indent):
+                    # indentation is shorter than the quote field
                     break
                 end += 1
             try:
                 quote = yaml.safe_load("\n".join(lines[i:end]))["quote"]
             except (yaml.parser.ParserError, yaml.scanner.ScannerError):
-                print(model_dump_yaml)
-                print("\n".join(lines[i:end]))
+                logging.error(
+                    "\n".join([model_dump_yaml] + lines[i:end]), exc_info=True
+                )
                 raise
             if not list(_find_in_paper(quote, paper)):
-                lines.insert(end, f"{lstrip}## {_WARNING}")
+                lines.insert(end, f"{indent}## {_WARNING}")
     model_dump_yaml = "\n".join(lines)
     return model_dump_yaml
 
@@ -393,7 +396,7 @@ def get_papers_from_file(
 
     for paper in papers:
         paper_id = paper.strip()
-        print("Parsing", paper_id)
+        logging.info(f"Parsing {paper_id}")
         paper = (
             (ROOT_DIR / f"data/cache/arxiv/{paper_id}.txt")
             .read_text()
@@ -402,8 +405,7 @@ def get_papers_from_file(
         )
         responses = list((ROOT_DIR / "data/queries/").glob(f"{paper_id}_[0-9]*.json"))
         if not responses:
-            print("No responses found for", paper_id)
-            print("Skipping...")
+            logging.info(f"No responses found for {paper_id}\nSkipping...")
             continue
         responses = (
             ExtractionResponse.model_validate_json(_f.read_text()) for _f in responses
@@ -421,14 +423,14 @@ def get_papers_from_folder() -> List[Tuple[str, Path, ExtractionResponse]]:
 
     extractions_tuple = []
     for response_path in responses:
-        print("Parsing", response_path)
+        logging.info(f"Parsing {response_path}")
         try:
             (_, paper), (_, _), (_, extractions), _ = (
                 ExtractionResponse.model_validate_json(response_path.read_text())
             )
         except ValidationError as e:
-            print(e)
-            print(f"Skipping {response_path}")
+            logging.error(e, exc_info=True)
+            logging.info(f"Skipping {response_path}")
             continue
         paper_id = paper
         paper = (
@@ -467,7 +469,7 @@ def main(argv=None):
         if [_paper_id for (_paper_id, _, _) in done if _paper_id == paper_id]:
             continue
 
-        print("Merging", paper_id)
+        logging.info(f"Merging {paper_id}")
 
         f: Path = (ROOT_DIR / "data/merged/") / paper_id
         f = f.with_suffix(".yaml")
@@ -483,8 +485,8 @@ def main(argv=None):
             except FileNotFoundError:
                 merged_extractions = None
             except ValidationError as e:
-                print(e)
-                print(f"Invalid extraction file... Consider deleting [{f}].")
+                logging.error(e, exc_info=True)
+                logging.info(f"Invalid extraction file... Consider deleting [{f}].")
                 continue
 
             try:
@@ -501,8 +503,8 @@ def main(argv=None):
                 )
                 f.with_suffix(".json").unlink()
             except ValidationError as e:
-                print(e)
-                print(f"Invalid extraction file... Consider deleting [{f}].")
+                logging.error(e, exc_info=True)
+                logging.info(f"Invalid extraction file... Consider deleting [{f}].")
                 continue
 
             if (
@@ -523,12 +525,12 @@ def main(argv=None):
         ]
 
         pdf: Path = (ROOT_DIR / "data/cache/arxiv/" / paper_id).with_suffix(".pdf")
-        print("Opening", pdf)
+        logging.info(f"Opening {pdf}")
         try:
             _open(str(pdf))
         except (subprocess.CalledProcessError, FileNotFoundError) as e:
             url = f"https://arxiv.org/pdf/{pdf.stem}"
-            print("Downloading from", url, "to", str(pdf))
+            logging.info(f"Downloading from {url} to {pdf}")
             urllib.request.urlretrieve(url, str(pdf))
             _open(str(pdf))
 
@@ -547,7 +549,7 @@ def main(argv=None):
         ):
             subprocess.run(cmd, check=check)
 
-        print("Merged paper saved to", f)
+        logging.info(f"Merged paper saved to {f}")
 
 
 if __name__ == "__main__":

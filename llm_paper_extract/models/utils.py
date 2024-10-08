@@ -263,9 +263,6 @@ def model2df(model: BaseModel):
 
 
 def fix_explained_fields():
-    import pdb
-
-    pdb.set_trace()
     fields = _get_fields(PaperExtractions)
     return create_model(PaperExtractions.__name__, **fields)
 

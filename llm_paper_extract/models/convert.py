@@ -1,3 +1,4 @@
+import logging
 import sys
 from pathlib import Path
 
@@ -69,11 +70,15 @@ def convert_model_v1(extractions: model_v1.PaperExtractions):
                         justification=f"Role:{[_r.value for _r in model_v1.Role]}",
                         quote=m.role,
                     ).model_dump(),
+                    # is_executed is uncertain except when the model is
+                    # contributed
                     is_executed=model.Explained(
                         value=str_eq(m.role, model_v1.Role.CONTRIBUTED.value),
                         justification=f"ModelMode:{[_m.value for _m in model_v1.ModelMode]}",
                         quote=m.mode,
                     ).model_dump(),
+                    # is_compared is uncertain except when the model is
+                    # contributed
                     is_compared=model.Explained(
                         value=str_eq(m.role, model_v1.Role.CONTRIBUTED.value),
                         justification="",
@@ -141,23 +146,28 @@ if __name__ == "__main__":
                 try:
                     extractions = model_cls.model_validate_json(model_json)
                     break
-                except pydantic_core._pydantic_core.ValidationError:
-                    pass
+                except pydantic_core._pydantic_core.ValidationError as _e:
+                    e = _e
+                    logging.warning(
+                        f"Failed to validate json of model {model_cls}: {e}",
+                        exc_info=True,
+                    )
+            else:
+                raise e
 
             try:
+                # extractions might be a [model | model_v1].ExtractionResponse
                 response: model_v1.ExtractionResponse = extractions
                 extractions = response.extractions
             except AttributeError:
+                # extractions is of type [model | model_v1].PaperExtractions
                 response = None
 
             if isinstance(extractions, model.PaperExtractions):
-                print(
-                    f"Model {path.relative_to(ROOT_DIR)} already updated",
-                    file=sys.stderr,
-                )
+                logging.info(f"Model {path.relative_to(ROOT_DIR)} already updated")
                 continue
 
-            print(f"Updating {path.relative_to(ROOT_DIR)}", file=sys.stderr)
+            logging.info(f"Updating {path.relative_to(ROOT_DIR)}")
             extractions = convert_model_v1(extractions)
 
             if response is not None:

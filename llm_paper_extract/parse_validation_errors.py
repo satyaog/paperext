@@ -113,6 +113,8 @@ def parse_request_output(request_output: str):
         try:
             request_output = ast.literal_eval(request_output)
         except SyntaxError:
+            # Skip prefixes like 'DEBUG:', 'Request options:' until a valid dict
+            # can be parsed
             continue
         break
 

@@ -3,7 +3,6 @@ import asyncio
 import bdb
 import json
 import logging
-import warnings
 from pathlib import Path
 from typing import List, Tuple
 
@@ -18,7 +17,9 @@ from .models.model import (_FIRST_MESSAGE, _RETRY_MESSAGE, ExtractionResponse,
 from .utils import Paper, build_validation_set, python_module
 
 # Set logging to DEBUG to print OpenAI requests
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(
+    filename=ROOT_DIR / f"logs/{Path(__file__).stem}.out", level=logging.DEBUG
+)
 
 PROG = f"python3 -m {python_module(__file__)}"
 
@@ -122,8 +123,9 @@ async def ignore_exceptions(
         except bdb.BdbQuit:
             raise
         except Exception as e:
-            warnings.warn(
-                f"Failed to extract paper informations from {paper.name}:\n{e}"
+            logging.error(
+                f"Failed to extract paper information from {paper.name}: {e}",
+                exc_info=True,
             )
 
 
@@ -178,7 +180,7 @@ def main(argv=None):
     client = instructor.from_openai(
         # TODO: update to use the new feature Mode.TOOLS_STRICT
         # https://openai.com/index/introducing-structured-outputs-in-the-api/
-        openai.AsyncOpenAI()# , mode=instructor.Mode.TOOLS_STRICT
+        openai.AsyncOpenAI()  # , mode=instructor.Mode.TOOLS_STRICT
     )
 
     asyncio.run(ignore_exceptions(client, [paper.absolute() for paper in papers]))

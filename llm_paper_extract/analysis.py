@@ -117,10 +117,6 @@ def main(argv=None):
             for paper in build_validation_set(ROOT_DIR / "data")
         ]
 
-    import ipdb
-
-    ipdb.set_trace()
-
     if not any(map(lambda p: p.exists(), papers)):
         papers = [ROOT_DIR / f"data/merged/{paper}.yaml" for paper in papers]
 
