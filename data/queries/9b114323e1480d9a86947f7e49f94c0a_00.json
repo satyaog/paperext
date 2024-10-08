@@ -1,0 +1,133 @@
+{
+  "paper": "9b114323e1480d9a86947f7e49f94c0a.txt",
+  "words": 905,
+  "extractions": {
+    "title": {
+      "value": "PD-0334 Techniques to optimize auto-segmentation of small OARs in pediatric patients undergoing CSI",
+      "justification": "The title clearly specifies the focus of the research on optimizing auto-segmentation techniques for small OARs in pediatric patients undergoing CSI.",
+      "quote": "PD-0334 Techniques to optimize auto-segmentation of small OARs in pediatric patients undergoing CSI"
+    },
+    "description": "This paper explores techniques to optimize auto-segmentation of small organs at risk (OARs) in pediatric patients undergoing cranial spinal irradiation (CSI) using deep learning models. It focuses on improving the performance of the nnUNet model by implementing strategies like HU windowing and Unified Focal Loss.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper is empirical as it involves the collection of data and the experimentation with different techniques to optimize the auto-segmentation of OARs, and it presents results based on the experiments.",
+      "quote": "We collected the planning CT scans of pediatric patients undergoing CSI and reviewed all the contours."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Radiation Oncology",
+        "justification": "The primary research field is radiation oncology due to the focus on contouring organs at risk for cranial spinal irradiation in pediatric patients.",
+        "quote": "^1 McGill University Health Centre, Radiation Oncology, Montreal, Canada"
+      },
+      "aliases": [
+        "RadOnc"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Medical Imaging",
+          "justification": "The subfield relates to medical imaging as the paper discusses auto-segmentation of MRI images, which is crucial in medical imaging applications.",
+          "quote": "the very complex task of automatically defining target volumes from MRI images"
+        },
+        "aliases": [
+          "MedImg"
+        ]
+      },
+      {
+        "name": {
+          "value": "Deep Learning",
+          "justification": "The research employs deep learning models, specifically nnUNet and UNet, for the segmentation tasks, indicating a focus on this subfield.",
+          "quote": "The development and training of Deep Learning (DL) algorithms are highly complex"
+        },
+        "aliases": [
+          "DL"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "nnUNet",
+          "justification": "The nnUNet is discussed as a model used for auto-segmentation of OARs.",
+          "quote": "The DL model nnUNet (Isensee et al. 2021) can obviate many difficulties associated with preprocessing, choice of network architecture, and model training due to its self-configuring capability."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "nnUNet is a known model referenced in the study but not a new contribution.",
+          "quote": "The DL model nnUNet (Isensee et al. 2021) can obviate many difficulties associated with preprocessing, choice of network architecture, and model training."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model is executed as its performance is evaluated and compared with other models.",
+          "quote": "We first implemented the 2D nnUNet framework to auto-segment 7 structures: eyes, lenses, optic nerves, and optic chiasm."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The nnUNet model's performance is compared with another model in terms of DICE scores.",
+          "quote": "We then compared the 2D nnUNet results with a basic 2D UNet."
+        },
+        "referenced_paper_title": {
+          "value": "nnU-Net: Self-adapting Framework for U-Net-Based Medical Image Segmentation",
+          "justification": "The referenced paper discusses nnUNet, providing background on this model.",
+          "quote": "The DL model nnUNet (Isensee et al. 2021) can obviate many difficulties associated with preprocessing, choice of network architecture, and model training."
+        }
+      },
+      {
+        "name": {
+          "value": "2D UNet with UFL",
+          "justification": "The 2D UNet with modifications, including Unified Focal Loss, is used in the research.",
+          "quote": "We then compared the 2D nnUNet results with a basic 2D UNet that incorporates two changes: 1) preprocessing the images by clipping the HU units within the range of the target structures; 2) implementing a Unified Focal Loss (UFL; Yeung et al. 2021) to account for class imbalance."
+        },
+        "aliases": [
+          "windowing + UNet + UFL"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The model used is a modified version of an existing known model and not a novel contribution.",
+          "quote": "a basic 2D UNet that incorporates two changes"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "This modified model is both implemented and evaluated in the research study.",
+          "quote": "We trained the models and inferred the output labels on the validation dataset."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of this model is directly compared with nnUNet.",
+          "quote": "We then compared the 2D nnUNet results with a basic 2D UNet."
+        },
+        "referenced_paper_title": {
+          "value": "Unified Focal Loss: Generalising Dice and Cross Entropy-based Losses to Handle Class Imbalanced Medical Image Segmentation",
+          "justification": "The paper by Yeung et al. 2021 describes the Unified Focal Loss used in the model.",
+          "quote": "implementing a Unified Focal Loss (UFL; Yeung et al. 2021) to account for class imbalance."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Planning CT scans of pediatric patients undergoing CSI",
+          "justification": "The dataset used in the study consists of planning CT scans for the specific patient group described.",
+          "quote": "We collected the planning CT scans of pediatric patients undergoing CSI and reviewed all the contours."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Not Applicable",
+          "justification": "The dataset is used within the paper itself, and there is no separate paper referenced for this dataset.",
+          "quote": "We collected the planning CT scans of pediatric patients undergoing CSI and reviewed all the contours."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1217,
+    "prompt_tokens": 2669,
+    "total_tokens": 3886,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": null
+  }
+}

@@ -1,6 +1,6 @@
 import argparse
-from pathlib import Path
 import sys
+from pathlib import Path
 from typing import List
 
 try:
@@ -24,10 +24,8 @@ import pandas as pd
 from sklearn.metrics import confusion_matrix
 
 from . import ROOT_DIR
-
-
 from .models.model import ExtractionResponse, PaperExtractions
-from .models.utils import model_validate_yaml, model2df
+from .models.utils import model2df, model_validate_yaml
 from .utils import build_validation_set, python_module
 
 PROG = f"python3 -m {python_module(__file__)}"
@@ -118,10 +116,6 @@ def main(argv=None):
             ROOT_DIR / "data/merged" / paper.with_suffix(".yaml").name
             for paper in build_validation_set(ROOT_DIR / "data")
         ]
-
-    import ipdb
-
-    ipdb.set_trace()
 
     if not any(map(lambda p: p.exists(), papers)):
         papers = [ROOT_DIR / f"data/merged/{paper}.yaml" for paper in papers]

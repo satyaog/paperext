@@ -84,7 +84,7 @@ def download_and_convert_paper(
     while links:
         l: dict = links.pop(0)
         link_type = l["type"].split(".")[0]
-        sources = [
+        for _if, pdf, pdf_link in (
             (
                 l["type"].lower().startswith("arxiv"),
                 cache_dir / f"arxiv/{l['link']}.pdf",
@@ -95,10 +95,8 @@ def download_and_convert_paper(
                 cache_dir / link_type / f"{l['link']}.pdf",
                 l.get("url", None),
             ),
-        ]
-        if paper_id is not None:
-            sources.append((True, cache_dir / link_type / f"{paper_id}.pdf", l["link"]))
-        for _if, pdf, pdf_link in sources:
+            (True, cache_dir / link_type / f"{paper_id}.pdf", l["link"]),
+        ):
             if not _if:
                 continue
             text = pdf.with_suffix(".txt")

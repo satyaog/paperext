@@ -1,0 +1,274 @@
+{
+  "paper": "81e7ee7cb4315a3d3fc59eee750b7f5d.txt",
+  "words": 15995,
+  "extractions": {
+    "title": {
+      "value": "Empirical Analysis of Model Selection for Heterogeneous Causal Effect Estimation",
+      "justification": "The title of the paper is explicitly provided in the document.",
+      "quote": "E MPIRICAL A NALYSIS OF M ODEL S ELECTION FOR H ETEROGENEOUS C AUSAL E FFECT E STIMATION"
+    },
+    "description": "The paper conducts an extensive empirical analysis on model selection strategies for Conditional Average Treatment Effect (CATE) estimation, comparing various surrogate metrics and proposing novel strategies like two-level model selection and causal ensembling to improve performance.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves extensive empirical analysis and studies related to model selection strategies.",
+      "quote": "We conduct an extensive empirical analysis to benchmark the surrogate model selection metrics introduced in the literature, as well as the novel ones introduced in this work."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Causal Inference",
+        "justification": "The focus of the paper is on model selection for causal inference, specifically for estimating conditional average treatment effects.",
+        "quote": "We study the problem of model selection in causal inference, specifically for conditional average treatment effect (CATE) estimation."
+      },
+      "aliases": [
+        "CATE estimation"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Model Selection",
+          "justification": "The paper is centered around model selection strategies for CATE estimation.",
+          "quote": "We study the problem of model selection in causal inference, specifically for conditional average treatment effect (CATE) estimation."
+        },
+        "aliases": [
+          "Model Selection strategies"
+        ]
+      },
+      {
+        "name": {
+          "value": "AutoML",
+          "justification": "The paper uses AutoML to tune hyperparameters of surrogate metrics for fair comparison.",
+          "quote": "We ensure a fair com- parison by tuning the hyperparameters associated with these metrics via AutoML."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "T-Learner",
+          "justification": "The T-Learner is mentioned as one of the meta-learners for estimating CATE and is compared in the empirical analysis.",
+          "quote": "The T-Learner approach approximates the potential outcome E[Y |W = 0, X = x] as μ̂0 by regressing Y on X using samples from the un-treated population."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The T-Learner is not introduced by this paper, it is a known method in the literature.",
+          "quote": "These approaches range from adapting neural networks (Shi et al., 2019) to random forests (Wager & Athey, 2018), along with frameworks like double machine learning (Chernozhukov et al., 2016; Foster & Syrgkanis, 2019; Nie & Wager, 2021), instrumental variables (Hartford et al., 2017), meta learners (Künzel et al., 2019), etc."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The T-Learner is executed as part of the empirical analysis.",
+          "quote": "Our evaluation framework encourages unbiased evaluation of surrogate metrics by proper tuning of their nuisance models using AutoML."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The T-Learner is part of the empirical comparison among various meta-learners for CATE estimation.",
+          "quote": "We consider the meta-learner framework (Künzel et al., 2019) that relies on estimates of nuisance parameters (η̂) to predict CATE."
+        },
+        "referenced_paper_title": {
+          "value": "Metalearners for estimating heterogeneous treatment effects using machine learning",
+          "justification": "The referenced paper introduces meta-learners including T-Learner, which is referred in this analysis.",
+          "quote": "(Künzel et al., 2019)"
+        }
+      },
+      {
+        "name": {
+          "value": "S-Learner",
+          "justification": "The S-Learner is explicitly discussed as a methodology for estimating potential outcomes within meta-learners.",
+          "quote": "The S-Leaner approach learns a single regression model μ̂(x, w), regressing Y jointly on the features X and the treatment assignments W from observational data."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The S-Learner is a standard method utilized within meta-learning frameworks in existing literature.",
+          "quote": "These approaches range from adapting neural networks (Shi et al., 2019) to random forests (Wager & Athey, 2018), along with frameworks like double machine learning (Chernozhukov et al., 2016; Foster & Syrgkanis, 2019; Nie & Wager, 2021), instrumental variables (Hartford et al., 2017), meta learners (Künzel et al., 2019), etc."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "S-Learner is among the meta-learner approaches tested within the empirical analysis.",
+          "quote": "Similarly, we could also learn a single regression function (μ̂x,w) to estimate the potential outcomes, also known as the S-Learner."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "It is part of the comparative analysis with other meta-learners for estimating CATE.",
+          "quote": "In the final step it learns the CATE predictor (fj^DL) by minimizing the following loss function:"
+        },
+        "referenced_paper_title": {
+          "value": "Metalearners for estimating heterogeneous treatment effects using machine learning",
+          "justification": "The referenced framework for meta-learners, including S-Learner, is in the cited work.",
+          "quote": "(Künzel et al., 2019)"
+        }
+      },
+      {
+        "name": {
+          "value": "DR-Learner",
+          "justification": "The DR-Learner, a doubly robust estimator, is used for estimating heterogeneous treatment effects and discussed extensively in the paper.",
+          "quote": "Doubly Robust Learner (DR-Learner) To avoid the heavy dependence on the potential outcome regression functions with indirect meta-learners, recent works have proposed generalizations of the doubly robust estimator."
+        },
+        "aliases": [
+          "Doubly Robust Learner"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The DR-Learner is not newly introduced in the paper, it has been used in prior related works.",
+          "quote": "These approaches range from adapting neural networks (Shi et al., 2019) to random forests (Wager & Athey, 2018), along with frameworks like double machine learning (Chernozhukov et al., 2016; Foster & Syrgkanis, 2019; Nie & Wager, 2021), instrumental variables (Hartford et al., 2017), meta learners (Künzel et al., 2019), etc."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The DR-Learner is executed in the empirical study to estimate causal effects.",
+          "quote": "The DR-Learner is a mixture of the S-learner with inverse propensity (IPW) based approach."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "It is compared with other CATE estimation techniques within the study.",
+          "quote": "Our target of inference is the conditional average treatment effect (CATE), that represents the average effect of intervention (Y (1) − Y (0)) on the population with covariates X = x."
+        },
+        "referenced_paper_title": {
+          "value": "Optimal doubly robust estimation of heterogeneous causal effects",
+          "justification": "This paper introduces methodologies around doubly robust estimators that the DR-Learner builds upon.",
+          "quote": " (Kennedy, 2020)"
+        }
+      },
+      {
+        "name": {
+          "value": "R-Learner",
+          "justification": "The R-Learner is a meta-learner framework used in the paper for estimating conditional average treatment effects.",
+          "quote": "Double Machine Learning (R-Learner) The Dobule ML approach to CATE estimation (Chernozhukov et al., 2016; Nie & Wager, 2021), also known in the literature as the R-Learner."
+        },
+        "aliases": [
+          "Double Machine Learning"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The R-Learner is a well-established method used within meta-learning for causal inference.",
+          "quote": "These approaches range from adapting neural networks (Shi et al., 2019) to random forests (Wager & Athey, 2018), along with frameworks like double machine learning (Chernozhukov et al., 2016; Foster & Syrgkanis, 2019; Nie & Wager, 2021), instrumental variables (Hartford et al., 2017), meta learners (Künzel et al., 2019), etc."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The R-Learner is primarily discussed in theory rather than being the main executed model for detailed empirical analysis.",
+          "quote": "We consider only meta-learners for CATE estimation as they reduce CATE estimation to a series of (weighted) regression and classification problems."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The R-Learner is compared to other methods in the review sections of the paper to highlight advantages and differences.",
+          "quote": "Double Machine Learning (R-Learner) to check for similarity in..."
+        },
+        "referenced_paper_title": {
+          "value": "Double/debiased machine learning for treatment and causal parameters",
+          "justification": "This is a foundational reference for R-Learner methodologies.",
+          "quote": "(Chernozhukov et al., 2016)"
+        }
+      },
+      {
+        "name": {
+          "value": "X-Learner",
+          "justification": "The X-Learner is a meta-learning strategy employed and analyzed as part of the empirical work in the paper.",
+          "quote": "The X-Learner (Künzel et al., 2019) approach, which first trains the nuisance models (μ̂0(x), μ̂1(x)) as in the T-Learner approach."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "As presented, X-Learner is an already established method not newly contributed by this paper.",
+          "quote": "These approaches range from adapting neural networks (Shi et al., 2019) to random forests (Wager & Athey, 2018), along with frameworks like double machine learning (Chernozhukov et al., 2016; Foster & Syrgkanis, 2019; Nie & Wager, 2021), instrumental variables (Hartford et al., 2017), meta learners (Künzel et al., 2019), etc."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "X-Learner is executed within the comparative empirical study to evaluate its performance.",
+          "quote": "The second approach takes the analogous approach using the treated population. Finally, we use the learned propensity model to combine the CATE predictions from both groups."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The X-Learner is part of the comparative analysis against other CATE estimation models.",
+          "quote": "In our empirical study, we compare the X-learner method against the other meta-learners as shown in Table 9."
+        },
+        "referenced_paper_title": {
+          "value": "Metalearners for estimating heterogeneous treatment effects using machine learning",
+          "justification": "X-Learner was previously introduced in the cited paper on meta-learners.",
+          "quote": "(Künzel et al., 2019)"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "ACIC 2016",
+          "justification": "The paper mentions using the ACIC 2016 benchmark as one of the datasets for empirical evaluation.",
+          "quote": "We work with the ACIC 2016 (Dorie et al., 2019) benchmark, where we discard datasets that have variance in true CATE lower than 0.01 to ensure heterogeneity."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Automated versus do-it-yourself methods for causal inference: Lessons learned from a data analysis competition",
+          "justification": "This paper discusses the ACIC 2016 datasets used in empirical causal evaluation.",
+          "quote": "(Dorie et al., 2019)"
+        }
+      },
+      {
+        "name": {
+          "value": "LaLonde CPS (RealCause)",
+          "justification": "LaLonde CPS is described as being incorporated into the study, modeled using RealCause.",
+          "quote": "Further, we incorporate three realistic datasets, LaLonde PSID, LaLonde CPS (LaLonde, 1986), and Twins (Louizos et al., 2017), using RealCause."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Evaluating the econometric evaluations of training programs with experimental data",
+          "justification": "The referenced paper includes understanding around datasets like LaLonde CPS which are used here.",
+          "quote": "(LaLonde, 1986)"
+        }
+      },
+      {
+        "name": {
+          "value": "LaLonde PSID (RealCause)",
+          "justification": "LaLonde PSID is included for empirical evaluation with modeling via RealCause to simulate potential outcomes.",
+          "quote": "Further, we incorporate three realistic datasets, LaLonde PSID, LaLonde CPS (LaLonde, 1986), and Twins (Louizos et al., 2017), using RealCause."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Evaluating the econometric evaluations of training programs with experimental data",
+          "justification": "The referenced work on training program evaluations cites LaLonde PSID for related data analyses.",
+          "quote": "(LaLonde, 1986)"
+        }
+      },
+      {
+        "name": {
+          "value": "Twins (RealCause)",
+          "justification": "The Twins dataset is mentioned as part of the realistic datasets analyzed using RealCause.",
+          "quote": "Further, we incorporate three realistic datasets, LaLonde PSID, LaLonde CPS (LaLonde, 1986), and Twins (Louizos et al., 2017), using RealCause."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Causal effect inference with deep latent-variable models",
+          "justification": "Referenced paper discusses methodologies which relate to the Twins dataset used in modeling potential outcomes.",
+          "quote": "(Louizos et al., 2017)"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "FLAML",
+          "justification": "FLAML is used within the study to perform hyperparameter tuning for nuisance models in the surrogate metrics.",
+          "quote": "Specifically, we have five different types of nuisance models... each learned using AutoML, specifically FLAML (Wang et al., 2021)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "FLAML: A Fast and Lightweight AutoML Library",
+          "justification": "FLAML is the AutoML library used in this research as cited in its original discussion.",
+          "quote": "(Wang et al., 2021)"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 3025,
+    "prompt_tokens": 33260,
+    "total_tokens": 36285,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": null
+  }
+}

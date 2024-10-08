@@ -1,0 +1,304 @@
+{
+  "paper": "96ac48315ee91ff9a181c7303d2fdb03.txt",
+  "words": 14348,
+  "extractions": {
+    "title": {
+      "value": "The Cost of Down-Scaling Language Models: Fact Recall Deteriorates Before In-Context Learning",
+      "justification": "This title captures the essence of the paper's focus on the effects of scaling down language models on their fact recall and in-context learning abilities.",
+      "quote": "T HE C OST OF D OWN -S CALING L ANGUAGE M ODELS : F ACT R ECALL D ETERIORATES BEFORE I N -C ONTEXT L EARNING"
+    },
+    "description": "This paper studies how scaling down large language models affects their capability to recall facts and to learn from context during inference. It evaluates the effects of weight pruning and dense scaling on these abilities, finding that reducing model size significantly impacts fact recall before it affects in-context learning.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves experimental analysis and benchmarking using different tasks and models to understand the effects of scaling on language models.",
+      "quote": "We carefully curate a suite of benchmarks that help tease apart the performance of any given model on the two capabilities. We then evaluate the aforementioned two capabilities under two different scaling techniques: pruning and dense scaling."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The paper is primarily focused on evaluating language models and their capabilities, which is a core aspect of Natural Language Processing.",
+        "quote": "Scaling up the size of large language models (LLMs) has yielded impressive performance gains on many natural language tasks."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Language Model Scaling",
+          "justification": "The paper focuses specifically on scaling techniques such as weight pruning and dense scaling in language models.",
+          "quote": "We study two scaling techniques: weight pruning and dense scaling, which is simply training a smaller or larger model."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Fact Recall in Language Models",
+          "justification": "One of the main capabilities evaluated in the paper is the fact recall ability of language models.",
+          "quote": "Our study focuses on how these techniques affect two core capabilities of LLMs: (a) recalling facts presented during pre-training."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "In-Context Learning",
+          "justification": "The paper evaluates how scaling affects the in-context learning capability of language models.",
+          "quote": "Yet, a 60–70% reduction largely preserves the various ways the model can (b) process in-context information."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "OPT-13B",
+          "justification": "The OPT-13B model is one of the models evaluated in the paper for its capabilities under scaling down.",
+          "quote": "Each color represents a different model; each line-style/marker-shape combination represents a different QA dataset. Moderate pruning harms LLMs’ capability to recall facts learnt during pre-training: in close-book QA tasks, accepting a 5% drop in average accuracy w.r.t. the dense models."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The OPT-13B model is used as an existing model in the study and not newly contributed by the paper.",
+          "quote": "We evaluate 6 models from 3 families: OPT (Zhang et al., 2022), LLaMA (Touvron et al., 2023) and Pythia (Biderman et al., 2023b)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper conducts experiments to evaluate this model's performance under various conditions.",
+          "quote": "Using the aforementioned datasets, we evaluate the ability of pruned models on the following task setup: (i) Close-book."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "OPT-13B is compared against other language models such as LLaMA-13B and LLaMA-33B in the study.",
+          "quote": "We plot the accuracy versus sparsity for the OPT-13B, OPT-30B, LLaMA-13B, and LLaMA-33B models on TriviaQA dataset."
+        },
+        "referenced_paper_title": {
+          "value": "OPT: Open Pre-trained Transformer Language Models",
+          "justification": "The OPT models are referenced in the context of their development and use in experiments within the paper.",
+          "quote": "Jonathan Frankle, Gintare Karolina Dziugaite, Daniel Roy, and Michael Carbin. Pruning neural networks at initialization: Why are we missing the mark? In International Conference on Learning Representations, 2021."
+        }
+      },
+      {
+        "name": {
+          "value": "OPT-30B",
+          "justification": "The OPT-30B model is used in the experiments to study down-scaling effects.",
+          "quote": "Each line-style/marker-shape combination represents a different QA dataset. Moderate pruning harms LLMs’ capability to recall facts learnt during pre-training: in close-book QA tasks, accepting a 5% drop in average accuracy w.r.t. the dense models."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "OPT-30B is used and not developed within the scope of this paper.",
+          "quote": "We evaluate 6 models from 3 families: OPT (Zhang et al., 2022), LLaMA (Touvron et al., 2023) and Pythia (Biderman et al., 2023b)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper uses this model to examine the effects of scaling techniques on its capabilities.",
+          "quote": "We then evaluate the aforementioned two capabilities under two different scaling techniques: pruning and dense scaling."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "OPT-30B is compared with other models like LLaMA-13B in terms of performance under scaling down.",
+          "quote": "We plot the accuracy versus sparsity for the OPT-13B, OPT-30B, LLaMA-13B, and LLaMA-33B models on TriviaQA dataset."
+        },
+        "referenced_paper_title": {
+          "value": "OPT: Open Pre-trained Transformer Language Models",
+          "justification": "The paper references previous work done on OPT models, outlining their design and capabilities.",
+          "quote": "Jonathan Frankle, Gintare Karolina Dziugaite, Daniel Roy, and Michael Carbin. Pruning neural networks at initialization: Why are we missing the mark? In International Conference on Learning Representations, 2021."
+        }
+      },
+      {
+        "name": {
+          "value": "LLaMA-13B",
+          "justification": "This model is included in the paper's analysis for examining capability retention after scaling.",
+          "quote": "We evaluate 6 models from 3 families: OPT (Zhang et al., 2022), LLaMA (Touvron et al., 2023) and Pythia (Biderman et al., 2023b)."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "LLaMA-13B is an existing model used for analysis, not contributed by the authors.",
+          "quote": "We focus on OPT and LLaMA in our main text and present Pythia results in Appendix E. Pythia family models show consistent results as LLaMA and OPT family models."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "This model was actively used to determine the effects of scaling down approaches.",
+          "quote": "We then evaluate the aforementioned two capabilities under two different scaling techniques: pruning and dense scaling."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "It's compared to other versions such as LLaMA-33B and other families like OPT.",
+          "quote": "Figure 1: Pruning to moderate sparsity (> 30% sparse) harms fact recall while in-context learning withstands even aggressive pruning (60% sparse). We plot the accuracy versus sparsity for the OPT-13B, OPT-30B, LLaMA-13B, and LLaMA-33B models."
+        },
+        "referenced_paper_title": {
+          "value": "LLaMA: Open and Efficient Foundation Language Models",
+          "justification": "Referenced as part of the model family used in experiments.",
+          "quote": "Jonathan Frankle, Gintare Karolina Dziugaite, Daniel Roy, and Michael Carbin. Pruning neural networks at initialization: Why are we missing the mark? In International Conference on Learning Representations, 2021."
+        }
+      },
+      {
+        "name": {
+          "value": "LLaMA-33B",
+          "justification": "The LLaMA-33B model is one of the primary models used to test the effects of scaling down methodologies in the paper.",
+          "quote": "Figure 1: Pruning to moderate sparsity (> 30% sparse) harms fact recall while in-context learning withstands even aggressive pruning (60% sparse). We plot the accuracy versus sparsity for the OPT-13B, OPT-30B, LLaMA-13B, and LLaMA-33B models."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "LLaMA-33B model was utilized for experiments but not developed in this paper.",
+          "quote": "We evaluate 6 models from 3 families: OPT (Zhang et al., 2022), LLaMA (Touvron et al., 2023) and Pythia (Biderman et al., 2023b)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "It's implemented in various tasks to investigate its performance under different scaling scenarios.",
+          "quote": "We then evaluate the aforementioned two capabilities under two different scaling techniques: pruning and dense scaling."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "LLaMA-33B's performance is evaluated against other models within studies of sparsity impacts.",
+          "quote": "Figure 1: Pruning to moderate sparsity (> 30% sparse) harms fact recall while in-context learning withstands even aggressive pruning (60% sparse). We plot the accuracy versus sparsity for the OPT-13B, OPT-30B, LLaMA-13B, and LLaMA-33B models."
+        },
+        "referenced_paper_title": {
+          "value": "LLaMA: Open and Efficient Foundation Language Models",
+          "justification": "The paper leverages existing models for its experiments and cites them properly.",
+          "quote": "Jonathan Frankle, Gintare Karolina Dziugaite, Daniel Roy, and Michael Carbin. Pruning neural networks at initialization: Why are we missing the mark? In International Conference on Learning Representations, 2021."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "TriviaQA",
+          "justification": "TriviaQA is used as one of the main datasets for evaluating the fact recall capabilities of the models.",
+          "quote": "We plot the accuracy versus sparsity for the OPT-13B, OPT-30B, LLaMA-13B, and LLaMA-33B models on TriviaQA dataset."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "TriviaQA: A Large Scale Distantly Supervised Challenge Dataset for Reading Comprehension",
+          "justification": "TriviaQA dataset is used for various evaluations in the paper, mostly related to question answering tasks.",
+          "quote": "Mandar Joshi, Eunsol Choi, Daniel S. Weld, and Luke Zettlemoyer. Triviaqa: A large scale distantly supervised challenge dataset for reading comprehension. In Proceedings of the 55th Annual Meeting of the Association for Computational Linguistics, 2017."
+        }
+      },
+      {
+        "name": {
+          "value": "WebQuestions",
+          "justification": "WebQuestions Dataset is utilized to evaluate the model's ability to recall facts from pre-training data.",
+          "quote": "WebQuestions. Berant et al. (2013) collected question-answer pairs from the Freebase knowledge database. We use its test set consisting of 2032 questions."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Semantic Parsing on Freebase from Question-Answer Pairs",
+          "justification": "This dataset forms part of the empirical evaluations in the study, specifically for testing performance on closed-book QA tasks.",
+          "quote": "Jonathan Berant, Andrew Chou, Roy Frostig, and Percy Liang. Semantic parsing on Freebase from question-answer pairs. In Conference on Empirical Methods in Natural Language Processing, 2013."
+        }
+      },
+      {
+        "name": {
+          "value": "NaturalQuestions",
+          "justification": "This dataset is used for evaluating performance in question answering tasks with context provided.",
+          "quote": "NaturalQuestions. Kwiatkowski et al. (2019) compiled the NaturalQuestions dataset from Google search queries."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Natural Questions: A Benchmark for Question Answering Research",
+          "justification": "NaturalQuestions is mentioned in the evaluation of models for open-book tasks.",
+          "quote": "Tom Kwiatkowski, Jennimaria Palomaki, Olivia Redfield, Michael Collins, Ankur Parikh, Chris Alberti, Danielle Epstein, Illia Polosukhin, Matthew Kelcey, Jacob Devlin, Kenton Lee, Kristina N. Toutanova, Llion Jones, Ming-Wei Chang, Andrew Dai, Jakob Uszkoreit, Quoc Le, and Slav Petrov. Natural questions: a benchmark for question answering research. In Transactions of the Association of Computational Linguistics, 2019."
+        }
+      },
+      {
+        "name": {
+          "value": "DissentQA",
+          "justification": "DissentQA is used to evaluate the ability to override pre-trained factual information with context-specific evidence.",
+          "quote": "Neeman et al. (2023) constructed the DissentQA dataset from the NaturalQuestions dataset."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "DisentQA: Disentangling Parametric and Contextual Knowledge with Counterfactual Question Answering",
+          "justification": "DissentQA is referred to in relation to testing the factual override capabilities of the models.",
+          "quote": "Ella Neeman, Roee Aharoni, Or Honovich, Leshem Choshen, Idan Szpektor, and Omri Abend. DisentQA: Disentangling parametric and contextual knowledge with counterfactual question answering. In Annual Meeting of the Association for Computational Linguistics, 2023."
+        }
+      },
+      {
+        "name": {
+          "value": "C4",
+          "justification": "A small subset of this dataset is used for calibration purposes during pruning experiments.",
+          "quote": "We obtain perplexity results by running the pruned model on a randomly sampled subset of C4 validation set, following the precedent of Frantar et al. (2023)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "T5: Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer",
+          "justification": "The C4 dataset is referenced in the context of evaluating perplexity after pruning.",
+          "quote": "Colin Raffel, Noam Shazeer, Adam Roberts, Katherine Lee, Sharan Narang, Michael Matena, Yanqi Zhou, Wei Li, Peter J. Liu. T5: Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The paper mentions using PyTorch for model evaluation, indicating its use in the research.",
+          "quote": "We perform our evaluations using TPU v3 running PyTorch (Paszke et al., 2019) with XLA backend."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An Imperative Style, High-Performance Deep Learning Library",
+          "justification": "PyTorch is a standard library used in many machine learning papers for its flexibility and performance.",
+          "quote": "Adam Paszke, Sam Gross, Francisco Massa, Adam Lerer, James Bradbury, Gregory Chanan, Trevor Killeen, Zeming Lin, Natalia Gimelshein, Luca Antiga, Alban Desmaison, Andreas Köpf, Edward Yang, Zach DeVito, Martin Raison, Alykhan Tejani, Sasank Chilamkurthy, Benoit Steiner, Lu Fang, Junjie Bai, and Soumith Chintala. Pytorch: an imperative style, high-performance deep learning library. In Advances in Neural Information Processing Systems, 2019."
+        }
+      },
+      {
+        "name": {
+          "value": "XLA",
+          "justification": "The paper uses the XLA backend for PyTorch in conducting evaluations.",
+          "quote": "We perform our evaluations using TPU v3 running PyTorch (Paszke et al., 2019) with XLA backend."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Accelerated Linear Algebra (XLA): Compile for Performance",
+          "justification": "XLA is referenced as part of the high-performance computational toolset used in conjunction with PyTorch.",
+          "quote": "XLA backend is used with PyTorch (Paszke et al., 2019) for efficient model evaluation on TPU."
+        }
+      },
+      {
+        "name": {
+          "value": "SparseGPT",
+          "justification": "SparseGPT is used as a main algorithm for pruning in this study.",
+          "quote": "We use SparseGPT (Frantar & Alistarh, 2023) in the main text and Wanda (Sun et al., 2024) in Appendix D. Both are one-shot pruning algorithms that scale to LLMs and outperform magnitude pruning."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "SparseGPT: Massive Language Models Can Be Accurately Pruned in One-Shot",
+          "justification": "The paper uses this library for pruning experiments which is central to the research conducted.",
+          "quote": "Elias Frantar and Dan Alistarh. SparseGPT: Massive language models can be accurately pruned in one-shot. In International Conference on Machine Learning, 2023."
+        }
+      },
+      {
+        "name": {
+          "value": "Wanda",
+          "justification": "Another pruning method used in the paper to evaluate the effects on LLM capabilities.",
+          "quote": "We repeat key experiments with another pruning algorithm called Wanda (Sun et al., 2024)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "A Simple and Effective Pruning Approach for Large Language Models",
+          "justification": "Wanda is evaluated for its performance compared to SparseGPT in the paper's pruning experiments.",
+          "quote": "Mingjie Sun, Zhuang Liu, Anna Bair, and J Zico Kolter. A simple and effective pruning approach for large language models. In International Conference on Learning Representations, 2024."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 3724,
+    "prompt_tokens": 25824,
+    "total_tokens": 29548,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": null
+  }
+}

@@ -1,8 +1,9 @@
 import typing
 import warnings
+
 import pandas as pd
-from pydantic import BaseModel, Field, create_model
 import yaml
+from pydantic import BaseModel, Field, create_model
 
 from ..utils import split_entry, str_normalize
 from .model import Explained, Model, PaperExtractions
@@ -262,9 +263,6 @@ def model2df(model: BaseModel):
 
 
 def fix_explained_fields():
-    import pdb
-
-    pdb.set_trace()
     fields = _get_fields(PaperExtractions)
     return create_model(PaperExtractions.__name__, **fields)
 

@@ -1,13 +1,98 @@
 import random
-from pathlib import Path
 import re
 import sys
 import unicodedata
+from pathlib import Path
 
 ROOT_FOLDER = Path(__file__).resolve().parent.parent
 PAPERS_TO_IGNORE = {
     "data/cache/arxiv/2404.09932.txt",
 }
+
+
+class Paper:
+    # Original form of the converted pdf to txt. eg data/cache/*/ARXIV_ID.txt
+    LINK_ID_TEMPLATE = "data/cache/*/{link_id}.txt"
+    # Extended form of the converted pdf to txt. eg data/cache/*/PAPER_ID.txt
+    PAPER_ID_TEMPLATE = LINK_ID_TEMPLATE.format(link_id="{paper_id}")
+    # The the up-to-date form of the converted pdf (by paperoni)
+    # eg data/cache/fulltext/PAPER_ID/fulltext.txt
+    PAPER_ID_FULLTEXT_TEMPLATE = "data/cache/fulltext/{paper_id}/fulltext.txt"
+
+    def __init__(self, paper: dict) -> None:
+        self._selected_id = None
+        self._paper_id = paper["paper_id"]
+        self._ids = [self._paper_id]
+        for l in paper["links"]:
+            link_id = l.get("link", None)
+            if link_id and link_id not in self._ids:
+                self._ids.append(link_id)
+
+            pdfs = sorted(Path().glob(self.LINK_ID_TEMPLATE.format(link_id=link_id)))
+            if pdfs and not self._selected_id:
+                self._selected_id = pdfs[0].stem
+
+        self._queries = sum(
+            [list(Path("data/queries/").glob(f"{id}_*.json")) for id in self._ids], []
+        )
+
+        if self._queries:
+            # assert len(queries) == 1
+            self._selected_id = "_".join(self._queries[0].stem.split("_")[:-1])
+
+        elif not self._selected_id:
+            pdfs = (
+                # Original form of the converted pdf to txt was data/cache/*/LINK_ID.txt
+                sorted(
+                    Path().glob(self.PAPER_ID_TEMPLATE.format(paper_id=self._paper_id))
+                )
+                +
+                # The the up-to-date form of the converted pdf (by paperoni) is
+                # data/cache/fulltext/PAPER_ID/fulltext.txt
+                sorted(
+                    Path().glob(
+                        self.PAPER_ID_FULLTEXT_TEMPLATE.format(paper_id=self._paper_id)
+                    )
+                )
+            )
+            if pdfs:
+                self._selected_id = self._paper_id
+
+    @property
+    def id(self):
+        return self._selected_id or self._paper_id
+
+    @property
+    def queries(self):
+        return self._queries
+
+    @property
+    def pdf(self):
+        return next(
+            iter(
+                sorted(Path().glob(self.LINK_ID_TEMPLATE.format(link_id=self.id)))
+                + sorted(
+                    Path().glob(self.PAPER_ID_TEMPLATE.format(paper_id=self._paper_id))
+                )
+                + sorted(
+                    Path().glob(
+                        self.PAPER_ID_FULLTEXT_TEMPLATE.format(paper_id=self._paper_id)
+                    )
+                )
+            ),
+            None,
+        )
+
+    def get_link_id_pdf(self):
+        link_id_pdf = None
+
+        if self.pdf:
+            link_id_pdf = self.pdf.with_stem(self.id)
+
+        if link_id_pdf and not link_id_pdf.exists():
+            link_id_pdf.hardlink_to(self.pdf)
+
+        return link_id_pdf
 
 
 def build_validation_set(data_dir: Path, seed=42):

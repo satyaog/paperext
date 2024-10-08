@@ -30,11 +30,9 @@ from openai.types.chat.chat_completion import CompletionUsage
 from paperoni.config import load_config, papconf
 
 from .download_convert import download_and_convert_paper
-from .models.dataset_category import (
-    _FIRST_MESSAGE,
-    DatasetCategoryExtraction,
-    ExtractionResponse,
-)
+from .models.dataset_category import (_FIRST_MESSAGE,
+                                      DatasetCategoryExtraction,
+                                      ExtractionResponse)
 from .stats import load_analysis
 
 
@@ -130,7 +128,8 @@ def extract_dataset_categories(
 
 def get_paper_json(paper_title):
 
-    from paperoni.sources.scrapers.semantic_scholar import SemanticScholarScraper
+    from paperoni.sources.scrapers.semantic_scholar import \
+        SemanticScholarScraper
 
     try:
         for paper in SemanticScholarScraper(papconf, papconf.database).query(
