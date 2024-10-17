@@ -1,0 +1,78 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "paperext"
+dynamic = ["version"]
+description = ''
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+keywords = []
+authors = [
+  { name = "Satya Ortiz-Gagne", email = "satya.ortiz-gagne@mila.quebec" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = [
+  "instructor",
+  "openai",
+  "mlcm",
+  "pandas",
+  "pydantic",
+  "pyyaml",
+  "scikit-learn",
+  "tiktoken",
+]
+
+[project.urls]
+Documentation = "https://github.com/satyaog/paperext#readme"
+Issues = "https://github.com/satyaog/paperext/issues"
+Source = "https://github.com/satyaog/paperext"
+
+[project.scripts]
+download-convert = "paperext.download_convert:main"
+query = "paperext.query:main"
+parse-validation-errors = "paperext.parse_validation_errors:main"
+merge-papers = "paperext.merge_papers:main"
+analysis = "paperext.analysis:main"
+
+[tool.hatch.version]
+path = "src/paperext/__about__.py"
+
+[tool.hatch.envs.default]
+installer = "uv"
+
+[tool.hatch.envs.types]
+extra-dependencies = [
+  "mypy>=1.0.0",
+]
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/paperext tests}"
+
+[tool.coverage.run]
+source_pkgs = ["paperext", "tests"]
+branch = true
+parallel = true
+omit = [
+  "src/paperext/__about__.py",
+]
+
+[tool.coverage.paths]
+paperext = ["src/paperext", "*/llm-paper-extractions/src/paperext"]
+tests = ["tests", "*/llm-paper-extractions/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
