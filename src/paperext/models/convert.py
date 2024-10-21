@@ -62,7 +62,7 @@ def convert_model_v1(extractions: model_v1.PaperExtractions):
             fields[field_name] = []
             for m in extractions.models:
                 name, *aliases = split_entry(m.name.value, sep_left="(", sep_right=")")
-                m = model.Model(
+                m = model.RefModel(
                     name={**m.name.model_dump(), "value": name},
                     aliases=aliases,
                     is_contributed=model.Explained(
@@ -94,7 +94,7 @@ def convert_model_v1(extractions: model_v1.PaperExtractions):
             fields[field_name] = []
             for d in extractions.datasets:
                 name, *aliases = split_entry(d.name.value, sep_left="(", sep_right=")")
-                d = model.Dataset(
+                d = model.RefDataset(
                     name={**d.name.model_dump(), "value": name},
                     aliases=aliases,
                     role=d.role,
@@ -108,7 +108,7 @@ def convert_model_v1(extractions: model_v1.PaperExtractions):
             fields[field_name] = []
             for l in extractions.libraries:
                 name, *aliases = split_entry(l.name.value, sep_left="(", sep_right=")")
-                l = model.Library(
+                l = model.RefLibrary(
                     name={**l.name.model_dump(), "value": name},
                     aliases=aliases,
                     role=l.role,

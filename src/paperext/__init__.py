@@ -2,8 +2,9 @@
 #
 # SPDX-License-Identifier: MIT
 
+import os
 import pathlib
 
-ROOT_DIR = pathlib.Path(__file__).resolve().parent.parent.parent
+ROOT_DIR = pathlib.Path(os.environ["PAPEREXT_ROOT"]).resolve()
 LOG_DIR = ROOT_DIR / "logs"
 LOG_DIR.mkdir(exist_ok=True)
