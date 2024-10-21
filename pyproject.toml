@@ -24,8 +24,8 @@ classifiers = [
 ]
 dependencies = [
   "instructor",
-  "openai",
   "mlcm",
+  "openai",
   "pandas",
   "pydantic",
   "pyyaml",
@@ -49,6 +49,8 @@ analysis = "paperext.analysis:main"
 path = "src/paperext/__about__.py"
 
 [tool.hatch.envs.default]
+python = "3.10"
+python-sources = ["external"]
 installer = "uv"
 
 [tool.hatch.envs.types]
@@ -57,6 +59,19 @@ extra-dependencies = [
 ]
 [tool.hatch.envs.types.scripts]
 check = "mypy --install-types --non-interactive {args:src/paperext tests}"
+
+[tool.hatch.envs.lint]
+detached = true
+dependencies = [
+  "black",
+  "isort",
+]
+
+[tool.hatch.envs.lint.scripts]
+lint = [
+  "black .",
+  "isort .",
+]
 
 [tool.coverage.run]
 source_pkgs = ["paperext", "tests"]

@@ -11,10 +11,10 @@ import openai
 import pydantic_core
 from openai.types.chat.chat_completion import CompletionUsage
 
-from . import ROOT_DIR, LOG_DIR
-from .models.model import (_FIRST_MESSAGE, _RETRY_MESSAGE, ExtractionResponse,
-                           PaperExtractions)
-from .utils import Paper, build_validation_set, python_module
+from paperext import LOG_DIR, ROOT_DIR
+from paperext.models.model import (_FIRST_MESSAGE, ExtractionResponse,
+                                   PaperExtractions)
+from paperext.utils import Paper, build_validation_set, python_module
 
 # Set logging to DEBUG to print OpenAI requests
 logging.basicConfig(
@@ -89,7 +89,10 @@ async def batch_extract_models_names(
 
             try:
                 response = ExtractionResponse.model_validate_json(f.read_text())
-            except (FileNotFoundError, pydantic_core._pydantic_core.ValidationError) as e:
+            except (
+                FileNotFoundError,
+                pydantic_core._pydantic_core.ValidationError,
+            ) as e:
                 logging.error(e, exc_info=True)
 
                 message = message.format(*data, paper_fn.read_text())

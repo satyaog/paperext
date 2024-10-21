@@ -17,11 +17,12 @@ from pygments import highlight
 from pygments.formatters import TerminalTrueColorFormatter
 from pygments.lexers.data import YamlLexer
 
-from . import ROOT_DIR
-from .models.model import ExtractionResponse, PaperExtractions, empty_model
-from .models.utils import (convert_model_json_to_yaml, model_dump_yaml,
-                           model_validate_yaml)
-from .utils import str_normalize
+from paperext import ROOT_DIR
+from paperext.models.model import (ExtractionResponse, PaperExtractions,
+                                   empty_model)
+from paperext.models.utils import (convert_model_json_to_yaml, model_dump_yaml,
+                                   model_validate_yaml)
+from paperext.utils import str_normalize
 
 _EDITOR = os.environ.get("VISUAL", os.environ.get("EDITOR", None))
 _TMPDIR = tempfile.TemporaryDirectory()

@@ -14,7 +14,7 @@
 ## Installation
 
 ```console
-pip install paperext
+pipx install paperext
 ```
 
 ## Usage

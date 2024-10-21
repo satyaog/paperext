@@ -7,7 +7,7 @@ from typing import Any, Generic, List, Optional, TypeVar
 
 from pydantic import BaseModel, Field
 
-from ..utils import str_normalize
+from paperext.utils import str_normalize
 
 logging.basicConfig(level=logging.DEBUG)
 

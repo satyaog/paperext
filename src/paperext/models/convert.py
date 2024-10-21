@@ -5,9 +5,9 @@ from pathlib import Path
 import pydantic_core
 from pydantic import BaseModel
 
-from .. import ROOT_DIR
-from ..utils import build_validation_set, split_entry, str_eq
-from . import model, model_v1
+from paperext import ROOT_DIR
+from paperext.models import model, model_v1
+from paperext.utils import build_validation_set, split_entry, str_eq
 
 
 def _model_dump(m):

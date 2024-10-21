@@ -5,8 +5,8 @@ import pandas as pd
 import yaml
 from pydantic import BaseModel, Field, create_model
 
-from ..utils import split_entry, str_normalize
-from .model import Explained, Model, PaperExtractions
+from paperext.models.model import Explained, Model, PaperExtractions
+from paperext.utils import split_entry, str_normalize
 
 _MODE_ALIASES = {
     "trained": ["training", "evaluation", "pretraining"],
