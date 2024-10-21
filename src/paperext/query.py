@@ -3,34 +3,115 @@ import asyncio
 import bdb
 import json
 import logging
+import os
+from datetime import datetime
 from pathlib import Path
 from typing import List, Tuple
 
 import instructor
-import openai
 import pydantic_core
-from openai.types.chat.chat_completion import CompletionUsage
 
-from paperext import LOG_DIR, ROOT_DIR
+from paperext import LOG_DIR as _LOG_DIR
+from paperext import ROOT_DIR
 from paperext.models.model import (_FIRST_MESSAGE, ExtractionResponse,
                                    PaperExtractions)
-from paperext.utils import Paper, build_validation_set, python_module
+from paperext.utils import Paper, build_validation_set
 
 # Set logging to DEBUG to print OpenAI requests
+LOG_DIR = _LOG_DIR / datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+LOG_DIR.mkdir(parents=True)
 logging.basicConfig(
-    filename=LOG_DIR / f"{Path(__file__).stem}.out", level=logging.DEBUG
+    filename=LOG_DIR / f"{Path(__file__).stem}.dbg", level=logging.DEBUG, force=True
 )
 
-PROG = f"python3 -m {python_module(__file__)}"
+logger = logging.getLogger(__name__)
+logger.addHandler(logging.FileHandler(LOG_DIR / "query.out"))
+logger.setLevel(logging.INFO)
+
+PROG = f"{Path(__file__).stem.replace('_', '-')}"
 
 DESCRIPTION = """
 Utility to query Chat-GPT on papers
+
+Logs will be written in logs/query.dbg and logs/query.out
 """
 
 EPILOG = f"""
 Example:
-  $ {PROG} --input data/query_set.txt > query.out
+  $ {PROG} --input data/query_set.txt
 """
+
+PLATFORMS = {}
+
+try:
+    import vertexai
+    from vertexai.generative_models import GenerativeModel
+
+    vertexai.init(project=os.environ.get("PAPEREXT_VERTEX_PROJECT"))
+
+    def _client():
+        model = "models/gemini-1.5-pro"
+        client = instructor.from_vertexai(GenerativeModel(model_name=model))
+        _create_with_completion = client.chat.completions.create_with_completion
+
+        def _wrap(*args, **kwargs):
+            # Gemini does not support "system" role
+            system_messages = []
+            for message in kwargs["messages"][:]:
+                if message["role"] == "system":
+                    system_messages.append(message["content"])
+                    kwargs["messages"].remove(message)
+                    continue
+                if system_messages:
+                    message["content"] = "\n".join(
+                        (*system_messages, message["content"])
+                    )
+                    system_messages = []
+            extractions, completion = _create_with_completion(*args, **kwargs)
+            # completion.usage_metadata doesn't seams to be serializable
+            # Unable to serialize unknown type: <class
+            # 'google.cloud.aiplatform_v1beta1.types.prediction_service.GenerateContentResponse.UsageMetadata'>
+            usage = {
+                "cached_content_token_count": completion.usage_metadata.cached_content_token_count,
+                "candidates_token_count": completion.usage_metadata.cached_content_token_count,
+                "prompt_token_count": completion.usage_metadata.cached_content_token_count,
+                "total_token_count": completion.usage_metadata.total_token_count,
+            }
+            return extractions, usage
+
+        client.chat.completions.create_with_completion = _wrap
+        return client
+
+    PLATFORMS["vertexai"] = _client
+except ModuleNotFoundError as e:
+    logging.info(e, exc_info=True)
+
+try:
+    import openai
+    from openai.types.chat.chat_completion import CompletionUsage
+
+    def _client():
+        model = "gpt-4o"
+        client = instructor.from_openai(
+            # TODO: update to use the new feature Mode.TOOLS_STRICT
+            # https://openai.com/index/introducing-structured-outputs-in-the-api/
+            openai.AsyncOpenAI(),
+            mode=instructor.Mode.TOOLS_STRICT,
+        )
+        _create_with_completion = client.chat.completions.create_with_completion
+
+        async def _wrap(*args, **kwargs):
+            extractions, completion = await _create_with_completion(
+                model=model, *args, **kwargs
+            )
+            return extractions, completion.usage
+
+        client.chat.completions.create_with_completion = _wrap
+        return client
+
+    PLATFORMS["openai"] = _client
+except ModuleNotFoundError as e:
+    logging.info(e, exc_info=True)
 
 
 async def extract_from_research_paper(
@@ -38,30 +119,34 @@ async def extract_from_research_paper(
     message: str,
 ) -> Tuple[PaperExtractions, CompletionUsage]:
     """Extract Models, Datasets and Frameworks names from a research paper."""
-    retries = [True] * 2
+    retries = [True] * 1
     while True:
         try:
-            extractions, completion = (
-                await client.chat.completions.create_with_completion(
-                    model="gpt-4o",
-                    response_model=PaperExtractions,
-                    messages=[
-                        {
-                            "role": "system",
-                            "content": f"Your role is to extract Deep Learning Models, Datasets and Deep Learning Libraries from a given research paper.",
-                            #  f"The Models, Datasets and Frameworks must be used in the paper "
-                            #  f"and / or the comparison analysis of the results of the "
-                            #  f"paper. The papers provided will be a convertion from pdf to text, which could imply some formatting issues.",
-                        },
-                        {
-                            "role": "user",
-                            "content": message,
-                        },
-                    ],
-                    max_retries=2,
-                )
+            result = client.chat.completions.create_with_completion(
+                # model="gpt-4o",
+                response_model=PaperExtractions,
+                messages=[
+                    {
+                        "role": "system",
+                        "content": f"Your role is to extract Deep Learning Models, Datasets and Deep Learning Libraries from a given research paper.",
+                        #  f"The Models, Datasets and Frameworks must be used in the paper "
+                        #  f"and / or the comparison analysis of the results of the "
+                        #  f"paper. The papers provided will be a convertion from pdf to text, which could imply some formatting issues.",
+                    },
+                    {
+                        "role": "user",
+                        "content": message,
+                    },
+                ],
+                max_retries=1,
             )
-            return extractions, completion.usage
+
+            try:
+                extractions, usage = result
+            except TypeError:
+                extractions, usage = await result
+
+            return extractions, usage
         except openai.RateLimitError as e:
             asyncio.sleep(60)
             if retries:
@@ -73,7 +158,10 @@ async def extract_from_research_paper(
 async def batch_extract_models_names(
     client: instructor.client.Instructor | instructor.client.AsyncInstructor,
     papers_fn: List[Path],
+    destination: Path = (ROOT_DIR / "data/queries/"),
 ) -> List[ExtractionResponse]:
+    destination.mkdir(parents=True, exist_ok=True)
+
     for paper_fn in papers_fn:
         paper = paper_fn.name
 
@@ -84,7 +172,7 @@ async def batch_extract_models_names(
         data = []
 
         for i, message in enumerate((_FIRST_MESSAGE,)):
-            f = (ROOT_DIR / "data/queries/") / paper
+            f = destination / paper
             f = f.with_stem(f"{f.stem}_{i:02}").with_suffix(".json")
 
             try:
@@ -99,17 +187,27 @@ async def batch_extract_models_names(
 
                 extractions, usage = await extract_from_research_paper(client, message)
 
-                response = ExtractionResponse(
-                    paper=paper,
-                    words=count,
-                    extractions=extractions,
-                    usage=usage,
-                )
-
                 f.parent.mkdir(parents=True, exist_ok=True)
-                f.write_text(response.model_dump_json(indent=2))
 
-            print(response.model_dump_json(indent=2))
+                try:
+                    response = ExtractionResponse(
+                        paper=paper,
+                        words=count,
+                        extractions=extractions,
+                        usage=usage,
+                    )
+                    f.write_text(response.model_dump_json(indent=2))
+
+                except pydantic_core._pydantic_core.PydanticSerializationError:
+                    response = ExtractionResponse(
+                        paper=paper,
+                        words=count,
+                        extractions=extractions,
+                        usage=None,
+                    )
+                    f.write_text(response.model_dump_json(indent=2))
+
+            logger.info(response.model_dump_json(indent=2))
 
             models = [m.name.value for m in response.extractions.models]
             datasets = [d.name.value for d in response.extractions.datasets]
@@ -121,10 +219,12 @@ async def batch_extract_models_names(
 async def ignore_exceptions(
     client: instructor.client.Instructor | instructor.client.AsyncInstructor,
     validation_set: List[Path],
+    *args,
+    **kwargs,
 ):
     for paper in validation_set:
         try:
-            await batch_extract_models_names(client, [paper])
+            await batch_extract_models_names(client, [paper], *args, **kwargs)
         except bdb.BdbQuit:
             raise
         except Exception as e:
@@ -140,6 +240,13 @@ def main(argv=None):
         description=DESCRIPTION,
         epilog=EPILOG,
         formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
+    parser.add_argument(
+        "--platform",
+        type=str,
+        choices=sorted(PLATFORMS.keys()),
+        default="openai",
+        help="Platform to use",
     )
     parser.add_argument(
         "--papers", nargs="*", type=str, default=None, help="Papers to analyse"
@@ -175,20 +282,23 @@ def main(argv=None):
         papers = [Path(paper) for paper in options.papers if paper.strip()]
     else:
         papers = build_validation_set(ROOT_DIR / "data/")
-        print(*papers, sep="\n")
+        for p in papers:
+            logger.info(p)
 
     if not all(map(lambda p: p.exists(), papers)):
         papers = [Path(ROOT_DIR / f"data/cache/arxiv/{paper}.txt") for paper in papers]
 
     assert all(map(lambda p: p.exists(), papers))
 
-    client = instructor.from_openai(
-        # TODO: update to use the new feature Mode.TOOLS_STRICT
-        # https://openai.com/index/introducing-structured-outputs-in-the-api/
-        openai.AsyncOpenAI()  # , mode=instructor.Mode.TOOLS_STRICT
-    )
+    client = PLATFORMS[options.platform]()
 
-    asyncio.run(ignore_exceptions(client, [paper.absolute() for paper in papers]))
+    asyncio.run(
+        ignore_exceptions(
+            client,
+            [paper.absolute() for paper in papers],
+            destination=ROOT_DIR / f"data/queries/{options.platform}",
+        )
+    )
 
 
 if __name__ == "__main__":
