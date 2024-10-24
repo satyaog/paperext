@@ -61,6 +61,9 @@ installer = "uv"
 
 [tool.hatch.envs.default.env-vars]
 PAPEREXT_ROOT = "{env:PAPEREXT_ROOT:{root:real}}"
+# linux seams to require the following to avoid
+# ImportError: cannot import name '_message' from 'google.protobuf.pyext'
+PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION = "upb"
 
 [tool.hatch.envs.openai]
 extra-dependencies = [

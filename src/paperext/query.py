@@ -93,8 +93,6 @@ try:
     def _client():
         model = "gpt-4o"
         client = instructor.from_openai(
-            # TODO: update to use the new feature Mode.TOOLS_STRICT
-            # https://openai.com/index/introducing-structured-outputs-in-the-api/
             openai.AsyncOpenAI(),
             mode=instructor.Mode.TOOLS_STRICT,
         )
@@ -123,7 +121,6 @@ async def extract_from_research_paper(
     while True:
         try:
             result = client.chat.completions.create_with_completion(
-                # model="gpt-4o",
                 response_model=PaperExtractions,
                 messages=[
                     {

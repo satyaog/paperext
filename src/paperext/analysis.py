@@ -138,7 +138,7 @@ def main(argv=None):
         annotated[0].append(paper_attr)
         annotated[1].append(paper_refs)
 
-        queries_dir = ROOT_DIR / "data/queries/"
+        queries_dir = ROOT_DIR / "data/queries/openai"
         for i, query_f in enumerate(sorted(queries_dir.glob(f"{f.stem}*.json"))):
             print(f"Fetching data from {query_f}", file=sys.stderr)
             model = ExtractionResponse.model_validate_json(
