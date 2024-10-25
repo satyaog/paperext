@@ -34,12 +34,29 @@ class ResearchType(str, enum.Enum):
     EMPIRICAL = "empirical"
     THEORETICAL = "theoretical"
 
+    @classmethod
+    def _missing_(cls, value):
+        return _caseinsensitive_missing_(cls, value)
+
 
 # TODO: make list of contributed, used, referenced models, datasets and libraries
 class Role(str, enum.Enum):
     CONTRIBUTED = "contributed"
     USED = "used"
     REFERENCED = "referenced"
+
+    @classmethod
+    def _missing_(cls, value):
+        return _caseinsensitive_missing_(cls, value)
+
+
+def _caseinsensitive_missing_(cls: enum.Enum, value):
+    if isinstance(value, str):
+        value = str_normalize(value.split()[0])
+    for member in cls:
+        if member.lower() == value:
+            return member
+    return None
 
 
 T = TypeVar("T")

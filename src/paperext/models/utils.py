@@ -1,12 +1,21 @@
+import json
+import logging
+import re
 import typing
+import unicodedata
 import warnings
+from pathlib import Path
 
 import pandas as pd
 import yaml
 from pydantic import BaseModel, Field, create_model
 
+from paperext import ROOT_DIR
 from paperext.models.model import Explained, PaperExtractions, RefModel
-from paperext.utils import split_entry, str_normalize
+from paperext.utils import split_entry
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
 
 _MODE_ALIASES = {
     "trained": ["training", "evaluation", "pretraining"],
@@ -112,6 +121,69 @@ _RESEARCH_FIELDS_ALIASES = {
     for k, v in _RESEARCH_FIELDS_ALIASES.items()
     for alias in {k, *v, *([f"{k}{v[0]}"] if v else [])}
 }
+
+
+def str_normalize(string):
+    string = unicodedata.normalize("NFKC", string).lower()
+    string = re.sub(pattern=r"[\s/_\.\(\),\[\]\{\}-]", string=string, repl="")
+    return string
+
+
+def _refs_field_map(categoried_refs_file: Path, fields: list):
+    fields = [".".join(map(str_normalize, field.split("."))) for field in fields]
+
+    categoried_refs = json.loads(categoried_refs_file.read_text())
+
+    def list_refs(categories: dict):
+        for name, sub_cat in categories.items():
+            name = str_normalize(name)
+            for sub_name in list_refs(sub_cat):
+                yield f"{name}.{sub_name}"
+
+            yield name
+
+    for ref in list_refs(categoried_refs):
+        for field in fields:
+            if ref.startswith(field + ".") or ref == field:
+                yield (ref.split(".")[-1], field)
+                break
+
+
+def _models_field_map():
+    yield from _refs_field_map(
+        ROOT_DIR / "data/categorized_models.json",
+        [
+            "algorithms.optimizer",
+            "algorithms.other algorithms",
+            "algorithms.reinforcement learning",
+            "algorithms",
+            "classic_ml",
+            "ignore",
+            "neural networks.attention network",
+            "neural networks.autoencoder",
+            "neural networks.bayesian network",
+            "neural networks.convolutional neural network.ResNet",
+            "neural networks.convolutional neural network.Very Deep Convolutional Networks",
+            "neural networks.convolutional neural network",
+            "neural networks.diffusion model",
+            "neural networks.generative adversarial network",
+            "neural networks.generative flow networks",
+            "neural networks.graph neural network",
+            "neural networks.multi layer perceptron",
+            "neural networks.normalizing flow",
+            "neural networks.recurrent neural network",
+            "neural networks.transformer.Generative Pre-trained Transformer",
+            "neural networks.transformer.Vision Transformer",
+            "neural networks.transformer.bert",
+            "neural networks.transformer",
+            "neural networks",
+        ],
+    )
+
+
+_MODELS_FIELD_MAP = {model: field for model, field in _models_field_map()}
+
+# assert sorted(_MODELS_FIELD_MAP) == sorted([m for m, _ in _models_field_map()])
 
 
 def _mode_aliases(mode):
@@ -236,6 +308,38 @@ def model2df(model: BaseModel):
                         entry_v = str_normalize(entry_v.split()[0])
 
                     paper_references_df[entry_k][(k, i)] = entry_v
+
+    map_error = None
+
+    for group in (
+        "models",
+        "datasets",
+    ):
+        if group != "models" or "name" not in paper_references_df:
+            continue
+
+        paper_references_df.setdefault("field", {})
+
+        fields = []
+        name_df = paper_references_df["name"]
+        for (k, i), field in name_df.items():
+            if k != group:
+                continue
+
+            try:
+                field = _MODELS_FIELD_MAP[field]
+            except KeyError as e:
+                map_error = e
+                logger.error(map_error, exc_info=True)
+                continue
+            field_cnt = (
+                field if field not in fields else f"{field}-{fields.count(field)}"
+            )
+            fields.append(field)
+            paper_references_df["field"][(k, i)] = field_cnt
+
+    if map_error:
+        raise map_error
 
     paper_1d_df["sub_research_fields"] = [pd.Series(paper_1d_df["sub_research_fields"])]
     paper_1d_df["all_research_fields"] = [pd.Series(paper_1d_df["all_research_fields"])]
