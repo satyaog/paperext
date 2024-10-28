@@ -138,7 +138,7 @@ def main(argv=None):
         annotated[0].append(paper_attr)
         annotated[1].append(paper_refs)
 
-        queries_dir = ROOT_DIR / "data/queries/"
+        queries_dir = ROOT_DIR / "data/queries/openai"
         for i, query_f in enumerate(sorted(queries_dir.glob(f"{f.stem}*.json"))):
             print(f"Fetching data from {query_f}", file=sys.stderr)
             model = ExtractionResponse.model_validate_json(
@@ -202,7 +202,7 @@ def main(argv=None):
 
             (_analysis_dir / f"{label}_{i:02}.csv").write_text(
                 pd.DataFrame(
-                    conf_mat, index=[*classes, ""], columns=[*classes, ""]
+                    conf_mat, index=[*classes, "No True Label"], columns=[*classes, "No Predicted Label"]
                 ).to_csv()
             )
             print(f"{label}:")
@@ -217,6 +217,7 @@ def main(argv=None):
         "libraries",
     ):
         for i in range(max_attempt + 1):
+            # [1] indexes the references (models, datasets, libraries)
             ann, pred = (
                 annotated[1].loc[:, group, :],
                 predictions[1].loc[:, i, group, :],
@@ -225,8 +226,8 @@ def main(argv=None):
             pred: pd.DataFrame
 
             papers = (
-                ann.index.get_level_values(0)
-                .union(pred.index.get_level_values(0))
+                ann.index.get_level_values(0)  # paper id
+                .union(pred.index.get_level_values(0))  # matching paper id
                 .sort_values()
                 .drop_duplicates()
             )
@@ -243,7 +244,25 @@ def main(argv=None):
 
             (_analysis_dir / f"{group}.{col}_{i:02}.csv").write_text(
                 pd.DataFrame(
-                    conf_mat, index=[*names, ""], columns=[*names, ""]
+                    conf_mat, index=[*names, "No True Label"], columns=[*names, "No Predicted Label"]
+                ).to_csv()
+            )
+
+            print(f"{group}.{col}:")
+            print("Raw confusion Matrix:")
+            print(conf_mat)
+            print("Normalized confusion Matrix (%):")
+            print(normal_conf_mat)
+
+            col = "field"
+            (conf_mat, normal_conf_mat), names = _mlcm(
+                [_ann[col] for _ann in ann_per_paper],
+                [_pred[col] for _pred in pred_per_paper],
+            )
+
+            (_analysis_dir / f"{group}.{col}_{i:02}.csv").write_text(
+                pd.DataFrame(
+                    conf_mat, index=[*names, "No True Label"], columns=[*names, "No Predicted Label"]
                 ).to_csv()
             )
 
@@ -284,7 +303,7 @@ def main(argv=None):
 
                     (_analysis_dir / f"{group}.{col}_{i:02}.csv").write_text(
                         pd.DataFrame(
-                            conf_mat, index=[*classes, ""], columns=[*classes, ""]
+                            conf_mat, index=[*classes, "No True Label"], columns=[*classes, "No Predicted Label"]
                         ).to_csv()
                     )
 
