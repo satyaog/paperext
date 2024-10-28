@@ -1,0 +1,147 @@
+{
+  "paper": "2310.07800.txt",
+  "words": 6383,
+  "extractions": {
+    "title": {
+      "value": "Explainable Attention for Few-shot Learning and Beyond",
+      "justification": "The paper's title is clearly stated.",
+      "quote": "Explainable Attention for Few-shot Learning and Beyond"
+    },
+    "description": "This research paper proposes a new approach for hard attention finding in few-shot learning called FewXAT. FewXAT uses deep reinforcement learning to find the most informative patches within an image for classification. The authors argue that by focusing on these patches, the model can effectively learn with limited training samples and achieve better performance. They demonstrate the effectiveness of their method through experiments on four benchmark datasets: MiniImageNet, CIFAR-FS, FC-100, and CUB. The results show improvement in accuracy compared to the baseline models and random patch selection. Moreover, they visualize the selected patches, demonstrating the interpretability of the method. The paper also explores the impact of adding a contrastive learning module to enhance training and improve generalization. Lastly, they show the potential of FewXAT beyond few-shot learning by applying it to the classification task using ImageNet10 and ImageNetdog datasets, achieving promising results.",
+    "type": {
+      "value": "empirical",
+      "justification": "The authors propose a new method and validate its effectiveness through experiments on benchmark datasets, making the research empirical.",
+      "quote": "we demonstrate the efficacy of our proposed method."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Machine Learning",
+        "justification": "The paper focuses on enhancing few-shot learning, a subfield of machine learning. While it touches upon computer vision applications, its core contribution is within the learning methodology itself.",
+        "quote": "In this paper, we propose a novel explainable hard attention-finding approach for few-shot learning, called FewXAT, to detect the attentive areas and enhance performance in few-shot learning."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Few-shot Learning",
+          "justification": "The paper heavily emphasizes 'few-shot learning' throughout, indicating it as the primary research area.",
+          "quote": "Explainable Attention for Few-shot Learning and Beyond"
+        },
+        "aliases": [
+          "few-shot learning"
+        ]
+      },
+      {
+        "name": {
+          "value": "Computer Vision",
+          "justification": "The paper applies the proposed few-shot learning method to image classification tasks, making Computer Vision a relevant sub-research field.",
+          "quote": "Most of the leading few-shot learning methods are either metric learning-based or meta learner-based (Li et al. 2017). Prototypical Networks (ProtNet) is one of the most popular metric-based approaches in few-shot learning, proposed by Snell et al. (Snell, Swersky,\\nand Zemel 2017). The main idea behind Prototypical Networks is to learn a metric space where examples from the same class are close to each other and examples from different classes are far apart."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Prototypical Networks",
+          "justification": "The paper clearly states the name of the model as 'Prototypical Networks', often shortened to 'ProtoNet.'",
+          "quote": "Prototypical Networks (ProtNet) is one of the most popular metric-based approaches in few-shot learning..."
+        },
+        "aliases": [
+          "ProtoNet",
+          "Prototypical Networks"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper doesn't introduce Prototypical Networks as a new model. It leverages this existing model as a baseline for comparison.",
+          "quote": "Prototypical Networks (ProtNet) is one of the most popular metric-based approaches in few-shot learning, proposed by Snell et al. (Snell, Swersky,\\nand Zemel 2017)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The authors use ProtoNet in their experiments and provide specific details about its implementation and the datasets used. They mention using different structures of ProtoNet like Conv-4 and ResNet-10, indicating execution.",
+          "quote": "To evaluate FewXAT, we used ProtoNet with two different structures including Conv-4, and ResNet-10."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The authors use ProtoNet as the baseline classifier and compare their proposed method, FewXAT, against it. The paper mentions '...we selected ProtoNet (Snell, Swersky, and Zemel 2017) as the baseline.' indicating its use as a comparison point for evaluating FewXAT's performance.",
+          "quote": "In this paper, we used the ProtoNet algorithm as the baseline, as it is one of the most popular and well-performing learning methods for few-shot learning (Snell, Swersky, and Zemel 2017)."
+        },
+        "referenced_paper_title": {
+          "value": "Prototypical networks for few-shot learning",
+          "justification": "The authors reference the paper where Prototypical Networks were introduced.",
+          "quote": "Snell, J.; Swersky, K.; and Zemel, R. 2017. Prototypical networks for few-shot learning. Advances in neural information processing systems, 30."
+        }
+      },
+      {
+        "name": {
+          "value": "Conv-4",
+          "justification": "Although not explicitly named, 'Conv-4' likely refers to a convolutional neural network with 4 layers. The paper uses it as a known architecture.",
+          "quote": "Conv-4"
+        },
+        "aliases": [
+          "Conv-4"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "There is no mention of the authors introducing or modifying the Conv-4 architecture, implying it's a known structure used for comparison.",
+          "quote": "The accuracy results are shown in Table 1, for the datasets MiniImageNet,\\nCIFAR-FS, FC-100, and CUB. The first row of the table shows the test results of the baselines on the original data."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper clearly indicates that the authors used Conv-4 in their experiments to evaluate FewXAT, showing its execution.",
+          "quote": "Table 4: Run time (in hours) of training ProtoNet (with Conv-4) with and without FewXAT."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Conv-4 is used as a baseline model in conjunction with ProtoNet and its performance is compared before and after applying the FewXAT method.",
+          "quote": "To evaluate FewXAT, we used ProtoNet with two different structures including Conv-4, and ResNet-10."
+        },
+        "referenced_paper_title": {
+          "value": "None",
+          "justification": "The paper doesn't provide a specific reference for the Conv-4 model.",
+          "quote": "None"
+        }
+      },
+      {
+        "name": {
+          "value": "ResNet-10",
+          "justification": "While not explicitly defined, 'ResNet-10' and 'ResNet-50' likely refer to ResNet variations with 10 and 50 layers respectively.",
+          "quote": "ResNet-10"
+        },
+        "aliases": [
+          "ResNet-10",
+          "ResNet-50"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The authors don't present ResNet-10 or ResNet-50 as new models. They are used as established architectures for comparison purposes.",
+          "quote": "The accuracy results are shown in Table 1, for the datasets MiniImageNet,\\nCIFAR-FS, FC-100, and CUB. The first row of the table shows the test results of the baselines on the original data."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper clearly states that ResNet-10 and ResNet-50 were used in their experiments, indicating their execution.",
+          "quote": "As the baseline, we selected Conv-4, and ResNet-50."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "ResNet-10 and ResNet-50 are used as baseline models along with ProtoNet. The paper compares their performance with and without FewXAT.",
+          "quote": "To evaluate FewXAT, we used ProtoNet with two different structures including Conv-4, and ResNet-10."
+        },
+        "referenced_paper_title": {
+          "value": "None",
+          "justification": "The paper doesn't specify a reference for ResNet-10 or ResNet-50.",
+          "quote": "None"
+        }
+      }
+    ],
+    "datasets": [],
+    "libraries": []
+  },
+  "usage": {
+    "cached_content_token_count": 0,
+    "candidates_token_count": 0,
+    "prompt_token_count": 0,
+    "total_token_count": 12320
+  }
+}

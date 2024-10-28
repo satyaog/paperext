@@ -1,0 +1,171 @@
+{
+  "paper": "1912.09867.txt",
+  "words": 7688,
+  "extractions": {
+    "title": {
+      "value": "Meta-Graph: Few Shot Link Prediction via Meta Learning",
+      "justification": "The title of the paper is \"Meta-Graph: Few Shot Link Prediction via Meta Learning\".",
+      "quote": "M ETA -G RAPH : F EW SHOT L INK P REDICTION VIA M ETA L EARNING"
+    },
+    "description": "The paper introduces a new gradient-based meta learning framework called Meta-Graph for few-shot link prediction. The authors also introduce a series of benchmarks for this task. The key idea behind Meta-Graph is that it leverages higher-order gradients along with a learned graph signature function that conditionally generates a graph neural network initialization. The paper compares Meta-Graph with various baseline models, including MAML, on three link prediction benchmarks: PPI, FirstMMDB, and Ego-AMINER. The results show that Meta-Graph outperforms the baselines in terms of both fast adaptation and final convergence, especially when the number of training edges is small.",
+    "type": {
+      "value": "empirical",
+      "justification": "This paper is empirical as it proposes a new model and validates its effectiveness through experiments on multiple benchmark datasets.",
+      "quote": "We experimentally validate our approach on three link prediction benchmarks."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Link Prediction",
+        "justification": "The paper focuses on the task of link prediction within multiple graphs.",
+        "quote": "We consider the task of few shot link prediction, where the goal is to predict missing edges across multiple graphs using only a small sample of known edges."
+      },
+      "aliases": [
+        "link prediction"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Few-shot Learning",
+          "justification": "The paper focuses on few-shot link prediction, which is a subfield of few-shot learning and meta-learning.",
+          "quote": "This few shot link prediction setting is particularly challenging as current link prediction methods are generally ill-equipped to transfer knowledge between graphs in a multi-graph setting and are also unable to effectively learn from very sparse data."
+        },
+        "aliases": [
+          "few-shot learning",
+          "meta learning"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Meta-Graph",
+          "justification": "The paper refers to the model as Meta-Graph.",
+          "quote": "We introduce a new framework called Meta-Graph for few shot link prediction and also introduce a series of benchmarks for this task."
+        },
+        "aliases": [
+          "Meta-Graph"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The paper introduces Meta-Graph as a new framework for few-shot link prediction.",
+          "quote": "We introduce a new framework called Meta-Graph for few shot link prediction and also introduce a series of benchmarks for this task."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper provides experimental results for Meta-Graph on three link prediction benchmarks.",
+          "quote": "We experimentally validate our approach on three link prediction benchmarks."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares Meta-Graph with various baseline models, including MAML.",
+          "quote": "We find that our MetaGraph approach not only achieves fast adaptation but also converges to a better overall solution in many experimental settings, with an average improvement of 5.3% in AUC at convergence over non-meta learning baselines."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "No reference paper is mentioned for Meta-Graph as it is a novel contribution of this work.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "MAML",
+          "justification": "The paper refers to the model as MAML.",
+          "quote": "Note that a simplification of Meta-Graph, where the graph signature function is removed, can be viewed as an adaptation of model agnostic meta learning (MAML) (Finn et al., 2017) to the few shot link prediction setting."
+        },
+        "aliases": [
+          "MAML"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "MAML is an existing meta-learning algorithm, not a contribution of this paper.",
+          "quote": ""
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper shows experimental results for MAML on the link prediction benchmarks.",
+          "quote": "We provide comparisons to this simplified MAML approach in the experiments below."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper uses MAML as one of the baseline models for comparison.",
+          "quote": "Note that a simplification of Meta-Graph, where the graph signature function is removed, can be viewed as an adaptation of model agnostic meta learning (MAML) (Finn et al., 2017) to the few shot link prediction setting."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The paper cites the original MAML paper by Finn et al.",
+          "quote": "Note that a simplification of Meta-Graph, where the graph signature function is removed, can be viewed as an adaptation of model agnostic meta learning (MAML) (Finn et al., 2017) to the few shot link prediction setting."
+        }
+      },
+      {
+        "name": {
+          "value": "VGAE",
+          "justification": "The paper names the model as VGAE.",
+          "quote": "In principle, our framework can be combined with a wide variety of GNN-based link prediction approaches, but here we focus on variational graph autoencoders (VGAEs) (Kipf & Welling, 2016b) as our base link prediction framework."
+        },
+        "aliases": [
+          "VGAE"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "VGAE is an existing method for link prediction, not a contribution of this paper.",
+          "quote": ""
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper uses VGAE as the base model for its experiments.",
+          "quote": "We build upon VGAEs due to their strong performance on standard link prediction benchmarks (Kipf & Welling, 2016b), as well as the fact that they have a well-defined probabilistic interpretation that generalizes many embedding-based approaches to link prediction (e.g., node2vec (Grover & Leskovec, 2016))."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "While not directly compared in the results table, the paper uses VGAE as the local link prediction model within Meta-Graph and other baselines.",
+          "quote": "In principle, our framework can be combined with a wide variety of GNN-based link prediction approaches, but here we focus on variational graph autoencoders (VGAEs) (Kipf & Welling, 2016b) as our base link prediction framework."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The paper cites the original VGAE paper by Kipf & Welling.",
+          "quote": "In principle, our framework can be combined with a wide variety of GNN-based link prediction approaches, but here we focus on variational graph autoencoders (VGAEs) (Kipf & Welling, 2016b) as our base link prediction framework."
+        }
+      },
+      {
+        "name": {
+          "value": "GCN",
+          "justification": "The paper refers to the model as GCN.",
+          "quote": "We use a k-layer graph convolutional network (GCN) (Kipf & Welling, 2016a), with sum pooling to compute the signature"
+        },
+        "aliases": [
+          "GCN",
+          "graph convolutional network"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "GCN is a well-known model, not a contribution of this paper.",
+          "quote": ""
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "GCN is used as part of the implemented model.",
+          "quote": "We use a k-layer graph convolutional network (GCN) (Kipf & Welling, 2016a), with sum pooling to compute the signature"
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "The paper uses GCN as part of the Meta-Graph architecture, but not as a standalone model for comparison.",
+          "quote": "We use a k-layer graph convolutional network (GCN) (Kipf & Welling, 2016a), with sum pooling to compute the signature"
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The paper cites the GCN paper by Kipf & Welling.",
+          "quote": "We use a k-layer graph convolutional network (GCN) (Kipf & Welling, 2016a), with sum pooling to compute the signature"
+        }
+      }
+    ],
+    "datasets": [],
+    "libraries": []
+  },
+  "usage": {
+    "cached_content_token_count": 0,
+    "candidates_token_count": 0,
+    "prompt_token_count": 0,
+    "total_token_count": 16131
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "paper": "2305.11856.txt",
+  "words": 5432,
+  "extractions": {
+    "title": {
+      "value": "Video Killed the HD-Map: Predicting Multi-Agent Behavior Directly From Aerial Images",
+      "justification": "Extracted from the paper's title.",
+      "quote": "Video Killed the HD-Map:\\nPredicting Multi-Agent Behavior Directly From Aerial Images"
+    },
+    "description": "The development of algorithms that learn multiagent behavioral models using human demonstrations has led to increasingly realistic simulations in the field of autonomous driving. In general, such models learn to jointly predict trajectories for all controlled agents by exploiting road context information such as drivable lanes obtained from manually annotated high-definition (HD) maps. Recent studies show that these models can greatly benefit from increasing the amount of human data available for training. However, the manual annotation of HD maps which is necessary for every new location puts a bottleneck on efficiently scaling up human traffic datasets. We propose an aerial image-based map (AIM)\\nrepresentation that requires minimal annotation and provides rich road context information for traffic agents like pedestrians and vehicles. We evaluate multi-agent trajectory prediction using the AIM by incorporating it into a differentiable driving simulator as an image-texture-based differentiable rendering module. Our results demonstrate competitive multi-agent trajectory prediction performance especially for pedestrians in the scene when using our AIM representation as compared to models trained with rasterized HD maps.",
+    "type": {
+      "value": "empirical",
+      "justification": "The authors propose and evaluate a new method, ITRA-AIM, indicating empirical research.",
+      "quote": "In this study, we investigate the performance of behavioral models learned using aerial imagery instead of HD maps."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Robotics",
+        "justification": "The paper focuses on autonomous driving, a key application in the field of robotics.",
+        "quote": "The development of algorithms that learn multiagent behavioral models using human demonstrations has led to increasingly realistic simulations in the field of autonomous driving."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Trajectory Prediction",
+          "justification": "The paper heavily focuses on trajectory prediction as its central theme.",
+          "quote": "We evaluate multi-agent trajectory prediction using the AIM by incorporating it into a differentiable driving simulator as an image-texture-based differentiable rendering module."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Multi-Agent Systems",
+          "justification": "The core problem addressed is the prediction of multi-agent behavior, which is a key aspect of Multi-Agent Systems.",
+          "quote": "The development of algorithms that learn multiagent behavioral models using human demonstrations has led to increasingly realistic simulations in the field of autonomous driving."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "ITRA",
+          "justification": "ITRA is the name of the model, as mentioned in the paper.",
+          "quote": "We use ITRA [3] to investigate the validity of our primary claim."
+        },
+        "aliases": [
+          "ITRA-AIM",
+          "ITRA-HDM"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The authors use ITRA, a multi-agent trajectory prediction model from prior work, to evaluate their proposed AIM approach. Therefore, ITRA is not a novel contribution of this paper.",
+          "quote": "We use ITRA [3] to investigate the validity of our primary claim."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The authors trained and evaluated ITRA-AIM and ITRA-HDM.",
+          "quote": "We train all of our models with a random observation length between 1 to 10 timesteps to prevent overfitting on past observations and they are trained until the validation loss converges."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The authors compare ITRA-AIM with the original ITRA that utilizes the rasterized HD map (ITRA-HDM).",
+          "quote": "To compare ITRA-AIM with the original ITRA that utilizes the rasterized HD map (ITRA-HDM), we apply the same training procedure on ITRA-AIM as our baseline, training each component of the network from scratch and using the same training hyper-parameters for ITRA-AIM and ITRA-HDM."
+        },
+        "referenced_paper_title": {
+          "value": "Imagining the road ahead: Multi-agent trajectory prediction via differentiable simulation",
+          "justification": "The paper references ITRA with [3].",
+          "quote": "A. Ścibior, V. Lioutas, D. Reda, P. Bateni, and F. Wood, “Imagining the road ahead: Multi-agent trajectory prediction via differentiable simulation,” IEEE Transactions on Intelligent Transportation Systems,\\n2021."
+        }
+      },
+      {
+        "name": {
+          "value": "CVRNN",
+          "justification": "The paper mentions using CVRNN.",
+          "quote": "ITRA uses a conditional variational recurrent neural network (CVRNN) [16] model followed by a bicycle kinematic model [17] to jointly predict the next state of each agent in the scene."
+        },
+        "aliases": [
+          "CVRNN"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The authors use a conditional variational recurrent neural network (CVRNN).",
+          "quote": "ITRA uses a conditional variational recurrent neural network (CVRNN) [16] model followed by a bicycle kinematic model [17] to jointly predict the next state of each agent in the scene."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "There's no mention of using CVRNN in experiments.",
+          "quote": ""
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "There's no mention of comparing CVRNN.",
+          "quote": ""
+        },
+        "referenced_paper_title": {
+          "value": "A recurrent latent variable model for sequential data",
+          "justification": "The paper references CVRNN with [16].",
+          "quote": "J. Chung, K. Kastner, L. Dinh, K. Goel, A. C. Courville, and Y. Bengio, “A recurrent latent variable model for sequential data,”\\nAdvances in neural information processing systems, vol. 28, 2015."
+        }
+      }
+    ],
+    "datasets": [],
+    "libraries": [
+      {
+        "name": {
+          "value": "Pytorch3D",
+          "justification": "The authors state that they implemented a differentiable renderer with Pytorch3D.",
+          "quote": "Our method incorporates unlabelled aerial images into a simulation environment [3] using a differentiable renderer implemented with Pytorch3D [31]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Accelerating 3d deep learning with pytorch3d",
+          "justification": "Reference for Pytorch3D is provided as [31].",
+          "quote": "N. Ravi, J. Reizenstein, D. Novotny, T. Gordon, W.-Y. Lo, J. Johnson,\\nand G. Gkioxari, “Accelerating 3d deep learning with pytorch3d,”\\narXiv:2007.08501, 2020."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "cached_content_token_count": 0,
+    "candidates_token_count": 0,
+    "prompt_token_count": 0,
+    "total_token_count": 10693
+  }
+}

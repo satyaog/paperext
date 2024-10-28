@@ -1,0 +1,152 @@
+{
+  "paper": "2402.05468.txt",
+  "words": 20469,
+  "extractions": {
+    "title": {
+      "value": "Implicit Diffusion: Efficient Optimization through Stochastic Sampling",
+      "justification": "The title of the paper is 'Implicit Diffusion: Efficient Optimization through Stochastic Sampling'.",
+      "quote": "Implicit Diffusion: Efficient Optimization through Stochastic Sampling"
+    },
+    "description": "The paper presents a new algorithm to optimize distributions defined implicitly by parameterized stochastic diffusions. The algorithm performs jointly, in a single loop, optimization and sampling steps. This approach is inspired by recent advances in bilevel optimization and automatic implicit differentiation, leveraging the point of view of sampling as optimization over the space of probability distributions. The paper provides theoretical guarantees on the performance of the method, as well as experimental results demonstrating its effectiveness in real-world settings.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper includes theoretical analysis and experimental results, demonstrating both theoretical and empirical contributions.",
+      "quote": "We provide theoretical guarantees on the performance of our method, as well as experimental results demonstrating its effectiveness in real-world settings."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Machine Learning",
+        "justification": "The paper is categorized under cs.LG (computer science, machine learning).",
+        "quote": "arXiv:2402.05468v1 [cs.LG] 8 Feb 2024"
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Bilevel Optimization",
+          "justification": "The paper explicitly states bilevel optimization and automatic implicit differentiation as inspirations.",
+          "quote": "We present a new algorithm to optimize distributions defined implicitly by parameterized stochastic diffusions. Doing so allows us to modify the outcome distribution of sampling processes by optimizing over their parameters. We introduce a general framework for first-order optimization of these processes, that performs jointly, in a single loop, optimization and sampling steps. This approach is inspired by recent advances in bilevel optimization and automatic implicit differentiation, leveraging the point of view of sampling as optimization over the space of probability distributions. We provide theoretical guarantees on the performance of our method, as well as experimental results demonstrating its effectiveness in real-world settings."
+        },
+        "aliases": [
+          "Bilevel Optimization",
+          "Automatic Implicit Differentiation"
+        ]
+      },
+      {
+        "name": {
+          "value": "Sampling as Optimization",
+          "justification": "The paper frames sampling as optimization over probability distributions.",
+          "quote": "This approach is inspired by recent advances in bilevel optimization and automatic implicit differentiation, leveraging the point of view of sampling as optimization over the space of probability distributions."
+        },
+        "aliases": [
+          "Sampling as Optimization",
+          "Probability Distributions"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Langevin diffusion",
+          "justification": "Langevin diffusion is the name of the model.",
+          "quote": "Typically, approximating a target probability distribution π can be cast as the minimization of a dissimilarity functional between probability distributions w.r.t. π, that only vanishes at the target. For instance, it is known that Langevin diffusion dynamics follow a gradient flow of a Kullback-Leibler (KL) objective with respect to the Wasserstein-2 distance from optimal transport (Jordan et al., 1998). These dynamics can be discretized to lead to tractable sampling algorithms, like Langevin Monte Carlo (Parisi, 1981; Roberts & Tweedie, 1996; Wibisono, 2018; Durmus et al., 2019)."
+        },
+        "aliases": [
+          "Langevin diffusion",
+          "Langevin Monte Carlo"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper doesn't introduce the Langevin diffusion as a new model.",
+          "quote": "Typically, approximating a target probability distribution π can be cast as the minimization of a dissimilarity functional between probability distributions w.r.t. π, that only vanishes at the target. For instance, it is known that Langevin diffusion dynamics follow a gradient flow of a Kullback-Leibler (KL) objective with respect to the Wasserstein-2 distance from optimal transport (Jordan et al., 1998). These dynamics can be discretized to lead to tractable sampling algorithms, like Langevin Monte Carlo (Parisi, 1981; Roberts & Tweedie, 1996; Wibisono, 2018; Durmus et al., 2019)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper provides experimental results based on Langevin diffusion.",
+          "quote": "We present a general framework describing parameterized sampling algorithms, and introduce Implicit Diffusion optimization, a single-loop optimization algorithm to optimize through sampling."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares its algorithm to Langevin diffusion as an alternative approach.",
+          "quote": "Typically, approximating a target probability distribution π can be cast as the minimization of a dissimilarity functional between probability distributions w.r.t. π, that only vanishes at the target. For instance, it is known that Langevin diffusion dynamics follow a gradient flow of a Kullback-Leibler (KL) objective with respect to the Wasserstein-2 distance from optimal transport (Jordan et al., 1998). These dynamics can be discretized to lead to tractable sampling algorithms, like Langevin Monte Carlo (Parisi, 1981; Roberts & Tweedie, 1996; Wibisono, 2018; Durmus et al., 2019)."
+        },
+        "referenced_paper_title": {
+          "value": "The variational formulation of the fokker–planck equation",
+          "justification": "The paper cites Jordan et al. (1998) when mentioning the Langevin diffusion.",
+          "quote": "Typically, approximating a target probability distribution π can be cast as the minimization of a dissimilarity functional between probability distributions w.r.t. π, that only vanishes at the target. For instance, it is known that Langevin diffusion dynamics follow a gradient flow of a Kullback-Leibler (KL) objective with respect to the Wasserstein-2 distance from optimal transport (Jordan et al., 1998). These dynamics can be discretized to lead to tractable sampling algorithms, like Langevin Monte Carlo (Parisi, 1981; Roberts & Tweedie, 1996; Wibisono, 2018; Durmus et al., 2019)."
+        }
+      },
+      {
+        "name": {
+          "value": "denoising diffusion",
+          "justification": "The models are referred to as 'denoising diffusion' models.",
+          "quote": "Denoising diffusion (Hyvärinen, 2005; Vincent, 2011; Ho et al., 2020) consists in running the SDE, for Y0 ∼ N (0, I),"
+        },
+        "aliases": [
+          "denoising diffusion",
+          "diffusion models",
+          "score matching"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The denoising diffusion models are not presented as new models.",
+          "quote": "This setting encompasses for instance diffusion models (Song et al., 2021), that cannot directly be formalized as descent dynamics of an objective functional over P, but whose output is determined by a parameter θ (i.e. the weights of the neural networks for score matching)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper uses denoising diffusion models in the experiments section.",
+          "quote": "We also showcase its performance in experimental settings."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper discusses denoising diffusion models in the context of finetuning.",
+          "quote": "This setting encompasses for instance diffusion models (Song et al., 2021), that cannot directly be formalized as descent dynamics of an objective functional over P, but whose output is determined by a parameter θ (i.e. the weights of the neural networks for score matching)."
+        },
+        "referenced_paper_title": {
+          "value": "Maximum likelihood training of score-based diffusion models",
+          "justification": "The paper cites Song et al. (2021) in the context of diffusion models.",
+          "quote": "This setting encompasses for instance diffusion models (Song et al., 2021), that cannot directly be formalized as descent dynamics of an objective functional over P, but whose output is determined by a parameter θ (i.e. the weights of the neural networks for score matching)."
+        }
+      },
+      {
+        "name": {
+          "value": "energy-based models",
+          "justification": "The paper refers to the models as 'energy-based models'.",
+          "quote": "This case corresponds to training energy-based models (Gutmann & Hyvärinen, 2012)."
+        },
+        "aliases": [
+          "energy-based models"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Energy-based models are not a contribution of the paper.",
+          "quote": "This case corresponds to training energy-based models (Gutmann & Hyvärinen, 2012)."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The paper does not describe any implementation or experimental results for energy-based models.",
+          "quote": "This case corresponds to training energy-based models (Gutmann & Hyvärinen, 2012)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Energy-based models are compared to the approach in the paper.",
+          "quote": "This case corresponds to training energy-based models (Gutmann & Hyvärinen, 2012)."
+        },
+        "referenced_paper_title": {
+          "value": "Noise-contrastive estimation of unnormalized statistical models, with applications to natural image statistics",
+          "justification": "The paper cites Gutmann & Hyvärinen (2012) when discussing energy-based models.",
+          "quote": "This case corresponds to training energy-based models (Gutmann & Hyvärinen, 2012)."
+        }
+      }
+    ],
+    "datasets": [],
+    "libraries": []
+  },
+  "usage": {
+    "cached_content_token_count": 0,
+    "candidates_token_count": 0,
+    "prompt_token_count": 0,
+    "total_token_count": 39979
+  }
+}

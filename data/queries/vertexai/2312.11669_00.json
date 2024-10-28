@@ -1,0 +1,140 @@
+{
+  "paper": "2312.11669.txt",
+  "words": 22802,
+  "extractions": {
+    "title": {
+      "value": "Prediction and Control in Continual Reinforcement Learning",
+      "justification": "The title of the paper is 'Prediction and Control in Continual Reinforcement Learning'.",
+      "quote": "Prediction and Control in Continual Reinforcement Learning"
+    },
+    "description": "This paper proposes a new approach to value function estimation in continual reinforcement learning, inspired by the complementary learning systems (CLS) theory from neuroscience. The authors decompose the value function into two components: a permanent value function, which captures general knowledge that persists over time, and a transient value function, which allows quick adaptation to new situations. They present theoretical results showing that their approach is well suited for continual learning, and empirical results demonstrating its effectiveness on both prediction and control problems in several domains, including gridworlds, Minigrid, JellyBeanWorld, and MinAtar.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper includes both theoretical analysis and empirical evaluations.",
+      "quote": "We establish theoretical results showing that our approach is well suited for continual learning and draw connections to the complementary learning systems (CLS) theory from neuroscience. Empirically, this approach improves performance significantly on both prediction and control problems."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Continual Reinforcement Learning",
+        "justification": "The paper clearly focuses on continual reinforcement learning.",
+        "quote": "Prediction and Control in Continual Reinforcement Learning"
+      },
+      "aliases": [
+        "continual RL",
+        "Continual RL",
+        "continual reinforcement learning",
+        "semi-continual RL"
+      ]
+    },
+    "sub_research_fields": [],
+    "models": [
+      {
+        "name": {
+          "value": "PT-TD",
+          "justification": "The paper names the proposed method PT-TD.",
+          "quote": "Algorithm 1 PT-TD learning (Prediction)"
+        },
+        "aliases": [
+          "TD",
+          "temporal-difference",
+          "temporal difference",
+          "TD learning",
+          "tracking TD learning algorithm"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The paper proposes an improvement to TD learning.",
+          "quote": "As an alternative, we propose a CLS-inspired approach to the stability-plasticity dilemma which relies on maintaining two value function estimates: a permanent one, whose goal is to accumulate\\n\\\"baseline\\\" knowledge from the entire distribution of information to which the agent is exposed over time, and a transient component, whose goal is to learn very quickly using information that is relevant to the current circumstances."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper includes empirical evaluations of the proposed method.",
+          "quote": "Empirically, this approach improves performance significantly on both prediction and control problems."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares the proposed method with traditional TD learning.",
+          "quote": "A convergent temporal-difference\\n(TD) algorithm [43] aggregates information from all value functions in the task distribution implicitly,\\nthereby losing precision in the estimate of the value function for the current situation. A tracking TD learning algorithm [46] learns predictions for the current task, overwriting estimates of past tasks and re-learning from scratch for each new task, which can require a lot of data."
+        },
+        "referenced_paper_title": {
+          "value": "Reinforcement learning: An introduction",
+          "justification": "The paper references the original TD learning paper.",
+          "quote": "wt+1 ← wt + αt δt ∇w vw (St ),\\n(1)\\nwhere αt is the learning rate at time t, δt = Rt+1 + γvw (St+1 ) − vw (St ) is the TD error (see Sutton and Barto [45] for details)."
+        }
+      },
+      {
+        "name": {
+          "value": "PT-Q-learning",
+          "justification": "The paper refers to the proposed method as PT-Q-learning.",
+          "quote": "Algorithm 3 PT-Q-learning (Control)"
+        },
+        "aliases": [
+          "Q-learning",
+          "PT-Q-learning"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The paper proposes a method combining permanent and transient components with Q-learning.",
+          "quote": "To test our approach as a complement to Q-learning 3, we conducted a tabular gridworld experiment and a Minigrid experiment using deep neural networks."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper evaluates the proposed method empirically.",
+          "quote": "We conducted experiments in both the prediction and the control settings on a range of problems."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares the proposed method with traditional Q-learning.",
+          "quote": "To test our approach as a complement to Q-learning 3, we conducted a tabular gridworld experiment and a Minigrid experiment using deep neural networks."
+        },
+        "referenced_paper_title": {
+          "value": "Reinforcement learning: An introduction",
+          "justification": "The paper doesn't explicitly provide a reference for Q-learning but cites Sutton and Barto [45] for general reinforcement learning.",
+          "quote": "wt+1 ← wt + αt δt ∇w vw (St ),\\n(1)\\nwhere αt is the learning rate at time t, δt = Rt+1 + γvw (St+1 ) − vw (St ) is the TD error (see Sutton and Barto [45] for details)."
+        }
+      },
+      {
+        "name": {
+          "value": "PT-DQN",
+          "justification": "PT-DQN is the name given to the DQN variant with permanent and transient components.",
+          "quote": "Results are presented in Fig. 5 and the pseudocode of PT-DQN is included in Appendix C.1.4."
+        },
+        "aliases": [
+          "DQN",
+          "PT-DQN",
+          "PT-DQN-0.5x",
+          "multi-headed DQN",
+          "DQN with multiple heads"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The paper contributes the PT-DQN model, a combination of permanent and transient components with DQN.",
+          "quote": "For our approach, we use half the number of parameters as that of DQN for both permanent and transient value networks to ensure the total number of parameters across all baselines are same — hence the name PT-DQN-0.5x."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper conducts experiments with PT-DQN on continual RL problems.",
+          "quote": "Results are presented in Fig. 5 and the pseudocode of PT-DQN is included in Appendix C.1.4. For JBW experiment, we plot the reward obtained per timestep over a 10k step window (reward rate) as a function of time. For MinAtar, we plot the return averaged over the past 100 episodes. Our method, PT-DQN-0.5x, performs better than all the baselines."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares its proposed PT-DQN with standard DQN and multi-headed DQN.",
+          "quote": "Baselines: We compare our method with DQN, two DQN variants, and a uniformly random policy.\\nFor the first baseline, we use a large experience replay buffer, an approach which was proposed recently as a viable option for continual RL [8]. The second baseline, DQN with multiple heads, uses a common trunk to learn features and separate heads to learn Q-values for the three tasks."
+        },
+        "referenced_paper_title": {
+          "value": "Reinforcement learning: An introduction",
+          "justification": "No specific DQN paper is referenced, but Sutton and Barto [45] is cited for general reinforcement learning concepts.",
+          "quote": "wt+1 ← wt + αt δt ∇w vw (St ),\\n(1)\\nwhere αt is the learning rate at time t, δt = Rt+1 + γvw (St+1 ) − vw (St ) is the TD error (see Sutton and Barto [45] for details)."
+        }
+      }
+    ],
+    "datasets": [],
+    "libraries": []
+  },
+  "usage": {
+    "cached_content_token_count": 0,
+    "candidates_token_count": 0,
+    "prompt_token_count": 0,
+    "total_token_count": 47930
+  }
+}

@@ -1,0 +1,235 @@
+{
+  "paper": "2403.14421.txt",
+  "words": 10313,
+  "extractions": {
+    "title": {
+      "value": "DP-RDM: Adapting Diffusion Models to Private Domains Without Fine-Tuning",
+      "justification": "The title of the paper is extracted from the beginning of the document.",
+      "quote": "DP-RDM: Adapting Diffusion Models to Private Domains Without Fine-Tuning"
+    },
+    "description": "The paper proposes a new approach for private image generation based on differentially private retrieval augmentation. The authors define a differentially private retrieval-augmented diffusion model (DP-RDM) that can generate high-quality image samples based on text prompts while satisfying rigorous DP guarantees. They achieve this by using a private k-NN retrieval mechanism that adds calibrated noise to retrieved samples and adapts an existing retrieval-augmented diffusion model architecture to accommodate this mechanism. The authors evaluate DP-RDM on three datasets: CIFAR-10, MS-COCO, and Shutterstock. They show that it effectively adapts to these datasets with minor loss in generation quality. Notably, DP-RDM can work with any state-of-the-art retrieval-augmented image generation model, regardless of the number of parameters or output resolution. This is the first work to demonstrate privacy risks when using private data in the retrieval dataset for RAG and propose a differentially private solution for adapting text-to-image diffusion models to sensitive target domains.",
+    "type": {
+      "value": "empirical",
+      "justification": "The authors conduct experiments to validate their proposed method, indicating an empirical paper.",
+      "quote": "To demonstrate the efficacy of our DP-RDM algorithm, we evaluate its text-to-image generation performance on several large-scale image datasets."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The paper primarily focuses on generating images, which falls under the field of computer vision.",
+        "quote": "null"
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Image Generation",
+          "justification": "The paper focuses on generating images using diffusion models.",
+          "quote": "Currently, the state-of-the-art in DP image generation focuses on adaptation through fine-tuning (Ghalebikesabi et al., 2023; Lyu et al., 2023), where a diffusion model is first trained on public data (e.g., a licensed dataset)\\nand then fine-tuned on a private dataset using DP-SGD (Abadi et al., 2016)."
+        },
+        "aliases": [
+          "image generation",
+          "generative modeling",
+          "DP image generation"
+        ]
+      },
+      {
+        "name": {
+          "value": "Differential Privacy",
+          "justification": "The paper focuses on ensuring differential privacy in image generation.",
+          "quote": "One promising strategy for mitigating this risk is through differential privacy (DP; Dwork et al. (2006))."
+        },
+        "aliases": [
+          "differential privacy",
+          "DP"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "DP-RDM",
+          "justification": "DP-RDM stands for \\\"differentially private retrieval-augmented diffusion model\\\", as explained in the paper.",
+          "quote": "We utilize this desirable property of RAG and define a differentially private retrieval-augmented diffusion model\\n(DP-RDM) that is capable of generating high-quality images based on text prompts while satisfying rigorous DP guarantees."
+        },
+        "aliases": [
+          "DP-RDM",
+          "RDM",
+          "text-to-image diffusion model"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The authors are proposing the DP-RDM model.",
+          "quote": "We utilize this desirable property of RAG and define a differentially private retrieval-augmented diffusion model\\n(DP-RDM) that is capable of generating high-quality images based on text prompts while satisfying rigorous DP guarantees."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The authors evaluate DP-RDM on three datasets.",
+          "quote": "We evaluate our DP-RDM on three datasets—CIFAR-10, MS-COCO and Shutterstock"
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "It's not clear if there are comparisons to other models, as the paper focuses on presenting a new method.",
+          "quote": "null"
+        },
+        "referenced_paper_title": {
+          "value": "null",
+          "justification": "This model seems to be a novel contribution of this paper.",
+          "quote": "null"
+        }
+      },
+      {
+        "name": {
+          "value": "CLIP",
+          "justification": "The paper mentions both CLIP and MetaCLIP.",
+          "quote": "We also substitute the CLIP encoder with the open-source MetaCLIP encoder (Xu et al., 2023)."
+        },
+        "aliases": [
+          "CLIP text encoder",
+          "CLIP image encoder",
+          "MetaCLIP encoder",
+          "MetaCLIP",
+          "CLIP"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The authors use pre-trained CLIP encoders.",
+          "quote": "null"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The authors use a pre-trained CLIP encoder in their model.",
+          "quote": "To generate an image sample, RDM encodes a text prompt using the CLIP text encoder (Radford et al., 2021) and retrieves k nearest neighbors from the retrieval dataset, which contains CLIP-embedded images."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "The paper does not compare different CLIP models.",
+          "quote": "null"
+        },
+        "referenced_paper_title": {
+          "value": "Learning Transferable Visual Models From Natural Language Supervision",
+          "justification": "The paper cites \\\"(Radford et al., 2021)\\\" when mentioning CLIP.",
+          "quote": "To generate an image sample, RDM encodes a text prompt using the CLIP text encoder (Radford et al., 2021) and retrieves k nearest neighbors from the retrieval dataset, which contains CLIP-embedded images."
+        }
+      },
+      {
+        "name": {
+          "value": "RDM",
+          "justification": "The paper introduces both RDM-fb and RDM-adapt.",
+          "quote": "We follow the training algorithm detailed in Blattmann et al. (2022) (with minor changes) to obtain two 400M parameter RDMs: RDM-fb and RDM-adapt."
+        },
+        "aliases": [
+          "RDM-fb",
+          "RDM-adapt"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The authors propose modifications to the existing RDM architecture.",
+          "quote": "We follow the training algorithm detailed in Blattmann et al. (2022) (with minor changes) to obtain two 400M parameter RDMs: RDM-fb and RDM-adapt."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The authors evaluate both RDM-fb and RDM-adapt.",
+          "quote": "We follow the training algorithm detailed in Blattmann et al. (2022) (with minor changes) to obtain two 400M parameter RDMs: RDM-fb and RDM-adapt."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The authors are comparing different versions of RDM.",
+          "quote": "We follow the training algorithm detailed in Blattmann et al. (2022) (with minor changes) to obtain two 400M parameter RDMs: RDM-fb and RDM-adapt."
+        },
+        "referenced_paper_title": {
+          "value": "Retrieval-Augmented Diffusion Models",
+          "justification": "The original RDM model is introduced in \\\"(Blattmann et al., 2022)\\\".",
+          "quote": "To motivate our DP-RDM framework, we first show that RDM (Blattmann et al., 2022), like standard text-to-image diffusion models, are also vulnerable to sample memorization."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "The paper evaluates on CIFAR-10.",
+          "quote": "We evaluate our DP-RDM on three datasets—CIFAR-10, MS-COCO and Shutterstock"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Multiple Layers of Features from Tiny Images",
+          "justification": "The paper refers to Krizhevsky and Hinton (2009) when describing CIFAR-10.",
+          "quote": "CIFAR-10 (Krizhevsky and Hinton, 2009)"
+        }
+      },
+      {
+        "name": {
+          "value": "MS-COCO",
+          "justification": "The paper evaluates on MS-COCO 2014.",
+          "quote": "We evaluate on three image datasets: CIFAR-10 (Krizhevsky and Hinton, 2009),\\nMS-COCO 2014 (Lin et al., 2014) with face-blurring (Yang et al., 2022), and Shutterstock"
+        },
+        "aliases": [
+          "MS-COCO 2014",
+          "MS-COCO"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Microsoft COCO: Common Objects in Context",
+          "justification": "The paper refers to Lin et al. (2014) when evaluating on MS-COCO.",
+          "quote": "MS-COCO 2014 (Lin et al., 2014)"
+        }
+      },
+      {
+        "name": {
+          "value": "Shutterstock",
+          "justification": "The paper evaluates on Shutterstock.",
+          "quote": "We evaluate on three image datasets: CIFAR-10 (Krizhevsky and Hinton, 2009),\\nMS-COCO 2014 (Lin et al., 2014) with face-blurring (Yang et al., 2022), and Shutterstock"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "null",
+          "justification": "The dataset is not introduced with a paper citation, therefore I cannot extract it.",
+          "quote": "null"
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet (Face Blurred)",
+          "justification": "The authors use ImageNet with face-blurring. I assume the face-blurred version to be a different dataset.",
+          "quote": "We consider ImageNet (with face-blurring), MS-COCO (with face-blurring), and Shutterstock as retrieval datasets."
+        },
+        "aliases": [
+          "ImageNet FB",
+          "ImageNet"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ImageNet Classification with Deep Convolutional Neural Networks",
+          "justification": "The reference to ImageNet is ambiguous between (Krizhevsky et al. 2012) and (Yang et al., 2022). I chose the oldest one.",
+          "quote": "We train on a face-blurred version of ImageNet (Krizhevsky et al., 2012; Yang et al., 2022) to enhance privacy of the pre-training dataset."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Faiss",
+          "justification": "The authors use Faiss to speed up k-NN search.",
+          "quote": "To this end, we use the Faiss library (Johnson et al., 2019), which is known to support fast inner product search for billion-scale vector databases."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Billion-scale similarity search with GPUs",
+          "justification": "The paper mentions \\\"(Johnson et al., 2019)\\\" when talking about Faiss.",
+          "quote": "To this end, we use the Faiss library (Johnson et al., 2019), which is known to support fast inner product search for billion-scale vector databases."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "cached_content_token_count": 0,
+    "candidates_token_count": 0,
+    "prompt_token_count": 0,
+    "total_token_count": 21309
+  }
+}

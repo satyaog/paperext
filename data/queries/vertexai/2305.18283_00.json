@@ -1,0 +1,259 @@
+{
+  "paper": "2305.18283.txt",
+  "words": 4096,
+  "extractions": {
+    "title": {
+      "value": "CommonAccent: Exploring Large Acoustic Pretrained Models for Accent Classification Based on Common Voice",
+      "justification": "The paper's title reflects the study's focus on exploring large acoustic pretrained models for accent classification.",
+      "quote": "CommonAccent: Exploring Large Acoustic Pretrained Models for Accent Classification Based on Common Voice"
+    },
+    "description": "The paper explores the use of large acoustic pretrained models for accent classification. The authors introduce CommonAccent, a benchmark dataset based on Common Voice, and fine-tune ECAPA-TDNN and Wav2Vec 2.0/XLSR models for this task, achieving state-of-the-art results for English accent classification.",
+    "type": {
+      "value": "empirical",
+      "justification": "The research presented is empirical, as it involves experiments, data analysis, and performance evaluation.",
+      "quote": "In this work, we showed that pre-trained acoustic models like XLSR can be adapted for accent classification systems, particularly for English (§ 5)."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Speech Recognition",
+        "justification": "The paper's primary focus revolves around accent classification within the broader field of speech recognition.",
+        "quote": "Despite the recent advancements in Automatic Speech Recognition (ASR), the recognition of accented speech still remains a dominant problem."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Accent Classification",
+          "justification": "The core research problem addressed is classifying accents from speech data.",
+          "quote": "In this paper, we study the accent classification problem, which is a critical building block towards accent-aware ASR."
+        },
+        "aliases": [
+          "accent classification",
+          "Automatic accent classification"
+        ]
+      },
+      {
+        "name": {
+          "value": "Accent-Aware ASR",
+          "justification": "The paper aims to improve automatic speech recognition by incorporating accent information.",
+          "quote": "As a result, it has become crucial to develop and implement accentaware or accent-invariant ASR systems."
+        },
+        "aliases": [
+          "accent-aware ASR",
+          "Accented speech recognition",
+          "Accented ASR"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "ECAPA-TDNN",
+          "justification": "ECAPA-TDNN, building upon the x-vector architecture, is used for accent classification.",
+          "quote": "The ECAPA-TDNN model has shown state-of-the-art results in speaker verification tasks. It builds on the original x-vector architecture [31] through an increased focus on channel attention, propagation, and aggregation."
+        },
+        "aliases": [
+          "ECAPA-TDNN",
+          "x-vector architecture"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The authors don't introduce ECAPA-TDNN but fine-tune existing models for accent classification.",
+          "quote": "The ECAPA-TDNN model has shown state-of-the-art results in speaker verification tasks."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "ECAPA-TDNN models are fine-tuned and evaluated in the paper's experiments.",
+          "quote": "We examine the implementation of this architecture in accent classification through two models: one trained with SpecAugmentation [32] and speed perturbation and a baseline Accent Identification model without data augmentation."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "ECAPA-TDNN is compared against Wav2Vec 2.0/XLSR in terms of performance.",
+          "quote": "Table 2 presents the accuracy scores for both ECAPA-TDNN and w2v2 models fine-tuned on the English CommonAccent dataset."
+        },
+        "referenced_paper_title": {
+          "value": "ECAPA-TDNN: Emphasized Channel Attention, Propagation and Aggregation in TDNN Based Speaker Verification",
+          "justification": "The paper references the publication introducing ECAPA-TDNN.",
+          "quote": "ECAPA-TDNN: Emphasized Channel Attention, Propagation and Aggregation in TDNN Based Speaker Verification,” in Proc. Interspeech 2020, 2020, pp. 3830–3834."
+        }
+      },
+      {
+        "name": {
+          "value": "Wav2Vec 2.0/XLSR",
+          "justification": "The study primarily focuses on fine-tuning Wav2Vec 2.0/XLSR for accent classification.",
+          "quote": "We address multilingual accent classification through the ECAPA-TDNN and Wav2Vec 2.0/XLSR architectures which have been proven to perform well on a variety of speech-related downstream tasks."
+        },
+        "aliases": [
+          "w2v2",
+          "XLSR",
+          "w2v2-XLSR"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The authors utilize a pre-existing Wav2Vec 2.0/XLSR model, not contributing a novel architecture.",
+          "quote": "The w2v2-XLSR model is designed to acquire cross-lingual speech representations for 53 languages, utilizing the raw waveform of speech to train on 56K hours of unlabeled data [4]."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Wav2Vec 2.0/XLSR models are fine-tuned and evaluated for accent classification.",
+          "quote": "Based on the w2v2 architecture [3], it learns contextualized speech representations and multilingual quantized latent speech representations simultaneously."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Wav2Vec 2.0/XLSR is compared with ECAPA-TDNN on the accent classification task.",
+          "quote": "Table 2 presents the accuracy scores for both ECAPA-TDNN and w2v2 models fine-tuned on the English CommonAccent dataset."
+        },
+        "referenced_paper_title": {
+          "value": "wav2vec 2.0: A framework for self-supervised learning of speech representations",
+          "justification": "The reference points to a publication introducing Wav2Vec 2.0.",
+          "quote": "wav2vec 2.0: A framework for self-supervised learning of speech representations,” Advances in Neural Information Processing Systems, vol. 33, pp. 12 449–12 460, 2020."
+        }
+      },
+      {
+        "name": {
+          "value": "TDNN & CTC",
+          "justification": "The paper discusses TDNN and CTC models in the context of related work on accent classification.",
+          "quote": "In a recent Interspeech (2020) competition [11],4 the highest performing model used a TDNN based classification network with phonetic posteriorgram (PPG) features as input and TTS (text-to-speech) to augment the training data [11, 19]."
+        },
+        "aliases": [
+          "TDNN",
+          "CTC"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The authors don't introduce a novel TDNN or CTC model but discuss their existing applications in accent classification.",
+          "quote": "In a recent Interspeech (2020) competition [11],4 the highest performing model used a TDNN based classification network with phonetic posteriorgram (PPG) features as input and TTS (text-to-speech) to augment the training data [11, 19]."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The paper doesn't involve training or evaluating TDNN or CTC models directly.",
+          "quote": ""
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "While not directly compared in experiments, the paper mentions TDNN and CTC-based models and their performance in other studies on accent classification.",
+          "quote": "Another proposed accent classification network, mined elements from a deep speaker identification framework to make it applicable for accent classification. In detail, they implemented a Convolutional Recurrent Neural Network as a front-end encoder, integrated local features using a Recurrent Neural Network, included a Connectionist Temporal Classification (CTC) based speech recognition auxiliary task, and introduced some strong discriminative loss functions [20]."
+        },
+        "referenced_paper_title": {
+          "value": "Deep discriminative feature learning for accent recognition",
+          "justification": "The paper references studies that utilize TDNN and CTC for accent classification.",
+          "quote": "Deep discriminative feature learning for accent recognition,” arXiv preprint arXiv:2011.12461, 2020."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Common Voice",
+          "justification": "Common Voice dataset is explicitly named in the abstract and used throughout the paper for accent classification.",
+          "quote": "We introduce a simple-to-follow recipe aligned to the SpeechBrain toolkit for accent classification based on Common Voice 7.0 (English) and Common Voice 11.0 (Italian, German, and Spanish)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Common Voice: A Massively-Multilingual Speech Corpus",
+          "justification": "The paper references Common Voice alongside a publication.",
+          "quote": "Common Voice: A Massively-Multilingual Speech Corpus,” in Proceedings of the Twelfth Language Resources and Evaluation Conference."
+        }
+      },
+      {
+        "name": {
+          "value": "Common Voice 7.0 & 11.0",
+          "justification": "Common Voice 7.0 and 11.0 are subsets of the Common Voice dataset, specifically used in this paper.",
+          "quote": "This work employs the Common Voice dataset to perform accent classification on different languages. The CommonAccent recipe uses two versions of Common Voice. For English (EN), we use Common Voice 7.0 (CV7), while for German (DE), Spanish (ES), and Italian (IT) we use Common Voice 11.0 (CV11)."
+        },
+        "aliases": [
+          "CV7",
+          "CV11"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "No specific paper references Common Voice 7.0 or 11.0 independently.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "CommonAccent",
+          "justification": "The paper introduces CommonAccent, a dataset derived from Common Voice, optimized for accent classification.",
+          "quote": "We introduce CommonAccent, a subset of Common Voice compiled as a benchmark dataset optimized for accent classification in multiple languages, e.g., English, German, Spanish, and Italian."
+        },
+        "aliases": [
+          "CommonAccent"
+        ],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "No separate paper is referenced for CommonAccent as it's a contribution of this work.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "L2 Artic",
+          "justification": "The paper mentions L2 Artic as a potential alternative dataset for their recipe.",
+          "quote": "This recipe can be used with other datasets such as L2 Artic [29]."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "L2-arctic: A non-native english speech corpus.",
+          "justification": "The paper references a publication related to the L2 Artic dataset.",
+          "quote": "L2-arctic: A non-native english speech corpus.” in Interspeech, 2018, pp. 2783–2787."
+        }
+      },
+      {
+        "name": {
+          "value": "Librispeech",
+          "justification": "The authors use the Librispeech dataset as an example of a large dataset used to train Large Acoustic Models.",
+          "quote": "Their powerful capabilities are evident in the application of datasets such as Librispeech [2]."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Librispeech: an asr corpus based on public domain audio books",
+          "justification": "The reference points to a publication related to the Librispeech dataset.",
+          "quote": "Librispeech: an asr corpus based on public domain audio books,” in 2015 IEEE international conference on acoustics, speech and signal processing (ICASSP). IEEE, 2015, pp. 5206–5210."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "SpeechBrain",
+          "justification": "SpeechBrain is used as the core toolkit for implementing the accent classification recipe.",
+          "quote": "We introduce a simple-to-follow recipe aligned to the SpeechBrain toolkit for accent classification based on Common Voice 7.0 (English) and Common Voice 11.0 (Italian, German, and Spanish)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Speechbrain: A general-purpose speech toolkit",
+          "justification": "The authors reference a publication introducing the SpeechBrain toolkit.",
+          "quote": "Speechbrain: A general-purpose speech toolkit,” arXiv preprint arXiv:2106.04624, 2021."
+        }
+      },
+      {
+        "name": {
+          "value": "HuggingFace Hub",
+          "justification": "The authors utilize HuggingFace Hub to host and share their trained models, as well as source datasets.",
+          "quote": "Additionally, we open-source fine-tuned models in the HuggingFace Hub [8, 9]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Datasets: A community library for natural language processing",
+          "justification": "The references indicate publications related to the HuggingFace Hub.",
+          "quote": "Datasets: A community library for natural language processing,” in Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing: System Demonstrations, 2021, pp. 175–184."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "cached_content_token_count": 0,
+    "candidates_token_count": 0,
+    "prompt_token_count": 0,
+    "total_token_count": 10581
+  }
+}

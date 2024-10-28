@@ -1,0 +1,215 @@
+{
+  "paper": "2309.10954.txt",
+  "words": 7266,
+  "extractions": {
+    "title": {
+      "value": "In-Context Learning for Text Classification with Many Labels",
+      "justification": "The title accurately reflects the core theme of the research.",
+      "quote": "In-Context Learning for Text Classification with Many Labels"
+    },
+    "description": "The paper proposes a retrieval-augmented in-context learning (ICL) approach for text classification with many labels. The authors argue that traditional ICL is limited by the context window size of large language models (LLMs), making it difficult to fit enough examples for tasks with many classes. Their approach uses a pre-trained dense retrieval model (Sentence-BERT) to select a subset of relevant examples from a pool based on similarity to the input text. These examples are then fed to the LLM for prediction. The authors evaluate their method on three intent classification datasets (BANKING77, HWU64, CLINC150) and one fine-grained sentiment classification dataset (GoEmotions), achieving state-of-the-art results in few-shot settings. They use LLaMA and OPT models as LLMs and compare their performance to adapter-based fine-tuning and contrastive pre-training methods. The paper includes ablation studies to investigate the impact of label semantics, input-output correspondences, and example similarity on ICL performance.",
+    "type": {
+      "value": "empirical",
+      "justification": "The research is empirical, as it involves experiments and analysis of results on various datasets.",
+      "quote": "Testing with recent open-source LLMs (OPT, LLaMA), we set new state of the art performance in few-shot settings for three common intent classification datasets, with no finetuning."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The paper's primary focus is on text classification, a core task within natural language processing.",
+        "quote": "In this work, we study whether ICL can handle challenging classification tasks with many possible labels, by augmenting the LM with a secondary pre-trained retrieval model."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "In-Context Learning",
+          "justification": "In-context learning is central to the paper's proposed method.",
+          "quote": "In this work, we study whether ICL can handle challenging classification tasks with many possible labels, by augmenting the LM with a secondary pre-trained retrieval model."
+        },
+        "aliases": [
+          "ICL"
+        ]
+      },
+      {
+        "name": {
+          "value": "Multi-Label Text Classification",
+          "justification": "The paper focuses on the specific challenge of text classification with a large number of labels.",
+          "quote": "In-context learning (ICL) using large language models for tasks with many labels is challenging due to the limited context window, which makes it difficult to fit a sufficient number of examples in the prompt."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Intent Classification",
+          "justification": "Intent classification is one of the key applications explored in the paper.",
+          "quote": "Testing with recent open-source LLMs\\n(OPT, LLaMA), we set new state of the art performance in few-shot settings for three common intent classification datasets, with no finetuning."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Sentiment Analysis",
+          "justification": "Sentiment analysis, particularly fine-grained sentiment analysis, is another application domain investigated.",
+          "quote": "We also surpass fine-tuned performance on fine-grained sentiment classification in certain cases."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "LLaMA",
+          "justification": "LLaMA is the name of the model family.",
+          "quote": "Experiments are done using the LLaMA models (Touvron et al., 2023) and the OPT models (Zhang et al., 2022) as LLMs."
+        },
+        "aliases": [
+          "LLaMA",
+          "LLaMA-2"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The authors use pre-existing LLaMA models.",
+          "quote": "Experiments are done using the LLaMA models (Touvron et al., 2023) and the OPT models (Zhang et al., 2022) as LLMs."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper uses LLaMA models for experiments.",
+          "quote": "Experiments are done using the LLaMA models (Touvron et al., 2023) and the OPT models (Zhang et al., 2022) as LLMs."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares different sizes of the LLaMA model.",
+          "quote": "Experiments are done using the LLaMA models (Touvron et al., 2023) and the OPT models (Zhang et al., 2022) as LLMs."
+        },
+        "referenced_paper_title": {
+          "value": "LLaMA: Open and Efficient Foundation Language Models.",
+          "justification": "The authors reference the paper introducing LLaMA.",
+          "quote": "Experiments are done using the LLaMA models (Touvron et al., 2023) and the OPT models (Zhang et al., 2022) as LLMs."
+        }
+      },
+      {
+        "name": {
+          "value": "OPT",
+          "justification": "OPT is the name of the model family.",
+          "quote": "Experiments are done using the LLaMA models (Touvron et al., 2023) and the OPT models (Zhang et al., 2022) as LLMs."
+        },
+        "aliases": [
+          "OPT",
+          "OPT 175B"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The authors use pre-existing OPT models.",
+          "quote": "Experiments are done using the LLaMA models (Touvron et al., 2023) and the OPT models (Zhang et al., 2022) as LLMs."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper uses OPT models for experiments.",
+          "quote": "Experiments are done using the LLaMA models (Touvron et al., 2023) and the OPT models (Zhang et al., 2022) as LLMs."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares different sizes of the OPT model.",
+          "quote": "Experiments are done using the LLaMA models (Touvron et al., 2023) and the OPT models (Zhang et al., 2022) as LLMs."
+        },
+        "referenced_paper_title": {
+          "value": "OPT: Open Pre-trained Transformer Language Models.",
+          "justification": "The authors reference the paper introducing OPT.",
+          "quote": "Experiments are done using the LLaMA models (Touvron et al., 2023) and the OPT models (Zhang et al., 2022) as LLMs."
+        }
+      },
+      {
+        "name": {
+          "value": "DeBERTa-v2-XXLarge",
+          "justification": "DeBERTa-v2-XXLarge is the name of the model.",
+          "quote": "The baseline “DeBERTa (Pfeiffer)“ is the DeBERTa-XXL model released by Microsoft, trained via AdapterHub with the Pfeiffer-style bottleneck adapters (Pfeiffer et al.,\\n2020b,a)."
+        },
+        "aliases": [
+          "DeBERTa-v2-XXLarge",
+          "DeBERTa-XXL",
+          "DeBERTa"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The authors use the existing DeBERTa-v2-XXLarge model.",
+          "quote": "The baseline “DeBERTa (Pfeiffer)“ is the DeBERTa-XXL model released by Microsoft, trained via AdapterHub with the Pfeiffer-style bottleneck adapters (Pfeiffer et al.,\\n2020b,a)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "DeBERTa-v2-XXLarge with Pfeiffer adapters is used in experiments.",
+          "quote": "The baseline “DeBERTa (Pfeiffer)“ is the DeBERTa-XXL model released by Microsoft, trained via AdapterHub with the Pfeiffer-style bottleneck adapters (Pfeiffer et al.,\\n2020b,a)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "DeBERTa-v2-XXLarge with Pfeiffer adapters is used as a baseline.",
+          "quote": "The baseline “DeBERTa (Pfeiffer)“ is the DeBERTa-XXL model released by Microsoft, trained via AdapterHub with the Pfeiffer-style bottleneck adapters (Pfeiffer et al.,\\n2020b,a)."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "No referenced paper is mentioned in relation to DeBERTa-v2-XXLarge.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "Sentence-BERT",
+          "justification": "Sentence-BERT is the name of the model.",
+          "quote": "The retrieval model used is a Sentence-BERT model trained in a Siamese dualnetwork setup to be able to retrieve text based on cosine similarity of the embedding vectors it produces, described in Reimers and Gurevych (2019b)."
+        },
+        "aliases": [
+          "Sentence-BERT",
+          "SBERT retriever",
+          "all-mpnet-base-v2",
+          "Siamese dual-network"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The authors use a pre-trained Sentence-BERT model.",
+          "quote": "The retrieval model used is a Sentence-BERT model trained in a Siamese dualnetwork setup to be able to retrieve text based on cosine similarity of the embedding vectors it produces, described in Reimers and Gurevych (2019b)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The Sentence-BERT model is used for retrieving text.",
+          "quote": "The retrieval model used is a Sentence-BERT model trained in a Siamese dualnetwork setup to be able to retrieve text based on cosine similarity of the embedding vectors it produces, described in Reimers and Gurevych (2019b)."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "The Sentence-BERT model is used as a part of the proposed system.",
+          "quote": "The retrieval model used is a Sentence-BERT model trained in a Siamese dualnetwork setup to be able to retrieve text based on cosine similarity of the embedding vectors it produces, described in Reimers and Gurevych (2019b)."
+        },
+        "referenced_paper_title": {
+          "value": "Sentence-BERT: Sentence Embeddings using Siamese BERT-networks.",
+          "justification": "The authors reference the Sentence-BERT paper.",
+          "quote": "The retrieval model used is a Sentence-BERT model trained in a Siamese dualnetwork setup to be able to retrieve text based on cosine similarity of the embedding vectors it produces, described in Reimers and Gurevych (2019b)."
+        }
+      }
+    ],
+    "datasets": [],
+    "libraries": [
+      {
+        "name": {
+          "value": "SentenceTransformers",
+          "justification": "The paper explicitly mentions using the SentenceTransformers library for implementing their retrieval model.",
+          "quote": "For our sentence encoder/retriever, we use the SentenceTransformers library (Reimers and Gurevych, 2019a), and use the pre-trained “all-mpnet-base-v2” model (a 110M parameter model pre-trained on over 1 billion training pairs)."
+        },
+        "aliases": [
+          "SBERT"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Sentence-BERT: Sentence Embeddings using Siamese BERT-networks.",
+          "justification": "The authors cite the Sentence-BERT paper alongside the library.",
+          "quote": "For our sentence encoder/retriever, we use the SentenceTransformers library (Reimers and Gurevych, 2019a), and use the pre-trained “all-mpnet-base-v2” model (a 110M parameter model pre-trained on over 1 billion training pairs)."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "cached_content_token_count": 0,
+    "candidates_token_count": 0,
+    "prompt_token_count": 0,
+    "total_token_count": 15702
+  }
+}

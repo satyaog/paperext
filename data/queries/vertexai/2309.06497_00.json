@@ -1,0 +1,87 @@
+{
+  "paper": "2309.06497.txt",
+  "words": 19013,
+  "extractions": {
+    "title": {
+      "value": "A Distributed Data-Parallel PyTorch Implementation of the Distributed Shampoo Optimizer for Training Neural Networks At-Scale",
+      "justification": "This is the title extracted from the paper.",
+      "quote": "A Distributed Data-Parallel PyTorch Implementation of the Distributed Shampoo Optimizer for Training Neural Networks At-Scale"
+    },
+    "description": "This paper presents a distributed data-parallel PyTorch implementation of the Distributed Shampoo Optimizer for at-scale training of neural networks. The Shampoo optimizer is an online and stochastic optimization algorithm that belongs to the AdaGrad family. It constructs a block-diagonal preconditioner where each block is a coarse Kronecker product approximation to the full-matrix AdaGrad for each parameter of the neural network. The paper also presents performance optimizations that leverage PyTorch\\'s DTensor data structure for fast multi-GPU distributed data-parallel training. The implementation achieves at most a 10% performance reduction in per-step wall-clock time compared to standard diagonal-scaling-based adaptive gradient methods. The authors validate their implementation through an ablation study on training ImageNet ResNet50, showing Shampoo\\'s superiority against standard training recipes with minimal hyperparameter tuning. The code is available at: https://github.com/facebookresearch/optimizers/tree/main/distributed_shampoo.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper focuses on empirical evaluation of the implemented optimizer through an ablation study, demonstrating its practical effectiveness.",
+      "quote": "We validate our implementation by performing an ablation study on training ImageNet ResNet50, demonstrating Shampoo’s superiority against standard training recipes with minimal hyperparameter tuning."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Optimization Algorithm",
+        "justification": "The paper states these fields as application domains where adaptive gradient methods have been widely adopted.",
+        "quote": "Adaptive gradient methods (Adam(W), AdaGrad, RMSProp) have been widely adopted as the defacto methods for training neural networks across a range of applications, including computer vision, natural language processing, and ranking and recommendation [Dosovitskiy et al. 2021; Naumov et al. 2019; Zhang et al. 2022]."
+      },
+      "aliases": [
+        "computer vision",
+        "natural language processing",
+        "ranking and recommendation"
+      ]
+    },
+    "sub_research_fields": [],
+    "models": [
+      {
+        "name": {
+          "value": "ResNet50",
+          "justification": "The paper explicitly refers to ResNet50.",
+          "quote": "We validate our implementation by performing an ablation study on training ImageNet ResNet50, demonstrating Shampoo’s superiority against standard training recipes with minimal hyperparameter tuning."
+        },
+        "aliases": [
+          "ResNet50"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper doesn't claim to contribute a new model. It focuses on implementing the Shampoo optimizer.",
+          "quote": "null"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "ResNet50 is used for training on the ImageNet dataset as part of the ablation study.",
+          "quote": "We validate our implementation by performing an ablation study on training ImageNet ResNet50, demonstrating Shampoo’s superiority against standard training recipes with minimal hyperparameter tuning."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The authors use ResNet50 for an ablation study on training ImageNet, comparing the performance of Shampoo against standard training recipes.",
+          "quote": "We validate our implementation by performing an ablation study on training ImageNet ResNet50, demonstrating Shampoo’s superiority against standard training recipes with minimal hyperparameter tuning."
+        },
+        "referenced_paper_title": {
+          "value": "null",
+          "justification": "No referenced paper title for ResNet50 is found in the paper.",
+          "quote": "null"
+        }
+      }
+    ],
+    "datasets": [],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The paper presents a PyTorch implementation of the Distributed Shampoo optimizer, highlighting its use for distributed data-parallel training and leveraging PyTorch's DTensor data structure.",
+          "quote": "In this work, we provide a complete description of the algorithm as well as the performance optimizations that our implementation leverages to train deep networks at-scale in PyTorch. Our implementation enables fast multi-GPU distributed data-parallel training by distributing the memory and computation associated with blocks of each parameter via PyTorch’s DTensor data structure and performing an AllGather primitive on the computed search directions at each iteration."
+        },
+        "aliases": [
+          "PyTorch"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "null",
+          "justification": "No referenced paper title for PyTorch is found in the paper.",
+          "quote": "null"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "cached_content_token_count": 0,
+    "candidates_token_count": 0,
+    "prompt_token_count": 0,
+    "total_token_count": 35280
+  }
+}

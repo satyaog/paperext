@@ -1,0 +1,118 @@
+{
+  "paper": "2307.01163.txt",
+  "words": 9790,
+  "extractions": {
+    "title": {
+      "value": "Improving Language Plasticity via Pretraining with Active Forgetting",
+      "justification": "The paper's title reflects the main goal and method: improving the adaptability (plasticity) of language models through pretraining with an active forgetting mechanism.",
+      "quote": "Improving Language Plasticity via Pretraining with Active Forgetting"
+    },
+    "description": "This research paper proposes a novel pretraining approach for transformer-based language models to improve their adaptability to new languages. The authors introduce an active forgetting mechanism during pretraining, where they periodically reset the token embedding layer to random values. This forces the model to relearn language-specific information and encourages it to store more universal knowledge in the transformer body. They hypothesize that this approach leads to better language plasticity, making the models easier to adapt to new languages with less data. Their experiments demonstrate that models pretrained with the forgetting mechanism outperform standard models in low-data regimes, especially for languages that are distant from English in terms of language family, script, and morphology.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents an empirical study involving experiments and benchmark evaluations to validate the proposed pretraining approach.",
+      "quote": "Experiments with RoBERTa show that models pretrained with our forgetting mechanism not only demonstrate faster convergence during language adaptation, but also outperform standard ones in a low-data regime, particularly for languages that are distant from English."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "natural language processing",
+        "justification": "The paper focuses on improving pretrained language models, a key aspect of natural language processing.",
+        "quote": "Pretrained language models (PLMs) have been swiftly reshaping the landscape of natural language processing (NLP) by improving upon standardized benchmarks across the board [Radford and Narasimhan, 2018, Devlin et al., 2019, Liu et al., 2019, Brown et al., 2020]."
+      },
+      "aliases": [
+        "natural language processing",
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "cross-lingual transfer",
+          "justification": "The core focus is on improving the adaptation of language models to new languages, particularly in zero-shot or low-resource scenarios.",
+          "quote": "Our zero-shot evaluations on several cross-lingual transfer benchmarks show that for cases where unlabeled adaptation corpus for the unseen language has as few as 5 million tokens (a low-data regime), forgetting PLMs outperforms the baseline by large margins: average gains of +21.2% on XNLI, +33.8% on MLQA, and +60.9% on XQuAD."
+        },
+        "aliases": [
+          "language adaptation",
+          "cross-lingual transfer",
+          "unsupervised cross-lingual transfer",
+          "zero-shot cross-lingual transfer"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "RoBERTa",
+          "justification": "The paper primarily focuses on RoBERTa as the base language model for evaluating the proposed active forgetting pretraining approach.",
+          "quote": "Our pretraining model is RoBERTa-base, a standard 12-layer transformer-based language model."
+        },
+        "aliases": [
+          "RoBERTa",
+          "RoBERTa-base",
+          "forgetting PLMs",
+          "standard PLMs"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The paper proposes a novel pretraining approach, active forgetting, applied to RoBERTa, leading to forgetting PLMs. The standard RoBERTa without forgetting is used as a baseline.",
+          "quote": "Concretely, by resetting the embedding layer every K updates during pretraining, we encourage the PLM to improve its ability of learning new embeddings within limited number of updates, similar to a meta-learning effect.\\nExperiments with RoBERTa show that models pretrained with our forgetting mechanism not only demonstrate faster convergence during language adaptation, but also outperform standard ones in a low-data regime, particularly for languages that are distant from English."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The authors implement and train the forgetting PLMs based on RoBERTa, evaluating their performance in comparison to standard RoBERTa.",
+          "quote": "Our pretraining model is RoBERTa-base, a standard 12-layer transformer-based language model."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares RoBERTa models pretrained with and without the proposed forgetting mechanism on various cross-lingual transfer benchmarks.",
+          "quote": "Experiments with RoBERTa show that models pretrained with our forgetting mechanism not only demonstrate faster convergence during language adaptation, but also outperform standard ones in a low-data regime, particularly for languages that are distant from English."
+        },
+        "referenced_paper_title": {
+          "value": "RoBERTa: A Robustly Optimized BERT Pretraining Approach",
+          "justification": "The authors use RoBERTa as proposed in \\\"RoBERTa: A Robustly Optimized BERT Pretraining Approach\\\" by Liu et al.",
+          "quote": "In our work, we closely follow the setup in Artetxe et al. [2020] and Marchisio et al. [2022]. Our pretraining model is RoBERTa-base, a standard 12-layer transformer-based language model. We trained language-specific sentencepiece tokenizers [Kudo and Richardson, 2018] with a vocabulary size of 50K over the corresponding data subsets in CC100. The model was pretrained with the English subset of the CC-100 dataset."
+        }
+      },
+      {
+        "name": {
+          "value": "transformer-based model",
+          "justification": "The paper focuses on the general concept of transformer-based language models, without specifying a particular architecture like BERT or GPT.",
+          "quote": "A transformer-based model is pretrained on an English corpus."
+        },
+        "aliases": [
+          "transformer-based model",
+          "transformer",
+          "PLM"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper focuses on a novel pretraining approach for transformer-based language models. It leverages existing transformer architectures without contributing a new one.",
+          "quote": "Pretrained language models (PLMs) are today the primary model for natural language processing."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "While the authors use a transformer-based model (RoBERTa), their primary focus is on the pretraining method rather than the specifics of the transformer architecture itself.",
+          "quote": "A transformer-based model is pretrained on an English corpus."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "The paper does not explicitly compare different types of transformer models. It primarily focuses on the impact of the pretraining approach on a chosen model (RoBERTa).",
+          "quote": "Pretrained language models (PLMs) have been swiftly reshaping the landscape of natural language processing (NLP) by improving upon standardized benchmarks across the board [Radford and Narasimhan, 2018, Devlin et al., 2019, Liu et al., 2019, Brown et al., 2020]. At their core, they acquire knowledge by ingesting large datasets and store this knowledge in their parameters during pretraining. Using finetuning or prompting [Brown et al., 2020], such knowledge can then be applied to downstream applications, such as semantic analysis, question answering, and others."
+        },
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "The paper does not reference a specific paper introducing transformer models but refers to them as a well-established concept in NLP.",
+          "quote": "A transformer-based model is pretrained on an English corpus."
+        }
+      }
+    ],
+    "datasets": [],
+    "libraries": []
+  },
+  "usage": {
+    "cached_content_token_count": 0,
+    "candidates_token_count": 0,
+    "prompt_token_count": 0,
+    "total_token_count": 20014
+  }
+}
