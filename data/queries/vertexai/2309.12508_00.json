@@ -1,0 +1,124 @@
+{
+  "paper": "2309.12508.txt",
+  "words": 8857,
+  "extractions": {
+    "title": {
+      "value": "A Diffusion-Model of Joint Interactive Navigation",
+      "justification": "The title of the paper is extracted from the beginning of the provided text.",
+      "quote": "A Diffusion-Model of Joint Interactive Navigation"
+    },
+    "description": "A Diffusion-Model of Joint Interactive Navigation Matthew Niedoba1,2\\n\\nJ. Wilder Lavington1,2\\n\\nJustice Sefas1,2\\n\\nXiaoxuan Liang1,2\\n\\nBerend Zwartsenberg2\\n\\narXiv:2309.12508v2 [cs.LG] 24 Oct 2023\\n\\n1\\n\\nYunpeng Liu1,2 Dylan Green1,2\\n\\nAdam Scibior1,2\\n\\nVasileios Lioutas1,2\\n\\nSetareh Dabiri2\\n\\nFrank Wood1,2\\n\\nUniversity of British Columbia, 2 Inverted AI mniedoba@cs.ubc.ca\\n\\nAbstract Simulation of autonomous vehicle systems requires that simulated traffic participants exhibit diverse and realistic behaviors. The use of prerecorded real-world traffic scenarios in simulation ensures realism but the rarity of safety critical events makes large scale collection of driving scenarios expensive. In this paper, we present DJINN – a diffusion based method of generating traffic scenarios. Our approach jointly diffuses the trajectories of all agents, conditioned on a flexible set of state observations from the past, present, or future. On popular trajectory forecasting datasets, we report state of the art performance on joint trajectory metrics. In addition, we demonstrate how DJINN flexibly enables direct test-time sampling from a variety of valuable conditional distributions including goal-based sampling, behavior-class sampling, and scenario editing.\\n\\n1\\n\\nIntroduction\\n\\nAccurate simulations are critical to the development of autonomous vehicles (AVs) because they facilitate the safe testing of complex driving systems [15]. One of the most popular methods of simulation is virtual replay [46], in which the performance of autonomous systems are evaluated by replaying previously recorded traffic scenarios. Although virtual replay is a valuable tool for AV testing, recording diverse scenarios is expensive and time consuming, as safety-critical traffic behaviors are rare [17]. Methods for producing synthetic traffic scenarios of specific driving behaviors are therefore essential to accelerate AV development and simulation quality.\\nProducing these synthetic traffic scenarios involves generating the joint future motion of all the agents in a scene, a task which is closely related to the problem of trajectory forecasting. Due to the complexity of learning a fully autonomous end-to-end vehicle controller, researchers often opt to split the problem into three main tasks [52]: perception, trajectory forecasting, and planning. In trajectory forecasting, the future positions of all agents are predicted up to a specified future time based on the agent histories and the road information. Due to the utility of trajectory forecasting models in autonomous vehicle systems along with the availability of standard datasets and benchmarks to measure progress [4, 53], a variety of effective trajectory forecasting methods are now available.\\nUnfortunately, most methods produce deterministic sets of trajectory forecasts per-agent [47, 9]\\nwhich are difficult to combine to produce realistic joint traffic scenes [30].\\nGenerative models of driving behavior have been proposed as an alternative to deterministic trajectory forecasting methods for traffic scene generation [40, 46]. These models re-frame trajectory forecasting as modeling the joint distribution of future agent state conditioned on past observations and map context. However, given that the distribution of traffic scenes in motion forecasting datasets are similar to real-world driving, modelling the data distribution does not ensure that models will generate rare, safety critical events.\\n37th Conference on Neural Information Processing Systems (NeurIPS 2023).\\n\\n\\nfurther control over the conditioning of traffic scenes based on behavior modes, agent states, or scene editing.\\nWe evaluate the quality of sampled trajectories with both joint and ego-only motion forecasting on the Argoverse [4] and INTERACTION [53] datasets. We report excellent ego-only motion forecasting and outperform Scene Transformer on joint motion forecasting metrics. We further demonstrate both DJINN’s flexibility and compatibility with various forms of test-time diffusion guidance by generating goal-directed samples, examples of cut-in driving behaviors, and editing replay logs.",
+    "type": {
+      "value": "empirical",
+      "justification": "The research presents a novel model and evaluates it empirically on established datasets. Hence, it's classified as empirical research.",
+      "quote": "We evaluate the quality of sampled trajectories with both joint and ego-only motion forecasting on the Argoverse [4] and INTERACTION [53] datasets."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Autonomous Vehicle Simulation",
+        "justification": "The paper focuses on simulating autonomous vehicle systems, particularly emphasizing the generation of realistic traffic scenarios for this purpose.",
+        "quote": "Abstract Simulation of autonomous vehicle systems requires that simulated traffic participants exhibit diverse and realistic behaviors."
+      },
+      "aliases": [
+        "autonomous vehicles",
+        "AVs",
+        "self-driving"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Trajectory Forecasting",
+          "justification": "The paper heavily emphasizes the task of trajectory forecasting as crucial for generating synthetic traffic scenarios.",
+          "quote": "Producing these synthetic traffic scenarios involves generating the joint future motion of all the agents in a scene, a task which is closely related to the problem of trajectory forecasting."
+        },
+        "aliases": [
+          "trajectory forecasting",
+          "motion forecasting",
+          "behavior prediction"
+        ]
+      },
+      {
+        "name": {
+          "value": "Diffusion Models",
+          "justification": "The paper proposes DJINN, a diffusion-based generative model, for creating these traffic scenarios.",
+          "quote": "In this paper, we present DJINN – a diffusion based method of generating traffic scenarios."
+        },
+        "aliases": [
+          "Generative models",
+          "diffusion models"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "DJINN",
+          "justification": "The paper refers to the model as DJINN.",
+          "quote": "In this paper, we present DJINN – a diffusion based method of generating traffic scenarios."
+        },
+        "aliases": [
+          "DJINN"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The authors introduce DJINN as their approach to generate traffic scenarios.",
+          "quote": "To alleviate these issues we propose DJINN, a model which generatively produces joint traffic scenarios with flexible conditioning."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The authors evaluate DJINN on Argoverse and INTERACTION datasets.",
+          "quote": "We evaluate the quality of sampled trajectories with both joint and ego-only motion forecasting on the Argoverse [4] and INTERACTION [53] datasets."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares DJINN with Scene Transformer on joint motion forecasting and reports outperforming it.",
+          "quote": "We report excellent ego-only motion forecasting and outperform Scene Transformer on joint motion forecasting metrics."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "No reference paper is mentioned for this model.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "Scene Transformer",
+          "justification": "The paper names the model as Scene Transformer.",
+          "quote": "Scene Transformer [30], which uses a similar backbone architecture to our method, uses a transformer [48]\\nnetwork to jointly produce trajectory sets for all agents in the scene."
+        },
+        "aliases": [
+          "Scene Transformer"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "This model is referenced as prior work and is not contributed by the authors.",
+          "quote": "We compare DJINN against a reproduction of Scene Transformer trained for joint motion forecasting, using their reported hyperparameters."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The authors use the Scene Transformer model for comparison in their experiments.",
+          "quote": "We compare DJINN against a reproduction of Scene Transformer trained for joint motion forecasting, using their reported hyperparameters."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The authors compare their model, DJINN, against Scene Transformer.",
+          "quote": "We compare DJINN against a reproduction of Scene Transformer trained for joint motion forecasting, using their reported hyperparameters."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      }
+    ],
+    "datasets": [],
+    "libraries": []
+  },
+  "usage": {
+    "cached_content_token_count": 0,
+    "candidates_token_count": 0,
+    "prompt_token_count": 0,
+    "total_token_count": 16085
+  }
+}

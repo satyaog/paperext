@@ -1,0 +1,376 @@
+{
+  "paper": "2402.01788.txt",
+  "words": 6049,
+  "extractions": {
+    "title": {
+      "value": "LitLLM: A Toolkit for Scientific Literature Review",
+      "justification": "The title of the paper is explicitly stated as 'LitLLM: A Toolkit for Scientific Literature Review.'",
+      "quote": "LitLLM: A Toolkit for Scientific Literature Review Shubham Agarwal1,2,3 , Issam H. Laradji1,4 , Laurent Charlin2,3,5 , Christopher Pal1,2,5"
+    },
+    "description": "Conducting literature reviews for scientific papers is essential for understanding research,\\nits limitations, and building on existing work. It is a tedious task which makes an automatic literature review generator appealing.\\nUnfortunately, many existing works that generate such reviews using Large Language Models (LLMs) have significant limitations.\\nThey tend to hallucinate—generate non-factual information—and ignore the latest research they have not been trained on. To address these limitations, we propose a toolkit that operates on Retrieval Augmented Generation\\n(RAG) principles, specialized prompting and instructing techniques with the help of LLMs. Our system first initiates a web search to retrieve relevant papers by summarizing user-provided abstracts into keywords using an off-the-shelf LLM. Authors can enhance the search by supplementing it with relevant papers or keywords, contributing to a tailored retrieval process. Second, the system re-ranks the retrieved papers based on the user-provided abstract. Finally, the related work section is generated based on the re-ranked results and the abstract. There is a substantial reduction in time and effort for literature review compared to traditional methods, establishing our toolkit as an efficient alternative. Our open-source toolkit is accessible at https://github.com/\\nshubhamagarwal92/LitLLM and Huggingface space (https://huggingface.co/spaces/\\nshubhamagarwal92/LitLLM) with the video demo at https://youtu.be/E2ggOZBAFw0",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents LitLLM, a novel toolkit that's been implemented and tested, showcasing its effectiveness through experiments and user studies. Therefore, it falls under empirical research.",
+      "quote": "As a preliminary study, we provided access to our user interface to 5 different researchers who worked through the demo to write literature reviews and validate the system’s efficacy."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The paper focuses on using LLMs, particularly for scientific literature review generation, directly relating to the field of Natural Language Processing.",
+        "quote": "Scientists have long used NLP systems like search engines to find and retrieve relevant papers."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Information Retrieval",
+          "justification": "The paper heavily emphasizes retrieving and ranking relevant research papers as a core aspect of the system, aligning with Information Retrieval.",
+          "quote": "On the other hand, there has been a notable emphasis on utilizing Large Language Models (LLMs) for tasks related to information retrieval and ranking (Zhu et al., 2023)."
+        },
+        "aliases": [
+          "Information Retrieval",
+          "relevance ranking"
+        ]
+      },
+      {
+        "name": {
+          "value": "Text Generation",
+          "justification": "The paper centers around generating human-readable text, specifically literature reviews, marking Text Generation as a primary focus.",
+          "quote": "Systems that help researchers with literature reviews hold promising prospects."
+        },
+        "aliases": [
+          "Text Generation",
+          "literature review generation",
+          "related work section"
+        ]
+      },
+      {
+        "name": {
+          "value": "Retrieval Augmented Generation",
+          "justification": "RAG is fundamental to the proposed system's design, addressing hallucination issues often associated with LLMs in text generation tasks.",
+          "quote": "As a step forward, we explore retrieval-augmented-generation (RAG) to improve factual correctness (Lewis et al., 2020)."
+        },
+        "aliases": [
+          "Retrieval Augmented Generation",
+          "RAG"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "",
+          "justification": "No specific name for the model is provided, it's referred to as 'our system' or 'toolkit' throughout the paper.",
+          "quote": ""
+        },
+        "aliases": [
+          "ChatGPT",
+          "GPT-4",
+          "GPT-3.5-turbo"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper presents a toolkit that utilizes pre-existing LLMs like ChatGPT, GPT-3.5-turbo and GPT-4 for tasks such as summarizing text into keywords and generating text, but doesn’t contribute to the development of new LLMs.",
+          "quote": "In this work, we use OpenAI API8 to generate results for LLM using GPT-3.5-turbo and GPT-4 model. At the same time, our modular pipeline allows using any LLM (proprietary or open-sourced) for different components."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The authors employ these LLMs in their toolkit for literature review generation, meaning they are executed within the system's pipeline.",
+          "quote": "In this work, we use OpenAI API8 to generate results for LLM using GPT-3.5-turbo and GPT-4 model. At the same time, our modular pipeline allows using any LLM (proprietary or open-sourced) for different components."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The authors mention these models as examples of LLMs used for various tasks, including relevance ranking and literature review generation.",
+          "quote": "In this work, we use OpenAI API8 to generate results for LLM using GPT-3.5-turbo and GPT-4 model. At the same time, our modular pipeline allows using any LLM (proprietary or open-sourced) for different components."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "No specific research paper is referenced as contributing to the model's development.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "Galactica",
+          "justification": "The paper explicitly names the model 'Galactica' when discussing its capabilities and limitations.",
+          "quote": "For example, the Galactica system was developed to reason about scientific knowledge (Taylor et al., 2022)."
+        },
+        "aliases": [
+          "Galactica"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper refers to Galactica, a system developed by another research group, highlighting it as an example of LLMs applied to scientific tasks.",
+          "quote": "For example, the Galactica system was developed to reason about scientific knowledge (Taylor et al., 2022)."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The paper doesn't mention the authors running or experimenting with Galactica directly. It serves as a point of reference in the discussion about LLMs.",
+          "quote": ""
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The authors discuss Galactica's performance on scientific tasks and its tendency to generate inaccurate content.",
+          "quote": "For example, the Galactica system was developed to reason about scientific knowledge (Taylor et al., 2022). While it outperforms contemporary models on various scientific tasks, it generates made-up content like inaccurate citations and imaginary papers."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The paper cites the research paper by Taylor et al. (2022), indicating it as the source of information about Galactica.",
+          "quote": "For example, the Galactica system was developed to reason about scientific knowledge (Taylor et al., 2022)."
+        }
+      },
+      {
+        "name": {
+          "value": "Explainpaper",
+          "justification": "The paper refers to the model as 'Explainpaper,' using it as an example within the broader context of LLMs used for scientific tasks.",
+          "quote": "For example, Explainpaper1 helps explain the contents of papers, and Writefull2 helps with several writing tasks, including abstract and title generation."
+        },
+        "aliases": [
+          "Explainpaper",
+          "Explainpaper1"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The authors refer to Explainpaper, an externally developed system, as an example of existing tools that utilize LLMs in the research process.",
+          "quote": "For example, Explainpaper1 helps explain the contents of papers, and Writefull2 helps with several writing tasks, including abstract and title generation."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The paper does not mention any direct execution or experimentation with Explainpaper. It's presented as context within the discussion of LLMs in research.",
+          "quote": ""
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper mentions Explainpaper as an example of a tool that leverages LLMs to aid researchers in understanding scientific papers.",
+          "quote": "For example, Explainpaper1 helps explain the contents of papers, and Writefull2 helps with several writing tasks, including abstract and title generation."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The paper does not cite a specific research paper associated with the development of Explainpaper.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "Writefull",
+          "justification": "The paper refers to the model as 'Writefull,' using it to illustrate the application of LLMs in aiding research writing.",
+          "quote": "For example, Explainpaper1 helps explain the contents of papers, and Writefull2 helps with several writing tasks, including abstract and title generation."
+        },
+        "aliases": [
+          "Writefull",
+          "Writefull2"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The authors mention Writefull, an externally existing tool, to exemplify the use of LLMs in academic writing but not as a contribution of their own.",
+          "quote": "For example, Explainpaper1 helps explain the contents of papers, and Writefull2 helps with several writing tasks, including abstract and title generation."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The paper does not mention Writefull being directly used or experimented with. It serves as an example within the discussion on LLMs.",
+          "quote": ""
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper includes Writefull as an example to illustrate the application of LLMs in assisting with various research writing tasks.",
+          "quote": "For example, Explainpaper1 helps explain the contents of papers, and Writefull2 helps with several writing tasks, including abstract and title generation."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The paper does not include a specific research paper citation related to the development or description of Writefull.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "LitLLM",
+          "justification": "The system proposed by the authors is explicitly named 'LitLLM' throughout the paper.",
+          "quote": "LitLLM is an interactive tool to help scientists write the literature review or related work section of a scientific paper starting from a user-provided abstract (see Figure 1)."
+        },
+        "aliases": [
+          "LitLLM"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The paper revolves around the introduction and description of LitLLM, a novel toolkit for generating literature reviews using LLMs.",
+          "quote": "LitLLM is an interactive tool to help scientists write the literature review or related work section of a scientific paper starting from a user-provided abstract (see Figure 1)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The authors have implemented LitLLM, and it's actively used in their experiments, as evidenced by the description of its features and functionalities.",
+          "quote": "LitLLM is an interactive tool to help scientists write the literature review or related work section of a scientific paper starting from a user-provided abstract (see Figure 1)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "This is the system proposed in the paper, compared to other systems for literature review generation and highlighting its efficiency.",
+          "quote": "LitLLM is an interactive tool to help scientists write the literature review or related work section of a scientific paper starting from a user-provided abstract (see Figure 1)."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The authors don't reference a separate paper for LitLLM. It's the main subject and contribution of the current paper itself.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "Contrastive Captioner",
+          "justification": "The paper explicitly refers to the model as 'Contrastive Captioner (CoCa),' using both its full name and acronym.",
+          "quote": "In this context, the work of [1] presents the Contrastive Captioner (CoCa), a model that combines contrastive loss and captioning loss to pretrain an image-text encoder-decoder foundation model."
+        },
+        "aliases": [
+          "CoCa",
+          "Contrastive Captioner"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper discusses CoCa, an externally developed model, in the context of related work but does not introduce or modify it.",
+          "quote": "In this context, the work of [1] presents the Contrastive Captioner (CoCa), a model that combines contrastive loss and captioning loss to pretrain an image-text encoder-decoder foundation model."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The paper does not involve running or experimenting with CoCa directly. It's referenced as part of the discussion about image-text understanding.",
+          "quote": ""
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "CoCa is mentioned as a model for image-text understanding, comparing its capabilities and limitations with the authors' proposed approach.",
+          "quote": "In this context, the work of [1] presents the Contrastive Captioner (CoCa), a model that combines contrastive loss and captioning loss to pretrain an image-text encoder-decoder foundation model."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The mention of CoCa includes a citation '[1]' within the paper, likely corresponding to the research paper introducing this model.",
+          "quote": "In this context, the work of [1] presents the Contrastive Captioner (CoCa), a model that combines contrastive loss and captioning loss to pretrain an image-text encoder-decoder foundation model."
+        }
+      },
+      {
+        "name": {
+          "value": "Stable Diffusion",
+          "justification": "The model is directly named 'Stable Diffusion' in the paper when discussing its use as an alternative to DALL-E.",
+          "quote": "As DALL-E and Flamingo are not publicly available, we use Stable Diffusion and BLIP in the remaining work."
+        },
+        "aliases": [
+          "Stable Diffusion"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper refers to Stable Diffusion, an existing model developed externally, as a replacement for DALL-E in their research.",
+          "quote": "As DALL-E and Flamingo are not publicly available, we use Stable Diffusion and BLIP in the remaining work."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The authors explicitly state they utilize Stable Diffusion in their remaining work, indicating its execution in their experiments.",
+          "quote": "As DALL-E and Flamingo are not publicly available, we use Stable Diffusion and BLIP in the remaining work."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The authors mention Stable Diffusion as a substitute for DALL-E in their work, implying a comparison of their capabilities.",
+          "quote": "As DALL-E and Flamingo are not publicly available, we use Stable Diffusion and BLIP in the remaining work."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The paper does not provide a specific research paper citation for Stable Diffusion.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "BLIP",
+          "justification": "The model is explicitly named 'BLIP' when discussing alternatives to Flamingo in their experimental setup.",
+          "quote": "As DALL-E and Flamingo are not publicly available, we use Stable Diffusion and BLIP in the remaining work."
+        },
+        "aliases": [
+          "BLIP"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The authors refer to BLIP, an externally existing model, as a replacement for Flamingo, not as a novel contribution of their research.",
+          "quote": "As DALL-E and Flamingo are not publicly available, we use Stable Diffusion and BLIP in the remaining work."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The use of BLIP in the 'remaining work' suggests that it was implemented and executed within the authors' experiments.",
+          "quote": "As DALL-E and Flamingo are not publicly available, we use Stable Diffusion and BLIP in the remaining work."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "BLIP is mentioned as a substitute for Flamingo, suggesting a comparison of their functionality in the authors' research.",
+          "quote": "As DALL-E and Flamingo are not publicly available, we use Stable Diffusion and BLIP in the remaining work."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "No research paper is cited in direct relation to BLIP.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "Flamingo",
+          "justification": "The model is directly named 'Flamingo' when discussing its role in image captioning within the research field.",
+          "quote": "The field of multimodal research focusing on the comprehension and creation of both images and text has witnessed significant strides. This progress is exemplified by the emergence of sophisticated models dedicated to image captioning at scale, such as the notable Flamingo model and text-to-image generative models, with DALL-E serving as a prominent example."
+        },
+        "aliases": [
+          "Flamingo"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The authors refer to Flamingo, an existing model developed by others, to illustrate advancements in image captioning but do not claim its creation.",
+          "quote": "The field of multimodal research focusing on the comprehension and creation of both images and text has witnessed significant strides. This progress is exemplified by the emergence of sophisticated models dedicated to image captioning at scale, such as the notable Flamingo model and text-to-image generative models, with DALL-E serving as a prominent example."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "Although the authors initially considered using Flamingo, they later opted for BLIP as a substitute due to Flamingo's unavailability.",
+          "quote": "As DALL-E and Flamingo are not publicly available, we use Stable Diffusion and BLIP in the remaining work."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Flamingo is mentioned as a large-scale image captioning model and compared to other models in the field.",
+          "quote": "The field of multimodal research focusing on the comprehension and creation of both images and text has witnessed significant strides. This progress is exemplified by the emergence of sophisticated models dedicated to image captioning at scale, such as the notable Flamingo model and text-to-image generative models, with DALL-E serving as a prominent example."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "No specific research paper is cited in direct relation to Flamingo in this context.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "DALL-E",
+          "justification": "The paper explicitly mentions 'DALL-E' as a prominent example of text-to-image generative models.",
+          "quote": "The field of multimodal research focusing on the comprehension and creation of both images and text has witnessed significant strides. This progress is exemplified by the emergence of sophisticated models dedicated to image captioning at scale, such as the notable Flamingo model and text-to-image generative models, with DALL-E serving as a prominent example."
+        },
+        "aliases": [
+          "DALL-E"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper refers to DALL-E, an existing text-to-image generation model, to highlight advancements in multimodal research but does not claim to have developed it.",
+          "quote": "The field of multimodal research focusing on the comprehension and creation of both images and text has witnessed significant strides. This progress is exemplified by the emergence of sophisticated models dedicated to image captioning at scale, such as the notable Flamingo model and text-to-image generative models, with DALL-E serving as a prominent example."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "While the authors intended to use DALL-E, they ultimately used Stable Diffusion due to DALL-E's unavailability.",
+          "quote": "As DALL-E and Flamingo are not publicly available, we use Stable Diffusion and BLIP in the remaining work."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "DALL-E, a prominent text-to-image model, is discussed and compared with other multimodal models in the paper.",
+          "quote": "The field of multimodal research focusing on the comprehension and creation of both images and text has witnessed significant strides. This progress is exemplified by the emergence of sophisticated models dedicated to image captioning at scale, such as the notable Flamingo model and text-to-image generative models, with DALL-E serving as a prominent example."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The paper doesn't cite a specific research paper in relation to DALL-E in this context.",
+          "quote": ""
+        }
+      }
+    ],
+    "datasets": [],
+    "libraries": []
+  },
+  "usage": {
+    "cached_content_token_count": 0,
+    "candidates_token_count": 0,
+    "prompt_token_count": 0,
+    "total_token_count": 14117
+  }
+}

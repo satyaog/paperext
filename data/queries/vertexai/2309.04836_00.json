@@ -1,0 +1,119 @@
+{
+  "paper": "2309.04836.txt",
+  "words": 12151,
+  "extractions": {
+    "title": {
+      "value": "Neural Semantic Surface Maps",
+      "justification": "The title of the paper is clearly stated.",
+      "quote": "Neural Semantic Surface Maps"
+    },
+    "description": "The paper presents a novel technique for computing semantically meaningful maps between two 3D shapes, leveraging pre-trained vision transformers (ViTs) to establish semantic correspondences. The method, dubbed Neural Semantic Surface Maps (NSM), addresses the challenge of limited annotated 3D data by extracting semantic priors from ViT features trained on image data. By rendering the 3D shapes from various viewpoints and feeding the rendered images to a ViT, the method identifies corresponding feature points, which are then projected back to the 3D shapes. These correspondences are subsequently refined and distilled into a continuous and bijective inter-surface map. The authors demonstrate the effectiveness of their approach on a range of shape pairs, showcasing its ability to generate semantically accurate maps even for non-isometrically related shapes. The method utilizes a seamless variant of Neural Surface Maps (sNSM) to handle arbitrary cuts on the surfaces, and employs a custom optimization scheme to aggregate fuzzy matches and mitigate the influence of outliers. Through quantitative and qualitative experiments, the authors show that their approach outperforms existing surface map extraction techniques in terms of semantic accuracy and robustness to non-isometric deformations.",
+    "type": {
+      "value": "empirical",
+      "justification": "The research presented in the paper is empirical in nature.",
+      "quote": "Through quantitative and qualitative experiments, we evaluate our ability to match upright object pairs with varying levels of isometry for objects from the same semantic class and across different ones."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The paper focuses on 3D shape analysis and correspondence, which falls under the domain of computer vision.",
+        "quote": "We present an automated technique for computing a map between two genus-zero shapes, which matches semantically corresponding regions to one another."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "3D Shape Matching",
+          "justification": "The paper explicitly focuses on 3D shape matching as its primary research area.",
+          "quote": "Shape matching and correspondence estimation have been widely studied in geometry processing."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Semantic Shape Analysis",
+          "justification": "The paper heavily relies on semantic shape analysis techniques for aligning and establishing correspondences between shapes.",
+          "quote": "Given two upright shapes, A and B, we first align them to have the same orientations. We achieve this by casting this problem as (semantic) circular string matching between shape renderings"
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Dinov2",
+          "justification": "The paper explicitly refers to the model as Dinov2.",
+          "quote": "We render shape pairs and use these images with DinoViT2 [ODM∗ 23]"
+        },
+        "aliases": [
+          "ViT",
+          "vision transformer",
+          "Dino-ViT",
+          "Dinov2"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The authors do not present a new model but leverage the pre-trained vision transformer Dinov2.",
+          "quote": "We render shape pairs and use these images with DinoViT2 [ODM∗ 23]"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The Dinov2 model is used to extract features from shape renderings.",
+          "quote": "Then, Dinov2 [ODM∗ 23] embeds these patches in a forward pass."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares DinoV2 to its predecessor DinoV1 in terms of correspondence accuracy and robustness.",
+          "quote": "In general, DinoV2 [ODM∗ 23] outperforms its predecessor V1 [CTM∗ 21], offering more accurate and robust matches."
+        },
+        "referenced_paper_title": {
+          "value": "Dinov2: Learning robust visual features without supervision",
+          "justification": "The reference for Dinov2 is provided.",
+          "quote": "Dinov2: Learning robust visual features without supervision. arXiv preprint arXiv:2304.07193 (2023)"
+        }
+      },
+      {
+        "name": {
+          "value": "seamless Neural Surface Maps",
+          "justification": "The paper refers to the model as seamless Neural Surface Maps, abbreviated as sNSM.",
+          "quote": "We address the first problem by proposing a seamless Neural Surface Maps (sNSM) framework, which relaxes the requirement from exact boundary correspondences to only cone-point matchings."
+        },
+        "aliases": [
+          "NSM",
+          "Neural Surface Maps",
+          "sNSM",
+          "seamless Neural Surface Maps"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The authors introduce sNSM as an extension of Neural Surface Maps.",
+          "quote": "As we cannot guarantee corresponding cuts between genus 0 meshes, see cut examples in Figure 5, we relax the boundarymatching constraint in the original NSM and extend it to support seamless maps."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The sNSM model is employed to optimize the inter-surface map.",
+          "quote": "Our final goal is thus to devise an optimization scheme that will lead to a map Ψ : A ↔ B which balances smoothness with the number of respected correspondences. To achieve this goal, we compare each point’s image with its designated corresponding point from φi with the L1 norm."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares sNSM, a seamless variant of Neural Surface Maps, to the original NSM approach.",
+          "quote": "Furthermore, we define a soft correspondence term to handle inaccurate correspondences, while NSM enforces exact correspondences with an L2 loss over all correspondences."
+        },
+        "referenced_paper_title": {
+          "value": "Neural surface maps",
+          "justification": "The reference for the original Neural Surface Maps is provided.",
+          "quote": "Neural surface maps. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (2021), pp. 4639–4648."
+        }
+      }
+    ],
+    "datasets": [],
+    "libraries": []
+  },
+  "usage": {
+    "cached_content_token_count": 0,
+    "candidates_token_count": 0,
+    "prompt_token_count": 0,
+    "total_token_count": 22014
+  }
+}
