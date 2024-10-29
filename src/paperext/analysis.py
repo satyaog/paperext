@@ -130,14 +130,18 @@ def main(argv=None):
             if not f.exists():
                 continue
 
+            stage = {
+                "ann": [[], []],
+                "pred": [[], []],
+            }
             print(f"Fetching data from {f}", file=sys.stderr)
             model = model_validate_yaml(PaperExtractions, f.read_text())
             paper_attr, paper_refs = map(
                 lambda m: _append_left_indices(m, [("paper_id", f.stem)]), model2df(model)
             )
 
-            annotated[0].append(paper_attr)
-            annotated[1].append(paper_refs)
+            stage["ann"][0].append(paper_attr)
+            stage["ann"][1].append(paper_refs)
 
             queries_dir = ROOT_DIR / f"data/queries/{platform}"
             for i, query_f in enumerate(sorted(queries_dir.glob(f"{f.stem}*.json"))):
@@ -153,8 +157,14 @@ def main(argv=None):
                     model2df(model),
                 )
 
-                predictions[0].append(paper_attr)
-                predictions[1].append(paper_refs)
+                stage["pred"][0].append(paper_attr)
+                stage["pred"][1].append(paper_refs)
+            
+            if stage["pred"][0]:
+                annotated[0].extend(stage["ann"][0])
+                annotated[1].extend(stage["ann"][1])
+                predictions[0].extend(stage["pred"][0])
+                predictions[1].extend(stage["pred"][1])
 
         annotated[0] = pd.concat(annotated[0])
         annotated[1] = pd.concat(annotated[1])
@@ -273,50 +283,53 @@ def main(argv=None):
                 print("Normalized confusion Matrix (%):")
                 print(normal_conf_mat)
 
-                ann_matches = []
-                pred_matches = []
+                # ann_matches = []
+                # pred_matches = []
 
-                for ann_items, pred_items in zip(ann_per_paper, pred_per_paper):
-                    for _, row in ann_items.iterrows():
-                        pred_match = pred_items[pred_items["name"] == row["name"]]
-                        if not pred_match.empty:
-                            assert (
-                                len(pred_match) == 1
-                            ), f"Too many matches for\n{row['name']}\nin\n{pred_items}"
+                # for ann_items, pred_items in zip(ann_per_paper, pred_per_paper):
+                #     for _, row in ann_items.iterrows():
+                #         pred_match = pred_items[pred_items["name"] == row["name"]]
+                #         if not pred_match.empty:
+                #             assert (
+                #                 len(pred_match) == 1
+                #             ), f"Too many matches for\n{row['name']}\nin\n{pred_items}"
 
-                            ann_matches.append(pd.DataFrame([row]))
-                            pred_matches.append(pred_match)
+                #             ann_matches.append(pd.DataFrame([row]))
+                #             pred_matches.append(pred_match)
 
-                ann_matches, pred_matches = (
-                    pd.concat(ann_matches).reset_index(drop=True),
-                    pd.concat(pred_matches).reset_index(drop=True),
-                )
+                # ann_matches, pred_matches = (
+                #     pd.concat(ann_matches).reset_index(drop=True),
+                #     pd.concat(pred_matches).reset_index(drop=True),
+                # )
 
-                for col in ann.columns:
-                    if col in (
-                        "role",
-                        "mode_and_role",
-                    ):
-                        (conf_mat, normal_conf_mat), classes = _mlcm(
-                            [ann_matches.loc[idx:idx, col] for idx in ann_matches.index],
-                            [pred_matches.loc[idx:idx, col] for idx in pred_matches.index],
-                        )
+                # for col in ann.columns:
+                #     if col in (
+                #         "role",
+                #         "mode_and_role",
+                #     ):
+                #         (conf_mat, normal_conf_mat), classes = _mlcm(
+                #             [ann_matches.loc[idx:idx, col] for idx in ann_matches.index],
+                #             [pred_matches.loc[idx:idx, col] for idx in pred_matches.index],
+                #         )
 
-                        (_analysis_dir / f"{group}.{col}_{i:02}.csv").write_text(
-                            pd.DataFrame(
-                                conf_mat, index=[*classes, "No True Label"], columns=[*classes, "No Predicted Label"]
-                            ).to_csv()
-                        )
+                #         (_analysis_dir / f"{group}.{col}_{i:02}.csv").write_text(
+                #             pd.DataFrame(
+                #                 conf_mat, index=[*classes, "No True Label"], columns=[*classes, "No Predicted Label"]
+                #             ).to_csv()
+                #         )
 
-                        print(f"{group}.{col}:")
-                        print("Raw confusion Matrix:")
-                        print(conf_mat)
-                        print("Normalized confusion Matrix (%):")
-                        print(normal_conf_mat)
-                    else:
-                        pass
+                #         print(f"{group}.{col}:")
+                #         print("Raw confusion Matrix:")
+                #         print(conf_mat)
+                #         print("Normalized confusion Matrix (%):")
+                #         print(normal_conf_mat)
+                #     else:
+                #         pass
 
-    for platform in ["openai", "vertexai"]:
+    for platform in [
+        "openai",
+        "vertexai"
+    ]:
         _analysis(papers, platform)
 
 
