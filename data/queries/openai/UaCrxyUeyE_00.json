@@ -9,7 +9,7 @@
     },
     "description": "This paper explores how overparameterization affects neural networks' representation quality and generalization in both supervised and self-supervised learning settings. The authors use information geometric measures like the spectral norm of the feature Jacobian and the coefficient of spectral decay to assess representation quality.",
     "type": {
-      "value": "Empirical Study",
+      "value": "empirical",
       "justification": "The paper includes experimental analysis on different datasets and models to study the impact of overparameterization.",
       "quote": "In this work, we experimentally connect α to input sensitivity of the features fθ , by studying the expected spectral norm of the input Jacobian J."
     },
@@ -55,17 +55,17 @@
           "ResNet-18"
         ],
         "is_contributed": {
-          "value": 0,
+          "value": false,
           "justification": "ResNet18 is not introduced in this paper but is used for experimentation.",
           "quote": "As our backbones, we use convolutional networks with residual connections (ResNet18)."
         },
         "is_executed": {
-          "value": 1,
+          "value": true,
           "justification": "The model was used for experimentation as mentioned multiple times in the context of tests conducted.",
           "quote": "In particular, increasing model width monotonically improves both train and test loss."
         },
         "is_compared": {
-          "value": 1,
+          "value": true,
           "justification": "ResNet18 is compared to other models in terms of performance metrics.",
           "quote": "For our SSL experiments, we use a standard ResNet18 backbone with batch normalization layers as the feature encoder."
         },
@@ -83,17 +83,17 @@
         },
         "aliases": [],
         "is_contributed": {
-          "value": 0,
+          "value": false,
           "justification": "Barlow Twins is used as an existing self-supervised learning model.",
           "quote": "For learning objectives, we consider supervised learning as the baseline, and compare learning dynamics to Barlow Twins."
         },
         "is_executed": {
-          "value": 1,
+          "value": true,
           "justification": "Barlow Twins is actually used in the experiments.",
           "quote": "We train Resnet-18 backbones with varying base widths using the Barlow-Twins learning objective."
         },
         "is_compared": {
-          "value": 1,
+          "value": true,
           "justification": "Barlow Twins is compared to other SSL models in the experiments.",
           "quote": "In particular, increasing model width monotonically improves both train and test loss. We report similar observations on STL10, and with BYOL as the pretraining objective in the Appendix C."
         },
@@ -113,17 +113,17 @@
           "Bootstrap Your Own Latent"
         ],
         "is_contributed": {
-          "value": 0,
+          "value": false,
           "justification": "BYOL is used as an existing self-supervised learning model.",
           "quote": "Similarly to the supervised experiments, we control model size by varying the base width ω = 1, . . . , 64. Accordingly, the embedding dimensionality varies from dimension d = 32 to d = 2048. To ensure good performance, we use a non-linear projector head consisting of one hidden MLP layer with batch normalization and ReLU activations, with width matching the embedding dimensionality of the encoder. SSL features are learned on CIFAR-10 by using Barlow Twins (Zbontar et al., 2021) and BYOL (Grill et al., 2020). At the end of SSL training, the projection layer is discarded, and the ResNet18 encoder is used to generate features fθ (x)."
         },
         "is_executed": {
-          "value": 1,
+          "value": true,
           "justification": "BYOL is actually used in the experiments.",
           "quote": "In our experiments, following Nakkiran et al. (2019), we vary the base width in the range ω = 1, . . . , 64. By controlling the network size through the width, we produce a range of models presenting model-wise double descent in the test error, which captures the essence of the benign overfitting phenomenon (Bartlett et al., 2020) observed for large interpolating networks, while also presenting malign overfitting for models near the interpolation threshold."
         },
         "is_compared": {
-          "value": 1,
+          "value": true,
           "justification": "BYOL is compared to other SSL models in the experiments.",
           "quote": "For learning objectives, we consider supervised learning as the baseline, and compare learning dynamics to Barlow Twins (Zbontar et al., 2021), BYOL (Grill et al., 2020) with 2 augmentations."
         },

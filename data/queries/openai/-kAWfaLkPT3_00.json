@@ -9,7 +9,7 @@
     },
     "description": "The paper proposes a method called Action Limited PreTraining (ALPT) which combines large but sparsely-annotated datasets from a target environment of interest with fully-annotated datasets from various other source environments. This method significantly improves game performance and generalization capability in reinforcement learning settings with limited action data.",
     "type": {
-      "value": "Empirical Study",
+      "value": "empirical",
       "justification": "The paper presents experimental results and evaluations of the proposed method ALPT on benchmark game-playing environments.",
       "quote": "Through various experiments and ablations, we demonstrate that leveraging the generalization capabilities of IDMs is critical to the success of ALPT, as opposed to, for example, pretraining the DT model alone on the multi-environment datasets or training the IDM only on the target environment. On a benchmark game-playing environment, we show that ALPT yields as much as 5x improvement in performance."
     },
@@ -52,17 +52,17 @@
           "ALPT"
         ],
         "is_contributed": {
-          "value": 1,
+          "value": true,
           "justification": "ALPT is introduced in this paper as a novel method for handling action-limited datasets.",
           "quote": "In this paper, we propose an orthogonal but related approach to VPT: leveraging a large set of labeled data from various source domains to learn an agent policy on a limited action dataset of a target evaluation environment. To tackle this setting, we propose Action Limited Pretraining (ALPT)."
         },
         "is_executed": {
-          "value": 1,
+          "value": true,
           "justification": "The model is executed on GPUs to train the large transformer-based architectures.",
           "quote": "Train DT on all data: (Sn d=1Dd ) [ D?+ [ D? , with IDM providing action labels on D?."
         },
         "is_compared": {
-          "value": 1,
+          "value": true,
           "justification": "The performance of ALPT is compared with several baseline models and methods in the experiments.",
           "quote": "We compare our pretraining regime (ALPT) with the single-game variant and standard DT baselines in Figure 2. We see that pretraining ALPT on the source games results in substantial downstream performance improvements."
         },
@@ -82,17 +82,17 @@
           "IDM"
         ],
         "is_contributed": {
-          "value": 0,
+          "value": false,
           "justification": "IDM itself is not the contribution of the current paper, though it is used as a part of ALPT.",
           "quote": "Some recent works have explored approaches to mitigate the issue of action limited datasets. For example, Video PreTraining (VPT) (Baker et al., 2022) proposes gathering a small amount (2k hours of video) of labeled data manually which is used to train an inverse dynamics model (IDM)"
         },
         "is_executed": {
-          "value": 1,
+          "value": true,
           "justification": "IDM is used to label unannotated sequences during the ALPT procedure, which is executed as part of the method.",
           "quote": "To tackle this setting, we propose Action Limited Pretraining (ALPT), which relies on the hypothesis that shared structures between environments can be exploited by non-causal (i.e., bidirectional) transformer IDMs."
         },
         "is_compared": {
-          "value": 0,
+          "value": false,
           "justification": "IDM is not individually compared but is part of the ALPT method compared in the experiments.",
           "quote": "We compare our pretraining regime (ALPT) with the single-game variant and standard DT baselines in Figure 2."
         },
@@ -112,17 +112,17 @@
           "DT"
         ],
         "is_contributed": {
-          "value": 0,
+          "value": false,
           "justification": "The DT model is not a new contribution of this paper, though it is used as part of the proposed ALPT method.",
           "quote": "train a single generalist agent, while Lee et al. (2022) demonstrate a similar result but using non-expert (offline RL) data from a suite of Atari gameplaying environments and using a decision transformer (DT) sequence modeling objective."
         },
         "is_executed": {
-          "value": 1,
+          "value": true,
           "justification": "DT is executed as part of the ALPT method for sequence modeling.",
           "quote": "Concurrent with IDM pretraining, we also train the DT on the combined labelled and unlabelled datasets using the IDM to provide action labels on the unlabelled portion."
         },
         "is_compared": {
-          "value": 0,
+          "value": false,
           "justification": "The DT model itself is not compared directly, but the ALPT method which includes DT is compared.",
           "quote": "We compare our pretraining regime (ALPT) with the single-game variant and standard DT baselines in Figure 2."
         },
@@ -144,7 +144,7 @@
           "Atari",
           "RL Unplugged Atari Dataset"
         ],
-        "role": "Used",
+        "role": "used",
         "referenced_paper_title": {
           "value": "RL Unplugged: A Suite of Benchmarks for Offline Reinforcement Learning",
           "justification": "The referenced paper for the Atari dataset is mentioned.",
@@ -160,7 +160,7 @@
         "aliases": [
           "Maze Navigation"
         ],
-        "role": "Used",
+        "role": "used",
         "referenced_paper_title": {
           "value": "N/A",
           "justification": "The Maze Navigation dataset was generated specifically for the experiments in this paper.",
@@ -176,7 +176,7 @@
           "quote": "In our experiments, we parameterize P using the GPT-2 transformer architecture (Radford et al., 2019b) and use k = 5."
         },
         "aliases": [],
-        "role": "Used",
+        "role": "used",
         "referenced_paper_title": {
           "value": "Language Models are Unsupervised Multitask Learners",
           "justification": "The paper references the original GPT-2 paper.",

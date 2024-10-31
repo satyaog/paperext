@@ -9,7 +9,7 @@
     },
     "description": "This paper proposes a framework called Repo-Level Prompt Generator (RLPG) that generates example-specific prompts for Large Language Models (LLMs) of code by incorporating context from the entire code repository. The framework suggests prompt proposals which consider imports, parent classes, and sibling files, among others. The framework does not require access to the LLM weights and is especially beneficial in black-box scenarios. The study demonstrates substantial improvements in single-line code-autocompletion tasks over Codex, by using repo-level context.",
     "type": {
-      "value": "Empirical Study",
+      "value": "empirical",
       "justification": "The paper conducts experiments to evaluate the effectiveness of the proposed RLPG framework and shows empirical results comparing its performance with Codex for single-line code-autocompletion.",
       "quote": "We conduct experiments on the task of single-line code-autocompletion using code repositories taken from Google Code archives."
     },
@@ -67,17 +67,17 @@
           "Code-davinci-001"
         ],
         "is_contributed": {
-          "value": 0,
+          "value": false,
           "justification": "Codex is utilized for performance comparison and as a baseline in this study, but it is not a new contribution by the authors.",
           "quote": "that an oracle constructed from our prompt proposals gives a remarkably high relative improvement of 36% over Codex, showing the quality of these proposals."
         },
         "is_executed": {
-          "value": 1,
+          "value": true,
           "justification": "The experiments involved executing Codex to generate code completions and compare them against the repository-level prompts.",
           "quote": "We conduct experiments on the task of single-line code-autocompletion using code repositories taken from Google Code archives."
         },
         "is_compared": {
-          "value": 1,
+          "value": true,
           "justification": "Codex's performance is compared with the proposed RLPG framework in the task of single-line code-autocompletion.",
           "quote": "we show that an oracle constructed from our proposed prompt proposals gives up to 36% relative improvement over Codex. This improvement is pleasantly surprising as Codex has never seen prompts made from these prompt proposals during training."
         },
@@ -97,17 +97,17 @@
           "PPC"
         ],
         "is_contributed": {
-          "value": 1,
+          "value": true,
           "justification": "PPC is a novel neural network model contributed by the authors as part of the proposed RLPG framework.",
           "quote": "We do this by coming up with a neural network called Prompt Proposal Classifier (PPC), that given an example, learns to select a prompt proposal such that the resulting prompt is likely to produce the desired output."
         },
         "is_executed": {
-          "value": 1,
+          "value": true,
           "justification": "The PPC is executed as part of the RLPG framework to generate prompts that are evaluated against the performance of Codex.",
           "quote": "the prompt proposal classifier takes in the hole position (position of the cursor) in the current file, the repository to which the current file belongs and a set of repo-level prompt proposals as input, and predicts a prompt proposal."
         },
         "is_compared": {
-          "value": 1,
+          "value": true,
           "justification": "The PPC-generated prompts are compared to Codex's default prompt results, showing improvements in code completion tasks.",
           "quote": "in the task of single-line code-autocompletion, we show that an oracle constructed from our proposed prompt proposals gives up to 36% relative improvement over Codex."
         },
@@ -129,7 +129,7 @@
           "Google Code repository",
           "Google Code Java repositories"
         ],
-        "role": "Used",
+        "role": "used",
         "referenced_paper_title": {
           "value": "Evaluating large language models trained on code",
           "justification": "Referencing the original work that involved Google Code archives for training and evaluation.",
@@ -147,7 +147,7 @@
         "aliases": [
           "OpenAI API"
         ],
-        "role": "Used",
+        "role": "used",
         "referenced_paper_title": {
           "value": "Evaluating large language models trained on code",
           "justification": "This references the original paper introducing and evaluating the Codex API.",
@@ -163,7 +163,7 @@
         "aliases": [
           "tree-sitter"
         ],
-        "role": "Used",
+        "role": "used",
         "referenced_paper_title": {
           "value": "tree-sitter for Java",
           "justification": "Referencing the tool's original documentation and application for syntax parsing.",
@@ -179,7 +179,7 @@
         "aliases": [
           "Okapi BM25"
         ],
-        "role": "Used",
+        "role": "used",
         "referenced_paper_title": {
           "value": "A probabilistic model of information retrieval: development and comparative experiments - part 1",
           "justification": "This references the original work on the BM25 ranking algorithm used for scoring prompt proposals.",

@@ -135,7 +135,7 @@ def fix_explained_fields():
 
 
 def model_dump_yaml(model: BaseModel, **kwargs):
-    return yaml.safe_dump(model.model_dump(**kwargs), sort_keys=False, width=120)
+    return yaml.safe_dump(model.model_dump(**kwargs, mode="json"), sort_keys=False, width=120)
 
 
 def model_validate_yaml(model_cls: BaseModel, yaml_data: str, **kwargs):
