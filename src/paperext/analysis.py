@@ -202,6 +202,7 @@ def main(argv=None):
         for label in (
             "sub_research_fields",
             "all_research_fields",
+            "research_fields_categories",
         ):
             for i in range(max_attempt + 1):
                 ann, pred = (
@@ -209,7 +210,10 @@ def main(argv=None):
                     predictions[0].loc[:, i, :].loc[:, label],
                 )
 
-                (conf_mat, normal_conf_mat), classes = _mlcm(ann, pred)
+                (conf_mat, normal_conf_mat), classes = _mlcm(
+                    [_ann.drop_duplicates() for _ann in ann],
+                    [_pred.drop_duplicates() for _pred in pred],
+                )
 
                 (_analysis_dir / f"{label}_{i:02}.csv").write_text(
                     pd.DataFrame(
@@ -265,10 +269,10 @@ def main(argv=None):
                 print("Normalized confusion Matrix (%):")
                 print(normal_conf_mat)
 
-                col = "field"
+                col = "category"
                 (conf_mat, normal_conf_mat), names = _mlcm(
-                    [_ann[col] for _ann in ann_per_paper],
-                    [_pred[col] for _pred in pred_per_paper],
+                    [_ann[col].drop_duplicates() for _ann in ann_per_paper],
+                    [_pred[col].drop_duplicates() for _pred in pred_per_paper],
                 )
 
                 (_analysis_dir / f"{group}.{col}_{i:02}.csv").write_text(

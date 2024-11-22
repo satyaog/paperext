@@ -404,7 +404,7 @@ def get_papers_from_file(
             .lower()
             .replace("\n", " ")
         )
-        responses = list((ROOT_DIR / "data/queries/").glob(f"{paper_id}_[0-9]*.json"))
+        responses = list((ROOT_DIR / "data/queries/openai").glob(f"{paper_id}_[0-9]*.json"))
         if not responses:
             logging.info(f"No responses found for {paper_id}\nSkipping...")
             continue
@@ -420,7 +420,7 @@ def get_papers_from_file(
 
 
 def get_papers_from_folder() -> List[Tuple[str, Path, ExtractionResponse]]:
-    responses = (ROOT_DIR / "data/queries/").glob("*.json")
+    responses = (ROOT_DIR / "data/queries/openai").glob("*.json")
 
     extractions_tuple = []
     for response_path in responses:

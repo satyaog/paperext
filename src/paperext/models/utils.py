@@ -129,7 +129,7 @@ def str_normalize(string):
     return string
 
 
-def _refs_field_map(categoried_refs_file: Path, fields: list):
+def _refs_category_map(categoried_refs_file: Path, fields: list):
     fields = [".".join(map(str_normalize, field.split("."))) for field in fields]
 
     categoried_refs = json.loads(categoried_refs_file.read_text())
@@ -149,39 +149,55 @@ def _refs_field_map(categoried_refs_file: Path, fields: list):
                 break
 
 
-def _models_field_map():
-    yield from _refs_field_map(
+def _domains_category_map():
+    yield from _refs_category_map(
+        ROOT_DIR / "data/categorized_domains.json",
+        [
+            "abstract_research_topics.computer vision",
+            "abstract_research_topics.graph-based",
+            "abstract_research_topics.natural language processing",
+            "abstract_research_topics.reinforcement learning and decision making.reinforcement learning",
+            "abstract_research_topics",
+            "application_domains",
+            "ignore",
+        ],
+    )
+
+
+def _models_category_map():
+    yield from _refs_category_map(
         ROOT_DIR / "data/categorized_models.json",
         [
-            "algorithms.optimizer",
-            "algorithms.other algorithms",
-            "algorithms.reinforcement learning",
+            # "algorithms.optimizer",
+            # "algorithms.other algorithms",
+            # "algorithms.reinforcement learning",
             "algorithms",
             "classic_ml",
             "ignore",
-            "neural networks.attention network",
-            "neural networks.autoencoder",
-            "neural networks.bayesian network",
-            "neural networks.convolutional neural network.ResNet",
-            "neural networks.convolutional neural network.Very Deep Convolutional Networks",
+            # "neural networks.attention network",
+            # "neural networks.autoencoder",
+            # "neural networks.bayesian network",
+            # "neural networks.convolutional neural network.ResNet",
+            # "neural networks.convolutional neural network.Very Deep Convolutional Networks",
             "neural networks.convolutional neural network",
             "neural networks.diffusion model",
-            "neural networks.generative adversarial network",
+            # "neural networks.generative adversarial network",
             "neural networks.generative flow networks",
             "neural networks.graph neural network",
             "neural networks.multi layer perceptron",
-            "neural networks.normalizing flow",
+            # "neural networks.normalizing flow",
             "neural networks.recurrent neural network",
-            "neural networks.transformer.Generative Pre-trained Transformer",
-            "neural networks.transformer.Vision Transformer",
-            "neural networks.transformer.bert",
+            # "neural networks.transformer.Generative Pre-trained Transformer",
+            # "neural networks.transformer.Vision Transformer",
+            # "neural networks.transformer.bert",
             "neural networks.transformer",
             "neural networks",
         ],
     )
 
 
-_MODELS_FIELD_MAP = {model: field for model, field in _models_field_map()}
+_DOMAINS_CATEGORY_MAP = {domain: category for domain, category in _domains_category_map()}
+_MODELS_CATEGORY_MAP = {model: category for model, category in _models_category_map()}
 
 # assert sorted(_MODELS_FIELD_MAP) == sorted([m for m, _ in _models_field_map()])
 
@@ -309,40 +325,63 @@ def model2df(model: BaseModel):
 
                     paper_references_df[entry_k][(k, i)] = entry_v
 
-    map_error = None
+    for domain in paper_1d_df["all_research_fields"]:
+        paper_1d_df.setdefault("research_fields_categories", [])
 
+        try:
+            category:str = _DOMAINS_CATEGORY_MAP[domain]
+        except KeyError as e:
+            map_error = e
+            logger.error(map_error, exc_info=True)
+            continue
+
+        if not category.startswith("abstractresearchtopics."):
+            category = "ignore"
+
+        paper_1d_df["research_fields_categories"].append(category)
+
+    map_error = None
     for group in (
         "models",
         "datasets",
     ):
-        if group != "models" or "name" not in paper_references_df:
+        if "name" not in paper_references_df:
             continue
 
-        paper_references_df.setdefault("field", {})
+        if group == "models":
+            _map = _MODELS_CATEGORY_MAP
+            _check = lambda cat: cat.startswith("neuralnetworks.")
+        else:
+            continue
 
-        fields = []
+        paper_references_df.setdefault("category", {})
+
+        categories = []
         name_df = paper_references_df["name"]
-        for (k, i), field in name_df.items():
+        for (k, i), category in name_df.items():
             if k != group:
                 continue
 
             try:
-                field = _MODELS_FIELD_MAP[field]
+                _category = category
+                category:str = _map[category]
             except KeyError as e:
                 map_error = e
                 logger.error(map_error, exc_info=True)
                 continue
-            field_cnt = (
-                field if field not in fields else f"{field}-{fields.count(field)}"
-            )
-            fields.append(field)
-            paper_references_df["field"][(k, i)] = field_cnt
+
+            if not _check(category):
+                category = "ignore"
+
+            categories.append(category)
+            paper_references_df["category"][(k, i)] = category
 
     if map_error:
         raise map_error
 
     paper_1d_df["sub_research_fields"] = [pd.Series(paper_1d_df["sub_research_fields"])]
     paper_1d_df["all_research_fields"] = [pd.Series(paper_1d_df["all_research_fields"])]
+    paper_1d_df["research_fields_categories"] = [pd.Series(paper_1d_df["research_fields_categories"])]
     paper_1d_df, paper_references_df = (
         pd.DataFrame(paper_1d_df),
         pd.DataFrame(paper_references_df),
