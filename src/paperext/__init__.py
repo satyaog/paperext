@@ -2,9 +2,13 @@
 #
 # SPDX-License-Identifier: MIT
 
-import os
-import pathlib
+from pathlib import Path
+from paperext.config import Config
 
-ROOT_DIR = pathlib.Path(os.environ["PAPEREXT_ROOT"]).resolve()
+ROOT_DIR: Path = Config().dir.root
+DATA_DIR: Path = Config().dir.data
+CACHE_DIR: Path = Config().dir.cache
+QUERIES_DIR: Path = Config().dir.queries
+
 LOG_DIR = ROOT_DIR / "logs"
 LOG_DIR.mkdir(exist_ok=True)
