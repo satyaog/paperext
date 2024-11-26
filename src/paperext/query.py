@@ -11,22 +11,10 @@ from typing import List, Tuple
 import instructor
 import pydantic_core
 
-from paperext import LOG_DIR as _LOG_DIR
-from paperext import ROOT_DIR
-from paperext.models.model import (_FIRST_MESSAGE, ExtractionResponse,
-                                   PaperExtractions)
+from paperext import CFG, LOG_DIR
+from paperext.config import Config
+from paperext.models.model import _FIRST_MESSAGE, ExtractionResponse, PaperExtractions
 from paperext.utils import Paper, build_validation_set
-
-# Set logging to DEBUG to print OpenAI requests
-LOG_DIR = _LOG_DIR / datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-LOG_DIR.mkdir(parents=True)
-logging.basicConfig(
-    filename=LOG_DIR / f"{Path(__file__).stem}.dbg", level=logging.DEBUG, force=True
-)
-
-logger = logging.getLogger(__name__)
-logger.addHandler(logging.FileHandler(LOG_DIR / "query.out"))
-logger.setLevel(logging.INFO)
 
 PROG = f"{Path(__file__).stem.replace('_', '-')}"
 
@@ -40,6 +28,16 @@ EPILOG = f"""
 Example:
   $ {PROG} --input data/query_set.txt
 """
+
+# Set logging to DEBUG to print OpenAI requests
+LOG_FILE = LOG_DIR / datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+logging.basicConfig(
+    filename=LOG_FILE.with_suffix(f".{PROG}.dbg"), level=logging.DEBUG, force=True
+)
+
+logger = logging.getLogger(PROG)
+logger.addHandler(logging.FileHandler(LOG_FILE.with_suffix(f".{PROG}.out")))
+logger.setLevel(logging.INFO)
 
 PLATFORMS = {}
 
@@ -158,7 +156,7 @@ async def extract_from_research_paper(
 async def batch_extract_models_names(
     client: instructor.client.Instructor | instructor.client.AsyncInstructor,
     papers_fn: List[Path],
-    destination: Path = (ROOT_DIR / "data/queries/"),
+    destination: Path = CFG.dir.queries,
 ) -> List[ExtractionResponse]:
     destination.mkdir(parents=True, exist_ok=True)
 
@@ -245,7 +243,7 @@ def main(argv=None):
         "--platform",
         type=str,
         choices=sorted(PLATFORMS.keys()),
-        default="openai",
+        default=CFG.platform.select,
         help="Platform to use",
     )
     parser.add_argument(
@@ -267,6 +265,8 @@ def main(argv=None):
     )
     options = parser.parse_args(argv)
 
+    CFG.platform.select = options.platform
+
     if options.paperoni:
         papers = [
             Paper(p).get_link_id_pdf() for p in json.loads(options.paperoni.read_text())
@@ -281,22 +281,22 @@ def main(argv=None):
     elif options.papers:
         papers = [Path(paper) for paper in options.papers if paper.strip()]
     else:
-        papers = build_validation_set(ROOT_DIR / "data/")
+        papers = build_validation_set(CFG.dir.data)
         for p in papers:
             logger.info(p)
 
     if not all(map(lambda p: p.exists(), papers)):
-        papers = [Path(ROOT_DIR / f"data/cache/arxiv/{paper}.txt") for paper in papers]
+        papers = [Path(CFG.dir.cache / f"arxiv/{paper}.txt") for paper in papers]
 
     assert all(map(lambda p: p.exists(), papers))
 
-    client = PLATFORMS[options.platform]()
+    client = PLATFORMS[CFG.platform.select]()
 
     asyncio.run(
         ignore_exceptions(
             client,
             [paper.absolute() for paper in papers],
-            destination=ROOT_DIR / f"data/queries/{options.platform}",
+            destination=CFG.dir.queries / CFG.platform.select,
         )
     )
 
