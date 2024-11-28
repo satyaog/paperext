@@ -56,7 +56,7 @@ path = "src/paperext/__about__.py"
 
 [tool.hatch.envs.default]
 python = "3.10"
-python-sources = ["external"]
+python-sources = ["internal"]
 installer = "uv"
 
 [tool.hatch.envs.default.env-vars]
@@ -70,13 +70,14 @@ extra-dependencies = [
   "paperext[openai]",
 ]
 [tool.hatch.envs.vertexai]
-installer = "pip"   # uv seams to hangs with instructor[google-generativeai]
 extra-dependencies = [
   "paperext[vertexai]",
 ]
 
 [tool.hatch.envs.tests]
 extra-dependencies = [
+  "paperext[openai]",
+  "paperext[vertexai]",
   "pytest",
   "pytest-regressions",
 ]

@@ -3,7 +3,6 @@ import asyncio
 import bdb
 import json
 import logging
-import os
 from datetime import datetime
 from pathlib import Path
 from typing import List, Tuple
@@ -11,8 +10,8 @@ from typing import List, Tuple
 import instructor
 import pydantic_core
 
-from paperext import CFG, LOG_DIR
-from paperext.config import Config
+from paperext import CFG
+from paperext.log import logger
 from paperext.models.model import _FIRST_MESSAGE, ExtractionResponse, PaperExtractions
 from paperext.utils import Paper, build_validation_set
 
@@ -30,25 +29,48 @@ Example:
 """
 
 # Set logging to DEBUG to print OpenAI requests
-LOG_FILE = LOG_DIR / datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+LOG_FILE = CFG.dir.log / datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 logging.basicConfig(
     filename=LOG_FILE.with_suffix(f".{PROG}.dbg"), level=logging.DEBUG, force=True
 )
 
-logger = logging.getLogger(PROG)
-logger.addHandler(logging.FileHandler(LOG_FILE.with_suffix(f".{PROG}.out")))
-logger.setLevel(logging.INFO)
-
 PLATFORMS = {}
+
+try:
+    import openai
+    from openai.types.chat.chat_completion import CompletionUsage
+
+    def _client():
+        model = CFG.openai.model
+        client = instructor.from_openai(
+            # TODO: update to use the new feature Mode.TOOLS_STRICT
+            # https://openai.com/index/introducing-structured-outputs-in-the-api/
+            openai.AsyncOpenAI(),
+            mode=instructor.Mode.TOOLS_STRICT,
+        )
+        _create_with_completion = client.chat.completions.create_with_completion
+
+        async def _wrap(*args, **kwargs):
+            extractions, completion = await _create_with_completion(
+                model=model, *args, **kwargs
+            )
+            return extractions, completion.usage
+
+        client.chat.completions.create_with_completion = _wrap
+        return client
+
+    PLATFORMS["openai"] = _client
+except ModuleNotFoundError as e:
+    logging.info(e, exc_info=True)
 
 try:
     import vertexai
     from vertexai.generative_models import GenerativeModel
 
-    vertexai.init(project=os.environ.get("PAPEREXT_VERTEX_PROJECT"))
+    vertexai.init(project=CFG.vertexai.project)
 
     def _client():
-        model = "models/gemini-1.5-pro"
+        model = CFG.vertexai.model
         client = instructor.from_vertexai(GenerativeModel(model_name=model))
         _create_with_completion = client.chat.completions.create_with_completion
 
@@ -81,33 +103,6 @@ try:
         return client
 
     PLATFORMS["vertexai"] = _client
-except ModuleNotFoundError as e:
-    logging.info(e, exc_info=True)
-
-try:
-    import openai
-    from openai.types.chat.chat_completion import CompletionUsage
-
-    def _client():
-        model = "gpt-4o"
-        client = instructor.from_openai(
-            # TODO: update to use the new feature Mode.TOOLS_STRICT
-            # https://openai.com/index/introducing-structured-outputs-in-the-api/
-            openai.AsyncOpenAI(),
-            mode=instructor.Mode.TOOLS_STRICT,
-        )
-        _create_with_completion = client.chat.completions.create_with_completion
-
-        async def _wrap(*args, **kwargs):
-            extractions, completion = await _create_with_completion(
-                model=model, *args, **kwargs
-            )
-            return extractions, completion.usage
-
-        client.chat.completions.create_with_completion = _wrap
-        return client
-
-    PLATFORMS["openai"] = _client
 except ModuleNotFoundError as e:
     logging.info(e, exc_info=True)
 
