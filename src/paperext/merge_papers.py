@@ -1,6 +1,5 @@
 import argparse
 import json
-import logging
 import os
 import platform
 import shutil
@@ -17,11 +16,14 @@ from pygments import highlight
 from pygments.formatters import TerminalTrueColorFormatter
 from pygments.lexers.data import YamlLexer
 
-from paperext import ROOT_DIR
-from paperext.models.model import (ExtractionResponse, PaperExtractions,
-                                   empty_model)
-from paperext.models.utils import (convert_model_json_to_yaml, model_dump_yaml,
-                                   model_validate_yaml)
+from paperext import CFG
+from paperext.log import logger
+from paperext.models.model import ExtractionResponse, PaperExtractions, empty_model
+from paperext.models.utils import (
+    convert_model_json_to_yaml,
+    model_dump_yaml,
+    model_validate_yaml,
+)
 from paperext.utils import str_normalize
 
 _EDITOR = os.environ.get("VISUAL", os.environ.get("EDITOR", None))
@@ -122,9 +124,7 @@ def _model_dump(paper_id, paper, model: BaseModel):
             try:
                 quote = yaml.safe_load("\n".join(lines[i:end]))["quote"]
             except (yaml.parser.ParserError, yaml.scanner.ScannerError):
-                logging.error(
-                    "\n".join([model_dump_yaml] + lines[i:end]), exc_info=True
-                )
+                logger.error("\n".join([model_dump_yaml] + lines[i:end]), exc_info=True)
                 raise
             if not list(_find_in_paper(quote, paper)):
                 lines.insert(end, f"{indent}## {_WARNING}")
@@ -165,7 +165,7 @@ def _select(key: str, *options: List[str], edit=False):
         editable_content.append(f"{prefix}{separator[len(prefix):]}")
         editable_content.append(option)
 
-    editable_content.append(f"## {key} ")
+    editable_content.append(f"## {key}")
     for entry in editable_content:
         print(highlight(entry, YamlLexer(), TerminalTrueColorFormatter()), end="")
 
@@ -322,7 +322,7 @@ def merge_paper_extractions(
     merged_extractions: PaperExtractions,
     *all_extractions: List[PaperExtractions],
 ):
-    f: Path = (ROOT_DIR / "data/merged/") / paper_id
+    f: Path = CFG.dir.merged / paper_id
     f = f.with_suffix(".yaml")
 
     for keys_values in zip(
@@ -397,16 +397,16 @@ def get_papers_from_file(
 
     for paper in papers:
         paper_id = paper.strip()
-        logging.info(f"Parsing {paper_id}")
+        logger.info(f"Parsing {paper_id}")
         paper = (
-            (ROOT_DIR / f"data/cache/arxiv/{paper_id}.txt")
+            (CFG.dir.cache / "arxiv/{paper_id}.txt")
             .read_text()
             .lower()
             .replace("\n", " ")
         )
-        responses = list((ROOT_DIR / "data/queries/openai").glob(f"{paper_id}_[0-9]*.json"))
+        responses = list((CFG.dir.queries / "openai").glob(f"{paper_id}_[0-9]*.json"))
         if not responses:
-            logging.info(f"No responses found for {paper_id}\nSkipping...")
+            logger.info(f"No responses found for {paper_id}\nSkipping...")
             continue
         responses = (
             ExtractionResponse.model_validate_json(_f.read_text()) for _f in responses
@@ -420,25 +420,22 @@ def get_papers_from_file(
 
 
 def get_papers_from_folder() -> List[Tuple[str, Path, ExtractionResponse]]:
-    responses = (ROOT_DIR / "data/queries/openai").glob("*.json")
+    responses = (CFG.dir.queries / "openai").glob("*.json")
 
     extractions_tuple = []
     for response_path in responses:
-        logging.info(f"Parsing {response_path}")
+        logger.info(f"Parsing {response_path}")
         try:
             (_, paper), (_, _), (_, extractions), _ = (
                 ExtractionResponse.model_validate_json(response_path.read_text())
             )
         except ValidationError as e:
-            logging.error(e, exc_info=True)
-            logging.info(f"Skipping {response_path}")
+            logger.error(e, exc_info=True)
+            logger.info(f"Skipping {response_path}")
             continue
         paper_id = paper
         paper = (
-            (ROOT_DIR / "data/cache/arxiv/" / paper_id)
-            .read_text()
-            .lower()
-            .replace("\n", " ")
+            (CFG.dir.cache / "arxiv" / paper_id).read_text().lower().replace("\n", " ")
         )
         extractions_tuple.append((paper_id, paper, extractions))
 
@@ -470,9 +467,9 @@ def main(argv=None):
         if [_paper_id for (_paper_id, _, _) in done if _paper_id == paper_id]:
             continue
 
-        logging.info(f"Merging {paper_id}")
+        logger.info(f"Merging {paper_id}")
 
-        f: Path = (ROOT_DIR / "data/merged/") / paper_id
+        f: Path = CFG.dir.merged / paper_id
         f = f.with_suffix(".yaml")
         f.parent.mkdir(parents=True, exist_ok=True)
 
@@ -486,8 +483,8 @@ def main(argv=None):
             except FileNotFoundError:
                 merged_extractions = None
             except ValidationError as e:
-                logging.error(e, exc_info=True)
-                logging.info(f"Invalid extraction file... Consider deleting [{f}].")
+                logger.error(e, exc_info=True)
+                logger.info(f"Invalid extraction file... Consider deleting [{f}].")
                 continue
 
             try:
@@ -504,8 +501,8 @@ def main(argv=None):
                 )
                 f.with_suffix(".json").unlink()
             except ValidationError as e:
-                logging.error(e, exc_info=True)
-                logging.info(f"Invalid extraction file... Consider deleting [{f}].")
+                logger.error(e, exc_info=True)
+                logger.info(f"Invalid extraction file... Consider deleting [{f}].")
                 continue
 
             if (
@@ -525,14 +522,14 @@ def main(argv=None):
             if _paper_id == paper_id
         ]
 
-        pdf: Path = (ROOT_DIR / "data/cache/arxiv/" / paper_id).with_suffix(".pdf")
-        logging.info(f"Opening {pdf}")
+        pdf: Path = (CFG.dir.cache / "arxiv" / paper_id).with_suffix(".pdf")
+        logger.info(f"Opening {pdf}")
         try:
             _open(str(pdf))
         except (subprocess.CalledProcessError, FileNotFoundError) as e:
-            logging.error(e, exc_info=True)
+            logger.error(e, exc_info=True)
             url = f"https://arxiv.org/pdf/{pdf.stem}"
-            logging.info(f"Downloading from {url} to {pdf}")
+            logger.info(f"Downloading from {url} to {pdf}")
             urllib.request.urlretrieve(url, str(pdf))
             _open(str(pdf))
 
@@ -551,7 +548,7 @@ def main(argv=None):
         ):
             subprocess.run(cmd, check=check)
 
-        logging.info(f"Merged paper saved to {f}")
+        logger.info(f"Merged paper saved to {f}")
 
 
 if __name__ == "__main__":

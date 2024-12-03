@@ -267,4 +267,12 @@ def _empty_fields(model_cls: BaseModel):
 
 
 def empty_model(model_cls):
-    return model_cls(**_empty_fields(model_cls))
+    empty_fields = _empty_fields(model_cls)
+    empty_fields["type"]["value"] = "empirical"
+    empty_fields["models"][0]["is_contributed"]["value"] = False
+    empty_fields["models"][0]["is_executed"]["value"] = False
+    empty_fields["models"][0]["is_compared"]["value"] = False
+    empty_fields["datasets"][0]["role"] = "referenced"
+    empty_fields["libraries"][0]["role"] = "referenced"
+
+    return model_cls(**empty_fields)
