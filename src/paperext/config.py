@@ -37,6 +37,8 @@ class Config:
             self._config = config
 
         else:
+            assert Path(config_file).exists()
+
             _config = configparser.ConfigParser(
                 interpolation=configparser.ExtendedInterpolation()
             )
@@ -107,12 +109,12 @@ class Config:
                 )
 
     def _resolve(self, config_file: str):
-        config_file = Path(config_file).resolve().parent
+        config_parent = Path(config_file).resolve().parent
 
         for k, v in self._config["dir"].items():
             v = Path(v)
             if not v.is_absolute():
-                v = config_file / v
+                v = config_parent / v
             self._config["dir"][k] = v
 
     @staticmethod

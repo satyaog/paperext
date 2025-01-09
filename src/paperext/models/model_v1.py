@@ -6,8 +6,6 @@ from typing import Any, Generic, List, Optional, TypeVar
 
 from pydantic import BaseModel, Field
 
-logging.basicConfig(level=logging.DEBUG)
-
 _FIRST_MESSAGE = (
     "Which Deep Learning Models, Datasets and Libraries can you find in the "
     "following research paper:\n"

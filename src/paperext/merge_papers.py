@@ -399,7 +399,7 @@ def get_papers_from_file(
         paper_id = paper.strip()
         logger.info(f"Parsing {paper_id}")
         paper = (
-            (CFG.dir.cache / "arxiv/{paper_id}.txt")
+            (CFG.dir.cache / f"arxiv/{paper_id}.txt")
             .read_text()
             .lower()
             .replace("\n", " ")
