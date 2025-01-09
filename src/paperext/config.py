@@ -37,12 +37,10 @@ class Config:
             self._config = config
 
         else:
-            assert Path(config_file).exists()
-
             _config = configparser.ConfigParser(
                 interpolation=configparser.ExtendedInterpolation()
             )
-            _config.read(config_file)
+            assert _config.read(config_file)
 
             self._config = config_to_dict(_config)
 
