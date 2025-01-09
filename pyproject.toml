@@ -56,11 +56,10 @@ path = "src/paperext/__about__.py"
 
 [tool.hatch.envs.default]
 python = "3.10"
-python-sources = ["external"]
 installer = "uv"
 
 [tool.hatch.envs.default.env-vars]
-PAPEREXT_ROOT = "{env:PAPEREXT_ROOT:{root:real}}"
+PAPEREXT_CFG = "{env:PAPEREXT_CFG:{root:real}/config.ini}"
 # linux seams to require the following to avoid
 # ImportError: cannot import name '_message' from 'google.protobuf.pyext'
 PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION = "upb"
@@ -70,10 +69,19 @@ extra-dependencies = [
   "paperext[openai]",
 ]
 [tool.hatch.envs.vertexai]
-installer = "pip"   # uv seams to hangs with instructor[google-generativeai]
 extra-dependencies = [
   "paperext[vertexai]",
 ]
+
+[tool.hatch.envs.tests]
+extra-dependencies = [
+  "paperext[openai]",
+  "paperext[vertexai]",
+  "pytest",
+  "pytest-regressions",
+]
+[tool.hatch.envs.tests.scripts]
+tests = "pytest tests {args}"
 
 [tool.hatch.envs.types]
 extra-dependencies = [
@@ -104,8 +112,8 @@ omit = [
 ]
 
 [tool.coverage.paths]
-paperext = ["src/paperext", "*/llm-paper-extractions/src/paperext"]
-tests = ["tests", "*/llm-paper-extractions/tests"]
+paperext = ["src/paperext", "*/paperext/src/paperext"]
+tests = ["tests", "*/paperext/tests"]
 
 [tool.coverage.report]
 exclude_lines = [
