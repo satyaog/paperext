@@ -1,0 +1,147 @@
+{
+  "paper": "2402.04821.txt",
+  "words": 7653,
+  "extractions": {
+    "title": {
+      "value": "E(3)-Equivariant Mesh Neural Networks",
+      "justification": "This title is explicitly stated at the beginning of the paper.",
+      "quote": "E(3)-Equivariant Mesh Neural Networks"
+    },
+    "description": "This paper introduces the Equivariant Mesh Neural Network (EMNN), a model designed for geometric deep learning on 3D triangular meshes that incorporates mesh face information and long-range interactions. The EMNN outperforms other complex equivariant methods on several mesh tasks while being computationally efficient and simple to implement.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper provides experimental results comparing the proposed EMNN with other existing methods, demonstrating its efficiency and effectiveness on various datasets.",
+      "quote": "In this section, we evaluate our models using two types of settings: one for evaluating equivariant models and another for non-equivariant models."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "Triangular meshes are often used in computer graphics and vision tasks, and the paper focuses on geometric deep learning on these 3D meshes.",
+        "quote": "Recent advancements in 3D geometric deep learning have showcased remarkable performance across a diverse array of computer graphics and vision tasks."
+      },
+      "aliases": [
+        "CV",
+        "Geometric Deep Learning"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Geometric Deep Learning",
+          "justification": "The paper focuses on algorithms and architectures that operate on geometric structures like meshes, making it a subfield of geometric deep learning.",
+          "quote": "One way to incorporate geometry deep networks for mesh data is to make them equivariant to relevant geometric transformations, such as translations and rotations."
+        },
+        "aliases": [
+          "Geometric DL"
+        ]
+      },
+      {
+        "name": {
+          "value": "3D Object Representation",
+          "justification": "The paper deals significantly with 3D object representation using triangular meshes.",
+          "quote": "Polygon meshes, which are collections of vertices and polygons, are an alternative to point clouds and voxel-based representations of 3D objects."
+        },
+        "aliases": [
+          "3D Representation"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Equivariant Mesh Neural Network (EMNN)",
+          "justification": "The paper's primary contribution is the Equivariant Mesh Neural Network (EMNN).",
+          "quote": "Equivariant Mesh Neural Network(EMNN), is a simple message-passing method that proves both efficient and effective compared to all prior work."
+        },
+        "aliases": [
+          "EMNN"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "EMNN is introduced and developed within this paper.",
+          "quote": "we minimally extend the update equations of E(n)-Equivariant Graph Neural Networks (EGNNs) to incorporate mesh face information, and further improve it to account for long-range interactions through hierarchy. The resulting architecture, Equivariant Mesh Neural Network(EMNN),"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper includes experimental results obtained by executing the model, and specific details such as runtime and memory usage are mentioned.",
+          "quote": "All experiments in this section are conducted using 1 GPU Nvidia Quadro RTX 5000."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "EMNN is compared against several other models like GEM-CNN, EMAN, and EGNN in terms of performance and efficiency.",
+          "quote": "Our method is compared against alternatives in table 5. EMNN achieved SOTA on 16-4 split settings, while placed second in the 10-10 settings."
+        },
+        "referenced_paper_title": {
+          "value": "E(n)-Equivariant Graph Neural Networks",
+          "justification": "EMNN is based on extending the E(n)-Equivariant Graph Neural Networks (EGNNs) method.",
+          "quote": "we minimally extend the update equations of E(n)-Equivariant Graph Neural Networks (EGNNs) (Satorras et al., 2021)"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "FAUST",
+          "justification": "FAUST is explicitly mentioned and used for model evaluation in the paper.",
+          "quote": "FAUST includes 100 instances of 3-dimensional human meshes with 6890 vertices each."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "FAUST: Dataset and evaluation for 3D mesh registration",
+          "justification": "The dataset description mentions its introduction by Bogo et al., 2014.",
+          "quote": "FAUST (Bogo et al., 2014)"
+        }
+      },
+      {
+        "name": {
+          "value": "TOSCA",
+          "justification": "TOSCA is explicitly mentioned and used for model evaluation in the paper.",
+          "quote": "TOSCA is a 9-class mesh dataset of cats, men, women, centaurs, etc with varying nodes and edges in each mesh."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Numerical Geometry of Non-Rigid Shapes",
+          "justification": "The dataset description mentions its introduction by Bronstein et al., 2008.",
+          "quote": "TOSCA (Bronstein et al., 2008)"
+        }
+      },
+      {
+        "name": {
+          "value": "SHREC",
+          "justification": "SHREC is explicitly mentioned and used for model evaluation in the paper.",
+          "quote": "Datasets used to evaluate equivariant models comprise TOSCA (Bronstein et al., 2008) and FAUST (Bogo et al., 2014): ...SHREC dataset"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "SHREC ‘11 Track: Shape Retrieval on Non-Rigid 3D Watertight Meshes",
+          "justification": "The dataset description mentions its introduction by Lian et al., 2011.",
+          "quote": "SHREC-11 (Lian et al., 2011)"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The source code implementation is mentioned to be in PyTorch.",
+          "quote": "Our source code in PyTorch (Paszke et al., 2019) is at https://github.com/HySonLab/EquiMesh"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An Imperative Style, High-Performance Deep Learning Library.",
+          "justification": "The library description mentions its introduction by Paszke et al., 2019.",
+          "quote": "PyTorch(Paszke et al., 2019)"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1574,
+    "prompt_tokens": 15858,
+    "total_tokens": 17432
+  }
+}

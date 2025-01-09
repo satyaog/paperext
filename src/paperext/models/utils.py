@@ -11,8 +11,7 @@ import yaml
 from pydantic import BaseModel, Field, create_model
 
 from paperext import ROOT_DIR
-from paperext.models.model import Explained, PaperExtractions, RefModel
-from paperext.utils import split_entry
+from paperext.models.model import Explained, PaperExtractions
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -196,7 +195,9 @@ def _models_category_map():
     )
 
 
-_DOMAINS_CATEGORY_MAP = {domain: category for domain, category in _domains_category_map()}
+_DOMAINS_CATEGORY_MAP = {
+    domain: category for domain, category in _domains_category_map()
+}
 _MODELS_CATEGORY_MAP = {model: category for model, category in _models_category_map()}
 
 # assert sorted(_MODELS_FIELD_MAP) == sorted([m for m, _ in _models_field_map()])
@@ -223,7 +224,9 @@ def fix_explained_fields():
 
 
 def model_dump_yaml(model: BaseModel, **kwargs):
-    return yaml.safe_dump(model.model_dump(**kwargs, mode="json"), sort_keys=False, width=120)
+    return yaml.safe_dump(
+        model.model_dump(**kwargs, mode="json"), sort_keys=False, width=120
+    )
 
 
 def model_validate_yaml(model_cls: BaseModel, yaml_data: str, **kwargs):
@@ -329,7 +332,7 @@ def model2df(model: BaseModel):
         paper_1d_df.setdefault("research_fields_categories", [])
 
         try:
-            category:str = _DOMAINS_CATEGORY_MAP[domain]
+            category: str = _DOMAINS_CATEGORY_MAP[domain]
         except KeyError as e:
             map_error = e
             logger.error(map_error, exc_info=True)
@@ -364,7 +367,7 @@ def model2df(model: BaseModel):
 
             try:
                 _category = category
-                category:str = _map[category]
+                category: str = _map[category]
             except KeyError as e:
                 map_error = e
                 logger.error(map_error, exc_info=True)
@@ -381,7 +384,9 @@ def model2df(model: BaseModel):
 
     paper_1d_df["sub_research_fields"] = [pd.Series(paper_1d_df["sub_research_fields"])]
     paper_1d_df["all_research_fields"] = [pd.Series(paper_1d_df["all_research_fields"])]
-    paper_1d_df["research_fields_categories"] = [pd.Series(paper_1d_df["research_fields_categories"])]
+    paper_1d_df["research_fields_categories"] = [
+        pd.Series(paper_1d_df["research_fields_categories"])
+    ]
     paper_1d_df, paper_references_df = (
         pd.DataFrame(paper_1d_df),
         pd.DataFrame(paper_references_df),

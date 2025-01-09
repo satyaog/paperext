@@ -6,8 +6,6 @@ from typing import Any, Generic, List, Optional, TypeVar
 
 from pydantic import BaseModel, Field
 
-from paperext import ROOT_DIR
-
 logging.basicConfig(level=logging.DEBUG)
 
 _FIRST_MESSAGE = (

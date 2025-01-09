@@ -7,7 +7,7 @@ from pydantic import BaseModel
 import yaml
 
 from paperext import ROOT_DIR
-from paperext.models import model, model_v1, model_v2
+from paperext.models import model_v1, model_v2
 from paperext.models.utils import model_dump_yaml
 from paperext.utils import split_entry, str_eq
 
@@ -76,7 +76,7 @@ def convert_model_v1(extractions: model_v1.PaperExtractions):
                 )
                 sub_research_fields.append(srf)
                 log_msg += f" ({name}, {aliases})"
-            
+
             logging.info(log_msg)
 
         elif field_name in ("models",):
@@ -186,7 +186,11 @@ def convert_model_v2(extractions: model_v2.PaperExtractions):
         elif field_name in ("models",):
             fields[field_name] = []
             for m in extractions.models:
-                attributes = [m.is_contributed.value, m.is_executed.value, m.is_compared.value]
+                attributes = [
+                    m.is_contributed.value,
+                    m.is_executed.value,
+                    m.is_compared.value,
+                ]
                 for i, a in enumerate(attributes):
                     if isinstance(a, bool):
                         continue
@@ -198,7 +202,7 @@ def convert_model_v2(extractions: model_v2.PaperExtractions):
                         attributes[i] = a.lower().strip() == "true"
                     else:
                         assert False
-                    
+
                     logging.info(f"Converted enum from {a} to {attributes[i]}")
 
                 is_contributed, is_executed, is_compared = attributes
@@ -206,7 +210,10 @@ def convert_model_v2(extractions: model_v2.PaperExtractions):
                 m = dest_model.RefModel(
                     name=m.name.model_dump(),
                     aliases=m.aliases,
-                    is_contributed={**m.is_contributed.model_dump(), "value": is_contributed},
+                    is_contributed={
+                        **m.is_contributed.model_dump(),
+                        "value": is_contributed,
+                    },
                     is_executed={**m.is_executed.model_dump(), "value": is_executed},
                     is_compared={**m.is_compared.model_dump(), "value": is_compared},
                     referenced_paper_title=m.referenced_paper_title.model_dump(),
@@ -250,6 +257,7 @@ CONVERT_MODEL = {
 
 if __name__ == "__main__":
     from paperext.models import model as dest_model, model_v2 as src_model
+
     for path in sorted(
         sum(
             map(
