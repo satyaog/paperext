@@ -1,0 +1,146 @@
+{
+  "paper": "2310.01807.txt",
+  "words": 4489,
+  "extractions": {
+    "title": {
+      "value": "Discrete, compositional, and symbolic representations through attractor dynamics",
+      "justification": "The title is clearly stated at the beginning of the paper.",
+      "quote": "Discrete, compositional, and symbolic representations through attractor dynamics"
+    },
+    "description": "This paper explores how discretization in neural networks can be implemented in a neurally plausible manner through the modeling of attractor dynamics, which partition the continuous representation space into basins corresponding to sequences of symbols. It introduces novel training methods and shows that imposing structure in the symbolic space can produce compositionality in the attractor-supported representation space of rich sensory inputs.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper describes experiments performed to validate their model on the Gaussians task and the dSprites task.",
+      "quote": "We demonstrate that not only is such a dynamical system learnable using a neural network, but that the learned attractors also adopt compositional structure to efficiently encode information using sequences of symbols."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Artificial Intelligence",
+        "justification": "The paper is primarily concerned with improving neural network models to better mimic discrete symbolic processing, which is a core area within AI.",
+        "quote": "Compositionality is an important feature of discrete symbolic systems, such as language and programs, as it enables them to have infinite capacity despite a finite symbol set. It serves as a useful abstraction for reasoning in both cognitive science and in AI ..."
+      },
+      "aliases": [
+        "AI"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Neural Networks",
+          "justification": "The primary focus of the paper is on using neural networks for modeling attractor dynamics to achieve discrete, compositional, and symbolic representations.",
+          "quote": "Although deep learning has helped bridge the gap by incorporating inductive biases for discreteness in representations (e.g., [10, 11]) and symbolic processing [12, 13, 14, 15, 16, 17, 18, 19], these models explicitly assume discretization by means of discrete actions and the pre-allocation of neural modules ..."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Symbolic Systems",
+          "justification": "The paper aims to bridge the gap between continuous and symbolic processing in a neurally plausible manner.",
+          "quote": "In this work, we explore how discretization could be implemented in a more neurally plausible manner through the modeling of attractor dynamics that partition the continuous representation space into basins that correspond to sequences of symbols."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Generative Flow Network - Expectation Maximization (GFN-EM)",
+          "justification": "The paper prominently features the development and use of the GFN-EM model for learning emergent compositional language that encodes sensory information.",
+          "quote": "We overcome this limitation by using a generative flow network (GFN) [22] which allows us to specify the desired distribution using an unnormalized target function and the GFN expectation-maximization algorithm (GFN-EM) [23] to learn the mapping between the attractors and their symbolic representations."
+        },
+        "aliases": [
+          "GFN-EM",
+          "Generative Flow Network",
+          "Generative Flow Network - EM"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The GFN-EM model is introduced and developed in this paper.",
+          "quote": "We demonstrate that not only is such a dynamical system learnable using a neural network, but that the learned attractors also adopt compositional structure to efficiently encode information using sequences of symbols."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper includes empirical validation of the model, indicating that it was executed.",
+          "quote": "Formally, our aim is to learn a marginal distribution $P(z_T, w|x)$ over the final point of the trajectory $z_T$ and its discretization $w$ such that both are sampled proportionally to the reward function $R_φ(z_T, w; x)$."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares the GFN-EM model with baseline methods such as PCA.",
+          "quote": "As a baseline, we performed principal component analysis (PCA) on the images to reduce their dimensions to 5 principal components ... the zero-step model does better still, suggesting that there remains a gap in how well the attractor dynamics model can learn compositional code."
+        },
+        "referenced_paper_title": {
+          "value": "GFlowNet-EM for learning compositional latent variable models",
+          "justification": "The GFN-EM algorithm is based on work cited from another paper.",
+          "quote": "We use the GFN-EM algorithm to learn a compositional code for X by using a conditional-VAE (CVAE)."
+        }
+      },
+      {
+        "name": {
+          "value": "Conditional Variational AutoEncoder (CVAE)",
+          "justification": "The CVAE model is used for the similarity measure in the dSprites task.",
+          "quote": "We once again use the GFN-EM algorithm to learn a compositional code for X by using a conditional-VAE (CVAE) [27] for the similarity measure $s_φ(x, z)$."
+        },
+        "aliases": [
+          "CVAE",
+          "Conditional-VAE"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The CVAE model is not introduced in this paper but is used and referenced.",
+          "quote": "We once again use the GFN-EM algorithm to learn a compositional code for X by using a conditional-VAE (CVAE) [27] for the similarity measure $s_φ(x, z)$."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The CVAE model is used in the experiments conducted in the paper.",
+          "quote": "We use a conditional-VAE (CVAE) [27] for the similarity measure $s_φ(x, z)$."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "It is compared against other similar methods and models.",
+          "quote": "However, the CVAE is liable to learn to reconstruct x for any w, even when w has incomplete or even incorrect information, by encoding the entire informational context of x in $ζ$."
+        },
+        "referenced_paper_title": {
+          "value": "Learning structured output representation using deep conditional generative models",
+          "justification": "The referenced paper is clearly cited next to the description of the CVAE model.",
+          "quote": "We once again use the GFN-EM algorithm to learn a compositional code for X by using a conditional-VAE (CVAE) [27] for the similarity measure $s_φ(x, z)$."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "dSprites",
+          "justification": "The paper uses the dSprites dataset for evaluating their model.",
+          "quote": "To evaluate our model on a more complex task, we use the dSprites [26] dataset which consists of synthetic images that contain a single shape of various sizes in various positions."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "dsprites: Disentanglement testing sprites dataset",
+          "justification": "The dataset is clearly referenced along with its identifier.",
+          "quote": "To evaluate our model on a more complex task, we use the dSprites [26] dataset ..."
+        }
+      },
+      {
+        "name": {
+          "value": "Grid of Gaussians",
+          "justification": "The paper uses a Grid of Gaussians dataset to validate their approach.",
+          "quote": "As an initial validation of our approach, we begin with a simple task where the inputs are generated from a mixture of 2-dimensional Gaussian distributions with component means in a 4 × 4 grid [23]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "GFlowNet-EM for learning compositional latent variable models",
+          "justification": "The Grid of Gaussians dataset is related to the GFlowNet-EM research.",
+          "quote": "As an initial validation of our approach, we begin with a simple task where the inputs are generated from a mixture of 2-dimensional Gaussian distributions with component means in a 4 × 4 grid [23."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1940,
+    "prompt_tokens": 9672,
+    "total_tokens": 11612
+  }
+}

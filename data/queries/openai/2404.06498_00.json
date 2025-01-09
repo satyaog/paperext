@@ -1,0 +1,242 @@
+{
+  "paper": "2404.06498.txt",
+  "words": 17600,
+  "extractions": {
+    "title": {
+      "value": "Simultaneous linear connectivity of neural networks modulo permutation",
+      "justification": "This is the title of the paper.",
+      "quote": "Simultaneous linear connectivity of neural networks modulo permutation"
+    },
+    "description": "This paper investigates the permutation symmetries in neural networks, particularly focusing on the concept of linear mode connectivity. The authors refine existing arguments into three distinct claims about permutation symmetries and provide empirical evidence for these claims. The concept of simultaneous weak linear connectivity is introduced, and evidence for the potential of strong linear connectivity is also discussed, especially as the network width increases.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper introduces theories about linear connectivity in neural networks but primarily focuses on empirical evidence to support these claims.",
+      "quote": "We verify simultaneous connectivity for sequences of networks resulting from SGD training trajectories, as well as sequences of networks resulting from iterative magnitude pruning (IMP). Finally, we provide the first support for the existence of strong connectivity, by showing that barriers among permuted network triplets reduce as network width increases."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Neural Network Optimization",
+        "justification": "The primary focus of the paper is on optimizing neural networks through understanding and leveraging permutation symmetries.",
+        "quote": "In this work, we focus on linear (mode) connectivity where a lack of significant loss/error barriers between networks indicates a certain degree of flatness or even convexity in a region of the loss/error landscape."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Generalization in Neural Networks",
+          "justification": "The paper discusses how permutation invariance might contribute to generalizing across different network initializations.",
+          "quote": "Generalization: Recent work has argued that permutation symmetries are the only sources of non-convexity, meaning there are essentially no such barriers between trained networks if they are permuted appropriately."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Sparse Neural Networks",
+          "justification": "The paper discusses the iterative magnitude pruning (IMP) method for finding sparse subnetworks.",
+          "quote": "We verify simultaneous connectivity for sequences of networks resulting from SGD training trajectories, as well as sequences of networks resulting from iterative magnitude pruning (IMP)."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "VGG-16",
+          "justification": "VGG-16 is used as one of the primary models to explore the loss barrier behavior in neural networks.",
+          "quote": "Activations are drawn from the output of the last operation that occurs in a given permutation. For example, if a permutation contains a convolution layer followed by a normalization and ReLU non-linearity, we use the output of the ReLU non-linearity as the activations for that permutation."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "VGG-16 is a well-known existing model that is used as a tool in this research.",
+          "quote": "For convolutional models, we train standard VGG-16 convolutional networks with a standard width of 64 hidden units after the input layer."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Experiments involving VGG-16 are executed to draw empirical evidence.",
+          "quote": "VGG-16 networks are trained using SGD optimizer to study their behavior."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of VGG-16 is compared with other models in this study.",
+          "quote": "Our new observations provide evidence for the strictly stronger conjecture that SGD trajectories are simultaneously weak linearly connected modulo permutation."
+        },
+        "referenced_paper_title": {
+          "value": "Very Deep Convolutional Networks for Large-Scale Image Recognition",
+          "justification": "This is the original paper that introduced the VGG models.",
+          "quote": "For convolutional models, we train standard VGG-16 convolutional networks with a standard width of 64 hidden units after the input layer."
+        }
+      },
+      {
+        "name": {
+          "value": "ResNet-20",
+          "justification": "ResNet-20 is another model used to investigate the properties of loss barriers in neural networks.",
+          "quote": "For residual models, we train ResNet-20 with a width of 64 hidden units (4× width), as [1] finds that standard width ResNet-20 models have much larger error barrier than equivalent VGG networks."
+        },
+        "aliases": [
+          "Residual Network"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "ResNet-20 is a pre-existing model employed in the research for experiments.",
+          "quote": "For residual models, we train ResNet-20 with a width of 64 hidden units (4× width), as [1] finds that standard width ResNet-20 models have much larger error barrier than equivalent VGG networks."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The ResNet-20 model is executed to gather empirical data for the study.",
+          "quote": "ResNet-20 models are trained and their performance is evaluated."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The ResNet-20 model is compared with other models to observe differences in linear connectivity properties.",
+          "quote": "For residual models, we train ResNet-20 with a width of 64 hidden units (4× width), as [1] finds that standard width ResNet-20 models have much larger error barrier than equivalent VGG networks."
+        },
+        "referenced_paper_title": {
+          "value": "Deep Residual Learning for Image Recognition",
+          "justification": "This is the original paper that introduced Residual Networks (ResNet).",
+          "quote": "For residual models, we train ResNet-20 with a width of 64 hidden units (4× width), as [1] finds that standard width ResNet-20 models have much larger error barrier than equivalent VGG networks."
+        }
+      },
+      {
+        "name": {
+          "value": "MLP",
+          "justification": "MLP is used as a baseline model in the experiments to validate the findings.",
+          "quote": "We demonstrate the validity of our findings across various models including MLP"
+        },
+        "aliases": [
+          "Multi-Layer Perceptron"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "MLP is a standard model architecture used to compare results.",
+          "quote": "We evaluate our findings across standard models, including MLP."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "MLP experiments are conducted as part of the broader empirical study.",
+          "quote": "Results presented in the main paper are for VGG-16 with layer normalization trained on CIFAR-10, add results from MLP experimented elsewhere."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "MLP is compared to other model types to validate generalizability.",
+          "quote": "We also compare results across different model architectures, including MLP."
+        },
+        "referenced_paper_title": {
+          "value": "Gradient-Based Learning Applied to Document Recognition",
+          "justification": "This paper originally detailed the use of Neural Networks including MLPs for practical tasks.",
+          "quote": "We demonstrate the validity of our findings across various models including MLP"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "CIFAR-10 is a commonly used benchmark dataset in computer vision tasks and is employed in multiple experiments within this paper.",
+          "quote": "For convolutional models, we train standard VGG-16 convolutional networks with a standard width of 64 hidden units after the input layer."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Multiple Layers of Features from Tiny Images",
+          "justification": "This is the paper which properly documents the CIFAR-10 dataset.",
+          "quote": "For convolutional models, we train standard VGG-16 convolutional networks with a standard width of 64 hidden units after the input layer."
+        }
+      },
+      {
+        "name": {
+          "value": "SVHN",
+          "justification": "SVHN dataset is utilized to diversify experiments and validate the robustness of findings across different datasets.",
+          "quote": "Next we examine the evolution of loss and error barrier for a variety of image datasets and model architectures."
+        },
+        "aliases": [
+          "Street View House Numbers"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Reading Digits in Natural Images with Unsupervised Feature Learning",
+          "justification": "This paper originally introduced and documented SVHN dataset.",
+          "quote": "Next we examine the evolution of loss and error barrier for a variety of image datasets and model architectures."
+        }
+      },
+      {
+        "name": {
+          "value": "CIFAR-100",
+          "justification": "CIFAR-100 is employed alongside CIFAR-10 for additional validation of the empirical findings.",
+          "quote": "We add results from similar experiments using CIFAR-100 dataset."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Multiple Layers of Features from Tiny Images",
+          "justification": "CIFAR-100 is part of the same dataset release as CIFAR-10 and is well-documented within the same paper.",
+          "quote": "We add results from similar experiments using CIFAR-100 dataset."
+        }
+      },
+      {
+        "name": {
+          "value": "MNIST",
+          "justification": "MNIST is another commonly used benchmark dataset used in the experiments.",
+          "quote": "Additional experiments are conducted with different datasets including MNIST."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Gradient-Based Learning Applied to Document Recognition",
+          "justification": "This is the original paper that outlined the MNIST dataset.",
+          "quote": "Additional experiments are conducted with different datasets including MNIST."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "OpenLTH",
+          "justification": "The OpenLTH framework provides tools for conducting lottery ticket hypothesis experiments, crucial for the IMP procedures in the paper.",
+          "quote": "We used OpenLTH for our experiments involving iterative magnitude pruning (IMP)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The Lottery Ticket Hypothesis: Finding Sparse, Trainable Neural Networks",
+          "justification": "This is the foundational paper for the lottery ticket hypothesis, which OpenLTH is built to explore.",
+          "quote": "We used OpenLTH for our experiments involving iterative magnitude pruning (IMP)."
+        }
+      },
+      {
+        "name": {
+          "value": "Git Re-Basin",
+          "justification": "This library is utilized for weight matching and other permutation-finding algorithms in the research.",
+          "quote": "We reuse and extend the implementation provided in git-rebasin."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Git Re-Basin: Merging Models Modulo Permutation Symmetries",
+          "justification": "The referenced paper introduces the Git Re-Basin tool used for permutation.",
+          "quote": "We reuse and extend the implementation provided in git-rebasin."
+        }
+      },
+      {
+        "name": {
+          "value": "GNU Parallel",
+          "justification": "GNU Parallel is used to manage computational tasks efficiently for the experiments conducted.",
+          "quote": "GNU Parallel [is used] for our experiments."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "GNU Parallel - The Command-Line Power Tool",
+          "justification": "This is the paper detailing GNU Parallel.",
+          "quote": "GNU Parallel [is used] for our experiments."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2190,
+    "prompt_tokens": 30612,
+    "total_tokens": 32802
+  }
+}

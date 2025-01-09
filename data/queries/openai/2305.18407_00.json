@@ -1,0 +1,137 @@
+{
+  "paper": "2305.18407.txt",
+  "words": 15843,
+  "extractions": {
+    "title": {
+      "value": "A Group Symmetric Stochastic Differential Equation Model for Molecule Multi-modal Pretraining",
+      "justification": "This is the title provided at the beginning of the paper.",
+      "quote": "A Group Symmetric Stochastic Differential Equation Model for Molecule Multi-modal Pretraining"
+    },
+    "description": "The paper proposes MoleculeSDE, a novel pretraining method using group symmetric stochastic differential equation models for generating 3D geometries from 2D topologies and vice versa, directly in the input space. It aims to enhance molecule representation in AI-based drug discovery by retaining more structural information. The approach is shown to achieve state-of-the-art performance on several downstream tasks.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents an empirical analysis by conducting experiments to demonstrate the efficacy of the proposed MoleculeSDE model compared to baseline methods.",
+      "quote": "By comparing with 17 pretraining baselines, we empirically verify that MoleculeSDE can learn an expressive representation with state-of-the-art performance on 26 out of 32 downstream tasks."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The core focus of the paper is on improving molecular representations for AI-based drug discovery, which is a significant area within Natural Language Processing.",
+        "quote": "Molecule pretraining has quickly become the go-to schema to boost the performance of AI-based drug discovery."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Generative Models",
+          "justification": "The paper presents a new generative model, MoleculeSDE, for generating 3D geometries from 2D topologies and vice versa.",
+          "quote": "MoleculeSDE leverages group symmetric (e.g., SE(3)-equivariant and reflection-antisymmetric) stochastic differential equation models to generate the 3D geometries from 2D topologies, and vice versa, directly in the input space."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Self-Supervised Learning",
+          "justification": "The paper utilizes self-supervised learning paradigms such as contrastive and generative learning objectives.",
+          "quote": "MoleculeSDE contains both contrastive and generative SSLs."
+        },
+        "aliases": [
+          "SSL"
+        ]
+      },
+      {
+        "name": {
+          "value": "Graph Neural Networks",
+          "justification": "The paper extensively discusses the use of GNNs for representing molecular graphs in both 2D and 3D modalities.",
+          "quote": "The 2D graph representation with graph neural network (GNN) is: H2D = GNN-2D(T2D (g2D )) = GNN-2D(T2D (X, E))."
+        },
+        "aliases": [
+          "GNN"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "MoleculeSDE",
+          "justification": "The paper introduces MoleculeSDE as a new model for molecule multi-modal pretraining.",
+          "quote": "To address this issue, we propose MoleculeSDE. MoleculeSDE leverages group symmetric (e.g., SE(3)-equivariant and reflection-antisymmetric) stochastic differential equation models to generate the 3D geometries from 2D topologies, and vice versa, directly in the input space."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "MoleculeSDE is introduced and contributed by the authors of the paper.",
+          "quote": "To address this issue, we propose MoleculeSDE."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper presents experimental results achieved by executing the MoleculeSDE model.",
+          "quote": "By comparing with 17 pretraining baselines, we empirically verify that MoleculeSDE can learn an expressive representation with state-of-the-art performance on 26 out of 32 downstream tasks."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "MoleculeSDE is compared to 17 pretraining baselines in the experiments.",
+          "quote": "By comparing with 17 pretraining baselines, we empirically verify that MoleculeSDE can learn an expressive representation with state-of-the-art performance on 26 out of 32 downstream tasks."
+        },
+        "referenced_paper_title": {
+          "value": "None",
+          "justification": "Since MoleculeSDE is a new contribution introduced by the authors themselves, there is no referenced paper title.",
+          "quote": "To address this issue, we propose MoleculeSDE."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "PCQM4Mv2",
+          "justification": "PCQM4Mv2 is used for pretraining in the paper.",
+          "quote": "Dataset. For pretraining, we use PCQM4Mv2 (Hu et al., 2020a). It’s a sub-dataset of PubChemQC (Nakata & Shimazaki, 2017) with 3.4 million molecules with both the topological graph and geometric conformations."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Strategies for Pre-training Graph Neural Networks",
+          "justification": "The reference for the PCQM4Mv2 dataset is provided.",
+          "quote": "(Hu et al., 2020a)"
+        }
+      },
+      {
+        "name": {
+          "value": "Molecule3D",
+          "justification": "The paper also mentions using the Molecule3D dataset but prefers PCQM4Mv2 due to certain mismatches.",
+          "quote": "We are aware of the Molecule3D (Xu et al., 2021b) dataset, which is also extracted from PubChemQC (Nakata & Shimazaki, 2017). Yet, after confirming with the authors, certain mismatches exist between the 2D topologies and 3D conformations. Thus, in this work, we use PCQM4Mv2 for pretraining."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Molecule3D: A Benchmark for Predicting 3D Geometries from Molecular Graphs",
+          "justification": "The reference for the Molecule3D dataset is provided.",
+          "quote": "(Xu et al., 2021b)"
+        }
+      },
+      {
+        "name": {
+          "value": "PubChemQC",
+          "justification": "The paper mentions PubChemQC as the source dataset from which both PCQM4Mv2 and Molecule3D are extracted.",
+          "quote": "Yet, after confirming with the authors, certain mismatches exist between the 2D topologies and 3D conformations. Thus, in this work, we use PCQM4Mv2 for pretraining."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "PubChemQC Project: A Large-Scale First-Principles Electronic Structure Database for Data-Driven Chemistry",
+          "justification": "The reference for the PubChemQC dataset is provided.",
+          "quote": "(Nakata & Shimazaki, 2017)"
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1661,
+    "prompt_tokens": 33124,
+    "total_tokens": 34785
+  }
+}

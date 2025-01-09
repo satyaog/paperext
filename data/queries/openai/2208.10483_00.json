@@ -1,0 +1,197 @@
+{
+  "paper": "2208.10483.txt",
+  "words": 11896,
+  "extractions": {
+    "title": {
+      "value": "Prioritizing Samples in Reinforcement Learning with Reducible Loss",
+      "justification": "This is clearly the title of the paper.",
+      "quote": "Prioritizing Samples in Reinforcement Learning with Reducible Loss"
+    },
+    "description": "This paper proposes a method to prioritize samples in reinforcement learning based on their learn-ability, defined as the steady decrease of training loss over time. The method aims to improve sample efficiency by focusing on samples with high reducible loss. The approach is empirically tested on benchmarks like DeepMind Control Suite, OpenAI Gym, MinAtar, and the Arcade Learning Environment.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents empirical results demonstrating the effectiveness of the proposed method across multiple domains.",
+      "quote": "We empirically show that across multiple domains our method is more robust than random sampling."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Reinforcement Learning",
+        "justification": "The paper focuses on improving sampling strategies within Reinforcement Learning.",
+        "quote": "Most reinforcement learning algorithms take advantage of an experience replay buffer to repeatedly train on samples the agent has observed in the past."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Sample Efficiency",
+          "justification": "The paper aims to improve the efficiency of sample usage in reinforcement learning.",
+          "quote": "We empirically show that across multiple domains our method is more robust than random sampling and also better than just prioritizing with respect to the training loss."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Experience Replay",
+          "justification": "The method proposed deals with the prioritization of samples in the experience replay buffer.",
+          "quote": "Instead of randomly sampling from the experience replay, we propose to sample based on the learnability of the samples."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Deep Q Networks (DQN)",
+          "justification": "The paper refers to Deep Q Networks as a key method that benefits from the proposed sample prioritization.",
+          "quote": "One of the landmarks in the space of online RL learning has been Deep Q Networks (DQN) [Mnih et al., 2015]."
+        },
+        "aliases": [
+          "DQN"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The Deep Q Network model is referenced, not contributed by this paper.",
+          "quote": "One of the landmarks in the space of online RL learning has been Deep Q Networks (DQN) [Mnih et al., 2015]."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper uses DQN in experiments as one of the benchmarks.",
+          "quote": "One of the landmarks in the space of online RL learning has been Deep Q Networks (DQN) [Mnih et al., 2015]."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares the performance of its proposed method against DQN in various benchmarks.",
+          "quote": "We demonstrate the performance of our approach empirically on the DeepMind Control Suite [Tassa et al., 2018], OpenAI Gym, MinAtar [Young and Tian, 2019] and Arcade Learning Environment [Bellemare et al., 2013] benchmarks."
+        },
+        "referenced_paper_title": {
+          "value": "Human-level control through deep reinforcement learning.",
+          "justification": "The referenced paper provides foundational work on DQN.",
+          "quote": "One of the landmarks in the space of online RL learning has been Deep Q Networks (DQN) [Mnih et al., 2015]."
+        }
+      },
+      {
+        "name": {
+          "value": "Rainbow",
+          "justification": "Rainbow is mentioned in the context of experience replay and sample prioritization methods.",
+          "quote": "Rainbow [Hessel et al., 2017]"
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Rainbow is not introduced or contributed by this paper.",
+          "quote": "Rainbow [Hessel et al., 2017]"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper uses Rainbow in experiments.",
+          "quote": "We demonstrate the performance of our approach empirically on the Rainbow benchmarks."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares its method against Rainbow.",
+          "quote": "Rainbow with ReLo achieves better performance"
+        },
+        "referenced_paper_title": {
+          "value": "Rainbow: Combining Improvements in Deep Reinforcement Learning.",
+          "justification": "The referenced paper is the canonical source describing Rainbow.",
+          "quote": "Rainbow [Hessel et al., 2017]"
+        }
+      },
+      {
+        "name": {
+          "value": "Soft Actor Critic (SAC)",
+          "justification": "SAC is used as one of the baseline algorithms to test the proposed method.",
+          "quote": "In the continuous control tasks, Soft Actor Critic (SAC) [Haarnoja et al., 2018] is used as the base off-policy algorithm to which we add ReLo."
+        },
+        "aliases": [
+          "SAC"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Soft Actor Critic (SAC) is referenced and used but not contributed by this paper.",
+          "quote": "Soft Actor Critic (SAC) [Haarnoja et al., 2018]"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper executes SAC in its experiments.",
+          "quote": "In the continuous control tasks, Soft Actor Critic (SAC) [Haarnoja et al., 2018] is used as the base off-policy algorithm to which we add ReLo."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares its methods against SAC.",
+          "quote": "SAC with PER has the highest reported TD errors throughout training ... In contrast, ReLo addresses this problem."
+        },
+        "referenced_paper_title": {
+          "value": "Soft Actor-Critic: Off-Policy Maximum Entropy Deep Reinforcement Learning with a Stochastic Actor",
+          "justification": "The referenced paper is a canonical source on SAC.",
+          "quote": "Soft Actor Critic (SAC) [Haarnoja et al., 2018]"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "DeepMind Control Suite",
+          "justification": "The DeepMind Control Suite is used as one of the benchmark datasets to evaluate the proposed method.",
+          "quote": "We demonstrate the performance of our approach empirically on the DeepMind Control Suite [Tassa et al., 2018]"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "DeepMind Control Suite",
+          "justification": "The dataset is the same as the DeepMind Control Suite referenced in the paper.",
+          "quote": "DeepMind Control Suite [Tassa et al., 2018]"
+        }
+      },
+      {
+        "name": {
+          "value": "OpenAI Gym",
+          "justification": "OpenAI Gym is used as one of the benchmark datasets.",
+          "quote": "We demonstrate the performance of our approach empirically on the ... OpenAI Gym"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "OpenAI Gym",
+          "justification": "The dataset is the same as the one referenced in the paper.",
+          "quote": "OpenAI Gym"
+        }
+      },
+      {
+        "name": {
+          "value": "MinAtar",
+          "justification": "MinAtar is used as one of the benchmark datasets.",
+          "quote": "We demonstrate the performance of our approach empirically on the ... MinAtar [Young and Tian, 2019]"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "MinAtar: An Atari-inspired Testbed for Thorough and Reproducible Reinforcement Learning Experiments",
+          "justification": "The referenced paper provides foundational work on MinAtar.",
+          "quote": "MinAtar [Young and Tian, 2019]"
+        }
+      },
+      {
+        "name": {
+          "value": "Arcade Learning Environment",
+          "justification": "Arcade Learning Environment is used as a benchmark dataset in the experiments.",
+          "quote": "We demonstrate the performance of our approach empirically on the ... Arcade Learning Environment [Bellemare et al., 2013] benchmarks."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The Arcade Learning Environment: An Evaluation Platform for General Agents",
+          "justification": "The referenced paper provides foundational work on the Arcade Learning Environment.",
+          "quote": "Arcade Learning Environment [Bellemare et al., 2013]"
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 3837,
+    "prompt_tokens": 46125,
+    "total_tokens": 49962
+  }
+}

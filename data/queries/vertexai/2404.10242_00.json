@@ -1,0 +1,203 @@
+{
+  "paper": "2404.10242.txt",
+  "words": 9577,
+  "extractions": {
+    "title": {
+      "value": "Masked Autoencoders for Microscopy are Scalable Learners of Cellular Biology",
+      "justification": "The title is extracted from the paper.",
+      "quote": "Masked Autoencoders for Microscopy are Scalable Learners of Cellular Biology"
+    },
+    "description": "The authors explore scaling properties of weakly supervised classifiers and self-supervised masked autoencoders (MAEs) when training with increasingly larger model backbones and microscopy datasets. The paper introduces a novel channel-agnostic MAE architecture (CA-MAE) and demonstrates its effectiveness in generalizing across different microscopy image datasets with varying channel structures. The authors used the RPI-93M dataset for pretraining and the JUMP-CP dataset for evaluation. ",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper is empirical as it focuses on experimental results and analysis of MAE performance on image datasets.",
+      "quote": "Our results show that ViT-based MAEs outperform weakly supervised classifiers on a variety of tasks, achieving as much as a 11.5% relative improvement when recalling known biological relationships curated from public databases."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Cellular Biology",
+        "justification": "The paper focuses on applying machine learning to the field of cellular biology, especially in the context of microscopy images.",
+        "quote": "Our findings motivate continued research into scaling self-supervised learning on microscopy data in order to create powerful foundation models of cellular biology that have the potential to catalyze advancements in drug discovery and beyond."
+      },
+      "aliases": [
+        "biological research",
+        "cellular biology",
+        "drug discovery",
+        "HCS"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Microscopy",
+          "justification": "The paper heavily centers on microscopy images, specifically in the context of High Content Screening (HCS).",
+          "quote": "Featurizing microscopy images for use in biological research remains a significant challenge, especially for large-scale experiments spanning millions of images."
+        },
+        "aliases": [
+          "Microscopy",
+          "microscopy images",
+          "HCS images",
+          "HCS microscopy",
+          "Cell Painting"
+        ]
+      },
+      {
+        "name": {
+          "value": "Self-Supervised Learning",
+          "justification": "The core of the paper revolves around using self-supervised learning techniques, particularly MAEs, for learning representations from microscopy images.",
+          "quote": "In order to overcome these limitations, we develop an alternative framework for learning representations of HCS datasets based on self-supervised learning (Fig. 1)."
+        },
+        "aliases": [
+          "self-supervised learning",
+          "SSL",
+          "weakly supervised learning",
+          "WSL",
+          "representation learning"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Masked Autoencoder",
+          "justification": "The paper focuses on exploring Masked Autoencoders (MAEs).",
+          "quote": "This work explores the scaling properties of weakly supervised classifiers and self-supervised masked autoencoders (MAEs) when training with increasingly larger model backbones and microscopy datasets."
+        },
+        "aliases": [
+          "MAE",
+          "MAEs",
+          "masked autoencoders"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The paper introduces a new channel-agnostic MAE architecture called CA-MAE.",
+          "quote": "Additionally, we develop a new channel-agnostic MAE architecture (CA-MAE) that allows for inputting images of different numbers and orders of channels at inference time."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The authors trained MAEs such as MU-Net-M, MU-Net-L, ViT-S, ViT-B, and ViT-L.",
+          "quote": "Specifically, we train masked autoencoders (MAEs) [31] with U-Net and vision transformer (ViT) backbones on progressively larger HCS image sets."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares MAEs with weakly supervised classifiers.",
+          "quote": "Our results show that ViT-based MAEs outperform weakly supervised classifiers on a variety of tasks, achieving as much as a 11.5% relative improvement when recalling known biological relationships curated from public databases."
+        },
+        "referenced_paper_title": {
+          "value": "Masked autoencoders are scalable vision learners",
+          "justification": "This citation is given for MAEs in general.",
+          "quote": "Specifically, we train masked autoencoders (MAEs) [31] with U-Net and vision transformer (ViT) backbones on progressively larger HCS image sets."
+        }
+      },
+      {
+        "name": {
+          "value": "MU-Net",
+          "justification": "MU-Net is an adaptation of U-Net specifically for masked autoencoding.",
+          "quote": "We adapt U-Nets [56] for use as masked autoencoders (MU-Nets) by training to reconstruct masked sections of input images."
+        },
+        "aliases": [
+          "MU-Net",
+          "MU-Nets",
+          "MU-Net-M",
+          "MU-Net-L"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The paper adapts U-Nets for use as masked autoencoders called MU-Nets",
+          "quote": "We adapt U-Nets [56] for use as masked autoencoders (MU-Nets) by training to reconstruct masked sections of input images."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The authors trained MU-Nets as part of their exploration of MAEs, see results in Table 3.",
+          "quote": "We adapt U-Nets [56] for use as masked autoencoders (MU-Nets) by training to reconstruct masked sections of input images."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The authors compare different model sizes and training set sizes in Table 3, comparing MU-Nets with other models.",
+          "quote": "We adapt U-Nets [56] for use as masked autoencoders (MU-Nets) by training to reconstruct masked sections of input images."
+        },
+        "referenced_paper_title": {
+          "value": "U-net: Convolutional networks for biomedical image segmentation",
+          "justification": "The authors cite the U-Net paper when mentioning MU-Nets.",
+          "quote": "We adapt U-Nets [56] for use as masked autoencoders (MU-Nets) by training to reconstruct masked sections of input images."
+        }
+      },
+      {
+        "name": {
+          "value": "Vision Transformer",
+          "justification": "The paper refers to \"vision transformers\" and uses the abbreviation \"ViT\".",
+          "quote": "We train vision transformers [19, 21, 59, 69] as MAEs following the implementation in He et al. [31]."
+        },
+        "aliases": [
+          "ViT",
+          "MAE ViTs",
+          "ViT-S",
+          "ViT-B",
+          "ViT-L",
+          "ViT-L/8+",
+          "CA-MAE",
+          "CA-MAE ViT-B/16",
+          "CA-MAE ViT-L/16+"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The paper introduces a channel-agnostic variant of the ViT model, called CA-MAE.",
+          "quote": "In an effort to develop an architecture that can transfer to a different number and set of channels at test time, we developed the channel-agnostic ViT architecture (CA-MAE)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper uses ViT models for various tasks like image classification and as the backbone for MAEs.",
+          "quote": "We also trained WSL models with vision transformers (ViT-B/16 and ViT-L/16) [21], described further in the following sections."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The authors compare different variants of ViT, such as ViT-S, ViT-B, and ViT-L, in their experiments.",
+          "quote": "We report results for ViT-S, ViT-B, and ViT-L encoders [21], containing 22-, 86-, and 304-million parameters, respectively, and producing 384-, 768-, and 1,024-dimensional embeddings respectively."
+        },
+        "referenced_paper_title": {
+          "value": "An image is worth 16x16 words: Transformers for image recognition at scale",
+          "justification": "Multiple citations are given for ViTs, including [19, 21, 59, 69]. Choosing [21] as it is the most relevant.",
+          "quote": "We train vision transformers [19, 21, 59, 69] as MAEs following the implementation in He et al. [31]."
+        }
+      },
+      {
+        "name": {
+          "value": "DenseNet-161",
+          "justification": "The paper clearly states \"DenseNet-161\" as the model.",
+          "quote": "We reimplement the 28-million parameter DenseNet-161 backbone proposed in Sypetkowski et al. [62], trained to predict cellular perturbations and producing 128-dimensional embeddings from a two-layer MLP neck before the classification logits."
+        },
+        "aliases": [
+          "DenseNet-161"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper uses an existing DenseNet-161 model, it is not a new contribution.",
+          "quote": "We reimplement the 28-million parameter DenseNet-161 backbone proposed in Sypetkowski et al. [62], trained to predict cellular perturbations and producing 128-dimensional embeddings from a two-layer MLP neck before the classification logits."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper re-implements the DenseNet-161 model from a previous paper, indicating they trained it.",
+          "quote": "We reimplement the 28-million parameter DenseNet-161 backbone proposed in Sypetkowski et al. [62], trained to predict cellular perturbations and producing 128-dimensional embeddings from a two-layer MLP neck before the classification logits."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The authors benchmark DenseNet-161 against other models in their experiments.",
+          "quote": "We reimplement the 28-million parameter DenseNet-161 backbone proposed in Sypetkowski et al. [62], trained to predict cellular perturbations and producing 128-dimensional embeddings from a two-layer MLP neck before the classification logits."
+        },
+        "referenced_paper_title": {
+          "value": "Rxrx1: A dataset for evaluating experimental batch correction methods",
+          "justification": "The authors directly reference \"Sypetkowski et al. [62]\" when mentioning DenseNet-161.",
+          "quote": "We reimplement the 28-million parameter DenseNet-161 backbone proposed in Sypetkowski et al. [62], trained to predict cellular perturbations and producing 128-dimensional embeddings from a two-layer MLP neck before the classification logits."
+        }
+      }
+    ],
+    "datasets": [],
+    "libraries": []
+  },
+  "usage": {
+    "cached_content_token_count": 0,
+    "candidates_token_count": 0,
+    "prompt_token_count": 0,
+    "total_token_count": 22627
+  }
+}

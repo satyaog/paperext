@@ -1,0 +1,118 @@
+{
+  "paper": "2302.06576.txt",
+  "words": 12688,
+  "extractions": {
+    "title": {
+      "value": "GFlowNet-EM for Learning Compositional Latent Variable Models",
+      "justification": "The title of the paper is clearly mentioned at the beginning of the provided text.",
+      "quote": "GFlowNet-EM for Learning Compositional Latent Variable Models"
+    },
+    "description": "This paper introduces GFlowNet-EM, a novel method for maximum-likelihood estimation in discrete latent variable models (LVMs) leveraging GFlowNets to sample from an intractable posterior, enabling the training of expressive LVMs with discrete compositional latents. The method is validated on grammar induction and image modeling tasks, showing superior performance over existing approaches. It also introduces several algorithmic improvements to enhance the optimization process in jointly learning a GFlowNet sampler and a generative model, aiming to mitigate issues like posterior collapse.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper proposes a novel method (GFlowNet-EM) and validates it through empirical experiments on grammar induction and image modeling tasks. The focus is on demonstrating the performance improvements over existing methods through experimental results.",
+      "quote": "Our contributions include:\n(1) The GFlowNet-EM framework for maximum likelihood estimation in discrete compositional LVMs that are intractable to optimize by exact EM;\n(2) Algorithmic improvements to stabilize joint learning with the generative model while mitigating posterior collapse;\n(3) Empirical demonstrations of LVMs with intractable posteriors learned with GFlowNet-EM, including a non-context-free grammar and a discrete VAE without independence assumptions in the encoder."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Latent Variable Models",
+        "justification": "The paper focuses on improving the optimization and training of Latent Variable Models (LVMs) using GFlowNets, a method well-suited for dealing with the complexities of LVMs.",
+        "quote": "Latent variable models (LVMs) with discrete compositional latents are an important but challenging setting due to a combinatorially large number of possible configurations of the latents."
+      },
+      "aliases": [
+        "LVMs"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Grammar Induction",
+          "justification": "One of the empirical validations of the proposed method (GFlowNet-EM) is performed on a grammar induction task using grammar from the Penn Tree Bank, which is relevant to the Grammar Induction research field.",
+          "quote": "We validate our method, which we call GFlowNet-EM, on both language and image domains."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Discrete Variational Autoencoders",
+          "justification": "The paper also validates its proposed method (GFlowNet-EM) in the context of learning deep generative models of images with discrete latent representations, which falls under the research domain of Discrete Variational Autoencoders.",
+          "quote": "Next, we study the problem of learning deep generative models of images with discrete latent representations. This problem was previously posed under the framework of vector-quantized variational autoencoders (VQ-VAE; van den Oord et al., 2017)."
+        },
+        "aliases": [
+          "VQ-VAE"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "GFlowNet-EM",
+          "justification": "GFlowNet-EM is the main proposed model in the paper, designed for maximum likelihood estimation in discrete compositional latent variable models.",
+          "quote": "We validate our method, which we call GFlowNet-EM, on both language and image domains."
+        },
+        "aliases": [
+          "GFlowNet"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "GFlowNet-EM is introduced and validated as the main contribution of the paper.",
+          "quote": "We propose the use of GFlowNets, algorithms for sampling from an unnormalized density by learning a stochastic policy for sequential construction of samples, for this intractable E-step."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper mentions using V100 GPUs, indicating that the model is executed on GPU.",
+          "quote": "Our experiments with the context-free grammar take 23 hours to run to completion on a single V100 GPU, while the baseline from Kim et al. (2019) takes 21 hours to run on similar hardware."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "GFlowNet-EM is empirically compared with different models such as exact EM and variational EM in the experiments.",
+          "quote": "Averaged over twenty random seeds, after sixty iterations (which induces convergence in all methods), the data log-likelihood per sample for exact EM is −5.79 ± 0.74, variational EM is −7.26 ± 1.12, and GFlowNet-EM is −5.77 ± 0.48."
+        },
+        "referenced_paper_title": {
+          "value": "Generative flow networks",
+          "justification": "GFlowNet itself is referenced in the text, connecting it to prior work.",
+          "quote": "Generative flow networks (GFlowNets; Bengio et al., 2021; 2023), which we review in §2.2, are an amortized inference method for sampling from unnormalized densities by sequentially constructing samples using a learned stochastic policy."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Penn Tree Bank (PTB)",
+          "justification": "The dataset is explicitly mentioned as being used for grammar induction experiments in the paper.",
+          "quote": "Dataset. We use a subset of Penn Tree Bank (PTB; Marcus et al., 1999) that contains sentences with 20 or fewer tokens."
+        },
+        "aliases": [
+          "PTB"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Treebank-3",
+          "justification": "The referenced paper provides the details and original introduction of the Penn Tree Bank dataset used in the research.",
+          "quote": "Penn Tree Bank (PTB; Marcus et al., 1999)"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The paper mentions using Torch-Struct, a PyTorch-based library, indicating the use of PyTorch for implementation.",
+          "quote": "We use Torch-Struct (Rush, 2020) to perform marginalization and exact sampling in PCFGs."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Torch-struct: Deep structured prediction library",
+          "justification": "Torch-struct is used to perform marginalization and exact sampling, indicating its underlying dependency on PyTorch.",
+          "quote": "We use Torch-Struct (Rush, 2020) to perform marginalization and exact sampling in PCFGs."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1333,
+    "prompt_tokens": 24570,
+    "total_tokens": 25903
+  }
+}

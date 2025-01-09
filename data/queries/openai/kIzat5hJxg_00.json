@@ -1,0 +1,166 @@
+{
+  "paper": "kIzat5hJxg.txt",
+  "words": 3974,
+  "extractions": {
+    "title": {
+      "value": "PySCFIPU : Repurposing Density Functional Theory to Suit Deep Learning",
+      "justification": "This is the title of the paper, as stated at the beginning of the document.",
+      "quote": "PySCFIPU : Repurposing Density Functional Theory to Suit Deep Learning"
+    },
+    "description": "This paper presents PySCFIPU, a hardware-accelerated adaptation of the PySCF library optimized for creating large DFT datasets. The authors introduce a new dataset, QM10X, and demonstrate its efficiency by training a SchNet model. The paper explores the impact of dataset size on neural network performance and highlights how PySCFIPU addresses computational challenges in DFT calculations.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves the creation of a new dataset (QM10X) and empirically tests the effect of dataset size on the performance of a neural network model (SchNet).",
+      "quote": "We create QM10X, a dataset with 108 conformers, in 13 hours, on which we subsequently train SchNet in 12 hours."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computational Chemistry",
+        "justification": "The primary focus of the paper is on Density Functional Theory (DFT) and its application in creating large chemical datasets.",
+        "quote": "Density Functional Theory (DFT) accurately predicts the properties of molecules given their atom types and positions, and often serves as ground truth for molecular property prediction tasks."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Dataset Generation",
+          "justification": "The paper specifically discusses the creation of a new dataset called QM10X, which is a major contribution of this work.",
+          "quote": "The datasets QM9, ANI1, and PCQ computed chemical properties using the DFT libraries Gaussian9 and GAMESS... We introduce PySCFIPU , a DFT library optimised for small sized chemical systems (8-12 heavy atoms) that we used to create QM10X, a dataset containing 100M examples with 10 heavy atoms."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Neural Networks",
+          "justification": "The paper involves training a neural network model (SchNet) on the newly created QM10X dataset.",
+          "quote": "We create QM10X, a dataset with 108 conformers, in 13 hours, on which we subsequently train SchNet in 12 hours."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "SchNet",
+          "justification": "SchNet is the neural network model used in this study to train on the QM10X dataset and assess performance.",
+          "quote": "We create QM10X, a dataset with 108 conformers, in 13 hours, on which we subsequently train SchNet in 12 hours."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "SchNet is not introduced as a new model in this paper; it is used as an existing model for evaluation.",
+          "quote": "We create QM10X, a dataset with 108 conformers, in 13 hours, on which we subsequently train SchNet in 12 hours."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "SchNet is executed for training and evaluation on the QM10X dataset.",
+          "quote": "We create QM10X, a dataset with 108 conformers, in 13 hours, on which we subsequently train SchNet in 12 hours."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "SchNet's performance is analyzed based on different datasets, including equilibrium and off-equilibrium molecules.",
+          "quote": "Our SchNet model attained 0.049eV on QM9F =0 , similar to 0.053eV on ”normal” QM9. Our SchNet model performed worse at 0.123eV on QMF ̸=0 , see Figure 2(b)."
+        },
+        "referenced_paper_title": {
+          "value": "SchNet–A Deep Learning Architecture for Molecules and Materials",
+          "justification": "The original paper where SchNet was introduced.",
+          "quote": "Schütt et al. (2018) trained SchNet for 12 hours on 110k QM9 equilibrium molecules, and 12 days on the 19M off-equilibrium molecules."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "QM10X",
+          "justification": "The new dataset created in this study, consisting of 100 million conformers.",
+          "quote": "We introduce PySCFIPU , a DFT library optimised for small sized chemical systems (8-12 heavy atoms) that we used to create QM10X, a dataset containing 100M examples with 10 heavy atoms."
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "None",
+          "justification": "This is a new dataset introduced by the authors in this paper.",
+          "quote": "We introduce PySCFIPU , a DFT library optimised for small sized chemical systems (8-12 heavy atoms) that we used to create QM10X, a dataset containing 100M examples with 10 heavy atoms."
+        }
+      },
+      {
+        "name": {
+          "value": "QM9",
+          "justification": "A previously existing dataset used for comparison in this study.",
+          "quote": "Datasets in the molecular domain like QM9 (Ramakrishnan et al., 2014), ANI1 (Smith et al., 2017) and PCQ (Nakata & Shimazaki, 2017) contain 100k to 20M molecules, which is considered small in the context of machine learning datasets."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Quantum Chemistry Structures and Properties of 134 Kilo Molecules",
+          "justification": "The referenced paper where QM9 dataset was introduced.",
+          "quote": "Datasets in the molecular domain like QM9 (Ramakrishnan et al., 2014), ANI1 (Smith et al., 2017) and PCQ (Nakata & Shimazaki, 2017) contain 100k to 20M molecules, which is considered small in the context of machine learning datasets."
+        }
+      },
+      {
+        "name": {
+          "value": "ANI1",
+          "justification": "A previously existing dataset used for comparison in this study.",
+          "quote": "Datasets in the molecular domain like QM9 (Ramakrishnan et al., 2014), ANI1 (Smith et al., 2017) and PCQ (Nakata & Shimazaki, 2017) contain 100k to 20M molecules, which is considered small in the context of machine learning datasets."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "ANI-1, A Data Set of 20 Million Calculated Off-Equilibrium Conformations for Organic Molecules",
+          "justification": "The referenced paper where ANI1 dataset was introduced.",
+          "quote": "Datasets in the molecular domain like QM9 (Ramakrishnan et al., 2014), ANI1 (Smith et al., 2017) and PCQ (Nakata & Shimazaki, 2017) contain 100k to 20M molecules, which is considered small in the context of machine learning datasets."
+        }
+      },
+      {
+        "name": {
+          "value": "PCQ",
+          "justification": "A previously existing dataset used for comparison in this study.",
+          "quote": "Datasets in the molecular domain like QM9 (Ramakrishnan et al., 2014), ANI1 (Smith et al., 2017) and PCQ (Nakata & Shimazaki, 2017) contain 100k to 20M molecules, which is considered small in the context of machine learning datasets."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "PubChemQC Project: A Large-Scale First-Principles Electronic Structure Database for Data-Driven Chemistry",
+          "justification": "The referenced paper where PCQ dataset was introduced.",
+          "quote": "Datasets in the molecular domain like QM9 (Ramakrishnan et al., 2014), ANI1 (Smith et al., 2017) and PCQ (Nakata & Shimazaki, 2017) contain 100k to 20M molecules, which is considered small in the context of machine learning datasets."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PySCFIPU",
+          "justification": "PySCFIPU is the primary library introduced and utilized in this study, specifically optimized for creating DFT datasets.",
+          "quote": "We introduce PySCFIPU , a DFT library optimised for small sized chemical systems (8-12 heavy atoms) that we used to create QM10X, a dataset containing 100M examples with 10 heavy atoms."
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "None",
+          "justification": "This is a new library introduced in this paper.",
+          "quote": "We introduce PySCFIPU , a DFT library optimised for small sized chemical systems (8-12 heavy atoms) that we used to create QM10X, a dataset containing 100M examples with 10 heavy atoms."
+        }
+      },
+      {
+        "name": {
+          "value": "PySCF",
+          "justification": "PySCF is the foundational DFT library on which PySCFIPU was based.",
+          "quote": "We developed PySCFIPU , a hardware accelerated version of PySCF optimized to generate DFT datasets."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "PySCF: the Python-based simulations of chemistry framework",
+          "justification": "The referenced paper where PySCF library was introduced.",
+          "quote": "We developed PySCFIPU , a hardware accelerated version of PySCF optimized to generate DFT datasets."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1983,
+    "prompt_tokens": 8707,
+    "total_tokens": 10690
+  }
+}

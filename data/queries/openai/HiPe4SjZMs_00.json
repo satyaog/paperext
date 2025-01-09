@@ -1,0 +1,165 @@
+{
+  "paper": "HiPe4SjZMs.txt",
+  "words": 6582,
+  "extractions": {
+    "title": {
+      "value": "Learning Optimizers for Local SGD",
+      "justification": "This is the exact title of the paper provided.",
+      "quote": "Learning Optimizers for Local SGD"
+    },
+    "description": "This paper investigates incorporating local optimizers that compute multiple updates into a learned optimization framework. The goal is to potentially create more efficient local SGD algorithms. The study demonstrates that learned optimizers can outperform local SGD and its variants while maintaining communication efficiency, and these optimizers can generalize to new datasets and architectures.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper evaluates the effectiveness of learned optimizers through empirical experiments across various datasets and neural network architectures.",
+      "quote": "Our results demonstrate that local learned optimizers can substantially outperform local SGD and its sophisticated variants while maintaining their communication efficiency. We show that the learned optimizers can generalize to new datasets and architectures, demonstrating the potential of learned optimizers for improving communication-efficient distributed learning."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Optimization",
+        "justification": "The paper focuses on improving optimizer algorithms for distributed deep learning training.",
+        "quote": "In this work, we incorporate local optimizers that compute multiple updates into a learned optimization framework, allowing to meta-learn potentially more efficient local SGD algorithms."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Federated Learning",
+          "justification": "The paper addresses communication-efficient distributed learning, which is a key concern in federated learning.",
+          "quote": "These findings establish learned optimization as a promising direction for improving communication-efficient distributed training algorithms for deep learning while scaling to diverse architectures, datasets, and H values. They also hold promise not only in the current context but also in decentralized and federated learning scenarios."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "LOpt-A",
+          "justification": "LOpt-A is one of the proposed learned optimizers discussed and evaluated in the paper.",
+          "quote": "LOpt-A Our first proposed variant of a locally learned optimizer uses ∆t , the average of the updates from all workers, as an input feature and uses it to compute features along with the optimizer state. This process is analogous to existing learned optimization proposed in Metz et al. (2022a) where the role of the gradient is replaced with ∆t."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "The model is a novel contribution proposed by the authors of the paper.",
+          "quote": "Our first proposed variant of a locally learned optimizer uses ∆t , the average of the updates from all workers, as an input feature and uses it to compute features along with the optimizer state."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model has been empirically evaluated in the paper, hence executed in experiments.",
+          "quote": "Our empirical evaluation is based on standard supervised learning tasks with different dataset and architecture combinations commonly studied in learned optimization literature Metz et al. (2022a)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares this model to other baseline models like Local SGD and SlowMo in terms of performance.",
+          "quote": "Our LOpt-A and LAgg-A outperform strong communication-efficient baselines such as SlowMo and local SGD. They also outperform well tuned standard optimization strategies at equivalent effective batch sizes."
+        },
+        "referenced_paper_title": {
+          "value": "Tasks, Stability, Architecture, and Compute: Training More Effective Learned Optimizers, and Using Them to Train Themselves",
+          "justification": "The design of the learned optimizer is based on the methods proposed in this referenced paper.",
+          "quote": "This process is analogous to existing learned optimization proposed in Metz et al. (2022a) where the role of the gradient is replaced with ∆t."
+        }
+      },
+      {
+        "name": {
+          "value": "LAgg-A",
+          "justification": "LAgg-A is another proposed learned optimizer discussed and evaluated in the paper.",
+          "quote": "LAgg-A Our second locally learned optimizer takes advantage of pre-aggregated information from each worker, specifically it uses all the ∆ (k) as input to the MLP along with the AdaFactor features."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "The model is a novel contribution proposed by the authors of the paper.",
+          "quote": "Our second locally learned optimizer takes advantage of pre-aggregated information from each worker, specifically it uses all the ∆ (k) as input to the MLP along with the AdaFactor features."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model has been empirically evaluated in the paper, hence executed in experiments.",
+          "quote": "Our empirical evaluation is based on standard supervised learning tasks with different dataset and architecture combinations commonly studied in learned optimization literature Metz et al. (2022a)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares this model to other baseline models like Local SGD and SlowMo in terms of performance.",
+          "quote": "Our LOpt-A and LAgg-A outperform strong communication-efficient baselines such as SlowMo and local SGD. They also outperform well tuned standard optimization strategies at equivalent effective batch sizes."
+        },
+        "referenced_paper_title": {
+          "value": "Tasks, Stability, Architecture, and Compute: Training More Effective Learned Optimizers, and Using Them to Train Themselves",
+          "justification": "The design of the learned optimizer is based on the methods proposed in this referenced paper.",
+          "quote": "This variant generalizes our LOpt-A and is potentially more powerful, however, we found that LOpt-A can also perform well while being simpler."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Fashion MNIST",
+          "justification": "The dataset is explicitly used in the paper for evaluating the proposed learned optimizers.",
+          "quote": "We use the Fashion MNIST dataset (10 classes) with full-size 28 × 28 images with 1 channel which we refer to as FMNIST or FMNIST 28 × 28."
+        },
+        "aliases": [
+          "FMNIST",
+          "FMNIST 28 × 28"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Fashion-MNIST: a Novel Image Dataset for Benchmarking Machine Learning Algorithms",
+          "justification": "The paper refers to the original dataset to explain its use in the experiments.",
+          "quote": "We use the Fashion MNIST dataset (10 classes) with full-size 28 × 28 images with 1 channel which we refer to as FMNIST or FMNIST 28 × 28."
+        }
+      },
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "The dataset is explicitly used in the paper for evaluating the proposed learned optimizers.",
+          "quote": "We also use the CIFAR-10 dataset (10 classes) with full-size 32 × 32 images with 3 channels, referred to as CIFAR-10 or CIFAR-10 32 × 32."
+        },
+        "aliases": [
+          "CIFAR-10 32 × 32"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Multiple Layers of Features from Tiny Images",
+          "justification": "The paper refers to the original dataset to explain its use in the experiments.",
+          "quote": "We also use the CIFAR-10 dataset (10 classes) with full-size 32 × 32 images with 3 channels, referred to as CIFAR-10 or CIFAR-10 32 × 32."
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet",
+          "justification": "The dataset is explicitly used in the paper for evaluating the proposed learned optimizers.",
+          "quote": "Finally, we use the ImageNet dataset (1000 classes) with downsampled size 32 × 32 images with 3 channels."
+        },
+        "aliases": [
+          "ImageNet 32 × 32"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ImageNet: A large-scale hierarchical image database",
+          "justification": "The paper refers to the original dataset to explain its use in the experiments.",
+          "quote": "Finally, we use the ImageNet dataset (1000 classes) with downsampled size 32 × 32 images with 3 channels."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "AdamW",
+          "justification": "AdamW optimizer is used in the meta-training phase in the experiments.",
+          "quote": "During meta-training, we used AdamW as our optimizer with a warmup cosine decay schedule."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Decoupled Weight Decay Regularization",
+          "justification": "This reference explains the AdamW optimizer used in the meta-training phase.",
+          "quote": "During meta-training, we used AdamW as our optimizer with a warmup cosine decay schedule."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1723,
+    "prompt_tokens": 12723,
+    "total_tokens": 14446
+  }
+}

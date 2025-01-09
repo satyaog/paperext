@@ -1,0 +1,309 @@
+{
+  "paper": "2312.10114.txt",
+  "words": 11382,
+  "extractions": {
+    "title": {
+      "value": "FoMo-Bench: a multi-modal, multi-scale and multi-task Forest Monitoring Benchmark for remote sensing foundation models",
+      "justification": "The paper's title is provided at the top of the first page.",
+      "quote": "FoMo-Bench: a multi-modal, multi-scale and multi-task Forest Monitoring Benchmark for remote sensing foundation models"
+    },
+    "description": "The authors introduce FoMo-Bench, a benchmark composed of 15 different remote sensing datasets with global coverage. The benchmark is designed for evaluating foundation models on forest monitoring tasks such as land use and land cover (LULC) estimation and tree species identification. Alongside the benchmark, the authors contribute a novel dataset called TalloS, a large-scale, multi-modal, globally distributed dataset focused on tree species multi-label classification. Finally, the authors present a baseline foundation model called FoMo-Net which is trained on FoMo-Bench and open-source satellite data archives. FoMo-Net is a sensor-agnostic foundation model that can process various input settings and can be applied to a wide range of downstream tasks.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents a benchmark and proposes a new model, making it an empirical study.",
+      "quote": "In this work, we propose a framework to evaluate foundation models for forest-monitoring tasks."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Forest Monitoring",
+        "justification": "The main research field is Forest Monitoring, as evidenced by the title and abstract.",
+        "quote": "FoMo-Bench: a multi-modal, multi-scale and multi-task Forest Monitoring Benchmark for remote sensing foundation models"
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [],
+    "models": [
+      {
+        "name": {
+          "value": "FoMo-Net",
+          "justification": "The authors refer to their model as FoMo-Net, and use FoMo-Net1 to denote a specific version.",
+          "quote": "The input to our model, then, is provided as:\\n\\n  t_i(s(X_i)) \\\\oplus \\\\mathbf {S} \\\\oplus \\\\mathbf {P}, \\n\\n(1)\\n\\nwhere S \\\\in RN \\\\times d , P \\\\in RN \\\\times d are respectively the learnt spectral and positional embeddings, and ⊕ denotes the element-wise sum.\\nSpectral band MAE: The next step of the procedure follows a masked autoencoding (MAE) framework [25] that is shared by various high-performing foundation models for remote sensing [8, 16, 23, 28, 52, 60, 62, 67]. However, our method differs from a typical MAE in two key aspects (see Fig. 4). First, we introduce a random spectral band selection by sampling in both D and X, representing the datasets and spectral bands, respectively. This approach promotes modeling interactions between a wide range of band combinations, creating a highly flexible encoder able to process any set of spectral bands. Next, we incorporate both spectral and positional embeddings, allowing the model to capture information regarding the spatial position of the patch and its spectral band,\\nas detailed in Eq. 5. Both types of embeddings are trainable and randomly initialized. Given the randomness in the input space, the spectral embedding is of utmost importance as no other information regarding the nature of the input is provided.\\nBatch gradient accumulation: The combination of the proposed modality sampling and token masking is particularly computationally efficient in contrast to the exhaustive generation and processing of tokens from the entire spectrum of information. However, randomly choosing datasets and spectral bands at each training iteration results in highly heterogeneous batches, potentially destabilizing the optimization process. To address this, the FoMo-Net pre-training process exploits gradient accumulation (see Fig. 4). Letting fθ be a neural network parameterized by θ, and L be a loss gradient is accumulated during PVfunction, the δLv (fθ (Bev ))/δθ , and it is this sum that is V forward passes according to v=0 backpropagated through fθ .\\nFoMo-Net architecture: In this work, our encoder is a vision transformer\\n(ViT) [11] with 12 layers, each with 16 attention heads, and the decoder is a ViT with 8 layers, each with 16 attention heads. We use a spatial patch size of 16×16 pixels. Compared to existing foundation models, FoMo-Net is quite shallow,\\nintended as a first step towards a generic forest-monitoring foundation model,\\nand is designed to be lightweight since most stakeholders implementing forestmonitoring algorithms in practice have very limited computational resources. In particular, FoMo-Net1 contains ≈ 101M parameters while FoMo-Netm ≈ 110M.\\nBoth FoMo-Net versions are pre-trained for 80 epochs."
+        },
+        "aliases": [
+          "FoMo-Net1"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "FoMo-Net is a novel model proposed in this work.",
+          "quote": "Building on FoMo-Bench and inspired by the necessity for a generalized foundation model, we introduce FoMo-Net."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The authors provide the results of FoMo-Net1 on the FoMo-Bench datasets, meaning they executed/ran the model.",
+          "quote": "We evaluate the performance of FoMo-Net using two pretrained backbones,\\nFoMo-Net1 and FoMo-Netm (see Section 5) across a range of semantic segmentation, classification, and object detection tasks"
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The authors compare two different version of FoMo-Net: FoMo-Net1 and FoMo-Netm. They find that FoMo-Net1 performs better overall.",
+          "quote": "It is worth noting that FoMo-Netm performs consistently worse than FoMo-Net1 in all tasks, in stark contrast to the common practice of learning a dedicated linear transformation per sensor."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "This paper introduces FoMo-Net and there is no other referenced paper.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "FoMo-Net",
+          "justification": "The authors refer to their model as FoMo-Net, and use FoMo-Netm to denote a specific version.",
+          "quote": "Our approach is driven by three core considerations. First, it should maximize flexibility to process various input settings, without relying on specific sets of sensory modalities. Second, it should have the capacity to process information and generate meaningful representations for the whole globe. Third, it should be applicable to a wide range of downstream tasks.\\nPre-training data: FoMo-Net pre-training scheme contains rich multi-sensor information, both paired and unpaired, from most parts of the world. In particular, we use the RapidAI4EO dataset as a source of Planet and Sentinel-2 data; TalloS containing DEM, Sentinel-1, and Sentinel-2; SSL4EO-Landsat [58]\\nto acquire global information from Landsat 8 and 9; a combination of all available UAV datasets in FoMo-Bench; and the FiveBillionPixel dataset providing a unique source of Gaofen-2 high resolution satellite imagery.\\nThe datasets used in the FoMo-Net pre-training framework are detailed Dataset Sensors Spatial resolution Sampling weight in Table 2. The proposed framework SSL4EO-Landsat Landsat 8-9 Low 0.2 RapidAI4EO Planet, Sentinel-2 Medium, Low 0.2 is able to process any combination TalloS Sentinel-1, Sentinel-2, DEM Low 0.2 FLAIR #1 Aerial High 0.1 of the 36 most common modalities FiveBillionPixels Gaofen-2 Medium 0.2 UAV-datasets Aerial Very high 0.1 in remote sensing, stemming from Sentinel-1, Sentinel-2, Landsat 8-9,\\nPlanet, Gaofen-2 and UAV sensors Table 2: FoMo-Net pre-training datasets. The proposed pre-training with ground sampling distance spanframework has been experimented with ning from a few centimeters to 60m four satellite-based datasets and four per pixel. In this work, a distinct aerial-based datasets, including three modality is defined as any band with UAV datasets from FoMo-Bench (Waititu,\\na unique combination of wavelength Spekboom and Woody). Their correspondand spatial resolution. Given its im- ing spatial resolution is defined as very high portance in Earth observation, digi- (< 5cm), high (≥ 5cm and < 1m), medium tal elevation models (DEM) are also (≥ 1m and < 10m) or low (≥ 10m). The included in our definition as a spe- sampling weight is based on the frequency cific band. The FoMo-Net pre-training of each source in our pretraining datasets pipeline is illustrated in Figure 4 and and is used for the modality sampling.\\nwill be detailed in the following sections. Additionally, the pseudocode of the pre-training pipeline is summarized in Appendix A.\\nApproach to variable spectral bands: Let D = {D1 , · · · , Dn } be a set of n datasets, and X = {X1 , · · · , Xm } be a set of m spectral bands, where Xi ∈\\nRH×W where H and W represent respectively the height and width dimensions.\\nAt each iteration, a training batch B contains a variable number of spectral bands, each sampled with respective probabilities αi ∈ {α1 , · · · , αm }. In our experiments, we set αi equal to the frequency with which the i-th band occurs in D (see Table 2).\\nEach band Xi is tokenized into N patches of size P according to the transH W\\ntransformation s, so that s(Xi ) ∈ RN ×⌊ P ⌋×⌊ P ⌋ . The tokenized input s(Xi ) is then embedded using a linear transformation ti ∈ {t1 , · · · , tm } learnt during the opW H\\ntimization process as ti : RN ×⌊ P ⌋×⌊ P ⌋ → RN ×d . We considered two projection setups: The first (noted FoMo-Net1 ) uses a single linear projection for all spectral bands, while the second (denoted FoMo-Netm ) projects each spectral band with its own linear projection. Our initial experiments suggest that FoMo-Net1 yields significantly better results."
+        },
+        "aliases": [
+          "FoMo-Netm"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "FoMo-Net is a novel model proposed in this work.",
+          "quote": "Building on FoMo-Bench and inspired by the necessity for a generalized foundation model, we introduce FoMo-Net."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The authors provide the results of FoMo-Netm on the FoMo-Bench datasets, meaning they executed/ran the model.",
+          "quote": "We evaluate the performance of FoMo-Net using two pretrained backbones,\\nFoMo-Net1 and FoMo-Netm (see Section 5) across a range of semantic segmentation, classification, and object detection tasks"
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The authors compare two different version of FoMo-Net: FoMo-Net1 and FoMo-Netm. They find that FoMo-Net1 performs better overall.",
+          "quote": "It is worth noting that FoMo-Netm performs consistently worse than FoMo-Net1 in all tasks, in stark contrast to the common practice of learning a dedicated linear transformation per sensor."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "This paper introduces FoMo-Net and there is no other referenced paper.",
+          "quote": ""
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "TalloS",
+          "justification": "The authors introduce a completely novel dataset, combining Sentinel and ERA-5 data with Tallo, called TalloS. ",
+          "quote": "To improve the geographic diversity of FoMo-Bench, we also propose TalloS,\\na unique, global, multi-modal dataset focused on tree species identification and based on worldwide forest inventories [32]. Each sample included in TalloS combines data acquired from the Sentinel-2 and Sentinel-1 missions, meteorological\\ndata from the ERA-5 dataset and elevation information, and georeferenced tree species information, in the form of a multi-label classification task."
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "Tallo: A global tree allometry and crown architecture database",
+          "justification": "The authors provide a reference to the Tallo dataset, linking to a paper by Jucker et al. 2022 titled \\\"Tallo: A global tree allometry and crown architecture database\\\".",
+          "quote": "Recently, manual forest inventories, including manual measurements of\\ntree height and aboveground biomass, have been aggregated in Tallo [32], a data source that we leverage for machine learning in the present work."
+        }
+      },
+      {
+        "name": {
+          "value": "BigEarthNet-MM",
+          "justification": "The authors state that their benchmark uses BigEarthNet-MM.",
+          "quote": "The BigEarthNet-MM [59]\\nand Sen12MS [57] datasets are two of the most commonly used multi-modal datasets for LULC in remote sensing."
+        },
+        "aliases": [
+          "BigEarthNet"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "BigEarthNet-MM: A large-scale, multi-modal, multi-label benchmark archive for remote sensing image classification and retrieval",
+          "justification": "The authors provide a reference to the BigEarthNet-MM dataset, linking to a paper by Sumbul et al. 2021 titled \\\"BigEarthNet-MM: A large-scale, multi-modal, multi-label benchmark archive for remote sensing image classification and retrieval\\\".",
+          "quote": "The large scale BigEarthNet-MM dataset [59], built from Sentinel-1 and Sentinel-2 data, is designed to assess both performance and training complexity of deep learning methods [47]."
+        }
+      },
+      {
+        "name": {
+          "value": "Sen12MS",
+          "justification": "The authors state that their benchmark uses Sen12MS.",
+          "quote": "The BigEarthNet-MM [59]\\nand Sen12MS [57] datasets are two of the most commonly used multi-modal datasets for LULC in remote sensing."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Sen12MS–a curated dataset of georeferenced multi-spectral sentinel-1/2 imagery for deep learning and data fusion",
+          "justification": "The authors provide a reference to the Sen12MS dataset, linking to a paper by Schmitt et al. 2019 titled \\\"Sen12MS–a curated dataset of georeferenced multi-spectral sentinel-1/2 imagery for deep learning and data fusion\\\".",
+          "quote": "Sen12MS–a curated dataset of georeferenced multi-spectral sentinel-1/2 imagery for deep learning and data fusion."
+        }
+      },
+      {
+        "name": {
+          "value": "RapidAI4EO",
+          "justification": "The authors state that their benchmark uses RapidAI4EO.",
+          "quote": "FoMo-Bench also includes RapidAI4EO [2] as a third LULC dataset with a unique source of high resolution satellite imagery offering timeseries of Planet data,\\nat 3m resolution, for 500,000 locations across Europe."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "RapidAI4EO: Mono-and multi-temporal deep learning models for updating the corine land cover product",
+          "justification": "The authors provide a reference to the RapidAI4EO dataset, linking to a paper by Bhugra et al. titled \\\"RapidAI4EO: Mono-and multi-temporal deep learning models for updating the corine land cover product\\\".",
+          "quote": "Rapidai4eo: Mono-and multi-temporal deep learning models for updating the corine land cover product."
+        }
+      },
+      {
+        "name": {
+          "value": "ForestNet",
+          "justification": "The authors mention the ForestNet dataset is included in the benchmark.",
+          "quote": "The ForestNet dataset [29] aims to identify drivers leading to deforestation and uses Landsat-8 imagery."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ForestNet: Classifying drivers of deforestation in indonesia using deep learning on satellite imagery",
+          "justification": "The authors provide a reference to the ForestNet dataset, linking to a paper by Irvin et al. titled \\\"ForestNet: Classifying drivers of deforestation in indonesia using deep learning on satellite imagery\\\".",
+          "quote": "Forestnet: Classifying drivers of deforestation in indonesia using deep learning on satellite imagery."
+        }
+      },
+      {
+        "name": {
+          "value": "FiveBillionPixels",
+          "justification": "The authors mention the FiveBillionPixels dataset is included in the benchmark.",
+          "quote": "FiveBillionPixels dataset [64] provides high resolution Gaofen-2 images (4m) for LULC of cities in China with 24 categories including 5 forest monitoring classes."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Enabling country-scale land cover mapping with meter-resolution satellite imagery",
+          "justification": "The authors provide a reference to the FiveBillionPixels dataset, linking to a paper by Tong et al. titled \\\"Enabling country-scale land cover mapping with meter-resolution satellite imagery\\\".",
+          "quote": "Enabling country-scale land cover mapping with meter-resolution satellite imagery."
+        }
+      },
+      {
+        "name": {
+          "value": "TreeSatAI",
+          "justification": "The authors state that TreeSatAI is included in their Benchmark.",
+          "quote": "The TreeSatAI dataset [1] offers multi-modal data\\n(e.g. aerial images, SAR and multispectral) for tree species identification, including 20 tree species derived from forest administration data in Lower Saxony,\\nGermany."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "TreeSatAI Benchmark Archive: a multi-sensor, multi-label dataset for tree species classification in remote sensing",
+          "justification": "The authors provide a reference to the TreeSatAI dataset, linking to a paper by Ahlswede et al. titled \\\"TreeSatAI Benchmark Archive: a multi-sensor, multi-label dataset for tree species classification in remote sensing\\\".",
+          "quote": "TreeSatAI Benchmark Archive: a multi-sensor, multi-label dataset for tree species classification in remote sensing."
+        }
+      },
+      {
+        "name": {
+          "value": "NeonTree",
+          "justification": "The authors mention the NeonTree dataset is used for tree crown detection.",
+          "quote": "The NeonTree dataset [68] focuses on tree crown detection with RGB imagery, LiDAR and hyperspectral data recorded from airborne systems. FoMo-Bench includes the NeonTree high resolution RGB imagery (0.1m resolution) along with point cloud LiDAR data."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "A benchmark dataset for individual tree crown delineation in co-registered airborne rgb, lidar and hyperspectral imagery from the national ecological observation network",
+          "justification": "The authors provide a reference to the NeonTree dataset, linking to a paper by Weinstein et al. 2020 titled \\\"A benchmark dataset for individual tree crown delineation in co-registered airborne rgb, lidar and hyperspectral imagery from the national ecological observation network\\\".",
+          "quote": "A benchmark dataset for individual tree crown delineation in co-registered airborne rgb, lidar and hyperspectral imagery from the national ecological observation network."
+        }
+      },
+      {
+        "name": {
+          "value": "Woody",
+          "justification": "The authors mention the Woody dataset is used for detection of several invasive tree species.",
+          "quote": "The Woody dataset [35] is composed of RGB images recorded from an UAV, at several cm resolution, for detection of several invasive tree species in Chile."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Uav data as alternative to field sampling to map woody invasive species based on combined sentinel-1 and sentinel-2 data",
+          "justification": "The authors provide a reference to the Woody dataset, linking to a paper by Kattenborn et al. 2019 titled \\\"Uav data as alternative to field sampling to map woody invasive species based on combined sentinel-1 and sentinel-2 data\\\".",
+          "quote": "Uav data as alternative to field sampling to map woody invasive species based on combined sentinel-1 and sentinel-2 data."
+        }
+      },
+      {
+        "name": {
+          "value": "Spekboom",
+          "justification": "The authors mention the Spekboom dataset is used for mapping tree species.",
+          "quote": "Similarly, the Spekboom [17] and Waititu [33] datasets are composed of RGB images recorded from UAVs to map tree species in South Africa and New Zealand, respectively."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Automated mapping of portulacaria afra canopies for restoration monitoring with convolutional neural networks and heterogeneous unmanned aerial vehicle imagery",
+          "justification": "The authors provide a reference to the Spekboom dataset, linking to a paper by Galuszynski et al. 2022 titled \\\"Automated mapping of portulacaria afra canopies for restoration monitoring with convolutional neural networks and heterogeneous unmanned aerial vehicle imagery\\\".",
+          "quote": "Automated mapping of portulacaria afra canopies for restoration monitoring with convolutional neural networks and heterogeneous unmanned aerial vehicle imagery."
+        }
+      },
+      {
+        "name": {
+          "value": "Waititu",
+          "justification": "The authors mention the Waititu dataset is used for mapping tree species.",
+          "quote": "Similarly, the Spekboom [17] and Waititu [33] datasets are composed of RGB images recorded from UAVs to map tree species in South Africa and New Zealand, respectively."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Convolutional neural networks accurately predict cover fractions of plant species and communities in unmanned aerial vehicle imagery",
+          "justification": "The authors provide a reference to the Waititu dataset, linking to a paper by Kattenborn et al. 2020 titled \\\"Convolutional neural networks accurately predict cover fractions of plant species and communities in unmanned aerial vehicle imagery\\\".",
+          "quote": "Convolutional neural networks accurately predict cover fractions of plant species and communities in unmanned aerial vehicle imagery."
+        }
+      },
+      {
+        "name": {
+          "value": "ReforesTree",
+          "justification": "The authors state that their benchmark uses ReforesTree.",
+          "quote": "In the same vein, the ReforesTree dataset [53] is designed for tree crown detection with 6 classes using high-resolution RGB images recorded from an UAV, as well as ground measurements, such as tree height and diameter at breast height."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Reforestree: A dataset for estimating tropical forest carbon stock with deep learning and aerial imagery",
+          "justification": "The authors provide a reference to the ReforesTree dataset, linking to a paper by Reiersen et al. 2022 titled \\\"Reforestree: A dataset for estimating tropical forest carbon stock with deep learning and aerial imagery\\\".",
+          "quote": "Reforestree: A dataset for estimating tropical forest carbon stock with deep learning and aerial imagery."
+        }
+      },
+      {
+        "name": {
+          "value": "FORinstance",
+          "justification": "The authors state that FORinstance is included in FoMo-Bench.",
+          "quote": "The FORinstance dataset [49] provides a unique source of data with LiDAR point clouds and semantic annotations collected in 5 countries (see Fig. 2a)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "For-instance: a uav laser scanning benchmark dataset for semantic and instance segmentation of individual trees.",
+          "justification": "The authors provide a reference to the FORinstance dataset, linking to a paper by Puliti et al. titled \\\"For-instance: a uav laser scanning benchmark dataset for semantic and instance segmentation of individual trees.\\\"",
+          "quote": "For-instance: a uav laser scanning benchmark dataset for semantic and instance segmentation of individual trees."
+        }
+      },
+      {
+        "name": {
+          "value": "FLAIR #1",
+          "justification": "The authors state that FLAIR #1 is included in FoMo-Bench.",
+          "quote": "Unlike the previous aerial datasets, FLAIR #1 [19, 20]\\nand FLAIR #2 [18, 19] are large-scale datasets testing spatiotemporal generalization."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "FLAIR : a country-scale land cover semantic segmentation dataset from multi-source optical imagery",
+          "justification": "The authors provide references to the FLAIR #1 dataset, linking to papers by Garioud et al. titled \\\"Flair #1: semantic segmentation and domain adaptation dataset\\\" and \\\"FLAIR : a country-scale land cover semantic segmentation dataset from multi-source optical imagery\\\".",
+          "quote": "Flair #1: semantic segmentation and domain adaptation dataset."
+        }
+      },
+      {
+        "name": {
+          "value": "FLAIR #2",
+          "justification": "The authors state that FLAIR #2 is included in FoMo-Bench.",
+          "quote": "Unlike the previous aerial datasets, FLAIR #1 [19, 20]\\nand FLAIR #2 [18, 19] are large-scale datasets testing spatiotemporal generalization."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "FLAIR : a country-scale land cover semantic segmentation dataset from multi-source optical imagery",
+          "justification": "The authors provide references to the FLAIR #2 dataset, linking to papers by Garioud et al. titled \\\"Flair #2: textural and temporal information for semantic segmentation from multisource optical imagery\\\" and \\\"FLAIR : a country-scale land cover semantic segmentation dataset from multi-source optical imagery\\\".",
+          "quote": "Flair #2: textural and temporal information for semantic segmentation from multisource optical imagery."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "cached_content_token_count": 0,
+    "candidates_token_count": 0,
+    "prompt_token_count": 0,
+    "total_token_count": 28614
+  }
+}

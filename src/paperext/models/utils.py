@@ -1,12 +1,21 @@
+import json
+import logging
+import re
 import typing
+import unicodedata
 import warnings
+from pathlib import Path
 
 import pandas as pd
 import yaml
 from pydantic import BaseModel, Field, create_model
 
-from ..utils import split_entry, str_normalize
-from .model import Explained, Model, PaperExtractions
+from paperext import ROOT_DIR
+from paperext.models.model import Explained, PaperExtractions, RefModel
+from paperext.utils import split_entry
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
 
 _MODE_ALIASES = {
     "trained": ["training", "evaluation", "pretraining"],
@@ -114,6 +123,85 @@ _RESEARCH_FIELDS_ALIASES = {
 }
 
 
+def str_normalize(string):
+    string = unicodedata.normalize("NFKC", string).lower()
+    string = re.sub(pattern=r"[\s/_\.\(\),\[\]\{\}-]", string=string, repl="")
+    return string
+
+
+def _refs_category_map(categoried_refs_file: Path, fields: list):
+    fields = [".".join(map(str_normalize, field.split("."))) for field in fields]
+
+    categoried_refs = json.loads(categoried_refs_file.read_text())
+
+    def list_refs(categories: dict):
+        for name, sub_cat in categories.items():
+            name = str_normalize(name)
+            for sub_name in list_refs(sub_cat):
+                yield f"{name}.{sub_name}"
+
+            yield name
+
+    for ref in list_refs(categoried_refs):
+        for field in fields:
+            if ref.startswith(field + ".") or ref == field:
+                yield (ref.split(".")[-1], field)
+                break
+
+
+def _domains_category_map():
+    yield from _refs_category_map(
+        ROOT_DIR / "data/categorized_domains.json",
+        [
+            "abstract_research_topics.computer vision",
+            "abstract_research_topics.graph-based",
+            "abstract_research_topics.natural language processing",
+            "abstract_research_topics.reinforcement learning and decision making.reinforcement learning",
+            "abstract_research_topics",
+            "application_domains",
+            "ignore",
+        ],
+    )
+
+
+def _models_category_map():
+    yield from _refs_category_map(
+        ROOT_DIR / "data/categorized_models.json",
+        [
+            # "algorithms.optimizer",
+            # "algorithms.other algorithms",
+            # "algorithms.reinforcement learning",
+            "algorithms",
+            "classic_ml",
+            "ignore",
+            # "neural networks.attention network",
+            # "neural networks.autoencoder",
+            # "neural networks.bayesian network",
+            # "neural networks.convolutional neural network.ResNet",
+            # "neural networks.convolutional neural network.Very Deep Convolutional Networks",
+            "neural networks.convolutional neural network",
+            "neural networks.diffusion model",
+            # "neural networks.generative adversarial network",
+            "neural networks.generative flow networks",
+            "neural networks.graph neural network",
+            "neural networks.multi layer perceptron",
+            # "neural networks.normalizing flow",
+            "neural networks.recurrent neural network",
+            # "neural networks.transformer.Generative Pre-trained Transformer",
+            # "neural networks.transformer.Vision Transformer",
+            # "neural networks.transformer.bert",
+            "neural networks.transformer",
+            "neural networks",
+        ],
+    )
+
+
+_DOMAINS_CATEGORY_MAP = {domain: category for domain, category in _domains_category_map()}
+_MODELS_CATEGORY_MAP = {model: category for model, category in _models_category_map()}
+
+# assert sorted(_MODELS_FIELD_MAP) == sorted([m for m, _ in _models_field_map()])
+
+
 def _mode_aliases(mode):
     return _MODE_ALIASES.get(mode, mode)
 
@@ -135,7 +223,7 @@ def fix_explained_fields():
 
 
 def model_dump_yaml(model: BaseModel, **kwargs):
-    return yaml.safe_dump(model.model_dump(**kwargs), sort_keys=False, width=120)
+    return yaml.safe_dump(model.model_dump(**kwargs, mode="json"), sort_keys=False, width=120)
 
 
 def model_validate_yaml(model_cls: BaseModel, yaml_data: str, **kwargs):
@@ -237,8 +325,63 @@ def model2df(model: BaseModel):
 
                     paper_references_df[entry_k][(k, i)] = entry_v
 
+    for domain in paper_1d_df["all_research_fields"]:
+        paper_1d_df.setdefault("research_fields_categories", [])
+
+        try:
+            category:str = _DOMAINS_CATEGORY_MAP[domain]
+        except KeyError as e:
+            map_error = e
+            logger.error(map_error, exc_info=True)
+            continue
+
+        if not category.startswith("abstractresearchtopics."):
+            category = "ignore"
+
+        paper_1d_df["research_fields_categories"].append(category)
+
+    map_error = None
+    for group in (
+        "models",
+        "datasets",
+    ):
+        if "name" not in paper_references_df:
+            continue
+
+        if group == "models":
+            _map = _MODELS_CATEGORY_MAP
+            _check = lambda cat: cat.startswith("neuralnetworks.")
+        else:
+            continue
+
+        paper_references_df.setdefault("category", {})
+
+        categories = []
+        name_df = paper_references_df["name"]
+        for (k, i), category in name_df.items():
+            if k != group:
+                continue
+
+            try:
+                _category = category
+                category:str = _map[category]
+            except KeyError as e:
+                map_error = e
+                logger.error(map_error, exc_info=True)
+                continue
+
+            if not _check(category):
+                category = "ignore"
+
+            categories.append(category)
+            paper_references_df["category"][(k, i)] = category
+
+    if map_error:
+        raise map_error
+
     paper_1d_df["sub_research_fields"] = [pd.Series(paper_1d_df["sub_research_fields"])]
     paper_1d_df["all_research_fields"] = [pd.Series(paper_1d_df["all_research_fields"])]
+    paper_1d_df["research_fields_categories"] = [pd.Series(paper_1d_df["research_fields_categories"])]
     paper_1d_df, paper_references_df = (
         pd.DataFrame(paper_1d_df),
         pd.DataFrame(paper_references_df),

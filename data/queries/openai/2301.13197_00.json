@@ -1,0 +1,199 @@
+{
+  "paper": "2301.13197.txt",
+  "words": 12554,
+  "extractions": {
+    "title": {
+      "value": "Unlocking Slot Attention by Changing Optimal Transport Costs",
+      "justification": "This is the exact title provided at the beginning of the paper.",
+      "quote": "Unlocking Slot Attention by Changing Optimal Transport Costs\nYan Zhang * 1 David W. Zhang * 2 Simon Lacoste-Julien 1 3 4 Gertjan J. Burghouts 5 Cees G. M. Snoek 2"
+    },
+    "description": "The paper introduces a new method called MESH (Minimize Entropy of Sinkhorn) to enhance slot attention, a technique used for object-centric modeling in images and videos. By leveraging optimal transport theories, MESH addresses the limitations of traditional slot attention, particularly its inability to handle dynamic numbers of objects due to set-equivariance. The new method shows significant empirical improvements over existing slot attention techniques across multiple benchmarks.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper provides empirical evaluations of the proposed MESH method on multiple datasets and compares the results with existing models.",
+      "quote": "We evaluate our method in slot attention (SA-MESH1 ) on two object detection and two unsupervised object discovery tasks (Section 5). We find that our optimal transport-based variants generally outperform slot attention. Crucially, SA-MESH almost always has the best results—often by a significant margin."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The primary focus of the paper is on improving object-centric modeling in images and videos.",
+        "quote": "Slot attention is a powerful method for objectcentric modeling in images and videos."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Object Detection",
+          "justification": "The paper evaluates the proposed method on object detection tasks, indicating its relevance to this subfield.",
+          "quote": "We evaluate our method in slot attention (SA-MESH1 ) on two object detection and two unsupervised object discovery tasks (Section 5)."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Unsupervised Object Discovery",
+          "justification": "The method is evaluated on unsupervised object discovery tasks, showcasing its application in this subfield.",
+          "quote": "We evaluate our method in slot attention (SA-MESH1 ) on two object detection and two unsupervised object discovery tasks (Section 5)."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "MESH (Minimize Entropy of Sinkhorn)",
+          "justification": "MESH is the novel model introduced and evaluated in the paper.",
+          "quote": "Based on this new perspective we propose MESH (Minimize Entropy of Sinkhorn): a cross-attention module that combines the tiebreaking properties of unregularized optimal transport with the speed of regularized optimal transport."
+        },
+        "aliases": [
+          "SA-MESH"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "MESH is a novel contribution of the paper.",
+          "quote": "Based on this new perspective we propose MESH (Minimize Entropy of Sinkhorn): a cross-attention module that combines the tiebreaking properties of unregularized optimal transport with the speed of regularized optimal transport."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The experiments involving MESH would typically be executed on GPUs due to the computational demands of optimal transport algorithms.",
+          "quote": "We evaluate our method in slot attention (SA-MESH1 ) on two object detection and two unsupervised object discovery tasks (Section 5). We find that our optimal transport-based variants generally outperform slot attention. Crucially, SA-MESH almost always has the best results—often by a significant margin."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "MESH is empirically compared to several other models, including traditional slot attention and variations that use other optimal transport methods.",
+          "quote": "We evaluate slot attention using MESH on multiple object-centric learning benchmarks and find significant improvements over slot attention in every setting."
+        },
+        "referenced_paper_title": {
+          "value": "Object-centric learning with slot attention",
+          "justification": "The original slot attention method, which MESH aims to improve upon, is detailed in the referenced paper.",
+          "quote": "In this paper, we develop a module that enhances cross-attention in order to make the object-centric slot attention exclusively multiset-equivariant, thereby addressing the problems of soft assignments and tiebreaking.\n\nModels that rely on cross-attention, such as slot attention\n(Locatello et al., 2020), can run into this issue when trying to extract objects from images and other data modalities."
+        }
+      },
+      {
+        "name": {
+          "value": "Slot Attention",
+          "justification": "Slot attention is the base method that the proposed MESH model aims to improve.",
+          "quote": "Slot attention is a powerful method for objectcentric modeling in images and videos."
+        },
+        "aliases": [
+          "SA"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Slot attention is not a contribution of this paper; it is the baseline method the paper aims to improve upon.",
+          "quote": "Models that rely on cross-attention, such as slot attention\n(Locatello et al., 2020), can run into this issue when trying to\nextract objects from images and other data modalities."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Slot attention is executed as a baseline and for comparison purposes in the experiments.",
+          "quote": "We evaluate slot attention using MESH on multiple object-centric learning benchmarks and find significant improvements over slot attention in every setting."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Slot attention is one of the primary baselines against which MESH is compared.",
+          "quote": "We evaluate slot attention using MESH on multiple object-centric learning benchmarks and find significant improvements over slot attention in every setting."
+        },
+        "referenced_paper_title": {
+          "value": "Object-centric learning with slot attention",
+          "justification": "The original slot attention method is described in this referenced paper.",
+          "quote": "Models that rely on cross-attention, such as slot attention (Locatello et al., 2020), can run into this issue when trying to extract objects from images and other data modalities."
+        }
+      },
+      {
+        "name": {
+          "value": "Deep Set Prediction Networks",
+          "justification": "Deep Set Prediction Networks are mentioned as currently having the property of exclusive multiset-equivariance, which the paper aims to bring to slot attention.",
+          "quote": "So far, only models from the Deep Set Prediction Networks family\n(Zhang et al., 2019; 2022) are known to have this property."
+        },
+        "aliases": [
+          "DSPN"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Deep Set Prediction Networks are not a contribution of this paper; they are referenced as related work.",
+          "quote": "So far, only models from the Deep Set Prediction Networks family\n(Zhang et al., 2019; 2022) are known to have this property."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The paper does not execute Deep Set Prediction Networks; it only references them.",
+          "quote": "So far,\nonly models from the Deep Set Prediction Networks family\n(Zhang et al., 2019; 2022) are known to have this property."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "Deep Set Prediction Networks are not compared in the experimental results.",
+          "quote": "So far, only models from the Deep Set Prediction Networks family\n(Zhang et al., 2019; 2022) are known to have this property."
+        },
+        "referenced_paper_title": {
+          "value": "Deep set prediction networks",
+          "justification": "This title corresponds to the referenced model family that the paper mentions.",
+          "quote": "So far, only models from the Deep Set Prediction Networks family\n(Zhang et al., 2019; 2022) are known to have this property."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Multi-dSprites",
+          "justification": "Multi-dSprites is explicitly mentioned as a benchmark for evaluating the proposed method.",
+          "quote": "We evaluate our method in slot attention (SA-MESH1 ) on two object detection and two unsupervised object discovery tasks (Section 5)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Multi-object representation learning with iterative variational inference",
+          "justification": "The referenced paper that introduces Multi-dSprites.",
+          "quote": "We evaluate our method in slot attention (SA-MESH1 ) on two object detection and two unsupervised object discovery tasks (Section 5)."
+        }
+      },
+      {
+        "name": {
+          "value": "CLEVR",
+          "justification": "CLEVR is mentioned as one of the datasets used for evaluating object detection tasks.",
+          "quote": "Next, we test SA and our proposed variants on a more realistic object detection task. CLEVR (Johnson et al., 2017) is a synthetic dataset containing images with up to ten objects in a 3d scene."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Clevr: A diagnostic dataset for compositional language and elementary visual reasoning",
+          "justification": "The referenced paper that introduces the CLEVR dataset.",
+          "quote": "CLEVR (Johnson et al., 2017) is a synthetic dataset containing images with up to ten objects in a 3d scene."
+        }
+      },
+      {
+        "name": {
+          "value": "ClevrTex",
+          "justification": "ClevrTex is explicitly mentioned as a benchmark for evaluating the proposed method.",
+          "quote": "Additionally, we test on ClevrTex (Karazija et al., 2021), a synthetic dataset similar to CLEVR that introduces the added challenge of different textures."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Clevrtex: A texture-rich benchmark for unsupervised multi-object segmentation",
+          "justification": "The referenced paper that introduces the ClevrTex dataset.",
+          "quote": "Additionally, we test on ClevrTex (Karazija et al., 2021), a synthetic dataset similar to CLEVR that introduces the added challenge of different textures."
+        }
+      },
+      {
+        "name": {
+          "value": "CLEVRER",
+          "justification": "CLEVRER is used as a video dataset for evaluating object discovery over time.",
+          "quote": "As we mentioned in Section 1, Wu et al. (2022) observed issues with SA when applied to videos where multiple objects can enter the scene. To evaluate our method in this scenario, we build two variants of the CLEVRER video dataset (Yi et al., 2019) where the number of visible objects varies over time."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Clevrer: Collision events for video representation and reasoning",
+          "justification": "The referenced paper that introduces the CLEVRER dataset.",
+          "quote": "we build two variants of the CLEVRER video dataset (Yi et al., 2019) where the number of visible objects varies over time."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 2625,
+    "prompt_tokens": 21330,
+    "total_tokens": 23955
+  }
+}

@@ -1,0 +1,132 @@
+{
+  "paper": "1901.07186.txt",
+  "words": 10915,
+  "extractions": {
+    "title": {
+      "value": "Towards Learning to Imitate from a Single Video Demonstration",
+      "justification": "This is the title of the paper provided in the instruction.",
+      "quote": "Towards Learning to Imitate from a Single Video Demonstration"
+    },
+    "description": "The paper addresses the challenge of enabling reinforcement learning agents to imitate behaviors observed in a single video demonstration without access to the internal state or action information of the observed agent. It introduces a new visual-imitation learning method called VIRL, which uses contrastive training to learn a reward function by comparing the behavior of the agent with a single video demonstration. The method employs a Siamese recurrent neural network architecture and includes innovations like multi-task data integration and additional image encoding losses. The authors demonstrate the effectiveness of their approach on various simulated robot behaviors in both 2D and 3D environments.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents experimental results demonstrating the effectiveness of the proposed visual imitation learning method, VIRL, through various experiments and comparisons with state-of-the-art techniques.",
+      "quote": "We demonstrate our approach on simulated humanoid, dog, and raptor agents in 2D and quadruped and humanoid agents in 3D. We show that our method outperforms current state-of-the-art techniques..."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Imitation Learning",
+        "justification": "The primary focus of the paper is on imitation learning, specifically in the context of enabling reinforcement learning agents to imitate behaviors from video demonstrations.",
+        "quote": "Imitation learning gives an agent the ability to reproduce the behaviours and skills of other agents through demonstrations"
+      },
+      "aliases": [
+        "IL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Reinforcement Learning",
+          "justification": "The paper extensively discusses the application of reinforcement learning techniques to train agents to imitate behaviors observed in video demonstrations.",
+          "quote": "We approach this challenge using contrastive training to learn a reward function by comparing an agent’s behaviour with a single demonstration... while training an RL policy to minimize this distance."
+        },
+        "aliases": [
+          "RL"
+        ]
+      },
+      {
+        "name": {
+          "value": "Computer Vision",
+          "justification": "The paper involves learning from visual data (video demonstrations) to train RL agents, which falls under the domain of computer vision.",
+          "quote": "Our contribution consists of a new visual-imitation learning method for RL based on visual comparisons and the specific architectures and training procedures discussed in more detail throughout the paper."
+        },
+        "aliases": [
+          "CV"
+        ]
+      },
+      {
+        "name": {
+          "value": "Deep Learning Architectures",
+          "justification": "The paper explores the use of neural network architectures such as the Siamese recurrent neural network for the task of visual-imitation learning.",
+          "quote": "We use a Siamese recurrent neural network architecture to learn rewards in space and time between motion clips while training an RL policy to minimize this distance."
+        },
+        "aliases": [
+          "DLA"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Visual-Imitation with Reinforcement Learning (VIRL)",
+          "justification": "VIRL is the main model introduced in this paper for visual-imitation learning from video demonstrations.",
+          "quote": "For many of these imitation tasks, our method “visual-imitation with reinforcement learning” (VIRL) is able to imitate the given skill using only a single observed demonstration."
+        },
+        "aliases": [
+          "VIRL"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The VIRL model is introduced as a novel contribution of this paper.",
+          "quote": "Our contribution consists of a new visual-imitation learning method for RL based on visual comparisons and the specific architectures and training procedures discussed in more detail throughout the paper."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper shows the implementation and experimentation of VIRL in various simulated environments.",
+          "quote": "It takes 5 − 7 days to train each policy in these results on a 16 core machine with an Nvidia GTX1080 GPU."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "VIRL is compared against other methods like GAIfO and TCN in the experimental results.",
+          "quote": "We compare VIRL to two baselines that learn distances in observation space. The first is GAIfO (Torabi et al., 2018b) that trains a GAN to differentiate between images from the demonstration and images from the agent. The other is TCN, an image-to-image only siamese model (Nair et al., 2018).... As a result, the learned reward can often be more sparse, slowing down learning."
+        },
+        "referenced_paper_title": {
+          "value": "Generative Adversarial Imitation from Observation (GAIfO)",
+          "justification": "The comparison model GAIfO is explicitly mentioned in the experiment section.",
+          "quote": "We compare VIRL to two baselines that learn distances in observation space. The first is GAIfO (Torabi et al., 2018b) that trains a GAN to differentiate between images from the demonstration and images from the agent."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CMU Graphics Lab Motion Capture Database",
+          "justification": "The dataset used for the video demonstrations in the paper comes from the CMU Graphics Lab Motion Capture Database.",
+          "quote": "We are using the mocap data from the “CMU Graphics Lab Motion Capture Database” from 2002 (http://mocap.cs.cmu.edu/). To be thorough, we provide the processing at length."
+        },
+        "aliases": [
+          "CMU MoCap"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "CMU Graphics Lab Motion Capture Database",
+          "justification": "The paper directly refers to using this dataset for generating the video demonstrations for the simulated environments.",
+          "quote": "We are using the mocap data from the “CMU Graphics Lab Motion Capture Database” from 2002 (http://mocap.cs.cmu.edu/)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The implementation details and the architecture of the models in the paper indicate the use of a library like PyTorch for construction and training.",
+          "quote": "The majority of the network uses rectified linear unit (ReLU) activations except for the last layer that uses a sigmoid activation. Dropout is used between convolutional layers. The RNN-based model uses a LSTM layer with 128 hidden units, followed by a dense layer of 64 units. The decoder model has the same structure in reverse, with deconvolution in place of convolutional layers."
+        },
+        "aliases": [
+          "torch"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Automatic Differentiation in PyTorch",
+          "justification": "The referenced paper likely covers the same or similar implementation.",
+          "quote": "The majority of the network uses rectified linear unit (ReLU) activations except for the last layer that uses a sigmoid activation. Dropout is used between convolutional layers. The RNN-based model uses a LSTM layer with 128 hidden units, followed by a dense layer of 64 units. The decoder model has the same structure in reverse, with deconvolution in place of convolutional layers."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1417,
+    "prompt_tokens": 18567,
+    "total_tokens": 19984
+  }
+}

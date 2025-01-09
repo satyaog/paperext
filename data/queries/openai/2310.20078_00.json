@@ -1,0 +1,117 @@
+{
+  "paper": "2310.20078.txt",
+  "words": 8382,
+  "extractions": {
+    "title": {
+      "value": "TorchProbe: Fuzzing Dynamic Deep Learning Compilers",
+      "justification": "The title is found at the beginning of the paper.",
+      "quote": "TorchProbe: Fuzzing Dynamic Deep Learning Compilers"
+    },
+    "description": "The paper proposes a novel fuzzing framework called TorchProbe designed for dynamic deep learning compilers. Through several code transformations, it generates test cases that include dynamic features such as control flows, in-place tensor mutation, list comprehension, and nested functions. The paper reports the identification of twenty previously unknown bugs in the PyTorch compiler and its underlying tensor compiler Triton.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper reports the implementation and evaluation of a fuzzing framework, including the discovery of unknown bugs.",
+      "quote": "Through our approach, we have successfully identified twenty previously unknown bugs in the PyTorch compiler and its underlying tensor compiler Triton."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Software Engineering for Deep Learning",
+        "justification": "The paper focuses on testing and debugging of deep learning compilers, which is a concern of software engineering in deep learning.",
+        "quote": "Static and dynamic computational graphs represent two distinct approaches to constructing deep learning frameworks. The former prioritizes compiler-based optimizations, while the latter focuses on programmability and user-friendliness."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Deep Learning Compilers",
+          "justification": "The paper explicitly focuses on the testing of deep learning compilers like PyTorch and Triton.",
+          "quote": "The newly released PyTorch 2.0 includes a compiler component that facilitates the automatic optimization of any Python code through a simple API called torch.compile."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Fuzz Testing",
+          "justification": "The paper introduces a fuzzing framework for testing dynamic deep learning compilers.",
+          "quote": "To bridge this gap, we present a novel fuzzing framework called TorchProbe."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The paper discusses the PyTorch compiler and its underlying components extensively.",
+          "quote": "The newly released PyTorch 2.0 includes a compiler component that facilitates the automatic optimization of any Python code through a simple API called torch.compile."
+        },
+        "aliases": [
+          "TorchScript",
+          "Torch.fx",
+          "TorchDynamo"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "PyTorch is used as the target deep learning compiler for testing but is not a new model introduced by this paper.",
+          "quote": "The newly released PyTorch 2.0 includes a compiler component that facilitates the automatic optimization of any Python code through a simple API called torch.compile."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper discusses the performance improvements and bug identification processes that involve executing the PyTorch model.",
+          "quote": "TorchDynamo now supports many backend compilers including TorchInductor, TVM [12], TensorRT [56], and ONNX [5]. The official backend compiler is TorchInductor, which can generate high-performance CPU kernels, or relies on the Triton [53] intermediate language to generate GPU kernels."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper identifies bugs by comparing the execution of PyTorch code under normal and optimized conditions.",
+          "quote": "A correctly implemented compiler should guarantee that the optimized code should generate the same output as the original code."
+        },
+        "referenced_paper_title": {
+          "value": "PyTorch: An imperative style, high-performance deep learning library",
+          "justification": "The original reference paper where PyTorch was introduced.",
+          "quote": "Paszke, A., Gross, S., Massa, F., Lerer, A., Bradbury, J., Chanan, G., Killeen, T., Lin, Z., Gimelshein, N., Antiga, L., et al.: Pytorch: An imperative style, high-performance deep learning library. Advances in neural information processing systems 32 (2019)"
+        }
+      }
+    ],
+    "datasets": [],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is mentioned multiple times as the primary library used in the study.",
+          "quote": "The newly released PyTorch 2.0 includes a compiler component that facilitates the automatic optimization of any Python code through a simple API called torch.compile."
+        },
+        "aliases": [
+          "TorchScript",
+          "Torch.fx",
+          "TorchDynamo"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An imperative style, high-performance deep learning library",
+          "justification": "This is the main paper describing PyTorch.",
+          "quote": "Paszke, A., Gross, S., Massa, F., Lerer, A., Bradbury, J., Chanan, G., Killeen, T., Lin, Z., Gimelshein, N., Antiga, L., et al.: Pytorch: An imperative style, high-performance deep learning library. Advances in neural information processing systems 32 (2019)."
+        }
+      },
+      {
+        "name": {
+          "value": "Triton",
+          "justification": "The paper reports on the use and bug identification within the Triton compiler, an underlying component of PyTorch.",
+          "quote": "we present a novel fuzzing framework called TorchProbe. ... we have identified a total of twenty bugs in the PyTorch compiler and its underlying tensor compiler Triton."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Triton: an intermediate language and compiler for tiled neural network computations",
+          "justification": "This is the primary paper describing the Triton compiler.",
+          "quote": "Tillet, P., Kung, H.T., Cox, D.: Triton: an intermediate language and compiler for tiled neural network computations. In: Proceedings of the 3rd ACM SIGPLAN International Workshop on Machine Learning and Programming Languages. pp. 10–19 (2019)"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1161,
+    "prompt_tokens": 14604,
+    "total_tokens": 15765
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "paper": "2308.10984.txt",
+  "words": 3931,
+  "extractions": {
+    "title": {
+      "value": "Debiasing Counterfactuals In the Presence of Spurious Correlations",
+      "justification": "The exact title as given in the user's submission",
+      "quote": "Debiasing Counterfactuals In the Presence of\nSpurious Correlations"
+    },
+    "description": "The paper introduces an end-to-end training framework that integrates debiasing classifiers and counterfactual image generation to expose and mitigate the effects of spurious correlations in medical imaging classification tasks. It also proposes a novel metric called Spurious Correlation Latching Score (SCLS) to quantify classifier reliance on spurious correlations.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper primarily deals with experiments conducted on datasets to test the proposed framework and metric.",
+      "quote": "Through comprehensive experiments on\ntwo public datasets (with the simulated and real visual artifacts), we\ndemonstrate that the debiasing method: (i) learns generalizable markers\nacross the population, and (ii) successfully ignores spurious correlations\nand focuses on the underlying disease pathology."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The paper deals with classification tasks based on medical imaging and mitigating biases in the visual data.",
+        "quote": "Deep learning models can perform well in complex medical imaging classification tasks..."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Explainability",
+          "justification": "The paper deals with explainability techniques to expose spurious correlations in the dataset.",
+          "quote": "Explainability based on counterfactual image generation can be used to expose the confounders..."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Debiasing",
+          "justification": "The framework integrates debiasing classifiers to avoid relying on spurious correlations.",
+          "quote": "we introduce the first end-to-end training framework that integrates both (i) popular debiasing classifiers (e.g. distributionally\nrobust optimization (DRO)) to avoid latching onto the spurious correlations..."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "ERM (Empirical Risk Minimization)",
+          "justification": "ERM is mentioned as the baseline classifier which has problems with latching on to spurious correlations.",
+          "quote": "A classifier based on a standard\noptimization technique, empirical risk minimization (ERM), incorrectly indicates the medical device as a disease marker, as depicted by the counterfactual (CF)."
+        },
+        "aliases": [
+          "ERM"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "ERM is used as a baseline model in the paper, not contributed.",
+          "quote": "A classifier based on a standard\noptimization technique, empirical risk minimization (ERM), incorrectly indicates the medical device as a disease marker, as depicted by the counterfactual\n(CF)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "ERM was used in the experiments to show its limitations in handling spurious correlations.",
+          "quote": "A classifier based on a standard\noptimization technique, empirical risk minimization (ERM), incorrectly indicates the medical device as a disease marker, as depicted by the counterfactual\n(CF)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "ERM is compared with the DRO classifier in terms of performance and reliance on spurious correlations.",
+          "quote": "A classifier based on a standard\noptimization technique, empirical risk minimization (ERM), incorrectly indicates the medical device as a disease marker, as depicted by the counterfactual\n(CF)."
+        },
+        "referenced_paper_title": {
+          "value": "Principles of risk minimization for learning theory",
+          "justification": "The original ERM algorithm was introduced in this paper.",
+          "quote": "Principles of risk minimization for learning theory"
+        }
+      },
+      {
+        "name": {
+          "value": "Group-DRO (Distributionally Robust Optimization)",
+          "justification": "Group-DRO is the debiasing classifier proposed in the paper to mitigate the effects of spurious correlations.",
+          "quote": "propose replacing ERM with a popular debiasing method,\nGroup-DRO (distributional robust optimization). This permits the classifier to\nfocus on the pathological image markers of the disease rather than on spurious\ncorrelation(s)."
+        },
+        "aliases": [
+          "Group-DRO"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Group-DRO is used in the paper but not introduced here for the first time.",
+          "quote": "propose replacing ERM with a popular debiasing method,\nGroup-DRO (distributional robust optimization). This permits the classifier to\nfocus on the pathological image markers of the disease rather than on spurious\ncorrelation(s)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Group-DRO was used in the experiments to show its effectiveness in handling spurious correlations.",
+          "quote": "propose replacing ERM with a popular debiasing method,\nGroup-DRO (distributional robust optimization). This permits the classifier to\nfocus on the pathological image markers of the disease rather than on spurious\ncorrelation(s)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Group-DRO is compared with ERM to demonstrate its advantages in avoiding spurious correlations.",
+          "quote": "propose replacing ERM with a popular debiasing method,\nGroup-DRO (distributional robust optimization). This permits the classifier to\nfocus on the pathological image markers of the disease rather than on spurious\ncorrelation(s)."
+        },
+        "referenced_paper_title": {
+          "value": "Distributionally robust neural networks for group shifts: On the importance of regularization for worst-case generalization",
+          "justification": "The original Group-DRO algorithm was introduced in this paper.",
+          "quote": "Distributionally robust neural networks for group shifts: On the importance of regularization for worst-case generalization"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "RSNA Pneumonia Detection Challenge",
+          "justification": "This dataset was used in the experiments to add synthetic artifacts and test the classifiers.",
+          "quote": "Extensive experiments are performed on two\ndifferent publicly available datasets - (i) RSNA Pneumonia Detection Challenge"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "RSNA Pneumonia Detection Challenge",
+          "justification": "The dataset itself is named after this challenge.",
+          "quote": "RSNA Pneumonia Detection Challenge"
+        }
+      },
+      {
+        "name": {
+          "value": "CheXpert",
+          "justification": "The CheXpert dataset was used for real-world artifacts in the experiments.",
+          "quote": "Extensive experiments are performed on two\ndifferent publicly available datasets - (ii) CheXpert"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "CheXpert: A large chest radiograph dataset with uncertainty labels and expert comparison",
+          "justification": "This is the original paper introducing the CheXpert dataset.",
+          "quote": "CheXpert: A large chest radiograph dataset with uncertainty labels and expert comparison"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "CycleGAN",
+          "justification": "CycleGAN was used to adapt the counterfactual image generation in their experiments.",
+          "quote": "We adapted Cycle-GAN [25] as the generative\nmodel for counterfactual image generation, chosen for its strong performance\nacross a variety of domains"
+        },
+        "aliases": [
+          "Cycle-GAN"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Unpaired image-to-image translation using cycle-consistent adversarial networks",
+          "justification": "This is the original paper introducing CycleGAN.",
+          "quote": "Unpaired image-to-image translation using cycle-consistent adversarial networks"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1502,
+    "prompt_tokens": 7697,
+    "total_tokens": 9199
+  }
+}

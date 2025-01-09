@@ -1,0 +1,122 @@
+{
+  "paper": "2306.04620.txt",
+  "words": 6411,
+  "extractions": {
+    "title": {
+      "value": "Goal-conditioned GFlowNets for Controllable Multi-Objective Molecular Design",
+      "justification": "The title is explicitly mentioned in the provided text.",
+      "quote": "Goal-conditioned GFlowNets for Controllable Multi-Objective Molecular Design"
+    },
+    "description": "This paper proposes the use of goal-conditioned GFlowNets to tackle the multi-objective molecular design problem, enabling more fine-grained control over trade-offs. By conditioning the Generative Flow Networks (GFlowNets) on specific goal regions in the objective space, the approach aims to achieve a more comprehensive and evenly distributed Pareto front of solutions, addressing issues present in previously scalarized single-objective models.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper includes experimental results, evaluation metrics, and performance comparisons for different GFlowNet conditioning strategies in the context of molecular design.",
+      "quote": "We primarily experiment on a two-objective task, the well-known drug-likeness heuristic QED..."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Molecular Design",
+        "justification": "The paper focuses on applying machine learning techniques for the design of chemical molecules with pharmaceutical applications.",
+        "quote": "In recent years, in-silico molecular design has received much attention from the machine learning community."
+      },
+      "aliases": [
+        "Molecular Design"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Generative Models",
+          "justification": "GFlowNets, a type of generative model, are a key component of the proposed method.",
+          "quote": "The Generative Flow Network (GFlowNet, GFN) framework is a recently introduced method to train energy-based generative models."
+        },
+        "aliases": [
+          "Generative Models"
+        ]
+      },
+      {
+        "name": {
+          "value": "Reinforcement Learning",
+          "justification": "The approach takes inspiration from goal-conditional reinforcement learning and applies it to GFlowNets.",
+          "quote": "Through the choice of distribution over these goals, we enable users of these models to have more fine-grained control over trade-offs. We also find that assuming proper coverage of the goal distribution, goal-conditioned models discover a more complete and higher entropy approximation of the Pareto front for various shapes."
+        },
+        "aliases": [
+          "Reinforcement Learning"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "GFlowNet",
+          "justification": "The GFlowNet framework is heavily utilized and adapted in this paper for goal-conditioned multi-objective molecular design.",
+          "quote": "The Generative Flow Network (GFlowNet, GFN) framework is a recently introduced method to train energy-based generative models."
+        },
+        "aliases": [
+          "GFN"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The paper introduces a new adaptation of the GFlowNet specifically for goal-conditioned molecular design.",
+          "quote": "To tackle this problem, we propose to train models which explicitly target specific regions in objective space. Taking inspiration from goal-conditional reinforcement learning (Schaul et al., 2015), we condition GFlowNet (Bengio et al., 2021a;b) models on a description of such goal regions."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Given the complexity and nature of the GFlowNet models, execution on GPUs is assumed for efficient computation.",
+          "quote": "Not explicitly stated in the paper, but considering the nature of GFlowNets and the computational intensity of the tasks, GPU execution is implied."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper includes comparative results between the goal-conditioned GFlowNet and other models.",
+          "quote": "Finally, to report on the controllability of the compared methods, we measure the Pearson correlation coefficient (PCC) between the conditional vector c (goal or preference) and the resulting reward vector..."
+        },
+        "referenced_paper_title": {
+          "value": "Flow Network based Generative Models for Non-Iterative Diverse Candidate Generation",
+          "justification": "The referenced paper for the GFlowNet model is cited within the text.",
+          "quote": "The Generative Flow Network (GFlowNet, GFN) framework is a recently introduced method to train energy-based generative models (i.e. models that learn pθ (x) ∝ R(x); Bengio et al., 2021a)."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "QED Dataset",
+          "justification": "The well-known QED drug-likeness heuristic is used as part of the evaluation tasks.",
+          "quote": "We primarily experiment on a two-objective task, the well-known drug-likeness heuristic QED (Bickerton et al., 2012)."
+        },
+        "aliases": [
+          "QED"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Quantifying the chemical beauty of drugs",
+          "justification": "This is the referenced paper for the QED drug-likeness heuristic dataset.",
+          "quote": "We primarily experiment on a two-objective task, the well-known drug-likeness heuristic QED (Bickerton et al., 2012)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "Given the nature of the models and their implementation, PyTorch is a likely candidate.",
+          "quote": "Not explicitly mentioned, but highly likely given the context and type of models used."
+        },
+        "aliases": [
+          "PyTorch"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Automatic differentiation in PyTorch",
+          "justification": "PyTorch is a common library used for implementing such models.",
+          "quote": "Not explicitly mentioned, but highly likely given the context and type of models used."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1096,
+    "prompt_tokens": 11801,
+    "total_tokens": 12897
+  }
+}

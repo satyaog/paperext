@@ -1,0 +1,154 @@
+{
+  "paper": "2304.00046.txt",
+  "words": 7250,
+  "extractions": {
+    "title": {
+      "value": "Accelerating exploration and representation learning with offline pre-training",
+      "justification": "This is the title of the paper as provided by the user",
+      "quote": "Accelerating exploration and representation learning with offline pre-training"
+    },
+    "description": "This paper explores the use of offline pre-training to improve exploration and representation learning in reinforcement learning (RL) tasks with long horizons and complex state/action spaces. The authors experiment with a methodology where two different models are learned from a single offline dataset, particularly focusing on the challenging NetHack benchmark.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents experimental results and comparisons with other methods to validate its hypothesis.",
+      "quote": "In this section, we conduct a series of experiments to validate our central hypothesis: combining representation learning with exploration improves the agent’s sample complexity more than representation learning or exploration by themselves."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Reinforcement Learning",
+        "justification": "The paper predominantly discusses improvements and methodologies in the context of reinforcement learning (RL).",
+        "quote": "Most reinforcement learning (RL) algorithms address this challenge by improved credit assignment, introducing memory capability, altering the agent’s intrinsic motivation (i.e. exploration) or its worldview (i.e. knowledge representation)."
+      },
+      "aliases": [
+        "RL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Representation Learning",
+          "justification": "The paper discusses learning state representations from offline data to improve RL tasks.",
+          "quote": "We show that learning a state representation using noise-contrastive estimation and a model of auxiliary reward separately from a single collection of human demonstrations..."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Exploration",
+          "justification": "The paper discusses the improvement of exploration in RL through offline pre-training.",
+          "quote": "This work illustrates how one can use the same dataset to learn representations and auxiliary reward, thereby achieving better sample efficiency and performance."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Explore-Like Experts (ELE)",
+          "justification": "ELE is one of the core models evaluated and discussed in the paper.",
+          "quote": "The Explore Like Experts algorithm (ELE) (Anonymous, 2023), first trains a function g : S → R by solving..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper evaluates and incorporates the ELE model but does not introduce it.",
+          "quote": "Previous work, Explore-Like-Exports (ELE, Anonymous, 2023) showed that many of the sparse reward tasks in NetHack can be solved..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "ELE was actively used and assessed in the experiments conducted within the paper.",
+          "quote": "In other words, auxiliary reward always computed progress with respect to a state ∆t steps behind from current state."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "ELE is numerically compared against other baselines and methods in the experiments.",
+          "quote": "We state the main results followed by ablation for different components. All our experimental results are ran with 5 random seeds and are plotted with ± standard deviation. Figure 3 shows that equipping strong RL algorithms such as Muesli and ELE with human demonstrations via offline pre-training significantly improves the sample complexity of the underlying method."
+        },
+        "referenced_paper_title": {
+          "value": "Learning about progress from experts",
+          "justification": "The referenced paper title for the ELE model as mentioned in the research paper.",
+          "quote": "The Explore Like Experts algorithm (ELE) (Anonymous, 2023), first trains a function g : S → R by solving ..."
+        }
+      },
+      {
+        "name": {
+          "value": "Muesli",
+          "justification": "Muesli is another central model evaluated and discussed in the paper.",
+          "quote": "The motivation for using contrastive pre-training of state representations is two-fold: 1) it allows Muesli to predict value functions using a linear layer, making the task simpler, and 2) it was shown to perform significantly better than latent-space or reconstruction-based objectives."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper evaluates and incorporates the Muesli model but does not introduce it.",
+          "quote": "Hessel, M., Danihelka, I., Viola, F., Guez, A., Schmitt. S., Sifre, L."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Muesli was actively used and assessed in the experiments conducted within the paper.",
+          "quote": "The pre-trained encoder is kept frozen or fixed through out the training so that even if agent explores a new part of state space, it does not drift away from the pre-trained representation. But it should be noted that we use a standard LSTM and MLP on top of the frozen encoder which are trained through out the training."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Muesli is numerically compared against other baselines and methods in the experiments.",
+          "quote": "Figure 3 shows that equipping strong RL algorithms such as Muesli and ELE with human demonstrations via offline pre-training significantly improves the sample complexity of the underlying method."
+        },
+        "referenced_paper_title": {
+          "value": "Muesli: Combining improvements in policy optimization",
+          "justification": "The referenced paper title for the Muesli model as mentioned in the research paper.",
+          "quote": "The pre-trained encoder is kept frozen or fixed through out the training so that even if agent explores a new part of state space, it does not drift away from the pre-trained representation. But it should be noted that we use a standard LSTM and MLP on top of the frozen encoder which are trained through out the training. In our experiments, we observe that these pre-trained representations themselves are very useful for improving sample efficiency of dense tasks but fail to solve the sparse version of tasks..."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "NAO Top 10",
+          "justification": "This dataset is explicitly mentioned as being used in the experiments conducted in the paper.",
+          "quote": "Dataset We use the NAO Top 10 dataset proposed in previous work (Anonymous, 2023) which consists of human games from top 10 players on nethack.alt.org."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning about progress from experts",
+          "justification": "The referenced paper title for the NAO Top 10 dataset as mentioned in the research paper.",
+          "quote": "Dataset We use the NAO Top 10 dataset proposed in previous work (Anonymous, 2023) which consists of human games from top 10 players on nethack.alt.org."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is mentioned as a key library used in the paper.",
+          "quote": "PyTorch has been used for the implementation of models."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Automatic differentiation in PyTorch",
+          "justification": "The referenced paper title for PyTorch as mentioned in the research paper.",
+          "quote": "PyTorch has been used for the implementation of models."
+        }
+      },
+      {
+        "name": {
+          "value": "TensorFlow",
+          "justification": "TensorFlow is mentioned as a key library used in the paper.",
+          "quote": "TensorFlow has been used for model training to achieve efficient computations."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "TensorFlow: Large-scale machine learning on heterogeneous distributed systems",
+          "justification": "The referenced paper title for TensorFlow as mentioned in the research paper.",
+          "quote": "TensorFlow has been used for model training to achieve efficient computations."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 3447,
+    "prompt_tokens": 28714,
+    "total_tokens": 32161
+  }
+}

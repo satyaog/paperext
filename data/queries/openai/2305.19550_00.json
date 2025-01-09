@@ -1,0 +1,311 @@
+{
+  "paper": "2305.19550.txt",
+  "words": 7481,
+  "extractions": {
+    "title": {
+      "value": "Spotlight Attention: Robust Object-Centric Learning With a Spatial Locality Prior",
+      "justification": "The title is mentioned at the top of the provided paper excerpt.",
+      "quote": "Spotlight Attention: Robust Object-Centric Learning With a Spatial Locality Prior"
+    },
+    "description": "The paper introduces a spatial locality prior (SLP) to enhance object-centric vision models, particularly in segmenting objects in both synthetic and real-world datasets. The SLP mimics human visual attention by encouraging slots to select spatially contiguous patches in an image, leading to improved object segmentation and robustness to hyperparameter selection.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents experiments and results obtained from incorporating the spatial locality prior in various object-centric models and datasets.",
+      "quote": "We show consistent improvements in the quality of object representations for three object-centric architectures, eight distinct data sets, both synthetic and natural, and multiple different performance measures that have been used in the literature."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The paper focuses on object-centric representation learning, which is a subfield of computer vision.",
+        "quote": "The aim of object-centric vision is to construct an explicit representation of the objects in a scene."
+      },
+      "aliases": [
+        "Computer Vision"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Object-Centric Learning",
+          "justification": "The paper specifically addresses issues and enhancements in object-centric learning.",
+          "quote": "We incorporate a spatial-locality prior into state-of-the-art object-centric vision models and obtain significant improvements in segmenting objects in both synthetic and real-world datasets."
+        },
+        "aliases": [
+          "OCL"
+        ]
+      },
+      {
+        "name": {
+          "value": "Attention Mechanisms",
+          "justification": "The paper introduces a spatial locality prior as a form of attention mechanism to improve object segmentation.",
+          "quote": "Our method is the first to use spatial constraints to steer the slot-pixel assignment with no supervision."
+        },
+        "aliases": [
+          "Attention"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Slot Attention",
+          "justification": "Slot Attention is one of the primary models augmented with the Spatial Locality Prior (SLP).",
+          "quote": "For synthetic datasets, we focus on the task of Object Discovery, which is to produce a set of masks that cover each of the objects that appear in the image. We first isolate the effect of SLP through experimenting with vanilla Slot Attention [Locatello et al., 2020] on CLEVR6 [Johnson et al., 2016]."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The Slot Attention model was not introduced in this paper but was used as a base model.",
+          "quote": "For synthetic datasets, we focus on the task of Object Discovery, which is to produce a set of masks that cover each of the objects that appear in the image. We first isolate the effect of SLP through experimenting with vanilla Slot Attention [Locatello et al., 2020] on CLEVR6 [Johnson et al., 2016]."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The Slot Attention model was executed with the Spatial Locality Prior on various datasets.",
+          "quote": "For synthetic datasets, we focus on the task of Object Discovery, which is to produce a set of masks that cover each of the objects that appear in the image. We first isolate the effect of SLP through experimenting with vanilla Slot Attention [Locatello et al., 2020] on CLEVR6 [Johnson et al., 2016]."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Slot Attention was compared with other models and its variants in the paper.",
+          "quote": "We show that SLP works for other variants of Slot Attention, we examine BO-QSA [Jia et al., 2023] on ShapeStacks, ObjectsRoom, and ClevrTex datasets. We primarily focus on Foreground-ARI (FG-ARI) [Hubert and Arabie, 1985] as our dependent measure of performance."
+        },
+        "referenced_paper_title": {
+          "value": "Object-centric learning with slot attention",
+          "justification": "The reference paper for Slot Attention is cited in this paper.",
+          "quote": "We show that SLP works for other variants of Slot Attention, we examine BO-QSA [Jia et al., 2023] on ShapeStacks, ObjectsRoom, and ClevrTex datasets. We primarily focus on Foreground-ARI (FG-ARI) [Hubert and Arabie, 1985] as our dependent measure of performance."
+        }
+      },
+      {
+        "name": {
+          "value": "BO-QSA",
+          "justification": "BO-QSA is one of the models tested with the Spatial Locality Prior in this paper.",
+          "quote": "We show that SLP works for other variants of Slot Attention, we examine BO-QSA [Jia et al., 2023] on ShapeStacks, ObjectsRoom, and ClevrTex datasets. We primarily focus on Foreground-ARI (FG-ARI) [Hubert and Arabie, 1985] as our dependent measure of performance."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The BO-QSA model was not introduced in this paper but was tested with the Spatial Locality Prior.",
+          "quote": "We show that SLP works for other variants of Slot Attention, we examine BO-QSA [Jia et al., 2023] on ShapeStacks, ObjectsRoom, and ClevrTex datasets. We primarily focus on Foreground-ARI (FG-ARI) [Hubert and Arabie, 1985] as our dependent measure of performance."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The BO-QSA model was executed with the Spatial Locality Prior in this paper.",
+          "quote": "In Table 3, we show that SLP allows an under-parameterized Slot Attention with 7 slots to match the 11 slot baseline. Additionally, the improvement on the 7 slot experiment is robust as a two-tailed t-test yielded t(3) = 3.61, p = .02."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of BO-QSA was compared with and without the Spatial Locality Prior.",
+          "quote": "The CSP’s loss consists of two terms. First, a penalty is imposed to the degree that each pair of slots fail to have spatially distinct attentional profiles as characterized by a distance measure summed over slot pairs:… Ldistinct is designed to push apart the slot means (the numerator term) relative to the intra-slot variance (the denominator term)."
+        },
+        "referenced_paper_title": {
+          "value": "Improving object-centric learning with query optimization",
+          "justification": "The reference paper for BO-QSA is cited in this paper.",
+          "quote": "We show that SLP works for other variants of Slot Attention, we examine BO-QSA [Jia et al., 2023] on ShapeStacks, ObjectsRoom, and ClevrTex datasets."
+        }
+      },
+      {
+        "name": {
+          "value": "DINOSAUR",
+          "justification": "DINOSAUR is one of the models that was enhanced with the Spatial Locality Prior and tested in this paper.",
+          "quote": "We refer to the base models (Slot Attention, BO-QSA, and DINOSAUR) augmented with the spatial-locality prior (hereafter, SLP) by adding the modifier ‘+SLP’ to the name."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The DINOSAUR model was not introduced in this paper, it was used as a base model for testing the Spatial Locality Prior.",
+          "quote": "All comparisons we report use a given base model with and without SLP for highly controlled experimentation. Here, we include details about our datasets, architectural decisions, and evaluation methods,..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The DINOSAUR model was executed with the Spatial Locality Prior in the paper.",
+          "quote": "We refer to the base models (Slot Attention, BO-QSA, and DINOSAUR) augmented with the spatial-locality prior (hereafter, SLP) by adding the modifier ‘+SLP’ to the name."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The DINOSAUR model was compared with and without the Spatial Locality Prior.",
+          "quote": "We refer to the base models (Slot Attention, BO-QSA, and DINOSAUR) augmented with the spatial-locality prior (hereafter, SLP) by adding the modifier ‘+SLP’ to the name."
+        },
+        "referenced_paper_title": {
+          "value": "Bridging the Gap to Real-World Object-Centric Learning",
+          "justification": "The reference paper for DINOSAUR is cited in the provided paper.",
+          "quote": "In the experiments conducted in Section 4.1.3, we built upon the open-source implementation provided by Seitzer et al. [2023]."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CLEVR6",
+          "justification": "The CLEVR6 dataset was used for evaluating the performance of the Slot Attention model with the Spatial Locality Prior.",
+          "quote": "We first isolate the effect of SLP through experimenting with vanilla Slot Attention [Locatello et al., 2020] on CLEVR6 [Johnson et al., 2016]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Clevr: A diagnostic dataset for compositional language and elementary visual reasoning",
+          "justification": "The referenced paper for CLEVR6 is about the CLEVR dataset.",
+          "quote": "We first isolate the effect of SLP through experimenting with vanilla Slot Attention [Locatello et al., 2020] on CLEVR6 [Johnson et al., 2016]."
+        }
+      },
+      {
+        "name": {
+          "value": "ObjectsRoom",
+          "justification": "The ObjectsRoom dataset was used to evaluate the Slot Attention and BO-QSA models.",
+          "quote": "We show that SLP works for other variants of Slot Attention, we examine BO-QSA [Jia et al., 2023] on ShapeStacks, ObjectsRoom, and ClevrTex datasets."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Multi-Object Datsets",
+          "justification": "The reference paper for the ObjectsRoom dataset is provided.",
+          "quote": "We show that SLP works for other variants of Slot Attention, we examine BO-QSA [Jia et al., 2023] on ShapeStacks, ObjectsRoom, and ClevrTex datasets."
+        }
+      },
+      {
+        "name": {
+          "value": "MultidSprites",
+          "justification": "The MultidSprites dataset was used for evaluating the Slot Attention model with the Spatial Locality Prior.",
+          "quote": "Slot Attention + SLP yields improvements on MultidSprites."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "MONet: Unsupervised Scene Decomposition and Representation",
+          "justification": "The referenced paper for the MultidSprites dataset is provided in the list of references in the paper.",
+          "quote": "Slot Attention + SLP yields improvements on MultidSprites."
+        }
+      },
+      {
+        "name": {
+          "value": "ShapeStacks",
+          "justification": "The ShapeStacks dataset was used to evaluate the Slot Attention and BO-QSA models with and without the Spatial Locality Prior.",
+          "quote": "We show that SLP works for other variants of Slot Attention, we examine BO-QSA [Jia et al., 2023] on ShapeStacks, ObjectsRoom, and ClevrTex datasets."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ShapeStacks: Learning Vision-Based Physical Intuition for Generalized Object Stacking",
+          "justification": "The reference paper for the ShapeStacks dataset is listed among the references in the provided text.",
+          "quote": "We show that SLP works for other variants of Slot Attention, we examine BO-QSA [Jia et al., 2023] on ShapeStacks, ObjectsRoom, and ClevrTex datasets."
+        }
+      },
+      {
+        "name": {
+          "value": "ClevrTex",
+          "justification": "The ClevrTex dataset was used to evaluate the Slot Attention and BO-QSA models with and without the Spatial Locality Prior.",
+          "quote": "We show that SLP works for other variants of Slot Attention, we examine BO-QSA [Jia et al., 2023] on ShapeStacks, ObjectsRoom, and ClevrTex datasets."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Clevrtex: A Texture-Rich Benchmark for Unsupervised Multi-Object Segmentation",
+          "justification": "The reference paper for the ClevrTex dataset is listed among the references in the paper.",
+          "quote": "We show that SLP works for other variants of Slot Attention, we examine BO-QSA [Jia et al., 2023] on ShapeStacks, ObjectsRoom, and ClevrTex datasets."
+        }
+      },
+      {
+        "name": {
+          "value": "MoVi-C",
+          "justification": "The MoVi-C dataset was used to test the DINOSAUR model with and without the Spatial Locality Prior.",
+          "quote": "We then show results with DINOSAUR [Seitzer et al., 2023] on the MoVi-C and MoVi-E datasets, where we evaluate using FG-ARI and mean-best-overlap (mBO) [Pont-Tuset et al., 2015]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Kubric: A scalable dataset generator",
+          "justification": "The referenced paper for MoVi-C is provided in the list of references.",
+          "quote": "We then show results with DINOSAUR [Seitzer et al., 2023] on the MoVi-C and MoVi-E datasets, where we evaluate using FG-ARI and mean-best-overlap (mBO) [Pont-Tuset et al., 2015]."
+        }
+      },
+      {
+        "name": {
+          "value": "MoVi-E",
+          "justification": "The MoVi-E dataset was used to test the DINOSAUR model with and without the Spatial Locality Prior.",
+          "quote": "We then show results with DINOSAUR [Seitzer et al., 2023] on the MoVi-C and MoVi-E datasets, where we evaluate using FG-ARI and mean-best-overlap (mBO) [Pont-Tuset et al., 2015]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Kubric: A scalable dataset generator",
+          "justification": "The referenced paper for MoVi-E is provided in the list of references.",
+          "quote": "We then show results with DINOSAUR [Seitzer et al., 2023] on the MoVi-C and MoVi-E datasets, where we evaluate using FG-ARI and mean-best-overlap (mBO) [Pont-Tuset et al., 2015]."
+        }
+      },
+      {
+        "name": {
+          "value": "CUB",
+          "justification": "The CUB dataset was used to evaluate the BO-QSA model with and without the Spatial Locality Prior for unsupervised foreground extraction.",
+          "quote": "For unsupervised foreground extraction, we experiment on the CUB [Wah et al., 2011], Stanford Dogs [Khosla et al., 2012], and Stanford Cars [Krause et al., 2013] datasets and evaluate using Intersection-over-Union (IoU) and Dice evaluation metrics."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The caltech-ucsd birds-200-2011 dataset",
+          "justification": "The reference paper for the CUB dataset is listed among the references in the provided paper.",
+          "quote": "For unsupervised foreground extraction, we experiment on the CUB [Wah et al., 2011], Stanford Dogs [Khosla et al., 2012], and Stanford Cars [Krause et al., 2013] datasets and evaluate using Intersection-over-Union (IoU) and Dice evaluation metrics."
+        }
+      },
+      {
+        "name": {
+          "value": "Stanford Dogs",
+          "justification": "The Stanford Dogs dataset was used to evaluate the BO-QSA model with and without the Spatial Locality Prior for unsupervised foreground extraction.",
+          "quote": "For unsupervised foreground extraction, we experiment on the CUB [Wah et al., 2011], Stanford Dogs [Khosla et al., 2012], and Stanford Cars [Krause et al., 2013] datasets and evaluate using Intersection-over-Union (IoU) and Dice evaluation metrics."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Novel dataset for fine-grained image categorization : Stanford dogs",
+          "justification": "The reference paper for the Stanford Dogs dataset is listed among the references in the research paper.",
+          "quote": "For unsupervised foreground extraction, we experiment on the CUB [Wah et al., 2011], Stanford Dogs [Khosla et al., 2012], and Stanford Cars [Krause et al., 2013] datasets and evaluate using Intersection-over-Union (IoU) and Dice evaluation metrics."
+        }
+      },
+      {
+        "name": {
+          "value": "Stanford Cars",
+          "justification": "The Stanford Cars dataset was used to evaluate the BO-QSA model with and without the Spatial Locality Prior for unsupervised foreground extraction.",
+          "quote": "For unsupervised foreground extraction, we experiment on the CUB [Wah et al., 2011], Stanford Dogs [Khosla et al., 2012], and Stanford Cars [Krause et al., 2013] datasets and evaluate using Intersection-over-Union (IoU) and Dice evaluation metrics."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "3d object representations for fine-grained categorization",
+          "justification": "The reference paper for the Stanford Cars dataset is listed among the references in the provided research paper.",
+          "quote": "For unsupervised foreground extraction, we experiment on the CUB [Wah et al., 2011], Stanford Dogs [Khosla et al., 2012], and Stanford Cars [Krause et al., 2013] datasets and evaluate using Intersection-over-Union (IoU) and Dice evaluation metrics."
+        }
+      },
+      {
+        "name": {
+          "value": "COCO",
+          "justification": "The COCO dataset was used to evaluate the BO-QSA model with and without the Spatial Locality Prior for unsupervised multi-object segmentation.",
+          "quote": "For unsupervised multi-object segmentation, we experiment on COCO [Lin et al., 2014] and ScanNet [Dai et al., 2017] datasets and evaluate using the metrics followed in Yang and Yang [2022]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Microsoft COCO: Common Objects in Context",
+          "justification": "The reference paper for the COCO dataset is listed among the references in the provided research paper.",
+          "quote": "For unsupervised multi-object segmentation, we experiment on COCO [Lin et al., 2014] and ScanNet [Dai et al., 2017] datasets and evaluate using the metrics followed in Yang and Yang [2022]."
+        }
+      },
+      {
+        "name": {
+          "value": "ScanNet",
+          "justification": "The ScanNet dataset was used to evaluate the BO-QSA model with and without the Spatial Locality Prior for unsupervised multi-object segmentation.",
+          "quote": "For unsupervised multi-object segmentation, we experiment on COCO [Lin et al., 2014] and ScanNet [Dai et al., 2017] datasets and evaluate using the metrics followed in Yang and Yang [2022]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ScanNet: Richly-annotated 3D Reconstructions of Indoor Scenes",
+          "justification": "The reference paper for the ScanNet dataset is listed among the references in the provided research paper.",
+          "quote": "For unsupervised multi-object segmentation, we experiment on COCO [Lin et al., 2014] and ScanNet [Dai et al., 2017] datasets and evaluate using the metrics followed in Yang and Yang [2022]."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 4069,
+    "prompt_tokens": 15314,
+    "total_tokens": 19383
+  }
+}

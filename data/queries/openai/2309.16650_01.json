@@ -1,0 +1,258 @@
+{
+  "paper": "2309.16650.txt",
+  "words": 10191,
+  "extractions": {
+    "title": {
+      "value": "ConceptGraphs: Open-Vocabulary 3D Scene Graphs for Perception and Planning",
+      "justification": "The title precisely describes the primary contribution of the paper, which is the ConceptGraphs method.",
+      "quote": "ConceptGraphs: Open-Vocabulary 3D Scene Graphs for Perception and Planning"
+    },
+    "description": "The paper proposes ConceptGraphs, a novel method to construct open-vocabulary and object-centric 3D scene graphs for robot perception and planning. It leverages 2D foundation models and fuses their outputs into 3D by multiview association to create a structured and semantically rich representation. The method allows robots to understand complex scenes, perform task planning, and handle abstract language queries without requiring large 3D datasets or model finetuning.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper includes experiments and real-world trials with robots to validate the proposed method, which classifies it as an empirical study.",
+      "quote": "We implement and demonstrate ConceptGraphs on a number of real-world robotics tasks across wheeled and legged mobile robot platforms."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Deep Learning",
+        "justification": "The research involves using deep learning models for building 3D scene representations from 2D image data.",
+        "quote": "Recent approaches have attempted to leverage features from large vision-language models to encode semantics in 3D representations."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "3D Scene Understanding",
+          "justification": "The paper focuses on 3D scene graphs which are an advanced representation for understanding the spatial relationships and semantic information in 3D scenes.",
+          "quote": "ConceptGraphs, a 3D scene representation method for robot perception and planning that satisfies all the above requirements."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Segment Anything",
+          "justification": "The model is used for segmentation in the proposed ConceptGraphs method.",
+          "quote": "We use SegmentAnything (SAM) [33] as the segmentation model Seg(·)."
+        },
+        "aliases": [
+          "SAM"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Role:['contributed', 'used', 'referenced']",
+          "quote": "used"
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
+          "quote": "inference"
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "",
+          "quote": ""
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "CLIP",
+          "justification": "The model extracts visual features for the segmented regions.",
+          "quote": "Each extracted mask mt,i is then passed to a visual feature extractor (CLIP [31], DINO [53]) to obtain a visual descriptor ft,i = Embed(Itrgb , mt,i )."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Role:['contributed', 'used', 'referenced']",
+          "quote": "used"
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
+          "quote": "inference"
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "",
+          "quote": ""
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "DINO",
+          "justification": "The model is used alongside CLIP for feature extraction from segmented regions.",
+          "quote": "Each extracted mask mt,i is then passed to a visual feature extractor (CLIP [31], DINO [53]) to obtain a visual descriptor ft,i = Embed(Itrgb , mt,i )."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Role:['contributed', 'used', 'referenced']",
+          "quote": "used"
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
+          "quote": "inference"
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "",
+          "quote": ""
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "LLaVA",
+          "justification": "LLaVA is used for generating object captions from visual data.",
+          "quote": "We use LLaVA [55] as the vision-language model LVLM and GPT-4 [32] for our LLM."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Role:['contributed', 'used', 'referenced']",
+          "quote": "used"
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
+          "quote": "inference"
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "",
+          "quote": ""
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "GPT-4",
+          "justification": "GPT-4 is used as the language model for inferring relationships and processing language queries.",
+          "quote": "We use LLaVA [55] as the vision-language model LVLM and GPT-4 [32] for our LLM."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Role:['contributed', 'used', 'referenced']",
+          "quote": "used"
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
+          "quote": "inference"
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "",
+          "quote": ""
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "Grounding DINO",
+          "justification": "The model is used in a variant of the ConceptGraphs system for open-vocabulary detection.",
+          "quote": "An open-vocabulary 2D detector (Grounding DINO [34]) to obtain object bounding boxes."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Role:['contributed', 'used', 'referenced']",
+          "quote": "referenced"
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
+          "quote": "inference"
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "",
+          "quote": ""
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Replica",
+          "justification": "The dataset is used to evaluate the accuracy of 3D scene graphs generated by ConceptGraphs.",
+          "quote": "For each scene in the Replica dataset [56], we report scene graph accuracy metrics for both CG and the detector-variant CG-D."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Open3d SLAM",
+          "justification": "Used for building initial pointcloud maps for the Jackal robot navigation.",
+          "quote": "The initial Jackal pointcloud does not include task-relevant objects and is downprojected to a 2D costmap for navigation using the base Jackal ROS stack."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "RTAB-Map",
+          "justification": "Utilized for obtaining camera poses and the scene point cloud in experiments.",
+          "quote": "We then stage two separate scenes with different objects: one for object search and another for traversability estimation. In both cases, we map the scene with an Azure Kinect Camera and rely on RTAB-Map [69] to obtain camera poses and the scene point cloud."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1338,
+    "prompt_tokens": 17061,
+    "total_tokens": 18399
+  }
+}

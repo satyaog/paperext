@@ -1,0 +1,174 @@
+{
+  "paper": "AAML7ivghpY.txt",
+  "words": 4445,
+  "extractions": {
+    "title": {
+      "value": "Enhancing Protein Language Model with Structure-Based Encoder and Pre-Training",
+      "justification": "The title is explicitly mentioned at the beginning of the research paper.",
+      "quote": "E NHANCING P ROTEIN L ANGUAGE M ODEL WITH S TRUCTURE - BASED E NCODER AND P RE - TRAINING"
+    },
+    "description": "This paper proposes an enhancement of protein language models (PLMs) by integrating a structure-based encoder and pre-training. The enhanced model, called ESM-GearNet, combines ESM-1b and GearNet, and leverages contrastive learning for pre-training on unlabeled protein structures to improve protein function prediction tasks.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper conducts extensive experiments and empirical evaluations on EC and GO protein function prediction benchmarks to demonstrate the effectiveness of the proposed model.",
+      "quote": "Extensive experiments on EC and GO protein function prediction benchmarks demonstrate the superiority of ESM-GearNet over previous PLMs and structure encoders."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The research focuses on enhancing protein language models (PLMs), which falls under the domain of Natural Language Processing.",
+        "quote": "Regarding protein sequences as the language of life, PLMs aim to learn effective protein representations from large-scale protein sequence corpora."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Computational Biology",
+          "justification": "The paper deals with protein structures and function prediction, which is a key area of computational biology.",
+          "quote": "Machine learning methods have shown great promise in predicting protein structures and understanding protein functions."
+        },
+        "aliases": [
+          "CompBio"
+        ]
+      },
+      {
+        "name": {
+          "value": "Representation Learning",
+          "justification": "The study involves learning effective protein representations using pre-trained language models and structure-based encoders.",
+          "quote": "PLMs have shown impressive performance on predicting protein structures and functionality."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "ESM-GearNet",
+          "justification": "The primary model proposed and evaluated in this paper is ESM-GearNet.",
+          "quote": "We empirically verify the ESM-GearNet that connects two encoders in a series way as the most effective combination model."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "ESM-GearNet is the primary contribution of this paper, integrating ESM-1b and GearNet with pre-training strategies.",
+          "quote": "In this work, we enhance the PLM with structure-based encoder and pre-training."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was executed on GPUs for training and evaluation purposes.",
+          "quote": "All these models are implemented with TorchDrug library and trained on 4 Tesla A100 GPUs."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "ESM-GearNet was compared with other baseline models in various experiments.",
+          "quote": "The benchmark results verify the superiority of the proposed ESM-GearNet over vanilla PLMs, various protein structure encoders and existing structure encoder enhanced PLMs."
+        },
+        "referenced_paper_title": {
+          "value": "Biological structure and function emerge from scaling unsupervised learning to 250 million protein sequences.",
+          "justification": "ESM-1b, which is part of the ESM-GearNet model, references Rives et al., 2021.",
+          "quote": "We choose ESM-1b (Rives et al., 2021) as our baseline backbone model."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "AlphaFold Database",
+          "justification": "The AlphaFold Database is used for pre-training the ESM-GearNet model.",
+          "quote": "We follow (Zhang et al., 2022b) to use the AlphaFold protein structure database v1 and v2 (Varadi et al., 2021) for pre-training."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "AlphaFold protein structure database: massively expanding the structural coverage of protein-sequence space with high-accuracy models.",
+          "justification": "The referenced paper for AlphaFold Database is by Varadi et al., 2021.",
+          "quote": "We follow (Zhang et al., 2022b) to use the AlphaFold protein structure database v1 and v2 (Varadi et al., 2021) for pre-training."
+        }
+      },
+      {
+        "name": {
+          "value": "PDB",
+          "justification": "The Protein Data Bank (PDB) is mentioned as a source of abundant unlabeled structures.",
+          "quote": "These methods only focus on a limited number of labeled structures, while ignoring abundant unlabeled structures available in PDB (Berman et al., 2000)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The protein data bank.",
+          "justification": "The referenced paper for PDB is by Berman et al., 2000.",
+          "quote": "These methods only focus on a limited number of labeled structures, while ignoring abundant unlabeled structures available in PDB (Berman et al., 2000)."
+        }
+      },
+      {
+        "name": {
+          "value": "Swiss-Prot",
+          "justification": "The Swiss-Prot dataset was used for pre-training in conjunction with the AlphaFold database.",
+          "quote": "We follow (Zhang et al., 2022b) to use ... 440K Swiss-Prot (Consortium, 2021) predictions from AlphaFold2."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "UniProt: the universal protein knowledgebase in 2021.",
+          "justification": "The referenced paper for Swiss-Prot is by the UniProt Consortium, 2021.",
+          "quote": "We follow (Zhang et al., 2022b) to use ... 440K Swiss-Prot (Consortium, 2021) predictions from AlphaFold2."
+        }
+      },
+      {
+        "name": {
+          "value": "Gene Ontology (GO)",
+          "justification": "GO is used as a benchmark for evaluating the performance of the proposed model.",
+          "quote": "We run experiments on EC and GO protein function prediction benchmarks."
+        },
+        "aliases": [
+          "GO"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "A large-scale evaluation of computational protein function prediction.",
+          "justification": "The referenced paper for Gene Ontology is by Radivojac et al., 2013.",
+          "quote": "We report the protein-centric maximum F-score Fmax and pair-centric area under precision-recall curve AUPR, which are commonly used in the CAFA challenges (Radivojac et al., 2013)."
+        }
+      },
+      {
+        "name": {
+          "value": "Enzyme Commission (EC)",
+          "justification": "EC is used as a benchmark for evaluating the performance of the proposed model.",
+          "quote": "We run experiments on EC and GO protein function prediction benchmarks."
+        },
+        "aliases": [
+          "EC"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Structure-based protein function prediction using graph convolutional networks.",
+          "justification": "The referenced paper for Enzyme Commission is by Gligorijević et al., 2021.",
+          "quote": "Enzyme Commission (EC) number prediction predicts the EC numbers of proteins, characterizing biochemical reactions they catalyze."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "TorchDrug",
+          "justification": "This deep learning library was used to implement the models mentioned in the paper.",
+          "quote": "All these models are implemented with TorchDrug library (Zhu et al., 2022) and trained on 4 Tesla A100 GPUs."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "TorchDrug: A powerful and flexible machine learning platform for drug discovery.",
+          "justification": "The referenced paper for TorchDrug is by Zhu et al., 2022.",
+          "quote": "All these models are implemented with TorchDrug library (Zhu et al., 2022) and trained on 4 Tesla A100 GPUs."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1954,
+    "prompt_tokens": 9393,
+    "total_tokens": 11347
+  }
+}

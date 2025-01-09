@@ -1,0 +1,220 @@
+{
+  "paper": "2206.10658.txt",
+  "words": 9457,
+  "extractions": {
+    "title": {
+      "value": "Questions Are All You Need to Train a Dense Passage Retriever",
+      "justification": "This is the title displayed at the top of the paper.",
+      "quote": "Questions Are All You Need to Train a Dense Passage Retriever"
+    },
+    "description": "The paper introduces ART, a new corpus-level autoencoding approach to dense passage retrieval that doesn't require labeled training data. By using a passage-retrieval autoencoding scheme, ART allows effective unsupervised learning of passage and question encoders. The study demonstrates ART's superior performance on various QA retrieval benchmarks, showcasing its potential to replace traditional supervised retrievers without the need for custom hard-negative mining and dataset-specific losses.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents experimental results and performance comparisons on various benchmarks to demonstrate the effectiveness of the proposed ART method.",
+      "quote": "Extensive experiments demonstrate that ART obtains state-of-the-art results on multiple QA retrieval benchmarks with only generic initialization from a pretrained language model, removing the need for labeled data and task-specific losses."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Information Retrieval",
+        "justification": "The primary focus is on developing a new method for dense passage retrieval, which is a core task in Information Retrieval.",
+        "quote": "We introduce ART, a new corpus-level autoencoding approach for training dense retrieval models that does not require any labeled training data."
+      },
+      "aliases": [
+        "IR"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Question Answering",
+          "justification": "The paper focuses on retrieval methods for open-domain tasks like Open QA.",
+          "quote": "Given an input question, ART first retrieves a small set of possible evidences passages. It then reconstructs the original question by attending to these passages (see Figure 1 for an overview)."
+        },
+        "aliases": [
+          "QA",
+          "Open QA"
+        ]
+      },
+      {
+        "name": {
+          "value": "Natural Language Processing",
+          "justification": "The methodologies and tasks involved, such as question answering and passage retrieval, are integral parts of Natural Language Processing.",
+          "quote": "We introduce ART, a new corpus-level autoencoding approach for training dense retrieval models that does not require any labeled training data."
+        },
+        "aliases": [
+          "NLP"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "ART",
+          "justification": "The model introduced and primarily discussed in the paper is ART, which stands for Autoencoding-based Retriever Training.",
+          "quote": "We propose ART: Autoencoding-based Retriever Training which only assumes access to sets of unpaired questions and passages."
+        },
+        "aliases": [
+          "Autoencoding-based Retriever Training"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The main contribution of the paper is the introduction of ART.",
+          "quote": "In this paper, we introduce the first unsupervised method, based on a new corpus-level autoencoding approach, that can match or surpass strong supervised performance levels with no labeled training data or task-specific losses."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The experiments mention that the embeddings and retrieval processes are performed on accelerators such as GPUs.",
+          "quote": "As the selection operation requires performing inner-product with millions of passage embeddings, this can be efficiently performed on accelerators such as GPUs."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "ART is compared with various existing models in terms of performance on several benchmarks, showing its superiority in most cases.",
+          "quote": "By simply using questions from the training set, ART outperforms models like DPR by an average of 5 points absolute in top-20 and 4 points absolute in top-100 accuracy."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "There is no specific referenced paper for ART as it is the primary contribution of this document.",
+          "quote": ""
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Natural Questions (NQ)",
+          "justification": "The paper explicitly mentions the use of the Natural Questions dataset for training and evaluation.",
+          "quote": "We also train using all the questions contained in the Natural Questions (NQ) dataset (Kwiatkowski et al., 2019) and find that even with a mix of answerable and unanswerable questions, ART achieves strong generalization on out-of-distribution datasets due to relying on PLM."
+        },
+        "aliases": [
+          "NQ",
+          "NQ-Open",
+          "NQ-Full"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Natural questions: a benchmark for question answering research",
+          "justification": "Referenced for the definition and general details of the NQ dataset.",
+          "quote": "Natural questions: a benchmark for question answering research."
+        }
+      },
+      {
+        "name": {
+          "value": "MS MARCO",
+          "justification": "The MS MARCO dataset is used for training and evaluations in several experiments.",
+          "quote": "We use all the questions from Natural Questions (henceforth referred to as NQ-Full) and MS MARCO passage ranking (Bajaj et al., 2016) datasets."
+        },
+        "aliases": [
+          "Microsoft MAchine Reading COmprehension"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Ms marco: A human generated machine reading comprehension dataset",
+          "justification": "Referenced for the definition and general details of the MS MARCO dataset.",
+          "quote": "Ms marco: A human generated machine reading comprehension dataset."
+        }
+      },
+      {
+        "name": {
+          "value": "SQuAD-Open",
+          "justification": "The paper also performs experiments using the SQuAD-Open dataset.",
+          "quote": "Following previous work, we use the open-retrieval version of Natural Questions (NQ-Open; Kwiatkowski et al., 2019), TriviaQA (Joshi et al., 2017), SQuAD1.0 (SQuAD-Open; Rajpurkar et al., 2016), WebQuestions (WebQ; Berant et al., 2013), and EntityQuestions (EQ; Sciavolino et al., 2021) datasets."
+        },
+        "aliases": [
+          "SQuAD1.0",
+          "Stanford Question Answering Dataset"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "SQuAD: 100,000+ questions for machine comprehension of text",
+          "justification": "Referenced for the purpose of detailed definition of the dataset.",
+          "quote": "SQuAD: 100,000+ questions for machine comprehension of text."
+        }
+      },
+      {
+        "name": {
+          "value": "TriviaQA",
+          "justification": "The TriviaQA dataset is used both for training and evaluating the ART model.",
+          "quote": "Following previous work, we use the open-retrieval version of Natural Questions (NQ-Open; Kwiatkowski et al., 2019), TriviaQA (Joshi et al., 2017), SQuAD1.0 (SQuAD-Open; Rajpurkar et al., 2016), WebQuestions (WebQ; Berant et al., 2013), and EntityQuestions (EQ; Sciavolino et al., 2021) datasets."
+        },
+        "aliases": [
+          "TQA"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "TriviaQA: A large scale distantly supervised challenge dataset for reading comprehension",
+          "justification": "Referenced for the definition and general details of the TriviaQA dataset.",
+          "quote": "TriviaQA: A large scale distantly supervised challenge dataset for reading comprehension."
+        }
+      },
+      {
+        "name": {
+          "value": "WebQuestions (WebQ)",
+          "justification": "The WebQuestions dataset is used for evaluating the ART model.",
+          "quote": "Following previous work, we use the open-retrieval version of Natural Questions (NQ-Open; Kwiatkowski et al., 2019), TriviaQA (Joshi et al., 2017), SQuAD1.0 (SQuAD-Open; Rajpurkar et al., 2016), WebQuestions (WebQ; Berant et al., 2013), and EntityQuestions (EQ; Sciavolino et al., 2021) datasets."
+        },
+        "aliases": [
+          "WebQ"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Semantic parsing on Freebase from question-answer pairs",
+          "justification": "Referenced for the definition and general details of the WebQuestions dataset.",
+          "quote": "Semantic parsing on Freebase from question-answer pairs."
+        }
+      },
+      {
+        "name": {
+          "value": "EntityQuestions (EQ)",
+          "justification": "The EntityQuestions dataset is used for evaluation purposes in the paper.",
+          "quote": "Following previous work, we use the open-retrieval version of Natural Questions (NQ-Open; Kwiatkowski et al., 2019), TriviaQA (Joshi et al., 2017), SQuAD1.0 (SQuAD-Open; Rajpurkar et al., 2016), WebQuestions (WebQ; Berant et al., 2013), and EntityQuestions (EQ; Sciavolino et al., 2021) datasets."
+        },
+        "aliases": [
+          "EQ"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Simple entity-centric questions challenge dense retrievers",
+          "justification": "Referenced for the definition and general details of the EQ dataset.",
+          "quote": "Simple entity-centric questions challenge dense retrievers."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch was used for implementation, as inferred from the context of deep learning model training and GPU usage.",
+          "quote": "We perform training on instances containing 8 or 16 A100 GPUs, each containing 40 GB RAM."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The paper does not mention a specific reference paper for PyTorch.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "HuggingFace Transformers",
+          "justification": "The use of pre-trained language models like BERT and T5, provided by HuggingFace, implies that the HuggingFace Transformers library was likely used.",
+          "quote": "For the teacher PLM, we use two configurations: (i) T5-XL configuration (Raffel et al., 2020) consisting of 24 layers, 32 attention heads, and 2048 embedding dimensions, leading to 3B parameters, and (ii) a larger T5-XXL configuration consisting of 11B parameters."
+        },
+        "aliases": [
+          "Transformers"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Huggingface's transformers: State-of-the-art natural language processing",
+          "justification": "This paper provides a detailed description of the HuggingFace Transformers library and its application in NLP tasks.",
+          "quote": "Huggingface's transformers: State-of-the-art natural language processing"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2095,
+    "prompt_tokens": 18088,
+    "total_tokens": 20183
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "paper": "2306.08832.txt",
+  "words": 9232,
+  "extractions": {
+    "title": {
+      "value": "Contrasting intra-modal and ranking cross-modal hard negatives to enhance visio-linguistic compositional understanding",
+      "justification": "This is the title as extracted from the provided research paper.",
+      "quote": "Contrasting intra-modal and ranking cross-modal hard negatives to enhance visio-linguistic compositional understanding"
+    },
+    "description": "The paper presents a method to improve compositional reasoning in Vision-Language Models (VLMs) by refining and expanding the image-text contrastive learning framework. The approach does not require additional annotations or parameters and is shown to improve performance across five vision-language compositional benchmarks.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper conducts experiments on models like CLIP and X-VLM using various datasets to validate the proposed method. Empirical data is presented to support the results.",
+      "quote": "To validate the effectiveness, we conduct experiments on two models: the versatile CLIP and the strong X-VLM [71]. Our evaluation across various compositional datasets consistently reveals performance enhancements, establishing our method as a new state-of-the-art across all assessed benchmarks."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The paper primarily deals with Vision-Language Models, which fall under the domain of Computer Vision.",
+        "quote": "Vision-Language Models (VLMs), such as CLIP, exhibit strong image-text comprehension abilities, facilitating advances in several downstream tasks such as zero-shot image classification, image-text retrieval, and text-to-image generation."
+      },
+      "aliases": [
+        "CV",
+        "Vision-Language Models"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Natural Language Processing",
+          "justification": "The paper involves processing and understanding language in conjunction with visual data, indicating its relevance to NLP.",
+          "quote": "However, the compositional reasoning abilities of existing VLMs remains subpar. The root of this limitation lies in the inadequate alignment between the images and captions in the pretraining datasets."
+        },
+        "aliases": [
+          "NLP"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "CLIP",
+          "justification": "CLIP is extensively discussed and utilized as a primary model in the research to validate the proposed methods.",
+          "quote": "Vision-Language Models (VLMs), such as CLIP, exhibit strong image-text comprehension abilities, facilitating advances in several downstream tasks such as zero-shot image classification, image-text retrieval, and text-to-image generation."
+        },
+        "aliases": [
+          "Contrastive Language-Image Pretraining"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper builds upon the existing CLIP model and does not claim its contribution.",
+          "quote": "...image-text pairs crawled from the web using contrastive learning [52]."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model is executed to show improvements in compositional reasoning through proposed methods.",
+          "quote": "Our CE-CLIP model, which is trained on the same dataset as NegCLIP, surpasses all methods utilizing hard negatives across all benchmarks."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of the CLIP model is compared with that of the enhanced versions proposed in the paper.",
+          "quote": "...demonstrates significant improvements over the baseline CLIP model: 23.7% on ARO-Relation, 13.5% on ARO-Attribute, 7.2% on VALSE..."
+        },
+        "referenced_paper_title": {
+          "value": "Learning transferable visual models from natural language supervision",
+          "justification": "The original CLIP model is described in the referenced work by Radford et al.",
+          "quote": "Among them, CLIP [52] stands out, employing a contrastive learning method for pretraining."
+        }
+      },
+      {
+        "name": {
+          "value": "X-VLM",
+          "justification": "X-VLM is used as another primary model to test the proposed methods.",
+          "quote": "To validate the effectiveness, we conduct experiments on two models: the versatile CLIP and the strong X-VLM [71]."
+        },
+        "aliases": [
+          "eXtended Vision-Language Model"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper uses the existing model X-VLM and does not claim its contribution.",
+          "quote": "To validate the effectiveness, we conduct experiments on two models: the versatile CLIP and the strong X-VLM [71]."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "X-VLM is executed to test the proposed method's effectiveness.",
+          "quote": "The latter incorporates an adaptive threshold during the fine-tuning phase...X-VLM model upon application of our method."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares the performance of X-VLM before and after applying the proposed methods.",
+          "quote": "We also achieve modest improvements of 0.5%, 2.5% respectively on the ARO Relation and Attribution splits, 1.3% on VALSE and 2.1% on VL-CheckList on top of the already strong X-VLM model upon application of our method."
+        },
+        "referenced_paper_title": {
+          "value": "Multi-grained vision language pre-training: Aligning texts with visual concepts",
+          "justification": "The original X-VLM model is described in the referenced work by Zeng et al.",
+          "quote": "the strong X-VLM [71]"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "COCO",
+          "justification": "The COCO dataset is used for training the model in the experiments.",
+          "quote": "Specifically, training CLIP with our method on the COCO dataset leads to an improvement of 23.7% and 13.5% respectively on the Relation and Attribution splits of the ARO benchmark [70]..."
+        },
+        "aliases": [
+          "Common Objects in Context"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Microsoft coco: Common objects in context",
+          "justification": "The original COCO dataset is described in the referenced paper by Lin et al.",
+          "quote": "We train in two configurations: (1) CE-CLIP, using only the COCO dataset [34], for direct comparison with NegCLIP [70]..."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "SpaCy",
+          "justification": "SpaCy is used for Part-Of-Speech (POS) parsing in the paper.",
+          "quote": "To generate these hard negatives, we employ Part-Of-Speech (POS) parsing and Language Models. Utilizing Spacy [23], we parse the captions and assign POS tags to each word."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "SpaCy 2: Natural language understanding with Bloom embeddings, convolutional neural networks and incremental parsing",
+          "justification": "The original SpaCy library is described in the referenced work by Matthew Honnibal and Ines Montani.",
+          "quote": "Utilizing Spacy [23], we parse the captions and assign POS tags to each word."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1372,
+    "prompt_tokens": 19517,
+    "total_tokens": 20889
+  }
+}

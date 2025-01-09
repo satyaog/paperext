@@ -5,7 +5,7 @@ import sys
 import urllib.request
 from pathlib import Path
 
-from .utils import python_module
+from paperext.utils import python_module
 
 PROG = f"python3 -m {python_module(__file__)}"
 

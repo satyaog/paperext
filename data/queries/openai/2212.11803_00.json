@@ -1,0 +1,150 @@
+{
+  "paper": "2212.11803.txt",
+  "words": 5803,
+  "extractions": {
+    "title": {
+      "value": "EuclidNets: An Alternative Operation for Efficient Inference of Deep Learning Models",
+      "justification": "Title provided in the paper header.",
+      "quote": "EuclidNets: An Alternative Operation for\nEfficient Inference of Deep Learning Models"
+    },
+    "description": "This paper introduces EuclidNet, a type of neural network that replaces the multiplication operation in neural networks with the Euclidean distance operation to achieve better efficiency on low-power and restricted memory edge devices. The paper provides both theoretical justification and empirical evidence for the effectiveness of EuclidNet.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper not only introduces a new method (EuclidNet) but also provides empirical performance results on standard benchmarks like CIFAR10, CIFAR100, and ImageNet.",
+      "quote": "We provide an easy approach to train EuclidNets using homotopy. To illustrate performance of the EuclidNets, We apply our proposed method on image classification tasks."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Neural Network Compression",
+        "justification": "The research primarily focuses on introducing a new compression method (EuclidNet) for neural networks to be efficiently deployed on edge devices.",
+        "quote": "With the advent of deep learning application on edge devices, researchers actively try to optimize their deployments on low-power and restricted memory devices. There are established compression method such as quantization, pruning, and architecture search that leverage commodity hardware."
+      },
+      "aliases": [
+        "Neural Network Optimization",
+        "Model Compression"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Computer Vision",
+          "justification": "The empirical evaluation of EuclidNet is conducted on Computer Vision benchmarks like CIFAR10, CIFAR100, and ImageNet.",
+          "quote": "Table 1 Euclid-Net Accuracy with full precision and 8-bit quantization: Results on ResNet-20 with Euclidian similarity for CIFAR10 and CIFAR100, and results on ResNet-18 for ImageNet."
+        },
+        "aliases": [
+          "Vision",
+          "Image Processing"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "EuclidNet",
+          "justification": "EuclidNet is the primary model introduced and evaluated by the paper, which uses the Euclidean distance operation instead of multiplication.",
+          "quote": "To this end, we propose EuclidNet, a compression method, designed to be implemented on hardware which replaces multiplication, xw, with Euclidean distance (x − w)2."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "EuclidNet is the innovative model introduced and evaluated in the paper.",
+          "quote": "To this end, we propose EuclidNet, a compression method, designed to be implemented on hardware which replaces multiplication, xw, with Euclidean distance (x − w)2."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper discusses the hardware implementation and efficiency of EuclidNet, implying that it was executed on hardware.",
+          "quote": "EuclidNet is aligned with matrix multiplication and it can be used as a measure of similarity in case of convolutional layers."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "EuclidNet's performance is compared with standard convolutional neural networks and other similarity measures like AdderNet.",
+          "quote": "We show that under various transformations and noise scenarios, EuclidNet exhibits the same performance compared to the deep learning models designed with multiplication operations."
+        },
+        "referenced_paper_title": {
+          "value": "None",
+          "justification": "EuclidNet is introduced in this paper, and no reference paper for EuclidNet is mentioned.",
+          "quote": "None"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CIFAR10",
+          "justification": "The dataset was used to evaluate the performance of EuclidNet.",
+          "quote": "We normalize and augment the dataset with random crop and random horizontal flip. We consider two ResNet models [46], ResNet-20 and ResNet-32."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning multiple layers of features from tiny images",
+          "justification": "The CIFAR10 dataset reference paper is stated in the references section.",
+          "quote": "Krizhevsky, A., Hinton, G., et al.: Learning multiple layers of features from tiny images (2009)"
+        }
+      },
+      {
+        "name": {
+          "value": "CIFAR100",
+          "justification": "The dataset was used to evaluate the performance of EuclidNet.",
+          "quote": "Table 1 Euclid-Net Accuracy with full precision and 8-bit quantization: Results on ResNet-20 with Euclidian similarity for CIFAR10 and CIFAR100, and results on ResNet-18 for ImageNet."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning multiple layers of features from tiny images",
+          "justification": "The CIFAR100 dataset reference paper is stated in the references section.",
+          "quote": "Krizhevsky, A., Hinton, G., et al.: Learning multiple layers of features from tiny images (2009)"
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet",
+          "justification": "The dataset was used to evaluate the performance of EuclidNet.",
+          "quote": "Next, we consider testing EuclidNet classifier on ImageNet [48] which is known to be a challenging classification task comparing to CIFAR10."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ImageNet: A Large-Scale Hierarchical Image Database",
+          "justification": "The ImageNet dataset reference paper is stated in the references section.",
+          "quote": "Deng, J., Dong, W., Socher, R., Li, L.-J., Li, K., Fei-Fei, L.: ImageNet: A Large-Scale Hierarchical Image Database. In: CVPR09 (2009) "
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The paper mentions using PyTorch for training convolutional networks and compares it to other methods.",
+          "quote": "The official implementation of AdderNet [4] reflects order of 20× slower training than the traditional convolution on PyTorch."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "None",
+          "justification": "PyTorch is a commonly used library mentioned in the methodology and results sections.",
+          "quote": "None"
+        }
+      },
+      {
+        "name": {
+          "value": "TensorFlow",
+          "justification": "The paper mentions TensorFlow as another commonly used deep learning framework.",
+          "quote": "their implementation is natural in deep learning frameworks such as PyTorch and Tensorflow."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "None",
+          "justification": "TensorFlow is a commonly used library mentioned in the methodology and results sections.",
+          "quote": "None"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1337,
+    "prompt_tokens": 11248,
+    "total_tokens": 12585
+  }
+}

@@ -1,0 +1,551 @@
+{
+  "paper": "2303.03915.txt",
+  "words": 16866,
+  "extractions": {
+    "title": {
+      "value": "The BigScience ROOTS Corpus: A 1.6TB Composite Multilingual Dataset",
+      "justification": "The title of the paper is extracted from the provided text.",
+      "quote": "The BigScience ROOTS Corpus: A 1.6TB Composite Multilingual Dataset"
+    },
+    "description": "ROOTS is a 1.6TB multilingual dataset spanning 59 languages, including 46 natural languages and 13 programming languages. It is composed of 62% from various sources like existing NLP datasets, documents, and websites, and 38% from a pre-processed web crawl called OSCAR. The dataset was created with a focus on ethical considerations, community involvement, and mitigating privacy risks. The paper also provides a first look at the corpus through statistical analyses of the aggregated data.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents the creation of a new dataset and analyzes its properties, making it an empirical paper.",
+      "quote": "This paper documents the data creation and curation efforts undertaken by BigScience to assemble the Responsible Open-science Open-collaboration Text Sources (ROOTS) corpus, a 1.6TB dataset spanning 59 languages that was used to train the 176-billion-parameter BigScience Large Open-science Open-access Multilingual (BLOOM)(BigScience Workshop, 2022) language model."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The paper focuses on creating a large multilingual dataset for training language models.",
+        "quote": "As language models grow ever larger, the need for large-scale high-quality text datasets has never been more pressing, especially in multilingual settings."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Large language model",
+          "justification": "The paper focuses on Large Language Models.",
+          "quote": "One of the founding goals of BigScience was to train an open-access, massively multilingual LLM, comparable in scale to GPT-3 (Brown et al., 2020) yet trained on a better documented and more representative multilingual dataset."
+        },
+        "aliases": [
+          "LLM",
+          "Large language models"
+        ]
+      },
+      {
+        "name": {
+          "value": "Language model",
+          "justification": "The paper focuses on language model.",
+          "quote": "The goal of the current paper is twofold: (1) we present a preliminary gated, subject to committing to the BigScience ethical charter2 , release of a large subset of ROOTS3 (2) we release the numerous data tools4 that were developed along the way and enabled us to curate, source, clean and inspect all 498 constituent datasets that come together to constitute ROOTS. This includes a preliminary results of the analyses that are currently being developed to study the corpus."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Multilingual modeling",
+          "justification": "This paper focuses on Multilingual modeling.",
+          "quote": "We further release a large initial subset of the corpus and analyses thereof, and hope to empower large-scale monolingual and multilingual modeling projects with both the data and the processing tools, as well as stimulate research around this large multilingual corpus."
+        },
+        "aliases": [
+          "Multilingual modeling"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "GPT-3",
+          "justification": "The paper mentions GPT-3 as a point of comparison.",
+          "quote": "One of the founding goals of BigScience was to train an open-access, massively multilingual LLM, comparable in scale to GPT-3 (Brown et al., 2020) yet trained on a better documented and more representative multilingual dataset."
+        },
+        "aliases": [
+          "GPT-3"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The authors did not contribute to the development of GPT-3.",
+          "quote": "null"
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The authors did not train or fine-tune GPT-3 in this work.",
+          "quote": "null"
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "GPT-3 is used as a point of comparison for the size of the corpus and the trained model.",
+          "quote": "One of the founding goals of BigScience was to train an open-access, massively multilingual LLM, comparable in scale to GPT-3 (Brown et al., 2020) yet trained on a better documented and more representative multilingual dataset."
+        },
+        "referenced_paper_title": {
+          "value": "Language models are few-shot learners",
+          "justification": "The paper references the paper that introduces GPT-3.",
+          "quote": "One of the founding goals of BigScience was to train an open-access, massively multilingual LLM, comparable in scale to GPT-3 (Brown et al., 2020) yet trained on a better documented and more representative multilingual dataset."
+        }
+      },
+      {
+        "name": {
+          "value": "BLOOM",
+          "justification": "BLOOM is the name given to the LLM trained in the paper.",
+          "quote": "This paper documents the data creation and curation efforts undertaken by BigScience to assemble the Responsible Open-science Open-collaboration Text Sources (ROOTS) corpus, a 1.6TB dataset spanning 59 languages that was used to train the 176-billion-parameter BigScience Large Open-science Open-access Multilingual (BLOOM)(BigScience Workshop, 2022) language model."
+        },
+        "aliases": [
+          "BLOOM",
+          "BigScience Large Open-science Open-access Multilingual"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The paper describes the creation of the BLOOM model, a 176-billion parameter language model trained on the ROOTS corpus.",
+          "quote": "This paper documents the data creation and curation efforts undertaken by BigScience to assemble the Responsible Open-science Open-collaboration Text Sources (ROOTS) corpus, a 1.6TB dataset spanning 59 languages that was used to train the 176-billion-parameter BigScience Large Open-science Open-access Multilingual (BLOOM)(BigScience Workshop, 2022) language model."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "This information is not available in the paper.",
+          "quote": "null"
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "This information is not available in the paper.",
+          "quote": "null"
+        },
+        "referenced_paper_title": {
+          "value": "null",
+          "justification": "This information is not available in the paper.",
+          "quote": "null"
+        }
+      },
+      {
+        "name": {
+          "value": "T5",
+          "justification": "The T5 tokenizer is mentioned as a tool for corpus analysis.",
+          "quote": "Figure 7 shows the tokens-per-byte measurement on English component datasets for the BLOOM tokenizer, trained on this corpus, the GPT-NeoX 20B tokenizer (Black et al., 2022), trained on the Pile, and the T5 tokenizer (Raffel et al., 2020), trained on C4."
+        },
+        "aliases": [
+          "T5"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The authors did not contribute to the development of the T5 model.",
+          "quote": "null"
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The authors did not train or fine-tune T5 in this work.",
+          "quote": "null"
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The T5 tokenizer is used to analyze the ROOTS corpus and compare it to the C4 dataset.",
+          "quote": "Figure 7 shows the tokens-per-byte measurement on English component datasets for the BLOOM tokenizer, trained on this corpus, the GPT-NeoX 20B tokenizer (Black et al., 2022), trained on the Pile, and the T5 tokenizer (Raffel et al., 2020), trained on C4."
+        },
+        "referenced_paper_title": {
+          "value": "Exploring the limits of transfer learning with a unified text-to-text transformer",
+          "justification": "The paper that introduces the T5 tokenizer is referenced.",
+          "quote": "Figure 7 shows the tokens-per-byte measurement on English component datasets for the BLOOM tokenizer, trained on this corpus, the GPT-NeoX 20B tokenizer (Black et al., 2022), trained on the Pile, and the T5 tokenizer (Raffel et al., 2020), trained on C4."
+        }
+      },
+      {
+        "name": {
+          "value": "GPT-NeoX 20B",
+          "justification": "The GPT-NeoX 20B tokenizer is mentioned as a tool for corpus analysis.",
+          "quote": "Figure 7 shows the tokens-per-byte measurement on English component datasets for the BLOOM tokenizer, trained on this corpus, the GPT-NeoX 20B tokenizer (Black et al., 2022), trained on the Pile, and the T5 tokenizer (Raffel et al., 2020), trained on C4."
+        },
+        "aliases": [
+          "GPT-NeoX 20B"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The authors did not contribute to the development of GPT-NeoX 20B.",
+          "quote": "null"
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The authors did not train or fine-tune GPT-NeoX 20B in this work.",
+          "quote": "null"
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The GPT-NeoX 20B tokenizer is used to analyze the ROOTS corpus and compare it to the Pile dataset.",
+          "quote": "Figure 7 shows the tokens-per-byte measurement on English component datasets for the BLOOM tokenizer, trained on this corpus, the GPT-NeoX 20B tokenizer (Black et al., 2022), trained on the Pile, and the T5 tokenizer (Raffel et al., 2020), trained on C4."
+        },
+        "referenced_paper_title": {
+          "value": "null",
+          "justification": "This information is not available in the paper.",
+          "quote": "null"
+        }
+      },
+      {
+        "name": {
+          "value": "GPT-2",
+          "justification": "GPT-2 is mentioned in the context of corpus size comparison.",
+          "quote": "Figure 4: A raw size comparison to other corpora used to train large language models."
+        },
+        "aliases": [
+          "GPT-2"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The authors did not contribute to the development of GPT-2.",
+          "quote": "null"
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The authors did not train or fine-tune GPT-2 in this work.",
+          "quote": "null"
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "GPT-2 is used as a point of comparison for the size of the corpus.",
+          "quote": "Figure 4: A raw size comparison to other corpora used to train large language models."
+        },
+        "referenced_paper_title": {
+          "value": "null",
+          "justification": "This information is not available in the paper.",
+          "quote": "null"
+        }
+      },
+      {
+        "name": {
+          "value": "AlphaCode",
+          "justification": "AlphaCode is mentioned as using the same language selection for their code dataset.",
+          "quote": "We collected a code dataset from BigQuery7 using the same language selection as AlphaCode (Li et al., 2022)."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "This information is not available in the paper.",
+          "quote": "null"
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "This information is not available in the paper.",
+          "quote": "null"
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "This information is not available in the paper.",
+          "quote": "null"
+        },
+        "referenced_paper_title": {
+          "value": "null",
+          "justification": "This information is not available in the paper.",
+          "quote": "null"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "ROOTS",
+          "justification": "The paper introduces and describes the ROOTS corpus.",
+          "quote": "This paper documents the data creation and curation efforts undertaken by BigScience to assemble the Responsible Open-science Open-collaboration Text Sources (ROOTS) corpus, a 1.6TB dataset spanning 59 languages that was used to train the 176-billion-parameter BigScience Large Open-science Open-access Multilingual (BLOOM)(BigScience Workshop, 2022) language model."
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "null",
+          "justification": "This information is not available in the paper.",
+          "quote": "null"
+        }
+      },
+      {
+        "name": {
+          "value": "OSCAR",
+          "justification": "OSCAR is mentioned as a source of data.",
+          "quote": "38% consists of text extracted from a pre-processed web crawl, OSCAR (Ortiz Suárez et al. (2020)), filtered with the help of native speakers, which is described in section 3."
+        },
+        "aliases": [
+          "OSCAR"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "A monolingual approach to contextualized word embeddings for mid-resource languages",
+          "justification": "The paper references the paper that introduces OSCAR.",
+          "quote": "38% consists of text extracted from a pre-processed web crawl, OSCAR (Ortiz Suárez et al. (2020)), filtered with the help of native speakers, which is described in section 3."
+        }
+      },
+      {
+        "name": {
+          "value": "The Pile",
+          "justification": "The Pile is mentioned as a point of comparison for the corpus size.",
+          "quote": "Figure 4: A raw size comparison to other corpora used to train large language models. The asterisk next to GPT-3 indicates the fact that the value in question is an estimate computed using the reported number of tokens and the average number of tokens per byte of text that the GPT-2 tokenizer produces on the Pile-CC, Books3, OWT2, and Wiki-en subsets of the Pile (Gao et al., 2020)"
+        },
+        "aliases": [
+          "The Pile"
+        ],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "The Pile: An 800gb dataset of diverse text for language modeling",
+          "justification": "The paper references the paper that introduces the Pile.",
+          "quote": "Figure 4: A raw size comparison to other corpora used to train large language models. The asterisk next to GPT-3 indicates the fact that the value in question is an estimate computed using the reported number of tokens and the average number of tokens per byte of text that the GPT-2 tokenizer produces on the Pile-CC, Books3, OWT2, and Wiki-en subsets of the Pile (Gao et al., 2020)"
+        }
+      },
+      {
+        "name": {
+          "value": "PubMed Central",
+          "justification": "PubMed Central is mentioned as one of the dataset overlaps",
+          "quote": "Non-trivial datasets overlap included s2orc (Lo et al., 2020),\\nArxiv (Clement et al., 2019) and the PubMed Central subset of the Pile (Gao et al., 2020)."
+        },
+        "aliases": [
+          "PubMed Central"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "null",
+          "justification": "This information is not available in the paper.",
+          "quote": "null"
+        }
+      },
+      {
+        "name": {
+          "value": "s2orc",
+          "justification": "s2orc is mentioned as one of the dataset overlaps",
+          "quote": "Non-trivial datasets overlap included s2orc (Lo et al., 2020),"
+        },
+        "aliases": [
+          "s2orc"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "S2ORC: The semantic scholar open research corpus",
+          "justification": "s2orc paper is referenced in the context of dataset overlaps",
+          "quote": "Non-trivial datasets overlap included s2orc (Lo et al., 2020),"
+        }
+      },
+      {
+        "name": {
+          "value": "Arxiv",
+          "justification": "Arxiv is mentioned as one of the dataset overlaps",
+          "quote": "Arxiv (Clement et al., 2019) and the PubMed Central subset of the Pile (Gao et al., 2020)."
+        },
+        "aliases": [
+          "Arxiv"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "On the use of arxiv as a dataset",
+          "justification": "Arxiv paper is referenced in the context of dataset overlaps",
+          "quote": "Arxiv (Clement et al., 2019) and the PubMed Central subset of the Pile (Gao et al., 2020)."
+        }
+      },
+      {
+        "name": {
+          "value": "Wikipedia",
+          "justification": "Wikipedia is mentioned as a source of data that was pseudo-crawled.",
+          "quote": "We also performed cross-pipeline dataset deduplication, removing the pseudo-crawled Wikipedia and GitHub in favor of their other versions."
+        },
+        "aliases": [
+          "Wikipedia"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "null",
+          "justification": "This information is not available in the paper.",
+          "quote": "null"
+        }
+      },
+      {
+        "name": {
+          "value": "GitHub",
+          "justification": "GitHub is mentioned as a source of data that was pseudo-crawled.",
+          "quote": "We also performed cross-pipeline dataset deduplication, removing the pseudo-crawled Wikipedia and GitHub in favor of their other versions."
+        },
+        "aliases": [
+          "GitHub"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "null",
+          "justification": "This information is not available in the paper.",
+          "quote": "null"
+        }
+      },
+      {
+        "name": {
+          "value": "OpenITI",
+          "justification": "OpenITI is mentioned as an example for dataset overlap.",
+          "quote": "For example: OpenITI was present in both its raw form as well as a processed version."
+        },
+        "aliases": [
+          "OpenITI"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "null",
+          "justification": "This information is not available in the paper.",
+          "quote": "null"
+        }
+      },
+      {
+        "name": {
+          "value": "WuDao",
+          "justification": "WuDao is mentioned as a web-based corpus",
+          "quote": "Similar concerns apply to other existing NLP datasets we identified in the catalogue, including notably the WuDao web-based corpus (Yuan et al., 2021) which makes up a significant part of the Chinese language data."
+        },
+        "aliases": [
+          "WuDao"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "null",
+          "justification": "This information is not available in the paper.",
+          "quote": "null"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "SentencePiece",
+          "justification": "SentencePiece is used for tokenization and training language models for filtering OSCAR.",
+          "quote": "Following Wenzek et al. (2020), we trained SentencePiece unigram tokenizers (Kudo, 2018) followed by KenLM 5-gram models after tokenization (Heafield, 2011) on Wikipedia article openings for every language that was extracted from OSCAR."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "null",
+          "justification": "This information is not available in the paper.",
+          "quote": "null"
+        }
+      },
+      {
+        "name": {
+          "value": "KenLM",
+          "justification": "KenLM is used for building language models for filtering OSCAR.",
+          "quote": "Following Wenzek et al. (2020), we trained SentencePiece unigram tokenizers (Kudo, 2018) followed by KenLM 5-gram models after tokenization (Heafield, 2011) on Wikipedia article openings for every language that was extracted from OSCAR."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "null",
+          "justification": "This information is not available in the paper.",
+          "quote": "null"
+        }
+      },
+      {
+        "name": {
+          "value": "fastText",
+          "justification": "fastText is used for language identification in OSCAR.",
+          "quote": "We used fastText (Joulin et al., 2017) to perform language identification and getting confidence scores for each document."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "null",
+          "justification": "This information is not available in the paper.",
+          "quote": "null"
+        }
+      },
+      {
+        "name": {
+          "value": "Stanza",
+          "justification": "Stanza is used for sentence splitting in several languages.",
+          "quote": "For Arabic, Catalan, Basque, Indonesian, and Chinese (both simplified and traditional), we use the Stanza tokenizer (Qi et al., 2020)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "null",
+          "justification": "This information is not available in the paper.",
+          "quote": "null"
+        }
+      },
+      {
+        "name": {
+          "value": "NLTK",
+          "justification": "NLTK is used for sentence splitting in several languages.",
+          "quote": "For English, French, Portuguese, and Spanish, we use the NLTK tokenizer (Bird et al., 2009)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "null",
+          "justification": "This information is not available in the paper.",
+          "quote": "null"
+        }
+      },
+      {
+        "name": {
+          "value": "Indic NLP library",
+          "justification": "Indic NLP library is used for sentence splitting in several languages.",
+          "quote": "For Bengalic, Gujarati, Hindi, Kannada, Malayalam, Marathi, Punjabi, Tamil, and Telugu, we use the Indic NLP library tokenizer (Kunchukuttan, 2020)."
+        },
+        "aliases": [
+          "Indic NLP library"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "null",
+          "justification": "This information is not available in the paper.",
+          "quote": "null"
+        }
+      },
+      {
+        "name": {
+          "value": "Underthesea",
+          "justification": "Underthesea is used for sentence splitting in Vietnamese.",
+          "quote": "For Vietnamese, we use the Underthesea tokenizer 16."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "null",
+          "justification": "This information is not available in the paper.",
+          "quote": "null"
+        }
+      },
+      {
+        "name": {
+          "value": "XLMRoberta",
+          "justification": "XLMRoberta is used for NER tagging.",
+          "quote": "It relies on transformer models and backtranslation to perform NER and associated augmentation and anonymization over 100+ languages (i.e., we rely on XLMRoberta Fan et al. (2021) and M2M100 Conneau et al. (2020))."
+        },
+        "aliases": [
+          "XLMRoberta"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "null",
+          "justification": "This information is not available in the paper.",
+          "quote": "null"
+        }
+      },
+      {
+        "name": {
+          "value": "M2M100",
+          "justification": "M2M100 is used for NER tagging.",
+          "quote": "It relies on transformer models and backtranslation to perform NER and associated augmentation and anonymization over 100+ languages (i.e., we rely on XLMRoberta Fan et al. (2021) and M2M100 Conneau et al. (2020))."
+        },
+        "aliases": [
+          "M2M100"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "null",
+          "justification": "This information is not available in the paper.",
+          "quote": "null"
+        }
+      },
+      {
+        "name": {
+          "value": "spacy",
+          "justification": "Spacy is used for NER tagging.",
+          "quote": "We also use spacy and regex as added signals for NER tags."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "null",
+          "justification": "This information is not available in the paper.",
+          "quote": "null"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "cached_content_token_count": 0,
+    "candidates_token_count": 0,
+    "prompt_token_count": 0,
+    "total_token_count": 34333
+  }
+}

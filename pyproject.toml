@@ -24,13 +24,19 @@ classifiers = [
 ]
 dependencies = [
   "instructor",
-  "openai",
   "mlcm",
   "pandas",
   "pydantic",
   "pyyaml",
   "scikit-learn",
   "tiktoken",
+]
+[project.optional-dependencies]
+openai = [
+  "openai",
+]
+vertexai = [
+  "instructor[vertexai]",
 ]
 
 [project.urls]
@@ -49,7 +55,25 @@ analysis = "paperext.analysis:main"
 path = "src/paperext/__about__.py"
 
 [tool.hatch.envs.default]
+python = "3.10"
+python-sources = ["external"]
 installer = "uv"
+
+[tool.hatch.envs.default.env-vars]
+PAPEREXT_ROOT = "{env:PAPEREXT_ROOT:{root:real}}"
+# linux seams to require the following to avoid
+# ImportError: cannot import name '_message' from 'google.protobuf.pyext'
+PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION = "upb"
+
+[tool.hatch.envs.openai]
+extra-dependencies = [
+  "paperext[openai]",
+]
+[tool.hatch.envs.vertexai]
+installer = "pip"   # uv seams to hangs with instructor[google-generativeai]
+extra-dependencies = [
+  "paperext[vertexai]",
+]
 
 [tool.hatch.envs.types]
 extra-dependencies = [
@@ -57,6 +81,19 @@ extra-dependencies = [
 ]
 [tool.hatch.envs.types.scripts]
 check = "mypy --install-types --non-interactive {args:src/paperext tests}"
+
+[tool.hatch.envs.lint]
+detached = true
+dependencies = [
+  "black",
+  "isort",
+]
+
+[tool.hatch.envs.lint.scripts]
+lint = [
+  "black .",
+  "isort .",
+]
 
 [tool.coverage.run]
 source_pkgs = ["paperext", "tests"]

@@ -1,0 +1,213 @@
+{
+  "paper": "wcNtbEtcGIC.txt",
+  "words": 10090,
+  "extractions": {
+    "title": {
+      "value": "Robust and Controllable Object-Centric Learning through Energy-based Models",
+      "justification": "The exact title of the paper as given in the text.",
+      "quote": "Robust and Controllable Object-Centric Learning through Energy-based Models"
+    },
+    "description": "This research paper introduces EGO (EnerGy-based Object-centric learning), a method for learning object-centric representations through energy-based models (EBM). The approach leverages vanilla attention mechanisms in Transformers to form a permutation-invariant energy function and uses gradient-based MCMC methods for inference. The paper demonstrates the effectiveness of EGO in tasks like segmentation accuracy, scene generation, manipulation, and its robustness to distribution shifts.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper includes empirical evaluations and demonstrates the effectiveness of the proposed model on unsupervised object discovery tasks, scene manipulation, and robustness evaluation against distribution shifts.",
+      "quote": "We quantitatively and qualitatively evaluate our proposed model on the task of unsupervised object discovery, with the goal of decomposing the visual scene into a set of objects without any human supervision."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The paper primarily deals with visual scene understanding by decomposing scenes into object-centric representations using energy-based models.",
+        "quote": "The goal of object-centric representation learning is to learn a mapping from a visual observation x ∈ RDx to a set of vectors {zk }, where each vector zk ∈ RDz describes an individual object (or background) in x."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Object-centric Learning",
+          "justification": "The research is focused on object-centric representation learning, which aims to decompose visual scenes into individual objects.",
+          "quote": "Learning object-centric representations can further help to identify the relational and compositional structure among objects and enables the agent to reason about a novel scene composed of new objects by leveraging knowledge from previously-learned representations of similar objects."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Energy-based Models",
+          "justification": "The proposed method, EGO, is based on energy-based models (EBM) that help in learning object-centric representations.",
+          "quote": "EGO (EnerGy-based Object-centric learning), a conceptually simple yet effective approach to learning object-centric representations without the need for specially-tailored neural network architectures or strong (typically parametric) assumptions on data generating process."
+        },
+        "aliases": [
+          "EBM"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "EGO",
+          "justification": "The primary model introduced in the paper is EGO, designed for object-centric learning using energy-based models.",
+          "quote": "Contributions In this work, we introduce EGO (EnerGy-based Object-centric learning)..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "The paper introduces EGO as a new method and evaluates its performance on various tasks.",
+          "quote": "We introduce EGO (EnerGy-based Object-centric learning)..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The training and evaluation of EGO involve computational tasks that require execution on hardware.",
+          "quote": "We train all models with batch size 128 using the Adam optimizer..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "EGO's performance is compared numerically against several baseline methods in terms of segmentation accuracy and other metrics.",
+          "quote": "We compare our model against a variety of baseline methods, including Slot Attention, IODINE, and MONet."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "N/A as EGO is introduced in this paper.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "Slot Attention",
+          "justification": "Slot Attention is one of the baseline methods used for comparison in the paper.",
+          "quote": "We compare our model against a variety of baseline methods, including Slot Attention..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Slot Attention is referenced as a baseline and is not a contribution of this paper.",
+          "quote": "We compare our model against a variety of baseline methods, including Slot Attention (Locatello et al., 2020)..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Slot Attention was executed as part of baseline comparisons.",
+          "quote": "Implementation For the EGO model, we first encode the image input x using a CNN backbone. We use the same CNN architecture from Slot-Attention (Locatello et al., 2020)..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Slot Attention is numerically compared against EGO for performance evaluation.",
+          "quote": "We compare our model against a variety of baseline methods, including Slot Attention, IODINE, and MONet."
+        },
+        "referenced_paper_title": {
+          "value": "Object-centric learning with slot attention",
+          "justification": "The referenced paper for Slot Attention is cited in the text.",
+          "quote": "(Locatello et al., 2020)"
+        }
+      },
+      {
+        "name": {
+          "value": "MONet",
+          "justification": "MONet is one of the baseline methods used for comparison in the paper.",
+          "quote": "We compare our model against a variety of baseline methods, including MONet..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "MONet is referenced as a baseline and is not a contribution of this paper.",
+          "quote": "We compare our model against a variety of baseline methods, including MONet (Burgess et al., 2019)..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "MONet was executed as part of baseline comparisons.",
+          "quote": "Following (Greff et al., 2019; Locatello et al., 2020), the first 70K samples from the CLEVR-6 dataset and the first 60K samples from the Multi-dSprites and Tetrominoes datasets are used for training. Evaluation is performed on 320 test data examples."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "MONet is numerically compared against EGO for performance evaluation.",
+          "quote": "We compare our model against a variety of baseline methods, including Slot Attention, IODINE, and MONet."
+        },
+        "referenced_paper_title": {
+          "value": "MONet: Unsupervised scene decomposition and representation",
+          "justification": "The referenced paper for MONet is cited in the text.",
+          "quote": "(Burgess et al., 2019)"
+        }
+      },
+      {
+        "name": {
+          "value": "IODINE",
+          "justification": "IODINE is one of the baseline methods used for comparison in the paper.",
+          "quote": "We compare our model against a variety of baseline methods, including IODINE..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "IODINE is referenced as a baseline and is not a contribution of this paper.",
+          "quote": "We compare our model against a variety of baseline methods, including IODINE (Greff et al., 2019)..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "IODINE was executed as part of baseline comparisons.",
+          "quote": "For unsupervised object discovery, we follow prior approaches and use a spatial broadcast decoder (Watters et al., 2019; Greff et al., 2019; Locatello et al., 2020) to decode each latent variable zk separately..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "IODINE is numerically compared against EGO for performance evaluation.",
+          "quote": "We compare our model against a variety of baseline methods, including Slot Attention, IODINE, and MONet."
+        },
+        "referenced_paper_title": {
+          "value": "Multi-object representation learning with iterative variational inference",
+          "justification": "The referenced paper for IODINE is cited in the text.",
+          "quote": "(Greff et al., 2019)"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CLEVR",
+          "justification": "CLEVR is one of the datasets used for training and evaluation in the paper.",
+          "quote": "We use the CLEVR (Johnson et al., 2017) dataset from the Multi-Object Datasets library..."
+        },
+        "aliases": [
+          "CLEVR-6"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "CLEVR: A diagnostic dataset for compositional language and elementary visual reasoning",
+          "justification": "The referenced paper for CLEVR is cited in the text.",
+          "quote": "CLEVR (Johnson et al., 2017)"
+        }
+      },
+      {
+        "name": {
+          "value": "Multi-dSprites",
+          "justification": "Multi-dSprites is one of the datasets used for training and evaluation in the paper.",
+          "quote": "We use the Multi-dSprites dataset from the dSprites (Matthey et al., 2017) dataset."
+        },
+        "aliases": [
+          "dSprites"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "dsprites: Disentanglement testing sprites dataset",
+          "justification": "The referenced paper for Multi-dSprites is cited in the text.",
+          "quote": "(Matthey et al., 2017)"
+        }
+      },
+      {
+        "name": {
+          "value": "Tetrominoes",
+          "justification": "Tetrominoes is one of the datasets used for training and evaluation in the paper.",
+          "quote": "We use the Tetrominoes dataset from the Multi-Object Datasets library..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "N/A as the usage of the dataset is self-explanatory from the library.",
+          "quote": ""
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 2374,
+    "prompt_tokens": 19139,
+    "total_tokens": 21513
+  }
+}

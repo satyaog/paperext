@@ -1,0 +1,138 @@
+{
+  "paper": "a6718553c4b015228056e892e6bfb8cd.txt",
+  "words": 16964,
+  "extractions": {
+    "title": {
+      "value": "How well do models of visual cortex generalize to out of distribution samples?",
+      "justification": "This is the exact title given in the paper.",
+      "quote": "How well do models of visual cortex generalize to out of distribution samples?"
+    },
+    "description": "This paper investigates the ability of deep neural network (DNN) models of the visual cortex to predict neuronal responses to out-of-distribution (OOD) stimuli. By assessing various DNN models, their architectures, learning strategies, and datasets, the authors aim to understand the correlation between DNN performance on common vision benchmarks and their neural predictivity for synthetic stimuli.",
+    "type": {
+      "value": "empirical",
+      "justification": "The study involves experiments and observations to evaluate the models' performances on datasets and correlate with neural predictivity.",
+      "quote": "Here, we investigated how the recent progress in improving DNNs’ object recognition generalization, as well as various DNN design choices such as architecture, learning algorithm, and datasets have impacted the generalization gap in neural predictivity."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Neuroscience",
+        "justification": "The paper focuses on understanding the neuronal predictivity of DNN models in visual cortex tasks.",
+        "quote": "Considering the more recent advances of DNNs in closing the gap in cross-domain invariant object recognition, it is natural to ask: Do object recognition models with better generalization capacity also constitute more accurate and more general models of neurons in the brain?"
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Computer Vision",
+          "justification": "The evaluation of DNN models with respect to visual stimuli falls under the computer vision domain.",
+          "quote": "Several benchmarks were developed, aiming at assessing the ability of recognition models across different domains of objects."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Deep Learning",
+          "justification": "The study involves various architectures, learning algorithms, and datasets associated with deep neural networks.",
+          "quote": "Unit activity in particular deep neural networks (DNNs) are remarkably similar to the neuronal population responses to static images along the primate ventral visual cortex."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "ResNet50",
+          "justification": "Several analyses and predictions in the paper are based on the ResNet50 model.",
+          "quote": "We considered ResNet architecture with 18, 50, and 101 layers of computation and wide variations of ResNet50 and ResNet101 in which the number of units in each layer are doubled compared to their respective original architectures."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "ResNet50 is an established model and not introduced in the paper.",
+          "quote": "We compared the neural predictivity score across variations of ResNet architecture which differed in their relative depth and width."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model is utilized in multiple experiments in the study.",
+          "quote": "We compared the neural predictivity score across variations of ResNet architecture which differed in their relative depth and width."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of ResNet50 is compared with other models like ResNet18 and ResNet101.",
+          "quote": "Comparison of ID (green), OOD (blue), and generalization gap (purple) in neural predictivity on ResNet18 (left) and ResNet101 (right) variations of the ResNet architecture. MoCo improves OOD neural predictivity on both architectures."
+        },
+        "referenced_paper_title": {
+          "value": "Deep Residual Learning for Image Recognition",
+          "justification": "This is the original paper introducing ResNet50, referenced in the study.",
+          "quote": "He, K., Zhang, X., Ren, S., & Sun, J. (2016). Deep Residual Learning for Image Recognition. In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 770–778)."
+        }
+      },
+      {
+        "name": {
+          "value": "MoCo (Momentum Contrast)",
+          "justification": "MoCo is identified as an effective unsupervised learning algorithm that boosts neural predictivity.",
+          "quote": "A specific unsupervised learning algorithm called Momentum Contrast (MoCo) can substantially boost the neuronal models’ generalization performance."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "MoCo is an established unsupervised learning algorithm and is not introduced in this paper.",
+          "quote": "We also observed that when model parameters are tuned with a specific unsupervised algorithm (Momentum Contrast), the learned internal representations of these models generalize better to out-of-distribution stimuli compared to their supervised-trained counterparts."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "MoCo was used as an alternative learning algorithm in the experiments.",
+          "quote": "To examine the effect of these factors on neural prediction generalization, we compared the neural predictivity score across variations of ResNet architecture which differed in their relative depth and width."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "MoCo was compared with other learning algorithms for evaluating neural predictivity.",
+          "quote": "On the naturalistic domain, none of the unsupervised learning algorithms significantly exceeded the neural predictivity score of the supervised-trained model. In contrast, on the synthetic domain, one such algorithm (MoCo) substantially improved the neural predictivity score beyond the supervised-trained model (Fig. 6b)."
+        },
+        "referenced_paper_title": {
+          "value": "Momentum Contrast for Unsupervised Visual Representation Learning",
+          "justification": "This is the paper introducing the MoCo algorithm referenced in the study.",
+          "quote": "He, K., Fan, H., Wu, Y., Xie, S., & Girshick, R. (2020). Momentum Contrast for Unsupervised Visual Representation Learning. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition (pp. 9729–9738)."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "ImageNet",
+          "justification": "ImageNet dataset is used to evaluate object recognition performance in the study.",
+          "quote": "We used the ImageNet dataset to assess the models’ object recognition performance under common natural settings."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ImageNet: A Large-Scale Hierarchical Image Database",
+          "justification": "This is the original paper introducing the ImageNet dataset.",
+          "quote": "Deng, J., Dong, W., Socher, R., Li, L.-J., Li, K., & Fei-Fei, L. (2009). ImageNet: A Large-Scale Hierarchical Image Database. In 2009 IEEE conference on computer vision and pattern recognition (pp. 248–255)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is mentioned as a library used in the study.",
+          "quote": "We use the PyTorch library to implement the neural networks and perform the necessary computations."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Automatic differentiation in PyTorch",
+          "justification": "This is the original paper that introduces PyTorch.",
+          "quote": "Paszke, A., Gross, S., Massa, F., Lerer, A., Bradbury, J., Chanan, G., ... & Desmaison, A. (2017). Automatic differentiation in PyTorch. In Advances in Neural Information Processing Systems 30 (NIPS 2017) (pp. 8024-8035)."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1491,
+    "prompt_tokens": 29113,
+    "total_tokens": 30604
+  }
+}

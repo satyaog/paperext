@@ -1,0 +1,112 @@
+{
+  "paper": "2306.04226.txt",
+  "words": 12560,
+  "extractions": {
+    "title": {
+      "value": "Normalization Layers Are All That Sharpness-Aware Minimization Needs",
+      "justification": "Title retrieved from the provided paper details.",
+      "quote": "Normalization Layers Are All That Sharpness-Aware Minimization Needs"
+    },
+    "description": "This paper investigates the role of normalization layers in the context of sharpness-aware minimization (SAM). The authors propose a variant, SAM-ON (SAM-OnlyNorm), where perturbations during the adversarial step are applied solely to the normalization layers. The study demonstrates that SAM-ON can outperform traditional SAM methods across various settings, including ResNet and Vision Transformer architectures, particularly on CIFAR and ImageNet datasets.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper conducts experiments to validate the proposed SAM-ON approach across different architectures and datasets, illustrating empirical research.",
+      "quote": "We study the effect of applying SAM (and its variants) solely to the normalization layers of a considered model."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Machine Learning",
+        "justification": "The primary research field is Machine Learning as the study focuses on optimization techniques like sharpness-aware minimization, which are core topics in this field.",
+        "quote": "In this work we show that perturbing only the affine normalization parameters ... can outperform perturbing all of the parameters."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Computer Vision",
+          "justification": "The paper involves experiments on convolutional architectures such as ResNet and Vision Transformers, which are widely used in Computer Vision tasks.",
+          "quote": "...both ResNet (Batch Normalization) and Vision Transformer (Layer Normalization) architectures..."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Optimization",
+          "justification": "The study focuses on sharpness-aware minimization techniques, specifically examining the effect of perturbing normalization layer parameters.",
+          "quote": "Sharpness-aware minimization (SAM) was proposed to reduce sharpness of minima and has been shown to enhance generalization performance..."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "ResNet-50",
+          "justification": "The paper mentions the use of ResNet-50 architecture trained on ImageNet as part of their experiments.",
+          "quote": "We select the most promising SAM-ON variants and compare them against the established methods (SGD, SAM, ASAM elementwise ℓ2 ). The results are shown in Table 2. ...We train a ResNet-50 for 100 epochs on eight 2080-Ti GPUs with m = 64, leading to an overall batch-size of 512"
+        },
+        "aliases": [
+          "ResNet"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The ResNet-50 model is not a contribution of this paper; it is a well-established model used in experiments.",
+          "quote": "We corroborate the remarkable generalization performance of SAM-ON for ResNet and Vision Transformer architectures"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The ResNet-50 model was executed on GPU during the experiments mentioned in the paper.",
+          "quote": "We train a ResNet-50 for 100 epochs on eight 2080-Ti GPUs"
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The ResNet-50 model is compared with other models using different SAM and SGD variants.",
+          "quote": "We select the most promising SAM-ON variants and compare them against the established methods (SGD, SAM, ASAM elementwise ℓ2 )."
+        },
+        "referenced_paper_title": {
+          "value": "Deep residual learning for image recognition",
+          "justification": "The original ResNet architecture was introduced in the paper titled 'Deep residual learning for image recognition' by He et al.",
+          "quote": "ResNet-50"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CIFAR-100",
+          "justification": "The paper uses CIFAR-100 dataset for training and evaluating various models including ResNet with SAM and SAM-ON.",
+          "quote": "Figure 1: The interplay of normalization layers with SAM: Perturbing only normalization layers (OnlyNorm, dashed) improves generalization performance, while omitting them in the perturbation (no-norm, dotted) can harm training. WideResNet-28-10 trained with different SAM-variants on CIFAR-100."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "CIFAR-100: A 100-Class Dataset for Image Classification",
+          "justification": "CIFAR-100 dataset is a well-known image classification dataset introduced by Krizhevsky et al., often referenced in deep learning research.",
+          "quote": "CIFAR-100"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The authors mention the use of PyTorch for training models on CIFAR-100 on a single A100 GPU.",
+          "quote": "We report the wall-clock time of training a WRN-28 (left) and a ResNeXt (right) with batchsize 128 on a single A100 with PyTorch."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An Imperative Style, High-Performance Deep Learning Library",
+          "justification": "PyTorch is a widely used deep learning library often cited in research papers.",
+          "quote": "PyTorch"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1051,
+    "prompt_tokens": 27623,
+    "total_tokens": 28674
+  }
+}

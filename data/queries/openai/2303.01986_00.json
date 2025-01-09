@@ -1,0 +1,310 @@
+{
+  "paper": "2303.01986.txt",
+  "words": 7399,
+  "extractions": {
+    "title": {
+      "value": "Towards Democratizing Joint-Embedding Self-Supervised Learning",
+      "justification": "The paper clearly states its title at the beginning",
+      "quote": "Towards Democratizing Joint-Embedding Self-Supervised Learning"
+    },
+    "description": "This paper focuses on Joint Embedding Self-Supervised Learning (JE-SSL). It challenges several preconceptions about the necessity of large mini-batches and strong data augmentations for training JE-SSL models. The paper introduces a novel PyTorch library named FFCV-SSL specifically optimized for Self-Supervised Learning to make these models more accessible.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper carries out extensive experiments to debunk various misconceptions in JE-SSL.",
+      "quote": "The development of JE-SSL methods was driven primarily by the search for ever increasing downstream classification accuracies, using huge computational resources, and typically built upon insights and intuitions inherited from a close parent JE-SSL method."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Self-Supervised Learning",
+        "justification": "The paper primarily deals with Self-Supervised Learning techniques, focusing on Joint Embedding methodologies.",
+        "quote": "Interest in Self-Supervised Learning (SSL) has increased steadily since the work of [5]."
+      },
+      "aliases": [
+        "SSL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Contrastive Learning",
+          "justification": "The paper discusses various Contrastive Learning methods in detail.",
+          "quote": "Since then, other works tried to build upon the contrastive method of [5] by either increasing the scale [6], improving the negative example sampling scheme using a buffer [6] or by using new data augmentations [9]."
+        },
+        "aliases": [
+          "CL"
+        ]
+      },
+      {
+        "name": {
+          "value": "Data Augmentation",
+          "justification": "The paper evaluates the impact of different data augmentation strategies for JE-SSL methods.",
+          "quote": "Another common criticism is the requirement for a very specific set of hand-crafted data augmentation to make such methods work."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "SimCLR",
+          "justification": "SimCLR is mentioned as a baseline in numerous experiments and comparisons.",
+          "quote": "For example we show that it is possible to train SimCLR to learn useful representations, while using a single image patch as a negative example, and simple Gaussian noise as the only data augmentation for the positive pair."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "It is used as a baseline model in various comparisons.",
+          "quote": "we compare FFCV-SSL with torchvision using various image’s resolution (224 means that a fixed resolution size of 224x224 is used when cropping the images while 160 -> 224 means that the resolution is increasing during training from 160x160 to 224x224) – no other changes have been applied in the implementation and the same hardware (GPU A100) is employed."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Experimental results and training times are provided for SimCLR executed on GPUs.",
+          "quote": "we are able to perform thorough empirical investigations against preconceived failure modes of SSL models for which we obtain novel conclusions e.g. 1) SimCLR can perform equally well with small or large mini-batch training"
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "SimCLR is compared to other models to evaluate its performance under different conditions.",
+          "quote": "Surprisingly, we will be able to debunk empirically several observations that were put forward in multiple previous studies, ultimately showcasing that most JE-SSL methods are actually much more similar to one another than previously thought."
+        },
+        "referenced_paper_title": {
+          "value": "A Simple Framework for Contrastive Learning of Visual Representations",
+          "justification": "The original SimCLR paper is frequently cited.",
+          "quote": "For example, [5,21] study the impact of the batch size but keep all other hyper-parameters fixed."
+        }
+      },
+      {
+        "name": {
+          "value": "BarlowTwins",
+          "justification": "Barlow Twins is discussed and its performance is evaluated under various settings.",
+          "quote": "BarlowTwins's loss proposes yet a slightly different approach where zi must be close to zj if Gi,j > 0."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "It serves as a baseline for various experiments.",
+          "quote": "we will be able to debunk empirically several observations that were put forward in multiple previous studies, ultimately showcasing that most JE-SSL methods are actually much more similar to one another than previously thought."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Experimental results and training times are provided for Barlow Twins executed on GPUs.",
+          "quote": "By using FFCV-SSL, we are able to run SSL experiment 3 times faster than before."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Barlow Twins is compared to other models like SimCLR.",
+          "quote": "By reproducing many experiments of the original work of [6] we will be able to debunk most of the aforementioned a prioris."
+        },
+        "referenced_paper_title": {
+          "value": "Barlow Twins: Self-Supervised Learning via Redundancy Reduction",
+          "justification": "The original Barlow Twins paper is referenced.",
+          "quote": "BarlowTwins's loss [21] proposes yet a slightly different approach where zi must be close to zj if Gi,j > 0."
+        }
+      },
+      {
+        "name": {
+          "value": "BYOL",
+          "justification": "BYOL is discussed and its performance is evaluated under various settings.",
+          "quote": "We find that [Byol] is not robust to removing some types of data augmentations, like SIMCLR"
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "It serves as a baseline for various experiments.",
+          "quote": "we will be able to debunk empirically several observations that were put forward in multiple previous studies, ultimately showcasing that most JE-SSL methods are actually much more similar to one another than previously thought."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Experimental results and training times are provided for BYOL executed on GPUs.",
+          "quote": "By using FFCV-SSL, we are able to run SSL experiment 3 times faster than before."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "BYOL is compared to other models like SimCLR.",
+          "quote": "By reproducing many experiments of the original work of [6] we will be able to debunk most of the aforementioned a prioris."
+        },
+        "referenced_paper_title": {
+          "value": "Bootstrap Your Own Latent: A New Approach to Self-Supervised Learning",
+          "justification": "The original BYOL paper is referenced.",
+          "quote": "We find that [Byol] is not robust to removing some types of data augmentations, like SIMCLR [11]"
+        }
+      },
+      {
+        "name": {
+          "value": "VICReg",
+          "justification": "VICReg is discussed and its performance is evaluated under various settings.",
+          "quote": "VICReg's loss is defined as a function of X and G in the following triplet loss."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "It serves as a baseline for various experiments.",
+          "quote": "we will be able to debunk empirically several observations that were put forward in multiple previous studies, ultimately showcasing that most JE-SSL methods are actually much more similar to one another than previously thought."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Experimental results and training times are provided for VICReg executed on GPUs.",
+          "quote": "By using FFCV-SSL, we are able to run SSL experiment 3 times faster than before."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "VICReg is compared to other models to evaluate its performance.",
+          "quote": "By reproducing many experiments of the original work of [6] we will be able to debunk most of the aforementioned a prioris."
+        },
+        "referenced_paper_title": {
+          "value": "VICReg: Variance-Invariance-Covariance Regularization for Self-Supervised Learning",
+          "justification": "The original VICReg paper is referenced.",
+          "quote": "VICReg's loss [2] is defined as a function of X and G in the following triplet loss"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "ImageNet",
+          "justification": "The ImageNet dataset is used for evaluating the models.",
+          "quote": "Figure 1. ImageNet validation accuracy (y-axis) during training of SimCLR with respect to the training time (x-axis)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ImageNet Large Scale Visual Recognition Challenge",
+          "justification": "The ImageNet paper is referenced for validating the models.",
+          "quote": "using only a Gaussian noise as data augmentation for the positive pair, leads on several downstream tasks to results that are very close to the SimCLR baseline."
+        }
+      },
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "CIFAR-10 dataset is used for evaluating the models.",
+          "quote": "The impact of the downstream task One caveat of the batch size analysis in [5, 21] is that it concerns only the performances on ImageNet. Since one of the main motivation behind SSL is to learn a model whose representations can generalize to different tasks, we analyse the performances with different batch sizes across several downstream tasks: ImageNet-1K [19], CIFAR10 [16], CLEVR [14], Eurosat [12], Inaturalist [13] and Places [22]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Multiple Layers of Features from Tiny Images",
+          "justification": "The CIFAR-10 paper is referenced for validating the models.",
+          "quote": "The impact of the downstream task One caveat of the batch size analysis in [5, 21] is that it concerns only the performances on ImageNet. Since one of the main motivation behind SSL is to learn a model whose representations can generalize to different tasks, we analyse the performances with different batch sizes across several downstream tasks: ImageNet-1K [19], CIFAR10 [16], CLEVR [14], Eurosat [12], Inaturalist [13] and Places [22]."
+        }
+      },
+      {
+        "name": {
+          "value": "CLEVR",
+          "justification": "CLEVR dataset is used for evaluating the models.",
+          "quote": "CLEVR [14],"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "CLEVR: A Diagnostic Dataset for Compositional Language and Elementary Visual Reasoning",
+          "justification": "The CLEVR paper is referenced for validating the models.",
+          "quote": "CLEVR [14],"
+        }
+      },
+      {
+        "name": {
+          "value": "Eurosat",
+          "justification": "The Eurosat dataset is used for evaluating the models.",
+          "quote": "Eurosat [12],"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "EuroSat: A Novel Dataset and Deep Learning Benchmark for Land Use and Land Cover Classification",
+          "justification": "The Eurosat paper is referenced for validating the models.",
+          "quote": "Eurosat [12],"
+        }
+      },
+      {
+        "name": {
+          "value": "iNaturalist",
+          "justification": "The iNaturalist dataset is used for evaluating the models.",
+          "quote": "Inaturalist [13]"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The iNaturalist Species Classification and Detection Dataset",
+          "justification": "The iNaturalist paper is referenced for validating the models.",
+          "quote": "Inaturalist [13]"
+        }
+      },
+      {
+        "name": {
+          "value": "Places",
+          "justification": "The Places dataset is used for evaluating the models.",
+          "quote": "Places [22]"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Deep Features for Scene Recognition Using Places Database",
+          "justification": "The Places paper is referenced for validating the models.",
+          "quote": "Places [22]"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The authors implemented their models and experiments using PyTorch.",
+          "quote": "As demonstrated in the previous section, the necessity of strong augmentation and large batch size in SimCLR is not as obvious as presented in the current literature. Knowing this, we attempted to train several SimCLR models using a single GPU."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An Imperative Style, High-Performance Deep Learning Library",
+          "justification": "The reference paper for PyTorch is cited.",
+          "quote": "Most implementations of Self-Supervised learning use Pytorch [18] along its vision library Torchvision."
+        }
+      },
+      {
+        "name": {
+          "value": "FFCV",
+          "justification": "FFCV is the foundation of the FFCV-SSL library introduced by the paper.",
+          "quote": "All of our empirical analysis is enabled by FFCV-SSL which we developed specifically to reduce data loading overhead when training JE-SSL methods, and is based on the fast data loading library FFCV [17]."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "ffcv",
+          "justification": "The original FFCV library is referenced as the base for FFCV-SSL.",
+          "quote": "All of our empirical analysis is enabled by FFCV-SSL which we developed specifically to reduce data loading overhead when training JE-SSL methods, and is based on the fast data loading library FFCV [17]."
+        }
+      },
+      {
+        "name": {
+          "value": "Torchvision",
+          "justification": "Torchvision is used as a comparison for the new FFCV-SSL library.",
+          "quote": "Figure 1. ImageNet validation accuracy (y-axis) during training of SimCLR with respect to the training time (x-axis). FFCV-SSL is our proposed library that is specifically optimized for Self-Supervised Learning, and that extends the original FFCV library [17]. We compare FFCV-SSL with torchvision using various image’s resolution (224 means that a fixed resolution size of 224x224 is used when cropping the images while 160 -> 224 means that the resolution is increasing during training from 160x160 to 224x224)"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An Imperative Style, High-Performance Deep Learning Library",
+          "justification": "Torchvision is part of the PyTorch library ecosystem.",
+          "quote": "the necessity of strong augmentation and large batch size in SimCLR is not as obvious as presented in the current literature. Knowing this, we attempted to train several SimCLR models using a single GPU."
+        }
+      },
+      {
+        "name": {
+          "value": "FFCV-SSL",
+          "justification": "The authors introduced FFCV-SSL as their new PyTorch library optimized for Self-Supervised Learning.",
+          "quote": "All of our empirical analysis is enable by FFCV-SSL which we developed specifically to reduce data loading overhead when training JE-SSL methods, and is based on the fast data loading library FFCV [17]."
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "Towards Democratizing Joint-Embedding Self-Supervised Learning",
+          "justification": "This paper itself is the main reference for FFCV-SSL.",
+          "quote": "we introduce an optimized PyTorch library for SSL https://github.com/facebookresearch/FFCV-SSL."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 3796,
+    "prompt_tokens": 12960,
+    "total_tokens": 16756
+  }
+}

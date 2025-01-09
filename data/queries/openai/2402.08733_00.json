@@ -1,0 +1,266 @@
+{
+  "paper": "2402.08733.txt",
+  "words": 35569,
+  "extractions": {
+    "title": {
+      "value": "Experts Don’t Cheat: Learning What You Don’t Know By Predicting Pairs",
+      "justification": "This is the title of the paper provided by the user.",
+      "quote": "Experts Don’t Cheat: Learning What You Don’t Know By Predicting Pairs"
+    },
+    "description": "The paper presents a strategy for training models to estimate the gaps between their predictions and the true underlying data distribution by predicting pairs of responses. This technique helps in identifying and quantifying epistemic uncertainty by allowing the model to 'cheat' by observing one response while predicting the other.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper demonstrates the proposed methods using empirical experiments and provides results with various datasets and tasks to support the claims.",
+      "quote": "We demonstrate empirically that our approach accurately estimates how much models don’t know across ambiguous image classification, (synthetic) language modeling, and partially-observable navigation tasks, outperforming existing techniques."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Uncertainty Estimation",
+        "justification": "The primary focus of the paper is on improving uncertainty estimation in predictive models through a novel training strategy involving paired response prediction.",
+        "quote": "We show that second-order calibration is equivalent to ordinary calibration over pairs of responses (y1 , y2 ), and propose a simple modification to standard maximum-likelihood training (“training models to cheat” as in Figure 1) which incentivizes models to become second-order calibrated given sufficient capacity and training data."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Image Classification",
+          "justification": "One of the experiments conducted in the paper involves ambiguous image classification, proving its relevance to this subfield.",
+          "quote": "We demonstrate empirically that our approach accurately estimates how much models don’t know across ambiguous image classification, (synthetic) language modeling, and partially-observable navigation tasks."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Language Modeling",
+          "justification": "The paper applies its proposed methodology to a synthetic language modeling task to showcase the effectiveness of the uncertainty estimation technique.",
+          "quote": "We demonstrate empirically that our approach accurately estimates how much models don’t know across ambiguous image classification, (synthetic) language modeling, and partially-observable navigation tasks."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Navigation and Planning",
+          "justification": "The paper includes experiments in partially-observable navigation tasks to validate the performance of the proposed technique in estimating model uncertainty.",
+          "quote": "We demonstrate empirically that our approach accurately estimates how much models don’t know across ambiguous image classification, (synthetic) language modeling, and partially-observable navigation tasks."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Cheat-Corrected Selection",
+          "justification": "This model is introduced and used in the empirical experiments within the paper as a method to estimate epistemic uncertainty by allowing the model to cheat.",
+          "quote": "In particular, we propose to directly train a model p̂θY1,Y2|X (Y1 , Y2 |X) to predict paired responses by minimizing the standard cross-entropy loss."
+        },
+        "aliases": [
+          "Cheat-Corrected NN"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The model is presented as a primary contribution of the research, intended to improve the accuracy of uncertainty estimation.",
+          "quote": "We show that second-order calibration is equivalent to ordinary calibration over pairs of responses (y1 , y2 ), and propose a simple modification to standard maximum-likelihood training (“training models to cheat” as in Figure 1)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper includes empirical results obtained by running this model on various tasks and datasets.",
+          "quote": "We demonstrate empirically that our approach accurately estimates how much models don’t know across ambiguous image classification, (synthetic) language modeling, and partially-observable navigation tasks."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The model's performance is compared to existing uncertainty quantification methods in the empirical sections of the paper.",
+          "quote": "We demonstrate empirically that our approach accurately estimates how much models don’t know across ambiguous image classification, (synthetic) language modeling, and partially-observable navigation tasks, outperforming existing techniques."
+        },
+        "referenced_paper_title": {
+          "value": "Experts Don’t Cheat: Learning What You Don’t Know By Predicting Pairs",
+          "justification": "As this is the primary model introduced in the paper, its own title is used as the referenced paper.",
+          "quote": "We demonstrate empirically that our approach accurately estimates how much models don’t know across ambiguous image classification, (synthetic) language modeling, and partially-observable navigation tasks, outperforming existing techniques."
+        }
+      },
+      {
+        "name": {
+          "value": "Evidential Deep Learning",
+          "justification": "This model is mentioned as a comparative baseline for uncertainty estimation in the empirical experiments of the paper.",
+          "quote": "Borrow Evidential DL (Sensoy et al., 2018), on the other hand, is underconfident because its objective biases its uncertainty estimates."
+        },
+        "aliases": [
+          "Evidential NN"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The model is not a contribution of this paper; it is used for comparison purposes.",
+          "quote": "Borrow Evidential DL (Sensoy et al., 2018), on the other hand, is underconfident because its objective biases its uncertainty estimates."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "This model is run as part of the empirical experiments comparing different uncertainty estimation techniques.",
+          "quote": "Existing epistemic uncertainty quantification approaches are not second-order calibrated under misspecification (Figure 3)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "This model's performance is compared against the proposed Cheat-Corrected Selection model in the empirical evaluations.",
+          "quote": "Existing epistemic uncertainty quantification approaches are not second-order calibrated under misspecification (Figure 3)."
+        },
+        "referenced_paper_title": {
+          "value": "Evidential Deep Learning to Quantify Classification Uncertainty",
+          "justification": "This referenced paper by Sensoy et al. is cited in the context of comparing models.",
+          "quote": "Borrow Evidential DL (Sensoy et al., 2018), on the other hand, is underconfident because its objective biases its uncertainty estimates."
+        }
+      },
+      {
+        "name": {
+          "value": "Gaussian Process Classifier",
+          "justification": "This model is used as a comparative baseline for measuring uncertainty in the empirical experiments of the paper.",
+          "quote": "Existing techniques for estimating epistemic uncertainty often attempt to estimate how much pY|X could vary given what the model “knows”. For instance, Gaussian processes (Bernardo et al., 1998) and Bayesian neural networks (Goan & Fookes, 2020) impose a prior distribution over the generative process."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The model is not a contribution of this paper; it is used for comparison purposes.",
+          "quote": "Existing techniques for estimating epistemic uncertainty often attempt to estimate how much pY|X could vary given what the model “knows”. For instance, Gaussian processes (Bernardo et al., 1998) and Bayesian neural networks (Goan & Fookes, 2020) impose a prior distribution over the generative process."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "This model is run as part of the empirical experiments comparing different uncertainty estimation techniques.",
+          "quote": "Existing techniques for estimating epistemic uncertainty often attempt to estimate how much pY|X could vary given what the model “knows”. For instance, Gaussian processes (Bernardo et al., 1998) and Bayesian neural networks (Goan & Fookes, 2020) impose a prior distribution over the generative process."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "This model's performance is compared against the proposed Cheat-Corrected Selection model in the empirical evaluations.",
+          "quote": "Existing epistemic uncertainty quantification approaches are not second-order calibrated under misspecification (Figure 3)."
+        },
+        "referenced_paper_title": {
+          "value": "Regression and Classification Using Gaussian Process Priors",
+          "justification": "This referenced paper by Bernardo et al. is cited in the context of comparing models.",
+          "quote": "Existing techniques for estimating epistemic uncertainty often attempt to estimate how much pY|X could vary given what the model “knows”. For instance, Gaussian processes (Bernardo et al., 1998) and Bayesian neural networks (Goan & Fookes, 2020) impose a prior distribution over the generative process."
+        }
+      },
+      {
+        "name": {
+          "value": "NN Ensemble",
+          "justification": "This is a common baseline model used in the paper for comparison against the proposed Cheat-Corrected Selection model.",
+          "quote": "Other related strategies include ensembling (Lakshminarayanan et al., 2016), injecting noise into the model or training process (Gal & Ghahramani, 2015; Osband et al., 2021), or predicting a “distribution over distributions” (Sensoy et al., 2018; Malinin & Gales, 2018)."
+        },
+        "aliases": [
+          "Neural Network Ensemble"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The model is not a contribution of this paper; it is utilized for comparative experiments.",
+          "quote": "Other related strategies include ensembling (Lakshminarayanan et al., 2016), injecting noise into the model or training process (Gal & Ghahramani, 2015; Osband et al., 2021), or predicting a “distribution over distributions” (Sensoy et al., 2018; Malinin & Gales, 2018)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "This baseline model is executed in the scope of the paper to provide comparative results.",
+          "quote": "Other related strategies include ensembling (Lakshminarayanan et al., 2016), injecting noise into the model or training process (Gal & Ghahramani, 2015; Osband et al., 2021), or predicting a “distribution over distributions” (Sensoy et al., 2018; Malinin & Gales, 2018)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The model's performance is numerically compared with the proposed Cheat-Corrected Selection model.",
+          "quote": "Other related strategies include ensembling (Lakshminarayanan et al., 2016), injecting noise into the model or training process (Gal & Ghahramani, 2015; Osband et al., 2021), or predicting a “distribution over distributions” (Sensoy et al., 2018; Malinin & Gales, 2018)."
+        },
+        "referenced_paper_title": {
+          "value": "Simple and Scalable Predictive Uncertainty Estimation Using Deep Ensembles",
+          "justification": "This referenced paper by Lakshminarayanan et al. is cited in the context of comparing models.",
+          "quote": "Other related strategies include ensembling (Lakshminarayanan et al., 2016), injecting noise into the model or training process (Gal & Ghahramani, 2015; Osband et al., 2021), or predicting a “distribution over distributions” (Sensoy et al., 2018; Malinin & Gales, 2018)."
+        }
+      },
+      {
+        "name": {
+          "value": "Epinet",
+          "justification": "This model is used as a comparative baseline for measuring uncertainty about the predictions a model makes, similar to the proposed model.",
+          "quote": "We compare our approach to a variety of existing uncertainty quantification techniques: SNGP Cov. (Liu et al., 2020), which uses spectral normalization and a Laplace random-features approximation to a Gaussian process covariance; Evidential DL (Sensoy et al., 2018), which uses a regularized Dirichlet output to estimate epistemic uncertainty; Epinet (Osband et al., 2021), which models uncertainty by feeding a random “index” input through a fixed “prior” network and a learned corrector."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The model is not a contribution of this paper; it is used for comparison.",
+          "quote": "We compare our approach to a variety of existing uncertainty quantification techniques: SNGP Cov. (Liu et al., 2020), which uses spectral normalization and a Laplace random-features approximation to a Gaussian process covariance; Evidential DL (Sensoy et al., 2018), which uses a regularized Dirichlet output to estimate epistemic uncertainty; Epinet (Osband et al., 2021), which models uncertainty by feeding a random “index” input through a fixed “prior” network and a learned corrector."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "This model is run as part of the empirical experiments comparing different uncertainty estimation techniques.",
+          "quote": "We compare our approach to a variety of existing uncertainty quantification techniques: SNGP Cov. (Liu et al., 2020), which uses spectral normalization and a Laplace random-features approximation to a Gaussian process covariance; Evidential DL (Sensoy et al., 2018), which uses a regularized Dirichlet output to estimate epistemic uncertainty; Epinet (Osband et al., 2021), which models uncertainty by feeding a random “index” input through a fixed “prior” network and a learned corrector."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "This model's performance is compared against the proposed Cheat-Corrected Selection model in the empirical evaluations.",
+          "quote": "We compare our approach to a variety of existing uncertainty quantification techniques: SNGP Cov. (Liu et al., 2020), which uses spectral normalization and a Laplace random-features approximation to a Gaussian process covariance; Evidential DL (Sensoy et al., 2018), which uses a regularized Dirichlet output to estimate epistemic uncertainty; Epinet (Osband et al., 2021), which models uncertainty by feeding a random “index” input through a fixed “prior” network and a learned corrector."
+        },
+        "referenced_paper_title": {
+          "value": "Epistemic Neural Networks",
+          "justification": "This referenced paper by Osband et al. is cited in the context of comparing models.",
+          "quote": "We compare our approach to a variety of existing uncertainty quantification techniques: SNGP Cov. (Liu et al., 2020), which uses spectral normalization and a Laplace random-features approximation to a Gaussian process covariance; Evidential DL (Sensoy et al., 2018), which uses a regularized Dirichlet output to estimate epistemic uncertainty; Epinet (Osband et al., 2021), which models uncertainty by feeding a random “index” input through a fixed “prior” network and a learned corrector."
+        }
+      },
+      {
+        "name": {
+          "value": "SNGP Cov.",
+          "justification": "This model is used as a comparative baseline for measuring uncertainty, applying spectral normalization and a Laplace random-feature approximation to a Gaussian process covariance.",
+          "quote": "We compare our approach to a variety of existing uncertainty quantification techniques: SNGP Cov. (Liu et al., 2020), which uses spectral normalization and a Laplace random-features approximation to a Gaussian process covariance; Evidential DL (Sensoy et al., 2018), which uses a regularized Dirichlet output to estimate epistemic uncertainty; Epinet (Osband et al., 2021), which models uncertainty by feeding a random “index” input through a fixed “prior” network and a learned corrector."
+        },
+        "aliases": [
+          "Spectral Normalization Gaussian Process"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The model is not a contribution of this paper; it is used for comparison purposes.",
+          "quote": "We compare our approach to a variety of existing uncertainty quantification techniques: SNGP Cov. (Liu et al., 2020), which uses spectral normalization and a Laplace random-features approximation to a Gaussian process covariance; Evidential DL (Sensoy et al., 2018), which uses a regularized Dirichlet output to estimate epistemic uncertainty; Epinet (Osband et al., 2021), which models uncertainty by feeding a random “index” input through a fixed “prior” network and a learned corrector."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "This model is executed in the scope of the paper to provide comparative results.",
+          "quote": "We compare our approach to a variety of existing uncertainty quantification techniques: SNGP Cov. (Liu et al., 2020), which uses spectral normalization and a Laplace random-features approximation to a Gaussian process covariance."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The model's performance is numerically compared with the proposed Cheat-Corrected Selection model.",
+          "quote": "We compare our approach to a variety of existing uncertainty quantification techniques: SNGP Cov. (Liu et al., 2020), which uses spectral normalization and a Laplace random-features approximation to a Gaussian process covariance."
+        },
+        "referenced_paper_title": {
+          "value": "Simple and Principled Uncertainty Estimation with Deterministic Deep Learning via Distance Awareness",
+          "justification": "This referenced paper by Liu et al. is cited in the context of comparing models.",
+          "quote": "We compare our approach to a variety of existing uncertainty quantification techniques: SNGP Cov. (Liu et al., 2020), which uses spectral normalization and a Laplace random-features approximation to a Gaussian process covariance."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CIFAR-10H",
+          "justification": "The CIFAR-10H dataset is used to evaluate the uncertainty estimation of the proposed models under ambiguous image classification tasks.",
+          "quote": "We compare our approach to a variety of existing uncertainty quantification techniques: ... ECE-2 is second-order calibration error of the variance estimate (best ECE-2 in bold), E[v̂ θ ] is predicted epistemic variance, and E[(p̂θ − p)2 ] is actual grouping error (ideally close to E[v̂ θ ]). ... Our primary evaluation metric is the expected second-order calibration error between the predicted epistemic variance and the actual squared difference between the predicted probability and p(Y |x)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Human Uncertainty Makes Classification More Robust",
+          "justification": "The referenced paper by Peterson et al. provides the CIFAR-10H dataset used in the experiments.",
+          "quote": "Our primary evaluation metric is the expected second-order calibration error between the predicted epistemic variance and the actual squared difference between the predicted probability and p(Y |x)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "TensorFlow",
+          "justification": "TensorFlow is one of the primary libraries used to implement the models discussed in the paper.",
+          "quote": "deep learning library TensorFlow (Abadi et al., 2015)"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Systems",
+          "justification": "The referenced paper by Abadi et al. discusses the TensorFlow library.",
+          "quote": "deep learning library TensorFlow (Abadi et al., 2015)"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 3933,
+    "prompt_tokens": 66008,
+    "total_tokens": 69941
+  }
+}

@@ -1,0 +1,160 @@
+{
+  "paper": "XGXPeOXbiT-.txt",
+  "words": 10846,
+  "extractions": {
+    "title": {
+      "value": "UNSUPERVSED MODEL-BASED PRE-TRAINING FOR DATA-EFFICIENT CONTROL FROM PIXELS",
+      "justification": "The title is clearly mentioned at the beginning of the document.",
+      "quote": "UNSUPERVISED MODEL-BASED PRE-TRAINING FOR DATA-EFFICIENT CONTROL FROM PIXELS"
+    },
+    "description": "The paper discusses an unsupervised reinforcement learning strategy for data-efficient visual control by pre-training with world models. It evaluates the approach using the Unsupervised RL Benchmark (URLB) and Real-World RL Benchmark (RWRL) and proposes a hybrid planner named Dyna-MPC. The large-scale empirical study shows that this approach requires 20× less data to achieve performance comparable to supervised methods.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents extensive empirical evaluations, supported by experiments to design the method.",
+      "quote": "An extensive empirical evaluation, supported by more than 2k experiments, among main results, analysis and ablations, was used to carefully design our method."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Reinforcement Learning",
+        "justification": "The paper focuses on reinforcement learning strategies, particularly unsupervised pre-training and its effectiveness for data-efficient visual control.",
+        "quote": "In this work, we design an unsupervised RL strategy for data-efficient visual control."
+      },
+      "aliases": [
+        "RL",
+        "Reinforcement Learning"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Computer Vision",
+          "justification": "Part of the focus is on visual control which directly ties into Computer Vision.",
+          "quote": "Controlling artificial agents from visual sensory data is an arduous task."
+        },
+        "aliases": [
+          "CV",
+          "Computer Vision"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Dyna-MPC",
+          "justification": "This is the hybrid planner proposed and used in the study.",
+          "quote": "We propose a novel hybrid planner we call Dyna-MPC, which allows us to effectively combine behaviors learned in imagination with planning (Section 3.3)."
+        },
+        "aliases": [
+          "Dyna-MPC"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The paper introduces Dyna-MPC as a novel hybrid planner for improved data-efficient control.",
+          "quote": "We propose a novel hybrid planner we call Dyna-MPC, which allows us to effectively combine behaviors learned in imagination with planning (Section 3.3)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model uses Dreamer agents which are known to run on GPUs.",
+          "quote": "The dynamics is captured into a latent space Z, providing a compact representation of the high-dimensional inputs. The encoder and decoder are convolutional neural networks (CNNs) and the remaining components are multi-layer perceptrons (MLPs)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of Dyna-MPC is compared to other strategies in various experiments.",
+          "quote": "combining our findings into one approach, we outperform previous approaches on URLB from pixels, nearly solving the benchmark (Section 4.1)."
+        },
+        "referenced_paper_title": {
+          "value": "Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model",
+          "justification": "This paper is referenced in the context of using MPC which relates to the proposed Dyna-MPC.",
+          "quote": "Model-based Predictive Control (MPC) (Williams et al., 2015; Chua et al., 2018; Richards, 2005), can be used to plan the agent’s action."
+        }
+      },
+      {
+        "name": {
+          "value": "DreamerV2",
+          "justification": "The Dreamer agent forms the base model used for encoding and decoding.",
+          "quote": "In this work, we ground upon the DreamerV2 agent (Hafner et al., 2021), which learns a world model (Ha & Schmidhuber, 2018; Hafner et al., 2019b) predicting the outcomes of actions in the environment."
+        },
+        "aliases": [
+          "DreamerV2"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "DreamerV2 is used as a base model and is not introduced as a new model in this paper.",
+          "quote": "In this work, we ground upon the DreamerV2 agent (Hafner et al., 2021), which learns a world model (Ha & Schmidhuber, 2018; Hafner et al., 2019b) predicting the outcomes of actions in the environment."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The dynamics is captured into a latent space Z, providing a compact representation of the high-dimensional inputs. The encoder and decoder are convolutional neural networks (CNNs) and the remaining components are multi-layer perceptrons (MLPs). The setup implies execution on a GPU.",
+          "quote": "The dynamics is captured into a latent space Z, providing a compact representation of the high-dimensional inputs. The encoder and decoder are convolutional neural networks (CNNs) and the remaining components are multi-layer perceptrons (MLPs)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "DreamerV2 is compared to other models and methods as part of the experiments.",
+          "quote": "Given the insights from the previous section, we use the Dreamer’s world models and actors pre-trained with all the different unsupervised strategies we considered."
+        },
+        "referenced_paper_title": {
+          "value": "Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model",
+          "justification": "DreamerV2's foundational concepts come from previous works like Ha & Schmidhuber (2018); Hafner et al., 2019b.",
+          "quote": "In this work, we ground upon the DreamerV2 agent (Hafner et al., 2021), which learns a world model (Ha & Schmidhuber, 2018; Hafner et al., 2019b)"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Unsupervised Reinforcement Learning Benchmark (URLB)",
+          "justification": "The benchmark is explicitly mentioned as being a major part of the study.",
+          "quote": "Recently, the Unsupervised Reinforcement Learning Benchmark (URLB) (Laskin et al., 2021) established a common protocol to compare self-supervised algorithms across several domains and tasks from the DMC Suite (Tassa et al., 2018)."
+        },
+        "aliases": [
+          "URLB"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "URLB: Unsupervised Reinforcement Learning Benchmark",
+          "justification": "This is the reference paper for URLB dataset used in the study.",
+          "quote": "Recently, the Unsupervised RL Benchmark (URLB) (Laskin et al., 2021) established a common protocol to compare self-supervised algorithms across several domains and tasks from the DMC Suite (Tassa et al., 2018)."
+        }
+      },
+      {
+        "name": {
+          "value": "Real-World Reinforcement Learning Benchmark (RWRL)",
+          "justification": "The benchmark is explicitly mentioned as being part of the evaluation.",
+          "quote": "The approach also demonstrates robust performance on the Real-World RL benchmark, hinting that the approach generalizes to noisy environments."
+        },
+        "aliases": [
+          "RWRL"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "An empirical investigation of the challenges of real-world reinforcement learning",
+          "justification": "This is the reference paper for the RWRL benchmark used in the study.",
+          "quote": "The RWRL benchmark (Dulac-Arnold et al., 2020) considers several challenges that are common in real-world systems and implements them on top of DMC tasks."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is explicitly mentioned as the underlying library for the experiments in the paper.",
+          "quote": "The PyTorch code for the experiments will be open-sourced upon publication."
+        },
+        "aliases": [
+          "PyTorch"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1940,
+    "prompt_tokens": 18449,
+    "total_tokens": 20389
+  }
+}

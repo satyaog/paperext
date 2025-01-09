@@ -1,0 +1,148 @@
+{
+  "paper": "2306.01112.txt",
+  "words": 11973,
+  "extractions": {
+    "title": {
+      "value": "Improving day-ahead Solar Irradiance Time Series Forecasting by Leveraging Spatio-Temporal Context",
+      "justification": "This is the title provided at the start of the document, including the subtitle that explains the main contribution.",
+      "quote": "Improving day-ahead Solar Irradiance Time Series Forecasting by Leveraging Spatio-Temporal Context"
+    },
+    "description": "This paper proposes a deep learning architecture called CrossViViT for leveraging spatio-temporal context using satellite data to achieve highly accurate day-ahead time-series forecasting of Global Horizontal Irradiance (GHI). It also introduces a novel multi-modal dataset that combines satellite imagery with solar irradiance and other physical variables.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents a new deep learning architecture and evaluates its performance using a novel dataset, thus focusing on experimental results and empirical validation.",
+      "quote": "In this paper, we put forth a deep learning architecture designed to harness spatio-temporal context using satellite data, to attain highly accurate day-ahead time-series forecasting for any given station, with a particular emphasis on forecasting Global Horizontal Irradiance (GHI)."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Deep Learning",
+        "justification": "The paper develops a new deep learning architecture for time-series forecasting within the domain of solar irradiance prediction.",
+        "quote": "We present a deep learning architecture called CrossViViT, designed to leverage spatiotemporal context (such as satellite data) in order to achieve highly accurate medium-term (1 day horizon) time-series forecasting at any given station."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Time Series Forecasting",
+          "justification": "The primary focus is on enhancing the accuracy of time-series forecasting for solar irradiance by using a deep learning model.",
+          "quote": "We present a deep learning architecture called CrossViViT, designed to leverage spatiotemporal context (such as satellite data) in order to achieve highly accurate medium-term (1 day horizon) time-series forecasting at any given station."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "CrossViViT",
+          "justification": "It is the main model introduced and experimentally validated in this paper.",
+          "quote": "We present a deep learning architecture called CrossViViT, designed to leverage spatiotemporal context (such as satellite data) in order to achieve highly accurate medium-term (1 day horizon) time-series forecasting at any given station."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "Role:['contributed', 'used', 'referenced']",
+          "quote": "Contributed"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
+          "quote": "Trained"
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "",
+          "quote": ""
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "Multi-Quantile CrossViViT",
+          "justification": "This is an alternative version of the CrossViViT model that allows extracting uncertainty estimations for predictions.",
+          "quote": "We present a Multi-Quantile version of the model which allows to extract uncertainty estimation attached to each prediction."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "Role:['contributed', 'used', 'referenced']",
+          "quote": "Contributed"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
+          "quote": "Trained"
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "",
+          "quote": ""
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Baseline Surface Radiation Network",
+          "justification": "Time-series measurements from the Baseline Surface Radiation Network (BSRN) datasets are used in the experiments.",
+          "quote": "The time-series measurements were obtained from Baseline Surface Radiation Network datasets (Driemel et al., 2018)."
+        },
+        "aliases": [
+          "BSRN"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "EUMETSAT Rapid Scan Service",
+          "justification": "The paper utilizes satellite data from the EUMETSAT RSS dataset to provide spatio-temporal context.",
+          "quote": "In this study, we utilize the EUMETSAT Rapid Scan Service (RSS) dataset (Holmlund, 2003), which spans a period of 15 years from 2008 to 2022, with an original resolution of 5 minutes, later aligned with the time series data."
+        },
+        "aliases": [
+          "RSS"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "pvlib",
+          "justification": "Used for calculating the zenith angle of the sun, which is necessary for computing Global Horizontal Irradiance (GHI) from the BSRN dataset.",
+          "quote": "The GHI component was computed using the formula: GHI = DN I × cos z + DHI where z is the zenith angle of the sun obtained from the pvlib python library (Holmgren et al., 2020)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 996,
+    "prompt_tokens": 22728,
+    "total_tokens": 23724
+  }
+}

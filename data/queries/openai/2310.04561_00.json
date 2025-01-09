@@ -1,0 +1,133 @@
+{
+  "paper": "2310.04561.txt",
+  "words": 6752,
+  "extractions": {
+    "title": {
+      "value": "DragD3D: Vertex-based Editing for Realistic Mesh Deformations using 2D Diffusion Priors",
+      "justification": "The title is the clear and complete name of the paper being analyzed.",
+      "quote": "DragD3D: Vertex-based Editing for Realistic Mesh Deformations using 2D Diffusion Priors"
+    },
+    "description": "The paper proposes a new method named DragD3D for local mesh editing, combining classic geometric regularizers with 2D priors from large-scale diffusion models to produce realistic deformations.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper conducts experiments comparing the proposed method with other geometric deformation techniques and performs ablation studies.",
+      "quote": "Section 4 presents our experiments and analysis of the method including ablation studies related to our design decisions, and finally, Section 5 has conclusions, limitations, and future work."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Graphics",
+        "justification": "The paper focuses on geometric modeling and mesh deformations, which are key components of computer graphics.",
+        "quote": "Direct mesh editing and deformation are key components in the geometric modeling and animation pipeline."
+      },
+      "aliases": [
+        "Graphics"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "3D Modeling",
+          "justification": "The paper's main contribution is in the area of 3D mesh editing and deformations.",
+          "quote": "In this work, our main contribution is a local mesh editing method called DragD3D for global context-aware realistic deformation through direct manipulation of a few vertices."
+        },
+        "aliases": [
+          "Mesh Editing"
+        ]
+      },
+      {
+        "name": {
+          "value": "Machine Learning",
+          "justification": "The method uses large-scale diffusion models and neural Jacobian fields, which are based on machine learning techniques.",
+          "quote": "We optimize the modifiable part of the mesh in the gradient domain [GAG∗ 23] guided by three losses... guided by three losses: (1) l 2 distance of the user constraint loss, (2) Delta Denoising Score (DDS) loss which makes the deformed mesh have realistic appearances when rendered from random viewpoints and provides global guidance to our 3D model, and (3) ARAP loss to control the local geometric behavior."
+        },
+        "aliases": [
+          "ML"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Clip",
+          "justification": "The paper uses CLIP embeddings to guide the deformation using stable diffusion models.",
+          "quote": "Another strategy is to rely on optimizing the shape using 2D priors obtained from large pre-trained 2D models such as CLIP [MKXBP22, GAG∗ 23, SFL∗ 23] or stable diffusion [PJBM22, MPCOMA23, TMT∗ 23], and guide the deformation through differential rendering."
+        },
+        "aliases": [
+          "Contrastive Language-Image Pre-Training"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "CLIP is not a new model developed in this paper but is rather used as a tool for deformation.",
+          "quote": "Another strategy is to rely on optimizing the shape using 2D priors obtained from large pre-trained 2D models such as CLIP [MKXBP22, GAG∗ 23, SFL∗ 23] or stable diffusion [PJBM22, MPCOMA23, TMT∗ 23], and guide the deformation through differential rendering."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was used to guide the deformation process through its embeddings.",
+          "quote": "Another strategy is to rely on optimizing the shape using 2D priors obtained from large pre-trained 2D models such as CLIP [MKXBP22, GAG∗ 23, SFL∗ 23] or stable diffusion [PJBM22, MPCOMA23, TMT∗ 23], and guide the deformation through differential rendering."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "The paper does not compare CLIP to other models numerically; it uses it as a component of the proposed method.",
+          "quote": "Another strategy is to rely on optimizing the shape using 2D priors obtained from large pre-trained 2D models such as CLIP [MKXBP22, GAG∗ 23, SFL∗ 23] or stable diffusion [PJBM22, MPCOMA23, TMT∗ 23], and guide the deformation through differential rendering."
+        },
+        "referenced_paper_title": {
+          "value": "Learning Transferable Visual Models From Natural Language Supervision",
+          "justification": "This is the referenced paper from which the CLIP model is used.",
+          "quote": "Another strategy is to rely on optimizing the shape using 2D priors obtained from large pre-trained 2D models such as CLIP [MKXBP22, GAG∗ 23, SFL∗ 23] or stable diffusion [PJBM22, MPCOMA23, TMT∗ 23], and guide the deformation through differential rendering."
+        }
+      },
+      {
+        "name": {
+          "value": "Stable Diffusion",
+          "justification": "The paper uses stable diffusion models as a 2D prior to guide mesh deformations.",
+          "quote": "Another strategy is to rely on optimizing the shape using 2D priors obtained from large pre-trained 2D models such as CLIP [MKXBP22, GAG∗ 23, SFL∗ 23] or stable diffusion [PJBM22, MPCOMA23, TMT∗ 23], and guide the deformation through differential rendering."
+        },
+        "aliases": [
+          "Latent Diffusion Models"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Stable Diffusion is not a new model developed in this paper but is rather used as a tool for deformation.",
+          "quote": "Another strategy is to rely on optimizing the shape using 2D priors obtained from large pre-trained 2D models such as CLIP [MKXBP22, GAG∗ 23, SFL∗ 23] or stable diffusion [PJBM22, MPCOMA23, TMT∗ 23], and guide the deformation through differential rendering."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was used to guide the deformation process through its embeddings.",
+          "quote": "Another strategy is to rely on optimizing the shape using 2D priors obtained from large pre-trained 2D models such as CLIP [MKXBP22, GAG∗ 23, SFL∗ 23] or stable diffusion [PJBM22, MPCOMA23, TMT∗ 23], and guide the deformation through differential rendering."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "The paper does not compare Stable Diffusion to other models numerically; it uses it as a component of the proposed method.",
+          "quote": "Another strategy is to rely on optimizing the shape using 2D priors obtained from large pre-trained 2D models such as CLIP [MKXBP22, GAG∗ 23, SFL∗ 23] or stable diffusion [PJBM22, MPCOMA23, TMT∗ 23], and guide the deformation through differential rendering."
+        },
+        "referenced_paper_title": {
+          "value": "High-Resolution Image Synthesis with Latent Diffusion Models",
+          "justification": "This is the referenced paper from which the Stable Diffusion model is used.",
+          "quote": "Another strategy is to rely on optimizing the shape using 2D priors obtained from large pre-trained 2D models such as CLIP [MKXBP22, GAG∗ 23, SFL∗ 23] or stable diffusion [PJBM22, MPCOMA23, TMT∗ 23], and guide the deformation through differential rendering."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Thingi10K",
+          "justification": "The meshes used in the experiments were obtained from Thingi10K among other sources.",
+          "quote": "All the meshes were rendered with and without texture to show the geometry clearly. The meshes were obtained from TurboSquid, Thingi10K [ZJ16], and TEXTure [RMA∗ 23]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Thingi10K: A Dataset of 10,000 3D-Printing Models",
+          "justification": "This is the paper describing the Thingi10K dataset used in the experiments.",
+          "quote": "The meshes were obtained from TurboSquid, Thingi10K [ZJ16], and TEXTure [RMA∗ 23]."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 2015,
+    "prompt_tokens": 12145,
+    "total_tokens": 14160
+  }
+}

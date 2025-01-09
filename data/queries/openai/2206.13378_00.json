@@ -1,0 +1,207 @@
+{
+  "paper": "2206.13378.txt",
+  "words": 9945,
+  "extractions": {
+    "title": {
+      "value": "Guillotine Regularization: Why removing layers is needed to improve generalization in Self-Supervised Learning",
+      "justification": "This is the title provided at the beginning of the paper.",
+      "quote": "Guillotine Regularization: Why removing layers is needed to improve generalization in Self-Supervised Learning"
+    },
+    "description": "The paper investigates the effectiveness of a technique named Guillotine Regularization, where the last few layers of a trained deep network, often called the projector head, are removed to improve the generalization performance of self-supervised learning (SSL) models. The study explores the reasons for the success of this technique and examines how changes in training setup, data, and downstream tasks can impact the optimal layer to use.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents experimental evaluations and empirical analysis on how removing layers improves generalization in self-supervised learning.",
+      "quote": "Through empirical evaluations, we demonstrated that the optimal layer to use for downstream evaluation vary depending on several factors: optimization, data and downstream task."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Self-Supervised Learning",
+        "justification": "The main focus of the paper is on Self-Supervised Learning and how Guillotine Regularization affects its performance.",
+        "quote": "Many recent self-supervised learning (SSL) methods consist in learning invariances to specific chosen relations between samples."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Regularization",
+          "justification": "The technique introduced in the paper, Guillotine Regularization, is a regularization method for improving generalization in models.",
+          "quote": "We first place the SSL trick of removing the projector post-training under the umbrella of a generically applicable method that we call Guillotine Regularization."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Transfer Learning",
+          "justification": "The paper discusses the application of Guillotine Regularization in transfer learning scenarios.",
+          "quote": "Features in upstream layers often appear more general and transferable to various downstream tasks than the ones at the deepest layers which are too specialized towards the initial training objective."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "SimCLR",
+          "justification": "SimCLR is mentioned multiple times as an SSL method used for experiments in the paper.",
+          "quote": "Another line of work tries to train self-supervised models without the use of a projector. Jing et al. (2022) shows that by removing the projector and cutting the representation vector in two parts, such that a SSL criteria is applied on the first part of the vector while no criterion is applied on the second part, improves considerably the performances compared to applying the SSL criteria directly on the entire representation vector. This however works mostly thanks to the residual connection of the resnet."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "SimCLR is not introduced in this paper; it is referenced from other works.",
+          "quote": "Another line of work tries to train self-supervised models without the use of a projector. Jing et al. (2022) shows that by removing the projector and cutting the representation vector in two parts, such that a SSL criteria is applied on the first part of the vector while no criterion is applied on the second part, improves considerably the performances compared to applying the SSL criteria directly on the entire representation vector."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model is executed as part of the experiments in the paper.",
+          "quote": "Another line of work tries to train self-supervised models without the use of a projector. Jing et al. (2022) shows that by removing the projector and cutting the representation vector in two parts, such that a SSL criteria is applied on the first part of the vector while no criterion is applied on the second part, improves considerably the performances compared to applying the SSL criteria directly on the entire representation vector."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "SimCLR is compared to other SSL models in terms of performance after applying Guillotine Regularization.",
+          "quote": "In fact, in this instance the best layer to use for every of these split is the backbone layer whereas the best layer to use for the in-distribution split is the projector layer."
+        },
+        "referenced_paper_title": {
+          "value": "A simple framework for contrastive learning of visual representations",
+          "justification": "This is the paper where SimCLR was originally introduced.",
+          "quote": "Ting Chen, Simon Kornblith, Mohammad Norouzi, and Geoffrey E. Hinton. A simple framework for contrastive learning of visual representations. In ICML, 2020a."
+        }
+      },
+      {
+        "name": {
+          "value": "Barlow Twins",
+          "justification": "Barlow Twins is mentioned multiple times as an SSL method used for experiments in the paper.",
+          "quote": "SSL: Barlow Twins"
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Barlow Twins is not introduced in this paper; it is referenced from other works.",
+          "quote": "Jure Zbontar, Li Jing, Ishan Misra, Yann LeCun, and Stéphane Deny. Barlow twins: Self-supervised learning via redundancy reduction. arXiv preprint arxiv:2103.03230, 2021."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model is executed as part of the experiments in the paper.",
+          "quote": "In Figure 5 we study the effect of Guillotine Regularization with respect to an hyper-parameter grid search for various SSL methods (SimCLR, Barlow Twins and Byol)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Barlow Twins is compared to other SSL models in terms of performance after applying Guillotine Regularization.",
+          "quote": "In Figure 5 we study the effect of Guillotine Regularization with respect to an hyper-parameter grid search for various SSL methods (SimCLR, Barlow Twins and Byol)."
+        },
+        "referenced_paper_title": {
+          "value": "Barlow twins: Self-supervised learning via redundancy reduction",
+          "justification": "This is the paper where Barlow Twins was originally introduced.",
+          "quote": "Jure Zbontar, Li Jing, Ishan Misra, Yann LeCun, and Stéphane Deny. Barlow twins: Self-supervised learning via redundancy reduction. arXiv preprint arxiv:2103.03230, 2021."
+        }
+      },
+      {
+        "name": {
+          "value": "Byol",
+          "justification": "Byol is mentioned multiple times as an SSL method used for experiments in the paper.",
+          "quote": "SSL: Byol"
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Byol is not introduced in this paper; it is referenced from other works.",
+          "quote": "Jean-Bastien Grill, Florian Strub, Florent Altché, Corentin Tallec, Pierre H. Richemond, Elena Buchatskaya, Carl Doersch, Bernardo Avila Pires, Zhaohan Daniel Guo, Mohammad Gheshlaghi Azar, Bilal Piot, Koray Kavukcuoglu, Rémi Munos, and Michal Valko. Bootstrap your own latent: A new approach to self-supervised learning. In NeurIPS, 2020."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model is executed as part of the experiments in the paper.",
+          "quote": "In Figure 5 we study the effect of Guillotine Regularization with respect to an hyper-parameter grid search for various SSL methods (SimCLR, Barlow Twins and Byol)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Byol is compared to other SSL models in terms of performance after applying Guillotine Regularization.",
+          "quote": "In Figure 5 we study the effect of Guillotine Regularization with respect to an hyper-parameter grid search for various SSL methods (SimCLR, Barlow Twins and Byol)."
+        },
+        "referenced_paper_title": {
+          "value": "Bootstrap your own latent: A new approach to self-supervised learning",
+          "justification": "This is the paper where Byol was originally introduced.",
+          "quote": "Jean-Bastien Grill, Florian Strub, Florent Altché, Corentin Tallec, Pierre H. Richemond, Elena Buchatskaya, Carl Doersch, Bernardo Avila Pires, Zhaohan Daniel Guo, Mohammad Gheshlaghi Azar, Bilal Piot, Koray Kavukcuoglu, Rémi Munos, and Michal Valko. Bootstrap your own latent: A new approach to self-supervised learning. In NeurIPS, 2020."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "ImageNet",
+          "justification": "ImageNet is extensively used for evaluating the models in this paper.",
+          "quote": "In fact, on ImageNet (Deng et al., 2009), such technique can improve classification performances by around 30 points of percentage (Figure 1b)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ImageNet: A large-scale hierarchical image database",
+          "justification": "This is the original paper that introduced ImageNet.",
+          "quote": "Jia Deng, Wei Dong, Richard Socher, Li-Jia Li, Kai Li, and Li Fei-Fei. Imagenet: A large-scale hierarchical image database. In CVPR, 2009."
+        }
+      },
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "CIFAR-10 is mentioned as one of the downstream tasks used for evaluation.",
+          "quote": "In Figure 3c, in which we train a supervised Resnet50 over ImageNet. Then, we freeze the weights of the model and train a linear probe over ImageNet (Deng et al., 2009), CIFAR10 (Krizhevsky, 2009), Place205 (Zhou et al., 2014), CLEVR (Johnson et al., 2017) and Eurosat (Helber et al., 2019) at different layers."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning multiple layers of features from tiny images",
+          "justification": "This is the original paper that introduced CIFAR-10.",
+          "quote": "Alex Krizhevsky. Learning multiple layers of features from tiny images. pp. 32–33, 2009."
+        }
+      },
+      {
+        "name": {
+          "value": "Places205",
+          "justification": "Places205 is mentioned as one of the downstream tasks used for evaluation.",
+          "quote": "In Figure 3c, in which we train a supervised Resnet50 over ImageNet. Then, we freeze the weights of the model and train a linear probe over ImageNet (Deng et al., 2009), CIFAR10 (Krizhevsky, 2009), Place205 (Zhou et al., 2014), CLEVR (Johnson et al., 2017) and Eurosat (Helber et al., 2019) at different layers."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning deep features for scene recognition using places database",
+          "justification": "This is the original paper that introduced Places205.",
+          "quote": "Bolei Zhou, Agata Lapedriza, Jianxiong Xiao, Antonio Torralba, and Aude Oliva. Learning deep features for scene recognition using places database. In Z. Ghahramani, M. Welling, C. Cortes, N. Lawrence, and K.Q. Weinberger (eds.), Advances in Neural Information Processing Systems, volume 27. Curran Associates, Inc., 2014."
+        }
+      },
+      {
+        "name": {
+          "value": "CLEVR",
+          "justification": "CLEVR is mentioned as one of the downstream tasks used for evaluation.",
+          "quote": "In Figure 3c, in which we train a supervised Resnet50 over ImageNet. Then, we freeze the weights of the model and train a linear probe over ImageNet (Deng et al., 2009), CIFAR10 (Krizhevsky, 2009), Place205 (Zhou et al., 2014), CLEVR (Johnson et al., 2017) and Eurosat (Helber et al., 2019) at different layers."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Clevr: A diagnostic dataset for compositional language and elementary visual reasoning",
+          "justification": "This is the original paper that introduced CLEVR.",
+          "quote": "Justin Johnson, Bharath Hariharan, Laurens van der Maaten, Li Fei-Fei, C Lawrence Zitnick, and Ross Girshick. Clevr: A diagnostic dataset for compositional language and elementary visual reasoning. In CVPR, 2017."
+        }
+      },
+      {
+        "name": {
+          "value": "Eurosat",
+          "justification": "Eurosat is mentioned as one of the downstream tasks used for evaluation.",
+          "quote": "In Figure 3c, in which we train a supervised Resnet50 over ImageNet. Then, we freeze the weights of the model and train a linear probe over ImageNet (Deng et al., 2009), CIFAR10 (Krizhevsky, 2009), Place205 (Zhou et al., 2014), CLEVR (Johnson et al., 2017) and Eurosat (Helber et al., 2019) at different layers."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Eurosat: A novel dataset and deep learning benchmark for land use and land cover classification",
+          "justification": "This is the original paper that introduced Eurosat.",
+          "quote": "Patrick Helber, Benjamin Bischke, Andreas Dengel, and Damian Borth. Eurosat: A novel dataset and deep learning benchmark for land use and land cover classification. IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing, 12(7):2217–2226, 2019."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 3313,
+    "prompt_tokens": 17138,
+    "total_tokens": 20451
+  }
+}

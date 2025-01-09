@@ -1,0 +1,301 @@
+{
+  "paper": "2212.07016.txt",
+  "words": 11634,
+  "extractions": {
+    "title": {
+      "value": "Understanding Zero-Shot Adversarial Robustness for Large-Scale Models",
+      "justification": "This title is taken directly from the header of the research paper.",
+      "quote": "Understanding Zero-Shot Adversarial Robustness for Large-Scale Models"
+    },
+    "description": "This paper investigates the problem of adapting large-scale vision-language models for zero-shot adversarial robustness, specifically focusing on the CLIP model. It introduces a new text-guided contrastive adversarial training loss and evaluates the effectiveness of different adaptation methods, showing significant improvements in robustness.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents experimental results and analyses on the effectiveness of various adaptation methods and losses in improving the zero-shot adversarial robustness of the CLIP model.",
+      "quote": "We conduct an extensive evaluation on 15 zero-shot image datasets, offering a holistic study of the zero-shot adversarial robustness problem."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The research primarily deals with large-scale vision-language models and their robustness in zero-shot tasks, which falls under the domain of Computer Vision.",
+        "quote": "Large-scale models trained on vision and language data—also known as foundation models— have emerged as a universal backbone for tackling many recognition problems in computer vision."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Adversarial Robustness",
+          "justification": "The paper focuses on adapting large-scale models for adversarial robustness, particularly in zero-shot settings.",
+          "quote": "We identify and explore the problem of adapting large-scale models for zero-shot adversarial robustness."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Transfer Learning",
+          "justification": "The study involves adapting pre-trained models to new tasks and assessing their generalization capabilities.",
+          "quote": "One of the key advantages of foundation models is zero-shot generalization, where the models use just a single textual description to recognize new visual categories with high accuracy."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Contrastive Learning",
+          "justification": "The paper introduces a contrastive learning method for improving the adversarial robustness of vision-language models.",
+          "quote": "We then propose a text-guided contrastive adversarial training (TeCoA) loss, dubbed as Tekoa (tee·kow), which maximizes the similarity of the adversarial visual features and the correct text embeddings with contrastive learning."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "CLIP",
+          "justification": "CLIP is the primary model analyzed and adapted for zero-shot adversarial robustness in this study.",
+          "quote": "We study this important yet under-explored problem, zero-shot adversarial robustness of large-scale vision-language models. We start our investigation with the state-of-the-art CLIP model, which has been shown to be effective in zero-shot recognition tasks."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "CLIP itself is not a new model contribution by this paper; it is an existing model that the study builds upon.",
+          "quote": "We start our investigation with the state-of-the-art CLIP model."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The experiments in the paper involve running the CLIP model to evaluate its performance and robustness.",
+          "quote": "We conduct an extensive evaluation on 15 zero-shot image datasets."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of CLIP is compared numerically against other adaptation methods and training losses.",
+          "quote": "We then propose a text-guided contrastive adversarial training (TeCoA) loss... Our best performing model with the TeCoA loss can improve adversarial robustness over CLIP by an average of 31% across the datasets."
+        },
+        "referenced_paper_title": {
+          "value": "Learning Transferable Visual Models From Natural Language Supervision",
+          "justification": "This is the original paper where the CLIP model was introduced, which the current study builds upon.",
+          "quote": "Radford et al., 2021"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "ImageNet",
+          "justification": "ImageNet is used as the primary dataset for training and evaluating the adversarial robustness of the adapted CLIP model.",
+          "quote": "If we follow the standard adversarial training defense paradigm (Madry et al., 2018; Rice et al., 2020) to finetune CLIP on the ImageNet (Deng et al., 2009b) training set..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ImageNet: A Large-Scale Hierarchical Image Database",
+          "justification": "This is the original paper that introduced the ImageNet dataset.",
+          "quote": "Deng et al., 2009b"
+        }
+      },
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "CIFAR-10 is used in the evaluation of the zero-shot adversarial robustness of the adapted CLIP model.",
+          "quote": "CIFAR10, CIFAR100 (Krizhevsky et al., 2009) for generic classification."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Multiple Layers of Features from Tiny Images",
+          "justification": "This is the original paper that introduced the CIFAR-10 dataset.",
+          "quote": "Krizhevsky et al., 2009"
+        }
+      },
+      {
+        "name": {
+          "value": "CIFAR-100",
+          "justification": "CIFAR-100 is used in the evaluation of the zero-shot adversarial robustness of the adapted CLIP model.",
+          "quote": "CIFAR10, CIFAR100 (Krizhevsky et al., 2009) for generic classification."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Multiple Layers of Features from Tiny Images",
+          "justification": "This is the original paper that introduced the CIFAR-100 dataset.",
+          "quote": "Krizhevsky et al., 2009"
+        }
+      },
+      {
+        "name": {
+          "value": "STL-10",
+          "justification": "STL-10 is used in the evaluation of the zero-shot adversarial robustness of the adapted CLIP model.",
+          "quote": "STL10 (Coates et al., 2011) for generic classification."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "An Analysis of Single-Layer Networks in Unsupervised Feature Learning",
+          "justification": "This is the original paper that introduced the STL-10 dataset.",
+          "quote": "Coates et al., 2011"
+        }
+      },
+      {
+        "name": {
+          "value": "Caltech101",
+          "justification": "Caltech101 is used in the evaluation of the zero-shot adversarial robustness of the adapted CLIP model.",
+          "quote": "Caltech101 (Fei-Fei et al., 2004) for generic classification."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Generative Visual Models from Few Training Examples: An Incremental Bayesian Approach Tested on 101 Object Categories",
+          "justification": "This is the original paper that introduced the Caltech101 dataset.",
+          "quote": "Fei-Fei et al., 2004"
+        }
+      },
+      {
+        "name": {
+          "value": "Caltech256",
+          "justification": "Caltech256 is used in the evaluation of the zero-shot adversarial robustness of the adapted CLIP model.",
+          "quote": "Caltech256 (Griffin et al., 2007) for generic classification."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Caltech-256 Object Category Dataset",
+          "justification": "This is the original technical report that introduced the Caltech256 dataset.",
+          "quote": "Griffin et al., 2007"
+        }
+      },
+      {
+        "name": {
+          "value": "Oxford-IIIT Pet",
+          "justification": "Oxford-IIIT Pet is used in the evaluation of the zero-shot adversarial robustness of the adapted CLIP model.",
+          "quote": "OxfordPets (Parkhi et al., 2012) for fine-grained classification."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Cats and Dogs",
+          "justification": "This is the original paper that introduced the Oxford-IIIT Pet dataset.",
+          "quote": "Parkhi et al., 2012"
+        }
+      },
+      {
+        "name": {
+          "value": "StanfordCars",
+          "justification": "StanfordCars is used in the evaluation of the zero-shot adversarial robustness of the adapted CLIP model.",
+          "quote": "StanfordCars (Krause et al., 2013) for fine-grained classification."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "3D Object Representations for Fine-Grained Categorization",
+          "justification": "This is the original paper that introduced the StanfordCars dataset.",
+          "quote": "Krause et al., 2013"
+        }
+      },
+      {
+        "name": {
+          "value": "Food-101",
+          "justification": "Food-101 is used in the evaluation of the zero-shot adversarial robustness of the adapted CLIP model.",
+          "quote": "Food101 (Bossard et al., 2014) for fine-grained classification."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Food-101 -- Mining Discriminative Components with Random Forests",
+          "justification": "This is the original paper that introduced the Food-101 dataset.",
+          "quote": "Bossard et al., 2014"
+        }
+      },
+      {
+        "name": {
+          "value": "Flowers-102",
+          "justification": "Flowers-102 is used in the evaluation of the zero-shot adversarial robustness of the adapted CLIP model.",
+          "quote": "Flowers102 (Nilsback & Zisserman, 2008) for fine-grained classification."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Automated Flower Classification over a Large Number of Classes",
+          "justification": "This is the original paper that introduced the Flowers-102 dataset.",
+          "quote": "Nilsback & Zisserman, 2008"
+        }
+      },
+      {
+        "name": {
+          "value": "SUN397",
+          "justification": "SUN397 is used in the evaluation of the zero-shot adversarial robustness of the adapted CLIP model.",
+          "quote": "SUN397 (Xiao et al., 2010) for scene recognition."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "SUN Database: Large-Scale Scene Recognition from Abbey to Zoo",
+          "justification": "This is the original paper that introduced the SUN397 dataset.",
+          "quote": "Xiao et al., 2010"
+        }
+      },
+      {
+        "name": {
+          "value": "DTD",
+          "justification": "DTD is used in the evaluation of the zero-shot adversarial robustness of the adapted CLIP model.",
+          "quote": "DTD (Cimpoi et al., 2014) for texture recognition."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Describing Textures in the Wild",
+          "justification": "This is the original paper that introduced the DTD dataset.",
+          "quote": "Cimpoi et al., 2014"
+        }
+      },
+      {
+        "name": {
+          "value": "PatchCamelyon",
+          "justification": "PatchCamelyon is used in the evaluation of the zero-shot adversarial robustness of the adapted CLIP model.",
+          "quote": "PatchCamelyon (PCAM, lymph node tumor detection) (Veeling et al., 2018)"
+        },
+        "aliases": [
+          "PCAM"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Rotation Equivariant CNNs for Digital Pathology",
+          "justification": "This is the original paper that introduced the PatchCamelyon dataset.",
+          "quote": "Veeling et al., 2018"
+        }
+      },
+      {
+        "name": {
+          "value": "Hateful Memes",
+          "justification": "Hateful Memes is used in the evaluation of the zero-shot adversarial robustness of the adapted CLIP model.",
+          "quote": "HatefulMemes (hatespeech detection) (Kiela et al., 2020)"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The Hateful Memes Challenge: Detecting Hate Speech in Multimodal Memes",
+          "justification": "This is the original paper that introduced the Hateful Memes dataset.",
+          "quote": "Kiela et al., 2020"
+        }
+      },
+      {
+        "name": {
+          "value": "EuroSAT",
+          "justification": "EuroSAT is used in the evaluation of the zero-shot adversarial robustness of the adapted CLIP model.",
+          "quote": "EuroSAT (Helber et al., 2017) for satellite image classification."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "EuroSAT: A Novel Dataset and Deep Learning Benchmark for Land Use and Land Cover Classification",
+          "justification": "This is the original paper that introduced the EuroSAT dataset.",
+          "quote": "Helber et al., 2017"
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 5802,
+    "prompt_tokens": 49467,
+    "total_tokens": 55269
+  }
+}

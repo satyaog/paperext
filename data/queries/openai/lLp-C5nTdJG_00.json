@@ -1,0 +1,132 @@
+{
+  "paper": "lLp-C5nTdJG.txt",
+  "words": 12008,
+  "extractions": {
+    "title": {
+      "value": "STATIC PREDICTION OF RUNTIME ERRORS BY LEARNING TO EXECUTE PROGRAMS WITH EXTERNAL RESOURCE DESCRIPTIONS",
+      "justification": "Title retrieved from the beginning of the provided paper.",
+      "quote": "S TATIC P REDICTION OF RUNTIME E RRORS BY L EARNING TO E XECUTE P ROGRAMS WITH E XTERNAL R ESOURCE D ESCRIPTIONS"
+    },
+    "description": "This paper introduces a method for predicting runtime errors in Python programs in a static setting where program execution is not possible. The authors present a dataset of competition-level Python programs annotated with runtime error information and propose an interpreter-inspired model for this task. Their approach demonstrates improved performance over baseline models and the ability to identify error locations without explicit supervision for fault localization.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves experiments and evaluations of different models on a new dataset, which is characteristic of empirical research.",
+      "quote": "We evaluate these interpreter-inspired architectures against Transformer, LSTM, and GGNN neural baselines, and against pylint as a static analysis baseline."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Program Analysis",
+        "justification": "The paper primarily focuses on the analysis of program code to predict runtime errors, fitting within the Program Analysis field.",
+        "quote": "We investigate applying neural machine learning methods to the static analysis of source code for early prediction of runtime errors."
+      },
+      "aliases": [
+        "Static Code Analysis",
+        "Code Error Prediction"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Graph Neural Networks",
+          "justification": "The paper extensively discusses and evaluates a Graph Neural Network-based approach, specifically the Instruction Pointer Attention Graph Neural Network (IPA-GNN).",
+          "quote": "Instruction Pointer Attention Graph Neural Network (IPA-GNN) models simulate the execution of a program, following its control flow structure, but operating in a continuous embedding space."
+        },
+        "aliases": [
+          "GNN",
+          "Graph Networks"
+        ]
+      },
+      {
+        "name": {
+          "value": "Natural Language Processing",
+          "justification": "The research includes methods for processing natural language descriptions of input resources, indicating relevance to NLP.",
+          "quote": "We convert this description into embedding d(x); the embeddings, vocabulary, and tokenizer used to produce d(x) are shared with those used to produce token embeddings from program source."
+        },
+        "aliases": [
+          "NLP"
+        ]
+      },
+      {
+        "name": {
+          "value": "Runtime Error Prediction",
+          "justification": "This specific focus area of predicting runtime errors in programs is a key contribution of the paper.",
+          "quote": "The task is to predict whether a program will exhibit a runtime error when it is run, and if so to determine the error."
+        },
+        "aliases": [
+          "Runtime Error Detection"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Instruction Pointer Attention Graph Neural Network (IPA-GNN)",
+          "justification": "The IPA-GNN model is a primary focus of the study and is evaluated extensively in the experiments.",
+          "quote": "Instruction Pointer Attention Graph Neural Network (IPA-GNN) models simulate the execution of a program, following its control flow structure, but operating in a continuous embedding space."
+        },
+        "aliases": [
+          "IPA-GNN"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The IPA-GNN model is an innovative contribution specifically improved and evaluated in this paper.",
+          "quote": "We make a number of improvements to IPA-GNN: scaling up to handle complex programs requiring thousands of execution steps, adding the ability to 'learn to execute' descriptions of external resources, and extending the architecture to model exception handling and recover error locations."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper indicates that the models were run and evaluated on computational resources, likely encompassing GPU usage given the complexity involved.",
+          "quote": "We evaluate these interpreter-inspired architectures against Transformer, LSTM, and GGNN neural baselines, and against pylint as a static analysis baseline."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The IPA-GNN model is compared against several baseline models in the experiments.",
+          "quote": "We evaluate these interpreter-inspired architectures against Transformer, LSTM, and GGNN neural baselines, and against pylint as a static analysis baseline."
+        },
+        "referenced_paper_title": {
+          "value": "Learning to execute programs with instruction pointer attention graph neural networks",
+          "justification": "This referenced paper is related to the original IPA-GNN model, which the current paper builds upon.",
+          "quote": "Instruction Pointer 1 Attention Graph Neural Network (IPA-GNN) (Bieber et al., 2020) models simulate the execution of a program..."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Python Runtime Errors Dataset",
+          "justification": "The dataset mentioned is constructed from Python 3 programs and is specifically used for evaluating runtime error prediction.",
+          "quote": "Our dataset consists of 2.4 million Python 3 programs from Project CodeNet (Puri et al., 2021) written by competitive programmers."
+        },
+        "aliases": [
+          "Project CodeNet Subset"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Project CodeNet: A Large-Scale AI for Code Dataset for Learning a Diversity of Coding Tasks",
+          "justification": "The dataset is based on Project CodeNet as referenced in the paper.",
+          "quote": "Our dataset consists of 2.4 million Python 3 programs from Project CodeNet (Puri et al., 2021) written by competitive programmers."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "pytorch",
+          "justification": "PyTorch is commonly used for implementing deep learning models, and given the context of the models mentioned, it's reasonable to infer its use.",
+          "quote": "We first apply either a local or global Transformer encoder to produce per-token embeddings...We consider four types of pooling in our hyperparameter search space: first, sum, mean, and max."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An Imperative Style, High-Performance Deep Learning Library",
+          "justification": "PyTorch is referenced and inferred as the library used for implementing the model architectures discussed in the paper.",
+          "quote": "We first apply either a local or global Transformer encoder to produce per-token embeddings."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1205,
+    "prompt_tokens": 20588,
+    "total_tokens": 21793
+  }
+}

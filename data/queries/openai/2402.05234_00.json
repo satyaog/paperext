@@ -1,0 +1,131 @@
+{
+  "paper": "2402.05234.txt",
+  "words": 11262,
+  "extractions": {
+    "title": {
+      "value": "QGFN: Controllable Greediness with Action Values",
+      "justification": "This is the title as stated in the paper.",
+      "quote": "QGFN: Controllable Greediness with Action Values"
+    },
+    "description": "The paper explores leveraging connections between Generative Flow Networks (GFNs) and reinforcement learning to create a new method called QGFN. This method combines GFN policies with action-value estimates (Q) to generate greedier sampling policies while maintaining diversity. Variants like p-greedy, p-quantile, and p-of-max are benchmarked on tasks such as molecule design, RNA design, and bit sequence generation, outperforming several baselines.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper proposes a new method and benchmarks its variants on several tasks, comparing them with existing methods and baselines, which indicates an empirical study.",
+      "quote": "We evaluate the proposed methods on 5 standard tasks used in prior GFN works: the fragment-based molecular design task introduced by Bengio et al. [2021a], 2 RNA design tasks introduced by Sinai et al. [2020], a small molecule design task based on QM9 [Jain et al., 2023], as well as a bit sequence task from Malkin et al. [2022a], Shen et al. [2023]."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Reinforcement Learning",
+        "justification": "The paper primarily focuses on integrating reinforcement learning techniques with Generative Flow Networks to improve sample generation, indicating its primary research field is Reinforcement Learning.",
+        "quote": "In this work, we leverage connections between GFNs and reinforcement learning (RL) and propose to combine the GFN policy with an action-value estimate, Q, to create greedier sampling policies which can be controlled by a mixing parameter."
+      },
+      "aliases": [
+        "RL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Generative Models",
+          "justification": "Generative Flow Networks (GFNs) are a subset of generative models, and the paper contributes to this field by proposing QGFN.",
+          "quote": "Generative Flow Networks [Bengio et al., 2021a,b], also known as GFlowNets, or GFNs, were recently introduced as a novel generative framework in the family of energy-based models [Malkin et al., 2022b, Zhang et al., 2022]."
+        },
+        "aliases": [
+          "GFNs",
+          "GFlowNets"
+        ]
+      },
+      {
+        "name": {
+          "value": "Molecular Design",
+          "justification": "The paper benchmarks QGFN on a fragment-based molecular design task, indicating its relevance to the field of Molecular Design.",
+          "quote": "We evaluate the proposed methods on 5 standard tasks used in prior GFN works: the fragment-based molecular design task introduced by Bengio et al. [2021a]"
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "RNA Design",
+          "justification": "The paper evaluates QGFN on 2 RNA design tasks, indicating its relevance to RNA Design.",
+          "quote": "We evaluate the proposed methods on 5 standard tasks used in prior GFN works:...2 RNA design tasks introduced by Sinai et al. [2020]"
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Combinatorial Optimization",
+          "justification": "The bit-sequence generation and molecular tasks align with combinatorial optimization problems, showcasing the method's applicability in this field.",
+          "quote": "Finally, it may be possible and desirable to use more complex schedules for p, or to sample p during training from some (adaptive) distribution."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "QGFN",
+          "justification": "The model QGFN is detailed and evaluated as the main contribution of the paper.",
+          "quote": "We show that several variants of the proposed method, QGFN, are able to improve on the number of high-reward samples generated in a variety of tasks without sacrificing diversity."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "QGFN is a new model proposed by the authors of the paper.",
+          "quote": "In this work, we leverage connections between GFNs and reinforcement learning (RL) and propose to combine the GFN policy with an action-value estimate, Q, to create greedier sampling policies which can be controlled by a mixing parameter."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "QGFN has been executed on various tasks as described in the experimental setup.",
+          "quote": "We evaluate the proposed methods on 5 standard tasks used in prior GFN works: the fragment-based molecular design task introduced by Bengio et al. [2021a], 2 RNA design tasks introduced by Sinai et al. [2020], a small molecule design task based on QM9 [Jain et al., 2023], as well as a bit sequence task from Malkin et al. [2022a], Shen et al. [2023]."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "QGFN is numerically compared with several baselines in the paper.",
+          "quote": "We evaluate the proposed methods on 5 standard tasks... The proposed method outperforms strong baselines, achieving high average rewards and discovering modes more efficiently, sometimes by a large margin."
+        },
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "QGFN is a novel model introduced in the paper, so there is no referenced paper title.",
+          "quote": "We propose to combine the GFN policy with an action-value estimate, Q, to create greedier sampling policies which can be controlled by a mixing parameter"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Fragment-based Molecule Design Task",
+          "justification": "The paper includes experiments using a fragment-based molecule design task dataset provided by Bengio et al. 2021a.",
+          "quote": "We evaluate the proposed methods on 5 standard tasks used in prior GFN works: the fragment-based molecular design task introduced by Bengio et al. [2021a]"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Flow Network based Generative Models for Non-Iterative Diverse Candidate Generation",
+          "justification": "The referenced paper by Bengio et al. details the dataset used in the fragment-based molecular design task.",
+          "quote": "the fragment-based molecular design task introduced by Bengio et al. [2021a]"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "RDKit",
+          "justification": "RDKit is used to calculate the Tanimoto similarity score in the fragment-based molecule design task.",
+          "quote": "RDKit [Landrum, 2013] is used to compare pairwise Tanimoto similarity."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "RDKit: Open-source cheminformatics software",
+          "justification": "The paper referenced for RDKit is by Landrum, detailing RDKit as an open-source cheminformatics software.",
+          "quote": "RDKit [Landrum, 2013] is used to compare pairwise Tanimoto similarity."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1425,
+    "prompt_tokens": 20435,
+    "total_tokens": 21860
+  }
+}

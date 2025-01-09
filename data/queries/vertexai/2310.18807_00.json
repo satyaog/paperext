@@ -1,0 +1,281 @@
+{
+  "paper": "2310.18807.txt",
+  "words": 9765,
+  "extractions": {
+    "title": {
+      "value": "OC-NMN: Object-centric Compositional Neural Module Network for Generative Visual Analogical Reasoning",
+      "justification": "OC-NMN: Object-centric Compositional Neural Module Network for Generative Visual Analogical Reasoning",
+      "quote": "OC-NMN: Object-centric Compositional Neural Module Network for Generative Visual Analogical Reasoning"
+    },
+    "description": "This research paper proposes a novel object-centric compositional neural module network (OC-NMN) for visual analogical reasoning, aiming to enhance the compositional generalization abilities of machine learning models. The authors introduce Arith-MNIST, a benchmark designed to evaluate the reasoning and generalization capabilities of models on arithmetic tasks involving MNIST digits. The paper emphasizes the importance of object-centric inductive biases for visual reasoning, modularity in model architecture, and the role of compositional imagination in improving generalization. The authors compare their model with various baselines, including an object-centric version of Neural Abstract Reasoner (NAR), a non-modular baseline (DNC-GRU), and a Transformer-based baseline (DNC-Transformer). They demonstrate the effectiveness of their approach in achieving better out-of-distribution generalization on the Arith-MNIST benchmark, highlighting the potential of compositional imagination in enhancing model generalization. Furthermore, the authors investigate the impact of object-level attribute disentanglement on generalization, emphasizing the need for better inductive biases in object-centric perception models. The paper concludes by acknowledging limitations and suggesting future research directions, such as developing more comprehensive benchmarks and exploring more complex reasoning scenarios.",
+    "type": {
+      "value": "empirical",
+      "justification": "This research paper is empirical, as it conducts experiments to validate the proposed model.",
+      "quote": "In this work, we explore the use of neural module networks (Andreas et al., 2016) for solving such tasks by leveraging object-centric representations, resulting in our proposed approach called OC-NMN."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Visual Reasoning",
+        "justification": "The paper focuses on visual analogical reasoning which is a subfield of visual reasoning.",
+        "quote": "OC-NMN: Object-centric Compositional Neural Module Network for Generative Visual Analogical Reasoning"
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [],
+    "models": [
+      {
+        "name": {
+          "value": "OC-NMN",
+          "justification": "OC-NMN",
+          "quote": "OC-NMN"
+        },
+        "aliases": [
+          "OC-NMN",
+          "Object-centric Compositonal Neural Module Network",
+          "Object-centric Compositional- Neural Module Network",
+          "Object-centric Compositional Neural Module Network"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The paper introduces OC-NMN as its main contribution.",
+          "quote": "To tackle Arith-MNIST, we propose the Object-centric Compositional- Neural Module Network (OC-NMN), an example of how object-centric inductive biases can be exploited to (1) design a modular architecture that can solve generative visual reasoning tasks like ARC, and (2) derive a compositional data augmentation paradigm that we lead to better out-of-distribution generalization."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper provides details about the architecture and functioning of OC-NMN.",
+          "quote": "Following this general structure of NMNs, OC-NMN also predicts a sequence of modules to be assembled along with their arguments; however, our module generation differs from that of NMNs in two ways: (1) the model does not have access to the program (e.g. the parsed question in the VQA setting) and needs to infer it from the demonstration pairs in the support set, and, (2) the arguments to the modules come directly from the visual input query. Our model overview is given in Figure 2"
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares OC-NMN to several other models.",
+          "quote": "We compare our model to an object-centric version of NAR (replacing its image encoder with a Slot Attention module and concatenating the slots). We also propose two additional baselines ..."
+        },
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "No referenced paper title for OC-NMN is found in the paper.",
+          "quote": "No quote"
+        }
+      },
+      {
+        "name": {
+          "value": "NAR",
+          "justification": "NAR",
+          "quote": "NAR"
+        },
+        "aliases": [
+          "NAR",
+          "Neural Abstract Reasoner"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "NAR is an existing model used for comparison.",
+          "quote": "To the best of our knowledge, the only existing neural network model that can readily tackle generative visual reasoning tasks is the Neural Abstract Reasoner (NAR) (Kolev et al.,\\n2020)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper uses NAR as a baseline model in its experiments.",
+          "quote": "We compare our model to an object-centric version of NAR (replacing its image encoder with a Slot Attention module and concatenating the slots)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares its model to NAR.",
+          "quote": "To the best of our knowledge, the only existing neural network model that can readily tackle generative visual reasoning tasks is the Neural Abstract Reasoner (NAR) (Kolev et al.,\\n2020)."
+        },
+        "referenced_paper_title": {
+          "value": "Neural Abstract Reasoner",
+          "justification": "The paper references the original NAR paper (Kolev et al., 2020).",
+          "quote": "Neural Abstract Reasoner (NAR) (Kolev et al.,\\n2020)."
+        }
+      },
+      {
+        "name": {
+          "value": "DNC-GRU",
+          "justification": "DNC-GRU",
+          "quote": "DNC-GRU"
+        },
+        "aliases": [
+          "DNC-GRU"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The authors propose DNC-GRU as a baseline.",
+          "quote": "We also propose two additional baselines, both having no selection bottleneck: a non-modular baseline, where the executor consists of a single GRU cell that takes as input the query slots and the tasks embedding coming from the controller. We denote this baseline DNC-GRU."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper describes the details of this model.",
+          "quote": "The DNC-GRU executor corresponds to the non-modular version of our OC-NMN. It does not have any selection bottleneck and is composed of a single GRU cell that performs a sequential update of working memory from which the final answer is retrieved."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The authors compare their model against DNC-GRU.",
+          "quote": "We also propose two additional baselines, both having no selection bottleneck: a non-modular baseline, where the executor consists of a single GRU cell that takes as input the query slots and the tasks embedding coming from the controller. We denote this baseline DNC-GRU."
+        },
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "No referenced paper title for DNC-GRU is found in the paper.",
+          "quote": "No quote"
+        }
+      },
+      {
+        "name": {
+          "value": "DNC-Transformer",
+          "justification": "DNC-Transformer",
+          "quote": "DNC-Transformer"
+        },
+        "aliases": [
+          "DNC-Transformer"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The authors introduce DNC-Transformer as a baseline.",
+          "quote": "The second baseline consists of a stack of Transformer encoder layers, and takes as input a set composed of the query slots, the controller output, and a CLS token from which we retrieve the final answer. We denote this model DNC-Transformer."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper describes this model in detail.",
+          "quote": "Let squery = [squery1, squeryN] denote the set of N object-centric slot representation of the input query and z the output from the controller. The DNC-Transformer executor consists of a stack of transformer layers that is performed over the set composed of the inputs slots, a CLS token, and the output of the controller z. The final result is retrieved from the CLS token at the end of stack."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "DNC-Transformer is one of the baselines.",
+          "quote": "The second baseline consists of a stack of Transformer encoder layers, and takes as input a set composed of the query slots, the controller output, and a CLS token from which we retrieve the final answer. We denote this model DNC-Transformer."
+        },
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "No referenced paper title for DNC-Transformer found.",
+          "quote": "No quote"
+        }
+      },
+      {
+        "name": {
+          "value": "FLAN-T5",
+          "justification": "FLAN-T5",
+          "quote": "FLAN-T5"
+        },
+        "aliases": [
+          "FLAN-T5"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "FLAN-T5 is an existing model.",
+          "quote": "In the text version of the benchmark (where each image/output pair is described in natural language), we consider two state-of-the-art language models: FLANT5 (Chung et al., 2022) fine-tuned on our task and GPT-4."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "FLAN-T5 was fine-tuned on the authors task.",
+          "quote": "In the text version of the benchmark (where each image/output pair is described in natural language), we consider two state-of-the-art language models: FLANT5 (Chung et al., 2022) fine-tuned on our task and GPT-4."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "FLAN-T5 is used as a baseline.",
+          "quote": "In the text version of the benchmark (where each image/output pair is described in natural language), we consider two state-of-the-art language models: FLANT5 (Chung et al., 2022) fine-tuned on our task and GPT-4."
+        },
+        "referenced_paper_title": {
+          "value": "Scaling instruction-finetuned language models",
+          "justification": "The reference for FLAN-T5 is (Chung et al., 2022).",
+          "quote": "FLANT5 (Chung et al., 2022)"
+        }
+      },
+      {
+        "name": {
+          "value": "GPT-4",
+          "justification": "GPT-4",
+          "quote": "GPT-4"
+        },
+        "aliases": [
+          "GPT-4"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "GPT-4 is an existing model.",
+          "quote": "We evaluate GPT-4 on the easy split and obtain an accuracy of 16 in the best case."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "GPT-4 is used for evaluation purposes in the research paper.",
+          "quote": "We evaluate GPT-4 on the easy split and obtain an accuracy of 16 in the best case."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The authors evaluate GPT-4 on their benchmark.",
+          "quote": "We evaluate GPT-4 on the easy split and obtain an accuracy of 16 in the best case."
+        },
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "No referenced paper title for GPT-4 found.",
+          "quote": "No quote"
+        }
+      },
+      {
+        "name": {
+          "value": "Slot Attention",
+          "justification": "Slot Attention",
+          "quote": "Slot Attention"
+        },
+        "aliases": [
+          "Slot Attention"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Slot Attention is an existing model.",
+          "quote": "All the models share the same perception model, which is Slot Attention."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The authors use Slot Attention as a module in their model.",
+          "quote": "All the models share the same perception model, which is Slot Attention."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "While not directly compared, Slot Attention is used as a component in multiple models that are compared.",
+          "quote": "We compare our model to an object-centric version of NAR (replacing its image encoder with a Slot Attention module and concatenating the slots)."
+        },
+        "referenced_paper_title": {
+          "value": "Object-centric learning with slot attention",
+          "justification": "The reference for Slot Attention is (Locatello et al., 2020).",
+          "quote": "A slot attention (Locatello et al., 2020) mechanism"
+        }
+      },
+      {
+        "name": {
+          "value": "Differentiable Neural Computer",
+          "justification": "Differentiable Neural Computer",
+          "quote": "Differentiable Neural Computer"
+        },
+        "aliases": [
+          "Differentiable Neural Computer",
+          "DNC"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "DNC is an existing model.",
+          "quote": "Most visual reasoning benchmarks revolve around variations of Raven’s Progressive Matrices (RPM) (James, 1936;\\nZhang et al., 2019; Barrett et al., 2018; Hoshen and Werman,\\n2017), all of which are discriminative tasks in which the solver chooses from a set of candidate answers."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The authors utilize DNC in their experiments.",
+          "quote": "The controller module’s architecture is the same for all the baselines considered (including our model) and corresponds to the Differentiable Neural Computer controller (Graves et al., 2016) proposed in Neural Abstract Reasoner (Kolev et al., 2020)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper mentions DNC as the basis for the controller in the compared models.",
+          "quote": "Our contribution resides in the design of the executor and the Selection Bottleneck that we detail below."
+        },
+        "referenced_paper_title": {
+          "value": "Hybrid computing using a neural network with dynamic external memory",
+          "justification": "The reference for Differentiable Neural Computers is (Graves et al., 2016).",
+          "quote": "Differentiable Neural Computer controller (Graves et al., 2016)"
+        }
+      }
+    ],
+    "datasets": [],
+    "libraries": []
+  },
+  "usage": {
+    "cached_content_token_count": 0,
+    "candidates_token_count": 0,
+    "prompt_token_count": 0,
+    "total_token_count": 19274
+  }
+}

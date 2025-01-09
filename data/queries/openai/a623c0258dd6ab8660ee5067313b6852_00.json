@@ -1,0 +1,208 @@
+{
+  "paper": "a623c0258dd6ab8660ee5067313b6852.txt",
+  "words": 6231,
+  "extractions": {
+    "title": {
+      "value": "MiRGraph: A transformer-based feature learning approach to identify microRNA-target interactions by integrating heterogeneous graph network and sequence information",
+      "justification": "The title is explicitly mentioned at the beginning of the paper.",
+      "quote": "MiRGraph: A transformer-based feature learning approach to identify microRNA-target interactions by integrating heterogeneous graph network and sequence information"
+    },
+    "description": "This paper presents MiRGraph, a deep learning framework designed to predict microRNA-target interactions. By integrating both heterogeneous network structures and sequence information, MiRGraph aims to improve the accuracy of predictions compared to existing methods.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves experiments and comparisons with other methodologies to validate the performance of MiRGraph.",
+      "quote": "The proposed method MiRGraph is compared with several existing MTIs prediction methods on two different datasets under standard metrics. The results demonstrate that our approach outperforms most of the state-of-the-art methods in MTIs prediction task."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computational Biology",
+        "justification": "The research primarily focuses on predicting microRNA-target interactions, a significant topic in computational biology.",
+        "quote": "There are currently few studies on MTIs prediction that simultaneously perform feature learning on heterogeneous graph network and sequence information."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Bioinformatics",
+          "justification": "The study involves the use of bioinformatics techniques for predicting microRNA-target interactions.",
+          "quote": "Detecting miRNA-target interactions (MTIs) is critical for unraveling the complex mechanisms of gene regulation, the potential therapeutic targets and diagnostic markers."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Deep Learning",
+          "justification": "The study employs transformer-based deep learning models to predict MTIs.",
+          "quote": "In this study, we present a novel transformer-based deep learning framework named MiRGraph, which considers both network and sequential information for MTIs prediction."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "MiRGraph",
+          "justification": "The study introduces MiRGraph, a transformer-based multi-view feature learning method.",
+          "quote": "Thus, we present a transformer-based multi-view feature learning method, named MiRGraph, capable of modeling both heterogeneous network and sequence features to improve the prediction performance of MTIs."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "MiRGraph is proposed as the primary contribution of this research.",
+          "quote": "Thus, we present a transformer-based multi-view feature learning method, named MiRGraph, capable of modeling both heterogeneous network and sequence features to improve the prediction performance of MTIs."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper mentions implementing and executing MiRGraph using specific computational resources.",
+          "quote": "The implementation of MiRGraph was done in Python (v 3.9.6) using Pytorch (v 1.10.0) and PyTorch Geometric (v 2.1.0) as backend."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "MiRGraph's performance is compared against other models.",
+          "quote": "The proposed method MiRGraph is compared with several existing MTIs prediction methods on two different datasets under standard metrics. The results demonstrate that our approach outperforms most of the state-of-the-art methods in MTIs prediction task."
+        },
+        "referenced_paper_title": {
+          "value": "Not Applicable",
+          "justification": "MiRGraph is an original contribution in this paper and is not referenced from another paper.",
+          "quote": "Thus, we present a transformer-based multi-view feature learning method, named MiRGraph, capable of modeling both heterogeneous network and sequence features to improve the prediction performance of MTIs."
+        }
+      },
+      {
+        "name": {
+          "value": "TransCNN",
+          "justification": "TransCNN is a module within MiRGraph designed for specialized learning of sequence features.",
+          "quote": "Taking into account different representation structures of sequence features, we combine transformer with Resnet architecture to design TransCNN miRNA and TransCNN gene feature encoding module for the specialized learning of miRNAs and genes sequence features respectively."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "TransCNN is introduced as part of the MiRGraph framework.",
+          "quote": "Taking into account different representation structures of sequence features, we combine transformer with Resnet architecture to design TransCNN miRNA and TransCNN gene feature encoding module for the specialized learning of miRNAs and genes sequence features respectively."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "TransCNN is executed as a part of MiRGraph's implementation.",
+          "quote": "We first trained the HGT (taking an average of 45s per epoch) on the CPU and the TransCNN on the GPU (taking an average of 42s per epoch), and finally trained MiRGraph or the prediction layer of MiRGraph on the CPU."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "TransCNN's performance is compared to other methods as part of the MiRGraph framework.",
+          "quote": "We compared the MTIs prediction performance on the test miRTarBase MTI using RCGN, MRMTI, HGT, HGT BiSTM, TransCNN and MiRGraph."
+        },
+        "referenced_paper_title": {
+          "value": "Not Applicable",
+          "justification": "TransCNN is an original contribution in this paper and is not referenced from another paper.",
+          "quote": "Taking into account different representation structures of sequence features, we combine transformer with Resnet architecture to design TransCNN miRNA and TransCNN gene feature encoding module for the specialized learning of miRNAs and genes sequence features respectively."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "miRTarBase",
+          "justification": "miRTarBase is used for labeling positive and negative edges in the dataset formation.",
+          "quote": "The predicted miRNA-gene interactions network is obtained from TargetScan. We use the experimentally validated MTI from miRTarbase to label the TargetScan predicted edges as positive edges and the rest as negative edges."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "mirtarbase: a database curates experimentally validated microrna–target interactions",
+          "justification": "The referenced title is explicitly mentioned in the bibliography and corresponds to miRTarBase.",
+          "quote": "Hsu, S. D., Lin, F. M., Wu, W. Y., Liang, C., Huang, W. C., Chan, W. L., ... & Huang, H. D. (2011). mirtarbase: a database curates experimentally validated microrna–target interactions. Nucleic acids research, 39(suppl 1), D163-D169."
+        }
+      },
+      {
+        "name": {
+          "value": "TargetScan",
+          "justification": "TargetScan is used to obtain the miRNA-gene interactions network.",
+          "quote": "The predicted miRNA-gene interactions network is obtained from TargetScan."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Predicting effective microrna target sites in mammalian mrnas",
+          "justification": "The referenced title is explicitly mentioned in the bibliography and corresponds to TargetScan.",
+          "quote": "Agarwal, V., Bell, G. W., Nam, J. W., & Bartel, D. P. (2015). Predicting effective microrna target sites in mammalian mrnas. elife, 4, e05005."
+        }
+      },
+      {
+        "name": {
+          "value": "DIANA-TarBase",
+          "justification": "DIANA-TarBase is used as a source for the miRAW dataset.",
+          "quote": "We used the processed miRAW dataset by TargetNet authors. This dataset was originally derived from DIANA-TarBase and miRTarBase."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Diana-tarbase v8: a decade-long collection of experimentally supported mirna–gene interactions",
+          "justification": "The referenced title is explicitly mentioned in the bibliography and corresponds to DIANA-TarBase.",
+          "quote": "Karagkouni, D., et al. (2018). Diana-tarbase v8: a decade-long collection of experimentally supported mirna–gene interactions. Nucleic acids research, 46(D1), D239-D245."
+        }
+      },
+      {
+        "name": {
+          "value": "STRING",
+          "justification": "The protein-protein interaction data used in the study is derived from STRING database.",
+          "quote": "We obtain protein-protein interaction network with 1,043,837 edges between 11,091 genes from the STRING database."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "String v11: protein–protein association networks with increased coverage, supporting functional discovery in genome-wide experimental datasets",
+          "justification": "The referenced title is explicitly mentioned in the bibliography and corresponds to STRING database.",
+          "quote": "Szklarczyk, D., et al. (2019). String v11: protein–protein association networks with increased coverage, supporting functional discovery in genome-wide experimental datasets. Nucleic acids research, 47(D1), D607-D613."
+        }
+      },
+      {
+        "name": {
+          "value": "miRAW",
+          "justification": "miRAW dataset is used for evaluating the performance of MiRGraph.",
+          "quote": "We used the processed miRAW dataset by TargetNet authors. This dataset was originally derived from DIANA-TarBase and miRTarBase."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "miraw: A deep learning-based approach to predict microrna targets by analyzing whole microrna transcripts",
+          "justification": "The referenced title is explicitly mentioned in the methodology.",
+          "quote": "Pla, A., Zhong, X., & Rayner, S. (2018). miraw: A deep learning-based approach to predict microrna targets by analyzing whole microrna transcripts. PLoS computational biology, 14(7), e1006185."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The implementation of MiRGraph utilizes PyTorch as the primary deep learning library.",
+          "quote": "The implementation of MiRGraph was done in Python (v 3.9.6) using Pytorch (v 1.10.0) and PyTorch Geometric (v 2.1.0) as backend."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Automatic differentiation in pytorch",
+          "justification": "The referenced title is explicitly mentioned in the bibliography.",
+          "quote": "Paszke, A., Gross, S., Massa, F., Lerer, A., Bradbury, J., Chanan, G., ... & Chintala, S. (2017). Automatic differentiation in pytorch."
+        }
+      },
+      {
+        "name": {
+          "value": "PyTorch Geometric",
+          "justification": "The implementation of MiRGraph utilizes PyTorch Geometric for handling graph structures.",
+          "quote": "The implementation of MiRGraph was done in Python (v 3.9.6) using Pytorch (v 1.10.0) and PyTorch Geometric (v 2.1.0) as backend."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Pytorch geometric: Learning graph neural networks with pytorch",
+          "justification": "The referenced title is explicitly mentioned in the bibliography.",
+          "quote": "Fey, M., & Lenssen, J. E. (2019). Pytorch geometric: Learning graph neural networks with pytorch. In Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery & Data Mining (pp. 745-755)."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2337,
+    "prompt_tokens": 13523,
+    "total_tokens": 15860
+  }
+}

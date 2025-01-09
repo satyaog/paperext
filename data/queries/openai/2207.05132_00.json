@@ -1,0 +1,228 @@
+{
+  "paper": "2207.05132.txt",
+  "words": 9635,
+  "extractions": {
+    "title": {
+      "value": "Dev2vec: Representing Domain Expertise of Developers in an Embedding Space",
+      "justification": "Title from the provided paper.",
+      "quote": "Dev2vec: Representing Domain Expertise of Developers in an Embedding Space"
+    },
+    "description": "This paper proposes a method called 'dev2vec' to represent the domain expertise of developers through embedding vectors derived using doc2vec. The embeddings are constructed from multiple sources of developers' contributions on GitHub, such as repository descriptions, issue resolving history, and API calls in commits. The paper demonstrates that these embeddings can improve the classification of developers into job roles compared to state-of-the-art methods.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper includes experiments and evaluations to demonstrate the effectiveness of the proposed method.",
+      "quote": "Our results indicate that encoding the expertise of developers in an embedding vector outperforms state-of-the-art methods and improves the F1score up to 21%."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Software Engineering",
+        "justification": "The study focuses on assessing the domain expertise of developers, which is a core challenge in software engineering.",
+        "quote": "Accurate assessment of the domain expertise of developers is important for assigning the proper candidate to contribute to a project, or to attend a job role."
+      },
+      "aliases": [
+        "SE"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Natural Language Processing",
+          "justification": "The study uses doc2vec, an NLP technique, to process textual information from GitHub repositories and developer activities.",
+          "quote": "In this paper, we employ doc2vec to represent the domain expertise of developers as embedding vectors."
+        },
+        "aliases": [
+          "NLP"
+        ]
+      },
+      {
+        "name": {
+          "value": "Machine Learning",
+          "justification": "The study employs machine learning classifiers to evaluate the performance of the proposed embedding vectors derived from doc2vec.",
+          "quote": "We use three different and well-known classifiers: SVM, Random Forest, and Logistic Regression."
+        },
+        "aliases": [
+          "ML"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "dev2vec:Repos",
+          "justification": "One of the proposed embedding methods that uses the textual information of repositories to represent developer expertise.",
+          "quote": "We derive embedding vectors of developers’ expertise from the meta-data of repositories that developers contributed to, the issue resolving history of developers and the list of APIs in changes applied by developers on different source files. We name these methods after their respective sources: dev2vec:Repos, dev2vec:Issues and dev2vec:APIs, respectively."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "The 'dev2vec:Repos' method is introduced in this paper.",
+          "quote": "We name these methods after their respective sources: dev2vec:Repos"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The dev2vec:Repos model was trained and evaluated in the paper.",
+          "quote": "We train the doc2vec model on tagged documents of developers in trainset and infer vectors for developers in testset based on the content of their documents."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The 'dev2vec:Repos' method was compared to other models in the experimental results.",
+          "quote": "Table 2 shows that all dev2vec methods and the state-of-the-art, SOA:bow, show a better performance than the baseline."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "No referenced paper for the model since it is introduced in this paper.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "dev2vec:Issues",
+          "justification": "One of the proposed embedding methods that uses the issue resolving history to represent developer expertise.",
+          "quote": "We derive embedding vectors of developers’ expertise from the meta-data of repositories that developers contributed to, the issue resolving history of developers and the list of APIs in changes applied by developers on different source files. We name these methods after their respective sources: dev2vec:Repos, dev2vec:Issues and dev2vec:APIs, respectively."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "The 'dev2vec:Issues' method is introduced in this paper.",
+          "quote": "We name these methods after their respective sources: dev2vec:Issues"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The dev2vec:Issues model was trained and evaluated in the paper.",
+          "quote": "We train the doc2vec model on tagged documents of developers in trainset and infer vectors for developers in testset based on the content of their documents."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The 'dev2vec:Issues' method was compared to other models in the experimental results.",
+          "quote": "Table 2 shows that all dev2vec methods and the state-of-the-art, SOA:bow, show a better performance than the baseline."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "No referenced paper for the model since it is introduced in this paper.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "dev2vec:APIs",
+          "justification": "One of the proposed embedding methods that uses the list of APIs in changes applied by developers to represent developer expertise.",
+          "quote": "We derive embedding vectors of developers’ expertise from the meta-data of repositories that developers contributed to, the issue resolving history of developers and the list of APIs in changes applied by developers on different source files. We name these methods after their respective sources: dev2vec:Repos, dev2vec:Issues and dev2vec:APIs, respectively."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "The 'dev2vec:APIs' method is introduced in this paper.",
+          "quote": "We name these methods after their respective sources: dev2vec:APIs"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The dev2vec:APIs model was trained and evaluated in the paper.",
+          "quote": "For this step, per each commit, we extract all language-specific source files linked to a commit after submitting it."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The 'dev2vec:APIs' method was compared to other models in the experimental results.",
+          "quote": "Table 2 shows that all dev2vec methods and the state-of-the-art, SOA:bow, show a better performance than the baseline."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "No referenced paper for the model since it is introduced in this paper.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "dev2vec:RIAs",
+          "justification": "An aggregated model that combines the embeddings from dev2vec:Repos, dev2vec:Issues, and dev2vec:APIs.",
+          "quote": "We name these methods after their respective sources: dev2vec:Repos, dev2vec:Issues and dev2vec:APIs, respectively. In addition, we merge the output of these three methods by concatenating the embedding vectors from these three different spaces of information and call it dev2vec:RIAs."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "The 'dev2vec:RIAs' method, combining other dev2vec models, is introduced in this paper.",
+          "quote": "we merge the output of these three methods by concatenating the embedding vectors from these three different spaces of information and call it dev2vec:RIAs."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The dev2vec:RIAs model was trained and evaluated in the paper.",
+          "quote": "We concatenate three embedding vectors from three different spaces of their activities, as explained in Section 3.5. The size of the final embedding vector that represents the expertise of developers is 580."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The 'dev2vec:RIAs' method was compared to other models in the experimental results.",
+          "quote": "The performance of concatenation of embedding vectors from different spaces, dev2vec:RIA, is as good as dev2vec:Issues."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "No referenced paper for the model since it is introduced in this paper.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "Doc2Vec",
+          "justification": "The base model used for embedding textual data in the proposed methods.",
+          "quote": "In this paper, we employ doc2vec to represent the domain expertise of developers as embedding vectors."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The model is used as a foundational element, not introduced by the paper.",
+          "quote": "One of the solutions is to rely on embeddings. Words, or aggregation of words, are encoded as fixed-length vectors, resulting in low dimensionality representation. word2vec [15] and doc2vec [16] are well known examples."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Doc2Vec was actively used to derive embedding vectors for the dev2vec models.",
+          "quote": "We train the doc2vec model on tagged documents of developers."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "Doc2Vec itself is not compared, but methods derived from it are.",
+          "quote": "Doc2Vec is not explicitly compared in the paper, but the generated embedding vectors are."
+        },
+        "referenced_paper_title": {
+          "value": "Distributed Representations of Sentences and Documents",
+          "justification": "This is the foundational paper for the doc2vec model used in this study.",
+          "quote": "Distributed representations of sentences and documents [16]"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "GitHub Developer Dataset",
+          "justification": "Used to collect developers' contributions across multiple projects on GitHub.",
+          "quote": "They collected the GitHub username of these developers to link them to their GitHub pages."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Mining the Technical Roles of GitHub Users",
+          "justification": "The dataset was published in this referenced paper.",
+          "quote": "We used a labeled dataset of developers published in [14]."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Gensim",
+          "justification": "Gensim was used to implement doc2vec in the experiments.",
+          "quote": "We use the implementation in Gensim for building the doc2vec models."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "Gensim is a commonly used library, so no specific reference paper is mentioned.",
+          "quote": ""
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 4733,
+    "prompt_tokens": 35075,
+    "total_tokens": 39808
+  }
+}

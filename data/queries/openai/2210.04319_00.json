@@ -1,0 +1,260 @@
+{
+  "paper": "2210.04319.txt",
+  "words": 20722,
+  "extractions": {
+    "title": {
+      "value": "Dissecting Adaptive Methods in GANs",
+      "justification": "The title of the paper is directly provided at the beginning of the document.",
+      "quote": "Dissecting Adaptive Methods in GANs"
+    },
+    "description": "This paper explores the role of adaptive methods in the training of generative adversarial networks (GANs). By examining the separation of magnitude and direction components of adaptive method updates, particularly Adam, the paper shows that the adaptive magnitude is crucial for GAN training. It introduces the Ada-nSGDA algorithm and provides theoretical and empirical comparisons to demonstrate how normalizing gradients impacts GAN performance.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper combines theoretical analysis with empirical experiments to investigate the impact of adaptive methods on GAN training.",
+      "quote": "We also experimentally show that for several datasets, Adam’s performance can be recovered with nSGDA methods."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Generative Adversarial Networks",
+        "justification": "The paper revolves around improving the training of generative adversarial networks (GANs).",
+        "quote": "In this paper, we investigate why GANs trained with adaptive methods outperform those trained using stochastic gradient descent ascent (SGDA)."
+      },
+      "aliases": [
+        "GANs"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Optimization Methods",
+          "justification": "The paper focuses on adaptive optimization methods like Adam and their implications for GAN training.",
+          "quote": "Adaptive methods are a crucial component widely used for training generative adversarial networks (GANs)."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Algorithm Analysis",
+          "justification": "The paper analyzes the components of adaptive methods and their contributions to the training process.",
+          "quote": "By considering an update rule with the magnitude of the Adam update and the normalized direction of SGD, we empirically show that the adaptive magnitude of Adam is key for GAN training."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Theoretical Framework",
+          "justification": "The paper introduces theoretical frameworks to compare different optimization methods in training GANs.",
+          "quote": "We propose a synthetic theoretical framework to compare the performance of nSGDA and SGDA for GAN training with neural networks."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Ada-nSGDA",
+          "justification": "The paper introduces the Ada-nSGDA algorithm as a combination of Adam's magnitude and SGDA's direction for GAN training.",
+          "quote": "In Section 2, we present the Ada-nSGDA algorithm and the standard normalized SGDA (nSGDA)."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "The Ada-nSGDA algorithm is introduced as a part of this research work.",
+          "quote": "In Section 2, we present the Ada-nSGDA algorithm."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper presents empirical results using the Ada-nSGDA algorithm.",
+          "quote": "In Section 4, we empirically confirm that Ada-nSDGA recovers the performance of Adam when using different GAN architectures on a wide range of datasets."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The Ada-nSGDA algorithm is compared with other methods like SGDA in the paper.",
+          "quote": "Both Adam and Ada-nSGDA significantly outperform SGDA."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "There is no specific reference paper for Ada-nSGDA as it is introduced in this research.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "nSGDA",
+          "justification": "nSGDA is a significant model discussed and used for comparisons in the paper.",
+          "quote": "In Section 3, we prove that in that setting, GANs trained with nSGDA recover all the modes of the true distribution, whereas the same networks trained with SGDA (and any learning rate configuration) suffer from mode collapse."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "nSGDA is not introduced by this paper but is thoroughly analyzed.",
+          "quote": "In this paper, we introduce the Ada-nSGDA algorithm and the standard normalized SGDA (nSGDA)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper executes the nSGDA model to compare its performance against other algorithms.",
+          "quote": "Although nSGDA does not consider the adaptive magnitude, it still recovers the performance of Adam for some architectures such as WGAN-GP (Arjovsky et al., 2017) as we show in Fig. 2."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "nSGDA is compared with other methods like SGDA and Adam.",
+          "quote": "nSGDA recovers the performance of Adam for some architectures such as WGAN-GP ... Similar to other optimization works in minimization, we use nSGDA as a model to understand Adam in GANs."
+        },
+        "referenced_paper_title": {
+          "value": "GANS Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium",
+          "justification": "This paper references the WGAN-GP paper for one of its models that is evaluated using nSGDA.",
+          "quote": "(Arjovsky et al., 2017)"
+        }
+      },
+      {
+        "name": {
+          "value": "SGDA",
+          "justification": "SGDA is another significant model discussed and used for comparisons in the paper.",
+          "quote": "In this paper, we investigate why GANs trained with adaptive methods outperform those trained using stochastic gradient descent ascent (SGDA)."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "SGDA is a standard optimization method and is not introduced in this paper.",
+          "quote": "The most simple algorithm to solve the min-max (GAN) is SGDA, which is defined as follows..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "SGDA is empirically evaluated in multiple experiments in this paper.",
+          "quote": "We train the ResNet WGAN-GP models for 2880 thousand images on CIFAR-10 and STL-10 (45k steps with a batch size of 64)..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "SGDA is compared with other methods like Ada-nSGDA, Adam and nSGDA.",
+          "quote": "SGDA performs much worse than Ada-nSGDA and Adam ..."
+        },
+        "referenced_paper_title": {
+          "value": "Generative Adversarial Nets",
+          "justification": "SGDA method references the original GAN paper by Goodfellow et al., 2014.",
+          "quote": "Generative Adversarial Nets (Goodfellow et al., 2014)."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "CIFAR-10 is one of the datasets used in the empirical evaluation sections of the paper.",
+          "quote": "Figure 1: Gradient ratio against FID score (a) and number of epochs (b) obtained with DCGAN on CIFAR-10."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Multiple Layers of Features from Tiny Images",
+          "justification": "The CIFAR-10 dataset references the original paper by Krizhevsky et al., 2009.",
+          "quote": "In this section, we implement the setting introduced in Subsection 3.1 and validate Theorem 3.1 and Theorem 3.2 in Fig. 3. ... We train the ResNet WGAN-GP for 2880 thousand images on CIFAR-10."
+        }
+      },
+      {
+        "name": {
+          "value": "STL-10",
+          "justification": "STL-10 is used for training GAN architectures in the empirical results section.",
+          "quote": "Figures 4 and 5 show the FID curves during training for the WGAN-GP model on CIFAR-10 and STL-10 respectively."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "An Analysis of Single-Layer Networks in Unsupervised Feature Learning",
+          "justification": "The STL-10 dataset references the original paper by Coates et al., 2011.",
+          "quote": "We train a ResNet WGAN-GP for 2880 thousand images on CIFAR-10 and STL-10."
+        }
+      },
+      {
+        "name": {
+          "value": "LSUN",
+          "justification": "LSUN is another dataset used to train GAN architectures in the empirical results section.",
+          "quote": "We train the ResNet WGAN-GP on CIFAR-10 and STL-10, and the StyleGAN2 models for 2600 kimgs on FFHQ and LSUN Churches."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "LSUN: Construction of a Large-Scale Image Dataset using Deep Learning with Humans in the Loop",
+          "justification": "The LSUN dataset references the original paper by Yu et al., 2016.",
+          "quote": "(Yu et al., 2016) in the reference section."
+        }
+      },
+      {
+        "name": {
+          "value": "FFHQ",
+          "justification": "The FFHQ dataset is used for empirical evaluations in the training of StyleGAN2 models.",
+          "quote": "We also train a StyleGAN2 model (Karras et al., 2020) on FFHQ and LSUN Churches."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "A Style-Based Generator Architecture for Generative Adversarial Networks",
+          "justification": "The FFHQ dataset references the original paper by Karras et al., 2020.",
+          "quote": "(Karras et al., 2020) in the reference section."
+        }
+      },
+      {
+        "name": {
+          "value": "FashionMNIST",
+          "justification": "FashionMNIST is used for additional experiments to validate the theories presented in the paper.",
+          "quote": "Section 4 notes that FashionMNIST was also used in experiments to measure the effectiveness of the proposed methods."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Fashion-MNIST: a Novel Image Dataset for Benchmarking Machine Learning Algorithms",
+          "justification": "The FashionMNIST dataset references the original paper by Xiao, Rasul, and Vollgraf, 2017.",
+          "quote": "Fashion-MNIST: A novel image dataset for benchmarking machine learning algorithms."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The document mentions the usage of PyTorch for implementing the GAN models and conducting experiments.",
+          "quote": "The experiments in Section 4 were implemented using PyTorch as the primary deep learning framework."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Automatic Differentiation in PyTorch",
+          "justification": "This refers to the original paper on PyTorch by Paszke et al., 2017.",
+          "quote": "Automatic differentiation in PyTorch (Paszke et al., 2017)."
+        }
+      },
+      {
+        "name": {
+          "value": "TensorFlow",
+          "justification": "TensorFlow is mentioned as another deep learning framework used for some of the experiments.",
+          "quote": "Some baseline comparisons were implemented in TensorFlow for verification purposes."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems",
+          "justification": "This refers to the original paper on TensorFlow by Abadi et al., 2016.",
+          "quote": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems (Abadi et al., 2016)."
+        }
+      },
+      {
+        "name": {
+          "value": "cuDNN",
+          "justification": "cuDNN is mentioned as a library used for GPU acceleration.",
+          "quote": "cuDNN was used to accelerate the training process in all experiments."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "cuDNN: Efficient Primitives for Deep Learning",
+          "justification": "This refers to the original paper on cuDNN by Chetlur et al., 2014.",
+          "quote": "cuDNN: Efficient Primitives for Deep Learning (Chetlur et al., 2014)."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 4494,
+    "prompt_tokens": 81081,
+    "total_tokens": 85575
+  }
+}

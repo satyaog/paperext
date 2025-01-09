@@ -1,0 +1,138 @@
+{
+  "paper": "2308.00566.txt",
+  "words": 8498,
+  "extractions": {
+    "title": {
+      "value": "Stochastic positional embeddings improve masked image modeling",
+      "justification": "The title is explicitly mentioned at the beginning of the document.",
+      "quote": "Stochastic positional embeddings improve masked image modeling"
+    },
+    "description": "This paper proposes the use of Stochastic Positional embeddings (StoP) to improve Masked Image Modeling (MIM) by incorporating location uncertainty. It involves conditioning the model on stochastic masked token positions drawn from a Gaussian distribution to reduce overfitting to location features and enhance robustness to location uncertainties. The approach is applied on I-JEPA, a state-of-the-art MIM method, leading to improved performance on various downstream tasks.",
+    "type": {
+      "value": "theoretical",
+      "justification": "The paper primarily introduces and explores a new theoretical concept of Stochastic Positional embeddings (StoP) and its applications in MIM, providing proofs and empirical validations.",
+      "quote": "First, we propose the idea of Stochastic Positional embeddings (StoP) and apply it to MIM to address the location uncertainty in MIM."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The primary focus of this paper is on improving Masked Image Modeling, a technique in Computer Vision.",
+        "quote": "Masked Image Modeling (MIM) enables learning from unlabeled images by reconstructing masked parts of the image given the rest of the image as context."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Self-Supervised Learning",
+          "justification": "The paper targets the improvement of self-supervised learning techniques through the innovation of stochastic positional embeddings within masked image modeling.",
+          "quote": "Masked Image Modeling (MIM) is a promising self-supervised learning approach that enables learning from unlabeled images."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "ViT-B",
+          "justification": "ViT-B (Vision Transformer - Base) is one of the models evaluated using the proposed StoP technique in the paper.",
+          "quote": "StoP improves downstream MIM performance on a variety of downstream tasks, including +1.7% on ImageNet linear probing using ViT-B."
+        },
+        "aliases": [
+          "Vision Transformer - Base"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "ViT-B was not introduced by this paper but was used for evaluation.",
+          "quote": "In recently years, new MIM methods have emerged (Xie et al., 2021; Bao et al., 2021; He et al., 2021; Assran et al., 2023). Masked AutoEncoders (MAE) (He et al., 2021) are trained to minimize a reconstruction error in pixel space, and I-JEPA (Assran et al., 2023) reconstructs image features."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The ViT-B model was executed with StoP for empirical validation.",
+          "quote": "StoP improves downstream MIM performance on a variety of downstream tasks, including +1.7% on ImageNet linear probing using ViT-B."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "ViT-B with and without StoP was compared to demonstrate the effectiveness of StoP.",
+          "quote": "StoP improves downstream MIM performance on a variety of downstream tasks, including +1.7% on ImageNet linear probing using ViT-B."
+        },
+        "referenced_paper_title": {
+          "value": "An image is worth 16x16 words: Transformers for image recognition at scale",
+          "justification": "The referenced paper is the original paper introducing the Vision Transformer, which includes ViT-B.",
+          "quote": "For the case of Vision Transformers (Dosovitskiy et al., 2020), an input image Ix ∈ RH×W ×3 is first patchified into a sequence of non-overlapping image patches."
+        }
+      },
+      {
+        "name": {
+          "value": "ViT-H",
+          "justification": "ViT-H (Vision Transformer - Huge) is one of the models evaluated using the proposed StoP technique in the paper.",
+          "quote": "+2.5% for ViT-H using 1% of the data."
+        },
+        "aliases": [
+          "Vision Transformer - Huge"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "ViT-H was not introduced by this paper but was used for evaluation.",
+          "quote": "In recently years, new MIM methods have emerged (Xie et al., 2021; Bao et al., 2021; He et al., 2021; Assran et al., 2023). Masked AutoEncoders (MAE) (He et al., 2021) are trained to minimize a reconstruction error in pixel space, and I-JEPA (Assran et al., 2023) reconstructs image features."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The ViT-H model was executed with StoP for empirical validation.",
+          "quote": "+2.5% for ViT-H using 1% of the data."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "ViT-H with and without StoP was compared to demonstrate the effectiveness of StoP.",
+          "quote": "+2.5% for ViT-H using 1% of the data."
+        },
+        "referenced_paper_title": {
+          "value": "An image is worth 16x16 words: Transformers for image recognition at scale",
+          "justification": "The referenced paper is the original paper introducing the Vision Transformer, which includes ViT-H.",
+          "quote": "For the case of Vision Transformers (Dosovitskiy et al., 2020), an input image Ix ∈ RH×W ×3 is first patchified into a sequence of non-overlapping image patches."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "ImageNet",
+          "justification": "The ImageNet dataset was used for linear probing and performance evaluation of the models with StoP.",
+          "quote": "Quantitatively, StoP improves downstream MIM performance on a variety of downstream tasks, including +1.7% on ImageNet linear probing using ViT-B."
+        },
+        "aliases": [
+          "IN-1k"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ImageNet large scale visual recognition challenge",
+          "justification": "The referenced paper is the original paper introducing the ImageNet dataset.",
+          "quote": "ImageNet (IN-1k) (Russakovsky et al., 2015)"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Vision Transformer",
+          "justification": "The Vision Transformer (ViT) library was employed to implement and evaluate the Transformer models like ViT-B and ViT-H used in this study.",
+          "quote": "For the case of Vision Transformers (Dosovitskiy et al., 2020), an input image Ix ∈ RH×W ×3 is first patchified into a sequence of non-overlapping image patches."
+        },
+        "aliases": [
+          "ViT"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "An image is worth 16x16 words: Transformers for image recognition at scale",
+          "justification": "The referenced paper is the original paper that introduced the Vision Transformer library.",
+          "quote": "For the case of Vision Transformers (Dosovitskiy et al., 2020), an input image Ix ∈ RH×W ×3 is first patchified into a sequence of non-overlapping image patches."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1758,
+    "prompt_tokens": 16725,
+    "total_tokens": 18483
+  }
+}

@@ -1,0 +1,250 @@
+{
+  "paper": "2305.05858.txt",
+  "words": 13901,
+  "extractions": {
+    "title": {
+      "value": "Vārta: A Large-Scale Headline-Generation Dataset for Indic Languages",
+      "justification": "The title is mentioned at the top of the research paper.",
+      "quote": "Vārta: A Large-Scale Headline-Generation Dataset for Indic Languages"
+    },
+    "description": "This paper introduces Vārta, a substantial multilingual dataset aimed at the task of headline generation in 14 Indic languages and English. The dataset is utilized in various experiments to explore its efficacy in Indic NLP and multilingual research, showing that it is challenging for state-of-the-art models and beneficial for pretraining strong language models.",
+    "type": {
+      "value": "empirical",
+      "justification": "The research involves collecting a large-scale dataset and running a series of experiments to evaluate its effectiveness.",
+      "quote": "We use the data collected in a series of experiments to answer important questions related to Indic NLP and multilinguality research in general."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The primary focus of the dataset and experiments revolves around tasks related to Natural Language Processing such as headline generation and abstractive summarization.",
+        "quote": "We present Vārta, a large-scale multilingual dataset for headline generation in Indic languages."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Machine Translation",
+          "justification": "The paper references machine translation models and highlights the translation difficulties among Indic languages.",
+          "quote": "For example, though most Indic languages are closely related, they use different scripts which makes transfer learning harder."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Text Summarization",
+          "justification": "The primary task discussed is headline generation, a form of text summarization.",
+          "quote": "Headline generation is a special case of abstractive summarization where the goal is to create a brief, often single-sentence ‘summary’ of a news article."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "mT5",
+          "justification": "mT5 is a key model used in the experiments for headline generation and pretraining tasks.",
+          "quote": "mT5 introduced by Xue et al. (2021), it is the multilingual variant of T5 (Raffel et al., 2022)."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "mT5 was not introduced by this paper; it was used as a baseline.",
+          "quote": "mT5 introduced by Xue et al. (2021), it is the multilingual variant of T5 (Raffel et al., 2022)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The mT5 model was executed on the dataset for various experiments.",
+          "quote": "We finetune each model described in §4.2 on Vārta in five settings."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of mT5 is compared to other models such as Vārta-T5 and mBERT.",
+          "quote": "Overall, Vārta-T5 finetuned in the all setting performs the best with an average ROUGE - L of 40.48."
+        },
+        "referenced_paper_title": {
+          "value": "mT5: A massively multilingual pre-trained text-to-text transformer",
+          "justification": "The reference paper for mT5 is cited in the text.",
+          "quote": "mT5 introduced by Xue et al. (2021), it is the multilingual variant of T5 (Raffel et al., 2022)."
+        }
+      },
+      {
+        "name": {
+          "value": "mBERT-seq2seq",
+          "justification": "mBERT-seq2seq is another key model used in the experiments for headline generation.",
+          "quote": "We warm-start both the encoder and decoder of our model with mBERT weights and the encoder-decoder attention weights are initialized randomly."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The mBERT model was used in its existing form and not introduced in this paper.",
+          "quote": "We warm-start both the encoder and decoder of our model with mBERT weights and the encoder-decoder attention weights are initialized randomly."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The mBERT model was executed on the dataset for various experiments.",
+          "quote": "We finetune each model described in §4.2 on Vārta in five settings."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of mBERT is compared to other models such as Vārta-T5 and mT5.",
+          "quote": "Overall, Vārta-T5 finetuned in the all setting performs the best with an average ROUGE - L of 40.48."
+        },
+        "referenced_paper_title": {
+          "value": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "justification": "The reference paper for mBERT is cited in the text.",
+          "quote": "We warm-start both the encoder and decoder of our model with mBERT weights and the encoder-decoder attention weights are initialized randomly."
+        }
+      },
+      {
+        "name": {
+          "value": "Vārta-T5",
+          "justification": "Vārta-T5 is a key model introduced in the paper and used in various experiments.",
+          "quote": "Therefore, we use the full training set from Vārta to pretrain a T5 model from scratch."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "Vārta-T5 was developed as a part of this research work.",
+          "quote": "Therefore, we use the full training set from Vārta to pretrain a T5 model from scratch."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Vārta-T5 was pretrained and fine-tuned for various tasks in the study.",
+          "quote": "Therefore, we use the full training set from Vārta to pretrain a T5 model from scratch."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Vārta-T5 is compared with other models like mT5 and mBERT.",
+          "quote": "Overall, Vārta-T5 finetuned in the all setting performs the best with an average ROUGE - L of 40.48."
+        },
+        "referenced_paper_title": {
+          "value": "Exploring the limits of transfer learning with a unified text-to-text transformer",
+          "justification": "The development of Vārta-T5 is based on the original T5 model, which is detailed in the referenced paper.",
+          "quote": "We use span corruption and gap-sentence generation as the pretraining objectives. Both objectives are sampled uniformly during pretraining."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Vārta",
+          "justification": "The primary dataset introduced in the paper is Vārta.",
+          "quote": "We present Vārta, a large-scale multilingual dataset for headline generation in Indic languages."
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "Vārta is the main contribution of this paper and not referenced from other works.",
+          "quote": "We present Vārta, a large-scale multilingual dataset for headline generation in Indic languages."
+        }
+      },
+      {
+        "name": {
+          "value": "DailyHunt",
+          "justification": "DailyHunt is the source from which Vārta data was collected.",
+          "quote": "The data is crawled from DailyHunt, a popular news aggregator in India that pulls high-quality articles from multiple trusted and reputed news publishers."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The data for Vārta was crawled from DailyHunt, but DailyHunt itself is not a dataset referenced from another research paper.",
+          "quote": "The data is crawled from DailyHunt, a popular news aggregator in India that pulls high-quality articles from multiple trusted and reputed news publishers."
+        }
+      },
+      {
+        "name": {
+          "value": "XL-Sum",
+          "justification": "XL-Sum is mentioned as one of the datasets used for zero-shot evaluation.",
+          "quote": "In the abstractive summarization and headline generation tasks, Vārta-trained models are assessed on the XL-Sum dataset."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "XL-Sum: Large-scale multilingual abstractive summarization for 44 languages",
+          "justification": "The paper references XL-Sum as the evaluation dataset.",
+          "quote": "To test the generalizability of our models on other datasets and tasks, we evaluate models finetuned on Vārta on the Indic subset of the XL-Sum dataset."
+        }
+      },
+      {
+        "name": {
+          "value": "IndicNLG",
+          "justification": "IndicNLG benchmark was used to evaluate the generalizability of Vārta-T5 on diverse NLG tasks.",
+          "quote": "We evaluate Vārta-T5 on IndicNLG and compare its performance against two strong baselines: IndicBART and mT5."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "IndicNLG Benchmark: Multilingual Datasets for Diverse NLG Tasks in Indic Languages",
+          "justification": "The paper references the IndicNLG benchmark for evaluation.",
+          "quote": "We evaluate Vārta-T5 on IndicNLG and compare its performance against two strong baselines: IndicBART and mT5."
+        }
+      },
+      {
+        "name": {
+          "value": "IndicXTREME",
+          "justification": "IndicXTREME is used to evaluate Vārta-BERT on various NLU tasks.",
+          "quote": "We evaluate our model on the IndicXTREME benchmark (Doddapaneni et al., 2022) which consists of 9 tasks in 19 Indic languages."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "IndicXTREME: A Multi-Task Benchmark for Evaluating Indic Languages",
+          "justification": "The paper references IndicXTREME as the evaluation benchmark for NLU tasks.",
+          "quote": "We evaluate our model on the IndicXTREME benchmark (Doddapaneni et al., 2022) which consists of 9 tasks in 19 Indic languages."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Scrapy",
+          "justification": "Scrapy was used for crawling data from DailyHunt.",
+          "quote": "Since DailyHunt does not have an external facing API, we crawl their website using Scrapy,4 a Python-based scraping tool that collects data efficiently without burdening their servers."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "Scrapy is a commonly used tool, and its usage does not require a specific reference paper.",
+          "quote": "Since DailyHunt does not have an external facing API, we crawl their website using Scrapy,4 a Python-based scraping tool that collects data efficiently without burdening their servers."
+        }
+      },
+      {
+        "name": {
+          "value": "Beautiful Soup",
+          "justification": "Beautiful Soup was used for processing the crawled data.",
+          "quote": "We use Beautiful Soup 4 which is available at this URL: https://www.crummy.com/software/BeautifulSoup/."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "Beautiful Soup is a commonly used tool, and its usage does not require a specific reference paper.",
+          "quote": "We use Beautiful Soup 4 which is available at this URL: https://www.crummy.com/software/BeautifulSoup/."
+        }
+      },
+      {
+        "name": {
+          "value": "IndicNLP Library",
+          "justification": "IndicNLP Library was used for transliterating Vārta content.",
+          "quote": "We use the IndicTrans (Bhat et al., 2015) and IndicNLP (Kunchukuttan, 2020) libraries to transliterate text to English and Devanagari respectively."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The paper directly references the usage of IndicNLP Library for transliteration.",
+          "quote": "We use the IndicTrans (Bhat et al., 2015) and IndicNLP (Kunchukuttan, 2020) libraries to transliterate text to English and Devanagari respectively."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 3072,
+    "prompt_tokens": 29901,
+    "total_tokens": 32973
+  }
+}

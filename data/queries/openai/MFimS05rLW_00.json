@@ -1,0 +1,138 @@
+{
+  "paper": "MFimS05rLW.txt",
+  "words": 7667,
+  "extractions": {
+    "title": {
+      "value": "Investigating the Effect of Pre-finetuning BERT Models on NLI Involving Presuppositions",
+      "justification": "Extracted directly from the paper title",
+      "quote": "Investigating the Effect of Pre-finetuning BERT Models on NLI Involving Presuppositions"
+    },
+    "description": "This study explores how pre-finetuning on tasks related to discourse coherence and sarcasm detection can improve the performance of Natural Language Inference (NLI) models, especially in cases involving presuppositions. The investigation includes several experiments and diagnostic tests to evaluate the effectiveness of pre-finetuning with respect to performance gains attributed to the nature of the tasks rather than merely additional training data.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper includes multiple experiments and diagnostic tests to evaluate the effectiveness of pre-finetuning on model performance.",
+      "quote": "We exploit advances in training transformer-based models that show that pre-finetuning—–i.e., finetuning the model on an additional task or dataset before the actual finetuning phase—–can help these models, in some cases, achieve a higher performance on a given downstream task...We notice that, indeed, pre-finetuning on those tasks leads to performance improvements. Furthermore, we run several diagnostic tests to understand whether these gains are merely a byproduct of additional training data."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The focus of the paper is on improving the performance of Natural Language Inference (NLI) models, which falls under the domain of Natural Language Processing.",
+        "quote": "We choose a popular NLU task, natural language inference (NLI) (Dagan et al., 2005; MacCartney and Manning, 2008; Bowman et al., 2015) as a testbed for exploring this connection"
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Natural Language Inference",
+          "justification": "The study specifically targets Natural Language Inference (NLI) models and their performance.",
+          "quote": "We set to exploit this connection between presupposition on one hand and discourse and coherence models and sarcasm on the other hand. We choose a popular NLU task, natural language inference (NLI) (Dagan et al., 2005; MacCartney and Manning, 2008; Bowman et al., 2015) as a testbed for exploring this connection."
+        },
+        "aliases": [
+          "NLI"
+        ]
+      },
+      {
+        "name": {
+          "value": "Transfer Learning",
+          "justification": "The concept of pre-finetuning introduced in the paper is closely related to transfer learning, as it involves leveraging learned tasks to improve performance on a downstream task.",
+          "quote": "To do so, we utilize pre-finetuning, a training strategy that has received attention in the context of transformer (Vaswani et al., 2017) models such as BERT (Devlin et al., 2019), RoBERTa (Liu et al., 2019), BART (Lewis et al., 2020) and GPT-3 (Brown et al., 2020). Generally, prefinetuning a pretrained model is to finetune it on a task/dataset before the actual finetuning stage on the downstream task of interest."
+        },
+        "aliases": [
+          "Pre-finetuning"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "BERT",
+          "justification": "BERT is one of the transformer-based models used in the study for pre-finetuning and evaluating NLI tasks.",
+          "quote": "To do so, we utilize pre-finetuning, a training strategy that has received attention in the context of transformer (Vaswani et al., 2017) models such as BERT (Devlin et al., 2019), RoBERTa (Liu et al., 2019), BART (Lewis et al., 2020) and GPT-3 (Brown et al., 2020)."
+        },
+        "aliases": [
+          "Bidirectional Encoder Representations from Transformers"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "BERT is not a new model introduced by the paper but rather one that was utilized for the study.",
+          "quote": "To do so, we utilize pre-finetuning, a training strategy that has received attention in the context of transformer (Vaswani et al., 2017) models such as BERT (Devlin et al., 2019), RoBERTa (Liu et al., 2019), BART (Lewis et al., 2020) and GPT-3 (Brown et al., 2020)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "BERT models were executed as part of the study to evaluate the performance improvements.",
+          "quote": "Depending on the pre-finetuning task, the base BERT model is followed by a corresponding linear layer and softmax for classification (2-way or 4-way classification depending on the task) or none in the case of the P RETRAIN experiment (where the data is used to further pre-train the model and not to predict labels)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "BERT models were compared with other models and techniques in the scope of the paper.",
+          "quote": "Pre-finetuning has been explored in the context of question answering (Tafjord et al., 2019), named entities (Shwartz et al., 2020) and broader multi-task learning scenarios (Gururangan et al., 2020; Aghajanyan et al., 2021)."
+        },
+        "referenced_paper_title": {
+          "value": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "justification": "This is the referenced paper detailing BERT's original introduction and capabilities.",
+          "quote": "To do so, we utilize pre-finetuning, a training strategy that has received attention in the context of transformer (Vaswani et al., 2017) models such as BERT (Devlin et al., 2019), RoBERTa (Liu et al., 2019), BART (Lewis et al., 2020) and GPT-3 (Brown et al., 2020)."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "MNLI",
+          "justification": "MNLI is a popular dataset for NLI tasks and is used as a benchmark in the study.",
+          "quote": "We choose a popular NLU task, natural language inference (NLI) (Dagan et al., 2005; MacCartney and Manning, 2008; Bowman et al., 2015) as a testbed for exploring this connection... our efforts are complemented by other works ... show that pre-finetuning leads to enhanced performance in models pre-trained on MNLI (Williams et al., 2018)..."
+        },
+        "aliases": [
+          "Multi-Genre Natural Language Inference"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "A Broad-Coverage Challenge Corpus for Sentence Understanding through Inference",
+          "justification": "This is the referenced paper detailing MNLI's introduction and use as a benchmark dataset.",
+          "quote": "...show that pre-finetuning leads to enhanced performance in models pre-trained on MNLI (Williams et al., 2018)..."
+        }
+      },
+      {
+        "name": {
+          "value": "ImpPres",
+          "justification": "ImpPres is used specifically for evaluating the performance of NLI models on presuppositional phenomena.",
+          "quote": "ImpPres dataset (Jeretic et al., 2020), is a collection of 25.5k semi-automatically generated sentences...It includes multiple types of presupposition triggers and serves to evaluate NLI models on their presupposition recognition capabilities."
+        },
+        "aliases": [
+          "Implicit and Presupposed Dataset"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Are Natural Language Inference Models IMPPRESsive? Learning IMPlicature and PRESupposition",
+          "justification": "This is the referenced paper detailing ImpPres's introduction and application for evaluating NLI models on presuppositional phenomena.",
+          "quote": "ImpPres dataset (Jeretic et al., 2020), is a collection of 25.5k semi-automatically generated sentences...It includes multiple types of presupposition triggers and serves to evaluate NLI models on their presupposition recognition capabilities"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "HuggingFace Transformers",
+          "justification": "The HuggingFace Transformers library was used for the implementation of the pre-trained BERT model.",
+          "quote": "The main building block of our experiments is HuggingFace’s bert-large-uncased implementation (Wolf et al., 2019) of BERT that was trained on lower-cased English text."
+        },
+        "aliases": [
+          "Transformers"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Huggingface's Transformers: State-of-the-Art Natural Language Processing",
+          "justification": "This is the referenced paper detailing the capabilities and applications of HuggingFace Transformers.",
+          "quote": "The main building block of our experiments is HuggingFace’s bert-large-uncased implementation (Wolf et al., 2019) of BERT that was trained on lower-cased English text."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1866,
+    "prompt_tokens": 14701,
+    "total_tokens": 16567
+  }
+}

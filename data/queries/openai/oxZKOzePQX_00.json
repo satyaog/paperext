@@ -1,0 +1,270 @@
+{
+  "paper": "oxZKOzePQX.txt",
+  "words": 8974,
+  "extractions": {
+    "title": {
+      "value": "S WEET: Weakly Supervised Person Name Extraction for Fighting Human Trafficking",
+      "justification": "This is the exact title of the paper provided by the user.",
+      "quote": "S WEET: Weakly Supervised Person Name Extraction for Fighting Human Trafficking"
+    },
+    "description": "This paper presents S WEET, a weak supervision methodology to extract person names from noisy escort ads in the human trafficking domain, leveraging a combination of rule-based and language model-based labeling functions which are aggregated by an HMM-based method. The paper also introduces HTG EN, a synthetic dataset of escort ads generated using ChatGPT.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper performs experimental evaluations, providing results and comparisons with other methods on various datasets including HTNAME and HTGEN.",
+      "quote": "The experimental evaluations show that S WEET achieves SOTA results on the HTNAME dataset with an F1 score of 0.87, outperforming the previous SOTA by 9% while also generalizing better to CoNLL2003 and WNUT2017 datasets."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The paper focuses on Named Entity Recognition, a core task within Natural Language Processing.",
+        "quote": "Named Entity Recognition (NER) is the task of identifying elements in the text that correspond to high-level categories like PERSON, ORGANIZATION, LOCATION, DATES, and other concrete concepts that can be explicitly named."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Named Entity Recognition",
+          "justification": "The primary task addressed by the research is Named Entity Recognition, specifically for person names in noisy and adversarial text data from escort ads.",
+          "quote": "Hence, efficient entity extractors must extract accurate and relevant information from ad text."
+        },
+        "aliases": [
+          "NER"
+        ]
+      },
+      {
+        "name": {
+          "value": "Information Extraction",
+          "justification": "The problem tackled in the research involves extracting specific entities (person names) from text, which is a sub-field of Information Extraction.",
+          "quote": "In this paper, the focus is on human names because they are most associated with an HT victim and names are the most common entity type to appear in escort ads."
+        },
+        "aliases": [
+          "IE"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "S WEET",
+          "justification": "S WEET is the primary method proposed in the paper for extracting person names using weak supervision.",
+          "quote": "In this work, we propose a weak supervision pipeline S WEET: Supervise Weakly for Entity Extraction to fight Trafficking for extracting person names from noisy escort advertisements."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "S WEET is the novel contribution of the paper, designed specifically for this task.",
+          "quote": "We study the problem of name extraction from noisy text through the novel lens of weak supervision and propose a new method."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The methodology section details the implementation and execution of S WEET, involving multiple language models and rule-based functions.",
+          "quote": "The proposed weak supervision pipeline in S WEET consists of 2 main types of LFs: Antirules and Fine-tuned Models."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "S WEET is compared numerically against other models including NEAT, achieving significant improvements in performance.",
+          "quote": "The experimental evaluations show that S WEET achieves SOTA results on the HTNAME dataset with an F1 score of 0.87, outperforming the previous SOTA by 9% while also generalizing better to CoNLL2003 and WNUT2017 datasets."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "S WEET is introduced in this paper and does not reference another title.",
+          "quote": "We propose a weak supervision pipeline S WEET: Supervise Weakly for Entity Extraction."
+        }
+      },
+      {
+        "name": {
+          "value": "NEAT",
+          "justification": "NEAT is referenced as the previous state-of-the-art method for name extraction from escort ads.",
+          "quote": "Traditional extraction methods, such as the embedding-based Flair (Akbik et al., 2018a) and Spacy NLP models...NEAT (Li et al., 2022) stands as the current SOTA name extractor in this domain."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "NEAT is not a contribution of this paper but is used for comparison.",
+          "quote": "NEAT (Li et al., 2022) stands as the current SOTA name extractor in this domain."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The paper does not indicate executing the NEAT model, rather it uses the reported results for comparison.",
+          "quote": "NEAT relies on a sample of manually labeled data to provide optimal results. This is a challenge because the relevant datasets for this task are typically curated in-house and not shared publicly due to their sensitive nature."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "NEAT is compared numerically in the results section and the paper demonstrates that S WEET outperforms it.",
+          "quote": "S WEET achieves SOTA results on the HTNAME dataset with an F1 score of 0.87, outperforming the previous SOTA by 9% while also generalizing better to CoNLL2003 and WNUT2017 datasets."
+        },
+        "referenced_paper_title": {
+          "value": "Extracting person names from user generated text: Named-entity recognition for combating human trafficking",
+          "justification": "This is the title of the reference paper for NEAT used in the comparisons.",
+          "quote": "NEAT (Li et al., 2022) stands as the current SOTA name extractor in this domain."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "HTG EN",
+          "justification": "HTG EN is introduced in the paper as a synthetic dataset of escort ads generated using ChatGPT.",
+          "quote": "Furthermore, we also release HTG EN, a synthetically generated dataset of escort advertisements (built using ChatGPT) to facilitate further research within the community."
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "HTG EN is introduced in this paper and is not referenced from another paper.",
+          "quote": "Furthermore, we also release HTG EN, a synthetically generated dataset of escort advertisements (built using ChatGPT) to facilitate further research within the community."
+        }
+      },
+      {
+        "name": {
+          "value": "HTNAME",
+          "justification": "HTNAME is utilized in the experimental evaluations and comparisons of the proposed method S WEET.",
+          "quote": "On re-evaluating NEAT on HTNAME, we found an increase in the strict F1 score from the previous results (0.76 from Table 2 in Li et al. (2022) becomes 0.78), and use this stronger performance as the baseline."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Extracting person names from user generated text: Named-entity recognition for combating human trafficking",
+          "justification": "HTNAME is referenced from Li et al. 2022 as part of the datasets used for evaluation.",
+          "quote": "On re-evaluating NEAT on HTNAME, we found an increase in the strict F1 score from the previous results (0.76 from Table 2 in Li et al. (2022) becomes 0.78), and use this stronger performance as the baseline."
+        }
+      },
+      {
+        "name": {
+          "value": "CoNLL2003",
+          "justification": "CoNLL2003 is used for training and evaluating language models involved in the study.",
+          "quote": "CoNLL2003(Tjong Kim Sang and De Meulder, 2003) is a very popular baseline for evaluating the performance of different NLP systems and algorithms."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Introduction to the CoNLL-2003 shared task: Language-independent named entity recognition",
+          "justification": "The paper references the CoNLL-2003 shared task for using the CoNLL2003 dataset.",
+          "quote": "CoNLL2003(Tjong Kim Sang and De Meulder, 2003) is a very popular baseline for evaluating the performance of different NLP systems and algorithms."
+        }
+      },
+      {
+        "name": {
+          "value": "WNUT2017",
+          "justification": "WNUT2017 is used as one of the evaluation datasets to test the generalization ability of the proposed method.",
+          "quote": "WNUT2017(Derczynski et al., 2017) consists of user-generated text and contains many examples of informal language, abbreviations, misspellings, and other noisy characteristics."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Results of the WNUT2017 shared task on novel and emerging entity recognition",
+          "justification": "The WNUT2017 dataset is referenced from the WNUT shared task paper.",
+          "quote": "WNUT2017(Derczynski et al., 2017) consists of user-generated text and contains many examples of informal language, abbreviations, misspellings, and other noisy characteristics."
+        }
+      },
+      {
+        "name": {
+          "value": "Tweebank",
+          "justification": "Tweebank is used as an additional evaluation dataset in the experiments.",
+          "quote": "Tweebank(Jiang et al., 2022) was developed to address the challenges of analyzing social media data."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Annotating the Tweebank Corpus on Named Entity Recognition and Building NLP Models for Social Media Analysis",
+          "justification": "The Tweebank dataset is referenced for named entity annotation tasks.",
+          "quote": "Tweebank(Jiang et al., 2022) was developed to address the challenges of analyzing social media data."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Skweak",
+          "justification": "The paper uses Skweak as the weak-supervision framework for label aggregation and learning.",
+          "quote": "Skweak (Lison et al., 2021) is a Python-based weak supervision framework made specifically for NER tasks."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "skweak: Weak supervision made easy for NLP",
+          "justification": "The Skweak framework is referenced from Lison et al. (2021).",
+          "quote": "Skweak (Lison et al., 2021) is a Python-based weak supervision framework made specifically for NER tasks."
+        }
+      },
+      {
+        "name": {
+          "value": "Snorkel",
+          "justification": "Snorkel is mentioned as an alternative weak supervision framework, but Skweak is chosen due to its better suitability for NER tasks.",
+          "quote": "These make Skweak a better choice compared to other weak label aggregators such as Snorkel (Ratner et al., 2016)."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Data programming: Creating large training sets, quickly",
+          "justification": "Snorkel is referenced from the paper by Ratner et al., 2016 discussing data programming.",
+          "quote": "These make Skweak a better choice compared to other weak label aggregators such as Snorkel (Ratner et al., 2016)."
+        }
+      },
+      {
+        "name": {
+          "value": "Spacy",
+          "justification": "Spacy is used within the Skweak framework and is also mentioned for its named entity recognition models.",
+          "quote": "Skweak (Lison et al., 2021) is a Python-based weak supervision framework made specifically for NER tasks. It works together with the Spacy library (Honnibal et al., 2020)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "spaCy: Industrial-strength Natural Language Processing in Python",
+          "justification": "Spacy is referenced for its role within the Skweak framework for NER tasks.",
+          "quote": "Skweak (Lison et al., 2021) is a Python-based weak supervision framework made specifically for NER tasks. It works together with the Spacy library (Honnibal et al., 2020)."
+        }
+      },
+      {
+        "name": {
+          "value": "ChatGPT",
+          "justification": "ChatGPT is used for generating the HTGEN dataset and for labeling the HTU NSUP dataset in the methodology.",
+          "quote": "We also introduce HTG EN, a synthetically generated dataset of escort ads which, unlike the real-world datasets used in papers in this domain, can be published for further research and helps with reproducibility."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "ChatGPT is a widely known model developed by OpenAI and the quote references its usage rather than an external paper.",
+          "quote": "We also introduce HTG EN, a synthetically generated dataset of escort ads which, unlike the real-world datasets used in papers in this domain, can be published for further research and helps with reproducibility."
+        }
+      },
+      {
+        "name": {
+          "value": "RoBERTa",
+          "justification": "RoBERTa is one of the language models fine-tuned and used as a labeling function in the S WEET method.",
+          "quote": "Base versions of RoBERTa (Liu et al., 2019) and DeBERTa-v3 (He et al., 2021) for the task of Named Entity Recognition on six different datasets, namely: the train splits of CoNLL2003, WNUT2017, Few-NERD-L1, WikiNER-en, a domain dataset labelled by ChatGPT called HTU NSUP, and a domain dataset generated and labelled by ChatGPT called HTG EN."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "RoBERTa: A Robustly Optimized BERT Pretraining Approach",
+          "justification": "The RoBERTa model is referenced from the paper by Liu et al., 2019.",
+          "quote": "Base versions of RoBERTa (Liu et al., 2019) and DeBERTa-v3 (He et al., 2021) for the task of Named Entity Recognition on six different datasets, namely: the train splits of CoNLL2003, WNUT2017, Few-NERD-L1, WikiNER-en, a domain dataset labelled by ChatGPT called HTU NSUP, and a domain dataset generated and labelled by ChatGPT called HTG EN."
+        }
+      },
+      {
+        "name": {
+          "value": "DeBERTa",
+          "justification": "DeBERTa is one of the language models fine-tuned and used as a labeling function in the S WEET method.",
+          "quote": "Base versions of RoBERTa (Liu et al., 2019) and DeBERTa-v3 (He et al., 2021) for the task of Named Entity Recognition on six different datasets, namely: the train splits of CoNLL2003, WNUT2017, Few-NERD-L1, WikiNER-en, a domain dataset labelled by ChatGPT called HTU NSUP, and a domain dataset generated and labelled by ChatGPT called HTG EN."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "DeBERTaV3: Improving DeBERTa using Electra-Style Pre-Training with Gradient-Disentangled Embedding Sharing",
+          "justification": "The DeBERTa model is referenced from the paper by He et al., 2021.",
+          "quote": "Base versions of RoBERTa (Liu et al., 2019) and DeBERTa-v3 (He et al., 2021) for the task of Named Entity Recognition on six different datasets, namely: the train splits of CoNLL2003, WNUT2017, Few-NERD-L1, WikiNER-en, a domain dataset labelled by ChatGPT called HTU NSUP, and a domain dataset generated and labelled by ChatGPT called HTG EN."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 3838,
+    "prompt_tokens": 16465,
+    "total_tokens": 20303
+  }
+}

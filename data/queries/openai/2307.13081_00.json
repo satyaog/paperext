@@ -1,0 +1,231 @@
+{
+  "paper": "2307.13081.txt",
+  "words": 7019,
+  "extractions": {
+    "title": {
+      "value": "Fairness Under Demographic Scarce Regime",
+      "justification": "This is the title as provided in the research paper.",
+      "quote": "Fairness Under Demographic Scarce Regime"
+    },
+    "description": "This paper addresses the challenge of achieving fairness in machine learning models when demographic information is partially or wholly missing. The proposed framework introduces uncertainty awareness in attribute classifiers, thereby improving the fairness-accuracy trade-off. Empirical results on two datasets demonstrate the efficacy of the approach.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper demonstrates empirical results to validate the efficacy of their proposed framework.",
+      "quote": "Our experiments on two datasets showed that the proposed framework yields models with significantly better fairness-accuracy trade-offs compared to classic attribute classifiers."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Fairness in Machine Learning",
+        "justification": "The primary focus of the paper is on mitigating bias and achieving fairness in machine learning models, particularly in the context of missing demographic information.",
+        "quote": "Most existing works on fairness assume the model has full access to demographic information."
+      },
+      "aliases": [
+        "Fair ML",
+        "Bias Mitigation"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Classification",
+          "justification": "The paper involves building classifiers with better fairness-accuracy trade-offs.",
+          "quote": "The goal is to train a classifier that is fair with respect to different demographic groups in D1."
+        },
+        "aliases": [
+          "Classification Task",
+          "Label Classification"
+        ]
+      },
+      {
+        "name": {
+          "value": "Uncertainty Estimation",
+          "justification": "The proposed method introduces uncertainty awareness in the attribute classifier to improve fairness.",
+          "quote": "Our method introduces uncertainty awareness in the attribute classifier and enforces fairness on samples with demographic information inferred with the lowest uncertainty."
+        },
+        "aliases": [
+          "Uncertainty Modeling",
+          "Bayesian Methods"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Deep Neural Network (DNN)",
+          "justification": "The paper utilizes a deep neural network model for attribute classification.",
+          "quote": "We construct an uncertainty-aware deep neural network model (DNN) to predict demographic information."
+        },
+        "aliases": [
+          "DNN",
+          "Neural Network"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper did not introduce a new model but utilized an existing DNN framework.",
+          "quote": "We construct an uncertainty-aware deep neural network model (DNN) to predict demographic information."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was executed to predict demographic information in their experiments.",
+          "quote": "To demonstrate this, we propose a framework that consists of two phases. During the first phases, we construct an uncertainty-aware deep neural network model (DNN) to predict demographic information."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The DNN was compared to other models like KNN in terms of fairness-accuracy trade-offs.",
+          "quote": "We hypothesize that the uncertainty of the sensitive attribute classifier plays a critical role in improving fairness-accuracy tradeoffs on downstream tasks."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The DNN is a commonly used model and does not have a single reference paper in this context.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "k-Nearest Neighbors (KNN)",
+          "justification": "The k-Nearest Neighbors algorithm is used as a baseline for imputing missing sensitive attributes.",
+          "quote": "Here the missing sensitive attributes are derived using the k-nearest neighbors (KNN) of samples with missing sensitive attributes."
+        },
+        "aliases": [
+          "KNN"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The KNN algorithm is a well-known, existing method used as a baseline.",
+          "quote": "Here the missing sensitive attributes are derived using the k-nearest neighbors (KNN) of samples with missing sensitive attributes."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The KNN was executed to impute missing sensitive attributes in their experiments.",
+          "quote": "Here the missing sensitive attributes are derived using the k-nearest neighbors (KNN) of samples with missing sensitive attributes."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The KNN was compared to other models like the DNN in terms of fairness-accuracy trade-offs.",
+          "quote": "To validate our hypothesis, we define a confidence threshold H for samples used to train the label classifier with fairness constraints, i.e., the label classifier with fairness constraints is trained on a subset D1′ ⊂ D1."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The KNN is a standard machine learning method and does not have a single reference paper in this context.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "Logistic Regression",
+          "justification": "Logistic regression was used as a baseline model for demonstrating fairness mechanisms.",
+          "quote": "Random forest was initialized with maximum depth 5 and minimum samples leaf 10, and default parameters were used for logistic regression without hyperparameter tuning."
+        },
+        "aliases": [
+          "Logistic Classifier"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Logistic Regression is a standard, existing method used as a baseline.",
+          "quote": "Random forest was initialized with maximum depth 5 and minimum samples leaf 10, and default parameters were used for logistic regression without hyperparameter tuning."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The Logistic Regression model was executed as part of the experiments.",
+          "quote": "We validate our method on two real-world benchmarks widely used for bias assessment: Adult Income (Asuncion and Newman, 2007) and Compas datasets (Jeff et al., 2016)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Logistic Regression was used as a baseline and compared to other models in terms of fairness-accuracy trade-off.",
+          "quote": "For the exponential gradient, we used various base classifiers including logistic regression, random forest, and gradient-boosted trees (Ding et al., 2021)."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "Logistic Regression is a well-established machine learning model and does not have a specific reference paper in this context.",
+          "quote": ""
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Adult Income",
+          "justification": "The Adult Income dataset is used for validating the proposed method.",
+          "quote": "We validate our method on two real-world benchmarks widely used for bias assessment: Adult Income (Asuncion and Newman, 2007) and Compas datasets (Jeff et al., 2016)."
+        },
+        "aliases": [
+          "Adult"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "UCI Machine Learning Repository",
+          "justification": "The dataset is from the UCI Machine Learning Repository.",
+          "quote": "https://archive.ics.uci.edu/ml/datasets/Adult"
+        }
+      },
+      {
+        "name": {
+          "value": "Compas",
+          "justification": "The Compas dataset is used for evaluating the proposed framework.",
+          "quote": "We validate our method on two real-world benchmarks widely used for bias assessment: Adult Income (Asuncion and Newman, 2007) and Compas datasets (Jeff et al., 2016)."
+        },
+        "aliases": [
+          "COMPAS Recidivism"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "How we analyzed the COMPAS recidivism algorithm",
+          "justification": "The dataset is associated with the analysis of the COMPAS algorithm.",
+          "quote": "The Compas dataset contains around 6,000 samples described with 10 features. The goal is to predict whether a defendant will recidivate within two years."
+        }
+      },
+      {
+        "name": {
+          "value": "New Adult",
+          "justification": "The New Adult dataset was used for comparison in terms of bias and fairness.",
+          "quote": "We also considered the recent version of the Adult dataset (New Adult) for the year 2018 across different states in US (Ding et al., 2021)."
+        },
+        "aliases": [
+          "Adult 2018",
+          "New Census Data"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Retiring Adult: New datasets for fair machine learning",
+          "justification": "The dataset is associated with the study on retiring the traditional adult dataset.",
+          "quote": "We also considered the recent version of the Adult dataset (New Adult) for the year 2018 across different states in US (Ding et al., 2021)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is used to implement the models in the paper.",
+          "quote": "The student and teacher models were implemented as feed-forward Multi-layer Perceptrons (MLPs) with Pytorch (Paszke et al., 2019), and the loss function 4 is minimized using the Adam optimizer with learning rate 0.001 and batch size 256."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An imperative style, high-performance deep learning library",
+          "justification": "The library reference is provided in the paper's bibliography.",
+          "quote": "Paszke, A., Gross, S., Massa, F., Lerer, A., Bradbury, J., Chanan, G., Killeen, T., Lin, Z., Gimelshein, N., Antiga, L., et al. (2019). Pytorch: An imperative style, high-performance deep learning library. Advances in neural information processing systems, 32."
+        }
+      },
+      {
+        "name": {
+          "value": "Fairlearn",
+          "justification": "Fairlearn was used for implementing fairness mechanisms.",
+          "quote": "For fairness-enhancing mechanisms, we considered the Fairlean (Bird et al., 2020) implementation of the exponential gradient (Agarwal et al., 2018) and adversarial debiasing (Zhang et al., 2018) (Section 3.2)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Fairlearn: A toolkit for assessing and improving fairness in AI",
+          "justification": "The toolkit reference is provided in the paper's bibliography.",
+          "quote": "Bird, S., Dudík, M., Edgar, R., Horn, B., Lutz, R., Milan, V., Sameki, M., Wallach, H., and Walker, K. (2020). Fairlearn: A toolkit for assessing and improving fairness in ai. Microsoft, Tech. Rep. MSR-TR-2020-32."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2545,
+    "prompt_tokens": 12632,
+    "total_tokens": 15177
+  }
+}

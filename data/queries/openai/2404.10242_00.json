@@ -1,0 +1,200 @@
+{
+  "paper": "2404.10242.txt",
+  "words": 9577,
+  "extractions": {
+    "title": {
+      "value": "Masked Autoencoders are Scalable Learners of Cellular Biology",
+      "justification": "The title is clearly mentioned at the start of the paper.",
+      "quote": "Masked Autoencoders are Scalable Learners of Cellular Biology"
+    },
+    "description": "This paper explores the scaling properties of weakly supervised classifiers and self-supervised masked autoencoders (MAEs) when applied to microscopy images in biological research. It introduces a new channel-agnostic MAE architecture and demonstrates the effectiveness of MAEs, particularly ViT-based MAEs, in improving the recall of known biological relationships. The study uses various large-scale microscopy datasets and proposes novel methodologies like Fourier domain reconstruction to stabilize MAE training. The goal is to create robust foundation models for cellular biology that can advance drug discovery.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves experimental evaluations of different models on large-scale datasets, exhibiting characteristics typical of an empirical study.",
+      "quote": "Our results show that ViT-based MAEs outperform weakly supervised classifiers on a variety of tasks, achieving as much as a 11.5% relative improvement... We train masked autoencoders (MAEs)... employing a novel channel-agnostic MAE..."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Deep Learning",
+        "justification": "The paper focuses on deep learning methods, specifically masked autoencoders and vision transformers, applied to biological data.",
+        "quote": "This work explores the scaling properties of weakly supervised classifiers and self-supervised masked autoencoders (MAEs) when training with increasingly larger model backbones and microscopy datasets."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Computer Vision",
+          "justification": "The paper deals with analyzing and extracting features from microscopy images, a task central to the field of computer vision.",
+          "quote": "Masked Autoencoders for Microscopy are Scalable Learners of Cellular Biology"
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "ViT",
+          "justification": "ViT models, including ViT-S, ViT-B, and ViT-L, are mentioned throughout the paper as part of the MAE framework used and evaluated.",
+          "quote": "Our results show that ViT-based MAEs outperform weakly supervised classifiers on a variety of tasks"
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Role:['contributed', 'used', 'referenced']",
+          "quote": "used"
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
+          "quote": "training"
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "",
+          "quote": ""
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "U-Net",
+          "justification": "The paper discusses the use of U-Net models for masked autoencoder tasks, specifically mentioning MU-Net-M and MU-Net-L.",
+          "quote": "We adapt U-Nets [56] for use as masked autoencoders (MU-Nets) by training to reconstruct masked sections of input images. We train MU-Nets as described in Xun et al. [68] and report results for MU-Net-M and MU-Net-L"
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Role:['contributed', 'used', 'referenced']",
+          "quote": "used"
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
+          "quote": "training"
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "",
+          "quote": ""
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "DenseNet-161",
+          "justification": "The DenseNet-161 model is explicitly mentioned multiple times in the context of weakly supervised learning.",
+          "quote": "We reimplement the 28-million parameter DenseNet-161 backbone proposed in Sypetkowski et al. [62], trained to predict cellular perturbations and producing 128-dimensional embeddings from a two-layer MLP neck before the classification logits"
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Role:['contributed', 'used', 'referenced']",
+          "quote": "used"
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
+          "quote": "training"
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "",
+          "quote": ""
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "RxRx1",
+          "justification": "RxRx1 is mentioned multiple times as a dataset used in the study.",
+          "quote": "RxRx1 [62] is a publicly-available proprietary Cell Painting dataset with 125,510 images of 4 human cell types under 1,108 different siRNA perturbations across 51 experimental batches. A unique feature of this dataset is that it is comprised entirely of siRNA perturbations"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "RxRx3",
+          "justification": "RxRx3 is another dataset used in the study, as explicitly mentioned.",
+          "quote": "RxRx3 [24] is a publicly-available proprietary Cell Painting dataset with over 2.2 million images of HUVEC cells each perturbed with one of 17,063 CRISPR knockouts (using one of six different guides) or 1,674 compounds across 180 experimental batches"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "RPI-52M",
+          "justification": "RPI-52M is indicated as one of the larger datasets used in training and validation.",
+          "quote": "RPI-52M is a private dataset with approximately 52 million proprietary images spanning 6,638 experimental batches and 40 cell types. This is a superset of the preceeding three datasets."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "RPI-93M",
+          "justification": "RPI-93M is described as one of the largest datasets used in the study.",
+          "quote": "RPI-93M is a private dataset with approximately 93 million proprietary images spanning over 10,000 experimental batches and 41 cell types. To our knowledge, this is the largest HCS dataset collected for model training purposes."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is explicitly mentioned as the framework used for training the models.",
+          "quote": "Models were trained with data-distributed parallel (DDP) training and PyTorch 2.0 for up to 100 epochs on up to 256 NVIDIA 80GB A100 GPUs, depending on the size of the model and dataset."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1433,
+    "prompt_tokens": 19191,
+    "total_tokens": 20624
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "paper": "2310.10591.txt",
+  "words": 9570,
+  "extractions": {
+    "title": {
+      "value": "InterpreTING and controllING Vision Foundation Models via Text Explanations",
+      "justification": "This is the title of the research paper as mentioned in the provided text.",
+      "quote": "INTERPRETING AND CONTROLLING VISION FOUNDATION MODELS VIA TEXT EXPLANATIONS"
+    },
+    "description": "This paper presents a framework for interpreting and controlling large-scale pre-trained vision foundation models like CLIP through text explanations. The framework enables understanding the reasoning processes of these models by retrieving natural language explanations for latent tokens without additional model training or data collection. The authors also demonstrate how to edit the model behavior using these interpretations to improve robustness against biases and spurious correlations.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper provides a framework and presents empirical experiments, visualizations, and quantitative evaluations to demonstrate its effectiveness.",
+      "quote": "Qualitative and quantitative experiments demonstrate the effectiveness of our text interpretation."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The primary focus of the paper is on vision foundation models and interpreting their visual reasoning through text explanations, which falls under the domain of Computer Vision.",
+        "quote": "Large-scale pre-trained vision foundation models, such as CLIP, have become de facto backbones for various vision tasks."
+      },
+      "aliases": [
+        "CV"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Model Interpretation",
+          "justification": "The paper aims to interpret the latent tokens in vision transformers through natural language explanations, which fits under the field of Model Interpretation.",
+          "quote": "We propose an approach to interpret the latent tokens in pretrained vision-language transformers using text explanations."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Model Robustness",
+          "justification": "The paper also focuses on improving the robustness of vision models against biases and spurious correlations using the provided interpretations.",
+          "quote": "... our framework allows for model editing that controls model reasoning behaviors and improves model robustness against biases and spurious correlations."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Vision-Language Models",
+          "justification": "The paper specifically addresses vision-language transformers like CLIP and FLAVA in its approach.",
+          "quote": "Recent advancements in large-scale vision-language transformers, such as CLIP (Radford et al., 2021; Jia et al., 2021) and FLAVA (Singh et al., 2022), have enhanced robustness and generalizability."
+        },
+        "aliases": [
+          "Language-Vision Models"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "CLIP",
+          "justification": "The paper frequently refers to experiments and interpretations applied to the CLIP model.",
+          "quote": "In the established CLIP model, a text description is retrieved from a set of provided vocabulary for entire image based on similarity between image and text representation."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "CLIP is not a new model introduced by this paper.",
+          "quote": "In the established CLIP model, a text description is retrieved from a set of provided vocabulary for entire image based on similarity between image and text representation."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper performs empirical experiments on the CLIP model.",
+          "quote": "Our experiment focuses on the CLIP-B/32 model, while our method is general and can be used for any other transformer-based architecture."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "The paper does not provide numerical comparisons of CLIP against other models; rather, it uses CLIP as a backbone for its framework.",
+          "quote": "we demonstrate our framework’s capability to explain complex interactions in images..."
+        },
+        "referenced_paper_title": {
+          "value": "Learning transferable visual models from natural language supervision",
+          "justification": "This is the title of the seminal CLIP paper by Radford et al., which is referenced in the text.",
+          "quote": "CLIP (Radford et al., 2021)"
+        }
+      },
+      {
+        "name": {
+          "value": "FLAVA",
+          "justification": "The paper mentions FLAVA as another vision-language transformer relevant to their work.",
+          "quote": "Recent advancements in large-scale vision-language transformers, such as CLIP (Radford et al., 2021; Jia et al., 2021) and FLAVA (Singh et al., 2022), have enhanced robustness and generalizability."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "FLAVA is not a new model proposed by this paper.",
+          "quote": "Recent advancements in large-scale vision-language transformers, such as CLIP (Radford et al., 2021; Jia et al., 2021) and FLAVA (Singh et al., 2022), have enhanced robustness and generalizability."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "Only CLIP is explicitly mentioned as being used for experiments.",
+          "quote": "Our experiment focuses on the CLIP-B/32 model, while our method is general and can be used for any other transformer-based architecture."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "FLAVA is mentioned for context but not compared numerically to other models in this paper.",
+          "quote": "Recent advancements in large-scale vision-language transformers, such as CLIP..."
+        },
+        "referenced_paper_title": {
+          "value": "FLAVA: A Foundational Language and Vision Alignment Model",
+          "justification": "This is the title of the FLAVA paper by Singh et al., referenced in the text.",
+          "quote": "FLAVA (Singh et al., 2022)"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "VAW (Visual Attributes in the Wild) Dataset",
+          "justification": "The VAW dataset is used in the paper for evaluating the quality of token interpretations.",
+          "quote": "We use the VAW dataset (Pham et al., 2021) to study whether the annotated attribute emerges in vision transformer reasoning."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning to Predict Visual Attributes in the Wild",
+          "justification": "This is the title of the VAW dataset paper by Pham et al., referenced in the text.",
+          "quote": "VAW dataset (Pham et al., 2021)"
+        }
+      },
+      {
+        "name": {
+          "value": "UC Merced Land Use Dataset",
+          "justification": "The UC Merced Land Use Dataset is used to evaluate the framework's performance in specific scenarios like fixing typographical attacks and intervening in visual reasoning.",
+          "quote": "We use the UC Merced Land Use Dataset (Yang & Newsam, 2010) to study fixing typographical attacks and intervening in the visual reasoning procedure."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Bag-of-visual-words and spatial extensions for land-use classification",
+          "justification": "This is the title of the UC Merced Land Use Dataset paper by Yang & Newsam, referenced in the text.",
+          "quote": "UC Merced Land Use Dataset (Yang & Newsam, 2010)"
+        }
+      },
+      {
+        "name": {
+          "value": "CelebA Dataset",
+          "justification": "The CelebA dataset is used for studying the removal of spurious correlations.",
+          "quote": "We use the task of classifying the hair color as gray or not gray. The label is spuriously correlated with gender. Our goal is to use our framework to remove these spurious correlations."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Deep Learning Face Attributes in the Wild",
+          "justification": "This is the title of the CelebA dataset paper by Liu et al., referenced in the text.",
+          "quote": "CelebA Dataset. (Liu et al., 2015) We use the task of classifying the hair color as gray or not gray."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "Although not directly mentioned, the experiments involving transformers make it likely that PyTorch was used, as it is the most commonly used framework for such models.",
+          "quote": "Our experiment focuses on the CLIP-B/32 model, while our method is general and can be used for any other transformer-based architecture."
+        },
+        "aliases": [
+          "torch"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An Imperative Style, High-Performance Deep Learning Library",
+          "justification": "This is the title of the PyTorch paper by Paszke et al., referenced generally in the context of deep learning experiments.",
+          "quote": "Our experiment focuses on the CLIP-B/32 model, while our method is general and can be used for any other transformer-based architecture."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1694,
+    "prompt_tokens": 17555,
+    "total_tokens": 19249
+  }
+}

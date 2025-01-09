@@ -1,0 +1,120 @@
+{
+  "paper": "VbjD8w2ctG.txt",
+  "words": 9122,
+  "extractions": {
+    "title": {
+      "value": "Learning Conditional Policies for Crystal Design Using Offline Reinforcement Learning",
+      "justification": "The title is explicitly provided at the beginning of the paper.",
+      "quote": "Learning Conditional Policies for Crystal Design Using Offline Reinforcement Learning"
+    },
+    "description": "This paper presents a method to design novel and stable crystalline materials conditioned on a desired band gap by using offline reinforcement learning with conservative Q-learning. The study formulates crystal design as a sequential decision-making problem and evaluates the generated materials using density functional theory (DFT) calculations. The results are compared with baselines like random policy and behavioral cloning.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper includes experimental evaluation of the proposed method using datasets and numerical comparisons with existing methods, which is typical of empirical studies.",
+      "quote": "Our experiments show that conditioned policies achieve targeted crystal design and demonstrate the capability to perform crystal discovery evaluated with accurate and computationally expensive DFT calculations."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Materials Discovery",
+        "justification": "The research focuses on the discovery and design of novel crystalline materials using AI and reinforcement learning techniques, which fits within the domain of Materials Discovery.",
+        "quote": "This work aims to design novel and stable crystalline materials conditioned on a desired band gap."
+      },
+      "aliases": [
+        "Materials Discovery"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Reinforcement Learning",
+          "justification": "The study utilizes reinforcement learning techniques, specifically offline reinforcement learning using conservative Q-learning, to address the problem of crystal design.",
+          "quote": "To alleviate the issue of time-consuming DFT calculations when integrated into the scientific discovery loop, we apply offline reinforcement learning using the conservative Q-learning (CQL) approach."
+        },
+        "aliases": [
+          "Reinforcement Learning"
+        ]
+      },
+      {
+        "name": {
+          "value": "Computational Chemistry",
+          "justification": "The evaluation of the designed materials involves computational chemistry techniques, specifically density functional theory (DFT) calculations.",
+          "quote": "The reward function penalizes high energies and large deviations from the desired band gap using values computed by density functional theory (DFT) calculations."
+        },
+        "aliases": [
+          "Computational Chemistry"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Conservative Q-learning (CQL)",
+          "justification": "The paper explicitly states that it uses conservative Q-learning (CQL) as its reinforcement learning approach.",
+          "quote": "To alleviate the issue of time-consuming DFT calculations when integrated into the scientific discovery loop, we apply offline reinforcement learning using the conservative Q-learning (CQL) approach."
+        },
+        "aliases": [
+          "CQL"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "CQL has been previously established as a robust approach in reinforcement learning and is not a new contribution of this paper.",
+          "quote": "Offline RL enables for learning an optimal policy directly from trajectories, making it possible to utilize knowledge from existing crystal structures."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The paper implements CQL but does not specify the computational hardware like GPU or CPU explicitly for this model.",
+          "quote": "We apply offline reinforcement learning using the conservative Q-learning (CQL) approach, which is known to mitigate overestimation and out-of-distribution issues when agents are trained with static datasets in an offline manner."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "CQL is compared to other models like random policy and behavioral cloning in the experimental section.",
+          "quote": "Our experiments show that conditioned policies achieve targeted crystal design and demonstrate the capability to perform crystal discovery evaluated with accurate and computationally expensive DFT calculations."
+        },
+        "referenced_paper_title": {
+          "value": "Conservative Q-Learning for Offline Reinforcement Learning",
+          "justification": "This is the title of the referenced paper for CQL, cited in the document as [18].",
+          "quote": "Using CQL as our offline RL framework, we show that conservatism, combined with the right amount of importance for the energy and band gap terms in the reward function, can result in an intuitive approach for generating crystals with a favorable shift in the distribution of properties of interest."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Materials Project",
+          "justification": "The paper uses the Materials Project database as the source of high-quality nonmetallic crystal structures.",
+          "quote": "We construct a state transition dataset from high-quality nonmetallic crystal structures present in the Materials Project database."
+        },
+        "aliases": [
+          "MP-20"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Commentary: The Materials Project: A materials genome approach to accelerating materials innovation",
+          "justification": "This is the title of the referenced paper for the Materials Project, cited in the document as [14].",
+          "quote": "For this study, we used a subset of the Materials Project database, referred to as MP-20, that was previously used by [42]."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Quantum Espresso",
+          "justification": "The paper uses Quantum Espresso for performing density functional theory (DFT) calculations.",
+          "quote": "To ensure consistency in our reward calculation, we evaluate ∼ 20k crystal structures using the Quantum Espresso package for DFT calculation."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Quantum Espresso: a modular and open-source software project for quantum simulations of materials",
+          "justification": "This is the title of the referenced paper for Quantum Espresso, cited in the document as [11].",
+          "quote": "We use an open-source DFT calculator that is highly reproducible and consistent for all the structures evaluated."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1085,
+    "prompt_tokens": 15242,
+    "total_tokens": 16327
+  }
+}

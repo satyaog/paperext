@@ -1,0 +1,144 @@
+{
+  "paper": "2306.02451.txt",
+  "words": 22396,
+  "extractions": {
+    "title": {
+      "value": "For SALE: State-ction Representation Learning for Deep Reinforcement Learning",
+      "justification": "This is the title of the paper.",
+      "quote": "For SALE: State-Action Representation Learning for Deep Reinforcement Learning"
+    },
+    "description": "In deep Reinforcement Learning (RL), representation learning is often limited to image-based tasks. However, this paper introduces SALE, a new approach for learning state-action embeddings to enhance RL from low-level states. Integrating SALE with TD3 and other RL techniques, the resulting TD7 algorithm significantly outperforms existing methods in continuous control tasks.",
+    "type": {
+      "value": "empirical",
+      "justification": "The study involves introducing a new algorithm, conducting extensive empirical evaluations and comparing its performance to existing methods.",
+      "quote": "To this end, we perform an extensive empirical evaluation over the design space, with the aim of discovering which choices are the most significant contributors to final performance."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Reinforcement Learning",
+        "justification": "The paper focuses on improving reinforcement learning algorithms through representation learning.",
+        "quote": "In the field of reinforcement learning (RL), representation learning is a proven tool for complex image-based tasks, but is often overlooked for environments with low-level states, such as physical control problems."
+      },
+      "aliases": [
+        "RL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Representation Learning",
+          "justification": "The main contribution of the paper is the introduction of SALE, a method for state-action representation learning.",
+          "quote": "Representation learning can also refer to feature learning, where the objective is to learn features that capture relevant aspects of the environment or task, via auxiliary rewards or alternate training signals."
+        },
+        "aliases": [
+          "Feature Learning"
+        ]
+      },
+      {
+        "name": {
+          "value": "Continuous Control",
+          "justification": "The paper demonstrates the effectiveness of the proposed methods on continuous control benchmark tasks.",
+          "quote": "On OpenAI gym benchmark tasks, TD7 has an average performance gain of 276.7% and 50.7% over TD3 at 300k and 5M time steps, respectively, and works in both the online and offline settings."
+        },
+        "aliases": [
+          "Robust Control"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "SALE",
+          "justification": "SALE is the novel model introduced in the paper for learning state-action embeddings.",
+          "quote": "In this paper, we devise state-action learned embeddings (SALE), a method that learns embeddings jointly over both state and action by modeling the dynamics of the environment in latent space."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "SALE is a novel method introduced by the authors.",
+          "quote": "we devise state-action learned embeddings (SALE), a method that learns embeddings jointly over both state and action by modeling the dynamics of the environment in latent space."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model is designed to be used in empirical experiments which are typically performed on GPUs.",
+          "quote": "Our code is open-sourced1."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "SALE is compared to existing continuous control algorithms.",
+          "quote": "On OpenAI gym benchmark tasks, TD7 has an average performance gain of 276.7% and 50.7% over TD3 at 300k and 5M time steps, respectively, and works in both the online and offline settings."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "SALE is introduced in this paper and does not reference another paper for its primary idea.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "TD7",
+          "justification": "TD7 is a new algorithm introduced in the paper which integrates SALE with other reinforcement learning techniques.",
+          "quote": "We combine TD3 with our state-action representation learning method SALE, the aforementioned checkpoints, prioritized experience replay [Fujimoto et al., 2020], and a behavior cloning term (used only for offline RL) [Fujimoto and Gu, 2021] to form the TD7 (TD3+4 additions) algorithm."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "TD7 is a novel algorithm introduced by the authors.",
+          "quote": "We combine TD3 with our state-action representation learning method SALE, the aforementioned checkpoints, prioritized experience replay [Fujimoto et al., 2020], and a behavior cloning term (used only for offline RL) [Fujimoto and Gu, 2021] to form the TD7 (TD3+4 additions) algorithm."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model is designed to be used in empirical experiments which are typically performed on GPUs.",
+          "quote": "Our code is open-sourced1."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "TD7 is benchmarked against several existing methods, showing significant improvements.",
+          "quote": "We benchmark the TD7 algorithm in both the online and offline RL setting. TD7 significantly outperforms existing methods without the additional complexity from competing methods such as large ensembles, additional updates per time step, or per-environment hyperparameters."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "TD7 is introduced in this paper and does not reference another paper for its primary idea.",
+          "quote": ""
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "OpenAI Gym",
+          "justification": "OpenAI Gym is a widely used benchmark for evaluating reinforcement learning algorithms.",
+          "quote": "On OpenAI gym benchmark tasks, TD7 has an average performance gain of 276.7% and 50.7% over TD3 at 300k and 5M time steps, respectively, and works in both the online and offline settings."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "OpenAI Gym",
+          "justification": "The OpenAI Gym benchmark is well-known and often referenced in reinforcement learning research.",
+          "quote": "Using OpenAI gym [Brockman et al., 2016], we benchmark TD7 against TD3 [Fujimoto et al., 2018], SAC [Haarnoja et al., 2018], TQC [Kuznetsov et al., 2020], and TD3+OFE [Ota et al., 2020] on the MuJoCo environments [Todorov et al., 2012]."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is the deep learning library used for implementing the models in the paper.",
+          "quote": "Each algorithm is trained using the same deep learning framework, PyTorch [Paszke et al., 2019]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An Imperative Style, High-Performance Deep Learning Library",
+          "justification": "The library is referenced with its corresponding citation.",
+          "quote": "PyTorch [Paszke et al., 2019]."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1686,
+    "prompt_tokens": 40138,
+    "total_tokens": 41824
+  }
+}

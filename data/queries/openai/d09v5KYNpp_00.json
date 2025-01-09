@@ -1,0 +1,116 @@
+{
+  "paper": "d09v5KYNpp.txt",
+  "words": 6301,
+  "extractions": {
+    "title": {
+      "value": "Performative Prediction with Neural Networks",
+      "justification": "The title clearly indicates the focus on performative prediction using neural networks.",
+      "quote": "Performative Prediction with Neural Networks"
+    },
+    "description": "This paper explores the concept of performative prediction applied to neural networks. It aims to find classifiers that are performatively stable, meaning they are optimal for the data distribution they induce. The paper challenges the standard assumptions requiring strong convexity in risk functions and instead proposes that the data distribution be Lipschitz continuous with respect to the model’s predictions. A resampling procedure is introduced to model realistic distribution shifts, and the paper provides both theoretical and empirical support for learning performatively stable classifiers using neural networks.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper includes both theoretical analysis and empirical experiments to support its proposed framework and findings.",
+      "quote": "To illustrate our results, we propose the Resample-if-Rejected procedure in the following section and show that it satisfies assumptions (A1) and (A2). The proof of Theorem 2 is available in the Supplementary Material section."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Performative Prediction",
+        "justification": "The primary research focus of the paper is on performative prediction and its implications for learning stable classifiers using neural networks.",
+        "quote": "Performative prediction is a framework introduced by [22] to deal with the problem of distribution shift or concept drift ([9, 25, 23]) when the distribution changes as a consequence of the model’s deployment."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Neural Networks",
+          "justification": "The paper specifically addresses the application of performative prediction to neural networks.",
+          "quote": "we believe that this stronger assumption on the distribution map is a price we have to pay to relax the assumptions on the loss function significantly and have convergence guarantees for neural networks with non-convex loss functions."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Two-layer Neural Network",
+          "justification": "The empirical experiments in the paper use a two-layer neural network for a credit-scoring task.",
+          "quote": "For the classifier, we use a two-layer neural network with a scaled-sigmoid activation function after the second layer to bring the outcome fθ (x) to the interval [0, 1 − δ]"
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The two-layer neural network model is not a novel contribution of this paper but rather a model used to demonstrate the theoretical findings.",
+          "quote": "For the classifier, we use a two-layer neural network with a scaled-sigmoid activation function after the second layer to bring the outcome fθ (x) to the interval [0, 1 − δ]"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model is empirically tested as part of the experiments in the paper.",
+          "quote": "We implemented our simulations based on the code of [22] in the Whynot Python package [18], and changed it according to our settings so we can use auto-differentiation of PyTorch."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "The two-layer neural network model is used to demonstrate convergence rather than to compare its performance against other models.",
+          "quote": "Since the outcome fθ (x) is in [0, 1 − δ], we change the label 1 to 1 − δ."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "There is no specific referenced paper title for the model since it's a commonly known architecture.",
+          "quote": ""
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Give Me Some Credit",
+          "justification": "The experiments are conducted using Kaggle’s Give Me Some Credit dataset.",
+          "quote": "We run the simulations using Kaggle’s Give Me Some Credit dataset ([12]), which consists of features x ∈ Rd corresponding to applicants’ information along with their label y ∈ {0, 1}, where y = 1 indicates that the applicant defaulted and y = 0 otherwise."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Give me some credit dataset.",
+          "justification": "Reference corresponding to the dataset used in the experiments.",
+          "quote": "Give me some credit dataset. 2011."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The paper uses PyTorch for auto-differentiation in implementing neural networks.",
+          "quote": "We implemented our simulations based on the code of [22] in the Whynot Python package [18], and changed it according to our settings so we can use auto-differentiation of PyTorch."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "Whynot Python Package",
+          "justification": "The codebase utilized for the experiments is based on the Whynot Python package.",
+          "quote": "We implemented our simulations based on the code of [22] in the Whynot Python package [18]"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Whynot, 2020.",
+          "justification": "Reference corresponding to the Whynot Python package.",
+          "quote": "John Miller, Chloe Hsu, Jordan Troutman, Juan Perdomo, Tijana Zrnic, Lydia Liu, Yu Sun, Ludwig Schmidt, and Moritz Hardt. Whynot, 2020."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2161,
+    "prompt_tokens": 25860,
+    "total_tokens": 28021
+  }
+}

@@ -1,0 +1,214 @@
+{
+  "paper": "2310.05707.txt",
+  "words": 12073,
+  "extractions": {
+    "title": {
+      "value": "Guiding Language Model Math Reasoning with Planning Tokens",
+      "justification": "It's the exact title listed at the beginning of the provided text.",
+      "quote": "Guiding Language Model Math Reasoning with Planning Tokens"
+    },
+    "description": "The paper introduces a method to guide large language model (LLM) reasoning, particularly for math problems, using planning tokens. These tokens are embedded within the model to guide its reasoning steps, thereby increasing its reasoning capabilities without significantly increasing the number of parameters. Experiments on various math datasets show improved accuracy over standard fine-tuning methods.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper includes empirical experiments to demonstrate performance improvements on specific datasets.",
+      "quote": "We demonstrate our method’s effectiveness by applying it to three different LLMs, showing notable accuracy improvements across three math word problem datasets w.r.t. standard fine-tuning baselines."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The paper focuses on enhancing the reasoning capabilities of language models, which is a sub-field of Natural Language Processing (NLP).",
+        "quote": "Large language models (LLMs) have recently attracted considerable interest for their ability to perform complex reasoning tasks, such as chain-of-thought reasoning."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Mathematical Reasoning",
+          "justification": "The paper specifically targets improvements in mathematical reasoning using LLMs.",
+          "quote": "We show a 1.5 gain in average accuracy (4.5 % relative gain)....The experiment results show that by adding planning tokens at training time, we are able to improve upon the baseline without planning tokens by 3.3% accuracy points on average over three pre-trained language models (Phi 1.5 (Gunasekar et al., 2023), 7B Llama 2 (Touvron et al., 2023b), and 13B Llama 2) and three MWP datasets."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Chain-of-Thought (CoT) Reasoning",
+          "justification": "The paper focuses heavily on improving Chain-of-Thought reasoning in LLMs.",
+          "quote": "A popular and effective paradigm of reasoning with LMs is chain-of-thought (CoT) reasoning....We propose to strategically add new tokens into CoTs at training time."
+        },
+        "aliases": [
+          "CoT"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Phi-1.5",
+          "justification": "Phi-1.5 is mentioned as one of the LMs used in their experiments.",
+          "quote": "We show a 1.5 gain in average accuracy (4.5 % relative gain)....over three pre-trained language models (Phi 1.5, 7B Llama 2, and 13B Llama 2)."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The model Phi-1.5 was used for experiments but not introduced as a novel model in the paper.",
+          "quote": "Our empirical analysis uses several decoder-only architectures of varying sizes. We use the 7B and 13B variants of Llama2, both trained over 2 trillion tokens from publicly accessible data sources. We also experiment with Phi-1.5 (Gunasekar et al., 2023), a 1.3B parameter model trained on a mixture of textbook-quality code data, and additional synthetically generated textbook and exercise data."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was executed to validate the experimental results.",
+          "quote": "Phi-1.5, a 1.3B parameter model trained on a mixture of textbook-quality code data, and additional synthetically generated textbook and exercise data."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares Phi-1.5's performance with other models like Llama 2.",
+          "quote": "We show a 1.5 gain in average accuracy (4.5 % relative gain)....over three pre-trained language models (Phi 1.5, 7B Llama 2, and 13B Llama 2)."
+        },
+        "referenced_paper_title": {
+          "value": "Textbooks are all you need",
+          "justification": "This paper introduces the Phi-1.5 model.",
+          "quote": "Phi-1.5 (Gunasekar et al., 2023), a 1.3B parameter model trained on a mixture of textbook-quality code data, and additional synthetically generated textbook and exercise data."
+        }
+      },
+      {
+        "name": {
+          "value": "Llama 2 (7B)",
+          "justification": "Llama 2 (7B) is one of the LMs evaluated in the paper.",
+          "quote": "We show a 1.5 gain in average accuracy (4.5 % relative gain)....over three pre-trained language models (Phi 1.5, 7B Llama 2, and 13B Llama 2)."
+        },
+        "aliases": [
+          "Llama2-7B"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The model Llama 2 (7B) was used for experiments but not introduced as a novel model in the paper.",
+          "quote": "We use the 7B and 13B variants of Llama2, both trained over 2 trillion tokens from publicly accessible data sources."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was executed to validate the experimental results.",
+          "quote": "We use the 7B and 13B variants of Llama2, both trained over 2 trillion tokens from publicly accessible data sources."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares Llama 2 (7B)'s performance with other models like Phi-1.5.",
+          "quote": "We show a 1.5 gain in average accuracy (4.5 % relative gain)....over three pre-trained language models (Phi 1.5, 7B Llama 2, and 13B Llama 2)."
+        },
+        "referenced_paper_title": {
+          "value": "Llama 2: Open Foundation and Fine-Tuned Chat Models",
+          "justification": "This paper introduces the Llama 2 (7B) model.",
+          "quote": "Llama2, both trained over 2 trillion tokens from publicly accessible data sources."
+        }
+      },
+      {
+        "name": {
+          "value": "Llama 2 (13B)",
+          "justification": "Llama 2 (13B) is one of the LMs evaluated in the paper.",
+          "quote": "We show a 1.5 gain in average accuracy (4.5 % relative gain)....over three pre-trained language models (Phi 1.5, 7B Llama 2, and 13B Llama 2)."
+        },
+        "aliases": [
+          "Llama2-13B"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The model Llama 2 (13B) was used for experiments but not introduced as a novel model in the paper.",
+          "quote": "We use the 7B and 13B variants of Llama2, both trained over 2 trillion tokens from publicly accessible data sources."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was executed to validate the experimental results.",
+          "quote": "We use the 7B and 13B variants of Llama2, both trained over 2 trillion tokens from publicly accessible data sources."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares Llama 2 (13B)'s performance with other models like Phi-1.5.",
+          "quote": "We show a 1.5 gain in average accuracy (4.5 % relative gain)....over three pre-trained language models (Phi 1.5, 7B Llama 2, and 13B Llama 2)."
+        },
+        "referenced_paper_title": {
+          "value": "Llama 2: Open Foundation and Fine-Tuned Chat Models",
+          "justification": "This paper introduces the Llama 2 (13B) model.",
+          "quote": "Llama2, both trained over 2 trillion tokens from publicly accessible data sources."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "GSM8K",
+          "justification": "GSM8K is explicitly referenced as one of the datasets used to demonstrate the effectiveness of the planning tokens.",
+          "quote": "We perform experiments on three math word problem (MWP) datasets: GSM8K (Cobbe et al., 2021), AQUA (Ling et al., 2017), and MATH (Hendrycks et al., 2021a)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Training verifiers to solve math word problems",
+          "justification": "This paper introduces the GSM8K dataset.",
+          "quote": "GSM8K (Cobbe et al., 2021)"
+        }
+      },
+      {
+        "name": {
+          "value": "AQUA",
+          "justification": "AQUA is explicitly referenced as one of the datasets used to demonstrate the effectiveness of the planning tokens.",
+          "quote": "We perform experiments on three math word problem (MWP) datasets: GSM8K (Cobbe et al., 2021), AQUA (Ling et al., 2017), and MATH (Hendrycks et al., 2021a)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Program induction by rationale generation: Learning to solve and explain algebraic word problems",
+          "justification": "This paper introduces the AQUA dataset.",
+          "quote": "AQUA (Ling et al., 2017)"
+        }
+      },
+      {
+        "name": {
+          "value": "MATH",
+          "justification": "MATH is explicitly referenced as one of the datasets used to demonstrate the effectiveness of the planning tokens.",
+          "quote": "We perform experiments on three math word problem (MWP) datasets: GSM8K (Cobbe et al., 2021), AQUA (Ling et al., 2017), and MATH (Hendrycks et al., 2021a)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Measuring mathematical problem solving with the MATH dataset",
+          "justification": "This paper introduces the MATH dataset.",
+          "quote": "MATH (Hendrycks et al., 2021a)"
+        }
+      },
+      {
+        "name": {
+          "value": "Mammoth",
+          "justification": "Mammoth is mentioned as an augmented dataset used for training LLMs with CoT and PoT solutions.",
+          "quote": "Yue et al. (2023) fine-tune LLMs on multiple math datasets with CoT and PoT solutions."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Mammoth: Building Math Generalist Models through Hybrid Instruction Tuning",
+          "justification": "This paper introduces the Mammoth dataset.",
+          "quote": "Yue et al. (2023) fine-tune LLMs on multiple math datasets with CoT and PoT solutions."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "LoRA",
+          "justification": "LoRA is explicitly mentioned as an efficient fine-tuning method that integrates well with the proposed approach of using planning tokens.",
+          "quote": "This makes our method integrate well with parameter-efficient fine-tuning methods like LoRA (Hu et al., 2021)."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "LoRA: Low-rank adaptation of large language models",
+          "justification": "This paper introduces the LoRA library.",
+          "quote": "LoRA (Hu et al., 2021)"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2356,
+    "prompt_tokens": 20571,
+    "total_tokens": 22927
+  }
+}

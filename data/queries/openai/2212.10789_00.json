@@ -1,0 +1,166 @@
+{
+  "paper": "2212.10789.txt",
+  "words": 18466,
+  "extractions": {
+    "title": {
+      "value": "Multi-modal Molecule Structure-text Model for Text-based Retrieval and Editing",
+      "justification": "This is the title of the given research paper.",
+      "quote": "Multi-modal Molecule Structure-text Model for Text-based Retrieval and Editing"
+    },
+    "description": "This paper presents a multi-modal molecule structure-text model named MoleculeSTM, aimed at joint learning of molecular chemical structures and textual descriptions using contrastive learning. The model is trained on a large dataset called PubChemSTM with over 280,000 structure-text pairs. The paper emphasizes the model's ability for text-based molecule retrieval and editing, demonstrating superior zero-shot generalization capabilities to novel biochemical concepts.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves experimental validation and performance evaluation of the proposed model, MoleculeSTM, for molecule structure-text retrieval and editing tasks.",
+      "quote": "Empirically, MoleculeSTM reaches the best performance on six zero-shot retrieval tasks (up to 50% higher accuracy)"
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The primary focus of the paper is on integrating natural language processing with chemical structure analysis to form a multi-modal framework.",
+        "quote": "We propose MoleculeSTM, consisting of two branches: the chemical structure branch and the textual description branch, to handle the molecules’ internal structures and external domain knowledge, respectively."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Cheminformatics",
+          "justification": "The paper is heavily oriented towards applications in chemistry, particularly in the representation and analysis of molecular data.",
+          "quote": "There is increasing adoption of artificial intelligence in drug discovery. However, existing studies use machine learning to mainly utilize the chemical structures of molecules but ignore the vast textual knowledge available in chemistry."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Machine Learning",
+          "justification": "Machine learning techniques are utilized for model training and performance evaluation, emphasizing its significance in this research.",
+          "quote": "However, such a supervised setting requires expensive annotations on pre-determined label categories, impeding the application to unseen categories and tasks. To overcome this issue, unsupervised pretraining on large-scale databases has been proposed."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "MoleculeSTM",
+          "justification": "This is the main model proposed by the research for the multi-modal learning of molecular structures and textual descriptions.",
+          "quote": "We propose MoleculeSTM, consisting of two branches: the chemical structure branch and the textual description branch, to handle the molecules’ internal structures and external domain knowledge, respectively."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "The model is a key contribution of the paper.",
+          "quote": "Here we present a multi-modal molecule structure-text model, MoleculeSTM, by jointly learning molecules’ chemical structures and textual descriptions via a contrastive learning strategy."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was tested and executed as part of the experiments described in the paper.",
+          "quote": "In experiments, MoleculeSTM obtains the state-of-the-art generalization ability to novel biochemical concepts across various benchmarks."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The model's performance was compared to other existing methods to demonstrate its effectiveness.",
+          "quote": "Empirically, MoleculeSTM reaches the best performance on six zero-shot retrieval tasks (up to 50% higher accuracy) and 20 zero-shot text-based editing tasks (up to 40% higher hit ratio) compared to the state-of-the-art methods."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "There is no specific referenced paper title for MoleculeSTM given. The model itself is a contribution of this paper.",
+          "quote": ""
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "PubChemSTM",
+          "justification": "PubChemSTM is the primary dataset constructed and used for training the proposed MoleculeSTM model.",
+          "quote": "To align such two branches with MoleculeSTM, we construct a structure-text dataset called PubChemSTM from PubChem, which is the largest multi-modal dataset to date in the community (28× larger than the existing dataset)."
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "PubChem in 2021: new data content and improved web interfaces",
+          "justification": "The construction of PubChemSTM dataset is based on the PubChem database reference mentioned in the paper.",
+          "quote": "Specifically for PubChemSTM, it is constructed from PubChem. We extract molecules with the textual description fields, leading to 281K chemical structure and text pairs. More details can be found in Supplementary A.1."
+        }
+      },
+      {
+        "name": {
+          "value": "DrugBank",
+          "justification": "The DrugBank datasets were used for benchmarking the performance of MoleculeSTM in retrieval tasks.",
+          "quote": "For the zero-shot retrieval, we construct three datasets from DrugBank. DrugBank is by far the most comprehensive database for drug-like molecules."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "DrugBank 5.0: a major update to the DrugBank database for 2018",
+          "justification": "The paper refers to DrugBank for constructing the datasets for zero-shot retrieval tasks.",
+          "quote": "For the zero-shot retrieval, we construct three datasets from DrugBank. DrugBank is by far the most comprehensive database for drug-like molecules."
+        }
+      },
+      {
+        "name": {
+          "value": "ZINC",
+          "justification": "The ZINC dataset was used for sampling molecules in the editing tasks.",
+          "quote": "Experiments. For molecule editing, we randomly sample 200 molecules from ZINC and a text prompt as the inputs."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ZINC 15–ligand discovery for everyone",
+          "justification": "The paper uses ZINC data, which is detailed in the reference section.",
+          "quote": "John J Irwin, Teague Sterling, Michael M Mysinger, Erin S Bolstad, and Ryan G Coleman. “ZINC: a free tool to discover chemistry for biology”."
+        }
+      },
+      {
+        "name": {
+          "value": "MoleculeNet",
+          "justification": "MoleculeNet datasets were used for evaluating molecular property prediction tasks.",
+          "quote": "Similar to previous works on molecule pretraining, we adopt the MoleculeNet benchmark. It contains eight single-modal binary classification datasets to evaluate the expressiveness of the pretrained molecule representation methods."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "MoleculeNet: a benchmark for molecular machine learning",
+          "justification": "The use of MoleculeNet datasets for molecular property prediction is supported by the referenced paper.",
+          "quote": "Zhenqin Wu, Bharath Ramsundar, Evan N Feinberg, Joseph Gomes, Caleb Geniesse, Aneesh S Pappu, Karl Leswing, and Vijay Pande. “MoleculeNet: a benchmark for molecular machine learning”."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "RDKit",
+          "justification": "RDKit is used for processing molecular structures in the experiments.",
+          "quote": "The 2D topology graph can be obtained using the RDKit package."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "RDKit: A software suite for cheminformatics, computational chemistry, and predictive modeling",
+          "justification": "The paper explicitly mentions the usage of RDKit for molecular structure processing.",
+          "quote": "To align such two branches with MoleculeSTM, we construct a structure-text dataset called PubChemSTM from PubChem, which is the largest multi-modal dataset to date in the community (28× larger than the existing dataset)."
+        }
+      },
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch was the framework used for implementing the machine learning models in the study.",
+          "quote": "The source code can be found at this GitHub repository and Zenodo. The scripts for pretraining and three downstream tasks are provided here. The checkpoints of the pretrained models are provided at this Hugging Face link. Beyond the methods described so far, to help users try our MoleculeSTM model, this release includes demos in notebooks. Furthermore, users can customize their own datasets by checking the datasets folder."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "There is no specific referenced paper title for PyTorch given in this context.",
+          "quote": ""
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2047,
+    "prompt_tokens": 35685,
+    "total_tokens": 37732
+  }
+}

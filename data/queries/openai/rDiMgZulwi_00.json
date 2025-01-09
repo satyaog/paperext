@@ -1,0 +1,183 @@
+{
+  "paper": "rDiMgZulwi.txt",
+  "words": 6982,
+  "extractions": {
+    "title": {
+      "value": "Learning better with Dale’s Law: A Spectral Perspective",
+      "justification": "This is the official title of the paper as stated at the beginning of the document.",
+      "quote": "Learning better with Dale’s Law: A Spectral Perspective"
+    },
+    "description": "This paper investigates how incorporating Dale’s Law, which says that neurons must be either excitatory (E) or inhibitory (I), affects the learning performance of recurrent neural networks (RNNs). The authors extend a bio-inspired EI network architecture named Dale’s ANNs to recurrent networks and show that while partitioning networks into E and I units typically impairs learning, specific spectral properties of the weight matrix at initialization are more impactful on performance. They provide a spectral analysis that explains why some EI networks that respect Dale’s Law learn better than others, and introduce normalised SVD entropy as a measure of spectral pathology correlated with performance.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper conducts experiments to assess the performance of different RNN architectures on various tasks, providing empirical evidence to support their conclusions about the effects of Dale's Law and spectral properties on learning performance.",
+      "quote": "We first assessed the performance of standard, ColEI, and DANN RNNs on four benchmark tasks for RNNs: the adding problem, row-wise sequential MNIST, the Penn Tree Bank dataset, and a naturalistic object recognition task"
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computational Neuroscience",
+        "justification": "The paper focuses on adapting and understanding biologically-inspired constraints (Dale's Law) in neural networks, which is a core topic in computational neuroscience.",
+        "quote": "Recurrent neural networks (RNNs) are a major tool in computational neuroscience research, with numerous papers that use RNNs to model the brain published every year"
+      },
+      "aliases": [
+        "CompNeuro",
+        "Neural Computation"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Deep Learning",
+          "justification": "The paper investigates various RNN architectures and their learning performance, which falls under the broader category of deep learning.",
+          "quote": "In this work, we show that recurrent versions of DANNs can also learn as well as standard RNNs."
+        },
+        "aliases": [
+          "DL"
+        ]
+      },
+      {
+        "name": {
+          "value": "Neuroscience-inspired AI",
+          "justification": "The paper aims to align neural network architectures more closely with biological principles such as Dale’s Law.",
+          "quote": "Overall, this work sheds light on a long-standing mystery in neuroscience-inspired AI and computational neuroscience, paving the way for greater alignment between neural networks and biology."
+        },
+        "aliases": [
+          "Bio-inspired AI"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Standard RNN",
+          "justification": "The paper uses Standard RNNs as a baseline for comparison against other architectures that respect Dale’s Law.",
+          "quote": "Standard Recurrent Neural Networks (RNN): For a multilayer network, we define the hidden state activations of a 'standard' RNN layer ` at time t, h`t, via: ..."
+        },
+        "aliases": [
+          "Standard RNNs"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Standard RNNs are not a contribution of this paper; they are used as a baseline for comparison.",
+          "quote": "We first define 'standard' RNNs, then the two different kinds of RNNs that obey Dale’s Law, namely ColEI and DANNs."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Experiments using Standard RNNs were conducted on an RTX 8000 GPU cluster.",
+          "quote": "All experiments were run with PyTorch version 1.5.0 on a RTX 8000 GPU cluster."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Performance of Standard RNNs is compared with that of ColEI and DANNs networks.",
+          "quote": "We first assessed the performance of standard, ColEI, and DANN RNNs on four benchmark tasks for RNNs: the adding problem, row-wise sequential MNIST, the Penn Tree Bank dataset, and a naturalistic object recognition task."
+        },
+        "referenced_paper_title": {
+          "value": "The reader can find the code for all our experiments available here.",
+          "justification": "Internal reference to the availability of code for experiments.",
+          "quote": "The reader can find the code for all our experiments available here."
+        }
+      },
+      {
+        "name": {
+          "value": "ColEI",
+          "justification": "ColEI is one of the RNN architectures tested in the paper, which partitions neurons into excitatory and inhibitory populations to obey Dale’s Law.",
+          "quote": "Column Excitation-Inhibition (ColEI) The ColEI model discussed in this work has the same formulation as a standard RNN (equations 1 and 2) except that the weight matrices are sign constrained."
+        },
+        "aliases": [
+          "Column Excitation-Inhibition (ColEI)"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The ColEI model is not newly proposed in this paper but is discussed and investigated for its performance under Dale's Law constraints.",
+          "quote": "Column Excitation-Inhibition (ColEI): The ColEI model discussed in this work has the same formulation as a standard RNN (equations 1 and 2) except that the weight matrices are sign constrained."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Experiments using ColEI were conducted on an RTX 8000 GPU cluster.",
+          "quote": "All experiments were run with PyTorch version 1.5.0 on a RTX 8000 GPU cluster."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Performance of ColEI is compared with Standard RNNs and DANNs in various tasks.",
+          "quote": "We first assessed the performance of standard, ColEI, and DANN RNNs on four benchmark tasks for RNNs: the adding problem, row-wise sequential MNIST, the Penn Tree Bank dataset, and a naturalistic object recognition task."
+        },
+        "referenced_paper_title": {
+          "value": "Training excitatory-inhibitory recurrent neural networks for cognitive tasks: a simple and flexible framework",
+          "justification": "This paper is referenced in discussing the spectral properties and performance of ColEI networks.",
+          "quote": "We find that the singular value spectrum of ColEI networks as in [9] is multimodal, dispersed, and includes a notable mode of large singular values."
+        }
+      },
+      {
+        "name": {
+          "value": "DANNs",
+          "justification": "The paper extends Dale’s ANNs (DANNs) to recurrent networks and tests their performance while incorporating Dale’s Law.",
+          "quote": "Dale’s Artificial Neural Networks (DANN): DANNs are an EI architecture first introduced in [10] for feedforward networks that were inspired by fast feedforward inhibition in the brain."
+        },
+        "aliases": [
+          "Dale’s Artificial Neural Networks (DANN)"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "DANNs as recurrent networks are proposed and tested in this paper as a contribution.",
+          "quote": "However, here we extend DANNs to the recurrent setting..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Experiments using DANNs were conducted on an RTX 8000 GPU cluster.",
+          "quote": "All experiments were run with PyTorch version 1.5.0 on a RTX 8000 GPU cluster."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Performance of DANNs is compared with Standard RNNs and ColEI networks in various tasks.",
+          "quote": "We first assessed the performance of standard, ColEI, and DANN RNNs on four benchmark tasks for RNNs: the adding problem, row-wise sequential MNIST, the Penn Tree Bank dataset, and a naturalistic object recognition task."
+        },
+        "referenced_paper_title": {
+          "value": "Learning to live with dale’s principle: Anns with separate excitatory and inhibitory units",
+          "justification": "This paper is referenced in introducing the DANN network architecture.",
+          "quote": "DANNs are an EI architecture first introduced in [10] for feedforward networks that were inspired by fast feedforward inhibition the brain [24]."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Sequential MNIST",
+          "justification": "This dataset is used for testing the classification performance of ColEI, Standard RNN, and DANN models.",
+          "quote": "Sequential MNIST: The sequential MNIST problem is a common test for the ability of RNNs to engage in classification. In this task, the network must classify MNIST digits (i.e. handwritten digits of numbers) when the rows of the image are presented sequentially to the network from top to bottom (resulting in 28 timesteps)."
+        },
+        "aliases": [
+          "sMNIST"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "A simple way to initialize recurrent networks of rectified linear units",
+          "justification": "Referenced for using the Sequential MNIST dataset in recurrent network tasks.",
+          "quote": "Sequential MNIST (3 layers of 100 neurons)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The experiments were conducted using PyTorch, a widely-used deep learning library.",
+          "quote": "All experiments were run with PyTorch version 1.5.0 on a RTX 8000 GPU cluster."
+        },
+        "aliases": [
+          "Torch"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "All experiments were run with PyTorch version 1.5.0 on a RTX 8000 GPU cluster.",
+          "justification": "Internal reference to the version of PyTorch used.",
+          "quote": "All experiments were run with PyTorch version 1.5.0 on a RTX 8000 GPU cluster."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1928,
+    "prompt_tokens": 11979,
+    "total_tokens": 13907
+  }
+}

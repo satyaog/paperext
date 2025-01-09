@@ -1,0 +1,244 @@
+{
+  "paper": "Vn5qZGxGj3.txt",
+  "words": 12248,
+  "extractions": {
+    "title": {
+      "value": "SatBird: Bird Species Distribution Modeling with Remote Sensing and Citizen Science Data",
+      "justification": "This is the exact title of the paper.",
+      "quote": "SatBird: Bird Species Distribution Modeling with Remote Sensing and Citizen Science Data"
+    },
+    "description": "The paper presents SatBird, a novel dataset for predicting bird species encounter rates using remote sensing and citizen science data. It combines satellite images with bird observation data from eBird to model the distribution of bird species. The dataset includes data for the USA and Kenya, catering to high and low-data regimes respectively.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper includes the presentation of a new dataset (SatBird) and benchmarks various deep learning models on this dataset, which indicates it is empirical.",
+      "quote": "We benchmark a set of baselines on our dataset, including SOTA models for remote sensing tasks."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Ecology and Environmental Science",
+        "justification": "The paper focuses on biodiversity monitoring and species distribution modeling using remote sensing and citizen science data.",
+        "quote": "Understanding the distribution of species and their habitats is crucial for conservation policy planning."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Computer Vision",
+          "justification": "The paper makes use of deep learning models for image processing tasks on satellite imagery.",
+          "quote": "We benchmark a set of baselines on our dataset, including SOTA models for remote sensing tasks."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Remote Sensing",
+          "justification": "The paper heavily relies on satellite imagery for the dataset and task formulation.",
+          "quote": "We propose to use remote sensing to infer the joint distribution of many species for a given location."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Species Distribution Modeling (SDM)",
+          "justification": "The primary task of the paper is the prediction of species distribution, a key aspect of SDM.",
+          "quote": "Traditional methods in ecology for species distribution models (SDMs) generally focus either on narrow sets of species or narrow geographical areas."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "ResNet-18",
+          "justification": "The paper benchmarks ResNet-18 on the SatBird dataset.",
+          "quote": "We use ResNet-18 [27] architecture, using the RGB and NIR bands reflectance data as input and we initialize the network with ImageNet pretrained weights."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "ResNet-18 is not a new model and has been used extensively in other research.",
+          "quote": "We use ResNet-18 [27] architecture, using the RGB and NIR bands reflectance data as input and we initialize the network with ImageNet pretrained weights."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was executed for benchmarks in the paper.",
+          "quote": "All models were trained with batch size 128 using Adam [37] optimizer... All ResNet-18 models were trained for 50 epochs."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of ResNet-18 is compared to other models.",
+          "quote": "We benchmark a set of baselines on our dataset, including SOTA models for remote sensing tasks."
+        },
+        "referenced_paper_title": {
+          "value": "Deep residual learning for image recognition",
+          "justification": "This refers to He et al.'s 2016 paper that introduced ResNet-18.",
+          "quote": "We use ResNet-18 [27] architecture, using the RGB and NIR bands reflectance data as input and we initialize the network with ImageNet pretrained weights."
+        }
+      },
+      {
+        "name": {
+          "value": "Satlas (Swin-v2 transformer)",
+          "justification": "The paper mentions the use of the Satlas pre-trained transformer model.",
+          "quote": "The model is pre-trained on Satlas, a dataset of 1.3 million satellite images from different sources, and is proven to perform well in both in-distribution and out-of-distribution settings."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Satlas is a pre-existing model not developed in this paper.",
+          "quote": "The model is pre-trained on Satlas, a dataset of 1.3 million satellite images from different sources, and is proven to perform well in both in-distribution and out-of-distribution settings."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was executed for benchmarks in the paper.",
+          "quote": "We freeze the Satlas parameters and train a final fully connected layer to predict our target."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of Satlas is compared to other models in the paper.",
+          "quote": "We benchmark MOSAIKS, SATLAS pretrained transformer, SatMAE and ResNet-18 among other models."
+        },
+        "referenced_paper_title": {
+          "value": "Swin Transformer V2: Scaling Up Capacity and Resolution",
+          "justification": "This refers to the Swin Transformer V2 paper by Liu et al., 2022.",
+          "quote": "Satlas pretrained transformer [7]... pre-trained on Satlas, a dataset of 1.3 million satellite images from different sources, and is proven to perform well in both in-distribution and out-of-distribution settings."
+        }
+      },
+      {
+        "name": {
+          "value": "SatMAE",
+          "justification": "The SatMAE pre-trained model is used in the paper.",
+          "quote": "We apply transfer learning to our dataset using SatMAE pre-trained model on the fMoW [13] dataset."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "SatMAE is a pre-existing model used in this research.",
+          "quote": "We apply transfer learning to our dataset using SatMAE pre-trained model on the fMoW [13] dataset."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was executed for benchmarks in the paper.",
+          "quote": "SatMAE: This is an unsupervised pre-training framework based on Masked Autoencoders (MAE) for tasks related to remote sensing, specifically for temporal or multi-spectral satellite imagery data."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of SatMAE is compared to other models in the paper.",
+          "quote": "We benchmark MOSAIKS, SATLAS pretrained transformer, SatMAE and ResNet-18 among other models."
+        },
+        "referenced_paper_title": {
+          "value": "SatMAE: Pre-training Transformers for Temporal and Multi-Spectral Satellite Imagery",
+          "justification": "This refers to the SatMAE paper by Cong et al., 2023.",
+          "quote": "SatMAE [15]: This is an unsupervised pre-training framework based on Masked Autoencoders (MAE) for tasks related to remote sensing, specifically for temporal or multi-spectral satellite imagery data."
+        }
+      },
+      {
+        "name": {
+          "value": "MOSAIKS",
+          "justification": "The MOSAIKS model was used for feature extraction and combined with other features.",
+          "quote": "We propose to use the MOSAIKS method to extract features from our satellite images dataset and combine them with the environmental variables before training a regressor to predict the encounter rates at each hotspot."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "MOSAIKS is a pre-existing model used in the research.",
+          "quote": "MOSAIKS [55]: This model was proposed as an accessible method that generalizes well across a wide range of tasks at significantly lower computational cost compared to training a deep neural network for each task."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The MOSAIKS model was executed for feature extraction and benchmarking.",
+          "quote": "We propose to use the MOSAIKS method to extract features from our satellite images dataset and combine them with the environmental variables before training a regressor to predict the encounter rates at each hotspot."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of MOSAIKS is compared to other models in the paper.",
+          "quote": "We benchmark MOSAIKS, SATLAS pretrained transformer, SatMAE and ResNet-18 among other models."
+        },
+        "referenced_paper_title": {
+          "value": "A generalizable and accessible approach to machine learning with global satellite imagery",
+          "justification": "This refers to the Rolf et al., 2021 paper on MOSAIKS.",
+          "quote": "MOSAIKS [55]: This model was proposed as an accessible method that generalizes well across a wide range of tasks at significantly lower computational cost compared to training a deep neural network for each task."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "SatBird-USA-summer",
+          "justification": "The specific name of the dataset subset used in the research.",
+          "quote": "SatBird-USA-summer, generally corresponding to the breeding season"
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "The dataset is introduced and contributed by this paper.",
+          "quote": "We introduce SatBird, a dataset for the task of predicting encounter rates from remote sensing images and environmental data with labels derived from eBird observation reports, with the continental USA and Kenya as regions of interest."
+        }
+      },
+      {
+        "name": {
+          "value": "SatBird-USA-winter",
+          "justification": "The specific name of the dataset subset used in the research.",
+          "quote": "SatBird-USA-winter, the nonbreeding season"
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "The dataset is introduced and contributed by this paper.",
+          "quote": "We introduce SatBird, a dataset for the task of predicting encounter rates from remote sensing images and environmental data with labels derived from eBird observation reports, with the continental USA and Kenya as regions of interest."
+        }
+      },
+      {
+        "name": {
+          "value": "SatBird-Kenya",
+          "justification": "The specific name of the dataset subset used in the research.",
+          "quote": "SatBird-Kenya, as an example of a low-data regime."
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "The dataset is introduced and contributed by this paper.",
+          "quote": "We introduce SatBird, a dataset for the task of predicting encounter rates from remote sensing images and environmental data with labels derived from eBird observation reports, with the continental USA and Kenya as regions of interest."
+        }
+      },
+      {
+        "name": {
+          "value": "eBird",
+          "justification": "Bird observation data from eBird is used in conjunction with satellite imagery.",
+          "quote": "We use bird sighting records from the citizen science database eBird [36], which has 80 million records of almost all 10000 global bird species."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "eBird: A human/computer learning network for biodiversity conservation and research",
+          "justification": "This refers to the Kelling et al., 2013 paper on eBird.",
+          "quote": "eBird [36]: We use bird sighting records from the citizen science database eBird, which has 80 million records of almost all 10000 global bird species."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The PyTorch framework was used to implement models.",
+          "quote": "All ResNet-18 baselines were trained using the PyTorch framework [49]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Automatic differentiation in PyTorch",
+          "justification": "This refers to Paszke et al., 2017 paper on PyTorch.",
+          "quote": "All ResNet-18 baselines were trained using the PyTorch framework [49]."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2323,
+    "prompt_tokens": 22080,
+    "total_tokens": 24403
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "paper": "2303.16187.txt",
+  "words": 3869,
+  "extractions": {
+    "title": {
+      "value": "Visual Chain-of-Thought Diffusion Models",
+      "justification": "The title of the paper as mentioned in the user-provided text.",
+      "quote": "Visual Chain-of-Thought Diffusion Models"
+    },
+    "description": "This paper proposes a method to close the gap between conditional and unconditional image diffusion models using a two-stage sampling procedure. In the first stage, an embedding describing the semantic content of the image is sampled. In the second stage, the image is sampled conditioned on this embedding and then the embedding is discarded. This approach utilizes the power of conditional diffusion models for unconditional generation, showing a significant improvement in performance.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents experimental results to show the effectiveness of the proposed method, such as FID scores on various datasets.",
+      "quote": "We show improved unconditional image generation by first sampling a CLIP embedding and then feeding this CLIP embedding into a conditional image DGM. Note that, while this technique is related to text-conditional image generation, we are instead applying it to improved unconditional image generation. We call the resulting model a Visual Chain-of-Thought Diffusion Model (VCDM) and release code at https://github.com/plai-group/vcdm."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The paper focuses on image generative models, which is a topic within Computer Vision.",
+        "quote": "We now introduce VCDM which leverages this phenomenon to benefit the unconditional setting (in which the user does not wish to specify any input to condition on) and the “lightly-conditional” setting in which the input is low-dimensional, e.g. a class-label."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Image Generation",
+          "justification": "The paper focuses on improving the quality of generated images.",
+          "quote": "Recent text-to-image diffusion generative models (DGMs) have exhibited stunning sample quality [17] to the point that they are now being used to create art [13]."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Diffusion Models",
+          "justification": "The paper investigates both conditional and unconditional image diffusion models.",
+          "quote": "We propose to close the gap between conditional and unconditional models using a two-stage sampling procedure."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Visual Chain-of-Thought Diffusion Model (VCDM)",
+          "justification": "The paper explicitly names and introduces the Visual Chain-of-Thought Diffusion Model as its main contribution.",
+          "quote": "We call the resulting model a Visual Chain-of-Thought Diffusion Model (VCDM) and release code at https://github.com/plai-group/vcdm."
+        },
+        "aliases": [
+          "VCDM"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The Visual Chain-of-Thought Diffusion Model is the main contribution of the paper.",
+          "quote": "We call the resulting model a Visual Chain-of-Thought Diffusion Model (VCDM) and release code at https://github.com/plai-group/vcdm."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper includes experimental results for the Visual Chain-of-Thought Diffusion Model, indicating it was executed.",
+          "quote": "VCDM consistently outperforms unconditional generation after 1-2 GPU-days and this performance gap continues for as long as we train the networks."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The Visual Chain-of-Thought Diffusion Model is compared to other models in terms of FID scores.",
+          "quote": "We compare VCDM to three other approaches: EDM [9], VCDM with oracle, and Class-cond."
+        },
+        "referenced_paper_title": {
+          "value": "n/a",
+          "justification": "The Visual Chain-of-Thought Diffusion Model appears to be an original contribution and not based on a single prior referred paper.",
+          "quote": "n/a"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "AFHQ",
+          "justification": "The dataset is mentioned multiple times in the context of experimental evaluation of the proposed model.",
+          "quote": "We experiment on three datasets: AFHQ [2], FFHQ [9] and ImageNet [3], all at 64 × 64 resolution."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Stargan v2: Diverse image synthesis for multiple domains",
+          "justification": "The referenced paper corresponds to the dataset AFHQ.",
+          "quote": "Yunjey Choi, Youngjung Uh, Jaejun Yoo, and Jung-Woo Ha. Stargan v2: Diverse image synthesis for multiple domains. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, pages 8188–8197, 2020."
+        }
+      },
+      {
+        "name": {
+          "value": "FFHQ",
+          "justification": "The dataset is mentioned multiple times in the context of experimental evaluation of the proposed model.",
+          "quote": "We experiment on three datasets: AFHQ [2], FFHQ [9] and ImageNet [3], all at 64 × 64 resolution."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "A style-based generator architecture for generative adversarial networks",
+          "justification": "The referenced paper corresponds to the dataset FFHQ.",
+          "quote": "Tero Karras, Samuli Laine, and Timo Aila. A style-based generator architecture for generative adversarial networks. arxiv e-prints, page. arXiv preprint arXiv:1812.04948, 1, 2018."
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet",
+          "justification": "The dataset is mentioned multiple times in the context of experimental evaluation of the proposed model.",
+          "quote": "We experiment on three datasets: AFHQ [2], FFHQ [9] and ImageNet [3], all at 64 × 64 resolution."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Imagenet: A large-scale hierarchical image database",
+          "justification": "The referenced paper corresponds to the dataset ImageNet.",
+          "quote": "Jia Deng, Wei Dong, Richard Socher, Li-Jia Li, Kai Li, and Li Fei-Fei. Imagenet: A large-scale hierarchical image database. In 2009 IEEE conference on computer vision and pattern recognition, pages 248–255. Ieee, 2009."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "CLIP",
+          "justification": "The CLIP model is explicitly mentioned as being used for generating embeddings in the proposed method.",
+          "quote": "Specifically we train a DGM to model the distribution of CLIP embeddings of images in our dataset. From this we achieve improved unconditional image generation by first sampling a CLIP embedding and then feeding this CLIP embedding into a conditional image DGM."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning transferable visual models from natural language supervision",
+          "justification": "The referenced paper corresponds to the CLIP model.",
+          "quote": "Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, Sandhini Agarwal, Girish Sastry, Amanda Askell, Pamela Mishkin, Jack Clark, et al. Learning transferable visual models from natural language supervision. In International conference on machine learning, pages 8748–8763. PMLR, 2021."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1486,
+    "prompt_tokens": 7592,
+    "total_tokens": 9078
+  }
+}

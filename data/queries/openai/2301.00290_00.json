@@ -1,0 +1,172 @@
+{
+  "paper": "2301.00290.txt",
+  "words": 6187,
+  "extractions": {
+    "title": {
+      "value": "BARVINN: Arbitrary Precision DNN Accelerator Controlled by a RISC-V CPU",
+      "justification": "The title is explicitly stated at the beginning and in the header of the paper.",
+      "quote": "BARVINN: Arbitrary Precision DNN Accelerator Controlled by a RISC-V CPU"
+    },
+    "description": "The paper presents BARVINN, a deep neural network (DNN) accelerator capable of performing inference at arbitrary precision through configurable processing elements. Controlled by a RISC-V controller and implemented on the Alveo U250 FPGA platform, BARVINN achieves high computational throughput and offers flexibility in executing DNN models with varying quantization levels. The paper also introduces a code generator tool for converting CNN models in ONNX format to executable commands for the RISC-V controller, demonstrating the accelerator's scalable throughput with different DNN kernels and models.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves the implementation and performance evaluation of a DNN hardware accelerator, which is indicative of empirical research.",
+      "quote": "In section 4, a detailed performance analysis of BARVINN is provided and compared with other DNN accelerators."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Hardware Acceleration",
+        "justification": "The paper mainly focuses on developing and analyzing a DNN hardware accelerator.",
+        "quote": "We present a DNN accelerator that allows inference at arbitrary precision with dedicated processing elements that are configurable at the bit level."
+      },
+      "aliases": [
+        ""
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Quantization",
+          "justification": "The paper discusses the effects of different quantization levels on model performance and energy consumption.",
+          "quote": "Compared to other low precision accelerators, our accelerator provides run time programmability without hardware reconfiguration and can accelerate DNNs with multiple quantization levels."
+        },
+        "aliases": [
+          ""
+        ]
+      },
+      {
+        "name": {
+          "value": "Deep Learning Compilers",
+          "justification": "The paper mentions the development of a code generator tool for converting DNN models into executable commands for the RISC-V controller.",
+          "quote": "We develop a code generator tool that ingests CNN models in ONNX format and generates an executable command stream for the RISC-V controller."
+        },
+        "aliases": [
+          ""
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "ResNet18",
+          "justification": "ResNet18 model is used in the experiments to demonstrate the effects of different quantization levels on accuracy and model size.",
+          "quote": "Table 1 illustrates the result of applying Learned Scale Quantization (LSQ) [9] with different bit precisions on different models and tasks. Quantized models offer accuracy similar to full precision models, while having smaller size."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The ResNet18 model is not introduced or developed in this paper but is used for experimental evaluation.",
+          "quote": "Table 1 illustrates the result of applying Learned Scale Quantization (LSQ) [9] with different bit precisions on different models and tasks."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The ResNet18 model was executed on the BARVINN platform during the experiments.",
+          "quote": "We demonstrate the scalable throughput of our accelerator by running different DNN kernels and models when different quantization levels are selected."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The ResNet18 model's performance with different bit precisions is compared in the paper.",
+          "quote": "Table 1 illustrates the result of applying Learned Scale Quantization (LSQ) [9] with different bit precisions on different models and tasks."
+        },
+        "referenced_paper_title": {
+          "value": "Deep Residual Learning for Image Recognition",
+          "justification": "The ResNet18 model is a well-known model introduced in the paper \"Deep Residual Learning for Image Recognition.\"",
+          "quote": "In [10], the authors illustrate that using their mixed-precision framework, they reduced model latency and energy consumption by a factor of almost 2× with little drop in accuracy compared with an 8-bit quantized model."
+        }
+      },
+      {
+        "name": {
+          "value": "ResNet9",
+          "justification": "The ResNet9 model is used for experimental analysis in section 4 of the paper.",
+          "quote": "We compared BARVINN with FINN [22], which is a templated Vivado HLS C++ library of common DNN layers. Like BARVINN, FINN can generate hardware for arbitrary precision, but is not software programmable. However, at the time of writing, FINN supports simple linear topologies and we were not able to get performance metrics for our model. Instead, we used the available CIFAR10-CNV model from the FINN repository that was tuned for the FINN dataflow for our comparison."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The ResNet9 model is not a new contribution of this paper but is adapted for performance evaluation.",
+          "quote": "We used the available CIFAR10-CNV model from the FINN repository that was tuned for the FINN dataflow for our comparison."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The ResNet9 model was executed on the BARVINN accelerator for performance analysis.",
+          "quote": "To illustrate the performance of BARVINN, we chose the ResNet9 image classifier model for the CIFAR10 dataset."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of the ResNet9 model is evaluated and compared to other models and accelerators in the paper.",
+          "quote": "We compared BARVINN with FINN [22], which is a templated Vivado HLS C++ library of common DNN layers."
+        },
+        "referenced_paper_title": {
+          "value": "Bag of Tricks for Image Classification with Convolutional Neural Networks",
+          "justification": "ResNet9 is a model variant of the ResNet architecture, often referred to in various image classification literature.",
+          "quote": "We compared BARVINN with FINN [22], which is a templated Vivado HLS C++ library of common DNN layers."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CIFAR-100",
+          "justification": "The CIFAR-100 dataset is used for evaluating the performance of the ResNet18 model with different quantization levels.",
+          "quote": "The authors illustrate that using their mixed-precision framework, they reduced model latency and energy consumption by a factor of almost 2× with little drop in accuracy compared with an 8-bit quantized model."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Multiple Layers of Features from Tiny Images",
+          "justification": "CIFAR-100 is a well-known dataset introduced in the paper \"Learning Multiple Layers of Features from Tiny Images.\"",
+          "quote": "The authors illustrate that using their mixed-precision framework, they reduced model latency and energy consumption by a factor of almost 2× with little drop in accuracy compared with an 8-bit quantized model."
+        }
+      },
+      {
+        "name": {
+          "value": "VOCSSD300",
+          "justification": "The VOCSSD300 dataset is used for evaluating the performance of object detection models with different quantization levels.",
+          "quote": "Table 1 illustrates the result of applying Learned Scale Quantization (LSQ) [9] with different bit precisions on different models and tasks."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The PASCAL Visual Object Classes (VOC) Challenge",
+          "justification": "VOCSSD300 is a specific dataset used within the PASCAL VOC dataset challenges, introduced in the paper \"The PASCAL Visual Object Classes (VOC) Challenge.\"",
+          "quote": "Table 1 illustrates the result of applying Learned Scale Quantization (LSQ) [9] with different bit precisions on different models and tasks."
+        }
+      },
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "The CIFAR-10 dataset is used for evaluating the performance of the ResNet9 model on the BARVINN accelerator.",
+          "quote": "To illustrate the performance of BARVINN, we chose the ResNet9 image classifier model for the CIFAR10 dataset."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Multiple Layers of Features from Tiny Images",
+          "justification": "CIFAR-10 is a well-known dataset introduced in the paper \"Learning Multiple Layers of Features from Tiny Images.\"",
+          "quote": "To illustrate the performance of BARVINN, we chose the ResNet9 image classifier model for the CIFAR10 dataset."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "ONNX",
+          "justification": "The ONNX library is used for ingesting CNN models and generating executable command streams.",
+          "quote": "We develop a code generator tool that ingests CNN models in ONNX format and generates an executable command stream for the RISC-V controller."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ONNX: Open Neural Network Exchange",
+          "justification": "The reference paper for ONNX is known for introducing the open neural network exchange format.",
+          "quote": "We develop a code generator tool that ingests CNN models in ONNX format and generates an executable command stream for the RISC-V controller."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1835,
+    "prompt_tokens": 11829,
+    "total_tokens": 13664
+  }
+}

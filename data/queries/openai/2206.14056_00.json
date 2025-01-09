@@ -1,0 +1,273 @@
+{
+  "paper": "2206.14056.txt",
+  "words": 6665,
+  "extractions": {
+    "title": {
+      "value": "Deep Neural Networks pruning via the Structured Perspective Regularization",
+      "justification": "The title of the paper as given in the document.",
+      "quote": "Deep Neural Networks pruning via the Structured Perspective Regularization"
+    },
+    "description": "The paper proposes a new pruning method based on Operational Research tools aimed at compressing deep neural networks without significantly sacrificing performance. The method introduces a structured perspective regularization (SPR) term that leads to the pruning of ANN elements during training. The approach is tested on ResNet architectures with CIFAR-10, CIFAR-100, and ImageNet datasets, showing competitive performance in structured pruning.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents experimental results from testing their pruning method on standard datasets and neural network architectures, such as ResNet.",
+      "quote": "We test our method on some ResNet architectures applied to CIFAR-10, CIFAR-100 and ImageNet datasets, obtaining competitive performances w.r.t. the state of the art for structured pruning."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Model Pruning",
+        "justification": "The focus of the paper is to propose a new method for pruning deep neural networks, which falls under the research field of Model Pruning.",
+        "quote": "we propose a new pruning method based on Operational Research tools."
+      },
+      "aliases": [
+        "Network Compression",
+        "Sparse Models"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Computer Vision",
+          "justification": "The datasets used, such as CIFAR-10, CIFAR-100, and ImageNet, are common benchmarks in the Computer Vision field.",
+          "quote": "We test our method on some ResNet architectures applied to CIFAR-10, CIFAR-100 and ImageNet datasets, obtaining competitive performances w.r.t. the state of the art for structured pruning."
+        },
+        "aliases": [
+          "Vision",
+          "Image Recognition"
+        ]
+      },
+      {
+        "name": {
+          "value": "Deep Learning",
+          "justification": "The paper deals with deep neural networks, their training and pruning, which are core topics in Deep Learning.",
+          "quote": "In Machine Learning, Artificial Neural Networks (ANNs) are a very powerful tool, broadly used in many applications. Often, the selected (deep) architectures include many layers, and therefore a large amount of parameters, which makes training, storage and inference expensive."
+        },
+        "aliases": [
+          "Neural Networks",
+          "Neural Nets"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "ResNet-18",
+          "justification": "ResNet-18 is one of the models used to test the pruning method proposed in the paper.",
+          "quote": "we used ResNet-18 for the ImageNet dataset."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "ResNet-18 is not a new model introduced by the authors, but rather an existing model used for evaluation.",
+          "quote": "we used ResNet-18 for the ImageNet dataset."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper mentions using GPU for training, implying that the model was executed.",
+          "quote": "The model was trained for 150 epochs and fine tuned for 50 ones... We used mini batches of 256 and 0.1 learning rate that was divided by 10 every 35 epochs."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "ResNet-18's performance is compared with other approaches and settings in the experimental results section.",
+          "quote": "Results on ImageNet using ResNet-18 are reported in Table 7 and show that even in a very large and difficult dataset our method was able to improve the original model results by a consistent margin, reaching almost 71% accuracy while pruning more than 6% of the parameters."
+        },
+        "referenced_paper_title": {
+          "value": "Deep Residual Learning for Image Recognition",
+          "justification": "This is the foundational paper for the ResNet architectures.",
+          "quote": "K. He, X. Zhang, S. Ren, and J. Sun. Deep residual learning for image recognition. CoRR, abs/1512.03385, 2015."
+        }
+      },
+      {
+        "name": {
+          "value": "ResNet-50",
+          "justification": "ResNet-50 is one of the models used to test the pruning method proposed in the paper.",
+          "quote": "Finally, for very low level of pruning, also λ needs to be decreased. Finally, for Resnet-18 on ImageNet, we had λ ∈ [0.5, 0.8, 1.0, 1.3] and α [1e − 3, 1e − 2, 0.1, 0.3]."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "ResNet-50 is not a new model introduced by the authors, but rather an existing model used for evaluation.",
+          "quote": "we used Resnet-50 on CIFAR-10 dataset."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper mentions using GPU for training, implying that the model was executed.",
+          "quote": "The model was trained for 150 epochs and fine tuned for 50 ones... We used mini batches of 256 and 0.1 learning rate that was divided by 10 every 35 epochs."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "ResNet-50's performance is compared with other approaches and settings in the experimental results section.",
+          "quote": "Table 12: Results of state of the art method on CIFAR-10 using ResNet-50"
+        },
+        "referenced_paper_title": {
+          "value": "Deep Residual Learning for Image Recognition",
+          "justification": "This is the foundational paper for the ResNet architectures.",
+          "quote": "K. He, X. Zhang, S. Ren, and J. Sun. Deep residual learning for image recognition. CoRR, abs/1512.03385, 2015."
+        }
+      },
+      {
+        "name": {
+          "value": "ResNet-20",
+          "justification": "ResNet-20 is one of the models used to test the pruning method proposed in the paper.",
+          "quote": "As shown in Table 1, training ResNet-20 on CIFAR-10, we were able to prune more than 23% of the parameters by still increasing the accuracy of the original model, while we could prune almost 70% of the model by still preserving more than 90% accuracy."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "ResNet-20 is not a new model introduced by the authors, but rather an existing model used for evaluation.",
+          "quote": "As shown in Table 1, training ResNet-20 on CIFAR-10, we were able to prune more than 23% of the parameters by still increasing the accuracy of the original model, while we could prune almost 70% of the model by still preserving more than 90% accuracy."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper mentions using GPU for training, implying that the model was executed.",
+          "quote": "These experiments were performed on a single GPU, either a TESLA V100 32GB or NVIDIA Ampere A100 40GB."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "ResNet-20's performance is compared with other approaches and settings in the experimental results section.",
+          "quote": "Regarding ResNet-20 on CIFAR-10, our results in Table 8 outperform the other methods in most of the cases, meaning that we could reach equal or better accuracy while pruning a larger amount of parameters."
+        },
+        "referenced_paper_title": {
+          "value": "Deep Residual Learning for Image Recognition",
+          "justification": "This is the foundational paper for the ResNet architectures.",
+          "quote": "K. He, X. Zhang, S. Ren, and J. Sun. Deep residual learning for image recognition. CoRR, abs/1512.03385, 2015."
+        }
+      },
+      {
+        "name": {
+          "value": "ResNet-56",
+          "justification": "ResNet-56 is one of the models used to test the pruning method proposed in the paper.",
+          "quote": "We tested our method on the task of filter pruning in Deep Convolutional Neural Networks; that is, the prunable entities are the filters of the convolutional layers. More specifically, the weights in a convolutional layer with ninp input channels, nout output channels and k × k kernels is a tensor with four dimensions (ninp , nout , k, k): our prunable entities correspond to the sub-tensors with the second coordinate fixed, and therefore have ninp × k × k parameters."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "ResNet-56 is not a new model introduced by the authors, but rather an existing model used for evaluation.",
+          "quote": "We tested our method on the task of filter pruning in Deep Convolutional Neural Networks; that is, the prunable entities are filters of the convolutional layers. More specifically, the weights in a convolutional layer with ninp input channels, nout output channels and k × k kernels is a tensor with four dimensions (ninp, nout, k, k): our prunable entities correspond to the sub-tensors with the second coordinate fixed, and therefore have ninp × k × k parameters."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper mentions using GPU for training, implying that the model was executed.",
+          "quote": "These experiments were performed on a single GPU, either a TESLA V100 32GB or NVIDIA Ampere A100 40GB."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "ResNet-56's performance is compared with other approaches and settings in the experimental results section.",
+          "quote": "In Table 10, we can observe a similar situation to ResNet-20 on CIFAR-10 for ResNet-56 on the same dataset. One of the few results we did not outperform was the HPF 93.30 accuracy with 50% sparsity but we could obtain a little bit more sparsity (54.21%) with almost the same accuracy (93.13%)."
+        },
+        "referenced_paper_title": {
+          "value": "Deep Residual Learning for Image Recognition",
+          "justification": "This is the foundational paper for the ResNet architectures.",
+          "quote": "K. He, X. Zhang, S. Ren, and J. Sun. Deep residual learning for image recognition. CoRR, abs/1512.03385, 2015."
+        }
+      },
+      {
+        "name": {
+          "value": "VGG-16",
+          "justification": "Vgg-16 is one of the models used to test the pruning method proposed in the paper.",
+          "quote": "Finally, when we employed these models on the Cifar10 dataset, we were able to prune the majority of the parameters (from 81% to more than 90%) without really affecting the accuracy of the ANN, sometimes even increasing it. This is shown in Tables 4, 5 and 6."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Vgg-16 is not a new model introduced by the authors, but rather an existing model used for evaluation.",
+          "quote": "Finally, when we employed these models on the Cifar10 dataset, we were able to prune the majority of the parameters (from 81% to more than 90%) without really affecting the accuracy of the ANN, sometimes even increasing it. This is shown in Tables 4, 5 and 6."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper mentions using GPU for training, implying that the model was executed.",
+          "quote": "These experiments were performed on a single GPU, either a TESLA V100 32GB or NVIDIA Ampere A100 40GB."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Vgg-16's performance is compared with other approaches and settings in the experimental results section.",
+          "quote": "Similarly, when training Vgg-16 on Cifar-10, our method beats most of the state-of-the-art ones and has always competitive results. For example, CHIP can never prune more than 88% of the ANN but our algorithm prunes consistently more than 92% achieving similar or better accuracy (Table 13)."
+        },
+        "referenced_paper_title": {
+          "value": "Very deep convolutional networks for large-scale image recognition",
+          "justification": "This is the foundational paper for the VGG architectures.",
+          "quote": "K. Simonyan and A. Zisserman. Very deep convolutional networks for large-scale image recognition. In International Conference on Learning Representations, 2015."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "CIFAR-10 is one of the datasets used to evaluate the pruning method.",
+          "quote": "We test our method on some ResNet architectures applied to CIFAR-10, CIFAR-100 and ImageNet datasets, obtaining competitive performances w.r.t. the state of the art for structured pruning."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning multiple layers of features from tiny images",
+          "justification": "This is the reference paper for the CIFAR-10 dataset.",
+          "quote": "A. Krizhevsky. Learning multiple layers of features from tiny images. Technical report, (canadian institute for advanced research), 2009."
+        }
+      },
+      {
+        "name": {
+          "value": "CIFAR-100",
+          "justification": "CIFAR-100 is one of the datasets used to evaluate the pruning method.",
+          "quote": "We test our method on some ResNet architectures applied to CIFAR-10, CIFAR-100 and ImageNet datasets, obtaining competitive performances w.r.t. the state of the art for structured pruning."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning multiple layers of features from tiny images",
+          "justification": "This is the reference paper for the CIFAR-100 dataset.",
+          "quote": "A. Krizhevsky. Learning multiple layers of features from tiny images. Technical report, (canadian institute for advanced research), 2009."
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet",
+          "justification": "ImageNet is one of the datasets used to evaluate the pruning method.",
+          "quote": "We test our method on some ResNet architectures applied to CIFAR-10, CIFAR-100 and ImageNet datasets, obtaining competitive performances w.r.t. the state of the art for structured pruning."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ImageNet classification with deep convolutional neural networks",
+          "justification": "This is the foundational paper for the ImageNet dataset.",
+          "quote": "A. Krizhevsky, I. Sutskever, and G. E. Hinton. Imagenet classification with deep convolutional neural networks. In Advances in Neural Information Processing Systems, 2012."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The paper explicitly mentions using the PyTorch library for their experiments.",
+          "quote": "For all the experiments, we used Pytorch (1.7.1 and 1.8.1) with Cuda, the CrossEntropyLoss and the SGD optimizer with 0.9 momentum."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Automatic Differentiation in PyTorch",
+          "justification": "This is a key paper for understanding the functionalities and applications of the PyTorch library.",
+          "quote": "A. Paszke, S. Gross, S. Chintala, G. Chanan, E. Yang, Z. DeVito, Z. Lin, A. Desmaison, L. Antiga, and A. Lerer. Automatic differentiation in pytorch. In NIPS-W, 2017."
+        }
+      },
+      {
+        "name": {
+          "value": "CUDA",
+          "justification": "The paper explicitly mentions using the CUDA library for their experiments.",
+          "quote": "For all the experiments, we used Pytorch (1.7.1 and 1.8.1) with Cuda, the CrossEntropyLoss and the SGD optimizer with 0.9 momentum."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "CUDA: Compute Unified Device Architecture",
+          "justification": "This is a fundamental paper for understanding the functionalities and applications of the CUDA library.",
+          "quote": "Nvidia. cuda cuDNN. url: https://developer.nvidia.com/cudnn."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 3304,
+    "prompt_tokens": 13483,
+    "total_tokens": 16787
+  }
+}

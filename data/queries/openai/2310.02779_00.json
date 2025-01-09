@@ -1,0 +1,142 @@
+{
+  "paper": "2310.02779.txt",
+  "words": 13612,
+  "extractions": {
+    "title": {
+      "value": "Expected Flow Networks in Stochastic Environments and Two-Player Zero-Sum Games",
+      "justification": "It is the exact title provided at the beginning of the paper.",
+      "quote": "Expected Flow Networks in Stochastic Environments and Two-Player Zero-Sum Games"
+    },
+    "description": "This paper introduces Expected Flow Networks (EFlowNets), an extension of Generative Flow Networks (GFlowNets) to stochastic environments and two-player adversarial games. The proposed method is evaluated in tasks like protein design and Connect-4, demonstrating superior performance over previous formulations of GFlowNets.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper conducts experiments to evaluate the performance of the proposed model in various tasks, indicating an empirical study.",
+      "quote": "We show that EFlowNets outperform other GFlowNet formulations in stochastic tasks such as protein design. We then extend the concept of EFlowNets to adversarial environments, proposing adversarial flow networks (AFlowNets) for two-player zero-sum games. We show that AFlowNets learn to find above 80% of optimal moves in Connect-4 via self-play and outperform AlphaZero in tournaments."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Deep Reinforcement Learning",
+        "justification": "The research focuses on training policies in stochastic and adversarial environments, which is a topic within Deep Reinforcement Learning.",
+        "quote": "Generative flow networks (GFlowNets; Bengio et al., 2021; 2023; Lahlou et al., 2023) are a unifying algorithmic framework for training stochastic policies in Markov decision processes (MDPs; Sutton & Barto, 2018) to sample from a given distribution over terminal states."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Generative Models",
+          "justification": "The paper extends Generative Flow Networks to stochastic environments, which is a type of generative modeling.",
+          "quote": "We propose expected flow networks (EFlowNets), which extend GFlowNets to stochastic environments."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Game Theory",
+          "justification": "The paper extends EFlowNets to adversarial games and evaluates their performance in two-player zero-sum games.",
+          "quote": "We then extend the concept of EFlowNets to adversarial environments, proposing adversarial flow networks (AFlowNets) for two-player zero-sum games."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Expected Flow Networks (EFlowNets)",
+          "justification": "The paper introduces this model as an extension to GFlowNets for stochastic environments.",
+          "quote": "We propose expected flow networks (EFlowNets), which extend GFlowNets to stochastic environments."
+        },
+        "aliases": [
+          "EFlowNets"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The paper introduces and evaluates EFlowNets as a contribution.",
+          "quote": "We propose expected flow networks (EFlowNets), which extend GFlowNets to stochastic environments."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Experiments involving EFlowNets, such as protein design and Connect-4, are performed on GPUs.",
+          "quote": "Thus, generation of training data with AFlowNets is faster than with AlphaZero, assuming the base model architectures are of a similar scale."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "EFlowNets is compared to other models like stochastic GFlowNets and AlphaZero.",
+          "quote": "We show that EFlowNets outperform other GFlowNet formulations in stochastic tasks such as protein design."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The model is proposed in the current paper, no previous paper is referenced for it.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "Adversarial Flow Networks (AFlowNets)",
+          "justification": "The paper introduces this model for two-player zero-sum games as an extension to EFlowNets.",
+          "quote": "We then extend the concept of EFlowNets to adversarial environments, proposing adversarial flow networks (AFlowNets) for two-player zero-sum games."
+        },
+        "aliases": [
+          "AFlowNets"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The paper introduces and evaluates AFlowNets as a contribution.",
+          "quote": "We then extend the concept of EFlowNets to adversarial environments, proposing adversarial flow networks (AFlowNets) for two-player zero-sum games."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Experiments involving AFlowNets, such as Connect-4, are performed on GPUs.",
+          "quote": "Thus, generation of training data with AFlowNets is faster than with AlphaZero, assuming the base model architectures are of a similar scale."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "AFlowNets is compared to models like AlphaZero.",
+          "quote": "We show that AFlowNets learn to find above 80% of optimal moves in Connect-4 via self-play and outperform AlphaZero in tournaments."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The model is proposed in the current paper, no previous paper is referenced for it.",
+          "quote": ""
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "TFBind",
+          "justification": "The paper uses the TFBind dataset for the protein design task.",
+          "quote": "We evaluate EFlowNets in a protein design task from Jain et al. (2022). The GFlowNet policy autoregressively generates an 8-symbol DNA sequence 𝑥 and receives a reward of 𝑅(𝑥) = 𝑓 (𝑥) 𝛽 , where 𝑓 (𝑥) is a proxy model estimating binding affinity to a target protein."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Biological sequence design with GFlowNets",
+          "justification": "The dataset is referenced from Jain et al., 2022, specified for protein design task.",
+          "quote": "The GFlowNet policy autoregressively generates an 8-symbol DNA sequence 𝑥 and receives a reward of 𝑅(𝑥) = 𝑓 (𝑥) 𝛽 , where 𝑓 (𝑥) is a proxy model estimating binding affinity to a target protein and 𝛽 is a hyperparameter controlling the reward distribution’s entropy."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is often used for developing and experimenting with deep learning models, which is likely the case here.",
+          "quote": "We use the hyperparameters from the existing implementation for all methods (except SAC, which we reimplemented because code was not available) and report the same primary metrics: the mean reward of the top-100 sequences among 2048 sampled from a trained model and the number of diverse modes found, as measured by the sphere exclusion algorithm from Jain et al. (2022)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The specific referenced paper is not mentioned for PyTorch, only its use can be inferred.",
+          "quote": ""
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1478,
+    "prompt_tokens": 27403,
+    "total_tokens": 28881
+  }
+}

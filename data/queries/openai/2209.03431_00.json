@@ -1,0 +1,170 @@
+{
+  "paper": "2209.03431.txt",
+  "words": 14577,
+  "extractions": {
+    "title": {
+      "value": "Physics-Guided Adversarial Machine Learning for Aircraft Systems Simulation",
+      "justification": "This is the title of the paper as given at the beginning.",
+      "quote": "Physics-Guided Adversarial Machine Learning for Aircraft Systems Simulation"
+    },
+    "description": "This paper presents a novel approach called physics-guided adversarial machine learning to improve the trustworthiness of deep learning models for aircraft system performance assessment. It involves a physics-guided adversarial testing phase to find test inputs leading to inconsistencies, followed by adversarial training to rectify these inconsistencies.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents empirical evaluations and experiments on two aircraft system performance models to demonstrate the effectiveness of the proposed approach.",
+      "quote": "Empirical evaluation on two aircraft system performance models shows the effectiveness of our adversarial ML approach in exposing physical inconsistencies of both models and in improving their propensity to be consistent with physics domain knowledge."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Adversarial Machine Learning",
+        "justification": "The primary focus of the paper is the development of an adversarial machine learning approach guided by physics to enhance the reliability of aircraft systems simulations.",
+        "quote": "This work presents a novel approach, physics-guided adversarial machine learning (ML)..."
+      },
+      "aliases": [
+        "Adversarial ML"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Aircraft Systems Simulation",
+          "justification": "The application domain of the adversarial machine learning approach described in the paper is aircraft systems simulation.",
+          "quote": "In the context of aircraft system performance assessment..."
+        },
+        "aliases": [
+          "Aircraft Simulation"
+        ]
+      },
+      {
+        "name": {
+          "value": "Deep Learning",
+          "justification": "Deep learning technologies are used to quickly infer aircraft system performance models from experimental measurements.",
+          "quote": "In the context of aircraft system performance assessment, deep learning technologies..."
+        },
+        "aliases": [
+          "DL"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Aircraft Performance FNN",
+          "justification": "One of the case studies involves an aircraft performance model, referred to as Aircraft Performance FNN.",
+          "quote": "A/C Performance FNN. It assembles three layers with, respectively, 128, 64, and 32 neurons."
+        },
+        "aliases": [
+          "A/C Performance FNN",
+          "Aircraft Performance Model"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The model design including its architecture and hyperparameters are specifically tailored for this study.",
+          "quote": "A/C Performance FNN. It assembles three layers with, respectively, 128, 64, and 32 neurons."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model is executed and evaluated as part of the empirical study.",
+          "quote": "The best-fitted parameters were obtained by a training of 250-epochs using a batch size of 64, a learning rate of 1e − 4 and an L2-norm weight decay coefficient of 5e − 4."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The model's improvements in physics consistency and predictive performance are evaluated and compared.",
+          "quote": "Table IX compares the number of physics inconsistencies (#AdvIn) revealed before and after the physics-informed adversarial learning, as well as the estimated improvement ratios (%Improv AdvIn)..."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The model does not refer to a specific previous work as it was created for this study.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "Wing Anti-Icing Performance FNN",
+          "justification": "The second case study involves a wing anti-icing system performance model, referred to as Wing Anti-Icing Performance FNN.",
+          "quote": "Wing-anti Icing Performance FNN. It stacks the consecutive layers including 256, 128, and 64 neurons."
+        },
+        "aliases": [
+          "WAI Performance FNN",
+          "Wing Anti-Icing System Performance Model"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The model design including its architecture and hyperparameters are specifically tailored for this study.",
+          "quote": "Wing-anti Icing Performance FNN. It stacks the consecutive layers including 256, 128, and 64 neurons."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model is executed and evaluated as part of the empirical study.",
+          "quote": "The best-fitted state was reached with 300 epochs of training using a batch size of 16, a learning rate of 1e − 3 and an L2-norm weight decay coefficient of 1e − 4."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The model's improvements in physics consistency and predictive performance are evaluated and compared.",
+          "quote": "Table IX compares the number of physics inconsistencies (#AdvIn) revealed before and after the physics-informed adversarial learning, as well as the estimated improvement ratios (%Improv AdvIn)..."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The model does not refer to a specific previous work as it was created for this study.",
+          "quote": ""
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Aircraft Performance Data",
+          "justification": "This dataset contains aircraft performance data used to train the Aircraft Performance FNN.",
+          "quote": "The first case study consists of an aircraft performance (referred to as A/C Perf.) model mapping steady-state angle of attack (α) to features related to flight conditions and wing configurations."
+        },
+        "aliases": [
+          "A/C Performance Data"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The dataset consists of flight test campaigns data and is created for this study.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "Wing Anti-Icing Performance Data",
+          "justification": "This dataset contains in-flight wing anti-icing system performance data used to train the Wing Anti-Icing Performance FNN.",
+          "quote": "The second case study consists of an in-flight wing anti-icing performance (known as WAI Perf.) model mapping wing leading-edge skin temperature sensors to features related to flight conditions, wing configurations, and high-pressure pneumatic system conditions at the wing root."
+        },
+        "aliases": [
+          "WAI Performance Data"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The dataset consists of flight test campaigns data and is created for this study.",
+          "quote": ""
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The paper mentions the use of PyTorch for developing the deep learning models.",
+          "quote": "It uses Pytorch [38], an established DL framework for modelling and training neural networks."
+        },
+        "aliases": [
+          "PyTorch"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An Imperative Style, High-Performance Deep Learning Library",
+          "justification": "This is the reference paper for the PyTorch library mentioned in the text.",
+          "quote": "It uses Pytorch [38], an established DL framework for modelling and training neural networks."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1707,
+    "prompt_tokens": 23355,
+    "total_tokens": 25062
+  }
+}

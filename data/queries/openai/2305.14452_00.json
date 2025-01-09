@@ -1,0 +1,154 @@
+{
+  "paper": "2305.14452.txt",
+  "words": 7890,
+  "extractions": {
+    "title": {
+      "value": "Fourier Neural Operators for Arbitrary Resolution Climate Data Downscaling",
+      "justification": "The title is mentioned at the beginning of the paper.",
+      "quote": "Fourier Neural Operators for Arbitrary Resolution Climate Data Downscaling"
+    },
+    "description": "The paper proposes a downscaling method based on Fourier Neural Operators (FNO) that enables climate simulations at arbitrary high resolution from low-resolution input without the need for high-resolution training data. It outperforms state-of-the-art convolutional and generative adversarial downscaling models in both standard single-resolution downscaling and zero-shot generalization to higher upsampling factors.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves experimental evaluation and comparison of the proposed FNO downscaling model with other models on datasets, particularly ERA5 and Navier-Stokes equation solution data.",
+      "quote": "Evaluated both on ERA5 climate model data and on the Navier-Stokes equation solution data, our downscaling model significantly outperforms state-of-the-art convolutional and generative adversarial downscaling models."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Climate Data Downscaling",
+        "justification": "The primary focus of the research is the downscaling of climate data to higher resolutions using deep learning methods.",
+        "quote": "we propose a downscaling method based on the Fourier neural operator."
+      },
+      "aliases": [
+        "Downscaling",
+        "Climate Downscaling",
+        "Super-resolution for Climate Data"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Physics-Constrained Deep Learning",
+          "justification": "The paper discusses the incorporation of physical constraints to ensure the outputs are consistent with physical laws, which is crucial for climate datasets.",
+          "quote": "Various works have attempted to embed physics constraints into neural network emulators by either adding violation penalty terms to the loss function (i.e., soft-constrained) or carefully designing a physics-preserving model structure (i.e., hard-constrained)."
+        },
+        "aliases": [
+          "Physics-Informed Neural Networks",
+          "Physics-Based Deep Learning"
+        ]
+      },
+      {
+        "name": {
+          "value": "Neural Operators",
+          "justification": "The paper is based on and extends the concept of Fourier Neural Operators, which are used for learning mappings between function spaces to solve PDEs.",
+          "quote": "Inspired by the recent success of Fourier neural operator (Li et al., 2021, FNO) for solving PDEs regardless of resolution, here we propose a novel FNO based zero-shot climate simulation data downscaling model"
+        },
+        "aliases": [
+          "FNO",
+          "Fourier Neural Operators"
+        ]
+      },
+      {
+        "name": {
+          "value": "Partial Differential Equation Solvers",
+          "justification": "The paper evaluates the proposed model on PDEs like the Navier-Stokes equation and compares its performance with other PDE solvers.",
+          "quote": "Furthermore, we show that our method also outperforms state-of-the-art data-driven partial differential equation solvers on Navier-Stokes equations."
+        },
+        "aliases": [
+          "PDE Solvers",
+          "Numerical Solvers for PDEs"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Fourier Neural Operator (FNO)",
+          "justification": "The main model proposed and used in the paper is the Fourier Neural Operator for climate data downscaling.",
+          "quote": "Inspired by the recent success of Fourier neural operator (Li et al., 2021, FNO) for solving PDEs regardless of resolution, here we propose a novel FNO based zero-shot climate simulation data downscaling model."
+        },
+        "aliases": [
+          "FNO",
+          "DFNO"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The FNO model is proposed and discussed in detail in the paper as a main contribution.",
+          "quote": "here we propose a novel FNO based zero-shot climate simulation data downscaling model"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was executed in various experiments as described in the paper.",
+          "quote": "We evaluate our FNO downscaling model in three experiments: PDE integration, PDE solution downscaling and observational climate quantity downscaling."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of the FNO model is compared with other baseline models including CNNs and GANs.",
+          "quote": "our downscaling model significantly outperforms state-of-the-art convolutional and generative adversarial downscaling models."
+        },
+        "referenced_paper_title": {
+          "value": "Fourier Neural Operator for Parametric Partial Differential Equations (Li et al., 2021)",
+          "justification": "The FNO model builds on the work by Li et al. (2021) on Fourier Neural Operators.",
+          "quote": "Inspired by the recent success of Fourier neural operator (Li et al., 2021, FNO) for solving PDEs regardless of resolution"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "ERA5",
+          "justification": "The ERA5 dataset is used for evaluating the performance of the proposed FNO model on observational climate data.",
+          "quote": "The observational climate quantity used in this work is the total column water content which we derived from the climate reanalysis data base ERA5 (Hersbach et al., 2020)."
+        },
+        "aliases": [
+          "ERA5 Reanalysis"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The ERA5 global reanalysis (Hersbach et al., 2020)",
+          "justification": "The dataset ERA5 is referenced from the work by Hersbach et al., (2020).",
+          "quote": "The observational climate quantity used in this work is the total column water content which we derived from the climate reanalysis data base ERA5 (Hersbach et al., 2020)."
+        }
+      },
+      {
+        "name": {
+          "value": "Navier-Stokes equation solution dataset",
+          "justification": "This dataset is used for evaluating the FNO model's performance on solving and downscaling PDE data.",
+          "quote": "In order to evaluate the performance of our model to downscale PDE data, we used a dataset solving the 2D Navier-Stokes equation for a viscous and incompressible fluid in vorticity form (Li et al., 2021, Section 5.3)."
+        },
+        "aliases": [
+          "Navier-Stokes dataset"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Fourier Neural Operator for Parametric Partial Differential Equations (Li et al., 2021)",
+          "justification": "The dataset of Navier-Stokes equation solutions is referenced from the work by Li et al. (2021).",
+          "quote": "In order to evaluate the performance of our model to downscale PDE data, we used a dataset solving the 2D Navier-Stokes equation for a viscous and incompressible fluid in vorticity form (Li et al., 2021, Section 5.3)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The paper uses PyTorch as the deep learning library for implementing the models.",
+          "quote": "We implement our model based on the PyTorch framework."
+        },
+        "aliases": [
+          "torch"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Automatic differentiation in PyTorch (Paszke et al., 2017)",
+          "justification": "The usage of PyTorch in the paper is based on the work by Paszke et al., (2017).",
+          "quote": "We implement our model based on the PyTorch framework."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1470,
+    "prompt_tokens": 16871,
+    "total_tokens": 18341
+  }
+}

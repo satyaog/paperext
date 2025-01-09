@@ -4,7 +4,7 @@ import sys
 from pathlib import Path
 from typing import List
 
-from .utils import python_module
+from paperext.utils import python_module
 
 PROG = f"python3 -m {python_module(__file__)}"
 

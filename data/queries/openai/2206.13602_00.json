@@ -1,0 +1,223 @@
+{
+  "paper": "2206.13602.txt",
+  "words": 16346,
+  "extractions": {
+    "title": {
+      "value": "Moleculuar Geometry Pretraining with SE(3)-Invariant Denoising Distance Matching",
+      "justification": "The title of the paper is clearly stated at the beginning of the document followed by the abstract.",
+      "quote": "MOLECULAR GEOMETRY PRETRAINING WITH SE(3)-INVARIANT DENOISING DISTANCE MATCHING"
+    },
+    "description": "This paper presents GeoSSL, a 3D coordinate denoising pretraining framework that captures the energy landscape of 3D molecules using SE(3)-invariant score matching method. The resulting method, GeoSSL-DDM, focuses on denoising pairwise atomic distances and is validated through comprehensive experiments on 22 downstream tasks, outperforming existing baselines.",
+    "type": {
+      "value": "empirical",
+      "justification": "This paper validates its proposed methods through comprehensive experiments, empirically demonstrating its effectiveness and robustness on 22 different downstream tasks.",
+      "quote": "Our comprehensive experiments confirm the effectiveness and robustness of our proposed method."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computational Chemistry",
+        "justification": "The primary focus of the paper is on molecular representation pretraining, which is a significant aspect of computational chemistry.",
+        "quote": "Molecular representation pretraining is critical in various applications for drug and material discovery due to the limited number of labeled molecules."
+      },
+      "aliases": [
+        "Mol. Comp. Chem."
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Self-Supervised Learning",
+          "justification": "The paper introduces GeoSSL, a self-supervised learning framework designed for 3D molecular geometry data.",
+          "quote": "Further by leveraging an SE(3)-invariant score matching method, we propose GeoSSL-DDM in which the coordinate denoising proxy task is effectively boiled down to denoising the pairwise atomic distances in a molecule."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Graph Neural Networks",
+          "justification": "The paper employs Graph Neural Networks (GNNs) to model the molecular structures.",
+          "quote": "Recent work based on graph neural networks (GNNs) has shown superior performance thanks to the simplicity and effectiveness of GNNs in modeling graph-structured data."
+        },
+        "aliases": [
+          "GNNs"
+        ]
+      },
+      {
+        "name": {
+          "value": "Denoising Score Matching",
+          "justification": "The key methodological contribution of the paper is the application of denoising score matching in the SE(3)-invariant GeoSSL framework.",
+          "quote": "This approach has been further improved by combining SM with denoising auto-encoding, forming the promising denoising score matching (DSM) strategy."
+        },
+        "aliases": [
+          "DSM"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "GeoSSL",
+          "justification": "The paper introduces GeoSSL as the main framework for 3D coordinate denoising pretraining to model the molecular energy landscape.",
+          "quote": "To achieve the aforementioned goal, we first introduce a general geometric self-supervised learning framework called GeoSSL."
+        },
+        "aliases": [
+          "GeoSSL"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "It is one of the major contributions of the paper.",
+          "quote": "We first introduce a general geometric self-supervised learning framework called GeoSSL."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper performs experiments to validate GeoSSL.",
+          "quote": "Examples of these frameworks include our proposed GeoSSL framework and the specifically designed GeoSSL-DDM."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "GeoSSL is compared against other methods in the experiments.",
+          "quote": "We empirically verified the effectiveness and robustness of GeoSSL-DDM on 22 downstream tasks."
+        },
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "GeoSSL is a newly introduced model in this paper, not referenced from another paper.",
+          "quote": "We propose GeoSSL, a 3D coordinate denoising pretraining framework to model such an energy landscape."
+        }
+      },
+      {
+        "name": {
+          "value": "GeoSSL-DDM",
+          "justification": "The paper presents GeoSSL-DDM as the implementation of GeoSSL using SE(3)-invariant score matching to denoise pairwise atomic distances.",
+          "quote": "Based on this, we further propose an SE(3)-invariant denoising distance matching pretraining algorithm, GeoSSL-DDM."
+        },
+        "aliases": [
+          "GeoSSL-DDM"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "GeoSSL-DDM is a core contribution and implementation of the GeoSSL framework discussed in this paper.",
+          "quote": "We further propose an SE(3)-invariant denoising distance matching pretraining algorithm, GeoSSL-DDM."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The experiments conducted in the paper include the validation of GeoSSL-DDM.",
+          "quote": "Moreover, directly denoising such noisy coordinates remains challenging... we further leverage an SE(3)-invariant score matching method, GeoSSL-DDM."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "GeoSSL-DDM is evaluated against other baselines in the experiments section.",
+          "quote": "We empirically demonstrate the effectiveness and robustness of GeoSSL-DDM on 22 downstream tasks."
+        },
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "GeoSSL-DDM is a novel model introduced in this paper and is not derived from another paper.",
+          "quote": "We empirically demonstrate the effectiveness and robustness of GeoSSL-DDM on 22 downstream tasks."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "QM9",
+          "justification": "QM9 is one of the datasets used in the downstream tasks to validate the proposed models.",
+          "quote": "We list the benchmark results on QM9 in Table 4."
+        },
+        "aliases": [
+          "QM9"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Quantum chemistry structures and properties of 134 kilo molecules",
+          "justification": "QM9 dataset is referenced in the context of the experiments, and its properties are described.",
+          "quote": "QM9 [46] is a dataset of 134K molecules consisting of 9 heavy atoms. It includes 12 tasks that are related to the quantum properties."
+        }
+      },
+      {
+        "name": {
+          "value": "MD17",
+          "justification": "MD17 is another dataset used for downstream testing of the proposed methodologies.",
+          "quote": "MD17 [10] is a dataset on molecular dynamics simulation. It includes eight tasks, corresponding to eight organic molecules, and each task includes the molecule positions along the potential energy surface (PES)."
+        },
+        "aliases": [
+          "MD17"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Machine learning of accurate energy-conserving molecular force fields",
+          "justification": "MD17 is cited in the paper with relevant reference details.",
+          "quote": "MD17 [10] is a dataset on molecular dynamics simulation."
+        }
+      },
+      {
+        "name": {
+          "value": "PubChemQC",
+          "justification": "The paper uses a subset of 1M molecules with 3D geometries from Molecule3D derived from PubChemQC for pretraining.",
+          "quote": "For our molecular geometry pretraining, we take a subset of 1M molecules with 3D geometries from Molecule3D."
+        },
+        "aliases": [
+          "PubChemQC"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "PubChemQC dataset is used in the context of the experiments but not derived from another specific paper referenced.",
+          "quote": "The PubChemQC database is a large-scale database with around 4M molecules with 3D geometries."
+        }
+      },
+      {
+        "name": {
+          "value": "Molecule3D",
+          "justification": "The pretraining dataset Molecule3D, derived from PubChemQC, is used.",
+          "quote": "For our molecular geometry pretraining, we take a subset of 1M molecules with 3D geometries from Molecule3D."
+        },
+        "aliases": [
+          "Molecule3D"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Molecule3D: A benchmark for predicting 3D geometries from molecular graphs",
+          "justification": "Molecule3D is properly cited in the context of describing the pretraining datasets.",
+          "quote": "Molecule3D [73] takes the ground-state geometries from PubChemQC and transforms the data formats into a deep learning-friendly way."
+        }
+      },
+      {
+        "name": {
+          "value": "LBA (Ligand Binding Affinity)",
+          "justification": "LBA is used to predict the binding affinity strength between a small molecule and a protein pocket.",
+          "quote": "We select three evaluation metrics for LBA: the root mean squared error (RMSD), the Pearson correlation (Rp ) and the Spearman correlation (RS )."
+        },
+        "aliases": [
+          "LBA"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The PDBbind database: methodologies and updates",
+          "justification": "The LBA dataset is referenced with relevant citation.",
+          "quote": "The first task is ligand binding affinity (LBA). It is gathered from [70] and the task is to predict the binding affinity strength between a small molecule and a protein pocket."
+        }
+      },
+      {
+        "name": {
+          "value": "LEP (Ligand Efficacy Prediction)",
+          "justification": "LEP is used to detect if the same molecule has a higher binding affinity with one pocket compared to another.",
+          "quote": "For the LEP task, the supervised and two contrastive learning pretraining baselines stand out for both ROC and PR metrics."
+        },
+        "aliases": [
+          "LEP"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Atom3D: Tasks on molecules in three dimensions",
+          "justification": "LEP dataset is cited in the experiments section, describing its relevance and application.",
+          "quote": "We follow Atom3D in data preprocessing and data splitting."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1930,
+    "prompt_tokens": 31576,
+    "total_tokens": 33506
+  }
+}

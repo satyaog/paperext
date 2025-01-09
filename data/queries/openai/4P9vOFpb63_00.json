@@ -1,0 +1,122 @@
+{
+  "paper": "4P9vOFpb63.txt",
+  "words": 2898,
+  "extractions": {
+    "title": {
+      "value": "ROSA: Random Orthogonal Subspace Adaptation",
+      "justification": "Title of the paper clearly mentioned at the top.",
+      "quote": "ROSA: Random Orthogonal Subspace Adaptation"
+    },
+    "description": "This paper proposes a method called Random Orthogonal Subspace Adaptation (ROSA) to adapt large pre-trained language models to downstream tasks efficiently, addressing memory constraints without adding latency overhead during inference. It compares the method to existing Parameter Efficient Fine-Tuning (PEFT) methods and demonstrates its effectiveness on GPT-2 models for Natural Language Generation tasks.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves experimental evaluation of ROSA on GPT-2 models for various Natural Language Generation tasks, demonstrating performance and memory efficiency through empirical results and comparisons.",
+      "quote": "We evaluate ROSA by finetuning GPT2 on various Natural Language Generation (NLG) tasks."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The paper focuses on efficiently fine-tuning large pre-trained language models like GPT-2 for tasks in the natural language processing domain.",
+        "quote": "As PEFT methods are especially useful in the natural language processing domain."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Natural Language Generation",
+          "justification": "The paper evaluates ROSA by fine-tuning GPT-2 on various Natural Language Generation tasks, making NLG a primary sub-research field.",
+          "quote": "We evaluate ROSA by finetuning GPT2 on various Natural Language Generation (NLG) tasks."
+        },
+        "aliases": [
+          "NLG"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "ROSA",
+          "justification": "The paper introduces a new method called Random Orthogonal Subspace Adaptation (ROSA).",
+          "quote": "In this work we propose Random Orthogonal Subspace Adaptation (ROSA), a method that exceeds the performance of previous PEFT methods by a significant margin, while maintaining a zero latency overhead during inference time."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "The ROSA model is a novel method introduced by the authors in this paper.",
+          "quote": "In this work we propose Random Orthogonal Subspace Adaptation (ROSA)"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper involves executing ROSA on a GPU for fine-tuning experiments with GPT-2.",
+          "quote": "Table 1: Runtime of one training epoch of finetuning of GPT2-S (128M parameters), using ROSA and LoRA on a single GPU (Quadro RTX 8000) with an input batch of 8 sequences of length 512."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "ROSA is compared to other PEFT methods like LoRA in terms of performance and memory efficiency.",
+          "quote": "Notably, ROSA consistently outperforms LoRA with a significant margin in terms of perplexity."
+        },
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "ROSA is the primary model contributed by this paper, so it does not have a reference paper.",
+          "quote": "In this work we propose Random Orthogonal Subspace Adaptation (ROSA)"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "E2E NLG dataset",
+          "justification": "The paper uses the E2E NLG dataset for evaluating the performance of ROSA.",
+          "quote": "We conducted a comparative analysis between ROSA and LoRA in terms of their finetuning performance, as shown in Table 2. Notably, ROSA consistently outperforms LoRA with a significant margin in terms of perplexity. For example, ROSA achieves a +1.4 improvement in perplexity over LoRA for the finetuning of GPT2-S with 11M trainable parameters. Additionally, the training curves depicted in Figure 2a demonstrate that increasing the rank of the trainable matrix benefits ROSA, whereas LoRA does not exhibit the same advantage. This observation aligns with the findings reported by the authors of LoRA (Hu et al., 2021)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The E2E dataset: New challenges for end-to-end generation",
+          "justification": "The paper cites the original paper for the E2E dataset in its references.",
+          "quote": "Novikova, J., Dušek, O., and Rieser, V. The E2E dataset: New challenges for end-to-end generation. In Proceedings of the 18th Annual Meeting of the Special Interest Group on Discourse and Dialogue, 2017."
+        }
+      },
+      {
+        "name": {
+          "value": "ELI5 dataset",
+          "justification": "The paper uses the ELI5 dataset for evaluating the performance of ROSA.",
+          "quote": "We further compare the finetuning performance between ROSA and LoRA on the ELI5 dataset. Looking at Table 3, we observe once more that (i) ROSA consistently outperforms LoRA and (ii) ROSA benefits from increasing rank, whereas the performance of LoRA remains relatively constant."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ELI5: long form question answering",
+          "justification": "The paper cites the original paper for the ELI5 dataset in its references.",
+          "quote": "Fan, A., Jernite, Y., Perez, E., Grangier, D., Weston, J., and Auli, M. ELI5: long form question answering. In Korhonen, A., Traum, D. R., and Màrquez, L. (eds.), Proceedings of the 57th Conference of the Association for Computational Linguistics (ACL). Association for Computational Linguistics, 2019."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Huggingface transformers library",
+          "justification": "The implementation of ROSA uses the Huggingface transformers library for fine-tuning the models.",
+          "quote": "Our implementation uses the huggingface transformers library (Wolf et al., 2020)."
+        },
+        "aliases": [
+          "huggingface"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Transformers: State-of-the-art natural language processing",
+          "justification": "The paper references the original paper for the Huggingface transformers library.",
+          "quote": "Wolf, T., Debut, L., Sanh, V., Chaumond, J., Delangue, C., Moi, A., Cistac, P., Rault, T., Louf, R., Funtowicz, M., et al. Transformers: State-of-the-art natural language processing. In Proceedings of the 2020 conference on empirical methods in natural language processing: system demonstrations, 2020."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1361,
+    "prompt_tokens": 6445,
+    "total_tokens": 7806
+  }
+}

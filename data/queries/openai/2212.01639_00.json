@@ -1,0 +1,176 @@
+{
+  "paper": "2212.01639.txt",
+  "words": 11033,
+  "extractions": {
+    "title": {
+      "value": "Visual Question Answering From Another Perspective: CLEVR Mental Rotation Tests",
+      "justification": "Title is clearly mentioned at the top of the paper",
+      "quote": "Visual Question Answering From Another Perspective: CLEVR Mental Rotation Tests"
+    },
+    "description": "The paper explores neural architectures for performing mental rotation tasks on visual question answering (VQA) using a new dataset called CLEVR-MRT. The authors investigate the ability of different models to reason about 3D scenes from single images by incorporating volumetric representations and transformations of scenes to answer questions from various viewpoints.",
+    "type": {
+      "value": "empirical",
+      "justification": "The study involves experiments and evaluations of different neural architectures using the CLEVR-MRT dataset to empirically determine their performance on mental rotation tasks.",
+      "quote": "Using CLEVR-MRT we examine standard methods, show how they fall short, then explore novel neural architectures that involve inferring volumetric representations of a scene. These volumes can be manipulated via camera-conditioned transformations to answer the question."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Visual Question Answering (VQA)",
+        "justification": "The primary focus of the paper is to explore neural architectures for visual question answering using the CLEVR-MRT dataset.",
+        "quote": "Using CLEVR-MRT we examine standard methods, show how they fall short, then explore novel neural architectures that involve inferring volumetric representations of a scene."
+      },
+      "aliases": [
+        "VQA"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "3D Vision",
+          "justification": "The paper extensively discusses the use of 3D representations and transformations to solve VQA tasks.",
+          "quote": "explore novel neural architectures that involve inferring volumetric representations of a scene. These volumes can be manipulated via camera-conditioned transformations to answer the question."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Neural Network Architectures",
+          "justification": "The paper investigates different neural network architectures for their efficacy in solving VQA tasks related to mental rotation.",
+          "quote": "we examine standard methods, show how they fall short, then explore novel neural architectures"
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Contrastive Learning",
+          "justification": "The paper uses contrastive learning to pre-train an encoder that maps 2D views to a 3D latent space.",
+          "quote": "we leverage contrastive learning as in Section 2.2.3. In the case of the latter model, we leverage the InfoNCE loss [29] to minimise the distance between different views of the same scene in a learned metric space, and conversely the opposite for views of different scenes altogether."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "FILM",
+          "justification": "The paper discusses using the FILM (Feature-wise Linear Modulation) technique extensively as a model for VQA.",
+          "quote": "we examine models that use the FILM (Feature-wise Linear Modulation) technique [31] for VQA, which delivers competitive performance."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "FILM is not introduced by this paper but used for evaluation.",
+          "quote": "we examine models that use the FILM (Feature-wise Linear Modulation) technique [31] for VQA, which delivers competitive performance."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The FILM model is executed for experiments in the paper.",
+          "quote": "we examine models that use the FILM (Feature-wise Linear Modulation) technique [31] for VQA, which delivers competitive performance."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "FILM is compared against other models in the paper.",
+          "quote": "we observe that such methods (FILM) fall short for this more challenging MRT VQA setting. This motivates us to create new architectures."
+        },
+        "referenced_paper_title": {
+          "value": "FILM: Visual reasoning with a general conditioning layer",
+          "justification": "The technique is attributed to a prior paper.",
+          "quote": "we examine models that use the FILM (Feature-wise Linear Modulation) technique [31] for VQA, which delivers competitive performance."
+        }
+      },
+      {
+        "name": {
+          "value": "InfoNCE",
+          "justification": "The InfoNCE loss is used in the contrastive learning approach presented in the paper.",
+          "quote": "we leverage contrastive learning as in Section 2.2.3. In the case of the latter model, we leverage the InfoNCE loss [29] to minimise the distance between different views of the same scene in a learned metric space, and conversely the opposite for views of different scenes altogether."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "InfoNCE is a known contrastive loss technique and is not introduced by this paper.",
+          "quote": "we leverage the InfoNCE loss [29] to minimise the distance between different views of the same scene in a learned metric space"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "InfoNCE loss is calculated in the experiments of the paper.",
+          "quote": "we leverage the InfoNCE loss [29] to minimise the distance between different views of the same scene in a learned metric space"
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "InfoNCE-based encoders are compared to other methods.",
+          "quote": "As we will see later, due to the many views available per scene and the fact that this task is supervised with respect to question/answer pairs, the problem can still be addressed."
+        },
+        "referenced_paper_title": {
+          "value": "Representation learning with contrastive predictive coding",
+          "justification": "The InfoNCE technique is attributed to a prior paper.",
+          "quote": "we leverage the InfoNCE loss [29] to minimise the distance between different views of the same scene in a learned metric space, and conversely the opposite for views of different scenes altogether."
+        }
+      },
+      {
+        "name": {
+          "value": "HoloGAN",
+          "justification": "The HoloGAN technique is mentioned as a related work for performing 3D transformations.",
+          "quote": "This motivates us to create new architectures that involve inferring a latent feature volume that we subject to rigid 3D transformations (rotations and translations), in a manner that has been examined in 3D generative modeling techniques such as spatial transformers [16] as well as HoloGAN [27]."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "HoloGAN is referenced and not contributed by this paper.",
+          "quote": "This motivates us to create new architectures that involve inferring a latent feature volume that we subject to rigid 3D transformations (rotations and translations), in a manner that has been examined in 3D generative modeling techniques such as spatial transformers [16] as well as HoloGAN [27]."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "HoloGAN is not implemented but mentioned as related work.",
+          "quote": "This motivates us to create new architectures ... as well as HoloGAN [27]."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "HoloGAN is only mentioned as related work and not empirically compared.",
+          "quote": "This motivates us to create new architectures that involve inferring a latent feature volume that we subject to rigid 3D transformations (rotations and translations), in a manner that has been examined in 3D generative modeling techniques such as spatial transformers [16] as well as HoloGAN [27]."
+        },
+        "referenced_paper_title": {
+          "value": "HoloGAN: Unsupervised learning of 3D representations from natural images",
+          "justification": "HoloGAN is attributed to a prior paper.",
+          "quote": "This motivates us to create new architectures ... as well as HoloGAN [27]."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CLEVR-MRT",
+          "justification": "The paper introduces the CLEVR-MRT dataset as a new Mental Rotation Test version of the CLEVR problem setup.",
+          "quote": "the three-dimensional structure of the scene is never fully exploited because the viewpoint camera never changes. We call our problem formulation and data set CLEVR-MRT, as it is a new Mental Rotation Test version of the CLEVR problem setup."
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "CLEVR: A Diagnostic Dataset for Compositional Language and Elementary Visual Reasoning",
+          "justification": "CLEVR is the basis for the new CLEVR-MRT dataset.",
+          "quote": "We use the the Compositional Language and Elementary Visual Reasoning (CLEVR) Diagnostic Dataset [18] as the starting point for our work."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The experiments use the PyTorch framework.",
+          "quote": "The pre-trained ImageNet backbone we use is the one that is pre-packaged with the PyTorch torchvision module, which is a ResNet-101 [11]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An Imperative Style, High-Performance Deep Learning Library",
+          "justification": "PyTorch is known deep learning library and was used for the experiments.",
+          "quote": "The pre-trained ImageNet backbone we use is the one that is pre-packaged with the PyTorch torchvision module, which is a ResNet-101 [11]."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1859,
+    "prompt_tokens": 18295,
+    "total_tokens": 20154
+  }
+}

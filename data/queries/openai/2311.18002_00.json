@@ -1,0 +1,158 @@
+{
+  "paper": "2311.18002.txt",
+  "words": 9232,
+  "extractions": {
+    "title": {
+      "value": "Echoes in the Noise: Posterior Samples of Faint Galaxy Surface Brightness Profiles with Score-Based Likelihoods and Priors",
+      "justification": "This is the title as given in the provided paper text.",
+      "quote": "Echoes in the Noise: Posterior Samples of Faint Galaxy Surface Brightness Profiles with Score-Based Likelihoods and Priors"
+    },
+    "description": "Examining galaxy population structures by overcoming noise and point spread function issues in astronomical images using score-based likelihood approaches and diffusion model priors for Bayesian analysis.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents and demonstrates a method for analyzing astronomical images using practical data from the Hubble Space Telescope and the James Webb Space Telescope.",
+      "quote": "Here we present a framework which combines recent advances in score-based likelihood characterization and diffusion model priors to perform a Bayesian analysis of image deconvolution."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Astroinformatics",
+        "justification": "The paper focuses on methods for improving the analysis of astronomical images through computational methods.",
+        "quote": "Here we present a framework which combines recent advances in score-based likelihood characterization and diffusion model priors to perform a Bayesian analysis of image deconvolution."
+      },
+      "aliases": [
+        "Astroinformatics"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Image Deconvolution",
+          "justification": "The paper proposes a framework specifically aimed at deconvoluting images from telescopes.",
+          "quote": "Examining the detailed structure of galaxy populations provides valuable insights into their formation and evolution mechanisms. Significant barriers to such analysis are the non-trivial noise properties of real astronomical images and the point spread function (PSF) which blurs structure."
+        },
+        "aliases": [
+          "Image Deconvolution"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "U-net",
+          "justification": "The paper states that a U-net architecture is used for learning the score of the noise distribution.",
+          "quote": "In summary, the objective function minimizes a weighted sum of Fisher divergences between the output of a neural network with a U-net architecture and the score of a Gaussian perturbation kernel, p(xt | x0 ) = N (xt | µ(t)x0 , σ 2 (t)1n×n ), both parameterized by the time variable t ∈ [0, 1] of an SDE."
+        },
+        "aliases": [
+          "U-net"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The U-net model is utilized but not introduced or contributed in this paper.",
+          "quote": "In summary, the objective function minimizes a weighted sum of Fisher divergences between the output of a neural network with a U-net architecture and the score of a Gaussian perturbation kernel, p(xt | x0 ) = N (xt | µ(t)x0 , σ 2 (t)1n×n ), both parameterized by the time variable t ∈ [0, 1] of an SDE."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The U-net model was executed as part of the proposed framework.",
+          "quote": "In summary, the objective function minimizes a weighted sum of Fisher divergences between the output of a neural network with a U-net architecture and the score of a Gaussian perturbation kernel, p(xt | x0 ) = N (xt | µ(t)x0 , σ 2 (t)1n×n ), both parameterized by the time variable t ∈ [0, 1] of an SDE."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "There is no indication that the U-net model was compared numerically to other models within the paper.",
+          "quote": "In summary, the objective function minimizes a weighted sum of Fisher divergences between the output of a neural network with a U-net architecture and the score of a Gaussian perturbation kernel, p(xt | x0 ) = N (xt | µ(t)x0 , σ 2 (t)1n×n ), both parameterized by the time variable t ∈ [0, 1] of an SDE."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "There is no explicit reference to a specific paper on U-net in the provided text.",
+          "quote": ""
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Hubble Space Telescope (HST) Data",
+          "justification": "The dataset used in this research includes minimally processed HST data.",
+          "quote": "The method, when applied to minimally processed Hubble Space Telescope (HST) data, recovers structures which have otherwise only become visible in next-generation James Webb Space Telescope (JWST) imaging."
+        },
+        "aliases": [
+          "HST Data"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The dataset is mentioned but not tied to a specific referenced paper within the provided text.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "James Webb Space Telescope (JWST) Data",
+          "justification": "The dataset used in this research includes JWST data for validating the recovered structures.",
+          "quote": "These structures are then confirmed with JWST data of the same sources, showing the effectiveness of the method to recover information that is otherwise indiscernible."
+        },
+        "aliases": [
+          "JWST Data"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The dataset is mentioned but not tied to a specific referenced paper within the provided text.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "PROBES Dataset",
+          "justification": "The PROBES dataset is used to learn priors from empirical observations of galaxies.",
+          "quote": "The PROBES dataset is a compendium of high-quality local late-type galaxies that we leverage to learn a prior from empirical observations of galaxies."
+        },
+        "aliases": [
+          "PROBES"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The Intrinsic Scatter of the Radial Acceleration Relation",
+          "justification": "This referenced paper provides details about the PROBES dataset used in the study.",
+          "quote": "The PROBES dataset is a compendium of high-quality local late-type galaxies that we leverage to learn a prior from empirical observations of galaxies. These galaxies have resolved structures... The Intrinsic Scatter of the Radial Acceleration Relation. The Astrophysical Journal, 882(1):6, September 2019."
+        }
+      },
+      {
+        "name": {
+          "value": "SKIRT TNG Dataset",
+          "justification": "The SKIRT TNG dataset is used to build prior knowledge about the morphology of faint galaxies.",
+          "quote": "The SKIRT TNG dataset is a large public collection of images spanning 0.3-5 microns made by applying dust radiative transfer post-processing to galaxies from the TNG cosmological magneto-hydrodynamical simulations over redshifts 0.1 ≤ z ≤ 0.7."
+        },
+        "aliases": [
+          "SKIRT TNG"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "IllustrisTNG in the HSC-SSP: image data release and the major role of mini mergers as drivers of asymmetry and star formation",
+          "justification": "This referenced paper provides details about the SKIRT TNG dataset used in the study.",
+          "quote": "The SKIRT TNG dataset is a large public collection of images spanning 0.3-5 microns made by applying dust radiative transfer post-processing to galaxies from the TNG cosmological magneto-hydrodynamical simulations... IllustrisTNG in the HSC-SSP: image data release and the major role of mini mergers as drivers of asymmetry and star formation."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The framework was built using PyTorch for its automatic differentiation capability.",
+          "quote": "The physical model is built with PyTorch for its automatic differentiation capability."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "PyTorch is mentioned but not tied to a specific referenced paper within the provided text.",
+          "quote": ""
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1597,
+    "prompt_tokens": 19820,
+    "total_tokens": 21417
+  }
+}

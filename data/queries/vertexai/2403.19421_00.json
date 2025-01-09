@@ -1,0 +1,189 @@
+{
+  "paper": "2403.19421.txt",
+  "words": 8478,
+  "extractions": {
+    "title": {
+      "value": "Scaling up ridge regression for brain encoding in a massive individual fMRI dataset",
+      "justification": "Extracted from the paper's title.",
+      "quote": "Scaling up ridge regression for brain encoding in a massive individual fMRI dataset"
+    },
+    "description": "The paper explores efficient parallelization techniques for brain encoding using ridge regression on large fMRI datasets, particularly the CNeuroMod Friends dataset. It benchmarks multi-threading with Intel MKL and OpenBLAS libraries, finding MKL significantly faster. The study also evaluates Dask\\'s MultiOutput regressor and proposes a \"batch\" version for enhanced performance.",
+    "type": {
+      "value": "empirical",
+      "justification": "The study involves empirical evaluation of algorithms and their performance.",
+      "quote": "This paper evaluates different parallelization techniques to reduce the training time of brain encoding with ridge regression on the CNeuroMod Friends dataset"
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "brain encoding",
+        "justification": "The primary focus is brain encoding, using fMRI data.",
+        "quote": "Brain encoding with neuroimaging data is an established analysis aimed at predicting human brain activity directly from complex stimuli features such as movie frames."
+      },
+      "aliases": [
+        "brain encoding",
+        "Brain Encoding",
+        "fMRI",
+        "neuroimaging"
+      ]
+    },
+    "sub_research_fields": [],
+    "models": [
+      {
+        "name": {
+          "value": "VGG16",
+          "justification": "The paper uses the VGG16 model, a convolutional neural network.",
+          "quote": "In this work, we used the approach of [12, 37], and applied a VGG16 model [38] pretrained for image classification to extract visual features from the movie frames."
+        },
+        "aliases": [
+          "VGG16",
+          "CNN",
+          "convolutional neural networks"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The authors use a pretrained VGG16 model, not contributing a new one.",
+          "quote": ""
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "A pretrained VGG16 model is used for feature extraction.",
+          "quote": "In this work, we used the approach of [12, 37], and applied a VGG16 model [38] pretrained for image classification to extract visual features from the movie frames."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "The authors do not explicitly compare VGG16 with other models.",
+          "quote": ""
+        },
+        "referenced_paper_title": {
+          "value": "Very deep convolutional networks for large-scale image recognition",
+          "justification": "Reference provided for VGG16.",
+          "quote": "Very deep convolutional networks for large-scale image recognition, arXiv preprint arXiv (2014)."
+        }
+      },
+      {
+        "name": {
+          "value": "ridge regression",
+          "justification": "The paper focuses on Ridge Regression as the model for brain encoding.",
+          "quote": "Ridge regression was first proposed by Hoerl and Kennard [2] as a generalization of ordinary least-square regression."
+        },
+        "aliases": [
+          "ridge regression",
+          "Ridge regression",
+          "ridge"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper focuses on optimizing the implementation of ridge regression, not introducing a novel architecture.",
+          "quote": ""
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Ridge regression is used extensively for predicting brain activity.",
+          "quote": "Ridge regression was first proposed by Hoerl and Kennard [2] as a generalization of ordinary least-square regression."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "The paper focuses on optimizing ridge regression but doesn't compare it to other models like SVM.",
+          "quote": ""
+        },
+        "referenced_paper_title": {
+          "value": "Ridge regression: applications to nonorthogonal problems",
+          "justification": "The authors reference the original paper that introduced Ridge Regression.",
+          "quote": "Ridge regression: applications to nonorthogonal problems, Technometrics 12 (1970) 69–82."
+        }
+      }
+    ],
+    "datasets": [],
+    "libraries": [
+      {
+        "name": {
+          "value": "scikit-learn",
+          "justification": "The paper extensively uses scikit-learn for implementing and parallelizing ridge regression.",
+          "quote": "and we used the scikit-learn library [26] for brain encoding, that provides efficient implementations of various machine-learning models, including ridge regression."
+        },
+        "aliases": [
+          "scikit-learn",
+          "Scikit-learn"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Scikit-learn: Machine learning in python",
+          "justification": "Reference provided for scikit-learn.",
+          "quote": "Scikit-learn: Machine learning in python, the Journal of machine Learning research 12 (2011) 2825–2830."
+        }
+      },
+      {
+        "name": {
+          "value": "Intel Math Kernel Library",
+          "justification": "The paper benchmarks Intel MKL for multi-threading in ridge regression.",
+          "quote": "In particular, the OpenBLAS and MKL libraries enable multithreaded execution of ridge regression over the CPU cores in a single machine for a faster execution time."
+        },
+        "aliases": [
+          "MKL",
+          "Intel Math Kernel Library",
+          "Intel oneAPI Math Kernel Library"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Intel math kernel library. in high-performance, Computing on the Intel® Xeon Phi™",
+          "justification": "Reference provided for Intel MKL.",
+          "quote": "Intel math kernel library. in high-performance, Computing on the Intel® Xeon Phi™ (2014) 167–188."
+        }
+      },
+      {
+        "name": {
+          "value": "OpenBLAS",
+          "justification": "OpenBLAS is benchmarked alongside MKL for multi-threading.",
+          "quote": "Two well-known BLAS libraries are Intel Math Kernel Library (MKL) [28] and OpenBLAS [27]."
+        },
+        "aliases": [
+          "OpenBLAS"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Model-driven level 3 blas performance optimization on loongson 3a processor.",
+          "justification": "Reference provided for OpenBLAS.",
+          "quote": "Model-driven level 3 blas performance optimization on loongson 3a processor., IEEE 18th international conference on parallel and distributed systems (2012) 1–18."
+        }
+      },
+      {
+        "name": {
+          "value": "Dask",
+          "justification": "Dask is used as the backend for distributed parallelism in scikit-learn.",
+          "quote": "Joblib supports multiple execution backends including single-host thread-based or process-based parallelism, and distributed parallelism using the Dask [29] or Ray [42] engines."
+        },
+        "aliases": [
+          "Dask"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Dask: Parallel computation with blocked algorithms and task scheduling",
+          "justification": "Reference provided for Dask.",
+          "quote": "Dask: Parallel computation with blocked algorithms and task scheduling, In Proceedings of the 14th python in science conferenc 130 (2015) 136."
+        }
+      },
+      {
+        "name": {
+          "value": "TensorFlow",
+          "justification": "TensorFlow is used for obtaining pretrained weights for the VGG16 model.",
+          "quote": "The VGG16 model was trained on a dataset of over 2 million images belonging to 1000 classes from the ImageNet database [39], and the weights of the models were retrieved through TensorFlow."
+        },
+        "aliases": [
+          "TensorFlow"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "No reference provided for TensorFlow.",
+          "quote": ""
+        }
+      }
+    ]
+  },
+  "usage": {
+    "cached_content_token_count": 0,
+    "candidates_token_count": 0,
+    "prompt_token_count": 0,
+    "total_token_count": 16183
+  }
+}

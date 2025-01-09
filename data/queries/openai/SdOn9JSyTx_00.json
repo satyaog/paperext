@@ -1,0 +1,124 @@
+{
+  "paper": "SdOn9JSyTx.txt",
+  "words": 11165,
+  "extractions": {
+    "title": {
+      "value": "Learning GFlowNets From Partial Episodes For Improved Convergence And Stability",
+      "justification": "The title is retrieved directly from the given paper.",
+      "quote": "Learning GFlowNets From Partial Episodes For Improved Convergence And Stability"
+    },
+    "description": "This paper introduces Subtrajectory Balance (SubTB(𝜆)), a new training objective for Generative Flow Networks (GFlowNets). SubTB(𝜆) allows learning from partial action subsequences of varying lengths, improving convergence rates and stability in complex environments with longer action sequences and sparser rewards. The paper presents empirical evidence showing that SubTB(𝜆) outperforms previous GFlowNet objectives like Trajectory Balance (TB) and Detailed Balance (DB) in both synthetic and real-world domains.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper provides empirical results demonstrating the performance improvements of SubTB(𝜆) compared to other GFlowNet training objectives. Experiments are conducted in various synthetic and real-world domains.",
+      "quote": "Experiments on two synthetic and four real-world domains support three empirical claims:"
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Reinforcement Learning",
+        "justification": "This paper presents methods inspired by reinforcement learning concepts such as the TD(𝜆) algorithm and applies them to the training of Generative Flow Networks (GFlowNets).",
+        "quote": "Inspired by the TD(𝜆) algorithm in reinforcement learning, we introduce subtrajectory balance or SubTB(𝜆), a GFlowNet training objective that can learn from partial action subsequences of varying lengths."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Probabilistic Modeling",
+          "justification": "The paper focuses on improving GFlowNets, which are used for probabilistic modeling tasks to sample discrete objects under an unnormalized target density.",
+          "quote": "Generative flow networks (GFlowNets) are a family of algorithms for training a sequential sampler of discrete objects under an unnormalized target density and have been successfully used for various probabilistic modeling tasks."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Sequence Generation",
+          "justification": "The paper includes experiments on generating sequences, such as biological sequences and molecules, highlighting its relevance to sequence generation tasks.",
+          "quote": "We consider three sequence generation tasks in which sequences are generated left to right, with each action appending one symbol from a vocabulary to a partial sequence: a synthetic task with varying sequence lengths and vocabulary sizes (§4.3.1), a practical biological sequence design task (§4.3.2), and a new protein design task with longer sequences (4.3.3)."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "GFlowNet",
+          "justification": "GFlowNets are the primary focus of the paper, and various objectives for training them, including the newly proposed SubTB(𝜆), are discussed and evaluated.",
+          "quote": "Generative flow networks (GFlowNets) are a family of algorithms for training a sequential sampler of discrete objects under an unnormalized target density and have been successfully used for various probabilistic modeling tasks."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The GFlowNet model itself is not new; however, the paper proposes a new objective function for training it, SubTB(𝜆).",
+          "quote": "We propose a new learning objective for GFlowNets, called subtrajectory balance (SubTB, or SubTB(𝜆) when its hyperparameter 𝜆 is specified)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The GFlowNet models, along with the proposed SubTB(𝜆) objective, are empirically evaluated in the paper using computational experiments.",
+          "quote": "We train GFlowNets on the 8 × 8 grid environment using SubTB(𝜆 = 0.8) and monitor various gradient metrics during training."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of GFlowNets trained with SubTB(𝜆) is numerically compared to those trained with other objectives such as Trajectory Balance (TB) and Detailed Balance (DB).",
+          "quote": "Experiments on two synthetic and four real-world domains support three empirical claims: (1) SubTB(𝜆) improves convergence of GFlowNets in previously studied environments: models trained with SubTB approach the target distribution in fewer training steps and are less sensitive to hyperparameter choices."
+        },
+        "referenced_paper_title": {
+          "value": "Flow network based generative models for non-iterative diverse candidate generation",
+          "justification": "This is one of the earlier works on GFlowNets referenced in this paper.",
+          "quote": "Generative flow networks (GFlowNets; Bengio et al., 2021a) are generative models that construct objects lying in a target space X by taking sequences of actions sampled from a learned policy."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "DBAASP v3",
+          "justification": "DBAASP v3 is used for training proxy models that provide rewards in the antimicrobial peptide generation tasks.",
+          "quote": "We take 6438 known AMP sequences and 9522 non-AMP sequences from the DBAASP database Pirtskhalava et al. (2021)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Dbaasp v3: Database of antimicrobial/cytotoxic activity and structure of peptides as a resource for development of new therapeutics",
+          "justification": "The paper references this dataset as the source of antimicrobial peptide sequences.",
+          "quote": "We take 6438 known AMP sequences and 9522 non-AMP sequences from the DBAASP database Pirtskhalava et al. (2021)."
+        }
+      },
+      {
+        "name": {
+          "value": "Sarkisyan et al. (2016) dataset",
+          "justification": "This dataset is used to train proxy reward models for the fluorescent protein generation task.",
+          "quote": "We consider the dataset of 56,086 proteins from Sarkisyan et al. (2016) processed based on Brookes et al. (2019)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Local fitness landscape of the green fluorescent protein",
+          "justification": "The dataset from Sarkisyan et al. (2016) is used for evaluating models in the fluorescent protein generation task.",
+          "quote": "Each protein is accompanied by a score quantifying its fluorescence. As with the AMP data, we keep 20% of the data as a validation set used for early-stopping. The regressor trained with the dataset is a Transformer."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Pyrosetta",
+          "justification": "Pyrosetta is used in the experiments related to protein modeling.",
+          "quote": "PyRosetta: a script-based interface for implementing molecular modeling algorithms using Rosetta."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyRosetta: a script-based interface for implementing molecular modeling algorithms using Rosetta",
+          "justification": "The library is explicitly mentioned in the paper as part of the methods used in experiments.",
+          "quote": "The energy is provided by a physics model (Rohl et al., 2004; Chaudhury et al., 2010)."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1489,
+    "prompt_tokens": 22248,
+    "total_tokens": 23737
+  }
+}

@@ -1,0 +1,132 @@
+{
+  "paper": "2305.05666.txt",
+  "words": 24814,
+  "extractions": {
+    "title": {
+      "value": "Policy Gradient Methods in the Presence of Symmetries and State Abstractions",
+      "justification": "The title is clearly stated at the beginning of the paper.",
+      "quote": "Policy Gradient Methods in the Presence of Symmetries and State Abstractions"
+    },
+    "description": "The paper introduces the concept of continuous Markov Decision Process (MDP) homomorphisms for reinforcement learning (RL) in continuous state and action spaces. It derives a policy gradient theorem on the abstract MDP and proposes actor-critic algorithms that learn policies and MDP homomorphisms simultaneously. The effectiveness of these methods is demonstrated on various tasks with symmetries, including visual control tasks, using environments from the DeepMind Control Suite.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents new algorithms and validates their effectiveness through experiments on various environments and tasks.",
+      "quote": "We empirically show that state-action abstractions learned through MDP homomorphisms provide a natural inductive bias for representation learning on challenging visual control problems, resulting in performance and sample efficiency improvements over strong baselines."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Reinforcement Learning",
+        "justification": "The paper focuses on developing and improving policy gradient methods for reinforcement learning, specifically in the presence of symmetries and state abstractions.",
+        "quote": "Reinforcement learning on high-dimensional observations relies on representation learning and abstraction for learning a simpler problem that can be solved efficiently."
+      },
+      "aliases": [
+        "RL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Representation Learning",
+          "justification": "The paper leverages state and action abstractions for policy optimization in reinforcement learning, which falls under the domain of representation learning.",
+          "quote": "Reinforcement learning on high-dimensional observations relies on representation learning and abstraction for learning a simpler problem that can be solved efficiently."
+        },
+        "aliases": [
+          "RepL"
+        ]
+      },
+      {
+        "name": {
+          "value": "Continuous Control",
+          "justification": "The paper addresses challenges and proposes solutions for reinforcement learning in continuous state and action spaces.",
+          "quote": "Our first contribution is that we extend MDP homomorphisms to the continuous setting. This is crucial if we are to use these ideas for control of dynamical systems in physical spaces, as in robotics."
+        },
+        "aliases": [
+          "ContCtrl"
+        ]
+      },
+      {
+        "name": {
+          "value": "Policy Optimization",
+          "justification": "The paper derives a new policy gradient theorem and integrates it into actor-critic algorithms, focusing on improving policy optimization.",
+          "quote": "The next significant contribution is that we derive a version of the policy gradient theorem (Sutton et al., 2000; Silver et al., 2014) that tightly integrates the MDP homomorphism in the policy optimization process."
+        },
+        "aliases": [
+          "PolOpt"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Deep Homomorphic Policy Gradient (DHPG)",
+          "justification": "The model is introduced in the paper as a key contribution and is specifically named.",
+          "quote": "Our third contribution is that we propose a deep actor-critic algorithm, referred to as the deep homomorphic policy gradient (DHPG) algorithm based on our novel theoretical results."
+        },
+        "aliases": [
+          "DHPG"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The DHPG algorithm is proposed and explained as a novel contribution in the paper.",
+          "quote": "Our third contribution is that we propose a deep actor-critic algorithm, referred to as the deep homomorphic policy gradient (DHPG) algorithm based on our novel theoretical results."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The experiments were performed on various environments, indicating that the model was executed to demonstrate its effectiveness.",
+          "quote": "Empirically, we show that stochastic DHPG is superior to deterministic DHPG in environments with continuous symmetries, as it is capable of a more powerful action abstraction."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of DHPG is compared to other baselines in empirical tests, and these comparisons are discussed throughout the paper.",
+          "quote": "Our code for DHPG and the novel environments with continuous symmetries are publicly available1 ."
+        },
+        "referenced_paper_title": {
+          "value": "Continuous MDP Homomorphisms and Homomorphic Policy Gradient",
+          "justification": "The referenced work is a previous study by Rezaei-Shoshtari et al. (2022), from which this paper extends.",
+          "quote": "Notably, compared to the prior work of Rezaei-Shoshtari et al. (2022), our theoretical and empirical contributions are not limited to deterministic policies and bijective action encoders."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "DeepMind Control Suite",
+          "justification": "The dataset is explicitly mentioned and used throughout the experiments in the paper.",
+          "quote": "We empirically show that state-action abstractions learned through MDP homomorphisms provide a natural inductive bias for representation learning on challenging visual control problems, resulting in performance and sample efficiency improvements over strong baselines. Finally, we show how to collapse an MDP when there is a group of symmetries which is also continuous. Thus, for example if a system is spherically symmetric the system is invariant under the action of the rotation group SO(3) and this is certainly not a finite group. Discrete symmetries can and do occur in continuous systems but in general one will be dealing with continuous symmetries. Additionally, to demonstrate the ability of DHPG in learning continuous symmetries, we have developed a series of environments with continuous symmetries.In summary, our contributions can be listed as:"
+        },
+        "aliases": [
+          "DM Control Suite"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "DeepMind Control Suite",
+          "justification": "The suite is created by DeepMind and is frequently referenced in reinforcement learning research.",
+          "quote": "We demonstrate the effectiveness of our method on our environments, as well as on challenging visual control tasks from the DeepMind Control Suite."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is mentioned as the deep learning framework used for implementing the models in the paper.",
+          "quote": "We implemented our method in PyTorch (Paszke et al., 2019) and results were obtained using Python v3.8.10, PyTorch v1.10.0, CUDA 11.4, and Mujoco 2.1.1 (Todorov et al., 2012) on A100 GPUs on a cloud computing service."
+        },
+        "aliases": [
+          "torch"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An imperative style, high-performance deep learning library",
+          "justification": "PyTorch is a known deep learning library, and its specific usage is referenced in this paper.",
+          "quote": "We implemented our method in PyTorch (Paszke et al., 2019) and results were obtained using Python v3.8.10, PyTorch v1.10.0, CUDA 11.4, and Mujoco 2.1.1 (Todorov et al., 2012) on A100 GPUs on a cloud computing service."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1436,
+    "prompt_tokens": 46436,
+    "total_tokens": 47872
+  }
+}

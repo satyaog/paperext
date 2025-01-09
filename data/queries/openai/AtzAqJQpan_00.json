@@ -1,0 +1,121 @@
+{
+  "paper": "AtzAqJQpan.txt",
+  "words": 7557,
+  "extractions": {
+    "title": {
+      "value": "Surrogate Minimization: An Optimization Algorithm for Training Large Neural Networks with Model Parallelism",
+      "justification": "The title is explicitly mentioned at the beginning of the paper.",
+      "quote": "Surrogate Minimization: An Optimization Algorithm for Training Large Neural Networks with Model Parallelism"
+    },
+    "description": "This paper proposes the Surrogate Minimization (SM) algorithm which is designed to optimize large, memory-intensive neural networks by distributing their layers across multiple GPUs. The algorithm efficiently minimizes a global loss by parallelizing the training using layer-wise local losses, in conjunction with GPipe for pipelining. Theoretical convergence guarantees and empirical results on MLPs demonstrate the superiority of the SM algorithm over existing methods.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper includes experimental results on MLPs and provides empirical evidence that the proposed SM algorithm outperforms existing baseline methods.",
+      "quote": "Finally, our experimental results on MLPs demonstrate that SM leads to faster convergence compared to competitive baselines."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Optimization for Machine Learning",
+        "justification": "The main focus of the paper is on developing an optimization algorithm to improve the training efficiency of large neural networks using model parallelism.",
+        "quote": "Optimizing large memory-intensive neural networks requires distributing its layers across multiple GPUs (referred to as model parallelism)."
+      },
+      "aliases": [
+        "Optimization",
+        "Machine Learning Optimization"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Model Parallelism",
+          "justification": "The paper specifically focuses on optimizing neural networks through model parallelism by distributing layers across GPUs.",
+          "quote": "Optimizing large memory-intensive neural networks requires distributing its layers across multiple GPUs (referred to as model parallelism)."
+        },
+        "aliases": [
+          "Pipeline Parallelism"
+        ]
+      },
+      {
+        "name": {
+          "value": "Neural Network Training",
+          "justification": "The focus is on training neural networks more efficiently using a new optimization algorithm.",
+          "quote": "We propose the Surrogate Minimization (SM) algorithm. SM allows for multiple parallel updates to the layer-wise parameters of a distributed neural network and consequently improves the GPU utilization of GPipe."
+        },
+        "aliases": [
+          "Deep Learning Training"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Multi-Layer Perceptrons",
+          "justification": "The paper empirically evaluates the SM algorithm using Multi-Layer Perceptrons (MLPs) on the MNIST dataset.",
+          "quote": "Finally, our experimental results on MLPs demonstrate that SM leads to faster convergence compared to competitive baselines."
+        },
+        "aliases": [
+          "MLPs"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "MLPs are a well-known type of neural network and are not introduced as a new contribution in this paper.",
+          "quote": "We compare SM with various baselines using 2, 4, and 8 layers of MLP on the MNIST [9] dataset in the deterministic setting."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The experimental results on MLPs were run on GPUs.",
+          "quote": "For the experiments involving 4 and 8 layers of MLP, we distribute the layers equally among 4 GPUs. All experiments presented here use the Nvidia Tesla V100 GPU (16 GB memory) and Intel Xeon Gold 6126 CPU (2.60GHz)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of MLPs using the SM algorithm is compared against various baselines.",
+          "quote": "Finally, our experimental results on MLPs demonstrate that SM leads to faster convergence compared to competitive baselines."
+        },
+        "referenced_paper_title": {
+          "value": "The MNIST database of handwritten digit images for machine learning research",
+          "justification": "The referenced paper for MNIST dataset in the experiments section.",
+          "quote": "All optimizers run for 300 epochs and we use torch’s GPipe Pipeline Parallelism [15] library (except for DDG [13])."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "MNIST",
+          "justification": "The MNIST dataset is used to evaluate the proposed SM algorithm on MLPs.",
+          "quote": "Under this setup, we compare SM with various baselines using 2, 4, and 8 layers of MLP on the MNIST [9] dataset in the deterministic setting."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The MNIST database of handwritten digit images for machine learning research",
+          "justification": "The referenced paper for the MNIST dataset is listed in the references section.",
+          "quote": "Li Deng. The MNIST database of handwritten digit images for machine learning research. IEEE Signal Processing Magazine, 29(6):141–142, 2012."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Torch",
+          "justification": "The Torch library (PyTorch) is used for implementing GPipe Pipeline Parallelism.",
+          "quote": "All optimizers run for 300 epochs and we use torch’s GPipe Pipeline Parallelism [15] library (except for DDG [13])."
+        },
+        "aliases": [
+          "PyTorch"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "torchgpipe: On-the-fly pipeline parallelism for training giant models",
+          "justification": "The referenced paper for Torch is listed in the references section.",
+          "quote": "Chiheon Kim, Heungsub Lee, Myungryong Jeong, Woonhyuk Baek, Boogeon Yoon, Ildoo Kim, Sungbin Lim, and Sungwoong Kim. torchgpipe: On-the-fly pipeline parallelism for training giant models. 2020."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1377,
+    "prompt_tokens": 16139,
+    "total_tokens": 17516
+  }
+}

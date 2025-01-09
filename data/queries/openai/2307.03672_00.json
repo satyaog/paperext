@@ -1,0 +1,216 @@
+{
+  "paper": "2307.03672.txt",
+  "words": 18053,
+  "extractions": {
+    "title": {
+      "value": "Simulation-Free Schrödinger Bridges via Score and Flow Matching",
+      "justification": "The title 'Simulation-Free Schrödinger Bridges via Score and Flow Matching' is clearly mentioned at the beginning of the provided text as the main heading.",
+      "quote": "Simulation-Free Schrödinger Bridges via Score and Flow Matching"
+    },
+    "description": "This paper presents a method called simulation-free score and flow matching ([SF]2 M), which solves the problem of inferring stochastic dynamics from unpaired samples taken from arbitrary source and target distributions. It generalizes the score-matching loss for diffusion models and flow matching loss for continuous normalizing flows. The method avoids the need to simulate learned stochastic processes during training, making it more efficient and accurate. The paper demonstrates the effectiveness of [SF]2 M on both synthetic and real-world datasets, particularly in the context of modeling cell dynamics from snapshot data.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper's focus on presenting a method, conducting experiments, and demonstrating its effectiveness on both synthetic and real-world datasets indicates that it is an empirical study.",
+      "quote": "We validate our proposed method on synthetic distributions and in several single-cell dynamics problems."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Machine Learning",
+        "justification": "The paper deals with the development and validation of a machine learning method for inferring stochastic dynamics, which falls under the domain of Machine Learning.",
+        "quote": "We present simulation-free score and flow matching ([SF]2 M), a simulation-free objective for inferring stochastic dynamics given unpaired samples drawn from arbitrary source and target distributions."
+      },
+      "aliases": [
+        "ML"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Generative Models",
+          "justification": "The method developed in the paper is used for generative modeling, as indicated by its application to creating stochastic dynamics models and aligning source and target distributions.",
+          "quote": "We demonstrate the effectiveness of [SF]2 M on both synthetic and real-world datasets. On synthetic data, we show that [SF]2 M performs better than related prior work and finds a better approximation to the true Schrödinger bridge."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Optimization",
+          "justification": "The paper extensively discusses the optimization techniques used to solve the Schrödinger bridge problem via optimal transport and minibatch approximations, which are areas of study within Optimization.",
+          "quote": "In this section, we review optimal transport and its application in machine learning."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Single-Cell Data Science",
+          "justification": "A significant application discussed in the paper is on modeling cell dynamics using single-cell data, classifying it under the research domain of Single-Cell Data Science.",
+          "quote": "Modeling cell dynamics is a major open problem in single-cell data science, as it is important for understanding – and eventually intervening in – cellular programs of development and disease (Lähnemann et al., 2020)."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "[SF]2 M",
+          "justification": "[SF]2 M (simulation-free score and flow matching) is the main model introduced and discussed throughout the paper.",
+          "quote": "We present simulation-free score and flow matching ([SF]2 M), a simulation-free objective for inferring stochastic dynamics given unpaired samples drawn from arbitrary source and target distributions."
+        },
+        "aliases": [
+          "simulation-free score and flow matching"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The model [SF]2 M is a contribution of the paper.",
+          "quote": "We present [SF]2 M, the first simulation-free objective for the Schrödinger bridge problem, and prove its correctness."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper includes the application and execution of the [SF]2 M model on various datasets.",
+          "quote": "We apply [SF]2 M to the problem of learning cell dynamics from snapshot data."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper includes comparisons of the [SF]2 M model with other methods.",
+          "quote": "We show that [SF]2 M performs better than related prior work and finds a better approximation to the true Schrödinger bridge."
+        },
+        "referenced_paper_title": {
+          "value": "None",
+          "justification": "There is no specific reference paper title for the [SF]2 M model as it is introduced and developed in this paper.",
+          "quote": "We present [SF]2 M, the first simulation-free objective for the Schrödinger bridge problem, and prove its correctness."
+        }
+      },
+      {
+        "name": {
+          "value": "Neural Graphical Model (NGM)",
+          "justification": "The Neural Graphical Model (NGM) is used in the experiments for Gene Regulatory Networks (GRN) inference as mentioned in the paper.",
+          "quote": "Specifically, time-varying vector fields vθ (·, ·) : [0, 1] × Rd → Rd and sθ (·, ·) : [0, 1] × Rd → Rd can be trained with the (unconditional) score and flow matching objective"
+        },
+        "aliases": [
+          "NGM"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The NGM model is used in the experiments but was not introduced as a new contribution in this paper.",
+          "quote": "For OT-CFM (i.e., [SF]2 M with σ = 0), we parameterize the NGM model with two hidden layers."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "NGM model has been executed in the experiments section on single-cell data.",
+          "quote": "To train [SF]2 M and NGM-[SF]2 M models on the bifurcating system, we use the Adam optimizer with a learning rate of 0.01 and batch size of 128 and use λ1 = 10−5."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "The NGM model itself was not the primary focus for comparison in the study.",
+          "quote": "We use the SeLU activation functions for both models. To train [SF]2 M and NGM-[SF]2 M models on the bifurcating system, we use the Adam optimizer with a learning rate of 0.01 and batch size of 128 and use λ1 = 10−5."
+        },
+        "referenced_paper_title": {
+          "value": "Neural Granger Causality",
+          "justification": "The NGM model referred to for constructing gene-gene interactions graph is based on works like 'Neural Granger Causality'.",
+          "quote": "Following from Bellot and Branson (2022) we can define:... We can then use Algorithm Alg. 1 to train the NGM model."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Embryoid Body (EB) Data",
+          "justification": "Embryoid Body (EB) Data is one of the real-world datasets used in the experiments for modeling cell dynamics.",
+          "quote": "For the cross-sectional measurements from the embryoid body (EB) data, we first embed the data in one dimension with the non-linear dimensionality reduction technique PHATE (Moon et al., 2019), which we then whiten to ensure the data is at a reasonable scale for the neural network initialization."
+        },
+        "aliases": [
+          "EB data"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Visualizing Structure and Transitions in High-Dimensional Biological Data",
+          "justification": "The referenced paper is 'Visualizing Structure and Transitions in High-Dimensional Biological Data' by Moon et al., 2019 which introduces the EB dataset.",
+          "quote": "For the cross-sectional measurements from the embryoid body (EB) data, we first embed the data in one dimension with the non-linear dimensionality reduction technique PHATE (Moon et al., 2019)."
+        }
+      },
+      {
+        "name": {
+          "value": "Multiome Dataset",
+          "justification": "Multiome dataset is one of the datasets used in the single-cell experiments described in the paper.",
+          "quote": "We preprocess this data slightly to remove patient specific effects by focusing on a single donor (donor 13176)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Multimodal Single-Cell Integration Across Time, Individuals, and Batches",
+          "justification": "The multiome dataset refers to data discussed in the paper 'Multimodal Single-Cell Integration Across Time, Individuals, and Batches' by Burkhardt et al., 2022.",
+          "quote": "We preprocess this data slightly to remove patient specific effects by focusing on a single donor (donor 13176)."
+        }
+      },
+      {
+        "name": {
+          "value": "CITE-seq Dataset",
+          "justification": "The CITE-seq dataset is used in the experiments involving single-cell dynamics.",
+          "quote": "For the Cite and Multi datasets these are sourced from the Multimodal Single-cell Integration challenge at NeurIPS 2022, a NeurIPS challenge hosted on Kaggle where the task was multi-modal prediction (Burkhardt et al., 2022)."
+        },
+        "aliases": [
+          "CITE-seq"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Multimodal Single-Cell Integration Across Time, Individuals, and Batches",
+          "justification": "Data is from the same source paper 'Multimodal Single-Cell Integration Across Time, Individuals, and Batches' by Burkhardt et al., 2022.",
+          "quote": "For the Cite and Multi datasets these are sourced from the Multimodal Single-cell Integration challenge at NeurIPS 2022, a NeurIPS challenge hosted on Kaggle where the task was multi-modal prediction (Burkhardt et al., 2022)."
+        }
+      },
+      {
+        "name": {
+          "value": "BoolODE Simulated Data",
+          "justification": "The BoolODE simulated data is used in the experiments related to gene regulatory networks.",
+          "quote": "Using BoolODE (Pratapa et al., 2020), we generate simulated single-cell gene expression trajectories for a bifurcating system and a trifurcating system."
+        },
+        "aliases": [
+          "BoolODE"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Benchmarking algorithms for gene regulatory network inference from single-cell transcriptomic data",
+          "justification": "The BoolODE simulated data refers to data discussed by Pratapa et al., 2020 in the paper 'Benchmarking algorithms for gene regulatory network inference from single-cell transcriptomic data'.",
+          "quote": "Using BoolODE (Pratapa et al., 2020), we generate simulated single-cell gene expression trajectories for a bifurcating system and a trifurcating system."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Python Optimal Transport (POT)",
+          "justification": "The POT library is used for computing optimal transport plans in the experiments.",
+          "quote": "In practice, it is enough to set k equal to 1 to get good performance in deep learning applications (Genevay et al., 2018; Damodaran et al., 2018; Fatras et al., 2021a)."
+        },
+        "aliases": [
+          "POT"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "POT: Python Optimal Transport",
+          "justification": "The referenced paper for the POT library is 'POT: Python Optimal Transport' by Flamary et al., 2021.",
+          "quote": "The discrete OT computation adds a negligible (< 1%) computational overhead in [SF]2 M.' POT (Flamary et al., 2021) package was used.'"
+        }
+      },
+      {
+        "name": {
+          "value": "PHATE",
+          "justification": "The PHATE library is used for dimensionality reduction in the preprocessing step of the Embryoid Body (EB) Data.",
+          "quote": "For the cross-sectional measurements from the embryoid body (EB) data, we first embed the data in one dimension with the non-linear dimensionality reduction technique PHATE (Moon et al., 2019), which we then whiten to ensure the data is at a reasonable scale for the neural network initialization.'"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Visualizing Structure and Transitions in High-Dimensional Biological Data",
+          "justification": "PHATE is used for processing the Embryoid Body (EB) data as described in 'Visualizing Structure and Transitions in High-Dimensional Biological Data' by Moon et al., 2019.",
+          "quote": "For the cross-sectional measurements from the embryoid body (EB) data, we first embed the data in one dimension with the non-linear dimensionality reduction technique PHATE (Moon et al., 2019), which we then whiten to ensure the data is at a reasonable scale for the neural network initialization.'"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2548,
+    "prompt_tokens": 34420,
+    "total_tokens": 36968
+  }
+}

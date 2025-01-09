@@ -1,0 +1,232 @@
+{
+  "paper": "2403.19421.txt",
+  "words": 8478,
+  "extractions": {
+    "title": {
+      "value": "Scaling up ridge regression for brain encoding in a massive individual fMRI dataset",
+      "justification": "Title given in the prompt.",
+      "quote": "Scaling up ridge regression for brain encoding in a massive individual fMRI dataset"
+    },
+    "description": "The paper evaluates various parallelization techniques to improve the training time of ridge regression for brain encoding using the CNeuroMod Friends dataset. It compares multi-threading, using libraries like Intel MKL and OpenBLAS, and distributed computing with Dask, proposing a new Batch-MultiOutput approach that showed significant speed-ups across multiple compute nodes and threads.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper evaluates different parallelization techniques and benchmark their performance.",
+      "quote": "This paper evaluates different parallelization techniques to reduce the training time of brain encoding with ridge regression on the CNeuroMod Friends dataset, one of the largest deep fMRI resource currently available."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Deep Learning",
+        "justification": "The paper deals with brain encoding, which involves predicting brain activity from complex stimuli using neural network features, a common deep learning task.",
+        "quote": "Brain encoding with neuroimaging data is an established analysis aimed at predicting human brain activity directly from complex stimuli features such as movie frames."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Neuroscience",
+          "justification": "The paper focuses on brain encoding using deep learning techniques, which falls into the intersection of deep learning and neuroscience.",
+          "quote": "Brain encoding with neuroimaging data is an established analysis aimed at predicting human brain activity directly from complex stimuli features such as movie frames."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Ridge Regression",
+          "justification": "Ridge Regression is the primary model used in this study for brain encoding.",
+          "quote": "Ridge regression is a popular prediction model for brain encoding due to its good out-of-sample generalization performance."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "Role:['contributed', 'used', 'referenced']",
+          "quote": "contributed"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
+          "quote": "training"
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "",
+          "quote": ""
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "VGG16",
+          "justification": "VGG16 is the pretrained neural network model used for feature extraction from movie frames.",
+          "quote": "We focus on a standard brain encoding pipeline using an established pretrained network (VGG16)."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Role:['contributed', 'used', 'referenced']",
+          "quote": "used"
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "ModelMode:['trained', 'fine-tuned', 'inference']",
+          "quote": "inference"
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "",
+          "quote": ""
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Friends fMRI dataset",
+          "justification": "The CNeuroMod Friends dataset is the main dataset used for the paper's experiments.",
+          "quote": "This paper evaluates different parallelization techniques to reduce the training time of brain encoding with ridge regression on the CNeuroMod Friends dataset."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "BOLD5000",
+          "justification": "The BOLD5000 dataset is referenced in the context of discussing large fMRI datasets.",
+          "quote": "In particular, datasets such as BOLD5000 [22], Natural Scenes Dataset (NSD)[23] provide so-called deep fMRI datasets, with long scanning time for a few subjects and an extensive stimuli space to properly estimate the generalization of brain encoding to different types of stimuli."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "Natural Scenes Dataset",
+          "justification": "The NSD dataset is referenced in the context of discussing large fMRI datasets.",
+          "quote": "In particular, datasets such as BOLD5000 [22], Natural Scenes Dataset (NSD)[23] provide so-called deep fMRI datasets, with long scanning time for a few subjects and an extensive stimuli space to properly estimate the generalization of brain encoding to different types of stimuli."
+        },
+        "aliases": [
+          "NSD"
+        ],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Intel Math Kernel Library",
+          "justification": "Intel MKL is used for multi-threading parallelization in the experiments.",
+          "quote": "With multi-threading, our results show that the Intel Math Kernel Library (MKL) significantly outperforms the OpenBLAS library."
+        },
+        "aliases": [
+          "MKL"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "OpenBLAS",
+          "justification": "OpenBLAS is another library used for multi-threaded parallelization in the experiments.",
+          "quote": "With multi-threading, our results show that the Intel Math Kernel Library (MKL) significantly outperforms the OpenBLAS library."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "scikit-learn",
+          "justification": "Scikit-learn is the machine learning library used for implementing Ridge regression.",
+          "quote": "and we used the scikit-learn library [26] for brain encoding, that provides efficient implementations of various machine-learning models, including ridge regression."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "Dask",
+          "justification": "Dask is used for distributed computation in the proposed Batch-MultiOutput parallelization approach.",
+          "quote": "We then evaluated the Dask multi-CPU implementation of ridge regression readily available in scikit-learn (MultiOutput), and we proposed a new “batch” version of Dask parallelization, motivated by a time complexity analysis."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "Joblib",
+          "justification": "Joblib is used as a parallelization backend for scikit-learn models.",
+          "quote": "Moreover, scikit-learn models rely on the Joblib library to interface with various parallelization backends including Dask [29]"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "Nilearn",
+          "justification": "Nilearn is used for preprocessing the fMRI data.",
+          "quote": "Note that the location of the mask was based on non-linear registration only, and did not use subject-specific segmentation of the grey matter. The exact same number of voxels (6728) was thus present in the mask for all subjects’ data, after realignment in stereotaxic space."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1258,
+    "prompt_tokens": 14162,
+    "total_tokens": 15420
+  }
+}

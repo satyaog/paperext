@@ -1,0 +1,172 @@
+{
+  "paper": "2309.08387.txt",
+  "words": 14305,
+  "extractions": {
+    "title": {
+      "value": "Efficient Graphics Representation with Differable Indirection",
+      "justification": "Title derived from the provided text.",
+      "quote": "Efficient Graphics Representation with Differable Indirection"
+    },
+    "description": "This paper introduces a novel learned primitive called differentiable indirection, which utilizes differentiable multi-scale lookup tables to substitute traditional compute and data operations in the graphics pipeline. Applications include geometric and image representation, texture mapping, shading, and radiance field representation.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper demonstrates the application of differentiable indirection on various tasks and presents empirical results, such as PSNR and performance metrics, which are typical of empirical studies.",
+      "quote": "In all cases, differentiable indirection seamlessly integrates into existing architectures, trains rapidly, and yields both versatile and efficient results."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Graphics",
+        "justification": "The primary focus of the paper is on improving efficiency in the graphics pipeline, including tasks such as shading, texture mapping, and image representation.",
+        "quote": "We introduce differentiable indirection – a novel learned primitive that employs differentiable multi-scale lookup tables as an effective substitute for traditional compute and data operations across the graphics pipeline."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Neural Rendering",
+          "justification": "The paper discusses applications like neural radiance field representation, which falls under the category of neural rendering.",
+          "quote": "We apply differentiable indirection to various tasks in the (neural) graphics pipeline, showcasing its potential as an efficient and flexible primitive for improving runtime efficiency."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Texture Mapping",
+          "justification": "The paper details the use of differentiable indirection for texture mapping and filtering, which are key components of texture mapping.",
+          "quote": "Figure 5: Comparing texture compression with and without pixel footprint."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Shading",
+          "justification": "One of the key applications of the proposed method is parametric shading using complex BRDF models like the Disney BRDF.",
+          "quote": "We use our technique on two different BRDFs - a simple isotropic GGX and a more complex Disney BRDF."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Image Compression",
+          "justification": "The paper applies differentiable indirection for compact image representations, which is a form of image compression.",
+          "quote": "We apply differentiable indirection to real-time texture and natural image (de-)compression, and filtered texture sampling."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Geometric Representation",
+          "justification": "The paper demonstrates the use of differentiable indirection for Signed Distance Field (SDF) representation, which is a geometric representation technique.",
+          "quote": "SDFs volumetrically encode the zero-level set of a spatial 3D shape function. DIn readily applies to SDF representation, compressing the volumetric information in the 3D arrays."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Differentiable Indirection",
+          "justification": "The entire paper revolves around this new learned primitive used for various graphics tasks.",
+          "quote": "We introduce differentiable indirection – a novel learned primitive that employs differentiable multi-scale lookup tables."
+        },
+        "aliases": [
+          "DIn"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The paper explicitly states that it introduces this new model.",
+          "quote": "We introduce differentiable indirection..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper mentions GPU usage for real-time applications.",
+          "quote": "...eliminating the need for specialized hardware [Nvidia 2019] acceleration in real-time applications."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares the performance of differentiable indirection against other techniques like MRHE and ASTC.",
+          "quote": "Figure 14(a): Comparing texture compression behavior for various techniques..."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "There is no referenced paper title for this model as it is a novel contribution.",
+          "quote": ""
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Multi Resolution Hash Encoding (MRHE) Dataset",
+          "justification": "This dataset is used for evaluating the MRHE technique against the proposed method.",
+          "quote": "We implement Multi Resolution Hash Encoding in our Pytorch-based framework."
+        },
+        "aliases": [
+          "Multi Resolution Hash Encoding"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The referenced paper title is not explicitly mentioned in the provided text.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "Direct Voxel Grid Dataset",
+          "justification": "This dataset is extracted from the Direct Voxel technique for the purpose of applying differentiable indirection.",
+          "quote": "We extract the pre-trained density and view-dependent radiance/RGB grid from the Direct Voxel technique."
+        },
+        "aliases": [
+          "Direct Voxel"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The referenced paper title is not explicitly mentioned in the provided text.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "Neural Shadow Mapping Dataset",
+          "justification": "Contrary to initial belief, this dataset is not referenced in the provided text for this particular paper.",
+          "quote": "Sayantan Datta, Derek Nowrouzezahrai, Christoph Schied, and Zhao Dong. 2022. Neural Shadow Mapping. In ACM SIGGRAPH 2022 Conference Proceedings."
+        },
+        "aliases": [
+          "Neural Shadow Mapping"
+        ],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Neural Shadow Mapping",
+          "justification": "This paper is referenced to illustrate the relevance of neural primitives in graphics applications.",
+          "quote": "Neural primitives are the fundamental building block of neural networks and used for a variety of purposes in graphics applications, such as appearance capture [Zhang et al. 2022], shading [Schied and Kaplanyan 2022], radiance caching [Müller et al. 2021], view-synthesis [Mildenhall et al. 2020], and shadows [Datta et al. 2022]."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Pytorch",
+          "justification": "Pytorch is used for implementing the Multi Resolution Hash Encoding in the paper.",
+          "quote": "We implement Multi Resolution Hash Encoding in our Pytorch-based framework."
+        },
+        "aliases": [
+          "PyTorch"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "There is no specific referenced paper title for this widely known library.",
+          "quote": ""
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1287,
+    "prompt_tokens": 26971,
+    "total_tokens": 28258
+  }
+}

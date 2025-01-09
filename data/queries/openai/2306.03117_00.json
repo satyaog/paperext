@@ -1,0 +1,134 @@
+{
+  "paper": "2306.03117.txt",
+  "words": 16591,
+  "extractions": {
+    "title": {
+      "value": "STR2STR: A Score-Based Framework for Zero Shot Protein Conformation Sampling",
+      "justification": "The title is explicitly stated at the beginning of the paper.",
+      "quote": "STR2STR: A Score-Based Framework for Zero Shot Protein Conformation Sampling"
+    },
+    "description": "This paper introduces STR2STR, a novel structure-to-structure translation framework designed for zero-shot conformation sampling of proteins. Leveraging an amortized denoising score matching objective trained on general crystal structures, STR2STR requires no reliance on simulation data for training or inference. STR2STR demonstrates superior performance compared to state-of-the-art generative models and is significantly faster than traditional molecular dynamics (MD) simulations.",
+    "type": {
+      "value": "empirical",
+      "justification": "This paper is based on experimental results comparing STR2STR to existing methods using benchmarking datasets and evaluating performance outcomes.",
+      "quote": "Experimental results across several benchmarking protein systems demonstrate that STR2STR outperforms previous state-of-the-art generative structure prediction models and can be orders of magnitude faster compared to long MD simulations."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computational Biology",
+        "justification": "The research primarily deals with computational techniques applied to biological problems, specifically protein conformation sampling.",
+        "quote": "Understanding the dynamical properties of proteins is crucial for elucidating the mechanism of their biological functions and regulations."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Structural Biology",
+          "justification": "The research involves studying and predicting the structure of protein molecules.",
+          "quote": "This paper introduces STR2STR, a novel structure-to-structure translation framework designed for zero-shot conformation sampling of proteins."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Machine Learning",
+          "justification": "The research utilizes machine learning techniques, specifically score-based generative models, for protein sampling.",
+          "quote": "Another increasingly appealing solution to the problem is the generative modeling of protein conformations."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Computational Chemistry",
+          "justification": "The paper discusses modeling and simulation of molecular systems, a core aspect of computational chemistry.",
+          "quote": "To address the aforementioned issues, we propose a new framework that samples general protein conformations via an equivariant structure-to-structure (STR2STR) translation."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "STR2STR",
+          "justification": "This is the main model introduced and evaluated in the paper.",
+          "quote": "Inspired by simulated annealing, we propose STR2STR, a novel structure-to-structure translation framework capable of zero-shot conformation sampling with roto-translation equivariant property."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "The model is introduced as a novel contribution in this paper.",
+          "quote": "Inspired by simulated annealing, we propose STR2STR, a novel structure-to-structure translation framework capable of zero-shot conformation sampling with roto-translation equivariant property."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model is empirically tested in the experiments, which imply computational execution.",
+          "quote": "Experimental results across several benchmarking protein systems demonstrate that STR2STR outperforms previous state-of-the-art generative structure prediction models and can be orders of magnitude faster compared to long MD simulations."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The model's performance is compared against several baselines in the paper.",
+          "quote": "Experimental results across several benchmarking protein systems demonstrate that STR2STR outperforms previous state-of-the-art generative structure prediction models."
+        },
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "STR2STR is introduced in this paper and does not reference another specific paper for its definition.",
+          "quote": "Inspired by simulated annealing, we propose STR2STR, a novel structure-to-structure translation framework capable of zero-shot conformation sampling with roto-translation equivariant property."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Fast Folding Proteins Benchmark",
+          "justification": "This dataset is explicitly used in the paper to evaluate the proposed model.",
+          "quote": "We compare the proposed method STR2STR to several recent baselines: MSA subsampling (Del Alamo et al., 2022), EigenFold (Jing et al., 2023), and idpGAN (Janson et al., 2023)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "How fast-folding proteins fold",
+          "justification": "The dataset is sourced from Lindorff-Larsen et al. (2011) as specified in the references section.",
+          "quote": "The fast folding targets with the corresponding PDB structures are listed as follows (Lindorff-Larsen et al., 2011): Chignolin (No PDB entry, reported in the supplementary of Honda et al. (2008)), Trp-cage (PDB entry 2JOF), BBA (PDB entry 1FME), Villin (PDB entry 2F4K), WW domain (PDB entry 2F21), NTL9 (PDB entry NTL9), BBL (PDB entry 2WXC), Protein B (PDB entry 1PRB), Homeodomain (PDB entry 2P6J), Protein G (PDB entry 1MIO), α3D (PDB entry 2A3D) and Lambda-repressor (PDB entry 1LMB)."
+        }
+      },
+      {
+        "name": {
+          "value": "Protein Data Bank (PDB)",
+          "justification": "This dataset is used for training the model.",
+          "quote": "To train the models, we collected the mmCIF structures from the Protein Data Bank (PDB) on June 9th, 2023 in single-chain (monomer) with experimental resolution better than 5Å."
+        },
+        "aliases": [
+          "PDB"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "The Protein Data Bank is a widely known resource and does not have a single reference paper.",
+          "quote": "To train the models, we collected the mmCIF structures from the Protein Data Bank (PDB) on June 9th, 2023 in single-chain (monomer) with experimental resolution better than 5Å."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "OpenMM",
+          "justification": "This library is explicitly mentioned as being used for simulation tasks in the paper.",
+          "quote": "After the protonation (add corresponding hydrogens to each heavy atom), the all-atom conformation is minimized by the Amber-ff14SB force fields using the OpenMM package (Eastman et al., 2017) with implicit solvent GBn2."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "OpenMM 7: Rapid development of high performance algorithms for molecular dynamics",
+          "justification": "The reference paper for OpenMM is cited in the context where OpenMM is mentioned in the research paper.",
+          "quote": "After the protonation (add corresponding hydrogens to each heavy atom), the all-atom conformation is minimized by the Amber-ff14SB force fields using the OpenMM package (Eastman et al., 2017) with implicit solvent GBn2."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1464,
+    "prompt_tokens": 29524,
+    "total_tokens": 30988
+  }
+}

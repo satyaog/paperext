@@ -1,0 +1,162 @@
+{
+  "paper": "d402b3be7f537505d711322f6705c6b5.txt",
+  "words": 10486,
+  "extractions": {
+    "title": {
+      "value": "Combining Parameter-efficient Modules for Task-level Generalisation",
+      "justification": "The title clearly mentions the integration of parameter-efficient modules for generalisation at the task level.",
+      "quote": "Combining Parameter-efficient Modules for Task-level Generalisation"
+    },
+    "description": "The paper proposes a modular design for neural networks that disentangle and recombine different facets of knowledge to generalise more systematically to new tasks. Different tasks are associated with subsets of latent skills, each corresponding to a parameter-efficient model adapter. The model jointly learns the adapters and a routing function to allocate skills to each task. The approach is evaluated on multitask reinforcement learning and few-shot fine-tuning in language models, showing improvements over fully shared, task-specific, or conditionally generated models as well as sparse mixture-of-experts models.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents experiments and evaluations to validate the effectiveness of its proposed methods.",
+      "quote": "We evaluate our latent-skill model in two main settings: 1) multitask reinforcement learning... 2) few-shot fine-tuning of language models."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Multitask Learning",
+        "justification": "The paper deals with training models on multiple tasks and enabling them to generalise to new tasks.",
+        "quote": "Task-level generalisation involves training a model on multiple tasks (in parallel or sequentially) and then performing zero-shot inference or few-shot adaptation on new tasks"
+      },
+      "aliases": [
+        "MTL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Parameter-efficient Learning",
+          "justification": "The paper specifically discusses the use of parameter-efficient adapters (e.g., SFT, LoRA).",
+          "quote": "each skill corresponds to a parameter-efficient (sparse / low-rank) model adapter"
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Reinforcement Learning",
+          "justification": "One of the settings evaluated in the paper is multitask reinforcement learning.",
+          "quote": "We evaluate our latent-skill model in two main settings: 1) multitask reinforcement learning for instruction following on 8 levels of the BabyAI platform"
+        },
+        "aliases": [
+          "RL"
+        ]
+      },
+      {
+        "name": {
+          "value": "Few-shot Learning",
+          "justification": "The paper evaluates its model in the context of few-shot fine-tuning.",
+          "quote": "2) few-shot fine-tuning of language models on 160 NLP tasks of the CrossFit benchmark"
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Natural Language Processing",
+          "justification": "The CrossFit benchmark used in the evaluation centers around NLP tasks.",
+          "quote": "...few-shot fine-tuning of language models on 160 NLP tasks of the CrossFit benchmark"
+        },
+        "aliases": [
+          "NLP"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "HyperFormer",
+          "justification": "Mentioned as a competitive baseline model.",
+          "quote": "These include models where parameters are fully shared, task-specific, or conditionally generated (HyperFormer)"
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Used as a baseline for comparison.",
+          "quote": "compared to a series of baselines. These include models... conditionally generated (HyperFormer)"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Executed as part of the empirical study.",
+          "quote": "Crucially, among information-sharing models, dual-speed S KILLED... whereas H YPER achieves performance..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Compared against the proposed S KILLED model.",
+          "quote": "we obtain higher sample efficiency and higher performance in few-shot adaptation to held-out tasks... state-of-the-art baselines for multitask learning. In the first baseline, H YPER..."
+        },
+        "referenced_paper_title": {
+          "value": "Parameter-efficient multi-task fine-tuning for transformers via shared hypernetworks",
+          "justification": "HyperFormer is the same model discussed in the mentioned reference paper.",
+          "quote": "Karimi Mahabadi et al., 2021"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "BabyAI",
+          "justification": "Used for reinforcement learning evaluation.",
+          "quote": "We evaluate our latent-skill model in two main settings: 1) multitask reinforcement learning for instruction following on 8 levels of the BabyAI platform"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "BabyAI: First steps towards grounded language learning with a human in the loop",
+          "justification": "The BabyAI platform is described and referenced.",
+          "quote": "BabyAI (Chevalier-Boisvert et al., 2019), a platform for instruction following in a simulated environment."
+        }
+      },
+      {
+        "name": {
+          "value": "CrossFit",
+          "justification": "Used for few-shot learning evaluation in NLP tasks.",
+          "quote": "2) few-shot fine-tuning of language models on 160 NLP tasks of the CrossFit benchmark"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "CrossFit: A few-shot learning challenge for cross-task generalization in NLP",
+          "justification": "The CrossFit benchmark is described and referenced.",
+          "quote": "the CrossFit benchmark (Ye et al., 2021) ."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "LoRA",
+          "justification": "Used to implement low-rank adapters for the model.",
+          "quote": "Low-Rank Adapters (LoRA; Hu et al., 2021)"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "LoRA: Low-rank adaptation of large language models",
+          "justification": "LoRA is the same method identified by the reference paper.",
+          "quote": "Low-Rank Adapters (LoRA; Hu et al., 2021)"
+        }
+      },
+      {
+        "name": {
+          "value": "Sparse Fine-Tuning (SFT)",
+          "justification": "Used to implement sparse adapters for the model.",
+          "quote": "Sparse Fine-Tuning (SFT; Ansell et al., 2022)"
+        },
+        "aliases": [
+          "SFT"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Composable sparse fine-tuning for cross-lingual transfer",
+          "justification": "SFT is the same method identified by the reference paper.",
+          "quote": "Sparse Fine-Tuning (SFT; Ansell et al., 2022)"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1238,
+    "prompt_tokens": 20487,
+    "total_tokens": 21725
+  }
+}

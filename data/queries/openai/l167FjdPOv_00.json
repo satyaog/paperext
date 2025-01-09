@@ -1,0 +1,122 @@
+{
+  "paper": "l167FjdPOv.txt",
+  "words": 7188,
+  "extractions": {
+    "title": {
+      "value": "Crystal-GFN: sampling crystals with desirable properties and constraints",
+      "justification": "The title of the paper is explicitly stated on the first page of the document.",
+      "quote": "Crystal-GFN: sampling crystals with desirable\nproperties and constraints"
+    },
+    "description": "This paper introduces Crystal-GFN, a generative model designed to sample crystal structures based on desirable structural properties such as space group, composition, and lattice parameters. The model allows for the incorporation of physical and structural constraints and can use any available predictive model of a desired physico-chemical property as an objective function. Empirical evaluations demonstrated that Crystal-GFN is capable of sampling diverse crystals with low formation energy.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper focuses on the empirical evaluation of Crystal-GFN, demonstrating its capability to sample crystal structures with low formation energy and high diversity through experiments.",
+      "quote": "Through an empirical evaluation (Section 4) of\n a Crystal-GFN trained with a predictive model of the formation energy, we demonstrate that our\n proposed method is able to sample diverse candidates with low formation energy."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Generative Models",
+        "justification": "The primary focus of the paper is on Crystal-GFN, a generative model that samples crystal structures based on structural properties and constraints.",
+        "quote": "In this\n paper, we introduce Crystal-GFN, a generative model of crystal structures that\n sequentially samples structural properties of crystalline materials"
+      },
+      "aliases": [
+        "Generative Models"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Materials Science",
+          "justification": "The paper discusses the application of generative models for accelerating material discovery, particularly in generating crystal structures with desirable properties.",
+          "quote": "Materials discovery plays a vital role in transforming numerous industries that are currently responsible for a significant fraction of the global greenhouse gas emissions."
+        },
+        "aliases": [
+          "Materials Science"
+        ]
+      },
+      {
+        "name": {
+          "value": "Machine Learning for Physical Sciences",
+          "justification": "The paper involves the application of machine learning, specifically a generative model, to solve problems in material science.",
+          "quote": "This traditional trial-and-error process is extremely costly both in terms of time and efforts, providing machine learning (ML) with an opportunity to\n greatly accelerate the generation and evaluation of promising candidates."
+        },
+        "aliases": [
+          "Machine Learning for Physical Sciences"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Crystal-GFN",
+          "justification": "The paper introduces Crystal-GFN, which is the subject of the entire study, aiming to sample crystal structures with desirable properties.",
+          "quote": "we introduce Crystal-GFN, a generative model of crystal structures that\n sequentially samples structural properties of crystalline materials"
+        },
+        "aliases": [
+          "Crystal-GFN"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The model Crystal-GFN is introduced and contributed by the authors in this paper.",
+          "quote": "In this\n paper, we introduce Crystal-GFN, a generative model of crystal structures that\n sequentially samples structural properties of crystalline materials"
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The details provided do not explicitly mention executing the model on either GPU or CPU.",
+          "quote": "We train the Crystal-GFN for 50,000 iterations,\nwhich amounts to 500,000 queries to the proxy model and about 12 hours on a CPU-only machine."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "There is no mention of Crystal-GFN being numerically compared with other models in the document.",
+          "quote": "In this paper, we have introduced a new generative model, Crystal-GFN, to sample inorganic crystal\n structures proportionally to a property of interest."
+        },
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "Crystal-GFN is a novel contribution by the authors and does not reference another paper.",
+          "quote": "N/A"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "MatBench",
+          "justification": "The MatBench dataset is used to train the proxy model that predicts the formation energy of a crystal structure.",
+          "quote": "Because the sampled crystal structure may be unknown\n or not characterised in existing data bases, its true FE may be unknown too. This is why we train a\n proxy machine learning model to predict the FE given a crystal x ∈ X , which is parameterised as the\n output of Crystal-GFN. In particular, we train a physics-informed Multi-Layer Perceptron (MLP) on\n the MatBench [6] data set."
+        },
+        "aliases": [
+          "MatBench"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Benchmarking materials property prediction methods: The MatBench test set and automatminer reference algorithm",
+          "justification": "The referenced paper titled 'Benchmarking materials property prediction methods: The MatBench test set and automatminer reference algorithm' includes the MatBench dataset used in this study.",
+          "quote": "Benchmarking materials property prediction methods: The MatBench test set and automatminer reference algorithm., 2020."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The PyTorch library is mentioned as the deep learning framework used for constructing the Crystal-GFN model.",
+          "quote": "The action space of the composition\n subspace consists of the choice of element and number of atoms, that\n is AC = {1, . . . D}×{1, . . . K}, plus the special “stop” action to finish a trajectory."
+        },
+        "aliases": [
+          "PyTorch"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An Imperative Style, High-Performance Deep Learning Library",
+          "justification": "The referential paper introducing PyTorch is cited in the study.",
+          "quote": "Paszke, A., Gross, S., Massa, F., Lerer, A., Bradbury, J., Chanan, G., ... & Chintala, S. (2019). PyTorch: An imperative style, high-performance deep learning library. In Advances in neural information processing systems (pp. 8026-8037)."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1204,
+    "prompt_tokens": 12677,
+    "total_tokens": 13881
+  }
+}

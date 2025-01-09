@@ -1,0 +1,202 @@
+{
+  "paper": "2405.09288.txt",
+  "words": 4527,
+  "extractions": {
+    "title": {
+      "value": "DeCoDEx: Confounder Detector Guidance for Improved Diffusion-based Counterfactual Explanations",
+      "justification": "This is the exact title of the paper.",
+      "quote": "DeCoDEx: Confounder Detector Guidance for Improved Diffusion-based Counterfactual Explanations"
+    },
+    "description": "This paper introduces DeCoDEx, a framework that leverages an external, pre-trained binary artifact detector to guide a diffusion-based counterfactual image generator, significantly improving explainability by steering the generation away from spurious correlations and towards causal pathology markers. The framework is demonstrated with experiments on the CheXpert dataset, showing substantial improvements in classifier performance for underrepresented groups.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents experiments and results on the CheXpert dataset to validate the proposed framework.",
+      "quote": "Experiments on the CheXpert dataset, using both synthetic artifacts and real visual artifacts (support devices), show that the proposed method successfully synthesizes the counterfactual images that change the causal pathology markers associated with Pleural Effusion while preserving or ignoring the visual artifacts."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The paper deals with image generation and classification tasks specifically within the medical imaging domain.",
+        "quote": "Deep learning classifiers are prone to latching onto dominant confounders present in a dataset rather than on the causal markers associated with the target class, leading to poor generalization and biased predictions."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Explainability",
+          "justification": "A core aspect of the paper is improving model explainability, especially through counterfactual image generation.",
+          "quote": "This paper presents DeCoDEx, an explainability framework that leverages a pre-trained classifier and detector to guide diffusion-based counterfactual synthesis towards accurate disease markers while ignoring spurious correlations."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Bias Mitigation",
+          "justification": "The goal of DeCoDEx is to mitigate biases in classifiers by focusing on causal disease markers rather than spurious correlations.",
+          "quote": "Deep learning classifiers are prone to latching onto dominant confounders present in a dataset rather than on the causal markers associated with the target class, leading to poor generalization and biased predictions."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Medical Imaging",
+          "justification": "The primary application domain of the research is medical imaging, particularly chest X-rays.",
+          "quote": "Extensive experiments are performed on the publicly available CheXpert dataset (Irvin et al., 2019), using both synthetic artifacts and real visual artifacts (support devices)."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "DeCoDEx",
+          "justification": "DeCoDEx is the primary model proposed and validated in this paper.",
+          "quote": "This paper introduces DeCoDEx, a diffusion-based (DDPM) counterfactual image generator for debiased classifier explainability in the presence of dominant and diverse visual artifacts."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "DeCoDEx is the main contribution of this paper.",
+          "quote": "This paper introduces DeCoDEx ..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model is executed as part of the experiments in this paper.",
+          "quote": "Extensive experiments are performed on the publicly available CheXpert dataset ..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares DeCoDEx with a baseline model.",
+          "quote": "Qualitative and quantitative analysis of our extensive experiments indicate that the proposed method outperforms the baseline model that does not use a detector."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "There is no reference to an external paper for DeCoDEx as it is introduced in this paper.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "Empirical Risk Minimization (ERM)",
+          "justification": "ERM is used as a baseline optimization method in the experiments.",
+          "quote": "We use the standard Empirical Risk Minimization (ERM) (Sagawa et al., 2020) as the optimization method."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "ERM is not introduced in this paper but is used as a baseline.",
+          "quote": "We use the standard Empirical Risk Minimization (ERM) (Sagawa et al., 2020) as the optimization method."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "ERM is executed as part of the experimental comparison.",
+          "quote": "We use the standard Empirical Risk Minimization (ERM) (Sagawa et al., 2020) as the optimization method."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "ERM is used as a comparative baseline in the experiments.",
+          "quote": "We use the standard Empirical Risk Minimization (ERM) (Sagawa et al., 2020) as the optimization method."
+        },
+        "referenced_paper_title": {
+          "value": "Distributionally Robust Neural Networks for Group Shifts: On the Importance of Regularization for Worst-Case Generalization",
+          "justification": "The referenced paper is cited in the context of using ERM.",
+          "quote": "We use the standard Empirical Risk Minimization (ERM) (Sagawa et al., 2020) as the optimization method."
+        }
+      },
+      {
+        "name": {
+          "value": "Group Distributionally Robust Optimization (Group-DRO)",
+          "justification": "Group-DRO is used as a comparative model in the experiments.",
+          "quote": "An analysis showing the performance of the detector via counterfactual image generation is discussed in Appendix B."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Group-DRO is not a contribution of this paper but is used for comparison.",
+          "quote": "The results showed improvement for minority subgroups, and classification based on disease-specific features. However, debiasing techniques have a number of known drawbacks, including improved fairness at the expense of a reduction in the performance in the majority subgroup."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Group-DRO is executed as part of the experimental setup.",
+          "quote": "The results showed improvement for minority subgroups, and classification based on disease-specific features. However, debiasing techniques have a number of known drawbacks, including improved fairness at the expense of a reduction in the performance in the majority subgroup."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Group-DRO is compared against other models in the paper, including DeCoDEx.",
+          "quote": "The results showed improvement for minority subgroups, and classification based on disease-specific features."
+        },
+        "referenced_paper_title": {
+          "value": "Distributionally Robust Neural Networks for Group Shifts: On the Importance of Regularization for Worst-Case Generalization",
+          "justification": "The referenced paper is cited in the context of using Group-DRO.",
+          "quote": "The results showed improvement for minority subgroups, and classification based on disease-specific features."
+        }
+      },
+      {
+        "name": {
+          "value": "DenseNet-121",
+          "justification": "DenseNet-121 is used as the architecture for training the classifiers and detectors in the study.",
+          "quote": "The DenseNet-121 (Huang et al., 2017) architecture is used to train the classifier and detector."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "DenseNet-121 is not a contribution of this paper but is used as a tool in the experiments.",
+          "quote": "The DenseNet-121 (Huang et al., 2017) architecture is used to train the classifier and detector."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "DenseNet-121 is trained and used for the experiments in this paper.",
+          "quote": "The DenseNet-121 (Huang et al., 2017) architecture is used to train the classifier and detector."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "DenseNet-121 itself is not compared; it is used as a part of the models being evaluated.",
+          "quote": "The DenseNet-121 (Huang et al., 2017) architecture is used to train the classifier and detector."
+        },
+        "referenced_paper_title": {
+          "value": "Densely Connected Convolutional Networks",
+          "justification": "The referenced paper is cited in the context of using DenseNet-121.",
+          "quote": "The DenseNet-121 (Huang et al., 2017) architecture is used to train the classifier and detector."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CheXpert",
+          "justification": "The CheXpert dataset is used for experiments in this paper.",
+          "quote": "Extensive experiments are performed on the publicly available CheXpert dataset (Irvin et al., 2019), using both synthetic artifacts and real visual artifacts (support devices)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "CheXpert: A large chest radiograph dataset with uncertainty labels and expert comparison",
+          "justification": "The referenced paper is cited in the context of using the CheXpert dataset.",
+          "quote": "Extensive experiments are performed on the publicly available CheXpert dataset (Irvin et al., 2019), using both synthetic artifacts and real visual artifacts (support devices)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The paper mentions making their code publicly available, which suggests they used common deep learning libraries, likely including PyTorch.",
+          "quote": "The code is made publicly available at https://github.com/NimaFathi/DeCoDEx."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The paper does not reference a specific paper for PyTorch.",
+          "quote": "The code is made publicly available at https://github.com/NimaFathi/DeCoDEx."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1970,
+    "prompt_tokens": 9015,
+    "total_tokens": 10985
+  }
+}

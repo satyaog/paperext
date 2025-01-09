@@ -1,0 +1,281 @@
+{
+  "paper": "2307.08863.txt",
+  "words": 9343,
+  "extractions": {
+    "title": {
+      "value": "M ETA -VALUE L EARNING : A G ENERAL F RAMEWORK FOR L EARNING WITH L EARNING AWARENESS",
+      "justification": "This is the title of the paper.",
+      "quote": "M ETA -VALUE L EARNING : A G ENERAL F RAMEWORK FOR L EARNING WITH L EARNING AWARENESS"
+    },
+    "description": "The paper proposes to learn long-term prospects as measured by the meta-value, a discounted sum over the returns of future optimization iterates. It uses a form of Q-learning applied to the meta-game of optimization, avoiding the need to represent the continuous action space of policy updates. The method, MeVa, is evaluated on repeated matrix games, including the Iterated Prisoner’s Dilemma, Iterated Matching Pennies, and Chicken games. It is shown to exhibit opponent-shaping behavior, including ZD-extortion and dynamical exploitation.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper proposes a new method and evaluates it empirically.",
+      "quote": "We demonstrate the importance of looking far ahead in §5.1, and show qualitatively how the gradient of the meta-value leads to the Pareto-efficient solution regardless of initialization."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Multi-agent reinforcement learning",
+        "justification": "The paper studies multi-agent reinforcement learning in the context of game theory.",
+        "quote": "Multi-agent reinforcement learning (Busoniu et al., 2008) has found success in two-player zero-sum games (Mnih et al., 2015; Silver et al., 2017), cooperative settings (Lauer, 2000; Matignon et al.,\\n2007; Foerster et al., 2018b; Panait & Luke, 2005), and team-based mixed settings (Lowe et al., 2017)."
+      },
+      "aliases": [
+        "Multi-agent reinforcement learning"
+      ]
+    },
+    "sub_research_fields": [],
+    "models": [
+      {
+        "name": {
+          "value": "LOLA",
+          "justification": "The paper referrs to the model as LOLA.",
+          "quote": "LOLA (Foerster et al., 2018a) accounts for this by differentiating through one step of optimization."
+        },
+        "aliases": [
+          "LOLA",
+          "Learning with Opponent-Learning Awareness"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The authors did not contribute to LOLA.",
+          "quote": "We take inspiration from the recent work Learning with Opponent-Learning Awareness (LOLA Foerster et al. (2018a;c)), the first general learning algorithm to find tit-for-tat on IPD."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The authors execute LOLA for comparison.",
+          "quote": "We analyze the behavior of our method on a toy game and compare to prior work on repeated matrix games."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares MeVa to LOLA and shows that MeVa outperforms it.",
+          "quote": "Our proposal improves on LOLA in two respects."
+        },
+        "referenced_paper_title": {
+          "value": "Learning with opponent-learning awareness",
+          "justification": "This is the paper referenced when mentioning LOLA.",
+          "quote": "Learning with opponent-learning awareness. International Conference on Autonomous Agents and Multiagent Systems, 2018a"
+        }
+      },
+      {
+        "name": {
+          "value": "HOLA",
+          "justification": "The paper refers to the model as HOLA, short for Higher-Order LOLA.",
+          "quote": "Foerster et al. (2018a) also proposed Higher-Order LOLA (HOLA), where HOLA0 assumes opponents are fixed, HOLA1 assumes opponents are naive learners, HOLA2 assumes opponents use LOLA, and so on."
+        },
+        "aliases": [
+          "HOLA",
+          "Higher-Order LOLA"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The authors did not contribute to HOLA.",
+          "quote": "Foerster et al. (2018a) also proposed Higher-Order LOLA (HOLA), where HOLA0 assumes opponents are fixed, HOLA1 assumes opponents are naive learners, HOLA2 assumes opponents use LOLA, and so on."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The authors execute HOLA for comparison.",
+          "quote": "We analyze the behavior of our method on a toy game and compare to prior work on repeated matrix games."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares MeVa to HOLA.",
+          "quote": "We found HOLA3 to be significantly worse than HOLA2 and did not pursue that direction further."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The paper does not reference a specific paper for HOLA.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "COLA",
+          "justification": "The paper refers to the model as COLA.",
+          "quote": "COLA (Willi et al., 2022) solves such an implicit equation in the case where only the opponents are extrapolated, but the approach is generally applicable."
+        },
+        "aliases": [
+          "COLA"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The authors mention their own implementation of COLA.",
+          "quote": "COLA (our implementation) makes significant improvements around the edges and around the origin, but overshoots B as α increases."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The authors execute COLA for comparison.",
+          "quote": "We analyze the behavior of our method on a toy game and compare to prior work on repeated matrix games."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares MeVa to COLA.",
+          "quote": "COLA (our implementation) makes significant improvements around the edges and around the origin, but overshoots B as α increases."
+        },
+        "referenced_paper_title": {
+          "value": "Cola: consistent learning with opponent-learning awareness",
+          "justification": "This is the paper referenced when mentioning COLA.",
+          "quote": "Cola: consistent learning with opponent-learning awareness. In International Conference on Machine Learning, 2022."
+        }
+      },
+      {
+        "name": {
+          "value": "Meta-PG",
+          "justification": "The authors refer to the model as Meta-PG.",
+          "quote": "Meta-PG (Al-Shedivat et al., 2018) was the first to consider such a meta-game, applying policy gradients to find initializations xi that maximize Viπ , with π assumed to be naive learning on f ."
+        },
+        "aliases": [
+          "Meta-PG"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The authors did not contribute to Meta-PG.",
+          "quote": "Meta-PG (Al-Shedivat et al., 2018) was the first to consider such a meta-game, applying policy gradients to find initializations xi that maximize Viπ , with π assumed to be naive learning on f ."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The paper does not execute Meta-PG.",
+          "quote": ""
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The authors mention that unlike Meta-PG, their approach is based on value learning.",
+          "quote": "Unlike prior work, our approach is based on value learning and does not require policy gradients anywhere."
+        },
+        "referenced_paper_title": {
+          "value": "Continuous adaptation via meta-learning in nonstationary and competitive environments",
+          "justification": "This is the paper referenced when mentioning Meta-PG.",
+          "quote": "Continuous adaptation via meta-learning in nonstationary and competitive environments. In International Conference on Learning Representations, 2018."
+        }
+      },
+      {
+        "name": {
+          "value": "Meta-MAPG",
+          "justification": "The authors refer to the model as Meta-MAPG.",
+          "quote": "Meta-MAPG (Kim et al., 2021) tailor Meta-PG to multi-agent learning, taking the learning process of other agents into account."
+        },
+        "aliases": [
+          "Meta-MAPG"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The authors did not contribute to Meta-MAPG.",
+          "quote": "Meta-MAPG (Kim et al., 2021) tailor Meta-PG to multi-agent learning, taking the learning process of other agents into account."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The paper does not execute Meta-MAPG.",
+          "quote": ""
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The authors mention that unlike Meta-MAPG, their approach is based on value learning.",
+          "quote": "Unlike prior work, our approach is based on value learning and does not require policy gradients anywhere."
+        },
+        "referenced_paper_title": {
+          "value": "A policy gradient algorithm for learning to learn in multiagent reinforcement learning",
+          "justification": "This is the paper referenced when mentioning Meta-MAPG.",
+          "quote": "A policy gradient algorithm for learning to learn in multiagent reinforcement learning. In International Conference on Machine Learning, 2021."
+        }
+      },
+      {
+        "name": {
+          "value": "M-FOS",
+          "justification": "The authors refer to the model as M-FOS.",
+          "quote": "M-FOS (Lu et al., 2022) considers a partially observable meta-game, thus allowing for the scenario in which opponent policies are not directly observable."
+        },
+        "aliases": [
+          "M-FOS"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The authors did not contribute to M-FOS.",
+          "quote": "M-FOS (Lu et al., 2022) considers a partially observable meta-game, thus allowing for the scenario in which opponent policies are not directly observable."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The authors execute M-FOS for comparison.",
+          "quote": "We evaluate our method on several repeated matrix games by going head-to-head with naive learners, LOLA and M-MAML."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The authors compare their model, MeVa, to M-FOS.",
+          "quote": "MeVa’s opponent-shaping capabilities are similar to those of M-FOS (Lu et al., 2022)."
+        },
+        "referenced_paper_title": {
+          "value": "Model-free opponent shaping",
+          "justification": "This is the paper referenced when mentioning M-FOS.",
+          "quote": "Model-free opponent shaping. In International Conference on Machine Learning, 2022."
+        }
+      },
+      {
+        "name": {
+          "value": "M-MAML",
+          "justification": "The authors refer to the model as M-MAML.",
+          "quote": "M-MAML is a variant of MetaMAPG due to Lu et al. (2022) that uses exact gradients."
+        },
+        "aliases": [
+          "M-MAML"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The authors did not contribute to M-MAML, but built upon it.",
+          "quote": "M-MAML is a variant of MetaMAPG due to Lu et al. (2022) that uses exact gradients."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The authors execute M-MAML for comparison.",
+          "quote": "We evaluate our method on several repeated matrix games by going head-to-head with naive learners, LOLA and M-MAML."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares MeVa to M-MAML, a variant of Meta-MAPG.",
+          "quote": "We evaluate our method on several repeated matrix games by going head-to-head with naive learners, LOLA and M-MAML."
+        },
+        "referenced_paper_title": {
+          "value": "Model-free opponent shaping",
+          "justification": "This is the paper referenced when mentioning M-MAML.",
+          "quote": "Model-free opponent shaping. In International Conference on Machine Learning, 2022."
+        }
+      },
+      {
+        "name": {
+          "value": "MeVa",
+          "justification": "The paper refers to the model as MeVa, short for Meta-Value Learning.",
+          "quote": "We have introduced Meta-Value Learning (MeVa), a naturally consistent and far-sighted approach to learning with learning awareness."
+        },
+        "aliases": [
+          "MeVa",
+          "Meta-Value Learning"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "MeVa is the method proposed in this paper.",
+          "quote": "We have introduced Meta-Value Learning (MeVa), a naturally consistent and far-sighted approach to learning with learning awareness."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The authors introduce and experiment with MeVa.",
+          "quote": "We analyze the behavior of our method on a toy game and compare to prior work on repeated matrix games."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares MeVa to several other methods.",
+          "quote": "We analyze the behavior of our method on a toy game and compare to prior work on repeated matrix games."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The paper does not reference another paper for MeVa.",
+          "quote": ""
+        }
+      }
+    ],
+    "datasets": [],
+    "libraries": []
+  },
+  "usage": {
+    "cached_content_token_count": 0,
+    "candidates_token_count": 0,
+    "prompt_token_count": 0,
+    "total_token_count": 18568
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "paper": "2404.09339.txt",
+  "words": 12524,
+  "extractions": {
+    "title": {
+      "value": "Towards Practical Tool Usage for Continually Learning LLMs",
+      "justification": "The title 'Towards Practical Tool Usage for Continually Learning LLMs' clearly identifies the focus of the research, which is on the utilization of tools to enhance continual learning in large language models.",
+      "quote": "'Towards Practical Tool Usage for Continually Learning LLMs' clearly identifies the focus of the research, which is on the utilization of tools to enhance continual learning in large language models."
+    },
+    "description": "This paper explores the integration of tools to aid in the continual learning of large language models (LLMs). It proposes synthetic and realistic benchmarks to evaluate how LLMs adapt to new tasks while retaining knowledge from previous tasks. The results show that while scaling model size alone is insufficient for continual learning, the use of tools combined with replay methods significantly enhances the adaptation and retention capabilities of LLMs.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves the development of synthetic benchmarks and the aggregation of existing NLP tasks for practical testing scenarios. It also presents experimental results that demonstrate the impact of different techniques on the performance of LLMs, indicating empirical research.",
+      "quote": "To verify this, we develop a synthetic benchmark and follow this by aggregating existing NLP tasks to form a more realistic testing scenario. While we demonstrate scaling model size is not a solution, regardless of tool usage, continual learning techniques can enable tool LLMs to both adapt faster while forgetting less, highlighting their potential as continual learners."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The research is centered around improving large language models, which are a key focus in the field of Natural Language Processing (NLP).",
+        "quote": "Large language models (LLMs) show an innate skill for solving language based tasks. ... Tool use helps by offloading work to systems ... better suited for continual learning (CL) ..."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Continual Learning",
+          "justification": "The paper specifically focuses on the continual learning aspect of NLP models, investigating how LLMs can retain and update their knowledge over time.",
+          "quote": "the LLMs have to adapt to make its generated texts relevant. ... continual learning techniques can enable tool LLMs to both adapt faster while forgetting less."
+        },
+        "aliases": [
+          "CL"
+        ]
+      },
+      {
+        "name": {
+          "value": "Tool-Augmented Learning",
+          "justification": "The study explores how tool usage can assist LLMs in continual learning processes, making it a sub-field of Tool-Augmented Learning.",
+          "quote": "Tool-augmented LLMs address this by learning to manipulate specialized tools to handle the knowledge-based computations."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "OPT (Zhang et al., 2022)",
+          "justification": "The paper uses the OPT family of models in its experiments.",
+          "quote": "Model: We use causal Transformer-based language models in a text-generation setup, in particular, the OPT (Zhang et al., 2022) family of pre-trained LLMs up to 13B parameters."
+        },
+        "aliases": [
+          "OPT"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The OPT model family is not introduced by this paper, but is used as a framework for experiments.",
+          "quote": "We use causal Transformer-based language models in a text-generation setup, in particular, the OPT (Zhang et al., 2022) family of pre-trained LLMs up to 13B parameters."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The models are executed on GPUs for the experiments as mentioned.",
+          "quote": "For the experiments in this study, we exclusively use a server of 4 NVIDIA V100-32GB GPUs."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares the performance of the OPT model with and without tool usage.",
+          "quote": "The paper compares the performance of the OPT model with and without tool usage."
+        },
+        "referenced_paper_title": {
+          "value": "OPT: Open Pretrained Transformer Language Models",
+          "justification": "This is the reference paper where the OPT model was introduced.",
+          "quote": "in particular, the OPT (Zhang et al., 2022) family of pre-trained LLMs up to 13B parameters."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Toy Arithmetic Benchmark",
+          "justification": "The Toy Arithmetic Benchmark is specifically created and used in the experiments to test the continual learning capabilities of LLMs with tool usage.",
+          "quote": "To verify this, we develop a synthetic benchmark and follow this by aggregating existing NLP tasks to form a more realistic testing scenario."
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "Towards Practical Tool Usage for Continually Learning LLMs",
+          "justification": "This paper is the source of the contributed dataset.",
+          "quote": "We propose a synthetic arithmetic dataset with Easy and Difficult splits, and benchmark LLMs of size 125M-13B on using the tools in a task of continual API learning."
+        }
+      },
+      {
+        "name": {
+          "value": "Advanced Arithmetic Benchmark",
+          "justification": "The Advanced Arithmetic Benchmark expands on the Toy Arithmetic Benchmark and is used to further test the models on more complex tasks.",
+          "quote": "We add difficulty through expanding input and output space along with adding ambiguous templates. To expand the input space, we create additional functions and templates for existing functions which must be learned to properly use the tools."
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "Towards Practical Tool Usage for Continually Learning LLMs",
+          "justification": "This paper is the source of this contributed dataset.",
+          "quote": "We add difficulty through expanding input and output space along with adding ambiguous templates."
+        }
+      },
+      {
+        "name": {
+          "value": "GLUE Benchmark",
+          "justification": "The GLUE Benchmark is used as a realistic testing scenario for evaluating continual learning capabilities in LLMs.",
+          "quote": "We use a subset of tasks from the GLUE benchmark (Wang et al., 2019a), in particular MNLI, QQP, SST-2 and CoLA."
+        },
+        "aliases": [
+          "GLUE"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "GLUE: A Multi-Task Benchmark and Analysis Platform for Natural Language Understanding",
+          "justification": "This provides the source reference for the GLUE Benchmark.",
+          "quote": "We use a subset of tasks from the GLUE benchmark (Wang et al., 2019a), in particular MNLI, QQP, SST-2 and CoLA."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Transformers",
+          "justification": "The Transformers library is used for implementing the language models and running experiments.",
+          "quote": "from transformers import pipeline"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Transformers: State-of-the-Art Natural Language Processing",
+          "justification": "This is the reference for the Transformers library used in the experiments.",
+          "quote": "from transformers import pipeline"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1400,
+    "prompt_tokens": 25270,
+    "total_tokens": 26670
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "paper": "2311.07687.txt",
+  "words": 7382,
+  "extractions": {
+    "title": {
+      "value": "Language Model-In-The-Loop: Data Optimal Approach to Learn-To-Recommend Actions in Text Games",
+      "justification": "The title is clearly mentioned at the beginning of the paper.",
+      "quote": "Language Model-In-The-Loop: Data Optimal Approach to Learn-To-Recommend Actions in Text Games"
+    },
+    "description": "This paper explores updating Large Language Models (LLMs) used for candidate action recommendations during the learning of text-based games. The goal is to reduce reliance on costly human-annotated gameplays by using carefully selected in-game transitions for training the LLMs.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents experimental results from using different methods to train LLMs during gameplay to study their impact on performance and data efficiency.",
+      "quote": "In this work, we explore and evaluate updating LLM used for candidate recommendation during the learning of the text based game as well to mitigate the reliance on the human annotated gameplays, which are costly to acquire. We observe that by updating the LLM during learning using carefully selected in-game transitions, we can reduce the dependency on using human annotated game plays for fine-tuning the LLMs. We conducted further analysis to study the transferability of the updated LLMs and observed that transferring in-game trained models to other games did not result in a consistent transfer."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The primary focus of the paper is on leveraging and updating Large Language Models (LLMs) for tasks within text-based games, which is a subfield of Natural Language Processing (NLP).",
+        "quote": "Large Language Models (LLMs) have demonstrated superior performance in language understanding benchmarks."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Reinforcement Learning",
+          "justification": "The paper discusses using LLMs within reinforcement learning environments to recommend actions based on game states.",
+          "quote": "Training decision making agents over textual information for playing text-based games (Hausknecht et al., 2020; Côté et al., 2018) has been a recent usecase for LLM."
+        },
+        "aliases": [
+          "RL",
+          "Reinforcement Learning in NLP"
+        ]
+      },
+      {
+        "name": {
+          "value": "Deep Reinforcement Learning",
+          "justification": "The paper describes the use of deep reinforcement learning techniques, namely DRRN, in conjunction with LLMs to play text-based games.",
+          "quote": "A popular deep RL method used in text-based games is the Deep Reinforcement Relevance Network (DRRN) (He et al., 2016)."
+        },
+        "aliases": [
+          "DRL"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "GPT-2",
+          "justification": "The paper frequently mentions using GPT-2 for action candidate recommendations in text-based games and further adaptation with in-game data.",
+          "quote": "CALM, a popular approach, leverages linguistic priors of LLMs—GPT-2—for action candidate recommendations to improve the performance in text games in Jericho without environment-provided actions."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "GPT-2 is used in the context of this paper but is not a novel contribution of it. It was developed in prior research by OpenAI.",
+          "quote": "Yao et al. (2020) used GPT-2 (Radford et al., 2018b) to generate candidate actions for the decision making DRRN module (He et al., 2016) in Jericho benchmark of text based games."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper involves practical experiments using GPT-2 for recommending actions in text games, implying that the model was executed as part of the study.",
+          "quote": "The LM-in-the-Loop does not always transfer to other games."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares the performance of the GPT-2 model adapted with in-game transitions against models adapted with human-annotated gameplay.",
+          "quote": "Toward that, we explore LM-in-the-Loop by building over the setup in Yao et al. (2020) by training GPT-2 using in-game generated transitions. Further, we analyze such a set up along the metrics of: (1) Improvement in performance, (2) Acceleration in convergence, (3) Reliance on human annotated transitions, (4) Replacing GPT-2 as a policy network, (5) comparing reward, state based transitions selection for LM training, and (6) Generalization of LM-in-the-Loop trained LM to other games."
+        },
+        "referenced_paper_title": {
+          "value": "Language models are unsupervised multitask learners",
+          "justification": "The referenced paper for GPT-2 is by Radford et al. (2018), which presents GPT-2 as an unsupervised multitask learner.",
+          "quote": "Yao et al. (2020) used GPT-2 (Radford et al., 2018b) to generate candidate actions for the decision making DRRN module (He et al., 2016) in Jericho benchmark of text based games."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Jericho",
+          "justification": "Jericho is referred to as the benchmark environment used to evaluate the performance of LMs in text-based game scenarios.",
+          "quote": "Jericho (Hausknecht et al., 2020) is a learning environment that supports 32 human-written interactive fiction games."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Interactive fiction games: A colossal adventure",
+          "justification": "The Jericho learning environment is detailed in Hausknecht et al.'s paper on interactive fiction games.",
+          "quote": "Jericho (Hausknecht et al., 2020) is a learning environment that supports 32 human-written interactive fiction games."
+        }
+      },
+      {
+        "name": {
+          "value": "ClubFloyd",
+          "justification": "ClubFloyd is mentioned as the dataset of human gameplay used to adapt the GPT-2 model for action recommendations.",
+          "quote": "Yao et al. (2020) make use of linguistic priors in LLMs to prune the combinatorially large action space. The authors adapt GPT-2 for the task with a corpus of human gameplay on similar games—ClubFloyd."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Keep CALM and explore: Language models for action generation in text-based games",
+          "justification": "The referenced paper for the ClubFloyd dataset is by Yao et al. (2020), which discusses its use for adapting GPT-2 for action recommendation in text games.",
+          "quote": "Yao et al. (2020) make use of linguistic priors in LLMs to prune the combinatorially large action space. The authors adapt GPT-2 for the task with a corpus of human gameplay on similar games—ClubFloyd."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is specifically used for code implementation in the study.",
+          "quote": "We used PyTorch for the code implementation and Huggingface to load pre-trained language models."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "There is no specific referenced paper title provided for PyTorch, but its use is still clearly stated.",
+          "quote": "We used PyTorch for the code implementation and Huggingface to load pre-trained language models."
+        }
+      },
+      {
+        "name": {
+          "value": "Huggingface",
+          "justification": "Huggingface is used to load pre-trained language models in the study.",
+          "quote": "We used PyTorch for the code implementation and Huggingface to load pre-trained language models."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "There is no specific referenced paper title provided for Huggingface, but its use is clearly stated.",
+          "quote": "We used PyTorch for the code implementation and Huggingface to load pre-trained language models."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1612,
+    "prompt_tokens": 14083,
+    "total_tokens": 15695
+  }
+}

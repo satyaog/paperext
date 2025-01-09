@@ -1,0 +1,166 @@
+{
+  "paper": "2210.05519.txt",
+  "words": 9762,
+  "extractions": {
+    "title": {
+      "value": "Robust and Controllable Object-Centric Learning through Energy-based Models",
+      "justification": "Title is at the beginning of the document and matches the one provided by the user.",
+      "quote": "ROBUST AND CONTROLLABLE OBJECT-CENTRIC LEARNING THROUGH ENERGY-BASED MODELS"
+    },
+    "description": "This paper introduces EGO, an energy-based model for learning object-centric representations from visual scenes. The model uses vanilla attention blocks and gradient-based MCMC methods to infer object-centric latent variables. It is shown to be effective in segmentation accuracy and robust against distribution shifts, and can be used for controllable scene generation and manipulation.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents empirical evaluations and results demonstrating the effectiveness of the proposed model across several benchmarks and tasks.",
+      "quote": "We empirically demonstrate that EGO can achieve state-of-the-art performance on various unsupervised object discovery tasks and excels at generalizing to OOD scenes."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The research focuses on understanding and decomposing visual scenes to learn object-centric representations, a key area in Computer Vision.",
+        "quote": "Developing artificial agents capable of decomposing complex scenes into discrete objects can be a crucial step for many applications in robotics, vision, reasoning, and planning."
+      },
+      "aliases": [
+        "CV"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Object Detection",
+          "justification": "The paper deals with unsupervised object discovery and decomposition of scenes into objects, which is central to Object Detection.",
+          "quote": "To test how our model generalizes when more objects are present in the scene (compared to the training data), we increase the number of objects at test time."
+        },
+        "aliases": [
+          "Object Recognition"
+        ]
+      },
+      {
+        "name": {
+          "value": "Generative Models",
+          "justification": "The paper proposes an energy-based model that generates representations for downstream tasks such as scene manipulation and controllable generation.",
+          "quote": "We also show that we can reuse the learned energy functions for controllable scene generation and manipulation, which enables systematic compositional generalization to novel scenes."
+        },
+        "aliases": [
+          "Generative Adversarial Networks",
+          "GANs"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "EGO (EnerGy-based Object-centric learning)",
+          "justification": "It is the main model proposed and discussed throughout the paper.",
+          "quote": "In this work, we introduce EGO (EnerGy-based Object-centric learning), a conceptually simple yet effective approach to learning object-centric representations without the need for specially-tailored neural network architectures or excessive generative modeling (typically parametric) assumptions."
+        },
+        "aliases": [
+          "EGO"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The paper introduces and proposes EGO as a novel model for object-centric learning.",
+          "quote": "In this work, we introduce EGO (EnerGy-based Object-centric learning), a conceptually simple yet effective approach to learning object-centric representations."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper details the experimental evaluations and implementations of EGO, implying that it was executed.",
+          "quote": "We train all models with batch size 128 using the Adam optimizer with a learning rate 0.0002 for 500K steps."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "EGO is compared to several state-of-the-art models in terms of its segmentation performance and robustness.",
+          "quote": "We compare our model against a variety of baseline methods, including Slot Attention (Locatello et al., 2020), IODINE (Greff et al., 2019), and MONet (Burgess et al., 2019)."
+        },
+        "referenced_paper_title": {
+          "value": "Attention is All You Need",
+          "justification": "The attention mechanism which is integral to EGO refers to the Transformer architecture proposed in 'Attention is All You Need'.",
+          "quote": "We use vanilla attention blocks (Vaswani et al., 2017), such as cross-attention and self-attention, to build up these differentiable mappings."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CLEVR",
+          "justification": "CLEVR is used for the task of unsupervised object discovery.",
+          "quote": "We use the CLEVR dataset from the Multi-Object Datasets library."
+        },
+        "aliases": [
+          "CLEVR-6"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "CLEVR: A Diagnostic Dataset for Compositional Language and Elementary Visual Reasoning",
+          "justification": "CLEVR was first introduced in the referenced paper.",
+          "quote": "We use the CLEVR (Johnson et al., 2017) dataset from the Multi-Object Datasets library."
+        }
+      },
+      {
+        "name": {
+          "value": "Multi-dSprites",
+          "justification": "Multi-dSprites is used for evaluating segmentation performance and robustness.",
+          "quote": "We use the Multi-dSprites dataset from the dSprites dataset."
+        },
+        "aliases": [
+          "dSprites",
+          "dSprites-Multi"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "dSprites: Disentanglement Testing Sprites Dataset",
+          "justification": "Multi-dSprites is an extension of the original dSprites dataset.",
+          "quote": "We use the Multi-dSprites dataset from the dSprites dataset."
+        }
+      },
+      {
+        "name": {
+          "value": "Tetrominoes",
+          "justification": "Tetrominoes is used for assessing segmentation accuracy and robustness.",
+          "quote": "We use the Tetrominoes dataset from the Multi-Object Datasets library."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Multi-Object Datasets: An Embedding Learning Benchmark",
+          "justification": "Tetrominoes is part of the Multi-Object Datasets proposed in this reference.",
+          "quote": "We use the Tetrominoes dataset from the Multi-Object Datasets library."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Jax",
+          "justification": "Jax is used to implement the models in the paper.",
+          "quote": "We implemented our model in Jax and Flax."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "JAX: Composable transformations of Python+NumPy programs",
+          "justification": "The Jax library facilitates the implementation of the model.",
+          "quote": "We implemented our model in Jax (Bradbury et al., 2018)."
+        }
+      },
+      {
+        "name": {
+          "value": "Flax",
+          "justification": "Flax is used alongside Jax for the model implementations.",
+          "quote": "We implemented our model in Jax and Flax."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Flax: A neural network library and ecosystem for JAX",
+          "justification": "Flax is mentioned as part of the implementation environment for the research models.",
+          "quote": "We implemented our model in Jax and Flax (Heek et al., 2020)."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1363,
+    "prompt_tokens": 19047,
+    "total_tokens": 20410
+  }
+}

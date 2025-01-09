@@ -1,0 +1,242 @@
+{
+  "paper": "2301.10847.txt",
+  "words": 9195,
+  "extractions": {
+    "title": {
+      "value": "Enhancing Medical Image Segmentation with TransCeption: A Multi-Scale Feature Fusion Approach",
+      "justification": "This is the title provided at the beginning of the paper.",
+      "quote": "Enhancing Medical Image Segmentation with TransCeption: A Multi-Scale Feature Fusion Approach"
+    },
+    "description": "This paper proposes a novel architecture named TransCeption for medical image segmentation. TransCeption integrates multi-scale semantic information from intra-stage and inter-stage perspectives using ResInception Patch Merging (RIPM), Multi-branch Transformer (MB transformer), and Dual Transformer Bridge. The method is evaluated on multi-organ and skin lesion segmentation tasks, achieving superior performance compared to state-of-the-art methods.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper includes extensive experiments and evaluations on two datasets (Synapse Multi-Organ Segmentation and ISIC 2018 Skin Lesion Segmentation) to demonstrate the effectiveness of the proposed method.",
+      "quote": "Extensive experiments on multi-organ and skin lesion segmentation tasks present the superior performance of TransCeption compared to previous work."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The primary focus of the paper is on medical image segmentation, which is a sub-field of Computer Vision.",
+        "quote": "Transformer, Medical Image Segmentation, Multi-scale Feature Fusion, Inception"
+      },
+      "aliases": [
+        "CV"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Medical Image Segmentation",
+          "justification": "The paper specifically tackles the problem of segmenting medical images, as described throughout the paper.",
+          "quote": "Medical image segmentation enables the extraction of meaningful semantic information from raw medical image datasets."
+        },
+        "aliases": [
+          "MIS"
+        ]
+      },
+      {
+        "name": {
+          "value": "Deep Learning",
+          "justification": "The proposed method and the comparative methods are based on deep learning architectures and techniques.",
+          "quote": "Benefiting from the development of deep learning and computer vision technologies, medical image segmentation enables the extraction of meaningful semantic information from raw medical image datasets."
+        },
+        "aliases": [
+          "DL"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "TransCeption",
+          "justification": "TransCeption is the proposed model in the paper designed for medical image segmentation.",
+          "quote": "Inspired by this idea, we propose TransCeption for medical image segmentation, a pure transformer-based U-shape network featured by incorporating the inception-like module into the encoder and adopting a contextual bridge for better feature fusion."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "TransCeption is the main contribution of the paper.",
+          "quote": "Inspired by this idea, we propose TransCeption for medical image segmentation, a pure transformer-based U-shape network featured by incorporating the inception-like module into the encoder and adopting a contextual bridge for better feature fusion."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was trained and tested on a GPU (Nvidia RTX 3090) as mentioned in the implementation details.",
+          "quote": "We train the network on an Nvidia RTX 3090 GPU without any pre-trained weights."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of TransCeption has been compared to other state-of-the-art models such as V-Net, U-Net, TransUNet, and Swin-Unet.",
+          "quote": "We compare our TransCeption network with six state-of-the-art CNN-based approaches and five transformer-based methods, including V-Net, DARR, U-Net, R50 U-Net, Att-UNet, R50 ViT, TransUNet, Swin-Unet, TransDeepLab, and MISSFormer."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "U-Net",
+          "justification": "U-Net is one of the baseline models used for comparison in the experiments.",
+          "quote": "The milestone U-shaped encoder-decoder network structure, U-Net [5], outperformed the state-of-the-art results of numerous medical semantic segmentation tasks."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "U-Net is not a new model introduced by this paper, it is used as a baseline for comparison.",
+          "quote": "The milestone U-shaped encoder-decoder network structure, U-Net [5], outperformed the state-of-the-art results of numerous medical semantic segmentation tasks."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The paper does not mention training or executing U-Net as part of this work; it is only cited for comparison.",
+          "quote": ""
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "U-Net is compared to TransCeption in terms of performance on the datasets used in the experiments.",
+          "quote": "We compare our TransCeption network with six state-of-the-art CNN-based approaches and five transformer-based methods, including V-Net, DARR, U-Net, R50 U-Net, Att-UNet, R50 ViT, TransUNet, Swin-Unet, TransDeepLab, and MISSFormer."
+        },
+        "referenced_paper_title": {
+          "value": "U-net: Convolutional networks for biomedical image segmentation",
+          "justification": "The full title of the U-Net paper is referenced in the citations.",
+          "quote": "U-Net, O. Ronneberger, P. Fischer, and T. Brox, “U-net: Convolutional networks for biomedical image segmentation,” in International Conference on Medical image computing and computer-assisted intervention. Springer, 2015, pp. 234–241."
+        }
+      },
+      {
+        "name": {
+          "value": "TransUNet",
+          "justification": "TransUNet is one of the transformer-based models used for comparison in the experiments.",
+          "quote": "TransUNet, proposed by Chen et al. [21], is the first model that combines Transformer and U-Net for medical image segmentation tasks, where transformer blocks are adapted in the encoder to encode the global information."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "TransUNet is not a new model introduced by this paper, it is used as a baseline for comparison.",
+          "quote": "TransUNet, proposed by Chen et al. [21], is the first model that combines Transformer and U-Net for medical image segmentation tasks, where transformer blocks are adapted in the encoder to encode the global information."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The paper does not mention training or executing TransUNet as part of this work; it is only cited for comparison.",
+          "quote": ""
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "TransUNet is compared to TransCeption in terms of performance on the datasets used in the experiments.",
+          "quote": "We compare our TransCeption network with six state-of-the-art CNN-based approaches and five transformer-based methods, including V-Net, DARR, U-Net, R50 U-Net, Att-UNet, R50 ViT, TransUNet, Swin-Unet, TransDeepLab, and MISSFormer."
+        },
+        "referenced_paper_title": {
+          "value": "Transunet: Transformers make strong encoders for medical image segmentation",
+          "justification": "The full title of the TransUNet paper is referenced in the citations.",
+          "quote": "TransUNet, J. Chen, Y. Lu, Q. Yu, X. Luo, E. Adeli, Y. Wang, L. Lu, A. L. Yuille, and Y. Zhou, “Transunet: Transformers make strong encoders for medical image segmentation,” arXiv preprint arXiv:2102.04306, 2021."
+        }
+      },
+      {
+        "name": {
+          "value": "Swin-Unet",
+          "justification": "Swin-Unet is one of the transformer-based models used for comparison in the experiments.",
+          "quote": "Such approaches can be classified as hybrid-transformer architectures. Another kind of architecture can be classified as the pure transformer, such as Swin-Unet [24], nnFormer [25], MISSFormer [26], DSTransUNet [27], TransDeepLab [28], and DAE-Former [29]."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Swin-Unet is not a new model introduced by this paper, it is used as a baseline for comparison.",
+          "quote": "Another kind of architecture can be classified as the pure transformer, such as Swin-Unet [24], nnFormer [25], MISSFormer [26], DSTransUNet [27], TransDeepLab [28], and DAE-Former [29]."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The paper does not mention training or executing Swin-Unet as part of this work; it is only cited for comparison.",
+          "quote": ""
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Swin-Unet is compared to TransCeption in terms of performance on the datasets used in the experiments.",
+          "quote": "We compare our TransCeption network with six state-of-the-art CNN-based approaches and five transformer-based methods, including V-Net, DARR, U-Net, R50 U-Net, Att-UNet, R50 ViT, TransUNet, Swin-Unet, TransDeepLab, and MISSFormer."
+        },
+        "referenced_paper_title": {
+          "value": "Swin-unet: Unet-like pure transformer for medical image segmentation",
+          "justification": "The full title of the Swin-Unet paper is referenced in the citations.",
+          "quote": "Swin-Unet, H. Cao, Y. Wang, J. Chen, D. Jiang, X. Zhang, Q. Tian, and M. Wang, “Swin-unet: Unet-like pure transformer for medical image segmentation,” in Proceedings of the European Conference on Computer Vision Workshops(ECCVW), 2022."
+        }
+      },
+      {
+        "name": {
+          "value": "V-Net",
+          "justification": "V-Net is one of the CNN-based models used for comparison in the experiments.",
+          "quote": "Differently V-Net [14] network leverages different types of backbones to the U-Net architecture to further facilitate the effectiveness of image segmentation."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "V-Net is not a new model introduced by this paper, it is used as a baseline for comparison.",
+          "quote": "Differently V-Net [14] network leverages different types of backbones to the U-Net architecture to further facilitate the effectiveness of image segmentation."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The paper does not mention training or executing V-Net as part of this work; it is only cited for comparison.",
+          "quote": ""
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "V-Net is compared to TransCeption in terms of performance on the datasets used in the experiments.",
+          "quote": "We compare our TransCeption network with six state-of-the-art CNN-based approaches and five transformer-based methods, including V-Net, DARR, U-Net, R50 U-Net, Att-UNet, R50 ViT, TransUNet, Swin-Unet, TransDeepLab, and MISSFormer."
+        },
+        "referenced_paper_title": {
+          "value": "V-net: Fully convolutional neural networks for volumetric medical image segmentation",
+          "justification": "The full title of the V-Net paper is referenced in the citations.",
+          "quote": "V-Net, F. Milletari, N. Navab, and S.-A. Ahmadi, “V-net: Fully convolutional neural networks for volumetric medical image segmentation,” in 2016 fourth international conference on 3D vision (3DV). IEEE, 2016, pp. 565–571."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Synapse Multi-Organ Segmentation",
+          "justification": "This dataset is used for the multi-organ segmentation task to evaluate the performance of TransCeption.",
+          "quote": "The multi-organ Synapse dataset [36] consists of 30 abdominal CT scans with 3779 axial contrast-enhanced clinical CT images."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The dataset is referenced as a well-known dataset, but no specific title for the paper is provided.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "ISIC 2018 Skin Lesion Segmentation",
+          "justification": "This dataset is used for the skin lesion segmentation task to evaluate the performance of TransCeption.",
+          "quote": "The ISIC 2018 [37] dataset, consists of dermoscopic images from diverse populations, which is a large-scale dermoscopic image dataset."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The dataset is referenced as a well-known dataset, but no specific title for the paper is provided.",
+          "quote": ""
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The implementation details mention the use of Python, and it is common to use PyTorch for deep learning tasks.",
+          "quote": "The code of TransCeption is implemented based on Python 3.6."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The paper does not explicitly mention PyTorch, but it is strongly implied.",
+          "quote": ""
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 3194,
+    "prompt_tokens": 16944,
+    "total_tokens": 20138
+  }
+}

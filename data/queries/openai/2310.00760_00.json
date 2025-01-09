@@ -1,0 +1,118 @@
+{
+  "paper": "2310.00760.txt",
+  "words": 4522,
+  "extractions": {
+    "title": {
+      "value": "Uncertainty-aware hybrid paradigm of nonlinear MPC and model-based RL for offroad navigation: Exploration of transformers in the predictive model",
+      "justification": "This is the title mentioned at the beginning of the given research paper.",
+      "quote": "Uncertainty-aware hybrid paradigm of nonlinear MPC and model-based RL for offroad navigation: Exploration of transformers in the predictive model"
+    },
+    "description": "This paper investigates a hybrid approach that combines nonlinear model predictive control (MPC) and model-based reinforcement learning (RL) for autonomous model car navigation in offroad, unstructured terrains without relying on predefined maps. The study enhances the BADGR LSTM-based network by replacing LSTM modules with transformers, improving environment modeling. The proposed method addresses uncertainty using an ensemble of predictive models, dynamic horizon planning, and a nonlinear MPC controller to balance speed and uncertainty.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper conducts empirical studies to validate the proposed hybrid approach using real-world data gathered by an RC car and compares various models and planning horizons for their performance, uncertainty, and navigation efficiency.",
+      "quote": "The practical validation of our approach is conducted using real-world data gathered by an RC car, depicted in Fig. 1. Subsequent sections delve into the methodology and present the results, accompanied by insightful observations."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Robotics",
+        "justification": "The research focuses on navigation planning of an autonomous model car in offroad, unstructured terrains, which is a primary concern of the field of Robotics.",
+        "quote": "Researchers in the field of off-road autonomous navigation have developed robust techniques to effectively drive vehicles toward their destinations... Our innovative approach... concentrating on environment modeling...navigation planning of an autonomous model car across offroad, unstructured terrains."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Reinforcement Learning",
+          "justification": "The paper discusses a model-based reinforcement learning approach to producing steering angles and quantifying uncertainty.",
+          "quote": "The model-based RL facet produces steering angles and quantifies inherent uncertainty."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Transformers",
+          "justification": "The research explores the application of transformers in environment modeling to improve performance over the previously used LSTM-based models.",
+          "quote": "...distinguishes itself by substituting LSTM modules with transformers to greatly elevate the performance our model. Addressing uncertainty within the system, we train an ensemble of predictive models..."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Model Predictive Control",
+          "justification": "Nonlinear model predictive control (MPC) is an essential component of the proposed hybrid planning paradigm, balancing speed and uncertainty.",
+          "quote": "Further enhancing our methodology, we incorporate a nonlinear MPC controller that accounts for the intricacies of the vehicle’s model and states."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "BADGR",
+          "justification": "The BADGR model serves as the foundational reference for the RL-based environment predictive model, though enhanced in this study by replacing LSTM modules with transformers.",
+          "quote": "This work adopts the model introduced in [3] as the foundational reference."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Though the paper builds on the BADGR model, it does not claim to have originally contributed this model itself.",
+          "quote": "A notable contribution in this area is BADGR [3], which combines model-based and model-free RL, effectively addressing path planning on smooth terrains while minimizing collision risks."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The BADGR-based model, enhanced with transformers, was executed and evaluated on a GPU in this study.",
+          "quote": "In every study, we conduct training for a total of 700 epochs, utilizing a batch size of 64, and employing an NVIDIA GeForce RTX 3090 GPU."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The BADGR-based model with transformers is compared to other models based on different horizons and evaluation metrics.",
+          "quote": "To delve deeper into the ramifications of the planning horizon, we train three models of each type with three different planning horizons: 10, 20, and 40 timesteps, and compare their performance."
+        },
+        "referenced_paper_title": {
+          "value": "Badgr: An autonomous self-supervised learning-based navigation system",
+          "justification": "The paper explicitly mentions BADGR and provides the reference in the citations.",
+          "quote": "A notable contribution in this area is BADGR [3], which combines model-based and model-free RL, effectively addressing path planning on smooth terrains while minimizing collision risks."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Offroad Autonomous Navigation Dataset",
+          "justification": "The dataset mentioned is gathered from hands-on robot navigation trials and is manually annotated to ensure quality.",
+          "quote": "Our dataset encompasses trials of hands-on robot navigation, deliberately exposing the robot to intricate scenarios to enhance the dataset’s diversity."
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "Not Applicable",
+          "justification": "The paper does not reference any external paper for the dataset; it was contributed by the authors.",
+          "quote": "To train the image-based planner, we gathered a dataset and performed manual annotations to ensure its quality and have better evaluation studies."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The paper mentions the usage of Vision Transformer (ViT) models which are commonly implemented using PyTorch library.",
+          "quote": "To evaluate the complexity of our dataset on a classification task, we trained and evaluated three Residual Network (ResNet) [26] models, two Vision Transformer (ViT) [27] models, and two Visual Geometry Group (VGG) [28] models on our dataset."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "An image is worth 16x16 words: Transformers for image recognition at scale",
+          "justification": "The paper uses Vision Transformer (ViT) models and refers to their original implementation which is available in PyTorch library.",
+          "quote": "To evaluate the complexity of our dataset on a classification task, we trained and evaluated three Residual Network (ResNet) [26] models, two Vision Transformer (ViT) [27] models, and two Visual Geometry Group (VGG) [28] models on our dataset."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1261,
+    "prompt_tokens": 8648,
+    "total_tokens": 9909
+  }
+}

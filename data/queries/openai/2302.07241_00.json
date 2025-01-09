@@ -1,0 +1,226 @@
+{
+  "paper": "2302.07241.txt",
+  "words": 13860,
+  "extractions": {
+    "title": {
+      "value": "ConceptFusion: Open-set Multimodal 3D Mapping",
+      "justification": "This is the exact title as provided at the beginning of the paper.",
+      "quote": "ConceptFusion: Open-set Multimodal 3D Mapping"
+    },
+    "description": "This paper presents ConceptFusion, a technique for building open-set multimodal 3D maps by leveraging the capabilities of large foundation models like CLIP, DINO, and AudioCLIP. These maps can integrate features from various modalities such as text, image, audio, and clicks, making them queryable for arbitrary concepts in a zero-shot manner.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper introduces a new technique and demonstrates its effectiveness through extensive evaluations on real-world datasets and tasks.",
+      "quote": "We extensively evaluate ConceptFusion on a number of real-world datasets, simulated home environments, a real-world tabletop manipulation task, and an autonomous driving platform."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The paper focuses on creating and querying 3D maps using visual data from images, depth cameras, and other sensors.",
+        "quote": "Building 3D maps of the environment is central to robot navigation, planning, and interaction with objects in a scene."
+      },
+      "aliases": [
+        "CV"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Multimodal Learning",
+          "justification": "The paper integrates features from multiple modalities such as text, image, and audio into 3D maps.",
+          "quote": "ConceptFusion leverages the open-set capabilities of today’s foundation models that have been pre-trained on internet-scale data to reason about concepts across modalities such as natural language, images, and audio."
+        },
+        "aliases": [
+          "Multimodal"
+        ]
+      },
+      {
+        "name": {
+          "value": "Simultaneous Localization and Mapping (SLAM)",
+          "justification": "The paper combines traditional SLAM techniques with the fusion of multimodal features.",
+          "quote": "We demonstrate that pixel-aligned open-set features can be fused into 3D maps via traditional SLAM and multi-view fusion approaches."
+        },
+        "aliases": [
+          "SLAM"
+        ]
+      },
+      {
+        "name": {
+          "value": "Zero-shot Learning",
+          "justification": "The approach enables zero-shot spatial reasoning without the need for additional training or finetuning.",
+          "quote": "This enables effective zero-shot spatial reasoning, not needing any additional training or finetuning, and retains long-tailed concepts better than supervised approaches."
+        },
+        "aliases": [
+          "Zero-shot"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "ConceptFusion",
+          "justification": "The primary model introduced and evaluated in the paper.",
+          "quote": "We propose ConceptFusion; an open-set and multimodal 3D mapping technique."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "ConceptFusion is the main contribution of the paper.",
+          "quote": "We propose ConceptFusion; an open-set and multimodal 3D mapping technique."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was executed and evaluated on various real-world tasks.",
+          "quote": "We extensively evaluate ConceptFusion on a number of real-world datasets, simulated home environments, a real-world tabletop manipulation task, and an autonomous driving platform."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "ConceptFusion was compared to other methods like LSeg, OpenSeg, and MaskCLIP.",
+          "quote": "We evaluate text-query based object localization performance on 3D maps, on the UnCoCo dataset. We evaluate two state-of-the-art per-pixel CLIP-aligned feature extractors in LSeg and OpenSeg, which require additional training over a large labelled dataset; and MaskCLIP—the current state-of-the-art approach for extracting zero-shot per-pixel labels based on a text prompt."
+        },
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "ConceptFusion is introduced in this paper and does not reference another paper as its origin.",
+          "quote": "N/A"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "UnCoCo",
+          "justification": "The dataset was introduced in this paper for evaluating open-set multimodal 3D mapping.",
+          "quote": "A new RGB-D dataset, UnCoCo, to evaluate open-set multimodal 3D mapping. UnCoCo comprises 78 common household/office objects tagged with more than 500K queries across modalities."
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "UnCoCo is introduced in this paper and does not reference another paper as its origin.",
+          "quote": "N/A"
+        }
+      },
+      {
+        "name": {
+          "value": "ScanNet",
+          "justification": "ScanNet was used for evaluating the performance of ConceptFusion.",
+          "quote": "We evaluate ConceptFusion on multiple real-world datasets and tasks, including searching for objects in the real world and simulated home environments, robot manipulation tasks, and autonomous driving. ... We identified the following sequences from the ScanNet validation set."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ScanNet: Richly-annotated 3D Reconstructions of Indoor Scenes",
+          "justification": "This is the reference paper where ScanNet was originally introduced.",
+          "quote": "Angela Dai, Angel X. Chang, Manolis Savva, Maciej Halber, Thomas Funkhouser, and Matthias Nießner. Scannet: Richly-annotated 3d reconstructions of indoor scenes."
+        }
+      },
+      {
+        "name": {
+          "value": "Replica",
+          "justification": "Replica was used for evaluating the performance of ConceptFusion.",
+          "quote": "We evaluate on the following 8 replica scenes: office0, office1, office2, office3, office4, room0, room1, room2."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The Replica Dataset: A Digital Replica of Indoor Spaces",
+          "justification": "This is the reference paper where Replica was originally introduced.",
+          "quote": "Julian Straub, Thomas Whelan, Lingni Ma, Yufan Chen, Erik Wijmans, Simon Green, Jakob J. Engel, Raul Mur-Artal, Carl Ren, Shobhit Verma, Anton Clarkson, Mingfei Yan, Brian Budge, Yajie Yan, Xiaqing Pan, June Yon, Yuyang Zou, Kimberly Leon, Nigel Carter, Jesus Briales, Tyler Gillingham, Elias Mueggler, Luis Pesqueira, Manolis Savva, Dhruv Batra, Hauke M. Strasdat, Renzo De Nardi, Michael Goesele, Steven Lovegrove, and Richard Newcombe. The Replica dataset: A digital replica of indoor spaces."
+        }
+      },
+      {
+        "name": {
+          "value": "SemanticKITTI",
+          "justification": "SemanticKITTI was used for evaluating the performance of ConceptFusion.",
+          "quote": "On SemanticKITTI, we evaluate on all image frames containing at least one foreground object."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "SemanticKITTI: A Dataset for Semantic Scene Understanding of LiDAR Sequences",
+          "justification": "This is the reference paper where SemanticKITTI was originally introduced.",
+          "quote": "J. Behley, M. Garbade, A. Milioto, J. Quenzel, S. Behnke, C. Stachniss, and J. Gall. SemanticKITTI: a dataset for semantic scene understanding of lidar sequences."
+        }
+      },
+      {
+        "name": {
+          "value": "AI2-THOR",
+          "justification": "AI2-THOR was used for evaluating the performance of ConceptFusion in interactive household scenarios.",
+          "quote": "We illustrate two scenarios from the AI2-THOR interactive household simulator. The GenericLLM-Agent fails to achieve the specified task since it does not have an explicit 3D map representation."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "AI2-THOR: An Interactive 3D Environment for Visual AI",
+          "justification": "This is the reference paper where AI2-THOR was originally introduced.",
+          "quote": "Eric Kolve, Roozbeh Mottaghi, Winson Han, Eli VanderBilt, Luca Weihs, Alvaro Herrasti, Daniel Gordon, Yuke Zhu, Abhinav Gupta, and Ali Farhadi. AI2-THOR: An Interactive 3D Environment for Visual AI."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch was used for computing and accessing foundation features.",
+          "quote": "Our feature fusion algorithm is implemented on top of the ∇SLAM [59] dense SLAM system, as this was one of the few implementations of the PointFusion algorithm [30], and for its convenience of interfacing with PyTorch for computing and accessing foundation features."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An Imperative Style, High-Performance Deep Learning Library",
+          "justification": "This is the reference paper where PyTorch was originally introduced.",
+          "quote": "Adam Paszke, Sam Gross, Francisco Massa, Adam Lerer, James Bradbury, Gregory Chanan, Trevor Killeen, Zeming Lin, Natalia Gimelshein, Luca Antiga, Alban Desmaison, Andreas Kopf, Edward Yang, Zachary DeVito, Martin Raison, Alykhan Tejani, Sasank Chilamkurthy, Benoit Steiner, Lu Fang, Junjie Bai, and Soumith Chintala. Pytorch: An imperative style, high-performance deep learning library."
+        }
+      },
+      {
+        "name": {
+          "value": "OpenAI CLIP",
+          "justification": "CLIP models were used as foundation models for extracting and aligning features across modalities.",
+          "quote": "Foundation models like CLIP [6], DINO [7], AudioCLIP [8], and their variants have shown impressive performance on open-set scenarios, where the concepts of interest are supplied only at inference time."
+        },
+        "aliases": [
+          "CLIP"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Transferable Visual Models From Natural Language Supervision",
+          "justification": "This is the reference paper where OpenAI CLIP was originally introduced.",
+          "quote": "Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, Sandhini Agarwal, Girish Sastry, Amanda Askell, Pamela Mishkin, Jack Clark, Gretchen Krueger, and Ilya Sutskever. Learning transferable visual models from natural language supervision."
+        }
+      },
+      {
+        "name": {
+          "value": "DINO",
+          "justification": "DINO models were used as foundation models for extracting and aligning features across modalities.",
+          "quote": "Foundation models like CLIP [6], DINO [7], AudioCLIP [8], and their variants have shown impressive performance on open-set scenarios, where the concepts of interest are supplied only at inference time."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Emerging Properties in Self-Supervised Vision Transformers",
+          "justification": "This is the reference paper where DINO was originally introduced.",
+          "quote": "Mathilde Caron, Hugo Touvron, Ishan Misra, Hervé Jegou, Julien Mairal, Piotr Bojanowski, and Armand Joulin. Emerging properties in self-supervised vision transformers."
+        }
+      },
+      {
+        "name": {
+          "value": "AudioCLIP",
+          "justification": "AudioCLIP models were used as foundation models for extracting and aligning features across modalities.",
+          "quote": "Foundation models like CLIP [6], DINO [7], AudioCLIP [8], and their variants have shown impressive performance on open-set scenarios, where the concepts of interest are supplied only at inference time."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "AudioCLIP: Extending CLIP to Image, Text and Audio",
+          "justification": "This is the reference paper where AudioCLIP was originally introduced.",
+          "quote": "Andrey Guzhov, Federico Raue, Jörn Hees, and Andreas Dengel. AudioCLIP: Extending clip to image, text and audio."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2908,
+    "prompt_tokens": 24846,
+    "total_tokens": 27754
+  }
+}

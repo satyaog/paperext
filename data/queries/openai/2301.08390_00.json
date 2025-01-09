@@ -1,0 +1,163 @@
+{
+  "paper": "2301.08390.txt",
+  "words": 10363,
+  "extractions": {
+    "title": {
+      "value": "Open-Set Likelihood Maximization for Few-Shot Learning",
+      "justification": "Title of this arXiv paper as stated in the provided document.",
+      "quote": "Open-Set Likelihood Maximization for Few-Shot Learning"
+    },
+    "description": "This paper addresses the Few-Shot Open-Set Recognition (FSOSR) problem, which involves classifying instances from classes with few labeled samples and simultaneously detecting instances that do not belong to any known class. The authors propose a method called Open-Set Likelihood Optimization (OSLO), which generalizes the maximum likelihood principle by introducing latent scores to down-weigh potential outliers along with the usual parametric model. This method leverages both support and unlabelled query sets and improves the accuracy of inlier classification and outlier detection.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper includes empirical evaluations through extensive experiments comparing the proposed OSLO method with existing methods on various datasets.",
+      "quote": "Through extensive experiments, we show that our method surpasses existing inductive and transductive methods on both aspects of open-set recognition, namely inlier classification and outlier detection."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The paper focuses on Few-Shot Open-Set Recognition, a problem within the domain of Computer Vision.",
+        "quote": "We tackle the Few-Shot Open-Set Recognition (FSOSR) problem, i.e. classifying instances among a set of classes for which we only have a few labeled samples, while simultaneously detecting instances that do not belong to any known class."
+      },
+      "aliases": [
+        "CV"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Outlier Detection",
+          "justification": "The paper discusses detecting instances that do not belong to any known class, which is a key problem in Outlier Detection.",
+          "quote": "Few-Shot Open-Set Recognition (FSOSR) setting, in which query instances may not belong to any known class."
+        },
+        "aliases": [
+          "OOD"
+        ]
+      },
+      {
+        "name": {
+          "value": "Few-Shot Learning",
+          "justification": "The paper proposes improvements in Few-Shot Learning by focusing on Few-Shot Open-Set Recognition.",
+          "quote": "Few-shot classification consists in recognizing concepts for which we have only a handful of labeled examples."
+        },
+        "aliases": [
+          "FSL"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Open-Set Likelihood Optimization (OSLO)",
+          "justification": "The paper introduces and details the proposed OSLO method.",
+          "quote": "We call our resulting formulation Open-Set Likelihood Optimization (OSLO)."
+        },
+        "aliases": [
+          "OSLO"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "OSLO is a new method introduced by the authors in this paper.",
+          "quote": "We proceed with a block-coordinate descent, with the latent scores and parametric model co-optimized alternately, thereby benefiting from each other. We call our resulting formulation Open-Set Likelihood Optimization (OSLO)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The experiments conducted to evaluate OSLO utilized computational resources, implying the model was executed.",
+          "quote": "Through extensive experiments, we show that our method surpasses existing inductive and transductive methods on both aspects of open-set recognition, namely inlier classification and outlier detection."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The OSLO method is compared numerically with various existing inductive and transductive methods across different metrics.",
+          "quote": "Through extensive experiments, we show that our method surpasses existing inductive and transductive methods on both aspects of open-set recognition, namely inlier classification and outlier detection."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The OSLO method was contributed by this paper.",
+          "quote": ""
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "mini-ImageNet",
+          "justification": "The mini-ImageNet dataset is explicitly mentioned as one of the datasets used for experiments in this paper.",
+          "quote": "Empirically, we show that OSLO significantly surpasses its inductive and transductive competitors alike for both outlier detection and closed-set prediction. Applied on a wide variety of architectures and training strategies and without any re-optimization of its parameters, OSLO’s improvement over a strong baseline remains large and consistent. This modularity allows our method to fully benefit from the latest advances in standard image recognition."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Matching networks for one shot learning (NeurIPS 2016)",
+          "justification": "The dataset mini-ImageNet is widely known to have been introduced in the paper 'Matching networks for one shot learning'.",
+          "quote": "Few-shot classification consists in recognizing concepts for which we have only a handful of labeled examples. These form the support set, which, together with a batch of unlabeled instances (the query set), constitute a few-shot task."
+        }
+      },
+      {
+        "name": {
+          "value": "tiered-ImageNet",
+          "justification": "The tiered-ImageNet dataset is explicitly mentioned as one of the datasets used for experiments in this paper.",
+          "quote": "Empirically, we show that OSLO significantly surpasses its inductive and transductive competitors alike for both outlier detection and closed-set prediction. Applied on a wide variety of architectures and training strategies and without any re-optimization of its parameters, OSLO’s improvement over a strong baseline remains large and consistent. This modularity allows our method to fully benefit from the latest advances in standard image recognition."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Meta-learning for semi-supervised few-shot classification (ICLR 2018)",
+          "justification": "The dataset tiered-ImageNet is widely known to have been introduced in the paper 'Meta-learning for semi-supervised few-shot classification'.",
+          "quote": "Given a set of novel classes Cnovel disjoint from base classes i.e. Cnovel ∩ Cbase = ∅, a K-way FSOSR task is formed by sampling a set of K closedset classes CCS ⊂ Cnovel, a support set of labeled |S| instances S = {(xi , yi ) ∈ X × CCS }i=1 and a query set |S|+|Q| Q = {xi ∈ X }i=|S|+1 . In the standard few-shot setting, the |S|+|Q| unknown ground-truth query labels {yi}i=|S|+1 are assumed to be restricted to closed-set classes i.e. ∀i, yi ∈ CCS ."
+        }
+      },
+      {
+        "name": {
+          "value": "Caltech-UCSD Birds 200",
+          "justification": "The CUB dataset is used for cross-domain experimental benchmarking in this paper.",
+          "quote": "We also report results in supplementary materials for a more general setting in which open-set query instances are sampled indifferently from all remaining classes in the test set."
+        },
+        "aliases": [
+          "CUB"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Caltech-UCSD Birds 200",
+          "justification": "This dataset is commonly referenced with its original title Caltech-UCSD Birds 200.",
+          "quote": "We test tasks sampled from Fungi, and the Strong Baseline performance is x. For each method, the average relative improvement across the 5 scenarios is reported in parenthesis in the legend."
+        }
+      },
+      {
+        "name": {
+          "value": "FGVC-Aircraft",
+          "justification": "The FGVC-Aircraft dataset is explicitly used for cross-domain experimental benchmarking in this paper.",
+          "quote": "In this setting, we reproduce and benchmark five state-of-the-art transductive methods."
+        },
+        "aliases": [
+          "Aircraft"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Fine-grained visual classification of aircraft (arXiv:1306.5151)",
+          "justification": "The dataset FGVC-Aircraft is widely known to have been introduced in the paper 'Fine-grained visual classification of aircraft'.",
+          "quote": "We also experiment on more challenging cross-domain tasks formed by using 3 finer-grained datasets: the Caltech-UCSD Birds 200 [44] (CUB) dataset, with 200 classes, the FGVC-Aircraft dataset [25] with 100 classes, and the Fungi classification challenge [34] with 1394 classes."
+        }
+      },
+      {
+        "name": {
+          "value": "Fungi",
+          "justification": "The Fungi dataset is used for cross-domain experimental benchmarking in this paper.",
+          "quote": "We also experiment on more challenging cross-domain tasks formed by using 3 finer-grained datasets: the Caltech-UCSD Birds 200 [44] (CUB) dataset, with 200 classes, the FGVC-Aircraft dataset [25] with 100 classes, and the Fungi classification challenge [34] with 1394 classes."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "FGVCx fungi classification challenge",
+          "justification": "The dataset Fungi is widely known to have been introduced in the paper 'FGVCx fungi classification challenge'.",
+          "quote": "We also experiment on more challenging cross-domain tasks formed by using 3 finer-grained datasets: the Caltech-UCSD Birds 200 (CUB) dataset, with 200 classes, the FGVC-Aircraft dataset with 100 classes, and the Fungi classification challenge with 1394 classes."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1896,
+    "prompt_tokens": 21863,
+    "total_tokens": 23759
+  }
+}

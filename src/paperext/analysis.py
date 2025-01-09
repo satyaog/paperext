@@ -23,10 +23,10 @@ except AttributeError:
 import pandas as pd
 from sklearn.metrics import confusion_matrix
 
-from . import ROOT_DIR
-from .models.model import ExtractionResponse, PaperExtractions
-from .models.utils import model2df, model_validate_yaml
-from .utils import build_validation_set, python_module
+from paperext import ROOT_DIR
+from paperext.models.model import ExtractionResponse, PaperExtractions
+from paperext.models.utils import model2df, model_validate_yaml
+from paperext.utils import build_validation_set, python_module
 
 PROG = f"python3 -m {python_module(__file__)}"
 
@@ -122,179 +122,219 @@ def main(argv=None):
 
     assert any(map(lambda p: p.exists(), papers))
 
-    annotated = [[], []]
-    predictions = [[], []]
+    def _analysis(papers:list, platform:str):
+        annotated = [[], []]
+        predictions = [[], []]
 
-    for f in papers:
-        if not f.exists():
-            continue
+        for f in papers:
+            if not f.exists():
+                continue
 
-        print(f"Fetching data from {f}", file=sys.stderr)
-        model = model_validate_yaml(PaperExtractions, f.read_text())
-        paper_attr, paper_refs = map(
-            lambda m: _append_left_indices(m, [("paper_id", f.stem)]), model2df(model)
-        )
-
-        annotated[0].append(paper_attr)
-        annotated[1].append(paper_refs)
-
-        queries_dir = ROOT_DIR / "data/queries/"
-        for i, query_f in enumerate(sorted(queries_dir.glob(f"{f.stem}*.json"))):
-            print(f"Fetching data from {query_f}", file=sys.stderr)
-            model = ExtractionResponse.model_validate_json(
-                query_f.read_text()
-            ).extractions
-
+            stage = {
+                "ann": [[], []],
+                "pred": [[], []],
+            }
+            print(f"Fetching data from {f}", file=sys.stderr)
+            model = model_validate_yaml(PaperExtractions, f.read_text())
             paper_attr, paper_refs = map(
-                lambda m: _append_left_indices(
-                    m, [("paper_id", f.stem), ("attempt", i)]
-                ),
-                model2df(model),
+                lambda m: _append_left_indices(m, [("paper_id", f.stem)]), model2df(model)
             )
 
-            predictions[0].append(paper_attr)
-            predictions[1].append(paper_refs)
+            stage["ann"][0].append(paper_attr)
+            stage["ann"][1].append(paper_refs)
 
-    annotated[0] = pd.concat(annotated[0])
-    annotated[1] = pd.concat(annotated[1])
+            queries_dir = ROOT_DIR / f"data/queries/{platform}"
+            for i, query_f in enumerate(sorted(queries_dir.glob(f"{f.stem}*.json"))):
+                print(f"Fetching data from {query_f}", file=sys.stderr)
+                model = ExtractionResponse.model_validate_json(
+                    query_f.read_text()
+                ).extractions
 
-    predictions[0] = pd.concat(predictions[0])
-    predictions[1] = pd.concat(predictions[1])
+                paper_attr, paper_refs = map(
+                    lambda m: _append_left_indices(
+                        m, [("paper_id", f.stem), ("attempt", i)]
+                    ),
+                    model2df(model),
+                )
 
-    _analysis_dir = ROOT_DIR / f"data/analysis/"
-    _analysis_dir.mkdir(parents=True, exist_ok=True)
+                stage["pred"][0].append(paper_attr)
+                stage["pred"][1].append(paper_refs)
+            
+            if stage["pred"][0]:
+                annotated[0].extend(stage["ann"][0])
+                annotated[1].extend(stage["ann"][1])
+                predictions[0].extend(stage["pred"][0])
+                predictions[1].extend(stage["pred"][1])
 
-    max_attempt = max(
-        predictions[0]
-        .reset_index(
-            [
-                0,
-            ],
-            drop=True,
+        annotated[0] = pd.concat(annotated[0])
+        annotated[1] = pd.concat(annotated[1])
+
+        predictions[0] = pd.concat(predictions[0])
+        predictions[1] = pd.concat(predictions[1])
+
+        _analysis_dir = ROOT_DIR / f"data/analysis/{platform}"
+        _analysis_dir.mkdir(parents=True, exist_ok=True)
+
+        max_attempt = max(
+            predictions[0]
+            .reset_index(
+                [
+                    0,
+                ],
+                drop=True,
+            )
+            .index
         )
-        .index
-    )
 
-    for label in ("title", "type", "primary_research_field"):
-        for i in range(max_attempt + 1):
-            mat, classes = _cm(
-                annotated[0].loc[:, label], predictions[0].loc[:, i, :].loc[:, label]
-            )
-            # Title confusion matrix should be the identity
-            # if label == "title":
-            #     assert (_mat == np.identity(_mat.shape[0])).all()
+        for label in ("title", "type", "primary_research_field"):
+            for i in range(max_attempt + 1):
+                mat, classes = _cm(
+                    annotated[0].loc[:, label], predictions[0].loc[:, i, :].loc[:, label]
+                )
+                # Title confusion matrix should be the identity
+                # if label == "title":
+                #     assert (_mat == np.identity(_mat.shape[0])).all()
 
-            (_analysis_dir / f"{label}_{i:02}.csv").write_text(
-                pd.DataFrame(mat, index=classes, columns=classes).to_csv()
-            )
+                (_analysis_dir / f"{label}_{i:02}.csv").write_text(
+                    pd.DataFrame(mat, index=classes, columns=classes).to_csv()
+                )
 
-    for label in (
-        "sub_research_fields",
-        "all_research_fields",
-    ):
-        for i in range(max_attempt + 1):
-            ann, pred = (
-                annotated[0].loc[:, label],
-                predictions[0].loc[:, i, :].loc[:, label],
-            )
+        for label in (
+            "sub_research_fields",
+            "all_research_fields",
+            "research_fields_categories",
+        ):
+            for i in range(max_attempt + 1):
+                ann, pred = (
+                    annotated[0].loc[:, label],
+                    predictions[0].loc[:, i, :].loc[:, label],
+                )
 
-            (conf_mat, normal_conf_mat), classes = _mlcm(ann, pred)
+                (conf_mat, normal_conf_mat), classes = _mlcm(
+                    [_ann.drop_duplicates() for _ann in ann],
+                    [_pred.drop_duplicates() for _pred in pred],
+                )
 
-            (_analysis_dir / f"{label}_{i:02}.csv").write_text(
-                pd.DataFrame(
-                    conf_mat, index=[*classes, ""], columns=[*classes, ""]
-                ).to_csv()
-            )
-            print(f"{label}:")
-            print("Raw confusion Matrix:")
-            print(conf_mat)
-            print("Normalized confusion Matrix (%):")
-            print(normal_conf_mat)
+                (_analysis_dir / f"{label}_{i:02}.csv").write_text(
+                    pd.DataFrame(
+                        conf_mat, index=[*classes, "No True Label"], columns=[*classes, "No Predicted Label"]
+                    ).to_csv()
+                )
+                print(f"{label}:")
+                print("Raw confusion Matrix:")
+                print(conf_mat)
+                print("Normalized confusion Matrix (%):")
+                print(normal_conf_mat)
 
-    for group in (
-        "models",
-        "datasets",
-        "libraries",
-    ):
-        for i in range(max_attempt + 1):
-            ann, pred = (
-                annotated[1].loc[:, group, :],
-                predictions[1].loc[:, i, group, :],
-            )
-            ann: pd.DataFrame
-            pred: pd.DataFrame
+        for group in (
+            "models",
+            "datasets",
+            "libraries",
+        ):
+            for i in range(max_attempt + 1):
+                # [1] indexes the references (models, datasets, libraries)
+                ann, pred = (
+                    annotated[1].loc[:, group, :],
+                    predictions[1].loc[:, i, group, :],
+                )
+                ann: pd.DataFrame
+                pred: pd.DataFrame
 
-            papers = (
-                ann.index.get_level_values(0)
-                .union(pred.index.get_level_values(0))
-                .sort_values()
-                .drop_duplicates()
-            )
-            ann_per_paper, pred_per_paper = (
-                [ann[ann.index.isin([p], level=0)] for p in papers],
-                [pred[pred.index.isin([p], level=0)] for p in papers],
-            )
+                papers = (
+                    ann.index.get_level_values(0)  # paper id
+                    .union(pred.index.get_level_values(0))  # matching paper id
+                    .sort_values()
+                    .drop_duplicates()
+                )
+                ann_per_paper, pred_per_paper = (
+                    [ann[ann.index.isin([p], level=0)] for p in papers],
+                    [pred[pred.index.isin([p], level=0)] for p in papers],
+                )
 
-            col = "name"
-            (conf_mat, normal_conf_mat), names = _mlcm(
-                [_ann[col] for _ann in ann_per_paper],
-                [_pred[col] for _pred in pred_per_paper],
-            )
+                col = "name"
+                (conf_mat, normal_conf_mat), names = _mlcm(
+                    [_ann[col] for _ann in ann_per_paper],
+                    [_pred[col] for _pred in pred_per_paper],
+                )
 
-            (_analysis_dir / f"{group}.{col}_{i:02}.csv").write_text(
-                pd.DataFrame(
-                    conf_mat, index=[*names, ""], columns=[*names, ""]
-                ).to_csv()
-            )
+                (_analysis_dir / f"{group}.{col}_{i:02}.csv").write_text(
+                    pd.DataFrame(
+                        conf_mat, index=[*names, "No True Label"], columns=[*names, "No Predicted Label"]
+                    ).to_csv()
+                )
 
-            print(f"{group}.{col}:")
-            print("Raw confusion Matrix:")
-            print(conf_mat)
-            print("Normalized confusion Matrix (%):")
-            print(normal_conf_mat)
+                print(f"{group}.{col}:")
+                print("Raw confusion Matrix:")
+                print(conf_mat)
+                print("Normalized confusion Matrix (%):")
+                print(normal_conf_mat)
 
-            ann_matches = []
-            pred_matches = []
+                col = "category"
+                (conf_mat, normal_conf_mat), names = _mlcm(
+                    [_ann[col].drop_duplicates() for _ann in ann_per_paper],
+                    [_pred[col].drop_duplicates() for _pred in pred_per_paper],
+                )
 
-            for ann_items, pred_items in zip(ann_per_paper, pred_per_paper):
-                for _, row in ann_items.iterrows():
-                    pred_match = pred_items[pred_items["name"] == row["name"]]
-                    if not pred_match.empty:
-                        assert (
-                            len(pred_match) == 1
-                        ), f"Too many matches for\n{row['name']}\nin\n{pred_items}"
+                (_analysis_dir / f"{group}.{col}_{i:02}.csv").write_text(
+                    pd.DataFrame(
+                        conf_mat, index=[*names, "No True Label"], columns=[*names, "No Predicted Label"]
+                    ).to_csv()
+                )
 
-                        ann_matches.append(pd.DataFrame([row]))
-                        pred_matches.append(pred_match)
+                print(f"{group}.{col}:")
+                print("Raw confusion Matrix:")
+                print(conf_mat)
+                print("Normalized confusion Matrix (%):")
+                print(normal_conf_mat)
 
-            ann_matches, pred_matches = (
-                pd.concat(ann_matches).reset_index(drop=True),
-                pd.concat(pred_matches).reset_index(drop=True),
-            )
+                # ann_matches = []
+                # pred_matches = []
 
-            for col in ann.columns:
-                if col in (
-                    "role",
-                    "mode_and_role",
-                ):
-                    (conf_mat, normal_conf_mat), classes = _mlcm(
-                        [ann_matches.loc[idx:idx, col] for idx in ann_matches.index],
-                        [pred_matches.loc[idx:idx, col] for idx in pred_matches.index],
-                    )
+                # for ann_items, pred_items in zip(ann_per_paper, pred_per_paper):
+                #     for _, row in ann_items.iterrows():
+                #         pred_match = pred_items[pred_items["name"] == row["name"]]
+                #         if not pred_match.empty:
+                #             assert (
+                #                 len(pred_match) == 1
+                #             ), f"Too many matches for\n{row['name']}\nin\n{pred_items}"
 
-                    (_analysis_dir / f"{group}.{col}_{i:02}.csv").write_text(
-                        pd.DataFrame(
-                            conf_mat, index=[*classes, ""], columns=[*classes, ""]
-                        ).to_csv()
-                    )
+                #             ann_matches.append(pd.DataFrame([row]))
+                #             pred_matches.append(pred_match)
 
-                    print(f"{group}.{col}:")
-                    print("Raw confusion Matrix:")
-                    print(conf_mat)
-                    print("Normalized confusion Matrix (%):")
-                    print(normal_conf_mat)
-                else:
-                    pass
+                # ann_matches, pred_matches = (
+                #     pd.concat(ann_matches).reset_index(drop=True),
+                #     pd.concat(pred_matches).reset_index(drop=True),
+                # )
+
+                # for col in ann.columns:
+                #     if col in (
+                #         "role",
+                #         "mode_and_role",
+                #     ):
+                #         (conf_mat, normal_conf_mat), classes = _mlcm(
+                #             [ann_matches.loc[idx:idx, col] for idx in ann_matches.index],
+                #             [pred_matches.loc[idx:idx, col] for idx in pred_matches.index],
+                #         )
+
+                #         (_analysis_dir / f"{group}.{col}_{i:02}.csv").write_text(
+                #             pd.DataFrame(
+                #                 conf_mat, index=[*classes, "No True Label"], columns=[*classes, "No Predicted Label"]
+                #             ).to_csv()
+                #         )
+
+                #         print(f"{group}.{col}:")
+                #         print("Raw confusion Matrix:")
+                #         print(conf_mat)
+                #         print("Normalized confusion Matrix (%):")
+                #         print(normal_conf_mat)
+                #     else:
+                #         pass
+
+    for platform in [
+        "openai",
+        "vertexai"
+    ]:
+        _analysis(papers, platform)
 
 
 if __name__ == "__main__":

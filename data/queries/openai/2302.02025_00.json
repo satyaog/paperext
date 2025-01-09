@@ -1,0 +1,132 @@
+{
+  "paper": "2302.02025.txt",
+  "words": 5388,
+  "extractions": {
+    "title": {
+      "value": "Self-Supervised Transformer Architecture for Change Detection in Radio Access Networks",
+      "justification": "This is the title of the paper as given by the authors.",
+      "quote": "Self-Supervised Transformer Architecture for Change Detection in Radio Access Networks"
+    },
+    "description": "This paper proposes a self-supervised learning framework using self-attention and self-distillation to detect changes in Radio Access Networks (RANs) by monitoring Performance Measurement (PM) data. The framework aims to be scalable and generalizable, handling large datasets of time-varying metrics and adapting to various hardware setups with minimal expert intervention.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves experimental results evaluated on a real-world based dataset, implementing and testing different models, including their own, for performance comparison.",
+      "quote": "Experimental results show that our approach outperforms the state of the art by 4% on a real-world based dataset consisting of about hundred thousands timeseries."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Telecommunications",
+        "justification": "The study focuses on Radio Access Networks (RANs) for telecommunications, detecting changes in PM data which reflect various aspects of the network's performance.",
+        "quote": "Radio Access Networks (RANs) for telecommunications represent large agglomerations of interconnected hardware consisting of hundreds of thousands of transmitting devices (cells)."
+      },
+      "aliases": [
+        "Telecom"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Anomaly Detection",
+          "justification": "The proposal and experiments revolve around detecting changes, which is a subset of anomaly detection focused on identifying stable changes in the network’s performance metrics.",
+          "quote": "we focus on change, as opposed to anomaly detection. The difference is that change detection focuses on stable changes in operating characteristics"
+        },
+        "aliases": [
+          "Change Detection"
+        ]
+      },
+      {
+        "name": {
+          "value": "Self-Supervised Learning",
+          "justification": "The framework utilizes self-supervised learning techniques to monitor and detect changes in the network metrics without requiring labeled data.",
+          "quote": "We propose a self-supervised learning framework that leverages self-attention and self-distillation for this task."
+        },
+        "aliases": [
+          "SSL"
+        ]
+      },
+      {
+        "name": {
+          "value": "Transformer Models",
+          "justification": "The proposed method, TREX-DINO, extends the DINO method, which uses the transformer architecture, to time series data for change detection.",
+          "quote": "In order to adapt this method to the timeseries case, some modifications were needed. First, we adapted the ViT to accept timeseries as input. TREX-DINO adapts these from 2-dimensional convolutions, appropriate for images, to 1-dimensional ones better suited to timeseries."
+        },
+        "aliases": [
+          "Transformers"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "TREX-DINO",
+          "justification": "The TREX-DINO model is the primary contribution of the paper, specifically tailored for change detection in Radio Access Networks using a self-supervised transformer-based architecture.",
+          "quote": "TREX-DINO (Timeseries REpresentation eXtraction using DIstillation with NO labels), is an extension of DINO [1], a method originally proposed for self-supervised representation learning on images."
+        },
+        "aliases": [
+          "TREX-DINO"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The model TREX-DINO is introduced and developed by the authors for the task of change detection in Radio Access Networks.",
+          "quote": "To address these requirements, we monitor individual metrics, as opposed to looking at pair correlations of metrics, which experience polynomial computing resource demand growth [2]."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The experimental results and performance evaluation indicate that the TREX-DINO model was executed as part of the study.",
+          "quote": "TREX-DINO attains a high F1 score over a much wider range of normalized threshold values, indicating that it is less sensitive to the choice of the threshold. This is also reflected in its superior PR AUC score."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "TREX-DINO was compared against other models, such as Binseg and TIRE, showing superior performance in the experiments.",
+          "quote": "The F1 curves for the three methods are shown in Figure 3. The maximum F1 scores and the area under precision-recall curve (PR AUC) attained by each method are shown in Table I. In addition to achieving the highest max F1 score of the three, TREX-DINO also attains a high F1 score over a much wider range of normalized threshold values, indicating that it is less sensitive to the choice of the threshold. This is also reflected in its superior PR AUC score."
+        },
+        "referenced_paper_title": {
+          "value": "Emerging properties in self-supervised vision transformers",
+          "justification": "The TREX-DINO model is an extension of the DINO method proposed in the reference paper, adapted for timeseries data.",
+          "quote": "TREX-DINO (Timeseries REpresentation eXtraction using DIstillation with NO labels), is an extension of DINO [1], a method originally proposed for self-supervised representation learning on images."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Proprietary System Level RAN Simulator Dataset",
+          "justification": "The dataset, based on a proprietary system-level RAN simulator, was developed by the authors specifically for the task of change detection in cellular networks.",
+          "quote": "Due to a lack of publicly available datasets for this task, we developed our own. This dataset is based on a proprietary, system-level RAN simulator originally developed and validated to study network parameter optimization"
+        },
+        "aliases": [
+          "Proprietary RAN Simulator Dataset"
+        ],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "Hierarchical policy learning for hybrid communication load balancing",
+          "justification": "The dataset is grounded on a proprietary system-level RAN simulator developed for studying network parameter optimization, as referenced in the given paper.",
+          "quote": "Due to a lack of publicly available datasets for this task, we developed our own. This dataset is based on a proprietary, system-level RAN simulator originally developed and validated to study network parameter optimization [3], [4]."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The paper uses PyTorch for implementing and executing the deep learning models such as TREX-DINO.",
+          "quote": "TIRE and TREX-DINO were both trained on a randomly selected half of the dataset and tested all together with Binseg on the other half.\nHyperparameters’ values used for training TIRE and TREX-DINO were based on [1], [25]. Specifically, for TIRE, we used 3 parallel autoencoders in both timeseries and frequency domains; for the DINO subpart of TREX-DINO, we used 12 self-attention heads with embedding dimensions size of 768, Gaussian noise with standard deviation of 0.3, and Gaussian blur with kernel standard deviation uniformly distributed in the [0.1, 2.] range and applied on average in half of the augmentation calls."
+        },
+        "aliases": [
+          "PyTorch"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Automatic differentiation in PyTorch",
+          "justification": "The reference gives the standard paper for PyTorch, which is implicitly used as the implementation framework for training the models in the paper.",
+          "quote": "A. Paszke, S. Gross, S. Chintala, G. Chanan, E. Yang, Z. DeVito, Z. Lin, A. Desmaison, L. Antiga, and A. Lerer, “Automatic differentiation in pytorch,” 2017."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1526,
+    "prompt_tokens": 10056,
+    "total_tokens": 11582
+  }
+}

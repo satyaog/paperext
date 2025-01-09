@@ -1,0 +1,144 @@
+{
+  "paper": "E8vGACczsQ.txt",
+  "words": 7715,
+  "extractions": {
+    "title": {
+      "value": "(Out-of-context) Meta-learning in Language Models",
+      "justification": "This is the title of the research paper provided by the user.",
+      "quote": "(Out-of-context) Meta-learning in Language Models"
+    },
+    "description": "The paper investigates the phenomenon of out-of-context meta-learning in large language models (LLMs) through synthetic experiments. The authors demonstrate that LLMs internalize broadly useful semantic content and apply it in appropriate contexts, even when such content is out-of-context. The findings extend to computer vision settings and reveal general properties of stochastic-gradient-based learning in deep learning models.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper is based on empirical studies and experiments conducted with language models and computer vision settings to demonstrate out-of-context meta-learning.",
+      "quote": "In this paper we show that large language models trained with gradient-descent-based methods pick up on features that indicate whether a given data point is likely to help reduce the loss on other data points, and 'internalize' data more or less based on these features."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The primary focus of the paper is on language models and their behavior, which falls under the field of Natural Language Processing.",
+        "quote": "In this paper we show that large language models trained with gradient-descent-based methods pick up on features that indicate whether a given data point is likely to help reduce the loss on other data points, and 'internalize' data more or less based on these features."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Meta-Learning",
+          "justification": "The study specifically explores meta-learning phenomena in language models as well as in other deep learning models.",
+          "quote": "Brown et al. (2020) famously introduced the phenomenon of in-context metalearning in large language models (LLMs). Our work establishes the existence of a phenomenon we call out-of-context meta-learning via carefully designed synthetic experiments with large language models."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Computer Vision",
+          "justification": "The paper extends the analysis of internalization and meta-learning to a computer vision setting as well.",
+          "quote": "We further demonstrate internalization in a synthetic computer vision setting, and propose two hypotheses for the emergence of internalization."
+        },
+        "aliases": [
+          "CV"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Pythia",
+          "justification": "The Pythia suite of language models is used extensively in the experiments described in the paper.",
+          "quote": "Our experiments on LLMs in Section 2 span several different sizes of language models from the Pythia suite (Biderman et al., 2023)."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The Pythia models were used in the experiments but were not contributed or newly introduced by this paper.",
+          "quote": "Our experiments on LLMs in Section 2 span several different sizes of language models from the Pythia suite (Biderman et al., 2023)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The Pythia models were explicitly used for experiments in the paper.",
+          "quote": "We use this tokenizer in combination with Pythia-70M (19M non-embedding parameters) configuration to train the models from scratch in the two-stage setting described previously: on QA pairs with definitions in the first stage, and on new definitions in the second stage."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The Pythia models are compared with other models like T5 in the paper.",
+          "quote": "Our experiments on LLMs in Section 2 span several different sizes of language models from the Pythia suite (Biderman et al., 2023), as well as T5 (Raffel et al., 2020), and two different datasets."
+        },
+        "referenced_paper_title": {
+          "value": "Pythia: A suite for analyzing large language models across training and scaling",
+          "justification": "This is the title of the referenced paper for the Pythia model suite.",
+          "quote": "Pythia: A suite for analyzing large language models across training and scaling"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Cross-Verified Database (CVDB)",
+          "justification": "The CVDB is used to create a dataset containing facts about named entities which are then transformed into question-answer pairs for the experiments.",
+          "quote": "Our starting point is a dataset containing facts about named entities, which we then transform into question-answer pairs about each entity. Specifically, we start with the Cross-Verified database (CVDB) (Laouenan et al., 2022)."
+        },
+        "aliases": [
+          "CVDB"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "A cross-verified database of notable people, 3500bc-2018ad",
+          "justification": "This is the title of the referenced paper for the CVDB dataset.",
+          "quote": "A cross-verified database of notable people, 3500bc-2018ad."
+        }
+      },
+      {
+        "name": {
+          "value": "T-REx",
+          "justification": "The T-REx knowledge base is used to create questions about books, movies, and other creative works for experiments on internalization.",
+          "quote": "We also investigate internalization on an analogous QA dataset based on the T-REx knowledge base (Elsahar et al., 2018) from which we create questions about books, movies, and other creative works."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "T-REx: A large scale alignment of natural language with knowledge base triples",
+          "justification": "This is the title of the referenced paper for the T-REx knowledge base.",
+          "quote": "T-REx: A large scale alignment of natural language with knowledge base triples."
+        }
+      },
+      {
+        "name": {
+          "value": "MNIST",
+          "justification": "The MNIST dataset of handwritten digits is used to set up a computer vision task for investigating internalization.",
+          "quote": "The variables are specified as a N × N grid of digits (e.g. ( 61 90 )), and the entities are fully specified by a corresponding grid of target labels (e.g. ( AB BA ))."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The MNIST database of handwritten digit images for machine learning research",
+          "justification": "This is the title of the referenced paper for the MNIST dataset.",
+          "quote": "The MNIST database of handwritten digit images for machine learning research."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Transformers",
+          "justification": "The Transformers library is implicitly used for dealing with transformer architectures like Pythia and T5 in the experiments.",
+          "quote": "No explicit quote available, but the use of transformer-based models like Pythia and T5 indicates the use of a library like Transformers."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "No explicit title available",
+          "justification": "The paper does not provide explicit titles for libraries used, but based on context, Transformers library is likely used.",
+          "quote": "No explicit quote available, but the use of transformer-based models like Pythia and T5 indicates the use of a library like Transformers."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1452,
+    "prompt_tokens": 13418,
+    "total_tokens": 14870
+  }
+}

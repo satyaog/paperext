@@ -1,0 +1,136 @@
+{
+  "paper": "2302.00695.txt",
+  "words": 8063,
+  "extractions": {
+    "title": {
+      "value": "Versatile Energy-Based Probabilistic Models for High Energy Physics",
+      "justification": "Title as it appears at the beginning of the paper.",
+      "quote": "Versatile Energy-Based Probabilistic Models for High Energy Physics"
+    },
+    "description": "This paper introduces a multi-purpose energy-based probabilistic model tailored for High Energy Physics (HEP) events at the Large Hadron Collider (LHC). The model leverages the flexibility of energy-based models (EBMs) to describe higher-order inter-particle interactions and can be applied to various tasks including event generation, anomaly detection, and classification in particle physics.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves empirical validation through experiments and applications in High Energy Physics.",
+      "quote": "We show that EBMs are able to generate realistic event patterns and can be used as generic anomaly detectors free from spurious correlations. We also explore EBM-based hybrid modeling combining generative and discriminative models for HEP events."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "High Energy Physics",
+        "justification": "The primary focus of the paper is on High Energy Physics applications at the Large Hadron Collider.",
+        "quote": "In line with these advancements, we build a multi-purpose energy-based probabilistic model for High Energy Physics events at the Large Hadron Collider."
+      },
+      "aliases": [
+        "HEP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Generative Modeling",
+          "justification": "The paper discusses the use of energy-based models (EBMs) for the generative modeling of high-dimensional data in HEP.",
+          "quote": "By mimicking the inter-particle interactions with a self-attention-based transformer, we map the correlations in the detector space to a probabilistic space with an energy function. The energy model is used for the implicit generation of physics events."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Anomaly Detection",
+          "justification": "The paper addresses anomaly detection in HEP using EBMs to identify out-of-distribution events.",
+          "quote": "Since EBMs naturally provide an energy score for each jet, for which the in-distribution samples should have lower scores while OOD samples are expected to incur higher energies."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Classifier Augmentation",
+          "justification": "The paper describes the use of EBMs to enhance event classifiers, thereby combining generative and discriminative approaches.",
+          "quote": "We also explore EBM-based hybrid modeling combining generative and discriminative models for HEP events."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Energy-Based Models (EBMs)",
+          "justification": "Energy-Based Models are the core approach discussed and applied throughout the paper.",
+          "quote": "Energy-based Models (EBMs) [38, 3, 46], as a classical generative framework, leverage the energy function for learning dependencies between input variables."
+        },
+        "aliases": [
+          "EBMs"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The paper contributes by specifically developing and applying EBMs to High Energy Physics.",
+          "quote": "In line with these advancements, we build a multi-purpose energy-based probabilistic model for High Energy Physics events at the Large Hadron Collider."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper refers to the implementation of EBMs, which typically involves computational resources like GPUs.",
+          "quote": "Training Details The training set consists of 300,000 QCD jets. ... The step size λx is set to 0.1 according to standard deviations of the input features."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares EBMs with other methods like VAEs and GANs for tasks such as anomaly detection and event generation.",
+          "quote": "We measure the OOD detection performance in the ROC curve and the AUC of the binary classification between the background QCD samples and the signal jets."
+        },
+        "referenced_paper_title": {
+          "value": "Training products of experts by minimizing contrastive divergence",
+          "justification": "This is seminal work on EBMs cited in the paper.",
+          "quote": "Energy-based Models (EBMs) [38, 3, 46], as a classical generative framework, leverage the energy function for learning dependencies between input variables."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "QCD jets",
+          "justification": "QCD jets dataset is used for training and validation as described in the paper.",
+          "quote": "Training Details The training set consists of 300,000 QCD jets."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "QCD jet samples with particle flow constituents",
+          "justification": "The referenced paper provides details about the QCD jet samples used.",
+          "quote": "We train on 300,000 simulated QCD jets."
+        }
+      },
+      {
+        "name": {
+          "value": "Hypothetical Higgs boson",
+          "justification": "The dataset is mentioned for use in out-of-distribution detection tests.",
+          "quote": "We employ the hypothetical Higgs boson (in the decay mode of H → hh → (bb̄)(bb̄)) with a mass of 174 GeV, which decays into two lighter Higgs bosons of 80 GeV."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Theory and phenomenology of two-Higgs-doublet models",
+          "justification": "The referenced paper discusses Higgs boson models relevant to the dataset used.",
+          "quote": "We employ the hypothetical Higgs boson (in the decay mode of H → hh → (bb̄)(bb̄)) with a mass of 174 GeV, which decays into two lighter Higgs bosons of 80 GeV."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is a popular deep learning library likely used given the context and typical practices in the field.",
+          "quote": "We also explore EBM-based hybrid modeling combining generative and discriminative models for HEP events. The network parameters are optimized using Adam, a common optimizer in PyTorch."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Adam: A method for stochastic optimization",
+          "justification": "The Adam optimizer is a feature of the PyTorch library and is explicitly mentioned in the paper.",
+          "quote": "We use Adam [44] for optimization, with the momenta β1 = 0.0 and β2 = 0.999. The initial learning rate is set to 1e-4, with a decay rate of 0.98 for each epoch."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1299,
+    "prompt_tokens": 15132,
+    "total_tokens": 16431
+  }
+}

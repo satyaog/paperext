@@ -1,0 +1,218 @@
+{
+  "paper": "2309.03839.txt",
+  "words": 10381,
+  "extractions": {
+    "title": {
+      "value": "Bootstrapping Adaptive Human-Machine Interfaces with Offline Reinforcement Learning",
+      "justification": "The title is provided in the paper.",
+      "quote": "Bootstrapping Adaptive Human-Machine Interfaces with Offline Reinforcement Learning"
+    },
+    "description": "This research paper proposes ORBIT, an offline reinforcement learning algorithm to improve the data efficiency of adaptive interfaces used in tasks like robotic teleoperation. The authors argue that conventional human-in-the-loop machine learning systems, while beneficial, are often hampered by limited user data. ORBIT leverages offline pre-training and online fine-tuning to train an interface for mapping raw command signals to actions. They evaluate their approach through a user study involving a simulated navigation task where participants control movements using eye gaze tracked through a webcam. The findings show ORBIT\\'s superiority over a baseline directional interface due to its ability to decipher noisy user commands and offer shared autonomy assistance. Further evaluations on a simulated Sawyer pushing task and the Lunar Lander game reinforce ORBIT\\'s effectiveness across different domains.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents empirical findings and evaluations.",
+      "quote": "The results show that ORBIT enables the user to successfully navigate to their goal more often than a default, directional interface used to collect the training data."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "human-computer interaction",
+        "justification": "The paper explicitly states 'One of the central problems in the field of human-computer interaction is...' directly connecting it to the research.",
+        "quote": "One of the central problems in the field of human-computer interaction is designing interfaces that help users control complex systems, such as prosthetic limbs and assistive robots, by translating raw user commands (e.g., brain signals) into actions (illustrated in Fig. 1)."
+      },
+      "aliases": [
+        "human-computer interaction",
+        "robotic teleoperation",
+        "assistive robotics"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "reinforcement learning",
+          "justification": "Reinforcement learning is central to the paper, as evidenced by its title and repeated mentions throughout.",
+          "quote": "we propose a reinforcement learning algorithm to address this by training an interface to map raw command signals to actions using a combination of offline pre-training and online fine tuning."
+        },
+        "aliases": [
+          "reinforcement learning",
+          "offline RL",
+          "human-in-the-loop RL",
+          "RL"
+        ]
+      },
+      {
+        "name": {
+          "value": "adaptive interfaces",
+          "justification": "Adaptive interfaces are a key focus, as the paper aims to improve their data efficiency.",
+          "quote": "Adaptive interfaces can help users perform sequential decision-making tasks like robotic teleoperation given noisy, high-dimensional command signals (e.g., from a braincomputer interface)."
+        },
+        "aliases": [
+          "adaptive interfaces"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "ORBIT",
+          "justification": "The name 'ORBIT' is given in the paper.",
+          "quote": "We call our method the Offline RL-Bootstrapped InTerface (ORBIT)."
+        },
+        "aliases": [
+          "ORBIT",
+          "Offline RL-Bootstrapped InTerface"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The paper introduces ORBIT as its novel contribution.",
+          "quote": "We propose an offline RL algorithm for interface optimization that can learn from both an observational dataset of the user attempting to perform their desired tasks using some unknown existing default interface, as well as online data collected using our learned interface, where each episode is labeled with a sparse reward that indicates overall task success or failure."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper details the execution and evaluation of ORBIT.",
+          "quote": "To evaluate ORBIT’s ability to learn an effective interface from real user data, we conduct a user study with 12 participants who perform a simulated navigation task by using their eye gaze to modulate a 128dimensional command signal from their webcam (illustrated in Fig. 3 and 5)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares ORBIT against a 'default, directional interface' as its baseline throughout the study.",
+          "quote": "The results show that ORBIT enables the user to successfully navigate to their goal more often than a default, directional interface used to collect the training data."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "No reference paper is mentioned for ORBIT.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "directional interface",
+          "justification": "The paper refers to this model as the 'directional interface' or 'default interface'.",
+          "quote": "Baseline: directional interface."
+        },
+        "aliases": [
+          "directional interface",
+          "default interface"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The directional interface is not a novel contribution of this work and is used as a baseline.",
+          "quote": ""
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The directional interface is used in both the user study and in simulation experiments.",
+          "quote": "Each of the 12 participants completed two phases of experiments. In phase A, they use the default, directional interface for 100 episodes."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The directional interface serves as the baseline for comparison with ORBIT.",
+          "quote": "The results show that ORBIT enables the user to successfully navigate to their goal more often than a default, directional interface used to collect the training data."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "No specific reference paper is mentioned for the directional interface.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "iTracker",
+          "justification": "The model is named 'iTracker'.",
+          "quote": "The eye gaze signals are the same used in prior work on RL-based adaptive interfaces [6], [7], and consist of representations from iTracker [52]."
+        },
+        "aliases": [
+          "iTracker"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The authors use the pre-existing iTracker, not as a contribution of their work.",
+          "quote": ""
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "iTracker is used to process webcam input for eye gaze tracking.",
+          "quote": "The eye gaze signals are the same used in prior work on RL-based adaptive interfaces [6], [7], and consist of representations from iTracker [52]."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "iTracker itself is not compared; it's a tool used in the study.",
+          "quote": ""
+        },
+        "referenced_paper_title": {
+          "value": "Eye tracking for everyone",
+          "justification": "The paper cites the source of iTracker.",
+          "quote": "Eye tracking for everyone."
+        }
+      },
+      {
+        "name": {
+          "value": "gated recurrent neural network",
+          "justification": "The paper explicitly names 'gated recurrent neural network (RNN)' and uses GRU as a type of RNN.",
+          "quote": "In our experiments, we model the trajectory encoder eϕ as a gated recurrent neural network (RNN) [21], and the reward decoder dψ as a feedforward neural network."
+        },
+        "aliases": [
+          "GRU",
+          "gated recurrent neural network"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "GRU is not a contribution of this paper.",
+          "quote": ""
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "GRU is used as part of the trajectory encoder architecture.",
+          "quote": "In our experiments, we model the trajectory encoder eϕ as a gated recurrent neural network (RNN) [21], and the reward decoder dψ as a feedforward neural network."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "The use of GRU is not compared in this study.",
+          "quote": ""
+        },
+        "referenced_paper_title": {
+          "value": "On the properties of neural machine translation: Encoder-decoder approaches",
+          "justification": "The paper cites the source of GRU.",
+          "quote": "On the properties of neural machine translation: Encoder-decoder approaches."
+        }
+      },
+      {
+        "name": {
+          "value": "proximal policy optimization algorithm",
+          "justification": "The name 'proximal policy optimization algorithm (PPO)' is explicitly mentioned.",
+          "quote": "We train an agent to act as the simulated user using the proximal policy optimization algorithm (PPO) [58] and the default hyperparameter values from the Stable Baselines3 library [59]."
+        },
+        "aliases": [
+          "PPO",
+          "proximal policy optimization algorithm"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "PPO is not a contribution of this paper.",
+          "quote": ""
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The authors use PPO for training an agent that simulates user behavior.",
+          "quote": "We train an agent to act as the simulated user using the proximal policy optimization algorithm (PPO) [58] and the default hyperparameter values from the Stable Baselines3 library [59]."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "PPO is not itself compared.",
+          "quote": ""
+        },
+        "referenced_paper_title": {
+          "value": "Proximal policy optimization algorithms",
+          "justification": "The paper cites the source of PPO.",
+          "quote": "Proximal policy optimization algorithms."
+        }
+      }
+    ],
+    "datasets": [],
+    "libraries": []
+  },
+  "usage": {
+    "cached_content_token_count": 0,
+    "candidates_token_count": 0,
+    "prompt_token_count": 0,
+    "total_token_count": 20128
+  }
+}

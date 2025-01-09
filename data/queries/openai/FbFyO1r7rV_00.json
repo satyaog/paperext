@@ -1,0 +1,138 @@
+{
+  "paper": "FbFyO1r7rV.txt",
+  "words": 29747,
+  "extractions": {
+    "title": {
+      "value": "How does fine-tuning affect your model? Mechanistic analysis on procedural tasks",
+      "justification": "Title of the paper directly from the provided text.",
+      "quote": "How does fine-tuning affect your model? Mechanistic analysis on procedural tasks"
+    },
+    "description": "This paper explores how fine-tuning alters the capabilities of large pre-trained models, mainly focusing on whether it introduces novel capabilities or modifies existing ones. The study employs mechanistic interpretability tools like network pruning and probing in synthetic settings to discern changes in the model's capabilities.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper conducts experiments to empirically analyze how fine-tuning affects pre-trained models' capabilities.",
+      "quote": "We address this question empirically in synthetic settings with mechanistic interpretability tools (e.g., network pruning and probing) to understand how the model’s underlying capabilities are changing."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The study primarily focuses on understanding the capabilities of large language models when fine-tuned.",
+        "quote": "Large language models (LLMs) pretrained on huge, web-crawled text datasets demonstrate extremely general capabilities"
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Model Interpretability",
+          "justification": "The paper employs mechanistic interpretability tools to analyze underlying model capabilities and their changes after fine-tuning.",
+          "quote": "Our extensive analysis of the effects of fine-tuning shows: (i) fine-tuning rarely alters the underlying model capabilities; (ii) a minimal transformation, which we call a ‘wrapper’, is typically learned on top of the underlying model capabilities; and (iii) further fine-tuning on a task where such wrapped capabilities are relevant leads to sample-efficient “revival” of the capability"
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Machine Learning Safety",
+          "justification": "The study explores the safety implications of fine-tuning by investigating how it affects undesirable behaviors enforced through fine-tuning.",
+          "quote": "Morover, further fine-tuning the model on a subset of pretraining data leads to an extremely sample-efficient revival of the capability... This indicates practitioners can unintentionally remove a model’s safety wrapper by merely fine-tuning it on a superficially unrelated task."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Tracr Models",
+          "justification": "The paper explicitly mentions using Tracr compiled models to analyze fine-tuning effects.",
+          "quote": "Specifically, we focus on compiled transformer models based on the Tracr library [15, 16]—which allows encoding specific computational programs into a transformer."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The Tracr models were not developed by the authors but are used in the study.",
+          "quote": "Specifically, we focus on compiled transformer models based on the Tracr library [15, 16]—which allows encoding specific computational programs into a transformer."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The experiments involving Tracr models were executed as part of the study to analyze capabilities.",
+          "quote": "Specifically, we focus on compiled transformer models based on the Tracr library [15, 16]—which allows encoding specific computational programs into a transformer."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The Tracr models were compared with other models such as those trained on PCFGs to analyze different capability transformations.",
+          "quote": "Compiled capabilities with Tracr. For a fully controllable system with no ambiguities in model capabilities, we use Tracr [15], a recently proposed library that enables “compiling” a transformer model with a set of predefined computational primitives over a string of characters from the English alphabet, such as counting and sorting."
+        },
+        "referenced_paper_title": {
+          "value": "Tracr: Compiled transformers as a laboratory for interpretability",
+          "justification": "The referenced paper provides detail about the Tracr models used in the study.",
+          "quote": "To be presented at the Conference on Neural Information Processing Systems (NeurIPS 2023)."
+        }
+      },
+      {
+        "name": {
+          "value": "minGPT",
+          "justification": "The paper mentions using a variant of minGPT trained on PCFGs for experiments.",
+          "quote": "Specifically, we follow recent work [19] and train a minGPT model [23] via autoregressive modeling on probabilisitc context-free grammars (PCFGs), a formal model of language that captures syntactic properties."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The minGPT model was used in the study but was not developed by the authors.",
+          "quote": "Specifically, we follow recent work [19] and train a minGPT model [23] via autoregressive modeling on probabilisitc context-free grammars (PCFGs)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The minGPT model was trained and evaluated as part of the experiments in the paper.",
+          "quote": "Specifically, we follow recent work [19] and train a minGPT model [23] via autoregressive modeling on probabilisitc context-free grammars (PCFGs)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The minGPT model was compared with Tracr models to analyze different capability transformations.",
+          "quote": "While Tracr allows us to analyze models with perfectly encoded capabilities, models trained on PCFGs allow us to evaluate the effects of different pretraining design choices that may yield learning of “approximate” capabilities."
+        },
+        "referenced_paper_title": {
+          "value": "minGPT",
+          "justification": "The referenced paper provides detail about the minGPT models used in the study.",
+          "quote": "Specifically, we follow recent work [19] and train a minGPT model [23] via autoregressive modeling on probabilisitc context-free grammars (PCFGs)."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "PCFGs",
+          "justification": "The study uses probabilistic context-free grammars (PCFGs) to train and evaluate models.",
+          "quote": "Specifically, we follow recent work [19] and train a minGPT model [23] via autoregressive modeling on probabilisitc context-free grammars (PCFGs), a formal model of language that captures syntactic properties."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Physics of language models: Part 1, context-free grammar",
+          "justification": "The referenced paper provides detail about the PCFGs used in the study.",
+          "quote": "Specifically, we follow recent work [19] and train a minGPT model [23] via autoregressive modeling on probabilisitc context-free grammars (PCFGs), a formal model of language that captures syntactic properties."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Tracr",
+          "justification": "The Tracr library is explicitly mentioned in the paper as a tool for creating compiled transformer models.",
+          "quote": "Specifically, we focus on compiled transformer models based on the Tracr library [15, 16]—which allows encoding specific computational programs into a transformer."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Tracr: Compiled transformers as a laboratory for interpretability",
+          "justification": "The referenced paper provides detail about the Tracr library used in the study.",
+          "quote": "Specifically, we focus on compiled transformer models based on the Tracr library [15, 16]—which allows encoding specific computational programs into a transformer."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1500,
+    "prompt_tokens": 55804,
+    "total_tokens": 57304
+  }
+}

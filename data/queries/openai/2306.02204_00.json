@@ -1,0 +1,172 @@
+{
+  "paper": "2306.02204.txt",
+  "words": 10747,
+  "extractions": {
+    "title": {
+      "value": "Cycle Consistency Driven Object Discovery",
+      "justification": "This is the title of the paper.",
+      "quote": "Cycle Consistency Driven Object Discovery"
+    },
+    "description": "This paper introduces cycle consistency objectives to improve object-centric representation learning. The authors show that these objectives enhance object discovery and provide richer features for downstream tasks. The method is demonstrated on both synthetic and real-world scenes, achieving substantial improvements in object-discovery performance. Moreover, the learned representations enhance performance in downstream reinforcement learning tasks.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents experimental results on synthetic and real-world datasets as well as reinforcement learning tasks to support its claims.",
+      "quote": "By integrating these consistency objectives into various existing slot-based object-centric methods, we showcase substantial improvements in object-discovery performance. These enhancements consistently hold true across both synthetic and real-world scenes, underscoring the effectiveness and adaptability of the proposed approach."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The primary focus of the paper is on object discovery within visual scenes, which is a core area of Computer Vision.",
+        "quote": "Developing deep learning models that effectively learn object-centric representations, akin to human cognition, remains a challenging task."
+      },
+      "aliases": [
+        "CV"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Object Detection",
+          "justification": "The paper's primary contribution is in improving object-centric representation learning, which directly falls under object detection.",
+          "quote": "By integrating these consistency objectives into various existing slot-based object-centric methods, we showcase substantial improvements in object-discovery performance."
+        },
+        "aliases": [
+          "Object Recognition"
+        ]
+      },
+      {
+        "name": {
+          "value": "Reinforcement Learning",
+          "justification": "The paper evaluates the effectiveness of the learned representations on downstream reinforcement learning tasks.",
+          "quote": "To tackle the second limitation, we apply the learned object-centric representations from the proposed method to two downstream reinforcement learning tasks, demonstrating considerable performance enhancements compared to conventional slot-based and monolithic representation learning methods."
+        },
+        "aliases": [
+          "RL"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Slot Attention",
+          "justification": "Slot Attention is used as a base object-centric approach augmented with the proposed cycle consistency objectives.",
+          "quote": "Our proposed objectives are agnostic to the object-centric approach used and only require that the underlying base object-centric approach employs slot attention."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Slot Attention is an existing model used as the base approach in this paper.",
+          "quote": "Slot Attention employs a top-down iterative attention mechanism to discover slots from image features obtained using a convolutional encoder."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was executed as part of the experiments in the paper.",
+          "quote": "For instance, slot attention [Locatello et al., 2020] utilizes a pixel-based reconstruction loss. Upon adding the proposed objectives, the final loss becomes: Lf inal = Lrecon + λsf s′ Lsf s′ + λf sf ′ Lf sf ′"
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Slot Attention was compared numerically to other models in the experiments.",
+          "quote": "We compare our method to the baseline decision transformer and an object-centric variant of the decision transformer (DT + SA), where we use the slot attention style reconstruction loss but omit the cycle consistency objectives."
+        },
+        "referenced_paper_title": {
+          "value": "Object-centric learning with slot attention",
+          "justification": "The reference to Slot Attention model in the paper 'Object-centric learning with slot attention' by Locatello et al.",
+          "quote": "Slot Attention employs a top-down iterative attention mechanism to discover slots from image features obtained using a convolutional encoder."
+        }
+      },
+      {
+        "name": {
+          "value": "SLATE",
+          "justification": "The SLATE model is used as one of the base object-centric approaches in the paper.",
+          "quote": "We consider the following as base object-centric approaches: (1) Slot Attention [Locatello et al., 2020]; (2) SLATE [Singh et al., 2022];"
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "SLATE is an existing model used in this paper.",
+          "quote": "SLATE uses slot attention to discover slots but substitutes the convolutional encoder in slot attention with a dVAE [van den Oord et al., 2017, Ramesh et al., 2021], and the convolutional decoder with an autoregressive transformer [Ramesh et al., 2021]."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "SLATE model was run during the experiments as one of the base models.",
+          "quote": "The baseline object centric model in our case is Slate. We augment it with the proposed cycle consistency objectives for our model. Both the object-centric models utilize 6 slots. We train them for 200k steps."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "SLATE is compared with other object-centric models in the experiments.",
+          "quote": "We compare our method to the baseline decision transformer and an object-centric variant of the decision transformer (DT + SA), where we use the slot attention style reconstruction loss but omit the cycle consistency objectives."
+        },
+        "referenced_paper_title": {
+          "value": "Improving object-centric learning with query optimization",
+          "justification": "SLATE is referenced to as one of the base models for comparison.",
+          "quote": "BO-Slate represents an improved iteration of Slate [Singh et al., 2022], primarily enhanced through learnable slot initializations."
+        }
+      },
+      {
+        "name": {
+          "value": "Dinosaur",
+          "justification": "The Dinosaur model utilizes slot attention on features from a pretrained self-supervised encoder.",
+          "quote": "Recent works [Singh et al., 2022, Jia et al., 2022, Seitzer et al., 2023, Choudhury et al., 2021, Wang et al., 2022b, 2023] have proposed improvements that scale these slot-based methods to real-world datasets. While most datasets utilize pixel-wise reconstruction objectives, [Seitzer et al., 2023, Wang et al., 2023] are the only two works utilizing objectives in the latent space, akin to our proposed approach."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Dinosaur is based on existing work and not specifically contributed by this paper.",
+          "quote": "Dinosaur also utilizes the slot attention module for discovering slots but replaces the convolutional encoder with a pretrained and fixed DINO encoder [Caron et al., 2021]. The decoder in Dinosaur reconstructs pretrained DINO features instead of reconstructing the image in pixel space."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The Dinosaur model was executed as part of the experiments in the paper.",
+          "quote": "We use DINOSAUR [Seitzer et al., 2023] as the base model to which we augment the cycle consistency objectives for our experiments on the MOVi-E and MOVi-C datasets."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The Dinosaur model's performance is compared against other models in this study.",
+          "quote": "A noticeable performance drop is observed when the cycle consistency objectives are exclusively applied to the last iteration, underscoring the importance of applying the objectives across all iterations."
+        },
+        "referenced_paper_title": {
+          "value": "Bridging the gap to real-world object-centric learning",
+          "justification": "The Dinosaur model is referenced in this context.",
+          "quote": "We use DINOSAUR [Seitzer et al., 2023] as the base model to which we augment the cycle consistency objectives."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "MOVi-C",
+          "justification": "This dataset is used in the experiments for evaluation.",
+          "quote": "Our comparison is conducted on the MOVI datasets [Greff et al., 2022]. The results in Table 4 demonstrate that DINOSAUR augmented with cyclic objectives outperforms the base DINOSAUR model on both datasets."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Kubric: A scalable dataset generator",
+          "justification": "The MOVI datasets are part of the Kubric dataset generator referenced in this paper.",
+          "quote": "[Greff et al., 2022]"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is commonly used for implementing deep learning models and is likely used in this study for experimental purposes.",
+          "quote": ""
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An imperative style, high-performance deep learning library",
+          "justification": "PyTorch is widely referenced in studies involving deep learning implementations.",
+          "quote": ""
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2125,
+    "prompt_tokens": 20375,
+    "total_tokens": 22500
+  }
+}

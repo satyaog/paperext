@@ -1,0 +1,194 @@
+{
+  "paper": "2211.13337.txt",
+  "words": 7090,
+  "extractions": {
+    "title": {
+      "value": "MULTI-ENVIRONMENT PRETRAINING ENABLES TRANSFER TO ACTION LIMITED DATASETS",
+      "justification": "The title is clearly mentioned at the very beginning of the paper.",
+      "quote": "MULTI-ENVIRONMENT PRETRAINING ENABLES TRANSFER TO ACTION LIMITED DATASETS"
+    },
+    "description": "The paper proposes Action Limited PreTraining (ALPT) to overcome limitations in reinforcement learning where available data lacks action annotations. By combining sparsely-annotated data from target environments with fully-annotated data from various source environments, and leveraging inverse dynamics modeling (IDM) to label missing action data, the method shows significant improvements in learning policies for target environments, even with minimal annotated data.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents experimental results and evaluations of the proposed ALPT method across various benchmarks to demonstrate its effectiveness and performance improvements.",
+      "quote": "We evaluate our method on benchmark game-playing environments and show that we can significantly improve game performance and generalization capability compared to other approaches."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Reinforcement Learning",
+        "justification": "The paper addresses challenges and proposes solutions within the domain of reinforcement learning, focusing on how to better utilize available data for training models.",
+        "quote": "In reinforcement learning, however, a key challenge is that available data of sequential decision making is often not annotated with actions."
+      },
+      "aliases": [
+        "RL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Inverse Dynamics Modeling",
+          "justification": "Inverse Dynamics Modeling (IDM) is explicitly mentioned as a core component of the proposed method, used to label missing action data in target environments.",
+          "quote": "Action Limited PreTraining (ALPT), leverages the generalization capabilities of inverse dynamics modelling (IDM) to label missing action data in the target environment."
+        },
+        "aliases": [
+          "IDM",
+          "Inverse Dynamics Model"
+        ]
+      },
+      {
+        "name": {
+          "value": "Sequence Modeling",
+          "justification": "The paper uses Decision Transformers (DT) for sequence modeling in the reinforcement learning setting, particularly for offline RL.",
+          "quote": "Decision transformer (DT) (Chen et al., 2021a) is an approach to offline RL which formulates this problem as sequence modeling, and then uses transformer-based architectures to solve it."
+        },
+        "aliases": [
+          "DT",
+          "Sequence Model"
+        ]
+      },
+      {
+        "name": {
+          "value": "Transfer Learning",
+          "justification": "The proposed ALPT method involves transferring knowledge from source environments with fully-annotated data to target environments with limited annotations, aligning with the principles of transfer learning.",
+          "quote": "We show that these benefits even hold when the source and target environments use distinct action spaces; i.e., the environments share similar states but no common actions, further demonstrating the power of IDM pretraining."
+        },
+        "aliases": [
+          "Transfer Learning"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Decision Transformer",
+          "justification": "Decision Transformers (DT) are specifically mentioned and used in the paper to model sequences for offline reinforcement learning.",
+          "quote": "Decision transformer (DT) (Chen et al., 2021a) is an approach to offline RL which formulates this problem as sequence modeling."
+        },
+        "aliases": [
+          "DT"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The Decision Transformer (DT) model was cited from another paper and not proposed as a novel contribution in this paper.",
+          "quote": "Decision transformer (DT) (Chen et al., 2021a) is an approach to offline RL which formulates this problem as sequence modeling."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model is trained and evaluated on benchmark game-playing environments, implying it was executed as part of the experiments.",
+          "quote": "We evaluate our method on benchmark game-playing environments and show that we can significantly improve game performance and generalization capability compared to other approaches."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The Decision Transformer model is compared to other models in the paper, particularly in terms of its performance and generalization capabilities.",
+          "quote": "These methods are commonly used to train on a source set of tasks, like ALPT, but usually require task labels. Meta-training tasks need to be hand-selected, and the results are highly dependent on the quality of that process."
+        },
+        "referenced_paper_title": {
+          "value": "Decision Transformer: Reinforcement Learning via Sequence Modeling",
+          "justification": "This is the originating paper for the Decision Transformer model, which was referenced and utilized in this study.",
+          "quote": "Decision transformer (DT) (Chen et al., 2021a) is an approach to offline RL which formulates this problem as sequence modeling."
+        }
+      },
+      {
+        "name": {
+          "value": "Inverse Dynamics Model",
+          "justification": "Inverse Dynamics Models (IDM) are central to the ALPT methodology proposed in the paper, used for pretraining to predict missing action labels.",
+          "quote": "Action Limited PreTraining (ALPT), leverages the generalization capabilities of inverse dynamics modelling (IDM) to label missing action data in the target environment."
+        },
+        "aliases": [
+          "IDM"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Inverse Dynamics Modeling is an existing approach (Nguyen-Tuong et al., 2008) and not a novel contribution of this paper.",
+          "quote": "Inverse dynamics model (IDM) (Nguyen-Tuong et al., 2008)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The IDM was trained on data from various source environments as part of the experimental setup.",
+          "quote": "ALPT thus uses the multi-environment source datasets as pretraining for an IDM."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of IDM is compared with other baselines and methods to demonstrate its effectiveness in labeling missing action data.",
+          "quote": "We show that utilizing even one additional environment dataset of labelled data during IDM pretraining gives rise to substantial improvements in generating action labels for unannotated sequences."
+        },
+        "referenced_paper_title": {
+          "value": "Learning Inverse Dynamics: A Comparison",
+          "justification": "This paper outlines the concept of Inverse Dynamics Models, which is referenced in this study.",
+          "quote": "(Nguyen-Tuong et al., 2008)"
+        }
+      },
+      {
+        "name": {
+          "value": "Action Limited PreTraining",
+          "justification": "Action Limited PreTraining (ALPT) is the novel contribution of this paper, proposed and evaluated by the authors.",
+          "quote": "We propose Action Limited PreTraining (ALPT), which leverages the generalization capabilities of inverse dynamics modelling (IDM) to label missing action data in the target environment."
+        },
+        "aliases": [
+          "ALPT"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "ALPT is the primary contribution of this paper, proposed as a solution to the problem of learning from action-limited datasets.",
+          "quote": "We propose Action Limited PreTraining (ALPT), which leverages the generalization capabilities of inverse dynamics modelling (IDM) to label missing action data in the target environment."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The ALPT framework was implemented and evaluated on various benchmark game-playing environments.",
+          "quote": "We evaluate our method on benchmark game-playing environments and show that we can significantly improve game performance and generalization capability compared to other approaches."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The ALPT method is compared with several baseline methods to demonstrate its effectiveness, including comparisons with Decision Transformers and other multi-environment and single-environment baselines.",
+          "quote": "We compare our pretraining regime (ALPT) with the single-game variant and standard DT baselines in Figure 2. We see that pretraining ALPT on the source games results in substantial downstream performance improvements."
+        },
+        "referenced_paper_title": {
+          "value": "MULTI-ENVIRONMENT PRETRAINING ENABLES TRANSFER TO ACTION LIMITED DATASETS",
+          "justification": "As ALPT is the novel contribution of this paper, the reference paper title is the same as the current paper being analyzed.",
+          "quote": "We propose Action Limited PreTraining (ALPT), which leverages the generalization capabilities of inverse dynamics modelling (IDM) to label missing action data in the target environment."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "RL Unplugged Atari Dataset",
+          "justification": "The RL Unplugged Atari Dataset is mentioned as a source of offline RL Atari data used in the experiments.",
+          "quote": "As in Lee et al. (2022), we use the standard offline RL Atari datasets from RL Unplugged (Gulcehre et al., 2020)."
+        },
+        "aliases": [
+          "RL Unplugged"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "RL Unplugged: A suite of benchmarks for offline reinforcement learning",
+          "justification": "This is the reference paper for the RL Unplugged datasets, specifically described as benchmarks for offline RL.",
+          "quote": "As in Lee et al. (2022), we use the standard offline RL Atari datasets from RL Unplugged (Gulcehre et al., 2020)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "GPT-2",
+          "justification": "The IDM is implemented using the GPT-2 transformer architecture, modified to be bidirectional.",
+          "quote": "We use k = 5 and parameterize Pβ using the GPT-2 transformer architecture (Radford et al., 2019b), modified to be bidirectional by changing the attention mask."
+        },
+        "aliases": [
+          "GPT-2"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Language Models are Unsupervised Multitask Learners",
+          "justification": "This is the paper in which the GPT-2 architecture was introduced.",
+          "quote": "We use k = 5 and parameterize Pβ using the GPT-2 transformer architecture (Radford et al., 2019b), modified to be bidirectional by changing the attention mask."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1955,
+    "prompt_tokens": 12521,
+    "total_tokens": 14476
+  }
+}

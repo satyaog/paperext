@@ -1,0 +1,127 @@
+{
+  "paper": "2309.13543.txt",
+  "words": 8281,
+  "extractions": {
+    "title": {
+      "value": "S UBSTITUTING DATA A NNOTATION WITH BALANCED U PDATES AND C OLLECTIVE L OSS IN M ULTI - LABEL T EXT C LASSIFICATION",
+      "justification": "This is the title of the research paper.",
+      "quote": "S UBSTITUTING DATA A NNOTATION WITH BALANCED U PDATES AND C OLLECTIVE L OSS IN M ULTI - LABEL T EXT C LASSIFICATION"
+    },
+    "description": "The paper focuses on Multi-label text classification (MLTC) and addresses the challenges posed by limited annotated data. The authors propose a framework (BNCL) that leverages pre-trained language models (like BART) and incorporates label dependencies (using GloVe word embeddings) to enhance classification accuracy. The framework is evaluated on the Reuters21578 and StackEx-Philosophy datasets, demonstrating significant performance improvements compared to baseline methods, especially in low-supervision settings.",
+    "type": {
+      "value": "empirical",
+      "justification": "The research paper presents an empirical study based on experiments on different datasets. Thus, it's categorized as empirical research.",
+      "quote": "Our experiments show that the proposed framework is efficient and effective in terms of improving the prediction performance."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Multi-label text classification",
+        "justification": "The paper focuses on the task of multi-label text classification within the broader field of natural language processing.",
+        "quote": "Multi-label text classification (MLTC) is the task of assigning multiple labels to a given text, and has a wide range of application domains."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [],
+    "models": [
+      {
+        "name": {
+          "value": "BART",
+          "justification": "The paper names BART as the pre-trained language model used in their methodology.",
+          "quote": "We transform the input using the pre-trained model BART (Lewis et al., 2020) and its corresponding tokenizer, which is fine-tuned on a large corpus, MNLI (Williams et al., 2018), composed of hypothesis-premise pairs."
+        },
+        "aliases": [
+          "BART"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The authors use BART, a pre-existing language model, as a part of their framework, they do not contribute to its development.",
+          "quote": "We transform the input using the pre-trained model BART (Lewis et al., 2020) and its corresponding tokenizer, which is fine-tuned on a large corpus, MNLI (Williams et al., 2018), composed of hypothesis-premise pairs."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The authors utilize a pre-trained BART model in their experiments.",
+          "quote": "We transform the input using the pre-trained model BART (Lewis et al., 2020) and its corresponding tokenizer, which is fine-tuned on a large corpus, MNLI (Williams et al., 2018), composed of hypothesis-premise pairs."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares the performance of its proposed model, BNCL, with BART in the context of multi-label text classification.",
+          "quote": "We transform the input using the pre-trained model BART (Lewis et al., 2020) and its corresponding tokenizer, which is fine-tuned on a large corpus, MNLI (Williams et al., 2018), composed of hypothesis-premise pairs."
+        },
+        "referenced_paper_title": {
+          "value": "BART: Denoising Sequence-to-Sequence Pre-training for Natural Language Generation, Translation, and Comprehension",
+          "justification": "The paper references the original BART paper (Lewis et al., 2020).",
+          "quote": "Lewis et al., 2020"
+        }
+      },
+      {
+        "name": {
+          "value": "BERT",
+          "justification": "The paper mentions BERT as a pre-trained language model.",
+          "quote": "Meng et al. (2020) use a pre-trained language model, BERT (Devlin et al., 2019)"
+        },
+        "aliases": [
+          "BERT"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper discusses BERT as a tool used by other researchers but does not contribute to the model's development itself.",
+          "quote": "Meng et al. (2020) use a pre-trained language model, BERT (Devlin et al., 2019),\\nto generate a list of alternative words for each label."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The paper doesn't explicitly state that it uses BERT for experiments. It's only mentioned in the related work section, suggesting its use by other researchers for comparison.",
+          "quote": "Meng et al. (2020) use a pre-trained language model, BERT (Devlin et al., 2019),\\nto generate a list of alternative words for each label."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "BERT is mentioned in the context of related work, particularly single-label text classification.",
+          "quote": "Mekala & Shang (2020) argue that forming the keyword vocabulary for labels independent from the context of the input text makes it impossible for the model to differentiate between different usages of the same word. By using BERT (Devlin et al., 2019) to build context vectors, they propose a method that can associate different meanings with different labels."
+        },
+        "referenced_paper_title": {
+          "value": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "justification": "The paper cites the original BERT paper (Devlin et al., 2019).",
+          "quote": "Devlin et al., 2019"
+        }
+      },
+      {
+        "name": {
+          "value": "GCN",
+          "justification": "The paper refers to GCN (Graph Convolutional Network) as the foundational concept for their model update function.",
+          "quote": "Derr et al. (2018) extend the graph convolutional network (GCN) (Kipf\\n& Welling, 2017) to signed networks based on balance theory"
+        },
+        "aliases": [
+          "GCN",
+          "graph convolutional network"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The authors use the concept of GCNs as a basis for their model's update function but do not introduce a new GCN architecture.",
+          "quote": "Derr et al. (2018) extend the graph convolutional network (GCN) (Kipf\\n& Welling, 2017) to signed networks based on balance theory, which states that a triad is balanced if and only if the number of negative edges is even; the friend of my friend is my friend and the enemy of my enemy is my friend."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "While the paper uses a model inspired by GCNs, it doesn't explicitly state that a GCN model itself was implemented and run.",
+          "quote": "Derr et al. (2018) extend the graph convolutional network (GCN) (Kipf\\n& Welling, 2017) to signed networks based on balance theory, which states that a triad is balanced if and only if the number of negative edges is even; the friend of my friend is my friend and the enemy of my enemy is my friend."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "The paper mentions GCN in the context of related work, particularly in zero-shot multi-label text classification, but not as a direct comparison to their model.",
+          "quote": "Rios & Kavuluru (2018) use label descriptions to generate a feature vector for each label and employ a two layer graph convolutional network (GCN) (Kipf & Welling, 2017) to encode the hierarchical label structure."
+        },
+        "referenced_paper_title": {
+          "value": "Semi-Supervised Classification with Graph Convolutional Networks",
+          "justification": "The paper cites the original GCN paper (Kipf & Welling, 2017).",
+          "quote": "Kipf & Welling, 2017"
+        }
+      }
+    ],
+    "datasets": [],
+    "libraries": []
+  },
+  "usage": {
+    "cached_content_token_count": 0,
+    "candidates_token_count": 0,
+    "prompt_token_count": 0,
+    "total_token_count": 17105
+  }
+}

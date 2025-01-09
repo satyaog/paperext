@@ -17,11 +17,12 @@ from pygments import highlight
 from pygments.formatters import TerminalTrueColorFormatter
 from pygments.lexers.data import YamlLexer
 
-from . import ROOT_DIR
-from .models.model import ExtractionResponse, PaperExtractions, empty_model
-from .models.utils import (convert_model_json_to_yaml, model_dump_yaml,
-                           model_validate_yaml)
-from .utils import str_normalize
+from paperext import ROOT_DIR
+from paperext.models.model import (ExtractionResponse, PaperExtractions,
+                                   empty_model)
+from paperext.models.utils import (convert_model_json_to_yaml, model_dump_yaml,
+                                   model_validate_yaml)
+from paperext.utils import str_normalize
 
 _EDITOR = os.environ.get("VISUAL", os.environ.get("EDITOR", None))
 _TMPDIR = tempfile.TemporaryDirectory()
@@ -403,7 +404,7 @@ def get_papers_from_file(
             .lower()
             .replace("\n", " ")
         )
-        responses = list((ROOT_DIR / "data/queries/").glob(f"{paper_id}_[0-9]*.json"))
+        responses = list((ROOT_DIR / "data/queries/openai").glob(f"{paper_id}_[0-9]*.json"))
         if not responses:
             logging.info(f"No responses found for {paper_id}\nSkipping...")
             continue
@@ -419,7 +420,7 @@ def get_papers_from_file(
 
 
 def get_papers_from_folder() -> List[Tuple[str, Path, ExtractionResponse]]:
-    responses = (ROOT_DIR / "data/queries/").glob("*.json")
+    responses = (ROOT_DIR / "data/queries/openai").glob("*.json")
 
     extractions_tuple = []
     for response_path in responses:

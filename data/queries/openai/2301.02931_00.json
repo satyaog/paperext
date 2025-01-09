@@ -1,0 +1,218 @@
+{
+  "paper": "2301.02931.txt",
+  "words": 9076,
+  "extractions": {
+    "title": {
+      "value": "Bidirectional Learning for Offline Model-Based Biological Sequence Design",
+      "justification": "This is the actual title of the paper as provided.",
+      "quote": "Bidirectional Learning for Offline Model-based Biological Sequence Design"
+    },
+    "description": "This paper addresses offline model-based optimization, focusing on biological sequence design, specifically DNA and protein sequences. It critiques the reliance on Neural Tangent Kernel (NTK) and incorporates pre-trained Language Models (LMs) for better feature learning and exploitation of biophysical information. The paper introduces an adaptive bi-level optimization framework involving a forward and backward mapping loss, and proposes the first learning rate adaptation module for gradient-based algorithms in this context. Experimental results validate the framework's effectiveness.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper conducts experiments to validate the effectiveness of the proposed algorithm on DNA and protein sequence design tasks, analyzing quantitative results.",
+      "quote": "Experimental results on DNA/protein sequence design tasks verify the effectiveness of our algorithm."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing (NLP) for Biological Sequence Design",
+        "justification": "The core of the research leverages Natural Language Processing models (pre-trained language models) for biological sequence design tasks.",
+        "quote": "Though effective, the NTK cannot learn features because of its parametrization, and its use prevents the incorporation of powerful pre-trained Language Models (LMs) that can capture the rich biophysical information in millions of biological sequences."
+      },
+      "aliases": [
+        "NLP for BioSeqDesign",
+        "NLP for Biological Sequences",
+        "Biological NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Gradient-Based Optimization",
+          "justification": "The framework involves gradient ascent and introduces novel methods for learning rate adaptation and weight control via bi-level optimization.",
+          "quote": "We construct a proxy model by combining a finite-width pre-trained LM with an additional layer. We then linearize the resultant proxy model, inspired by the recent progress in deep linearization."
+        },
+        "aliases": [
+          "Gradient Optimization",
+          "Gradient Descent Optimization"
+        ]
+      },
+      {
+        "name": {
+          "value": "Model-Based Optimization",
+          "justification": "The core of the research is focused on model-based optimization techniques for the design of biological sequences.",
+          "quote": "Offline model-based optimization aims to maximize a black-box objective function with a static dataset of designs and their scores."
+        },
+        "aliases": [
+          "Model-Based Design Optimization"
+        ]
+      },
+      {
+        "name": {
+          "value": "Biological Sequence Design",
+          "justification": "The primary application domain of the techniques proposed in the paper is the design of biological sequences, such as DNA and proteins.",
+          "quote": "We focus on biological sequence design to maximize some sequence score."
+        },
+        "aliases": [
+          "BioSeq Design",
+          "Biological Sequence Engineering"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "BIdirectional Learning for model-based Biological sequence design (BIB)",
+          "justification": "This is the main model proposed in the paper, combining a pre-trained language model with a linearization scheme for bidirectional learning.",
+          "quote": "To sum up, we propose BIdirectional learning for model-based Biological sequence design (BIB)."
+        },
+        "aliases": [
+          "BIB"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "BIB is a newly introduced model in this paper.",
+          "quote": "To sum up, we propose BIdirectional learning for model-based Biological sequence design (BIB)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Experimental results and optimization tasks are performed using the proposed BIB model.",
+          "quote": "Experimental results on DNA/protein sequence design tasks verify the effectiveness of BIB and Adaptive-η."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares BIB numerically with other gradient-based and non-gradient-based methods.",
+          "quote": "We compare BIB with two groups of baselines: the gradient-based methods and the non-gradient-based methods."
+        },
+        "referenced_paper_title": {
+          "value": "None",
+          "justification": "This model is newly introduced in this paper and has no prior reference.",
+          "quote": "To sum up, we propose BIdirectional learning for model-based Biological sequence design (BIB)."
+        }
+      },
+      {
+        "name": {
+          "value": "Adaptive-η",
+          "justification": "Adaptive-η is introduced as the first learning rate adaptation module for gradient-based algorithms in this context.",
+          "quote": "To the best of our knowledge, Adaptive-η is the first learning rate adaptation module for gradient-based algorithms for offline model-based optimization."
+        },
+        "aliases": [
+          "Adaptive-eta"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "Adaptive-η is introduced in this paper as a new module.",
+          "quote": "To the best of our knowledge, Adaptive-η is the first learning rate adaptation module for gradient-based algorithms for offline model-based optimization."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Adaptive-η is evaluated in experiments to demonstrate its effectiveness in improving learning models.",
+          "quote": "Experimental results on DNA/protein sequence design tasks verify the effectiveness of BIB and Adaptive-η."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Adaptive-η is compared with gradient-based algorithms both with and without the module to show its effectiveness.",
+          "quote": "Adaptive-η provides a consistent gain for all scenarios, which demonstrates the widespread applicability and effectiveness of the module."
+        },
+        "referenced_paper_title": {
+          "value": "None",
+          "justification": "This model is newly introduced in this paper and has no prior reference.",
+          "quote": "To the best of our knowledge, Adaptive-η is the first learning rate adaptation module for gradient-based algorithms for offline model-based optimization."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "TFBind8(r)",
+          "justification": "This is a DNA dataset used for measuring the binding activity score with a particular transcription factor.",
+          "quote": "We conduct experiments on two DNA tasks: TFBind8(r) and TFBind10(r), following (Chen et al., 2022b) and three protein tasks: avGFP, AAV and E4B, in (Ren et al., 2022) which have the most data points."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Survey of variation in human transcription factors reveals prevalent DNA binding changes",
+          "justification": "TFBind8(r) dataset is derived from a study by Barrera et al. (2016).",
+          "quote": "The goal is to find a length-8 DNA sequence to maximize the binding activity score with a particular transcription factor, SIX6REFR1 (Barrera et al., 2016)."
+        }
+      },
+      {
+        "name": {
+          "value": "TFBind10(r)",
+          "justification": "This is a DNA dataset similar to TFBind8(r), but for length-10 DNA sequences.",
+          "quote": "We conduct experiments on two DNA tasks: TFBind8(r) and TFBind10(r), following (Chen et al., 2022b) and three protein tasks: avGFP, AAV and E4B, in (Ren et al., 2022) which have the most data points."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Survey of variation in human transcription factors reveals prevalent DNA binding changes",
+          "justification": "TFBind10(r) dataset is derived from a study by Barrera et al. (2016).",
+          "quote": "This task TFBind10(r) is the same as TFBind8(r) except that the goal is to find a length-10 DNA sequence. Both DNA tasks measure the entire search space."
+        }
+      },
+      {
+        "name": {
+          "value": "avGFP",
+          "justification": "This is a protein dataset used for designing protein sequences to maximize fluorescence levels.",
+          "quote": "This task aims to find a protein sequence with approximately 239 amino acids to maximize the fluorescence level of Green Fluorescent Proteins (Sarkisyan et al., 2016)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Local fitness landscape of the green fluorescent protein",
+          "justification": "The avGFP dataset derives its ground-truth from an extensive study by Sarkisyan et al. (2016).",
+          "quote": "This task aims to find a protein sequence with approximately 239 amino acids to maximize the fluorescence level of Green Fluorescent Proteins (Sarkisyan et al., 2016)."
+        }
+      },
+      {
+        "name": {
+          "value": "AAV",
+          "justification": "This protein dataset is used for engineering a specific segment of the VP1 protein to remain viable for gene therapy.",
+          "quote": "The goal is to engineer a 28-amino acid segment (positions 561–588) of the VP1 protein to remain viable for gene therapy (Bryant et al., 2021)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Deep diversification of an AAV capsid protein by machine learning",
+          "justification": "The AAV dataset is referenced from a study by Bryant et al. (2021).",
+          "quote": "The goal is to engineer a 28-amino acid segment (positions 561–588) of the VP1 protein to remain viable for gene therapy (Bryant et al., 2021)."
+        }
+      },
+      {
+        "name": {
+          "value": "E4B",
+          "justification": "This dataset focuses on designing protein sequences to maximize ubiquitination rates to the target protein.",
+          "quote": "This task aims to design a protein (around 102 amino acids) to maximize the ubiquitination rate to the target protein (Starita et al., 2013)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Activity-enhancing mutations in an E3 ubiquitin ligase identified by high-throughput mutagenesis",
+          "justification": "The E4B dataset is derived from research by Starita et al. (2013).",
+          "quote": "This task aims to design a protein (around 102 amino acids) to maximize the ubiquitination rate to the target protein (Starita et al., 2013)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is mentioned as the deep learning framework used for all the experiments in the paper.",
+          "quote": "We use Pytorch (Paszke et al., 2019) to run all experiments on one V100 GPU."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Pytorch: an imperative style, high-performance deep learning library",
+          "justification": "The library's reference is correctly cited in the paper.",
+          "quote": "We use Pytorch (Paszke et al., 2019) to run all experiments on one V100 GPU."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2109,
+    "prompt_tokens": 16996,
+    "total_tokens": 19105
+  }
+}
