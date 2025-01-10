@@ -8,13 +8,31 @@
 ## Table of Contents
 
 - [Installation](#installation)
+- [Configuration](#Configuration)
 - [Usage](#usage)
 - [License](#license)
 
 ## Installation
 
 ```console
-pipx install paperext
+pip install -e ".[openai]"
+pip install -e ".[vertexai]"
+```
+
+This project is also compatible with [Hatch](https://hatch.pypa.io/latest/)
+
+```console
+hatch run openai:[command]
+hatch run vertexai:[command]
+```
+
+## Configuration
+
+Set the environment variable `PAPEREXT_CONFIG` to point to your configuration
+file. A default configuration file is provided in [config.ini](./config.ini).
+
+```console
+export PAPEREXT_CONFIG=config.ini
 ```
 
 ## Usage
