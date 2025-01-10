@@ -6,7 +6,7 @@ import pydantic_core
 import yaml
 from pydantic import BaseModel
 
-from paperext import ROOT_DIR
+from paperext import CFG
 from paperext.models import model_v1, model_v2
 from paperext.models.utils import model_dump_yaml
 from paperext.utils import split_entry, str_eq
@@ -270,7 +270,7 @@ if __name__ == "__main__":
                         *p.glob(f"*/*.yaml"),
                     ]
                 ),
-                [ROOT_DIR / "data/merged", ROOT_DIR / "data/queries/"],
+                [CFG.dir.merged, CFG.dir.queries],
             ),
             [],
         )
@@ -307,10 +307,10 @@ if __name__ == "__main__":
             response = None
 
         if isinstance(extractions, dest_model.PaperExtractions):
-            logging.info(f"Model {path.relative_to(ROOT_DIR)} already updated")
+            logging.info(f"Model {path.relative_to(CFG.dir.root)} already updated")
             continue
 
-        logging.info(f"Updating {path.relative_to(ROOT_DIR)}")
+        logging.info(f"Updating {path.relative_to(CFG.dir.root)}")
         extractions = CONVERT_MODEL[src_model](extractions)
 
         if response is not None:
