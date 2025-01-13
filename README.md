@@ -29,7 +29,8 @@ hatch run vertexai:[command]
 ## Configuration
 
 Set the environment variable `PAPEREXT_CONFIG` to point to your configuration
-file. A default configuration file is provided in [config.ini](./config.ini).
+file. A default configuration file is provided in
+[config.mdl.ini](./config.mdl.ini).
 
 ```console
 export PAPEREXT_CONFIG=config.ini
@@ -39,7 +40,8 @@ export PAPEREXT_CONFIG=config.ini
 
 ### download-convert
 
-`pdftotext` from https://poppler.freedesktop.org/ is required to run this utility.
+`pdftotext` from https://poppler.freedesktop.org/ is required to run this
+utility.
 
 ```console
 usage: download-convert [-h] [--cache-dir DIR] JSON
