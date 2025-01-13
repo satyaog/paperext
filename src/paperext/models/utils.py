@@ -11,7 +11,7 @@ import yaml
 from pydantic import BaseModel, Field, create_model
 
 from paperext import ROOT_DIR
-from paperext.models.model import Explained, PaperExtractions
+from paperext.models.mdl.model import Explained, PaperExtractions
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
