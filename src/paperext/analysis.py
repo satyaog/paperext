@@ -24,7 +24,7 @@ import pandas as pd
 from sklearn.metrics import confusion_matrix
 
 from paperext import ROOT_DIR
-from paperext.models.model import ExtractionResponse, PaperExtractions
+from paperext.models.mdl.model import ExtractionResponse, PaperExtractions
 from paperext.models.utils import model2df, model_validate_yaml
 from paperext.utils import build_validation_set, python_module
 

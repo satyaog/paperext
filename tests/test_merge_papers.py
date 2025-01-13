@@ -7,7 +7,7 @@ import yaml
 import paperext.merge_papers
 from paperext.config import Config
 from paperext.merge_papers import _select, _update_progession, _validate_field
-from paperext.models.model import PaperExtractions, empty_model
+from paperext.models.mdl.model import PaperExtractions, empty_model
 from paperext.models.utils import model_dump_yaml, model_validate_yaml
 
 

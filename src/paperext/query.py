@@ -5,15 +5,28 @@ import json
 import logging
 from datetime import datetime
 from pathlib import Path
-from typing import List, Tuple
+from typing import Any, List, Tuple
 
 import instructor
 import pydantic_core
 
 from paperext import CFG
 from paperext.log import logger
-from paperext.models.model import _FIRST_MESSAGE, ExtractionResponse, PaperExtractions
+from paperext.models import STRUCT_MODULES
 from paperext.utils import Paper, build_validation_set
+
+
+def get_first_message():
+    return STRUCT_MODULES[CFG.platform.struct]._FIRST_MESSAGE
+
+
+def get_extraction_response():
+    return STRUCT_MODULES[CFG.platform.struct].ExtractionResponse
+
+
+def get_paper_extractions():
+    return STRUCT_MODULES[CFG.platform.struct].PaperExtractions
+
 
 PROG = f"{Path(__file__).stem.replace('_', '-')}"
 
@@ -110,14 +123,14 @@ except ModuleNotFoundError as e:
 async def extract_from_research_paper(
     client: instructor.client.Instructor | instructor.client.AsyncInstructor,
     message: str,
-) -> Tuple[PaperExtractions, CompletionUsage]:
+) -> Tuple[Any, CompletionUsage]:
     """Extract Models, Datasets and Frameworks names from a research paper."""
     retries = [True] * 1
     while True:
         try:
             result = client.chat.completions.create_with_completion(
                 # model="gpt-4o",
-                response_model=PaperExtractions,
+                response_model=get_paper_extractions(),
                 messages=[
                     {
                         "role": "system",
@@ -152,7 +165,7 @@ async def batch_extract_models_names(
     client: instructor.client.Instructor | instructor.client.AsyncInstructor,
     papers_fn: List[Path],
     destination: Path = CFG.dir.queries,
-) -> List[ExtractionResponse]:
+) -> List:
     destination.mkdir(parents=True, exist_ok=True)
 
     for paper_fn in papers_fn:
@@ -164,12 +177,12 @@ async def batch_extract_models_names(
 
         data = []
 
-        for i, message in enumerate((_FIRST_MESSAGE,)):
+        for i, message in enumerate((get_first_message(),)):
             f = destination / paper
             f = f.with_stem(f"{f.stem}_{i:02}").with_suffix(".json")
 
             try:
-                response = ExtractionResponse.model_validate_json(f.read_text())
+                response = get_extraction_response().model_validate_json(f.read_text())
             except (
                 FileNotFoundError,
                 pydantic_core._pydantic_core.ValidationError,
@@ -183,7 +196,7 @@ async def batch_extract_models_names(
                 f.parent.mkdir(parents=True, exist_ok=True)
 
                 try:
-                    response = ExtractionResponse(
+                    response = get_extraction_response()(
                         paper=paper,
                         words=count,
                         extractions=extractions,
@@ -192,7 +205,7 @@ async def batch_extract_models_names(
                     f.write_text(response.model_dump_json(indent=2))
 
                 except pydantic_core._pydantic_core.PydanticSerializationError:
-                    response = ExtractionResponse(
+                    response = get_extraction_response()(
                         paper=paper,
                         words=count,
                         extractions=extractions,

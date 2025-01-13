@@ -2,9 +2,15 @@ from unittest.mock import MagicMock
 
 import pytest
 
+from paperext.models import STRUCT_MODULES
+from paperext.models.mdl.model import PaperExtractions
 import paperext.query
-from paperext.models.model import PaperExtractions
-from paperext.query import main
+from paperext.query import (
+    main,
+    get_first_message,
+    get_extraction_response,
+    get_paper_extractions,
+)
 
 
 @pytest.fixture(autouse=True)
@@ -18,6 +24,17 @@ def clean_up(cfg):
 
     for query_file in cfg.dir.queries.glob(f"*/new_*.json"):
         query_file.unlink(missing_ok=True)
+
+
+@pytest.mark.parametrize("model_struct", ["ai4hcat", "mdl"])
+def test_model_struct_from_cfg(monkeypatch, cfg, model_struct):
+    cfg.platform.struct = model_struct
+
+    monkeypatch.setattr(paperext.query, "CFG", cfg)
+
+    assert get_first_message() is STRUCT_MODULES[model_struct]._FIRST_MESSAGE
+    assert get_extraction_response() is STRUCT_MODULES[model_struct].ExtractionResponse
+    assert get_paper_extractions() is STRUCT_MODULES[model_struct].PaperExtractions
 
 
 @pytest.mark.parametrize("platform", ["openai", "vertexai"])
