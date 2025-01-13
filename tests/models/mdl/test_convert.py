@@ -2,8 +2,8 @@ import json
 
 import pytest
 
-from paperext.models import model, model_v1, model_v2, model_v3
-from paperext.models.convert import _model_dump, convert_model_v1, convert_model_v2
+from paperext.models.mdl import model, model_v1, model_v2, model_v3
+from paperext.models.mdl.convert import _model_dump, convert_model_v1, convert_model_v2
 
 
 def test_model_dump(cfg):
