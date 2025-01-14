@@ -256,10 +256,8 @@ CONVERT_MODEL = {
 
 
 if __name__ == "__main__":
-    from paperext.structured_output.mdl import (
-        model as dest_model,
-        model_v2 as src_model,
-    )
+    from paperext.structured_output.mdl import model as dest_model
+    from paperext.structured_output.mdl import model_v2 as src_model
 
     for path in sorted(
         sum(
