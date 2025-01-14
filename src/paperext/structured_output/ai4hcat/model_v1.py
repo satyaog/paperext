@@ -104,6 +104,7 @@ class Category(str, enum.Enum):
     POLLUTION = "Pollution"
     SUSTAINABLE_FINANCE = "Sustainable Finance"
     SUPPORT_TO_GLOBAL_SOUTH = "Support to Global South"
+    NA = "N/A"
 
 
 class SubCategory(str, enum.Enum):
@@ -138,6 +139,7 @@ class SubCategory(str, enum.Enum):
     CLIMATE_DATA = "Climate Data"
     POLICY_ADVICE_AND_KNOWLEDGE_SHARING = "Policy Advice and Knowledge Sharing"
     SUPPORT_RE_DEPLOYMENT = "Support RE Deployment"
+    NA = "N/A"
 
 
 T = TypeVar("T")
@@ -226,11 +228,9 @@ def _empty_fields(model_cls: BaseModel):
 
 def empty_model(model_cls):
     empty_fields = _empty_fields(model_cls)
-    empty_fields["type"]["value"] = "empirical"
-    empty_fields["models"][0]["is_contributed"]["value"] = False
-    empty_fields["models"][0]["is_executed"]["value"] = False
-    empty_fields["models"][0]["is_compared"]["value"] = False
-    empty_fields["datasets"][0]["role"] = "referenced"
-    empty_fields["libraries"][0]["role"] = "referenced"
+    empty_fields["primary_category"]["value"] = Category.NA.value
+    empty_fields["seconday_categories"][0]["value"] = Category.NA.value
+    empty_fields["primary_sub_category"]["value"] = SubCategory.NA.value
+    empty_fields["secondary_sub_categories"][0]["value"] = SubCategory.NA.value
 
     return model_cls(**empty_fields)
