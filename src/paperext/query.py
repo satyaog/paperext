@@ -12,7 +12,7 @@ import pydantic_core
 
 from paperext import CFG
 from paperext.log import logger
-from paperext.models import STRUCT_MODULES
+from paperext.structured_output import STRUCT_MODULES
 from paperext.utils import Paper, build_validation_set
 
 
