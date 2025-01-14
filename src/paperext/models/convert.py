@@ -3,8 +3,8 @@ import logging
 from pathlib import Path
 
 import pydantic_core
-from pydantic import BaseModel
 import yaml
+from pydantic import BaseModel
 
 from paperext import ROOT_DIR
 from paperext.models import model_v1, model_v2
@@ -256,7 +256,8 @@ CONVERT_MODEL = {
 
 
 if __name__ == "__main__":
-    from paperext.models import model as dest_model, model_v2 as src_model
+    from paperext.models import model as dest_model
+    from paperext.models import model_v2 as src_model
 
     for path in sorted(
         sum(

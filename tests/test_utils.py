@@ -1,5 +1,5 @@
-from pathlib import Path
 import tempfile
+from pathlib import Path
 
 import paperext.utils
 from paperext.utils import build_validation_set, split_entry, str_eq, str_normalize

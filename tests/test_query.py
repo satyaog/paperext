@@ -2,8 +2,8 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from paperext.models.model import PaperExtractions
 import paperext.query
+from paperext.models.model import PaperExtractions
 from paperext.query import main
 
 

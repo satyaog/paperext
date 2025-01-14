@@ -3,6 +3,7 @@
 # SPDX-License-Identifier: MIT
 
 from pathlib import Path
+
 from paperext.config import Config
 
 CFG = Config.get_global_config()
