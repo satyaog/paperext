@@ -7,8 +7,8 @@ import yaml
 from pydantic import BaseModel
 
 from paperext import CFG
-from paperext.models.mdl import model_v1, model_v2
-from paperext.models.utils import model_dump_yaml
+from paperext.structured_output.mdl import model_v1, model_v2
+from paperext.structured_output.utils import model_dump_yaml
 from paperext.utils import split_entry, str_eq
 
 
@@ -26,7 +26,7 @@ def _model_dump(m):
 
 
 def convert_model_v1(extractions: model_v1.PaperExtractions):
-    from paperext.models.mdl import model_v2 as dest_model
+    from paperext.structured_output.mdl import model_v2 as dest_model
 
     fields = {}
 
@@ -158,7 +158,7 @@ def convert_model_v1(extractions: model_v1.PaperExtractions):
 
 
 def convert_model_v2(extractions: model_v2.PaperExtractions):
-    from paperext.models.mdl import model as dest_model
+    from paperext.structured_output.mdl import model as dest_model
 
     def convert_enum(enum_cls, value):
         try:
@@ -256,7 +256,10 @@ CONVERT_MODEL = {
 
 
 if __name__ == "__main__":
-    from paperext.models.mdl import model as dest_model, model_v2 as src_model
+    from paperext.structured_output.mdl import (
+        model as dest_model,
+        model_v2 as src_model,
+    )
 
     for path in sorted(
         sum(
