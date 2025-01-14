@@ -24,8 +24,8 @@ import pandas as pd
 from sklearn.metrics import confusion_matrix
 
 from paperext import ROOT_DIR
-from paperext.models.mdl.model import ExtractionResponse, PaperExtractions
-from paperext.models.utils import model2df, model_validate_yaml
+from paperext.structured_output.mdl.model import ExtractionResponse, PaperExtractions
+from paperext.structured_output.utils import model2df, model_validate_yaml
 from paperext.utils import build_validation_set, python_module
 
 PROG = f"python3 -m {python_module(__file__)}"
