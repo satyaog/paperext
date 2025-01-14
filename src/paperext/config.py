@@ -12,7 +12,9 @@ logger.setLevel(logging.WARNING)
 
 _PREFIX = "PAPEREXT"
 _CFG_VARENV = f"{_PREFIX}_CFG"
-CONFIG_FILE = os.environ.get(_CFG_VARENV, "")
+CONFIG_FILE = os.environ.get(
+    _CFG_VARENV, Path(__file__).parent.parent.parent / "config.mdl.ini"
+)
 
 
 def config_to_dict(config):
