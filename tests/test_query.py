@@ -2,15 +2,15 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from paperext.structured_output import STRUCT_MODULES
-from paperext.structured_output.mdl.model import PaperExtractions
 import paperext.query
 from paperext.query import (
-    main,
-    get_first_message,
     get_extraction_response,
+    get_first_message,
     get_paper_extractions,
+    main,
 )
+from paperext.structured_output import STRUCT_MODULES
+from paperext.structured_output.mdl.model import PaperExtractions
 
 
 @pytest.fixture(autouse=True)
