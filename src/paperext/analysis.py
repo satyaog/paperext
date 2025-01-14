@@ -122,7 +122,7 @@ def main(argv=None):
 
     assert any(map(lambda p: p.exists(), papers))
 
-    def _analysis(papers:list, platform:str):
+    def _analysis(papers: list, platform: str):
         annotated = [[], []]
         predictions = [[], []]
 
@@ -137,7 +137,8 @@ def main(argv=None):
             print(f"Fetching data from {f}", file=sys.stderr)
             model = model_validate_yaml(PaperExtractions, f.read_text())
             paper_attr, paper_refs = map(
-                lambda m: _append_left_indices(m, [("paper_id", f.stem)]), model2df(model)
+                lambda m: _append_left_indices(m, [("paper_id", f.stem)]),
+                model2df(model),
             )
 
             stage["ann"][0].append(paper_attr)
@@ -159,7 +160,7 @@ def main(argv=None):
 
                 stage["pred"][0].append(paper_attr)
                 stage["pred"][1].append(paper_refs)
-            
+
             if stage["pred"][0]:
                 annotated[0].extend(stage["ann"][0])
                 annotated[1].extend(stage["ann"][1])
@@ -189,7 +190,8 @@ def main(argv=None):
         for label in ("title", "type", "primary_research_field"):
             for i in range(max_attempt + 1):
                 mat, classes = _cm(
-                    annotated[0].loc[:, label], predictions[0].loc[:, i, :].loc[:, label]
+                    annotated[0].loc[:, label],
+                    predictions[0].loc[:, i, :].loc[:, label],
                 )
                 # Title confusion matrix should be the identity
                 # if label == "title":
@@ -217,7 +219,9 @@ def main(argv=None):
 
                 (_analysis_dir / f"{label}_{i:02}.csv").write_text(
                     pd.DataFrame(
-                        conf_mat, index=[*classes, "No True Label"], columns=[*classes, "No Predicted Label"]
+                        conf_mat,
+                        index=[*classes, "No True Label"],
+                        columns=[*classes, "No Predicted Label"],
                     ).to_csv()
                 )
                 print(f"{label}:")
@@ -259,7 +263,9 @@ def main(argv=None):
 
                 (_analysis_dir / f"{group}.{col}_{i:02}.csv").write_text(
                     pd.DataFrame(
-                        conf_mat, index=[*names, "No True Label"], columns=[*names, "No Predicted Label"]
+                        conf_mat,
+                        index=[*names, "No True Label"],
+                        columns=[*names, "No Predicted Label"],
                     ).to_csv()
                 )
 
@@ -277,7 +283,9 @@ def main(argv=None):
 
                 (_analysis_dir / f"{group}.{col}_{i:02}.csv").write_text(
                     pd.DataFrame(
-                        conf_mat, index=[*names, "No True Label"], columns=[*names, "No Predicted Label"]
+                        conf_mat,
+                        index=[*names, "No True Label"],
+                        columns=[*names, "No Predicted Label"],
                     ).to_csv()
                 )
 
@@ -330,10 +338,7 @@ def main(argv=None):
                 #     else:
                 #         pass
 
-    for platform in [
-        "openai",
-        "vertexai"
-    ]:
+    for platform in ["openai", "vertexai"]:
         _analysis(papers, platform)
 
 
