@@ -2,8 +2,8 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from paperext.models import STRUCT_MODULES
-from paperext.models.mdl.model import PaperExtractions
+from paperext.structured_output import STRUCT_MODULES
+from paperext.structured_output.mdl.model import PaperExtractions
 import paperext.query
 from paperext.query import (
     main,
