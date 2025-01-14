@@ -36,6 +36,14 @@ file. A default configuration file is provided in
 export PAPEREXT_CONFIG=config.ini
 ```
 
+[!NOTE]
+All configuration can be overwritten with environment variables in the form of
+`PAPEREXT_{SECTION}_{OPTION}` such as:
+
+```console
+export PAPEREXT_DIR_DATA=path/to/data
+```
+
 ## Usage
 
 ### download-convert
