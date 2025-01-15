@@ -11,12 +11,12 @@ from paperext.utils import str_normalize
 
 logging.basicConfig(level=logging.DEBUG)
 
-_FIRST_MESSAGE = (
+FIRST_MESSAGE = (
     "Which Deep Learning Models, Datasets and Libraries can you find in the "
     "following research paper:\n"
     "{}"
 )
-_RETRY_MESSAGE = (
+RETRY_MESSAGE = (
     "Given your previous list of Models\n"
     "{}\n"
     "your previous list of Datasets\n"

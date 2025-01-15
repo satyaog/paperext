@@ -64,7 +64,7 @@ def get_applications(category: str, sub_category: str):
     )
 
 
-_FIRST_MESSAGE = (
+FIRST_MESSAGE = (
     "Your main task is to analyze the a Deep Learning scientific paper, assign it "
     "an eco-responsible category and sub-category, and, if possible, extract any "
     "applications discussed in the paper. Here is a hierarchical list of "

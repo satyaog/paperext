@@ -17,7 +17,7 @@ from paperext.utils import Paper, build_validation_set
 
 
 def get_first_message() -> str:
-    return STRUCT_MODULES[CFG.platform.struct]._FIRST_MESSAGE
+    return STRUCT_MODULES[CFG.platform.struct].FIRST_MESSAGE
 
 
 def get_extraction_response() -> (
