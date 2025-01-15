@@ -6,12 +6,12 @@ from typing import Any, Generic, List, Optional, TypeVar
 
 from pydantic import BaseModel, Field
 
-_FIRST_MESSAGE = (
+FIRST_MESSAGE = (
     "Which Deep Learning Models, Datasets and Libraries can you find in the "
     "following research paper:\n"
     "{}"
 )
-_RETRY_MESSAGE = (
+RETRY_MESSAGE = (
     "Given your precedent list of Models\n"
     "{}\n"
     "your precedent list of Datasets\n"

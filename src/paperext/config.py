@@ -13,7 +13,7 @@ logger.setLevel(logging.WARNING)
 _PREFIX = "PAPEREXT"
 _CFG_VARENV = f"{_PREFIX}_CFG"
 CONFIG_FILE = os.environ.get(
-    _CFG_VARENV, Path(__file__).parent.parent.parent / "config.ini"
+    _CFG_VARENV, Path(__file__).parent.parent.parent / "config.mdl.ini"
 )
 
 
@@ -40,7 +40,9 @@ class Config:
             _config = configparser.ConfigParser(
                 interpolation=configparser.ExtendedInterpolation()
             )
-            assert _config.read(config_file)
+            assert _config.read(
+                config_file
+            ), f"Could not read config file [{config_file}]"
 
             self._config = config_to_dict(_config)
 
@@ -120,6 +122,9 @@ class Config:
         """Returns the global instance of Config."""
         if Config._instance is None:
             Config._instance = Config()
+            Config.update_global_config(
+                Config._instance
+            )  # Set env vars and logging level
         return Config._instance
 
     @staticmethod

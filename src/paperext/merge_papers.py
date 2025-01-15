@@ -18,8 +18,12 @@ from pygments.lexers.data import YamlLexer
 
 from paperext import CFG
 from paperext.log import logger
-from paperext.models.model import ExtractionResponse, PaperExtractions, empty_model
-from paperext.models.utils import (
+from paperext.structured_output.mdl.model import (
+    ExtractionResponse,
+    PaperExtractions,
+    empty_model,
+)
+from paperext.structured_output.utils import (
     convert_model_json_to_yaml,
     model_dump_yaml,
     model_validate_yaml,

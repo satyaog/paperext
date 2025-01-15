@@ -8,20 +8,48 @@
 ## Table of Contents
 
 - [Installation](#installation)
+- [Configuration](#Configuration)
 - [Usage](#usage)
 - [License](#license)
 
 ## Installation
 
 ```console
-pipx install paperext
+pip install -e ".[openai]"
+pip install -e ".[vertexai]"
+```
+
+This project is also compatible with [Hatch](https://hatch.pypa.io/latest/)
+
+```console
+hatch run openai:[command]
+hatch run vertexai:[command]
+```
+
+## Configuration
+
+Set the environment variable `PAPEREXT_CONFIG` to point to your configuration
+file. A default configuration file is provided in
+[config.mdl.ini](./config.mdl.ini).
+
+```console
+export PAPEREXT_CONFIG=config.ini
+```
+
+[!NOTE]
+All configuration can be overwritten with environment variables in the form of
+`PAPEREXT_{SECTION}_{OPTION}` such as:
+
+```console
+export PAPEREXT_DIR_DATA=path/to/data
 ```
 
 ## Usage
 
 ### download-convert
 
-`pdftotext` from https://poppler.freedesktop.org/ is required to run this utility.
+`pdftotext` from https://poppler.freedesktop.org/ is required to run this
+utility.
 
 ```console
 usage: download-convert [-h] [--cache-dir DIR] JSON

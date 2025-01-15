@@ -11,12 +11,12 @@ from paperext.utils import str_normalize
 
 logging.basicConfig(level=logging.DEBUG)
 
-_FIRST_MESSAGE = (
+FIRST_MESSAGE = (
     "Which Deep Learning Models, Datasets and Libraries can you find in the "
     "following research paper:\n"
     "{}"
 )
-_RETRY_MESSAGE = (
+RETRY_MESSAGE = (
     "Given your previous list of Models\n"
     "{}\n"
     "your previous list of Datasets\n"
@@ -46,7 +46,7 @@ T = TypeVar("T")
 
 
 class Explained(BaseModel, Generic[T]):
-    value: T
+    value: T | str
     justification: str = Field(
         description="Short justification for the choice of the value",
     )
@@ -68,20 +68,20 @@ class Explained(BaseModel, Generic[T]):
 # |             | X           | X           | has been executed (trained or finetuned or inference) and compared to other models
 # |             |             | X           | is compared to other models using only results from a referenced paper
 # |             |             |             | is only referenced in the paper but is not used in any comparison
-class RefModel(BaseModel):
+class Model(BaseModel):
     name: Explained[str] = Field(
         description="Name of the Model",
     )
     aliases: List[str] = Field(
         description="List of names or acronyms used to identify the Model",
     )
-    is_contributed: Explained[bool] = Field(
+    is_contributed: Explained[bool | int] = Field(
         description="Was the Model a contribution to the research field in the scope of the paper",
     )
-    is_executed: Explained[bool] = Field(
+    is_executed: Explained[bool | int] = Field(
         description="Was the Model executed on GPU or CPU in the scope of the paper",
     )
-    is_compared: Explained[bool] = Field(
+    is_compared: Explained[bool | int] = Field(
         description="Was the Model compared numerically to other models in the scope of the paper",
     )
     referenced_paper_title: Explained[str] = Field(
@@ -118,21 +118,14 @@ class DatasetSubset(BaseModel):
     )
 
 
-# For some reason, `Dataset` or `DatasetRef` class name is incompatible with
-# `instructor.Mode.TOOLS_STRICT` and will result in:
-# instructor.exceptions.InstructorRetryException: Error code: 400 - {'error':
-# {'message': "Invalid schema for function 'PaperExtractions': In
-# context=('properties', 'name'), 'additionalProperties' is required to be
-# supplied and to be false.", 'type': 'invalid_request_error', 'param':
-# 'tools[0].function.parameters', 'code': 'invalid_function_parameters'}}
-class RefDataset(BaseModel):
+class Dataset(BaseModel):
     name: Explained[str] = Field(
         description="Name of the Dataset",
     )
     aliases: List[str] = Field(
         description="List of names or acronyms used to identify the Dataset",
     )
-    role: Role = Field(
+    role: Role | str = Field(
         description=f"Was the Dataset {' or '.join([role.value.lower() for role in Role])} in the scope of the paper"
     )
     referenced_paper_title: Explained[str] = Field(
@@ -154,14 +147,14 @@ class RefDataset(BaseModel):
         return False
 
 
-class RefLibrary(BaseModel):
+class Library(BaseModel):
     name: Explained[str] = Field(
         description="Name of the Library",
     )
     aliases: List[str] = Field(
         description="List of names or acronyms used to identify the Library",
     )
-    role: Role = Field(
+    role: Role | str = Field(
         description=f"Was the Library {' or '.join([role.value.lower() for role in Role])} in the scope of the paper"
     )
     referenced_paper_title: Explained[str] = Field(
@@ -223,9 +216,9 @@ class PaperExtractions(BaseModel):
         description="List of Deep Learning sub-research fields or application "
         "domains of the paper, order from major to minor",
     )
-    models: List[RefModel] = Field(description="All Models found in the paper")
-    datasets: List[RefDataset] = Field(description="All Datasets found in the paper")
-    libraries: List[RefLibrary] = Field(
+    models: List[Model] = Field(description="All Models found in the paper")
+    datasets: List[Dataset] = Field(description="All Datasets found in the paper")
+    libraries: List[Library] = Field(
         description="All Deep Learning Libraries explicitely used or contributed according to the paper"
     )
 
@@ -267,12 +260,4 @@ def _empty_fields(model_cls: BaseModel):
 
 
 def empty_model(model_cls):
-    empty_fields = _empty_fields(model_cls)
-    empty_fields["type"]["value"] = "empirical"
-    empty_fields["models"][0]["is_contributed"]["value"] = False
-    empty_fields["models"][0]["is_executed"]["value"] = False
-    empty_fields["models"][0]["is_compared"]["value"] = False
-    empty_fields["datasets"][0]["role"] = "referenced"
-    empty_fields["libraries"][0]["role"] = "referenced"
-
-    return model_cls(**empty_fields)
+    return model_cls(**_empty_fields(model_cls))
