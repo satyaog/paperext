@@ -12,19 +12,23 @@ import pydantic_core
 
 from paperext import CFG
 from paperext.log import logger
-from paperext.structured_output import STRUCT_MODULES
+from paperext.structured_output import STRUCT_MODULES, ai4hcat, mdl
 from paperext.utils import Paper, build_validation_set
 
 
-def get_first_message():
+def get_first_message() -> str:
     return STRUCT_MODULES[CFG.platform.struct]._FIRST_MESSAGE
 
 
-def get_extraction_response():
+def get_extraction_response() -> (
+    ai4hcat.model.ExtractionResponse | mdl.model.ExtractionResponse
+):
     return STRUCT_MODULES[CFG.platform.struct].ExtractionResponse
 
 
-def get_paper_extractions():
+def get_paper_extractions() -> (
+    ai4hcat.model.PaperExtractions | mdl.model.PaperExtractions
+):
     return STRUCT_MODULES[CFG.platform.struct].PaperExtractions
 
 

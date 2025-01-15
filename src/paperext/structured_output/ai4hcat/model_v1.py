@@ -2,16 +2,14 @@ from __future__ import annotations
 
 import csv
 import enum
-import logging
 import typing
 from typing import Any, Generic, List, Optional, TypeVar
 
 from pydantic import BaseModel, Field
 
 from paperext import CFG
+from paperext.log import logger
 from paperext.utils import str_normalize
-
-logging.basicConfig(level=logging.DEBUG)
 
 _APPLICATIONS_KEY = "applications"
 _PAPERS_EXAMPLES_KEY = "papers_examples"
@@ -203,7 +201,8 @@ class ExtractionResponse(BaseModel):
 def _is_base(cls, other):
     try:
         return cls.__base__ == other
-    except AttributeError:
+    except AttributeError as e:
+        logger.debug(f"{cls} is not based on {other}: {e}", exc_info=True)
         return False
 
 
