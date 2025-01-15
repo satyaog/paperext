@@ -165,7 +165,8 @@ class GlobalConfigProxy(Config):
 
     @property
     def _config(self) -> dict:
-        return Config.get_global_config()._config
+        assert Config._instance
+        return Config._instance._config
 
 
 CFG = GlobalConfigProxy()

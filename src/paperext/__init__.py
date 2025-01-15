@@ -4,7 +4,9 @@
 
 from pathlib import Path
 
-from paperext.config import CFG
+from paperext.config import CFG, Config
+
+Config.get_global_config()
 
 ROOT_DIR: Path = CFG.dir.root
 DATA_DIR: Path = CFG.dir.data
