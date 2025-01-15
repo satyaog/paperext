@@ -3,7 +3,7 @@ from pathlib import Path
 
 import pytest
 
-from paperext.config import Config
+from paperext.config import CFG, Config
 from paperext.log import logger as main_logger
 
 from . import CONFIG_FILE
@@ -12,22 +12,38 @@ from . import CONFIG_FILE
 def test_global_config():
     """Test that the global config instance is a singleton"""
     global_config = Config.get_global_config()
-    assert global_config is Config.get_global_config()
-
-    assert Config(str(CONFIG_FILE)) is not Config(str(CONFIG_FILE))
-    assert Config(str(CONFIG_FILE)) == Config(str(CONFIG_FILE))
+    assert global_config == Config.get_global_config()
 
     config = Config(str(CONFIG_FILE))
-    assert config is not global_config
+    config.testsection.testoption = "new test value"
+    assert config != global_config
 
-    Config.update_global_config(config)
+    Config.apply_global_config(config)
     assert config == Config.get_global_config()
-    assert global_config is Config.get_global_config()
+    assert config is Config._instance
+    assert global_config != Config.get_global_config()
+
+
+def test_stack_config():
+    """Test that the stack config method correctly stack the config"""
+    global_config = Config.get_global_config()
+    config = Config(str(CONFIG_FILE))
+    config.testsection.testoption = "new test value"
+
+    assert CFG == global_config
+
+    with Config.cfg(config):
+        assert config == Config.get_global_config()
+        assert global_config != Config.get_global_config()
+        assert CFG == Config.get_global_config()
+
+    assert CFG == global_config
 
 
 def test_config_setattr():
     """Test setting an existing config attribute"""
     config = Config(str(CONFIG_FILE))
+    assert config.testsection.testoption != "new test value"
     config.testsection.testoption = "new test value"
     assert config.testsection.testoption == "new test value"
 
@@ -90,9 +106,9 @@ def test_config_logging_level(monkeypatch):
     assert config.logging.level == "DEBUG"
 
     main_logger.level = logging.NOTSET
-    Config.update_global_config(config)
+    Config.apply_global_config(config)
     assert main_logger.level == logging.DEBUG
 
     with pytest.raises(ValueError):
         monkeypatch.setenv("PAPEREXT_LOGGING_LEVEL", "NOT A LEVEL")
-        Config.update_global_config(Config(str(CONFIG_FILE)))
+        Config.apply_global_config(Config(str(CONFIG_FILE)))

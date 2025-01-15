@@ -4,7 +4,4 @@
 
 from pathlib import Path
 
-from paperext.config import Config
-
 CONFIG_FILE = Path(__file__).with_name("config.ini")
-CFG = Config(str(CONFIG_FILE))

@@ -2,8 +2,9 @@ import configparser
 import copy
 import logging
 import os
+from contextlib import contextmanager
 from pathlib import Path
-from typing import Any, Union
+from typing import Any, Generator, Union
 
 from paperext.log import logger as main_logger
 
@@ -33,6 +34,7 @@ class Config:
     _instance: "Config" = None
 
     def __init__(self, config_file: str = CONFIG_FILE, config: dict = None) -> None:
+        """Create a Config object from a config file or a dictionary."""
         if config:
             self._config = config
 
@@ -48,6 +50,11 @@ class Config:
 
             self._parse_env_vars()
             self._resolve(config_file)
+
+    def __deepcopy__(self, memo):
+        _config = Config(config=copy.deepcopy(self._config, memo))
+        memo[id(self)] = _config
+        return _config
 
     def __eq__(self, value: object) -> bool:
         if isinstance(value, Config):
@@ -122,15 +129,15 @@ class Config:
         """Returns the global instance of Config."""
         if Config._instance is None:
             Config._instance = Config()
-            Config.update_global_config(
+            Config.apply_global_config(
                 Config._instance
             )  # Set env vars and logging level
-        return Config._instance
+        return copy.deepcopy(Config._instance)
 
     @staticmethod
-    def update_global_config(config: "Config") -> None:
-        """Updates the global instance of Config."""
-        Config.get_global_config()._config = copy.deepcopy(config._config)
+    def apply_global_config(config: "Config") -> None:
+        """Apply the global instance of Config."""
+        Config._instance = config
 
         try:
             main_logger.setLevel(config._config["logging"]["level"])
@@ -139,3 +146,27 @@ class Config:
 
         for varenv, val in config._config["env"].items():
             os.environ[varenv.upper()] = val
+
+    @contextmanager
+    @staticmethod
+    def cfg(config: "Config") -> Generator["Config", None, None]:
+        """Context manager to temporarily change the global config."""
+        _config = Config._instance
+        try:
+            Config.apply_global_config(config)
+            yield config
+        finally:
+            Config._instance = _config
+
+
+class GlobalConfigProxy(Config):
+    def __init__(self) -> None:
+        pass
+
+    @property
+    def _config(self) -> dict:
+        assert Config._instance
+        return Config._instance._config
+
+
+CFG = GlobalConfigProxy()

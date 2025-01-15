@@ -4,7 +4,7 @@ from paperext.config import Config
 
 from . import CONFIG_FILE
 
-Config.update_global_config(Config(str(CONFIG_FILE)))
+Config.apply_global_config(Config(str(CONFIG_FILE)))
 _CFG = Config.get_global_config()
 _CFG.dir.log.mkdir(exist_ok=True)
 _TMPDIR = _CFG.dir.root / "tmp"
@@ -33,10 +33,10 @@ _clean_up()
 @pytest.fixture(scope="function", autouse=True)
 def cfg():
     config = Config(str(CONFIG_FILE))
-    Config.update_global_config(config)
+    Config.apply_global_config(config)
 
     yield config
 
     _clean_up(config)
 
-    Config.update_global_config(config)
+    Config.apply_global_config(config)
