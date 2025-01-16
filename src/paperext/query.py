@@ -45,12 +45,6 @@ Example:
   $ {PROG} --input data/query_set.txt
 """
 
-# Set logging to DEBUG to print OpenAI requests
-LOG_FILE = CFG.dir.log / datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-logging.basicConfig(
-    filename=LOG_FILE.with_suffix(f".{PROG}.dbg"), level=logging.DEBUG, force=True
-)
-
 PLATFORMS = {}
 
 try:
@@ -293,7 +287,7 @@ def main(argv=None):
     elif options.papers:
         papers = [Path(paper) for paper in options.papers if paper.strip()]
     else:
-        papers = build_validation_set(CFG.dir.data)
+        papers = build_validation_set()
         for p in papers:
             logger.info(p)
 
@@ -303,6 +297,14 @@ def main(argv=None):
     assert all(map(lambda p: p.exists(), papers))
 
     client = PLATFORMS[CFG.platform.select]()
+
+    # Set logging to DEBUG to print OpenAI requests
+    # TODO: there must be a better way that would not impact other usage of
+    # logging
+    LOG_FILE = CFG.dir.log / datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    logging.basicConfig(
+        filename=LOG_FILE.with_suffix(f".{PROG}.dbg"), level=logging.DEBUG, force=True
+    )
 
     asyncio.run(
         ignore_exceptions(

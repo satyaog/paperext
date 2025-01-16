@@ -149,12 +149,18 @@ class Config:
 
     @contextmanager
     @staticmethod
-    def cfg(config: "Config") -> Generator["Config", None, None]:
+    def push(config: "Config" = None) -> Generator["Config", None, None]:
         """Context manager to temporarily change the global config."""
         _config = Config._instance
+
         try:
+            if config is None:
+                config = Config.get_global_config()
+
             Config.apply_global_config(config)
+
             yield config
+
         finally:
             Config._instance = _config
 

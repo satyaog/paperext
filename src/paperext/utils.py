@@ -4,20 +4,22 @@ import sys
 import unicodedata
 from pathlib import Path
 
+from paperext import CFG
+
 ROOT_FOLDER = Path(__file__).resolve().parent.parent
 PAPERS_TO_IGNORE = {
-    "data/cache/arxiv/2404.09932.txt",
+    "arxiv/2404.09932.txt",
 }
 
 
 class Paper:
     # Original form of the converted pdf to txt. eg data/cache/*/ARXIV_ID.txt
-    LINK_ID_TEMPLATE = "data/cache/*/{link_id}.txt"
+    LINK_ID_TEMPLATE = "*/{link_id}.txt"
     # Extended form of the converted pdf to txt. eg data/cache/*/PAPER_ID.txt
     PAPER_ID_TEMPLATE = LINK_ID_TEMPLATE.format(link_id="{paper_id}")
     # The the up-to-date form of the converted pdf (by paperoni)
     # eg data/cache/fulltext/PAPER_ID/fulltext.txt
-    PAPER_ID_FULLTEXT_TEMPLATE = "data/cache/fulltext/{paper_id}/fulltext.txt"
+    PAPER_ID_FULLTEXT_TEMPLATE = "fulltext/{paper_id}/fulltext.txt"
 
     def __init__(self, paper: dict) -> None:
         self._selected_id = None
@@ -28,12 +30,14 @@ class Paper:
             if link_id and link_id not in self._ids:
                 self._ids.append(link_id)
 
-            pdfs = sorted(Path().glob(self.LINK_ID_TEMPLATE.format(link_id=link_id)))
+            pdfs = sorted(
+                CFG.dir.cache.glob(self.LINK_ID_TEMPLATE.format(link_id=link_id))
+            )
             if pdfs and not self._selected_id:
                 self._selected_id = pdfs[0].stem
 
         self._queries = sum(
-            [list(Path("data/queries/").glob(f"{id}_*.json")) for id in self._ids], []
+            [list(CFG.dir.queries.glob(f"{id}_*.json")) for id in self._ids], []
         )
 
         if self._queries:
@@ -44,13 +48,15 @@ class Paper:
             pdfs = (
                 # Original form of the converted pdf to txt was data/cache/*/LINK_ID.txt
                 sorted(
-                    Path().glob(self.PAPER_ID_TEMPLATE.format(paper_id=self._paper_id))
+                    CFG.dir.cache.glob(
+                        self.PAPER_ID_TEMPLATE.format(paper_id=self._paper_id)
+                    )
                 )
                 +
                 # The the up-to-date form of the converted pdf (by paperoni) is
                 # data/cache/fulltext/PAPER_ID/fulltext.txt
                 sorted(
-                    Path().glob(
+                    CFG.dir.cache.glob(
                         self.PAPER_ID_FULLTEXT_TEMPLATE.format(paper_id=self._paper_id)
                     )
                 )
@@ -70,12 +76,16 @@ class Paper:
     def pdf(self):
         return next(
             iter(
-                sorted(Path().glob(self.LINK_ID_TEMPLATE.format(link_id=self.id)))
-                + sorted(
-                    Path().glob(self.PAPER_ID_TEMPLATE.format(paper_id=self._paper_id))
+                sorted(
+                    CFG.dir.cache.glob(self.LINK_ID_TEMPLATE.format(link_id=self.id))
                 )
                 + sorted(
-                    Path().glob(
+                    CFG.dir.cache.glob(
+                        self.PAPER_ID_TEMPLATE.format(paper_id=self._paper_id)
+                    )
+                )
+                + sorted(
+                    CFG.dir.cache.glob(
                         self.PAPER_ID_FULLTEXT_TEMPLATE.format(paper_id=self._paper_id)
                     )
                 )
@@ -95,8 +105,10 @@ class Paper:
         return link_id_pdf
 
 
-def build_validation_set(data_dir: Path, seed=42):
+def build_validation_set(seed=42):
     random.seed(seed)
+
+    data_dir = CFG.dir.data
 
     all_papers = set()
     research_fields = sorted(

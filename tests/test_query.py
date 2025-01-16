@@ -27,10 +27,8 @@ def clean_up(cfg):
 
 
 @pytest.mark.parametrize("model_struct", ["ai4hcat", "mdl"])
-def test_model_struct_from_cfg(monkeypatch, cfg, model_struct):
+def test_model_struct_from_cfg(cfg, model_struct):
     cfg.platform.struct = model_struct
-
-    monkeypatch.setattr(paperext.query, "CFG", cfg)
 
     assert get_first_message() is STRUCT_MODULES[model_struct].FIRST_MESSAGE
     assert get_extraction_response() is STRUCT_MODULES[model_struct].ExtractionResponse
@@ -100,9 +98,7 @@ def test_query(
         assert "Failed to extract paper information" not in record.message
 
 
-def test_query_error_logged(
-    monkeypatch: pytest.MonkeyPatch, caplog: pytest.LogCaptureFixture
-):
+def test_query_error_logged(monkeypatch: pytest.MonkeyPatch):
     """Test that the query function:
     * logs an error when a query fails and continues with the next paper
     """
@@ -121,13 +117,17 @@ def test_query_error_logged(
     monkeypatch.setattr(paperext.query.instructor, f"from_openai", AsyncOpenAI)
 
     papers = ["new_1234.12345", "new_1234.23456"]
-    main(["--platform", "openai", "--papers", *papers])
+    logging_error_mock = MagicMock()
+    with monkeypatch.context() as m:
+        m.setattr(paperext.query.logging, "basicConfig", MagicMock)
+        m.setattr(paperext.query.logging, "error", logging_error_mock)
+        main(["--platform", "openai", "--papers", *papers])
 
     error_msg_cnt = 0
-    for record in filter(lambda r: r.levelname == "ERROR", caplog.records):
+    for call_arg in map(lambda c: str(c[0][0]), logging_error_mock.call_args_list):
         if (
             sum(
-                text in record.message
+                text in call_arg
                 for text in [
                     "Failed to extract paper information",
                     *papers,
