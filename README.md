@@ -103,18 +103,22 @@ export OPENAI_API_KEY=sk-proj-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
 ```console
-usage: query [-h] [--papers [PAPERS ...]] [--input TXT]
+usage: query [-h] [--platform {openai}] [--papers [PAPERS ...]] [--input TXT] [--paperoni JSON]
 
 Utility to query Chat-GPT on papers
 
+Queries logs will be written in ${PAPEREXT_DIR_LOG}/DATE.query.dbg
+
 options:
   -h, --help            show this help message and exit
+  --platform {openai}   Platform to use
   --papers [PAPERS ...]
                         Papers to analyse
   --input TXT           List of papers to analyse
+  --paperoni JSON       Paperoni json output of papers to query on converted pdfs -> txts
 
 Example:
-  $ query --input data/query_set.txt > query.out 2> query.err
+  $ query --input data/query_set.txt
 ```
 
 ### parse-validation-errors
@@ -131,7 +135,7 @@ options:
   -h, --help  show this help message and exit
 
 Example:
-  $ parse-validation-errors query.err
+  $ parse-validation-errors ${PAPEREXT_DIR_LOG}/DATE.query.dbg
     Per paper errors
     ================
     Failures count for paper: 1
@@ -191,7 +195,7 @@ Example:
 ### analysis
 
 ```console
-usage: analysis [-h] [--papers [PAPERS ...]] [--input TXT]
+usage: perf-analysis [-h] [--papers [PAPERS ...]] [--input TXT]
 
 Utility to analyses Chat-GPT responses on papers
 
@@ -204,7 +208,7 @@ options:
   --input TXT           List of papers to analyse
 
 Example:
-  $ analysis
+  $ perf-analysis --input data/validation_set.txt
 ```
 
 ## License

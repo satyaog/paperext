@@ -5,14 +5,14 @@ import paperext.utils
 from paperext.utils import build_validation_set, split_entry, str_eq, str_normalize
 
 
-def test_build_validation_set(monkeypatch, data_regression):
+def test_build_validation_set(monkeypatch, data_regression, cfg):
     categories = list(range(1000, 1000 + 15))
     files = list(range(15 * 100))
 
     here = Path(".").resolve()
 
     with tempfile.TemporaryDirectory() as tmp_dir:
-        tmp_dir = Path(tmp_dir)
+        cfg.dir.data = tmp_dir = Path(tmp_dir)
         for cat in categories:
             cat_file = tmp_dir / f"{cat:04}_papers.txt"
             cat_file.write_text(
@@ -20,12 +20,12 @@ def test_build_validation_set(monkeypatch, data_regression):
             )
             files = files[100:]
 
-        val_set = build_validation_set(tmp_dir)
+        val_set = build_validation_set()
 
         assert len(set(val_set)) == len(categories) * 10
         # Reproducibility
-        assert val_set == build_validation_set(tmp_dir)
-        assert val_set != build_validation_set(tmp_dir, 42 + 42)
+        assert val_set == build_validation_set()
+        assert val_set != build_validation_set(42 + 42)
 
         for p in val_set:
             assert str(p).startswith(f"{here}/")
@@ -36,7 +36,7 @@ def test_build_validation_set(monkeypatch, data_regression):
         monkeypatch.setattr(paperext.utils, "PAPERS_TO_IGNORE", {str(rel_val_set[0])})
 
         # There should be only one paper not present and replaced by another
-        assert len(set(val_set[1:10]) & set(build_validation_set(tmp_dir)[:10])) == 9
+        assert len(set(val_set[1:10]) & set(build_validation_set()[:10])) == 9
 
 
 def test_split_entry():

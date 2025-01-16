@@ -37,19 +37,13 @@ PROG = f"{Path(__file__).stem.replace('_', '-')}"
 DESCRIPTION = """
 Utility to query Chat-GPT on papers
 
-Logs will be written in logs/query.dbg and logs/query.out
+Queries logs will be written in ${PAPEREXT_DIR_LOG}/DATE.query.dbg
 """
 
 EPILOG = f"""
 Example:
   $ {PROG} --input data/query_set.txt
 """
-
-# Set logging to DEBUG to print OpenAI requests
-LOG_FILE = CFG.dir.log / datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-logging.basicConfig(
-    filename=LOG_FILE.with_suffix(f".{PROG}.dbg"), level=logging.DEBUG, force=True
-)
 
 PLATFORMS = {}
 
@@ -78,6 +72,7 @@ try:
 
     PLATFORMS["openai"] = _client
 except ModuleNotFoundError as e:
+    logger.info(e, exc_info=True)
     logging.info(e, exc_info=True)
 
 try:
@@ -121,6 +116,7 @@ try:
 
     PLATFORMS["vertexai"] = _client
 except ModuleNotFoundError as e:
+    logger.info(e, exc_info=True)
     logging.info(e, exc_info=True)
 
 
@@ -191,6 +187,7 @@ async def batch_extract_models_names(
                 FileNotFoundError,
                 pydantic_core._pydantic_core.ValidationError,
             ) as e:
+                logger.error(e, exc_info=True)
                 logging.error(e, exc_info=True)
 
                 message = message.format(*data, paper_fn.read_text())
@@ -238,6 +235,10 @@ async def ignore_exceptions(
         except bdb.BdbQuit:
             raise
         except Exception as e:
+            logger.error(
+                f"Failed to extract paper information from {paper.name}: {e}",
+                exc_info=True,
+            )
             logging.error(
                 f"Failed to extract paper information from {paper.name}: {e}",
                 exc_info=True,
@@ -293,7 +294,7 @@ def main(argv=None):
     elif options.papers:
         papers = [Path(paper) for paper in options.papers if paper.strip()]
     else:
-        papers = build_validation_set(CFG.dir.data)
+        papers = build_validation_set()
         for p in papers:
             logger.info(p)
 
@@ -303,6 +304,14 @@ def main(argv=None):
     assert all(map(lambda p: p.exists(), papers))
 
     client = PLATFORMS[CFG.platform.select]()
+
+    # Set logging to DEBUG to print OpenAI requests
+    # TODO: there must be a better way that would not impact other usage of
+    # logging
+    LOG_FILE = CFG.dir.log / datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    logging.basicConfig(
+        filename=LOG_FILE.with_suffix(f".{PROG}.dbg"), level=logging.DEBUG, force=True
+    )
 
     asyncio.run(
         ignore_exceptions(

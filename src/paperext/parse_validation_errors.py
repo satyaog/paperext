@@ -4,9 +4,7 @@ import sys
 from pathlib import Path
 from typing import List
 
-from paperext.utils import python_module
-
-PROG = f"python3 -m {python_module(__file__)}"
+PROG = f"{Path(__file__).stem.replace('_', '-')}"
 
 DESCRIPTION = """
 Utility to parse and gather stats on query logs
@@ -14,7 +12,7 @@ Utility to parse and gather stats on query logs
 
 EPILOG = f"""
 Example:
-  $ {PROG} query.out
+  $ {PROG} ${'{PAPEREXT_DIR_LOG}'}/DATE.query.dbg
     Per paper errors
     ================
     Failures count for paper: 1

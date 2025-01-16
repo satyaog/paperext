@@ -1,3 +1,5 @@
+import copy
+
 import pytest
 
 from paperext.config import Config
@@ -32,11 +34,9 @@ _clean_up()
 
 @pytest.fixture(scope="function", autouse=True)
 def cfg():
-    config = Config(str(CONFIG_FILE))
-    Config.apply_global_config(config)
+    Config.apply_global_config(Config(str(CONFIG_FILE)))
 
-    yield config
+    with Config.push() as config:
+        yield config
 
-    _clean_up(config)
-
-    Config.apply_global_config(config)
+    assert Config.get_global_config() == Config(str(CONFIG_FILE))

@@ -32,10 +32,18 @@ def test_stack_config():
 
     assert CFG == global_config
 
-    with Config.cfg(config):
+    with Config.push(config) as cfg:
+        assert cfg is config
         assert config == Config.get_global_config()
         assert global_config != Config.get_global_config()
         assert CFG == Config.get_global_config()
+
+    with Config.push() as cfg:
+        cfg.testsection.testoption = "new test value"
+        cfg == Config.get_global_config()
+
+        cfg.testsection.testoption = "renew test value"
+        cfg == Config.get_global_config()
 
     assert CFG == global_config
 
