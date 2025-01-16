@@ -6,9 +6,8 @@ from pathlib import Path
 
 from paperext import CFG
 from paperext.log import logger
-from paperext.utils import python_module
 
-PROG = f"python3 -m {python_module(__file__)}"
+PROG = f"{Path(__file__).stem.replace('_', '-')}"
 
 DESCRIPTION = """
 Utility to download and convert a list of papers' pdfs -> "txts.

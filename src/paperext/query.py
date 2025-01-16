@@ -37,7 +37,7 @@ PROG = f"{Path(__file__).stem.replace('_', '-')}"
 DESCRIPTION = """
 Utility to query Chat-GPT on papers
 
-Logs will be written in logs/query.dbg and logs/query.out
+Queries logs will be written in ${PAPEREXT_DIR_LOG}/DATE.query.dbg
 """
 
 EPILOG = f"""
@@ -72,6 +72,7 @@ try:
 
     PLATFORMS["openai"] = _client
 except ModuleNotFoundError as e:
+    logger.info(e, exc_info=True)
     logging.info(e, exc_info=True)
 
 try:
@@ -115,6 +116,7 @@ try:
 
     PLATFORMS["vertexai"] = _client
 except ModuleNotFoundError as e:
+    logger.info(e, exc_info=True)
     logging.info(e, exc_info=True)
 
 
@@ -185,6 +187,7 @@ async def batch_extract_models_names(
                 FileNotFoundError,
                 pydantic_core._pydantic_core.ValidationError,
             ) as e:
+                logger.error(e, exc_info=True)
                 logging.error(e, exc_info=True)
 
                 message = message.format(*data, paper_fn.read_text())
@@ -232,6 +235,10 @@ async def ignore_exceptions(
         except bdb.BdbQuit:
             raise
         except Exception as e:
+            logger.error(
+                f"Failed to extract paper information from {paper.name}: {e}",
+                exc_info=True,
+            )
             logging.error(
                 f"Failed to extract paper information from {paper.name}: {e}",
                 exc_info=True,
