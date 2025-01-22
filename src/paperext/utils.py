@@ -24,45 +24,42 @@ class Paper:
     def __init__(self, paper: dict) -> None:
         self._selected_id = None
         self._paper_id = paper["paper_id"]
-        self._ids = [self._paper_id]
+        link_ids = [self._paper_id]
+        pdfs = []
+
         for l in paper["links"]:
             link_id = l.get("link", None)
-            if link_id and link_id not in self._ids:
-                self._ids.append(link_id)
+            if link_id and link_id not in link_ids:
+                link_ids.append(link_id)
 
-            pdfs = sorted(
-                CFG.dir.cache.glob(self.LINK_ID_TEMPLATE.format(link_id=link_id))
-            )
-            if pdfs and not self._selected_id:
-                self._selected_id = pdfs[0].stem
+                pdfs += sorted(
+                    CFG.dir.cache.glob(self.LINK_ID_TEMPLATE.format(link_id=link_id))
+                )
 
+        # Find existing queries and infer the paper id from them
         self._queries = sum(
-            [list(CFG.dir.queries.glob(f"{id}_*.json")) for id in self._ids], []
+            [
+                list((CFG.dir.queries / CFG.platform.select).glob(f"{link_id}_*.json"))
+                for link_id in link_ids
+            ],
+            [],
         )
 
-        if self._queries:
-            # assert len(queries) == 1
-            self._selected_id = "_".join(self._queries[0].stem.split("_")[:-1])
+        _ids = ["_".join(p.stem.split("_")[:-1]) for p in self._queries]
 
-        elif not self._selected_id:
-            pdfs = (
-                # Original form of the converted pdf to txt was data/cache/*/LINK_ID.txt
-                sorted(
-                    CFG.dir.cache.glob(
-                        self.PAPER_ID_TEMPLATE.format(paper_id=self._paper_id)
-                    )
-                )
-                +
-                # The the up-to-date form of the converted pdf (by paperoni) is
-                # data/cache/fulltext/PAPER_ID/fulltext.txt
-                sorted(
-                    CFG.dir.cache.glob(
-                        self.PAPER_ID_FULLTEXT_TEMPLATE.format(paper_id=self._paper_id)
-                    )
-                )
-            )
-            if pdfs:
-                self._selected_id = self._paper_id
+        if _ids:
+            assert len(set(_ids)) == 1
+            self._selected_id = _ids[0]
+
+        # Try to find the downloaded/converted pdf using the original form of
+        # the converted pdf to txt
+        if not self._selected_id and pdfs:
+            # Favor the first pdf found, it's usually the most relevent and
+            # easiest to download / access
+            self._selected_id = pdfs[0].stem
+
+        if not self._selected_id and self.pdf:
+            self._selected_id = self._paper_id
 
     @property
     def id(self):

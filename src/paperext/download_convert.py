@@ -48,14 +48,18 @@ Example:
 
 def convert_pdf(pdf, text, pdf_link):
     pdf.parent.mkdir(parents=True, exist_ok=True)
+
     if not pdf.exists():
         logger.info(f"Downloading from {pdf_link} to {pdf}")
+
         try:
             urllib.request.urlretrieve(pdf_link, str(pdf))
+
         except (urllib.error.HTTPError, ValueError) as e:
             logger.error(f"Failed to download {pdf_link}: {e}", exc_info=True)
             pdf.unlink(missing_ok=True)
             return None
+
     if not text.exists():
         # pdftotext comes from https://poppler.freedesktop.org/
         try:
@@ -66,15 +70,18 @@ def convert_pdf(pdf, text, pdf_link):
                 cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True
             )
             logger.info(p.stdout)
+
             if p.returncode:
                 raise subprocess.CalledProcessError(
                     p.returncode, cmd, p.stdout, p.stderr
                 )
+
         except subprocess.CalledProcessError as e:
             logger.error(f"Failed to convert {pdf} to {text}: {e}", exc_info=True)
             pdf.unlink(missing_ok=True)
             text.unlink(missing_ok=True)
             return None
+
     return text
 
 
@@ -83,40 +90,56 @@ def download_and_convert_paper(
 ):
     text = None
     link_types = []
+
     while links:
         l: dict = links.pop(0)
         link_type = l["type"].split(".")[0]
+
         for _if, pdf, pdf_link in (
+            # Favor arxiv links if available
+            # If the link is an arxiv link, the arxiv id is in the `link` field.
+            # The arxiv id can be used to build an url and download the pdf file.
             (
                 l["type"].lower().startswith("arxiv"),
                 cache_dir / f"arxiv/{l['link']}.pdf",
                 f"https://arxiv.org/pdf/{l['link']}",
             ),
+            # If `url` is available, use it to download the pdf. The `link`
+            # field should contain the id for the pdf file.
             (
                 "url" in l,
                 cache_dir / link_type / f"{l['link']}.pdf",
                 l.get("url", None),
             ),
+            # If none of the above worked, try to download the pdf from the `link`
             (True, cache_dir / link_type / f"{paper_id}.pdf", l["link"]),
         ):
             if not _if:
                 continue
+
             text = pdf.with_suffix(".txt")
             link_types.append(link_type)
+
             if text.exists():
                 logger.info(f"Found existing {text}")
                 links[:] = []
                 break
+
             if check_only:
                 continue
+
             if convert_pdf(pdf, text, pdf_link) is not None:
                 links[:] = []
                 break
+
             logger.warning("retrying...")
+
         else:
             text = None
+
     if text is not None:
         link_types = link_types[-1:]
+
     return text, sorted(set(link_types))
 
 
