@@ -1,0 +1,605 @@
+{
+  "paper": "ad32a67a94ea0ef25d9046bc3217ffc4.txt",
+  "words": 12787,
+  "extractions": {
+    "title": {
+      "value": "Methods, Applications, and Directions of Learning-to-Rank in NLP Research",
+      "justification": "The title of the paper is given at the beginning of the document and describes the focus on learning-to-rank methods in Natural Language Processing.",
+      "quote": "Title: Methods, Applications, and Directions of Learning-to-Rank in NLP Research"
+    },
+    "description": "This survey paper explores various learning-to-rank (LTR) methods used in NLP. It discusses the formal background, application cases, and future directions of LTR in the context of NLP, with particular attention to statistical significance testing and the impact of large language models (LLMs).",
+    "type": {
+      "value": "theoretical",
+      "justification": "The paper primarily surveys existing methods and applications of LTR in NLP rather than conducting new experiments or empirical studies.",
+      "quote": "This is a theoretical paper that surveys the diverse use-cases of LTR methods in natural language processing research."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The paper is focused on learning-to-rank methods within the scope of Natural Language Processing applications and challenges.",
+        "quote": "This survey is aimed at NLP researchers and practitioners interested in understanding the formalisms and best practices regarding the application of LTR approaches in their research."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Information Retrieval",
+          "justification": "LTR is commonly used in information retrieval tasks, as highlighted in the paper.",
+          "quote": "Ranking, i.e., ordering according to some property, is a central problem for many natural language processing (NLP) and information retrieval (IR) tasks."
+        },
+        "aliases": [
+          "IR"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "RankNet",
+          "justification": "RankNet is one of the pairwise models discussed for optimizing ranking objectives.",
+          "quote": "RankNet (Burges et al., 2005), LambdaRank (Burges et al., 2006), and LambdaMART (Burges, 2010) use gradient descent to update a pairwise model."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "RankNet is referenced and used as an example rather than a contribution from this paper.",
+          "quote": "RankNet (Burges et al., 2005)"
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The paper does not mention executing models, as it is a theoretical survey of methods.",
+          "quote": "The paper focuses on methods and literature, not on executing models."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "RankNet is mentioned as an existing model, not one being numerically compared in this paper's scope.",
+          "quote": "The paper surveys pairwise models without specific numeric comparisons among them."
+        },
+        "referenced_paper_title": {
+          "value": "Learning to rank using gradient descent",
+          "justification": "The referenced paper provides the original description of RankNet.",
+          "quote": "RankNet (Burges et al., 2005)"
+        }
+      },
+      {
+        "name": {
+          "value": "LambdaRank",
+          "justification": "LambdaRank is discussed as a method that optimizes for a specific ranking metric directly.",
+          "quote": "LambdaRank bypasses this in favor of directly defining a gradient function that can optimize for a specific metric."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "LambdaRank is a referenced method rather than a new contribution of this paper.",
+          "quote": "LambdaRank (Burges et al., 2006)"
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The paper does not cover executing models as it is focused on theory and survey.",
+          "quote": "The focus is on survey and formal background."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "LambdaRank is referenced without direct numeric comparisons in this paper.",
+          "quote": "The paper references LambdaRank but does not compare it numerically to others."
+        },
+        "referenced_paper_title": {
+          "value": "Learning to rank with nonsmooth cost functions",
+          "justification": "The referenced paper details the LambdaRank model, its development, and applications.",
+          "quote": "LambdaRank (Burges et al., 2006)"
+        }
+      },
+      {
+        "name": {
+          "value": "LambdaMART",
+          "justification": "LambdaMART is mentioned as a model applying the LambdaRank objective with boosted regression trees.",
+          "quote": "LambdaMART implements the LambdaRank objective with boosted regression trees."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "LambdaMART is mentioned as part of existing literature and not as a new contribution by this survey.",
+          "quote": "LambdaMART (Burges, 2010)"
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "Execution of models is not within the scope as this paper is focused on exposing methods.",
+          "quote": "Execution of models is not discussed in the paper."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "It is referenced among models but not directly compared in this survey.",
+          "quote": "The paper mentions LambdaMART but does not compare it with other models."
+        },
+        "referenced_paper_title": {
+          "value": "From RankNet to LambdaRank to LambdaMART: An overview",
+          "justification": "The paper by Burges outlines the LambdaMART model, referenced by this survey.",
+          "quote": "LambdaMART (Burges, 2010)"
+        }
+      },
+      {
+        "name": {
+          "value": "SVMrank",
+          "justification": "SVMrank is noted for framing pairwise ranking problems and is cited as a popular method within NLP tasks.",
+          "quote": "SVMrank (Joachims, 2002) frames the pairwise ranking objective within the SVM algorithm, and has been a popular choice in NLP."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper mentions SVMrank as part of literature, not as a new finding.",
+          "quote": "SVMrank (Joachims, 2002)"
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The paper does not conduct any model executions per se.",
+          "quote": "The focus remains theoretical, not executional."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "There is no numerical comparison of SVMrank performed in this survey paper.",
+          "quote": "Popular SVMrank is mentioned but not numerically compared here."
+        },
+        "referenced_paper_title": {
+          "value": "Optimizing search engines using clickthrough data",
+          "justification": "The reference highlights SVMrank used for optimization of search engine results.",
+          "quote": "SVMrank (Joachims, 2002)"
+        }
+      },
+      {
+        "name": {
+          "value": "ListNet",
+          "justification": "ListNet is highlighted for its probabilistic ranking model approach and its usage.",
+          "quote": "Listwise ListNet (Cao et al., 2007) is a probabilistic ranking model where the probability of a list item being ranked in the first position for all other items, is predicted."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "ListNet is a discussed method within the survey, not a new contribution.",
+          "quote": "ListNet (Cao et al., 2007)"
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "Theoretical discussions on the model execute no code or experiments.",
+          "quote": "ListNet is examined as part of theoretical methods."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "The paper outlines ListNet without direct quantitative comparison with others.",
+          "quote": "ListNet is outlined without a direct comparison in this paper."
+        },
+        "referenced_paper_title": {
+          "value": "Learning to rank: from pairwise approach to listwise approach",
+          "justification": "The original development of ListNet is documented in this paper by Cao et al.",
+          "quote": "ListNet (Cao et al., 2007)"
+        }
+      },
+      {
+        "name": {
+          "value": "ListMLE",
+          "justification": "ListMLE is referenced for its use of a different loss function for listwise ranking methods.",
+          "quote": "ListMLE (Xia et al., 2008) builds on ListNet by proposing an alternative loss function."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "ListMLE is covered within the survey scope but not as a contribution.",
+          "quote": "ListMLE (Xia et al., 2008)"
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "Scope remains on discussing models, not Factual execution.",
+          "quote": "The survey provides theoretical rather than empirical execution."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "No comparative analysis given or numerical results are presented.",
+          "quote": "ListMLE is discussed but not compared to others numerically."
+        },
+        "referenced_paper_title": {
+          "value": "Listwise approach to learning to rank: theory and algorithm",
+          "justification": "The foundational ideas on ListMLE are developed in this referenced paper authored by Xia et al.",
+          "quote": "ListMLE (Xia et al., 2008)"
+        }
+      },
+      {
+        "name": {
+          "value": "RankT5",
+          "justification": "RankT5 is a newer model fine-tuning T5 to extend both pairwise and listwise ranking losses.",
+          "quote": "RankT5 (Zhuang et al., 2022) fine-tunes the T5 model to extend to both pairwise and listwise ranking losses."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "RankT5 is discussed as a model of interest, not as a contribution of this paper.",
+          "quote": "RankT5 (Zhuang et al., 2022)"
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "Execution isn't discussed; the paper surveys models conceptually.",
+          "quote": "It is examined for its relevance, not execution status."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "RankT5 is mentioned without numerical comparison being conducted.",
+          "quote": "The paper discusses RankT5 without presenting comparisons."
+        },
+        "referenced_paper_title": {
+          "value": "Fine-tuning T5 for text ranking with ranking losses",
+          "justification": "The discussed model RankT5 is detailed in the referenced work by Zhuang et al.",
+          "quote": "RankT5 (Zhuang et al., 2022)"
+        }
+      },
+      {
+        "name": {
+          "value": "ListBERT",
+          "justification": "ListBERT is highlighted for fine-tuning a RoBERTa model on listwise losses to rank products.",
+          "quote": "ListBERT (Kumar and Sarkar, 2022) finetunes a RoBERTa model with several listwise losses for ranking e-commerce products."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "It is part of the literature overviewed rather than a new contribution of the paper.",
+          "quote": "ListBERT (Kumar and Sarkar, 2022)"
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "Issues of execution on hardware are not discussed in the paper.",
+          "quote": "Any actual execution or experimentation is beyond the paper's scope."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "It discusses its role within literature but not directly comparing numerically to others in this paper.",
+          "quote": "ListBERT is included without a setting of comparative measurement against other methods."
+        },
+        "referenced_paper_title": {
+          "value": "ListBERT: Learning to rank e-commerce products with listwise BERT",
+          "justification": "The foundational technique within the discussed model is handled in the reference attributed to Kumar and Sarkar.",
+          "quote": "ListBERT (Kumar and Sarkar, 2022)"
+        }
+      },
+      {
+        "name": {
+          "value": "Listwise Ranker",
+          "justification": "The paper mentions a recurrent neural network (RNN)-based listwise ranker developed by Yan et al.",
+          "quote": "Yan et al. (2020) propose a listwise ranker based on a recurrent neural network (RNN) auto-encoder for ranking biomedical question-answer pairs."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "An existing methodology is detailed as part of a survey.",
+          "quote": "Yan et al. (2020)"
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The focus remains theoretical on methods and applications, rather than execution of models.",
+          "quote": "The focus remains theoretical rather than execution-focused."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "No numerical comparisons were reported between the Listwise Ranker and other models within this survey content.",
+          "quote": "Listing rather than numerical comparison was the focus with the mention of the Listwise Ranker."
+        },
+        "referenced_paper_title": {
+          "value": "List-wise learning to rank biomedical question-answer pairs with deep ranking recursive autoencoders",
+          "justification": "The techniques and applications around the Listwise Ranker have been laid out in the underlying paper about biomedical ranking published by Yan et al.",
+          "quote": "Yan et al. (2020)"
+        }
+      },
+      {
+        "name": {
+          "value": "ChatGPT Ranker",
+          "justification": "The paper refers to research exploring ChatGPT's ranking abilities in a set of tasks.",
+          "quote": "Ji et al. (2023) investigated ChatGPT’s ability to rank the outputs of various models on a diverse set of tasks including NLP tasks and open-ended generation tasks."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "It forms part of the survey overview, originated from other literature studies around AI models.",
+          "quote": "ChatGPT’s ability (Ji et al., 2023)"
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "Execution in empirical ways is discussed in other works reviewed but not within the faculty of this paper itself.",
+          "quote": "Reviewed research on model capabilities but sans executions in-house."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "Numerical performance metrics are outside its main review of ChatGPT as a conceptual entity.",
+          "quote": "Discussed as one key feature without comparative metrics laid out directly here."
+        },
+        "referenced_paper_title": {
+          "value": "Exploring ChatGPT’s ability to rank content: A preliminary study on consistency with human preferences",
+          "justification": "The conceptual understanding of the discussed model exists markedly in the cited foundational paper for ChatGPT capabilities by Ji et al.",
+          "quote": "Ji et al. (2023)"
+        }
+      },
+      {
+        "name": {
+          "value": "RankVicuna",
+          "justification": "RankVicuna is a zero-shot listwise document reranker mentioned in the paper.",
+          "quote": "RankVicuna: Zero-shot listwise document reranking with open-source large language models."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "RankVicuna is mentioned as part of existing literature rather than a new contribution.",
+          "quote": "RankVicuna is mentioned as existing work."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "Execution specifics are not detailed in the context of this paper.",
+          "quote": "Focus remains on discussing across literature models."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "Existing research work's conceptual highlights appear in discussion, not model comparisons.",
+          "quote": "It is examined discretely and without numerical contrast."
+        },
+        "referenced_paper_title": {
+          "value": "RankVicuna: Zero-shot listwise document reranking with open-source large language models",
+          "justification": "The framework and design details appear within the referenced study cited in the paper.",
+          "quote": "RankVicuna: Zero-shot listwise document reranking with open-source large language models."
+        }
+      },
+      {
+        "name": {
+          "value": "RankZephyr",
+          "justification": "RankZephyr is discussed as an effective zero-shot listwise reranker in recent literature.",
+          "quote": "RankZephyr: Effective and robust zero-shot listwise reranking is a breeze."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "RankZephyr is described in literary context rather than as an original finding or model from this survey study.",
+          "quote": "RankZephyr as research work is cited rather than contributed by the survey."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "Execution tests and details are not mentioned within the studied content about RankZephyr.",
+          "quote": "Ranks methods are listed but execution remains outside the theoretical scope."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "RankZephyr's abilities are conceptually discussed but not quantitatively compared in the body of this paper.",
+          "quote": "Comparative numerical attributes were not extensively detailed."
+        },
+        "referenced_paper_title": {
+          "value": "RankZephyr: Effective and robust zero-shot listwise reranking is a breeze!",
+          "justification": "The reference examines RankZephyr and its associated scientific discussions.",
+          "quote": "RankZephyr: Effective and robust zero-shot listwise reranking is a breeze!"
+        }
+      },
+      {
+        "name": {
+          "value": "LlamaIndex",
+          "justification": "LlamaIndex is mentioned relative to providing interfaces for ranked structured information.",
+          "quote": "Recent work on LlamaIndex provides an interface for connecting LLMs with indexed, textual data to be ranked."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "It is cited as part of a referenced study rather than a new contribution to infrastructure being discussed.",
+          "quote": "LlamaIndex citations reflect referencing rather than contribution."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The survey offers discussions on its existence rather than execution descriptions and results.",
+          "quote": "LlamaIndex observed in collective findings but sans execution mentions."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "Discusses infrastructure without direct execution or numerically detailed comparison.",
+          "quote": "Collection-based introductions without direct comparisons in numerical terms."
+        },
+        "referenced_paper_title": {
+          "value": "Provide ranked structured information interfaces for connection with LLMs",
+          "justification": "Contributed understanding on LlamaIndex is noted in specific cited studies around its usage in science and industry.",
+          "quote": "Recent work on LlamaIndex provides interfaces."
+        }
+      },
+      {
+        "name": {
+          "value": "LangChain",
+          "justification": "LangChain is discussed regarding its utility for building interfaces to rank textual data with LLMs.",
+          "quote": "LangChain provide an interface for connecting LLMs with indexed, textual data to be ranked."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "LangChain forms part of existing systems rather than a development credited to this survey research.",
+          "quote": "LangChain mention concerns referencing within LLM interface discussions."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The paper focuses on theoretical and practical discussions, not direct execution.",
+          "quote": "Execution and hands-on results are outside scope definition."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "The survey material lists these interfaces rather than presents direct comparisons or metrics between systems.",
+          "quote": "LangChain in textual ranking without numerical contrast discussion."
+        },
+        "referenced_paper_title": {
+          "value": "Architect interfaces for utilizing LLM capabilities in ordered data contexts",
+          "justification": "Insight into LangChain's role prominently features in referenced studies apart from this paper's internal contribution or experimental sections.",
+          "quote": "LangChain provide an interface."
+        }
+      }
+    ],
+    "datasets": [],
+    "libraries": [
+      {
+        "name": {
+          "value": "Ranklib",
+          "justification": "Ranklib is identified as a software tool for implementing LTR algorithms.",
+          "quote": "Ranklib has implementations for a variety of LTR algorithms."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Ranklib source documentation and algorithm implementations",
+          "justification": "Ranklib's contribution is contextualized through references to its documentation in the survey paper.",
+          "quote": "Ranklib has implementations for a variety of LTR algorithms."
+        }
+      },
+      {
+        "name": {
+          "value": "XGBoost",
+          "justification": "XGBoost is listed for its gradient-boosted models applied to LTR tasks.",
+          "quote": "XGBoost, a popular library for gradient boosted models, contains an implementation of LambdaRank."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "XGBoost: Scalable end-to-end tree boosting system",
+          "justification": "The foundation work and application of XGBoost are discussed in its documentation sources, aiding its role as mentioned in this paper.",
+          "quote": "XGBoost contains an implementation of LambdaRank."
+        }
+      },
+      {
+        "name": {
+          "value": "Tensorflow Ranking",
+          "justification": "Tensorflow Ranking is highlighted as a library for developing neural ranking models.",
+          "quote": "Tensorflow Ranking is an open-source library for developing neural ranking models."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Tensorflow Ranking documentation",
+          "justification": "Direct references to the use and capabilities of TensorFlow Ranking are imbued in its cited documentation.",
+          "quote": "Tensorflow Ranking is an open-source library for developing neural ranking models."
+        }
+      },
+      {
+        "name": {
+          "value": "AllRank",
+          "justification": "AllRank is mentioned relative to its utility in conjunction with PyTorch for building ranking models.",
+          "quote": "AllRank is a similar open-source library for PyTorch."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "AllRank - An open-source library for ranking algorithms on PyTorch",
+          "justification": "The paper references AllRank as a supplemented library infrastructure handled through other scientific contributions and descriptions.",
+          "quote": "AllRank is a similar open-source library for PyTorch."
+        }
+      },
+      {
+        "name": {
+          "value": "SciPy",
+          "justification": "SciPy's proficiency in implementing necessary metrics for evaluation highlights its mention.",
+          "quote": "Software libraries such as SciPy have implementations of most of these metrics."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "SciPy: Fundamental algorithms for scientific computing in Python",
+          "justification": "References call upon SciPy’s existing exhaustive repository of scientific and statistical computation deployed in LTR tasks.",
+          "quote": "Software libraries such as SciPy."
+        }
+      },
+      {
+        "name": {
+          "value": "scikit-learn",
+          "justification": "Scikit-learn is mentioned as a library with broad implementations of statistical significance metrics applicable in NLP tasks.",
+          "quote": "scikit-learn includes implementations key in building and measuring LTR methods."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Scikit-learn: Machine learning in Python",
+          "justification": "Scikit-learn’s comprehensive alignment with broader ML and statistical tasks finds a station in the paper referencing its capacities.",
+          "quote": "software libraries including scikit-learn."
+        }
+      },
+      {
+        "name": {
+          "value": "ranx",
+          "justification": "Ranx is noted for its competence in wrapping various task-relevant implementations for metric evaluations.",
+          "quote": "ranx, evaluate, and TREC-eval have implementations of most of these metrics."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Ranx GitHub Documentation",
+          "justification": "Ranx finds its baseline upon a variety of tasks that augment the referenced efficiencies in NLP metric evaluations.",
+          "quote": "ranx has implementations."
+        }
+      },
+      {
+        "name": {
+          "value": "evaluate",
+          "justification": "The paper mentions evaluate's use in carrying out various ranking and evaluation metrics.",
+          "quote": "evaluate and TREC-eval have implementations of most of these metrics."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Evaluate framework in HuggingFace Model Evaluations",
+          "justification": "Functionality noted in its repository specifications associates evaluate for its presence on ranking tasks as acknowledged in the paper.",
+          "quote": "Evaluate framework is situated around ranking functionaries along with TREC-eval."
+        }
+      },
+      {
+        "name": {
+          "value": "TREC-eval",
+          "justification": "TREC-eval is used in conjunction with other software to compute relevant metrics, as noted in the paper.",
+          "quote": "TREC-eval has implementations of most of these metrics."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "TREC-eval GitHub Repository",
+          "justification": "Implemented dataset metrics and structure exist predominantly in the GitHub repository, forming critical foundations cited in this paper.",
+          "quote": "TREC-eval provides metric evaluation implementations relevant to LTR measures."
+        }
+      },
+      {
+        "name": {
+          "value": "LlamaIndex",
+          "justification": "LlamaIndex's ability to connect LLMs with ranked data is discussed, noting its interface capabilities.",
+          "quote": "LlamaIndex provides an interface for connecting LLMs with indexed, textual data to be ranked."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "LlamaIndex: Interface connectivity for LLM applications in ranked data indexing",
+          "justification": "Handled within its indexed data articulations and their relevance to LTR as acknowledged in industry application documentation.",
+          "quote": "LlamaIndex connects digital indexed data with processing tasks via LLMs."
+        }
+      },
+      {
+        "name": {
+          "value": "LangChain",
+          "justification": "LangChain's role in building ranking interfaces for LLMs is highlighted within the document.",
+          "quote": "LangChain provides an interface for connecting LLMs with indexed, textual data to be ranked."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "LangChain: Interface tool for extensive LLM management in the context of data ranking",
+          "justification": "Documentational emphasis around LangChain’s functionality through its interfacing aspects in practical scenarios is referenced within surveys or repositories.",
+          "quote": "LangChain as an engaging component within ranked data tasks tied to LLM environments."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 5013,
+    "prompt_tokens": 23160,
+    "total_tokens": 28173,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}

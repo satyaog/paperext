@@ -1,0 +1,297 @@
+{
+  "paper": "abf569b17c075e68366715a5cc97efd3.txt",
+  "words": 15115,
+  "extractions": {
+    "title": {
+      "value": "Trajectory Flow Matching with Applications to Clinical Time Series Modeling",
+      "justification": "The title is explicitly stated at the beginning of the paper.",
+      "quote": "Trajectory Flow Matching with Applications to Clinical Time Series Modeling"
+    },
+    "description": "This paper addresses the challenges of modeling stochastic and irregularly sampled time series, particularly in medicine. It introduces a method called Trajectory Flow Matching (TFM) which trains Neural Stochastic Differential Equations (Neural SDEs) in a simulation-free manner to improve scalability and stability. The paper establishes necessary conditions for TFM to learn time series data, presents a stabilization trick, and adapts TFM to clinical time series, showing improved performance on multiple datasets.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper demonstrates the utility of the proposed method through empirical evaluation on clinical datasets.",
+      "quote": "We demonstrate that our method outperforms current state of the art time series modelling architecture including RNN, ODE based and flow matching methods. We empirically demonstrate the utility of our method in clinical applications."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Clinical Time Series Modeling",
+        "justification": "The paper focuses on improving the modeling of clinical time series data using Neural SDEs and Trajectory Flow Matching.",
+        "quote": "Next, we present a reparameterization trick which improves training stability. Finally, we adapt TFM to the clinical time series setting, demonstrating improved performance on four clinical time series datasets both in terms of absolute performance and uncertainty prediction, a crucial parameter in this setting."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Generative Modeling",
+          "justification": "The paper leverages techniques from generative modeling to develop Trajectory Flow Matching for time series.",
+          "quote": "TFM leverages the flow matching technique from generative modeling to model time series."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Neural SDE",
+          "justification": "The paper focuses on training Neural Stochastic Differential Equations.",
+          "quote": "Neural stochastic differential equations (Neural SDEs) are an attractive modeling technique for this problem..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Neural SDEs exist prior to this paper and are not introduced as a new contribution.",
+          "quote": "Neural stochastic differential equations (Neural SDEs) are an attractive modeling technique for this problem..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper discusses training and execution of Neural SDEs using the proposed TFM method.",
+          "quote": "Trajectory Flow Matching (TFM), which trains a Neural SDE in a simulation-free manner..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares the performance of TFM-trained Neural SDEs to other modeling methods.",
+          "quote": "We demonstrate that our method outperforms current state of the art time series modelling architecture including RNN, ODE based and flow matching methods."
+        },
+        "referenced_paper_title": {
+          "value": "Scalable gradients and variational inference for stochastic differential equations",
+          "justification": "This referenced paper provides foundational techniques for working with SDEs, as cited by the authors.",
+          "quote": "[Li et al., 2020]"
+        }
+      },
+      {
+        "name": {
+          "value": "Neural ODE",
+          "justification": "Neural Ordinary Differential Equations are frequently mentioned as a comparison method in the paper.",
+          "quote": "In a Neural SDE [Li et al., 2020, Kidger et al., 2021a,b] the drift and diffusion terms are parameterized with neural networks f θ (t, x t ) and g θ (t, x t )."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Neural ODEs are established models in the field and not introduced in this paper.",
+          "quote": "In a Neural SDE [Li et al., 2020, Kidger et al., 2021a,b]..."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The primary focus for execution in this study is on Neural SDEs, not Neural ODEs.",
+          "quote": "...while this is guaranteed to preserve the distribution over time, it is not guaranteed to preserve the coupling of q 0 and q 1"
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Neural ODEs are used as baseline models for performance comparison.",
+          "quote": "Neural ODE with latent representations of trajectories [Rubanova et al., 2019] outperformed RNN-based approaches..."
+        },
+        "referenced_paper_title": {
+          "value": "Neural ordinary differential equations",
+          "justification": "The referenced paper lays the groundwork for Neural ODEs, supporting their inclusion in this paper.",
+          "quote": "[Chen et al., 2018]"
+        }
+      },
+      {
+        "name": {
+          "value": "Latent Neural ODE",
+          "justification": "This model is used as a baseline for comparison in the paper's experiments.",
+          "quote": "We also evaluate NeuralODE [Chen et al., 2018], NeuralSDE [Li et al., 2020, Kidger et al., 2021b, Kidger, 2022], Latent NeuralODE [Rubanova et al., 2019]..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "This model is an existing method applied for comparative analysis in the experiments.",
+          "quote": "We also evaluate NeuralODE [Chen et al., 2018], NeuralSDE [Li et al., 2020, Kidger et al., 2021b, Kidger, 2022], Latent NeuralODE [Rubanova et al., 2019]..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper executes experiments using Latent Neural ODEs.",
+          "quote": "...Latent NeuralODE [Rubanova et al., 2019], and an aligned flow matching method..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Latent Neural ODEs are compared against TFM and other models for performance evaluation.",
+          "quote": "We empirically evaluate the performance... a variety of simulation-based and simulation-free methods including both stochastic and deterministic methods."
+        },
+        "referenced_paper_title": {
+          "value": "Latent ordinary differential equations for irregularly-sampled time series",
+          "justification": "The referenced paper introduces Latent Neural ODEs, establishing their methodology.",
+          "quote": "[Rubanova et al., 2019]"
+        }
+      },
+      {
+        "name": {
+          "value": "RNN",
+          "justification": "Recurrent Neural Networks are compared to the proposed method as part of the evaluation.",
+          "quote": "We demonstrate that our method outperforms current state of the art time series modelling architecture including RNN..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "RNNs are widely known models and are not introduced in this paper.",
+          "quote": "...current state of the art time series modelling architecture including RNN..."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "RNNs are used as a point of comparison but not executed as primary models under study.",
+          "quote": "...while ODEs model deterministic systems, SDEs contain a diffusion term and can better represent the inherent uncertainty..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "RNNs are used as benchmarks for comparison in the study's experiments.",
+          "quote": "...empirically demonstrate the utility of our method in clinical applications where hemodynamic trajectories are critical..."
+        },
+        "referenced_paper_title": {
+          "value": "Directly modeling missing data in sequences with rnns: Improved classification of clinical time series",
+          "justification": "This paper on RNNs is cited for comparison, providing a baseline context for the study.",
+          "quote": "[Lipton et al., 2016]"
+        }
+      },
+      {
+        "name": {
+          "value": "Denoising Diffusion Probabilistic Models",
+          "justification": "These models are mentioned as successful generative models that influence TFM techniques.",
+          "quote": "In the domain of generative models, diffusion models [Ho et al., 2020, Nichol and Dhariwal, 2021, Song et al., 2021]..."
+        },
+        "aliases": [
+          "Diffusion Models"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "These models are cited from other works and are not new contributions from this study.",
+          "quote": "In the domain of generative models, diffusion models..."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The models are not directly executed; they are referenced in discussion of generative modeling strategies.",
+          "quote": "In the domain of generative models, diffusion models..."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "These models were not compared numerically to alternatives in the experiments.",
+          "quote": "...demonstrate that our method outperforms current state of the art time series modelling architecture including RNN, ODE based and flow matching methods."
+        },
+        "referenced_paper_title": {
+          "value": "Denoising diffusion probabilistic models",
+          "justification": "This paper introduces the diffusion models referenced in the study.",
+          "quote": "[Ho et al., 2020]"
+        }
+      },
+      {
+        "name": {
+          "value": "Flow matching models",
+          "justification": "Flow matching models are discussed as a successful framework in the generative domain applied to time series in this paper.",
+          "quote": "...more recently flow matching models [Lipman et al., 2023, Albergo et al., 2023, Li et al., 2020]..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Flow matching models are established techniques from generative modeling incorporated into TFM.",
+          "quote": "...more recently flow matching models [Lipman et al., 2023, Albergo et al., 2023, Li et al., 2020]..."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The focus is on leveraging the concept rather than direct execution of existing models.",
+          "quote": "...more recently flow matching models..."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "The text doesn't indicate direct comparative execution; it's about adapting flow matching strategies to the TFM approach.",
+          "quote": "TFM leverages the flow matching technique from generative modeling to model time series."
+        },
+        "referenced_paper_title": {
+          "value": "Flow matching for generative modeling",
+          "justification": "This paper supports the relevance of flow matching techniques to the study's methodology.",
+          "quote": "[Lipman et al., 2023]"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "eICU Collaborative Research Database v2.0",
+          "justification": "This dataset is used as a foundational source for ICU patient data modeling with TFM.",
+          "quote": "We applied our method to the following longitudinal electronic health record datasets: medical intensive care unit (MICU) data of patients with sepsis..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "eicu collaborative research database (version 2.0)",
+          "justification": "This is the referenced source of the eICU dataset used in the study.",
+          "quote": "[Pollard et al., 2019]"
+        }
+      },
+      {
+        "name": {
+          "value": "Medical Information Mart for Intensive Care III (MIMIC-III)",
+          "justification": "MIMIC-III is noted as a data source for intensive care patient tracking.",
+          "quote": "...subset of the Medical Information Mart for Intensive Care III of patients with gastrointestinal bleeding as the primary diagnosis."
+        },
+        "aliases": [
+          "MIMIC-III"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "MIMIC-III, a freely accessible critical care database",
+          "justification": "The statement identifies MIMIC-III as a referenced source for the ICU GIB dataset.",
+          "quote": "[Johnson et al., 2016]"
+        }
+      },
+      {
+        "name": {
+          "value": "Emergency Department Acute Gastrointestinal Bleeding (ED GIB) Dataset",
+          "justification": "This dataset is used specifically to analyze emergency department presentations for gastrointestinal bleeding cases.",
+          "quote": "...patients presenting with signs and symptoms of acute gastrointestinal bleeding to the emergency department..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Acute physiology and chronic health evaluation (apache) iv: hospital mortality assessment for today’s critically ill patients",
+          "justification": "This study contributes to understanding patient status assessment using the dataset.",
+          "quote": "[Zimmerman et al., 2006]"
+        }
+      },
+      {
+        "name": {
+          "value": "Cardiac Arrest Risk Triage (CART) dataset",
+          "justification": "The CART dataset supports the modeling of cardiac risk in an ICU setting.",
+          "quote": "ICU Cardiac Arrest: a subset of the eICU Collaborative Research Database v2.0 of patients at risk for cardiac arrest."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Derivation of a cardiac arrest prediction model using ward vital signs",
+          "justification": "The CART dataset is supported by work on derivatives of cardiac risk modeling.",
+          "quote": "[Churpek et al., 2012]"
+        }
+      },
+      {
+        "name": {
+          "value": "NeuralODE Synthetic Datasets",
+          "justification": "The neural ODE synthetic datasets are used in simulations to validate model performance.",
+          "quote": "We empirically evaluate the performance of the trajectory flow matching objective...We also evaluate NeuralODE..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Neural ordinary differential equations",
+          "justification": "The datasets are from the NeuralODE framework which is referenced for deriving model testing conditions.",
+          "quote": "[Chen et al., 2018]"
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 2739,
+    "prompt_tokens": 26546,
+    "total_tokens": 29285,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

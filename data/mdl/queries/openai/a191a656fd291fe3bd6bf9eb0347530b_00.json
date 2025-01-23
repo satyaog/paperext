@@ -1,0 +1,190 @@
+{
+  "paper": "a191a656fd291fe3bd6bf9eb0347530b.txt",
+  "words": 11067,
+  "extractions": {
+    "title": {
+      "value": "Geometry of naturalistic object representations in recurrent neural network models of working memory",
+      "justification": "The title clearly indicates the focus on the geometry of object representations in RNN models of working memory.",
+      "quote": "Geometry of naturalistic object representations in recurrent neural network models of working memory"
+    },
+    "description": "The paper explores how recurrent neural networks (RNNs) process and maintain naturalistic object information in working memory through N-back tasks, contrasting this with traditional categorical inputs. It suggests that both task-relevant and irrelevant information are simultaneously encoded, and highlights the task-specific nature of RNN subspaces, particularly in gated RNNs like GRU and LSTM. It emphasizes the use of chronological memory subspaces in RNNs to handle overlapping object features across tasks.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper describes experimental findings related to RNN models' performance on N-back tasks with naturalistic stimuli.",
+      "quote": "Our findings indicate that goal-driven RNNs employ chronological memory subspaces to track information over short time spans, enabling testable predictions with neural data."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Working Memory Modeling with RNNs",
+        "justification": "The research focuses on how RNNs model working memory, especially in tasks requiring dynamic updates like the N-back task.",
+        "quote": "Recent approaches have focused on using artificial neural networks, such as recurrent neural networks (RNNs), to understand and model WM due to their ability to learn the complex cognitive tasks that are commonly used to study WM in humans."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Neuroscience",
+          "justification": "The study draws on neuroscience concepts to explore how RNNs might mimic neural processes during working memory tasks.",
+          "quote": "Neural network models have been increasingly used in computational neuroscience to model neural computations during different behaviors."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Naturalistic Stimuli Processing",
+          "justification": "A key aspect of the study is how RNNs handle high-dimensional, naturalistic stimuli compared to simple categorical data.",
+          "quote": "...ecologically-relevant, multidimensional naturalistic ones."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "GRU (Gated Recurrent Unit)",
+          "justification": "The GRU model is specifically mentioned as one of the RNN variants used to study task-specific subspace utilization.",
+          "quote": "While the latent subspaces used to maintain specific object properties in vanilla RNNs are largely shared across tasks, they are highly task-specific in gated RNNs such as GRU and LSTM;"
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The model is widely known and used; the paper uses it as part of its experiments rather than contributing the model itself.",
+          "quote": "We considered three recurrent architectures for the second stage of the model including the vanilla RNN, GRU [Chung et al., 2014], and LSTM [Hochreiter and Schmidhuber, 1997]."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The experiments discussed in the paper utilize GRU in their execution.",
+          "quote": "We trained different classes of gated and gateless RNN models on a suite of WM tasks and developed decoder-based analyses to study the geometry of naturalistic object representations during different stages of WM."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "GRU's representation is compared with other RNN variants in terms of task-specific subspace utilization.",
+          "quote": "We found that gated RNNs (GRU and LSTM) utilized highly task-specific subspaces for encoding object properties, while vanilla RNN encoded object properties within a subspace that was shared across all task-variations."
+        },
+        "referenced_paper_title": {
+          "value": "Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling",
+          "justification": "The referenced work by Chung et al., 2014, is correctly identified as the paper introducing the GRU model.",
+          "quote": "GRU [Chung et al., 2014]"
+        }
+      },
+      {
+        "name": {
+          "value": "LSTM (Long Short-Term Memory)",
+          "justification": "The LSTM is used in experiments to study its task-specific encoding properties as part of RNN architectures.",
+          "quote": "While the latent subspaces used to maintain specific object properties in vanilla RNNs are largely shared across tasks, they are highly task-specific in gated RNNs such as GRU and LSTM;"
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The LSTM model is a well-established architecture; it is used in this paper rather than being proposed as a new contribution.",
+          "quote": "We considered three recurrent architectures for the second stage of the model including the vanilla RNN, GRU [Chung et al., 2014], and LSTM [Hochreiter and Schmidhuber, 1997]."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The experimental framework in the paper involves executing LSTM models on specific tasks.",
+          "quote": "The ensuing analyses utilized data collected from models with 512 units for vanilla RNNs, and 256 units for GRUs and LSTMs, to ensure comparable model performance as well as comparable model parameters."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Comparative analysis is conducted between LSTM and other RNN variants regarding task-specific subspace utility.",
+          "quote": "We found that gated RNNs (GRU and LSTM) utilized highly task-specific subspaces for encoding object properties, while vanilla RNN encoded object properties within a subspace that was shared across all task-variations."
+        },
+        "referenced_paper_title": {
+          "value": "Long Short-Term Memory",
+          "justification": "The origin of the LSTM model is correctly attributed to Hochreiter and Schmidhuber's foundational work.",
+          "quote": "LSTM [Hochreiter and Schmidhuber, 1997]."
+        }
+      },
+      {
+        "name": {
+          "value": "ResNet50",
+          "justification": "This CNN model is used as part of the perception stage in the model architecture.",
+          "quote": "At the first stage, the model processes sequences of images, utilizing an ImageNet [Deng et al., 2009] pre-trained ResNet50 [He et al., 2016] model to derive visual embeddings from each image input."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "ResNet50 is a pre-established model used for feature extraction in the paper.",
+          "quote": "utilizing an ImageNet [Deng et al., 2009] pre-trained ResNet50 [He et al., 2016] model to derive visual embeddings from each image input."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model is executed to extract features from image sequences as described in the paper.",
+          "quote": "All object features including category, identity, and location were highly decodable from these activations (category: 100.00%, identity: 99.57%, location: 100.00%; 2-fold cross-validation)."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "The ResNet50 model is used as a pre-processing step for feature extraction rather than being compared to other models within the scope of the paper.",
+          "quote": "At the first stage, the model processes sequences of images, utilizing an ImageNet [Deng et al., 2009] pre-trained ResNet50 [He et al., 2016] model to derive visual embeddings from each image input."
+        },
+        "referenced_paper_title": {
+          "value": "Deep residual learning for image recognition",
+          "justification": "The ResNet architecture is attributed to the correct original paper by He et al. (2016).",
+          "quote": "ResNet50 [He et al., 2016] model"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "ShapeNet",
+          "justification": "ShapeNet is explicitly used in the experiments for generating naturalistic stimuli via 3D object models.",
+          "quote": "Naturalistic stimuli were generated using 3D object models from the ShapeNet dataset (rendered examples in Figure A1a) [Chang et al., 2015]"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ShapeNet: An information-rich 3D model repository",
+          "justification": "The cited reference corresponds to the original paper introducing the ShapeNet dataset.",
+          "quote": "ShapeNet dataset [Chang et al., 2015]"
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet",
+          "justification": "ImageNet is mentioned as the source of pre-training for the ResNet50 model.",
+          "quote": "...utilizing an ImageNet [Deng et al., 2009] pre-trained ResNet50 [He et al., 2016] model..."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "ImageNet: A Large-Scale Hierarchical Image Database",
+          "justification": "The reference accurately connects to the original ImageNet paper by Deng et al. (2009).",
+          "quote": "ImageNet [Deng et al., 2009]"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "iWISDM",
+          "justification": "iWISDM is mentioned in the context of trial creation for model training.",
+          "quote": "...all trials were generated on-the-fly using the iWISDM package [Lei et al., 2024]."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "iWISDM: Assessing instruction following in multimodal models at scale",
+          "justification": "The title is linked to the citation provided for iWISDM in the paper.",
+          "quote": "iWISDM package [Lei et al., 2024]"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1975,
+    "prompt_tokens": 18134,
+    "total_tokens": 20109,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}

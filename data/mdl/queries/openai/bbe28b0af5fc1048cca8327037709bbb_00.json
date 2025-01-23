@@ -1,0 +1,163 @@
+{
+  "paper": "bbe28b0af5fc1048cca8327037709bbb.txt",
+  "words": 14296,
+  "extractions": {
+    "title": {
+      "value": "More Efficient Randomized Exploration for Reinforcement Learning via Approximate Sampling",
+      "justification": "The title is directly mentioned at the top of the paper.",
+      "quote": "More Efficient Randomized Exploration for Reinforcement Learning via Approximate Sampling"
+    },
+    "description": "This paper proposes an algorithmic framework that enhances Thompson Sampling (TS) exploration in Reinforcement Learning (RL) by integrating approximate sampling methods, particularly focusing on the Feel-Good Thompson Sampling (FGTS) approach. It claims to improve regret bounds and explores implementation on challenging Atari games.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper includes empirical studies, specifically mentioning extensive experiments on Atari games and the N-chain environments to demonstrate the performance of the proposed algorithms.",
+      "quote": "When applied to linear MDPs, our regret analysis yields the best known dependency of regret on dimensionality, surpassing existing randomized algorithms. Additionally, we provide explicit sampling complexity for each employed sampler. Empirically, we show that in tasks where deep exploration is necessary, our proposed algorithms that combine FGTS and approximate sampling perform significantly better compared to other strong baselines."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Reinforcement Learning",
+        "justification": "The entire focus of the paper is on improving exploration techniques in reinforcement learning, specifically through Thompson Sampling and its variants.",
+        "quote": "Thompson sampling (TS) is one of the most popular exploration techniques in reinforcement learning (RL)."
+      },
+      "aliases": [
+        "RL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Deep Reinforcement Learning",
+          "justification": "The paper aims to generalize exploration techniques like Thompson Sampling to deep reinforcement learning settings.",
+          "quote": "However, most TS algorithms with theoretical guarantees are difficult to implement and not generalizable to Deep RL."
+        },
+        "aliases": [
+          "Deep RL"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Feel-Good Thompson Sampling (FGTS)",
+          "justification": "The FGTS model is the core focus of the paper, aiming to improve exploration in reinforcement learning through approximate sampling.",
+          "quote": "we propose an algorithmic framework that incorporates different approximate sampling methods with the recently proposed Feel-Good Thompson Sampling (FGTS) approach"
+        },
+        "aliases": [
+          "FGTS"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Feel-Good Thompson Sampling (FGTS) was not invented in this paper but is rather used and improved upon.",
+          "quote": "Feel-Good Thompson sampling (FGTS) (Zhang, 2022; Dann et al., 2021) bypasses this issue..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "FGTS is implemented and tested in experiments within this work, particularly within Atari environments.",
+          "quote": "Empirically, we show that in tasks where deep exploration is necessary, our proposed algorithms that combine FGTS and approximate sampling perform significantly better compared to other strong baselines."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "FGTS-based algorithms are empirically compared to other baseline algorithms as part of the experimental results.",
+          "quote": "On several challenging games from the Atari 57 suite, our algorithms achieve performance that is either better than or on par with other strong baselines from the deep RL literature."
+        },
+        "referenced_paper_title": {
+          "value": "Feel-good Thompson sampling for contextual bandits and reinforcement learning",
+          "justification": "This title is referenced multiple times in the context of FGTS.",
+          "quote": "Feel-Good Thompson sampling (FGTS) (Zhang, 2022; Dann et al., 2021) bypasses this issue by incorporating an optimistic prior term in the posterior distribution of Q function."
+        }
+      },
+      {
+        "name": {
+          "value": "Langevin Monte Carlo (LMC)",
+          "justification": "Langevin Monte Carlo is used as one of the approximate sampling methods in the proposed exploration framework.",
+          "quote": "suppose practically implementable FGTS style algorithms that are based on approximate samplers from the MCMC literature. Our proposed algorithm allows flexible usage of different approximate samplers such as Langevin Monte Carlo (LMC)"
+        },
+        "aliases": [
+          "LMC"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Langevin Monte Carlo is a pre-existing method used in this context as a sampler, not contributed by this paper.",
+          "quote": "Our proposed algorithm allows flexible usage of different approximate samplers such as Langevin Monte Carlo (LMC)"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "It is executed as part of the experiments in the paper, particularly aligned with FGTS.",
+          "quote": "Our proposed algorithm allows flexible usage of different approximate samplers such as Langevin Monte Carlo (LMC)..."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "While LMC is used, the focus of the paper is not on comparing LMC to other models directly, but rather its implementation as part of the FGTS framework.",
+          "quote": "Our proposed algorithm allows flexible usage of different approximate samplers..."
+        },
+        "referenced_paper_title": {
+          "value": "Bayesian learning via stochastic gradient Langevin dynamics",
+          "justification": "This referenced paper justifies the mention of Langevin Monte Carlo as a known method.",
+          "quote": "Recent works that use Langevin Monte Carlo (LMC) (Dwaracherla & Van Roy, 2020; Xu et al., 2022; Ishfaq et al., 2024; Hsu et al., 2024) to implement TS which are both provably efficient and practical."
+        }
+      },
+      {
+        "name": {
+          "value": "Underdamped Langevin Monte Carlo (ULMC)",
+          "justification": "The ULMC is used as an advanced sampler, enhancing the scalability of LMC, within the FGTS framework discussed in the paper.",
+          "quote": "Our proposed algorithm allows flexible usage of different approximate samplers...such as Langevin Monte Carlo (LMC) or Underdamped Langevin Monte Carlo (ULMC)"
+        },
+        "aliases": [
+          "ULMC"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Like LMC, ULMC is an established method used within the paper's experiments and not a contribution of this paper.",
+          "quote": "ULMC, which exhibits enhanced scalability in such high-dimensional or poorly conditioned settings."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "ULMC is implemented and results are discussed in experiments.",
+          "quote": "ULMC can be implemented in the following way..."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "ULMC is used as a part of the model framework rather than being compared as an independent model in the study.",
+          "quote": "while implementing ULMC with step size τ..."
+        },
+        "referenced_paper_title": {
+          "value": "A non-asymptotic analysis of underdamped Langevin MCMC",
+          "justification": "The paper provides a reference supporting the theory behind ULMC in the context of sampling.",
+          "quote": "Underdamped Langevin MCMC: A non-asymptotic analysis. In Conference on Learning Theory, pp. 300–323. PMLR, 2018."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Atari 57",
+          "justification": "The Atari 57 suite is used as the testing ground for the proposed algorithms, as mentioned in the experiments section of the paper.",
+          "quote": "On several challenging games from the Atari 57 suite, our algorithms achieve performance that is either better than or on par with other strong baselines."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The arcade learning environment: An evaluation platform for general agents",
+          "justification": "This is the commonly referenced paper for the Atari suite of games.",
+          "quote": "challenges games from the Atari 57 suite, our algorithms achieve performance that is either better than or on par with other strong baselines"
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1559,
+    "prompt_tokens": 26995,
+    "total_tokens": 28554,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

@@ -1,0 +1,218 @@
+{
+  "paper": "c4eedb375cc50d7ddd7d906725ecdbb2.txt",
+  "words": 22781,
+  "extractions": {
+    "title": {
+      "value": "Improving Deep Reinforcement Learning by Reducing the Chain Effect of Value and Policy Churn",
+      "justification": "The paper focuses on improving Deep Reinforcement Learning by addressing the chain effect of churn in value and policy.",
+      "quote": "Improving Deep Reinforcement Learning by Reducing the Chain Effect of Value and Policy Churn"
+    },
+    "description": "The paper investigates the phenomenon of churn in deep reinforcement learning (DRL), particularly its impact on learning dynamics and proposes a method called Churn Approximated ReductIoN (CHAIN) to mitigate this effect. CHAIN aims to reduce undesirable changes in policy and value networks, thereby improving learning performance across various DRL settings. The paper provides a detailed empirical analysis and shows improvements in both online and offline DRL settings.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper conducts experiments to evaluate the proposed CHAIN method across different deep reinforcement learning tasks.",
+      "quote": "Our experiments demonstrate the effectiveness of our method in both reducing churn and improving learning performance across online and offline, value-based and policy-based RL settings, as well as a scaling setting."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Deep Reinforcement Learning",
+        "justification": "The paper primarily deals with improving learning performance in Deep Reinforcement Learning by addressing issues of churn in value and policy networks.",
+        "quote": "In this work, we start by characterizing churn in a view of Generalized Policy Iteration with function approximation, and we discover a chain effect of churn that leads to a cycle where the churns in value estimation and policy improvement compound and bias the learning dynamics throughout the iteration."
+      },
+      "aliases": [
+        "DRL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Actor-Critic Methods",
+          "justification": "The paper focuses on mitigating learning issues such as dual bias in actor-critic methods.",
+          "quote": "we concretize the study and focus on the learning issues caused by the chain effect in different settings, including greedy action deviation in value-based methods, trust region violation in proximal policy optimization, and dual bias of policy value in actor-critic methods."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Policy Optimization",
+          "justification": "The paper explores trust region violation in proximal policy optimization methods as part of its study on churn.",
+          "quote": "trust region violation in proximal policy optimization, and dual bias of policy value in actor-critic methods."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Generalized Policy Iteration",
+          "justification": "The study involves characterizing churn from the perspective of Generalized Policy Iteration.",
+          "quote": "We start by formally characterizing churn in view of Generalized Policy Iteration (GPI) with function approximation to best cover most DRL settings."
+        },
+        "aliases": [
+          "GPI"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "DoubleDQN",
+          "justification": "DoubleDQN is explicitly mentioned in relation to studying the churn phenomenon in value-based RL algorithms.",
+          "quote": "Recently, Schaul et al. [2022] studied a novel churn phenomenon in the learning process of typical value-based RL algorithms like DoubleDQN [van Hasselt et al., 2016]."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "DoubleDQN is cited as an existing algorithm used to illustrate the churn phenomenon, not as a contribution of this paper.",
+          "quote": "Recently, Schaul et al. [2022] studied a novel churn phenomenon in the learning process of typical value-based RL algorithms like DoubleDQN [van Hasselt et al., 2016]."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper uses DoubleDQN in experiments to demonstrate the chain effect and subsequent churn reduction improvements.",
+          "quote": "We use DoubleDQN (DDQN) [van Hasselt et al., 2016] as the value-based method and MinAtar [Young and Tian, 2019] as the experiment environments."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares the performance of DoubleDQN with and without the proposed CHAIN method to illustrate improvements.",
+          "quote": "Further, we show the learning curves of CHAIN DDQN regarding episode return in Figure 4. We can see that CHAIN consistently achieves clear improvements over DDQN."
+        },
+        "referenced_paper_title": {
+          "value": "Deep reinforcement learning with double q-learning",
+          "justification": "The reference paper by van Hasselt et al., 2016 is mentioned as the source for DoubleDQN.",
+          "quote": "Recently, Schaul et al. [2022] studied a novel churn phenomenon in the learning process of typical value-based RL algorithms like DoubleDQN [van Hasselt et al., 2016]."
+        }
+      },
+      {
+        "name": {
+          "value": "TD3",
+          "justification": "TD3 is mentioned in relation to actor-critic methods and is used to evaluate the CHAIN method's effectiveness.",
+          "quote": "For policy-based methods, TD3 [Fujimoto et al., 2018] is often used to update a deterministic policy with Deterministic Policy Gradient (DPG)."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "TD3 is an existing model that is tested in conjunction with the CHAIN mechanism, not contributed by this paper.",
+          "quote": "For policy-based methods, TD3 [Fujimoto et al., 2018] is often used to update a deterministic policy with Deterministic Policy Gradient (DPG)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper executes experiments on TD3 to demonstrate churn effects and CHAIN improvements.",
+          "quote": "We use TD3 [Fujimoto et al., 2018] and SAC [Haarnoja et al., 2018] and MuJoCo environments based on the public implementation of TD3 and SAC from CleanRL."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "TD3's performance is compared with and without the CHAIN method.",
+          "quote": "We can see that CHAIN-PCR often improves the learning performance, especially for Ant-v4; in contrast, CHAIN-VCR improves slightly."
+        },
+        "referenced_paper_title": {
+          "value": "Addressing function approximation error in actor-critic methods",
+          "justification": "TD3 is based on the methods discussed in the paper by Fujimoto et al., 2018.",
+          "quote": "For policy-based methods, TD3 [Fujimoto et al., 2018] is often used to update a deterministic policy with Deterministic Policy Gradient (DPG)."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "MinAtar",
+          "justification": "MinAtar is mentioned as the environment used for evaluating DoubleDQN experiments.",
+          "quote": "We use DoubleDQN (DDQN) [van Hasselt et al., 2016] as the value-based method and MinAtar [Young and Tian, 2019] as the experiment environments."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Minatar: An Atari-inspired testbed for more efficient reinforcement learning experiments",
+          "justification": "The referenced paper by Young and Tian, 2019 defines MinAtar.",
+          "quote": "We use DoubleDQN (DDQN) [van Hasselt et al., 2016] as the value-based method and MinAtar [Young and Tian, 2019] as the experiment environments."
+        }
+      },
+      {
+        "name": {
+          "value": "MuJoCo",
+          "justification": "MuJoCo is mentioned as an environment used for evaluating policy-based methods like PPO and other models.",
+          "quote": "for the experiments in the offline RL setting, we use the public implementation and benchmark scores for IQL and AWAC from CORL ."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "OpenAI Gym",
+          "justification": "The paper refers to Brockman et al., 2016 in the context of discussing environments like MuJoCo.",
+          "quote": "We use TD3 [Fujimoto et al., 2018] and SAC [Haarnoja et al., 2018] and MuJoCo environments based on the public implementation of TD3 and SAC from CleanRL."
+        }
+      },
+      {
+        "name": {
+          "value": "DeepMind Control Suite",
+          "justification": "The dataset is mentioned as one of the environments where CHAIN is evaluated.",
+          "quote": "Our experiments include 20 online RL tasks from MinAtar, MuJoCo, DMC, and 8 offline RL datasets from D4RL."
+        },
+        "aliases": [
+          "DMC"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "DeepMind Control Suite",
+          "justification": "Referenced in the paper as part of the environment setup for experiments.",
+          "quote": "DeepMind Control Suite [Tassa et al., 2018]"
+        }
+      },
+      {
+        "name": {
+          "value": "D4RL",
+          "justification": "The dataset is used for experiments to demonstrate the effectiveness of the proposed CHAIN method.",
+          "quote": "Our experiments include 20 online RL tasks from MinAtar, MuJoCo, DMC, and 8 offline RL datasets from D4RL."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "D4RL: datasets for deep data-driven reinforcement learning",
+          "justification": "Fu et al., 2020 is cited as the origin of the D4RL dataset.",
+          "quote": "Our experiments include 20 online RL tasks from MinAtar, MuJoCo, DMC, and 8 offline RL datasets from D4RL."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "CleanRL",
+          "justification": "CleanRL is mentioned as the implementation source for public PPO, TD3, and SAC experiments.",
+          "quote": "We build the experiments on the public implementation of PPO from CleanRL [Huang et al., 2022] and use the continuous control tasks in MuJoCo and DeepMind Control (DMC) as the environments for evaluation."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "CleanRL: High-quality single-file implementations of deep reinforcement learning algorithms",
+          "justification": "The reference by Huang et al., 2022 provides the basis for using CleanRL for experiments.",
+          "quote": "We build the experiments on the public implementation of PPO from CleanRL [Huang et al., 2022] and use the continuous control tasks in MuJoCo and DeepMind Control (DMC) as the environments for evaluation."
+        }
+      },
+      {
+        "name": {
+          "value": "CORL",
+          "justification": "CORL is mentioned as a public implementation used for IQL and AWAC experiments.",
+          "quote": "For the experiments in the offline RL setting, we use the public implementation and benchmark scores for IQL and AWAC from CORL."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "CORL: An open-source library for deep reinforcement learning",
+          "justification": "CORL is referred to as an application framework for the offline RL experiments such as IQL and AWAC.",
+          "quote": "For the experiments in the offline RL setting, we use the public implementation and benchmark scores for IQL and AWAC from CORL."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2228,
+    "prompt_tokens": 42849,
+    "total_tokens": 45077,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

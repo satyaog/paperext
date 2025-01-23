@@ -1,0 +1,195 @@
+{
+  "paper": "2404.11018.txt",
+  "words": 14143,
+  "extractions": {
+    "title": {
+      "value": "Many-Shot In-Context Learning",
+      "justification": "The title is present at the top of the paper.",
+      "quote": "Many-Shot In-Context Learning"
+    },
+    "description": "This paper investigates the use of large language models (LLMs) in the context of many-shot in-context learning. The authors explore how the expanded context windows in modern LLMs allow for learning from hundreds or thousands of examples, which contrasts with the few-shot regime. They introduce two new learning settings, Reinforced ICL and Unsupervised ICL, to enhance model performance without relying heavily on human-generated data. The paper presents significant findings on the effectiveness of many-shot ICL across various tasks, including translation, summarization, and algorithmic reasoning, and also highlights its potential to override pre-training biases.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper conducts experiments and presents quantitative results on the performance of many-shot in-context learning across various tasks.",
+      "quote": "In this paper, we investigate how scaling the number of in-context examples (shots) affects LLM performance across diverse downstream tasks."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The paper deals with large language models and their application in in-context learning, which falls under the domain of Natural Language Processing.",
+        "quote": "Large language models (LLMs) excel at few-shot in-context learning (ICL)..."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Machine Translation",
+          "justification": "The paper evaluates performance scaling with in-context examples in low-resource machine translation tasks.",
+          "quote": "To evaluate how performance scales as we increase the number of in-context examples, we consider machine translation from English to a low-resource target language."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Abstractive Summarization",
+          "justification": "The paper includes an evaluation of many-shot in-context learning for abstractive summarization tasks.",
+          "quote": "We now consider abstractive summarization, which tests the comprehension ability of LLMs to capture essence of the text."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Mathematical Problem Solving",
+          "justification": "The paper evaluates the performance of many-shot in-context learning in solving math problems on datasets like MATH and GSM8K.",
+          "quote": "We evaluate Reinforced and Unsupervised ICL on the Hendrycks MATH dataset..."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Algorithmic and Symbolic Reasoning",
+          "justification": "Algorithmic reasoning is explored in the context of the BIG-Bench Hard suite.",
+          "quote": "We now evaluate Reinforced ICL on BIG-Bench Hard, a suite of challenging algorithmic reasoning tasks."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Gemini 1.5 Pro",
+          "justification": "This model is discussed extensively in the paper as the primary model being evaluated for various tasks.",
+          "quote": "...we use the Gemini 1.5 Pro1 (Gemini Team, 2024) MoE model with 1 million token context length, the largest publicly available so far."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper does not claim the Gemini 1.5 Pro model as a contribution, but rather uses it for conducted experiments.",
+          "quote": "We use the Gemini 1.5 Pro1 (Gemini Team, 2024)..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The Gemini 1.5 Pro model is applied to various empirical tasks in the paper.",
+          "quote": "Unless specified otherwise, we use greedy decoding for evaluation."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares the Gemini 1.5 Pro's performance in many-shot learning against other models like Google Translate and specialized summarization models (PEGASUS, mT5).",
+          "quote": "...Gemini 1.5 Pro outperforms Google Translate..."
+        },
+        "referenced_paper_title": {
+          "value": "Gemini 1.5: Unlocking multimodal understanding across millions of tokens of context",
+          "justification": "The paper references the Gemini team's 2024 publication on the Gemini 1.5 model.",
+          "quote": "Gemini 1.5: Unlocking multimodal understanding across millions of tokens of context (Gemini Team, 2024)."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "MATH",
+          "justification": "The MATH dataset is used in the evaluation of many-shot in-context learning.",
+          "quote": "We evaluate Reinforced and Unsupervised ICL on the Hendrycks MATH dataset (Hendrycks et al., 2021)"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Measuring mathematical problem solving with the math dataset",
+          "justification": "The referenced paper details the MATH dataset used for evaluation.",
+          "quote": "Measuring mathematical problem solving with the math dataset. Hendrycks et al., 2021."
+        }
+      },
+      {
+        "name": {
+          "value": "GSM8K",
+          "justification": "GSM8K is one of the datasets used for evaluating the many-shot learning in math problem-solving tasks.",
+          "quote": "Singh et al. (2023) found that fine-tuning a model on model-generated solutions from MATH resulted in improved test performance on GSM8K (Cobbe et al., 2021)"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Training verifiers to solve math word problems",
+          "justification": "The paper uses GSM8K dataset and cites its original paper for reference.",
+          "quote": "Training verifiers to solve math word problems. Cobbe et al., 2021."
+        }
+      },
+      {
+        "name": {
+          "value": "FLORES-200",
+          "justification": "This dataset is specifically mentioned in the machine translation task evaluation section.",
+          "quote": "Evaluating FLORES-200 MT benchmark (NLLB Team, 2022) for translation from English to low-resource languages like Tamil and Kurdish."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "No language left behind: Scaling human-centered machine translation",
+          "justification": "The paper references the FLORES-200 dataset's NLLB team paper.",
+          "quote": "No language left behind: Scaling human-centered machine translation. NLLB Team, 2022."
+        }
+      },
+      {
+        "name": {
+          "value": "XSum",
+          "justification": "The XSum dataset is used for evaluating many-shot in-context learning in summarization tasks.",
+          "quote": "Our evaluation leverages the XSum task from the GEM benchmark."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Don't give me the details, just the summary! topic-aware convolutional neural networks for extreme summarization",
+          "justification": "The paper cites this reference for the XSum dataset.",
+          "quote": "Don't give me the details, just the summary! topic-aware convolutional neural networks for extreme summarization. Narayan et al., 2018."
+        }
+      },
+      {
+        "name": {
+          "value": "XLSum",
+          "justification": "The XLSum dataset is used alongside XSum to explore generalization abilities.",
+          "quote": "We also investigate generalization to XLSum (Hasan et al., 2021)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Xl-sum: Large-scale multilingual abstractive summarization for 44 languages",
+          "justification": "The paper references the original XLSum dataset paper.",
+          "quote": "Xl-sum: Large-scale multilingual abstractive summarization for 44 languages, Hasan et al., 2021."
+        }
+      },
+      {
+        "name": {
+          "value": "BBH (BigBench Hard)",
+          "justification": "The BBH dataset is referenced when talking about algorithmic reasoning tasks.",
+          "quote": "We now evaluate Reinforced ICL on BIG-Bench Hard, a suite of challenging algorithmic reasoning tasks."
+        },
+        "aliases": [
+          "BIG-Bench Hard"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Challenging big-bench tasks and whether chain-of-thought can solve them",
+          "justification": "The paper on BIG-Bench Hard is cited for the dataset used.",
+          "quote": "Challenging big-bench tasks and whether chain-of-thought can solve them. Suzgun et al., 2022."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1666,
+    "prompt_tokens": 24581,
+    "total_tokens": 26247,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

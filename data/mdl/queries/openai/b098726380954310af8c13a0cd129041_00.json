@@ -1,0 +1,186 @@
+{
+  "paper": "b098726380954310af8c13a0cd129041.txt",
+  "words": 12069,
+  "extractions": {
+    "title": {
+      "value": "Guiding Language Model Reasoning with Planning Tokens",
+      "justification": "It is explicitly stated at the beginning of the paper.",
+      "quote": "Guiding Language Model Reasoning with Planning Tokens"
+    },
+    "description": "The paper proposes a new method of enhancing large language models' reasoning capabilities by introducing planning tokens. These tokens are generated at the start of each reasoning step in a hierarchical CoT generation process, serving as high-level plans. The method integrates efficiently into parameter-efficient tuning approaches with minimal additional training parameters, significantly improving accuracy on math word and multihop QA problems across multiple base LMs.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves experiments and data analysis to demonstrate the effectiveness of the proposed method.",
+      "quote": "We perform experiments on three math word problem (MWP) datasets... and one multihop QA dataset..."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The paper focuses on enhancing the reasoning capabilities of language models.",
+        "quote": "Large language models (LLMs) have recently attracted considerable interest for their ability to perform complex reasoning tasks."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Mathematical Reasoning",
+          "justification": "The paper evaluates the model using math word problem datasets.",
+          "quote": "We perform experiments on three math word problem (MWP) datasets..."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Question Answering",
+          "justification": "The paper evaluates the proposed method on a multihop QA dataset.",
+          "quote": "...and one multihop QA dataset (StrategyQA)."
+        },
+        "aliases": [
+          "QA"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Llama 2",
+          "justification": "It is explicitly mentioned as a model used for evaluation.",
+          "quote": "We also experiment with Phi-1.5, a 1.3B parameter model..."
+        },
+        "aliases": [
+          "7B Llama 2",
+          "13B Llama 2"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The model used is from existing works, not newly introduced in this paper.",
+          "quote": "We also experiment with Phi-1.5... and the 7B Llama 2..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was used to conduct experiments and evaluate the method.",
+          "quote": "We perform experiments on three math word problem (MWP) datasets..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performances of different models were compared based on accuracy on datasets.",
+          "quote": "The experiment results in Section 3.1 show that by adding planning tokens... we are able to improve upon the baseline without planning tokens..."
+        },
+        "referenced_paper_title": {
+          "value": "Llama 2: Open foundation and fine-tuned chat models",
+          "justification": "The referenced paper that introduces and details Llama 2 is mentioned in the context of this research.",
+          "quote": "The 7B and 13B variants of Llama2 (Touvron et al., 2023b)..."
+        }
+      },
+      {
+        "name": {
+          "value": "Phi 1.5",
+          "justification": "Phi 1.5 is explicitly mentioned as one of the models used in experiments.",
+          "quote": "We also experiment with Phi-1.5 (Gunasekar et al., 2023), a 1.3B parameter model..."
+        },
+        "aliases": [
+          "Phi-1.5"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The model already exists and was used for testing in this research.",
+          "quote": "We also experiment with Phi-1.5..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was executed on the datasets to test the proposed method.",
+          "quote": "...by adding planning tokens at training time, we are able to improve upon the baseline..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The model was compared with other models to show the effectiveness of the method.",
+          "quote": "...we are able to improve upon the baseline without planning tokens..."
+        },
+        "referenced_paper_title": {
+          "value": "Textbooks are all you need",
+          "justification": "The referenced paper for Phi-1.5 is cited in relation to the model's use in this research.",
+          "quote": "Phi-1.5 (Gunasekar et al., 2023)..."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "GSM8K",
+          "justification": "The paper specifically uses this dataset for experiments.",
+          "quote": "The Grade School Math dataset (GSM8K) (Cobbe et al., 2021) contains 8.5K examples..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Training verifiers to solve math word problems",
+          "justification": "The referenced paper of GSM8K is cited in relation to its content and use.",
+          "quote": "The Grade School Math dataset (GSM8K) (Cobbe et al., 2021)..."
+        }
+      },
+      {
+        "name": {
+          "value": "AQUA-RAT",
+          "justification": "The dataset is used in the experiments to test the models.",
+          "quote": "The AQUA-RAT dataset (Ling et al., 2017) contains 100K samples..."
+        },
+        "aliases": [
+          "AQUA"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Program induction by rationale generation: Learning to solve and explain algebraic word problems",
+          "justification": "The referenced paper is cited where the AQUA dataset is mentioned.",
+          "quote": "The AQUA-RAT dataset (Ling et al., 2017)..."
+        }
+      },
+      {
+        "name": {
+          "value": "MATH",
+          "justification": "It is one of the datasets used for model evaluation.",
+          "quote": "...the MATH dataset (Hendrycks et al., 2021a)..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Measuring mathematical problem solving with the MATH dataset",
+          "justification": "The referenced paper for the MATH dataset explains its context and use.",
+          "quote": "the MATH dataset (Hendrycks et al., 2021a)..."
+        }
+      },
+      {
+        "name": {
+          "value": "StrategyQA",
+          "justification": "This dataset is used to demonstrate the method's effectiveness on multihop QA tasks.",
+          "quote": "...and one multihop QA dataset (StrategyQA)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Did aristotle use a laptop? a question answering benchmark with implicit reasoning strategies",
+          "justification": "The StrategyQA dataset is cited along with its original paper for clarification of its usage.",
+          "quote": "StrategyQA (Geva et al., 2021)..."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1345,
+    "prompt_tokens": 19535,
+    "total_tokens": 20880,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

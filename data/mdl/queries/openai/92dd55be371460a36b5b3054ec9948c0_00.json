@@ -1,0 +1,166 @@
+{
+  "paper": "92dd55be371460a36b5b3054ec9948c0.txt",
+  "words": 9118,
+  "extractions": {
+    "title": {
+      "value": "Context-Aware Assistant Selection for Improved Inference Acceleration with Large Language Models",
+      "justification": "The given text starts with this explicit title in magenta.",
+      "quote": "Context-Aware Assistant Selection for Improved Inference Acceleration with Large Language Models"
+    },
+    "description": "This paper explores the concept of assisted decoding with large language models (LLMs), specifically leveraging smaller draft models to guide and improve the inference speed of larger target models. The authors discuss using a contextual bandit framework to select the most appropriate draft model based on the input context, enabling faster and more efficient decoding. Through offline reinforcement learning methods, a policy is trained to decide between different draft models, all without prior knowledge about these models' construction. The research highlights how this approach can balance tradeoffs in alignment and speed across various domains.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper demonstrates an empirical study focusing on applying methods like speculative decoding, using reinforcement learning for policy training, and various experimental setups with LLMs to evaluate performance improvement across multiple domains.",
+      "quote": "We conduct a number of experiments, which we motivate by..."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The paper focuses on improving inference acceleration in Large Language Models, which is a significant area within Natural Language Processing.",
+        "quote": "With the introduction of the Transformer (Vaswani et al., 2017) has emerged the era of large language models..."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Machine Learning",
+          "justification": "Speculative Decoding and Reinforcement Learning applied to NLP tasks are crucial components of Machine Learning.",
+          "quote": "To better understand this decision making process, we observe it as a contextual bandit..."
+        },
+        "aliases": [
+          "ML"
+        ]
+      },
+      {
+        "name": {
+          "value": "Reinforcement Learning",
+          "justification": "The method of using a contextual bandit framework is deeply rooted in reinforcement learning principles.",
+          "quote": "we observe it as a contextual bandit, where a policy must choose a draft model based on a context."
+        },
+        "aliases": [
+          "RL"
+        ]
+      },
+      {
+        "name": {
+          "value": "Model Optimization",
+          "justification": "The main focus is on optimizing inference speed using draft models, which falls under Model Optimization efforts.",
+          "quote": "...creating an offline dataset from only outputs of independent draft/target models and training a policy over the alignment of these outputs can accelerate performance."
+        },
+        "aliases": [
+          "Model Efficiency"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Transformer",
+          "justification": "The LLMs discussed in the paper are based on the Transformer architecture, originally introduced by Vaswani et al.",
+          "quote": "With the introduction of the Transformer (Vaswani et al., 2017) has emerged the era of large language models..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The Transformer model itself is not a new contribution of this paper but is discussed as the foundational architecture for the LLMs in context.",
+          "quote": "With the introduction of the Transformer (Vaswani et al., 2017) has emerged the era of large language models..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper includes experimental setups that involve the execution of Transformer-based LLMs.",
+          "quote": "We conduct a number of experiments, which we motivate by..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Various models based on the Transformer architecture are compared in their performance and efficiency as part of the study.",
+          "quote": "Models and Tasks. We select publicly available LLMs to use for our experiments. We conduct a number of experiments, which we motivate by..."
+        },
+        "referenced_paper_title": {
+          "value": "Attention is All You Need",
+          "justification": "The original Transformer model was introduced in the paper titled 'Attention is All You Need' which is cited as part of the foundational discussion of Transformers.",
+          "quote": "Vaswani et al., 2017"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "IWSLT2017",
+          "justification": "The dataset is explicitly mentioned as being used for the translation tasks in the experiments.",
+          "quote": "We evaluate on translation (IWSLT2017 E N -D E (Cettolo et al., 2017)) and text summarization (XS UM (Narayan et al., 2018))."
+        },
+        "aliases": [
+          "IWSLT17"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Overview of the IWSLT 2017 evaluation campaign",
+          "justification": "The dataset's reference paper details the IWSLT 2017 evaluation campaign.",
+          "quote": "We evaluate on translation (IWSLT2017 E N -D E (Cettolo et al., 2017)) and text summarization (XS UM (Narayan et al., 2018))."
+        }
+      },
+      {
+        "name": {
+          "value": "XSUM",
+          "justification": "This dataset is used to evaluate text summarization capabilities in their experiments with LLMs.",
+          "quote": "We evaluate on translation (IWSLT2017 E N -D E (Cettolo et al., 2017)) and text summarization (XS UM (Narayan et al., 2018))."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Don’t give me the details, just the summary! Topic-aware convolutional neural networks for extreme summarization",
+          "justification": "Narayan et al., 2018 provide details about the XSUM dataset used for text summarization tasks.",
+          "quote": "We evaluate on translation (IWSLT2017 E N -D E (Cettolo et al., 2017)) and text summarization (XS UM (Narayan et al., 2018))."
+        }
+      },
+      {
+        "name": {
+          "value": "GSM8K",
+          "justification": "This dataset is used in the context of checking the applicability of the proposed method across different tasks.",
+          "quote": "We further verify whether the policy can ignore draft models when they are not useful. We experiment by including GSM8K to our tasks..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Training language models to follow instructions with human feedback",
+          "justification": "The GSM8K dataset reference is linked to studies where human feedback mechanisms are discussed, such as the work by Ouyang et al.",
+          "quote": "Long Ouyang, Jeff Wu, Xu Jiang... 2022. Training language models to follow instructions with human feedback."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The paper states that PyTorch was used in all experiments, indicating its role as a library.",
+          "quote": "All other hyperparameters are set to their default values in PyTorch."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An Imperative Style, High-Performance Deep Learning Library",
+          "justification": "Often cited in deep learning papers where PyTorch is employed for modeling and experiments.",
+          "quote": "All other hyperparameters are set to their default values in PyTorch."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1414,
+    "prompt_tokens": 17048,
+    "total_tokens": 18462,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

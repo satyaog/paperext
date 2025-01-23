@@ -1,0 +1,210 @@
+{
+  "paper": "9e0364451ec358ebfd2ab28c74bdfdaf.txt",
+  "words": 12460,
+  "extractions": {
+    "title": {
+      "value": "Grounding Multimodal Large Language Models in Actions",
+      "justification": "The title is clearly stated at the beginning of the document and throughout the paper, focusing on grounding multimodal LLMs in actions for various tasks.",
+      "quote": "Grounding Multimodal Large Language Models in Actions"
+    },
+    "description": "The paper discusses how to ground multimodal large language models (MLLMs) in different embodiments and their associated actions by using a unified architecture and action space adaptors. It empirically studies the grounding strategies across various environments and tasks to optimize the performance of MLLMs in continuous and discrete action spaces.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper conducts experiments to evaluate different action space adapters and models in various environments, providing empirical data on their performance.",
+      "quote": "A limitation of our work is all our analysis is under a single MLLM (LLaVA). Another limitation is that RVQ, the best performing ASA in continuous action spaces, requires collecting demonstrations to train the VQ model."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Embodied AI",
+        "justification": "The paper primarily focuses on using MLLMs in embodied AI tasks, such as robot manipulation and navigation, and explores how to adapt these models to such environments.",
+        "quote": "Multimodal Large Language Models (MLLMs) have demonstrated a wide range of capabilities across many domains, including Embodied AI."
+      },
+      "aliases": [
+        ""
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Robotics",
+          "justification": "The study involves tasks like robot manipulation and navigation, which fall under the robotics domain.",
+          "quote": "Grounding MLLMs to generate actions extends their capabilities to embodied tasks, such as robot manipulation and navigation."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Reinforcement Learning",
+          "justification": "The paper involves strategies for training MLLMs using reinforcement learning and evaluating their effectiveness in action prediction tasks.",
+          "quote": "We finetune the MLLM with interactive (i.e., action-labeled) data to make it more suited for interacting with a embodied and interactive environment."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Residual Vector Quantized Tokenization (RVQ)",
+          "justification": "This model is highlighted as the best performing action space adapter for continuous actions.",
+          "quote": "For continuous actions, learning a tokenization with several vocabularies that residually model continuous actions gives the right modeling precision while using vocabularies of manageable sizes and, as a result, yields the best performance across all continuous control environments."
+        },
+        "aliases": [
+          "RVQ"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The paper contributes this model as an improved method for tokenization in continuous action spaces.",
+          "quote": "Residual Vector Quantized Tokenization (RVQ): Precise control requires precise action modeling that can suffer after tokenization."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The experiments run different models, including RVQ, in various tasks and environments.",
+          "quote": "Figure 3: Comparing ASAs for continuous and discrete action spaces across 5 environments. For continuous actions, the RVQ tokenization performs best."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The RVQ model is extensively compared against other models like VQ, Uniform, and Pred, showing performance improvements.",
+          "quote": "The results in Figure 3 show that the RVQ action adapter consistently outperforms all other ASA approaches across all environments."
+        },
+        "referenced_paper_title": {
+          "value": "Autoregressive Image Generation using Residual Quantization",
+          "justification": "The referenced paper on Residual Quantization is mentioned in the context of how RVQ is utilized.",
+          "quote": "Residual VQ-VAE [RVQ-VAE, 52] on an offline dataset of actions."
+        }
+      },
+      {
+        "name": {
+          "value": "Semantic Language (SemLang)",
+          "justification": "The model is identified as the best performing action space adapter for discrete actions.",
+          "quote": "For discrete actions, the proposed semantically aligned action tokens yield 51% on LangR [21], up from 42% for direct action prediction."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "The paper proposes and tests the SemLang model as a method for discrete actions.",
+          "quote": "Semantic Language (SemLang): The action space adapter predicts natural language text that maps to a discrete action."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Experiments were conducted using SemLang in discrete action spaces across different environments.",
+          "quote": "Comparing ASAs for continuous and discrete action spaces across 5 environments. For discrete actions, SemLang performs best."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "SemLang is compared with other action space adapters like Pred and Lang, and found to perform better.",
+          "quote": "SemLang performs the best. In Figure 3, SemLang outperforms the next best ASA (Pred), by 9% on Language Rearrangement and 8% on BabyAI."
+        },
+        "referenced_paper_title": {
+          "value": "Large Language Models as Generalizable Policies for Embodied Tasks",
+          "justification": "The referenced paper is mentioned regarding SemLang in the scope of language-grounded policies.",
+          "quote": "This type of ASA is used by [29]."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CALVIN",
+          "justification": "CALVIN is used as a benchmark to test policy learning for robot manipulation tasks.",
+          "quote": "CALVIN [30]: This manipulation benchmark tests the ability of a tabletop robot to interact with an object to complete a natural language instruction."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "A Benchmark for Language-Conditioned Policy Learning for Long-Horizon Robot Manipulation Tasks",
+          "justification": "CALVIN's origin is cited to show it as a recognized standard benchmark dataset in robot manipulation tasks.",
+          "quote": "CALVIN [30]: This manipulation benchmark tests the ability of a tabletop robot to interact with an object to complete a natural language instruction."
+        }
+      },
+      {
+        "name": {
+          "value": "Meta-World",
+          "justification": "Meta-World serves as another benchmark dataset for evaluating multiple robotic tasks.",
+          "quote": "Meta-World [58]: We use the ML-45 version of this tabletop manipulation benchmark which has 45 tasks."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Meta-World: A Benchmark and Evaluation for Multi-Task and Meta Reinforcement Learning",
+          "justification": "The referenced paper defines Meta-World as a critical benchmark for evaluating multi-task learning.",
+          "quote": "Meta-World: A Benchmark and Evaluation for Multi-Task and Meta Reinforcement Learning."
+        }
+      },
+      {
+        "name": {
+          "value": "BabyAI",
+          "justification": "BabyAI is used to evaluate discrete task completion in a simplified grid world setting.",
+          "quote": "BabyAI is a grid world task where an agent navigates and interacts with objects to complete an instruction."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "BabyAI: First Steps Towards Grounded Language Learning with a Human in the Loop",
+          "justification": "The BabyAI dataset is cited appropriately, acknowledging its source and relevance in language grounded learning tasks.",
+          "quote": "BabyAI [60]: BabyAI is a grid world task where an agent navigates and interacts with objects to complete an instruction."
+        }
+      },
+      {
+        "name": {
+          "value": "Habitat Pick (HabPick)",
+          "justification": "Habitat Pick is used as part of evaluating continuous control policies in simulated environments focusing on object picking tasks.",
+          "quote": "Habitat Pick (HabPick) [59]: A mobile manipulation robot must pick up an object specified by name from a receptacle."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Habitat 2.0: Training Home Assistants to Rearrange their Habitat",
+          "justification": "The referenced paper captures the extended uses and configurations for Habitat environments, including tasks like object picking.",
+          "quote": "Habit 2.0: Training Home Assistants to Rearrange their Habitat."
+        }
+      },
+      {
+        "name": {
+          "value": "Language Rearrangement (LangR)",
+          "justification": "Used in the study for evaluating rearrangement tasks using high-level language instructions and object interactions.",
+          "quote": "Language Rearrangement: A mobile manipulation robot must rearrange objects to complete instructions like “store all the fruit in the fridge”."
+        },
+        "aliases": [
+          "LangR"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Large Language Models as Generalizable Policies for Embodied Tasks",
+          "justification": "References the general usage of LLM-enhanced tasks in embodied settings, specifically with actions represented with language.",
+          "quote": "Large language models as generalizable policies for embodied tasks"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "LLaVA-1.5-7B",
+          "justification": "Used as the base multimodal large language model for fine-tuning in interactive tasks.",
+          "quote": "We use LLaVA-1.5-7B [6] as the base MLLM. We finetune the MLLM with interactive (i.e., action-labeled) data to make it more suited for interacting with a embodied and interactive environment."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Visual Instruction Tuning",
+          "justification": "The model's origin and purpose in visual tuning is acknowledged as a source of the base model used here.",
+          "quote": "Visual instruction tuning."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1890,
+    "prompt_tokens": 26636,
+    "total_tokens": 28526,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

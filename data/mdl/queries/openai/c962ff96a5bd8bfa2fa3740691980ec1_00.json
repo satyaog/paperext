@@ -1,0 +1,238 @@
+{
+  "paper": "c962ff96a5bd8bfa2fa3740691980ec1.txt",
+  "words": 9308,
+  "extractions": {
+    "title": {
+      "value": "What makes a good metric? Evaluating automatic metrics for text-to-image consistency",
+      "justification": "The title explicitly states that the paper evaluates metrics for text-to-image consistency.",
+      "quote": "What makes a good metric? Evaluating automatic metrics for text-to-image consistency"
+    },
+    "description": "This paper evaluates the construct validity of four recent methods for measuring text-to-image consistency: CLIPScore, TIFA, VPEval, and DSG. It defines what constitutes a valid text-image consistency metric and assesses how well these methods meet those criteria. The paper also explores the relationships between existing metrics and discusses their limitations in sufficiently capturing visual information, thereby proposing minimal requirements for effective automatic metrics in text-image generation evaluation.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper conducts experiments to evaluate existing metrics, performs analyses on correlations, and provides empirical evidence on their effectiveness, which classifies it as empirical research.",
+      "quote": "In this work, we analyze the construct validity of four recent, commonly used methods for measuring text-to-image consistency..."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Text-to-Image Consistency Evaluation",
+        "justification": "The paper focuses on evaluating metrics that measure the consistency between text prompts and generated images, which situates it within the field of text-to-image consistency evaluation.",
+        "quote": "we analyze the construct validity of four recent, commonly used methods for measuring text-to-image consistency—CLIPScore, TIFA, VPEval, and DSG..."
+      },
+      "aliases": [
+        "T2I Consistency Evaluation"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Vision-Language Models",
+          "justification": "The research involves vision-language models like CLIP and their applications in consistency metrics.",
+          "quote": "CLIP (Radford et al., 2021) is a vision-language model that maps images and text to a feature embedding space."
+        },
+        "aliases": [
+          "VLM"
+        ]
+      },
+      {
+        "name": {
+          "value": "Visual Question Answering",
+          "justification": "The research evaluates metrics that involve VQA models as part of their methodology for assessing text-image consistency.",
+          "quote": "These LM-generated questions are passed to computer vision (CV) models, typically visual question answering (VQA) models..."
+        },
+        "aliases": [
+          "VQA"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "CLIP",
+          "justification": "CLIP model is used for computing similarity scores in the context of text-to-image consistency in the paper.",
+          "quote": "One metric for evaluating the text-image consistency is CLIPScore (Hessel et al., 2021), which uses a CLIP model (Radford et al., 2021)..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "CLIP is not a contribution of this paper; it is utilized as a part of the CLIPScore metric.",
+          "quote": "CLIP (Radford et al., 2021) is a vision-language model..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model is used actively in the experiments as part of the CLIPScore metric.",
+          "quote": "CLIPScore (Hessel et al., 2021) approximates the text-image consistency by using the cosine similarity between the features of the image and the text using CLIP."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance and limitations of CLIPScore, which uses CLIP, are compared with other metrics in the paper.",
+          "quote": "Our results suggest there is ample room to further refine and extend our existing suite of automatic text-image consistency metrics."
+        },
+        "referenced_paper_title": {
+          "value": "CLIP: Learning Transferable Visual Models from Natural Language Supervision",
+          "justification": "This is the referenced paper for the CLIP model itself.",
+          "quote": "CLIP (Radford et al., 2021) is a vision-language model that maps images and text to a feature embedding space."
+        }
+      },
+      {
+        "name": {
+          "value": "TIFA",
+          "justification": "TIFA is explicitly evaluated in the paper as a metric for text-to-image consistency.",
+          "quote": "TIFA, or Text-to-Image Faithfulness Evaluation (Hu et al., 2023), uses two primary components..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "TIFA is an existing metric evaluated in this paper and not a contribution of it.",
+          "quote": "In this work, we analyze the construct validity of four recent, commonly used methods..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper includes empirical evaluations using the TIFA metric.",
+          "quote": "For TIFA, VPEval and DSG, we generate questions using Llama-v2-Chat 70B checkpoint model."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "TIFA's performance is compared with other metrics like CLIPScore.",
+          "quote": "We additionally explore the relationship between existing metrics and find correlations with CLIPScore are low..."
+        },
+        "referenced_paper_title": {
+          "value": "TIFA: Accurate and Interpretable Text-to-Image Faithfulness Evaluation with Question Answering",
+          "justification": "This is the referenced paper for TIFA itself.",
+          "quote": "TIFA, or Text-to-Image Faithfulness Evaluation (Hu et al., 2023), uses two primary components..."
+        }
+      },
+      {
+        "name": {
+          "value": "VPEval",
+          "justification": "VPEval is another metric evaluated by the paper.",
+          "quote": "VPEval (Cho et al., 2023b) generates visual programs from the text prompt using an LM..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "VPEval is an existing metric and not a new contribution of the paper.",
+          "quote": "In this work, we analyze the construct validity of four recent, commonly used methods..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "VPEval is used in the experiments conducted in the paper.",
+          "quote": "For TIFA, VPEval and DSG, we generate questions using Llama-v2-Chat 70B checkpoint model."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "VPEval is compared with other metrics like TIFA and CLIPScore within the paper.",
+          "quote": "We additionally explore the relationship between existing metrics and find correlations with CLIPScore are low..."
+        },
+        "referenced_paper_title": {
+          "value": "Visual Programming for Text-to-Image Generation and Evaluation",
+          "justification": "The paper by Cho et al. (2023b) is referenced for VPEval.",
+          "quote": "VPEval (Cho et al., 2023b) generates visual programs from the text prompt using an LM..."
+        }
+      },
+      {
+        "name": {
+          "value": "DSG (Davidsonian Scene Graph)",
+          "justification": "DSG is a method evaluated in the paper for text-to-image consistency.",
+          "quote": "Davidsonian Scene Graph (DSG) (Cho et al., 2023a) is similar to TIFA, using LM-generated questions and a VQA model..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "DSG is an existing method evaluated in the paper, not a new contribution.",
+          "quote": "In this work, we analyze the construct validity of four recent, commonly used methods..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "DSG is part of the experiments carried out in the research.",
+          "quote": "For TIFA, VPEval and DSG, we generate questions using Llama-v2-Chat 70B checkpoint model."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "DSG's outcomes are compared against other metrics such as VPEval and CLIPScore.",
+          "quote": "We additionally explore the relationship between existing metrics and find correlations with CLIPScore are low..."
+        },
+        "referenced_paper_title": {
+          "value": "Davidsonian Scene Graph: Improving Reliability in Fine-Grained Evaluation for Text-Image Generation",
+          "justification": "The referenced work for DSG is provided by Cho et al. in 2023a.",
+          "quote": "Davidsonian Scene Graph (DSG) (Cho et al., 2023a) is similar to TIFA, using LM-generated questions and a VQA model..."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "MS-COCO",
+          "justification": "MS-COCO is mentioned as a dataset used for evaluation in the experiments.",
+          "quote": "We use the datasets MS-COCO (Lin et al., 2014) and Winoground (Thrush et al., 2022) for text prompts."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Microsoft COCO: Common Objects in Context",
+          "justification": "The dataset reference is associated with the original COCO dataset paper by Lin et al., 2014.",
+          "quote": "We use the datasets MS-COCO (Lin et al., 2014) and Winoground (Thrush et al., 2022) for text prompts."
+        }
+      },
+      {
+        "name": {
+          "value": "Winoground",
+          "justification": "Winoground is explicitly stated as a dataset used for evaluating the models and metrics.",
+          "quote": "We use the datasets MS-COCO (Lin et al., 2014) and Winoground (Thrush et al., 2022) for text prompts."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Winoground: Probing Vision and Language Models for Visio-Linguistic Compositionality",
+          "justification": "Winoground is referenced with respect to text-to-image consistency, connected to Thrush et al., 2022.",
+          "quote": "We use the datasets MS-COCO (Lin et al., 2014) and Winoground (Thrush et al., 2022) for text prompts."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "OpenCLIP",
+          "justification": "OpenCLIP is referenced as the checkpoint source for CLIPScore calculations.",
+          "quote": "For evaluating CLIPScore, we use the CLIP ViT-L14 checkpoint provided by OpenCLIP (Ilharco et al., 2021)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "OpenCLIP",
+          "justification": "OpenCLIP is an open-source project mentioned for obtaining CLIP checkpoints for experiments.",
+          "quote": "OpenCLIP, July 2021. URL https://doi.org/10.5281/zenodo.5143773. If you use this software, please cite it as below."
+        }
+      },
+      {
+        "name": {
+          "value": "BLIP2",
+          "justification": "BLIP2 is used in the evaluation for processing VQA questions in the paper.",
+          "quote": "For ease of comparison, we use the newer BLIP2-Flan T5 XL (Li et al., 2023) for all VQA questions."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models",
+          "justification": "BLIP2 is identified within a pre-training context according to Li et al., 2023.",
+          "quote": "BLIP2-Flan T5 XL (Li et al., 2023)"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2260,
+    "prompt_tokens": 18113,
+    "total_tokens": 20373,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}

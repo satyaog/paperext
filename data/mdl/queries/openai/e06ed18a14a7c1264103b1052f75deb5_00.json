@@ -1,0 +1,144 @@
+{
+  "paper": "e06ed18a14a7c1264103b1052f75deb5.txt",
+  "words": 14813,
+  "extractions": {
+    "title": {
+      "value": "Parseval Regularization for Continual Reinforcement Learning",
+      "justification": "The title is directly taken from the header of the paper, which is clearly labeled with the authors' names and affiliations.",
+      "quote": "Parseval Regularization for Continual Reinforcement Learning\n\nWesley Chung, Lynn Cherif, David Meger, Doina Precup"
+    },
+    "description": "The paper introduces Parseval regularization as a method to maintain orthogonality in weight matrices, thus improving optimization in continual reinforcement learning tasks. It shows significant benefits on several benchmark tasks such as Gridworld, CARL, and MetaWorld, and compares favorably to other regularization techniques.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents empirical results demonstrating the effectiveness of Parseval regularization on various reinforcement learning tasks and includes experimental setups and performance evaluations.",
+      "quote": "We empirically demonstrate that this addition facilitates learning on sequences of RL tasks as seen in Fig. 1 and Fig. 4 in MetaWorld, CARL and Gridworld environments."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Reinforcement Learning",
+        "justification": "The research is centered around improving training in reinforcement learning settings by mitigating known problems through a novel regularization technique.",
+        "quote": "We propose to use Parseval regularization, which maintains orthogonality of weight matrices, to preserve useful optimization properties and improve training in a continual reinforcement learning setting."
+      },
+      "aliases": [
+        "RL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Continual Learning",
+          "justification": "The paper addresses the challenge of continual learning in reinforcement learning settings, focusing on issues like plasticity loss when learning in sequences of tasks.",
+          "quote": "Continual reinforcement learning (RL) [30], a setting where a single agent has to learn in a complex environment with potentially changing tasks and dynamics, has remained a challenge for current agents."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "RPO (Robust Policy Optimization)",
+          "justification": "The RPO agent is used as the base agent for experiments and serves as a variant of PPO suitable for continuous actions.",
+          "quote": "Base agent. We use the RPO agent [50] (a variant of PPO) for continuous actions or PPO for discrete actions, based on the implementation from CleanRL [28]."
+        },
+        "aliases": [
+          "RPO"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "RPO is used as a benchmark or base agent, not introduced as a new model in this paper.",
+          "quote": "Base agent. We use the RPO agent [50] (a variant of PPO) for continuous actions or PPO for discrete actions, based on the implementation from CleanRL [28]."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper discusses empirical results involving RPO in various tasks, which indicates that the model was executed during experiments.",
+          "quote": "We first test the base RPO agent, the proposed addition of Parseval regularization as well as the baseline algorithms on the primary continual RL setting."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "RPO performance is compared against other regularization methods, such as Parseval, Layer Norm, and SnP, throughout the paper.",
+          "quote": "Parseval regularization significantly improves on the baseline and outperforms other alternatives."
+        },
+        "referenced_paper_title": {
+          "value": "Robust Policy Optimization in Deep Reinforcement Learning",
+          "justification": "This RPO model citation is used in the context of the model utilized within the study.",
+          "quote": "Base agent. We use the RPO agent [50] (a variant of PPO) for continuous actions or PPO for discrete actions, based on the implementation from CleanRL [28]."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "MetaWorld",
+          "justification": "MetaWorld serves as one of the benchmark suites for testing the proposed regularization method across multiple task sequences.",
+          "quote": "We empirically demonstrate that this addition facilitates learning on sequences of RL tasks as seen in Fig. 1 and Fig. 4 in MetaWorld [62], CARL [9] and Gridworld environments."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Meta-world: A benchmark and evaluation for multi-task and meta reinforcement learning",
+          "justification": "The paper cites MetaWorld as part of its experimental setup, which implies reliance on its benchmark capabilities.",
+          "quote": "We empirically demonstrate that this addition facilitates learning on sequences of RL tasks as seen in Fig. 1 and Fig. 4 in MetaWorld [62], CARL [9] and Gridworld environments."
+        }
+      },
+      {
+        "name": {
+          "value": "CARL",
+          "justification": "CARL is used for evaluating the agents on contextually varied tasks, providing a diverse range of reinforcement learning challenges.",
+          "quote": "We empirically demonstrate that this addition facilitates learning on sequences of RL tasks as seen in Fig. 1 and Fig. 4 in MetaWorld [62], CARL [9] and Gridworld environments."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Carl: A benchmark for contextual and adaptive reinforcement learning",
+          "justification": "CARL is referenced for its role in providing data and context variability needed for the experiments outlined in the paper.",
+          "quote": "We empirically demonstrate that this addition facilitates learning on sequences of RL tasks as seen in Fig. 1 and Fig. 4 in MetaWorld, CARL [9] and Gridworld environments."
+        }
+      },
+      {
+        "name": {
+          "value": "Gridworld",
+          "justification": "Gridworld provides a test environment for reinforcement learning algorithms, used to measure success rates as tasks change over time.",
+          "quote": "We empirically demonstrate that this addition facilitates learning on sequences of RL tasks as seen in Fig. 1 and Fig. 4 in MetaWorld, CARL and Gridworld environments."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Neural Network Transfer Learning for Gridworld Tasks",
+          "justification": "The Gridworld environment, though common, was specifically mentioned and used in a detailed experimental study in the primary text.",
+          "quote": "We empirically demonstrate that this addition facilitates learning on sequences of RL tasks as seen in Fig. 1 and Fig. 4 in MetaWorld, CARL and Gridworld environments."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "CleanRL",
+          "justification": "CleanRL is identified as the implementation framework used for the baseline RPO agent and PPO configurations.",
+          "quote": "Base agent. We use the RPO agent [50] (a variant of PPO) for continuous actions or PPO for discrete actions, based on the implementation from CleanRL [28]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "CleanRL: High-quality single-file implementations of deep reinforcement learning algorithms",
+          "justification": "CleanRL is cited in the context of implementing baseline models for experimentation, indicating its use in the study.",
+          "quote": "Base agent. We use the RPO agent [50] (a variant of PPO) for continuous actions or PPO for discrete actions, based on the implementation from CleanRL [28]."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1431,
+    "prompt_tokens": 24097,
+    "total_tokens": 25528,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

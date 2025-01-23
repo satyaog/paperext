@@ -1,0 +1,214 @@
+{
+  "paper": "2404.08471.txt",
+  "words": 13950,
+  "extractions": {
+    "title": {
+      "value": "Revisiting Feature Prediction for Learning Visual Representations from Video",
+      "justification": "The title is explicitly mentioned at the beginning of the paper.",
+      "quote": "Revisiting Feature Prediction for Learning Visual Representations from Video"
+    },
+    "description": "The paper explores feature prediction as a standalone objective for unsupervised learning from video. It introduces V-JEPA, a collection of vision models trained using feature prediction without pretrained image encoders, text, negative examples, or pixel-level reconstruction. The models are trained on 2 million videos and demonstrate strong performance on both motion and appearance-based tasks, evaluated on datasets like Kinetics-400 and ImageNet1K.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper includes experiments on a large dataset of videos to evaluate the performance of the V-JEPA models on downstream tasks, which is characteristic of empirical research.",
+      "quote": "The models are trained on 2 million videos collected from public datasets and are evaluated on downstream image and video tasks."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The paper focuses on visual representations and video data, which fall under the domain of computer vision.",
+        "quote": "This paper explores feature prediction as a stand-alone objective for unsupervised learning from video and introduces V-JEPA, a collection of vision models."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Self-Supervised Learning",
+          "justification": "The paper deals with learning without supervision by addressing feature prediction and introducing a self-supervised objective for learning visual representations.",
+          "quote": "In this work, we revisit feature prediction as a standalone objective for unsupervised learning of visual representations from video."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Video Representation Learning",
+          "justification": "The core focus of the paper is learning representations from video data, indicated by the discussion of video-specific datasets and model evaluations.",
+          "quote": "The models are trained on 2 million videos collected from public datasets and are evaluated on downstream image and video tasks."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Transformers in Vision",
+          "justification": "The paper extensively discusses Vision Transformers (ViTs) as part of the model architecture, signifying its involvement in this field.",
+          "quote": "We use a Vision Transformer (ViT) (Dosovitskiy et al., 2020; Arnab et al., 2021) as our video backbone."
+        },
+        "aliases": [
+          "ViT"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "V-JEPA",
+          "justification": "V-JEPA is the main model that the paper introduces and evaluates, as mentioned multiple times throughout the document.",
+          "quote": "introduces V-JEPA, a collection of vision models trained solely using a feature prediction objective"
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "The model is introduced in the paper as a new contribution to the field of visual representation learning.",
+          "quote": "introduces V-JEPA, a collection of vision models"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper mentions that V-JEPA models are trained and evaluated, implying execution.",
+          "quote": "The models are trained on 2 million videos collected from public datasets and are evaluated on downstream image and video tasks."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper mentions comparison to other models like VideoMAE and OmniMAE in performance sections.",
+          "quote": "V-JEPA outperforms the baselines on all downstream tasks, except ImageNet."
+        },
+        "referenced_paper_title": {
+          "value": "A path towards autonomous machine intelligence version 0.9. 2, 2022-06-27",
+          "justification": "This is the reference paper for JEPA, upon which V-JEPA builds its concept.",
+          "quote": "joint-embedding predictive architecture (JEPA) (LeCun, 2022; Assran et al., 2023; Baevski et al., 2022b)"
+        }
+      },
+      {
+        "name": {
+          "value": "ViT-H/16",
+          "justification": "This Vision Transformer variant is mentioned as part of the model architectures used for V-JEPA.",
+          "quote": "ViT-H/16 trained only on videos, obtains 81.9% on Kinetics-400."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "ViT-H/16 is used as part of the architecture but is based on existing Vision Transformer models.",
+          "quote": "Our largest model, a ViT-H/16 trained only on videos."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model is trained and evaluated on video datasets in the study.",
+          "quote": "ViT-H/16 trained only on videos"
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of ViT-H/16 is compared to other methods on datasets like Kinetics-400.",
+          "quote": "Our largest model, a ViT-H/16 trained only on videos, obtains 81.9% on Kinetics-400, 72.2% on Something-Something-v2, and 77.9% on ImageNet1K."
+        },
+        "referenced_paper_title": {
+          "value": "An image is worth 16x16 words: Transformers for image recognition at scale",
+          "justification": "ViT-H/16 is based on the Vision Transformer model framework from this reference paper.",
+          "quote": "Vision Transformer (ViT) (Dosovitskiy et al., 2020; Arnab et al., 2021)"
+        }
+      },
+      {
+        "name": {
+          "value": "VideoMAE",
+          "justification": "VideoMAE is mentioned as a baseline model for comparison with V-JEPA.",
+          "quote": "V-JEPA outperforms the baselines on all downstream tasks, except ImageNet."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "VideoMAE is an existing model used for baseline comparison, not introduced in this paper.",
+          "quote": "We compare V-JEPA with video approaches like VideoMAE, which rely on pixel prediction."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The study references VideoMAE's results but focuses on the execution of V-JEPA models.",
+          "quote": "We compare V-JEPA with OmniMAE, VideoMAE, and Hiera, which leverage a pixel-reconstruction loss."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "VideoMAE is explicitly compared to V-JEPA in terms of performance on several tasks.",
+          "quote": "V-JEPA outperforms the baselines, such as VideoMAE, on all downstream tasks."
+        },
+        "referenced_paper_title": {
+          "value": "VideoMAE: Masked Autoencoders Are Data-Efficient Learners for Self-Supervised Video Pre-Training",
+          "justification": "VideoMAE is referenced as a baseline in the paper.",
+          "quote": "VideoMAE trains vision transformer autoencoders exclusively on video"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Kinetics-400",
+          "justification": "The dataset is used for evaluating the performance of the V-JEPA models, indicating its role in the study.",
+          "quote": "obtains 81.9% on Kinetics-400, 72.2% on Something-Something-v2, and 77.9% on ImageNet1K."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The Kinetics human action video dataset",
+          "justification": "The paper uses Kinetics-400 as a key evaluation dataset for motion-based tasks.",
+          "quote": "obtains 81.9% on Kinetics-400, 72.2% on Something-Something-v2"
+        }
+      },
+      {
+        "name": {
+          "value": "Something-Something-v2",
+          "justification": "Something-Something-v2 is another major dataset used to evaluate the V-JEPA models' performance on temporal tasks.",
+          "quote": "obtains 81.9% on Kinetics-400, 72.2% on Something-Something-v2"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The \"Something Something\" Video Database for Learning and Evaluating Visual Common Sense",
+          "justification": "The paper uses the dataset for fine-grained temporal understanding evaluation of models.",
+          "quote": "V-JEPA achieves the best performance among methods we consider (+6% accuracy) on the Something-Something-v2 task"
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet1K",
+          "justification": "ImageNet1K serves as a benchmark dataset for evaluating appearance-based tasks in the study.",
+          "quote": "obtains 81.9% on Kinetics-400, 72.2% on Something-Something-v2, and 77.9% on ImageNet1K."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ImageNet Large Scale Visual Recognition Challenge",
+          "justification": "ImageNet1K is referenced as a key evaluation dataset for appearance-based tasks.",
+          "quote": "77.9% on ImageNet1K"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The paper's repository is hosted on GitHub under \"facebookresearch,\" which is commonly associated with projects using PyTorch.",
+          "quote": "Code: https://github.com/facebookresearch/jepa"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An Imperative Style, High-Performance Deep Learning Library",
+          "justification": "There is indirect evidence through the hosting of code on Facebook Research's GitHub, which commonly uses PyTorch.",
+          "quote": "The code repository is linked to GitHub under facebookresearch, suggesting the use of PyTorch."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1940,
+    "prompt_tokens": 25371,
+    "total_tokens": 27311,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

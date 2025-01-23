@@ -1,0 +1,161 @@
+{
+  "paper": "2404.08562.txt",
+  "words": 9819,
+  "extractions": {
+    "title": {
+      "value": "Dynamic Neural Control Flow Execution: An Agent-Based Deep Equilibrium Approach for Binary Vulnerability Detection",
+      "justification": "The title clearly mentions the main focus and methodology used in the paper, which is about controlling neural flow execution using an agent-based deep equilibrium approach for detecting binary vulnerabilities.",
+      "quote": "Dynamic Neural Control Flow Execution: An Agent-Based Deep Equilibrium Approach for Binary Vulnerability Detection"
+    },
+    "description": "The paper presents a novel neural model named DeepEXE designed to enhance binary code vulnerability detection through a state-guided execution process. By using an agent-based implicit neural network and reinforcement learning, the model improves the ability to handle complex binary programs beyond traditional static methods. DeepEXE aims to overcome constraints of current models by leveraging dynamic execution paths and achieving higher accuracy compared to other methods.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper proposes a model and tests it empirically through experiments on semi-synthetic and real-world datasets, emphasizing its performance against baseline methods.",
+      "quote": "We conduct experiments on two semi-synthetic datasets and two real world vulnerability datasets. We compare our methods against several state-of-the-art approaches and show that DeepEXE can consistently outperform the baselines in all scenarios."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Cybersecurity",
+        "justification": "The paper primarily addresses the challenge of detecting software vulnerabilities, which is a key concern in cybersecurity.",
+        "quote": "Software vulnerabilities have been an ongoing challenge in the cybersecurity domain. It is an inevitable problem, as the scale of software grows in complexity."
+      },
+      "aliases": [
+        "security vulnerabilities"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Binary Vulnerability Detection",
+          "justification": "The paper focuses on detecting vulnerabilities specifically in binary code, differentiating it from source code vulnerability detection.",
+          "quote": "Binary code vulnerability detection is less studied and more complex compared to source code, and this has important practical implications."
+        },
+        "aliases": [
+          "binary code security"
+        ]
+      },
+      {
+        "name": {
+          "value": "Reinforcement Learning",
+          "justification": "The use of reinforcement learning is highlighted in agent decision-making for state transitions.",
+          "quote": "We use reinforcement learning to enhance the branching decision at every program state transition and create a dynamic environment to learn the dependency between a vulnerability and certain program states."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Graph Neural Networks (GNN)",
+          "justification": "The paper discusses the use of graph-based methods and mentions GNNs frequently in managing program state through the CFGs.",
+          "quote": "Modern deep learning approaches learn the program semantics through sequence and graph neural networks, using various intermediate representation of programs, such as abstract syntax trees (AST) or control flow graphs (CFG)."
+        },
+        "aliases": [
+          "GNN"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "DeepEXE",
+          "justification": "DeepEXE is the central model proposed in the paper, focused on addressing issues in binary vulnerability detection.",
+          "quote": "To address these issues, we propose DeepEXE, an agent-based implicit neural network that mimics the execution path of a program."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "DeepEXE is introduced as a novel model designed specifically for the challenges highlighted in the paper.",
+          "quote": "We propose DeepEXE, a neural program execution model over a CFG for binary vulnerability detection."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The experiments conducted involve running DeepEXE on datasets, indicating it was executed as part of the research.",
+          "quote": "The experiments are conducted on two semi-synthetic and two real-world datasets."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "DeepEXE's performance is compared to several state-of-the-art models across datasets.",
+          "quote": "We compare our methods against several state-of-the-art approaches and show that DeepEXE can consistently outperform the baselines in all scenarios."
+        },
+        "referenced_paper_title": {
+          "value": "To address these issues, we propose DeepEXE, an agent-based implicit neural network that mimics the execution path of a program.",
+          "justification": "DeepEXE is introduced as the main contribution in this paper and does not reference another paper specifically for its introduction.",
+          "quote": "DeepEXE is introduced as the main contribution in this paper."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "NDSS18",
+          "justification": "NDSS18 is used to evaluate the model's performance in binary vulnerability detection, as mentioned in the experiments section.",
+          "quote": "The NDSS183 and Juliet Test Suites4 are both semi-synthetic datasets commonly used as for vulnerability detection tasks."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "VulDeePecker: A deep learning-based system for vulnerability detection",
+          "justification": "The NDSS18 dataset was first published by Li et al. (2018), originators of the VulDeePecker system for source code vulnerability.",
+          "quote": "NDSS18 was first published by (Li et al., 2018) as a source code vulnerability dataset and later compiled to binary code by (Le et al., 2018) for binary level detection."
+        }
+      },
+      {
+        "name": {
+          "value": "Juliet Test Suite",
+          "justification": "Mentioned as a synthetic dataset used in the evaluation of DeepEXE's performance for vulnerability detection tasks.",
+          "quote": "The NDSS183 and Juliet Test Suites4 are both semi-synthetic datasets commonly used as for vulnerability detection tasks."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Juliet Test Suite",
+          "justification": "The Juliet Test Suite is an established benchmark dataset provided by NIST for software vulnerability evaluation.",
+          "quote": "Juliet Test Suite is a collection of 81,000 test cases in C/C++ and Java from NIST9 that contain 112 different CWEs."
+        }
+      },
+      {
+        "name": {
+          "value": "FFmpeg",
+          "justification": "Used as one of the real-world datasets in experiments to test the model's application in realistic settings.",
+          "quote": "For real world datasets that are larger and can contain less trivial vulnerabilities, we employ the FFmpeg5 and Esh (David et al., 2016) datasets."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Devign: Effective vulnerability identification by learning comprehensive program semantics via graph neural networks",
+          "justification": "The FFmpeg dataset was previously utilized in the Devign paper for source code vulnerability detection.",
+          "quote": "Since Devign detects vulnerabilities at the source code level, ... We compile the FFmpeg source code provided by the authors into binary code and obtain 16,494 binary functions, where 7,257 are vulnerable and 9,237 are non-vulnerable."
+        }
+      },
+      {
+        "name": {
+          "value": "Esh",
+          "justification": "Used as a real-world dataset to further assess DeepEXE's performance in detecting vulnerabilities.",
+          "quote": "For real world datasets that are larger and can contain less trivial vulnerabilities, we employ the FFmpeg5 and Esh (David et al., 2016) datasets."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Statistical similarity of binaries",
+          "justification": "The Esh dataset was introduced and used by David et al. for case analysis of CVEs.",
+          "quote": "The Esh dataset contains CVE cases collected by David et al. (David et al., 2016), which include 8 different CVEs."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1479,
+    "prompt_tokens": 16451,
+    "total_tokens": 17930,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

@@ -1,0 +1,254 @@
+{
+  "paper": "bdbbf40b737d8aed97d40b01ce7c48b2.txt",
+  "words": 4210,
+  "extractions": {
+    "title": {
+      "value": "Adaptation Odyssey in LLMs: Why Does Additional Pretraining Sometimes Fail to Improve?",
+      "justification": "The title is clearly stated at the beginning of the document and reflects the main focus of the paper, which is to investigate why additional pretraining sometimes fails to improve LLMs.",
+      "quote": "Adaptation Odyssey in LLMs: Why Does Additional Pretraining Sometimes Fail to Improve?"
+    },
+    "description": "The paper investigates why additional pretraining of Large Language Models (LLMs) sometimes does not improve performance, despite expectations. It presents empirical observations on the effects of pretraining on model perplexity in various domains, using the Massively Multi-Domain Dataset (M2D2). Significant findings include performance degradation in some Wiki domains, contrasting improvements in S2ORC domains, and the impact of domain similarity to pretraining corpora. The study aims to inform decisions about when to continue or pause model adaptations based on domain similarities.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper emphasizes empirical observations by analyzing the effect of additional pretraining on LLMs using the M2D2 dataset across different domains.",
+      "quote": "This short paper introduces empirical observations that aim to shed light on further training of already pretrained language models."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The investigation focuses on Large Language Models, adaptation, and domain generalization, which are key topics within Natural Language Processing.",
+        "quote": "Contrary to traditional deep learning, large language models (LLMs) are (i) even more overparameterized, (ii) trained on unlabeled text corpora curated from the Internet."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Domain Adaptation",
+          "justification": "The paper specifically addresses how LLMs adapt to various domains.",
+          "quote": "When the original corpus and the adaptation domain are more similar, test perplexity in this adaptation domain after additional pretraining tends to increase."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Language Model Evaluation",
+          "justification": "Evaluation of perplexity and adaptation impacts in LLMs is central to the paper's methodology and findings.",
+          "quote": "Interestingly, we observe that additional pretraining on Wiki domains tends to degrade test perplexity, while pretraining on S2ORC domains always improves it."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "GPT2",
+          "justification": "The GPT2 model family, including variants like GPT2-small, GPT2-large, and GPT2-xlarge, are used in the experiments.",
+          "quote": "We conduct our experiments with decoder-only GPT2 model family (Radford et al., 2019), such as GPT2-small, GPT2-large and GPT2-xlarge."
+        },
+        "aliases": [
+          "GPT2-small",
+          "GPT2-large",
+          "GPT2-xlarge"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The model is used for evaluation rather than introduced as a new contribution.",
+          "quote": "We conduct our experiments with decoder-only GPT2 model family..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The models were pre-trained and tested during the study.",
+          "quote": "We additional pretrain each model for 1 epoch on a single GPU."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The models' performances are compared in terms of perplexity across different domains.",
+          "quote": "For different sizes of GPT2... we compute the zero-shot perplexity on all domains."
+        },
+        "referenced_paper_title": {
+          "value": "Language Models are Unsupervised Multitask Learners",
+          "justification": "This paper is referenced for the GPT2 model used in the experiments.",
+          "quote": "(Radford et al., 2019)"
+        }
+      },
+      {
+        "name": {
+          "value": "OLMo-1B",
+          "justification": "OLMo-1B is explicitly named as one of the models used in the research.",
+          "quote": "and OLMo-1B (Groeneveld et al., 2024)."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "It is used in the experiments for adaptation tasks.",
+          "quote": "OLMo-1B (Groeneveld et al., 2024)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was trained and evaluated in this study.",
+          "quote": "We additional pretrain each model for 1 epoch on a single GPU."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "OLMo-1B is compared with other models like GPT2 in terms of adaptation performance.",
+          "quote": "For different sizes of GPT2 as well as OLMo-1B..."
+        },
+        "referenced_paper_title": {
+          "value": "OLMo: Accelerating the Science of Language Models",
+          "justification": "The OLMo-1B model is referenced in this paper, indicating its prior introduction.",
+          "quote": "OLMo-1B (Groeneveld et al., 2024)."
+        }
+      },
+      {
+        "name": {
+          "value": "LLaMA-7B",
+          "justification": "The paper explicitly mentions using LLaMA-7B in experiments related to pretraining in different domains.",
+          "quote": "and LLaMA-7B (Touvron et al., 2023) models."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "LLaMA-7B is a pre-existing model used for the research, not a newly introduced contribution of this paper.",
+          "quote": "LLaMA-7B (Touvron et al., 2023) models."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was involved in pretraining and testing procedures.",
+          "quote": "We additional pretrain each model for 1 epoch on a single GPU."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "LLaMA-7B is compared with other models within the same experimental setup.",
+          "quote": "For different sizes of GPT2 as well as OLMo-1B and LLaMA-7B..."
+        },
+        "referenced_paper_title": {
+          "value": "LLaMA: Open and Efficient Foundation Language Models",
+          "justification": "The LLaMA-7B model, referenced in the study, was introduced in this paper.",
+          "quote": "LLaMA-7B (Touvron et al., 2023) models."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Massively Multi-Domain Dataset (M2D2)",
+          "justification": "M2D2 is used for evaluating the impact of additional pretraining on different domains.",
+          "quote": "We adapt LLMs of various sizes and architectures to different domains within the Massively Multi-Domain Dataset (M2D2, (Reid et al., 2022))"
+        },
+        "aliases": [
+          "M2D2"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "M2D2: A Massively Multi-Domain Language Modeling Dataset",
+          "justification": "M2D2 is referenced as a used dataset in this research paper.",
+          "quote": "(Reid et al., 2022)"
+        }
+      },
+      {
+        "name": {
+          "value": "OpenWebText",
+          "justification": "OpenWebText is mentioned as GPT2's training corpus, used for similarity analyses.",
+          "quote": "we sample 400k texts from GPT2’s training corpus, OpenWebText (Gokaslan and Cohen, 2019)"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Openwebtext Corpus",
+          "justification": "The corpus is referenced as part of the study's dataset selection and methodology.",
+          "quote": "(Gokaslan and Cohen, 2019)"
+        }
+      },
+      {
+        "name": {
+          "value": "Dolma",
+          "justification": "Dolma is noted as the training corpus for the OLMo-1B model and used for domain similarity analysis.",
+          "quote": "we sample 650k texts from OLMo’s training corpus, Dolma (Soldaini et al., 2024)"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Dolma: An Open Corpus of Three Trillion Tokens for Language Model Pretraining Research",
+          "justification": "Dolma is a large corpus referenced as being part of the study's dataset analysis.",
+          "quote": "(Soldaini et al., 2024)"
+        }
+      },
+      {
+        "name": {
+          "value": "LlaMa's Training Corpus",
+          "justification": "Used in similarity analysis for LLaMA-7B model.",
+          "quote": "and 930k text from LlaMa’s training corpus, (Computer, 2023)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Redpajama: an Open Dataset for Training Large Language Models",
+          "justification": "Referenced as a corpus for training in the similarity analysis portion of the study.",
+          "quote": "(Computer, 2023)"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Deepspeed",
+          "justification": "Deepspeed is explicitly mentioned as being used for additional pretraining in the study's experiments.",
+          "quote": "using the Deepspeed library (Rasley et al., 2020)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Deepspeed: System optimizations enable training deep learning models with over 100 billion parameters",
+          "justification": "DeepSpeed is used as a library for model training optimization in the study.",
+          "quote": "(Rasley et al., 2020)"
+        }
+      },
+      {
+        "name": {
+          "value": "Sentence Transformers (SBERT)",
+          "justification": "The SBERT library is used to extract embeddings necessary for domain similarity analysis.",
+          "quote": "extract d-dimensional l 2 normalized embeddings using Sentence Transformers (SBERT) (Reimers and Gurevych, 2019)"
+        },
+        "aliases": [
+          "SBERT"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Sentence-bert: Sentence embeddings using siamese bert-networks",
+          "justification": "SBERT is referenced as a tool for conducting critical parts of the study's analysis.",
+          "quote": "(Reimers and Gurevych, 2019)"
+        }
+      },
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The models were pretrained and fine-tuned within a PyTorch framework indicated by the use and flexibility of compatible libraries like DeepSpeed and SBERT.",
+          "quote": "The experiments referenced in the study imply the use of standard machine learning libraries such as PyTorch, which supports DeepSpeed."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An imperative style, high-performance deep learning library",
+          "justification": "PyTorch likely underpins the neural network operations and GPU computations described in the study, including usages of frameworks like DeepSpeed.",
+          "quote": "The experiments performed using libraries compatible and commonly used alongside PyTorch."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2168,
+    "prompt_tokens": 9698,
+    "total_tokens": 11866,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

@@ -1,0 +1,213 @@
+{
+  "paper": "b2ac048a20cf9ebdca0fcf4d314a6b72.txt",
+  "words": 3612,
+  "extractions": {
+    "title": {
+      "value": "A R EINFORCEMENT L EARNING P IPELINE FOR B AND G AP - DIRECTED C RYSTAL G ENERATION",
+      "justification": "The title is clearly mentioned at the beginning of the paper document.",
+      "quote": "Published as a workshop paper at AI4Mat 2024\nA R EINFORCEMENT L EARNING P IPELINE FOR B AND G AP - DIRECTED C RYSTAL G ENERATION"
+    },
+    "description": "The paper presents a reinforcement learning pipeline combined with DFT simulations to optimize crystal compositions for a target band gap, addressing challenges in AI-driven material discovery.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves experiments and analysis to demonstrate the performance of the proposed pipeline and highlights challenges for future improvement.",
+      "quote": "Overall, through simple experiments, we demonstrate the performance of an online RL approach for band gap-conditioned crystal generation and highlight the challenges for future work."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Reinforcement Learning for Material Science",
+        "justification": "The paper discusses the application of reinforcement learning specifically for optimizing crystal compositions to achieve certain material properties.",
+        "quote": "This study aims to extend the work by incorporating DFT simulations in an online RL training pipeline such that the number of DFT calls is reduced."
+      },
+      "aliases": [
+        "RL for Crystal Design",
+        "AI-Driven Material Discovery"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Material Science",
+          "justification": "The paper focuses on optimizing material properties, specifically the band gap of crystals.",
+          "quote": "In automated material design, considering the difficulty of using offline RL approaches and the impracticality of fully DFT-based online approaches, we emphasize the need for a middle ground that uses both machine learning property predictors and DFT."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Quantum Simulations",
+          "justification": "The paper extensively uses Density Functional Theory (DFT) simulations, which are quantum mechanical simulations, to evaluate materials.",
+          "quote": "Calls to DFT are made at a fixed frequency, allowing fine-tuning of the reward model after every successful DFT simulation."
+        },
+        "aliases": [
+          "DFT Simulations"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Deep Q Networks (DQN)",
+          "justification": "The paper implements DQN as part of their reinforcement learning pipeline for optimizing crystal compositions.",
+          "quote": "We implement Deep Q Networks (DQN) with a pretrained neural network reward function that acts as a proxy for the band gap output of DFT."
+        },
+        "aliases": [
+          "DQN"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "DQN is used as part of the methodology, not introduced as a new contribution in the paper.",
+          "quote": "We implement Deep Q Networks (DQN) with a pretrained neural network reward function that acts as a proxy for the band gap output of DFT."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model is specifically used in the experiment as part of the RL pipeline.",
+          "quote": "Our first online RL experiment deals with training DQN to optimize the composition of a single crystal skeleton for the band gap."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "The paper does not explicitly mention comparing DQN with other models numerically in the scope of the paper.",
+          "quote": "This study aims to extend the work by incorporating DFT simulations in an online RL training pipeline such that the number of DFT calls is reduced."
+        },
+        "referenced_paper_title": {
+          "value": "Human-level control through deep reinforcement learning",
+          "justification": "The referenced paper title is cited as the origin of the DQN model used in the experiments.",
+          "quote": "Deep Q Networks (DQN) (Mnih et al., 2015) with a pretrained neural network reward function"
+        }
+      },
+      {
+        "name": {
+          "value": "CHGNet",
+          "justification": "The paper fine-tunes a pre-trained CHGNet model for band gap prediction as part of the pipeline.",
+          "quote": "For the former, we fine-tuned a pre-trained CHGNet model (Deng et al., 2023) by replacing the final layers with a network that predicts the band gap."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The CHGNet model was fine-tuned but not introduced in this paper.",
+          "quote": "For the former, we fine-tuned a pre-trained CHGNet model (Deng et al., 2023) by replacing the final layers with a network that predicts the band gap."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model is used and fine-tuned during the experiments.",
+          "quote": "We fine-tuned a pre-trained CHGNet model (Deng et al., 2023) by replacing the final layers with a network that predicts the band gap."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "There is no mention of a numerical comparison between CHGNet and other models in this paper.",
+          "quote": "For training a band gap model, we used a state-of-the-art crystal graph neural network (CHGNet)."
+        },
+        "referenced_paper_title": {
+          "value": "Chgnet as a pretrained universal neural network potential for charge-informed atomistic modelling",
+          "justification": "The referenced paper provides the origin of the CHGNet used in this study.",
+          "quote": "CHGNet as a pretrained universal neural network potential for charge-informed atomistic modelling. Nature Machine Intelligence, 5(9):1031–1041, 2023."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "MP-20 dataset",
+          "justification": "The MP-20 dataset is used for fine-tuning the band gap prediction model.",
+          "quote": "We used the MP-20 dataset for fine-tuning (a subset of the Materials Project database containing crystals with less than 20 atoms, previously used by Xie et al. (2022))."
+        },
+        "aliases": [
+          "Materials Project 20"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Crystal graph convolutional neural networks for an accurate and interpretable prediction of material properties",
+          "justification": "The dataset was referenced in relation to previous use by a different study.",
+          "quote": "previously used by Xie et al. (2022)"
+        }
+      },
+      {
+        "name": {
+          "value": "Materials Project database",
+          "justification": "The Materials Project database is a well-known dataset referenced in the context of the MP-20 dataset subset.",
+          "quote": "(a subset of the Materials Project database)."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The paper did not provide a specific reference for the Materials Project database other than mentioning it in the context of MP-20 subset, lacking a quoted referenced paper title.",
+          "quote": "We used the MP-20 dataset for fine-tuning (a subset of the Materials Project database containing crystals with less than 20 atoms)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Quantum Espresso",
+          "justification": "The paper uses Quantum Espresso for performing DFT simulations.",
+          "quote": "We use Quantum Espresso v7.1 (Giannozzi et al., 2009), an open-source software suite for DFT calculations, with PBE functional and CUDA support."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Quantum espresso: a modular and open-source software project for quantum simulations of materials",
+          "justification": "The referenced paper provides the origin of the Quantum Espresso library used in this study.",
+          "quote": "Quantum Espresso v7.1 (Giannozzi et al., 2009)"
+        }
+      },
+      {
+        "name": {
+          "value": "CUDA",
+          "justification": "The paper mentions CUDA support in the context of using Quantum Espresso.",
+          "quote": "We use Quantum Espresso v7.1, an open-source software suite for DFT calculations, with PBE functional and CUDA support."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "CUDA is commonly known in the context of GPU acceleration, and no specific paper reference is provided in this paper.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "FIRE optimizer",
+          "justification": "The FIRE optimizer is mentioned in the context of structure relaxation prior to simulation.",
+          "quote": "Prior to simulation, we relax the generated crystal using CHGNet (Deng et al., 2023), a state-of-the-art MLIP for crystal energies and forces with the FIRE (Bitzek et al., 2006) optimizer."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Structural relaxation made simple",
+          "justification": "The referenced paper provides the origin of the FIRE optimizer used.",
+          "quote": "FIRE (Bitzek et al., 2006)"
+        }
+      },
+      {
+        "name": {
+          "value": "MEGNet",
+          "justification": "The paper mentions using MEGNet architecture suitable for materials and molecules.",
+          "quote": "Likewise, we also use MEGNet architecture, which is a GNN suitable for materials and molecules (Chen et al., 2019)."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Graph networks as a universal machine learning framework for molecules and crystals",
+          "justification": "The referenced paper provides the origin of the MEGNet architecture used.",
+          "quote": "Graph networks as a universal machine learning framework for molecules and crystals. Chemistry of Materials, 31(9):3564–3572, 2019."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1887,
+    "prompt_tokens": 7132,
+    "total_tokens": 9019,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

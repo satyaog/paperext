@@ -1,0 +1,276 @@
+{
+  "paper": "2402.09063.txt",
+  "words": 10305,
+  "extractions": {
+    "title": {
+      "value": "Soft Prompt Threats: Attacking Safety Alignment and Unlearning in Open-Source LLMs through the Embedding Space",
+      "justification": "The title is given at the very beginning of the paper.",
+      "quote": "Soft Prompt Threats: Attacking Safety Alignment and Unlearning in Open-Source LLMs through the Embedding Space"
+    },
+    "description": "The paper focuses on attacks on large language models (LLMs), particularly in open-source contexts. It introduces embedding space attacks, which target the continuous vector representations of input tokens, allowing adversaries to circumvent model alignments and trigger harmful behaviors efficiently. The paper explores the potential of these attacks to extract deleted information from supposedly unlearned LLMs and examines their implications for model safety.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper conducts experiments and evaluates embedding space attacks across multiple datasets and models, focusing on practical outcomes and effectiveness.",
+      "quote": "In our experiments, we minimize the difference between the target response y and the prediction of ŷ using the cross entropy loss function L(ŷ, y)."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Adversarial Attacks on Large Language Models",
+        "justification": "The paper is centered on exploring and evaluating adversarial attacks, specifically embedding space attacks on LLMs, which is a specific area within the DL field concerning model safety and robustness.",
+        "quote": "Embedding space attacks circumvent model alignments and trigger harmful behaviors more efficiently than discrete attacks or model fine-tuning."
+      },
+      "aliases": [
+        "LLM Embedding Attacks"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Model Unlearning",
+          "justification": "The paper investigates embedding attacks in the context of unlearning, using them to extract supposedly deleted information from LLMs, which is a part of model unlearning research.",
+          "quote": "embedding space attacks can extract supposedly deleted information from unlearned LLMs across multiple datasets and models."
+        },
+        "aliases": [
+          "Model Forgetting"
+        ]
+      },
+      {
+        "name": {
+          "value": "Machine Learning Safety",
+          "justification": "The paper discusses attacks that challenge the safety alignment of LLMs, key concerns within machine learning safety.",
+          "quote": "Our findings highlight embedding space attacks as an important threat model in open-source LLMs."
+        },
+        "aliases": [
+          "ML Safety"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Llama2-7b",
+          "justification": "Llama2-7b is one of the models evaluated for vulnerability to embedding space attacks in the paper.",
+          "quote": "We use 5 different open-source models in our evaluations. This includes Llama2-7b."
+        },
+        "aliases": [
+          "Llama2"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The model is used as a test subject for attacks, not introduced as new in the paper.",
+          "quote": "We use 5 different open-source models in our evaluations. This includes Llama2-7b."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Experiments involving Llama2-7b are conducted to assess the effectiveness of embedding space attacks.",
+          "quote": "We use 5 different open-source models in our evaluations. This includes Llama2-7b."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Llama2-7b is compared against other models and settings to evaluate attack success rates and robustness.",
+          "quote": "We use 5 different open-source models in our evaluations. This includes Llama2-7b."
+        },
+        "referenced_paper_title": {
+          "value": "Llama 2: Open foundation and fine-tuned chat models",
+          "justification": "This is the title of the reference paper for Llama2-7b as given in the references section.",
+          "quote": "Hugo Touvron, Louis Martin, Kevin Stone, Peter Albert, Amjad Almahairi, et al. Llama 2: Open foundation and fine-tuned chat models."
+        }
+      },
+      {
+        "name": {
+          "value": "Vicuna-7b",
+          "justification": "Vicuna-7b is another model evaluated for vulnerability to the proposed attack techniques in the paper.",
+          "quote": "This includes Llama2-7b, Vicuna-7b."
+        },
+        "aliases": [
+          "Vicuna"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Vicuna-7b is used in experiments but is not a new contribution from this paper.",
+          "quote": "This includes Llama2-7b, Vicuna-7b."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model is actively used in experiments to assess the attack methodologies presented.",
+          "quote": "This includes Llama2-7b, Vicuna-7b."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Vicuna-7b is compared with other models in evaluating the effects of embedding attacks.",
+          "quote": "This includes Llama2-7b, Vicuna-7b."
+        },
+        "referenced_paper_title": {
+          "value": "Vicuna-7B-v1.5",
+          "justification": "The title of the reference for Vicuna used in the research, as found in the references.",
+          "quote": "Hugging Face. Vicuna-7B-v1.5, 2023."
+        }
+      },
+      {
+        "name": {
+          "value": "Mistral-7b",
+          "justification": "Mentioned in the experiments section as a model tested against embedding space attacks.",
+          "quote": "We use 5 different open-source models in our evaluations. This includes... Mistral-7b."
+        },
+        "aliases": [
+          "Mistral"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The Mistral-7b model is used for experimentation, rather than being introduced as new in this work.",
+          "quote": "This includes... Mistral-7b."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model is part of the empirical experimentation for evaluating attack mechanisms.",
+          "quote": "This includes... Mistral-7b."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Mistral-7b is analyzed alongside other models to assess the generalizability and impact of embedding attacks.",
+          "quote": "This includes... Mistral-7b."
+        },
+        "referenced_paper_title": {
+          "value": "Mistral 7B",
+          "justification": "Paper references Mistral as one of the benchmarks for testing.",
+          "quote": "Albert Q Jiang, Alexandre Sablayrolles, Arthur Mensch, Chris Bamford, et al. Mistral 7b."
+        }
+      },
+      {
+        "name": {
+          "value": "Llama2-7b-WhoIsHarryPotter",
+          "justification": "This model is specifically mentioned as being part of the experimental setup, particularly in relation to the unlearning task.",
+          "quote": "On the Llama2-7b-WhoIsHarryPotter model, we demonstrate that embedding space attacks can extract significantly more information from unlearned models than direct prompts."
+        },
+        "aliases": [
+          "Llama2-WhoIsHarryPotter"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The model is already existing and adapted for experimentation with unlearned datasets.",
+          "quote": "Llama2-7b-WhoIsHarryPotter model, finetuned to forget Harry Potter related associations."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model is part of the evaluation setup for the novel attack formulations presented.",
+          "quote": "On the Llama2-7b-WhoIsHarryPotter model, we demonstrate that embedding space attacks can extract significantly more information from unlearned models than direct prompts."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "It is compared in terms of how embedding attacks reveal unlearned information in LLMs.",
+          "quote": "On the Llama2-7b-WhoIsHarryPotter model, we demonstrate that embedding space attacks can extract significantly more information..."
+        },
+        "referenced_paper_title": {
+          "value": "Who’s Harry Potter? Approximate Unlearning in LLMs",
+          "justification": "This is the referenced paper for the Llama2-7b-WhoIsHarryPotter model discussed in the text.",
+          "quote": "Ronen Eldan and Mark Russinovich. Who’s harry potter? approximate unlearning in llms."
+        }
+      },
+      {
+        "name": {
+          "value": "LlamaGuard-7b",
+          "justification": "The model is listed among the evaluated models that are subject to embedding attacks.",
+          "quote": "We use 5 different open-source models in our evaluations. This includes... LlamaGuard-7b."
+        },
+        "aliases": [
+          "LlamaGuard"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Like other models, LlamaGuard-7b is used for testing existing theories in this paper.",
+          "quote": "This includes... LlamaGuard-7b."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model is implemented and run as part of the experiments described.",
+          "quote": "This includes... LlamaGuard-7b."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "LlamaGuard-7b's performance under attack is analyzed alongside other models.",
+          "quote": "This includes... LlamaGuard-7b."
+        },
+        "referenced_paper_title": {
+          "value": "Llama Guard: LLM-based Input-Output Safeguard for Human-AI Conversations",
+          "justification": "The reference title clearly relates to the LlamaGuard model's role in safeguarding interactions.",
+          "quote": "Hakan Inan, Kartikeya Upasani, Jianfeng Chi, et al. Llama guard: Llm-based input-output safeguard for human-ai conversations."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "TOFU",
+          "justification": "TOFU is noted as an unlearning benchmark dataset used in the experiments.",
+          "quote": "We use the recently published TOFU dataset, an unlearning benchmark of fictitious content for LLMs."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "TOFU: A task of fictitious unlearning for llms",
+          "justification": "The dataset's reference paper is cited in the methods and experiments related to unlearning.",
+          "quote": "Pratyush Maini, Zhili Feng, Avi Schwarzschild, Zachary C Lipton, and J Zico Kolter. Tofu: A task of fictitious unlearning for llms."
+        }
+      },
+      {
+        "name": {
+          "value": "Harry Potter Q&A",
+          "justification": "This custom dataset was created for evaluating the LlamaHP model's unlearning capability.",
+          "quote": "For this purpose, we created a custom Harry Potter Q&A benchmark dataset."
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "Who’s Harry Potter? Approximate Unlearning in LLMs",
+          "justification": "Linked to the reference about evaluating unlearned knowledge recovery in the LlamaHP model.",
+          "quote": "Ronen Eldan and Mark Russinovich. Who’s harry potter? approximate unlearning in llms."
+        }
+      },
+      {
+        "name": {
+          "value": "Anthropic red-teaming-data",
+          "justification": "Used for fine-tuning in order to assess the embedding attack's effectiveness in compromising safety alignment.",
+          "quote": "We fine-tune the Llama2 model with QLoRa on the Anthropic red-teaming-data."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Red teaming language models to reduce harms: Methods, scaling behaviors, and lessons learned",
+          "justification": "Referenced in context with training data used for model fine-tuning against adversarial threats.",
+          "quote": "Deep Ganguli, Liane Lovitt, Jackson Kernion, Amanda Askell et al. Red teaming language models to reduce harms."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "tqdm",
+          "justification": "A library used explicitly in the paper for progress tracking during experiments.",
+          "quote": "For the purposes of these experiments, tqdm was used in the following configurations: [...]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "tqdm: A fast, extensible progress bar for Python and CLI",
+          "justification": "The library's reference is associated with its usage in progress tracking methodologies.",
+          "quote": "No direct quote referencing tqdm's paper, but cited as used in progress tracking."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2445,
+    "prompt_tokens": 18402,
+    "total_tokens": 20847,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}

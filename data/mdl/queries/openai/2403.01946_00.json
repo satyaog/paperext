@@ -1,0 +1,181 @@
+{
+  "paper": "2403.01946.txt",
+  "words": 12509,
+  "extractions": {
+    "title": {
+      "value": "A Generative Model of Symmetry Transformations",
+      "justification": "The paper explicitly aims to construct a generative model that captures symmetry transformations in data.",
+      "quote": "In this paper, we construct a generative model that explicitly aims to capture symmetries in the data, resulting in a model that learns which symmetries are present in an interpretable way."
+    },
+    "description": "This paper introduces a generative model designed to capture symmetry transformations directly from datasets without prior knowledge. The proposed Symmetry-aware Generative Model (SGM) separates latent representations into invariant and equivariant components, allowing the model to learn symmetries present in affine and color transformations. The approach is advantageous for its data efficiency and robustness against data sparsification. The model is tested with datasets like dSprites and MNIST.",
+    "type": {
+      "value": "theoretical",
+      "justification": "The paper focuses on constructing a theoretical model to capture symmetries and includes theoretical discussions about the model's properties.",
+      "quote": "In this paper, we construct a generative model that explicitly aims to capture symmetries in the data, resulting in a model that learns which symmetries are present in an interpretable way."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Generative Models",
+        "justification": "The paper's central focus is developing a generative model that captures symmetry transformations in data.",
+        "quote": "In this paper, we construct a generative model that explicitly aims to capture symmetries in the data, resulting in a model that learns which symmetries are present in an interpretable way."
+      },
+      "aliases": [
+        "SGM",
+        "Symmetry-aware Generative Model"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Unsupervised Learning",
+          "justification": "The paper explores learning symmetries in an unsupervised manner, as no labeled data is required for training the generative model.",
+          "quote": "We demonstrate that it is able to learn, in an unsupervised manner, a distribution over symmetries present in a dataset."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Representation Learning",
+          "justification": "The model explicitly separates data into invariant and equivariant components for better representation learning.",
+          "quote": "The SGM’s latent representation is separated into an invariant component x̂ and an equivariant component η."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Symmetry-aware Generative Model",
+          "justification": "The paper introduces the Symmetry-aware Generative Model (SGM) as a novel approach to capturing symmetries in generative modeling.",
+          "quote": "We propose a Symmetry-aware Generative Model (SGM). The SGM’s latent representation is separated into an invariant component x̂ and an equivariant component η."
+        },
+        "aliases": [
+          "SGM"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The SGM is a new model introduced by the authors of the paper as a contribution to the field of generative models.",
+          "quote": "We propose a Symmetry-aware Generative Model (SGM)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper describes experimental results where the SGM was trained and evaluated on datasets, implying execution.",
+          "quote": "We verify experimentally that our SGM completely captures affine and color symmetries."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The SGM's performance is compared to baseline models in terms of data efficiency and robustness.",
+          "quote": "A VAE’s marginal test-log-likelihood can improved by building in an SGM."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "As the model is newly contributed by the paper, there is no prior reference paper title.",
+          "quote": ""
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "dSprites",
+          "justification": "The paper uses the dSprites dataset to validate its model's ability to learn symmetries, particularly in shape transformations.",
+          "quote": "We conduct experiments using two datasets—dSprites (Matthey et al., 2017) and MNIST—and two kinds of transformations—affine and color."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "dsprites: Disentanglement testing sprites dataset",
+          "justification": "The dSprites dataset is referenced by its creators in Matthey et al., 2017.",
+          "quote": "We conduct experiments using two datasets—dSprites (Matthey et al., 2017) and MNIST."
+        }
+      },
+      {
+        "name": {
+          "value": "MNIST",
+          "justification": "The MNIST dataset is used to demonstrate the SGM's capacity to learn symmetries in digit images.",
+          "quote": "We conduct experiments using two datasets—dSprites (Matthey et al., 2017) and MNIST—and two kinds of transformations—affine and color."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "MNIST is a well-known dataset and doesn't require further referencing in the context of this paper.",
+          "quote": "We conduct experiments using two datasets—dSprites (Matthey et al., 2017) and MNIST."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "jax",
+          "justification": "The implementation likely uses JAX for managing NNs, as suggested by its listing among other libraries used.",
+          "quote": "We use jax with flax for NNs, distrax for probability distributions, and optax for optimizers."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The paper mentions the use of JAX, but does not reference a specific paper associated with the library.",
+          "quote": "We use jax with flax for NNs, distrax for probability distributions, and optax for optimizers."
+        }
+      },
+      {
+        "name": {
+          "value": "flax",
+          "justification": "Flax is mentioned as being used for neural network implementation.",
+          "quote": "We use jax with flax for NNs, distrax for probability distributions, and optax for optimizers."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The paper mentions the use of Flax, but does not reference a specific paper associated with the library.",
+          "quote": "We use jax with flax for NNs, distrax for probability distributions, and optax for optimizers."
+        }
+      },
+      {
+        "name": {
+          "value": "distrax",
+          "justification": "Distrax is used for handling probability distributions, as explicitly mentioned in the implementation details.",
+          "quote": "We use jax with flax for NNs, distrax for probability distributions, and optax for optimizers."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The paper mentions the use of Distrax, but does not reference a specific paper associated with the library.",
+          "quote": "We use jax with flax for NNs, distrax for probability distributions, and optax for optimizers."
+        }
+      },
+      {
+        "name": {
+          "value": "optax",
+          "justification": "Optax is specified as the optimizer library used in the experiments.",
+          "quote": "We use jax with flax for NNs, distrax for probability distributions, and optax for optimizers."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The paper mentions the use of Optax, but does not reference a specific paper associated with the library.",
+          "quote": "We use jax with flax for NNs, distrax for probability distributions, and optax for optimizers."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1492,
+    "prompt_tokens": 21076,
+    "total_tokens": 22568,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}
