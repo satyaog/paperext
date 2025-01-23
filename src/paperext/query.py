@@ -281,9 +281,8 @@ def main(argv=None):
     CFG.platform.select = options.platform
 
     if options.paperoni:
-        papers = [
-            Paper(p).get_link_id_pdf() for p in json.loads(options.paperoni.read_text())
-        ]
+        papers = [Paper(p) for p in json.loads(options.paperoni.read_text())]
+        papers = [p.get_link_id_pdf() for p in papers]
         papers = [p for p in papers if p is not None]
     elif options.input:
         papers = [

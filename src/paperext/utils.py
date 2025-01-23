@@ -5,6 +5,7 @@ import unicodedata
 from pathlib import Path
 
 from paperext import CFG
+from paperext.log import logger
 
 ROOT_FOLDER = Path(__file__).resolve().parent.parent
 PAPERS_TO_IGNORE = {
@@ -39,7 +40,9 @@ class Paper:
         # Find existing queries and infer the paper id from them
         self._queries = sum(
             [
-                list((CFG.dir.queries / CFG.platform.select).glob(f"{link_id}_*.json"))
+                sorted(
+                    (CFG.dir.queries / CFG.platform.select).glob(f"{link_id}_*.json")
+                )
                 for link_id in link_ids
             ],
             [],
@@ -48,7 +51,11 @@ class Paper:
         _ids = ["_".join(p.stem.split("_")[:-1]) for p in self._queries]
 
         if _ids:
-            assert len(set(_ids)) == 1
+            if len(set(_ids)) > 1:
+                logger.warning(
+                    f"Multiple paper queries found for {paper['title']}:\n  "
+                    + "\n  ".join(map(str, sorted(set(self._queries))))
+                )
             self._selected_id = _ids[0]
 
         # Try to find the downloaded/converted pdf using the original form of
@@ -70,23 +77,25 @@ class Paper:
         return self._queries
 
     @property
+    def pdfs(self):
+        return (
+            sorted(CFG.dir.cache.glob(self.LINK_ID_TEMPLATE.format(link_id=self.id)))
+            + sorted(
+                CFG.dir.cache.glob(
+                    self.PAPER_ID_TEMPLATE.format(paper_id=self._paper_id)
+                )
+            )
+            + sorted(
+                CFG.dir.cache.glob(
+                    self.PAPER_ID_FULLTEXT_TEMPLATE.format(paper_id=self._paper_id)
+                )
+            )
+        )
+
+    @property
     def pdf(self):
         return next(
-            iter(
-                sorted(
-                    CFG.dir.cache.glob(self.LINK_ID_TEMPLATE.format(link_id=self.id))
-                )
-                + sorted(
-                    CFG.dir.cache.glob(
-                        self.PAPER_ID_TEMPLATE.format(paper_id=self._paper_id)
-                    )
-                )
-                + sorted(
-                    CFG.dir.cache.glob(
-                        self.PAPER_ID_FULLTEXT_TEMPLATE.format(paper_id=self._paper_id)
-                    )
-                )
-            ),
+            iter(self.pdfs),
             None,
         )
 
