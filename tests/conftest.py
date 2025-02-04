@@ -1,4 +1,5 @@
 import shutil
+
 import pytest
 
 from paperext.config import Config
