@@ -231,7 +231,7 @@ def main(argv=None):
         help="List of arXiv ids use to download and convert pdfs -> txts",
     )
     parser.add_argument(
-        "--urls",
+        "--url",
         metavar="STR",
         nargs="+",
         default=tuple(),
@@ -269,7 +269,7 @@ def main(argv=None):
     ]
 
     for url, pdf_file, link_type in urls + [
-        (url, None, "rawurl") for url in options.urls
+        (url, None, "rawurl") for url in options.url
     ]:
         match link_type:
             case "arxiv":
@@ -285,16 +285,16 @@ def main(argv=None):
                 hash_object.update(url.encode())
                 pdf_file = (
                     options.cache_dir
-                    / f"{link_type}_{domain}/{hash_object.hexdigest()}.pdf",
+                    / f"{link_type}_{domain}/{hash_object.hexdigest()}.pdf"
                 )
 
-        test_file = convert_pdf(pdf_file, pdf_file.with_suffix(".txt"), url)
+        text_file = convert_pdf(pdf_file, pdf_file.with_suffix(".txt"), url)
 
         if text_file is not None:
-            completed.append((paper["paper_id"], test_file, [link_type]))
+            completed.append((url, text_file, [link_type]))
 
         else:
-            failed.append((paper["paper_id"], test_file, [link_type]))
+            failed.append((url, text_file, [link_type]))
 
     print(*sorted(str(text_file) for _, text_file, _ in completed), sep="\n")
 

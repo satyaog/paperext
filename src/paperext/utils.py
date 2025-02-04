@@ -25,6 +25,7 @@ class Paper:
     def __init__(self, paper: dict) -> None:
         self._selected_id = None
         self._paper_id = paper["paper_id"]
+        self._pdfs = []
         link_ids = [self._paper_id]
         pdfs = []
 
@@ -68,17 +69,7 @@ class Paper:
         if not self._selected_id and self.pdf:
             self._selected_id = self._paper_id
 
-    @property
-    def id(self):
-        return self._selected_id or self._paper_id
-
-    @property
-    def queries(self):
-        return self._queries
-
-    @property
-    def pdfs(self):
-        return (
+        self._pdfs = (
             sorted(CFG.dir.cache.glob(self.LINK_ID_TEMPLATE.format(link_id=self.id)))
             + sorted(
                 CFG.dir.cache.glob(
@@ -91,6 +82,18 @@ class Paper:
                 )
             )
         )
+
+    @property
+    def id(self):
+        return self._selected_id or self._paper_id
+
+    @property
+    def queries(self):
+        return self._queries
+
+    @property
+    def pdfs(self):
+        return self._pdfs
 
     @property
     def pdf(self):

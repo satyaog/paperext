@@ -297,10 +297,10 @@ def main(argv=None):
         for p in papers:
             logger.info(p)
 
-    if not all(map(lambda p: p.exists(), papers)):
+    if not all([p.exists() for p in papers]):
         papers = [Path(CFG.dir.cache / f"arxiv/{paper}.txt") for paper in papers]
 
-    assert all(map(lambda p: p.exists(), papers))
+    assert all([p.exists() for p in papers])
 
     client = PLATFORMS[CFG.platform.select]()
 

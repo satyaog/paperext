@@ -1,5 +1,4 @@
-import copy
-
+import shutil
 import pytest
 
 from paperext.config import Config
@@ -19,10 +18,13 @@ def _clean_up(config: Config = _CFG):
         _file.unlink(missing_ok=True)
 
     # Clean up tmp files
-    for _file in _TMPDIR.glob(f"*/*"):
-        _file.unlink(missing_ok=True)
+    for _entry in _TMPDIR.glob(f"**/*"):
+        if _entry.is_dir():
+            shutil.rmtree(_entry)
+        else:
+            _entry.unlink(missing_ok=True)
 
-    # Clean up files
+    # Clean up new files
     for d in config.dir:
         for _file in config.dir[d].glob(f"new_*"):
             _file.unlink(missing_ok=True)
