@@ -1,11 +1,17 @@
 import argparse
+import hashlib
 import json
+import os
 import subprocess
+import tempfile
 import urllib.request
 from pathlib import Path
 
+import yaml
+
 from paperext import CFG
 from paperext.log import logger
+from paperext.utils import Paper
 
 PROG = f"{Path(__file__).stem.replace('_', '-')}"
 
@@ -46,16 +52,81 @@ Example:
 """
 
 
+def paperoni_download(paper_data: dict, cache_dir: Path):
+    paper = Paper(paper_data)
+
+    if paper.pdfs:
+        return paper.get_link_id_pdf(), ["EXISTING"]
+
+    for filename in [CFG.env.paperoni_config, os.environ["PAPERONI_CONFIG"]]:
+        config_filename = Path(filename).resolve()
+        config = yaml.safe_load(config_filename.read_text())
+        assert (
+            "fulltext" in config["paperoni"]["paths"]
+        ), "The paperoni configuration file internal structure seams to have changed or is invalid"
+        config["paperoni"]["paths"]["fulltext"] = str(cache_dir / "fulltext")
+        break
+
+    else:
+        raise FileNotFoundError(
+            "paperoni config not found. Cannot download using paperoni"
+        )
+
+    try:
+        # Use a temporary yaml config file with a modified fulltext path
+        with tempfile.NamedTemporaryFile(
+            "w+",
+            prefix=f"{config_filename.stem}_",
+            suffix=".yaml",
+            dir=str(config_filename.parent),
+        ) as _f:
+            yaml.dump(config, _f)
+
+            subprocess.run(
+                [
+                    "hatch",
+                    "run",
+                    "paperoni:paperoni",
+                    "download",
+                    "--config",
+                    _f.name,
+                    "--title",
+                    paper_data["title"],
+                ],
+                check=True,
+            )
+
+        paper = Paper(paper_data)
+
+        if not paper.pdfs:
+            raise FileNotFoundError(f"Could not find converted file")
+
+        link_types = ["_PAPERONI"]
+
+    except (FileNotFoundError, subprocess.CalledProcessError) as e:
+        logger.error(
+            f"Failed to download or convert using paperoni {paper_data['paper_id']}:{paper_data['title']}: {e}",
+            exc_info=True,
+        )
+        link_types = sorted(set([l["type"].split(".")[0] for l in paper_data["links"]]))
+
+    return paper.get_link_id_pdf(), link_types
+
+
 def convert_pdf(pdf, text, pdf_link):
     pdf.parent.mkdir(parents=True, exist_ok=True)
+
     if not pdf.exists():
         logger.info(f"Downloading from {pdf_link} to {pdf}")
+
         try:
             urllib.request.urlretrieve(pdf_link, str(pdf))
+
         except (urllib.error.HTTPError, ValueError) as e:
             logger.error(f"Failed to download {pdf_link}: {e}", exc_info=True)
             pdf.unlink(missing_ok=True)
             return None
+
     if not text.exists():
         # pdftotext comes from https://poppler.freedesktop.org/
         try:
@@ -66,15 +137,18 @@ def convert_pdf(pdf, text, pdf_link):
                 cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True
             )
             logger.info(p.stdout)
+
             if p.returncode:
                 raise subprocess.CalledProcessError(
                     p.returncode, cmd, p.stdout, p.stderr
                 )
+
         except subprocess.CalledProcessError as e:
             logger.error(f"Failed to convert {pdf} to {text}: {e}", exc_info=True)
             pdf.unlink(missing_ok=True)
             text.unlink(missing_ok=True)
             return None
+
     return text
 
 
@@ -83,40 +157,56 @@ def download_and_convert_paper(
 ):
     text = None
     link_types = []
+
     while links:
         l: dict = links.pop(0)
         link_type = l["type"].split(".")[0]
+
         for _if, pdf, pdf_link in (
+            # Favor arxiv links if available
+            # If the link is an arxiv link, the arxiv id is in the `link` field.
+            # The arxiv id can be used to build an url and download the pdf file.
             (
                 l["type"].lower().startswith("arxiv"),
                 cache_dir / f"arxiv/{l['link']}.pdf",
                 f"https://arxiv.org/pdf/{l['link']}",
             ),
+            # If `url` is available, use it to download the pdf. The `link`
+            # field should contain the id for the pdf file.
             (
                 "url" in l,
                 cache_dir / link_type / f"{l['link']}.pdf",
                 l.get("url", None),
             ),
+            # If none of the above worked, try to download the pdf from the `link`
             (True, cache_dir / link_type / f"{paper_id}.pdf", l["link"]),
         ):
             if not _if:
                 continue
+
             text = pdf.with_suffix(".txt")
             link_types.append(link_type)
+
             if text.exists():
                 logger.info(f"Found existing {text}")
                 links[:] = []
                 break
+
             if check_only:
                 continue
+
             if convert_pdf(pdf, text, pdf_link) is not None:
                 links[:] = []
                 break
+
             logger.warning("retrying...")
+
         else:
             text = None
+
     if text is not None:
         link_types = link_types[-1:]
+
     return text, sorted(set(link_types))
 
 
@@ -128,10 +218,24 @@ def main(argv=None):
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     parser.add_argument(
-        "input",
+        "--paperoni",
         metavar="JSON",
         type=Path,
         help="Paperoni json output of papers to download and convert pdfs -> txts",
+    )
+    parser.add_argument(
+        "--arxiv",
+        metavar="STR",
+        nargs="+",
+        default=tuple(),
+        help="List of arXiv ids use to download and convert pdfs -> txts",
+    )
+    parser.add_argument(
+        "--url",
+        metavar="STR",
+        nargs="+",
+        default=tuple(),
+        help="List of urls to download and convert pdfs -> txts",
     )
     parser.add_argument(
         "--cache-dir",
@@ -142,51 +246,57 @@ def main(argv=None):
     )
     options = parser.parse_args(argv)
 
-    paperoni = json.loads(options.input.read_text())
-
     options.cache_dir.mkdir(parents=True, exist_ok=True)
 
     completed = []
     failed = []
-    for p in paperoni:
-        text = None
-        links = [l for l in p["links"] if l["type"].lower().startswith("arxiv")]
-        links.extend(
-            [
-                l
-                for l in p["links"]
-                if "pdf" in l["type"].lower().split(".")
-                and l["type"].lower().startswith("openreview")
-            ]
+
+    for paper in json.loads(options.paperoni.read_text() if options.paperoni else "{}"):
+        text_file, link_types = paperoni_download(paper, options.cache_dir)
+
+        if text_file:
+            completed.append((paper["paper_id"], text_file, link_types))
+        else:
+            failed.append((paper["paper_id"], text_file, link_types))
+
+    urls = [
+        (
+            f"https://arxiv.org/pdf/{arxiv_id}",
+            options.cache_dir / f"arxiv/{arxiv_id}.pdf",
+            "arxiv",
         )
-        links.extend([l for l in p["links"] if "pdf" in l["type"].lower().split(".")])
-        links.extend([l for l in p["links"] if "pdf" in l["link"].lower()])
-        if not links:
-            logger.warning(
-                "\n".join(
-                    [
-                        f"Could not find any pdf links for paper {p['title']} in",
-                        *[str(l) for l in p["links"]],
-                    ]
+        for arxiv_id in options.arxiv
+    ]
+
+    for url, pdf_file, link_type in urls + [
+        (url, None, "rawurl") for url in options.url
+    ]:
+        match link_type:
+            case "arxiv":
+                pass
+            case "rawurl":
+                domain = (
+                    # Remove scheme ending with "//"
+                    "//".join(url.split("//")[-1:])
+                    # Keep only the host
+                    .split("/")[0]
                 )
-            )
-        else:
-            logger.info(f'Downloading and converting {p["title"]}')
+                hash_object = hashlib.sha256()
+                hash_object.update(url.encode())
+                pdf_file = (
+                    options.cache_dir
+                    / f"{link_type}_{domain}/{hash_object.hexdigest()}.pdf"
+                )
 
-        for check_only in (True, False):
-            text, link_types = download_and_convert_paper(
-                p["paper_id"], links[:], options.cache_dir, check_only=check_only
-            )
-            if text is not None:
-                completed.append((p["paper_id"], text, link_types))
-                break
-        else:
-            failed.append((p["paper_id"], text, link_types))
-            logger.error(
-                f'Failed to download or convert {p["paper_id"]}:{p["title"]} with links {link_types}'
-            )
+        text_file = convert_pdf(pdf_file, pdf_file.with_suffix(".txt"), url)
 
-    print(*sorted(str(text) for _, text, _ in completed), sep="\n")
+        if text_file is not None:
+            completed.append((url, text_file, [link_type]))
+
+        else:
+            failed.append((url, text_file, [link_type]))
+
+    print(*sorted(str(text_file) for _, text_file, _ in completed), sep="\n")
 
     logger.info(
         f"Successfully downloaded and converted {len(completed)} out of "

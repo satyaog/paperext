@@ -281,9 +281,8 @@ def main(argv=None):
     CFG.platform.select = options.platform
 
     if options.paperoni:
-        papers = [
-            Paper(p).get_link_id_pdf() for p in json.loads(options.paperoni.read_text())
-        ]
+        papers = [Paper(p) for p in json.loads(options.paperoni.read_text())]
+        papers = [p.get_link_id_pdf() for p in papers]
         papers = [p for p in papers if p is not None]
     elif options.input:
         papers = [
@@ -298,10 +297,10 @@ def main(argv=None):
         for p in papers:
             logger.info(p)
 
-    if not all(map(lambda p: p.exists(), papers)):
+    if not all([p.exists() for p in papers]):
         papers = [Path(CFG.dir.cache / f"arxiv/{paper}.txt") for paper in papers]
 
-    assert all(map(lambda p: p.exists(), papers))
+    assert all([p.exists() for p in papers])
 
     client = PLATFORMS[CFG.platform.select]()
 
