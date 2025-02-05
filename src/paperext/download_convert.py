@@ -5,6 +5,7 @@ import os
 import subprocess
 import tempfile
 import urllib.request
+from multiprocessing.pool import ThreadPool
 from pathlib import Path
 
 import yaml
@@ -23,7 +24,7 @@ stdout will contain the list of files successfully converted separated by '\\n'.
 
 EPILOG = f"""
 Example:
-  $ {PROG} paperoni-2024-07-04.json
+  $ PAPEREXT_LOGGING_LEVEL=INFO {PROG} --paperoni paperoni-2024-07-04.json
     [DEBUG]
     data/cache/arxiv/1901.07186.txt
     data/cache/arxiv/1906.05433.txt
@@ -42,7 +43,7 @@ Example:
     html:3/3
     openreview:52/52
     pdf:77/145
-  $ {PROG} paperoni-2024-07-04.json > data/query_set.txt
+  $ PAPEREXT_LOGGING_LEVEL=INFO {PROG} --paperoni paperoni-2024-07-04.json > data/query_set.txt
     [DEBUG]
     Successfully downloaded and converted 587 out of 867 papers
     arxiv:455/455

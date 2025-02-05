@@ -66,7 +66,7 @@ options:
   --cache-dir DIR  Directory to store downloaded and converted pdfs -> txts
 
 Example:
-  $ download-convert paperoni-2024-07-04.json
+  $ PAPEREXT_LOGGING_LEVEL=INFO download-convert --paperoni paperoni-2024-07-04.json
     [DEBUG]
     data/cache/arxiv/1901.07186.txt
     data/cache/arxiv/1906.05433.txt
@@ -85,7 +85,7 @@ Example:
     html:3/3
     openreview:52/52
     pdf:77/145
-  $ download-convert paperoni-2024-07-04.json > data/query_set.txt
+  $ PAPEREXT_LOGGING_LEVEL=INFO download-convert --paperoni paperoni-2024-07-04.json > data/query_set.txt
     [DEBUG]
     Successfully downloaded and converted 587 out of 867 papers
     arxiv:455/455
