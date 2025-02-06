@@ -91,7 +91,7 @@ for p in json.loads(options.paperoni.read_text()):
             )
         )
 
-print("email", "index", "title", "urls", sep=",")
+print("email", "name", "index", "title", "urls", sep=",")
 for (email, name), papers in sorted(data.items()):
     for index, (title, urls) in enumerate(sorted(papers[:20])):
         title = title.strip()
