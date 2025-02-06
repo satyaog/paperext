@@ -1,10 +1,10 @@
 import argparse
 import json
 from pathlib import Path
-from paperext.log import logger
-import paperext.structured_output.mdl.model as structured_output
-from paperext.utils import Paper
 
+import paperext.structured_output.mdl.model as structured_output
+from paperext.log import logger
+from paperext.utils import Paper
 
 parser = argparse.ArgumentParser()
 parser.add_argument(

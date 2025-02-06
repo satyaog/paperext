@@ -3,6 +3,7 @@ import tempfile
 from pathlib import Path
 
 import paperext.utils
+from paperext.config import Config
 from paperext.utils import (
     Paper,
     build_validation_set,
@@ -10,7 +11,6 @@ from paperext.utils import (
     str_eq,
     str_normalize,
 )
-from paperext.config import Config
 
 
 def test_paper(cfg: Config):
