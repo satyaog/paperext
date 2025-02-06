@@ -1,0 +1,276 @@
+{
+  "paper": "wyU3Q4gahM.txt",
+  "words": 8575,
+  "extractions": {
+    "title": {
+      "value": "Unsupervised Discovery of Steerable Factors When Graph Deep Generative Models Are Entangled",
+      "justification": "The title is given at the beginning of the paper and summarizes the main focus of the research, which is discovering steerable factors in entangled graph deep generative models.",
+      "quote": "Unsupervised Discovery of Steerable Factors When Graph Deep Generative Models Are Entangled"
+    },
+    "description": "The paper investigates the latent space of pretrained graph deep generative models and presents GraphCG, a method for unsupervised discovery of steerable factors in such models. It provides a framework for graph controllable generation and evaluates its performance on molecular and point cloud datasets.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper conducts empirical studies to evaluate the disentanglement of latent spaces in graph DGMs, proposes a method (GraphCG), and verifies its effectiveness through experiments.",
+      "quote": "We conduct an empirical study on the disentanglement property of three pretrained graph DGMs using six metrics, and we observe that the latent space of these pretrained graph DGMs is entangled."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Graph Deep Generative Models",
+        "justification": "The paper focuses on deep generative models specifically for graph data, addressing the entangled latent representations and proposing a new method for this domain.",
+        "quote": "Deep generative models (DGMs) have been widely developed for graph data."
+      },
+      "aliases": [
+        "Graph DGMs"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Molecular Graphs",
+          "justification": "The paper explores the application of its proposed method on molecular graphs, which are treated as one type of graph data.",
+          "quote": "Concretely, the graph controllable generation task refers to modifying the steerable factors of the graph so as to obtain graphs with desired properties easily [...] A typical example is molecule editing."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Point Clouds",
+          "justification": "The paper also considers point clouds as graph data and evaluates the method's effectiveness on this type of data.",
+          "quote": "Processing point clouds as graphs is also a popular strategy, where points are viewed as nodes and edges are built among the nearest neighbors."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "GraphCG",
+          "justification": "GraphCG is the main model proposed in the paper for discovering steerable factors in the latent space of graph DGMs.",
+          "quote": "We propose GraphCG, a method for the unsupervised discovery of steerable factors in the latent space of pretrained graph DGMs."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "GraphCG is introduced in the paper as a new method for unsupervised graph controllable generation.",
+          "quote": "We propose GraphCG, a method for the unsupervised discovery of steerable factors."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper describes the execution of GraphCG during both the learning and inference phases with specific tasks and evaluations.",
+          "quote": "During the learning phase (Figure 1(a)), GraphCG starts with the assumption that the steerable factors can be learned [...] during the inference phase, with the learned semantic directions, we can carry out the editing task."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The effectiveness of GraphCG is compared against four competitive baselines across various datasets.",
+          "quote": "We quantitatively verify that GraphCG outperforms four competitive baselines when evaluated on two pretrained graph DGMs over two molecule datasets."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "GraphCG is introduced in this paper, and no external reference paper is cited as its origin.",
+          "quote": "We propose GraphCG, a method for the unsupervised discovery of steerable factors."
+        }
+      },
+      {
+        "name": {
+          "value": "MoFlow",
+          "justification": "MoFlow is one of the pretrained graph DGMs evaluated in the paper.",
+          "quote": "MoFlow is a flow-based generative model on molecules that adopts an invertible mapping between the input molecular graphs and a latent prior."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "MoFlow is used as a part of evaluating GraphCG and is not a new contribution of this paper.",
+          "quote": "We consider two state-of-the-art DGMs for molecular graph generation. MoFlow [...]"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The MoFlow model is used for generating molecular graph sequences during the evaluation of GraphCG.",
+          "quote": "We consider two state-of-the-art DGMs for molecular graph generation. MoFlow [...] on ZINC250K"
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "MoFlow's latent space disentanglement is measured and compared to other models as part of GraphCG's evaluation.",
+          "quote": "We conduct an empirical study on the disentanglement property of three pretrained graph DGMs using six metrics."
+        },
+        "referenced_paper_title": {
+          "value": "MoFlow: an invertible flow model for generating molecular graphs",
+          "justification": "The paper specifically evaluates MoFlow, and this model's origin is cited in the references section.",
+          "quote": "MoFlow (Zang & Wang, 2020) is a flow-based generative model on molecules."
+        }
+      },
+      {
+        "name": {
+          "value": "HierVAE",
+          "justification": "HierVAE is another pretrained graph DGM used for qualitative evaluation in the paper.",
+          "quote": "HierVAE is a hierarchical VAE model that encodes and decodes molecule atoms and motifs in a hierarchical manner."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "HierVAE is utilized in the evaluation of GraphCG but is not introduced as a new model in this work.",
+          "quote": "HierVAE is a hierarchical VAE model that encodes and decodes molecule atoms and motifs in a hierarchical manner."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The HierVAE model is used in experiments to demonstrate the effectiveness of GraphCG.",
+          "quote": "Besides, the pretrained checkpoints are also provided, on ZINC250K and ChEMBL, respectively."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The disentanglement property of HierVAE is analyzed as part of the comparison with GraphCG results.",
+          "quote": "The effectiveness of GraphCG is compared against [...] HierVAE on ZINC250k."
+        },
+        "referenced_paper_title": {
+          "value": "Hierarchical generation of molecular graphs using structural motifs",
+          "justification": "The paper provides references to the HierVAE model and its originating publication.",
+          "quote": "HierVAE (Jin et al., 2020a) is a hierarchical VAE model."
+        }
+      },
+      {
+        "name": {
+          "value": "PointFlow",
+          "justification": "PointFlow is another pretrained graph DGM used in the evaluation of GraphCG on point cloud data.",
+          "quote": "PointFlow is using the normalizing flow model for estimating the 3D point cloud distribution."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "PointFlow is utilized for evaluation purposes in the study, not as a new contribution.",
+          "quote": "We consider one of the latest DGMs on point clouds, PointFlow (Yang et al., 2019a)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "PointFlow is executed in experiments to demonstrate the editing capabilities of GraphCG on point clouds.",
+          "quote": "We consider PointFlow pretrained on three datasets in ShapeNet: Airplane, Car, and Chair."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "PointFlow's disentanglement is analyzed as part of the evaluation of GraphCG.",
+          "quote": "We conduct the following experiment [...] on three pretrained DGMs and two graph types."
+        },
+        "referenced_paper_title": {
+          "value": "PointFlow: 3D point cloud generation with continuous normalizing flows",
+          "justification": "The paper references the original PointFlow model for context and evaluation basis.",
+          "quote": "PointFlow (Yang et al., 2019a) is using the normalizing flow model."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "ZINC250K",
+          "justification": "ZINC250K is mentioned as one of the molecular datasets used in the evaluation of graph DGMs including MoFlow.",
+          "quote": "Besides, the pretrained checkpoints are also provided, on ZINC250K..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ZINC: a free database of commercially available compounds for virtual screening",
+          "justification": "The ZINC250K dataset, utilized in the evaluation part of the study, is traced to its origin referenced in the paper.",
+          "quote": "ZINC250K (Irwin & Shoichet, 2005)"
+        }
+      },
+      {
+        "name": {
+          "value": "ChEMBL",
+          "justification": "ChEMBL is used as another molecular dataset for evaluating GPAs including HierVAE.",
+          "quote": "pretrained checkpoints are also provided, on ZINC250K and ChEMBL, respectively."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ChEMBL: Towards direct deposition of bioassay data",
+          "justification": "The paper uses the ChEMBL dataset and provides a citation for it in the reference section.",
+          "quote": "HierVAE pretrained on ChEMBL (Mendez et al., 2019)"
+        }
+      },
+      {
+        "name": {
+          "value": "Airplane (from ShapeNet)",
+          "justification": "The Airplane dataset is used for evaluating point cloud graph DGMs like PointFlow.",
+          "quote": "We consider PointFlow pretrained on three datasets in ShapeNet (Chang et al., 2015): Airplane, Car, and Chair."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ShapeNet: An Information-Rich 3D Model Repository",
+          "justification": "The paper references datasets from ShapeNet, including the Airplane dataset for evaluation purposes.",
+          "quote": "We consider PointFlow pretrained on three datasets in ShapeNet (Chang et al., 2015)."
+        }
+      },
+      {
+        "name": {
+          "value": "Car (from ShapeNet)",
+          "justification": "The Car dataset from ShapeNet is mentioned as part of the evaluation datasets for PointFlow.",
+          "quote": "We consider PointFlow pretrained on three datasets in ShapeNet (Chang et al., 2015): Airplane, Car, and Chair."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ShapeNet: An Information-Rich 3D Model Repository",
+          "justification": "The paper uses the Car dataset from ShapeNet and references the ShapeNet repository for context.",
+          "quote": "We consider PointFlow pretrained on three datasets in ShapeNet (Chang et al., 2015)."
+        }
+      },
+      {
+        "name": {
+          "value": "Chair (from ShapeNet)",
+          "justification": "The Chair dataset is used to evaluate PointFlow's performance on point clouds.",
+          "quote": "We consider PointFlow pretrained on three datasets in ShapeNet (Chang et al., 2015): Airplane, Car, and Chair."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ShapeNet: An Information-Rich 3D Model Repository",
+          "justification": "The Chair dataset is part of the referenced ShapeNet repository used for evaluating DGMs in the paper.",
+          "quote": "We consider PointFlow pretrained on three datasets in ShapeNet (Chang et al., 2015)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "RDKit",
+          "justification": "RDKit is mentioned as a tool used for extracting substructures from molecular graphs for analysis.",
+          "quote": "We use RDKit (Landrum et al., 2013) to extract the 11 most distinguishable fragments as steerable factors for disentanglement measurement."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "RDKit: Open-source cheminformatics",
+          "justification": "The paper mentions the use of RDKit and references its source in the library's context.",
+          "quote": "We use RDKit (Landrum et al., 2013)"
+        }
+      },
+      {
+        "name": {
+          "value": "PCL",
+          "justification": "PCL is cited as a tool employed to extract descriptors from point clouds for evaluating DGMs.",
+          "quote": "For point clouds, we use PCL tool (Rusu & Cousins, 2011) to extract 75 VFH descriptors as steerable factors."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "3D is here: Point Cloud Library (PCL)",
+          "justification": "The use of PCL is documented and its original source is referenced in the paper.",
+          "quote": "For point clouds, we use PCL tool (Rusu & Cousins, 2011)"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2540,
+    "prompt_tokens": 15338,
+    "total_tokens": 17878,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

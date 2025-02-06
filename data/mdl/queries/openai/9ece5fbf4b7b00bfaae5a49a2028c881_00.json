@@ -1,0 +1,268 @@
+{
+  "paper": "9ece5fbf4b7b00bfaae5a49a2028c881.txt",
+  "words": 10627,
+  "extractions": {
+    "title": {
+      "value": "Graph Knowledge Distillation to Mixture of Experts",
+      "justification": "The title is found at the top of the paper, and it summarizes the main focus of the research which is knowledge distillation from Graph Neural Networks to a Mixture of Experts model.",
+      "quote": "Graph Knowledge Distillation to Mixture of Experts"
+    },
+    "description": "This paper addresses the performance issues of distilling knowledge from Graph Neural Networks (GNNs) to Multi-Layer Perceptrons (MLPs) and proposes a novel student model called Routing-by-Memory (RbM), a form of Mixture-of-Experts (MoE) with enforced expert specialization, to achieve more consistent performance across multiple datasets. The paper includes detailed methodology, experiments, and comparisons with existing techniques.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves experimental results on multiple datasets, comparisons with baselines, and practical applications of the proposed model.",
+      "quote": "To evaluate our model, we explore both transductive and inductive settings for 9 publicly available datasets."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Graph Neural Networks",
+        "justification": "The study is primarily concerned with knowledge distillation techniques for Graph Neural Networks (GNNs).",
+        "quote": "In terms of accuracy, Graph Neural Networks (GNNs) are the best architectural choice for the node classification task."
+      },
+      "aliases": [
+        "GNNs"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Knowledge Distillation",
+          "justification": "The paper discusses knowledge distillation techniques extensively, as it is the process being improved from GNN to MLP or MoE.",
+          "quote": "Knowledge distillation from a Graph Neural Network (GNN) into a Multi-Layer Perceptron (MLP) promotes inference efficiency."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Mixture of Experts",
+          "justification": "The proposed model is related to Mixture-of-Experts (MoE) architecture, which is a key component of the study.",
+          "quote": "Our model, named Routing-by-Memory (RbM), is a form of Mixture-of-Experts (MoE), with a design that enforces expert specialization."
+        },
+        "aliases": [
+          "MoE"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Routing-by-Memory (RbM)",
+          "justification": "The RbM model is introduced as a contribution of the paper and is central to the proposed method for knowledge distillation.",
+          "quote": "We propose a Routing-by-Memory (RbM) model that differs from, and outperforms, a standard sparse MoE."
+        },
+        "aliases": [
+          "RbM"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The model is proposed in the paper as a novel approach for GNN-to-MLP distillation.",
+          "quote": "Ours is the first work to propose the use of a student Mixture-of-Experts (MoE) model for the distillation of a GNN."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The experiments conducted in the paper indicate that the RbM model was implemented and executed.",
+          "quote": "We conduct a series of experiments showing that our approach can be efficiently and effectively applied to datasets of various sizes."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The RbM model is compared numerically against other models like MLPs and standard MoE in the experiments.",
+          "quote": "We conduct multiple novel experiments, demonstrating that the proposed approach consistently outperforms both (i) enlarged MLP students; and (ii) ensembles or sparse MoEs."
+        },
+        "referenced_paper_title": {
+          "value": "Neural Routing by Memory",
+          "justification": "The Routing-by-Memory approach adapts techniques from 'Neural Routing by Memory' by Zhang et al. (2021a).",
+          "quote": "We introduce important adaptations to a routing system previously proposed by Zhang et al. (2021a) for routing to a single expert in a computer vision setting."
+        }
+      },
+      {
+        "name": {
+          "value": "Graph Convolutional Networks (GCN)",
+          "justification": "GCN is mentioned as a baseline and teacher model used for comparisons in experiments.",
+          "quote": "We investigate whether our model is compatible with an alternative teacher GNN and demonstrates the same advantages over the baselines. Table 8 provides additional results for experiments in a transductive setting with GCN."
+        },
+        "aliases": [
+          "GCN"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The model is used as a baseline for comparison, not as a novel contribution of the paper.",
+          "quote": "GCN (Kipf & Welling, 2016)"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "GCN is executed in experiments to compare its performance with the proposed RbM model.",
+          "quote": "We investigate whether our model is compatible with an alternative teacher GNN and demonstrates the same advantages over the baselines."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "GCN is used as a baseline for numerical comparison against the RbM model.",
+          "quote": "We use GCN as the teacher model to provide additional results for experiments in a transductive setting."
+        },
+        "referenced_paper_title": {
+          "value": "Semi-Supervised Classification with Graph Convolutional Networks",
+          "justification": "The GCN model is referenced with Kipf & Welling (2016) which is the seminal paper for this model.",
+          "quote": "GCN (Kipf & Welling, 2016)"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Cora",
+          "justification": "Cora is used as one of the datasets to evaluate the model in experiments.",
+          "quote": "We evaluate our model on nine real-world datasets: Cora"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Collective Classification in Network Data",
+          "justification": "The dataset is listed with the reference to Sen et al. (2008).",
+          "quote": "Cora (Sen et al., 2008)"
+        }
+      },
+      {
+        "name": {
+          "value": "Citeseer",
+          "justification": "Citeseer is used as one of the datasets to evaluate the model in experiments.",
+          "quote": "We evaluate our model on nine real-world datasets: Citeseer"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "CiteSeer: An Automatic Citation Indexing System",
+          "justification": "The dataset is listed with the reference to Giles et al. (1998).",
+          "quote": "Citeseer (Giles et al., 1998)"
+        }
+      },
+      {
+        "name": {
+          "value": "Pubmed",
+          "justification": "Pubmed is used as one of the datasets to evaluate the model in experiments.",
+          "quote": "We evaluate our model on nine real-world datasets: Pubmed"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Automating the Construction of Internet Portals with Machine Learning",
+          "justification": "The dataset is listed with the reference to McCallum et al. (2000).",
+          "quote": "Pubmed (McCallum et al., 2000)"
+        }
+      },
+      {
+        "name": {
+          "value": "Amazon-Photo",
+          "justification": "Amazon-Photo is used as one of the datasets to evaluate the model in experiments.",
+          "quote": "We evaluate our model on nine real-world datasets: Amazon-Photo"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Pitfalls of Graph Neural Network Evaluation",
+          "justification": "The dataset is listed with the reference to Shchur et al. (2018).",
+          "quote": "Amazon-Photo (Shchur et al., 2018)"
+        }
+      },
+      {
+        "name": {
+          "value": "Amazon-Computers",
+          "justification": "Amazon-Computers is used as one of the datasets to evaluate the model in experiments.",
+          "quote": "We evaluate our model on nine real-world datasets: Amazon-Computers"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Pitfalls of Graph Neural Network Evaluation",
+          "justification": "The dataset is listed with the reference to Shchur et al. (2018).",
+          "quote": "Amazon-Computers (Shchur et al., 2018)"
+        }
+      },
+      {
+        "name": {
+          "value": "Academic-CS",
+          "justification": "Academic-CS is used as one of the datasets to evaluate the model in experiments.",
+          "quote": "We evaluate our model on nine real-world datasets: Academic-CS"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Pitfalls of Graph Neural Network Evaluation",
+          "justification": "The dataset is listed with the reference to Shchur et al. (2018).",
+          "quote": "Academic-CS (Shchur et al., 2018)"
+        }
+      },
+      {
+        "name": {
+          "value": "Academic-Physics",
+          "justification": "Academic-Physics is used as one of the datasets to evaluate the model in experiments.",
+          "quote": "We evaluate our model on nine real-world datasets: Academic-Physics"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Pitfalls of Graph Neural Network Evaluation",
+          "justification": "The dataset is listed with the reference to Shchur et al. (2018).",
+          "quote": "Academic-Physics (Shchur et al., 2018)"
+        }
+      },
+      {
+        "name": {
+          "value": "OGB-ArXive",
+          "justification": "OGB-ArXive is used as one of the datasets to evaluate the model in experiments.",
+          "quote": "For the OGB-ArXive and OGB-Products we use the public data splits provided by Hu et al. (2020)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Open Graph Benchmark: Datasets for Machine Learning on Graphs",
+          "justification": "The dataset is listed with the reference to Hu et al. (2020).",
+          "quote": "OGB-ArXive (Hu et al., 2020)."
+        }
+      },
+      {
+        "name": {
+          "value": "OGB-Products",
+          "justification": "OGB-Products is used as one of the datasets to evaluate the model in experiments.",
+          "quote": "For the OGB-ArXive and OGB-Products we use the public data splits provided by Hu et al. (2020)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Open Graph Benchmark: Datasets for Machine Learning on Graphs",
+          "justification": "The dataset is listed with the reference to Hu et al. (2020).",
+          "quote": "OGB-Products (Hu et al., 2020)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Adam",
+          "justification": "The Adam optimizer is used as part of the training process for the models.",
+          "quote": "We used Ray Tune (Liaw et al., 2018) to tune model hyperparameters. Specifically, we used the Optuna search algorithm (Akiba et al., 2019). We sampled 200 hyperparameter configurations for the small and medium datasets and 80 for the large datasets. We tuned the following model structure hyperparameters: (i) dropout rate was selected from [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6] and applied to all dropout layers in the model; (ii) total number of experts was selected from [4, 5, 6, 7, 8]. In addition to the structure hyperparameters, we selected the following training hyperparameters: (i) learning rate for the Adam optimizer (Kingma & Ba, 2014) was chosen from [0.01, 0.005, 0.001]; (ii) weight α of the commitment loss (6) from the range [0.0, 0.1]; (iii) weight β of the load-balancing loss (8) and weight γ of the self-similarity loss (7) both from the range [0.0, 0.05]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Adam: A Method for Stochastic Optimization",
+          "justification": "The paper references Kingma & Ba (2014) describing the Adam optimization algorithm.",
+          "quote": "Adam optimizer (Kingma & Ba, 2014)"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2470,
+    "prompt_tokens": 21002,
+    "total_tokens": 23472,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,189 @@
+{
+  "paper": "d938ec977662ca08e840eb4b729b1231.txt",
+  "words": 12330,
+  "extractions": {
+    "title": {
+      "value": "Combining supervised learning and local search for the multicommodity capacitated fixed-charge network design problem",
+      "justification": "The title mentions the main focus on combining supervised learning and local search strategies for a specific network design problem.",
+      "quote": "Combining supervised learning and local search for the multicommodity capacitated fixed-charge network design problem"
+    },
+    "description": "This paper investigates the integration of machine learning models into heuristic algorithms for solving the multicommodity capacitated fixed-charge network design problem (MCFND). It specifically uses supervised learning to predict near-optimal solutions and integrates these predictions into local search algorithms, comparing them with state-of-the-art heuristics. The paper also discusses feature engineering, dataset generation, and algorithm design for combining machine learning with combinatorial optimization.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper is centered on empirical evaluations, comparing various integration strategies of predictions within local search algorithms and benchmarking the ML-based approach against the state-of-the-art heuristic.",
+      "quote": "Our experimental results include an algorithm design analysis that compares various integration strategies of predictions within local search algorithms."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Optimization",
+        "justification": "The paper deals with designing solutions for an optimization problem, specifically in network design, using machine learning and local search algorithms.",
+        "quote": "explore how a data-driven approach can help improve upon the state of the art. By leveraging machine learning models, we attempt to reveal patterns hidden in the data..."
+      },
+      "aliases": [
+        "Combinatorial Optimization"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Machine Learning",
+          "justification": "The research heavily uses machine learning strategies, particularly supervised learning, to improve optimization heuristics.",
+          "quote": "Our method feeds a prediction from a machine learning (ML) model to a Local Search (LS) algorithm."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Network Design",
+          "justification": "The paper focuses specifically on a network design problem, indicating it as a primary aspect of the study.",
+          "quote": "The multicommodity capacitated fixed-charge network design problem (MCFND) is an influential problem..."
+        },
+        "aliases": [
+          "MCFND"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Gradient Boosted Machines (GBM)",
+          "justification": "The paper discusses using GBM to improve performance across a wide range of tasks and explicitly mentions employing LightGBM, a variant, in experiments.",
+          "quote": "Given the tabular nature of our dataset that relates to the structure of the MCFND, we chose to focus on GBMs as our primary ML model."
+        },
+        "aliases": [
+          "GBM",
+          "LightGBM"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The model is not newly introduced in this work but is used as an existing method foundational to the experiments.",
+          "quote": "Building upon this foundation, the development of XGBoost [9] and, more recently, Light GBM (LGBM) [35] marked a significant advancement in the field."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper describes experiments involving running the model to generate predictors for the network design problem.",
+          "quote": "we chose to focus on GBMs as our primary ML model... In particular, we use LGBM, a widely recognized and accessible library."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of GBM is compared against other ML models like GNNs in the context of solution prediction accuracy.",
+          "quote": "They also compare the precision of their GNN model with XGBoost and show that they have similar performance."
+        },
+        "referenced_paper_title": {
+          "value": "XGBoost: A Scalable Tree Boosting System",
+          "justification": "This reference indicates prior seminal work related to GBMs that supports the technical background for using LightGBM in the paper.",
+          "quote": "Building upon this foundation, the development of XGBoost [9] and, more recently, Light GBM (LGBM) [35] marked a significant advancement in the field."
+        }
+      },
+      {
+        "name": {
+          "value": "Linear Binary Classifiers",
+          "justification": "The paper highlights the use of a basic linear binary classifier model as part of their ML strategy.",
+          "quote": "Linear binary classifiers are widely appreciated for their simplicity, and efficiency in handling linearly separable datasets."
+        },
+        "aliases": [
+          "Linear Classifiers"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Linear binary classifiers are standard models not introduced by this work but are utilized in its experiments.",
+          "quote": "Linear binary classifiers are widely appreciated for their simplicity..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper executes these classifiers within experiments to provide baseline results and comparisons.",
+          "quote": "We cover here the linear binary and gradient boosting models that are used in our experiments."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of linear classifiers is compared against gradient boosting models such as GBM in terms of predictive power.",
+          "quote": "The model’s performance is constrained by the fact that it can only represent linear relationships. It limits its ability to capture complex patterns in the data."
+        },
+        "referenced_paper_title": {
+          "value": "Greedy Function Approximation: A Gradient Boosting Machine",
+          "justification": "This classic reference paper supports the conceptual foundation of apply gradient boosting techniques for model comparison.",
+          "quote": "The foundational work for GBM [18] introduced the concept of boosting and demonstrated its efficacy in minimizing various loss functions."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "GT Dataset",
+          "justification": "The GT dataset is used for benchmarking the algorithms developed in the paper.",
+          "quote": "Our test set includes the GT dataset [29] and large instances produced by the Canad generator [40]."
+        },
+        "aliases": [
+          "GT instances"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Combining Exact and Heuristic Approaches for the Capacitated Fixed-Charge Network Flow Problem",
+          "justification": "The paper mock-references this prior work to support the validity and design of the GT dataset, emphasizing its relevance to their study.",
+          "quote": "Our test set includes the GT dataset [29] and large instances produced by the Canad generator [40]."
+        }
+      },
+      {
+        "name": {
+          "value": "Canad Dataset",
+          "justification": "This dataset is a reference point in the paper used to compare heuristic performances.",
+          "quote": "Our test set includes the GT dataset [29] and large instances produced by the Canad generator [40]."
+        },
+        "aliases": [
+          "Canad instances"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Pseudo-random Instance Generators in C++ for Deterministic and Stochastic Multi-commodity Network Design Problems",
+          "justification": "This is the foundational work for the Canad generator referenced alongside its use.",
+          "quote": "Our test set includes the GT dataset [29] and large instances produced by the Canad generator [40]."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Gurobi Optimizer",
+          "justification": "Gurobi is mentioned as an optimization solver used in the experiments.",
+          "quote": "Our software stack is written in Julia and we use the JuMP package [43] to interface with the Gurobi Optimizer version 10.1 [23]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Gurobi Optimizer Reference Manual",
+          "justification": "This reference indicates the official documentation of Gurobi Optimizer used in the experiments.",
+          "quote": "Gurobi Optimizer Reference Manual."
+        }
+      },
+      {
+        "name": {
+          "value": "JuMP",
+          "justification": "JuMP is cited as the interface used for mathematical modeling in the experiments.",
+          "quote": "Our software stack is written in Julia and we use the JuMP package [43] to interface with the Gurobi Optimizer."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "JuMP 1.0: recent improvements to a modeling language for mathematical optimization",
+          "justification": "This reference provides a background understanding of the JuMP package that was significant enough to be cited in the work.",
+          "quote": "JuMP 1.0: recent improvements to a modeling language for mathematical optimization, Mathematical Programming Computation."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1626,
+    "prompt_tokens": 21503,
+    "total_tokens": 23129,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

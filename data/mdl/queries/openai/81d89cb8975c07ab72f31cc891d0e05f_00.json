@@ -1,0 +1,184 @@
+{
+  "paper": "81d89cb8975c07ab72f31cc891d0e05f.txt",
+  "words": 21848,
+  "extractions": {
+    "title": {
+      "value": "AugmenToxic: Leveraging Reinforcement Learning to Optimize LLM Instruction Fine-Tuning for Data Augmentation to Enhance Toxicity Detection",
+      "justification": "The title encapsulates the primary focus and methodology of the paper, which involves using reinforcement learning to enhance large language models for toxicity detection.",
+      "quote": "AugmenToxic: Leveraging Reinforcement Learning to Optimize LLM Instruction Fine-Tuning for Data Augmentation to Enhance Toxicity Detection"
+    },
+    "description": "This research introduces a novel approach to address imbalanced toxic datasets by leveraging reinforcement learning to fine-tune large language models (LLMs) for data augmentation. The method involves using instruction fine-tuning and the Proximal Policy Optimization (PPO) algorithm to optimize LLMs, aiming to generate balanced datasets and improve toxicity detection models. The Google Perspective API is utilized as a toxicity evaluator to guide the model. The study demonstrates that the proposed method outperforms existing techniques in generating toxic samples and enhances classifier performance.",
+    "type": {
+      "value": "empirical",
+      "justification": "The study involves experimentation with datasets and models, particularly focusing on measuring the improvement in generating toxic samples using the proposed method.",
+      "quote": "The findings highlight the superior performance of classifiers trained on data generated using our proposed method."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The research heavily focuses on text data augmentation and language model fine-tuning, which are key areas within NLP.",
+        "quote": "Computing methodologies → Natural language generation; Neural networks; Sequential decision making; Neural networks; Natural language processing"
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Text Data Augmentation",
+          "justification": "The paper specifically tackles the augmentation of text data to balance toxic datasets, which is a sub-field within NLP.",
+          "quote": "A novel method for enhancing toxic text data through Instruction Fine-tuning on the pretrained FLAN-T5 model, precisely crafted for paraphrasing with semantic equivalence using PAWS."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Toxic Language Detection",
+          "justification": "The primary application of the study is enhancing models for better detection of toxic language.",
+          "quote": "The primary goal of our methodology is to create a balanced and diverse dataset to enhance the accuracy and performance of classifiers in identifying instances from the minority class."
+        },
+        "aliases": [
+          "Toxicity Detection"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "FLAN-T5",
+          "justification": "FLAN-T5 is used in the study for fine-tuning and generating paraphrases to augment toxic text data.",
+          "quote": "Starting with an initial 16,225 toxic prompts, our method successfully generated 122,951 toxic samples with a toxicity score exceeding 30%."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "FLAN-T5 is utilized in the research but not a novel contribution from this paper.",
+          "quote": "Starting with an initial 16,225 toxic prompts, our method successfully generated 122,951 toxic samples with a toxicity score exceeding 30%."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "FLAN-T5 was actively used for generating paraphrases as part of the experiments.",
+          "quote": "A novel method for enhancing toxic text data through Instruction Fine-tuning on the pretrained FLAN-T5 model."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of FLAN-T5 is compared with other models in generating toxic samples.",
+          "quote": "Outperforming other data augmentation techniques, such as zero-shot learning, back-translation, and instruction-tuned LLMs, which lack RLHF optimization."
+        },
+        "referenced_paper_title": {
+          "value": "Scaling Instruction-Finetuned Language Models",
+          "justification": "The referenced work provides the basis for using instruction fine-tuning with FLAN-T5.",
+          "quote": "Scaling Instruction-Finetuned Language Models."
+        }
+      },
+      {
+        "name": {
+          "value": "Proximal Policy Optimization (PPO)",
+          "justification": "PPO is a reinforcement learning algorithm used to optimize the LLM for better toxicity augmentation.",
+          "quote": "Proximal Policy Optimization (PPO), introduced by Schulman et al. [124], stands out as a robust and widely used deep reinforcement learning algorithm."
+        },
+        "aliases": [
+          "PPO"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "PPO is an existing algorithm used for optimization in this research, not a new contribution.",
+          "quote": "Proximal Policy Optimization (PPO), introduced by Schulman et al. [124], stands out as a robust and widely used deep reinforcement learning algorithm."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "PPO was actively used to fine-tune the model with reinforcement learning.",
+          "quote": "We present a TDA framework guided by Reinforcement Learning from Human Feedback (RLHF) [39], specifically employing the Proximal Policy Optimization (PPO) algorithm [124]."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "PPO is not directly compared to other RL algorithms in the study.",
+          "quote": "We present a TDA framework guided by Reinforcement Learning from Human Feedback (RLHF) [39], specifically employing the Proximal Policy Optimization (PPO) algorithm [124]."
+        },
+        "referenced_paper_title": {
+          "value": "Proximal Policy Optimization Algorithms",
+          "justification": "The referenced paper provides the foundational algorithm for PPO used in this study.",
+          "quote": "Proximal Policy Optimization (PPO), introduced by Schulman et al. [124], stands out as a robust and widely used deep reinforcement learning algorithm."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Jigsaw toxic dataset",
+          "justification": "The Jigsaw dataset is used to demonstrate the paper's methods in augmenting toxic language data.",
+          "quote": "We employed a publicly available dataset provided by Google Jigsaw and Kaggle [26], which comprises 159,571 Wikipedia comments human-rated for toxicity."
+        },
+        "aliases": [
+          "Jigsaw"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Toxic Comment Classification Challenge",
+          "justification": "The paper references the dataset as part of the experiments.",
+          "quote": "We employed a publicly available dataset provided by Google Jigsaw and Kaggle [26], which comprises 159,571 Wikipedia comments human-rated for toxicity."
+        }
+      },
+      {
+        "name": {
+          "value": "ToxiGen dataset",
+          "justification": "ToxiGen is another dataset used to compare the generation of toxic samples.",
+          "quote": "We evaluated the proposed method and compared it with other techniques using the Jigsaw toxic dataset [26] and the ToxiGen dataset [52]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ToxiGen: A Large-Scale Machine-Generated Dataset for Adversarial and Implicit Hate Speech Detection",
+          "justification": "The dataset is referenced as a source for machine-generated hate speech content.",
+          "quote": "ToxiGen is a machine-generated dataset comprising 274,000 statements, encompassing both toxic and benign content associated with 13 distinct minority groups [52]."
+        }
+      },
+      {
+        "name": {
+          "value": "PAWS dataset",
+          "justification": "The PAWS dataset is used for instruction fine-tuning in the paraphrasing task.",
+          "quote": "The process begins by fine-tuning the LLM using an instruction dataset derived from the PAWS dataset (Paraphrase Adversaries from Word Scrambling) [155]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PAWS: Paraphrase Adversaries from Word Scrambling",
+          "justification": "The dataset is referenced as part of the methodology for instruction fine-tuning.",
+          "quote": "The process begins by fine-tuning the LLM using an instruction dataset derived from the PAWS dataset (Paraphrase Adversaries from Word Scrambling) [155]."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Google Perspective API",
+          "justification": "The Google Perspective API is used to evaluate the toxicity of the generated text samples and assign rewards based on their toxicity levels.",
+          "quote": "Utilizing the Google Perspective API to score toxicity and assign rewards accordingly, while implementing KL-Divergence as a penalty in the reward function to ensure the generated text maintains human-like responses."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "What do Perspective’s scores mean?",
+          "justification": "The API is cited as a machine learning tool for evaluating toxicity.",
+          "quote": "The Perspective API utilizes machine learning to identify abusive comments, providing toxicity scores between 0 and 1 as a probability indicator, not a severity measure."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1714,
+    "prompt_tokens": 41795,
+    "total_tokens": 43509,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

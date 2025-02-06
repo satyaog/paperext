@@ -1,0 +1,151 @@
+{
+  "paper": "2403.08245.txt",
+  "words": 4261,
+  "extractions": {
+    "title": {
+      "value": "ScatterMoE",
+      "justification": "The title of the paper is explicitly stated as ScatterMoE in the document.",
+      "quote": "We present ScatterMoE, an implementation of Sparse Mixture-of-Experts (SMoE) on GPUs."
+    },
+    "description": "The paper presents ScatterMoE, an implementation of Sparse Mixture-of-Experts (SMoE) on GPUs, focusing on improving inference and training speed while reducing memory footprint without padding and excessive input copies. The implementation leverages a new component named ParallelLinear.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper focuses on an implementation and benchmarking of ScatterMoE against existing implementations, which are empirical tasks.",
+      "quote": "We benchmark our implementation against Megablocks, and show that it enables a higher throughput and lower memory footprint."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Deep Learning",
+        "justification": "The paper is centered around the implementation and optimization of Deep Learning techniques through SMoEs.",
+        "quote": "We present ScatterMoE, an implementation of Sparse Mixture-of-Experts (SMoE) on GPUs."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Sparse Mixture-of-Experts",
+          "justification": "The paper is specifically about an implementation of Sparse Mixture-of-Experts (SMoE) for optimizing performance and efficiency.",
+          "quote": "Sparse Mixture of Experts (SMoEs; Shazeer et al. 2017) have become increasingly popular."
+        },
+        "aliases": [
+          "SMoE"
+        ]
+      },
+      {
+        "name": {
+          "value": "Neural Network Optimization",
+          "justification": "The paper discusses methods to improve the efficiency of neural networks, particularly through the use of SMoEs and ParallelLinear.",
+          "quote": "This implementation achieves this by avoiding padding and making excessive copies of the input."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Sparse Mixture-of-Experts (SMoE)",
+          "justification": "The model is a central aspect of the paper's contributions and evaluations in optimizing performance through ScatterMoE.",
+          "quote": "Sparse Mixture of Experts (SMoEs; Shazeer et al. 2017) have become increasingly popular."
+        },
+        "aliases": [
+          "SMoE"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "While the paper presents an implementation of SMoE, the model itself is not a new contribution but rather an existing model optimized by the authors.",
+          "quote": "Sparse Mixture of Experts (SMoEs; Shazeer et al. 2017) have become increasingly popular."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The implementation was executed on GPUs as part of benchmarking experiments, indicating execution within the scope of the paper.",
+          "quote": "We present ScatterMoE, an implementation of Sparse Mixture-of-Experts (SMoE) on GPUs."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "SMoE is compared to other implementations like Megablocks to showcase performance improvements.",
+          "quote": "We benchmark our implementation against Megablocks, and show that it enables a higher throughput and lower memory footprint."
+        },
+        "referenced_paper_title": {
+          "value": "Outrageously large neural networks: The sparsely-gated mixture-of-experts layer",
+          "justification": "The reference provides context for the existing model that ScatterMoE is built upon.",
+          "quote": "Sparse Mixture of Experts (SMoEs; Shazeer et al. 2017) have become increasingly popular."
+        }
+      },
+      {
+        "name": {
+          "value": "Megablocks",
+          "justification": "Megablocks is used as a baseline for comparison to demonstrate improvements.",
+          "quote": "We benchmark our implementation against Megablocks, and show that it enables a higher throughput and lower memory footprint."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Megablocks is used as a comparative baseline, not a contribution of the paper.",
+          "quote": "We benchmark our implementation against Megablocks, and show that it enables a higher throughput and lower memory footprint."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Megablocks was executed in the benchmarking experiments within the paper.",
+          "quote": "We benchmark our implementation against Megablocks, and show that it enables a higher throughput and lower memory footprint."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Megablocks is a key benchmark for comparison in the paper.",
+          "quote": "We benchmark our implementation against Megablocks, and show that it enables a higher throughput and lower memory footprint."
+        },
+        "referenced_paper_title": {
+          "value": "MegaBlocks: Efficient Sparse Training with Mixture-of-Experts",
+          "justification": "The reference is a comparative baseline paper describing Megablocks.",
+          "quote": "Gale et al. (2023) MegaBlocks: Efficient Sparse Training with Mixture-of-Experts."
+        }
+      }
+    ],
+    "datasets": [],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The paper mentions that a lot of deep learning research, including the implementation discussed in this paper, is conducted using PyTorch.",
+          "quote": "While a lot of deep learning research is implemented in PyTorch (Paszke et al., 2019)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An imperative style, high-performance deep learning library",
+          "justification": "The referenced paper provides context for the PyTorch library mentioned in the paper.",
+          "quote": "While a lot of deep learning research is implemented in PyTorch (Paszke et al., 2019)."
+        }
+      },
+      {
+        "name": {
+          "value": "Triton",
+          "justification": "The paper discusses using Triton, which is a tile-based language for GPU programming in Python, in its implementation.",
+          "quote": "Triton3 (Tillet et al., 2019), a tile-based language for GPU programming in Python."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Triton: an intermediate language and compiler for tiled neural network computations",
+          "justification": "The referenced paper provides details about the Triton language used in the implementation.",
+          "quote": "Tillet et al., 2019, Triton: an intermediate language and compiler for tiled neural network computations."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1243,
+    "prompt_tokens": 7792,
+    "total_tokens": 9035,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

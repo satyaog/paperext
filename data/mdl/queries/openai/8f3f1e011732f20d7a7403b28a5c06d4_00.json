@@ -1,0 +1,381 @@
+{
+  "paper": "8f3f1e011732f20d7a7403b28a5c06d4.txt",
+  "words": 5317,
+  "extractions": {
+    "title": {
+      "value": "When Do We Need Graph Neural Networks for Node Classification?",
+      "justification": "The title clearly reflects the paper's focus on identifying scenarios where Graph Neural Networks are necessary for node classification tasks.",
+      "quote": "When Do We Need Graph Neural Networks for Node Classification?"
+    },
+    "description": "This paper investigates the circumstances under which Graph Neural Networks (GNNs) outperform graph-agnostic neural networks (NNs) for node classification tasks. By examining the role of edge bias and introducing two new measures, Normalized Total Variation (NTV) and Normalized Smoothness Value (NSV), the study predicts and explains when GNNs have performance advantages over traditional NNs. The paper also integrates statistical hypothesis testing to assess the impact of edge bias on different datasets.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper evaluates and measures the performance of GNNs vs. NNs using empirical data over several datasets, and conducts statistical hypothesis testing.",
+      "quote": "With the measures and analyses on 14 real-world datasets, we are able to predict and explain the expected performance of graph-agnostic MLPs and GNN models."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Graph Neural Networks",
+        "justification": "The paper primarily focuses on Graph Neural Networks and their application and performance in node classification tasks.",
+        "quote": "Graph Neural Networks (GNNs) extend basic Neural Networks (NNs) by additionally making use of graph structure based on the relational inductive bias (edge bias)..."
+      },
+      "aliases": [
+        "GNNs"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Node Classification",
+          "justification": "The paper specifically addresses node classification tasks using GNNs and NNs.",
+          "quote": "To identify these cases, based on graph signal processing and statistical hypothesis testing, we propose two measures which analyze the cases in which the edge bias in features and labels does not provide advantages."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Graph Signal Processing",
+          "justification": "The paper integrates graph signal processing as a foundation for proposing measures and analyzing the graph data.",
+          "quote": "Combining with graph signal processing and convolutional neural networks [12], numerous Graph Neural Networks (GNNs) have been proposed [7, 8, 27, 10, 21]..."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Multi-Layer Perceptron (MLP)",
+          "justification": "The paper uses Multi-Layer Perceptron as a comparison baseline for evaluating GNN performance.",
+          "quote": "In some cases, even a simple Multi-Layer Perceptron (MLP) can outperform GNNs by a large margin, e.g., as shown in table 1, MLP outperform baseline GNNs on Cornell, Wisconsin, Texas and Film..."
+        },
+        "aliases": [
+          "MLP"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The MLP model is used as a baseline for comparison, not a new contribution.",
+          "quote": "In some cases, even a simple Multi-Layer Perceptron (MLP) can outperform GNNs by a large margin, e.g., as shown in table 1, MLP outperform baseline GNNs on Cornell, Wisconsin, Texas and Film..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper compares the execution and performance outcomes of MLPs with GNNs.",
+          "quote": "In some cases, even a simple Multi-Layer Perceptron (MLP) can outperform GNNs by a large margin, e.g., as shown in table 1, MLP outperform baseline GNNs on Cornell, Wisconsin, Texas and Film..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares the performance of MLPs with various GNN models like GCN, GAT, and GraphSAGE.",
+          "quote": "In some cases, even a simple Multi-Layer Perceptron (MLP) can outperform GNNs by a large margin, e.g., as shown in table 1, MLP outperform baseline GNNs on Cornell, Wisconsin, Texas and Film..."
+        },
+        "referenced_paper_title": {
+          "value": "Gradient-based learning applied to document recognition",
+          "justification": "The references provide context and background for MLP usage and capabilities.",
+          "quote": "Y. LeCun, L. Bottou, Y. Bengio, P. Haffner, et al. Gradient-based learning applied to document recognition. Proceedings of the IEEE, 86(11):2278–2324, 1998."
+        }
+      },
+      {
+        "name": {
+          "value": "Graph Convolutional Network (GCN)",
+          "justification": "The GCN is one of the baseline GNN models used for performance comparison in the paper.",
+          "quote": "Y = softmax( Ă sym ReLU( Ă sym XW 0 ) W 1 ) ... where W 0 ∈ R F×F 1 and W 1 ∈ R F 1×O (1)"
+        },
+        "aliases": [
+          "GCN"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "GCN is a well-established model used for comparison in the study.",
+          "quote": "Y = softmax( Ă sym ReLU( Ă sym XW 0 ) W 1 ) ..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper executes GCNs for experiments and performance evaluation.",
+          "quote": "Y = softmax( Ă sym ReLU( Ă sym XW 0 ) W 1 ) ..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "GCN's performance is numerically compared against other models like MLP, GAT, and GraphSAGE.",
+          "quote": "MLP outperform baseline GNNs on Cornell, Wisconsin, Texas and Film and perform almost the same as baseline GNNs on PubMed, Coauthor CS and Coauthor Phy."
+        },
+        "referenced_paper_title": {
+          "value": "Semi-supervised classification with graph convolutional networks",
+          "justification": "The protocol used in GCN is based on the referenced foundational work.",
+          "quote": "T. N. Kipf and M. Welling. Semi-supervised classification with graph convolutional networks. In International Conference on Learning Representations, 2016."
+        }
+      },
+      {
+        "name": {
+          "value": "Graph Attention Network (GAT)",
+          "justification": "GAT is one of the reference models used for performance analysis in the paper.",
+          "quote": "59.19 60.78 59.73 29.71 61.95 43.88 88.07 76.42 87.81 85.89 93.41"
+        },
+        "aliases": [
+          "GAT"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Graph Attention Network is used as a known model in the study for comparative analysis.",
+          "quote": "59.19 60.78 59.73 29.71 61.95 43.88 88.07 76.42 87.81 85.89 93.41"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "GAT's execution is apparent as it is compared against other models in empirical tests.",
+          "quote": "59.19 60.78 59.73 29.71 61.95 43.88 88.07 76.42 87.81 85.89 93.41"
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "GAT is compared with MLP, GCN, and GraphSAGE in the paper for different datasets.",
+          "quote": "59.19 60.78 59.73 29.71 61.95 43.88 88.07 76.42 87.81 85.89 93.41"
+        },
+        "referenced_paper_title": {
+          "value": "Graph attention networks",
+          "justification": "The methodology for GAT is derived from the cited work on graph attention networks.",
+          "quote": "P. Velickovic, G. Cucurull, A. Casanova, A. Romero, P. Lio, and Y. Bengio. Graph attention networks. In International Conference on Learning Representations, 2018."
+        }
+      },
+      {
+        "name": {
+          "value": "GraphSAGE",
+          "justification": "GraphSAGE is another prominent graph model discussed for performance analysis.",
+          "quote": "82.97 87.84 82.43 35.28 47.32 30.16 85.98 77.07 88.59 81.19 94.38 OOM 83.70 87.97"
+        },
+        "aliases": [
+          "GraphSAGE"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "GraphSAGE is a well-cited method within the study for context and analysis.",
+          "quote": "82.97 87.84 82.43 35.28 47.32 30.16 85.98 77.07 88.59 81.19 94.38 OOM 83.70 87.97"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model's performance is assessed along with others in the empirical part of the paper.",
+          "quote": "82.97 87.84 82.43 35.28 47.32 30.16 85.98 77.07 88.59 81.19 94.38 OOM 83.70 87.97"
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "GraphSAGE's performances are juxtaposed with models like MLP, GCN, and GAT.",
+          "quote": "82.97 87.84 82.43 35.28 47.32 30.16 85.98 77.07 88.59 81.19 94.38 OOM 83.70 87.97"
+        },
+        "referenced_paper_title": {
+          "value": "Inductive representation learning on large graphs",
+          "justification": "The GraphSAGE methodology and execution in the paper references its original contribution in the literature.",
+          "quote": "W. Hamilton, Z. Ying, and J. Leskovec. Inductive representation learning on large graphs. Advances in neural information processing systems, 30, 2017."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Cornell",
+          "justification": "Cornell is listed among several datasets where the model comparison is conducted.",
+          "quote": "MLP outperform baseline GNNs on Cornell, Wisconsin, Texas and Film..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The paper doesn't provide a specific reference for this dataset, implying it is a well-known dataset within the community.",
+          "quote": "MLP outperform baseline GNNs on Cornell, Wisconsin, Texas and Film..."
+        }
+      },
+      {
+        "name": {
+          "value": "Wisconsin",
+          "justification": "Wisconsin is utilized in the empirical evaluations comparing MLP and GNN.",
+          "quote": "MLP outperform baseline GNNs on Cornell, Wisconsin, Texas and Film..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "No specific reference paper is mentioned for this dataset.",
+          "quote": "MLP outperform baseline GNNs on Cornell, Wisconsin, Texas and Film..."
+        }
+      },
+      {
+        "name": {
+          "value": "Texas",
+          "justification": "Texas is one of the datasets used to illustrate performance differences.",
+          "quote": "MLP outperform baseline GNNs on Cornell, Wisconsin, Texas and Film..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "There is no clear reference to a specific paper about this dataset.",
+          "quote": "MLP outperform baseline GNNs on Cornell, Wisconsin, Texas and Film..."
+        }
+      },
+      {
+        "name": {
+          "value": "Film",
+          "justification": "The Film dataset is part of the study's dataset collection for comparing models.",
+          "quote": "MLP outperform baseline GNNs on Cornell, Wisconsin, Texas and Film..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The Film dataset is presented without a detailed citation, indicating standard dataset usage for benchmarking.",
+          "quote": "MLP outperform baseline GNNs on Cornell, Wisconsin, Texas and Film..."
+        }
+      },
+      {
+        "name": {
+          "value": "PubMed",
+          "justification": "PubMed is mentioned for its use in performance comparisons among different models.",
+          "quote": "perform almost the same as baseline GNNs on PubMed, Coauthor CS and Coauthor Phy."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The paper considers PubMed a known dataset without explicitly referencing its source paper.",
+          "quote": "perform almost the same as baseline GNNs on PubMed, Coauthor CS and Coauthor Phy."
+        }
+      },
+      {
+        "name": {
+          "value": "Coauthor CS",
+          "justification": "Coauthor CS was employed to evaluate and contrast model performances.",
+          "quote": "perform almost the same as baseline GNNs on PubMed, Coauthor CS and Coauthor Phy."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "New benchmarks for learning on non-homophilous graphs",
+          "justification": "Its mention alongside certain datasets suggests a context of non-homophily graphs, linking it back to certain studies.",
+          "quote": "D. Lim, X. Li, F. Hohne, and S.-N. Lim. New benchmarks for learning on non-homophilous graphs."
+        }
+      },
+      {
+        "name": {
+          "value": "Coauthor Phy",
+          "justification": "Used as part of the datasets to explore model effectiveness according to structural bias.",
+          "quote": "perform almost the same as baseline GNNs on PubMed, Coauthor CS and Coauthor Phy."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "New benchmarks for learning on non-homophilous graphs",
+          "justification": "The reference paper title is implied from the context, focusing on dataset challenges with non-homophily.",
+          "quote": "D. Lim, X. Li, F. Hohne, and S.-N. Lim. New benchmarks for learning on non-homophilous graphs."
+        }
+      },
+      {
+        "name": {
+          "value": "AMZ Comp",
+          "justification": "The dataset AMZ Comp is evaluated to understand model behavior under specific conditions.",
+          "quote": "does not significantly underperform baseline GNNs on some high homophily datasets, PubMed,Coauthor CS,Coauthor Phy and AMZ Photo)"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "AMZ Comp appears without a direct reference to a dataset publication or benchmark paper.",
+          "quote": "does not significantly underperform baseline GNNs on some high homophily datasets, PubMed,Coauthor CS,Coauthor Phy and AMZ Photo)"
+        }
+      },
+      {
+        "name": {
+          "value": "AMZ Photo",
+          "justification": "The paper mentions using AMZ Photo for empirical analysis, suggesting its relevancy in testing hypotheses.",
+          "quote": "not significantly underperform baseline GNNs on some high homophily datasets, PubMed,Coauthor CS,Coauthor Phy and AMZ Photo."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The dataset is used without attributing to a particular publication.",
+          "quote": "not significantly underperform baseline GNNs on some high homophily datasets, PubMed,Coauthor CS,Coauthor Phy and AMZ Photo."
+        }
+      },
+      {
+        "name": {
+          "value": "Citeseer",
+          "justification": "Citeseer is one of the datasets included in the analytical comparisons between model performances.",
+          "quote": "76.42 87.81 85.89 93.41"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Generalizing graph neural networks beyond homophily",
+          "justification": "It's implied as part of datasets representing variations in homophily, derived from associated studies.",
+          "quote": "J. Zhu, Y. Yan, L. Zhao, M. Heimann, L. Akoglu, and D. Koutra. Generalizing graph neural networks beyond homophily."
+        }
+      },
+      {
+        "name": {
+          "value": "DBLP",
+          "justification": "The DBLP dataset assists in contrasting the capabilities and efficiencies of GNN versus traditional models in the paper.",
+          "quote": "77.07 88.59 81.19 94.38 OOM 83.70 87.97"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "DBLP is recognized as a standard benchmark dataset and thus often doesn't require detailed referencing.",
+          "quote": "77.07 88.59 81.19 94.38 OOM 83.70 87.97"
+        }
+      },
+      {
+        "name": {
+          "value": "Squirrel",
+          "justification": "Squirrel dataset provides empirical foundations for discussions of homophily and edge bias effects.",
+          "quote": "MLP does not necessarily outperform baseline GNNs on some low homophily datasets (Chameleon and Squirrel)"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "Referenced without a specific paper indicated, likely due to common usage within this research field.",
+          "quote": "MLP does not necessarily outperform baseline GNNs on some low homophily datasets (Chameleon and Squirrel)"
+        }
+      },
+      {
+        "name": {
+          "value": "Chameleon",
+          "justification": "The Chameleon dataset is used to discuss performance variations in low homophily contexts.",
+          "quote": "MLP does not necessarily outperform baseline GNNs on some low homophily datasets (Chameleon and Squirrel)"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "Due to it being a regular dataset in graph studies, there's no need for a direct paper citation.",
+          "quote": "MLP does not necessarily outperform baseline GNNs on some low homophily datasets (Chameleon and Squirrel)"
+        }
+      },
+      {
+        "name": {
+          "value": "Cora",
+          "justification": "Cora dataset contributes to analyzing baseline comparisons specific to node-focused tasks.",
+          "quote": "82.97 87.84 82.43 35.28 47.32 30.16 85.98 77.07 88.59 81.19 94.38 OOM 83.70 87.97"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "On addressing the limitations of graph neural networks",
+          "justification": "Using Cora aligns with addressing various challenges specific to graph neural networks.",
+          "quote": "S. Luan. On addressing the limitations of graph neural networks. arXiv preprint arXiv:2306.12640, 2023."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 3807,
+    "prompt_tokens": 11046,
+    "total_tokens": 14853,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

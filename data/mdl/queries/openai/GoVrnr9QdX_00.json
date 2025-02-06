@@ -1,0 +1,166 @@
+{
+  "paper": "GoVrnr9QdX.txt",
+  "words": 13944,
+  "extractions": {
+    "title": {
+      "value": "Language-guided Skill Learning with Temporal Variational Inference",
+      "justification": "The title succinctly captures the main subject and methodological approach discussed in the paper, which revolves around a novel learning framework for skill discovery using language models and variational inference.",
+      "quote": "Language-guided Skill Learning with Temporal Variational Inference"
+    },
+    "description": "This paper presents LAST, a framework for learning reusable skills from expert demonstrations using language models and a hierarchical variational inference framework. The approach begins with an LLM-generated initial segmentation of trajectories and employs temporal variational inference to refine these segments into reusable skills that accelerate learning in complex tasks. The method incorporates an auxiliary objective based on the Minimum Description Length principle to balance between compression and reusability of the learned skills. Experiments demonstrate the framework's effectiveness in the BabyAI and ALFRED environments.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves empirical evaluation of the proposed LAST algorithm using datasets such as BabyAI and ALFRED to demonstrate its effectiveness in discovering reusable skills and accelerating learning in long-horizon tasks.",
+      "quote": "Our results demonstrate that agents equipped with our method are able to discover skills that help accelerate learning and outperform baseline skill learning approaches on new long-horizon tasks in BabyAI, a grid world navigation environment, as well as ALFRED, a household simulation environment."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Reinforcement Learning with Skill Discovery",
+        "justification": "The paper focuses on reinforcement learning with a specific emphasis on discovering reusable skills from expert demonstrations to facilitate long-horizon planning, directly tying into the field of reinforcement learning and skill discovery.",
+        "quote": "Our goal is to enable the discovery of reusable skills from a dataset of expert demonstrations... and use these skills to solve new complex tasks more efficiently."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Natural Language Processing",
+          "justification": "The use of language models for initial segmentation of trajectories indicates the involvement of natural language processing in the study.",
+          "quote": "We query an LLM (only using the goal and actions as input) for an initial segmentation and a language description for each segment."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Hierarchical Reinforcement Learning",
+          "justification": "The framework developed in the paper is hierarchical, with a top-level policy that chooses skills and a lower-level policy that executes actions, fitting into the sub-field of hierarchical reinforcement learning.",
+          "quote": "We employ a two-level hierarchical RL framework with a frozen low-level policy."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "LAST (Language-guided Skill Learning with Temporal Variational Inference)",
+          "justification": "The paper introduces a novel framework named LAST for discovering reusable skills through language guidance and temporal variational inference.",
+          "quote": "We propose LAST, a framework that learns reusable skills from expert trajectories by 1) querying LLMs for an initial segmentation; 2) leveraging temporal variational inference to merge subsequences into skills."
+        },
+        "aliases": [
+          "LAST"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "This model is an original contribution of the paper and forms the core of its methodological advances.",
+          "quote": "We propose LAST, a framework that learns reusable skills from expert trajectories..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The experiments conducted indicate that the LAST model is executed and evaluated within the paper, specifically in the environments of BabyAI and ALFRED.",
+          "quote": "Our results demonstrate that agents equipped with our method are able to discover skills that help accelerate learning and outperform baseline skill learning approaches..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "LAST is empirically compared with baseline methods to demonstrate its effectiveness in discovering skills and improving task performance.",
+          "quote": "LAST outperforms baselines in 5 out of 6 tasks, demonstrating that the learned skills can facilitate downstream task learning for multiple types of tasks."
+        },
+        "referenced_paper_title": {
+          "value": "Learning options via compression",
+          "justification": "The referenced paper discussing related concepts and approaches is cited within the work.",
+          "quote": "Inspire by Jiang et al. (2022), we introduce an auxiliary compression objective, following the Minimum Description Length (MDL) Principle."
+        }
+      },
+      {
+        "name": {
+          "value": "GPT-4",
+          "justification": "GPT-4 is utilized as the LLM for generating initial trajectory segmentations in the LAST framework.",
+          "quote": "We use GPT-4 as the LLM to generate the initial segmentation in all our experiments."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "GPT-4 is not a contribution of this paper, but a pre-existing model that the paper uses.",
+          "quote": "We use GPT-4 as the LLM to generate the initial segmentation in all our experiments."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The experiments using GPT-4 to perform segmentation are executed as part of the framework's application and evaluation process.",
+          "quote": "We use GPT-4 as the LLM to generate the initial segmentation in all our experiments."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "GPT-4 itself is not numerically compared to other models; it supports the process of trajectory segmentation.",
+          "quote": "We use GPT-4 as the LLM to generate the initial segmentation in all our experiments."
+        },
+        "referenced_paper_title": {
+          "value": "Do as I can, not as I say: Grounding language in robotic affordances",
+          "justification": "The paper references this title in the context of related applications of language models.",
+          "quote": "As an alternative, we have used open-sourced LMs (e.g., Phi-2 and Mistral 7B) to generate the initial segmentation."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "BabyAI",
+          "justification": "The BabyAI dataset is used for evaluating the skill learning capabilities of the proposed framework.",
+          "quote": "Our results demonstrate that agents equipped with our method are able to discover skills that help accelerate learning... in BabyAI, a grid world navigation environment."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "BabyAI: A platform to study the sample efficiency of grounded language learning",
+          "justification": "The referenced work provides context and background for the BabyAI dataset, which is employed in the experiments.",
+          "quote": "BabyAI (Chevalier-Boisvert et al., 2019) is an environment where an agent navigates and interacts in a grid world to achieve a goal described in language."
+        }
+      },
+      {
+        "name": {
+          "value": "ALFRED",
+          "justification": "The ALFRED dataset is employed to test the framework's performance in a household simulation environment.",
+          "quote": "...outperform baseline skill learning approaches on new long-horizon tasks in... ALFRED, a household simulation environment."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ALFRED: A benchmark for interpreting grounded instructions for everyday tasks",
+          "justification": "The referenced work details the ALFRED dataset used in the experiments within the paper.",
+          "quote": "ALFRED (Shridhar et al., 2020a) is a complex environment based on the AI2-THOR simulator."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Soft Actor-Critic (SAC)",
+          "justification": "SAC is used in training policies within the experiments to evaluate the agent's adaptation with discovered skills.",
+          "quote": "We adopt Soft Actor-Critic (SAC) with Gumbel-Softmax (for the categorical action distribution) to train the agent to maximize the cumulative return."
+        },
+        "aliases": [
+          "SAC"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Soft actor-critic: Off-policy maximum entropy deep reinforcement learning with a stochastic actor",
+          "justification": "This reference supports the use of SAC in the paper, acknowledging it as a foundational tool in RL applications.",
+          "quote": "We adopt Soft Actor-Critic (SAC) with Gumbel-Softmax (Jang et al., 2017) (for the categorical action distribution) to train the agent to maximize the cumulative return."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1628,
+    "prompt_tokens": 24328,
+    "total_tokens": 25956,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,190 @@
+{
+  "paper": "ce20cd3cd91c9cc81ccecabe47800c7b.txt",
+  "words": 7428,
+  "extractions": {
+    "title": {
+      "value": "BitPruning: Learning Bitlengths for Aggressive and Accurate Quantization",
+      "justification": "The title is explicitly stated at the beginning of the paper.",
+      "quote": "BitPruning: Learning Bitlengths for Aggressive and Accurate Quantization"
+    },
+    "description": "The paper introduces BitPruning, a method to automatically determine optimal bitlengths for quantizing neural networks. This approach helps in minimizing inference bitlength at any granularity while maintaining accuracy. BitPruning leverages a regularizer that penalizes larger bitlengths and shows how it can be adapted to minimize other criteria like operations count or memory footprint. The paper demonstrates high accuracy with reduced bitlengths across various neural network architectures and datasets.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves experimental evaluation of the BitPruning method on several neural network architectures and datasets, demonstrating its effectiveness and performance improvements.",
+      "quote": "We demonstrate that our method learns thrifty representations while maintaining accuracy. With ImageNet, the method produces an average per layer bitlength of 4.13, 3.76 and 4.36 bits on AlexNet, ResNet18 and MobileNet V2 respectively, remaining within 2.0%, 0.5% and 0.5% of the base TOP-1 accuracy."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Model Quantization",
+        "justification": "The primary focus of the paper is on improving the quantization process of neural network models by learning optimal bitlengths.",
+        "quote": "We introduce a training method for minimizing inference bitlength at any granularity while maintaining accuracy."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Neural Network Acceleration",
+          "justification": "The paper discusses accelerating neural networks by improving energy efficiency and computation through better quantization.",
+          "quote": "Neural networks have demonstrably achieved state-of-the art accuracy using low-bitlength integer quantization, yielding both execution time and energy benefits on existing hardware designs that support short bitlengths."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Computer Vision",
+          "justification": "The paper evaluates the BitPruning method using datasets like ImageNet, which is widely used in Computer Vision tasks.",
+          "quote": "With ImageNet, the method produces an average per layer bitlength of 4.13, 3.76 and 4.36 bits on AlexNet, ResNet18 and MobileNet V2 respectively."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "AlexNet",
+          "justification": "AlexNet is mentioned as one of the models evaluated using the BitPruning method.",
+          "quote": "With ImageNet, the method produces an average per layer bitlength of 4.13... bits on AlexNet..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "AlexNet is used as a benchmark model for evaluation and is not a contribution of this paper.",
+          "quote": "With ImageNet, the method produces an average per layer bitlength... on AlexNet."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The execution results of AlexNet with BitPruning are provided, indicating its execution.",
+          "quote": "The networks were trained on ImageNet [46] over 180 epochs..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "AlexNet is compared with its baseline accuracy to demonstrate the effectiveness of BitPruning.",
+          "quote": "Accuracies comparable to the baseline can be achieved with less than 3 bits on average for AlexNet..."
+        },
+        "referenced_paper_title": {
+          "value": "Imagenet classification with deep cnns",
+          "justification": "The reference to AlexNet is supported by the citation: [35] A. Krizhevsky, I. Sutskever, and G. E. Hinton, “Imagenet classification with deep cnns...",
+          "quote": "[35] A. Krizhevsky, I. Sutskever, and G. E. Hinton, “Imagenet classification with deep cnns..."
+        }
+      },
+      {
+        "name": {
+          "value": "ResNet18",
+          "justification": "ResNet18 is mentioned as one of the models evaluated using the BitPruning method.",
+          "quote": "With ImageNet, the method produces an average per layer bitlength of... 3.76... bits on ResNet18..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "ResNet18 is used as a benchmark model for evaluation and is not a contribution of this paper.",
+          "quote": "With ImageNet, the method produces an average per layer bitlength... on ResNet18."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The execution results of ResNet18 with BitPruning are provided, indicating its execution.",
+          "quote": "The networks were trained on ImageNet [46] over 180 epochs..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "ResNet18 is compared with its baseline accuracy to demonstrate the effectiveness of BitPruning.",
+          "quote": "Accuracies comparable to the baseline can be achieved with... around 3.5 bits on average for weights and around 4 bits for activations..."
+        },
+        "referenced_paper_title": {
+          "value": "Deep residual learning for image recognition",
+          "justification": "The reference to ResNet18 is supported by the citation: [36] K. He, X. Zhang, S. Ren, and J. Sun, “Deep residual learning for image recognition...",
+          "quote": "[36] K. He, X. Zhang, S. Ren, and J. Sun, “Deep residual learning for image recognition..."
+        }
+      },
+      {
+        "name": {
+          "value": "MobileNet V2",
+          "justification": "MobileNet V2 is mentioned as one of the models evaluated using the BitPruning method.",
+          "quote": "With ImageNet, the method produces an average per layer bitlength of... 4.36 bits on... MobileNet V2..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "MobileNet V2 is used as a benchmark model for evaluation and is not a contribution of this paper.",
+          "quote": "With ImageNet, the method produces an average per layer bitlength... on MobileNet V2."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The execution results of MobileNet V2 with BitPruning are provided, indicating its execution.",
+          "quote": "The networks were trained on ImageNet [46] over 180 epochs..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "MobileNet V2 is compared with its baseline accuracy to demonstrate the effectiveness of BitPruning.",
+          "quote": "Accuracies comparable to the baseline for all networks can be achieved with... around 4 bits for activations..."
+        },
+        "referenced_paper_title": {
+          "value": "Mobilenetv2: Inverted residuals and linear bottlenecks",
+          "justification": "The reference to MobileNet V2 is supported by the citation: [40] M. Sandler, A. F. Howard, M. Zhu, A. Zhmoginov, and L.-C. Chen, “Mobilenetv2: Inverted residuals and linear bottlenecks...",
+          "quote": "[40] M. Sandler, A. F. Howard, M. Zhu, A. Zhmoginov, and L.-C. Chen, “Mobilenetv2: Inverted residuals and linear bottlenecks..."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "ImageNet",
+          "justification": "ImageNet is explicitly mentioned as the dataset used for evaluating BitPruning on models like AlexNet, ResNet18, and MobileNet V2.",
+          "quote": "With ImageNet, the method produces an average per layer bitlength of 4.13, 3.76 and 4.36 bits on AlexNet, ResNet18 and MobileNet V2 respectively..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ImageNet Large Scale Visual Recognition Challenge",
+          "justification": "The reference to ImageNet is supported by the citation: [46] O. Russakovsky, J. Deng, H. Su, J. Krause, S. Satheesh, S. Ma, Z. Huang, A. Karpathy, A. Khosla, M. Bernstein, A. C. Berg, and L. Fei-Fei, “ImageNet Large Scale Visual Recognition Challenge...",
+          "quote": "[46] O. Russakovsky, J. Deng, H. Su, J. Krause, S. Satheesh, S. Ma, Z. Huang, A. Karpathy, A. Khosla, M. Bernstein, A. C. Berg, and L. Fei-Fei, “ImageNet Large Scale Visual Recognition Challenge..."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "fast.ai",
+          "justification": "The paper notes using fast.ai library for training the models in their experiments.",
+          "quote": "The networks were trained on ImageNet [46] over 180 epochs with default fast.ai [38] parameters and one cycle policy in Pytorch [39]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "fastai",
+          "justification": "The reference is provided for fast.ai usage in training the network: [38] J. Howard et al., “fastai,” https://github.com/fastai/fastai, 2018.",
+          "quote": "[38] J. Howard et al., “fastai,” https://github.com/fastai/fastai, 2018."
+        }
+      },
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The paper notes using PyTorch library for training the models in their experiments.",
+          "quote": "The networks were trained on ImageNet [46] over 180 epochs with default fast.ai [38] parameters and one cycle policy in Pytorch [39]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Automatic differentiation in pytorch",
+          "justification": "The reference is provided for PyTorch usage in training the network: [39] A. Paszke, S. Gross, S. Chintala, G. Chanan, E. Yang, Z. DeVito, Z. Lin, A. Desmaison, L. Antiga, and A. Lerer, “Automatic differentiation in pytorch,” 2017.",
+          "quote": "[39] A. Paszke, S. Gross, S. Chintala, G. Chanan, E. Yang, Z. DeVito, Z. Lin, A. Desmaison, L. Antiga, and A. Lerer, “Automatic differentiation in pytorch,” 2017."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2175,
+    "prompt_tokens": 15466,
+    "total_tokens": 17641,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

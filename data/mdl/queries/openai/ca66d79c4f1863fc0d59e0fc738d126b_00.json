@@ -1,0 +1,163 @@
+{
+  "paper": "ca66d79c4f1863fc0d59e0fc738d126b.txt",
+  "words": 14547,
+  "extractions": {
+    "title": {
+      "value": "A Foundation Model for Zero-shot Logical Query Reasoning",
+      "justification": "The title is clearly stated at the beginning of the paper and reflects the main focus of the research, which is on developing a foundation model for zero-shot logical query reasoning.",
+      "quote": "A Foundation Model for Zero-shot Logical Query Reasoning"
+    },
+    "description": "This paper introduces ULTRAQUERY, a foundation model designed for zero-shot logical query reasoning in knowledge graphs (KGs). The paper focuses on complex logical query answering (CLQA) which involves compositional queries with logical operations. ULTRAQUERY aims to provide inductive reasoning capabilities, allowing it to perform well across different KGs without being trained on specific entities or relation vocabularies, emphasizing zero-shot capability. The model leverages pre-trained inductive KG completion operations and fuzzy logic for non-parametric logical operations. The study evaluates ULTRAQUERY on 23 datasets, setting a new state of the art in 15.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents experimental results by testing ULTRAQUERY on 23 datasets and comparing its performance against various baselines, which is a hallmark of empirical studies.",
+      "quote": "Experimenting on 23 datasets, ULTRAQUERY in the zero-shot inference mode shows competitive or better query answering performance than best available baselines and sets a new state of the art on 15 of them."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Knowledge Graph Reasoning",
+        "justification": "The research focuses on logical query reasoning and knowledge graph completion, which are core areas within the field of knowledge graph reasoning.",
+        "quote": "Complex logical query answering (CLQA) in knowledge graphs (KGs) goes beyond simple KG completion... Here we present ULTRAQUERY, the first foundation model for inductive reasoning that can zero-shot answer logical queries on any KG."
+      },
+      "aliases": [
+        "KG Reasoning",
+        "Logical Query Reasoning"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Inductive Knowledge Graph Reasoning",
+          "justification": "The paper introduces ULTRAQUERY, an inductive model that generalizes query answering over new KGs with unseen entities and relations.",
+          "quote": "we focus on the hardest inductive generalization setup where queries and underlying graphs at inference time are completely different from the training graph... our proposed ULTRAQUERY is the first one to do so."
+        },
+        "aliases": [
+          "Inductive KG Reasoning"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "ULTRAQUERY",
+          "justification": "ULTRAQUERY is clearly introduced as the primary model being proposed and evaluated in this study, aimed at zero-shot logical query reasoning.",
+          "quote": "Here we present ULTRAQUERY, the first foundation model for inductive reasoning that can zero-shot answer logical queries on any KG."
+        },
+        "aliases": [
+          "Ultra Query"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "ULTRAQUERY is developed and introduced in this paper as a novel approach to logical query reasoning in knowledge graphs.",
+          "quote": "Our contributions are two-fold... and devise ULTRAQUERY, the first foundation model for CLQA that generalizes to logical queries on any arbitrary KG with any entity and relation vocabulary in the zero-shot fashion."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was executed on GPU as indicated in the experimental setup description demonstrating its practical implementation and evaluation.",
+          "quote": "Implementation and Training. ULTRAQUERY was trained on one FB15k237 dataset with complex queries for 10,000 steps with batch size of 32 on 4 RTX 3090 GPUs for 2 hours."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "ULTRAQUERY's performance is compared with various baseline models across multiple datasets to establish its effectiveness.",
+          "quote": "Experimenting on 23 datasets, ULTRAQUERY in the zero-shot inference mode shows competitive or better query answering performance than best available baselines and sets a new state of the art on 15 of them."
+        },
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "ULTRAQUERY is introduced in this paper, hence there is no reference paper title for its concept.",
+          "quote": "N/A"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "FB15k237",
+          "justification": "FB15k237 is mentioned as one of the datasets on which the model is trained and evaluated.",
+          "quote": "ULTRAQUERY was trained on one FB15k237 dataset with complex queries for 10,000 steps..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Beta Embeddings for Multi-Hop Logical Reasoning in Knowledge Graphs",
+          "justification": "FB15k237 is mentioned in the context of datasets used, often associated with the research by Ren and Leskovec on BetaE embedding methods.",
+          "quote": "Transductive (3 datasets) where training and inference graphs are the same (Gtrain = Ginf) and test queries cover the same set of entities and relations: FB15k237, NELL995, and FB15k all from Ren and Leskovec [25] with at most 100 answers per query."
+        }
+      },
+      {
+        "name": {
+          "value": "NELL995",
+          "justification": "NELL995 is explicitly listed among the datasets used for evaluating the model's performance.",
+          "quote": "Transductive (3 datasets) where training and inference graphs are the same (Gtrain = Ginf) and test queries cover the same set of entities and relations: FB15k237, NELL995 and FB15k..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Beta Embeddings for Multi-Hop Logical Reasoning in Knowledge Graphs",
+          "justification": "NELL995 is included in the context of datasets related to the BetaE model by Ren and Leskovec.",
+          "quote": "Transductive (3 datasets) where training and inference graphs are the same... FB15k237, NELL995, and FB15k all from Ren and Leskovec [25]."
+        }
+      },
+      {
+        "name": {
+          "value": "WikiTopics-QA",
+          "justification": "The paper introduces new inductive datasets called WikiTopics-QA for evaluating logical query answering in knowledge graphs.",
+          "quote": "In the absence of existing datasets for our inductive generalization setup, we curate a novel suite of 11 inductive query answering datasets..."
+        },
+        "aliases": [
+          "WikiTopics-CLQA"
+        ],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Double Equivariance for Inductive Link Prediction for Both New Nodes and New Relation Types",
+          "justification": "The WikiTopics datasets are built upon the work on inductive node and relation prediction by Gao et al.",
+          "quote": "The source graphs were adopted from the WikiTopics datasets [16], we follow the BetaE setting when sampling 14 query types with at most 100 answers."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is mentioned as the deep learning library used to implement the models in this study.",
+          "quote": "Both ULTRAQUERY and ULTRAQUERY LP are implemented with PyTorch..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An Imperative Style, High-Performance Deep Learning Library",
+          "justification": "The library is credited in the context of being used for the implementation of ULTRAQUERY models.",
+          "quote": "Both ULTRAQUERY and ULTRAQUERY LP are implemented with PyTorch [24] (BSD-style license)."
+        }
+      },
+      {
+        "name": {
+          "value": "PyTorch-Geometric",
+          "justification": "PyTorch-Geometric is used for graph-based neural network operations, critical for the inductive reasoning tasks conducted in this study.",
+          "quote": "Both ULTRAQUERY and ULTRAQUERY LP are implemented with PyTorch-Geometric..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Fast Graph Representation Learning with PyTorch Geometric",
+          "justification": "The library is mentioned in the context of supporting the implementation of graph-based learning tasks.",
+          "quote": "Both ULTRAQUERY and ULTRAQUERY LP are implemented with PyTorch-Geometric [12] (MIT license)."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1621,
+    "prompt_tokens": 26426,
+    "total_tokens": 28047,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

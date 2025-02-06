@@ -1,0 +1,156 @@
+{
+  "paper": "c69fac7227a190c4d6e01e37da842443.txt",
+  "words": 9231,
+  "extractions": {
+    "title": {
+      "value": "MARCO: A Memory-Augmented Reinforcement Framework for Combinatorial Optimization",
+      "justification": "The title is directly taken from the paper's first page and abstract.",
+      "quote": "This paper introduces a versatile framework, referred to as Memory-Augmented Reinforcement for Combinatorial Optimization (MARCO), that can be used to enhance both constructive and improvement methods in NCO through an innovative memory module."
+    },
+    "description": "The paper presents MARCO, a framework designed to improve Neural Combinatorial Optimization (NCO) methods by incorporating a memory module that stores and retrieves historical data. This framework aims to enhance both constructive and improvement NCO methods, facilitating efficient exploration of the search space and collaborative exploration using parallel threads. Experiments demonstrate the utility of MARCO in solving problems like maximum cut, maximum independent set, and travelling salesman, achieving high-quality solutions at a low computational cost.",
+    "type": {
+      "value": "empirical",
+      "justification": "The study includes empirical evaluations and experiments on combinatorial optimization problems such as maximum cut, maximum independent set, and travelling salesman problems.",
+      "quote": "Empirical evaluations, carried out on the maximum cut, maximum independent set and travelling salesman problems, reveal that the memory module effectively increases the exploration, enabling the model to discover diverse, higher-quality solutions."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Neural Combinatorial Optimization",
+        "justification": "The primary focus of the paper is on improving Neural Combinatorial Optimization methods using a memory-augmented framework.",
+        "quote": "Neural Combinatorial Optimization (NCO) is an emerging domain where deep learning techniques are employed to address combinatorial optimization problems as a standalone solver."
+      },
+      "aliases": [
+        "NCO"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Reinforcement Learning",
+          "justification": "MARCO integrates reinforcement learning techniques to optimize combinatorial problems.",
+          "quote": "A key feature of MARCO is the ability to manage a shared memory when several search threads are run in parallel...The main contributions of the paper are as follows: (1) introducing MARCO as a pioneering effort in integrating memory modules within both neural improvement and constructive methods."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Graph Neural Networks",
+          "justification": "The paper utilizes Graph Neural Networks as a part of the MARCO framework for combinatorial optimization on graph-based problems.",
+          "quote": "The policy is typically parameterized with a neural network, and especially with a graph neural network when operating on graph problems."
+        },
+        "aliases": [
+          "GNN"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "MARCO",
+          "justification": "MARCO is directly introduced as a model to augment neural combinatorial optimization methods.",
+          "quote": "This paper introduces a versatile framework, referred to as Memory-Augmented Reinforcement for Combinatorial Optimization (MARCO)"
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "MARCO is the main contribution of the paper, as explicitly mentioned in the text.",
+          "quote": "The main contributions of the paper are as follows: (1) introducing MARCO as a pioneering effort in integrating memory modules within both neural improvement and constructive methods."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The experiments with MARCO are performed on GPUs as stated in the experimental setup section.",
+          "quote": "MARCO has been implemented using PyTorch 2.0. A Nvidia A100 GPU has been used to train the models and perform inference."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of MARCO is empirically evaluated and compared with other methods in the experiments section.",
+          "quote": "The empirical results indicate that MARCO surpasses some of the recently proposed learning-based approaches."
+        },
+        "referenced_paper_title": {
+          "value": "None",
+          "justification": "There is no specific prior paper title referenced for MARCO, as it is a new contribution of this paper.",
+          "quote": "The main contributions of the paper are as follows: (1) introducing MARCO as a pioneering effort in integrating memory modules within both neural improvement and constructive methods."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Erdos-Renyi Graphs",
+          "justification": "Erdos-Renyi graphs are used as test instances for experiments on Maximum Cut and Maximum Independent Set problems.",
+          "quote": "For the MC and MIS, we used randomly generated Erdos-Renyi (ER) graphs with 15% of edge probability, and sizes ranging from 50 to 200 nodes."
+        },
+        "aliases": [
+          "ER graphs"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "None",
+          "justification": "The paper does not reference a specific paper for Erdos-Renyi graph generation.",
+          "quote": "For the MC and MIS, we used randomly generated Erdos-Renyi (ER) graphs with 15% of edge probability, and sizes ranging from 50 to 200 nodes."
+        }
+      },
+      {
+        "name": {
+          "value": "RB benchmark",
+          "justification": "RB benchmark graphs are used as part of the evaluation for Maximum Cut and Maximum Independent Set problems.",
+          "quote": "Evaluation Data Following the experimental setup of recent works, we will evaluate the MC and MIS problems in ER graphs of sizes between 700-800, and harder graphs from the RB benchmark"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Exact phase transitions in random constraint satisfaction problems",
+          "justification": "The RB benchmark is referenced and its usage in relation to the RB graphs problems is explained in the context of reference [43].",
+          "quote": "Evaluation Data Following the experimental setup of recent works [1; 7; 45], we will evaluate the MC and MIS problems in ER graphs of sizes between 700-800, and harder graphs from the RB benchmark [43] of sizes between 200-300 and 800-1200."
+        }
+      },
+      {
+        "name": {
+          "value": "Travelling Salesman Problem Instances",
+          "justification": "Instances for the Travelling Salesman Problem are used as a benchmark to evaluate MARCO.",
+          "quote": "For TSP, we follow the setting from [24] and use randomly generated instances, with uniformly sampled cities in the unit square."
+        },
+        "aliases": [
+          "TSP instances"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Attention, learn to solve routing problems!",
+          "justification": "The paper mentions following settings from work [24] for TSP, which matches the reference for Attention, learn to solve routing problems!",
+          "quote": "For TSP, we follow the setting from [24] and use randomly generated instances, with uniformly sampled cities in the unit square."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "MARCO is implemented using the PyTorch library as explicitly mentioned.",
+          "quote": "MARCO has been implemented using PyTorch 2.0."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "None",
+          "justification": "There is no specific reference paper for PyTorch mentioned in the paper.",
+          "quote": "MARCO has been implemented using PyTorch 2.0."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1404,
+    "prompt_tokens": 15716,
+    "total_tokens": 17120,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

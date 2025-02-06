@@ -1,0 +1,176 @@
+{
+  "paper": "2402.00724.txt",
+  "words": 6987,
+  "extractions": {
+    "title": {
+      "value": "Automatic Segmentation of the Spinal Cord Nerve Rootlets",
+      "justification": "The title explicitly states the main focus and methodology of the paper, which is the automation of segmentation of spinal cord nerve rootlets.",
+      "quote": "Automatic Segmentation of the Spinal Cord Nerve Rootlets"
+    },
+    "description": "This paper presents a deep learning-based approach for the semantic segmentation of spinal cord nerve rootlets from T2-weighted MRI scans, utilizing a 3D convolutional neural network trained via active learning on open-access datasets. The method achieves a reasonable performance metric and is integrated into the Spinal Cord Toolbox (SCT) v6.2 or higher.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves empirical testing of the segmentation model on different datasets and compares performance metrics, indicating it is empirical rather than theoretical.",
+      "quote": "The method was tested on 3T T2-weighted images from datasets unseen during training to assess inter-site, inter-session, and inter-resolution variability."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Medical Image Analysis",
+        "justification": "The research focuses on the analysis of medical images specifically for segmenting spinal cord nerve rootlets from MRI scans, which is a typical application within medical image analysis.",
+        "quote": "The goal of this study was to develop an automatic method for the semantic segmentation of spinal nerve rootlets from T2-weighted magnetic resonance imaging (MRI) scans."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Deep Learning",
+          "justification": "The study employs deep learning methodologies like 3D convolutional neural networks for model training.",
+          "quote": "A 3D multi-class convolutional neural network using an active learning approach to segment C2-C8 dorsal nerve rootlets."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Computer Vision",
+          "justification": "The study involves segmenting visual data from MRI scans, which falls under computer vision tasks.",
+          "quote": "Semantic segmentation of spinal nerve rootlets from T2-weighted magnetic resonance imaging (MRI) scans."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "nnUNetv2",
+          "justification": "The nnUNetv2 framework was explicitly used for training the segmentation model as described in the study.",
+          "quote": "The rootlets segmentation model was trained using nnUNetv2 (Isensee et al., 2021), a popular self-configuring deep learning-based framework."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The model architecture (nnUNetv2) is not introduced as a new model but is used as a basis for the presented segmentation task.",
+          "quote": "The rootlets segmentation model was trained using nnUNetv2 (Isensee et al., 2021), a popular self-configuring deep learning-based framework."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model is executed as described in the context of the segmentation tasks and performance evaluation in the study.",
+          "quote": "The model was trained with a batch size of 2 using the stochastic gradient descent optimizer with a polynomial learning rate scheduler."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The study involves performance testing and comparison against different datasets and setups to gauge the effectiveness of the segmentation model.",
+          "quote": "Test Dice score was computed between the ground truth (GT) STAPLE segmentation and the segmentation obtained using the developed segmentation model (nnUNet)."
+        },
+        "referenced_paper_title": {
+          "value": "nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation",
+          "justification": "This is the paper referenced for the model architecture used in this study.",
+          "quote": "The rootlets segmentation model was trained using nnUNetv2 (Isensee et al., 2021), a popular self-configuring deep learning-based framework."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "OpenNeuro ds004507",
+          "justification": "Used for training the segmentation models, specifically mentioned with its data characteristics.",
+          "quote": "Two open-access datasets were used for model training: OpenNeuro ds004507 (https://openneuro.org/datasets/ds004507/versions/1.0.1, multi-subject dataset n=10)..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Pontomedullary junction as a reference for spinal cord cross-sectional area: validation across neck positions",
+          "justification": "The dataset is mentioned with reference to its application within the study rather than a standalone dataset publication.",
+          "quote": "(Bédard et al., 2023)"
+        }
+      },
+      {
+        "name": {
+          "value": "Spine-generic",
+          "justification": "Used in the study as one of the main datasets to evaluate the segmentation model performance.",
+          "quote": "...and spine-generic (https://github.com/spine-generic/data-multi-subject/tree/r20230223, n=267)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Open-access quantitative MRI data of the spinal cord and reproducibility across participants, sites and manufacturers",
+          "justification": "This is the related referenced paper when discussing the spine-generic dataset.",
+          "quote": "(Cohen-Adad et al., 2021b)"
+        }
+      },
+      {
+        "name": {
+          "value": "Courtois-NeuroMod",
+          "justification": "Used as a secondary testing dataset to assess model performance across sessions.",
+          "quote": "The second testing dataset (test-set-2) is the Courtois-NeuroMod dataset ... an open-access dataset of healthy subjects scanned at regular intervals ..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Longitudinal stability of brain and spinal cord quantitative MRI measures",
+          "justification": "Referenced paper related to the Courtois-NeuroMod dataset.",
+          "quote": "(Boudreau et al., 2023)"
+        }
+      },
+      {
+        "name": {
+          "value": "PAM50 Template",
+          "justification": "Used to demonstrate the rootlet labeling in a widely recognized anatomical template.",
+          "quote": "The developed segmentation model was applied to the PAM50 T2-weighted spinal cord template image to obtain dorsal nerve rootlets ..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PAM50: Unbiased multimodal template of the brainstem and spinal cord aligned with the ICBM152 space",
+          "justification": "Referenced paper which introduced the PAM50 template used in this study.",
+          "quote": "(De Leener et al., 2018)"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "FSLeyes",
+          "justification": "FSLeyes was used for the manual segmentation of images in the dataset.",
+          "quote": "First, we manually segmented spinal cord dorsal nerve rootlets using FSLeyes image viewer ..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Simultaneous truth and performance level estimation (STAPLE): an algorithm for the validation of image segmentation",
+          "justification": "FSLeyes is part of the FSL suite, referenced indirectly via general tools used for segmentation and analysis in combination with other methods.",
+          "quote": "(Warfield et al., 2004)"
+        }
+      },
+      {
+        "name": {
+          "value": "Spinal Cord Toolbox (SCT)",
+          "justification": "The Spinal Cord Toolbox (SCT) is mentioned as part of the software infrastructure that implements the developed segmentation method.",
+          "quote": "The proposed methodology is open-source and readily available in the Spinal Cord Toolbox (SCT) v6.2 and higher."
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "SCT: Spinal Cord Toolbox, an open-source software for processing spinal cord MRI data",
+          "justification": "This paper is referenced regarding the Spinal Cord Toolbox, showing its contribution and usage within this study.",
+          "quote": "(De Leener et al., 2017)"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1577,
+    "prompt_tokens": 13210,
+    "total_tokens": 14787,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

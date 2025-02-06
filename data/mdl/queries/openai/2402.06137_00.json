@@ -1,0 +1,245 @@
+{
+  "paper": "2402.06137.txt",
+  "words": 12784,
+  "extractions": {
+    "title": {
+      "value": "On the Privacy of Selection Mechanisms with Gaussian Noise",
+      "justification": "The title is found at the beginning and at the end of the introductory text of the paper.",
+      "quote": "On the Privacy of Selection Mechanisms with Gaussian Noise"
+    },
+    "description": "This paper revisits the differential privacy analysis of the Above Threshold and Report Noisy Max mechanisms when instantiated with Gaussian noise. It shows that pure differential privacy guarantees can be achieved under certain conditions, and introduces a meta-algorithm for adaptive composition called Filtered Self-Reporting Composition (FSRC). The paper provides both theoretical analyses and empirical experiments with applications to mobility and energy consumption datasets, demonstrating that these methods can achieve competitive utility and require less hyper-parameter tuning.",
+    "type": {
+      "value": "theoretical",
+      "justification": "The paper primarily focuses on revisiting and analyzing differential privacy algorithms with Gaussian noise and presents theoretical bounds for privacy guarantees.",
+      "quote": "In this work, we revisit the analysis of Report Noisy Max and Above Threshold with Gaussian noise and show that, under the additional assumption..."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Differential Privacy",
+        "justification": "The paper addresses differentially private mechanisms such as Report Noisy Max and Above Threshold, aiming to improve differential privacy guarantees with Gaussian noise.",
+        "quote": "Differential Privacy (DP) (Dwork, 2006) has become the standard framework used for the private release of sensitive statistics."
+      },
+      "aliases": [
+        "DP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Online Learning Algorithms",
+          "justification": "The paper discusses applications in online learning, particularly with the Above Threshold mechanism as part of the Sparse Vector Technique.",
+          "quote": "The Sparse Vector Technique (Dwork et al., 2009), and is a common privacy primitive in change-point detection, empirical risk minimization, density estimation and other online learning algorithms"
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Empirical Risk Minimization",
+          "justification": "The paper mentions empirical risk minimization as part of applications where the Sparse Vector Technique is used.",
+          "quote": "Sparse Vector Technique, a composition of Above Threshold algorithms to find a sparse set of relevant queries among a large set. It is a common privacy primitive in change-point detection, empirical risk minimization, density estimation and other online learning algorithms"
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Density Estimation",
+          "justification": "The paper lists density estimation as one of the applications areas for the Sparse Vector Technique.",
+          "quote": "The Sparse Vector Technique, a composition of Above Threshold algorithms to find a sparse set of relevant queries among a large set. It is a common privacy primitive in change-point detection, empirical risk minimization, density estimation and other online learning algorithms"
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Gaussian Report Noisy Max",
+          "justification": "The paper analyzes the Gaussian Report Noisy Max mechanism and offers a pure DP bound for it.",
+          "quote": "We propose a pure DP bound for Gaussian Report Noisy Max."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The model itself is not a contribution of the paper, but the revision of its differential privacy guarantees with Gaussian noise under bounded queries is analyzed in the paper.",
+          "quote": "We revisit the privacy analysis of the Above Threshold mechanism instantiated with Gaussian noise... In the process, we also develop an ex-ante DP guarantee for Gaussian Report Noisy Max."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The Gaussian Report Noisy Max model is executed as part of theoretical and experimental evaluations presented in the study.",
+          "quote": "Empirically, we find that these privacy bounds lead to tighter privacy accounting..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The analysis involves comparing the results of the Gaussian noise models against classical approaches for privacy guarantees.",
+          "quote": "Our study compares Gaussian Above Threshold and Gaussian Report Noisy Max against other Gaussian-based mechanisms."
+        },
+        "referenced_paper_title": {
+          "value": "The Algorithmic Foundations of Differential Privacy",
+          "justification": "The foundational work of differential privacy is often referenced when introducing the Gaussian Report Noisy Max in the context of privacy.",
+          "quote": "The Exponential Mechanism (Dwork and Roth, 2014) and Permute-and-flip are commonly used for offline selection."
+        }
+      },
+      {
+        "name": {
+          "value": "Gaussian Above Threshold",
+          "justification": "The paper revisits and provides a privacy analysis for the Gaussian Above Threshold mechanism and introduces methods for composing pure ex-post DP guarantees for it.",
+          "quote": "We revisit the privacy analysis of the Above Threshold mechanism instantiated with Gaussian noise... provide pure DP guarantees..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The analysis of the Gaussian Above Threshold is not novel, but the paper's contribution is in the analysis under Gaussian noise for privacy guarantees.",
+          "quote": "We revisit the privacy analysis of the Above Threshold mechanism instantiated with Gaussian noise and show that..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The Gaussian Above Threshold model is executed in the experiments with application datasets.",
+          "quote": "Finally, we provide experiments on mobility and energy consumption datasets demonstrating..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The Gaussian Above Threshold mechanism is compared with other known privacy mechanisms both in theoretical analysis and empirical results presented in the paper.",
+          "quote": "Empirically, we find that these privacy bounds lead to tighter privacy accounting in the high privacy, low data regime, when compared to other Gaussian-based mechanisms."
+        },
+        "referenced_paper_title": {
+          "value": "Improving sparse vector technique with renyi differential privacy",
+          "justification": "The paper improves on previous analysis techniques using Renyi Differential Privacy, which are foundational to the Gaussian Above Threshold analysis.",
+          "quote": "Zhu and Wang (2020) recently proposed an RDP analysis which can be applied to the Gaussian version of Above Threshold."
+        }
+      },
+      {
+        "name": {
+          "value": "Sparse Vector Technique (SVT)",
+          "justification": "The paper revisits the SVT in the context of Gaussian noise and privacy filters, deriving a version called Filtered Self-Reporting Composition.",
+          "quote": "Running Above Threshold repeatedly is called the Sparse Vector Technique"
+        },
+        "aliases": [
+          "SVT"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The paper contributes a fully adaptive version of the Sparse Vector Technique called Filtered Self-Reporting Composition (FSRC).",
+          "quote": "Further, we define a meta-algorithm that composes Gaussian Above Threshold with ex-post DP guarantees. Thus, we derive a fully-adaptive Sparse Vector Technique (SVT), which we call Filtered Self-Reporting Composition (FSRC)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The Sparse Vector Technique (SVT) is executed in empirical tests as part of the enhanced privacy mechanism proposed in the paper.",
+          "quote": "Finally, we provide experiments on mobility and energy consumption datasets demonstrating that our analyses yield mechanisms that in practice..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The SVT composed in this paper is compared with previous approaches to demonstrate its effectiveness and practicality.",
+          "quote": "Finally, we provide experiments on mobility and energy consumption datasets demonstrating that our Sparse Vector Technique is practically competitive with previous approaches."
+        },
+        "referenced_paper_title": {
+          "value": "The Algorithmic Foundations of Differential Privacy",
+          "justification": "The SVT is rooted in established differential privacy techniques and its application is discussed across various privacy scenarios.",
+          "quote": "Sparse Vector Technique (Dwork et al., 2009), and is a common privacy primitive..."
+        }
+      },
+      {
+        "name": {
+          "value": "Filtered Self-Reporting Composition (FSRC)",
+          "justification": "FSRC is a novel meta-algorithm introduced in this paper, which composes Gaussian Above Threshold with ex-post DP guarantees to create a fully-adaptive SVT.",
+          "quote": "Thus, we derive a fully-adaptive Sparse Vector Technique (SVT), which we call Filtered Self-Reporting Composition (FSRC)."
+        },
+        "aliases": [
+          "FSRC"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "FSRC is a contributed model that combines Gaussian Above Threshold with ex-post DP guarantees to derive a new adaptive technique.",
+          "quote": "Further, we define a meta-algorithm that composes Gaussian Above Threshold with ex-post DP guarantees. Thus, we derive a fully-adaptive Sparse Vector Technique (SVT), which we call Filtered Self-Reporting Composition (FSRC)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "FSRC is executed in experiments and evaluated against other methods to determine its practicality and effectiveness.",
+          "quote": "Finally, we provide experiments on mobility and energy consumption datasets demonstrating that our analyses yield mechanisms that in practice match or outperform previous approaches. "
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "FSRC is explicitly compared to previous approaches to assess its practical competitiveness and the reduced need for hyper-parameter tuning.",
+          "quote": "Finally, we provide experiments on mobility and energy consumption datasets demonstrating that our analyses yield mechanisms that in practice match or outperform previous approaches and requires less hyper-parameter tuning."
+        },
+        "referenced_paper_title": {
+          "value": "On the algorithmic foundations of differential privacy",
+          "justification": "The Sparse Vector Technique and its adaptations like FSRC rely on foundational works in differential privacy.",
+          "quote": "Algorithmic Foundations of Differential Privacy. Foundations and trends in theoretical computer science. Now."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Mobility Data",
+          "justification": "The paper conducts experiments on mobility datasets as part of the empirical analysis to demonstrate the practical competitiveness of the proposed mechanisms.",
+          "quote": "Finally, we provide experiments on mobility and energy consumption datasets demonstrating..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Google COVID-19 community mobility reports: anonymization process description (version 1.1)",
+          "justification": "The paper references mobility data used during the COVID-19 pandemic for experiments.",
+          "quote": "For example, during the COVID-19 pandemic, Google Maps mobility data was published with DP (Aktay et al., 2020) in order for public health authorities to better understand various curve-flattening measures..."
+        }
+      },
+      {
+        "name": {
+          "value": "Energy Consumption Data",
+          "justification": "Energy consumption datasets are used in the experiments to demonstrate the effectiveness of the presented mechanisms.",
+          "quote": "...propose a simple privacy filter for composing pure ex-post DP guarantees, and use it to derive a fully adaptive Gaussian Sparse Vector Technique mechanism. Finally, we provide experiments on mobility and energy consumption datasets."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Residential load and rooftop pv generation: an Australian distribution network dataset",
+          "justification": "The energy consumption dataset is identified as an Australian distribution network dataset used for empirical analysis.",
+          "quote": "Residential load and rooftop pv generation: an Australian distribution network dataset. International Journal of Sustainable Energy..."
+        }
+      },
+      {
+        "name": {
+          "value": "UCI Bikes Dataset",
+          "justification": "The UCI Bikes Dataset is used in the empirical analysis to evaluate the proposed privacy mechanism in practice.",
+          "quote": "The UCI Bikes Dataset captures the utilization of shared bikes in a geographic area over the course of a year..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Event labeling combining ensemble detectors and background knowledge",
+          "justification": "The UCI Bikes Dataset is referenced in the empirical analysis section as part of the dataset used for evaluation.",
+          "quote": "Fanaee-T, H. and Gama, J. (2013). Event labeling combining ensemble detectors and background knowledge."
+        }
+      },
+      {
+        "name": {
+          "value": "LCL London Energy Dataset",
+          "justification": "The LCL London Energy Dataset is used in the experiments to assess the proposed model's performance.",
+          "quote": "The LCL London Energy Dataset consists of energy usage for N = 5, 564 customers over d = 829 days."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Smartmeter Energy Use Data in London Households",
+          "justification": "The paper references the LCL London Energy Dataset in the context of the energy consumption experiments.",
+          "quote": "Greater London Authority (2012). Smartmeter Energy Use Data in London Households."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 2431,
+    "prompt_tokens": 22602,
+    "total_tokens": 25033,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

@@ -1,0 +1,406 @@
+{
+  "paper": "86dc8a8317ab9366571cfed11fd47dcd.txt",
+  "words": 9957,
+  "extractions": {
+    "title": {
+      "value": "CALE: Continuous Arcade Learning Environment",
+      "justification": "The title is clearly stated at the beginning of the paper and encapsulates the introduction of the Continuous Arcade Learning Environment (CALE).",
+      "quote": "CALE: Continuous Arcade Learning Environment"
+    },
+    "description": "This paper introduces the Continuous Arcade Learning Environment (CALE), which extends the traditional Arcade Learning Environment (ALE) to support continuous actions. This adaptation allows for benchmarking and evaluating continuous-control agents alongside value-based agents using the same environment suite. This work provides initial baseline results with the Soft Actor-Critic algorithm and outlines potential research directions enabled by CALE.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper focuses on introducing a new environment (CALE) for evaluating reinforcement learning agents and presents baseline results, which is characteristic of empirical research.",
+      "quote": "We provide a series of open questions and research directions that CALE enables, as well as initial baseline results using Soft Actor-Critic."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Reinforcement Learning",
+        "justification": "The primary focus of the paper is on enhancing the Arcade Learning Environment to support reinforcement learning with continuous control, hence it falls under the domain of Reinforcement Learning.",
+        "quote": "This enables the benchmarking and evaluation of continuous-control agents (such as PPO and SAC) and value-based agents (such as DQN and Rainbow) on the same environment suite."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Deep Reinforcement Learning",
+          "justification": "The paper discusses and benchmarks various deep reinforcement learning algorithms using the newly introduced CALE, making it a key subfield of the paper.",
+          "quote": "Using the ALE, Mnih et al. [2015] demonstrated, for the first time, that reinforcement learning (RL) combined with deep neural networks could play challenging Atari 2600 games with super-human performance."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Continuous Control",
+          "justification": "The paper introduces CALE specifically to handle continuous actions, making Continuous Control a significant area of the study.",
+          "quote": "The CALE uses the same underlying emulator of the Atari 2600 gaming system (Stella), but adds support for continuous actions."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Soft Actor-Critic (SAC)",
+          "justification": "The Soft Actor-Critic (SAC) algorithm is explicitly mentioned as a baseline for continuous control evaluation in the CALE environment.",
+          "quote": "Additionally, we present baselines with the popular Soft-Actor Critic [SAC; Haarnoja et al., 2018] algorithm that underscore the need for further research towards general agents capable of handling diverse domains."
+        },
+        "aliases": [
+          "SAC"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "SAC is used for baseline evaluations but is not a novel contribution of this paper.",
+          "quote": "Additionally, we present baselines with the popular Soft-Actor Critic [SAC; Haarnoja et al., 2018] algorithm."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper discusses the execution of SAC on the CALE toolkit and provides results from these experiments.",
+          "quote": "We present a series of baseline results on CALE using the soft actor-critic agent [SAC; Haarnoja et al., 2018]."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "SAC's performance is compared to other algorithms like DQN within the context of the CALE.",
+          "quote": "We compare the performance of our SAC baseline against DQN in the 200 million training regime."
+        },
+        "referenced_paper_title": {
+          "value": "Soft actor-critic: Off-policy maximum entropy deep reinforcement learning with a stochastic actor",
+          "justification": "The referenced paper title is used in connection with SAC, as indicated by the citation provided.",
+          "quote": "Additionally, we present baselines with the popular Soft-Actor Critic [SAC; Haarnoja et al., 2018] algorithm."
+        }
+      },
+      {
+        "name": {
+          "value": "Proximal Policy Optimization (PPO)",
+          "justification": "PPO is mentioned as one of the continuous-control agents evaluated within the CALE.",
+          "quote": "This enables the benchmarking and evaluation of continuous-control agents (such as PPO and SAC)."
+        },
+        "aliases": [
+          "PPO"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "PPO is used for benchmarking but is not a novel contribution of this paper.",
+          "quote": "This enables the benchmarking and evaluation of continuous-control agents (such as PPO and SAC)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper mentions evaluating continuous control agents, including PPO, on CALE.",
+          "quote": "For SAC and PPO, we used the Dopamine implementations."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "While PPO is used in evaluations, there is no specific comparison mentioned with other models in the paper context.",
+          "quote": "SAC is a more natural choice for this initial set of baselines than other continuous control methods such as PPO."
+        },
+        "referenced_paper_title": {
+          "value": "Proximal policy optimization algorithms",
+          "justification": "The referenced paper title is inferred through the acronym PPO, which is a well-known algorithm introduced by Schulman et al.",
+          "quote": "This enables the benchmarking and evaluation of continuous-control agents (such as PPO and SAC)."
+        }
+      },
+      {
+        "name": {
+          "value": "Deep Q-Network (DQN)",
+          "justification": "DQN is used as a comparison point in experiments conducted with the CALE framework.",
+          "quote": "We compare the performance of our SAC baseline against DQN in the 200 million training regime."
+        },
+        "aliases": [
+          "DQN"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "DQN is an existing algorithm used for comparative analysis, not developed in this paper.",
+          "quote": "We compare the performance of our SAC baseline against DQN in the 200 million training regime."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The execution of DQN on the CALE is discussed through performance comparisons.",
+          "quote": "We compare the performance of our SAC baseline against DQN in the 200 million training regime."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "DQN is explicitly compared with SAC within the CALE framework, as outlined in the experiments.",
+          "quote": "We compare the performance of our SAC baseline against DQN in the 200 million training regime."
+        },
+        "referenced_paper_title": {
+          "value": "Human-level control through deep reinforcement learning",
+          "justification": "The referenced paper title is attributed to DQN as introduced by Mnih et al., cited accordingly.",
+          "quote": "DQN and the agents derived from it are also off-policy methods, thereby rendering SAC a more natural choice for this initial set of baselines than other continuous control methods such as PPO."
+        }
+      },
+      {
+        "name": {
+          "value": "Rainbow",
+          "justification": "The Rainbow algorithm is mentioned as a benchmark for comparison in continuous-control evaluations.",
+          "quote": "This enables [...] value-based agents (such as DQN and Rainbow) on the same environment suite."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Rainbow is mentioned as a comparative benchmark, not a contribution of this paper.",
+          "quote": "value-based agents (such as DQN and Rainbow) on the same environment suite."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The execution of Rainbow is not detailed in the discussions; it is listed for comparison purposes only.",
+          "quote": "value-based agents (such as DQN and Rainbow) on the same environment suite."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "While Rainbow is mentioned, the paper does not perform direct comparisons with Rainbow in empirical results.",
+          "quote": "value-based agents (such as DQN and Rainbow) on the same environment suite."
+        },
+        "referenced_paper_title": {
+          "value": "Rainbow: Combining improvements in deep reinforcement learning",
+          "justification": "The paper mentions Rainbow, referring to Hessel et al.'s work on improving reinforcement learning algorithms.",
+          "quote": "value-based agents (such as DQN and Rainbow) on the same environment suite."
+        }
+      },
+      {
+        "name": {
+          "value": "Double DQN",
+          "justification": "Double DQN is discussed as one of the improvements to the original DQN, used as a baseline in CALE.",
+          "quote": "Since its introduction, numerous works have improved on DQN, such as Double DQN."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Double DQN is a referenced method used for baseline improvement over DQN, not this paper's contribution.",
+          "quote": "numerous works have improved on DQN, such as Double DQN."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "There is no explicit mention of executing Double DQN as part of this paper's experiments.",
+          "quote": "numerous works have improved on DQN, such as Double DQN."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "While mentioned among several algorithms, there is no detailed comparative analysis featuring Double DQN in the paper's results.",
+          "quote": "numerous works have improved on DQN, such as Double DQN."
+        },
+        "referenced_paper_title": {
+          "value": "Deep reinforcement learning with double q-learning",
+          "justification": "The referenced paper is associated with Double DQN as introduced by Van Hasselt et al., highlighting its improvement over DQN.",
+          "quote": "numerous works have improved on DQN, such as Double DQN."
+        }
+      },
+      {
+        "name": {
+          "value": "C51",
+          "justification": "C51 is mentioned as one of the algorithms developed to improve upon DQN within the reinforcement learning community.",
+          "quote": "numerous works have improved on DQN, such as Double DQN, Rainbow, C51."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "C51 is mentioned as an existing improvement to DQN, not as a new development by this paper.",
+          "quote": "numerous works have improved on DQN, such as Double DQN, Rainbow, C51."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "C51 is referenced as part of historical context rather than executed in experiments.",
+          "quote": "numerous works have improved on DQN, such as Double DQN, Rainbow, C51."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "The paper mentions C51 in the context of prior improvements but does not use it for direct comparisons in their experiments.",
+          "quote": "numerous works have improved on DQN, such as Double DQN, Rainbow, C51."
+        },
+        "referenced_paper_title": {
+          "value": "A distributional perspective on reinforcement learning",
+          "justification": "C51 is linked to Bellemare et al.'s research, uniquely cited in the paper's context of reinforcement learning improvements.",
+          "quote": "numerous works have improved on DQN, such as Double DQN, Rainbow, C51."
+        }
+      },
+      {
+        "name": {
+          "value": "A3C",
+          "justification": "A3C is noted as another advancement in the development of reinforcement learning methods following the Doyle contributions.",
+          "quote": "numerous works have improved on DQN, such as [...], A3C."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper includes A3C as part of the progression in reinforcement learning methods not created by this work.",
+          "quote": "numerous works have improved on DQN, such as [...], A3C."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "No clear indication is made about A3C being executed in this paper's experimental setup.",
+          "quote": "numerous works have improved on DQN, such as [...], A3C."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "There is no direct comparison or execution of A3C in the analysis provided by the paper.",
+          "quote": "numerous works have improved on DQN, such as [...], A3C."
+        },
+        "referenced_paper_title": {
+          "value": "Asynchronous methods for deep reinforcement learning",
+          "justification": "The paper associates A3C with Mnih et al.'s work, pointing to asynchronous methods in the context of deep learning advances.",
+          "quote": "numerous works have improved on DQN, such as [...], A3C."
+        }
+      },
+      {
+        "name": {
+          "value": "IMPALA",
+          "justification": "IMPALA is mentioned as part of the continuum of research improving on DQN within reinforcement learning.",
+          "quote": "numerous works have improved on DQN, such as [...], IMPALA."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "IMPALA is included in the paper as part of related work improvements, not as a new contribution.",
+          "quote": "numerous works have improved on DQN, such as [...], IMPALA."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The paper mentions IMPALA in the context of related work but does not include it in the specific studied models.",
+          "quote": "numerous works have improved on DQN, such as [...], IMPALA."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "There is no provided comparison involving IMPALA in the studies conducted.",
+          "quote": "numerous works have improved on DQN, such as [...], IMPALA."
+        },
+        "referenced_paper_title": {
+          "value": "IMPALA: Scalable distributed deep-RL with importance weighted actor-learner architectures",
+          "justification": "The paper references IMPALA as part of Espeholt et al.'s work on distributed architectures in RL, providing historical context for improvements.",
+          "quote": "numerous works have improved on DQN, such as [...], IMPALA."
+        }
+      },
+      {
+        "name": {
+          "value": "R2D2",
+          "justification": "R2D2 is identified as one of the advances in reinforcement learning approach among others that improved on DQN.",
+          "quote": "numerous works have improved on DQN, such as [...], R2D2."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper includes R2D2 as existing prior work, rather than a direct contribution.",
+          "quote": "numerous works have improved on DQN, such as [...], R2D2."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "No evident section or experimental result states the execution of R2D2 in the investigation.",
+          "quote": "numerous works have improved on DQN, such as [...], R2D2."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "The paper does not directly compare or execute R2D2; it is instead listed as part of historical developments.",
+          "quote": "numerous works have improved on DQN, such as [...], R2D2."
+        },
+        "referenced_paper_title": {
+          "value": "Recurrent experience replay in distributed reinforcement learning",
+          "justification": "R2D2 is tied to the referenced paper by Kapturowski et al. in discussing approaches for reinforcement learning advancements.",
+          "quote": "numerous works have improved on DQN, such as [...], R2D2."
+        }
+      },
+      {
+        "name": {
+          "value": "Agent57",
+          "justification": "Agent57 is presented as a more recent development in the stream of improved reinforcement learning methods.",
+          "quote": "numerous works have improved on DQN, such as [...], Agent57."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper discusses Agent57 as previous research, not as a new piece of work.",
+          "quote": "numerous works have improved on DQN, such as [...], Agent57."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "Agent57 is included in the narrative but not executed or compared in the paper's experiments.",
+          "quote": "numerous works have improved on DQN, such as [...], Agent57."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "While noted for context, Agent57 is not part of direct comparative analysis in the current research findings.",
+          "quote": "numerous works have improved on DQN, such as [...], Agent57."
+        },
+        "referenced_paper_title": {
+          "value": "Agent57: Outperforming the Atari human benchmark",
+          "justification": "The reference to Agent57 aligns with the targeted benchmark and discussion provided by Badia et al., indicating improvement technologies.",
+          "quote": "numerous works have improved on DQN, such as [...], Agent57."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Arcade Learning Environment (ALE)",
+          "justification": "The ALE is a prominent dataset and environment suite consistently referred to throughout the paper for the evaluation of RL agents.",
+          "quote": "We introduce the Continuous Arcade Learning Environment (CALE), an extension of the well-known Arcade Learning Environment (ALE)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The arcade learning environment: An evaluation platform for general agents",
+          "justification": "The referenced paper introducing ALE as an evaluation platform is cited in relation to this research, emphasizing its role as a benchmark environment.",
+          "quote": "Bellemare et al. [2013] introduced the Arcade Learning Environment (ALE) as a challenging and diverse environment suite for evaluating generally capable agents."
+        }
+      },
+      {
+        "name": {
+          "value": "Atari 100k",
+          "justification": "The paper indicates using the Atari 100k benchmark as part of evaluation protocols, making it clearly utilized.",
+          "quote": "Additionally, we use the Atari 100k benchmark introduced by Łukasz Kaiser et al. [2020], which evaluates agents using only 100,000 agent interactions."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Model based reinforcement learning for atari",
+          "justification": "This particular benchmark is linked with the research by Łukasz Kaiser et al., as referenced in consideration of evaluations with CALE.",
+          "quote": "Additionally, we use the Atari 100k benchmark introduced by Łukasz Kaiser et al. [2020]."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Dopamine",
+          "justification": "Dopamine is used within the experiments for implementing and testing reinforcement learning algorithms like SAC and PPO on CALE.",
+          "quote": "We use the SAC implementation and experimental framework provided by Dopamine."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Dopamine: A Research Framework for Deep Reinforcement Learning",
+          "justification": "The reference title corresponds with the citation for Dopamine, affirming its usage context in implementations.",
+          "quote": "We use the SAC implementation and experimental framework provided by Dopamine [Castro et al., 2018]."
+        }
+      },
+      {
+        "name": {
+          "value": "Gymnasium",
+          "justification": "The paper mentions a Gymnasium interface for enabling continuous actions in CALE, affirming its usage.",
+          "quote": "A Gymnasium interface is also provided and can be installed via pip install gymnasium[atari]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Gymnasium",
+          "justification": "The integration within CALE suggests the application of Gymnasium from Towers et al.'s development, based on the installation instructions.",
+          "quote": "A Gymnasium interface is also provided and can be installed via pip install gymnasium[atari]."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 3831,
+    "prompt_tokens": 20039,
+    "total_tokens": 23870,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

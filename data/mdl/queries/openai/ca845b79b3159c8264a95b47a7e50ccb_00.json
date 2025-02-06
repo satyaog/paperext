@@ -1,0 +1,132 @@
+{
+  "paper": "ca845b79b3159c8264a95b47a7e50ccb.txt",
+  "words": 7965,
+  "extractions": {
+    "title": {
+      "value": "Exploring Quantization for Efficient Pre-Training of Transformer Language Models",
+      "justification": "The title explicitly mentions the exploration of quantization for efficient pre-training of Transformer language models.",
+      "quote": "Exploring Quantization for Efficient Pre-Training of Transformer Language Models"
+    },
+    "description": "This paper investigates the application of quantization techniques during the pre-training phase of transformer language models to increase efficiency. The study systematically applies linear quantization to various components such as weights, activations, gradients, and optimizer states, primarily using 4 and 8 bits. The goal is to achieve high training efficiency while retaining model performance. The results are analyzed for their effects on memory savings, training stability, and performance, and a comprehensive quantization strategy is proposed.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper includes experimental results demonstrating how quantization affects training efficiency and performance, indicating an empirical study.",
+      "quote": "In this paper, we present the first in-depth study on the effects of quantizing Transformer language models during pre-training and at scale."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Efficient Training of Transformer Models",
+        "justification": "The focus is on transformer models and specifically how quantization can make their training more efficient, targeting the Efficient Training subfield.",
+        "quote": "This study aims to explore the impact of quantization for efficient pre-training of Transformers, with a focus on linear layer components."
+      },
+      "aliases": [
+        "Transformer Efficiency"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Pre-Training Techniques",
+          "justification": "The paper explores quantization during the pre-training phase, suggesting it relates to pre-training techniques.",
+          "quote": "By offering a comprehensive recipe of effective quantization strategies to be applied during the pre-training of Transformers, we promote high training efficiency from scratch while retaining language modeling ability."
+        },
+        "aliases": [
+          ""
+        ]
+      },
+      {
+        "name": {
+          "value": "Quantization",
+          "justification": "The focus of the paper is on applying quantization during the pre-training of Transformer models.",
+          "quote": "The study systematically applies straightforward linear quantization to weights, activations, gradients, and optimizer states, we assess its effects on model efficiency, stability, and performance during training."
+        },
+        "aliases": [
+          "Quantized Neural Networks"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "GPT-2",
+          "justification": "GPT-2 small (124M) is used in experiments for analyzing quantization effects during its pre-training phase.",
+          "quote": "We used GPT-2 small (124M) (Radford et al., 2019) with FlashAttention-2 (Dao et al., 2022) for our experiments."
+        },
+        "aliases": [
+          ""
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "GPT-2 is a pre-existing model and not contributed by the paper.",
+          "quote": "We used GPT-2 small (124M) (Radford et al., 2019)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The experiments in the paper were conducted using the GPT-2 model.",
+          "quote": "We used GPT-2 small (124M) (Radford et al., 2019) with FlashAttention-2 (Dao et al., 2022) for our experiments."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper reports results on how quantization affects GPT-2 compared to other baselines.",
+          "quote": "We observe that per-channel weight quantization with 8 bits outperforms the floating-point baseline since the beginning of training in terms of validation loss, while per-tensor weight quantization with 8 bits shows competitive performance."
+        },
+        "referenced_paper_title": {
+          "value": "Language models are unsupervised multitask learners",
+          "justification": "The referenced paper for GPT-2 is listed in the citations, confirming its usage.",
+          "quote": "We used GPT-2 small (124M) (Radford et al., 2019)."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "OpenWebText",
+          "justification": "OpenWebText is explicitly used for pre-training models in the experiments.",
+          "quote": "For our experiments, we pre-trained 30 models from scratch on OpenWebText (Gokaslan and Cohen, 2019)."
+        },
+        "aliases": [
+          ""
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Openwebtext corpus",
+          "justification": "The name OpenWebText corpus refers to the dataset contributed by Gokaslan and Cohen.",
+          "quote": "Openwebtext corpus. http://Skylion007.github.io/OpenWebTextCorpus."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is used as the deep learning framework for model training in the experiments.",
+          "quote": "We explore the memory consumption of various components within GPT-2 models during training using the PyTorch Memory Profiler."
+        },
+        "aliases": [
+          ""
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "No specific paper is referenced for PyTorch, as it is a commonly used library.",
+          "quote": "We explore the memory consumption of various components within GPT-2 models during training using the PyTorch Memory Profiler."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1025,
+    "prompt_tokens": 16379,
+    "total_tokens": 17404,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

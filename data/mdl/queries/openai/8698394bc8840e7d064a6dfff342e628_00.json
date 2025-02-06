@@ -1,0 +1,162 @@
+{
+  "paper": "8698394bc8840e7d064a6dfff342e628.txt",
+  "words": 9249,
+  "extractions": {
+    "title": {
+      "value": "DECOLLAGE: 3D Detailization by Controllable, Localized, and Learned Geometry Enhancement",
+      "justification": "The title explicitly captures the essence of the paper's focus on localized geometry detailization using a method called DECOLLAGE.",
+      "quote": "DECOLLAGE: 3D Detailization by Controllable, Localized, and Learned Geometry Enhancement"
+    },
+    "description": "The paper presents a method for 3D detailization that allows users to enhance the geometry of coarse 3D shapes by applying styles from exemplar shapes. This is achieved through a Pyramid GAN structure that enables localized and controllable detailization, producing high-resolution geometric details that maintain structural integrity.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper includes extensive experiments comparing the proposed method against baseline techniques and demonstrates practical applications, supporting the conclusion that it is an empirical study.",
+      "quote": "Through extensive experiments, we show that our ability to localize details enables novel interactive creative workflows and applications."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "3D Geometry Processing",
+        "justification": "The research focuses on enhancing 3D geometry details, a key aspect of 3D geometry processing.",
+        "quote": "Our method leverages a hierarchical backbone architecture for generative adversarial learning, i.e., a Pyramid GAN, to handle 3D geometry detail generation."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Generative Adversarial Networks (GANs)",
+          "justification": "The paper employs a Pyramid GAN for achieving 3D geometry detailization, indicating its importance in the work.",
+          "quote": "To achieve such controllable and localized 3D detailization, we build on top of a Pyramid GAN by making it masking-aware."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Computer Graphics",
+          "justification": "The paper deals with enhancing 3D shapes and their visualization, which directly relates to computer graphics.",
+          "quote": "Customized 3D content is becoming more widely available, driven by rapid advances in generative AI and increasing demand from computer games, AR/VR, and e-commerce."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Pyramid GAN",
+          "justification": "The paper devises a method based on the Pyramid GAN architecture to achieve the task of 3D detailization.",
+          "quote": "Our method leverages a hierarchical backbone architecture for generative adversarial learning, i.e., a Pyramid GAN."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "The Pyramid GAN is heavily modified with additional losses and masking mechanisms tailored for this specific task.",
+          "quote": "Although Pyramid GAN has been heavily explored before, it alone is insufficient to tackle the challenge of style mixing. To this end, our key contribution is the use of novel structure-preserving losses tailored for the Pyramid architecture."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model is used in the experiments to demonstrate the proposed method's effectiveness.",
+          "quote": "Our network is trained with both a global discriminator and a local, style-conditioned one."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Pyramid GAN's performance is compared against other baseline models numerically and qualitatively.",
+          "quote": "We conduct experiments to show that our approach performs significantly better than relevant baselines on 3D detailization."
+        },
+        "referenced_paper_title": {
+          "value": "Deep generative image models using a laplacian pyramid of adversarial networks",
+          "justification": "The reference discusses the original concept of pyramid architectures in GANs, which the paper builds upon.",
+          "quote": "[12, 24, 48, 54]"
+        }
+      },
+      {
+        "name": {
+          "value": "DECOR-GAN",
+          "justification": "The paper references and compares its approach to DECOR-GAN, a model for generating detailed 3D shapes from coarse voxel inputs.",
+          "quote": "ShaDDR [5] can efficiently produce a detailed 3D shape from coarse voxel inputs, taking less than 1 to 2 seconds. Although ShaDDR provides interactivity during generation, it only offers global style control. Our work builds upon DECOR-GAN."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "DECOR-GAN is used as a baseline model for comparisons and is not a new contribution of this paper.",
+          "quote": "Our work builds upon DECOR-GAN to deliver the first controllable and localized interactive modeling experience."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "DECOR-GAN is executed for comparison purposes during experiments.",
+          "quote": "We first qualitatively and quantitatively compare our method with DECOR-GAN [6]..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "DECOR-GAN's results are numerically and qualitatively compared against the paper's proposed method.",
+          "quote": "We conduct experiments to show that our approach performs significantly better than relevant baselines..."
+        },
+        "referenced_paper_title": {
+          "value": "DECOR-GAN: 3D shape detailization by conditional refinement",
+          "justification": "DECOR-GAN is a referenced baseline model in the paper, and its title is explicitly mentioned as such in the experiments.",
+          "quote": "Chen, Z., Kim, V.G., Fisher, M., Aigerman, N., Zhang, H., Chaudhuri, S.: DECOR-GAN: 3d shape detailization by conditional refinement."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "ShapeNet",
+          "justification": "ShapeNet is mentioned as one of the datasets used for experiments with different shape categories.",
+          "quote": "Datasets. We conduct experiments on six shape categories: 16 chairs, 16 tables, and 5 plants from ShapeNet [4]; and 5 buildings, 3 cakes, and 3 crystals from 3D Warehouse [1] under CC-BY 4.0."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ShapeNet: An Information-Rich 3D Model Repository",
+          "justification": "The paper references ShapeNet as a source for their dataset of 3D models.",
+          "quote": "Chang, A.X., Funkhouser, T., Guibas, L., Hanrahan, P., Huang, Q., Li, Z., Savarese, S., Savva, M., Song, S., Su, H., et al.: ShapeNet: An information-rich 3d model repository."
+        }
+      },
+      {
+        "name": {
+          "value": "3D Warehouse",
+          "justification": "3D Warehouse is mentioned as a dataset for obtaining 3D models used in experiments.",
+          "quote": "Datasets. We conduct experiments on six shape categories: 16 chairs, 16 tables, and 5 plants from ShapeNet; and 5 buildings, 3 cakes, and 3 crystals from 3D Warehouse [1] under CC-BY 4.0."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "3D Warehouse - A library of 3D models",
+          "justification": "The paper references 3D Warehouse as a source for additional 3D models used in the research.",
+          "quote": "3d warehouse. https://3dwarehouse.sketchup.com/"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "NVIDIA CUDA",
+          "justification": "NVIDIA CUDA is likely used for GPU computations given the mention of using an NVIDIA 3090Ti GPU for training.",
+          "quote": "Training our model takes about 30 hours on a single NVIDIA 3090Ti GPU for k=4 and K=8."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "CUDA: A Parallel Computing Platform and Application Programming Interface Model Created by NVIDIA",
+          "justification": "NVIDIA CUDA provides the parallel computing capabilities necessary to take advantage of the mentioned hardware.",
+          "quote": "NVIDIA CUDA: A Parallel Computing Platform and Application Programming Interface Model Created by NVIDIA"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1584,
+    "prompt_tokens": 16578,
+    "total_tokens": 18162,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

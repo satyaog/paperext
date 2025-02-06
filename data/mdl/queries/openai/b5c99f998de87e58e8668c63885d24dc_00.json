@@ -1,0 +1,137 @@
+{
+  "paper": "b5c99f998de87e58e8668c63885d24dc.txt",
+  "words": 11850,
+  "extractions": {
+    "title": {
+      "value": "Neural differential equations for temperature control in buildings under demand response programs",
+      "justification": "The paper's title explicitly states the focus and application of neural differential equations for temperature control in buildings under demand response programs.",
+      "quote": "Neural differential equations for temperature control in buildings under demand response programs"
+    },
+    "description": "This paper proposes a general-purpose approach using continuous-time neural differential equations to predict temperature and HVAC power usage in buildings. It suggests a model to address the challenge of deploying adaptive smart temperature controllers combined with demand response programs, aiming to control the temperature setpoint for limiting HVAC power consumption while ensuring user comfort. The approach is mainly data-driven, using metering data, and can adapt to incorporate prior knowledge about building physics. The paper discusses in detail the performance of continuous-time models in comparison to discrete-time counterparts in HVAC control applications.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper conducts extensive empirical tests to assess the performance of each model through simulation and real data, implying that it is an empirical study.",
+      "quote": "Extensive empirical tests are conducted on simulation and real data to assess each model’s performance."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Energy Management in Buildings",
+        "justification": "The research focuses on temperature control in HVAC systems within buildings and their energy management under demand response programs.",
+        "quote": "Heating Ventilation and Air Conditioning (HVAC) are energy-intensive systems that greatly contribute to peak demand."
+      },
+      "aliases": [
+        "Building Energy Management",
+        "HVAC Control"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Control Systems",
+          "justification": "The paper includes designing control algorithms such as Model Predictive Control (MPC) for temperature setpoint adjustments in HVAC systems.",
+          "quote": "A planning algorithm embedded in an MPC framework is designed to control the temperature setpoint to limit the HVAC power consumption."
+        },
+        "aliases": [
+          "MPC",
+          "Model Predictive Control"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Neural ODEs",
+          "justification": "The paper discusses the use of Neural Ordinary Differential Equations (ODE) for continuous-time model development in HVAC control.",
+          "quote": "Neural ODEs (NODE). NODE are black-box models, in which a NN is used to learn the vector field describing the dynamics of the system."
+        },
+        "aliases": [
+          "NODE"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Neural ODEs are discussed as part of existing methods applied in this research field, rather than new contributions.",
+          "quote": "Neural ODEs (NODE). NODE are black-box models, in which a NN is used to learn the vector field describing the dynamics of the system."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper mentions the empirical testing of continuous-time models, which include Neural ODEs, thus indicating they were executed as part of the study.",
+          "quote": "The experiments show that continuous-time models are more sample-efficient and robust to missing and irregular observations."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The study compares continuous-time models, including Neural ODEs, against discrete-time counterparts in various experimental settings.",
+          "quote": "The paper shows that continuous-time models require fewer samples than their discrete-time counterparts."
+        },
+        "referenced_paper_title": {
+          "value": "Neural Ordinary Differential Equations",
+          "justification": "This paper by Chen et al. is cited in the context of using Neural ODEs.",
+          "quote": "The interpretation of residual networks as an Euler discretization of an Ordinary Differential Equation (ODE) made Chen et al. [28] formulate a class of continuous-time models called Neural ODEs (NODE)."
+        }
+      },
+      {
+        "name": {
+          "value": "Controlled Differential Equations (CDEs)",
+          "justification": "CDEs are highlighted as a key continuous-time modeling mechanism in the study for HVAC control.",
+          "quote": "In particular, Kidger et al. [32–34] studied Controlled Differential Equations (CDE), which can be interpreted as the continuous counterpart of Recurrent Neural Networks (RNN)."
+        },
+        "aliases": [
+          "CDE"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The paper actively leverages CDEs to model thermal dynamics, presenting novel application as part of their framework.",
+          "quote": "We propose a new class of continuous-time and structured SSM to capture the thermal dynamics of buildings. These models are built using CDEs."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The study uses CDEs in their empirical evaluations, hence they are executed in the research.",
+          "quote": "The functioning of continuous SSM is illustrated in Fig. 1. Discrete driver values are interpolated in a continuous signal used to integrate the vector field."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "CDEs are compared against other model types like LNODE and discrete models in the study.",
+          "quote": "We then investigate their properties when used to control temperature setpoints, while ensuring comfort and participation in DR events."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The study significantly builds upon the concept of CDEs without directly contributing a standalone model. A specific reference paper title for CDEs is not provided.",
+          "quote": "In particular, Kidger et al. [32–34] studied Controlled Differential Equations (CDE), which can be interpreted as the continuous counterpart of Recurrent Neural Networks (RNN)."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "DOE Prototype Building Models",
+          "justification": "The paper references using data simulated using DOE Prototype Building Models to test and validate HVAC control strategies.",
+          "quote": "Two single-zone houses from the residential reference buildings developed by the Department of Energy (DOE) are used to collect data [54]."
+        },
+        "aliases": [
+          "DOE Building Models"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Prototype Building Models",
+          "justification": "The DOE Prototype Building Models are referenced as the source of simulation data, hence a corresponding reference is provided.",
+          "quote": "A validation set of 75 days is always used to monitor the learning...If the amount of training data exceeds the winter or summer period duration, the weather of another year at the same location is used to generate more data [54]."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1246,
+    "prompt_tokens": 19343,
+    "total_tokens": 20589,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

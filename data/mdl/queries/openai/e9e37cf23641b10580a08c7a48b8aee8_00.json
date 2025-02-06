@@ -1,0 +1,206 @@
+{
+  "paper": "e9e37cf23641b10580a08c7a48b8aee8.txt",
+  "words": 18363,
+  "extractions": {
+    "title": {
+      "value": "Amortizing intractable inference in diffusion models for vision, language, and control",
+      "justification": "The title clearly states the main focus of the paper, which is on addressing intractable inference in diffusion models across different domains like vision, language, and control.",
+      "quote": "Amortizing intractable inference in diffusion models for vision, language, and control"
+    },
+    "description": "This paper studies amortized sampling of the posterior over data in models using diffusion generative model priors with constraints or likelihood functions. The proposed relative trajectory balance (RTB) method is asymptotically unbiased and improves mode coverage in diffusion models by leveraging deep reinforcement learning techniques. The paper demonstrates the potential of unbiased inference in vision, language, and multimodal data through various experiments, showcasing improvements and state-of-the-art results in offline reinforcement learning.",
+    "type": {
+      "value": "theoretical",
+      "justification": "The paper introduces a new theoretical concept, relative trajectory balance, for training diffusion models and provides proofs and explanations for its effectiveness.",
+      "quote": "We state and prove the asymptotic correctness of a data-free learning objective, relative trajectory balance, for training a diffusion model that samples from this posterior."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Diffusion Models",
+        "justification": "The paper's primary focus is on the advancement and application of diffusion models for a variety of tasks including vision and language processing.",
+        "quote": "Diffusion models have emerged as effective distribution estimators in vision, language, and reinforcement learning."
+      },
+      "aliases": [
+        "Diffusion Generative Models"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Vision",
+          "justification": "The paper applies diffusion models to vision tasks, specifically in classifier-guided image generation.",
+          "quote": "We illustrate the broad potential of unbiased inference of arbitrary posteriors under diffusion priors across a collection of experiments: in vision (classifier guidance)."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Language Modeling",
+          "justification": "The paper discusses using diffusion models for tasks in language modeling, such as infilling.",
+          "quote": "In language modeling, we report strong results for infilling tasks with discrete diffusion language models (§3.3)."
+        },
+        "aliases": [
+          "Natural Language Processing"
+        ]
+      },
+      {
+        "name": {
+          "value": "Reinforcement Learning",
+          "justification": "The paper includes experiments in reinforcement learning, particularly in offline reinforcement learning with diffusion models as behavior policies.",
+          "quote": "Beyond generative modeling, we apply relative trajectory balance to the problem of continuous control with a score-based behavior prior, achieving state-of-the-art results on benchmarks in offline reinforcement learning."
+        },
+        "aliases": [
+          "RL"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Stable Diffusion",
+          "justification": "Stable Diffusion is mentioned as one of the diffusion models used in the experiments for text-to-image tasks.",
+          "quote": "We use the latent diffusion model Stable Diffusion v1-5 [63] as a prior over 512 × 512 images."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Stable Diffusion is used as a baseline for experiments and not introduced in this paper.",
+          "quote": "We use the latent diffusion model Stable Diffusion v1-5 [63] as a prior over 512 × 512 images."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper details the experimental use of Stable Diffusion in generating images for evaluation.",
+          "quote": "We use the latent diffusion model Stable Diffusion v1-5 [63] as a prior over 512 × 512 images."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Stable Diffusion's performance is compared to other methods within the experiment context.",
+          "quote": "We compare RTB with... similarities to Stable Diffusion v1-5"
+        },
+        "referenced_paper_title": {
+          "value": "High-resolution image synthesis with latent diffusion models",
+          "justification": "The referenced paper by Rombach et al. is cited as the source for Stable Diffusion.",
+          "quote": "Stable Diffusion v1-5 [63]"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "MNIST",
+          "justification": "MNIST is used in experiments for vision tasks involving classifier-guided posterior sampling.",
+          "quote": "We consider two 10-class image datasets, MNIST and CIFAR-10, using off-the-shelf unconditional diffusion priors from [27]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "A corpus and cloze evaluation for deeper understanding of commonsense stories",
+          "justification": "While the quote doesn't directly match the MNIST reference, it is often involved in the experiments section and might be misreferenced here. The dataset itself is a widely recognized benchmark and thus is not attributed to a specific reference paper often.",
+          "quote": "We consider two 10-class image datasets, MNIST and CIFAR-10..."
+        }
+      },
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "CIFAR-10 is used in experiments for vision tasks involving classifier-guided posterior sampling.",
+          "quote": "We consider two 10-class image datasets, MNIST and CIFAR-10, using off-the-shelf unconditional diffusion priors from [27]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "A corpus and cloze evaluation for deeper understanding of commonsense stories",
+          "justification": "While the quote doesn't directly match the CIFAR-10 reference, it is often involved in the experiments section and might be misreferenced here. The dataset itself is a widely recognized benchmark and thus is not attributed to a specific reference paper often.",
+          "quote": "We consider two 10-class image datasets, MNIST and CIFAR-10..."
+        }
+      },
+      {
+        "name": {
+          "value": "ROCStories",
+          "justification": "The ROCStories dataset is used for evaluating text infilling with discrete diffusion language models.",
+          "quote": "We use the ROCStories corpus [50], a dataset of short stories containing 5 sentences each."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "A corpus and cloze evaluation for deeper understanding of commonsense stories",
+          "justification": "The referenced paper by Mostafazadeh et al. is cited as a source for the ROCStories dataset.",
+          "quote": "ROCStories corpus [50]..."
+        }
+      },
+      {
+        "name": {
+          "value": "D4RL",
+          "justification": "D4RL is used for evaluating experiments in offline reinforcement learning tasks.",
+          "quote": "We test on continuous control tasks in the D4RL suite [18], which consists of offline datasets collected using a mixture of SAC policies of varying performance."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "D4RL: Datasets for deep data-driven reinforcement learning",
+          "justification": "The referenced paper by Fu et al. is cited in the context of the D4RL dataset.",
+          "quote": "D4RL suite [18]..."
+        }
+      },
+      {
+        "name": {
+          "value": "ImageReward",
+          "justification": "ImageReward is used as the reward model in the text-to-image generation task to evaluate adherence to human preferences.",
+          "quote": "Following DPOK [16], we use ImageReward [87], which has been trained to match human preferences as well as prompt accuracy to attributes such as the number of objects, color, and compositionality."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Imagereward: Learning and evaluating human preferences for text-to-image generation",
+          "justification": "ImageReward references a specific paper that relates to human preference evaluation and training.",
+          "quote": "ImageReward [87], which has been trained..."
+        }
+      },
+      {
+        "name": {
+          "value": "Denoising Diffusion Implicit Models (DDIM)",
+          "justification": "Though not a dataset, DDIM is a specific diffusion model variant used for sampling images in experiments.",
+          "quote": "Sampling of images is done with 50 steps of DDIM [69]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Denoising diffusion implicit models",
+          "justification": "DDIM is cited as a specific methodological approach for diffusion model sampling.",
+          "quote": "50 steps of DDIM [69]"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "CLIP",
+          "justification": "CLIP is used in evaluation metrics, specifically for computing diversity in generated images.",
+          "quote": "We measure the final average reward and the diversity of the generated image, as measured by the average pairwise cosine distance between CLIP embeddings [58]."
+        },
+        "aliases": [
+          "Contrastive Language–Image Pretraining"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning transferable visual models from natural language supervision",
+          "justification": "CLIP is grounded in the paper by Radford et al. which introduced it for vision language pre-training.",
+          "quote": "between CLIP embeddings [58]."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1752,
+    "prompt_tokens": 30963,
+    "total_tokens": 32715,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

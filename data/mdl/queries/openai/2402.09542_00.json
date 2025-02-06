@@ -1,0 +1,147 @@
+{
+  "paper": "2402.09542.txt",
+  "words": 9862,
+  "extractions": {
+    "title": {
+      "value": "Layerwise Proximal Replay: A Proximal Point Method for Online Continual Learning",
+      "justification": "The title directly indicates the method presented in the paper, which is a novel approach in the domain of online continual learning.",
+      "quote": "Our solution, Layerwise Proximal Replay (LPR), balances learning from new and replay data while only allowing for gradual changes in the hidden activation of past data."
+    },
+    "description": "This paper introduces Layerwise Proximal Replay (LPR), a method designed to enhance the efficiency of online continual learning by combining experience replay with a proximal point method. This approach aims to stabilize optimization and improve accuracy by maintaining a balance between learning from new and past data without causing abrupt changes to the model's internal representations. The authors explore the performance of LPR across different setups in continual learning domains, evidencing improvements in both memory-constrained and unconstrained settings.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents a method and demonstrates its effectiveness through extensive experiments on online continual learning tasks, thus falling under empirical research.",
+      "quote": "We demonstrate through extensive experimentation that LPR consistently improves state-of-the-art online continual learning methods across problem settings and replay buffer sizes."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Continual Learning",
+        "justification": "The abstract and content focus on enhancing methods for online continual learning, which is a subfield of machine learning aimed at enabling models to learn continuously from a data stream without forgetting previous information.",
+        "quote": "Continual learning is a subfield of machine learning that studies how to enable models to continuously adapt to new information over time without forgetting old information under memory and computation constraints."
+      },
+      "aliases": [
+        "Lifelong Learning",
+        "Incremental Learning"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Online Continual Learning",
+          "justification": "The specific context of the research and experimentation revolves around online continual learning, where models learn incrementally from non-i.i.d. data streams.",
+          "quote": "Online continual learning is a problem setup where a model incrementally learns from a potentially non-i.i.d. data stream in a memory and/or computation limited setting."
+        },
+        "aliases": [
+          "OCL"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Layerwise Proximal Replay (LPR)",
+          "justification": "LPR is the main model introduced and analyzed in the paper, designed to enhance the performance of experience replay methods in online continual learning.",
+          "quote": "Our method, which we refer to as Layerwise Proximal Replay (LPR), applies a replay-tailored preconditioner to the loss gradients."
+        },
+        "aliases": [
+          "LPR"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The authors introduced LPR as a novel contribution to improve replay methods in continual learning setups.",
+          "quote": "We introduce Layerwise Proximal Replay (LPR), the first online continual learning method that combines experience replay with proximal optimization."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper contains extensive experimental setups and results indicating computations were performed using the LPR model.",
+          "quote": "We empirically demonstrate that LPR’s optimization geometry has non-trivial consequences on the predictive performance of many replay-based online continual learning methods."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "LPR is continuously compared with other models and methods across several experiments and metrics throughout the paper.",
+          "quote": "We compare various experience replay methods with and without LPR on Split-CIFAR100."
+        },
+        "referenced_paper_title": {
+          "value": "None",
+          "justification": "LPR is a novel contribution of this research; therefore, no external reference paper is provided.",
+          "quote": "We introduce Layerwise Proximal Replay (LPR), the first online continual learning method that combines experience replay with proximal optimization."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Split-CIFAR100",
+          "justification": "This is a common benchmark dataset used in continual and incremental learning experiments, as explicitly stated in the experimental setup.",
+          "quote": "For online class-incremental learning, we evaluate on the online versions of Split-CIFAR100 and Split-TinyImageNet datasets."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning multiple layers of features from tiny images",
+          "justification": "The dataset is derived from CIFAR-100, which is well-documented in the referenced paper by Krizhevsky et al., 2009.",
+          "quote": "We evaluate on the online versions of Split-CIFAR100... datasets (Soutif-Cormerais et al., 2023) based on (Krizhevsky et al., 2009)."
+        }
+      },
+      {
+        "name": {
+          "value": "Split-TinyImageNet",
+          "justification": "Similar to CIFAR-100, TinyImageNet is another well-known dataset used in the context of continual learning, as mentioned in the experiments.",
+          "quote": "We evaluate on the online versions of Split-CIFAR100 and Split-TinyImageNet datasets."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Tiny imagenet visual recognition challenge",
+          "justification": "TinyImageNet is well-documented in the referenced paper, which outlines its framework and challenges.",
+          "quote": "Split-TinyImageNet dataset is based on (Le & Yang, 2015)."
+        }
+      },
+      {
+        "name": {
+          "value": "CLEAR",
+          "justification": "CLEAR is mentioned as part of the experimental setup focusing on domain-incremental learning, highlighting the diversity of the tasks covered by LPR.",
+          "quote": "We evaluate on the online version of the CLEAR dataset (Lin et al., 2021)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The clear benchmark: Continual learning on real-world imagery",
+          "justification": "The referenced paper by Lin et al. outlines the CLEAR dataset and its usage for continual learning.",
+          "quote": "CLEAR’s built-in sequence of 10 tasks is converted to a data stream in the same manner as the online versions of Split-CIFAR100 and Split-TinyImageNet datasets."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is the framework leveraged for implementing the Avalanche continual learning framework on which the experiments are based.",
+          "quote": "We build on top of the Avalanche continual learning framework (Carta et al., 2023a)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Avalanche: A PyTorch library for deep continual learning",
+          "justification": "The Avalanche framework, which relies on PyTorch, is documented in the referenced paper, ensuring that PyTorch itself is a key component used.",
+          "quote": "We build on top of the Avalanche continual learning framework (Carta et al., 2023a) and closely follow the experiment setup from Soutif-Cormerais et al. (2023)."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1372,
+    "prompt_tokens": 18926,
+    "total_tokens": 20298,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

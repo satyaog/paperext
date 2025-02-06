@@ -1,0 +1,156 @@
+{
+  "paper": "6cFcw1Rxww.txt",
+  "words": 8154,
+  "extractions": {
+    "title": {
+      "value": "Local Search GFlowNets",
+      "justification": "The title explicitly mentioned at the beginning of the paper is \"L OCAL S EARCH GF LOW N ETS.\"",
+      "quote": "L OCAL S EARCH GF LOW N ETS Minsu Kim∗ & Taeyoung Yun KAIST Yoshua Bengio Mila, Université de Montréal, CIFAR"
+    },
+    "description": "The paper proposes a novel algorithm called Local Search GFlowNets (LS-GFN) to enhance the effectiveness of Generative Flow Networks (GFlowNets) by leveraging local search in the object space. The approach aims to improve the training efficiency of GFlowNets by balancing exploration and exploitation through a combination of inter-mode global exploration and intra-mode local exploration. The method is applied to several benchmarks in biochemical tasks, demonstrating significant improvements in both model performance and mode diversity.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper describes extensive experiments conducted to demonstrate the performance improvement of the proposed Local Search GFlowNets (LS-GFN) in biochemical tasks, which indicates it is an empirical study.",
+      "quote": "Extensive experiments demonstrate a remarkable performance improvement in several biochemical tasks."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Generative Models",
+        "justification": "The paper primarily deals with advancements in Generative Flow Networks (GFlowNets), which are a type of generative model.",
+        "quote": "Generative Flow Networks (GFlowNets) are amortized sampling methods that learn a distribution over discrete objects proportional to their rewards."
+      },
+      "aliases": [
+        "GFlowNets",
+        "Generative Flow Networks"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Reinforcement Learning",
+          "justification": "The paper integrates reinforcement learning concepts with GFlowNets, specifically in how the sampling policies are structured and refined.",
+          "quote": "GFlowNets, when introduced initially by Bengio et al. (2021) for scientific discovery, employed a flow matching condition for their temporal difference (TD)-like training scheme."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Biochemical Modeling",
+          "justification": "The paper demonstrates the use of Local Search GFlowNets in biochemical tasks such as molecule optimization and biological sequence design.",
+          "quote": "Our extensive experiments underscore the effectiveness of the proposed exploration strategy for GFlowNets. To assess the efficacy of our method, we apply it to six well-established benchmarks encompassing molecule optimization and biological sequence design."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Local Search GFlowNets (LS-GFN)",
+          "justification": "The paper introduces Local Search GFlowNets as a novel approach to training GFlowNets using local search methods for better exploration and exploitation.",
+          "quote": "In this study, we introduce a novel algorithm, local search GFlowNets (LS-GFN), which is designed to enhance the training effectiveness of GFlowNets by leveraging local search in object space."
+        },
+        "aliases": [
+          "LS-GFN"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The model is proposed as the main contribution of the paper to improve the training effectiveness of GFlowNets.",
+          "quote": "This paper proposes to train GFlowNets with local search, which focuses on exploiting high-rewarded sample space to resolve this issue."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper involves executing experiments using LS-GFN across various tasks, indicating that it was actually run in practice.",
+          "quote": "Our extensive experiments underscore the effectiveness of the proposed exploration strategy for GFlowNets."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of Local Search GFlowNets is compared to other GFlowNet methods and reward-maximization techniques in experiments.",
+          "quote": "The proposed method outperforms not only prior GFlowNet methods but also reward-maximization techniques employed by various reinforcement learning baselines."
+        },
+        "referenced_paper_title": {
+          "value": "Flow network based generative models for non-iterative diverse candidate generation",
+          "justification": "The referenced paper by Bengio et al. introduces the concept of flow networks which is foundational to the development of GFlowNets and LS-GFN.",
+          "quote": "Advances and extension of GFlowNets. A GFlowNet is a generative model that learns particle flows on a directed acyclic graph (DAG), with directed edges denoting actions and nodes signifying states of the Markov decision process (MDP)."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "QM9",
+          "justification": "The QM9 dataset is explicitly mentioned as a task focus for experimentation within the paper.",
+          "quote": "QM9. Our goal is to generate a small molecule graph...Our objective is to maximize the HOMO-LUMO gap, which is obtained via a pre-trained MXMNet (Zhang et al., 2020) proxy."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Molecular mechanics-driven graph neural network with multiplex graph for molecular structures",
+          "justification": "The referenced paper by Zhang et al. provides information on MXMNet, which is used alongside the QM9 dataset for experiments.",
+          "quote": "Our objective is to maximize the HOMO-LUMO gap, which is obtained via a pre-trained MXMNet (Zhang et al., 2020) proxy."
+        }
+      },
+      {
+        "name": {
+          "value": "sEH",
+          "justification": "The sEH protein binding task is one of the biochemical tasks used to evaluate the performance of GFlowNets.",
+          "quote": "sEH. Our goal is to generate binders of the sEH protein."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Flow network based generative models for non-iterative diverse candidate generation",
+          "justification": "The referenced paper by Bengio et al. relates to using GFlowNets in scientific discovery, including protein binding tasks like sEH.",
+          "quote": "Our objective is to maximize binding affinity to the protein provided by the pre-trained proxy model provided by (Bengio et al., 2021)."
+        }
+      },
+      {
+        "name": {
+          "value": "TFBind8",
+          "justification": "The TFBind8 task is used to evaluate GFlowNets for generating sequences with DNA binding affinity, as mentioned in the experiments.",
+          "quote": "TFBind8. Our goal is to generate a string of length 8 of nucleotides. The reward is a DNA binding affinity to a human transcription factor (Trabucco et al., 2022)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Design-bench: Benchmarks for data-driven offline model-based optimization",
+          "justification": "The referenced paper by Trabucco et al. involves benchmarks related to the TFBind8 task for optimization objectives.",
+          "quote": "The reward is a DNA binding affinity to a human transcription factor (Trabucco et al., 2022)."
+        }
+      },
+      {
+        "name": {
+          "value": "RNA-Binding",
+          "justification": "RNA-Binding is listed as one of the sequence design tasks used in the experiments, focusing on maximizing binding affinity.",
+          "quote": "RNA-Binding. Our goal is to generate a string of 14 nucleobases...Our objective is to maximize the binding affinity to the target transcription factor."
+        },
+        "aliases": [
+          "L14-RNA1",
+          "L14-RNA2",
+          "L14-RNA3"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Adalead: A simple and robust adaptive greedy search algorithm for sequence design",
+          "justification": "The dataset and objective seem to be inspired by tasks designed in the referenced paper by Sinai et al., relating to sequence design.",
+          "quote": "We present three different target transcriptions, L14-RNA1, L14-RNA2, and L14-RNA3, introduced by Sinai et al. (2020)."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1583,
+    "prompt_tokens": 15002,
+    "total_tokens": 16585,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

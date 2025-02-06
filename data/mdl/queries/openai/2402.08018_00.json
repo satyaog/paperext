@@ -1,0 +1,105 @@
+{
+  "paper": "2402.08018.txt",
+  "words": 12689,
+  "extractions": {
+    "title": {
+      "value": "Nearest Neighbour Score Estimators for Diffusion Generative Models",
+      "justification": "The title is directly mentioned at the beginning and end of the document, making it a clear identifier for the paper.",
+      "quote": "Nearest Neighbour Score Estimators for Diffusion Generative Models"
+    },
+    "description": "This paper introduces a novel nearest neighbour score function estimator for diffusion generative models, aimed at reducing the variance and bias of existing score estimators. This new estimator utilizes multiple samples from the training set to improve convergence speed and sample quality in training consistency models, and replaces learned networks for probability-flow ODE integration in diffusion models. The paper provides both theoretical bounds on the estimator's variance and empirical validation through experiments on CIFAR-10, highlighting its efficacy over previous methods.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents new empirical methods for score function estimation and validates them through experiments. It discusses the empirical performance of the proposed methods via experiments and comparisons with existing models and techniques.",
+      "quote": "Empirically, we measure our performance in three settings. First, we compare our score estimate against the true score on CIFAR-10 (Krizhevsky et al., 2009). We find that our method has near-zero variance and bias – substantially outperforming both STF (Xu et al., 2023) and EDM (Karras et al., 2022). Applying our method to consistency models, we find that replacing one-sample estimators with our method improves consistency training – resulting in faster convergence and higher sample quality."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Diffusion Generative Models",
+        "justification": "The paper focuses on improving the score estimators for diffusion generative models and applies the new estimator in these settings.",
+        "quote": "We introduce a novel nearest neighbour score function estimator which utilizes multiple samples from the training set to dramatically decrease estimator variance. We leverage our low variance estimator in two compelling applications. Training consistency models with our estimator, we report a significant increase in both convergence speed and sample quality. In diffusion models, we show that our estimator can replace a learned network for probability-flow ODE integration, opening promising new avenues of future research."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Diffusion Models",
+          "justification": "The paper discusses diffusion models specifically and how the new method can improve their operation.",
+          "quote": "Diffusion models (Sohl-Dickstein et al., 2015; Ho et al., 2020) have recently emerged as a powerful class of generative models."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Consistency Models",
+          "justification": "The research extends to consistency models, particularly on how they benefit from the new score estimator.",
+          "quote": "To address this shortcoming, consistency models (Song et al., 2023) learn a one step mapping between π(z) and the data distribution."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "EDM",
+          "justification": "EDM is a model discussed in context of measuring performance and comparisons in the paper.",
+          "quote": "We find that our estimator outperforms the STF estimator in both posterior mean and score estimation across every metric. The difference is especially stark for score estimation, where the peak MSE of our estimator is approximately 100 times better than that of STF. We hypothesize that our excellent performance is because for an intermediate range of t, qt (x(i) |z) matches the posterior nearly perfectly."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "EDM, referenced as an existing, near-SoTA diffusion model, is not presented as a new contribution by the authors.",
+          "quote": "Further, we do not plot its score metrics since errors in the posterior mean estimation for small t are amplified in the score by a factor of 1/t4 ."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "EDM is used for comparisons and thus executed in the scope of experiments.",
+          "quote": "Finally, we find that our estimator significantly outperforms even a near-SoTA diffusion model for most t."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "EDM is directly compared to other methods in terms of score estimation performance.",
+          "quote": "Finally, we find that our estimator significantly outperforms even a near-SoTA diffusion model for most t."
+        },
+        "referenced_paper_title": {
+          "value": "Elucidating the Design Space of Diffusion-based Generative Models",
+          "justification": "The paper cites this work by Karras et al., 2022, in relation to EDM.",
+          "quote": "EDM (Karras et al., 2022)"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "CIFAR-10 is explicitly mentioned as a dataset used for evaluation in the experiments.",
+          "quote": "Empirically, we measure our performance in three settings. First, we compare our score estimate against the true score on CIFAR-10 (Krizhevsky et al., 2009)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning multiple layers of features from tiny images",
+          "justification": "The CIFAR-10 dataset is attributed to A. Krizhevsky et al., providing context from its origin paper.",
+          "quote": "First, we compare our score estimate against the true score on CIFAR-10 (Krizhevsky et al., 2009)."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1110,
+    "prompt_tokens": 24284,
+    "total_tokens": 25394,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

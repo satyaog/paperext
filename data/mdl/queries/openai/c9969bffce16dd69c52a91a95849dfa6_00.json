@@ -1,0 +1,208 @@
+{
+  "paper": "c9969bffce16dd69c52a91a95849dfa6.txt",
+  "words": 18030,
+  "extractions": {
+    "title": {
+      "value": "Efficient Reinforcement Learning by Discovering Neural Pathways",
+      "justification": "This is the title of the paper as stated at the beginning and throughout the paper documentation provided.",
+      "quote": "Efficient Reinforcement Learning by Discovering Neural Pathways"
+    },
+    "description": "This paper presents a methodology to identify sparse sub-networks, or 'neural pathways', within a larger neural network in the context of reinforcement learning. The approach shows that these pathways use fewer parameters and achieve efficient solutions. It introduces a method called Data Adaptive Pathway Discovery (DAPD) for discovering these pathways, which is proven to be energy-efficient and effective for continuous control tasks.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper is based on empirical evaluations and experiments carried out on continuous control tasks to demonstrate the effectiveness of neural pathways in reinforcement learning.",
+      "quote": "We show empirically that even very small learned sub-networks, using less than 5% of the large network’s parameters, can provide very good quality solutions."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Reinforcement Learning",
+        "justification": "The paper's focus is on reinforcement learning and improving its efficiency through the use of sparse neural networks, specifically in multi-task setups.",
+        "quote": "We present a methodology for identifying sparse sub-networks within a larger network in reinforcement learning (RL). We call such sub-networks neural pathways."
+      },
+      "aliases": [
+        "RL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Sparse Neural Networks",
+          "justification": "The research discusses the identification and training of sparse neural pathways within a larger network for reinforcement learning tasks.",
+          "quote": "We call such sub-networks neural pathways."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Multi-task Learning",
+          "justification": "The research covers the training of multiple pathways for different tasks within the same RL network.",
+          "quote": "We demonstrate the training of multiple pathways within the same networks in a multi-task setup, where each pathway tackles a separate task."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Soft Actor-Critic (SAC) with Data Adaptive Pathway Discovery (DAPD)",
+          "justification": "The paper evaluates and applies the SAC model integrated with DAPD for improved performance and energy efficiency in RL tasks.",
+          "quote": "We use Soft Actor-Critic (SAC) as our online algorithm. Our proposed method not only surpasses the performance..."
+        },
+        "aliases": [
+          "SAC-DAPD"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper builds on existing models like SAC but enhances them with the DAPD methodology, which is the actual new contribution.",
+          "quote": "We use Soft Actor-Critic (SAC) as our online algorithm."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The experiments and evaluations discussed involving SAC with DAPD are empirical and indicated to be executed to show the approach's effectiveness.",
+          "quote": "We compare the performance of DAPD with other pruning algorithms adapted for online RL, specifically RiGL and Rlx2, as well as with the performance of a SAC-Dense network."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The SAC-DAPD model is compared to other models such as RiGL, Rlx2, and a dense network version of SAC.",
+          "quote": "We compare the performance of DAPD with other pruning algorithms adapted for online RL, specifically RiGL and Rlx2, as well as with the performance of a SAC-Dense network."
+        },
+        "referenced_paper_title": {
+          "value": "Soft Actor-Critic: Off-Policy Maximum Entropy Deep Reinforcement Learning with a Stochastic Actor",
+          "justification": "The authors mention SAC as a baseline model, which corresponds to a known model in RL with a specific reference title.",
+          "quote": "We use Soft Actor-Critic (SAC) as our online algorithm."
+        }
+      },
+      {
+        "name": {
+          "value": "BCQ (Batch-Constrained deep Q-learning)",
+          "justification": "BCQ is used as a baseline comparison in offline experiments, specifically in RL settings.",
+          "quote": "We use BCQ and IQL for our offline experiments."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "BCQ is used as a baseline reference model instead of being a direct contribution of the paper.",
+          "quote": "We use BCQ and IQL for our offline experiments."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "BCQ was used in the offline RL experiments, indicating it was run to provide empirical results.",
+          "quote": "We use BCQ and IQL for our offline experiments."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "BCQ is compared against other methods like SAC-DAPD and IQL in the offline settings.",
+          "quote": "We use BCQ and IQL for our offline experiments."
+        },
+        "referenced_paper_title": {
+          "value": "Off-Policy Deep Reinforcement Learning without Exploration",
+          "justification": "BCQ is fully titled and recognized in RL circles; the referenced paper outlines its principles and empirical tests.",
+          "quote": "We use BCQ and IQL for our offline experiments."
+        }
+      },
+      {
+        "name": {
+          "value": "Implicit Q-learning (IQL)",
+          "justification": "IQL is utilized in offline experiments and serves as an important comparison for the proposed approach.",
+          "quote": "We use BCQ and IQL for our offline experiments."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "This model is used to benchmark against the proposed methods, rather than being a new contribution.",
+          "quote": "We use BCQ and IQL for our offline experiments."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "IQL was executed to produce baseline results in the offline RL scenarios.",
+          "quote": "We use BCQ and IQL for our offline experiments."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "IQL is compared within the paper to measure the effectiveness of their approach versus existing methodologies.",
+          "quote": "We use BCQ and IQL for our offline experiments."
+        },
+        "referenced_paper_title": {
+          "value": "Offline Reinforcement Learning with Implicit Q-Learning",
+          "justification": "IQL is a known RL method, with the titled paper providing more in-depth experimental approach and results.",
+          "quote": "We use BCQ and IQL for our offline experiments."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "MetaWorld MT10",
+          "justification": "The MT10 dataset is used for evaluating performance in multitask experiments.",
+          "quote": "We compare the performance of our proposed method against various baselines on the MetaWorld MT10 benchmark."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Meta-World: A Benchmark and Evaluation for Multi-Task and Meta Reinforcement Learning",
+          "justification": "MetaWorld MT10 is part of the Meta-World benchmarking suite, stated in the paper quote.",
+          "quote": "We compare the performance of our proposed method against various baselines on the MetaWorld MT10 benchmark."
+        }
+      },
+      {
+        "name": {
+          "value": "MuJoCo",
+          "justification": "This is a known benchmark for continuous control tasks in reinforcement learning which was used in this paper.",
+          "quote": "MuJoCo continuous control tasks"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Legged Robots that Keep on Learning: Fine-Tuning Locomotion Policies in the Real World",
+          "justification": "The MuJoCo simulator is widely used and recognized in reinforcement learning studies, specifically for legged robotic tasks.",
+          "quote": "MuJoCo continuous control tasks"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "This is a common library used for neural network and reinforcement learning research, noted here for the execution of experiments and models.",
+          "quote": "We run our algorithm in PyTorch-1.9.0"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An Imperative Style, High-Performance Deep Learning Library",
+          "justification": "PyTorch is a well-documented library frequently used in machine learning studies and highlighted in the paper.",
+          "quote": "We run our algorithm in PyTorch-1.9.0"
+        }
+      },
+      {
+        "name": {
+          "value": "MetaWorld",
+          "justification": "The MetaWorld library is utilized for running the MT10 benchmark tasks mentioned frequently in the experimental analysis.",
+          "quote": "In our MetaWorld experiments, we utilized the commit with the following commit-id: https://github.com/rlworkgroup/metaworld/"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Meta-World: A Benchmark and Evaluation for Multi-Task and Meta Reinforcement Learning",
+          "justification": "MetaWorld as a benchmarking suite is directly utilized for analysis in this paper and has a definitive refereed paper.",
+          "quote": "In our MetaWorld experiments, we utilized the commit with the following commit-id: https://github.com/rlworkgroup/metaworld/"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1779,
+    "prompt_tokens": 31679,
+    "total_tokens": 33458,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}

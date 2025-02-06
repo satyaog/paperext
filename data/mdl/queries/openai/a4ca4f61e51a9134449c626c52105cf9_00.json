@@ -1,0 +1,152 @@
+{
+  "paper": "a4ca4f61e51a9134449c626c52105cf9.txt",
+  "words": 11900,
+  "extractions": {
+    "title": {
+      "value": "HardCore Generation: Generating Hard UNSAT Problems for Data Augmentation",
+      "justification": "The title is clearly stated at the beginning of the document.",
+      "quote": "HardCore Generation: Generating Hard UNSAT Problems for Data Augmentation"
+    },
+    "description": "This paper addresses the challenge of generating hard and realistic UNSAT problems for data augmentation in deep-learning. It proposes a novel method that utilizes a graph neural network for fast core detection to generate hard SAT instances in a reasonable time frame. The generated synthetic SAT problems can aid in improving the prediction of solver runtimes.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper includes experiments and results demonstrating the effectiveness of the proposed method.",
+      "quote": "We demonstrate experimentally that our proposed procedure preserves the key aspects of the original instances that impact solver runtimes."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Satisfiability Modulo Theories (SMT) and Satisfiability (SAT)",
+        "justification": "The paper addresses the satisfiability problem (SAT), specifically generating hard UNSAT problems.",
+        "quote": "The boolean satisfiability problem (the SAT problem) emerges in multiple industrial settings."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Graph Neural Networks",
+          "justification": "The method employs a graph neural network for core detection.",
+          "quote": "We introduce a fast core detection procedure that uses a graph neural network."
+        },
+        "aliases": [
+          "GNN"
+        ]
+      },
+      {
+        "name": {
+          "value": "Data Augmentation",
+          "justification": "The goal of generating hard UNSAT problems is for data augmentation in training deep learning models.",
+          "quote": "We show via experiment that the generated synthetic SAT problems can be used in a data augmentation setting."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Runtime Prediction",
+          "justification": "The generated datasets are used to improve the prediction of solver runtimes.",
+          "quote": "We illustrate the value of our augmentation process for solver runtime prediction."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Graph Neural Network (GNN) for Core Detection",
+          "justification": "The paper proposes using a GNN for core detection in generating hard SAT instances.",
+          "quote": "We train a graph neural network to perform the task."
+        },
+        "aliases": [
+          "GNN"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The paper contributes the application of GNN for core detection in SAT problems as part of the proposed method.",
+          "quote": "We propose a novel method for SAT generation... We train a graph neural network to perform the task."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The GNN is trained and used as part of the method described, indicating execution.",
+          "quote": "Training is supervised by taking a binary classification loss between the true core labels and the clause nodes’ core prediction probabilities."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of the GNN in core detection is an integral part of the experimental results.",
+          "quote": "Our experiments demonstrate that the method generates instances with a similar solver runtime distribution as the original instances."
+        },
+        "referenced_paper_title": {
+          "value": "Guiding High-Performance SAT Solvers with Unsat-Core Predictions",
+          "justification": "The GNN approach for core detection is likely inspired by related work using neural methods in SAT problem solving.",
+          "quote": "Neurocore (Selsam and Bjørner, 2019) was designed to predict the core of a SAT problem. Neurocore converts the input problem to a graph and uses a GNN to predict cores."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Proprietary Circuit Data (LEC Internal)",
+          "justification": "The paper uses this dataset in its experiments to demonstrate the proposed method.",
+          "quote": "This LEC Internal data is a set of UNSAT instances which are created and solved during the Logic Equivalence Checking (LEC) step of circuit design."
+        },
+        "aliases": [
+          "LEC"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Optimization-based Test Scheduling for IEEE 1687 Multi-Power Domain Networks Using Boolean Satisfiability",
+          "justification": "The dataset used in the paper is related to circuit design, which aligns with referenced papers using SAT in circuit contexts.",
+          "quote": "Proprietary Circuit Data (LEC Internal)... during the Logic Equivalence Checking (LEC) step of circuit design."
+        }
+      },
+      {
+        "name": {
+          "value": "Synthetic Data (K-SAT Random)",
+          "justification": "The dataset is generated for reproducibility of results in the paper.",
+          "quote": "Acknowleding the importance of reproducibility, we also provide results on synthetic data."
+        },
+        "aliases": [
+          "K-SAT Random"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "A Deep Instance Generative Framework for MILP Solvers Under Limited Data Availability",
+          "justification": "The dataset creation aligns with generating instances under limited data conditions, as cited in related works.",
+          "quote": "Synthetic Data (K-SAT Random) Acknowledging the importance of reproducibility, we also provide results on synthetic data."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "DGL (Deep Graph Library)",
+          "justification": "The GNN used in the method is implemented using DGL as stated in the appendix.",
+          "quote": "We implement HardCore in DGL using 3 Graph Convolutional Network layers..."
+        },
+        "aliases": [
+          "DGL"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "DGL: A Python Package for Deep Learning on Graphs",
+          "justification": "DGL is a library for implementing GNNs, aligning with its role mentioned in the appendix.",
+          "quote": "We implement HardCore in DGL using 3 Graph Convolutional Network layers."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1134,
+    "prompt_tokens": 18370,
+    "total_tokens": 19504,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}

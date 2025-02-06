@@ -1,0 +1,257 @@
+{
+  "paper": "97f81643043de8418bdd9fb077534d88.txt",
+  "words": 11129,
+  "extractions": {
+    "title": {
+      "value": "XC-C ACHE : Cross-Attending to Cached Context for Efficient LLM Inference",
+      "justification": "The title of the paper is directly provided at the beginning of the document.",
+      "quote": "XC-C ACHE : Cross-Attending to Cached Context for Efficient LLM Inference"
+    },
+    "description": "This paper introduces models that use cross-attention inspired by encoder-decoder architectures for efficient large language model (LLM) inference, with a focus on reducing cache memory footprint while maintaining competitive performance compared to prompt-based methods.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves experimental evaluation of models and approaches on datasets, as seen from the mention of experiments and results in sections like 'Experimental Setup' and 'Results'.",
+      "quote": "We focus on the question-answering task and train on a combination of datasets where context , query , and answer triplets are available."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The research focuses on model architecture and efficiency, specifically in the context of natural language tasks such as Question Answering, which are typical of NLP.",
+        "quote": "We focus on the question-answering task and train on a combination of datasets where context , query , and answer triplets are available."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Question Answering",
+          "justification": "The research specifically evaluates the models on question-answering tasks, using it as a testbed for context conditioning.",
+          "quote": "We focus on the question-answering task and train on a combination of datasets where context , query , and answer triplets are available."
+        },
+        "aliases": [
+          "QA"
+        ]
+      },
+      {
+        "name": {
+          "value": "Language Modeling",
+          "justification": "The research deals with language models and their inference efficiency, which is a part of language modeling.",
+          "quote": "Large Language Models (LLMs) have propelled advances in language modeling and enabled automatic production of almost human-like text."
+        },
+        "aliases": [
+          "LM"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "XC-L LAMA",
+          "justification": "The XC-L LAMA model is introduced as a contribution to transform existing LLMs into more efficient encoder-decoder architectures.",
+          "quote": "Specifically, we introduced XC-L LAMA which converts a pre-trained L LAMA 2 into an encoder-decoder architecture by integrating cross-attention layers interleaved between existing self-attention layers."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "XC-L LAMA is introduced as a contribution by the authors to improve inference efficiency.",
+          "quote": "Specifically, we introduced XC-L LAMA which converts a pre-trained L LAMA 2 into an encoder-decoder architecture by integrating cross-attention layers interleaved between existing self-attention layers."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "There is no specific mention of executing XC-L LAMA on GPU or CPU in the provided text.",
+          "quote": "The proposed architecture allows for a reduction in caching space by a factor exceeding 300."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The model is compared to other inference methods, including ICL-based approaches, in terms of accuracy and memory efficiency.",
+          "quote": "Overall, we advocate for a conceptual shift in architecture design for conditional generation, which should recenter on caching and make it integral to a model’s operation rather than an afterthought."
+        },
+        "referenced_paper_title": {
+          "value": "Llama 2: Open foundation and fine-tuned chat models",
+          "justification": "Llama 2 is explicitly referenced as related work that XC-L LAMA builds upon.",
+          "quote": "Hugo Touvron, Louis Martin, Kevin Stone, Peter Al- bert, Amjad Almahairi, Yasmine Babaei, Nikolay Bashlykov, Soumya Batra, Prajjwal Bhargava, Shruti Bhosale, et al. 2023. Llama 2: Open foundation and fine-tuned chat models. arXiv preprint arXiv:2307.09288."
+        }
+      },
+      {
+        "name": {
+          "value": "GPT-3.5 TURBO",
+          "justification": "GPT-3.5 TURBO is used as a reference model for comparison in Question-Answering tasks.",
+          "quote": "We further report results for GPT-3.5-T URBO . For these ICL baselines, we selected the prompt templates based on generated answer quality on sample validation data (refer to Appendix D for de- tails)."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The model is not a contribution of this paper, but used for baseline comparisons.",
+          "quote": "We further report results for GPT-3.5-T URBO ."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The execution of GPT-3.5 TURBO is implied in the experimental results and baseline comparisons.",
+          "quote": "We further report results for GPT-3.5-T URBO ."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "GPT-3.5 TURBO is directly compared to XC-L LAMA and other models for performance evaluation.",
+          "quote": "We further report results for GPT-3.5-T URBO ."
+        },
+        "referenced_paper_title": {
+          "value": "Language models are few-shot learners",
+          "justification": "GPT-3.5 TURBO is derived from the GPT series, where GPT-3 is a known baseline.",
+          "quote": "Tom Brown, Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared D Kaplan, et al. 2020. Language models are few-shot learners. Advances in neural information processing systems, 33:1877–1901."
+        }
+      },
+      {
+        "name": {
+          "value": "Llama 2-CHAT",
+          "justification": "Llama 2-CHAT is utilized as one of the models compared against the proposed approach.",
+          "quote": "Our main baseline is ICL, i.e., providing the context as part of the prompt. More specifically, we report baseline results for L LAMA 2-C HAT , which we found to per- form better than the base pre-trained L LAMA 2."
+        },
+        "aliases": [
+          "Llama 2-CHAT"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "This model is referenced for comparison purposes, not contributed by the authors of the paper.",
+          "quote": "More specifically, we report baseline results for L LAMA 2-C HAT , which we found to per- form better than the base pre-trained L LAMA 2."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Llama 2-CHAT is executed in experiments for baseline comparisons.",
+          "quote": "More specifically, we report baseline results for L LAMA 2-C HAT , which we found to per- form better than the base pre-trained L LAMA 2."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The model is used for performance comparison against new and existing methods.",
+          "quote": "More specifically, we report baseline results for L LAMA 2-C HAT , which we found to per- form better than the base pre-trained L LAMA 2."
+        },
+        "referenced_paper_title": {
+          "value": "Llama 2: Open foundation and fine-tuned chat models",
+          "justification": "Llama 2-CHAT is a derivative of Llama 2, also referenced in the discussions.",
+          "quote": "Hugo Touvron, Louis Martin, Kevin Stone, Peter Al- bert, Amjad Almahairi, Yasmine Babaei, Nikolay Bashlykov, Soumya Batra, Prajjwal Bhargava, Shruti Bhosale, et al. 2023. Llama 2: Open foundation and fine-tuned chat models. arXiv preprint arXiv:2307.09288."
+        }
+      },
+      {
+        "name": {
+          "value": "Fusion-in-Decoder (FiD)",
+          "justification": "FiD is mentioned as a state-of-the-art model for QA tasks, used for benchmarking the new approach.",
+          "quote": "Finally, we report the results of F USION - IN - D ECODER (FiD) (Izacard and Grave, 2021), a T5- based conditional generative model, which consistently proved to be state-of- the-art on QA tasks."
+        },
+        "aliases": [
+          "FiD"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "FiD is an existing model discussed for comparison against the novel model introduced in the paper.",
+          "quote": "Finally, we report the results of F USION - IN - D ECODER (FiD) (Izacard and Grave, 2021), a T5- based conditional generative model."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "FiD's performance is compared with that of the newly introduced model, indicating its execution.",
+          "quote": "Finally, we report the results of F USION - IN - D ECODER (FiD) (Izacard and Grave, 2021), a T5- based conditional generative model."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "FiD's performance is used as a benchmark to evaluate the efficacy of the model presented in this study.",
+          "quote": "Finally, we report the results of F USION - IN - D ECODER (FiD) (Izacard and Grave, 2021), a T5- based conditional generative model."
+        },
+        "referenced_paper_title": {
+          "value": "Leveraging passage retrieval with generative models for open domain question answering",
+          "justification": "The reference to FiD is explicitly given as an existing model for QA tasks.",
+          "quote": "Gautier Izacard and Edouard Grave. 2021. Leveraging passage retrieval with generative models for open domain question answering."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Natural Questions (NQ)",
+          "justification": "Natural Questions is explicitly listed as one of the datasets used in evaluating the proposed models.",
+          "quote": "N ATURAL Q UES - TIONS (NQ) (Kwiatkowski et al., 2019)"
+        },
+        "aliases": [
+          "NQ"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Natural questions: a benchmark for question answering research",
+          "justification": "Natural Questions is referenced as a dataset utilized in the research.",
+          "quote": "Tom Kwiatkowski, Jennimaria Palomaki, Olivia Red- field, Michael Collins, Ankur Parikh, Chris Alberti, Danielle Epstein, Illia Polosukhin, Jacob Devlin, Kenton Lee, et al. 2019. Natural questions: a benchmark for question answering research."
+        }
+      },
+      {
+        "name": {
+          "value": "HotpotQA",
+          "justification": "HotpotQA is used as one of the datasets for evaluating QA capabilities of the models.",
+          "quote": "H OT - POT QA (Yang et al., 2018)"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "HotpotQA: A dataset for diverse, explainable multi-hop question answering",
+          "justification": "HotpotQA is referenced as a dataset utilized in the research.",
+          "quote": "Zhilin Yang, Peng Qi, Saizheng Zhang, Yoshua Bengio, William Cohen, Ruslan Salakhutdinov, and Christo- pher D Manning. 2018. HotpotQA: A dataset for diverse, explainable multi-hop question answering."
+        }
+      },
+      {
+        "name": {
+          "value": "TopiOCQA",
+          "justification": "TopiOCQA is listed among the datasets used for testing model performance on conversation-based QA.",
+          "quote": "T OPI OCQA (Adlakha et al., 2022)"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Topiocqa: open-domain conversational question answering with topic switching",
+          "justification": "TopiOCQA is referenced as a dataset utilized in the research.",
+          "quote": "Vaibhav Adlakha, Shehzaad Dhuliawala, Kaheer Sule- man, Harm de Vries, and Siva Reddy. 2022. Topiocqa: open-domain conversational question answering with topic switching."
+        }
+      },
+      {
+        "name": {
+          "value": "MS MARCO",
+          "justification": "MS MARCO is used to assess model performance on reading comprehension and QA tasks.",
+          "quote": "MS MARCO (Bajaj et al., 2016)"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Ms marco: A human generated machine reading comprehension dataset",
+          "justification": "MS MARCO is referenced as a dataset utilized in the research.",
+          "quote": "Tri Nguyen, Mir Rosenberg, Xia Song, Jianfeng Gao, Saurabh Tiwary, Rangan Majumder, and Li Deng. 2016. Ms marco: A human generated machine reading comprehension dataset."
+        }
+      },
+      {
+        "name": {
+          "value": "Squad V2",
+          "justification": "Squad V2 is included in the list of datasets employed for training and evaluation purposes.",
+          "quote": "S QUAD -V2 (Rajpurkar et al., 2018)"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Know what you don’t know: Unanswerable questions for squad",
+          "justification": "Squad V2 is referenced as a dataset utilized in the research.",
+          "quote": "Pranav Rajpurkar, Robin Jia, and Percy Liang. 2018. Know what you don’t know: Unanswerable questions for squad."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 2734,
+    "prompt_tokens": 20039,
+    "total_tokens": 22773,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

@@ -1,0 +1,252 @@
+{
+  "paper": "a9b60e8dc503d60c7c888b2bc63b3afc.txt",
+  "words": 9186,
+  "extractions": {
+    "title": {
+      "value": "Improving Adversarial Robustness in Vision-Language Models with Architecture and Prompt Design",
+      "justification": "The title clearly states the focus on enhancing adversarial robustness in Vision-Language Models through architectural and prompt design improvements.",
+      "quote": "Improving Adversarial Robustness in Vision-Language Models with Architecture and Prompt Design"
+    },
+    "description": "The paper focuses on enhancing the adversarial robustness of Vision-Language Models (VLMs) through various architecture and prompt design strategies. It evaluates the impact of different vision encoders, image resolutions, language model sizes, and novel prompt engineering techniques on the robustness against adversarial attacks. The study aims to provide insights and guidelines for developing safer and more reliable VLMs for deployment in critical environments.",
+    "type": {
+      "value": "empirical",
+      "justification": "The research involves systematic evaluations and empirical testing of model design choices and prompt strategies to assess their impact on adversarial robustness of VLMs.",
+      "quote": "We systematically examine the possibility of incorporating adversarial robustness through various model design choices."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Vision-Language Models",
+        "justification": "The paper's primary focus is on improving adversarial robustness in Vision-Language Models, an area dealing with integrating visual and linguistic information.",
+        "quote": "Vision-Language Models (VLMs) have seen a significant increase in both research interest and real-world applications across various domains."
+      },
+      "aliases": [
+        "VLMs"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Adversarial Robustness",
+          "justification": "A central theme of the paper is improving robustness to adversarial attacks which is crucial for safe deployment of VLMs.",
+          "quote": "...enhance robustness against strong image-based attacks such as Auto-PGD."
+        },
+        "aliases": [
+          "Adversarial Attacks",
+          "Robustness"
+        ]
+      },
+      {
+        "name": {
+          "value": "Prompt Engineering",
+          "justification": "The paper introduces prompt design as a means to improve adversarial robustness, highlighting it as a significant consideration.",
+          "quote": "...novel, cost-effective approaches to enhance robustness through prompt engineering."
+        },
+        "aliases": [
+          "Prompt Design"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "CLIP",
+          "justification": "The paper mentions using CLIP as a vision encoder for its experiments in improving VLM adversarial robustness.",
+          "quote": "Adversarial Robustness of VLMs Research into the adversarial robustness of multi-modal foundation models like BLIP2, OpenFlamingo, CLIP, and LLaVA..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "CLIP is used in the experiments but is not newly introduced by this paper.",
+          "quote": "...like CLIP which have been studied for their adversarial robustness..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The experiments are executed using CLIP as a vision encoder to assess robustness.",
+          "quote": "Evaluation covers...CLIP ViT-L/14 @ 336px..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares the effectiveness of CLIP with other vision encoders for adversarial robustness.",
+          "quote": "We compare VLMs that use image encoders: CLIP, SigLIP, DINOv2, and ImageNet-trained ViT."
+        },
+        "referenced_paper_title": {
+          "value": "Learning transferable visual models from natural language supervision",
+          "justification": "The CLIP model is linked to the work titled 'Learning transferable visual models from natural language supervision' by Radford et al. in 2021.",
+          "quote": "Adversarial Robustness of VLMs Research into the adversarial robustness of multi-modal foundation models like...CLIP (Radford et al., 2021)..."
+        }
+      },
+      {
+        "name": {
+          "value": "Mistral",
+          "justification": "Mistral is evaluated for its robust accuracy against adversarial perturbations in VLMs.",
+          "quote": "Amoung LLMs, Mistral has the best robust accuracy and Vicuna has the worst robust accuracy."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Mistral is used as one of the language models in the experiments but is not newly introduced by this paper.",
+          "quote": "Amoung LLMs, Mistral has the best robust accuracy and Vicuna has the worst robust accuracy."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Mistral was executed in the experiment context to evaluate robust accuracy.",
+          "quote": "Amoung LLMs, Mistral has the best robust accuracy..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Mistral is compared with other language models like Vicuna and LLaVA for robust accuracy.",
+          "quote": "Amoung LLMs, Mistral has the best robust accuracy..."
+        },
+        "referenced_paper_title": {
+          "value": "Robust CLIP: Unsupervised Adversarial Fine-Tuning of Vision Embeddings for Robust Large Vision-Language Models",
+          "justification": "The Mistral model is referred to regarding its robustness in the context of large vision-language models as discussed under robust accuracy.",
+          "quote": "...the Mistral base model exhibits the best robust accuracy across tasks for all attacks and benchmarks..."
+        }
+      },
+      {
+        "name": {
+          "value": "Vicuna",
+          "justification": "The paper evaluates Vicuna's adversarial robustness among various language models in the study.",
+          "quote": "...Mistral has the best robust accuracy and Vicuna has the worst robust accuracy under the strongest iterative attacks."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Vicuna is utilized for comparison purposes but is not a novel contribution in this research.",
+          "quote": "...Mistral has the best robust accuracy and Vicuna has the worst robust accuracy under the strongest iterative attacks."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Vicuna is executed as part of the evaluations on language model robustness.",
+          "quote": "We evaluate several LLMs, including...Vicuna...to understand their relative robustness..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Vicuna is compared to other models like Mistral, demonstrating its lower robust accuracy in the context of adversarial attacks.",
+          "quote": "...Mistral has the best robust accuracy and Vicuna has the worst robust accuracy..."
+        },
+        "referenced_paper_title": {
+          "value": "Judging LLM-as-a-judge with MT-Bench and Chatbot Arena",
+          "justification": "This title is linked to Vicuna as mentioned in reference to evaluating language models in adversarial settings.",
+          "quote": "Many open-source VLMs utilize Vicuna as their LLM (Liu et al., 2023)."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "COCO",
+          "justification": "COCO is used in the experiments for evaluating performance on image captioning tasks in adversarial settings.",
+          "quote": "Comparison between VLMs having different image encoders but the same LLM - Vicuna v1.5 7B."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Microsoft COCO: Common Objects in Context",
+          "justification": "COCO is a referenced dataset known for image captioning and is mentioned in the experimental setup.",
+          "quote": "In the VQA domain, we evaluate using the validation splits of VQAv2, TextVQA, OK-VQA, and VizWiz datasets."
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet",
+          "justification": "ImageNet dataset is used as a standard for assessing adversarial robustness in the vision encoders discussed.",
+          "quote": "We employ PGD and APGD attacks with 100 iterations, while FGSM uses a single iteration by design."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ImageNet: A large-scale hierarchical image database",
+          "justification": "The dataset, famously known for image classification tasks, is directly referenced in the context of robustness evaluations.",
+          "quote": "RobustCLIP proposes an unsupervised method leveraging adversarial training on the ImageNet dataset."
+        }
+      },
+      {
+        "name": {
+          "value": "Flickr30k",
+          "justification": "Flickr30k is used as part of the evaluation of the models' robustness in image captioning tasks.",
+          "quote": "In the VQA domain, we evaluate using the validation splits of VQAv2, TextVQA, OK-VQA, and VizWiz datasets."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Flickr30k entities: Collecting region-to-phrase correspondences for richer image-to-sentence models",
+          "justification": "The reference explains the Flickr30k dataset's relevance in image-text correlation tasks.",
+          "quote": "For image captioning, we use the validation splits of the COCO and Flickr30k datasets to assess caption accuracy and relevance."
+        }
+      },
+      {
+        "name": {
+          "value": "VQAv2",
+          "justification": "VQAv2 is evaluated for performance in Visual Question Answering robustness tasks against adversarial attacks.",
+          "quote": "In the VQA domain, we evaluate using the validation splits of VQAv2, TextVQA, OK-VQA, and VizWiz datasets."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "VQA: Visual Question Answering",
+          "justification": "It is a well-referenced dataset for visual question answering, as utilized in this paper's experiments.",
+          "quote": "In the VQA domain, we evaluate using the validation splits of VQAv2, TextVQA, OK-VQA, and VizWiz datasets."
+        }
+      },
+      {
+        "name": {
+          "value": "VizWiz",
+          "justification": "VizWiz is included in the evaluations of VLMs' adversarial robustness in VQA.",
+          "quote": "In the VQA domain, we evaluate using the validation splits of VQAv2, TextVQA, OK-VQA, and VizWiz datasets."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "VizWiz Grand Challenge: Answering Visual Questions from Blind People",
+          "justification": "VizWiz is a recognized VQA dataset, mentioned here for robustness testing.",
+          "quote": "In the VQA domain, we evaluate using the validation splits of VQAv2, TextVQA, OK-VQA, and VizWiz datasets."
+        }
+      },
+      {
+        "name": {
+          "value": "OK-VQA",
+          "justification": "Used to evaluate adversarial robustness in the context of visual question answering with external knowledge.",
+          "quote": "In the VQA domain, we evaluate using the validation splits of VQAv2, TextVQA, OK-VQA, and VizWiz datasets."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "OK-VQA: A visual question answering benchmark requiring external knowledge",
+          "justification": "The OK-VQA dataset's reference highlights its use for assessing external knowledge relevance in visual question answering.",
+          "quote": "In the VQA domain, we evaluate using the validation splits of VQAv2, TextVQA, OK-VQA, and VizWiz datasets."
+        }
+      },
+      {
+        "name": {
+          "value": "TextVQA",
+          "justification": "TextVQA is part of the datasets used for evaluating VLMs' robustness in visual question answering.",
+          "quote": "We report the robust VQA accuracy for datasets associated with VQA tasks and robust CIDEr scores for the captioning datasets."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Towards VQA Models That Can Read",
+          "justification": "TextVQA reference is given due to its known application in evaluating models that process and understand textual and visual information.",
+          "quote": "In the VQA domain, we evaluate using the validation splits of VQAv2, TextVQA, OK-VQA, and VizWiz datasets."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 2355,
+    "prompt_tokens": 21111,
+    "total_tokens": 23466,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

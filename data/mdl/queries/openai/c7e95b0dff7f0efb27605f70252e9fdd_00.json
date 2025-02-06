@@ -1,0 +1,266 @@
+{
+  "paper": "c7e95b0dff7f0efb27605f70252e9fdd.txt",
+  "words": 13717,
+  "extractions": {
+    "title": {
+      "value": "Do LLMs Build World Representations? Probing Through the Lens of State Abstraction",
+      "justification": "The title captures the essence of the research, which is exploring the capability of large language models (LLMs) to build world representations via state abstraction probing.",
+      "quote": "The title of the paper is 'Do LLMs Build World Representations? Probing Through the Lens of State Abstraction'."
+    },
+    "description": "This paper explores whether large language models (LLMs) can build abstract representations of the world by leveraging state abstraction theory from reinforcement learning. The researchers propose a framework and a text-based task named 'REPLACE' to probe LLM representations. The findings suggest that LLMs tend to maintain goal-oriented abstractions rather than general world representations during decoding.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves experiments and observations based on LLMs' capabilities using the REPLACE task and various datasets, indicating an empirical study.",
+      "quote": "Our experiments reveal that fine-tuning as well as advanced pre-training strengthens LLM-built representations’ tendency of maintaining goal-oriented abstractions during decoding..."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The research focuses on probing LLM representations to understand how they encode world states through textual description, falling under NLP.",
+        "quote": "...the input in our task is text data instead of a game script or environment layout. Therefore, the conclusions drawn from our experiments are more applicable to LLMs and Transformer models for NLP tasks."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Reinforcement Learning",
+          "justification": "The paper uses state abstraction theory from reinforcement learning to probe LLMs' world representations.",
+          "quote": "...we propose a new framework for probing for world representations through the lens of state abstraction theory from reinforcement learning..."
+        },
+        "aliases": [
+          "RL"
+        ]
+      },
+      {
+        "name": {
+          "value": "Probing in NLP",
+          "justification": "The research involves probing LLMs to understand their internal representations, a common approach in NLP.",
+          "quote": "This approach has two main limitations. First, it fails to distinguish the function of a specific state variable: Is it intended to maintain a general representation of the world, or is it crucial only for specific tasks, or both?"
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Pythia",
+          "justification": "The model Pythia is explicitly mentioned among those experimented on in the paper to test the framework.",
+          "quote": "We conduct experiments on a wide range of Transformer models and LLMs, namely Pythia [6], Llama2 [35], Llama3 [1], Mistral [20] and Phi3 [2]."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Pythia is used in the experiments but is not introduced as a new contribution in this paper.",
+          "quote": "...we conduct experiments on a wide range of Transformer models and LLMs, namely Pythia [6]..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Pythia was experimented on as part of the framework analysis, indicating it was executed for this study.",
+          "quote": "For each LLM prompted to solve REPLACE, we assess which types of abstractions of state s_t are preserved in its representation h_t during decoding after the collection of {(s_t , h_t )} pairs."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Pythia's performance is compared with other models to evaluate the framework's effectiveness.",
+          "quote": "In contrast, the RR of store and held g , essential for world-irrelevant abstraction, are almost identical across all pre-trained LLMs."
+        },
+        "referenced_paper_title": {
+          "value": "Pythia: A suite for analyzing large language models across training and scaling",
+          "justification": "The referenced paper on Pythia provides background into its development and application scope.",
+          "quote": "...namely Pythia [6], Llama2 [35], Llama3 [1], Mistral [20] and Phi3 [2]."
+        }
+      },
+      {
+        "name": {
+          "value": "Llama2",
+          "justification": "Llama2 is investigated as part of the model experiments in the research paper.",
+          "quote": "...we conduct experiments on a wide range of Transformer models and LLMs, namely Pythia [6], Llama2 [35], Llama3 [1], Mistral [20] and Phi3 [2]."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Llama2 is utilized within the experiments but is not a new contribution of this paper.",
+          "quote": "Similarly, pre-trained models with near-random performance fail to efficiently preserve any type of abstractions."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Llama2 was used in experiments indicating it was run during the study's framework evaluation.",
+          "quote": "Experiments using our framework and task yield novel findings..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Llama2's performance is assessed against other models to draw conclusions on the LLMs' abilities to create world representations.",
+          "quote": "As shown in Table 1, both LLMs initially fail in nearly all cases when relying solely on in-context demonstrations..."
+        },
+        "referenced_paper_title": {
+          "value": "Llama 2: Open foundation and fine-tuned chat models",
+          "justification": "Referencing provides additional context on Llama2's capabilities and foundational elements.",
+          "quote": "...Llama2 [35], Llama3 [1]..."
+        }
+      },
+      {
+        "name": {
+          "value": "Llama3",
+          "justification": "The model Llama3 is named among those being used in the experiments for this paper.",
+          "quote": "...we conduct experiments on a wide range of Transformer models and LLMs, namely Pythia [6], Llama2 [35], Llama3 [1], Mistral [20] and Phi3 [2]."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Llama3 is utilized in experiments but not a new or direct contribution of this research.",
+          "quote": "Similarly, pre-trained models with near-random performance fail to efficiently preserve any type of abstractions."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Llama3 was run in the experiments to validate the probing framework presented in the paper.",
+          "quote": "Our experiments show that LLMs achieving reasonable performance on REPLACE, whether through fine-tuning or advanced pre-training, tend to maintain goal-oriented abstractions..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of Llama3 is compared with other models to analyze its capability in maintaining abstractions.",
+          "quote": "Comparing LLMs SFT and LLMs ICL in Figure 5 and Figure 7(a), Q*- and π *-irrelevant abstractions are probed from LLMs SFT with drastically higher RR than raw and world-irrelevant abstraction."
+        },
+        "referenced_paper_title": {
+          "value": "Introducing meta llama 3: The most capable openly available LLM to date",
+          "justification": "This paper references the source detailing Llama3's introduction and features.",
+          "quote": "Similarly, pre-trained models...namely Pythia [6], Llama2 [35], Llama3 [1]..."
+        }
+      },
+      {
+        "name": {
+          "value": "Mistral",
+          "justification": "Mistral is explicitly listed among the LLMs evaluated to explore the presented framework's effects.",
+          "quote": "...a wide range of Transformer models and LLMs, namely Pythia [6], Llama2 [35], Llama3 [1], Mistral [20] and Phi3 [2]."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper implements Mistral in its study but does not present it as a novel contribution.",
+          "quote": "We conduct experiments on a wide range of Transformer models and LLMs, namely Pythia [6], Llama2 [35], Llama3 [1], Mistral [20] and Phi3 [2]."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Mistral is used in the experiments described in the paper, indicating it was run for this study.",
+          "quote": "Our experiments show that..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The results of using Mistral are compared with other models as part of the analysis.",
+          "quote": "As shown in Table 1, both LLMs initially fail in nearly all cases when relying solely on in-context demonstrations."
+        },
+        "referenced_paper_title": {
+          "value": "Mistral 7b",
+          "justification": "The reference helps elucidate the origins and specifications of the Mistral model used in experimentation.",
+          "quote": "Mistral [20] and Phi3 [2]. Our experiments show that..."
+        }
+      },
+      {
+        "name": {
+          "value": "Phi3",
+          "justification": "Phi3 is featured among the models experimented on to evaluate state abstraction probing.",
+          "quote": "...a wide range of Transformer models and LLMs, namely Pythia [6], Llama2 [35], Llama3 [1], Mistral [20] and Phi3 [2]."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Phi3 is utilized in the experiments but is not a new model introduced by this paper.",
+          "quote": "We conduct experiments on a wide range of Transformer models and LLMs, namely Pythia [6], Llama2 [35], Llama3 [1], Mistral [20] and Phi3 [2]."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The Phi3 model is executed within the conducted experiments, as part of evaluating different LLMs' abilities.",
+          "quote": "Our experiments show that LLMs achieving reasonable performance on REPLACE..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Phi3's performance is assessed alongside other models to validate the probing framework introduced in this study.",
+          "quote": "Similarly, pre-trained models with near-random performance fail to efficiently preserve any type of abstractions."
+        },
+        "referenced_paper_title": {
+          "value": "Phi-3 technical report: A highly capable language model locally on your phone",
+          "justification": "This reference provides insight into Phi3's capabilities and relevant technical information.",
+          "quote": "Phi3 [2]. Our experiments show that..."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "GIPPER",
+          "justification": "The GIPPER dataset is synthesized specifically for the experiments in this paper.",
+          "quote": "We synthesize two English datasets for REPLACE: GRIPPER and COOK."
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "None",
+          "justification": "GIPPER is a new, contributed dataset specific to this paper's experiments, not based on an existing reference.",
+          "quote": "We synthesize two English datasets for REPLACE: GRIPPER and COOK."
+        }
+      },
+      {
+        "name": {
+          "value": "COOK",
+          "justification": "The COOK dataset, alongside GIPPER, is specifically developed for assessing the probing framework presented.",
+          "quote": "We synthesize two English datasets for REPLACE: GRIPPER and COOK."
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "None",
+          "justification": "COOK is an original dataset created for this paper's experimental purposes, thus, not stemming from a prior referenced paper.",
+          "quote": "We synthesize two English datasets for REPLACE: GRIPPER and COOK."
+        }
+      },
+      {
+        "name": {
+          "value": "British National Corpus",
+          "justification": "The paper uses object names from the British National Corpus to create variants of their datasets.",
+          "quote": "We first sample a set of o from a list of container names and b from a list of frequent nouns in British National Corpus (BNC)."
+        },
+        "aliases": [
+          "BNC"
+        ],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Word frequencies in written and spoken English: Based on the British National Corpus",
+          "justification": "The referenced work is a comprehensive detailing of the British National Corpus.",
+          "quote": "...frequent nouns in British National Corpus (BNC) [26]."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "TextWorld",
+          "justification": "TextWorld is mentioned as the tool used to generate the COOK dataset for experiments.",
+          "quote": "We generate the COOK dataset with TextWorld [8]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "TextWorld: A learning environment for text-based games",
+          "justification": "The paper introducing and discussing the capabilities of TextWorld is cited to show its role in this research.",
+          "quote": "...we generate the COOK dataset with TextWorld [8]... TextWorld is a learning environment for text-based games."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2615,
+    "prompt_tokens": 23058,
+    "total_tokens": 25673,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

@@ -1,0 +1,248 @@
+{
+  "paper": "b826fad6df722e2d73f52597fa6b9f51.txt",
+  "words": 12022,
+  "extractions": {
+    "title": {
+      "value": "In value-based deep reinforcement learning, a pruned network is a good network",
+      "justification": "The title clearly appears multiple times as a heading within the paper, signifying its role as the focal point of the research presented.",
+      "quote": "In value-based deep reinforcement learning, a pruned network is a good network"
+    },
+    "description": "The paper explores the use of gradual magnitude pruning in deep reinforcement learning, showing that sparse training techniques can enhance the effectiveness of value-based RL agents. It presents empirical findings on how pruning affects agent performance across various configurations and architectures, with implications for network efficiency and scaling in deep learning.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves practical experiments and analysis, including empirical results and performance comparisons of different neural network configurations and architectures.",
+      "quote": "In Figure 5 we can indeed confirm that the pruned architectures maintain a performance lead over the unpruned baseline even at high replay ratio values."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Reinforcement Learning",
+        "justification": "The paper centers around techniques for improving reinforcement learning (RL) through network pruning, which is a core aspect of RL research.",
+        "quote": "In this paper we explore gradual magnitude pruning as a general technique for improving the performance of RL agents."
+      },
+      "aliases": [
+        "RL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Deep Reinforcement Learning",
+          "justification": "The paper specifically focuses on enhancing deep reinforcement learning agents using pruning methodologies.",
+          "quote": "Recent work has shown that deep reinforcement learning agents have difficulty in effectively using their network parameters."
+        },
+        "aliases": [
+          "Deep RL"
+        ]
+      },
+      {
+        "name": {
+          "value": "Model Pruning",
+          "justification": "Central to the paper's studies is the technique of model pruning to improve deep RL agents.",
+          "quote": "We leverage prior insights into the advantages of sparse training techniques and demonstrate that gradual magnitude pruning enables value-based agents to maximize parameter effectiveness."
+        },
+        "aliases": [
+          "Network Pruning",
+          "Sparse Training"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "DQN",
+          "justification": "The Deep Q-Network (DQN) is frequently mentioned and analyzed in the paper's context of pruning.",
+          "quote": "The network Q θ is typically trained with a temporal difference loss, such as: (x,a,r,x )∼D"
+        },
+        "aliases": [
+          "Deep Q-Network"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "While the model is extensively used in experiments, it is not introduced as a novel contribution in this paper.",
+          "quote": "Most modern value-based methods will approximate Q via a neural network with parameters θ, denoted as Q θ . This idea was introduced by Mnih et al. (2015) with their DQN agent."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "DQN is executed as part of the experiments involving network pruning to evaluate performance.",
+          "quote": "When switching both agents to using the original CNN architecture of Mnih et al. (2015) we see a similar trend with Rainbow, but see little improvement in DQN (Figure 4)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The DQN model is compared to other models like Rainbow, demonstrating its role in evaluating pruning effectiveness.",
+          "quote": "Interestingly, when the same pruning technique is applied to the original CNN architecture there are no performance improvements, but no degradation either."
+        },
+        "referenced_paper_title": {
+          "value": "Human-level control through deep reinforcement learning",
+          "justification": "This paper frequently references DQN and associates it with Mnih et al. (2015).",
+          "quote": "This idea was introduced by Mnih et al. (2015) with their DQN agent."
+        }
+      },
+      {
+        "name": {
+          "value": "Rainbow",
+          "justification": "Rainbow is mentioned alongside DQN as a key deep RL agent for conducting experiments.",
+          "quote": "Rainbow (Hessel et al., 2018) extended, and improved, the original DQN algorithm."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Rainbow is utilized in experiments but is not a new model proposed by this paper.",
+          "quote": "Rainbow (Hessel et al., 2018) extended, and improved, the original DQN algorithm."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Rainbow is actively used in experimental evaluations, particularly in the context of pruning.",
+          "quote": "We observe close to a 60% (DQN) and 50% (Rainbow) performance improvement over the original (un-pruned and unscaled) architectures."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Rainbow is compared with DQN and other configurations to assess the impact of pruning.",
+          "quote": "The pruned architectures maintain a performance lead over the unpruned baseline even at high replay ratio values."
+        },
+        "referenced_paper_title": {
+          "value": "Rainbow: Combining improvements in deep reinforcement learning",
+          "justification": "The reference to Hessel et al. (2018) indicates the foundational paper for the Rainbow model.",
+          "quote": "Rainbow (Hessel et al., 2018) extended, and improved, the original DQN algorithm."
+        }
+      },
+      {
+        "name": {
+          "value": "Implicit Quantile Networks (IQN)",
+          "justification": "IQN is mentioned as one of the alternative RL agents evaluated under pruning techniques.",
+          "quote": "While Rainbow is still a competitive agent in the ALE and both DQN and Rainbow are still regularly used as baselines in recent works, exploring newer agents is a reasonable request. To address this, we ran experiments with Implicit Quantile Networks (IQN) (Dabney et al., 2018)."
+        },
+        "aliases": [
+          "IQN"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "IQN is an existing model used for comparative analysis in the study, not a new contribution.",
+          "quote": "To address this, we ran experiments with Implicit Quantile Networks (IQN) (Dabney et al., 2018)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "IQN is executed as part of the comparative assessment of different RL strategies under pruning.",
+          "quote": "To address this, we ran experiments with Implicit Quantile Networks (IQN) (Dabney et al., 2018)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The model is part of a comparative evaluation alongside other models such as DQN and Rainbow.",
+          "quote": "We observe significant gains when using pruning."
+        },
+        "referenced_paper_title": {
+          "value": "Implicit Quantile Networks for Distributional Reinforcement Learning",
+          "justification": "The referenced Dabney et al. (2018) is cited as associated with IQN.",
+          "quote": "To address this, we ran experiments with Implicit Quantile Networks (IQN) (Dabney et al., 2018)."
+        }
+      },
+      {
+        "name": {
+          "value": "Munchausen-Implicit Quantile Networks (M-IQN)",
+          "justification": "M-IQN is another model assessed in the study to understand its performance under pruning.",
+          "quote": "We explored newer agents. To address this, we ran experiments with Munchausen-IQN (Vieillard et al., 2020)."
+        },
+        "aliases": [
+          "M-IQN"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Munchausen-IQN is explored as part of this study, however, it is not newly introduced in this paper.",
+          "quote": "Vieillard et al., 2020 is cited as related to Munchausen-IQN."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "M-IQN is actively examined in the context of how well it operates under different pruning strategies.",
+          "quote": "We observe significant gains when using pruning."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "M-IQN is compared to other models in the study to assess pruning efficiency.",
+          "quote": "Exploring newer agents is a reasonable request. To address this, we ran experiments with M-IQN."
+        },
+        "referenced_paper_title": {
+          "value": "Munchausen Reinforcement Learning",
+          "justification": "The Munchausen variant is associated with the 2020 research by Vieillard et al., as cited in the document.",
+          "quote": "To address this, we ran experiments with Munchausen-IQN (Vieillard et al., 2020)."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Atari 2600",
+          "justification": "The Atari 2600 suite is a standard testing environment mentioned for evaluating the RL agents.",
+          "quote": "We evaluated pruning on DQN and Rainbow over all 60 Atari 2600 games, confirming our findings are not specific to the 15 games initially selected."
+        },
+        "aliases": [
+          "ALE",
+          "Arcade Learning Environment"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The arcade learning environment: An evaluation platform for general agents",
+          "justification": "The Atari 2600 environment is credited to Bellemare et al. (2013) as foundational for RL research.",
+          "quote": "Arcade Learning Environment on the same 15 games used by Graesser et al. (2022), chosen for their diversity."
+        }
+      },
+      {
+        "name": {
+          "value": "MuJoCo",
+          "justification": "MuJoCo is employed for continuous control tasks in RL agent training, as mentioned in the experiments.",
+          "quote": "We evaluate SAC on five continuous control environments from the MuJoCo suite (Todorov et al., 2012), using 10 independent seeds for each."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Mujoco: A physics engine for model-based control",
+          "justification": "MuJoCo is attributed to Todorov et al. (2012) for its role in simulation for reinforcement learning.",
+          "quote": "In 2012 IEEE/RSJ international conference on intelligent robots and systems, pp. 5026–5033. IEEE, 2012."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Jax",
+          "justification": "Jax is utilized as part of the computational tools in various implementations, as noted in the experiments.",
+          "quote": "We use the JaxPruner (Lee et al., 2024) library for [...] pruning, as it already provides integration with Dopamine."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Jax: Composable transformations of Python+NumPy programs",
+          "justification": "Bradbury et al. (2018) is acknowledged as the source for Jax, ensuring the described usage corresponds to cited content.",
+          "quote": "JAX (Bradbury et al., 2018)."
+        }
+      },
+      {
+        "name": {
+          "value": "Dopamine",
+          "justification": "The Dopamine library is explicitly referenced as a framework used in the experimental setup for RL models.",
+          "quote": "For the base DQN and Rainbow agents we use the Jax implementations of the Dopamine library (Castro et al., 2018)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Dopamine: A Research Framework for Deep Reinforcement Learning",
+          "justification": "The library aligns with the cited research of Castro et al. (2018), linking its use to this paper's research context.",
+          "quote": "Dopamine code available at https://github.com/google/dopamine."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2255,
+    "prompt_tokens": 23360,
+    "total_tokens": 25615,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "paper": "2403.10949.txt",
+  "words": 10858,
+  "extractions": {
+    "title": {
+      "value": "SelfIE: Self-Interpretation of Large Language Model Embeddings",
+      "justification": "The title directly describes the content and focus of the research paper, which is centered on enabling large language models to interpret their own embeddings.",
+      "quote": "SelfIE: Self-Interpretation of Large Language Model Embeddings"
+    },
+    "description": "This paper introduces SelfIE, a framework for enabling Large Language Models (LLMs) to interpret their own embeddings in natural language. The framework leverages LLMs' ability to respond to prompts to decode and represent complex concepts within hidden embeddings without additional training. It aims to provide transparency in LLM reasoning, particularly in ethical decision-making and handling of harmful knowledge. SelfIE also supports supervising and controlling the reasoning processes by editing concept representations at specific layers.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper conducts empirical experiments using SelfIE to demonstrate its ability to interpret LLM embeddings and control model reasoning processes.",
+      "quote": "Our visualizations and empirical results demonstrate that our interpretation framework faithfully conveys information in hidden embeddings and reveals internal reasoning procedures in LLMs."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The research focuses on interpreting the embeddings of Large Language Models, which are a core aspect of Natural Language Processing.",
+        "quote": "A longstanding problem in machine learning, there has been significant effort to uncover explanations behind LLM decisions."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Model Interpretability",
+          "justification": "The paper deals with interpreting and understanding the internal reasoning of LLMs, which falls under model interpretability.",
+          "quote": "The ability to explain and control an LLM’s reasoning process is key for reliability, transparency, and future model developments."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Model Control",
+          "justification": "SelfIE allows editing and controlling the reasoning process of LLMs, contributing to the field of model control.",
+          "quote": "SelfIE interpretations enable locating and modifying of individual layer to control LLM reasoning behaviors such as erasing harmful knowledge and overriding ethical steering."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "LLaMA-2-70B-Chat",
+          "justification": "This model was specifically mentioned and used in the experiments of the paper, demonstrating the capabilities of SelfIE.",
+          "quote": "Our experiment focuses on LLaMA-2-70B-Chat (Touvron et al., 2023), while our method is general to all transformer-based LLM of different sizes."
+        },
+        "aliases": [
+          "LLaMA"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The model LLaMA-2-70B-Chat is an existing model used for testing SelfIE, not a contribution of this paper.",
+          "quote": "Our experiment focuses on LLaMA-2-70B-Chat (Touvron et al., 2023), while our method is general to all transformer-based LLM of different sizes."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper involves empirical experiments which necessitate the execution of the model.",
+          "quote": "Our experiment focuses on LLaMA-2-70B-Chat."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Comparisons are made with other methods in terms of effectiveness, demonstrating numerical evaluations and performance measurements.",
+          "quote": "SelfIE achieves the same performance on eliciting LLM’s internal representation of world state in TextWorld (Côté et al., 2019) as prior supervised approach."
+        },
+        "referenced_paper_title": {
+          "value": "Llama 2: Open Foundation and Fine-tuned Chat Models",
+          "justification": "The referenced paper provides details on the model used in the experiments.",
+          "quote": "Our experiment focuses on LLaMA-2-70B-Chat (Touvron et al., 2023), while our method is general to all transformer-based LLM of different sizes."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "TextWorld",
+          "justification": "TextWorld is mentioned as a dataset used to evaluate the SelfIE framework.",
+          "quote": "TextWorld (Côté et al., 2019) provides a platform for generating synthetic worlds for text-based games that are used to test RL agents."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "TextWorld: A Learning Environment for Text-Based Games",
+          "justification": "This is the paper where TextWorld is introduced, outlining its purpose for generating environments for testing.",
+          "quote": "TextWorld (Côté et al., 2019) provides a platform for generating synthetic worlds for text-based games that are used to test RL agents."
+        }
+      },
+      {
+        "name": {
+          "value": "Counterfact",
+          "justification": "The Counterfact dataset is used for testing knowledge editing in the paper.",
+          "quote": "We test the efficiency of supervised control of reasoning on editing knowledge in a model with Counterfact dataset (Meng et al., 2022)"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Locating and Editing Factual Associations in GPT",
+          "justification": "The referenced paper introduces the Counterfact dataset and its application for probing factual knowledge in language models.",
+          "quote": "We test the efficiency of supervised control of reasoning on editing knowledge in a model with Counterfact dataset (Meng et al., 2022)"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is likely used given its prevalence and utility in implementing ML models, though it was not explicitly mentioned, it may be inferred from the context.",
+          "quote": "We use 8×NVIDIA RTX A6000 for interpretation and 8×NVIDIA A100 for reasoning control."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An Imperative Style, High-Performance Deep Learning Library",
+          "justification": "Although not directly quoted, PyTorch is a common framework for such experiments and likely used.",
+          "quote": "We use 8×NVIDIA RTX A6000 for interpretation and 8×NVIDIA A100 for reasoning control."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1231,
+    "prompt_tokens": 18515,
+    "total_tokens": 19746,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

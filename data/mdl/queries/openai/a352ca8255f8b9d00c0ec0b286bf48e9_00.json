@@ -1,0 +1,184 @@
+{
+  "paper": "a352ca8255f8b9d00c0ec0b286bf48e9.txt",
+  "words": 4235,
+  "extractions": {
+    "title": {
+      "value": "Automating MedSAM by Learning Prompts with Weak Few-Shot Supervision",
+      "justification": "This is the title of the research paper as presented at the beginning of the provided text.",
+      "quote": "Automating MedSAM by Learning Prompts with Weak Few-Shot Supervision"
+    },
+    "description": "The paper proposes an automated system for image segmentation in medical imaging using a foundation model called MedSAM. The system replaces manual prompt conditioning with a module that learns prompt embeddings directly from image embeddings. This method leverages weak supervision and few-shot learning for segmentation tasks, reducing user interaction and adapting better to specific tasks in the medical domain.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper revolves around validating a model using medical datasets, thereby focusing on practical, experimental results.",
+      "quote": "Our approach is validated on MedSAM, a version of SAM fine-tuned for medical images, with results on three medical datasets in MR and ultrasound imaging."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Medical Image Analysis",
+        "justification": "The paper addresses challenges and solutions in the field of medical image segmentation, evaluating methods on medical imaging datasets.",
+        "quote": "The introduction of foundation models for image segmentation such as the recent Segment Anything Model (SAM) [10], as well as its versions adapted for medical imaging [21], notably MedSAM [12], have appeared as a game-changer in the field of computer vision and medical image analysis."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Image Segmentation",
+          "justification": "The paper introduces a method for segmenting images automatically using learned prompts, a core topic within image segmentation.",
+          "quote": "...our module can be trained effectively with only bounding box annotations while keeping MedSAM frozen."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Deep Learning",
+          "justification": "The use of models such as SAM and adaptations like MedSAM, based on deep learning architectures, places this work within the domain of deep learning applications to image analysis.",
+          "quote": "Motivated by its performance in Natural Language Processing [2], prompt-tuning has successfully been applied to large vision models [8]."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Segment Anything Model (SAM)",
+          "justification": "SAM is mentioned as a foundational model for segmentation that the paper builds upon.",
+          "quote": "Foundation models such as the recently introduced Segment Anything Model (SAM) have achieved remarkable results in image segmentation tasks."
+        },
+        "aliases": [
+          "SAM"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper builds upon SAM as an existing foundational model but does not claim its original development.",
+          "quote": "Foundation models such as the recently introduced Segment Anything Model (SAM) have achieved remarkable results in image segmentation tasks."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The paper does not specify executing SAM on specific hardware; it rather discusses extending its capabilities.",
+          "quote": "This paper proposes a lightweight add-on prompt module which learns to generate prompt embeddings directly from SAM’s image embedding."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "SAM's capabilities are discussed and compared in the context of automation and its existing need for user interaction.",
+          "quote": "Recent attempts have been made to automate the prompt generation of SAM [20,17,22]."
+        },
+        "referenced_paper_title": {
+          "value": "Segment Anything",
+          "justification": "SAM is referenced through its advancements and use in image segmentation tasks without specifying a new contribution by the paper.",
+          "quote": "Segment Anything Model (SAM) [10], based on vision transformers [5] and trained on 1B masks and 11M images."
+        }
+      },
+      {
+        "name": {
+          "value": "MedSAM",
+          "justification": "MedSAM is highlighted as a model adapted for medical imaging, and forms a core part of the paper's experimentation and methodology.",
+          "quote": "Our foundation models with learnable prompts can automatically segment any specific region...Our approach is validated on MedSAM, a version of SAM fine-tuned for medical images."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The model MedSAM is a known adaptation of SAM for medical image segmentation, not an original model contribution.",
+          "quote": "MedSAM, a version of SAM fine-tuned for medical images."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "MedSAM is described as being used for experiments on medical datasets, indicating execution.",
+          "quote": "Our approach is validated on MedSAM, a version of SAM fine-tuned for medical images, with results on three medical datasets in MR and ultrasound imaging."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "MedSAM is compared in performance to other models using validation datasets.",
+          "quote": "First, with only tight bounding box (BB) annotations, our approach trained on all samples is able to outperform a UNet trained on ground-truth segmentation masks for 2 different tasks (HC and LA)."
+        },
+        "referenced_paper_title": {
+          "value": "Segment Anything in Medical Images",
+          "justification": "MedSAM is described as a version of SAM fine-tuned for medical images, implying the use without presenting it as a new contribution.",
+          "quote": "MedSAM, a foundation model for universal medical image segmentation was trained on 1.5 million image-mask pairs over 10 imaging modalities."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Head Circumference Dataset (HC18)",
+          "justification": "HC18 dataset is used for validation in the paper's experiments.",
+          "quote": "Our experiments validate our method on three public datasets: the Head Circumference dataset 4 (HC18) [6]."
+        },
+        "aliases": [
+          "HC18"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Automated measurement of fetal head circumference using 2D ultrasound images",
+          "justification": "The reference paper for HC18 dataset is mentioned in the bibliography, indicating it's an existing dataset not introduced by this work.",
+          "quote": "Our experiments validate our method on three public datasets: the Head Circumference dataset 4 (HC18) [6]."
+        }
+      },
+      {
+        "name": {
+          "value": "Cardiac Acquisitions for Multi-structure Ultrasound Segmentation (CAMUS)",
+          "justification": "CAMUS is one of the datasets used to evaluate the MedSAM model implementation.",
+          "quote": "Our experiments validate our method on three public datasets:... the Cardiac Acquisitions for Multi-structure Ultrasound Segmentation 5 (CAMUS) [11]."
+        },
+        "aliases": [
+          "CAMUS"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Deep Learning for Segmentation Using an Open Large-Scale Dataset in 2D Echocardiography",
+          "justification": "The reference paper for the CAMUS dataset indicates its availability and use in this paper.",
+          "quote": "the Cardiac Acquisitions for Multi-structure Ultrasound Segmentation 5 (CAMUS) [11]."
+        }
+      },
+      {
+        "name": {
+          "value": "Automated Cardiac Diagnosis Challenge (ACDC)",
+          "justification": "The ACDC dataset is another public dataset used in examining the approach's efficacy.",
+          "quote": "Our experiments validate our method on three public datasets:... the Automated Cardiac Diagnosis Challenge 6 (ACDC) [1]."
+        },
+        "aliases": [
+          "ACDC"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Deep Learning Techniques for Automatic MRI Cardiac Multi-Structures Segmentation and Diagnosis: Is the Problem Solved?",
+          "justification": "This is the reference paper for the ACDC dataset, indicating its original release and context.",
+          "quote": "the Automated Cardiac Diagnosis Challenge 6 (ACDC) [1]."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Pytorch",
+          "justification": "Pytorch is mentioned as the deep learning framework used for implementation in the paper.",
+          "quote": "All experiments are implemented in Python 3.8.10 with Pytorch on NVIDIA RTX-A6000 GPUs."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "There is no specific reference paper title for Pytorch mentioned in the bibliography or text.",
+          "quote": ""
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1614,
+    "prompt_tokens": 8542,
+    "total_tokens": 10156,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

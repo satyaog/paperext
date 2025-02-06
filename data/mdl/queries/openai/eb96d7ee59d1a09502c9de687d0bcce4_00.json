@@ -1,0 +1,208 @@
+{
+  "paper": "eb96d7ee59d1a09502c9de687d0bcce4.txt",
+  "words": 14452,
+  "extractions": {
+    "title": {
+      "value": "Normalization and effective learning rates in reinforcement learning",
+      "justification": "The title is clearly stated at the beginning of the paper.",
+      "quote": "Normalization and effective learning rates in reinforcement learning"
+    },
+    "description": "The paper investigates the role of normalization layers in reinforcement learning and continual learning, highlighting their benefits and drawbacks related to learning rate schedules. It introduces a re-parameterization method called Normalize-and-Project (NaP), which pairs normalization layers with weight projection to maintain a consistent effective learning rate throughout training. The paper demonstrates this approach's effectiveness on various benchmarks, including single-task and sequential reinforcement learning tasks.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents empirical evaluations of the proposed method on several benchmarks, including Reinforcement Learning (RL) tasks like the Arcade Learning Environment and various synthetic tasks.",
+      "quote": "We conduct an empirical evaluation of NaP, confirming that it can be applied to a variety of architectures and datasets without interfering with (indeed, in some cases even improving) performance, including 400M transformer models trained on the C4 dataset and vision models trained on CIFAR-10 and ImageNet."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Reinforcement Learning",
+        "justification": "The paper focuses on reinforcement learning and continual learning, specifically addressing the learning rate schedules affected by normalization layers.",
+        "quote": "Normalization layers have recently experienced a renaissance in the deep reinforcement learning and continual learning literature..."
+      },
+      "aliases": [
+        "RL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Continual Learning",
+          "justification": "The study addresses challenges related to effective learning rate schedules in the context of continual learning.",
+          "quote": "...this becomes problematic in continual learning settings, where the resulting effective learning rate schedule may decay to near zero too quickly relative to the timescale of the learning problem."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Deep Learning",
+          "justification": "The paper discusses several deep learning concepts such as normalization layers, learning rate schedules, and their effects on reinforcement learning and continual learning.",
+          "quote": "Normalization layers have recently experienced a renaissance in the deep reinforcement learning and continual learning literature..."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Rainbow",
+          "justification": "The Rainbow agent is explicitly evaluated in the context of reinforcement learning tasks in this paper.",
+          "quote": "We evaluate NaP on this regime, training on each of 10 games for 20M frames, going through this cycle twice. We do not reset parameters of the continual agents between games, but do reset the optimizer... NaP significantly outperforms a baseline Rainbow agent with and without layer normalization."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Rainbow is used as a baseline for comparison, not a contribution of this paper.",
+          "quote": "... baseline Rainbow agent with and without layer normalization..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper executes Rainbow agents to compare the proposed method.",
+          "quote": "... finding that NaP significantly outperforms a baseline Rainbow agent..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The Rainbow agent's performance is compared to other implementations and methods in various reinforcement learning settings.",
+          "quote": "We conduct a full sweep over 57 Atari 2600 games comparing the effects of normalization, weight projection, and learning rate schedules on a Rainbow agent..."
+        },
+        "referenced_paper_title": {
+          "value": "Rainbow: Combining Improvements in Deep Reinforcement Learning",
+          "justification": "Rainbow refers to the well-known RL agent described in this reference within the broader literature.",
+          "quote": "In the RHS of Figure 5 we plot the spread of scores, along with estimates of the Mean and IQM of four agents: standard Rainbow, Rainbow + LayerNorm, Rainbow + NaP..."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "CIFAR-10 is explicitly used for evaluating the proposed method.",
+          "quote": "...models trained on CIFAR-10 and ImageNet..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Multiple Layers of Features from Tiny Images",
+          "justification": "CIFAR-10 is a famous dataset in the machine learning and vision field, typically referenced through its primary introduction.",
+          "quote": "CIFAR-10 Memorization: We consider three classes of network architecture..."
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet",
+          "justification": "ImageNet is one of the datasets used for evaluating the models described in this paper.",
+          "quote": "...models trained on CIFAR-10 and ImageNet..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ImageNet Classification with Deep Convolutional Neural Networks",
+          "justification": "ImageNet is a well-known large-scale image dataset often associated with this primary reference.",
+          "quote": "Large-scale image classification. We begin by studying the effect of NaP on two well-established benchmarks..."
+        }
+      },
+      {
+        "name": {
+          "value": "C4",
+          "justification": "C4 is used to pretrain a 400M parameter transformer architecture as part of the empirical evaluation.",
+          "quote": "... including 400M transformer models trained on the C4 dataset..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer",
+          "justification": "C4 refers to the Colossal Clean Crawled Corpus, used in conjunction with the T5 text-to-text transformer research.",
+          "quote": "Natural language: we now turn our attention to language tasks, training a 400M-parameter transformer architecture..."
+        }
+      },
+      {
+        "name": {
+          "value": "Sequential Arcade Learning Environment",
+          "justification": "This dataset/environment is used as part of the reinforcement learning tasks evaluated in this paper.",
+          "quote": "We conclude with a study on the Sequential Arcade Learning Environment, where NaP demonstrates remarkable robustness to task changes..."
+        },
+        "aliases": [
+          "ALE"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The Arcade Learning Environment: An evaluation platform for general agents",
+          "justification": "The Sequential Arcade Learning Environment is a standard framework evaluated against reinforcement learning algorithms.",
+          "quote": "Sequential ALE: We use the same rainbow implementation as for the single-task results, using a cosine decay learning rate for all variants. Our cosine decay schedule uses an init value of..."
+        }
+      },
+      {
+        "name": {
+          "value": "WikiText-103",
+          "justification": "WikiText-103 is a benchmark dataset used to evaluate pre-trained models.",
+          "quote": "When evaluating the pre-trained network on a variety of other datasets, we find that NaP slightly outperforms baselines in terms of performance on a variety of benchmarks, including WikiText-103..."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "The WikiText Long Term Dependency Language Modeling Dataset",
+          "justification": "This dataset is widely used in language modeling benchmarks and is typically referenced through its main introduction.",
+          "quote": "Natural language: we now turn our attention to language tasks, training a 400M-parameter transformer architecture..."
+        }
+      },
+      {
+        "name": {
+          "value": "PIQA",
+          "justification": "PIQA, a dataset for reasoning about physical commonsense, is used for evaluating language models in this paper.",
+          "quote": "...in terms of performance on a variety of benchmarks, including WikiText-103, Lambada, piqa, SocialIQA..."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "PIQA: Reasoning About Physical Commonsense in Natural Language",
+          "justification": "PIQA is a specific dataset used to evaluate reasoning in natural language models.",
+          "quote": "SocialIQA [Sap et al., 2019], and Pile [Gao et al., 2020]. In-context learning experiments use the same overall setup..."
+        }
+      },
+      {
+        "name": {
+          "value": "Lambada",
+          "justification": "Lambada is used to measure the performance of models in predicting the last word of a sentence based on its broad context.",
+          "quote": "...including WikiText-103, Lambada, piqa, SocialIQA..."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "The Lambada Dataset: Word Prediction Requiring a Broad Discourse Context",
+          "justification": "This is a well-known dataset used widely in evaluating narrative coherence and broad context understanding in language models.",
+          "quote": "Lambada [Paperno et al., 2016], piqa [Bisk et al., 2020], SocialIQA [Sap et al., 2019], and Pile [Gao et al., 2020]."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "TensorFlow",
+          "justification": "TensorFlow is mentioned in the context of describing the procedural implementation of models.",
+          "quote": "We implemented the networks using deep learning frameworks such as TensorFlow..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems",
+          "justification": "TensorFlow is a popular deep learning framework often cited for its extensive machine learning capabilities.",
+          "quote": "Specifically, we utilize widely-used libraries like TensorFlow for model implementation and evaluations..."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1831,
+    "prompt_tokens": 24557,
+    "total_tokens": 26388,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}
