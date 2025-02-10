@@ -1,0 +1,158 @@
+{
+  "paper": "e0e9f87cb47528f48c92fdc52c60095e.txt",
+  "words": 11535,
+  "extractions": {
+    "title": {
+      "value": "Joint Multisided Exposure Fairness for Recommendation",
+      "justification": "The title explicitly states the focus of multisided exposure fairness in recommendations, which is central to the discussion in the paper.",
+      "quote": "Joint Multisided Exposure Fairness for Recommendation"
+    },
+    "description": "The paper extends existing work on exposure fairness in recommender systems, considering systemic biases in information exposure affecting groups of users and items. It formalizes a set of fairness metrics that account for both consumer and producer perspectives and explores stochastic ranking policies to achieve fairness.",
+    "type": {
+      "value": "theoretical",
+      "justification": "The paper focuses on the development of theoretical formulations for exposure fairness metrics and does not conduct empirical experiments to evaluate a new model or approach using datasets.",
+      "quote": "We extend their proposed framework to formalize a family of exposure fairness metrics that model the problem jointly from the perspective of both the consumers and producers."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Recommender Systems",
+        "justification": "The paper revolves around fairness in exposure within recommender systems, which is explicitly stated in the abstract and introduction.",
+        "quote": "Prior research on exposure fairness in the context of recommender systems..."
+      },
+      "aliases": [
+        "RS",
+        "Recommendation Systems"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Fairness in Machine Learning",
+          "justification": "The paper discusses exposure fairness metrics within the context of recommendation systems.",
+          "quote": "Fairness-aware Recommendation"
+        },
+        "aliases": [
+          "ML Fairness"
+        ]
+      },
+      {
+        "name": {
+          "value": "Stochastic Ranking",
+          "justification": "The paper explores optimizing ranking policies using stochastic methods to achieve fairness.",
+          "quote": "stochastic ranking policies can be optimized towards specific JME-fairness goals"
+        },
+        "aliases": [
+          "Stochastic Methods"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Matrix Factorization (MF)",
+          "justification": "Matrix Factorization is mentioned as the base model used in the experiments for optimizing recommendation systems.",
+          "quote": "We choose Matrix Factorization (MF) as our base model to conduct our experiments."
+        },
+        "aliases": [
+          "MF"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Matrix Factorization is a well-established method not introduced by this paper but used for demonstration of their fairness optimization methods.",
+          "quote": "We choose Matrix Factorization (MF) as our base model to conduct our experiments."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "MF was used in experiments for the evaluation of the proposed fairness metrics.",
+          "quote": "We choose Matrix Factorization (MF) as our base model to conduct our experiments."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Different values of alpha in fairness optimization were tested and effects on NDCG were measured, implicitly comparing the outputs.",
+          "quote": "Figure 5 shows the trade-off between II-F and GG-F that we achieve by varying α. On both datasets, we initially see a sharp fall in GG-F, which is desirable, with only a small increase in II-F."
+        },
+        "referenced_paper_title": {
+          "value": "Collaborative Filtering for Implicit Feedback Datasets",
+          "justification": "The paper on Collaborative Filtering for Implicit Feedback Datasets is recognized in recommender systems for methods related to MF.",
+          "quote": "Collaborative Filtering for Implicit Feedback Datasets."
+        }
+      },
+      {
+        "name": {
+          "value": "Plackett-Luce ranking model",
+          "justification": "Plackett-Luce ranking model is described as the statistical model employed in the stochastic ranking policies discussed in the paper.",
+          "quote": "the probability distribution as given by the Plackett-Luce model"
+        },
+        "aliases": [
+          "PL model"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The Plackett-Luce model is established in ranking literature and is used here to frame the fairness problem.",
+          "quote": "the Plackett-Luce model constructs a ranking"
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The PL model was not directly run in experiments, but rather used conceptually to define probability distributions.",
+          "quote": "using the Plackett-Luce model to sample multiple rankings."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Different aspects of the PL model are investigated in stochastic ranking context in terms of impacts on fairness metrics.",
+          "quote": "A stochastic ranking policy—generated by randomizing the BPRMF model using Plackett-Luce—on the MovieLens1M dataset."
+        },
+        "referenced_paper_title": {
+          "value": "The Analysis of Permutations",
+          "justification": "The original reference of Plackett-Luce model exploring permutations used here for ranking.",
+          "quote": "The analysis of permutations. Journal of the Royal Statistical Society: Series C (Applied Statistics) 24, 2 (1975), 193–202."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "MovieLens1M",
+          "justification": "MovieLens1M is used to evaluate impacts on recommendation models with respect to fairness metrics.",
+          "quote": "We generate stochastic ranking policies by applying this post-processing step, with different values of β, over a set of trained recommendation models that are publicly available for the MovieLens1M dataset."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The MovieLens Datasets: History and Context",
+          "justification": "The standard paper for referencing MovieLens datasets.",
+          "quote": "The MovieLens Datasets: History and Context. ACM Trans. Interact. Intell. Syst."
+        }
+      },
+      {
+        "name": {
+          "value": "MovieLens100K",
+          "justification": "The MovieLens100K dataset is also used for experimentation on fairness in recommendation systems.",
+          "quote": "We select the MovieLens100K and MovieLens1M [23] as our datasets."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The MovieLens Datasets: History and Context",
+          "justification": "The standard paper for referencing MovieLens datasets.",
+          "quote": "The MovieLens Datasets: History and Context. ACM Trans. Interact. Intell. Syst."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1187,
+    "prompt_tokens": 21547,
+    "total_tokens": 22734,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "paper": "M8D5iZsnrO.txt",
+  "words": 7123,
+  "extractions": {
+    "title": {
+      "value": "TITRATED: Learned Human Driving Behavior without Infractions via Amortized Inference",
+      "justification": "The title explicitly mentions the main focus of the paper, which is developing a model for human driving behavior that minimizes infractions using a method called amortized inference.",
+      "quote": "In this paper we present a novel method for fine-tuning a foundation model of human driving behavior to novel locations where human demonstrations are not available which reduces the incidence of such infractions."
+    },
+    "description": "The paper introduces a method called 'TITRATED' to fine-tune a foundation model of human driving behavior, which was initially trained using the INTERACTION dataset, to adapt it for deployment in new locations like CARLA simulator. The primary goal is to minimize infractions such as collisions and off-road driving. This is achieved through a process called amortized inference, which generates infraction-free trajectories that the model is further trained upon, significantly reducing infraction rates by 76-86%.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents experimental results of the TITRATED model and its application to reduce driving infractions in the CARLA simulator, indicating an empirical study based on data and practical implementation.",
+      "quote": "We demonstrate a 76-86% reduction in infraction rate and provide evidence that further gains are possible with more computation or better inference algorithms."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Autonomous Driving",
+        "justification": "The research focuses on improving the behavior prediction models used for autonomous vehicles, particularly in minimizing infractions while simulating human driving behavior.",
+        "quote": "Predicting the behavior of human-operated vehicles is a crucial capability for self-driving cars."
+      },
+      "aliases": [
+        "Self-Driving Cars"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Behavior Prediction",
+          "justification": "The paper specifically aims at predicting human driving behavior without infractions.",
+          "quote": "Models of human driving behavior have long been used for prediction in autonomous vehicles."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Simulation",
+          "justification": "The study involves creating realistic non-playable characters (NPCs) in driving simulators.",
+          "quote": "models of human driving behaviors are also used to create realistic non-playable characters (NPCs) for simulators."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "ITRA",
+          "justification": "ITRA is mentioned as the foundation model that the TITRATED methodology builds upon.",
+          "quote": "Our starting point is ITRA (Ścibior et al., 2021) pre-trained on the INTERACTION dataset."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "ITRA is used as a foundational model rather than being the contribution of this paper.",
+          "quote": "Our starting point is ITRA..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The ITRA model was executed in experiments with CARLA environments to observe its performance and infractions.",
+          "quote": "On its own ITRA produces unacceptable levels of infractions on CARLA maps."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "ITRA's performance in terms of infractions is compared with the TITRATED model in various scenarios.",
+          "quote": "We see that, averaged across all CARLA locations, individually trained TITRATED models are able to reduce collisions by 69% and off-road invasions by 72%."
+        },
+        "referenced_paper_title": {
+          "value": "Imagining The Road Ahead: Multi-Agent Trajectory Prediction via Differentiable Simulation",
+          "justification": "The reference to ITRA includes the full citation of its foundational paper.",
+          "quote": "(Ścibior et al., 2021)"
+        }
+      },
+      {
+        "name": {
+          "value": "TITRATED",
+          "justification": "TITRATED is the core contribution of this paper, developed by fine-tuning the ITRA model to reduce infractions.",
+          "quote": "We call the model output by applying our methodology TITRATED, which stands for 'Training ITRA to Emulate Desiderata'."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "TITRATED is a novel model developed in this research to address the issue of infractions in driving behavior models.",
+          "quote": "In this paper we present a novel method for fine-tuning... We call the model output by applying our methodology TITRATED."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper includes extensive experimental results on the effectiveness of TITRATED in reducing infractions in simulators.",
+          "quote": "Our method, TITRATED, substantially reduces both forms of infractions."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "TITRATED's performance is compared to ITRA's in terms of collision and off-road rates in the CARLA environment.",
+          "quote": "We see that, averaged across all CARLA locations, individually trained TITRATED models are able to reduce collisions by 69% and off-road invasions by 72%."
+        },
+        "referenced_paper_title": {
+          "value": "TITRATED: Learned Human Driving Behavior without Infractions via Amortized Inference",
+          "justification": "As the main contribution of the paper, TITRATED does not reference another study for its foundational paper.",
+          "quote": "We call the model output by applying our methodology TITRATED."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "INTERACTION dataset",
+          "justification": "The INTERACTION dataset is explicitly mentioned as the training data for the foundation model ITRA.",
+          "quote": "Our starting point is ITRA (Ścibior et al., 2021) pre-trained on the INTERACTION dataset."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "INTERACTION Dataset: An INTERnational, Adversarial and Cooperative moTION Dataset in Interactive Driving Scenarios with Semantic Maps",
+          "justification": "The INTERACTION dataset is referenced with citation information for its original paper.",
+          "quote": "In this paper, we use ITRA (Ścibior et al., 2021) trained on the INTERACTION dataset (Zhan et al., 2019) as our foundation model."
+        }
+      },
+      {
+        "name": {
+          "value": "CARLA",
+          "justification": "CARLA is the simulation environment used for experiments when deploying the TITRATED model.",
+          "quote": "We demonstrate this “titration” technique using the ITRA foundation behavior model trained on the INTERACTION dataset when transferring to CARLA map locations."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "CARLA: An open urban driving simulator",
+          "justification": "The CARLA simulator is referenced along with the citation of its paper.",
+          "quote": "target the creation of NPCs for CARLA (Dosovitskiy et al., 2017)."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1362,
+    "prompt_tokens": 13673,
+    "total_tokens": 15035,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

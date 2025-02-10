@@ -1,0 +1,124 @@
+{
+  "paper": "b502642bacc07bf7ed2de8dfcfa62944.txt",
+  "words": 9278,
+  "extractions": {
+    "title": {
+      "value": "Segmentation-Consistent Probabilistic Lesion Counting",
+      "justification": "The title is provided at the beginning of the document and matches the content discussed in the paper.",
+      "quote": "Segmentation-Consistent Probabilistic Lesion Counting"
+    },
+    "description": "The paper introduces a novel continuously differentiable function to map lesion segmentation predictions to lesion count probability distributions, offering a non-parametric method to enhance lesion segmentation models with probabilistic counting capabilities. The paper highlights the method's robustness, accuracy, and applicability in multi-task learning, especially for lesion counting in medical imaging.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents experiments and results on its proposed lesion counting model, including comparisons with baseline models, making it empirical research.",
+      "quote": "Experiments on Gadolinium-enhancing lesion counting demonstrate that our method outputs accurate and well-calibrated count distributions that capture meaningful uncertainty information."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Medical Imaging",
+        "justification": "The paper focuses on lesion counting in medical imaging, specifically in contexts relevant to diseases like Multiple Sclerosis.",
+        "quote": "Lesion counts are important indicators of disease severity, patient prognosis, and treatment efficacy, yet counting as a task in medical imaging is often overlooked in favor of segmentation."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Lesion Segmentation",
+          "justification": "The paper discusses augmenting lesion segmentation models with counting capabilities.",
+          "quote": "This work introduces a novel continuously differentiable function that maps lesion segmentation predictions to lesion count probability distributions."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Multi-task Learning",
+          "justification": "The method is suitable for multi-task learning, enhancing lesion segmentation with counting capabilities.",
+          "quote": "They also reveal that our model is suitable for multi-task learning of lesion segmentation."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "5-layer UNet",
+          "justification": "A 5-layer UNet is used as the baseline segmentation model in the experiments.",
+          "quote": "As backbone for lesion segmentation, we use a 5-layer UNet (Ronneberger et al., 2015; Isensee et al., 2018) with instance normalization, leakyReLU activation, and dropout trained using Adam and cross entropy loss."
+        },
+        "aliases": [
+          "UNet"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The UNet model is used as a baseline and is not a contribution of this paper.",
+          "quote": "As backbone for lesion segmentation, we use a 5-layer UNet (Ronneberger et al., 2015; Isensee et al., 2018)..."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The paper does not explicitly state if the UNet was executed on a GPU or CPU.",
+          "quote": "The execution environment for the UNet is not explicitly mentioned."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The UNet is part of the baseline comparison in evaluating the proposed lesion counting method.",
+          "quote": "Our model and the multi-head benchmark display the best overall counting metrics (see Table 1). Moreover, all multi-task approaches—except the bottleneck one—improve the calibration (Guo et al., 2017) of the segmentation predictions in comparison to the baseline segmentation model."
+        },
+        "referenced_paper_title": {
+          "value": "U-net: Convolutional networks for biomedical image segmentation",
+          "justification": "The UNet is referenced as a known architecture in the field and part of the baseline model used for comparison.",
+          "quote": "As backbone for lesion segmentation, we use a 5-layer UNet (Ronneberger et al., 2015; Isensee et al., 2018)..."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Gadolinium-enhancing MRI Dataset",
+          "justification": "The dataset is specifically used for assessing the method's effectiveness on the task of counting Gd-enhancing lesions in MS patients.",
+          "quote": "Gadolinium-enhancing (Gad) lesions have been shown to be an important biomarker of disease activity in Multiple Sclerosis (McFarland et al., 1992). In this section, we thus assess the effectiveness of our approach on the clinically-relevant task of Gad lesion counting."
+        },
+        "aliases": [
+          "Gad"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Adaptive multi-level conditional random fields for detection and segmentation of small enhanced pathology in medical images",
+          "justification": "The dataset reference is mentioned as being described in another work by Karimaghaloo et al., 2016.",
+          "quote": "We use a large multi-centre, multi-scanner proprietary dataset comprised of MRI scans from 1067 patients undergoing a clinical trial to treat Relapsing Remitting MS as described in (Karimaghaloo et al., 2016)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Adam Optimizer",
+          "justification": "The Adam optimizer is used for training the models as mentioned in the methodology section.",
+          "quote": "dropout trained using Adam and cross entropy loss."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Adam: A method for stochastic optimization",
+          "justification": "Adam, as a stochastic optimizer, is consistently used in deep learning studies, including this one as referenced in the paper.",
+          "quote": "dropout trained using Adam and cross entropy loss."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1074,
+    "prompt_tokens": 17219,
+    "total_tokens": 18293,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

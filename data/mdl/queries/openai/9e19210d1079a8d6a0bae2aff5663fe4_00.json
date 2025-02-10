@@ -1,0 +1,172 @@
+{
+  "paper": "9e19210d1079a8d6a0bae2aff5663fe4.txt",
+  "words": 9945,
+  "extractions": {
+    "title": {
+      "value": "Predicting Adverse Radiation Effects in Brain Tumors After Stereotactic Radiotherapy With Deep Learning and Handcrafted Radiomics",
+      "justification": "The title clearly outlines the main focus of the research, which is about predicting adverse radiation effects in brain tumors after stereotactic radiotherapy using deep learning and handcrafted radiomics.",
+      "quote": "Predicting Adverse Radiation Effects in Brain Tumors After Stereotactic Radiotherapy With Deep Learning and Handcrafted Radiomics"
+    },
+    "description": "This paper investigates the ability of machine learning models built with radiomics features, deep learning features, and patient characteristics to predict adverse radiation effects (ARE) in patients with brain metastases (BM) treated with stereotactic radiotherapy (SRT). The study explores different feature extraction methods and model architectures to enhance predictive performance.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves the collection and analysis of MRI data from patients treated with SRT and employs machine learning models to predict outcomes. This is indicative of an empirical study due to the reliance on experimental data.",
+      "quote": "Methods: Gadolinium-enhanced T1-weighted MRIs and characteristics from patients treated with SRT for BM were collected for a training and testing cohort (N = 1,404) and a validation cohort (N = 237) from a separate institute."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Radiation Oncology",
+        "justification": "The study focuses on predicting adverse radiation effects in the context of brain tumors, which falls under the domain of Radiation Oncology.",
+        "quote": "Introduction: There is a cumulative risk of 20–40% of developing brain metastases (BM) in solid cancers. Stereotactic radiotherapy (SRT) enables the application of high focal doses of radiation to a volume and is often used for BM treatment. However, SRT can cause adverse radiation effects (ARE)..."
+      },
+      "aliases": [
+        "Radiation Oncology"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Deep Learning",
+          "justification": "The paper discusses the use of deep learning models to predict adverse radiation effects, specifically mentioning DL features and models being trained for prediction tasks.",
+          "quote": "A DL model was trained on the same cohort to make a separate prediction and to extract the last layer of features."
+        },
+        "aliases": [
+          "DL"
+        ]
+      },
+      {
+        "name": {
+          "value": "Radiomics",
+          "justification": "The use and evaluation of radiomics features for predicting adverse radiation effects are central to the paper's methodology.",
+          "quote": "We hypothesized that models trained with radiomics features, deep learning (DL) features, and patient characteristics or their combination can predict ARE risk in patients with BM before SRT."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "XGBoost",
+          "justification": "The XGBoost model is explicitly mentioned as being used to train on radiomics features and combine them with deep learning features for prediction tasks.",
+          "quote": "A DL model was trained on the same cohort to make a separate prediction and to extract the last layer of features. Different models using XGBoost were built using only radiomics features, DL features, and patient characteristics or a combination of them."
+        },
+        "aliases": [
+          "Extreme Gradient Boosting"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "XGBoost is a well-established model in machine learning and is not contributed as a new model by this paper.",
+          "quote": "From each lesion in the training set, radiomics features were extracted and used to train an extreme gradient boosting (XGBoost) model."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper mentions executing the XGBoost model on the dataset to predict adverse effects, implying its implementation and execution.",
+          "quote": "Different models using XGBoost were built using only radiomics features, DL features, and patient characteristics or a combination of them."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "XGBoost models are compared with deep learning models and combinations thereof in terms of prediction performance.",
+          "quote": "The DL model achieved an AUC of 0.64 and recall of 0.85 per lesion and an AUC of 0.70 and recall of 0.60 per patient. The best-performing XGBoost model on a lesion level was trained on a combination of radiomics features and DL features (AUC of 0.71 and recall of 0.80)."
+        },
+        "referenced_paper_title": {
+          "value": "Predicting Adverse Radiation Effects in Brain Tumors After Stereotactic Radiotherapy With Deep Learning and Handcrafted Radiomics",
+          "justification": "The paper itself is the context in which the XGBoost model is utilized, focusing on predicting radiation effects.",
+          "quote": "Different models using XGBoost were built using only radiomics features, DL features, and patient characteristics or a combination of them."
+        }
+      },
+      {
+        "name": {
+          "value": "Xception",
+          "justification": "The Xception model is mentioned as the deep learning model used for predicting outcomes in this study.",
+          "quote": "An Xception three-dimensional model was trained and tested on the same datasets as the handcrafted radiomics-based model."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Xception is a known deep learning architecture and not a new contribution from this paper.",
+          "quote": "An Xception three-dimensional model was trained and tested on the same datasets as the handcrafted radiomics-based model."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The Xception model is trained and tested in the study, indicating its execution.",
+          "quote": "An Xception three-dimensional model was trained and tested on the same datasets as the handcrafted radiomics-based model."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of the Xception model is compared to other models, like XGBoost, in this study in terms of predictive accuracy.",
+          "quote": "A combination of radiomics and DL achieved an AUC of 0.71 (CI of 0.57–0.83), that of a combination of radiomics and patient characteristics an AUC of 0.71 (CI of 0.59–0.81)."
+        },
+        "referenced_paper_title": {
+          "value": "Xception: Deep Learning With Depthwise Separable Convolutions",
+          "justification": "This is the known reference paper for the Xception model architecture utilized in the study.",
+          "quote": "Xception is the extreme version of an Inception model, which uses depth-wise separable convolutions."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "UCSF Brain Metastases Dataset",
+          "justification": "The UCSF dataset is explicitly mentioned as one of the datasets used for training and testing in the study.",
+          "quote": "All data from patients with BM treated with SRT between 1997 and 2017 for which imaging, outcome data, and patient data were available were collected retrospectively from the University of California—San Francisco (UCSF) medical center’s picture archiving and communication system."
+        },
+        "aliases": [
+          "UCSF dataset"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Predicting Adverse Radiation Effects in Brain Tumors After Stereotactic Radiotherapy With Deep Learning and Handcrafted Radiomics",
+          "justification": "The dataset is employed within this research for training and validation purposes as described in the paper.",
+          "quote": "The UCSF dataset was divided randomly into sub-cohorts for training (70%) and testing (30%) while maintaining the ratios of events to non-events equal in both groups."
+        }
+      },
+      {
+        "name": {
+          "value": "USZ Brain Metastases Dataset",
+          "justification": "The USZ dataset is mentioned as a separate validation cohort for the study.",
+          "quote": "Available imaging data, outcome data, and patient data of all patients with BM treated with SRS/SRT between 2014 and 2019 at the University Hospital Zürich (USZ) were collected retrospectively."
+        },
+        "aliases": [
+          "USZ dataset"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Predicting Adverse Radiation Effects in Brain Tumors After Stereotactic Radiotherapy With Deep Learning and Handcrafted Radiomics",
+          "justification": "The dataset is used as an external validation cohort in the paper.",
+          "quote": "The USZ dataset was used as an independent external validation dataset."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyRadiomics",
+          "justification": "PyRadiomics is mentioned in the context of feature extraction, indicating its use in the research.",
+          "quote": "A full list and a description of the features can be found in the PyRadiomics documentation ([Radiomic Features—PyRadiomics Documentation, (45)]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyRadiomics: an open-source python package for the extraction of Radiomics features from medical imaging",
+          "justification": "This is a commonly known reference for PyRadiomics.",
+          "quote": "A full list and a description of the features can be found in the PyRadiomics documentation ([Radiomic Features—PyRadiomics Documentation, (45)]."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1815,
+    "prompt_tokens": 18852,
+    "total_tokens": 20667,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}

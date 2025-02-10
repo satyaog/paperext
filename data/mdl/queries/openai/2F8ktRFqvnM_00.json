@@ -1,0 +1,158 @@
+{
+  "paper": "2F8ktRFqvnM.txt",
+  "words": 4528,
+  "extractions": {
+    "title": {
+      "value": "Lazy vs hasty: linearization in deep networks impacts learning schedule based on example difficulty",
+      "justification": "The title is clearly mentioned at the beginning of the paper, identifying the focus of the study on the impact of linearization in deep networks on learning schedules.",
+      "quote": "Lazy vs hasty: linearization in deep networks impacts learning schedule based on example difficulty"
+    },
+    "description": "This paper explores the effects of different training regimes in deep networks, specifically comparing the lazy (linear) and feature learning (non-linear) regimes based on the difficulty of examples. The authors investigate how these regimes affect the learning dynamics in terms of training speed and prioritization of example types. This is examined through various datasets, focusing on implications like spurious correlations and the robustness of learning schedules.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents a series of experiments to investigate the theoretical claims about lazy and hasty regimes in deep network training, using datasets like CIFAR10, CelebA, and Waterbirds.",
+      "quote": "We first explore the effect of modulating the training regime for a binary classification task on a toy dataset..."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Deep Learning Training Dynamics",
+        "justification": "The main focus of the paper is on the investigation of training dynamics in deep learning models, specifically studying different regimes (lazy and feature learning) and their effects on learning schedules.",
+        "quote": "Here we investigate the comparative effect of the lazy (linear) and feature learning (non-linear) regimes on subgroups of examples based on their difficulty."
+      },
+      "aliases": [
+        "Training Dynamics"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Neural Tangent Kernel",
+          "justification": "The paper specifically mentions Neural Tangent Kernel as a way to analyze and draw conclusions about the linear regime in deep networks, forming a significant part of their inquiry into training dynamics.",
+          "quote": "The lazy regime is one where this kernel remains nearly constant throughout training. Training the network in this regime thus corresponds to training the linear predictor defined by the NTK."
+        },
+        "aliases": [
+          "NTK"
+        ]
+      },
+      {
+        "name": {
+          "value": "Implicit Regularization",
+          "justification": "The feature learning regime is discussed in relation to implicit regularization, particularly in how it allows models to adapt their capacity according to the task requirements.",
+          "quote": "It was argued in (Baratin et al., 2021) that such a mechanism acts as implicit regularizer, by allowing large models to adapt their capacity to the task."
+        },
+        "aliases": [
+          "Regularization in Learning"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "ResNet18",
+          "justification": "ResNet18 is explicitly used in the experiments for the CIFAR10 and CelebA datasets to study the different training regimes.",
+          "quote": "We trained a ResNet18 with SGD with learning rate 0.01, momentum 0.9 and bach size 125."
+        },
+        "aliases": [
+          "Residual Network 18"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "ResNet18 is a well-known existing model used to conduct experiments, not a novel contribution of the paper.",
+          "quote": "We now experiment with deeper convolutional networks on CIFAR10...we trained a ResNet18..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper describes running experiments using ResNet18, including settings of learning rate and batch size.",
+          "quote": "We trained a ResNet18 with SGD with learning rate 0.01, momentum 0.9 and bach size 125."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "The focus is on using ResNet18 to observe training dynamics, rather than comparing its performance to other models directly within the paper.",
+          "quote": "We use 20 000 examples of CelebA to train a ResNet18 classifier..."
+        },
+        "referenced_paper_title": {
+          "value": "Deep Residual Learning for Image Recognition",
+          "justification": "ResNet18 belongs to the Residual Networks family introduced in this paper.",
+          "quote": "He K, Zhang X, Ren S, Sun J. Deep residual learning for image recognition."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CIFAR10",
+          "justification": "CIFAR10 is used in experiments to evaluate training regimes, especially regarding C-scores and dealing with label noise.",
+          "quote": "We now experiment with deeper convolutional networks on CIFAR10..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Multiple Layers of Features from Tiny Images",
+          "justification": "CIFAR10 is commonly associated with the report on learning features from tiny images by Alex Krizhevsky.",
+          "quote": "Krizhevsky, A. Learning multiple layers of features from tiny images."
+        }
+      },
+      {
+        "name": {
+          "value": "CelebA",
+          "justification": "CelebA is used specifically to observe the impact of spurious correlations by identifying correlations between attributes like hair color and gender.",
+          "quote": "We experiment with Celeb A...Our task with CelebA is to classify pictures based on whether the person is blond or not."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Deep Learning Face Attributes in the Wild",
+          "justification": "The model and its applications were first introduced in this publication.",
+          "quote": "Liu, Z., Luo, P., Wang, X., and Tang, X. Deep learning face attributes in the wild."
+        }
+      },
+      {
+        "name": {
+          "value": "Waterbirds",
+          "justification": "The Waterbirds dataset is utilized to study spurious correlations in image classification tasks.",
+          "quote": "We experiment with Celeb A (Liu et al., 2015) and Waterbirds (Wah et al., 2011) datasets."
+        },
+        "aliases": [
+          "Caltech-UCSD Birds-200-2011"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The Caltech-UCSD Birds-200-2011 Dataset",
+          "justification": "The Waterbirds subset is from this broader dataset initiative focused on bird classification.",
+          "quote": "Wah, C., Branson, S., Welinder, P., Perona, P., and Belongie, S. The caltech-ucsd birds-200-2011 dataset."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is explicitly mentioned as the framework used for pre-training models.",
+          "quote": "Since the dataset is smaller, we start from a pre-trained ResNet18 classifier from default PyTorch models."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Automatic Differentiation in PyTorch",
+          "justification": "PyTorch's introductory paper covering its capabilities in differential programming is likely the source.",
+          "quote": "Paszke et al., Automatic Differentiation in PyTorch."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1356,
+    "prompt_tokens": 9110,
+    "total_tokens": 10466,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

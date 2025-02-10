@@ -1,0 +1,258 @@
+{
+  "paper": "c11a5159f3a48da401b9cc77bdfd27c6.txt",
+  "words": 11723,
+  "extractions": {
+    "title": {
+      "value": "The Curious Case of Absolute Position Embeddings",
+      "justification": "The title is explicitly stated at the beginning of the paper.",
+      "quote": "The Curious Case of Absolute Position Embeddings"
+    },
+    "description": "This paper investigates the role of Absolute Position Embeddings (APEs) in Transformer Language Models. It questions their effectiveness in capturing relative positional information and their impact on performance when sentence positions are shifted. The study explores various architectures and presents findings on how APEs influence zero, few, and full-shot tasks.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper conducts experiments on different models, tasks, and datasets to study the effects of Absolute Position Embeddings, indicating an empirical nature.",
+      "quote": "In this work, we subject models from several different architectures and sizes to phase shifting."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The study focuses on language models and their handling of positional embeddings, which is a task within Natural Language Processing.",
+        "quote": "Transformer language models encode the notion of word order using positional information."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Transformer Models",
+          "justification": "The study extensively discusses the use of positional embeddings in Transformer models.",
+          "quote": "Recently, Transformer (Vaswani et al., 2017) language models have been widely used for natural language applications."
+        },
+        "aliases": [
+          "TLMs"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "RoBERTa",
+          "justification": "RoBERTa is mentioned as one of the models used for experimentation with absolute position embeddings.",
+          "quote": "Many models, such as RoBERTa (Liu et al., 2019), GPT3 (Brown et al., 2020) and OPT (Zhang et al., 2022), utilize absolute position embeddings (APEs)."
+        },
+        "aliases": [
+          "RoBERTa"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "RoBERTa is a pre-existing model referenced for its characteristics regarding positional embeddings.",
+          "quote": "RoBERTa (Liu et al., 2019)"
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The paper does not explicitly mention executing RoBERTa but discusses its use in context.",
+          "quote": "such models incorporate positional encodings: vectors encoding information about the order of words in context."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "RoBERTa is compared with other models in terms of their performance and handling of positional shifts.",
+          "quote": "We compute the perplexities of several publicly available models—including RoBERTa—to evaluate the grammatical acceptability capabilities of the model."
+        },
+        "referenced_paper_title": {
+          "value": "RoBERTa: A Robustly Optimized BERT Pretraining Approach",
+          "justification": "The paper specifies the reference for RoBERTa in the context of absolute position embeddings.",
+          "quote": "RoBERTa (Liu et al., 2019)"
+        }
+      },
+      {
+        "name": {
+          "value": "GPT-2",
+          "justification": "GPT-2 is explicitly mentioned as a model for comparison in the study of absolute positional embeddings.",
+          "quote": "We compute the perplexities of several publicly available models—RoBERTa, BART, GPT2 and OPT—to evaluate the grammatical acceptability capabilities of the model."
+        },
+        "aliases": [
+          "GPT2"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "GPT-2 is used for comparative analysis rather than a newly introduced model.",
+          "quote": "GPT2 (Radford et al., 2019)"
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The model is compared in terms of performance metrics, but execution details on hardware are not mentioned.",
+          "quote": "We observe in GPT2 that more than 70% of the sentences have their best perplexity in k = 0, highlighting a severe zero-position bias."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "GPT-2 is compared with other models regarding their performance under different positional configurations.",
+          "quote": "Autoregressive models in particular display worse results. This is likely due to a mismatch of position information learned due to the causal language modelling objective."
+        },
+        "referenced_paper_title": {
+          "value": "Language Models are Unsupervised Multitask Learners",
+          "justification": "The reference paper for GPT-2 is cited to provide background context.",
+          "quote": "GPT2 (Radford et al., 2019)"
+        }
+      },
+      {
+        "name": {
+          "value": "BART",
+          "justification": "BART is mentioned as another model tested for performance with different positional shifts.",
+          "quote": "We compute the perplexities of several publicly available models—RoBERTa, BART, GPT2 and OPT—to evaluate the grammatical acceptability capabilities of the model."
+        },
+        "aliases": [
+          "BART"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "BART is not introduced as a new model in this paper but used for analysis.",
+          "quote": "BART (Lewis et al., 2020)"
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "Execution details specific to hardware for BART are not provided, but it is used in analysis.",
+          "quote": "In cases where a model does not have the [CLS] token, we instead use [BOS]."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "BART is part of the comparative study on task performance due to different positional encoding strategies.",
+          "quote": "BART (Lewis et al., 2020)"
+        },
+        "referenced_paper_title": {
+          "value": "BART: Denoising Sequence-to-Sequence Pre-training for Natural Language Generation, Translation, and Comprehension",
+          "justification": "The paper references BART, and its foundational paper provides its background.",
+          "quote": "BART (Lewis et al., 2020)"
+        }
+      },
+      {
+        "name": {
+          "value": "OPT",
+          "justification": "OPT is discussed in the context of how its performance changes with positional shifts, especially as a recent model release.",
+          "quote": "Recently released OPT (Zhang et al., 2022) shows erratic zero and few-shot performance on sub-window representations."
+        },
+        "aliases": [
+          "OPT"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "OPT is a referenced pre-existing model and not a new contribution in this paper.",
+          "quote": "Autoregressive models, including the recently published OPT (Zhang et al., 2022)."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The paper does not specifically discuss execution details on hardware for OPT.",
+          "quote": "Zero-shot and Few-shot performance of OPT family with various phase shifts for each individual dataset."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "OPT's performance is critically analyzed and compared against other models under different shift conditions.",
+          "quote": "Autoregressive models, including the recently published OPT (Zhang et al., 2022), show erratic zero and few-shot performance."
+        },
+        "referenced_paper_title": {
+          "value": "OPT: Open Pre-trained Transformer Language Models",
+          "justification": "The reference paper for OPT gives its detailed study and design.",
+          "quote": "OPT (Zhang et al., 2022)"
+        }
+      },
+      {
+        "name": {
+          "value": "GPT-3",
+          "justification": "GPT-3 is mentioned as another language model utilizing absolute position embeddings.",
+          "quote": "Many models, such as RoBERTa (Liu et al., 2019), GPT3 (Brown et al., 2020) and OPT (Zhang et al., 2022), utilize absolute position embeddings (APEs)."
+        },
+        "aliases": [
+          "GPT3"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper references GPT-3 as a well-known model rather than a new contribution.",
+          "quote": "GPT3 (Brown et al., 2020)"
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The execution specifics on GPU or CPU are not discussed for GPT-3.",
+          "quote": "We compute the perplexities of several publicly available models—RoBERTa, BART, GPT2 and OPT."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "GPT-3's use of APEs is compared in the narrative on positioning impacts, even though further numbers aren't detailed.",
+          "quote": "Models, such as RoBERTa (Liu et al., 2019), GPT3 (Brown et al., 2020)... utilize absolute position embeddings."
+        },
+        "referenced_paper_title": {
+          "value": "Language Models are Few-Shot Learners",
+          "justification": "The cited paper for GPT-3 explains its architecture and foundational aspects.",
+          "quote": "GPT3 (Brown et al., 2020)"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "BLiMP",
+          "justification": "BLiMP is used for evaluating model performance on grammatical acceptability.",
+          "quote": "We compute the perplexities of several publicly available models... using the BLiMP (Warstadt et al., 2020) benchmark."
+        },
+        "aliases": [
+          "BLiMP"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "BLiMP: The Benchmark of Linguistic Minimal Pairs for English",
+          "justification": "The paper cites BLiMP as the source of its grammatical test dataset.",
+          "quote": "BLiMP (Warstadt et al., 2020) is a challenge set designed to measures the model’s ability to distinguish between acceptable and unacceptable English sentences."
+        }
+      },
+      {
+        "name": {
+          "value": "GLUE",
+          "justification": "GLUE benchmark datasets are used for evaluating the models' performance on various language tasks during fine-tuning.",
+          "quote": "We train RoBERTa, BART, GPT2 and OPT models on CoLA, RTE and MRPC tasks from the GLUE benchmark."
+        },
+        "aliases": [
+          "GLUE"
+        ],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "GLUE: A Multi-Task Benchmark and Analysis Platform for Natural Language Understanding",
+          "justification": "GLUE is referenced within the paper to contextualize the datasets used for specific tasks.",
+          "quote": "three tasks from the standard language understanding benchmark GLUE (Wang et al., 2019)"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "HuggingFace",
+          "justification": "The paper mentions utilizing HuggingFace's model hub for loading and managing models.",
+          "quote": "We use HuggingFace (Wolf et al., 2020) model hub to load, fine-tune train, and run inference for all models."
+        },
+        "aliases": [
+          "Transformers"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Transformers: State-of-the-Art Natural Language Processing",
+          "justification": "The library is cited for its contribution to handling the models discussed in the paper.",
+          "quote": "We use HuggingFace (Wolf et al., 2020) model hub to load, fine-tune train, and run infererence for all models."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2186,
+    "prompt_tokens": 22707,
+    "total_tokens": 24893,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

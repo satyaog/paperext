@@ -1,0 +1,177 @@
+{
+  "paper": "ec02f764432b7bf906601658f91a0b7d.txt",
+  "words": 3941,
+  "extractions": {
+    "title": {
+      "value": "Propagating Uncertainty Across Cascaded Medical Imaging Tasks for Improved Deep Learning Inference",
+      "justification": "The extracted title matches the main topic and contribution of the paper regarding uncertainty propagation in medical imaging tasks.",
+      "quote": "Propagating Uncertainty Across Cascaded Medical Imaging Tasks for Improved Deep Learning Inference"
+    },
+    "description": "This paper explores the premise that embedding uncertainty estimates across cascaded inference tasks in medical imaging can improve performance over traditional deterministic methods. The study focuses on brain MR images, particularly in the contexts of multiple sclerosis lesion detection and brain tumor segmentation.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents experimental results and performance evaluations on medical imaging datasets, indicating an empirical study.",
+      "quote": "Experimental results indicate that uncertainty propagation improves the T2 lesion true positive rate (TPR) from 0.78 to 0.84..."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Medical Imaging",
+        "justification": "The research primarily focuses on medical imaging tasks, such as lesion detection and tumor segmentation in brain MR images.",
+        "quote": "Deep learning methods have been shown to outperform other methods on a variety of medical imaging inference tasks."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Uncertainty Estimation",
+          "justification": "The study involves propagating uncertainty estimates across inference tasks to improve performance.",
+          "quote": "The performance of the downstream tasks in a medical image analysis pipeline should improve if, in addition to deterministic predictions, uncertainty estimates are propagated."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Segmentation",
+          "justification": "The paper utilizes segmentation techniques as a central component of the proposed framework.",
+          "quote": "A second segmentation network is trained with this uncertainty as an additional input."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Lesion Detection",
+          "justification": "Lesion detection is one of the primary applications explored in the paper's experiments.",
+          "quote": "A 3D fully-convolutional segmentation network is trained on a large multi-site, multi-scanner, proprietary dataset of MS patient MRI."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "BU-Net (Bayesian U-Net)",
+          "justification": "BU-Net is used in the paper for uncertainty estimation in segmentation tasks.",
+          "quote": "the Task-1 network consists of a Bayesian U-Net (BU-Net), a segmentation network that takes multi-modal brain MRI and produces a T2 lesion segmentation and a voxel-level uncertainty map."
+        },
+        "aliases": [
+          "BU-Net"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "BU-Net is mentioned as a component used in the experiments, not as a new model introduced by the paper.",
+          "quote": "Bayesian U-Net (BU-Net) [5], a segmentation network that takes multi-modal brain MRI of MS patients."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "BU-Net is actively used in the experiments conducted in the paper.",
+          "quote": "A 3D fully-convolutional segmentation network is trained on a large multi-site, multi-scanner, proprietary dataset of MS patient MRI."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "BU-Net's performance is evaluated and compared, particularly in the context of uncertainty propagation.",
+          "quote": "Experimental results indicate that uncertainty propagation improves the T2 lesion true positive rate (TPR) from 0.78 to 0.84..."
+        },
+        "referenced_paper_title": {
+          "value": "Exploring uncertainty measures in deep networks for multiple sclerosis lesion detection and segmentation",
+          "justification": "The reference for the BU-Net model points to prior work that explored its use in lesion detection and segmentation.",
+          "quote": "Bayesian U-Net (BU-Net) [5], a segmentation network."
+        }
+      },
+      {
+        "name": {
+          "value": "RS-Net",
+          "justification": "RS-Net is utilized in the paper for synthesizing missing MRI sequences.",
+          "quote": "the Task-1 network is a synthesis network, which takes multi-modal MR sequences of patients with tumours... For this task, the multi-task Regression-Segmentation Network (RS-Net) proposed in [2] is used."
+        },
+        "aliases": [
+          "Regression-Segmentation Network"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "RS-Net is used as an existing model, already introduced in the cited references.",
+          "quote": "multi-task Regression-Segmentation Network (RS-Net) proposed in [2] is used."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "RS-Net is executed as part of the inference pipelines in the experiments presented in the paper.",
+          "quote": "For this task, the multi-task Regression-Segmentation Network (RS-Net) proposed in [2] is used."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "RS-Net is utilized in the experiments but not directly compared with other models.",
+          "quote": "RS-Net... For this task, the multi-task Regression-Segmentation Network (RS-Net) proposed in [2] is used."
+        },
+        "referenced_paper_title": {
+          "value": "RS-Net: regression-segmentation 3D CNN for synthesis of full resolution missing brain MRI in the presence of tumours",
+          "justification": "The referenced paper provides detailed context for the use of RS-Net in MRI synthesis tasks.",
+          "quote": "RS-Net (Regression-Segmentation Network) proposed in [2] is used."
+        }
+      },
+      {
+        "name": {
+          "value": "U-Net",
+          "justification": "U-Net forms the basis of the modified segmentation networks utilized for inference tasks like MS lesion segmentation.",
+          "quote": "A modified 3D U-Net is used for this task. Like the original 3D U-Net, the network consists of encoder and decoder paths."
+        },
+        "aliases": [
+          "3D U-Net"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The U-Net model itself is not a new contribution of this paper; it builds on existing 3D U-Net variants.",
+          "quote": "A modified 3D U-Net [12] is used for this task."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The U-Net is executed as part of the Task-2 network in the experiments.",
+          "quote": "The second task consists of a modified 3D U-Net (Task-2 network) that again performs binary voxel-level T2 lesion segmentation."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "While U-Net is utilized and its performance is shown, direct numerical comparison to other specific models is not highlighted.",
+          "quote": "The network is trained using categorical cross-entropy loss and produces multi-class tumour segmentation output."
+        },
+        "referenced_paper_title": {
+          "value": "3D U-Net: learning dense volumetric segmentation from sparse annotation",
+          "justification": "This is the reference paper for the 3D U-Net architecture which is leveraged in the study.",
+          "quote": "A modified 3D U-Net [12] is used for this task."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "BraTS-2018",
+          "justification": "BraTS-2018 is explicitly mentioned as one of the datasets on which experiments are conducted for tumor detection and segmentation.",
+          "quote": "a two-stage MR sequence synthesis and tumour segmentation pipeline is developed, which is trained and tested on the publicly available MICCAI 2018 BraTS dataset [13]."
+        },
+        "aliases": [
+          "MICCAI 2018 BraTS"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Identifying the best machine learning algorithms for brain tumor segmentation, progression assessment, and overall survival prediction in the BRATS challenge",
+          "justification": "The reference details the BraTS challenge which the dataset corresponds to.",
+          "quote": "MICCAI 2018 BraTS dataset [13]."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1523,
+    "prompt_tokens": 7710,
+    "total_tokens": 9233,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "paper": "8d05d893f24e9b197679a1b27005607b.txt",
+  "words": 5646,
+  "extractions": {
+    "title": {
+      "value": "CLIP-Mesh: Generating textured meshes from text using pretrained image-text models",
+      "justification": "The title is clearly mentioned at the beginning of the paper and in the ACM Reference Format section.",
+      "quote": "\"CLIP-Mesh: Generating textured meshes from text using pretrained image-text models.\""
+    },
+    "description": "The paper presents a zero-shot generation technique of 3D models using target text prompts without any 3D supervision. It uses a pre-trained CLIP model to deform a control shape of a surface to obtain 3D assets that correspond to the input text. The technique optimizes mesh parameters to generate shape and texture, using constraints, image augmentations, and a pretrained diffusion prior model.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper talks about generating actual 3D models and provides empirical evaluations and results.",
+      "quote": "\"We evaluated our methods on a wide variety of prompts and a few different generation scenarios.\""
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The paper focuses on 3D model generation from text prompts which falls under the domain of Computer Vision.",
+        "quote": "\"Generates 3D model using only a target text prompt.\""
+      },
+      "aliases": [
+        "CV"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "3D Modeling",
+          "justification": "The paper centers on creating 3D models from text descriptions.",
+          "quote": "\"We present a technique for zero-shot generation of a 3D model using only a target text prompt.\""
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Natural Language Processing",
+          "justification": "It involves understanding and processing text prompts, which is a key aspect of NLP.",
+          "quote": "\"While in our work the shape, texture and normal can be individually modified allowing unique application scenarios.\""
+        },
+        "aliases": [
+          "NLP"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "CLIP",
+          "justification": "The CLIP model is explicitly mentioned as being used for comparing text prompts with rendered images to generate 3D models.",
+          "quote": "\"We rely only on a pre-trained CLIP model that compares the input text prompt with differentiably rendered images.\""
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "CLIP is not a contribution of this paper; it is utilized as a pre-existing model.",
+          "quote": "\"We rely only on a pre-trained CLIP model.\""
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper discusses the use of a pre-trained CLIP model for text and image comparisons in the generation process.",
+          "quote": "\"We rely only on a pre-trained CLIP model that compares the input text prompt with differentiably rendered images.\""
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "CLIP is used as a tool within the research and not as a model to be compared against others numerically.",
+          "quote": "\"While previous works have focused on stylization or required training of generative models we perform optimization on mesh parameters directly to generate shape, texture or both.\""
+        },
+        "referenced_paper_title": {
+          "value": "Learning transferable visual models from natural language supervision",
+          "justification": "This is the reference title for the CLIP model as mentioned in the related works section.",
+          "quote": "\"Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya Ramesh... Learning transferable visual models from natural language supervision.\""
+        }
+      },
+      {
+        "name": {
+          "value": "Dreamfields",
+          "justification": "The paper uses Dreamfields as a comparative model regarding computational methods.",
+          "quote": "\"We then follow up with additional modeling scenarios unique to our method. Finally we provide quantitative evaluations of our results as well as ablation studies to illustrate the improvement provided by each step of our method.\""
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Dreamfields is referenced as an existing model for comparison.",
+          "quote": "\"We evaluated our methods on a wide variety of prompts and a few different generation scenarios.\""
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "While Dreamfields is mentioned for comparative analysis, the paper itself does not execute the model.",
+          "quote": "\"We evaluated our methods on a wide variety of prompts and a few different generation scenarios.\""
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares its results with those of Dreamfields.",
+          "quote": "\"We quantitatively evaluate our method, comparing it directly with the current closest work of [Jain et al. 2021].\""
+        },
+        "referenced_paper_title": {
+          "value": "Zero-Shot Text-Guided Object Generation with Dream Fields",
+          "justification": "This is the paper title where Dreamfields is originally presented.",
+          "quote": "\"Ajay Jain, Ben Mildenhall, Jonathan T Barron, Pieter Abbeel, Ben Poole. Zero-Shot Text-Guided Object Generation with Dream Fields.\""
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "ShapeNet",
+          "justification": "ShapeNet is mentioned as a dataset used for comparing the lack of variety in 3D datasets with the vast data available in 2D.",
+          "quote": "\"datasets such as Shapenet [Chang et al. 2015] and CO3D [Reizenstein et al. 2021] provide 50 object categories respectively.\""
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Shapenet: An information-rich 3d model repository",
+          "justification": "The referenced paper title for ShapeNet is provided in the citation.",
+          "quote": "\"Angel X Chang, Thomas Funkhouser, Leonidas Guibas, Pat Hanrahan, Qixing Huang... Shapenet: An information-rich 3d model repository.\""
+        }
+      },
+      {
+        "name": {
+          "value": "CO3D",
+          "justification": "Similar to ShapeNet, CO3D is also mentioned for its role in providing 3D object categories.",
+          "quote": "\"datasets such as Shapenet [Chang et al. 2015] and CO3D [Reizenstein et al. 2021] provide 50 object categories respectively.\""
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Common Objects in 3D: Large-Scale Learning and Evaluation of Real-life 3D Category Reconstruction",
+          "justification": "This is the reference title for the CO3D dataset as mentioned in the literature.",
+          "quote": "\"Jeremy Reizenstein, Roman Shapovalov, Philipp Henzler, Luca Sbordone, Patrick Labatut... Common Objects in 3D: Large-Scale Learning and Evaluation of Real-life 3D Category Reconstruction.\""
+        }
+      },
+      {
+        "name": {
+          "value": "Imagenet-21K",
+          "justification": "Imagenet-21K is highlighted for comparison in terms of 2D category richness compared to 3D datasets.",
+          "quote": "\"For example Imagenet-21K [Ridnik et al. 2021] has 21,000 object categories.\""
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "ImageNet-21K Pretraining for the Masses",
+          "justification": "The referenced paper title for Imagenet-21K is given in the bibliography.",
+          "quote": "\"Tal Ridnik, Emanuel Ben-Baruch, Asaf Noy, and Lihi Zelnik-Manor. Imagenet-21K Pretraining for the Masses.\""
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Laine et al. differentiable renderer",
+          "justification": "The differentiable renderer from Laine et al. is used for generating views of the 3D model.",
+          "quote": "\"Using a differentiable renderer such as [Laine et al. 2020] one can obtain images of a shape and then use CLIP to get a score between the images and an input text.\""
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Modular Primitives for High-Performance Differentiable Rendering",
+          "justification": "This is the referenced work for the differentiable renderer employed in the study.",
+          "quote": "\"Samuli Laine, Janne Hellsten, Tero Karras, Yeongho Seol, Jaakko Lehtinen, Timo Aila. Modular Primitives for High-Performance Differentiable Rendering.\""
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1676,
+    "prompt_tokens": 10150,
+    "total_tokens": 11826,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

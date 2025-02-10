@@ -1,0 +1,216 @@
+{
+  "paper": "91be42e1e874e9a7407038bdb1f3e044.txt",
+  "words": 4094,
+  "extractions": {
+    "title": {
+      "value": "SoundChoice: Grapheme-to-Phoneme Models with Semantic Disambiguation",
+      "justification": "The title explicitly mentions the key focus of the paper which is SoundChoice, a model for grapheme-to-phoneme conversion with semantic disambiguation.",
+      "quote": "This paper proposes SoundChoice, a novel G2P architecture that processes entire sentences rather than operating at the word level."
+    },
+    "description": "This paper introduces SoundChoice, a novel grapheme-to-phoneme (G2P) model designed to address the disambiguation challenge in end-to-end speech synthesis models. SoundChoice processes entire sentences, integrates curriculum learning, and uses BERT word embeddings to improve phoneme error rates and homograph disambiguation. It includes advancements like a weighted homograph loss and employs techniques from speech recognition such as Connectionist Temporal Classification (CTC).",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents empirical results including the phoneme error rate and homograph accuracy achieved by the proposed model on specific datasets.",
+      "quote": "Our best model achieves competitive Phonene-Error-Rate (PER%) on LibriSpeech sentence data (best test PER = 2.65%) with a homograph accuracy of 94%."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Speech Synthesis",
+        "justification": "The research primarily addresses challenges in speech synthesis, especially the conversion of text (graphemes) to speech (phonemes) with contextual disambiguation.",
+        "quote": "End-to-end speech synthesis models directly convert the input characters into an audio representation (e.g., spectrograms)."
+      },
+      "aliases": [
+        "Text-to-Speech"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Natural Language Processing",
+          "justification": "The study involves processing text for speech synthesis, thus overlapping with natural language processing expertise.",
+          "quote": "models the sentence context by taking advantage of a mixed representation composed of characters and BERT word embeddings."
+        },
+        "aliases": [
+          "NLP"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Tacotron",
+          "justification": "Tacotron is mentioned as an existing model that the proposed work aims to improve upon in terms of disambiguation performance.",
+          "quote": "Tacotron [1], for instance, is successful at only the most basic disambiguation"
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Tacotron is cited as a baseline/comparative model rather than a contribution of this paper.",
+          "quote": "Tacotron [1], for instance, is successful at only the most basic disambiguation"
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "While Tacotron is referenced, there is no indication that it was executed or tested anew in this study.",
+          "quote": "Tacotron [1], for instance, is successful at only the most basic disambiguation"
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of Tacotron is implicitly compared to that of the proposed model with respect to homograph disambiguation, as a motivation for the study.",
+          "quote": "is successful at only the most basic disambiguation"
+        },
+        "referenced_paper_title": {
+          "value": "Tacotron: Towards End-to-End Speech Synthesis",
+          "justification": "The referenced work on Tacotron in this study corresponds to the well-known paper titled 'Tacotron: Towards End-to-End Speech Synthesis'.",
+          "quote": "Tacotron: Towards End-to-End Speech Synthesis"
+        }
+      },
+      {
+        "name": {
+          "value": "DeepVoice3",
+          "justification": "DeepVoice3 is included in the comparative context to describe limitations of existing systems that SoundChoice aims to address.",
+          "quote": "DeepVoice3 [2] produces intermediate phonemes in homographs."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "DeepVoice3 is presented as part of the background or related work research stream, not as a new proposal of this study.",
+          "quote": "DeepVoice3 [2] produces intermediate phonemes in homographs."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "There is no mention of DeepVoice3 being implemented or experimented with directly in this paper.",
+          "quote": "DeepVoice3 [2] produces intermediate phonemes in homographs."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "DeepVoice3's capability in handling homographs is indirectly compared to highlight the improvement offered by SoundChoice.",
+          "quote": "DeepVoice3 [2] produces intermediate phonemes in homographs."
+        },
+        "referenced_paper_title": {
+          "value": "Deep Voice 3: 2000-Speaker Neural Text-to-Speech",
+          "justification": "The referenced DeepVoice3 model matches a well-documented version titled 'Deep Voice 3: 2000-Speaker Neural Text-to-Speech'.",
+          "quote": "Deep Voice 3: 2000-Speaker Neural Text-to-Speech"
+        }
+      },
+      {
+        "name": {
+          "value": "BERT",
+          "justification": "BERT is utilized for extracting word embeddings that are part of the SoundChoice model's architecture enhancements.",
+          "quote": "we here used word embeddings derived from the popular BERT model [14]."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "While integrated into the SoundChoice model, BERT itself is not newly contributed by this paper.",
+          "quote": "we here used word embeddings derived from the popular BERT model [14]."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "BERT embeddings are actively used in the model to enhance homograph disambiguation.",
+          "quote": "The BERT embeddings pass through a simple encoder consisting of a normalization layer...These features are then concatenated with the character-level embeddings."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "BERT is integrated into the system architecture but it is not the primary subject of comparative analysis regarding its core functions.",
+          "quote": "BERT embeddings, however, will play a crucial role in homograph disambiguation."
+        },
+        "referenced_paper_title": {
+          "value": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "justification": "The BERT model referred aligns with the influential paper 'BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding'.",
+          "quote": "The BERT model [14]"
+        }
+      },
+      {
+        "name": {
+          "value": "T5G2P",
+          "justification": "T5G2P is mentioned as an example of a model that utilizes sentence context for Grapheme-to-Phoneme conversion, relevant to the scope of this paper.",
+          "quote": "A recent example of a model exploiting sentence context is T5G2P [10]."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "T5G2P is referred to as related work and not an original contribution of this study.",
+          "quote": "A recent example of a model exploiting sentence context is T5G2P [10]."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The study does not involve the execution or experimental validation of the T5G2P model.",
+          "quote": "A recent example of a model exploiting sentence context is T5G2P [10]."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "T5G2P is not directly compared in terms of numerical results or performance metrics in this study.",
+          "quote": "A recent example of a model exploiting sentence context is T5G2P [10]."
+        },
+        "referenced_paper_title": {
+          "value": "T5G2P: Using Text-to-Text Transfer Transformer for Grapheme-to-Phoneme Conversion",
+          "justification": "The reference corresponding to T5G2P in this paper aligns with the published work titled 'T5G2P: Using Text-to-Text Transfer Transformer for Grapheme-to-Phoneme Conversion'.",
+          "quote": "T5G2P: Using Text-to-Text Transfer Transformer for Grapheme-to-Phoneme Conversion"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "LibriSpeech",
+          "justification": "LibriSpeech is utilized for evaluating the performance of the model and is a key dataset in the experiments.",
+          "quote": "Our best model achieves competitive Phonene-Error-Rate (PER%) on LibriSpeech sentence data (best test PER = 2.65%)"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Librispeech: An ASR Corpus Based on Public Domain Audio Books",
+          "justification": "LibriSpeech is a well-known dataset commonly referred to in speech processing papers.",
+          "quote": "V. Panayotov, G. Chen, D. Povey, and S. Khudanpur, “Librispeech: An asr corpus based on public domain audio books,"
+        }
+      },
+      {
+        "name": {
+          "value": "CMUDict",
+          "justification": "CMUDict is used to provide phoneme annotations for words where possible, crucial for the grapheme-to-phoneme conversion task.",
+          "quote": "annotations computed using CMUDict [7], primarily in unstressed syllables or short connecting words - conjunctions and prepositions."
+        },
+        "aliases": [
+          "CMU Pronouncing Dictionary"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "CMU Pronouncing Dictionary",
+          "justification": "CMUDict is the reference for phonetic information which is utilized across models working with English pronunciations.",
+          "quote": "CMU Pronouncing Dictionary"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "SpeechBrain",
+          "justification": "SpeechBrain is used to implement parts of the system, including the tokenizer module.",
+          "quote": "We use the SpeechBrain [12] implementation of the SentencePiece [15] language-independent tokenizer"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "SpeechBrain: A General-Purpose Speech Toolkit",
+          "justification": "SpeechBrain as a tool utilized in this paper is associated with the work presented as 'SpeechBrain: A General-Purpose Speech Toolkit'.",
+          "quote": "SpeechBrain: A general-purpose speech toolkit"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1990,
+    "prompt_tokens": 8212,
+    "total_tokens": 10202,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

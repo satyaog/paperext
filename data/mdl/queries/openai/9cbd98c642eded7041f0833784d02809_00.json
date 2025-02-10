@@ -1,0 +1,173 @@
+{
+  "paper": "9cbd98c642eded7041f0833784d02809.txt",
+  "words": 8792,
+  "extractions": {
+    "title": {
+      "value": "MCVD: Masked Conditional Video Diffusion for Prediction, Generation, and Interpolation",
+      "justification": "The title of the paper is clearly stated at the beginning of the document.",
+      "quote": "MCVD: Masked Conditional Video Diffusion for Prediction, Generation, and Interpolation"
+    },
+    "description": "This paper introduces a framework called Masked Conditional Video Diffusion (MCVD) for video synthesis tasks such as prediction, generation, and interpolation. The method uses a probabilistic conditional score-based denoising diffusion model and provides high-quality results across a variety of benchmarks with efficient training time.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper describes experiments and results on video prediction, generation, and interpolation tasks using the MCVD method, demonstrating its empirical nature.",
+      "quote": "Our experiments show that this approach can generate high-quality frames for diverse types of videos. Our MCVD models are built from simple non-recurrent 2D-convolutional architectures, conditioning on blocks of frames and generating blocks of frames."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Video Synthesis",
+        "justification": "The primary research focus is on video synthesis tasks, which include video prediction, generation, and interpolation, as detailed throughout the paper.",
+        "quote": "We devise a general-purpose framework called Masked Conditional Video Diffusion (MCVD) for all of these video synthesis tasks using a probabilistic conditional score-based denoising diffusion model."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Video Prediction",
+          "justification": "Video prediction is a major aspect of the research, as the method is designed to predict future video frames.",
+          "quote": "Future/past prediction – when only future/past frames are masked; unconditional generation – when both past and future frames are masked; and interpolation – when neither past nor future frames are masked."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Video Generation",
+          "justification": "Video generation is a core focus, as the proposed method is used for this purpose and achieves state-of-the-art results.",
+          "quote": "Our approach yields SOTA results across standard video prediction and interpolation benchmarks, with computation times for training models measured in 1-12 days using ≤ 4 GPUs."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Video Interpolation",
+          "justification": "Video interpolation is explicitly addressed as one of the tasks the model can handle, alongside prediction and generation.",
+          "quote": "Video interpolation is when neither past nor future frames are masked."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Masked Conditional Video Diffusion (MCVD)",
+          "justification": "MCVD is the main model introduced and developed in the research paper.",
+          "quote": "In this work, we devise a general-purpose framework called Masked Conditional Video Diffusion (MCVD) for all of these video synthesis tasks."
+        },
+        "aliases": [
+          "MCVD"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The model is a novel contribution introduced in the paper.",
+          "quote": "In this work, we devise a general-purpose framework called Masked Conditional Video Diffusion (MCVD) for all of these video synthesis tasks."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model is executed and tested on various datasets with performance metrics reported.",
+          "quote": "Our experiments show that this approach can generate high-quality frames for diverse types of videos."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "MCVD's performance is compared to other state-of-the-art methods in various experiments and benchmarks.",
+          "quote": "Our approach yields SOTA results across standard video prediction and interpolation benchmarks, with computation times for training models measured in 1-12 days using ≤ 4 GPUs."
+        },
+        "referenced_paper_title": {
+          "value": "None",
+          "justification": "MCVD is a new model introduced in this paper, so no reference paper is provided for it.",
+          "quote": "None"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Cityscapes",
+          "justification": "The Cityscapes dataset is explicitly mentioned and used for evaluating the model's performance.",
+          "quote": "Given two conditioning frames from the Cityscapes [Cordts et al., 2016] validation set (top left), we show 7 predicted future frames in row 2 below, then skip to frames 20-28, autoregressively predicted in row 4."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The cityscapes dataset for semantic urban scene understanding",
+          "justification": "The paper refers to the standard Cityscapes dataset paper by Cordts et al., 2016.",
+          "quote": "[Cordts et al., 2016]"
+        }
+      },
+      {
+        "name": {
+          "value": "Stochastic Moving MNIST (SMMNIST)",
+          "justification": "SMMNIST is used for video prediction tasks in the experiments as mentioned in the paper.",
+          "quote": "We show the results of our video prediction experiments on test data that was never seen during training in Tables 1 - 4 for Stochastic Moving MNIST (SMMNIST)."
+        },
+        "aliases": [
+          "SMMNIST"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Unsupervised learning of video representations using lstms",
+          "justification": "The referenced articles on datasets for video tasks usually include works like Srivastava et al., 2015 which is listed for SMMNIST.",
+          "quote": "[Denton and Fergus, 2018, Srivastava et al., 2015]"
+        }
+      },
+      {
+        "name": {
+          "value": "KTH",
+          "justification": "The KTH dataset is used in multiple experiments for video tasks as stated in the paper.",
+          "quote": "We show the results of our video prediction experiments on test data that was never seen during training in Tables 1 - 4 for Stochastic Moving MNIST (SMMNIST), KTH..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Recognizing human actions: a local svm approach",
+          "justification": "The common reference to the KTH human action dataset is Schuldt et al., 2004, as noted in the context.",
+          "quote": "[Schuldt et al., 2004]"
+        }
+      },
+      {
+        "name": {
+          "value": "BAIR",
+          "justification": "BAIR is cited in the paper as one of the datasets used for testing video prediction models.",
+          "quote": "We show the results of our video prediction experiments on test data that was never seen during training in Tables 1 - 4 for Stochastic Moving MNIST (SMMNIST), KTH, BAIR."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Self-supervised visual planning with temporal skip connections",
+          "justification": "References to the datasets often cite works like Ebert et al., 2017 for BAIR.",
+          "quote": "[Ebert et al., 2017]"
+        }
+      },
+      {
+        "name": {
+          "value": "UCF-101",
+          "justification": "UCF-101 is used for testing the models on a diverse set of video actions.",
+          "quote": "We present unconditional generation results for BAIR in Table 5 and UCF-101 in Table 6, and interpolation results for SMMNIST, KTH, and BAIR in Table 7."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Ucf101: A dataset of 101 human actions classes from videos in the wild",
+          "justification": "The reference to Soomro et al., 2012 is typical for the UCF-101 dataset.",
+          "quote": "[Soomro et al., 2012]"
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1527,
+    "prompt_tokens": 16802,
+    "total_tokens": 18329,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

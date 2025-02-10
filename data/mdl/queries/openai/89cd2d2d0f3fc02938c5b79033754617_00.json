@@ -1,0 +1,174 @@
+{
+  "paper": "89cd2d2d0f3fc02938c5b79033754617.txt",
+  "words": 15556,
+  "extractions": {
+    "title": {
+      "value": "Low-Rank Representation of Reinforcement Learning Policies",
+      "justification": "The title 'Low-Rank Representation of Reinforcement Learning Policies' is directly used in the document header and in the description of the content, focusing on reinforcement learning policies and their representation in a low-rank form leveraging RKHS.",
+      "quote": "Low-Rank Representation of Reinforcement Learning Policies"
+    },
+    "description": "The paper introduces a framework for policy representation in reinforcement learning using low-dimensional embeddings in a Reproducing Kernel Hilbert Space (RKHS). This approach aims to provide theoretical performance guarantees and reduce the variance of returns while maintaining robust performance. Experimental results support the theoretical findings.",
+    "type": {
+      "value": "theoretical",
+      "justification": "The paper provides a theoretical framework and derives performance bounds for the low-rank representation of reinforcement learning policies. It also uses theoretical results to support empirical outcomes.",
+      "quote": "We propose a decomposition of policy densities within a separable Hilbert space and derive a set of performance bounds which, when used together, provide a heuristic to pick the dimensionality of the embedding."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Reinforcement Learning",
+        "justification": "The paper is focused on reinforcement learning policies and their representation, with several references to applications in RL.",
+        "quote": "In the reinforcement learning (RL) framework, the goal of a rational agent consists in maximizing expected rewards in a dynamical system by finding a suitable conditional distribution known as policy."
+      },
+      "aliases": [
+        "RL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Kernel Methods",
+          "justification": "The use of Reproducing Kernel Hilbert Space (RKHS) is central to the framework presented, focusing on embedding policies in this space.",
+          "quote": "...represent a broad class of policy density functions as points in a Reproducing Kernel Hilbert Space (RKHS)."
+        },
+        "aliases": [
+          "RKHS"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Soft Actor-Critic (SAC)",
+          "justification": "The paper uses Soft Actor-Critic (SAC) policies in its experiments as a baseline deep reinforcement learning method.",
+          "quote": "In Pendulum and Mountain Car, all policy representation methods receive a pre-trained SAC policy [29], which they then project onto a lower-dimensional space."
+        },
+        "aliases": [
+          "SAC"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "SAC is a well-established method in the literature, used as a reference model for evaluating the proposed framework.",
+          "quote": "We pre-trained SAC policies to serve as the original, high dimensional policies to be embedded in RKHS."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "SAC was executed to generate the pre-trained policies for experimental comparison.",
+          "quote": "In Pendulum and Mountain Car, all policy representation methods receive a pre-trained SAC policy."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "The SAC method is used rather than compared numerically, serving as a baseline for embeddings into RKHS.",
+          "quote": "...all policy representation methods receive a pre-trained SAC policy..."
+        },
+        "referenced_paper_title": {
+          "value": "Soft actor-critic: Off-policy maximum entropy deep reinforcement learning with a stochastic actor",
+          "justification": "SAC is specifically named and cited in reference to Haarnoja et al., which is a key reference for this model.",
+          "quote": "Haarnoja, Aurick Zhou, Pieter Abbeel, and Sergey Levine. Soft actor-critic: Off-policy maximum entropy deep reinforcement learning with a stochastic actor [29]."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Pendulum-v0",
+          "justification": "Pendulum-v0 is used in the experiments to test the framework on a classical control task.",
+          "quote": "We train SAC until convergence and save snapshots of the actor and critic after 2k and 5k steps."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "OpenAI Gym",
+          "justification": "Pendulum-v0 is a task from OpenAI Gym, a toolkit for developing and comparing reinforcement learning algorithms.",
+          "quote": "We use standard benchmarks provided in OpenAI Gym (Brockman et al., 2016)."
+        }
+      },
+      {
+        "name": {
+          "value": "Continuous Mountain Car",
+          "justification": "Continuous Mountain Car is used as a test environment for evaluating the performance of the policy embedding framework.",
+          "quote": "In Pendulum and CMC, we omit GMM and fixed basis GMM methods, since the expectation-maximization algorithm runs into stability problems when dealing with a high number of components."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "OpenAI Gym",
+          "justification": "Continuous Mountain Car is another task from OpenAI Gym, referenced in the experiments.",
+          "quote": "We use standard benchmarks provided in OpenAI Gym (Brockman et al., 2016)."
+        }
+      },
+      {
+        "name": {
+          "value": "Bandit Turntable",
+          "justification": "The Bandit Turntable environment is designed for experiments involving multi-armed bandits to demonstrate the impact of the embedded policy.",
+          "quote": "We evaluate our framework in the multi-armed bandit inspired from (author?) [22] (see Figure 2a)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Practical Contextual Bandits with Regression Oracles",
+          "justification": "Inspired by prior works on contextual bandits, the Bandit Turntable acts as an environment reference rather than introduced as a new dataset.",
+          "quote": "Inspired from [22]."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "NumPy",
+          "justification": "Used for numerical computations essential for experiments and implementations of models and datasets.",
+          "quote": "NumPy is utilized for various mathematical operations within Python scripts as referenced in the supplemental code provided."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "NumPy: A fundamental package for scientific computing with Python",
+          "justification": "NumPy is mentioned in the context of computing and is a well-known library for array operations.",
+          "quote": "NumPy is utilized for various mathematical operations within Python scripts as referenced in the supplemental code provided."
+        }
+      },
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The framework uses PyTorch for its machine learning tasks and model implementations.",
+          "quote": "PyTorch is integrated into the described methodology for policy representation and the experiments conducted."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An imperative style, high-performance deep learning library",
+          "justification": "PyTorch is identified as a core tool for implementing RL algorithms and embedding processes in this study.",
+          "quote": "PyTorch is integrated into the described methodology for policy representation and the experiments conducted."
+        }
+      },
+      {
+        "name": {
+          "value": "SciPy",
+          "justification": "SciPy is applied for scientific computations, particularly in empirical evaluations in the paper.",
+          "quote": "SciPy is part of the stack used for scientific and numerical analysis."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "SciPy: Open source scientific tools for Python",
+          "justification": "SciPy is referenced as essential for conducting numerical experiments in conjunction with NumPy and PyTorch.",
+          "quote": "SciPy is part of the stack used for scientific and numerical analysis."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1439,
+    "prompt_tokens": 26702,
+    "total_tokens": 28141,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

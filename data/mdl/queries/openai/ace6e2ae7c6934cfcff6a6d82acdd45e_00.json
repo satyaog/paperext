@@ -1,0 +1,206 @@
+{
+  "paper": "ace6e2ae7c6934cfcff6a6d82acdd45e.txt",
+  "words": 7205,
+  "extractions": {
+    "title": {
+      "value": "ReQ : Assessing representation quality by measuring eigenspectrum decay",
+      "justification": "The title is clear from the first page of the document which states 'ReQ : Assessing representation quality by measuring eigenspectrum decay.'",
+      "quote": "ReQ : Assessing representation quality by measuring eigenspectrum decay"
+    },
+    "description": "The paper investigates the use of eigenspectrum decay in neural networks to assess the quality of representations learned through self-supervised learning (SSL). The eigenspectrum decay coefficient is proposed as a measure of representation quality, potentially allowing for task-agnostic evaluation of models without downstream task labels. The authors demonstrate that the decay coefficient is related to generalization performance across various network architectures and datasets.",
+    "type": {
+      "value": "theoretical",
+      "justification": "The paper primarily focuses on theoretical insights into assessing representation quality using eigenspectrum decay, supported by some empirical evidence across different models and datasets.",
+      "quote": "In this work, we analyze characteristics of learned representations f ✓ in well-trained neural networks with canonical architectures & across SSL objectives."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Self-Supervised Learning",
+        "justification": "The research is centered on evaluating representation quality in models trained with Self-Supervised Learning (SSL), specifically addressing challenges related to SSL representation assessment.",
+        "quote": "The recent success of self-supervised learning (SSL) has changed the landscape of deep learning significantly."
+      },
+      "aliases": [
+        "SSL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Representation Learning",
+          "justification": "The paper's primary focus is on assessing representation quality, which falls under representation learning.",
+          "quote": "We empirically validate our theoretical results by demonstrating a relationship between...and downstream generalization."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Model Selection",
+          "justification": "The paper introduces methodologies for model selection using the eigenspectrum decay measure, particularly in the context of Self-Supervised Learning.",
+          "quote": "↵ allows us to identify model hyper-parameters that lead to representations that generalize well without any labels."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "BarlowTwins",
+          "justification": "The paper frequently references this model in the context of its experiments, especially pertaining to SSL and model selection using the decay coefficient.",
+          "quote": "We establish ↵ as a reliable metric for model selection in a specific case of SSL using Barlow Twins."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The BarlowTwins model is referenced in the context of experiments and is not presented as a novel model development within this paper.",
+          "quote": "Notably, we show that ↵ allows us to identify model hyper-parameters that lead to representations that generalize well without any labels."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The experiments conducted with BarlowTwins indicate that the model was executed to study representation quality.",
+          "quote": "To empirically establish this connection, we vary (redundancy coefficient), projection head dimensionality and learning rate, and train a ResNet50 encoder using Barlow Twins learning objective."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "While BarlowTwins is used in the context of testing the decay coefficient, there's no evidence that it was numerically compared to other models.",
+          "quote": "The SSL loss (training for same number of gradient steps) is no longer useful to distinguish models with superior downstream performance."
+        },
+        "referenced_paper_title": {
+          "value": "Barlow Twins: Self-Supervised Learning via Redundancy Reduction",
+          "justification": "The paper explicitly references this model and its original contribution, as seen in their citations.",
+          "quote": "Jure Zbontar, Li Jing, Ishan Misra, Yann LeCun, and Stéphane Deny. Barlow twins: Self-supervised learning via redundancy reduction."
+        }
+      },
+      {
+        "name": {
+          "value": "SimCLR",
+          "justification": "The paper references SimCLR as one of the models used to illustrate their concept of representation quality measurement through eigenspectrum decay.",
+          "quote": "We take a ResNet-50 model trained using three different SSL algorithms, namely SimCLR [2], BYOL, and Barlow Twins, to analyze representation quality."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "SimCLR is mentioned as a pre-existing model utilized for experiments, not a new contribution of the paper.",
+          "quote": "We use three different SSL algorithms, namely SimCLR [2], BYOL [25], and Barlow Twins [1], trained on the ImageNet-1k dataset."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The execution of SimCLR is evident as it is part of the experiments conducted to measure representation quality.",
+          "quote": "ResNet-50 model was pre-trained with SSL algorithms including SimCLR [2] in the experiments."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "The paper does not focus on comparing numerical performance between models but rather assesses representation quality through the eigenspectrum decay coefficient.",
+          "quote": "We use three different SSL algorithms, namely SimCLR...to analyze representation quality."
+        },
+        "referenced_paper_title": {
+          "value": "A Simple Framework for Contrastive Learning of Visual Representations",
+          "justification": "The paper lists this title in their citations associated with SimCLR.",
+          "quote": "Ting Chen, Simon Kornblith, Mohammad Norouzi, and Geoffrey Hinton. A simple framework for contrastive learning of visual representations."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CIFAR",
+          "justification": "CIFAR is used in the experiments to demonstrate the use of the decay coefficient for model selection and representation quality.",
+          "quote": "(using multiple datasets, e.g. CIFAR, STL10, MIT67, ImageNet)"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Multiple Layers of Features from Tiny Images",
+          "justification": "The CIFAR dataset is well-known and this title by Krizhevsky is the foundational reference often cited for it.",
+          "quote": "Alex Krizhevsky and Geoffrey Hinton. Learning multiple layers of features from tiny images."
+        }
+      },
+      {
+        "name": {
+          "value": "STL10",
+          "justification": "STL10 is among the datasets employed in evaluating the eigenspectrum decay as a metric for representation quality.",
+          "quote": "This performance on different datasets like STL10 is used to observe correlations with the eigenspectrum decay."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "An analysis of single-layer networks in unsupervised feature learning",
+          "justification": "The referenced paper by Coates et al. is a major source for the STL10 dataset, involved in various deep learning experiments.",
+          "quote": "Adam Coates, Andrew Ng, and Honglak Lee. An analysis of single-layer networks in unsupervised feature learning."
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet",
+          "justification": "ImageNet is widely mentioned throughout the paper as part of the experimental setup, serving as a pretraining dataset for evaluating SSL methods.",
+          "quote": "For example, models are assessed on ImageNet pretrained architectures to examine features and decay coefficients."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ImageNet: A large-scale hierarchical image database",
+          "justification": "The standard reference paper by Deng et al. is cited in alignment with the use of ImageNet in deep learning tasks.",
+          "quote": "Jia Deng, Wei Dong, Richard Socher, Li-Jia Li, Kai Li, and Li Fei-Fei. ImageNet: A large-scale hierarchical image database."
+        }
+      },
+      {
+        "name": {
+          "value": "MIT67",
+          "justification": "The paper involves MIT67 in its empirical evaluation to illustrate the correlation of eigenspectrum coefficients with model performance on scene recognition tasks.",
+          "quote": "...train with a linear classifier on the MIT67 dataset to evaluate learned representations' performance."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Recognizing Indoor Scenes",
+          "justification": "The cited reference by Quattoni and Torralba forms the foundational contribution mentioning the MIT67 dataset.",
+          "quote": "Ariadna Quattoni and Antonio Torralba. Recognizing indoor scenes."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is used extensively in the paper for implementing various models and experiments as indicated by the citations and usage context.",
+          "quote": "Our pretrained models are taken from PyTorch Hub [14] and timm [15]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An imperative style, high-performance deep learning library",
+          "justification": "The reference to PyTorch is clear in both the citation and the context of experiments carried out using the library.",
+          "quote": "Adam Paszke, Sam Gross, Francisco Massa, et al. PyTorch: An imperative style, high-performance deep learning library."
+        }
+      },
+      {
+        "name": {
+          "value": "Timm",
+          "justification": "The Timm library is mentioned as a source for pre-trained models used in the paper's experiments.",
+          "quote": "Our pretrained models are taken from PyTorch Hub [14] and timm [15]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch Image Models",
+          "justification": "The library is commonly cited using its GitHub repository, aligning with the paper's usage of Timm for model experiments.",
+          "quote": "Ross Wightman. PyTorch Image Models. https://github.com/rwightman/pytorch-image-models, 2019."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1918,
+    "prompt_tokens": 12482,
+    "total_tokens": 14400,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

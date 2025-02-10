@@ -1,0 +1,165 @@
+{
+  "paper": "88e350746c925089515ceba236bda55d.txt",
+  "words": 3624,
+  "extractions": {
+    "title": {
+      "value": "Contextual bandit optimization of super-resolution microscopy",
+      "justification": "The title of the paper is directly taken from the top of the paper.",
+      "quote": "Contextual bandit optimization of super-resolution microscopy"
+    },
+    "description": "The paper presents a framework for optimizing imaging parameters in super-resolution microscopy using a contextual bandit approach, which considers the sample state to adapt imaging settings.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves the development and testing of models for optimizing parameters in microscopy, indicating empirical work.",
+      "quote": "In this work, we frame the optimization problem as a multi-armed bandit framework with contextual information about the sample to identify optimal sample-dependant imaging parameters."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Microscopy Optimization",
+        "justification": "The research focuses on optimizing imaging parameters for microscopy.",
+        "quote": "The online optimization of optical microscopy parameters aims at learning the set of imaging parameters while the experiment unfolds."
+      },
+      "aliases": [
+        "Super-Resolution Microscopy Optimization"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Machine Learning",
+          "justification": "The study employs machine learning frameworks like contextual bandit for optimization.",
+          "quote": "we frame the optimization problem as a multi-armed bandit framework."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Reinforcement Learning",
+          "justification": "The work discusses using contextual bandits and compares it with reinforcement learning algorithms.",
+          "quote": "The optimization of STED imaging parameters was recently tackled using sequential reinforcement learning (RL) algorithms."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "DyMIN",
+          "justification": "DyMIN is discussed as a model that adapts imaging parameters in microscopy.",
+          "quote": "Tools have been developed to assist the microscopists in specific imaging task. For instance, DyMIN (Dynamic intensity Minimum) dynamically adapts the imaging scheme of STED microscopy to reduce photobleaching and sample damage by switching on the depletion laser only when necessary"
+        },
+        "aliases": [
+          "Dynamic intensity Minimum"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "DyMIN is referenced as an existing tool used within the research.",
+          "quote": "for instance, DyMIN (Dynamic intensity Minimum) dynamically adapts the imaging scheme of STED microscopy"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper describes the use of DyMIN in their experimental setting, using simulated data.",
+          "quote": "We aim to optimize the parameters of DyMIN, which are highly dependant on the state of the current sample"
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "DyMIN's performance is considered in relation to other methods discussed in the paper.",
+          "quote": "We next aimed to compare Kernel-TS with baselines on the imaging task using the mean foreground intensity as contextual information."
+        },
+        "referenced_paper_title": {
+          "value": "Adaptive-Illumination STED Nanoscopy",
+          "justification": "The reference paper details adaptive illumination methods related to DyMIN.",
+          "quote": "J. Heine, M. Reuss, B. Harke, E. D’Este, S. J. Sahl, and S. W. Hell. “Adaptive-Illumination STED Nanoscopy”."
+        }
+      },
+      {
+        "name": {
+          "value": "Kernel-TS",
+          "justification": "Kernel-TS is used as a method to optimize imaging parameters under a multi-armed bandit framework.",
+          "quote": "The online automated optimization of optical microscopy parameters to simultaneously improve multiple objectives was previously formulated under a multi-armed bandit framework using Kernel-TS."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Kernel-TS is referenced as a method adapted from previous works to current research.",
+          "quote": "The online automated optimization of optical microscopy parameters to simultaneously improve multiple objectives was previously formulated under a multi-armed bandit framework using Kernel-TS."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Kernel-TS is implemented and executed in the experiments to optimize parameters.",
+          "quote": "We first evaluated the impact of leveraging the contextual information for Kernel-TS."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Kernel-TS is directly compared with other algorithmic approaches in the study.",
+          "quote": "We next aimed to compare Kernel-TS with baselines on the imaging task using the mean foreground intensity as contextual information."
+        },
+        "referenced_paper_title": {
+          "value": "Contextual Gaussian Process Bandit Optimization",
+          "justification": "The referenced paper outlines foundational concepts related to Kernel-TS's application to gaussian process bandits.",
+          "quote": "A. Krause and C. Ong. “Contextual Gaussian Process Bandit Optimization”."
+        }
+      },
+      {
+        "name": {
+          "value": "NeuralTS",
+          "justification": "NeuralTS is a neural network-based Thompson Sampling method evaluated in the paper.",
+          "quote": "Our last candidates are thus LinTS Diag, which samples from the posterior using the gradients of the last linear layer of the network, and NeuralTS, which uses the gradient through the entire network."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "NeuralTS is referenced as an existing method employed for comparison.",
+          "quote": "Our last candidates are thus LinTS Diag, which samples from the posterior using the gradients of the last linear layer of the network, and NeuralTS, which uses the gradient through the entire network."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "NeuralTS is applied to determine its efficiency in the contextual bandit framework.",
+          "quote": "Both NN models achieved a reduced number of failures (∼50 images, Figure 3a) and a similar selection of parameters."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "NeuralTS's performance is evaluated against other models in contextual bandit tasks.",
+          "quote": "Kernel-TS is only slightly outperformed by LinTS Diag and NeuralTS which extract their own features."
+        },
+        "referenced_paper_title": {
+          "value": "Neural Thompson Sampling",
+          "justification": "NeuralTS is directly tied to the concepts discussed in the referenced Neural Thompson Sampling paper.",
+          "quote": "W. Zhang, D. Zhou, L. Li, and Q. Gu. “Neural Thompson Sampling”."
+        }
+      }
+    ],
+    "datasets": [],
+    "libraries": [
+      {
+        "name": {
+          "value": "pySTED",
+          "justification": "pySTED is explicitly mentioned as a simulation tool used in the paper.",
+          "quote": "We implemented the DyMIN acquisition scheme in pySTED, a STED microscopy simulation tool designed to realistically emulate a STED acquisition."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "pySTED : A STED Microscopy Simulation Tool for Machine Learning Training",
+          "justification": "The referenced paper describes the utility of pySTED in machine learning contexts for microscopy.",
+          "quote": "B. Turcotte, A. Bilodeau, F. Lavoie-Cardinal, and A. Durand. “pySTED : A STED Microscopy Simulation Tool for Machine Learning Training”."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1395,
+    "prompt_tokens": 6999,
+    "total_tokens": 8394,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}
