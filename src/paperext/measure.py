@@ -94,7 +94,7 @@ def _mlcm(annotations: pd.DataFrame, predictions: pd.DataFrame):
     return mlcm.cm(_ann, _pred), classes
 
 
-def _performance_analysis(papers: list):
+def _measure_precision(papers: list):
     """Analyse the performance of the LLM on the given papers though confusion
     matrices and multi-label confusion matrices"""
     annotated = [[], []]
@@ -147,7 +147,7 @@ def _performance_analysis(papers: list):
     predictions[0] = pd.concat(predictions[0])
     predictions[1] = pd.concat(predictions[1])
 
-    _analysis_dir = CFG.dir.performance / CFG.platform.select
+    _analysis_dir = CFG.dir.measure / CFG.platform.select
     _analysis_dir.mkdir(parents=True, exist_ok=True)
 
     max_attempt = max(
@@ -323,7 +323,7 @@ def main(argv=None):
 
     assert any(map(lambda p: p.exists(), papers))
 
-    _performance_analysis(papers)
+    _measure_precision(papers)
 
 
 if __name__ == "__main__":
