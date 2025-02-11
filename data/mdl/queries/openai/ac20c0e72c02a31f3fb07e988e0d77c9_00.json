@@ -1,0 +1,162 @@
+{
+  "paper": "ac20c0e72c02a31f3fb07e988e0d77c9.txt",
+  "words": 13406,
+  "extractions": {
+    "title": {
+      "value": "QRelScore: Better Evaluating Generated Questions with Deeper Understanding of Context-aware Relevance",
+      "justification": "The title is clearly stated at the beginning of the paper and encapsulates the main focus of the research, which is introducing QRelScore to improve evaluation of question generation.",
+      "quote": "QRelScore: Better Evaluating Generated Questions with Deeper Understanding of Context-aware Relevance"
+    },
+    "description": "This paper introduces QRelScore, an automatic metric designed to evaluate the relevance of generated questions with their respective contexts more accurately. The method uses off-the-shelf language models like BERT and GPT2 to perform word-level and sentence-level analysis. It is shown to outperform existing metrics in terms of correlation with human evaluation and robustness against adversarial samples.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves experiments and evaluations of the proposed QRelScore metric against other metrics, demonstrating its effectiveness empirically.",
+      "quote": "Compared with existing metrics, our experiments demonstrate that QRelScore is able to achieve a higher correlation with human judgments while being much more robust to adversarial samples."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The paper focuses on question generation and evaluation, which are key tasks within Natural Language Processing.",
+        "quote": "Question generation (QG) systems aim to generate natural language questions that are relevant to and usually can be answered by a given piece of input text."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Question Generation",
+          "justification": "The primary focus of the paper is to evaluate question generation outputs using the new QRelScore metric.",
+          "quote": "In this paper, we propose QRelScore, a context-aware Relevance evaluation metric for Question Generation."
+        },
+        "aliases": [
+          "QG"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "BERT",
+          "justification": "BERT is mentioned as one of the models used within the QRelScore framework for word-level relevance computation.",
+          "quote": "Based on off-the-shelf language models such as BERT and GPT2, QRelScore employs both word-level hierarchical matching and sentence-level prompt-based generation."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "BERT is used as an existing model for its pre-trained capabilities to assist in the evaluation process rather than being a newly introduced model by this paper.",
+          "quote": "Based on off-the-shelf language models such as BERT and GPT2, QRelScore employs both word-level hierarchical matching and sentence-level prompt-based generation."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "BERT is actually used within the experiments to compute the QRel LRM scores.",
+          "quote": "Our QRel LRM and QRel GRG are implemented by BERT-base and OpenAI GPT2 English models, respectively."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares the performance of QRelScore, which uses BERT in part, to other evaluation metrics.",
+          "quote": "Compared with existing metrics, our experiments demonstrate that QRelScore is able to achieve a higher correlation with human judgments."
+        },
+        "referenced_paper_title": {
+          "value": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "justification": "This is the foundational paper that introduced BERT, upon which the current use for QRelScore is based.",
+          "quote": "BERTScore leverages contextualized embeddings from BERT (Devlin et al., 2019) and shows some degree of ability..."
+        }
+      },
+      {
+        "name": {
+          "value": "GPT2",
+          "justification": "GPT2 is used in QRelScore to handle sentence-level relevance evaluation via prompts.",
+          "quote": "Based on off-the-shelf language models such as BERT and GPT2, QRelScore employs both word-level hierarchical matching and sentence-level prompt-based generation."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "GPT2 is an established model utilized for its generative capabilities as part of the evaluation metric proposed in this paper.",
+          "quote": "Our QRel LRM and QRel GRG are implemented by BERT-base and OpenAI GPT2 English models, respectively."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "GPT2 is actively used in the experiments for the QRel GRG component of QRelScore.",
+          "quote": "Our QRel LRM and QRel GRG are implemented by BERT-base and OpenAI GPT2 English models, respectively."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance involving GPT2 as part of QRelScore is evaluated against other metrics.",
+          "quote": "Compared with existing metrics, our experiments demonstrate that QRelScore is able to achieve a higher correlation with human judgments."
+        },
+        "referenced_paper_title": {
+          "value": "Language Models are Unsupervised Multitask Learners",
+          "justification": "This is the paper introducing GPT2, which is referred to for its implementation in QRelScore.",
+          "quote": "GPT2"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "SQuAD",
+          "justification": "The SQuAD dataset is used for the experiments regarding question generation.",
+          "quote": "First, we demonstrate that QRelScore can improve the performance of question answering: by serving as a reward to train a QG model with reinforcement learning and then use it to augment a QA dataset (e.g. the SQuAD dataset (Rajpurkar et al., 2016)),"
+        },
+        "aliases": [
+          "SQuADv1"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "SQuAD: 100,000+ Questions for Machine Comprehension of Text",
+          "justification": "This is the reference paper for the SQuAD dataset that is used in the experiments.",
+          "quote": "the performance of a QA model can be improved by fine-tuning on the augmented dataset. Second, QRelScore achieves a state-of-the-art correlation with human judgments on the candidates generated by the existing QG models. Further-more, when considering the available human ref-erence of the dataset in QRelScore, we present a reference-augmented version, Ref-QRelScore, which achieves an even higher correlation."
+        }
+      },
+      {
+        "name": {
+          "value": "HotpotQA",
+          "justification": "HotpotQA is another dataset used to test the effectiveness of the QRelScore evaluation metric.",
+          "quote": "We employ two widely-used QG datasets to validate QRelScore, including SQuADv1 (Rajpurkar et al., 2016) and HotpotQA (Yang et al., 2018)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "HotpotQA: A Dataset for Diverse, Explainable Multi-hop Question Answering",
+          "justification": "This is the reference paper for the HotpotQA dataset that is also used in the research.",
+          "quote": "For the HotpotQA dataset, we utilize the official train/dev/test splits."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Transformers",
+          "justification": "The HuggingFace Transformers library is mentioned in the implementation of BERT and GPT2 models.",
+          "quote": "The contextualized embeddings and attention scores of BERT-base and generation likelihood of GPT2 are extracted by the HuggingFace Transformers package (Wolf et al., 2020)."
+        },
+        "aliases": [
+          "HuggingFace Transformers"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Transformers: State-of-the-art Natural Language Processing",
+          "justification": "This is the paper detailing the Transformers library, which provides implementations for models like BERT and GPT2.",
+          "quote": "The contextualized embeddings and attention scores of BERT-base and generation likelihood of GPT2 are extracted by the HuggingFace Transformers package (Wolf et al., 2020)."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1558,
+    "prompt_tokens": 24895,
+    "total_tokens": 26453,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

@@ -4,31 +4,31 @@
   "extractions": {
     "title": {
       "value": "A protocol for trustworthy EEG decoding with neural networks",
-      "justification": "The title succinctly describes the main focus of the paper, which is to develop a protocol for decoding EEG signals using neural networks.",
+      "justification": "The title explicitly states the focus of the paper is on developing a protocol for EEG decoding using neural networks.",
       "quote": "A protocol for trustworthy EEG decoding with neural networks"
     },
-    "description": "The paper presents a comprehensive protocol for decoding EEG signals using deep neural networks. It addresses the challenges of hyperparameter optimization and performance variability, providing solutions for a robust and trustworthy EEG decoding pipeline. The protocol is validated on multiple datasets and includes extensive experiments to explore the influence of various aspects such as participant numbers, search strategies, and random initializations.",
+    "description": "This paper presents a comprehensive protocol for EEG decoding that explores hyperparameters characterizing the entire pipeline, including data pre-processing, network architecture, network training, and data augmentation. It emphasizes robust performance estimates using multi-seed initialization and is validated across multiple datasets involving various deep learning models.",
     "type": {
       "value": "empirical",
-      "justification": "The paper conducts extensive experiments and validations on multiple datasets to test the proposed EEG decoding protocol.",
-      "quote": "Our protocol is validated on 9 datasets about motor imagery, P300, SSVEP...and on different deep learning models."
+      "justification": "The paper involves experiments conducted on EEG datasets to validate the proposed protocol.",
+      "quote": "Our protocol is validated on 9 datasets about motor imagery, P300, SSVEP, including 204 participants and 26 recording sessions, and on different deep learning models."
     },
     "primary_research_field": {
       "name": {
-        "value": "Electroencephalography (EEG) Decoding",
-        "justification": "The primary focus of the study is on decoding EEG signals using neural networks.",
+        "value": "EEG Decoding",
+        "justification": "The paper specifically focuses on EEG signal processing and decoding using neural networks.",
         "quote": "Deep learning solutions have rapidly emerged for EEG decoding, achieving state-of-the-art performance on a variety of decoding tasks."
       },
       "aliases": [
-        "EEG Decoding"
+        "Electroencephalography Decoding"
       ]
     },
     "sub_research_fields": [
       {
         "name": {
-          "value": "Brain–Computer Interfaces (BCI)",
-          "justification": "The study applies EEG decoding in the context of BCIs.",
-          "quote": "Machine learning and deep learning approaches are widely used to process the brain activity...primarily by addressing classification tasks in Brain–Computer Interfaces (BCIs)."
+          "value": "Brain-Computer Interfaces",
+          "justification": "The paper discusses applications related to BCIs, such as motor imagery, P300, and SSVEP paradigms.",
+          "quote": "Machine learning and deep learning approaches are widely used to process the brain activity, often encompassing data recorded via electroencephalographic (EEG) signals, mainly for designing neural decoders in Brain–Computer Interfaces (BCIs)."
         },
         "aliases": [
           "BCI"
@@ -39,29 +39,57 @@
       {
         "name": {
           "value": "EEGNet",
-          "justification": "EEGNet is specifically mentioned as the neural network architecture used for EEG decoding in the study.",
-          "quote": "EEGNet (Lawhern et al., 2018) – in its original version (Lawhern et al., 2018) and its variants – represents the most used one."
+          "justification": "EEGNet is discussed as a primary model for EEG decoding within the paper.",
+          "quote": "Among architectures, EEGNet (Lawhern et al., 2018) – in its original version and its variants – represents the most used one, providing a good trade-off between model compactness, model size, training time, and decoding accuracy."
         },
         "aliases": [],
         "is_contributed": {
           "value": false,
-          "justification": "EEGNet is not a new contribution of this paper; it is referenced as a commonly used network for EEG.",
-          "quote": "EEGNet (Lawhern et al., 2018) – in its original version (Lawhern et al., 2018) and its variants."
+          "justification": "The paper does not claim EEGNet as a newly developed model; it discusses its use within the proposed protocol.",
+          "quote": "Among EEGNet-like variants, recent improvements regarded..."
         },
         "is_executed": {
           "value": true,
-          "justification": "Experiments were conducted using EEGNet as part of the proposed protocol validation.",
-          "quote": "First, the network processes the input neural activity X i using temporal convolution, to learn how to optimally filter each EEG channel."
+          "justification": "The model is executed as part of the protocol validation over several datasets.",
+          "quote": "Our protocol is validated on 9 datasets about motor imagery, P300, SSVEP, including... and on different deep learning models."
         },
         "is_compared": {
           "value": true,
-          "justification": "EEGNet is evaluated and compared with baseline protocols and possibly other models.",
-          "quote": "EEGNet-based protocol consistently outperformed baseline state-of-the-art protocols across datasets."
+          "justification": "EEGNet's performance is compared to other models and baselines within the study.",
+          "quote": "Our protocol consistently outperformed baseline state-of-the-art pipelines, widely across datasets and models."
         },
         "referenced_paper_title": {
-          "value": "EEGNet: a compact convolutional neural network for EEG-based brain–computer interfaces",
-          "justification": "This is the original paper introducing EEGNet, as referenced in the document.",
-          "quote": "EEGNet (Lawhern et al., 2018) – in its original version...represents the most used one."
+          "value": "EEGNet: A compact convolutional neural network for EEG-based brain–computer interfaces",
+          "justification": "The referenced paper is acknowledged as the original proposal for EEGNet.",
+          "quote": "EEGNet (Lawhern et al., 2018) – in its original version..."
+        }
+      },
+      {
+        "name": {
+          "value": "ShallowConvNet",
+          "justification": "ShallowConvNet is mentioned as another model used in the study for comparison.",
+          "quote": "Crucially, it should be noted that for a more robust validation of the proposed decoding protocol, we applied it also with other CNNs, including... ShallowConvNet."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper does not contribute ShallowConvNet as a new model but uses it as an existing model for validation.",
+          "quote": "...including one of the first successful CNNs proposed for decoding motor imagery from EEG (ShallowConvNet)..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "It was executed to test against the proposed protocol.",
+          "quote": "Crucially, it should be noted that for a more robust validation of the proposed decoding protocol, we applied it also with other CNNs, including one of the first successful CNNs..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares its proposed protocol's results against baselines which include models like ShallowConvNet.",
+          "quote": "Additionally, when designing new decoding pipelines, neuroscientists could exploit our suggestions about the key aspect affecting a decoding protocol."
+        },
+        "referenced_paper_title": {
+          "value": "Deep learning with convolutional neural networks for EEG decoding and visualization",
+          "justification": "This is the foundational paper detailing ShallowConvNet's design and usage.",
+          "quote": "ShallowConvNet (Schirrmeister et al., 2017) is one of the first CNN proposed for motor imagery decoding..."
         }
       }
     ],
@@ -69,43 +97,73 @@
       {
         "name": {
           "value": "BNCI2014-001",
-          "justification": "The dataset is one of the publicly available MOABB datasets used for validation in the research.",
-          "quote": "The dataset consists of 22-channel EEG recorded from 9 healthy participants across 2 recording sessions."
+          "justification": "The dataset is used within the protocol validation involving motor imagery tasks.",
+          "quote": "In this study, we used 9 multi-session MOABB datasets publicly available, covering: Motor imagery-based BCIs: BNCI2014-001 (Tangermann et al., 2012)"
+        },
+        "aliases": [
+          "dataset IIa"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Review of the BCI competition IV",
+          "justification": "The dataset is cited with its reference from the BCI competition IV review paper.",
+          "quote": "BNCI2014-001... This dataset is also known as ‘dataset IIa’ from BCI competition IV (Tangermann et al., 2012)."
+        }
+      },
+      {
+        "name": {
+          "value": "Lee2019-MI",
+          "justification": "Used for validation in the protocol for motor imagery.",
+          "quote": "Lee2019-MI (Lee et al., 2019). This dataset consists of 62-channel EEG recorded from 54 healthy participants across 2 recording sessions."
         },
         "aliases": [],
         "role": "used",
         "referenced_paper_title": {
-          "value": "Review of the BCI competition IV",
-          "justification": "BNCI2014-001 is part of the BCI Competition IV datasets, as mentioned in the paper.",
-          "quote": "This dataset is also known as ‘dataset IIa’ from BCI competition IV (Tangermann et al., 2012)."
+          "value": "EEG dataset and OpenBMI toolbox for three BCI paradigms: an investigation into BCI illiteracy",
+          "justification": "The authors give proper credit citing the paper describing the dataset.",
+          "quote": "Lee2019-MI (Lee et al., 2019). This dataset consists of 62-channel EEG..."
         }
       },
       {
         "name": {
           "value": "BNCI2014-009",
-          "justification": "The dataset is one of the publicly available datasets used for validating the protocol.",
-          "quote": "The dataset consists of 16-channel EEG recorded from 10 healthy participants across 3 recording sessions."
+          "justification": "Dataset used for P300 evaluation in the protocol.",
+          "quote": "BNCI2014-009 (Aricò et al., 2014). This dataset consists of 16-channel EEG recorded from 10 healthy participants across 3 recording sessions."
         },
         "aliases": [],
         "role": "used",
         "referenced_paper_title": {
           "value": "Influence of P300 latency jitter on event related potential-based brain–computer interface performance",
-          "justification": "This title refers to the dataset BNCI2014-009 as per the paper's description and references.",
-          "quote": "BNCI2014-009 (Aricò et al., 2014)."
+          "justification": "The paper references the dataset according to its original study.",
+          "quote": "BNCI2014-009 (Aricò et al., 2014). This dataset consists of..."
         }
       },
       {
         "name": {
-          "value": "EPFLP300",
-          "justification": "The dataset is used as part of the evaluation on P300-based BCI paradigms.",
-          "quote": "The dataset consists of 32-channel EEG recorded from 9 participants across 4 recording sessions."
+          "value": "Lee2019-SSVEP",
+          "justification": "Utilized within the protocol for SSVEP paradigms.",
+          "quote": "Lee2019-SSVEP (Lee et al., 2019). This dataset consists of 62-channel EEG recorded from 54 healthy participants across 2 recording sessions."
         },
         "aliases": [],
         "role": "used",
         "referenced_paper_title": {
-          "value": "An efficient P300-based brain–computer interface for disabled subjects",
-          "justification": "The paper references this title for the EPFLP300 dataset that is used in their protocol validation.",
-          "quote": "EPFLP300 (Hoffmann et al., 2008)."
+          "value": "EEG dataset and OpenBMI toolbox for three BCI paradigms: an investigation into BCI illiteracy",
+          "justification": "The same paper that introduced Lee2019-MI also covers Lee2019-SSVEP.",
+          "quote": "Lee2019-SSVEP (Lee et al., 2019). This dataset consists of 62-channel EEG..."
+        }
+      },
+      {
+        "name": {
+          "value": "BI2015a",
+          "justification": "The dataset is applied during the protocol validation for P300 BCIs.",
+          "quote": "BI2015a (Korczowski et al., 2019). This dataset consists of 32-channel EEG recorded from 43 healthy participants across 3 recording sessions."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Brain invaders calibration-less P300-based BCI with modulation of flash duration dataset (bi2015a)",
+          "justification": "The description of BI2015a is consistent with its reference for validation in BCI.",
+          "quote": "BI2015a (Korczowski et al., 2019)..."
         }
       }
     ],
@@ -113,23 +171,23 @@
       {
         "name": {
           "value": "PyTorch",
-          "justification": "The library is explicitly mentioned as used for implementing the decoding protocol.",
-          "quote": "The decoding protocol was implemented using the PyTorch (Paszke et al., 2019)-based library."
+          "justification": "PyTorch is explicitly mentioned as the library used for the decoding protocol implementation.",
+          "quote": "The decoding protocol was implemented using the PyTorch (Paszke et al., 2019)-based library..."
         },
         "aliases": [],
         "role": "used",
         "referenced_paper_title": {
           "value": "PyTorch: An imperative style, high-performance deep learning library",
-          "justification": "The referenced paper by Paszke et al. is the foundational paper for the PyTorch library.",
-          "quote": "The decoding protocol was implemented using the PyTorch (Paszke et al., 2019)-based library."
+          "justification": "Reference to PyTorch is made with the paper on its development by Paszke et al.",
+          "quote": "...using the PyTorch (Paszke et al., 2019)-based library SpeechBrain..."
         }
       }
     ]
   },
   "usage": {
-    "completion_tokens": 1175,
+    "completion_tokens": 1828,
     "prompt_tokens": 40604,
-    "total_tokens": 41779,
+    "total_tokens": 42432,
     "completion_tokens_details": {
       "accepted_prediction_tokens": null,
       "audio_tokens": 0,
@@ -138,7 +196,7 @@
     },
     "prompt_tokens_details": {
       "audio_tokens": 0,
-      "cached_tokens": 1152
+      "cached_tokens": 0
     }
   }
 }

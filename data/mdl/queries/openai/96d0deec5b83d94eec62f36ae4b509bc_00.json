@@ -1,0 +1,238 @@
+{
+  "paper": "96d0deec5b83d94eec62f36ae4b509bc.txt",
+  "words": 4347,
+  "extractions": {
+    "title": {
+      "value": "REAL-M: TOWARDS SPEECH SEPARATION ON REAL MIXTURES",
+      "justification": "The title is clearly stated at the beginning of the document.",
+      "quote": "REAL-M: TOWARDS SPEECH SEPARATION ON REAL MIXTURES"
+    },
+    "description": "This paper presents a new dataset called REAL-M, which consists of real-life speech mixtures, and introduces a blind SI-SNR neural estimator for evaluating the quality of speech separation without needing ground truth signals. It also discusses the challenges and importance of evaluating speech separation models on real data rather than synthetic datasets.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves experimental work, dataset collection, and the testing of models on real and synthetic data.",
+      "quote": "This paper contributes to fill this gap in two ways. First, we release the REAL-M dataset, a crowd-sourced corpus of real-life mixtures. Secondly, we address the problem of performance evaluation of real- life mixtures, where the ground truth is not available."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Speech Separation",
+        "justification": "The paper aims to enhance and evaluate deep learning models specifically for the task of speech separation.",
+        "quote": "Index Terms— Source separation, In-the-wild speech separation, Dataset, Blind SI-SNR estimation, Deep learning."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Dataset Creation",
+          "justification": "The creation of the REAL-M dataset is a significant contribution highlighted in the paper.",
+          "quote": "First, we release REAL-M, a real- life speech source separation dataset for two-speaker mixtures."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "SepFormer",
+          "justification": "SepFormer is one of the models specifically tested and referenced in the paper.",
+          "quote": "SepFormer pre-trained on the WHAMR! dataset from the SpeechBrain Hugging Face repository [1]."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The SepFormer model is not a novel contribution of this paper but is used as a pre-existing model for evaluation.",
+          "quote": "SepFormer pre-trained on the WHAMR! dataset from the SpeechBrain Hugging Face repository [1]."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "SepFormer is tested on both synthetic and REAL-M datasets.",
+          "quote": "The training curve observed with the REAL-M dataset coupled with the proposed neural estimator looks pretty natural."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "SepFormer is compared with other models like DPRNN and ConvTasNet in the paper.",
+          "quote": "Moreover, the models evaluated on REAL-M with the neural estimator achieve the same performance ranking obtained on the validation set of WHAMR!."
+        },
+        "referenced_paper_title": {
+          "value": "Attention is all you need in speech separation",
+          "justification": "This is identified as the reference paper for SepFormer in the citation.",
+          "quote": "Attention is all you need in speech separation [1]."
+        }
+      },
+      {
+        "name": {
+          "value": "Wavesplit",
+          "justification": "Wavesplit is another model referenced as part of the study's context or evaluation.",
+          "quote": "Wavesplit [2], and DualPath RNNs [3], for instance, achieve more than 20 dB improvement in the Scale Invariant Signal-to-Noise Ratio (SI-SNR)."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Wavesplit is mentioned as an existing model rather than a contribution of this paper.",
+          "quote": "Wavesplit [2], and DualPath RNNs [3], for instance, achieve more than 20 dB improvement."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "There is no indication that the paper involves execution of the Wavesplit model.",
+          "quote": "Wavesplit [2], and DualPath RNNs [3], for instance, achieve more than 20 dB improvement."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The model is mentioned in comparison to others achieving high SI-SNR.",
+          "quote": "Wavesplit [2], and DualPath RNNs [3], for instance, achieve more than 20 dB improvement."
+        },
+        "referenced_paper_title": {
+          "value": "Wavesplit: End-to-end speech separation by speaker clustering",
+          "justification": "Wavesplit is cited as reference [2].",
+          "quote": "Wavesplit: End-to-end speech separation by speaker clustering [2]."
+        }
+      },
+      {
+        "name": {
+          "value": "DualPath RNN",
+          "justification": "DualPath RNNs are specifically referred to in the paper in the context of model performance.",
+          "quote": "Wavesplit [2], and DualPath RNNs [3], for instance, achieve more than 20 dB improvement."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "DualPath RNN is an existing model, not developed in the paper.",
+          "quote": "Wavesplit [2], and DualPath RNNs [3], for instance, achieve more than 20 dB improvement."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper includes testing of DualPath RNN on datasets.",
+          "quote": "We tested it with mixtures processed by DPRNN and ConvTasNet (CTN)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "DualPath RNN is compared to other models in terms of SI-SNR estimation correlation and WER.",
+          "quote": "Moreover, the models evaluated on REAL-M with the neural estimator achieve the same performance ranking obtained on the validation set of WHAMR!."
+        },
+        "referenced_paper_title": {
+          "value": "Dual-path rnn: efficient long sequence modeling for time-domain single-channel speech separation",
+          "justification": "This is the reference work for DualPath RNN cited in the paper.",
+          "quote": "Dual-path rnn: efficient long sequence modeling for time-domain single-channel speech separation [3]."
+        }
+      },
+      {
+        "name": {
+          "value": "ConvTasNet",
+          "justification": "ConvTasNet is evaluated in the context of this paper for source separation.",
+          "quote": "We tested it with mixtures processed by DPRNN and ConvTasNet (CTN)."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "ConvTasNet is used but not developed in this paper.",
+          "quote": "ConvTasNet [5]) for improving speech enhancement."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "ConvTasNet is used during empirical evaluations.",
+          "quote": "We tested it with mixtures processed by DPRNN and ConvTasNet (CTN)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The model's performance is compared against other models like SepFormer and DPRNN.",
+          "quote": "Moreover, the models evaluated on REAL-M with the neural estimator achieve the same performance ranking obtained on the validation set of WHAMR!."
+        },
+        "referenced_paper_title": {
+          "value": "Conv-TasNet: Surpassing Ideal Time–Frequency Magnitude Masking for Speech Separation",
+          "justification": "This title corresponds to the referenced ConvTasNet in the citations.",
+          "quote": "Conv-TasNet: Surpassing Ideal Time–Frequency Magnitude Masking for Speech Separation [5]."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "REAL-M Dataset",
+          "justification": "The paper describes the creation and release of this dataset as a major contribution.",
+          "quote": "First, we release REAL-M, a real- life speech source separation dataset for two-speaker mixtures."
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "REAL-M: TOWARDS SPEECH SEPARATION ON REAL MIXTURES",
+          "justification": "The dataset is introduced and detailed in this paper itself, making the paper the primary reference.",
+          "quote": "First, we release REAL-M, a real- life speech source separation dataset for two-speaker mixtures."
+        }
+      },
+      {
+        "name": {
+          "value": "LibriMix",
+          "justification": "LibriMix is mentioned as a synthetic dataset used in training.",
+          "quote": "We consider the LibriMix [23], and the WHAMR! [14] datasets simultaneously by randomly choosing mixtures from the two datasets."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "LibriMix: An open-source dataset for generalizable speech separation",
+          "justification": "LibriMix is cited with this reference title.",
+          "quote": "LibriMix: An open-source dataset for generalizable speech separation [23]."
+        }
+      },
+      {
+        "name": {
+          "value": "WHAMR!",
+          "justification": "The WHAMR! dataset is used for training and evaluation purposes in the paper.",
+          "quote": "LibriMix [23], and the WHAMR! [14] datasets simultaneously by randomly choosing mixtures from the two datasets."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "WHAMR!: Noisy and Reverberant Single-Channel Speech Separation",
+          "justification": "This is the precise reference given for WHAMR! in the paper.",
+          "quote": "WHAMR!: Noisy and Reverberant Single-Channel Speech Separation [14]."
+        }
+      },
+      {
+        "name": {
+          "value": "LibriSpeech",
+          "justification": "LibriSpeech is mentioned as the source for some of the test sets used in data collection.",
+          "quote": "We showed the participants the text of two sentences randomly sampled from the test set of LibriSpeech [21] dataset."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "LibriSpeech: An ASR corpus based on public domain audio books",
+          "justification": "The reference to LibriSpeech is directly cited in the paper.",
+          "quote": "LibriSpeech: an ASR corpus based on public domain audio books [21]."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "SpeechBrain",
+          "justification": "The paper details the release of an SI-SNR estimator within the SpeechBrain toolkit.",
+          "quote": "With REAL-M, we also release the training script of the SI-SNR estimator within the SpeechBrain [20]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "SpeechBrain: A general-purpose speech toolkit",
+          "justification": "SpeechBrain is explicitly referenced with its title in the citations.",
+          "quote": "SpeechBrain: A general-purpose speech toolkit [20]."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2065,
+    "prompt_tokens": 8532,
+    "total_tokens": 10597,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

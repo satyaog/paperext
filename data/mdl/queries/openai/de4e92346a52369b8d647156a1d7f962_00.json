@@ -1,0 +1,150 @@
+{
+  "paper": "de4e92346a52369b8d647156a1d7f962.txt",
+  "words": 8322,
+  "extractions": {
+    "title": {
+      "value": "Modeling electronic health record data using an end‐to‐end knowledge‐graph‐informed topic model",
+      "justification": "The title is present at the top of the paper and represents the main focus of the research.",
+      "quote": "Modeling electronic health\nrecord data using an end‐to‐end\nknowledge‐graph‐informed topic\nmodel"
+    },
+    "description": "The paper introduces GAT-ETM, a novel end-to-end taxonomy-knowledge-graph-based multimodal embedded topic model designed to extract clinically meaningful information from large-scale EHR datasets. The model employs graph attention networks to distill latent disease topics and demonstrate superior performance in topic quality, drug imputation, and disease diagnosis prediction.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents an empirical study as it evaluates the performance of the proposed model based on topic quality, drug imputation, and disease diagnosis prediction. Experiments are conducted using a large-scale EHR dataset consisting of over 1 million patients.",
+      "quote": "We applied GAT-ETM to a large-scale EHR\ndataset consisting of over 1 million patients. We evaluated its performance based on topic quality,\ndrug imputation, and disease diagnosis prediction."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Health Informatics",
+        "justification": "The research primarily concerns the application of machine learning in analyzing electronic health records, which falls under the field of Health Informatics.",
+        "quote": "The rapid growth of electronic health record (EHR) datasets opens up promising opportunities to\nunderstand human diseases in a systematic way."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Machine Learning",
+          "justification": "The research involves developing a novel machine learning model (GAT-ETM) for extracting topics from EHR data.",
+          "quote": "Extracting meaningful medical concepts by modeling the joint distribution of the EHR data is challenging\ndue to its large feature space. Among diverse machine learning approaches, topic models provide an efficient\nway to exploit sparse and discrete data."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Data Analysis",
+          "justification": "The paper focuses on the analysis of EHR data to extract clinically meaningful information.",
+          "quote": "Our goal then is\nto learn clinically meaningful phenotype topics and disease mixture memberships of patients."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Graph ATtention-Embedded Topic Model (GAT-ETM)",
+          "justification": "The paper introduces and extensively discusses GAT-ETM as a novel model developed for the purpose of the study.",
+          "quote": "We present Graph ATtention-\nEmbedded Topic Model (GAT-ETM), an end-to-end taxonomy-knowledge-graph-based multimodal embedded topic model."
+        },
+        "aliases": [
+          "GAT-ETM"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "GAT-ETM is presented as a novel contribution by the authors aiming to improve topic inference from EHR data using knowledge graphs.",
+          "quote": "In this paper, we present a neural topic model called Graph-ATtention Embedded Topic Model (GAT-ETM)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was applied on a large-scale EHR dataset for evaluating its performance regarding topic inference and other tasks, indicating it was executed in the research.",
+          "quote": "We applied GAT-ETM to a large-scale EHR\ndataset consisting of over 1 million patients."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "GAT-ETM was compared with other models like MixEHR, ETM, and GETM in terms of reconstruction error, topic quality, and other performance metrics.",
+          "quote": "GAT-ETM demonstrated superior performance\nover the alternative methods on all tasks."
+        },
+        "referenced_paper_title": {
+          "value": "Graph attention networks",
+          "justification": "The GAT component referenced within GAT-ETM refers to the Graph attention networks used within the model, implying reliance on previous work in describing its function.",
+          "quote": "To capture higher-level medical concepts, GAT-ETM uses a graph attention network (GAT) ^{10} to compute the embeddings of EHR codes."
+        }
+      },
+      {
+        "name": {
+          "value": "GETM",
+          "justification": "GETM is discussed as a baseline model against which GAT-ETM is compared.",
+          "quote": "GETM is an unsupervised model that directly learns the distribution of the EHR data using\nthe node2vec embedding."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "GETM is mentioned as a baseline model for comparison, not as a contribution of this particular research.",
+          "quote": "We considered GETM as the baseline because it harnesses external medical knowledge\ngraphs although not in an end-to-end manner."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "GETM's performance is evaluated as part of the comparison with the proposed GAT-ETM model, indicating execution.",
+          "quote": "Compared to GAT-ETM, GETM achieved higher TD but lower TC, which\nmeans that the topic distributions over the EHR codes are more diverse but less coherent."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "GETM is one of the models against which GAT-ETM is compared, as shown in results tables and discussions.",
+          "quote": "GAT-ETM demonstrated superior performance\nover the alternative methods on all tasks."
+        },
+        "referenced_paper_title": {
+          "value": "A graph-embedded topic model enables characterization of diverse pain phenotypes among UK biobank individuals",
+          "justification": "GETM is a referenced model discussed in the related works and the baselines sections as part of the performance comparison.",
+          "quote": "A recent model called Graph Embedded Topic Model (GETM) ^{28} leveraged a knowledge graph by combining ­node2vec ^{29} with embedded topic model (ETM) ^{30} in a pipeline approach."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Population Health Record (PopHR)",
+          "justification": "PopHR is used as the main dataset for evaluating GAT-ETM's performance, providing extensive EHR data for analysis.",
+          "quote": "To evaluate our model, we used a real-world large EHR database called Population Health Record (PopHR), which was originally created for monitoring population health from multiple distributed sources."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "PopHR does not have a specific paper referenced in the document as its origin is described without citation.",
+          "quote": "To evaluate our model, we used a real-world large EHR database called Population Health Record (PopHR), which was originally created for monitoring population health from multiple distributed sources."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "node2vec",
+          "justification": "node2vec is mentioned as a technique for initializing embeddings in the study, playing a part in the model's implementation.",
+          "quote": "We first initialize the embedding ρ (0) by training a node2vec model ^{29} on the knowledge\ngraph with embedding dimensions set to 256."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "node2vec: scalable feature learning for networks",
+          "justification": "node2vec is referenced as a paper used in the development process of initializing embeddings for GAT-ETM.",
+          "quote": "node2vec: scalable feature learning for networks"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1506,
+    "prompt_tokens": 15273,
+    "total_tokens": 16779,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

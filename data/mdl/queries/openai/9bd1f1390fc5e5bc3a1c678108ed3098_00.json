@@ -1,0 +1,190 @@
+{
+  "paper": "9bd1f1390fc5e5bc3a1c678108ed3098.txt",
+  "words": 12613,
+  "extractions": {
+    "title": {
+      "value": "Robust Contrastive Learning against Noisy Views",
+      "justification": "The title, \"Robust Contrastive Learning against Noisy Views,\" directly addresses the core research focus of the paper which is to develop a robust contrastive learning technique that deals with noisy data.",
+      "quote": "Robust Contrastive Learning against Noisy Views"
+    },
+    "description": "The paper presents a robust contrastive learning method, called Robust InfoNCE (RINCE), which is designed to be effective even in the presence of noisy views. It extends contrastive learning techniques to be modality-agnostic by introducing a new loss function that adjusts sample weights based on noise level estimates.",
+    "type": {
+      "value": "theoretical",
+      "justification": "The paper provides theoretical justifications by showing connections to robust symmetric losses for noisy binary classification and establishes a new contrastive bound for mutual information maximization based on the Wasserstein distance measure.",
+      "quote": "We provide rigorous theoretical justifications by showing connections to robust symmetric losses for noisy binary classification and by establishing a new contrastive bound for mutual information maximization based on the Wasserstein distance measure."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Contrastive Learning",
+        "justification": "The paper focuses on developing a robust methodology for contrastive learning in the face of noisy data across modalities like image, video, and graph.",
+        "quote": "We propose a new contrastive loss function that is robust against noisy views."
+      },
+      "aliases": [
+        "Contrastive Self-Supervised Learning"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Computer Vision",
+          "justification": "The paper demonstrates improvements in contrastive learning methods applied to image-based benchmarks, indicating a significant focus in this subfield.",
+          "quote": "We show that our approach provides consistent improvements over the state-of-the-art on image... contrastive learning benchmarks."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Video Learning",
+          "justification": "The paper evaluates the impact of the proposed method on video data, as indicated by tests performed using datasets like Kinetics400.",
+          "quote": "...and video contrastive learning benchmarks, demonstrating its generalizability across multiple modalities."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Graph Learning",
+          "justification": "The research also extends to graph contrastive learning scenarios, indicating its application in graph-based problems.",
+          "quote": "and graph contrastive learning benchmarks, demonstrating its generalizability across multiple modalities."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "RINCE",
+          "justification": "RINCE is the primary contribution of the paper as a robust contrastive loss function tailored to handle noisy views.",
+          "quote": "We propose RINCE, a new contrastive learning objective that is robust against noisy views of data."
+        },
+        "aliases": [
+          "Robust InfoNCE"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "RINCE is introduced in this paper as a novel method to improve contrastive learning robustness.",
+          "quote": "We propose RINCE, a new contrastive learning objective that is robust against noisy views of data."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper includes experiments with RINCE on datasets such as CIFAR-10 and ImageNet, which involves execution of the model.",
+          "quote": "We evaluate RINCE on various contrastive learning scenarios involving images (CIFAR-10 [36], ImageNet [37]), videos (ACAV100M [27], Kinetics400 [38]) and graphs (TUDataset [39])."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "RINCE is compared to existing models and benchmarks to demonstrate its effectiveness in different scenarios.",
+          "quote": "We demonstrate our approach on real-world scenarios of image, video, and graph contrastive learning."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "RINCE as a concept appears to be introduced and developed in this paper with no prior reference title documented.",
+          "quote": "We propose RINCE, a new contrastive learning objective... "
+        }
+      },
+      {
+        "name": {
+          "value": "SimCLR",
+          "justification": "SimCLR is mentioned as one of the baseline contrastive learning frameworks that the paper's experiments improve upon with the introduction of RINCE.",
+          "quote": "Since InfoNCE sets the basis for many modern contrastive methods such as SimCLR [6] and MoCo-v1/v2/v3 [5, 7, 35], our construction can be easily applied to many existing frameworks."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Focus is on comparing RINCE against existing models like SimCLR rather than contributing offshoot work to SimCLR.",
+          "quote": "Since InfoNCE sets the basis for many modern contrastive methods such as SimCLR..."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "While SimCLR is used as a comparison baseline, there is no indication that it was executed afresh as part of this paper.",
+          "quote": "Table 1. Linear Evaluation on ImageNet... Note that RINCE subsumes InfoNCE when q → 0."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "SimCLR is presented as an existing model to which RINCE's performance is compared for evaluating improvements.",
+          "quote": "SimCLR... our construction can be easily applied to many existing frameworks."
+        },
+        "referenced_paper_title": {
+          "value": "A simple framework for contrastive learning of visual representations",
+          "justification": "SimCLR is referenced to compare against the novel RINCE method.",
+          "quote": "Since InfoNCE sets the basis for many modern contrastive methods such as SimCLR [6]... and MoCo-v1/v2/v3"
+        }
+      },
+      {
+        "name": {
+          "value": "MoCo-v1/v2/v3",
+          "justification": "MoCo variations are used as baselines to demonstrate RINCE's performance against existing methods.",
+          "quote": "Since InfoNCE sets the basis for many modern contrastive methods such as SimCLR [6] and MoCo-v1/v2/v3 [5, 7, 35], our construction can be easily applied to many existing frameworks."
+        },
+        "aliases": [
+          "Momentum Contrast"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "MoCo models are existing techniques used to benchmark against RINCE.",
+          "quote": "Since InfoNCE sets the basis for many modern contrastive methods such as SimCLR [6] and MoCo-v1/v2/v3 [5, 7, 35], our construction can be easily applied to many existing frameworks."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The focus is on using MoCo as a baseline for performance comparison rather than executing them within the paper study.",
+          "quote": "...modern contrastive methods such as SimCLR [6] and MoCo-v1/v2/v3..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "MoCo models serve as baselines for comparison to highlight RINCE's advantages.",
+          "quote": "...such as SimCLR [6] and MoCo-v1/v2/v3 [5, 7, 35], our construction can be easily applied to many existing frameworks."
+        },
+        "referenced_paper_title": {
+          "value": "Momentum Contrast for Unsupervised Visual Representation Learning",
+          "justification": "MoCo series are referenced as comparison benchmarks against which RINCE's performance is evaluated.",
+          "quote": "Since InfoNCE sets the basis for many modern contrastive methods such as SimCLR [6] and MoCo-v1/v2/v3 [5, 7, 35]..."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "CIFAR-10 dataset is utilized to test and benchmark the RINCE model's performance against noise.",
+          "quote": "We begin with controlled experiments on CIFAR-10 to verify the robustness of RINCE against synthetic noise by controlling the noise rate η."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Multiple Layers of Features from Tiny Images",
+          "justification": "This dataset is used to compare results with other approaches such as InfoNCE and RINCE as stated in the experiments sections.",
+          "quote": "CIFAR-10 [36], ImageNet [37]..."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is implied through its modules being used in experimental implementation and testing of the RINCE model.",
+          "quote": "We use the PyTorch code in Figure 9 to generate the data augmentation noise."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Automatic differentiation in PyTorch",
+          "justification": "Mentioned in conjunction with implementation details for RINCE, albeit not explicitly named, PyTorch is integral for executing models as seen in common deep learning libraries.",
+          "quote": ""
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1766,
+    "prompt_tokens": 25466,
+    "total_tokens": 27232,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "paper": "bfb475c386f43e5413938ba63ca33791.txt",
+  "words": 5221,
+  "extractions": {
+    "title": {
+      "value": "IMPROVING SOURCE SEPARATION BY EXPLICITLY MODELING DEPENDENCIES BETWEEN SOURCES",
+      "justification": "The title directly reflects the main focus of the paper, as explicit modeling of dependencies between sources is a central theme in the proposed method.",
+      "quote": "We propose a new method for training a supervised source separation system that aims to learn the interdependent relationships between all combinations of sources in a mixture."
+    },
+    "description": "The paper introduces a novel method for training a supervised source separation system to learn interdependent relationships between all combinations of sources in a mixture. It adapts a standard source separation architecture with additional inputs for individual sources and uses a block Gibbs sampling procedure during inference to enhance separation performance iteratively.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper describes experiments conducted on datasets to validate the proposed method's effectiveness in improving source separation.",
+      "quote": "Experiments on two source separation datasets show that training a Demucs model with an Orderless N ADE approach and using Gibbs sampling (up to 512 steps) at inference time strongly outperforms a Demucs baseline that uses a standard regression loss and direct (one step) estimation of sources."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Music Source Separation",
+        "justification": "The paper discusses improving source separation in musical contexts and heavily focuses on dependencies between musical sources.",
+        "quote": "Experiments on two source separation datasets show that training a Demucs model with an Orderless N ADE approach and using Gibbs sampling (up to 512 steps) at inference time strongly outperforms a Demucs baseline that uses a standard regression loss and direct (one step) estimation of sources."
+      },
+      "aliases": [
+        "Audio Source Separation"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Audio Signal Processing",
+          "justification": "The work involves processing audio signals to separate different musical sources, which is a subset of audio signal processing.",
+          "quote": "Experiments on two source separation datasets show that training a Demucs model with an Orderless N ADE approach and using Gibbs sampling (up to 512 steps) at inference time strongly outperforms a Demucs baseline that uses a standard regression loss and direct (one step) estimation of sources."
+        },
+        "aliases": [
+          "Acoustic Signal Processing"
+        ]
+      },
+      {
+        "name": {
+          "value": "Deep Learning",
+          "justification": "The method utilizes deep learning techniques to improve source separation, indicating involvement in this field.",
+          "quote": "Despite this, deep learning-based music source separation research has largely ignored complementary context between musical sources, opting instead to model each source independently."
+        },
+        "aliases": [
+          "Neural Networks"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Demucs",
+          "justification": "Demucs is the primary model mentioned and used as a baseline in the experiments described in the paper.",
+          "quote": "We adapt a standard source separation architecture, Demucs, with additional inputs for each individual source, in addition to the input mixture."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper uses an existing version of Demucs as a baseline and modifies it for their experiments.",
+          "quote": "We adapt a standard source separation architecture, Demucs, with additional inputs for each individual source, in addition to the input mixture."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Demucs is executed as part of the experiment in the paper.",
+          "quote": "Experiments on two source separation datasets show that training a Demucs model with an Orderless N ADE approach and using Gibbs sampling (up to 512 steps) at inference time strongly outperforms a Demucs baseline that uses a standard regression loss and direct (one step) estimation of sources."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The modified Demucs model's performance is compared to a baseline version using numerical benchmarks.",
+          "quote": "Experiments on two source separation datasets show that training a Demucs model with an Orderless N ADE approach and using Gibbs sampling (up to 512 steps) at inference time strongly outperforms a Demucs baseline that uses a standard regression loss and direct (one step) estimation of sources."
+        },
+        "referenced_paper_title": {
+          "value": "Music source separation in the waveform domain",
+          "justification": "This is the paper mentioned in the reference section that details the architecture and use of Demucs, the key model used in this research.",
+          "quote": "Demucs [25] is a source separation network inspired by generative modeling, whereby the network forgoes a masking step in favor directly estimating the waveforms of multiple sources."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "MUSDB18",
+          "justification": "MUSDB18 is explicitly referenced as a dataset used for evaluating the proposed methods in the study.",
+          "quote": "The first dataset we examine is MUSDB18 [31]. MUSDB18 consists of 150 mixtures and corresponding source from real recording sessions featuring live musicians."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The MUSDB18 corpus for music separation",
+          "justification": "The paper refers to the original publication describing the MUSDB18 dataset.",
+          "quote": "The MUSDB18 corpus for music separation, Dec. 2017."
+        }
+      },
+      {
+        "name": {
+          "value": "Slakh2100",
+          "justification": "Slakh2100 is explicitly referenced as a dataset used for evaluating the proposed methods in the study.",
+          "quote": "The second dataset we focus on is Slakh2100 [32]. Slakh2100 contains 2,100 mixtures with corresponding source data that were synthesized using professional-grade sample-based synthesis engines."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Cutting music source separation some slakh: A dataset to study the impact of training data quality and quantity",
+          "justification": "The paper refers to the original publication describing the Slakh2100 dataset.",
+          "quote": "Cutting music source separation some slakh: A dataset to study the impact of training data quality and quantity, in 2019 IEEE Workshop on Applications of Signal Processing to Audio and Acoustics (WASPAA). IEEE, 2019, pp. 45–49."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Adam",
+          "justification": "The paper mentions using the Adam optimizer for training their model.",
+          "quote": "We trained using L1 loss on the waveform using Adam [22] with a learning rate of 3e-4 and batch size of 64 on 16 TPUv2 cores."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Adam: A method for stochastic optimization",
+          "justification": "This is the original paper describing the Adam optimizer.",
+          "quote": "Diederik P Kingma and Jimmy Ba, “Adam: A method for stochastic optimization,” arXiv preprint arXiv:1412.6980, 2014."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1365,
+    "prompt_tokens": 9276,
+    "total_tokens": 10641,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "paper": "c3e9d29d650785c36a52a3078741d69c.txt",
+  "words": 9722,
+  "extractions": {
+    "title": {
+      "value": "Probing Representation Forgetting in Supervised and Unsupervised Continual Learning",
+      "justification": "The title clearly states the focus of the paper on investigating how representations are forgotten over time in both supervised and unsupervised continual learning contexts.",
+      "quote": "Probing Representation Forgetting in Supervised and Unsupervised Continual Learning"
+    },
+    "description": "This paper investigates the phenomenon of representation forgetting in continual learning, both in supervised and unsupervised contexts. The authors explore how representation changes can be measured despite apparent forgetting, suggesting methods like linear probe evaluations and contrastive learning (SupCon) as competitive approaches to mitigate forgetting.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves extensive experiments and analysis of models undergoing continual learning to study representation forgetting, which constitutes empirical research.",
+      "quote": "First we bring three new significant insights obtained and demonstrated through extensive experimental analysis."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Continual Learning",
+        "justification": "The primary focus is on understanding and mitigating the effects of forgetting in models trained to learn continuously without storing old task data.",
+        "quote": "Continual Learning (CL) research typically focuses on tackling the phenomenon of catastrophic forgetting in neural networks."
+      },
+      "aliases": [
+        "CL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Representation Learning",
+          "justification": "Representation learning is fundamental to the study, as the paper examines how representations shift during continual learning tasks.",
+          "quote": "Indeed representation learning is at the core of deep learning methods in supervised and unsupervised settings."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Self-Supervised Learning",
+          "justification": "Self-supervised learning is explored in the context of its resistance to representation forgetting, particularly through contrastive learning methods like SimCLR and SupCon.",
+          "quote": "Self-supervised learning (SSL) is becoming increasingly popular in visual representation learning."
+        },
+        "aliases": [
+          "SSL"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "SimCLR",
+          "justification": "SimCLR is mentioned as a contrastive learning framework evaluated in the context of continual learning.",
+          "quote": "We suggest a simple approach to facilitate fast remembering, which does not require using a large memory during training; it relies only on a small memory combined with SupCon based finetuning."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper uses SimCLR as an existing model for comparison and analysis, not as a novel contribution.",
+          "quote": "SimCLR (in the unsupervised case) have advantageous properties for continual learning, particularly in longer sequences."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was executed as part of the evaluations done to analyze representation drop.",
+          "quote": "The self-supervised SimCLR loss and supervised SupCon loss have lesser representation forgetting in long tasks sequences, maintaining or increasing performance on early tasks."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "SimCLR was compared against other models in terms of its resistance to representation forgetting.",
+          "quote": "SimCLR decays at the first step but then remains nearly flat over the rest of the sequence, showing a strong resistance to representation forgetting."
+        },
+        "referenced_paper_title": {
+          "value": "A simple framework for contrastive learning of visual representations",
+          "justification": "The authors refer to SimCLR, which is known for this key paper describing its implementation and utilization in contrastive learning.",
+          "quote": "In the unsupervised setting the SimCLR loss [8] is given by."
+        }
+      },
+      {
+        "name": {
+          "value": "SupCon",
+          "justification": "SupCon is mentioned as a supervised contrastive learning method applied to the continual learning setting.",
+          "quote": "A natural baseline to compare such an approach to is splitting iid data into 10 subsets trained in sequence (we denote this iid-split). The results of this evaluation are shown for SplitCIFAR100 in Figure 7."
+        },
+        "aliases": [
+          "Supervised Contrastive Learning"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "SupCon was used as an existing method to evaluate its effectiveness in reducing forgetting in the continual learning context.",
+          "quote": "SupCon based finetuning, which has no explicit control for forgetting, outperforms LwF, a method specifically designed for CL."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was executed and its performance evaluated in the context of continual learning tasks.",
+          "quote": "The SupCon training achieves comparably high accuracy on the current task (even surpassing CE finetuning on Scenes) with relatively small representation forgetting."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "SupCon was compared with other methods like LwF on its impact on representation forgetting.",
+          "quote": "The LP accuracy of SupCon training, which has no control for forgetting, outperforms the LwF, a method designed for CL."
+        },
+        "referenced_paper_title": {
+          "value": "Supervised Contrastive Learning",
+          "justification": "The reference provided aligns with SupCon's known foundational paper, covering its formulation and initial applications.",
+          "quote": "referring to as SupCon. In [5] and [30] the use of SupCon is proposed."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Split CIFAR-100",
+          "justification": "Split CIFAR-100 is used as a benchmark to analyze the performance of continual learning models in the paper.",
+          "quote": "For our SplitCIFAR100 10-task sequence, MiniImageNet 20-task sequence..."
+        },
+        "aliases": [
+          "SplitCIFAR100"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning multiple layers of features from tiny images",
+          "justification": "Split CIFAR-100 refers to this foundational paper related to CIFAR datasets, often used in continual learning studies for task sequence.",
+          "quote": "A common SplitCIFAR100 [24] setting (split into 10 tasks)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is typically used in research papers for implementing deep learning experiments, although it is not explicitly mentioned.",
+          "quote": "We acknowledge resources provided by Compute Canada and Calcul Quebec."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "PyTorch: An Imperative Style, High-Performance Deep Learning Library",
+          "justification": "Based on the conjecture that PyTorch is used in this work given its ubiquity in NLP and vision studies, and its reference in many machine learning papers.",
+          "quote": "We acknowledge resources provided by Compute Canada and Calcul Quebec."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1297,
+    "prompt_tokens": 17678,
+    "total_tokens": 18975,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

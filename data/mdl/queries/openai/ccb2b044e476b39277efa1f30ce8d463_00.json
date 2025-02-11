@@ -4,106 +4,122 @@
   "extractions": {
     "title": {
       "value": "In-Simulation Testing of Deep Learning Vision Models in Autonomous Robotic Manipulators",
-      "justification": "The document explicitly mentions the title at the beginning and in the ACM reference format section.",
+      "justification": "The title clearly describes the focus of the research on testing deep learning vision models specifically within the context of autonomous robotic manipulators.",
       "quote": "In-Simulation Testing of Deep Learning Vision Models in Autonomous Robotic Manipulators"
     },
-    "description": "The paper presents the MARTENS framework, which integrates NVIDIA Isaac Sim simulator with evolutionary search, to test and enhance deep learning vision models in autonomous robotic manipulators. It focuses on uncovering design flaws and improving model performance by generating critical test scenarios in a simulated environment, demonstrating improved detection accuracy and system robustness.",
+    "description": "The paper discusses the challenges of testing autonomous robotic manipulators, which involve complex software interactions between vision and control components, particularly focusing on deep learning-based object detection models. It introduces the MARTENS framework that integrates NVIDIA Isaac Sim simulator with evolutionary search to enhance the development of deep learning vision models by identifying critical scenarios and system design flaws. The study concludes that the MARTENS framework effectively improves model performance and reveals design flaws through in-simulation testing, with significant results achieved in industrial use cases.",
     "type": {
       "value": "empirical",
-      "justification": "The paper involves practical experiments and evaluations conducted through industrial case studies to assess the MARTENS framework, showing empirical evidence of improved detection accuracy and system robustness.",
+      "justification": "The paper involves practical evaluation and results derived from two industrial case studies, demonstrating the effectiveness of the MARTENS framework in identifying failures and improving model performance.",
       "quote": "Evaluation of two industrial case studies demonstrated that MARTENS effectively reveals robotic manipulator system failures, detecting 25% to 50% more failures with greater diversity compared to random test generation."
     },
     "primary_research_field": {
       "name": {
         "value": "Robotics",
-        "justification": "The research is centered on testing and improving deep learning models used in autonomous robotic manipulator systems, which is a specific application within the field of Robotics.",
-        "quote": "Testing autonomous robotic manipulators is challenging due to the complex software interactions between vision and control components."
+        "justification": "The primary focus of the paper is on autonomous robotic manipulators, which are a key component of robotics. The study emphasizes testing and improving the interaction between the vision models and robotic systems.",
+        "quote": "Testing autonomous robotic manipulators is challenging due to the complex software interactions between vision and control com-ponents."
       },
-      "aliases": []
+      "aliases": [
+        "Autonomous Robotic Manipulators",
+        "ARM"
+      ]
     },
     "sub_research_fields": [
       {
         "name": {
-          "value": "Computer Vision",
-          "justification": "The research uses deep learning models for object detection, a key area in Computer Vision, to improve vision capabilities in robotic manipulators.",
+          "value": "Deep Learning",
+          "justification": "Deep learning models are a crucial component of the research, particularly in their application to object detection and vision systems within robotic systems.",
           "quote": "A crucial element of modern robotic manipulators is the deep learning based object detection model."
         },
-        "aliases": []
+        "aliases": [
+          "Deep Neural Networks",
+          "DNN"
+        ]
       },
       {
         "name": {
-          "value": "Deep Learning",
-          "justification": "The research involves improving deep learning models’ performance and robustness using synthetic data and evolutionary search approaches.",
-          "quote": "The current techniques primarily focus on using synthetic data to train deep neural networks (DNNs) and identifying failures through offline or online simulation-based testing."
+          "value": "Computer Vision",
+          "justification": "The research particularly focuses on the application of deep learning models to computer vision tasks, specifically in detecting visual objects in 2D images for robotic guidance.",
+          "quote": "...deep neural networks (DNNs), which excel at detecting visual objects in 2D images, making them suitable for robotic guidance applications."
         },
-        "aliases": []
-      },
-      {
-        "name": {
-          "value": "Simulation",
-          "justification": "The MARTENS framework is built around simulation testing, leveraging photorealistic environments to test and improve deep learning models in robotics.",
-          "quote": "We propose the MARTENS (Manipulator Robot Testing and Enhancement in Simulation) framework, which integrates a photorealistic NVIDIA Isaac Sim simulator."
-        },
-        "aliases": []
+        "aliases": [
+          "Vision Systems"
+        ]
       }
     ],
     "models": [
       {
         "name": {
           "value": "YOLOv8",
-          "justification": "The paper specifies using YOLOv8 for object detection tasks, emphasizing its role in bounding box detection and enhancement through the MARTENS framework.",
-          "quote": "This information can be inferred from the 2D images using YOLOv8 that natively supports the oriented bounding box detection."
+          "justification": "The paper mentions the use of YOLOv8 for oriented bounding box detection, which is a significant component of the vision system being tested and improved.",
+          "quote": "The vision system should send the coordinates of the cardbox center and its rotation angle w.r.t the z-axis. This information can be inferred from the 2D images using YOLOv8 [42] that natively supports the oriented bounding box detection."
         },
         "aliases": [],
         "is_contributed": {
           "value": false,
-          "justification": "YOLOv8 is used as an existing model within the MARTENS framework rather than a novel contribution of the paper itself.",
-          "quote": "Using the Isaac Replicator API, we propose generating annotated synthetic images by randomizing environmental parameters within specified distributions... Such labelled datasets can be used to train YOLOv8 for oriented bounding box detection."
+          "justification": "The model was used within the research but is not a contribution of this particular study.",
+          "quote": "This information can be inferred from the 2D images using YOLOv8 [42]..."
         },
         "is_executed": {
           "value": true,
-          "justification": "The model is trained and tested within the MARTENS framework to perform object detection in simulation and real-world setups.",
-          "quote": "For each of the use cases, we trained a dedicated vision DL model using 1200 synthetic images... An example of the model output predictions are shown in Figure 4."
+          "justification": "The model was implemented and its outputs were analyzed in the study, specifically for detecting objects in test scenarios.",
+          "quote": "The vision system should send the coordinates of the cardbox center and its rotation angle...using YOLOv8 [42]..."
         },
         "is_compared": {
-          "value": true,
-          "justification": "The paper discusses various metrics such as mAP and F1 scores to compare the YOLOv8 model's performance before and after repair and tuning.",
-          "quote": "Then, we used either M o or M f as a pre-trained DNN to train the vision model for detecting cardboard boxes in the real-world environment, referring to the resulting models as M or and M o f, respectively. As a baseline, we train a YOLOv8 model using its standard pre-trained weights exclusively on the real-world training dataset, denoted as M r ."
+          "value": false,
+          "justification": "There is no indication in the excerpt that YOLOv8 was numerically compared to other models within this paper.",
+          "quote": "This information can be inferred from the 2D images using YOLOv8 [42]..."
         },
         "referenced_paper_title": {
           "value": "",
-          "justification": "There is no specific paper cited for YOLOv8 within the given text.",
-          "quote": ""
+          "justification": "The text mentions the use of YOLOv8 but does not provide the title of any reference paper for this model within the provided excerpt.",
+          "quote": "This information can be inferred from the 2D images using YOLOv8 [42]..."
         }
       }
     ],
     "datasets": [
       {
         "name": {
-          "value": "Synthetic Dataset from NVIDIA Isaac Sim",
-          "justification": "The dataset mentioned is specifically created within the simulation environment for training and improving the model, as described in the paper.",
+          "value": "Synthetic Data from NVIDIA Isaac Sim",
+          "justification": "The research uses synthetic 2D annotated images generated by the NVIDIA Isaac Sim simulator as part of their testing framework.",
           "quote": "Using NVIDIA Isaac Sim, we created a photorealistic simulation environment for ARM applications, enabling the collection of synthetic 2D annotated images for training the DL vision models."
         },
-        "aliases": [],
-        "role": "contributed",
+        "aliases": [
+          "Synthetic 2D Annotated Images"
+        ],
+        "role": "used",
         "referenced_paper_title": {
           "value": "",
-          "justification": "The dataset is specifically contributed by the authors for the purpose of the experiments in their framework, hence no external reference is applicable.",
-          "quote": ""
+          "justification": "While the simulator is mentioned, there is no specific mention of a paper that references the synthetic dataset from the NVIDIA Isaac Sim.",
+          "quote": "Using NVIDIA Isaac Sim, we created a photorealistic simulation environment for ARM applications, enabling the collection of synthetic 2D annotated images..."
         }
       },
       {
         "name": {
-          "value": "Real-World Dataset",
-          "justification": "The real-world dataset is described as being collected for evaluating the performance of the trained models on actual scenarios.",
-          "quote": "We collect and label two limited datasets, consisting of approximately 100 images each, from the actual production environments that conform to the simulation for both use cases."
+          "value": "Real-world Images Dataset",
+          "justification": "The paper uses a dataset of real-world images to evaluate the performance of models trained and repaired using their approach.",
+          "quote": "The model trained and repaired using the MARTENS approach achieved mean average precision (mAP) scores of 0.91 and 0.82 on real-world images with no prior retraining."
         },
         "aliases": [],
         "role": "used",
         "referenced_paper_title": {
           "value": "",
-          "justification": "The dataset usage is described in the context of the paper's experiments without citing a specific external reference paper.",
-          "quote": ""
+          "justification": "The paper discusses use of real-world images but does not provide a specific reference to a paper for this dataset.",
+          "quote": "The model trained and repaired using the MARTENS approach achieved mean average precision (mAP) scores of 0.91 and 0.82 on real-world images..."
+        }
+      },
+      {
+        "name": {
+          "value": "Test Datasets",
+          "justification": "The paper references various test datasets to evaluate the performance of the frameworks and methods used, although they are not specifically named.",
+          "quote": "The rest of this paper is structured as follows: Section 2 describes the details of MARTENS approach for in-simulation DNN testing and improvement."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "No specific paper reference is provided for the test datasets used in evaluating the framework.",
+          "quote": "The rest of this paper is structured as follows: Section 2 describes the details of MARTENS approach for in-simulation DNN testing and improvement."
         }
       }
     ],
@@ -111,23 +127,67 @@
       {
         "name": {
           "value": "NVIDIA Isaac Sim",
-          "justification": "This library is used extensively for creating the simulation environment in which the MARTENS framework operates.",
-          "quote": "We propose the MARTENS (Manipulator Robot Testing and Enhancement in Simulation) framework, which integrates a photorealistic NVIDIA Isaac Sim simulator."
+          "justification": "This library is integral to the simulation environment which is a core part of the MARTENS framework described in the paper.",
+          "quote": "Using NVIDIA Isaac Sim, we created a photorealistic simulation environment for ARM applications..."
+        },
+        "aliases": [
+          "Isaac Sim"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The NVIDIA Isaac Sim is mentioned as a tool used in the research but no specific reference paper is indicated.",
+          "quote": "Using NVIDIA Isaac Sim, we created a photorealistic simulation environment for ARM applications..."
+        }
+      },
+      {
+        "name": {
+          "value": "RMPFlow",
+          "justification": "RMPFlow is used for robot control within the Isaac Sim environment as part of the testing framework described in the paper.",
+          "quote": "To implement robot control within Isaac Sim, we used the RMPFlow controller..."
         },
         "aliases": [],
         "role": "used",
         "referenced_paper_title": {
           "value": "",
-          "justification": "There is no specific reference to a paper about NVIDIA Isaac Sim in the given text.",
-          "quote": ""
+          "justification": "While RMPFlow is mentioned, there is no specific reference paper given.",
+          "quote": "To implement robot control within Isaac Sim, we used the RMPFlow controller..."
+        }
+      },
+      {
+        "name": {
+          "value": "Intel RealSense",
+          "justification": "The library supports the camera systems used in testing the manipulators, as described in the experimental setup.",
+          "quote": "The camera is an Intel RealSense D435 [21], configured to capture images of the size 640 x 514 pixels."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The paper mentions the Intel RealSense but does not provide a specific reference paper.",
+          "quote": "The camera is an Intel RealSense D435 [21], configured to capture images..."
+        }
+      },
+      {
+        "name": {
+          "value": "Ultralytics YOLO",
+          "justification": "The YOLO model, particularly YOLOv8, is utilized as part of the vision model for detecting oriented bounding boxes in the experiment.",
+          "quote": "This information can be inferred from the 2D images using YOLOv8 [42] that natively supports the oriented bounding box detection."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "While the utilization of YOLOv8 by Ultralytics is discussed, no specific reference paper is mentioned in the text.",
+          "quote": "This information can be inferred from the 2D images using YOLOv8 [42]..."
         }
       }
     ]
   },
   "usage": {
-    "completion_tokens": 1200,
+    "completion_tokens": 1765,
     "prompt_tokens": 17775,
-    "total_tokens": 18975,
+    "total_tokens": 19540,
     "completion_tokens_details": {
       "accepted_prediction_tokens": null,
       "audio_tokens": 0,

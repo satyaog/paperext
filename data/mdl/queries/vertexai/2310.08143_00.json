@@ -1,0 +1,84 @@
+{
+  "paper": "2310.08143.txt",
+  "words": 9301,
+  "extractions": {
+    "title": {
+      "value": "A Deep Learning Framework for Spatiotemporal Ultrasound Localization Microscopy",
+      "justification": "This is the title of the paper.",
+      "quote": "A Deep Learning Framework for Spatiotemporal Ultrasound Localization Microscopy"
+    },
+    "description": "This article has been accepted for publication in a future issue of this journal, but has not been fully edited. Content may change prior to final publication. Citation information: DOI 10.1109/TMI.2021.3056951, IEEE Transactions on Medical Imaging IEEE TRANSACTIONS ON MEDICAL IMAGING, VOL. xx, NO. X, NOVEMBER 2020\\n\\n1\\n\\nA Deep Learning Framework for Spatiotemporal Ultrasound Localization Microscopy\\n\\n1\\n\\nLéo Milecki, Jonathan Porée, Hatim Belgharbi, Chloé Bourquin, Rafat Damseh, Patrick DelafontaineMartel, Frédéric Lesage, Maxime Gasse, Jean Provost Abstract—Ultrasound Localization Microscopy can resolve the microvascular bed down to a few micrometers. To achieve such performance microbubble contrast agents must perfuse the entire microvascular network.\\nMicrobubbles are then located individually and tracked over time to sample individual vessels, typically over hundreds of thousands of images. To overcome the fundamental limit of diffraction and achieve a dense reconstruction of the network, low microbubble concentrations must be used, which lead to acquisitions lasting several minutes. Conventional processing pipelines are currently unable to deal with interference from multiple nearby microbubbles, further reducing achievable concentrations. This work overcomes this problem by proposing a Deep Learning approach to recover dense vascular networks from ultrasound acquisitions with high microbubble concentrations. A realistic mouse brain microvascular network, segmented from 2-photon microscopy, was used to train a three-dimensional convolutional neural network based on a V-net architecture.\\nUltrasound data sets from multiple microbubbles flowing through the microvascular network were simulated and used as ground truth to train the 3D CNN to track microbubbles. The 3D-CNN approach was validated in silico using a subset of the data and in vivo on a rat brain acquisition. In silico, the CNN reconstructed vascular networks with higher precision (81%) than a conventional ULM framework (70%). In vivo, the CNN could resolve micro vessels as small as 10 𝝁𝒎 with an increase in resolution when compared against a conventional approach.\\nIndex Terms—Deep Learning, Ultrasound Localization Microscopy.\\n\\nI. INTRODUCTION\\n\\nU\\n\\nltrasound Localization Microscopy (ULM) bypasses the intrinsic spatial resolution of conventional contrastenhanced ultrasound imaging via the localization of\\n\\nsparse microbubbles (MB) populations across ultrasound images [1], [2], [3]. As of today, ULM appears to be the only cost-effective, non-invasive, and non-ionizing method for the imaging of the microvasculature in large fields of view in vivo and in several organs such as the brain [4]. Adding tracking algorithms to the detection of MB enabled to map blood flow velocity maps [5]. The study of the microvascular angioarchitecture and its function at-depth and in vivo could become a powerful tool in the development of novel biomarkers for neurodegenerative diseases, cardiac diseases and cancer [6].\\nNevertheless, the clinical application of ULM is limited essentially by its required long, motion-free acquisition time (a few minutes) to output a single highly resolved image.\\nThis issue can be addressed in part by increasing MB density [7]. However, higher densities increase the difficulty of precisely localizing MB. Indeed, as they flow throughout the vascular network, MB that are close to one-another lead to US signal interference, preventing their accurate localization with a peak detection algorithm. Several processing techniques have been proposed to tackle this multi-object localization in ultrasound images. In [8] and [9], efficient filtering methods have been introduced based respectively on background removal, spatio-temporal-interframe-correlation based data acquisition, and separating spatially overlapping MB events into sub-populations. Some also use advance pairing techniques that discard unrealistic MB trajectories [10] or graph-based MB tracking on denoised images [11]. In [12], authors exposed the encouraging capacity of neural networks to spatio-temporally filter single MB in in vivo ULM images by training CNN to perform conventional signal processing methods. Others investigated the application of deep learning-based algorithms to enhance the localization of individual MB when higher concentrations are used. Those were either based on radiofrequency (RF) data [13] or envelope-detected images\\n[14], [15], [16], [17] and all relied on a per-frame localization.\\n\\nManuscript sent July 01, 2020. This work was supported in part by the New Frontiers in Research Fund under Grant NFRFE-2018-01312, the Canadian foundation for innovation, John R. Evans Leaders Fund – Funding for research infrastructure under Grant 38095, Transmedtech, Ivado,\\nand the Canada First Research Excellence Fund (Apogee/CFREF).\\nL. Milecki was with the Department of Engineering Physics, Polytechnique Montréal, Montréal, QC, Canada. (e-mail:\\nleo.milecki@centralesupelec.fr).\\nJ. Porée is with the Department of Engineering Physics, Polytechnique Montréal, Montréal, QC, Canada. (e-mail: jonathan.poree@polymtl.ca)\\nH. Belgharbi is with the Department of Engineering Physics, Polytechnique Montréal, Montréal, QC, Canada. (e-mail:\\nhatim.belgharbi@polymtl.ca)\\nC. Bourquin is with the Department of Engineering Physics, Polytechnique Montréal, Montréal, QC, Canada. (e-mail: chloe.bourquin@polymtl.ca)\\nR. Damseh is with the Institute of Biomedical Engineering, Polytechnique Montréal, Montréal, QC, Canada. (e-mail: rafat.damseh@polymtl.ca)\\nP. Delafontaine-Martel is with the Department of Electrical Engineering, Polytechnique Montréal, Montréal, QC, Canada. (e-mail:\\npatrick.delafontaine-martel@polymtl.ca)\\nF. Lesage is with the Department of Electrical Engineering, Polytechnique Montréal, Montréal, QC, Canada. (e-mail: Frederic.lesage@polymtl.ca)\\nM. Gasse is with the Mila, QC, Canada. (e-mail: maxime.gasse@gmail.com)\\nJ. Provost is with the Department of Engineering Physics, Polytechnique Montréal, Montréal, QC, Canada and the Institute of Cardiology of Montréal, Montréal, QC, Canada. (e-mail: jean.provost@polymtl.ca)\\n\\n0278-0062 (c) 2021 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. See http://www.ieee.org/publications_standards/publications/rights/index.html for more information.\\nAuthorized licensed use limited to: Centrale Supelec. Downloaded on April 06,2021 at 13:01:04 UTC from IEEE Xplore. Restrictions apply.\\n\\n\\nC) ULM simulation framework and D) Proposed Deep Learning based MBs tracking procedure.\\n\\nTo recover the microvascular network,\\nwe trained a 3D, V-net like CNN using ULM in-silico datasets based on a realistic microvasculature of a mouse brain extracted from ex-vivo 2-photon microscopy. The proposed framework was validated in-silico in independent data subsets and in vivo in a rat brain.",
+    "type": {
+      "value": "empirical",
+      "justification": "The research presented in the paper is empirical in nature. The authors propose a novel deep learning framework and validate its effectiveness through in silico and in vivo experiments.",
+      "quote": "The 3D-CNN approach was validated in silico using a subset of the data and in vivo on a rat brain acquisition."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Biomarker Development",
+        "justification": "The authors mention these specific application domains in the context of the study of microvascular angioarchitecture.",
+        "quote": "The study of the microvascular angioarchitecture and its function at-depth and in vivo could become a powerful tool in the development of novel biomarkers for neurodegenerative diseases, cardiac diseases and cancer [6]."
+      },
+      "aliases": [
+        "neurodegenerative diseases",
+        "cardiac diseases",
+        "cancer"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Deep Learning for Ultrasound Localization Microscopy",
+          "justification": "These keywords are  listed under \\\"Index Terms\\\", indicating the paper's relevance to these Deep Learning sub-research fields.",
+          "quote": "Index Terms—Deep Learning, Ultrasound Localization Microscopy."
+        },
+        "aliases": [
+          "Deep Learning",
+          "Ultrasound Localization Microscopy"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "V-net like 3D CNN",
+          "justification": "The paper refers to the model as a \\\"3D, V-net like CNN\\\".",
+          "quote": "To recover the microvascular network,\\nwe trained a 3D, V-net like CNN using ULM in-silico datasets based on a realistic microvasculature of a mouse brain extracted from ex-vivo 2-photon microscopy."
+        },
+        "aliases": [
+          "3D CNN",
+          "3D-CNN",
+          "CNN"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The authors contribute a 3D Convolutional Neural Network for the purpose of resolving multiple microbubbles trajectories from densely populated ultrasound cine loops.",
+          "quote": "In this study, rather than locating individual MB in independent frames, and pairing them along the cine-loop to generate tracks,\\nwe designed a 3D-CNN that directly generates binary tracks out of the correlation maps cine-loops."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The authors train and execute the model in silico, achieving superior performance compared to a conventional ULM framework. They also test the model in vivo.",
+          "quote": "The 3D-CNN approach was validated in silico using a subset of the data and in vivo on a rat brain acquisition."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The authors compare their proposed 3D CNN model to a conventional ULM framework, showing that the CNN achieves higher precision in reconstructing vascular networks.",
+          "quote": "In silico, the CNN reconstructed vascular networks with higher precision (81%) than a conventional ULM framework (70%)."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "No paper is referenced for the V-net architecture.",
+          "quote": ""
+        }
+      }
+    ],
+    "datasets": [],
+    "libraries": []
+  },
+  "usage": {
+    "cached_content_token_count": 0,
+    "candidates_token_count": 0,
+    "prompt_token_count": 0,
+    "total_token_count": 18468
+  }
+}

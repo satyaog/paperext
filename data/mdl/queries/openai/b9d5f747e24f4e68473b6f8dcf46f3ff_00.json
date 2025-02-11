@@ -1,0 +1,164 @@
+{
+  "paper": "b9d5f747e24f4e68473b6f8dcf46f3ff.txt",
+  "words": 8344,
+  "extractions": {
+    "title": {
+      "value": "Subgraph Retrieval Enhanced Model for Multi-hop Knowledge Base Question Answering",
+      "justification": "The title is clearly stated at the beginning of the paper.",
+      "quote": "Subgraph Retrieval Enhanced Model for Multi-hop Knowledge Base Question Answering"
+    },
+    "description": "The paper introduces a trainable subgraph retriever (SR) model designed for improving multi-hop knowledge base question answering (KBQA). The SR is decoupled from the reasoner, offering a plug-and-play framework that enhances any subgraph-oriented KBQA model. The method achieves state-of-the-art performance when combined with NSM for embedding-based KBQA models.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper conducts extensive experiments and presents empirical results to demonstrate the effectiveness of the proposed model.",
+      "quote": "Extensive experiments demonstrate SR achieves significantly better retrieval and QA performance than existing retrieval methods."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Knowledge Base Question Answering",
+        "justification": "The research is focused on designing models for answering questions using knowledge bases.",
+        "quote": "Knowledge Base Question Answering (KBQA) (Zhang et al., 2021) aims to seek answers to factoid questions from structured KBs such as Freebase, Wikidata, and DBPedia."
+      },
+      "aliases": [
+        "KBQA"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Machine Learning",
+          "justification": "The primary techniques and methodologies are grounded in the field of Machine Learning, as evidenced by the training and use of neural network models.",
+          "quote": "We propose a subgraph retriever (SR) decoupled from the subsequent reasoner for KBQA."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Natural Language Processing",
+          "justification": "The focus on question answering, an application of NLP, indicates a subfield in NLP.",
+          "quote": "Question Answering (QA) is a significant task in NLP that aims to automatically answer questions posed by humans in natural language."
+        },
+        "aliases": [
+          "NLP"
+        ]
+      },
+      {
+        "name": {
+          "value": "Information Retrieval",
+          "justification": "The paper deals with retrieval mechanisms in structured knowledge bases.",
+          "quote": "Recent works on knowledge base question answering (KBQA) retrieve subgraphs for easier reasoning."
+        },
+        "aliases": [
+          "IR"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "NSM",
+          "justification": "NSM is discussed as a model used for embedding-based KBQA and is enhanced by the proposed SR.",
+          "quote": "SR achieves new state-of-the-art performance when combined with NSM (He et al., 2021), a subgraph-oriented reasoner, for embedding-based KBQA methods."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "NSM is a pre-existing model that is enhanced by the new subgraph retriever proposed in this paper, not originally contributed by this work.",
+          "quote": "NSM equipped with SR, via weakly supervised pre-training and end-to-end fine-tuning, achieves new SOTA performance for embedding-based KBQA methods."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model NSM is executed with SR to demonstrate its effectiveness in KBQA.",
+          "quote": "We conduct extensive experiments on WebQSP and CWQ. The results reveal four major advantages: (1) SR, combined with existing subgraph-oriented reasoners, achieves several gains..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "NSM with SR is compared to models such as PullNet, and embedding-based KBQA models to evaluate its performance.",
+          "quote": "We compare with state-of-the-art KBQA models and present the Hits@1 and F1 scores in Table 2."
+        },
+        "referenced_paper_title": {
+          "value": "Improving Multi-hop Knowledge Base Question Answering by Learning Intermediate Supervision Signals",
+          "justification": "NSM is referenced multiple times in the context of its enhancements with the proposed model.",
+          "quote": "NSM (He et al., 2021), a state-of-the-art embedding-based model."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "WebQSP",
+          "justification": "WebQSP is mentioned as a dataset used for evaluating the KBQA models.",
+          "quote": "We conduct extensive experiments on WebQSP and CWQ."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The Value of Semantic Parse Labeling for Knowledge Base Question Answering",
+          "justification": "The paper provides information indicating WebQSP's use in prior works, aligning with its role here.",
+          "quote": "Knowledge Base Question Answering (KBQA) (Zhang et al., 2021) aims to seek answers to factoid questions from structured KBs such as Freebase, Wikidata, and DBPedia."
+        }
+      },
+      {
+        "name": {
+          "value": "CWQ",
+          "justification": "CWQ is included as another dataset for evaluation of the KBQA models, alongside WebQSP.",
+          "quote": "We conduct extensive experiments on WebQSP and CWQ."
+        },
+        "aliases": [
+          "Complex WebQuestion 1.1"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The Web as a Knowledge-base for Answering Complex Questions",
+          "justification": "The paper references CWQ, establishing its basis from respective prior works.",
+          "quote": "Complex WebQuestion 1.1 (CWQ) (Talmor and Berant, 2018)"
+        }
+      },
+      {
+        "name": {
+          "value": "NYT",
+          "justification": "The NYT dataset is used for unsupervised pre-training of the model.",
+          "quote": "When the (q, a) pairs are also scarce, we train the retriever in an unsupervised manner independent from the (q, a) pairs. We leverage the NYT dataset, a distant supervision dataset for relation extraction."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Modeling relations and their mentions without labeled text",
+          "justification": "The NYT dataset's application here is derived from previous established collection practices.",
+          "quote": "We leverage the NYT dataset, a distant supervision dataset for relation extraction (Riedel et al., 2010)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "RoBERTa",
+          "justification": "RoBERTa is mentioned as part of the SR's architecture for encoding queries and relations.",
+          "quote": "Path expanding starts from a topic entity and follows a sequential decision process... both f and h are instantiated by RoBERTa."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "RoBERTa: A robustly optimized BERT pretraining approach",
+          "justification": "The reference to RoBERTa is based on its known application in NLP tasks, which aligns with its use in this context.",
+          "quote": "Yinhan Liu, Myle Ott, Naman Goyal, Jingfei Du, Mandar Joshi, Danqi Chen, Omer Levy, Mike Lewis, Luke Zettlemoyer, and Veselin Stoyanov. 2019. Roberta: A robustly optimized BERT pretraining approach."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1402,
+    "prompt_tokens": 26548,
+    "total_tokens": 27950,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

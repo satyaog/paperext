@@ -4,92 +4,121 @@
   "extractions": {
     "title": {
       "value": "Towards a General Recipe for Combinatorial Optimization with Multi-Filter GNNs",
-      "justification": "The title directly reflects the content of the paper, which introduces and discusses the GCON model for combinatorial optimization using Multi-Filter GNNs.",
-      "quote": "F. Wenkel et al., Towards a General Recipe for Combinatorial Optimization with Multi-Filter GNNs. Proceedings of the Third Learning on Graphs Conference (LoG 2024), PMLR 269, Virtual Event, November 26–29, 2024."
+      "justification": "The title is explicitly stated at the beginning and throughout the paper.",
+      "quote": "Towards a General Recipe for Combinatorial Optimization with Multi-Filter GNNs"
     },
-    "description": "This paper introduces GCON, a novel graph neural network architecture that leverages complex filter banks and localized attention mechanisms for combinatorial optimization problems on graphs. The authors demonstrate its effectiveness on tasks such as maximum cut, minimum dominating set, and maximum clique, comparing it against other GNN-based approaches and solvers like Gurobi.",
+    "description": "This paper introduces GCON, a novel Graph Neural Network architecture with a complex filter bank and localized attention mechanisms to solve combinatorial optimization problems on graphs. The paper positions GCON against existing GNN-based CO solvers, demonstrating its effectiveness in unsupervised settings across maximum cut, minimum dominating set, and maximum clique problems.",
     "type": {
       "value": "empirical",
-      "justification": "The paper evaluates the GCON architecture on various combinatorial optimization tasks and provides empirical results demonstrating its performance.",
+      "justification": "The paper involves experiments and benchmarking with various datasets and models to evaluate the performance of the GCON architecture.",
       "quote": "We evaluate GCON on a variety of graph-CO problems on synthetic graph benchmarks, and demonstrate that our architecture is highly performant."
     },
     "primary_research_field": {
       "name": {
-        "value": "Graph Neural Networks",
-        "justification": "The paper focuses on developing a new GNN architecture, GCON, specifically for solving combinatorial optimization problems.",
+        "value": "Combinatorial Optimization",
+        "justification": "The paper focuses on solving combinatorial optimization problems using GNNs, which is a specific application area within the broader field of optimization in computer science and mathematics.",
         "quote": "Here, we introduce GCON, a novel GNN architecture that leverages a complex filter bank and localized attention mechanisms to solve CO problems on graphs."
       },
-      "aliases": []
+      "aliases": [
+        "CO"
+      ]
     },
     "sub_research_fields": [
       {
         "name": {
-          "value": "Combinatorial Optimization",
-          "justification": "The application domain of GCON is combinatorial optimization, as it solves problems such as maximum cut, minimum dominating set, and maximum clique.",
-          "quote": "Here, we consider leveraging GNNs to solve combinatorial optimization (CO) problems, a somewhat less explored yet emerging application area of graph learning."
+          "value": "Graph Neural Networks",
+          "justification": "The GCON model is a specific type of graph neural network designed to handle combinatorial optimization problems.",
+          "quote": "Recent years have seen the rapid development of neural networks for graph-structured data."
         },
-        "aliases": []
+        "aliases": [
+          "GNN",
+          "Graph NNs"
+        ]
+      },
+      {
+        "name": {
+          "value": "Graph Signal Processing",
+          "justification": "The paper leverages concepts from graph signal processing, such as low-pass filtering, to design GCON's architecture.",
+          "quote": "That can be interpreted, from the perspective of graph signal processing (GSP), as low-pass filtering."
+        },
+        "aliases": [
+          "GSP"
+        ]
       }
     ],
     "models": [
       {
         "name": {
           "value": "GCON",
-          "justification": "GCON is the main contribution of the paper, a novel GNN architecture for combinatorial optimization.",
-          "quote": "To address these challenges, we propose the Graph Combinatorial Optimization Network (GCON), a novel GNN that uses a hybrid filter bank consisting of both..."
+          "justification": "GCON is introduced as the novel model proposed by the authors to address combinatorial optimization problems using GNNs.",
+          "quote": "To address these challenges, we propose the Graph Combinatorial Optimization Network (GCON), a novel GNN."
         },
-        "aliases": [],
+        "aliases": [
+          "Graph Combinatorial Optimization Network"
+        ],
         "is_contributed": {
           "value": true,
-          "justification": "GCON is introduced and developed as a new model in this paper.",
-          "quote": "To address these challenges, we propose the Graph Combinatorial Optimization Network (GCON), a novel GNN..."
+          "justification": "The paper introduces GCON as a novel GNN architecture.",
+          "quote": "We propose the Graph Combinatorial Optimization Network (GCON), a novel GNN."
         },
         "is_executed": {
           "value": true,
-          "justification": "GCON was empirically evaluated on various tasks throughout the paper, as evidenced by the experiments section.",
+          "justification": "The paper discusses the execution of GCON in experiments on various datasets, highlighting its performance against other models.",
           "quote": "We evaluate GCON on a variety of graph-CO problems on synthetic graph benchmarks, and demonstrate that our architecture is highly performant."
         },
         "is_compared": {
           "value": true,
-          "justification": "GCON's performance is compared to various other methods, including Gurobi and other GNN-based models.",
-          "quote": "GCON is competitive across all tasks and consistently outperforms other specialized GNN-based approaches, and is on par with the powerful Gurobi solver on the max-cut problem."
+          "justification": "GCON is compared against various competing methods, such as heuristics, commercial solvers, and other GNN-based models.",
+          "quote": "We compare GCON to various competing methods, such as heuristics, commercial solvers, other specialized GNN-based approaches."
         },
         "referenced_paper_title": {
-          "value": "Towards a General Recipe for Combinatorial Optimization with Multi-Filter GNNs",
-          "justification": "As the main contribution, the model is part of this paper's content.",
-          "quote": "To address these challenges, we propose the Graph Combinatorial Optimization Network (GCON), a novel GNN..."
+          "value": "Not Applicable",
+          "justification": "There is no previous reference paper for GCON as it is introduced in this paper.",
+          "quote": "We develop GCON, a novel GNN architecture."
         }
       }
     ],
     "datasets": [
       {
         "name": {
-          "value": "Barabási–Albert (BA) graphs",
-          "justification": "This dataset is used for evaluating GCON on maximum cut and minimum dominating set problems, as mentioned in the experiments section.",
-          "quote": "For MDS and maximum cut, we follow Zhang et al. [41] and Sun et al. [30], generating Barabási–Albert (BA) graphs [2]..."
+          "value": "Cora",
+          "justification": "Cora is mentioned as a homophilic social network dataset used for node classification.",
+          "quote": "While this is a useful heuristic on homophilic social networks such as the ubiquitous Cora, CiteSeer, and PubMed datasets [7]."
         },
-        "aliases": [
-          "BA graphs"
-        ],
-        "role": "used",
+        "aliases": [],
+        "role": "referenced",
         "referenced_paper_title": {
-          "value": "Emergence of scaling in random networks",
-          "justification": "The dataset is referenced as part of the baseline model comparisons in the experiments and cited from Barabási and Albert's paper.",
-          "quote": "For MDS and maximum cut, we follow Zhang et al. [41] and Sun et al. [30], generating Barabási–Albert (BA) graphs [2]..."
+          "value": "Deep Gaussian Embedding of Graphs: Unsupervised Inductive Learning via Ranking",
+          "justification": "The Cora dataset is referenced from a paper on deep Gaussian embedding of graphs.",
+          "quote": "on homophilic social networks such as the ubiquitous Cora, CiteSeer, and PubMed datasets [7]."
         }
       },
       {
         "name": {
-          "value": "RB Model",
-          "justification": "The RB model is used for generating synthetic graphs to evaluate the maximum clique problem.",
-          "quote": "For the maximum clique problem, we use the RB model from Xu et al. [38] to generate challenging synthetic graphs as proposed by Karalias and Loukas [18]."
+          "value": "CiteSeer",
+          "justification": "CiteSeer is mentioned alongside Cora as another dataset used for node classification.",
+          "quote": "While this is a useful heuristic on homophilic social networks such as the ubiquitous Cora, CiteSeer, and PubMed datasets [7]."
         },
         "aliases": [],
-        "role": "used",
+        "role": "referenced",
         "referenced_paper_title": {
-          "value": "Random constraint satisfaction: Easy generation of hard (satisfiable) instances",
-          "justification": "The dataset's reference is given from Xu et al. and is used in generating data for testing the proposed models.",
-          "quote": "For the maximum clique problem, we use the RB model from Xu et al. [38] to generate challenging synthetic graphs..."
+          "value": "Deep Gaussian Embedding of Graphs: Unsupervised Inductive Learning via Ranking",
+          "justification": "CiteSeer is referenced from the same paper as Cora regarding deep Gaussian embedding.",
+          "quote": "on homophilic social networks such as the ubiquitous Cora, CiteSeer, and PubMed datasets [7]."
+        }
+      },
+      {
+        "name": {
+          "value": "PubMed",
+          "justification": "PubMed is part of the reference to common datasets for GNN benchmarking, often used for node classification.",
+          "quote": "While this is a useful heuristic on homophilic social networks such as the ubiquitous Cora, CiteSeer, and PubMed datasets [7]."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Deep Gaussian Embedding of Graphs: Unsupervised Inductive Learning via Ranking",
+          "justification": "The PubMed dataset is also referenced from the deep Gaussian embedding paper like Cora and CiteSeer.",
+          "quote": "on homophilic social networks such as the ubiquitous Cora, CiteSeer, and PubMed datasets [7]."
         }
       }
     ],
@@ -97,23 +126,23 @@
       {
         "name": {
           "value": "PyTorch Geometric",
-          "justification": "The experiments are built on the PyTorch Geometric framework, providing necessary tools for graph neural network processing.",
-          "quote": "Our experimental framework is built on PyTorch Geometric [12] and GraphGym [40]."
+          "justification": "PyTorch Geometric is mentioned in the experimental setup as part of the framework used for building the models in the study.",
+          "quote": "Our experimental framework is built on PyTorch Geometric and GraphGym."
         },
         "aliases": [],
         "role": "used",
         "referenced_paper_title": {
-          "value": "Fast graph representation learning with PyTorch Geometric",
-          "justification": "PyTorch Geometric is referenced for its utility in implementing the experimental framework.",
-          "quote": "Our experimental framework is built on PyTorch Geometric [12]..."
+          "value": "Fast Graph Representation Learning with PyTorch Geometric",
+          "justification": "This library is commonly referenced for fast graph representation learning.",
+          "quote": "Our experimental framework is built on PyTorch Geometric and GraphGym."
         }
       }
     ]
   },
   "usage": {
-    "completion_tokens": 1185,
+    "completion_tokens": 1245,
     "prompt_tokens": 21175,
-    "total_tokens": 22360,
+    "total_tokens": 22420,
     "completion_tokens_details": {
       "accepted_prediction_tokens": null,
       "audio_tokens": 0,

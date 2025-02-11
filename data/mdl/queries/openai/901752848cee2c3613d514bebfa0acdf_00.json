@@ -1,0 +1,109 @@
+{
+  "paper": "901752848cee2c3613d514bebfa0acdf.txt",
+  "words": 7520,
+  "extractions": {
+    "title": {
+      "value": "A Generalized Bootstrap Target for Value-Learning, Efficiently Combining Value and Feature Predictions",
+      "justification": "The paper focuses on introducing a generalized bootstrap target for value-learning, specifically combining value and feature predictions using η-return mixture.",
+      "quote": "In this paper, we aim to improve credit assignment and data efficiency for value-based methods, by proposing a new method of constructing a learning target, which borrows properties from all aforementioned approaches of target construction. This η-return mixture uses a parameter η to combine an ηγ-discounted successor features model (ηγ-SF) with the current value function estimate to parameterize the learning target used during bootstrapping."
+    },
+    "description": "The paper introduces the η-return mixture, a novel approach to constructing a learning target for value-learning in reinforcement learning, which combines value and feature predictions. It aims to improve data efficiency and credit assignment by interpolating between direct value estimates and successor features. The approach is empirically validated to show improved performance in both prediction and control tasks.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents empirical results showcasing the efficiency of the proposed η-return mixture in both prediction and control tasks, demonstrating its practical effectiveness in using sampled experience more efficiently.",
+      "quote": "(iii) We provide empirical results showing more efficient use of experience with the η-return mixture as the backup target, in both prediction and control, for tabular and nonlinear approximation, when compared to baselines."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Reinforcement Learning",
+        "justification": "The paper addresses the reinforcement learning problem, particularly focusing on value estimation methods and proposing improvements for TD learning algorithms within reinforcement learning frameworks.",
+        "quote": "Estimating value functions is a core component of reinforcement learning algorithms."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Value Learning",
+          "justification": "A major focus of the paper is on improving value function estimation, which is a core part of reinforcement learning and specifically falls under value learning.",
+          "quote": "Estimating value functions is a core component of reinforcement learning algorithms."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Temporal Difference Learning",
+          "justification": "The paper builds upon and proposes an enhancement to traditional TD methods for value function updates in reinforcement learning.",
+          "quote": "Temporal difference (TD) learning algorithms use bootstrapping, i.e. they update the value function toward a learning target using value estimates at subsequent time-steps."
+        },
+        "aliases": [
+          "TD Learning"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Deep Q Network (DQN)",
+          "justification": "The paper refers to DQN architecture while discussing control experiments and the integration of the η-return mixture into this architecture.",
+          "quote": "We build on top of the deep Q network (DQN) architecture (Mnih et al. 2015), and simply replace the bootstrap target with an estimate of the η-return mixture starting from a state and action."
+        },
+        "aliases": [
+          "DQN"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "DQN is referenced as a base model for applying the η-return mixture, not as a novel contribution within this paper.",
+          "quote": "We build on top of the deep Q network (DQN) architecture (Mnih et al. 2015), and simply replace the bootstrap target with an estimate of the η-return mixture starting from a state and action."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper includes empirical studies using the DQN architecture.",
+          "quote": "Experiment Set-up: We test our algorithm in the Mini-Atari (MinAtar, Young and Tian 2019, GNU General Public License v3.0) environment..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The DQN with η-return mixture is compared to baseline DQNs throughout the experiments to illustrate improvements.",
+          "quote": "Figure 3-B shows the learning curves of our proposed model that uses an intermediate value of η in comparison to the two baseline algorithms: bootstrapping entirely on the value parameters (η = 0, equivalent to vanilla DQN with a reward prediction auxiliary loss), and bootstrapping entirely on the full SF value (η = 1)."
+        },
+        "referenced_paper_title": {
+          "value": "Human-level control through deep reinforcement learning",
+          "justification": "The referenced paper of the DQN model is mentioned in the context of building upon its architecture.",
+          "quote": "We build on top of the deep Q network (DQN) architecture (Mnih et al. 2015), and simply replace the bootstrap target with an estimate of the η-return mixture starting from a state and action."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "MinAtar",
+          "justification": "MinAtar is used as an evaluation platform for testing the proposed algorithm in different environments modeled after Atari games.",
+          "quote": "Experiment Set-up: We test our algorithm in the Mini-Atari (MinAtar, Young and Tian 2019, GNU General Public License v3.0) environment, which is a smaller version of the Arcade Learning Environment (Bellemare et al. 2013) with 5 games..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Minatar: An atari-inspired testbed for thorough and reproducible reinforcement learning experiments",
+          "justification": "This is the paper introducing MinAtar, mentioned in the context of the experimental setup.",
+          "quote": "Experiment Set-up: We test our algorithm in the Mini-Atari (MinAtar, Young and Tian 2019, GNU General Public License v3.0) environment..."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1127,
+    "prompt_tokens": 14075,
+    "total_tokens": 15202,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

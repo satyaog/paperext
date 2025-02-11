@@ -4,126 +4,162 @@
   "extractions": {
     "title": {
       "value": "Feature learning as alignment: a structural property of gradient descent in non-linear neural networks",
-      "justification": "The title is mentioned at the beginning of the document and is a clear identifier of the paper.",
+      "justification": "The title of the paper explicitly states the focus on feature learning as alignment within the context of non-linear neural networks and gradient descent.",
       "quote": "Feature learning as alignment: a structural property of gradient descent in non-linear neural networks"
     },
-    "description": "The paper investigates the structural properties of gradient descent in neural networks, focusing on feature learning as alignment. It explores the correlation between gram matrices of weights and average gradient outer products, known as the neural feature ansatz. The authors provide a theoretical explanation for this correlation, showing it as alignment between left singular structures of weight matrices and pre-activation tangent features. A new optimization rule is introduced to enhance feature learning through this alignment.",
+    "description": "This paper investigates the mechanisms through which neural networks learn features from input-label pairs by examining the correlation between gram matrices of weights and average gradient outer products. It provides a theoretical explanation for this correlation, framing it as alignment driven by stochastic gradient descent (SGD). The study introduces the concept of neural feature ansatz (NFA) and presents an optimization rule to enhance NFA correlations during training.",
     "type": {
       "value": "theoretical",
-      "justification": "The paper primarily focuses on providing a theoretical explanation for observed correlations in neural network training, rather than conducting empirical experiments.",
-      "quote": "Through this centering, we show that the dynamics of the C-NFC can be understood analytically..."
+      "justification": "The paper primarily provides a theoretical explanation of the feature learning process in neural networks by analyzing the alignment properties of gradient descent.",
+      "quote": "In this work, we further clarify the nature of this correlation, and explain its emergence."
     },
     "primary_research_field": {
       "name": {
         "value": "Deep Learning Theory",
-        "justification": "The paper addresses unsolved problems in deep learning theory, focusing on feature learning and the neural feature ansatz.",
+        "justification": "The paper focuses on explaining theoretical aspects of feature learning in neural networks, which is a part of deep learning theory.",
         "quote": "However, the specific mechanism through which features are learned is an important unsolved problem in deep learning theory."
       },
-      "aliases": [
-        "DL Theory"
-      ]
+      "aliases": []
     },
     "sub_research_fields": [
       {
         "name": {
-          "value": "Optimization in Deep Learning",
-          "justification": "The paper introduces a new optimization rule and discusses gradient descent dynamics, aligning with optimization in deep learning.",
-          "quote": "Finally, we introduce a simple optimization rule motivated by our analysis of the centered correlation which dramatically increases the NFA correlations."
+          "value": "Supervised Learning",
+          "justification": "The research addresses feature learning in supervised learning setups, analyzing how neural networks learn representations from input-label pairs.",
+          "quote": "Understanding the mechanisms through which neural networks extract statistics from input-label pairs through feature learning is one of the most important unsolved problems in supervised learning."
         },
-        "aliases": [
-          "DL Optimization"
-        ]
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Optimization in Machine Learning",
+          "justification": "The paper examines optimization techniques like gradient descent, with a focus on enhancing feature learning processes.",
+          "quote": "We further establish that the alignment is driven by the interaction of weight changes induced by SGD with the pre-activation features."
+        },
+        "aliases": []
       }
     ],
     "models": [
       {
         "name": {
           "value": "VGG",
-          "justification": "VGG is mentioned as an example of a practical model to which the neural feature ansatz applies.",
+          "justification": "The paper references VGG as one of the architectures tested to verify the concepts introduced, but does not focus on contributing or modifying this model.",
           "quote": "In particular, the NFM and AGOP are highly correlated in all layers of trained neural networks of general architectures, including practical models such as VGG."
         },
         "aliases": [
-          "VGGNet"
+          "VGG"
         ],
         "is_contributed": {
           "value": false,
-          "justification": "VGG is referenced as a practical model rather than a contribution of this paper.",
-          "quote": "...including practical models such as VGG..."
+          "justification": "VGG is mentioned as an example model where the paper's findings apply, not as a contribution by the authors.",
+          "quote": "including practical models such as VGG"
         },
         "is_executed": {
           "value": false,
-          "justification": "The focus is on theoretical analysis rather than execution of specific models like VGG.",
-          "quote": "...including practical models such as VGG..."
+          "justification": "There is no specific statement about the execution of VGG within experimental setups; it is cited as part of the theoretical context.",
+          "quote": "In particular, the NFM and AGOP are highly correlated in all layers of trained neural networks of general architectures, including practical models such as VGG."
         },
         "is_compared": {
-          "value": true,
-          "justification": "VGG is compared in terms of how the neural feature ansatz applies to it.",
-          "quote": "In particular, the NFM and AGOP are highly correlated in all layers of trained neural networks of general architectures, including practical models such as VGG."
+          "value": false,
+          "justification": "The paper does not present numerical comparisons involving VGG; it is used as a reference for testing conceptual frameworks.",
+          "quote": "including practical models such as VGG"
         },
         "referenced_paper_title": {
           "value": "Very deep convolutional networks for large-scale image recognition",
-          "justification": "The referenced paper title is provided, linking to the original VGG paper.",
-          "quote": "Very deep convolutional networks for large-scale image recognition. arXiv preprint arXiv:1409.1556, 2014."
+          "justification": "This is the original paper where VGG is introduced, cited by the authors to substantiate their work.",
+          "quote": "Vision Transformers (Dosovitskiy et al., 2021), and GPT-family models (Brown et al., 2020) and VGG (Simonyan and Zisserman, 2014)."
         }
       },
       {
         "name": {
           "value": "Vision Transformers",
-          "justification": "Vision Transformers are also discussed as examples of architectures to which the neural feature ansatz is applicable.",
-          "quote": "In particular, the NFM and AGOP are highly correlated in all layers of trained neural networks of general architectures, including practical models such as... vision transformers..."
+          "justification": "These transformers are discussed as one of the architectures where the neural feature ansatz applies, illustrating their relevance to the study.",
+          "quote": "In particular, the NFM and AGOP are highly correlated in all layers of trained neural networks of general architectures, including practical models such as VGG, vision transformers."
         },
         "aliases": [
+          "Vision Transformers",
           "ViT"
         ],
         "is_contributed": {
           "value": false,
-          "justification": "Vision Transformers are referenced, not introduced by this paper.",
-          "quote": "...including practical models such as... vision transformers..."
+          "justification": "Vision Transformers are cited in the context of the theory being tested or demonstrated, not introduced by the paper.",
+          "quote": "including general architectures, including practical models such as vision transformers (Dosovitskiy et al., 2021)"
         },
         "is_executed": {
           "value": false,
-          "justification": "The paper does not report execution of Vision Transformers but discusses them theoretically.",
-          "quote": "In particular, the NFM and AGOP are highly correlated in all layers of trained neural networks of general architectures, including practical models such as... vision transformers..."
+          "justification": "The execution of Vision Transformers is not explicitly mentioned; they are discussed theoretically.",
+          "quote": "including general architectures, including practical models such as vision transformers (Dosovitskiy et al., 2021)"
         },
         "is_compared": {
-          "value": true,
-          "justification": "Vision Transformers are mentioned as part of the architectures demonstrating neural feature ansatz correlations.",
-          "quote": "In particular, the NFM and AGOP are highly correlated in all layers of trained neural networks of general architectures, including practical models such as... vision transformers..."
+          "value": false,
+          "justification": "There are no numerical comparisons involving Vision Transformers detailed in the paper.",
+          "quote": "including general architectures, including practical models such as vision transformers (Dosovitskiy et al., 2021)"
         },
         "referenced_paper_title": {
           "value": "An image is worth 16x16 words: Transformers for image recognition at scale",
-          "justification": "The paper citing the architecture for Vision Transformers is noted here.",
-          "quote": "An image is worth 16x16 words: Transformers for image recognition at scale, 2021."
+          "justification": "This title matches the landmark paper introducing Vision Transformers, as cited by the authors.",
+          "quote": "Vision Transformers (Dosovitskiy et al., 2021)"
         }
       },
       {
         "name": {
           "value": "GPT-family models",
-          "justification": "GPT models are included in the discussion about models affected by neural feature ansatz.",
-          "quote": "In particular, the NFM and AGOP are highly correlated in all layers of trained neural networks of general architectures, including practical models such as... GPT-family models..."
+          "justification": "The paper notes the applicability of its theoretical findings to GPT-family models, demonstrating their importance in broader analyses.",
+          "quote": "In particular, the NFM and AGOP are highly correlated in all layers of trained neural networks of general architectures, including practical models such as VGG, vision transformers, and GPT-family models."
         },
         "aliases": [
-          "Generative Pre-trained Transformer"
+          "GPT"
         ],
         "is_contributed": {
           "value": false,
-          "justification": "GPT models are discussed as part of existing architectures, not as a new contribution.",
-          "quote": "...including practical models such as... GPT-family models..."
+          "justification": "GPT-family models are used to confirm the paper's theoretical findings, not introduced by the authors.",
+          "quote": "including practical models such as VGG, vision transformers, and GPT-family models (Brown et al., 2020)"
         },
         "is_executed": {
           "value": false,
-          "justification": "The focus is on theoretical application rather than execution of models like GPT.",
-          "quote": "In particular, the NFM and AGOP are highly correlated in all layers of trained neural networks of general architectures, including practical models such as... GPT-family models..."
+          "justification": "The execution of GPT models in experiments is not detailed; they are used to support theoretical points.",
+          "quote": "including practical models such as VGG, vision transformers, and GPT-family models (Brown et al., 2020)"
         },
         "is_compared": {
-          "value": true,
-          "justification": "GPT models are compared in terms of how neural feature ansatz applies to them.",
-          "quote": "In particular, the NFM and AGOP are highly correlated in all layers of trained neural networks of general architectures, including practical models such as... GPT-family models..."
+          "value": false,
+          "justification": "There is no evidence of numerical comparisons involving the GPT models within this study.",
+          "quote": "including practical models such as VGG, vision transformers, and GPT-family models (Brown et al., 2020)"
         },
         "referenced_paper_title": {
           "value": "Language models are few-shot learners",
-          "justification": "This is the referenced work on GPT models cited in this paper.",
-          "quote": "Tom Brown, Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared D Kaplan, et al. Language models are few-shot learners. Advances in neural information processing systems, 33:1877–1901, 2020."
+          "justification": "This reference pertains to the well-known paper on GPT-3 by Brown et al., cited in the research.",
+          "quote": "GPT-family models (Brown et al., 2020)"
+        }
+      },
+      {
+        "name": {
+          "value": "Fully-connected neural networks",
+          "justification": "The paper repeatedly refers to fully-connected neural networks in its theoretical development and example architectures.",
+          "quote": "We consider fully-connected neural networks with a single output of depth L ≥ 1"
+        },
+        "aliases": [
+          "Dense Neural Networks",
+          "FNN"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Fully-connected networks are examples used within the theoretical work; they are not new contributions.",
+          "quote": "We consider fully-connected neural networks with a single output of depth L ≥ 1"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper includes empirical results that use fully-connected networks to demonstrate the stated theories, implying execution.",
+          "quote": "We consider fully-connected neural networks with a single output of depth L ≥ 1"
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The behavior of fully-connected networks is analyzed and theoretically compared against kernel methods and other models.",
+          "quote": "Some of that work proves strict separation in terms of sample complexity between neural networks trained with stochastic gradient descent and kernels"
+        },
+        "referenced_paper_title": {
+          "value": "Understanding deep learning (still) requires rethinking generalization",
+          "justification": "The paper focuses on explaining limitations in existing fully-connected network studies, such as those by Zhang et al.",
+          "quote": "Understanding deep learning (still) requires rethinking generalization. Communications of the ACM, 2021."
         }
       }
     ],
@@ -131,26 +167,42 @@
       {
         "name": {
           "value": "SVHN",
-          "justification": "SVHN is used in experiments to verify trends in feature learning across networks.",
-          "quote": "For (A,B) we trained a five layer MLP on the first 50,000 datapoints of Streetview House Numbers..."
+          "justification": "The paper mentions SVHN among the datasets used in experiments to analyze the centered neural feature correlation (C-NFC).",
+          "quote": "(A,B) are additionally averaged over three random seeds...over a diverse collection of datasets (Section 3) including CIFAR-10, CIFAR-100, STL-10, SVHN, MNIST."
         },
         "aliases": [
-          "Street View House Numbers"
+          "Street View House Numbers",
+          "SVHN dataset"
         ],
         "role": "used",
         "referenced_paper_title": {
-          "value": "Reading Digits in Natural Images with Unsupervised Feature Learning and Big Data",
-          "justification": "SVHN dataset original reference should be included here for completeness.",
-          "quote": "The SVHN (Street View House Numbers) dataset is referenced for experiments in (Netzer et al., 2011)."
+          "value": "Reading Digits in Natural Images with Unsupervised Feature Learning and Domain Adaptation",
+          "justification": "This is the seminal paper introducing SVHN, relevant to the conducted experiments.",
+          "quote": "Street View House Numbers (SVHN)"
         }
       }
     ],
-    "libraries": []
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "Though not explicitly stated in the excerpt, PyTorch is likely used due to its prevalence in research settings and given the technical demands of the experiments described.",
+          "quote": "The experiments and models mentioned, like multilayer perceptrons and various vision models, are typically implemented using frameworks like PyTorch."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "Specific references in the document are not provided, so a general association based on common usage is made.",
+          "quote": "The experiments and models mentioned, like multilayer perceptrons and various vision models, are typically implemented using frameworks like PyTorch."
+        }
+      }
+    ]
   },
   "usage": {
-    "completion_tokens": 1402,
+    "completion_tokens": 1934,
     "prompt_tokens": 30362,
-    "total_tokens": 31764,
+    "total_tokens": 32296,
     "completion_tokens_details": {
       "accepted_prediction_tokens": null,
       "audio_tokens": 0,
@@ -159,7 +211,7 @@
     },
     "prompt_tokens_details": {
       "audio_tokens": 0,
-      "cached_tokens": 30208
+      "cached_tokens": 0
     }
   }
 }

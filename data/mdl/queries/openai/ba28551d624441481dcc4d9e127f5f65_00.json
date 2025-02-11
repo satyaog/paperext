@@ -1,0 +1,222 @@
+{
+  "paper": "ba28551d624441481dcc4d9e127f5f65.txt",
+  "words": 5695,
+  "extractions": {
+    "title": {
+      "value": "3D Infomax improves GNNs for Molecular Property Prediction",
+      "justification": "The title is explicitly mentioned at the beginning of the paper.",
+      "quote": "3D Infomax improves GNNs for Molecular Property Prediction"
+    },
+    "description": "The paper presents a method called 3D Infomax to improve Graph Neural Networks (GNNs) for predicting molecular properties using only 2D molecular graphs. By pre-training a model to understand molecular geometry, the approach aims to improve prediction accuracy by generating latent 3D information implicitly.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves experiments and evaluations of the proposed method, including comparisons with baseline methods and analysis of performance improvements.",
+      "quote": "We analyze our method’s performance by pre-training with multiple 3D datasets before evaluating on 10 quantum mechanical molecular properties. 3D Infomax improves property predictions by large margins."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Molecular Property Prediction",
+        "justification": "The paper mainly deals with predicting molecular properties using deep learning models.",
+        "quote": "Molecular property prediction is one of the fastest-growing applications of deep learning with critical real-world impacts."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Graph Neural Networks",
+          "justification": "The paper discusses enhancing GNNs for molecular prediction tasks.",
+          "quote": "In particular, for the task of molecular property prediction, GNNs have had great success."
+        },
+        "aliases": [
+          "GNNs"
+        ]
+      },
+      {
+        "name": {
+          "value": "Self-supervised Learning",
+          "justification": "The paper uses self-supervised learning techniques to maximize mutual information for pre-training models.",
+          "quote": "Using methods from self-supervised learning, we maximize the mutual information between a 3D summary vector and the representations of a Graph Neural Network (GNN)."
+        },
+        "aliases": [
+          "SSL"
+        ]
+      },
+      {
+        "name": {
+          "value": "Contrastive Learning",
+          "justification": "The paper employs contrastive learning to teach GNNs about molecular 3D structures.",
+          "quote": "To teach the 2D GNN f ^{a} to generate 3D information from the 2D graph inputs, we maximize the mutual information between the latent 2D representations z ^{a} and 3D representations z ^{b} . Intuitively we wish to maximize the agreement between z ^{a} and z ^{b} if they come from the same molecule. For this purpose, we use contrastive learning (visualized in Figure 3)."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Graph Neural Network (GNN)",
+          "justification": "GNNs are used as the primary model for molecular property prediction.",
+          "quote": "In particular, for the task of molecular property prediction, GNNs have had great success."
+        },
+        "aliases": [
+          "GNN"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "GNNs are established models and were not introduced by this paper.",
+          "quote": "GNNs have had great success (Yang et al. 2019)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper executes GNNs as part of the experiments conducted for molecular property prediction improvements.",
+          "quote": "The GNN is pre-trained by maximizing the mutual information between its embedding of a molecular graph and a representation capturing the 3D information."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "GNNs are compared to other models and approaches like GraphCL and Rand Init in the experiments.",
+          "quote": "Results Table 1 shows that 3D Infomax pre-training leads to large improvements over the randomly initialized baseline and over GraphCL with all three pre-training datasets."
+        },
+        "referenced_paper_title": {
+          "value": "Analyzing Learned Molecular Representations for Property Prediction",
+          "justification": "The referenced work is mentioned in the context of GNN success in molecular prediction tasks.",
+          "quote": "In particular, for the task of molecular property prediction, GNNs have had great success (Yang et al. 2019)."
+        }
+      },
+      {
+        "name": {
+          "value": "Principal Neighborhood Aggregation (PNA)",
+          "justification": "PNA is chosen as the GNN architecture to pre-train in the experiments.",
+          "quote": "We choose Principal Neighborhood Aggregation (PNA) (Corso et al. 2020) as the GNN architecture to pre-train."
+        },
+        "aliases": [
+          "PNA"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "PNA is a pre-existing model architecture and not introduced by this paper.",
+          "quote": "Principal Neighborhood Aggregation (PNA) (Corso et al. 2020)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "PNA is explicitly executed as part of the pre-training experiments in the paper.",
+          "quote": "We choose Principal Neighborhood Aggregation (PNA) (Corso et al. 2020) as the GNN architecture to pre-train."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "PNA is compared against other models within the scope of pre-training experiments, as seen in performance tables.",
+          "quote": "Table 1 shows that 3D Infomax pre-training leads to large improvements over the randomly initialized baseline and over GraphCL with all three pre-training datasets."
+        },
+        "referenced_paper_title": {
+          "value": "Principal Neighbourhood Aggregation for Graph Nets",
+          "justification": "The referenced paper introduces PNA as mentioned in the context of this paper's experiments.",
+          "quote": "We choose Principal Neighborhood Aggregation (PNA) (Corso et al. 2020)."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "QM9",
+          "justification": "QM9 is used as one of the datasets for pre-training the models with 3D information.",
+          "quote": "For pre-training, we use three datasets of molecules with 3D information: QM9 (Ramakrishnan et al. 2014)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Quantum chemistry structures and properties of 134 kilo molecules",
+          "justification": "QM9 is a well-known dataset and its foundational paper is properly cited.",
+          "quote": "QM9 (Ramakrishnan et al. 2014)."
+        }
+      },
+      {
+        "name": {
+          "value": "GEOM-Drugs",
+          "justification": "GEOM-Drugs is used as one of the datasets for pre-training with multiple conformers.",
+          "quote": "On 140k of GEOM-Drugs with 5 conformers and, (3) on 620k of QMugs using 3 conformers."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "GEOM: Energy-annotated molecular conformations for property prediction and molecular generation",
+          "justification": "The GEOM-Drugs dataset is referenced with its foundational research paper.",
+          "quote": "GEOM-Drugs (Axelrod and Gomez-Bombarelli 2020)."
+        }
+      },
+      {
+        "name": {
+          "value": "QMugs",
+          "justification": "QMugs is used as a dataset in the experiments for pre-training with drug-like molecules.",
+          "quote": "On 620k of QMugs using 3 conformers."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "QMugs: Quantum Mechanical Properties of Drug-like Molecules",
+          "justification": "The QMugs dataset is mentioned with its reference paper.",
+          "quote": "QMugs (Isert et al. 2021)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is mentioned as the library used for implementing the experiments.",
+          "quote": "All experiments were implemented in PyTorch (Paszke et al. 2017)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Automatic differentiation in PyTorch",
+          "justification": "PyTorch foundational paper is referenced for its use in this research.",
+          "quote": "PyTorch (Paszke et al. 2017)."
+        }
+      },
+      {
+        "name": {
+          "value": "PyTorch Geometric",
+          "justification": "PyTorch Geometric is mentioned as a library used for processing graph data in the experiments.",
+          "quote": "using the deep learning libraries for processing graphs Pytorch Geometric (Fey and Lenssen 2019)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Fast Graph Representation Learning with PyTorch Geometric",
+          "justification": "The paper's reference mentions PyTorch Geometric to support its use in the study.",
+          "quote": "Pytorch Geometric (Fey and Lenssen 2019)."
+        }
+      },
+      {
+        "name": {
+          "value": "Deep Graph Library",
+          "justification": "Deep Graph Library is used as part of the deep learning libraries for conducting experimentations within the study's context.",
+          "quote": "and Deep Graph Library (Wang et al. 2019)."
+        },
+        "aliases": [
+          "DGL"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Deep Graph Library: A Graph-Centric, Highly-Performant Package for Graph Neural Networks",
+          "justification": "Deep Graph Library is cited from its reference paper for this study.",
+          "quote": "Deep Graph Library (Wang et al. 2019)."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1840,
+    "prompt_tokens": 11392,
+    "total_tokens": 13232,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

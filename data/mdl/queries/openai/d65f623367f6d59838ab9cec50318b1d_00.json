@@ -1,0 +1,198 @@
+{
+  "paper": "d65f623367f6d59838ab9cec50318b1d.txt",
+  "words": 9170,
+  "extractions": {
+    "title": {
+      "value": "On the benefits of representation regularization in invariance-based domain generalization",
+      "justification": "The title is explicitly stated at the beginning of the paper.",
+      "quote": "On the benefits of representation regularization in invariance based domain generalization"
+    },
+    "description": "The paper provides a theoretical analysis of the limitations of learning invariant representations in domain generalization, emphasizing the importance of controlling the smoothness of these representations. It introduces a novel regularization method using the Jacobian matrix to improve robustness in domain generalization, and tests its efficacy across various datasets and conditions.",
+    "type": {
+      "value": "theoretical",
+      "justification": "The paper primarily presents novel theoretical analysis to control errors in unseen test environments and formal derivations, rather than empirical experiments.",
+      "quote": "In this paper, we reveal that merely learning the invariant representation is vulnerable to the related unseen environment. To this end, we derive a novel theoretical analysis..."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Domain Generalization",
+        "justification": "Domain generalization is the central topic, focusing on the challenges of predicting unseen environments from multiple sources.",
+        "quote": "Domain generalization aims to alleviate such a prediction gap between the observed and unseen environments."
+      },
+      "aliases": [
+        "DG",
+        "Invariance-based domain generalization"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Representation Learning",
+          "justification": "The paper discusses learning representations that satisfy invariance criteria which are central to domain generalization.",
+          "quote": "Contributions In this paper, we aim to address these theoretical problems in the representation learning-based domain generalization."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Transfer Learning",
+          "justification": "The concept of leveraging shared knowledge from observed to unobserved environments aligns with transfer learning.",
+          "quote": "Domain generalization aims to alleviate such a prediction gap between the observed and unseen environments."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Domain Adversarial Neural Network (DANN)",
+          "justification": "The DANN is explicitly mentioned as a method employed in the study for achieving marginal feature alignment.",
+          "quote": "In the marginal matching, we adopted the well-known Domain Adversarial Neural Network (i.e., DANN)..."
+        },
+        "aliases": [
+          "DANN"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "DANN is not introduced as a novel model in this paper; it is used as a baseline method for comparison.",
+          "quote": "In the marginal matching, we adopted the well-known Domain Adversarial Neural Network (i.e., DANN)..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper describes using and evaluating DANN in experiments.",
+          "quote": "The marginal matching, we adopted the well-known Domain Adversarial Neural Network (i.e., DANN), which encourages..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "DANN is compared against other models in the paper.",
+          "quote": "The empirical results show that our algorithm outperforms the base versions in various datasets and invariance criteria."
+        },
+        "referenced_paper_title": {
+          "value": "Domain-adversarial training of neural networks",
+          "justification": "The referenced work for DANN is known from domain literature.",
+          "quote": "Ganin, Y., Ustinova, E., Ajakan, H.,... Lempitsky, V. (2016). Domain-adversarial training of neural networks."
+        }
+      },
+      {
+        "name": {
+          "value": "Conditional Domain Adversarial Neural Network (CDANN)",
+          "justification": "CDANN is explicitly mentioned as conditional-DANN, used for feature conditional invariance.",
+          "quote": "We adopt the conditional-DANN (CDANN), which is adapted from Mirza and Osindero (2014) and Li et al. (2018)."
+        },
+        "aliases": [
+          "CDANN"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "CDANN is not newly introduced in this paper but is adapted from existing methodologies.",
+          "quote": "We adopt the conditional-DANN (CDANN), which is adapted from Mirza and Osindero (2014) and Li et al. (2018)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "CDANN is implemented and evaluated as part of the experiments in the paper.",
+          "quote": "We adopt the CDANN model to execute feature conditional invariance experiments."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper uses CDANN in comparisons against other models and conditions.",
+          "quote": "In the feature conditional invariance experiments, the proposed regularization is tested against CDANN."
+        },
+        "referenced_paper_title": {
+          "value": "Conditional Generative Adversarial Nets",
+          "justification": "The reference paper is indicated as Mirza and Osindero (2014).",
+          "quote": "Mirza, M., & Osindero, S. (2014). Conditional generative adversarial nets."
+        }
+      },
+      {
+        "name": {
+          "value": "Invariant Risk Minimization (IRM)",
+          "justification": "IRM is explicitly mentioned as an approach for label-conditional invariance.",
+          "quote": "IRM adds a regularization term to encourage the S_1(y|z) = ⋯ = S_T(y|z)..."
+        },
+        "aliases": [
+          "IRM"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "IRM is an existing method used for comparison purposes.",
+          "quote": "We adopted Invariant Risk Minimization (IRM), which is recently proposed by..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "IRM is used in experiments for label-conditional invariance in the paper.",
+          "quote": "We adopted the IRM model for label conditional invariance experiments."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "IRM is compared with other methodologies to assess its performance in domain generalization.",
+          "quote": "The empirical results show that our algorithm outperforms the base versions including IRM in various datasets and invariance criteria."
+        },
+        "referenced_paper_title": {
+          "value": "Invariant Risk Minimization",
+          "justification": "The model is based on previous work by Arjovsky et al. (2019).",
+          "quote": "Arjovsky, M., Bottou, L., Gulrajani, I., & Lopez-Paz, D. (2019). Invariant risk minimization."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "ColorMNIST",
+          "justification": "ColorMNIST is used as a synthetic dataset to verify the generalization performance under different color relations.",
+          "quote": "ColorMNIST (Arjovsky et al. 2019) Each MNIST image is either colored by red or green..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Invariant Risk Minimization",
+          "justification": "The dataset is described in the context of work by Arjovsky et al.",
+          "quote": "ColorMNIST (Arjovsky et al. 2019) Each MNIST image is either colored by red or green..."
+        }
+      },
+      {
+        "name": {
+          "value": "PACS",
+          "justification": "PACS is used as a real-world dataset for evaluating the proposed improvements in domain generalization.",
+          "quote": "PACS (Li et al. 2017) and Office-Home (Venkateswara et al. 2017) are real-world datasets with high-dimensional images."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Deeper, broader and artier domain generalization",
+          "justification": "The paper by Li et al. (2017) is associated with the PACS dataset.",
+          "quote": "PACS (Li et al. 2017) and Office-Home..."
+        }
+      },
+      {
+        "name": {
+          "value": "Office-Home",
+          "justification": "Used for evaluating domain generalization, focusing on realistic multi-domain scenarios.",
+          "quote": "Office-Home (Venkateswara et al. 2017) are real-world datasets with high-dimensional images."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Deep hashing network for unsupervised domain adaptation",
+          "justification": "The reference to Office-Home is associated with Venkateswara et al. (2017).",
+          "quote": "Office-Home (Venkateswara et al. 2017)..."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1633,
+    "prompt_tokens": 17726,
+    "total_tokens": 19359,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

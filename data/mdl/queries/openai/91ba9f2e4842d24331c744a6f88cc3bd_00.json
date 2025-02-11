@@ -1,0 +1,174 @@
+{
+  "paper": "91ba9f2e4842d24331c744a6f88cc3bd.txt",
+  "words": 10763,
+  "extractions": {
+    "title": {
+      "value": "Improving Passage Retrieval with Zero-Shot Question Generation",
+      "justification": "The title is explicitly mentioned at the beginning of the paper: \"Improving Passage Retrieval with Zero-Shot Question Generation.\"",
+      "quote": "Improving Passage Retrieval with Zero-Shot Question Generation"
+    },
+    "description": "This paper proposes an unsupervised passage re-ranking method for open-domain retrieval, using pre-trained language models for zero-shot question generation. It demonstrates that this method, Unsupervised Passage Re-ranker (UPR), improves both unsupervised and supervised retrievers' passage retrieval accuracy by rescaling retrieved passages, outperforming strong supervised dense retrieval models.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper describes experiments conducted to demonstrate the effectiveness of the Unsupervised Passage Re-ranker (UPR), evaluates its performance on several datasets, and discusses experimental setups and results.",
+      "quote": "Comprehensive experiments across a wide range of datasets, retrievers, and PLMs highlight the strengths of UPR."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The research paper focuses on improving passage retrieval methods in open-domain question answering, which is a key task in Natural Language Processing.",
+        "quote": "Text retrieval is a core sub-task in many NLP problems, for example, open-domain question answering where a document must be retrieved and then read to answer an input query."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Open-domain Question Answering",
+          "justification": "The research aims to improve passage retrieval in open-domain question answering systems by introducing a new re-ranking method.",
+          "quote": "We focus on open-domain question answering and introduce a re-ranker based on zero-shot question generation with a pre-trained language model."
+        },
+        "aliases": [
+          "ODQA"
+        ]
+      },
+      {
+        "name": {
+          "value": "Information Retrieval",
+          "justification": "The paper proposes a method for improving passage retrieval accuracy, which is a core aspect of information retrieval.",
+          "quote": "To examine the robustness of UPR to keyword-centric datasets, we experiment with test collections where dense retrievers struggle and when the questions are from different domains."
+        },
+        "aliases": [
+          "IR"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Unsupervised Passage Re-ranker (UPR)",
+          "justification": "The paper introduces the Unsupervised Passage Re-ranker as a novel model for improving passage retrieval.",
+          "quote": "We focus on open-domain question answering and introduce a re-ranker based on zero-shot question generation with a pre-trained language model. Our re-ranker, which we call Unsupervised Passage Re-ranker (UPR),..."
+        },
+        "aliases": [
+          "UPR"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The Unsupervised Passage Re-ranker is introduced and developed in this paper as a new method for passage retrieval.",
+          "quote": "Our re-ranker, which we call Unsupervised Passage Re-ranker (UPR)..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The execution of the model is discussed in the experiments where it is used to re-rank retrieved passages and its performance is evaluated.",
+          "quote": "The initial passage ordering is then sorted based on log p(q | z). This enables us to re-rank the passages by just performing inference using off-the-shelf language models..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "UPR's performance is compared systematically with other models, including supervised retrievers like DPR.",
+          "quote": "We compute the conventional top-K retrieval accuracy metric... UPR provides consistent improvements across all the retrievers and datasets."
+        },
+        "referenced_paper_title": {
+          "value": "No specific title given",
+          "justification": "There is no specific reference paper for UPR mentioned, as it seems to be a novel contribution in this paper.",
+          "quote": "To the best of our knowledge, this is the first work to show that a fully unsupervised pipeline (consisting of a retriever and re-ranker) can greatly outperform supervised dense retrieval models like DPR."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Natural Questions",
+          "justification": "The Natural Questions dataset is one of the datasets used to evaluate the performance of the proposed Unsupervised Passage Re-ranker (UPR).",
+          "quote": "We focus on open-domain question answering and introduce a re-ranker based on zero-shot question generation with a pre-trained language model... evaluated on a number of open-domain retrieval datasets... including Natural Questions."
+        },
+        "aliases": [
+          "NQ"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Natural Questions: a benchmark for question answering research",
+          "justification": "The referenced paper is provided in the paper's references section as the source for the Natural Questions dataset.",
+          "quote": "Tom Kwiatkowski, Jennimaria Palomaki, Olivia Redfield, Michael Collins, Ankur Parikh, Chris Alberti, Danielle Epstein, Illia Polosukhin, Matthew Kelcey, Jacob Devlin, Kenton Lee, Kristina N. Toutanova, Llion Jones, Ming-Wei Chang, Andrew Dai, Jakob Uszkoreit, Quoc Le, and Slav Petrov. 2019. Natural Questions: a benchmark for question answering research."
+        }
+      },
+      {
+        "name": {
+          "value": "TriviaQA",
+          "justification": "TriviaQA is mentioned as a dataset for evaluating the Unsupervised Passage Re-ranker's effectiveness.",
+          "quote": "We focus on open-domain question answering and introduce a re-ranker based on zero-shot question generation with a pre-trained language model... evaluated on a number of open-domain retrieval datasets... including TriviaQA."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "TriviaQA: A Large Scale Distantly Supervised Challenge Dataset for Reading Comprehension",
+          "justification": "The reference paper for TriviaQA is provided in the document.",
+          "quote": "Mandar Joshi, Eunsol Choi, Daniel Weld, and Luke Zettlemoyer. 2017. TriviaQA: A large scale distantly supervised challenge dataset for reading comprehen-sion."
+        }
+      },
+      {
+        "name": {
+          "value": "SQuAD-Open",
+          "justification": "SQuAD-Open is used as a dataset to evaluate the retrieval method presented in the paper.",
+          "quote": "We focus on open-domain question answering and introduce a re-ranker based on zero-shot question generation with a pre-trained language model... evaluated on a number of open-domain retrieval datasets... including SQuAD-Open."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "SQuAD: 100,000+ questions for machine comprehension of text",
+          "justification": "The reference for the SQuAD dataset is indicated in the paper.",
+          "quote": "Pranav Rajpurkar, Jian Zhang, Konstantin Lopyrev, and Percy Liang. 2016. SQuAD: 100,000+ questions for machine comprehension of text."
+        }
+      },
+      {
+        "name": {
+          "value": "WebQuestions",
+          "justification": "WebQuestions is among the datasets used to validate the Unsupervised Passage Re-ranker's performance.",
+          "quote": "We focus on open-domain question answering and introduce a re-ranker based on zero-shot question generation with a pre-trained language model... evaluated on a number of open-domain retrieval datasets... including WebQuestions."
+        },
+        "aliases": [
+          "WebQ"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Semantic parsing on Freebase from question-answer pairs",
+          "justification": "The referenced paper for WebQuestions is provided in the paper's bibliography.",
+          "quote": "Jonathan Berant, Andrew Chou, Roy Frostig, and Percy Liang. 2013. Semantic parsing on Freebase from question-answer pairs."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The PyTorch deep learning library is explicitly used for implementation within the experiments section of the paper.",
+          "quote": "We use PyTorch (Paszke et al., 2019) to implement the UPR approach and relevant baselines."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An Imperative Style, High-Performance Deep Learning Library",
+          "justification": "The original PyTorch reference paper is provided in the paper's references list.",
+          "quote": "Adam Paszke, Sam Gross, Francisco Massa, Adam Lerer, James Bradbury, Gregory Chanan, Trevor Killeen, Zeming Lin, Natalia Gimelshein, Luca Antiga, Alban Desmaison, Andreas Kopf, Edward Yang, Zachary DeVito, Martin Raison, Alykhan Tejani, Sasank Chilamkurthy, Benoit Steiner, Lu Fang, Junjie Bai, and Soumith Chintala. 2019. PyTorch: An imperative style, high-performance deep learning library."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1762,
+    "prompt_tokens": 20539,
+    "total_tokens": 22301,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

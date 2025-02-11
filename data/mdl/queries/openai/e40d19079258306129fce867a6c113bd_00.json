@@ -1,0 +1,166 @@
+{
+  "paper": "e40d19079258306129fce867a6c113bd.txt",
+  "words": 12304,
+  "extractions": {
+    "title": {
+      "value": "New Insights on Reducing Abrupt Representation Change in Online Continual Learning",
+      "justification": "The title should accurately reflect the paper's focus, which is to provide new insights on reducing abrupt changes in data representation within the context of online continual learning.",
+      "quote": "N EW I NSIGHTS ON R EDUCING A BRUPT R EPRESENTA - TION C HANGE IN O NLINE C ONTINUAL L EARNING"
+    },
+    "description": "The paper investigates the challenges of online continual learning, specifically focusing on representation drift when new classes are introduced. It examines the impact of Experience Replay (ER) and proposes a new method, ER with asymmetric metric learning (ER-AML), to reduce disruptive parameter updates by treating incoming and past data asymmetrically. The study demonstrates substantial performance gains over baseline methods under various benchmarks.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper describes experiments and presents empirical results to demonstrate the effectiveness of their proposed solution, ER-AML, and ER-ACE, in real benchmarks and settings.",
+      "quote": "Empirical results show significant gains over strong baselines on standard continual learning benchmarks."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Continual Learning",
+        "justification": "The paper focuses on methods and challenges associated with learning from a continuous stream of data in a changing environment, which is the essence of continual learning.",
+        "quote": "Continual learning is concerned with building models that can learn and accumulate knowledge and skills over time."
+      },
+      "aliases": [
+        "Online Continual Learning",
+        "Incremental Learning"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Representation Learning",
+          "justification": "The paper addresses challenges related to changes in data representation as new classes are introduced and proposes methods to mitigate this.",
+          "quote": "We first highlight the problem of representation drift in the online continual learning setting."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Experience Replay",
+          "justification": "The paper concentrates on improving Experience Replay (ER) by addressing its shortcomings in representation drift when learning new data.",
+          "quote": "Experience Replay (ER), where a small subset of past data is stored and replayed alongside new data, has emerged as a simple and effective learning strategy."
+        },
+        "aliases": [
+          "ER"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "ER-ACE",
+          "justification": "ER-ACE (Experience Replay with asymmetric cross-entropy) is introduced as an alternative solution to address representation drift with minimal disruption.",
+          "quote": "This variant, named ER with asymmetric cross-entropy (ER-ACE), along with ER-AML show strong performance, with little disruption at task boundaries."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "ER-ACE is proposed by the authors as part of their contributions to tackle representation drift issues in online continual learning settings.",
+          "quote": "This variant, named ER with asymmetric cross-entropy (ER-ACE), along with ER-AML show strong performance..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper describes experimental results involving ER-ACE, indicating it was implemented and tested.",
+          "quote": "This variant, named ER with asymmetric cross-entropy (ER-ACE)...show strong performance with little disruption at task boundaries."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "ER-ACE's performance is compared against existing methods to demonstrate its effectiveness.",
+          "quote": "We achieve state of the art results in existing benchmarks while beating different existing methods including the traditional ER solution."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "ER-ACE seems to be a newly introduced method by the authors, and there is no indication of a previous reference paper specific to this model.",
+          "quote": "This variant, named ER with asymmetric cross-entropy (ER-ACE), along with ER-AML show strong performance."
+        }
+      },
+      {
+        "name": {
+          "value": "ER-AML",
+          "justification": "ER-AML (Experience Replay with Asymmetric Metric Learning) is a primary contribution of the paper to handle representation drifts in continual learning.",
+          "quote": "We propose a new family of methods addressing this issue by treating incoming and past data asymmetrically (Sec. 4.1, 4.3)."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "ER-AML is directly introduced by the authors as a solution to the issues they identify in the representation learning of continual learning models.",
+          "quote": "We propose a new family of methods addressing this issue by treating incoming and past data asymmetrically (Sec. 4.1, 4.3)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper includes empirical results demonstrating the execution and effectiveness of ER-AML, implying that it was implemented and tested.",
+          "quote": "Empirical results show significant gains over strong baselines on standard continual learning benchmarks."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares ER-AML to other baseline methods to highlight its performance improvements in representation retention and learning of new data.",
+          "quote": "We show strong gains over replay baselines in a new evaluation framework."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The model ER-AML appears to be an original contribution from this paper and does not reference a specific prior work it builds upon.",
+          "quote": "We propose a new family of methods addressing this issue by treating incoming and past data asymmetrically (Sec. 4.1, 4.3)."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Split CIFAR-10",
+          "justification": "The dataset is used in experiments to evaluate the effectiveness of the proposed methods in a continual learning setting.",
+          "quote": "Split CIFAR-10 partitions the dataset into 5 disjoint tasks containing two classes each (as in Aljundi et al. (2019a); Shim et al. (2020))"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The paper uses Split CIFAR-10 as an existing dataset for evaluation but doesn't reference a specific paper for it.",
+          "quote": "Split CIFAR-10 partitions the dataset into 5 disjoint tasks containing two classes each."
+        }
+      },
+      {
+        "name": {
+          "value": "Split CIFAR-100",
+          "justification": "Used as a benchmark for evaluating performance of continual learning methods.",
+          "quote": "Split CIFAR-100 comprises 20 tasks, each containing a disjoint set of 5 labels. We follow the split in Chaudhry et al. (2019)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Continual learning with tiny episodic memories",
+          "justification": "The paper references Chaudhry et al. (2019) regarding the use of Split CIFAR-100.",
+          "quote": "Split CIFAR-100 comprises 20 tasks, each containing a disjoint set of 5 labels. We follow the split in Chaudhry et al. (2019)."
+        }
+      },
+      {
+        "name": {
+          "value": "Split MiniImagenet",
+          "justification": "Used for evaluating the proposed methods within their benchmarks for continual learning.",
+          "quote": "Split MiniImagenet splits the MiniImagenet dataset into 20 disjoint tasks of 5 labels each."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The paper uses Split MiniImagenet and does not provide a reference indicating reliance on another specific work.",
+          "quote": "Split MiniImagenet splits the MiniImagenet dataset into 20 disjoint tasks of 5 labels each."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1502,
+    "prompt_tokens": 21948,
+    "total_tokens": 23450,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

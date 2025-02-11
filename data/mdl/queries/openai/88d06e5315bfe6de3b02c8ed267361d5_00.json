@@ -1,0 +1,189 @@
+{
+  "paper": "88d06e5315bfe6de3b02c8ed267361d5.txt",
+  "words": 8949,
+  "extractions": {
+    "title": {
+      "value": "Leveraging Integer Linear Programming to Learn Optimal Fair Rule Lists",
+      "justification": "The title is explicitly provided at the beginning and within the document.",
+      "quote": "Leveraging Integer Linear Programming to Learn Optimal Fair Rule Lists"
+    },
+    "description": "This paper proposes a method to improve the efficiency of the CORELS algorithm by introducing an Integer Linear Programming-based pruning technique. This method jointly considers accuracy and fairness constraints to learn optimal rule lists that are both interpretable and adhere to fairness standards.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents experimental evaluations and comparisons of the proposed method with existing approaches, making it empirical.",
+      "quote": "Our large experimental study using three datasets with various fairness measures and requirements demonstrates clear benefits of the proposed approaches in terms of search exploration, memory consumption and learning quality."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Fairness and Interpretability in Machine Learning",
+        "justification": "The paper focuses on developing models that are interpretable and adhere to fairness constraints, aligning with the research field.",
+        "quote": "Fairness and interpretability are fundamental requirements for the development of responsible machine learning."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Interpretable Models",
+          "justification": "The paper discusses rule lists and interpretable models throughout, aiming at deriving insights understandable by humans.",
+          "quote": "The interpretability of a machine learning model is defined in [10] as “the ability to explain or to present in understandable terms to a human”."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Algorithmic Fairness",
+          "justification": "The paper extensively covers fairness constraints and metrics to ensure fair predictions and decision-making.",
+          "quote": "Fairness is a central requirement for high-stake decision systems."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "CORELS",
+          "justification": "CORELS is repeatedly mentioned as a baseline learning algorithm for deriving certifiably optimal rule lists.",
+          "quote": "CORELS [3, 4] is a state-of-the-art supervised learning algorithm that outputs a certifiably optimal rule list."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "CORELS is not a contribution of this paper; it's used as a baseline model.",
+          "quote": "CORELS [3, 4] produces rule lists that are certifiably optimal in terms of accuracy and sparsity."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "There is no specific mention about the execution of CORELS on hardware in the paper scope.",
+          "quote": "The discussion focuses on methodology improvement rather than implementation specifics."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "CORELS is numerically compared with other models in the context of the proposed improvements.",
+          "quote": "Our experimental study shows clear benefits of our approach to speed-up the learning algorithm compared to CORELS."
+        },
+        "referenced_paper_title": {
+          "value": "Learning certifiably optimal rule lists",
+          "justification": "This is the main referenced paper for CORELS, as cited in the provided document.",
+          "quote": "CORELS [3, 4] is a state-of-the-art supervised learning algorithm that outputs a certifiably optimal rule list."
+        }
+      },
+      {
+        "name": {
+          "value": "FairCORELS",
+          "justification": "FairCORELS is a core model used in this paper, extending CORELS to incorporate fairness.",
+          "quote": "FairCORELS [1, 2] is a bi-objective extension of CORELS handling both statistical fairness and accuracy."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "FairCORELS, an extension integrating fairness, appears to be an enhanced focus in the paper's context.",
+          "quote": "In this paper, we address this issue and propose a method that harnesses the fairness constraints to efficiently prune the search space and optionally guide exploration."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The paper doesn't specify hardware execution details related to FairCORELS.",
+          "quote": "The focus is on algorithmic improvements, not the execution environment."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "FairCORELS is compared in terms of its performance and improvements over CORELS and other models.",
+          "quote": "Our thorough experiments show clear benefits of FairCORELS regarding exploration of the search space."
+        },
+        "referenced_paper_title": {
+          "value": "Learning fair rule lists",
+          "justification": "This is the main paper referenced for FairCORELS, extending CORELS with fairness considerations.",
+          "quote": "FairCORELS [1, 2] is a bi-objective extension of CORELS jointly addressing accuracy and statistical fairness."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "COMPAS dataset",
+          "justification": "The dataset is explicitly named in the experiments, making it a dataset used in the research.",
+          "quote": "The first task consists in predicting which individuals from the COMPAS dataset [5] will re-offend within two years."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Machine bias: There’s software used across the country to predict future criminals. and it’s biased against blacks",
+          "justification": "This is the referenced paper discussing the COMPAS dataset in the research.",
+          "quote": "COMPAS dataset [5]"
+        }
+      },
+      {
+        "name": {
+          "value": "German Credit dataset",
+          "justification": "The dataset is used within the experiments to test the model.",
+          "quote": "The second task consists in predicting whether individuals from the German Credit dataset [11] have a good or bad credit score."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "UCI machine learning repository",
+          "justification": "The referenced source for the German Credit dataset is the UCI repository as indicated in the quotes.",
+          "quote": "German Credit dataset [11]"
+        }
+      },
+      {
+        "name": {
+          "value": "Adult Income dataset",
+          "justification": "The dataset is named when conducting experiments to verify scalability.",
+          "quote": "To evaluate the scalability of our pruning approaches, we consider Adult Income [11], a larger dataset."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "UCI machine learning repository",
+          "justification": "The referenced source for the Adult Income dataset is the UCI repository as indicated in the quotes.",
+          "quote": "Adult Income [11]"
+        }
+      },
+      {
+        "name": {
+          "value": "FairCORELS dataset",
+          "justification": "The experiments are based on datasets, and this is a likely implied collection considering the text and experiments focus.",
+          "quote": "Our large experimental study shows clear benefits of our approach to speed-up the learning algorithm on well-known datasets."
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "Learning fair rule lists",
+          "justification": "This references the extension work on FairCORELS, dealing explicitly with datasets in experiments but doesn't pinpoint one paper.",
+          "quote": "FairCORELS [1, 2]"
+        }
+      },
+      {
+        "name": {
+          "value": "CORELS dataset",
+          "justification": "CORELS and derived datasets or conditions are being utilized for testing, following the context provided.",
+          "quote": "Given a statistical fairness notion, the unfairness function for CORELS on datasets is assessed."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Learning certifiably optimal rule lists",
+          "justification": "Referencing is inclined towards core data models or datasets addressed in referenced papers.",
+          "quote": "CORELS [3, 4]"
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1459,
+    "prompt_tokens": 16389,
+    "total_tokens": 17848,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

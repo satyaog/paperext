@@ -1,0 +1,169 @@
+{
+  "paper": "97f28ecf1bc9ed21535a8bcf84fdee02.txt",
+  "words": 10529,
+  "extractions": {
+    "title": {
+      "value": "Reincarnating Reinforcement Learning: Reusing Prior Computation to Accelerate Progress",
+      "justification": "The title \"Reincarnating Reinforcement Learning: Reusing Prior Computation to Accelerate Progress\" succinctly captures the essence of the research presented.",
+      "quote": "Reincarnating Reinforcement Learning:\nReusing Prior Computation to Accelerate Progress"
+    },
+    "description": "This paper presents reincarnating reinforcement learning (RRL) as an alternative workflow to traditional tabula rasa reinforcement learning (RL). The focus is on reusing prior computational work, such as learned policies, to improve agent training efficiency across design iterations or among different RL agents. The paper introduces an approach to effectively transfer a suboptimal policy to a standalone value-based RL agent, showcasing its benefits over classical tabula rasa approaches through empirical studies on Atari 2600 games, locomotion tasks, and balloon navigation problems.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper is based on empirical studies showcasing the benefits of reincarnating RL over traditional RL through experiments and comparisons on specific tasks.",
+      "quote": "Equipped with this algorithm, we demonstrate reincarnating RL’s gains over tabula rasa RL on Atari 2600 games, a challenging locomotion task, and the real-world problem of navigating stratospheric balloons."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Reinforcement Learning",
+        "justification": "The paper deals primarily with reinforcement learning (RL), and particularly proposes reincarnating RL.",
+        "quote": "Reinforcement learning (RL) is a general-purpose paradigm for making data-driven decisions."
+      },
+      "aliases": [
+        "RL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Deep Reinforcement Learning",
+          "justification": "The paper specifically discusses deep reinforcement learning methodologies and challenges, such as efficiency and resource constraints.",
+          "quote": "To address both the computational and sample inefficiencies of tabula rasa RL, we present reincarnating RL (RRL)."
+        },
+        "aliases": [
+          "Deep RL"
+        ]
+      },
+      {
+        "name": {
+          "value": "Transfer Learning in Reinforcement Learning",
+          "justification": "The paper focuses on transferring prior learned policies to new agents, which is essentially a form of transfer learning within the reinforcement learning domain.",
+          "quote": "As a step towards enabling reincarnating RL from any agent to any other agent, we focus on the specific setting of efficiently transferring an existing sub-optimal policy to a standalone value-based RL agent."
+        },
+        "aliases": [
+          "Policy Transfer"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Nature DQN",
+          "justification": "Nature DQN is used as a benchmark model to compare the results of reincarnating RL versus tabula rasa approaches in Atari games.",
+          "quote": "Tabula rasa Nature DQN ... nearly converges in performance ..."
+        },
+        "aliases": [
+          "DQN"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Nature DQN is an existing model, not a contribution of this paper.",
+          "quote": "Tabula rasa Nature DQN [60] nearly converges in performance..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Nature DQN was executed for baseline comparisons in Atari game simulations.",
+          "quote": "Tabula rasa Nature DQN [60] nearly converges in performance after training for 200M frames."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Performance of Nature DQN was compared to that of reincarnating RL-boosted models in the experiments.",
+          "quote": "Panel 1) Tabula rasa Nature DQN [60] nearly converges in performance after training for 200M frames. (Panel 2) Reincarnation via fine-tuning Nature DQN..."
+        },
+        "referenced_paper_title": {
+          "value": "Human-level control through deep reinforcement learning",
+          "justification": "The referring paper outlines the inception of the DQN architecture employed in the experiments.",
+          "quote": "Tabula rasa Nature DQN [60] nearly converges in performance after training for 200M frames."
+        }
+      },
+      {
+        "name": {
+          "value": "Rainbow",
+          "justification": "Rainbow is featured as an advanced RL model used in conjunction with reincarnating RL approaches.",
+          "quote": "A modern ResNet (Impala-CNN [26]) with a better algorithm (Rainbow [35]) outperforms..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Rainbow is an existing deep reinforcement learning model.",
+          "quote": "A modern ResNet (Impala-CNN [26]) with a better algorithm (Rainbow [35]) outperforms..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Rainbow was executed in the experiments for comparative analysis against other models.",
+          "quote": "A modern ResNet (Impala-CNN [26]) with a better algorithm (Rainbow [35]) outperforms..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Rainbow was compared to other models, such as Nature DQN and Impala-CNN Rainbow, for performance benchmarking.",
+          "quote": "Panel 3). A modern ResNet (Impala-CNN [26]) with a better algorithm (Rainbow [35]) outperforms further fine-tuning n-step DQN."
+        },
+        "referenced_paper_title": {
+          "value": "Rainbow: Combining Improvements in Deep Reinforcement Learning",
+          "justification": "The reference paper details the Rainbow model which combines several advancements in RL.",
+          "quote": "A modern ResNet (Impala-CNN [26]) with a better algorithm (Rainbow [35])..."
+        }
+      },
+      {
+        "name": {
+          "value": "QDagger",
+          "justification": "QDagger is introduced as a proposed solution to mitigate limitations in existing transfer learning strategies for RL.",
+          "quote": "To address these limitations, we introduce QDagger, which combines Dagger [71] with n-step Q-learning."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "QDagger is a novel contribution by the authors of this paper.",
+          "quote": "To address these limitations, we introduce QDagger, which combines Dagger [71] with n-step Q-learning..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "QDagger was executed in the experiments to validate its performance benefits over other methods.",
+          "quote": "Equipped with QDagger, we demonstrate the sample and compute-efficiency gains of reincarnating RL over tabula rasa RL, on ALE..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "QDagger was compared to several other methods to demonstrate its efficacy.",
+          "quote": "Equipped with QDagger, we demonstrate the sample and compute-efficiency gains..."
+        },
+        "referenced_paper_title": {
+          "value": "A reduction of imitation learning and structured prediction to no-regret online learning",
+          "justification": "Dagger, part of the QDagger model, references to work by Stéphane Ross et al. which is heavily incorporated.",
+          "quote": "To address these limitations, we introduce QDagger, which combines Dagger [71] with n-step Q-learning..."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Atari 2600",
+          "justification": "The Atari 2600 suite is a standard benchmark used for evaluating reinforcement learning algorithms.",
+          "quote": "We demonstrate reincarnating RL’s gains over tabula rasa RL on Atari 2600 games..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The arcade learning environment: An evaluation platform for general agents",
+          "justification": "The referenced paper establishes Atari 2600 as a core benchmark for evaluating RL agents.",
+          "quote": "We demonstrate reincarnating RL’s gains over tabula rasa RL on Atari 2600 games..."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1515,
+    "prompt_tokens": 19093,
+    "total_tokens": 20608,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

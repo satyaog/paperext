@@ -1,0 +1,177 @@
+{
+  "paper": "8ad0cb481cf4cd9f6950d2bafd35f105.txt",
+  "words": 7600,
+  "extractions": {
+    "title": {
+      "value": "Using Interactive Feedback to Improve the Accuracy and Explainability of Question Answering Systems Post-Deployment",
+      "justification": "The title is explicitly provided at the beginning of the document, listing all authors and identifiers.",
+      "quote": "Using Interactive Feedback to Improve the Accuracy and Explainability of Question Answering Systems Post-Deployment"
+    },
+    "description": "This paper investigates the use of interactive feedback to enhance question answering (QA) systems after deployment. It focuses on improving the accuracy of QA models and providing explanations for their answers. A new dataset, FEEDBACK QA, containing interactive feedback in the form of user ratings and natural language explanations, is collected. The study demonstrates that using this feedback not only improves the deployed QA system but also benefits stronger, non-deployed models. Human evaluations show that the generated explanations assist users in making informed decisions about accepting or rejecting answers.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves data collection and experimentation with QA models using real-world user feedback, qualifying it as empirical research.",
+      "quote": "We collect a retrieval-based QA dataset, FEEDBACK QA, which contains interactive feedback from users. We train a neural model with this feedback data... Our experiments show..."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Question Answering",
+        "justification": "The paper explicitly deals with improving Question Answering systems using interactive feedback, focusing on answer accuracy and explainability.",
+        "quote": "Most research on question answering focuses on the pre-deployment stage; i.e., building an accurate model for deployment."
+      },
+      "aliases": [
+        "QA"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Natural Language Processing",
+          "justification": "While the primary focus is on Question Answering, it falls under the broader field of Natural Language Processing as it deals with understanding and generating human language.",
+          "quote": "Much of the recent excitement in question answering (QA) is in building high-performing models with carefully curated training datasets."
+        },
+        "aliases": [
+          "NLP"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "BERT-based dense retriever",
+          "justification": "The paper mentions using a BERT-based dense retriever as the base model for their experiments.",
+          "quote": "For the base model, we use a BERT-based dense retriever."
+        },
+        "aliases": [
+          "BERT"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "BERT is a well-known pre-existing model used in the experiments, not developed as part of the new contributions in this paper.",
+          "quote": "For the base model, we use a BERT-based dense retriever."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was trained and deployed as part of the experiments conducted in the paper.",
+          "quote": "We first train a RQA model on the questions and passages, then deploy it on a crowdsourcing platform."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The effectiveness of the BERT-based model is evaluated against other models through experiments.",
+          "quote": "Our experiments show that this approach...improves the accuracy of the base QA model for which feedback is collected."
+        },
+        "referenced_paper_title": {
+          "value": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "justification": "The BERT model is specifically named as used in the experiments, and this is its foundational paper.",
+          "quote": "For the base model, we use a BERT-based dense retriever (Karpukhin et al., 2020)."
+        }
+      },
+      {
+        "name": {
+          "value": "BART-based reranker",
+          "justification": "The paper describes using a BART-based reranker to incorporate feedback into the QA system enhancement process.",
+          "quote": "We use BART parameterized by φ as the base of EXPLAINRATE because it is ease to adapt it to both explanation generation and rating classification."
+        },
+        "aliases": [
+          "BART"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "BART is an existing model adapted for use in this research, but it is not presented as a novel contribution of the paper.",
+          "quote": "We use BART parameterized by φ as the base of EXPLAINRATE because it is ease to adapt it to both explanation generation and rating classification."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The BART-based model is trained and evaluated within the scope of the research.",
+          "quote": "We use BART parameterized by φ as the base of EXPLAINRATE because it is ease to adapt it to both explanation generation and rating classification."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of the BART-based reranker is compared against other methods as part of the study.",
+          "quote": "We compare two variants of FEEDBACK RERANKER on validation set, one of which directly predicts the rating while the other first generates an explanation and then the rating."
+        },
+        "referenced_paper_title": {
+          "value": "BART: Denoising Sequence-to-Sequence Pre-training for Natural Language Generation, Translation, and Comprehension",
+          "justification": "The referenced BART paper provides background on the model that is adapted for this research.",
+          "quote": "We use two variants of pre-trained models to obtain the embeddings: 1) BERT (Devlin et al., 2019), a pre-trained Transformer encoder; and 2) BART (Lewis et al., 2020), a pretrained Transformer encoder-decoder."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "FEEDBACK QA",
+          "justification": "FEEDBACK QA is introduced as a new dataset created for the experiments conducted in this paper.",
+          "quote": "We collect a retrieval-based QA dataset, F EEDBACK QA, which contains interactive feedback from users."
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "FEEDBACK QA is newly contributed in this paper, hence there is no prior reference paper.",
+          "quote": "We collect a retrieval-based QA dataset, F EEDBACK QA, which contains interactive feedback from users."
+        }
+      },
+      {
+        "name": {
+          "value": "SQuAD",
+          "justification": "SQuAD is mentioned as a dataset that has enabled progress in the QA research area and is used as a basis for comparison.",
+          "quote": "Datasets like SQuAD (Rajpurkar et al., 2016)...have enabled rapid progress in this area."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "SQuAD: 100,000+ Questions for Machine Comprehension of Text",
+          "justification": "The dataset is referenced in terms of enabling progress in QA systems, not actively used in the experiments here.",
+          "quote": "Datasets like SQuAD (Rajpurkar et al., 2016)...have enabled rapid progress in this area."
+        }
+      },
+      {
+        "name": {
+          "value": "Natural Questions",
+          "justification": "The Natural Questions dataset is highlighted for its role in advancing QA research, serving as a point of reference.",
+          "quote": "Datasets like SQuAD (Rajpurkar et al., 2016), NaturalQuestions (Kwiatkowski et al., 2019)...have enabled rapid progress in this area."
+        },
+        "aliases": [
+          "NQ"
+        ],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Natural Questions: a Benchmark for Question Answering Research",
+          "justification": "Natural Questions is cited to indicate progress in QA, not directly used in this study.",
+          "quote": "Datasets like SQuAD (Rajpurkar et al., 2016), NaturalQuestions (Kwiatkowski et al., 2019)...have enabled rapid progress in this area."
+        }
+      },
+      {
+        "name": {
+          "value": "CoQA",
+          "justification": "CoQA is mentioned for its contribution to the QA field and is used as a reference point for context.",
+          "quote": "Datasets like SQuAD (Rajpurkar et al., 2016), NaturalQuestions (Kwiatkowski et al., 2019) and CoQA (Reddy et al., 2019) have enabled rapid progress in this area."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "CoQA: A Conversational Question Answering Challenge",
+          "justification": "CoQA is mentioned in the context of its impact on the QA field rather than being utilized for experiments in this paper.",
+          "quote": "Datasets like SQuAD (Rajpurkar et al., 2016), NaturalQuestions (Kwiatkowski et al., 2019) and CoQA (Reddy et al., 2019) have enabled rapid progress in this area."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1709,
+    "prompt_tokens": 13107,
+    "total_tokens": 14816,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}

@@ -3,8 +3,10 @@ import hashlib
 import json
 import os
 import subprocess
+import sys
 import tempfile
 import urllib.request
+from multiprocessing.pool import ThreadPool
 from pathlib import Path
 
 import yaml
@@ -23,7 +25,7 @@ stdout will contain the list of files successfully converted separated by '\\n'.
 
 EPILOG = f"""
 Example:
-  $ {PROG} paperoni-2024-07-04.json
+  $ PAPEREXT_LOGGING_LEVEL=INFO {PROG} --paperoni paperoni-2024-07-04.json
     [DEBUG]
     data/cache/arxiv/1901.07186.txt
     data/cache/arxiv/1906.05433.txt
@@ -42,7 +44,7 @@ Example:
     html:3/3
     openreview:52/52
     pdf:77/145
-  $ {PROG} paperoni-2024-07-04.json > data/query_set.txt
+  $ PAPEREXT_LOGGING_LEVEL=INFO {PROG} --paperoni paperoni-2024-07-04.json > data/query_set.txt
     [DEBUG]
     Successfully downloaded and converted 587 out of 867 papers
     arxiv:455/455
@@ -56,7 +58,7 @@ def paperoni_download(paper_data: dict, cache_dir: Path):
     paper = Paper(paper_data)
 
     if paper.pdfs:
-        return paper.get_link_id_pdf(), ["EXISTING"]
+        return paper_data["paper_id"], paper.get_link_id_pdf(), ["EXISTING"]
 
     for filename in [CFG.env.paperoni_config, os.environ["PAPERONI_CONFIG"]]:
         config_filename = Path(filename).resolve()
@@ -93,6 +95,7 @@ def paperoni_download(paper_data: dict, cache_dir: Path):
                     "--title",
                     paper_data["title"],
                 ],
+                stdout=sys.stderr.fileno(),
                 check=True,
             )
 
@@ -110,7 +113,7 @@ def paperoni_download(paper_data: dict, cache_dir: Path):
         )
         link_types = sorted(set([l["type"].split(".")[0] for l in paper_data["links"]]))
 
-    return paper.get_link_id_pdf(), link_types
+    return paper_data["paper_id"], paper.get_link_id_pdf(), link_types
 
 
 def convert_pdf(pdf, text, pdf_link):
@@ -251,13 +254,16 @@ def main(argv=None):
     completed = []
     failed = []
 
-    for paper in json.loads(options.paperoni.read_text() if options.paperoni else "{}"):
-        text_file, link_types = paperoni_download(paper, options.cache_dir)
-
-        if text_file:
-            completed.append((paper["paper_id"], text_file, link_types))
-        else:
-            failed.append((paper["paper_id"], text_file, link_types))
+    with ThreadPool(processes=8) as pool:
+        papers = json.loads(options.paperoni.read_text() if options.paperoni else "{}")
+        for paper_id, text_file, link_types in pool.starmap(
+            paperoni_download,
+            ((paper, options.cache_dir) for paper in papers),
+        ):
+            if text_file:
+                completed.append((paper_id, text_file, link_types))
+            else:
+                failed.append((paper_id, text_file, link_types))
 
     urls = [
         (

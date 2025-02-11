@@ -1,0 +1,175 @@
+{
+  "paper": "b78438419359e4be99e3e7fd21c81579.txt",
+  "words": 4562,
+  "extractions": {
+    "title": {
+      "value": "Better Modeling the Programming World with Code Concept Graphs-augmented Multi-modal Learning",
+      "justification": "The title is provided at the beginning of the document and at the top of the page under the authors' list.",
+      "quote": "Better Modeling the Programming World with Code Concept Graphs-augmented Multi-modal Learning"
+    },
+    "description": "This paper discusses enhancing pretrained language models for code by jointly learning with graph neural networks based on concept graphs of identifiers. The authors propose a multi-modal learning approach to improve the code modeling world through integrating varied data modalities. The paper presents a preliminary evaluation showcasing improved effectiveness in code search tasks using this joint-learning model.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves the implementation of a model, its training, and subsequent testing against a dataset, which are empirical activities.",
+      "quote": "We conducted a preliminary evaluation that shows gain of effectiveness of the models for code search using a simple joint-learning method and prompts us to further investigate our research vision."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The paper is focused on improving language models and graph neural networks for understanding programming languages, a task highly related to NLP.",
+        "quote": "One of the main objective of language models and graph neural networks (GNN) in natural language processing (NLP) is to implicitly encode knowledge about the world by learning semantically meaningful representations of words and concepts."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Software Engineering",
+          "justification": "The paper specifically discusses applications and improvements in software engineering through code modeling.",
+          "quote": "The progress made in code modeling has been tremendous in recent years thanks to the design of natural language processing learning approaches based on state-of-the-art model architectures."
+        },
+        "aliases": [
+          "SE"
+        ]
+      },
+      {
+        "name": {
+          "value": "Graph Neural Networks",
+          "justification": "The paper discusses enhancing language models with graph neural networks for improved code modeling.",
+          "quote": "In particular, we propose to enhance an existing pretrained language model of code by joint-learning it with a graph neural network based on our concept graphs."
+        },
+        "aliases": [
+          "GNN"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "CodeBERT",
+          "justification": "The paper uses CodeBERT as the pretrained language model for code token representation.",
+          "quote": "We use state-of-the-art CodeBERT [13, 30] as pretrained LM to encode both codes and queries."
+        },
+        "aliases": [
+          "CodeBERT"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper uses CodeBERT but does not contribute it as a novel model.",
+          "quote": "We use state-of-the-art CodeBERT [13, 30] as pretrained LM to encode both codes and queries."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "CodeBERT is executed during the experimentation phase of the study.",
+          "quote": "We fine-tune CodeBERT with the <code tokens, query> pairs as baseline and joint-learn our CCGNN model, i.e., code concepts GNN, with the pretrained version of CodeBERT, using the triplets <CG, code, query>."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares the results of CodeBERT and the proposed CCGNN model to demonstrate effectiveness improvements.",
+          "quote": "In Fig. 4, we report the evolution of the mean reciprocal rank (MRR) on the test set for CodeBERT and CCGNN."
+        },
+        "referenced_paper_title": {
+          "value": "CodeBERT: A Pre-trained Model for Programming and Natural Languages",
+          "justification": "The referenced paper for CodeBERT is included in the citation list as [13].",
+          "quote": "Zhangyin Feng, Daya Guo, Duyu Tang, Nan Duan, Xiaocheng Feng, Ming Gong, Linjun Shou, Bing Qin, Ting Liu, Daxin Jiang, et al. 2020. Codebert: A pre-trained model for programming and natural languages. arXiv preprint arXiv:2002.08155 (2020)."
+        }
+      },
+      {
+        "name": {
+          "value": "GAT (Gated Attention Network)",
+          "justification": "The paper mentions using a gated attention network for representing concept graphs.",
+          "quote": "To encode the CGs, we implemented a gated attention network (GAT) [10, 39] with a global attention pooling layer [26] on top of it."
+        },
+        "aliases": [
+          "GAT"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The gated attention network is used but not introduced as a new model by the paper.",
+          "quote": "To encode the CGs, we implemented a gated attention network (GAT) [10, 39] with a global attention pooling layer [26] on top of it."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "GAT is executed as it is part of their testing framework for representing concept graphs.",
+          "quote": "To encode the CGs, we implemented a gated attention network (GAT) [10, 39] with a global attention pooling layer [26] on top of it."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "The GAT model itself is not specifically compared to other models; it functions in conjunction with CodeBERT.",
+          "quote": "The embeddings are then combined using a function φ to obtain the final representation that embeds knowledge from both modalities."
+        },
+        "referenced_paper_title": {
+          "value": "Graph Attention Networks",
+          "justification": "The GAT model is referenced in the paper through the citation list entry [39] for the original GAT paper.",
+          "quote": "Petar Veličković, Guillem Cucurull, Arantxa Casanova, Adriana Romero, Pietro Liò, and Yoshua Bengio. 2018. Graph Attention Networks. arXiv:1710.10903 [stat.ML]"
+        }
+      },
+      {
+        "name": {
+          "value": "CCGNN (Code Concepts GNN)",
+          "justification": "The paper proposes a new model named CCGNN as a combination framework of CodeBERT and GAT.",
+          "quote": "We fine-tune CodeBERT with the <code tokens, query> pairs as baseline and joint-learn our CCGNN model, i.e., code concepts GNN, with the pretrained version of CodeBERT, using the triplets <CG, code, query>."
+        },
+        "aliases": [
+          "CCGNN"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "CCGNN is proposed as a new model in the paper, integrating GNN and CodeBERT.",
+          "quote": "We fine-tune CodeBERT with the <code tokens, query> pairs as baseline and joint-learn our CCGNN model, i.e., code concepts GNN, with the pretrained version of CodeBERT, using the triplets <CG, code, query>."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model is executed as part of the experiments conducted in the study.",
+          "quote": "We fine-tune CodeBERT with the <code tokens, query> pairs as baseline and joint-learn our CCGNN model, i.e., code concepts GNN, with the pretrained version of CodeBERT, using the triplets <CG, code, query>."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The effectiveness of CCGNN is compared against CodeBERT to show improvement.",
+          "quote": "In Fig. 4, we report the evolution of the mean reciprocal rank (MRR) on the test set for CodeBERT and CCGNN."
+        },
+        "referenced_paper_title": {
+          "value": "Graph Attention Networks",
+          "justification": "The GNN concept leveraged in CCGNN is based upon pre-existing works like [39].",
+          "quote": "Petar Veličković, Guillem Cucurull, Arantxa Casanova, Adriana Romero, Pietro Liò, and Yoshua Bengio. 2018. Graph Attention Networks. arXiv:1710.10903 [stat.ML]"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CodeSearchNet",
+          "justification": "The dataset used in the model evaluation is CodeSearchNet, as mentioned in the evaluation section.",
+          "quote": "We use a modified version of CodeSearchNet dataset [21] including extra preprocessing and cleaning [16]."
+        },
+        "aliases": [
+          "CodeSearchNet"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "CodeSearchNet Challenge: Evaluating the State of Semantic Code Search",
+          "justification": "The reference to the dataset is explicitly given in the citation list entry [21].",
+          "quote": "Hamel Husain, Ho-Hsiang Wu, Tiferet Gazit, Miltiadis Allamanis, and Marc Brockschmidt. 2019. Codesearchnet challenge: Evaluating the state of semantic code search. arXiv preprint arXiv:1909.09436 (2019)."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1815,
+    "prompt_tokens": 8620,
+    "total_tokens": 10435,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  }
+}
