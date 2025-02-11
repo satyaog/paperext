@@ -11,115 +11,11 @@ import yaml
 from pydantic import BaseModel, Field, create_model
 
 from paperext import ROOT_DIR
+from paperext.config import CFG
 from paperext.structured_output.mdl.model import Explained, PaperExtractions
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
-
-_MODE_ALIASES = {
-    "trained": ["training", "evaluation", "pretraining"],
-    "inference": [],
-    "finetuned": [],
-}
-
-_MODE_ALIASES = {alias: k for k, v in _MODE_ALIASES.items() for alias in {k, *v}}
-
-_RESEARCH_FIELDS_ALIASES = {
-    "3dreconstruction": [],
-    "3dvision": [],
-    "accentclassification": [],
-    "aiconsciousness": [],
-    "aiethics": [],
-    "aiethicsandhumancomputerinteractionhci": [],
-    "aiforhumanity": [],
-    "anomalydetection": [],
-    "artificialgeneralintelligence": ["agi"],
-    "artificialintelligence": ["ai"],
-    "attentionmechanisms": [],
-    "autonomousvehiclesystems": [],
-    "bayesianinferenceandgenerativemodels": [],
-    "combinatorialoptimization": [],
-    "computationalbiology": [],
-    "computervision": ["cv"],
-    "continuallearning": ["cl"],
-    "crosslingualtransferlearning": [],
-    "deeplearning": ["dl"],
-    "deepreinforcementlearning": ["drl"],
-    "differentiableprogramming": [],
-    "efficientinference": [],
-    "energymanagementinroboticsystems": [],
-    "evaluationmetrics": [],
-    "fairnessinai": [],
-    "fairnessinrecommendersystems": [],
-    "generativemodels": ["generativemodeling"],
-    "goalconditionedreinforcementlearning": [],
-    "graphneuralnetwork": [
-        "gnn",
-        "gnns",
-        "graphneuralnetworks",
-        "graphneuralnetworksgnns",
-    ],
-    "humancomputerinteraction": ["hci"],
-    "humanintheloopreinforcementlearning": [],
-    "interpretability": [],
-    "interpretablemachinelearning": [],
-    "longtermmemory": [],
-    "machinelearning": ["ml"],
-    "mathematics": [],
-    "medical": [],
-    "medicalimageanalysis": [],
-    "medicalimagesegmentation": [],
-    "medicalimaging": [],
-    "microscopyimageanalysis": [],
-    "modelcompressionsparsetrainingpruning": [],
-    "modeloptimization": [],
-    "modelriskmanagement": [],
-    "modelsafetyethicsinai": [],
-    "molecularpropertyprediction": [],
-    "multiagentreinforcementlearning": [],
-    "multilingualandlowresourcelanguageprocessing": [],
-    "multilingualdatasetsandlargelanguagemodels": [],
-    "multilingualnlp": [],
-    "musicrecommendationsystems": [],
-    "naturallanguageprocessing": ["nlp"],
-    "navigationagents": [],
-    "neuraldifferentialequations": [],
-    "neuralnetworkarchitectures": [],
-    "neuralnetworkoptimization": [],
-    "neuralsymboliclearning": [],
-    "optimizationandmetaheuristics": [],
-    "optimizationandtraining": [],
-    "optimizationindeeplearning": [],
-    "outofdistribution": [],
-    "proteinstructureprediction": [],
-    "recommendersystems": [],
-    "reinforcementlearning": ["rl"],
-    "representationlearning": [],
-    "roboticphotography": [],
-    "roboticplanningandcontrol": [],
-    "robotics": [],
-    "sampleefficientreinforcementlearning": [],
-    "sceneunderstanding": [],
-    "scientificmachinelearning": [],
-    "speechprocessing": [],
-    "speechrecognition": [],
-    "textclassification": [],
-    "theoremproving": [],
-    "timeseriesanomalydetection": [],
-    "timeseriesforecasting": [],
-    "trajectoryprediction": [],
-    "transitnetworkdesigngraphlearning": [],
-    "ultrasoundimaging": [],
-    "visualcomputing": [],
-    "visualquestionanswering": ["vqa"],
-    "weatherforecast": [],
-}
-
-_RESEARCH_FIELDS_ALIASES = {
-    alias: k
-    for k, v in _RESEARCH_FIELDS_ALIASES.items()
-    for alias in {k, *v, *([f"{k}{v[0]}"] if v else [])}
-}
 
 
 def str_normalize(string):
@@ -128,8 +24,13 @@ def str_normalize(string):
     return string
 
 
-def _refs_category_map(categoried_refs_file: Path, fields: list):
-    fields = [".".join(map(str_normalize, field.split("."))) for field in fields]
+def _refs_category_map(categoried_refs_file: Path, domains_categories_file: Path):
+    fields = domains_categories_file.read_text().splitlines()
+    fields = [
+        ".".join(map(str_normalize, field.split(".")))
+        for field in fields
+        if field.strip() and not field.startswith("#")
+    ]
 
     categoried_refs = json.loads(categoried_refs_file.read_text())
 
@@ -150,48 +51,15 @@ def _refs_category_map(categoried_refs_file: Path, fields: list):
 
 def _domains_category_map():
     yield from _refs_category_map(
-        ROOT_DIR / "data/categorized_domains.json",
-        [
-            "abstract_research_topics.computer vision",
-            "abstract_research_topics.graph-based",
-            "abstract_research_topics.natural language processing",
-            "abstract_research_topics.reinforcement learning and decision making.reinforcement learning",
-            "abstract_research_topics",
-            "application_domains",
-            "ignore",
-        ],
+        CFG.dir.data / "categorized_domains.json",
+        CFG.dir.measure_dom_cat / CFG.measure.dom_cat,
     )
 
 
 def _models_category_map():
     yield from _refs_category_map(
-        ROOT_DIR / "data/categorized_models.json",
-        [
-            # "algorithms.optimizer",
-            # "algorithms.other algorithms",
-            # "algorithms.reinforcement learning",
-            "algorithms",
-            "classic_ml",
-            "ignore",
-            # "neural networks.attention network",
-            # "neural networks.autoencoder",
-            # "neural networks.bayesian network",
-            # "neural networks.convolutional neural network.ResNet",
-            # "neural networks.convolutional neural network.Very Deep Convolutional Networks",
-            "neural networks.convolutional neural network",
-            "neural networks.diffusion model",
-            # "neural networks.generative adversarial network",
-            "neural networks.generative flow networks",
-            "neural networks.graph neural network",
-            "neural networks.multi layer perceptron",
-            # "neural networks.normalizing flow",
-            "neural networks.recurrent neural network",
-            # "neural networks.transformer.Generative Pre-trained Transformer",
-            # "neural networks.transformer.Vision Transformer",
-            # "neural networks.transformer.bert",
-            "neural networks.transformer",
-            "neural networks",
-        ],
+        CFG.dir.data / "categorized_models.json",
+        CFG.dir.measure_mod_cat / CFG.measure.mod_cat,
     )
 
 
@@ -199,16 +67,6 @@ _DOMAINS_CATEGORY_MAP = {
     domain: category for domain, category in _domains_category_map()
 }
 _MODELS_CATEGORY_MAP = {model: category for model, category in _models_category_map()}
-
-# assert sorted(_MODELS_FIELD_MAP) == sorted([m for m, _ in _models_field_map()])
-
-
-def _mode_aliases(mode):
-    return _MODE_ALIASES.get(mode, mode)
-
-
-def _reasearch_field_alias(field):
-    return _RESEARCH_FIELDS_ALIASES.get(field, field)
 
 
 def convert_model_json_to_yaml(model_cls: BaseModel, json_data: str, **kwargs):
@@ -366,7 +224,6 @@ def model2df(model: BaseModel):
                 continue
 
             try:
-                _category = category
                 category: str = _map[category]
             except KeyError as e:
                 map_error = e

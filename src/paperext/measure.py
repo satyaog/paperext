@@ -49,6 +49,16 @@ pd.set_option("display.width", 1024)  # No line width limit
 pd.set_option("display.max_colwidth", None)  # Show full content of each cell
 
 
+def _csv_fn(stem: str, index: int) -> str:
+    match stem:
+        case "research_fields_categories":
+            return f"{stem}_{CFG.measure.dom_cat}_{index:02}.csv"
+        case "models.category":
+            return f"{stem}_{CFG.measure.mod_cat}_{index:02}.csv"
+        case _:
+            return f"{stem}_{index:02}.csv"
+
+
 def _append_left_indices(df: pd.DataFrame, indices: List[tuple]):
     df = df.copy(True)
     if df.empty:
@@ -171,7 +181,7 @@ def _measure_precision(papers: list):
             # if label == "title":
             #     assert (_mat == np.identity(_mat.shape[0])).all()
 
-            (_analysis_dir / f"{label}_{i:02}.csv").write_text(
+            (_analysis_dir / _csv_fn(label, i)).write_text(
                 pd.DataFrame(mat, index=classes, columns=classes).to_csv()
             )
 
@@ -191,7 +201,7 @@ def _measure_precision(papers: list):
                 [_pred.drop_duplicates() for _pred in pred],
             )
 
-            (_analysis_dir / f"{label}_{i:02}.csv").write_text(
+            (_analysis_dir / _csv_fn(label, i)).write_text(
                 pd.DataFrame(
                     conf_mat,
                     index=[*classes, "No True Label"],
@@ -241,7 +251,7 @@ def _measure_precision(papers: list):
                 [_pred[col] for _pred in pred_per_paper],
             )
 
-            (_analysis_dir / f"{group}.{col}_{i:02}.csv").write_text(
+            (_analysis_dir / _csv_fn(f"{group}.{col}", i)).write_text(
                 pd.DataFrame(
                     conf_mat,
                     index=[*names, "No True Label"],
@@ -267,7 +277,7 @@ def _measure_precision(papers: list):
                 [_pred[col].drop_duplicates() for _pred in pred_per_paper],
             )
 
-            (_analysis_dir / f"{group}.{col}_{i:02}.csv").write_text(
+            (_analysis_dir / _csv_fn(f"{group}.{col}", i)).write_text(
                 pd.DataFrame(
                     conf_mat,
                     index=[*names, "No True Label"],
