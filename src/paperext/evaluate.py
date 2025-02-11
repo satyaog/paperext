@@ -52,9 +52,9 @@ pd.set_option("display.max_colwidth", None)  # Show full content of each cell
 def _csv_fn(stem: str, index: int) -> str:
     match stem:
         case "research_fields_categories":
-            return f"{stem}_{CFG.measure.dom_cat}_{index:02}.csv"
+            return f"{stem}_{CFG.evaluation.dom_cat}_{index:02}.csv"
         case "models.category":
-            return f"{stem}_{CFG.measure.mod_cat}_{index:02}.csv"
+            return f"{stem}_{CFG.evaluation.mod_cat}_{index:02}.csv"
         case _:
             return f"{stem}_{index:02}.csv"
 
@@ -104,7 +104,7 @@ def _mlcm(annotations: pd.DataFrame, predictions: pd.DataFrame):
     return mlcm.cm(_ann, _pred), classes
 
 
-def _measure_precision(papers: list):
+def _evaluate_precision(papers: list):
     """Analyse the performance of the LLM on the given papers though confusion
     matrices and multi-label confusion matrices"""
     annotated = [[], []]
@@ -157,7 +157,7 @@ def _measure_precision(papers: list):
     predictions[0] = pd.concat(predictions[0])
     predictions[1] = pd.concat(predictions[1])
 
-    _analysis_dir = CFG.dir.measure / CFG.platform.select
+    _analysis_dir = CFG.dir.evaluation / CFG.platform.select
     _analysis_dir.mkdir(parents=True, exist_ok=True)
 
     max_attempt = max(
@@ -333,7 +333,7 @@ def main(argv=None):
 
     assert any(map(lambda p: p.exists(), papers))
 
-    _measure_precision(papers)
+    _evaluate_precision(papers)
 
 
 if __name__ == "__main__":

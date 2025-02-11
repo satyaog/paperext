@@ -52,14 +52,14 @@ def _refs_category_map(categoried_refs_file: Path, domains_categories_file: Path
 def _domains_category_map():
     yield from _refs_category_map(
         CFG.dir.data / "categorized_domains.json",
-        CFG.dir.measure_dom_cat / CFG.measure.dom_cat,
+        CFG.dir.evaluation_dom_cat / CFG.evaluation.dom_cat,
     )
 
 
 def _models_category_map():
     yield from _refs_category_map(
         CFG.dir.data / "categorized_models.json",
-        CFG.dir.measure_mod_cat / CFG.measure.mod_cat,
+        CFG.dir.evaluation_mod_cat / CFG.evaluation.mod_cat,
     )
 
 
