@@ -87,7 +87,13 @@ class Config:
         if isinstance(value, dict):
             return Config(config=value)
         else:
-            return value
+            match value:
+                case "true":
+                    return True
+                case "false":
+                    return False
+                case _:
+                    return value
 
     def __iter__(self):
         return iter(self._config)
@@ -100,11 +106,9 @@ class Config:
             conf_key = envvar.lower().split("_")[1:]
 
             try:
-                section = self._config
-                while len(conf_key) > 1:
-                    section = section[conf_key.pop(0)]
+                section = self._config[conf_key.pop(0)]
 
-                option = conf_key.pop()
+                option = "_".join(conf_key)
                 # Do not create options
                 if option not in section:
                     raise KeyError(option)

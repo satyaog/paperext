@@ -50,13 +50,16 @@ pd.set_option("display.max_colwidth", None)  # Show full content of each cell
 
 
 def _csv_fn(stem: str, index: int) -> str:
+    collapse_tag = "_coll" if CFG.evaluation.collapse_cat else ""
     match stem:
         case "research_fields_categories":
-            return f"{stem}_{CFG.evaluation.dom_cat}_{index:02}.csv"
+            stem = f"{stem}_{CFG.evaluation.dom_cat}{collapse_tag}"
         case "models.category":
-            return f"{stem}_{CFG.evaluation.mod_cat}_{index:02}.csv"
+            stem = f"{stem}_{CFG.evaluation.mod_cat}{collapse_tag}"
         case _:
-            return f"{stem}_{index:02}.csv"
+            pass
+
+    return stem + f"_{index:02}.csv"
 
 
 def _append_left_indices(df: pd.DataFrame, indices: List[tuple]):
