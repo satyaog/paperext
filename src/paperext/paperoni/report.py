@@ -35,15 +35,16 @@ def main(argv=None):
         type=date_type,
     )
     options = parser.parse_args(argv)
+    start = options.start.strftime("%Y-%m-%d") if options.start else ""
+    end = options.end.strftime("%Y-%m-%d") if options.end else ""
     output = (
         options.output
         or CFG.dir.data
         / f"paperoni-{start}-{end}-PR_{date.today().strftime('%Y-%m-%d')}.json"
     )
-    start = options.start.strftime("%Y-%m-%d") if options.start else ""
-    end = options.end.strftime("%Y-%m-%d") if options.end else ""
 
     curl_options = [
+        # TODO: remove this as soon as the certificate becomes valid again
         "--insecure",
         "-o",
         str(output),
