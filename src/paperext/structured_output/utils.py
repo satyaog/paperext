@@ -10,116 +10,11 @@ import pandas as pd
 import yaml
 from pydantic import BaseModel, Field, create_model
 
-from paperext import ROOT_DIR
+from paperext.config import CFG
 from paperext.structured_output.mdl.model import Explained, PaperExtractions
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
-
-_MODE_ALIASES = {
-    "trained": ["training", "evaluation", "pretraining"],
-    "inference": [],
-    "finetuned": [],
-}
-
-_MODE_ALIASES = {alias: k for k, v in _MODE_ALIASES.items() for alias in {k, *v}}
-
-_RESEARCH_FIELDS_ALIASES = {
-    "3dreconstruction": [],
-    "3dvision": [],
-    "accentclassification": [],
-    "aiconsciousness": [],
-    "aiethics": [],
-    "aiethicsandhumancomputerinteractionhci": [],
-    "aiforhumanity": [],
-    "anomalydetection": [],
-    "artificialgeneralintelligence": ["agi"],
-    "artificialintelligence": ["ai"],
-    "attentionmechanisms": [],
-    "autonomousvehiclesystems": [],
-    "bayesianinferenceandgenerativemodels": [],
-    "combinatorialoptimization": [],
-    "computationalbiology": [],
-    "computervision": ["cv"],
-    "continuallearning": ["cl"],
-    "crosslingualtransferlearning": [],
-    "deeplearning": ["dl"],
-    "deepreinforcementlearning": ["drl"],
-    "differentiableprogramming": [],
-    "efficientinference": [],
-    "energymanagementinroboticsystems": [],
-    "evaluationmetrics": [],
-    "fairnessinai": [],
-    "fairnessinrecommendersystems": [],
-    "generativemodels": ["generativemodeling"],
-    "goalconditionedreinforcementlearning": [],
-    "graphneuralnetwork": [
-        "gnn",
-        "gnns",
-        "graphneuralnetworks",
-        "graphneuralnetworksgnns",
-    ],
-    "humancomputerinteraction": ["hci"],
-    "humanintheloopreinforcementlearning": [],
-    "interpretability": [],
-    "interpretablemachinelearning": [],
-    "longtermmemory": [],
-    "machinelearning": ["ml"],
-    "mathematics": [],
-    "medical": [],
-    "medicalimageanalysis": [],
-    "medicalimagesegmentation": [],
-    "medicalimaging": [],
-    "microscopyimageanalysis": [],
-    "modelcompressionsparsetrainingpruning": [],
-    "modeloptimization": [],
-    "modelriskmanagement": [],
-    "modelsafetyethicsinai": [],
-    "molecularpropertyprediction": [],
-    "multiagentreinforcementlearning": [],
-    "multilingualandlowresourcelanguageprocessing": [],
-    "multilingualdatasetsandlargelanguagemodels": [],
-    "multilingualnlp": [],
-    "musicrecommendationsystems": [],
-    "naturallanguageprocessing": ["nlp"],
-    "navigationagents": [],
-    "neuraldifferentialequations": [],
-    "neuralnetworkarchitectures": [],
-    "neuralnetworkoptimization": [],
-    "neuralsymboliclearning": [],
-    "optimizationandmetaheuristics": [],
-    "optimizationandtraining": [],
-    "optimizationindeeplearning": [],
-    "outofdistribution": [],
-    "proteinstructureprediction": [],
-    "recommendersystems": [],
-    "reinforcementlearning": ["rl"],
-    "representationlearning": [],
-    "roboticphotography": [],
-    "roboticplanningandcontrol": [],
-    "robotics": [],
-    "sampleefficientreinforcementlearning": [],
-    "sceneunderstanding": [],
-    "scientificmachinelearning": [],
-    "speechprocessing": [],
-    "speechrecognition": [],
-    "textclassification": [],
-    "theoremproving": [],
-    "timeseriesanomalydetection": [],
-    "timeseriesforecasting": [],
-    "trajectoryprediction": [],
-    "transitnetworkdesigngraphlearning": [],
-    "ultrasoundimaging": [],
-    "visualcomputing": [],
-    "visualquestionanswering": ["vqa"],
-    "weatherforecast": [],
-}
-
-_RESEARCH_FIELDS_ALIASES = {
-    alias: k
-    for k, v in _RESEARCH_FIELDS_ALIASES.items()
-    for alias in {k, *v, *([f"{k}{v[0]}"] if v else [])}
-}
 
 
 def str_normalize(string):
@@ -128,10 +23,15 @@ def str_normalize(string):
     return string
 
 
-def _refs_category_map(categoried_refs_file: Path, fields: list):
-    fields = [".".join(map(str_normalize, field.split("."))) for field in fields]
+def _refs_category_map(categories_refs_file: Path, categories_selections_file: Path):
+    categories_selection = categories_selections_file.read_text().splitlines()
+    categories_selection = [
+        ".".join(map(str_normalize, field.split(".")))
+        for field in categories_selection
+        if field.strip() and not field.startswith("#")
+    ]
 
-    categoried_refs = json.loads(categoried_refs_file.read_text())
+    categories_refs = json.loads(categories_refs_file.read_text())
 
     def list_refs(categories: dict):
         for name, sub_cat in categories.items():
@@ -141,74 +41,75 @@ def _refs_category_map(categoried_refs_file: Path, fields: list):
 
             yield name
 
-    for ref in list_refs(categoried_refs):
-        for field in fields:
-            if ref.startswith(field + ".") or ref == field:
-                yield (ref.split(".")[-1], field)
+    # Store filtered categories to check if we add the same category multiple
+    # times
+    filtered_categories = {}
+
+    for ref in list_refs(categories_refs):
+        category_name = ref.split(".")[-1]
+
+        filtered_categories.setdefault(category_name, [])
+        filtered_categories[category_name].append(ref)
+
+        if len(filtered_categories[category_name]) > 1:
+            logger.warning(
+                f"Category {category_name} present multiple times "
+                f"{sorted(filtered_categories[category_name])}"
+            )
+
+        for sel in categories_selection:
+            if ref.startswith(sel + ".") or ref == sel:
+                yield (category_name, sel)
                 break
 
+        else:
+            logger.warning(
+                f"Category reference {ref} not found in categories selection "
+                f"{categories_selections_file}. Defaulting to 'ignore'"
+            )
+            yield (category_name, "ignore")
 
+
+# TODO: refactor _domains_category_map() and _models_category_map() to reduce
+# code duplication
 def _domains_category_map():
-    yield from _refs_category_map(
-        ROOT_DIR / "data/categorized_domains.json",
-        [
-            "abstract_research_topics.computer vision",
-            "abstract_research_topics.graph-based",
-            "abstract_research_topics.natural language processing",
-            "abstract_research_topics.reinforcement learning and decision making.reinforcement learning",
-            "abstract_research_topics",
-            "application_domains",
-            "ignore",
-        ],
-    )
+    _map = {}
+
+    for domain, category in _refs_category_map(
+        CFG.dir.data / "categorized_domains.json",
+        CFG.dir.evaluation_dom_cat / CFG.evaluation.dom_cat,
+    ):
+        if domain not in _map or category != "ignore":
+            _map[domain] = category
+            yield domain, category
+
+        else:
+            logger.warning(
+                f"Skipping ({domain}: {category}) mapping. Existing map is ({domain}: {_map[domain]})"
+            )
 
 
 def _models_category_map():
-    yield from _refs_category_map(
-        ROOT_DIR / "data/categorized_models.json",
-        [
-            # "algorithms.optimizer",
-            # "algorithms.other algorithms",
-            # "algorithms.reinforcement learning",
-            "algorithms",
-            "classic_ml",
-            "ignore",
-            # "neural networks.attention network",
-            # "neural networks.autoencoder",
-            # "neural networks.bayesian network",
-            # "neural networks.convolutional neural network.ResNet",
-            # "neural networks.convolutional neural network.Very Deep Convolutional Networks",
-            "neural networks.convolutional neural network",
-            "neural networks.diffusion model",
-            # "neural networks.generative adversarial network",
-            "neural networks.generative flow networks",
-            "neural networks.graph neural network",
-            "neural networks.multi layer perceptron",
-            # "neural networks.normalizing flow",
-            "neural networks.recurrent neural network",
-            # "neural networks.transformer.Generative Pre-trained Transformer",
-            # "neural networks.transformer.Vision Transformer",
-            # "neural networks.transformer.bert",
-            "neural networks.transformer",
-            "neural networks",
-        ],
-    )
+    _map = {}
+
+    for model, category in _refs_category_map(
+        CFG.dir.data / "categorized_models.json",
+        CFG.dir.evaluation_mod_cat / CFG.evaluation.mod_cat,
+    ):
+        if model not in _map or category != "ignore":
+            _map[model] = category
+            yield model, category
+
+        else:
+            logger.warning(
+                f"Skipping ({model}: {category}) mapping. Existing map is ({model}: {_map[model]})"
+            )
 
 
 _DOMAINS_CATEGORY_MAP = {
     domain: category for domain, category in _domains_category_map()
 }
 _MODELS_CATEGORY_MAP = {model: category for model, category in _models_category_map()}
-
-# assert sorted(_MODELS_FIELD_MAP) == sorted([m for m, _ in _models_field_map()])
-
-
-def _mode_aliases(mode):
-    return _MODE_ALIASES.get(mode, mode)
-
-
-def _reasearch_field_alias(field):
-    return _RESEARCH_FIELDS_ALIASES.get(field, field)
 
 
 def convert_model_json_to_yaml(model_cls: BaseModel, json_data: str, **kwargs):
@@ -328,6 +229,10 @@ def model2df(model: BaseModel):
 
                     paper_references_df[entry_k][(k, i)] = entry_v
 
+    # Refactor the generalization of category maps (_MODELS_CATEGORY_MAP and
+    # _DOMAINS_CATEGORY_MAP) to reduce code cuplication
+    categories = []
+
     for domain in paper_1d_df["all_research_fields"]:
         paper_1d_df.setdefault("research_fields_categories", [])
 
@@ -338,12 +243,18 @@ def model2df(model: BaseModel):
             logger.error(map_error, exc_info=True)
             continue
 
-        if not category.startswith("abstractresearchtopics."):
-            category = "ignore"
+        category_with_cnt = (
+            category
+            if CFG.evaluation.collapse_cat or category not in categories
+            else f"{category}-{categories.count(category)}"
+        )
 
-        paper_1d_df["research_fields_categories"].append(category)
+        categories.append(category)
+
+        paper_1d_df["research_fields_categories"].append(category_with_cnt)
 
     map_error = None
+
     for group in (
         "models",
         "datasets",
@@ -353,7 +264,6 @@ def model2df(model: BaseModel):
 
         if group == "models":
             _map = _MODELS_CATEGORY_MAP
-            _check = lambda cat: cat.startswith("neuralnetworks.")
         else:
             continue
 
@@ -366,18 +276,21 @@ def model2df(model: BaseModel):
                 continue
 
             try:
-                _category = category
                 category: str = _map[category]
             except KeyError as e:
                 map_error = e
                 logger.error(map_error, exc_info=True)
                 continue
 
-            if not _check(category):
-                category = "ignore"
+            category_with_cnt = (
+                category
+                if CFG.evaluation.collapse_cat or category not in categories
+                else f"{category}-{categories.count(category)}"
+            )
 
             categories.append(category)
-            paper_references_df["category"][(k, i)] = category
+
+            paper_references_df["category"][(k, i)] = category_with_cnt
 
     if map_error:
         raise map_error

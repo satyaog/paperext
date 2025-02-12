@@ -49,6 +49,19 @@ pd.set_option("display.width", 1024)  # No line width limit
 pd.set_option("display.max_colwidth", None)  # Show full content of each cell
 
 
+def _csv_fn(stem: str, index: int) -> str:
+    collapse_tag = "_coll" if CFG.evaluation.collapse_cat else ""
+    match stem:
+        case "research_fields_categories":
+            stem = f"{stem}_{CFG.evaluation.dom_cat}{collapse_tag}"
+        case "models.category":
+            stem = f"{stem}_{CFG.evaluation.mod_cat}{collapse_tag}"
+        case _:
+            pass
+
+    return stem + f"_{index:02}.csv"
+
+
 def _append_left_indices(df: pd.DataFrame, indices: List[tuple]):
     df = df.copy(True)
     if df.empty:
@@ -94,7 +107,7 @@ def _mlcm(annotations: pd.DataFrame, predictions: pd.DataFrame):
     return mlcm.cm(_ann, _pred), classes
 
 
-def _performance_analysis(papers: list):
+def _evaluate_precision(papers: list):
     """Analyse the performance of the LLM on the given papers though confusion
     matrices and multi-label confusion matrices"""
     annotated = [[], []]
@@ -147,7 +160,7 @@ def _performance_analysis(papers: list):
     predictions[0] = pd.concat(predictions[0])
     predictions[1] = pd.concat(predictions[1])
 
-    _analysis_dir = CFG.dir.performance / CFG.platform.select
+    _analysis_dir = CFG.dir.evaluation / CFG.platform.select
     _analysis_dir.mkdir(parents=True, exist_ok=True)
 
     max_attempt = max(
@@ -171,7 +184,7 @@ def _performance_analysis(papers: list):
             # if label == "title":
             #     assert (_mat == np.identity(_mat.shape[0])).all()
 
-            (_analysis_dir / f"{label}_{i:02}.csv").write_text(
+            (_analysis_dir / _csv_fn(label, i)).write_text(
                 pd.DataFrame(mat, index=classes, columns=classes).to_csv()
             )
 
@@ -191,7 +204,7 @@ def _performance_analysis(papers: list):
                 [_pred.drop_duplicates() for _pred in pred],
             )
 
-            (_analysis_dir / f"{label}_{i:02}.csv").write_text(
+            (_analysis_dir / _csv_fn(label, i)).write_text(
                 pd.DataFrame(
                     conf_mat,
                     index=[*classes, "No True Label"],
@@ -241,7 +254,7 @@ def _performance_analysis(papers: list):
                 [_pred[col] for _pred in pred_per_paper],
             )
 
-            (_analysis_dir / f"{group}.{col}_{i:02}.csv").write_text(
+            (_analysis_dir / _csv_fn(f"{group}.{col}", i)).write_text(
                 pd.DataFrame(
                     conf_mat,
                     index=[*names, "No True Label"],
@@ -267,7 +280,7 @@ def _performance_analysis(papers: list):
                 [_pred[col].drop_duplicates() for _pred in pred_per_paper],
             )
 
-            (_analysis_dir / f"{group}.{col}_{i:02}.csv").write_text(
+            (_analysis_dir / _csv_fn(f"{group}.{col}", i)).write_text(
                 pd.DataFrame(
                     conf_mat,
                     index=[*names, "No True Label"],
@@ -323,7 +336,7 @@ def main(argv=None):
 
     assert any(map(lambda p: p.exists(), papers))
 
-    _performance_analysis(papers)
+    _evaluate_precision(papers)
 
 
 if __name__ == "__main__":
