@@ -1,3 +1,10 @@
+# /// script
+# requires-python = ">=3.10"
+# dependencies = [
+#   "paperext @ git+https://github.com/satyaog/paperext",
+# ]
+# ///
+
 import argparse
 import json
 from pathlib import Path
