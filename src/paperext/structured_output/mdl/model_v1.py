@@ -1,11 +1,17 @@
 from __future__ import annotations
 
 import enum
-import logging
 from typing import Any, Generic, List, Optional, TypeVar
 
 from pydantic import BaseModel, Field
 
+SYSTEM_MESSAGE = (
+    f"Your role is to extract Deep Learning Models, Datasets and Deep Learning "
+    f"Libraries from a given research paper."
+    #  f"The Models, Datasets and Frameworks must be used in the paper "
+    #  f"and / or the comparison analysis of the results of the "
+    #  f"paper. The papers provided will be a convertion from pdf to text, which could imply some formatting issues."
+)
 FIRST_MESSAGE = (
     "Which Deep Learning Models, Datasets and Libraries can you find in the "
     "following research paper:\n"

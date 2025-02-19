@@ -103,6 +103,12 @@ class Paper:
         )
 
     def get_link_id_pdf(self):
+        """Return a hardlink, with selected id as name, to the pdf.  Currently,
+        the pdf file name is used as an id to check if the query should be done
+        or not. As the pdf file name changed with the up-to-date paperoni cache
+        structure, a hardlink might be created and returned to avoid redoing the
+        query
+        """
         link_id_pdf = None
 
         if self.pdf:

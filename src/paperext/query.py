@@ -12,24 +12,12 @@ import pydantic_core
 
 from paperext import CFG
 from paperext.log import logger
-from paperext.structured_output import STRUCT_MODULES, ai4hcat, mdl
+from paperext.structured_output import get_struct_module, mdl
 from paperext.utils import Paper, build_validation_set
 
 
-def get_first_message() -> str:
-    return STRUCT_MODULES[CFG.platform.struct].FIRST_MESSAGE
-
-
-def get_extraction_response() -> (
-    ai4hcat.model.ExtractionResponse | mdl.model.ExtractionResponse
-):
-    return STRUCT_MODULES[CFG.platform.struct].ExtractionResponse
-
-
-def get_paper_extractions() -> (
-    ai4hcat.model.PaperExtractions | mdl.model.PaperExtractions
-):
-    return STRUCT_MODULES[CFG.platform.struct].PaperExtractions
+def get_state_cls():
+    return get_struct_module(CFG.platform.struct).state.State
 
 
 PROG = f"{Path(__file__).stem.replace('_', '-')}"
@@ -54,8 +42,6 @@ try:
     def _client():
         model = CFG.openai.model
         client = instructor.from_openai(
-            # TODO: update to use the new feature Mode.TOOLS_STRICT
-            # https://openai.com/index/introducing-structured-outputs-in-the-api/
             openai.AsyncOpenAI(),
             mode=instructor.Mode.TOOLS_STRICT,
         )
@@ -63,7 +49,7 @@ try:
 
         async def _wrap(*args, **kwargs):
             extractions, completion = await _create_with_completion(
-                model=model, *args, **kwargs
+                model=model, *args, **{"max_retries": 1, **kwargs}
             )
             return extractions, completion.usage
 
@@ -71,6 +57,7 @@ try:
         return client
 
     PLATFORMS["openai"] = _client
+
 except ModuleNotFoundError as e:
     logger.info(e, exc_info=True)
     logging.info(e, exc_info=True)
@@ -99,7 +86,10 @@ try:
                         (*system_messages, message["content"])
                     )
                     system_messages = []
-            extractions, completion = _create_with_completion(*args, **kwargs)
+            extractions, completion = _create_with_completion(
+                *args, **{"max_retries": 2, **kwargs}
+            )
+
             # completion.usage_metadata doesn't seams to be serializable
             # Unable to serialize unknown type: <class
             # 'google.cloud.aiplatform_v1beta1.types.prediction_service.GenerateContentResponse.UsageMetadata'>
@@ -115,6 +105,37 @@ try:
         return client
 
     PLATFORMS["vertexai"] = _client
+
+except ModuleNotFoundError as e:
+    logger.info(e, exc_info=True)
+    logging.info(e, exc_info=True)
+
+try:
+    import openai
+    from openai.types.chat.chat_completion import CompletionUsage
+
+    def _client():
+        model = CFG.ollama.model
+        client = instructor.from_openai(
+            openai.AsyncOpenAI(
+                base_url=CFG.ollama.url,
+                api_key="ollama",  # required, but unused
+            ),
+            mode=instructor.Mode.JSON,
+        )
+        _create_with_completion = client.chat.completions.create_with_completion
+
+        async def _wrap(*args, **kwargs):
+            extractions, completion = await _create_with_completion(
+                model=model, *args, **{"max_retries": 5, **kwargs}
+            )
+            return extractions, completion.usage
+
+        client.chat.completions.create_with_completion = _wrap
+        return client
+
+    PLATFORMS["ollama"] = _client
+
 except ModuleNotFoundError as e:
     logger.info(e, exc_info=True)
     logging.info(e, exc_info=True)
@@ -122,29 +143,16 @@ except ModuleNotFoundError as e:
 
 async def extract_from_research_paper(
     client: instructor.client.Instructor | instructor.client.AsyncInstructor,
-    message: str,
+    state: mdl.state.State,
+    messages: list[dict[str:str]],
 ) -> Tuple[Any, CompletionUsage]:
     """Extract Models, Datasets and Frameworks names from a research paper."""
     retries = [True] * 1
     while True:
         try:
             result = client.chat.completions.create_with_completion(
-                # model="gpt-4o",
-                response_model=get_paper_extractions(),
-                messages=[
-                    {
-                        "role": "system",
-                        "content": f"Your role is to extract Deep Learning Models, Datasets and Deep Learning Libraries from a given research paper.",
-                        #  f"The Models, Datasets and Frameworks must be used in the paper "
-                        #  f"and / or the comparison analysis of the results of the "
-                        #  f"paper. The papers provided will be a convertion from pdf to text, which could imply some formatting issues.",
-                    },
-                    {
-                        "role": "user",
-                        "content": message,
-                    },
-                ],
-                max_retries=1,
+                response_model=state.get_paper_extractions(),
+                messages=messages,
             )
 
             try:
@@ -153,6 +161,7 @@ async def extract_from_research_paper(
                 extractions, usage = await result
 
             return extractions, usage
+
         except openai.RateLimitError as e:
             asyncio.sleep(60)
             if retries:
@@ -163,26 +172,31 @@ async def extract_from_research_paper(
 
 async def batch_extract_models_names(
     client: instructor.client.Instructor | instructor.client.AsyncInstructor,
-    papers_fn: List[Path],
+    papers_w_pdf_txt: List[Path],
     destination: Path = CFG.dir.queries,
+    state_cls=None,
 ) -> List:
+    state_cls = state_cls or get_state_cls()
     destination.mkdir(parents=True, exist_ok=True)
 
-    for paper_fn in papers_fn:
-        paper = paper_fn.name
+    for paper, pdf_txt in papers_w_pdf_txt:
+        paper_name = pdf_txt.name
 
         count = 0
-        for line in paper_fn.read_text().splitlines():
+        for line in pdf_txt.read_text().splitlines():
             count += len([w for w in line.strip().split() if w])
 
-        data = []
+        state = state_cls(paper, pdf_txt)
 
-        for i, message in enumerate((get_first_message(),)):
-            f = destination / paper
+        for i, messages in enumerate(state.format_messages()):
+            f = destination / paper_name
             f = f.with_stem(f"{f.stem}_{i:02}").with_suffix(".json")
 
             try:
-                response = get_extraction_response().model_validate_json(f.read_text())
+                response = state.get_extraction_response().model_validate_json(
+                    f.read_text()
+                )
+
             except (
                 FileNotFoundError,
                 pydantic_core._pydantic_core.ValidationError,
@@ -190,15 +204,15 @@ async def batch_extract_models_names(
                 logger.error(e, exc_info=True)
                 logging.error(e, exc_info=True)
 
-                message = message.format(*data, paper_fn.read_text())
-
-                extractions, usage = await extract_from_research_paper(client, message)
+                extractions, usage = await extract_from_research_paper(
+                    client, state, messages
+                )
 
                 f.parent.mkdir(parents=True, exist_ok=True)
 
                 try:
-                    response = get_extraction_response()(
-                        paper=paper,
+                    response = state.get_extraction_response()(
+                        paper=paper_name,
                         words=count,
                         extractions=extractions,
                         usage=usage,
@@ -206,21 +220,16 @@ async def batch_extract_models_names(
                     f.write_text(response.model_dump_json(indent=2))
 
                 except pydantic_core._pydantic_core.PydanticSerializationError:
-                    response = get_extraction_response()(
-                        paper=paper,
+                    response = state.get_extraction_response()(
+                        paper=paper_name,
                         words=count,
                         extractions=extractions,
                         usage=None,
                     )
                     f.write_text(response.model_dump_json(indent=2))
 
+            state.push_response(response)
             logger.info(response.model_dump_json(indent=2))
-
-            models = [m.name.value for m in response.extractions.models]
-            datasets = [d.name.value for d in response.extractions.datasets]
-            libraries = [f.name.value for f in response.extractions.libraries]
-
-            data = [models, datasets, libraries]
 
 
 async def ignore_exceptions(
@@ -282,25 +291,30 @@ def main(argv=None):
 
     if options.paperoni:
         papers = [Paper(p) for p in json.loads(options.paperoni.read_text())]
-        papers = [p.get_link_id_pdf() for p in papers]
-        papers = [p for p in papers if p is not None]
+        papers = [
+            (p, p.get_link_id_pdf()) for p in papers if p.get_link_id_pdf() is not None
+        ]
     elif options.input:
         papers = [
-            Path(paper)
+            (None, Path(paper.strip()))
             for paper in Path(options.input).read_text().splitlines()
             if paper.strip()
         ]
     elif options.papers:
-        papers = [Path(paper) for paper in options.papers if paper.strip()]
+        papers = [(None, Path(paper)) for paper in options.papers if paper.strip()]
     else:
-        papers = build_validation_set()
-        for p in papers:
+        papers = [
+            (None, Path(paper)) for paper in build_validation_set() if paper.strip()
+        ]
+        for _, p in papers:
             logger.info(p)
 
-    if not all([p.exists() for p in papers]):
-        papers = [Path(CFG.dir.cache / f"arxiv/{paper}.txt") for paper in papers]
+    if not all([pdf_txt.exists() for _, pdf_txt in papers]):
+        papers = [
+            (p, Path(CFG.dir.cache / f"arxiv/{pdf_txt}.txt")) for p, pdf_txt in papers
+        ]
 
-    assert all([p.exists() for p in papers])
+    assert all([pdf_txt.exists() for _, pdf_txt in papers])
 
     client = PLATFORMS[CFG.platform.select]()
 
@@ -315,7 +329,7 @@ def main(argv=None):
     asyncio.run(
         ignore_exceptions(
             client,
-            [paper.absolute() for paper in papers],
+            [(paper, pdf_txt.absolute()) for paper, pdf_txt in papers],
             destination=CFG.dir.queries / CFG.platform.select,
         )
     )

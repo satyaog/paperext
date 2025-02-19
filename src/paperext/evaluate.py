@@ -25,7 +25,8 @@ from sklearn.metrics import confusion_matrix
 from paperext import CFG
 from paperext.log import logger
 from paperext.structured_output.mdl.model import ExtractionResponse, PaperExtractions
-from paperext.structured_output.utils import model2df, model_validate_yaml
+from paperext.structured_output.mdl.utils import model2df
+from paperext.structured_output.utils import model_validate_yaml
 from paperext.utils import build_validation_set
 
 PROG = f"{Path(__file__).stem.replace('_', '-')}"
