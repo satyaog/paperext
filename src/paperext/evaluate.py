@@ -24,7 +24,7 @@ from sklearn.metrics import confusion_matrix
 
 from paperext import CFG
 from paperext.log import logger
-from paperext.structured_output.mdl.model import ExtractionResponse, PaperExtractions
+from paperext.structured_output.mdl.model import Response, PaperExtractions
 from paperext.structured_output.mdl.utils import model2df
 from paperext.structured_output.utils import model_validate_yaml
 from paperext.utils import build_validation_set
@@ -135,9 +135,7 @@ def _evaluate_precision(papers: list):
         queries_dir = CFG.dir.queries / CFG.platform.select
         for i, query_f in enumerate(sorted(queries_dir.glob(f"{f.stem}*.json"))):
             logger.info(f"Fetching data from {query_f}")
-            model = ExtractionResponse.model_validate_json(
-                query_f.read_text()
-            ).extractions
+            model = Response.model_validate_json(query_f.read_text()).extractions
 
             paper_attr, paper_refs = map(
                 lambda m: _append_left_indices(

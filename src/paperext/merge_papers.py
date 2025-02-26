@@ -19,7 +19,7 @@ from pygments.lexers.data import YamlLexer
 from paperext import CFG
 from paperext.log import logger
 from paperext.structured_output.mdl.model import (
-    ExtractionResponse,
+    Response,
     PaperExtractions,
     empty_model,
 )
@@ -396,7 +396,7 @@ def merge_paper_extractions(
 
 def get_papers_from_file(
     papers: List[str],
-) -> List[Tuple[str, Path, ExtractionResponse]]:
+) -> List[Tuple[str, Path, Response]]:
     extractions_tuple = []
 
     for paper in papers:
@@ -412,9 +412,7 @@ def get_papers_from_file(
         if not responses:
             logger.info(f"No responses found for {paper_id}\nSkipping...")
             continue
-        responses = (
-            ExtractionResponse.model_validate_json(_f.read_text()) for _f in responses
-        )
+        responses = (Response.model_validate_json(_f.read_text()) for _f in responses)
         for (_, paper_id), (_, _), (_, extractions), _ in responses:
             extractions_tuple.append((paper_id, str_normalize(paper), extractions))
 
@@ -423,15 +421,15 @@ def get_papers_from_file(
     return extractions_tuple
 
 
-def get_papers_from_folder() -> List[Tuple[str, Path, ExtractionResponse]]:
+def get_papers_from_folder() -> List[Tuple[str, Path, Response]]:
     responses = (CFG.dir.queries / "openai").glob("*.json")
 
     extractions_tuple = []
     for response_path in responses:
         logger.info(f"Parsing {response_path}")
         try:
-            (_, paper), (_, _), (_, extractions), _ = (
-                ExtractionResponse.model_validate_json(response_path.read_text())
+            (_, paper), (_, _), (_, extractions), _ = Response.model_validate_json(
+                response_path.read_text()
             )
         except ValidationError as e:
             logger.error(e, exc_info=True)

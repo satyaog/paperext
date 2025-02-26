@@ -1,14 +1,14 @@
 from pathlib import Path
 from typing import Generator
 from paperext.utils import Paper
-from .model import FIRST_MESSAGE, SYSTEM_MESSAGE, ExtractionResponse, PaperExtractions
+from .model import FIRST_MESSAGE, SYSTEM_MESSAGE, Response, PaperExtractions
 
 
 class State:
     def __init__(self, paper: Paper, pdf_txt: Path):
         self._paper = paper
         self._pdf_txt = pdf_txt
-        self.responses: list[ExtractionResponse] = []
+        self.responses: list[Response] = []
 
     def format_messages(self) -> Generator[list[dict[str:str]], None, None]:
         yield [
@@ -25,8 +25,8 @@ class State:
     def push_response(self, response: "State.response_type"):
         self.responses.append(response)
 
-    def get_extraction_response(self):
-        return ExtractionResponse
+    def get_response_cls(self):
+        return Response
 
-    def get_paper_extractions(self):
+    def get_response_model(self):
         return PaperExtractions

@@ -284,7 +284,7 @@ if __name__ == "__main__":
 
         for model_cls in (
             *[m.PaperExtractions for m in (dest_model, src_model)],
-            *[m.ExtractionResponse for m in (dest_model, src_model)],
+            *[m.Response for m in (dest_model, src_model)],
         ):
             try:
                 extractions = model_cls.model_validate(model_data)
@@ -299,8 +299,8 @@ if __name__ == "__main__":
             raise e
 
         try:
-            # extractions might be a [dest_model | src_model].ExtractionResponse
-            response: src_model.ExtractionResponse = extractions
+            # extractions might be a [dest_model | src_model].Response
+            response: src_model.Response = extractions
             extractions = response.extractions
         except AttributeError:
             # extractions is of type [dest_model | src_model].PaperExtractions
@@ -314,7 +314,7 @@ if __name__ == "__main__":
         extractions = CONVERT_MODEL[src_model](extractions)
 
         if response is not None:
-            src = dest_model.ExtractionResponse(
+            src = dest_model.Response(
                 paper=response.paper,
                 words=response.words,
                 extractions=extractions,

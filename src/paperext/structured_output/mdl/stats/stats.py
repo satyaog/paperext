@@ -1,6 +1,6 @@
 # import json
 # from paperext.config import CFG
-# from ..model import ExtractionResponse
+# from ..model import Response
 # from paperext.structured_output.mdl.utils import _DOMAINS_CATEGORY_MAP, str_normalize
 
 
@@ -9,7 +9,7 @@
 #         (CFG.dir.data / "categorized_domains.json").read_text().lower()
 #     )
 #     for query in CFG.dir.queries.glob("*/*.json"):
-#         extractions = ExtractionResponse.model_validate_json(
+#         extractions = Response.model_validate_json(
 #             query.read_text()
 #         ).extractions
 #         for domain in [
@@ -30,12 +30,15 @@ from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
 from pprint import pprint
+import re
 from typing import Callable
+import unicodedata
 
 import pandas as pd
 import plotly.graph_objects as go
 
-from paperext.utils import Paper
+from paperext.sanitize_categorization import default_sanitize_key as sanitize_category
+from paperext.utils import Paper, split_entry
 
 # Load json of papers to select
 # Load analysis of papers based on the json
@@ -134,6 +137,18 @@ def normalize_model_name(model):
     return model
 
 
+normalize_model_name = lambda string: [
+    re.sub(
+        pattern=r"[\s/_\.\(\),\[\]\{\}-]",
+        string=sanitize_category(
+            unicodedata.normalize("NFKC", split).lower(),
+        ),
+        repl="",
+    )
+    for split in split_entry(string, sep_left="(", sep_right=")")
+]
+
+
 def normalize_dataset_name(dataset):
     dataset = dataset.lower()
     replacements = [
@@ -143,6 +158,9 @@ def normalize_dataset_name(dataset):
     for old, new in replacements:
         dataset = dataset.replace(old, new)
     return dataset
+
+
+normalize_dataset_name = normalize_model_name
 
 
 def normalize_library_name(library):
@@ -155,6 +173,9 @@ def normalize_library_name(library):
     for old, new in replacements:
         library = library.replace(old, new)
     return library
+
+
+normalize_library_name = normalize_model_name
 
 
 def find_analysis(paper, folder: Path, selector: Callable) -> Path | None:
@@ -200,13 +221,14 @@ def load_single_analysis(paper, folder: Path, selector: Callable):
             "paper_id": paper["paper_id"],
             "title": extraction["title"]["value"],
             "type": normalize_paper_type(extraction["type"]["value"]),
-            "primary_research_field": extraction["primary_research_field"]["name"][
-                "value"
-            ],
+            "primary_research_field": sanitize_category(
+                extraction["primary_research_field"]["name"]["value"]
+            ),
             "research_fields": [extraction["primary_research_field"]["name"]["value"]]
             + sum(
                 [
-                    [field["name"]["value"]] + field["aliases"]
+                    [sanitize_category(field["name"]["value"])]
+                    + [sanitize_category(al) for al in field["aliases"]]
                     for field in extraction["sub_research_fields"]
                 ],
                 [],
@@ -215,8 +237,11 @@ def load_single_analysis(paper, folder: Path, selector: Callable):
     ]
     rval["models"] = [
         {
-            "name": normalize_model_name(model["name"]["value"]),
-            "aliases": [normalize_model_name(alias) for alias in model["aliases"]],
+            "name": normalize_model_name(model["name"]["value"])[0],
+            "aliases": (
+                normalize_model_name(model["name"]["value"])[1:]
+                + sum([normalize_model_name(alias) for alias in model["aliases"]], []),
+            ),
             "is_contributed": model["is_contributed"]["value"],
             "is_executed": model["is_executed"]["value"],
             "is_compared": model["is_compared"]["value"],
@@ -229,8 +254,13 @@ def load_single_analysis(paper, folder: Path, selector: Callable):
     ]
     rval["datasets"] = [
         {
-            "name": normalize_dataset_name(dataset["name"]["value"]),
-            "aliases": [normalize_dataset_name(alias) for alias in dataset["aliases"]],
+            "name": normalize_dataset_name(dataset["name"]["value"])[0],
+            "aliases": (
+                normalize_dataset_name(dataset["name"]["value"])[1:]
+                + sum(
+                    [normalize_dataset_name(alias) for alias in dataset["aliases"]], []
+                )
+            ),
             "role": normalize_role(dataset["role"]),
             "referenced_paper_title": dataset["referenced_paper_title"]["value"],
             "referenced_paper_justification": dataset["referenced_paper_title"][
@@ -241,8 +271,13 @@ def load_single_analysis(paper, folder: Path, selector: Callable):
     ]
     rval["libraries"] = [
         {
-            "name": normalize_library_name(library["name"]["value"]),
-            "aliases": [normalize_library_name(alias) for alias in library["aliases"]],
+            "name": normalize_library_name(library["name"]["value"])[0],
+            "aliases": (
+                normalize_library_name(library["name"]["value"])[1:]
+                + sum(
+                    [normalize_library_name(alias) for alias in library["aliases"]], []
+                )
+            ),
             "role": normalize_role(library["role"]),
         }
         for library in extraction["libraries"]

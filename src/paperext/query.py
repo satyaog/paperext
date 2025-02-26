@@ -127,7 +127,7 @@ try:
 
         async def _wrap(*args, **kwargs):
             extractions, completion = await _create_with_completion(
-                model=model, *args, **{"max_retries": 5, **kwargs}
+                model=model, *args, **{"max_retries": 2, **kwargs}
             )
             return extractions, completion.usage
 
@@ -141,7 +141,7 @@ except ModuleNotFoundError as e:
     logging.info(e, exc_info=True)
 
 
-async def extract_from_research_paper(
+async def query(
     client: instructor.client.Instructor | instructor.client.AsyncInstructor,
     state: mdl.state.State,
     messages: list[dict[str:str]],
@@ -151,7 +151,7 @@ async def extract_from_research_paper(
     while True:
         try:
             result = client.chat.completions.create_with_completion(
-                response_model=state.get_paper_extractions(),
+                response_model=state.get_response_model(),
                 messages=messages,
             )
 
@@ -170,7 +170,7 @@ async def extract_from_research_paper(
             raise e
 
 
-async def batch_extract_models_names(
+async def batch_queries(
     client: instructor.client.Instructor | instructor.client.AsyncInstructor,
     papers_w_pdf_txt: List[Path],
     destination: Path = CFG.dir.queries,
@@ -179,12 +179,14 @@ async def batch_extract_models_names(
     state_cls = state_cls or get_state_cls()
     destination.mkdir(parents=True, exist_ok=True)
 
+    responses = []
+
     for paper, pdf_txt in papers_w_pdf_txt:
         paper_name = pdf_txt.name
 
         count = 0
-        for line in pdf_txt.read_text().splitlines():
-            count += len([w for w in line.strip().split() if w])
+        # for line in pdf_txt.read_text().splitlines():
+        #     count += len([w for w in line.strip().split() if w])
 
         state = state_cls(paper, pdf_txt)
 
@@ -193,9 +195,7 @@ async def batch_extract_models_names(
             f = f.with_stem(f"{f.stem}_{i:02}").with_suffix(".json")
 
             try:
-                response = state.get_extraction_response().model_validate_json(
-                    f.read_text()
-                )
+                response = state.get_response_cls().model_validate_json(f.read_text())
 
             except (
                 FileNotFoundError,
@@ -204,14 +204,12 @@ async def batch_extract_models_names(
                 logger.error(e, exc_info=True)
                 logging.error(e, exc_info=True)
 
-                extractions, usage = await extract_from_research_paper(
-                    client, state, messages
-                )
+                extractions, usage = await query(client, state, messages)
 
                 f.parent.mkdir(parents=True, exist_ok=True)
 
                 try:
-                    response = state.get_extraction_response()(
+                    response = state.get_response_cls()(
                         paper=paper_name,
                         words=count,
                         extractions=extractions,
@@ -220,7 +218,7 @@ async def batch_extract_models_names(
                     f.write_text(response.model_dump_json(indent=2))
 
                 except pydantic_core._pydantic_core.PydanticSerializationError:
-                    response = state.get_extraction_response()(
+                    response = state.get_response_cls()(
                         paper=paper_name,
                         words=count,
                         extractions=extractions,
@@ -231,6 +229,10 @@ async def batch_extract_models_names(
             state.push_response(response)
             logger.info(response.model_dump_json(indent=2))
 
+        responses.extend(state.responses)
+
+    return responses
+
 
 async def ignore_exceptions(
     client: instructor.client.Instructor | instructor.client.AsyncInstructor,
@@ -240,7 +242,7 @@ async def ignore_exceptions(
 ):
     for paper in validation_set:
         try:
-            await batch_extract_models_names(client, [paper], *args, **kwargs)
+            await batch_queries(client, [paper], *args, **kwargs)
         except bdb.BdbQuit:
             raise
         except Exception as e:

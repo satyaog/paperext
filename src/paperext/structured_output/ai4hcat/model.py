@@ -196,7 +196,7 @@ class PaperExtractions(BaseModel):
     )
 
 
-class ExtractionResponse(BaseModel):
+class Response(BaseModel):
     paper: str
     words: int
     extractions: PaperExtractions

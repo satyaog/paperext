@@ -167,8 +167,19 @@ def build_validation_set(seed=42):
 
 
 def split_entry(string: str, sep_left="[[", sep_right="]]"):
-    first, *extra = [_.strip().rstrip(sep_right) for _ in string.split(sep_left)]
-    assert len(extra) <= 1
+    first, *extra = [_.strip().split(sep_right) for _ in string.split(sep_left)]
+
+    try:
+        assert len(first) == 1
+        assert len(extra) <= 1
+    except AssertionError:
+        return [string]
+
+    if extra:
+        assert len(extra[0]) <= 2
+        extra = extra[0]
+    first = "".join([*first, *extra[1:]])
+    extra = extra[:1]
     extra = [_.strip() for _ in extra for _ in _.split(",")]
     return [first, *extra]
 

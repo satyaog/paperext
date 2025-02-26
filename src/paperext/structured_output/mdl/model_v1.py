@@ -212,7 +212,7 @@ class PaperExtractions(BaseModel):
 # PaperExtractions = fix_explained_fields()
 
 
-class ExtractionResponse(BaseModel):
+class Response(BaseModel):
     paper: str
     words: int
     extractions: PaperExtractions
