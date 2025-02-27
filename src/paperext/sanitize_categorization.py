@@ -2,6 +2,7 @@ import argparse
 import copy
 from io import StringIO
 import json
+import math
 from pathlib import Path
 from pprint import pprint
 from typing import Any
@@ -10,17 +11,34 @@ from paperext.log import logger
 from paperext.utils import split_entry
 
 
-def _dict_heads(dictionary: dict[Any, dict], level: int = None):
+def _dict_heads(
+    dictionary: dict[Any, dict],
+    start_level: int = None,
+    level: int = None,
+):
+    if start_level is None and level is None:
+        return dictionary
+
+    if level is None:
+        level = math.inf
+    if start_level is None:
+        start_level = 0
+
     match max(0, level):
-        case None:
-            return dictionary
         case 0:
             return {}
         case _:
-            return {
-                key: _dict_heads(value, level=level - 1)
-                for key, value in sorted(dictionary.items())
+            heads = {
+                key: _dict_heads(value, start_level=start_level - 1, level=level - 1)
+                for key, value in dictionary.items()
             }
+            if start_level <= 0:
+                return heads
+            else:
+                d = {}
+                for value in heads.values():
+                    d.update(value)
+                return d
 
 
 def _flatten_dict(dictionary: dict[Any, dict]):
@@ -94,7 +112,9 @@ def _make_sanitized_map(dict_or_keys: dict[str, dict] | set[str]):
 def split_words(key: str, separators=" "):
     for sep in separators:
         key = key.replace(sep, " ")
-    return [word.strip() for word in key.split(" ") if word.strip()]
+    for sep in "-_ ":
+        key = sep.join([word.strip() for word in key.split(sep) if word.strip()])
+    return key.split(" ")
 
 
 def default_sanitize_key(key: str, replace="_"):
@@ -104,7 +124,7 @@ def default_sanitize_key(key: str, replace="_"):
 def _eq_keys(
     key: str,
     other: str,
-    sanitize_key: callable = lambda key: default_sanitize_key(key.replace("-", " ")),
+    sanitize_key: callable = lambda key: default_sanitize_key(key, replace="_-"),
 ):
     key = sanitize_key(key)
     other = sanitize_key(other)

@@ -84,6 +84,11 @@ def main(argv: list = None):
 
                 if len(sub_cats) > 1:
                     _sub_cats = sorted(sub_cats)
+                    # _filename_prefix = sorted(set("".join(d[0] for d in sub_cats)))
+                    # _filename = "_".join(
+                    #     _filename_prefix,
+                    #     hashlib.sha256("".join(sorted(_sub_cats)).encode()).hexdigest(),
+                    # )
                     _filename = hashlib.sha256("".join(_sub_cats).encode()).hexdigest()
 
                     print(f"Identifying the most generic domain among {_sub_cats}")

@@ -41,10 +41,16 @@ def main(argv: list = None):
 
     data = {
         f"Total ({len(in_tokens)})": [sum_input + sum_output],
-        f"Average": [(sum_input + sum_output) / len(in_tokens)],
         f"{sum(in_tokens)} input token(s) @{options.cost_input:.2f}$/1M": [sum_input],
         f"{sum(out_tokens)} output token(s) @{options.cost_output:.2f}$/1M": [
             sum_output
+        ],
+        f"Average": [(sum_input + sum_output) / len(in_tokens)],
+        f"{sum(in_tokens) / len(in_tokens):.2f} input token(s) @{options.cost_input:.2f}$/1M": [
+            sum_input / len(in_tokens)
+        ],
+        f"{sum(out_tokens) / len(in_tokens):.2f} output token(s) @{options.cost_output:.2f}$/1M": [
+            sum_output / len(in_tokens)
         ],
     }
     df = pd.DataFrame(data).round(3)

@@ -8,7 +8,7 @@ from sentence_transformers import SentenceTransformer
 from sklearn.cluster import AgglomerativeClustering
 
 from paperext.config import CFG
-from paperext.sanitize_categorization import _flatten_dict
+from paperext.sanitize_categorization import _dict_heads, _flatten_dict
 from paperext.utils import Paper
 from paperext.structured_output.mdl_clus_dom.model import (
     FIRST_MESSAGE,
@@ -39,7 +39,9 @@ def _list_children_indices(
 
 
 def _sort_categories(model: SentenceTransformer, categories: list, **kwargs):
-    embeddings = model.encode(categories)
+    categories = sorted(set(categories))
+
+    embeddings = model.encode(categories, show_progress_bar=False)
     embeddings = embeddings / np.linalg.norm(embeddings, axis=1, keepdims=True)
 
     kwargs = {
@@ -69,7 +71,7 @@ def _sort_categories(model: SentenceTransformer, categories: list, **kwargs):
 
 
 def _find_min_max_threshold(model: SentenceTransformer, categories: list, **kwargs):
-    embeddings = model.encode(categories)
+    embeddings = model.encode(categories, show_progress_bar=False)
     embeddings = embeddings / np.linalg.norm(embeddings, axis=1, keepdims=True)
 
     kwargs = {
@@ -108,15 +110,22 @@ def _find_min_max_threshold(model: SentenceTransformer, categories: list, **kwar
 
 
 def cluster_categories(
-    model: SentenceTransformer, categories: list, tolerance=0.75, **kwargs
+    model: SentenceTransformer, categories: dict[str:dict], tolerance=0.75, **kwargs
 ):
-    embeddings = model.encode(categories)
+    sorted_categories = sorted(categories)
+    all_categories = sorted(set(_flatten_dict(categories)))
+
+    embeddings = model.encode(sorted_categories, show_progress_bar=False)
     embeddings = embeddings / np.linalg.norm(embeddings, axis=1, keepdims=True)
-    similarities = model.similarity(embeddings, embeddings)
+    all_embeddings = model.encode(all_categories, show_progress_bar=False)
+    all_embeddings = all_embeddings / np.linalg.norm(
+        all_embeddings, axis=1, keepdims=True
+    )
+    similarities = model.similarity(all_embeddings, all_embeddings)
     similarities = {
         (domain, other): similarities[i, j]
-        for i, domain in enumerate(categories)
-        for j, other in enumerate(categories)
+        for i, domain in enumerate(all_categories)
+        for j, other in enumerate(all_categories)
     }
 
     distance_threshold = 1 - math.cos(math.pi * (1 - tolerance))
@@ -144,20 +153,35 @@ def cluster_categories(
         if cluster_id not in clusters:
             clusters[cluster_id] = []
 
-        clusters[cluster_id].append(categories[sentence_id])
+        clusters[cluster_id].append(sorted_categories[sentence_id])
 
-    categories = {}
+    categorisation = {}
 
     for cluster in clusters.values():
         scores = []
         for element in cluster:
-            score = sum([similarities[(element, other)] for other in cluster])
+            score = [
+                similarities[(element, other)] for other in cluster if element != other
+            ]
+            score = sum(score) / (len(score) or 1)
+            # for level in range(2):
+            #     context_score = [
+            #         similarities[(element, other)]
+            #         for other in _dict_heads(
+            #             categories[element], start_level=level, level=level + 1
+            #         )
+            #         if element != other
+            #     ]
+            #     context_score = sum(context_score) / (
+            #         len(cluster) * (level + 1) * (len(context_score) or 1)
+            #     )
+            #     score += context_score
             scores.append((score, element))
         scores.sort(reverse=True)
         general_domain = scores[0][1]
-        categories[general_domain] = {s[1]: {} for s in scores[1:]}
+        categorisation[general_domain] = {s[1]: {} for s in scores[1:]}
 
-    return categories
+    return categorisation
 
 
 class State:

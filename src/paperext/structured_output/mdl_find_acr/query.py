@@ -18,11 +18,9 @@ from paperext.sanitize_categorization import (
     _update_sanitized_map,
 )
 from paperext.structured_output.mdl.stats.stats import load_analysis
+from paperext.structured_output.mdl_clus_dom.state import _sort_categories
 from paperext.structured_output.mdl_find_acr.model import Response
-from paperext.structured_output.mdl_find_acr.state import (
-    State,
-    _sort_categories,
-)
+from paperext.structured_output.mdl_find_acr.state import State
 
 
 def main(argv: list = None):
@@ -233,7 +231,7 @@ def main(argv: list = None):
             sep="\n",
         )
 
-    print(acronyms_or_abbreviations)
+    # print(acronyms_or_abbreviations)
 
 
 if __name__ == "__main__":
