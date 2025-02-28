@@ -227,7 +227,7 @@ async def batch_queries(
                     f.write_text(response.model_dump_json(indent=2))
 
             state.push_response(response)
-            logger.info(response.model_dump_json(indent=2))
+            # logger.info(response.model_dump_json(indent=2))
 
         responses.extend(state.responses)
 

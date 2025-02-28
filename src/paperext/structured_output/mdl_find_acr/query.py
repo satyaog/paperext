@@ -71,6 +71,7 @@ def main(argv: list = None):
     terms = _sort_categories(model, terms)
 
     acronyms_or_abbreviations: dict[str, list[str]] = {}
+    left_overs = set()
 
     with Config.push():
         # CFG.platform.select = "ollama"
@@ -146,6 +147,11 @@ def main(argv: list = None):
                     acr_abb.acronym_abbreviation.value,
                     acr_abb.full_form.value,
                 )
+
+                if (acr in concurrent_terms) != (full_form in concurrent_terms):
+                    left_overs.add(
+                        (tuple(sorted((acr, full_form))), tuple(concurrent_terms))
+                    )
 
                 if acr not in concurrent_terms or full_form not in concurrent_terms:
                     logger.warning(
