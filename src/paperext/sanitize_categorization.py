@@ -7,6 +7,7 @@ from pathlib import Path
 from pprint import pprint
 from typing import Any
 
+from paperext.config import CFG
 from paperext.log import logger
 from paperext.utils import split_entry
 
@@ -74,28 +75,42 @@ def _debug_msg_merge_dict(key: str | list, first: dict, other: dict):
     )
 
 
-def _update_sanitized_map(sanitized_key_map: dict[str, str], *keys):
+def _update_sanitized_map(sanitized_map: dict[str, str], *keys, return_bare=False):
     for key in keys:
-        if key in sanitized_key_map:
+        if key in sanitized_map:
             continue
 
         sane_key = default_sanitize_key(key)
         sane_key, *_ = split_entry(sane_key, sep_left="(", sep_right=")")
-        same_keys = [k for k in sanitized_key_map if _eq_keys(sane_key, k)]
-
+        bare_key = bare_sanitize_key(sane_key)
+        same_keys = [k for k in sanitized_map if _eq_keys(sane_key, k)]
         if same_keys:
-            sane_key = _make_sane_key(sane_key, *same_keys)
+            sane_key = _make_sane_key(sane_key, bare_key, *same_keys)
 
-        sanitized_key_map.update(**{k: sane_key for k in (key, sane_key, *same_keys)})
+        sanitized_map.update(
+            **{
+                k: sane_key
+                for k in (
+                    key,
+                    bare_key,
+                    sane_key,
+                    *same_keys,
+                    # update accronyms sane key
+                    *(k for k, v in sanitized_map.items() if _eq_keys(sane_key, v)),
+                )
+            }
+        )
 
-    return sanitized_key_map
+    return (
+        (bare_sanitize_key(key) if return_bare else sanitized_map[key]) for key in keys
+    )
 
 
-def _make_sanitized_map(dict_or_keys: dict[str, dict] | set[str]):
-    if isinstance(dict_or_keys, dict):
-        keys = _flatten_dict(dict_or_keys)
+def _make_sanitized_map(dict_or_list: dict[str, dict] | set[str]):
+    if isinstance(dict_or_list, dict):
+        keys = _flatten_dict(dict_or_list)
     else:
-        keys = dict_or_keys
+        keys = dict_or_list
     keys = sorted(set(keys))
 
     sanitized_key_map = {}
@@ -110,21 +125,44 @@ def _make_sanitized_map(dict_or_keys: dict[str, dict] | set[str]):
 
 
 def split_words(key: str, separators=" "):
-    for sep in separators:
+    for sep in set("_" + separators):
         key = key.replace(sep, " ")
     for sep in "-_ ":
         key = sep.join([word.strip() for word in key.split(sep) if word.strip()])
     return key.split(" ")
 
 
+# def _infer_words(key, *others):
+#     key_others = (key, *others)
+#     words_for_each = [split_words(k, separators=" -_") for k in key_others]
+#     word_index = 0
+#     while word_index < max(len(wfe) for wfe in words_for_each):
+#         min_len = min([len(wfe[word_index]) for wfe in words_for_each])
+#         for key_index, word in enumerate(wfe[word_index] for wfe in words_for_each):
+#             if len(word) > min_len:
+#                 words = [word[:min_len], word[min_len:]]
+#                 words_for_each[key_index].pop(word_index)
+#                 while words:
+#                     words_for_each[key_index].insert(word_index, words.pop(-1))
+#         word_index += 1
+
+#     assert all(wfe == words_for_each[0] for wfe in words_for_each[1:])
+
+#     return words_for_each[0]
+
+
 def default_sanitize_key(key: str, replace="_"):
     return " ".join(split_words(key.lower(), separators=replace))
+
+
+def bare_sanitize_key(key: str):
+    return default_sanitize_key(key, replace="-_").replace(" ", "")
 
 
 def _eq_keys(
     key: str,
     other: str,
-    sanitize_key: callable = lambda key: default_sanitize_key(key, replace="_-"),
+    sanitize_key: callable = bare_sanitize_key,
 ):
     key = sanitize_key(key)
     other = sanitize_key(other)
@@ -132,19 +170,26 @@ def _eq_keys(
 
 
 def _make_sane_key(key, *others, sanitize_key: callable = default_sanitize_key):
-    key = sanitize_key(key)
-    others = [sanitize_key(o) for o in others]
+    all_keys = [sanitize_key(o) for o in (key, *others)]
 
-    dash_locs = set(
-        sum([[i for i, c in enumerate(k) if c == "-"] for k in (key, *others)], [])
-    )
+    all_chars = [list(words) for words in all_keys]
 
-    key = "".join((("-" if i in dash_locs else c) for i, c in enumerate(key)))
+    char_index = 1
+    while char_index < max(len(chars) for chars in all_chars):
+        col = [chars[char_index] for chars in all_chars]
+        sep = "-" if "-" in col else " "
+        for key_index, c in enumerate(col):
+            if set(col) & set(" -") and c not in " -":
+                all_chars[key_index].insert(char_index, " ")
+            all_chars[key_index][char_index] = (
+                all_chars[key_index][char_index].strip() or sep
+            )
 
-    while (_ := key.replace("-" * 2, "-")) != key:
-        key = _
+        char_index += 1
 
-    return key
+    assert all(chars == all_chars[0] for chars in all_chars[1:])
+
+    return "".join(all_chars[0])
 
 
 def _sanitize_categories(
@@ -196,20 +241,40 @@ def _sanitize_categories(
     return ignore
 
 
-def sanitize_categories(categories: dict[str, dict]):
+def sanitize_categories(
+    categories: dict[str, dict],
+    accronyms: dict[str, str] = None,
+    sanitized_map: dict[str, str] = None,
+):
     categories = copy.deepcopy(categories)
 
+    accronyms = accronyms or {}
+    accronyms = accronyms.copy()
+
+    sanitized_map = sanitized_map or {}
+    sanitized_map = sanitized_map.copy()
+
     ignore = {k: {} for k in _flatten_dict(categories.pop("ignore", {}))}
-    sanitized_key_map = _make_sanitized_map(categories)
+    _update_sanitized_map(
+        sanitized_map,
+        *set(_flatten_dict(categories)),
+        *accronyms.keys(),
+        *accronyms.values(),
+    )
+    accronyms = {sanitized_map[k]: sanitized_map[v] for k, v in accronyms.items()}
+    sanitized_map = {
+        k: accronyms.get(sanitized_map[k], v) for k, v in sanitized_map.items()
+    }
 
     ignore.update(
+        **{k: {} for k in accronyms.keys()},
         **_sanitize_categories(
             categories,
-            sanitize_key=lambda key: sanitized_key_map[key],
-        )
+            sanitize_key=lambda key: sanitized_map[key],
+        ),
     )
 
-    ignore = {k: v for k, v in ignore.items() if k not in sanitized_key_map}
+    ignore = {k: v for k, v in ignore.items() if k not in sanitized_map}
 
     if ignore:
         _sanitized_ignore_map = _make_sanitized_map(ignore)
@@ -232,6 +297,12 @@ def main(argv=None):
         help="Path to categorization JSON file",
     )
     parser.add_argument(
+        "--accronyms",
+        type=Path,
+        default=CFG.dir.data / "mdl_find_acr/acronyms_or_abbreviations_domains.json",
+        help="Path to categorized domains",
+    )
+    parser.add_argument(
         "--out",
         metavar="PATH",
         type=Path,
@@ -241,11 +312,19 @@ def main(argv=None):
     options = parser.parse_args(argv)
     options.out = options.out or options.categorization
 
-    domains = json.loads(options.categorization.read_text())
-    domains = {k.replace(" ", "_"): v for k, v in sanitize_categories(domains).items()}
+    if options.accronyms:
+        accronyms_map = json.loads(options.accronyms.read_text().lower())
+    else:
+        accronyms_map = None
+
+    categories = json.loads(options.categorization.read_text())
+    categories = {
+        k.replace(" ", "_"): v
+        for k, v in sanitize_categories(categories, accronyms_map).items()
+    }
 
     (options.out.write_text if str(options.out) != "-" else print)(
-        json.dumps(domains, indent=2, sort_keys=True)
+        json.dumps(categories, indent=2, sort_keys=True)
     )
 
 

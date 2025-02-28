@@ -37,7 +37,10 @@ import unicodedata
 import pandas as pd
 import plotly.graph_objects as go
 
-from paperext.sanitize_categorization import default_sanitize_key as sanitize_category
+from paperext.sanitize_categorization import (
+    _update_sanitized_map,
+    default_sanitize_key as sanitize_category,
+)
 from paperext.utils import Paper, split_entry
 
 # Load json of papers to select
@@ -113,6 +116,10 @@ def normalize_paper_type(paper_type):
 
 def normalize_role(role):
     return role.lower()
+
+
+def normalize_category_research_field(research_field):
+    return next(_update_sanitized_map({}, research_field, return_bare=True))
 
 
 def normalize_model_name(model):

@@ -20,6 +20,8 @@ from paperext.sanitize_categorization import (
     _update_sanitized_map,
     sanitize_categories,
 )
+
+# from paperext.structured_output import get_struct_module
 from paperext.structured_output.mdl_clus_dom.state import (
     _find_min_max_threshold,
     _sort_categories,
@@ -27,6 +29,8 @@ from paperext.structured_output.mdl_clus_dom.state import (
 )
 from paperext.structured_output.mdl_cat_dom.state import State
 from paperext.structured_output.mdl_cat_dom.model import Response
+
+# from paperext.utils import Paper
 
 
 def _iter_tolerance(min_tolerance: int, max_tolerance: int, log_step=4):
@@ -63,8 +67,35 @@ def hierarchical_clustering(categories: list):
     return categories
 
 
+# def list_domains(papers: list[dict | Paper]):
+#     for paper in papers:
+#         if not isinstance(paper, Paper):
+#             paper = Paper(paper)
+
+#         for query in paper.queries:
+#             extractions = (
+#                 get_struct_module(CFG.platform.struct)
+#                 .model.Response.model_validate_json(query.read_text())
+#                 .extractions
+#             )
+
+#             for research_field in (
+#                 extractions.primary_research_field,
+#                 *extractions.sub_research_fields,
+#             ):
+#                 yield research_field.name.value
+#                 yield from research_field.aliases
+
+
 def main(argv: list = None):
     parser = argparse.ArgumentParser()
+    # parser.add_argument(
+    #     "--papers",
+    #     nargs="*",
+    #     type=Path,
+    #     default=[],
+    #     help="Paperoni json report of papers to analyse",
+    # )
     parser.add_argument(
         "--categorized-domains",
         type=Path,

@@ -12,11 +12,27 @@ from pprint import pprint
 from typing import Generator, List, Tuple
 
 import Levenshtein
+import numpy as np
 import pandas as pd
+from sentence_transformers import SentenceTransformer
 
 from paperext.config import CFG
 
+from paperext.sanitize_categorization import (
+    _flatten_dict,
+    _make_sanitized_map,
+    _update_sanitized_map,
+    sanitize_categories,
+)
+from paperext.structured_output import get_struct_module
 from paperext.structured_output.mdl.stats.stats import load_analysis
+
+from paperext.structured_output.mdl_clus_dom.state import (
+    _find_min_max_threshold,
+    _sort_categories,
+    cluster_categories,
+)
+from paperext.utils import Paper
 
 
 def build_domains_dataframe(domains):
@@ -53,24 +69,40 @@ def levenshtein_for_sequence(remaining, domain):
     return sum(dists)
 
 
-def get_proposition(remainings, domains, k=10, df=None):
+def get_proposition(
+    remainings,
+    domains,
+    k=10,
+    df=None,
+    similarities: dict[tuple[str, str], float] = None,
+):
+    if not similarities:
+        model = SentenceTransformer("all-MiniLM-L6-v2")
+        all_entries = sorted(set(remainings) | set(df["domain"]))
+        embeddings = model.encode(all_entries, show_progress_bar=False)
+        embeddings = embeddings / np.linalg.norm(embeddings, axis=1, keepdims=True)
+        similarities = model.similarity(embeddings, embeddings)
+        similarities = {
+            (domain, other): similarities[i, j]
+            for i, domain in enumerate(all_entries)
+            for j, other in enumerate(all_entries)
+        }
+
     if df is None:
         df = build_domains_dataframe(domains)
     propositions = []
     for remaining in remainings:
         remaining_domain_is_probably_an_acronym = is_probably_an_acronym(remaining)
         distances = []
-        for domain in list(df["domain"]):
+        for domain in set(df["domain"]):
             if remaining_domain_is_probably_an_acronym and not is_probably_an_acronym(
                 domain
             ):
-                distance = Levenshtein.distance(
-                    remaining, "".join(m[0] for m in domain.split(" "))
-                )
+                distance = 1 - similarities[remaining, domain]
             elif remaining_domain_is_probably_an_acronym:
                 continue
             else:
-                distance = Levenshtein.distance(remaining.lower(), domain.lower())
+                distance = 1 - similarities[remaining, domain]
 
             distances.append((distance, domain))
 
@@ -376,6 +408,26 @@ def any_remainings(domains_df, analysis, skipped):
     )
 
 
+def list_domains(papers: list[dict | Paper]):
+    for paper in papers:
+        if not isinstance(paper, Paper):
+            paper = Paper(paper)
+
+        for query in paper.queries:
+            extractions = (
+                get_struct_module(CFG.platform.struct)
+                .model.Response.model_validate_json(query.read_text())
+                .extractions
+            )
+
+            for research_field in (
+                extractions.primary_research_field,
+                *extractions.sub_research_fields,
+            ):
+                yield research_field.name.value
+                yield from research_field.aliases
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -391,16 +443,50 @@ def main(argv=None):
         default=CFG.dir.data / "mdl/categorized_domains.json",
         help="Path to categorized domains",
     )
+    parser.add_argument(
+        "--accronyms",
+        type=Path,
+        default=CFG.dir.data / "mdl_find_acr/acronyms_or_abbreviations_domains.json",
+        help="Path to categorized domains",
+    )
 
     options = parser.parse_args(argv)
 
     domains = json.loads(options.categorized_domains.read_text())
+
+    if options.accronyms:
+        accronyms_map = json.loads(options.accronyms.read_text().lower())
+    else:
+        accronyms_map = None
 
     papers = []
     for papers_json_path in options.papers:
         papers.extend(json.loads(Path(papers_json_path).read_text()))
 
     analysis, _ = load_analysis(papers, CFG.dir.queries / CFG.platform.select)
+
+    sanitized_map = _make_sanitized_map(set(list_domains(papers)))
+    _update_sanitized_map(
+        sanitized_map,
+        *set(_flatten_dict(domains["abstract_research_topics"])),
+        *set(_flatten_dict(domains["application_domains"])),
+        *accronyms_map.keys(),
+        *accronyms_map.values(),
+        *set(analysis["attrs"]["research_fields"].explode()),
+    )
+    accronyms_map = {
+        sanitized_map[k]: sanitized_map[v] for k, v in accronyms_map.items()
+    }
+    sanitized_map = {
+        k: accronyms_map.get(sanitized_map[k], v) for k, v in sanitized_map.items()
+    }
+    domains = {
+        k.replace(" ", "_"): v
+        for k, v in sanitize_categories(domains, accronyms_map, sanitized_map).items()
+    }
+
+    for research_fields in analysis["attrs"]["research_fields"]:
+        research_fields[:] = map(lambda x: sanitized_map[x], research_fields)
 
     print(analysis["attrs"].shape)
 

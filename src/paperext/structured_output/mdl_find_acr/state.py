@@ -1,10 +1,5 @@
-import math
 from pathlib import Path
 from typing import Generator
-
-import numpy as np
-from sentence_transformers import SentenceTransformer
-from sklearn.cluster import AgglomerativeClustering
 
 from paperext.sanitize_categorization import (
     _update_sanitized_map,

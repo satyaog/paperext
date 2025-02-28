@@ -17,10 +17,32 @@ from paperext.sanitize_categorization import (
     _make_sanitized_map,
     _update_sanitized_map,
 )
+from paperext.structured_output import get_struct_module
 from paperext.structured_output.mdl.stats.stats import load_analysis
 from paperext.structured_output.mdl_clus_dom.state import _sort_categories
 from paperext.structured_output.mdl_find_acr.model import Response
 from paperext.structured_output.mdl_find_acr.state import State
+from paperext.utils import Paper
+
+
+def list_domains(papers: list[dict | Paper]):
+    for paper in papers:
+        if not isinstance(paper, Paper):
+            paper = Paper(paper)
+
+        for query in paper.queries:
+            extractions = (
+                get_struct_module(CFG.platform.struct)
+                .model.Response.model_validate_json(query.read_text())
+                .extractions
+            )
+
+            for research_field in (
+                extractions.primary_research_field,
+                *extractions.sub_research_fields,
+            ):
+                yield research_field.name.value
+                yield from research_field.aliases
 
 
 def main(argv: list = None):
@@ -44,9 +66,6 @@ def main(argv: list = None):
     for papers_json_path in options.papers:
         papers.extend(json.loads(papers_json_path.read_text()))
 
-    analysis, _ = load_analysis(papers, CFG.dir.queries / CFG.platform.select)
-    papers = analysis["attrs"]
-
     categorised_terms = json.loads(options.categorized_terms.read_text().lower())
     terms = sorted(
         set(
@@ -61,6 +80,10 @@ def main(argv: list = None):
         )
     )
     sanitized_map = _make_sanitized_map(terms)
+    _update_sanitized_map(sanitized_map, *set(list_domains(papers)))
+
+    analysis, _ = load_analysis(papers, CFG.dir.queries / CFG.platform.select)
+    papers = analysis["attrs"]
     _update_sanitized_map(
         sanitized_map, *papers.explode("research_fields")["research_fields"].unique()
     )
