@@ -76,6 +76,7 @@ def main(argv=None):
         json.loads(output.read_text())
     except json.decoder.JSONDecodeError as e:
         logger.error(f"Paperoni report is not a valid JSON: {e}", exc_info=True)
+        raise
 
 
 if __name__ == "__main__":

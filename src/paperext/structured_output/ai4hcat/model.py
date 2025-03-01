@@ -176,7 +176,7 @@ class PaperExtractions(BaseModel):
     primary_category: Explained[Category] = Field(
         description="Primary eco-responsible category of the paper",
     )
-    seconday_categories: List[Explained[Category]] = Field(
+    secondary_categories: List[Explained[Category]] = Field(
         description="List of secondary eco-responsible categories of the paper",
     )
     primary_sub_category: Explained[SubCategory] = Field(
