@@ -18,7 +18,7 @@ class State:
             },
             {
                 "role": "user",
-                "content": FIRST_MESSAGE.format(self.pdf_txt.read_text()),
+                "content": FIRST_MESSAGE.format(self._pdf_txt.read_text()),
             },
         ]
 
