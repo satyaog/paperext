@@ -29,8 +29,9 @@ class State:
         self._pdf_txt = pdf_txt
         self._domain = domain
         self._other_domains = other_domains
-        self._sanitized_map = sanitized_map
+        self._sanitized_map = sanitized_map.copy()
 
+        self._queries_data: list[Response] = []
         self.responses: list[Response] = []
 
     @property
@@ -40,7 +41,7 @@ class State:
     def format_messages(self) -> Generator[list[dict[str:str]], None, None]:
         _messages = []
         listed_domains = set()
-        missing = set("empty")
+        missing = None
 
         _messages = [
             {
@@ -56,7 +57,15 @@ class State:
             },
         ]
 
-        while missing:
+        while missing is None or (len(missing) / len(self._other_domains)) > 0.1:
+            self._queries_data.append(
+                {
+                    "domain": self._domain,
+                    "domain_pool": self._other_domains,
+                    "missing": missing,
+                }
+            )
+
             _messages[0] = {
                 "role": "system",
                 "content": SYSTEM_MESSAGE,
@@ -69,6 +78,16 @@ class State:
             ):
                 _update_sanitized_map(self._sanitized_map, closest_parent_domain)
 
+            if closest_child_domain := default_sanitize_key(
+                self.responses[-1].extractions.closest_child_domain.value
+            ):
+                _update_sanitized_map(self._sanitized_map, closest_child_domain)
+
+            if closest_sibling_domain := default_sanitize_key(
+                self.responses[-1].extractions.closest_sibling_domain.value
+            ):
+                _update_sanitized_map(self._sanitized_map, closest_sibling_domain)
+
             for domains in (
                 self.responses[-1].extractions.semantically_equivalent_domains,
                 self.responses[-1].extractions.parent_domains,
@@ -76,16 +95,33 @@ class State:
                 self.responses[-1].extractions.sibling_domains,
                 self.responses[-1].extractions.unrelated_domains,
             ):
-                for i, domain in enumerate(domains):
+                for domain in domains:
                     if domain := default_sanitize_key(domain.value):
                         _update_sanitized_map(self._sanitized_map, domain)
 
             if closest_parent_domain := self._sanitized_map.get(
                 closest_parent_domain, ""
             ):
+                self.responses[-1].extractions.closest_parent_domain.value = (
+                    closest_parent_domain
+                )
                 listed_domains.add(closest_parent_domain)
 
-            self.responses[-1].extractions.closest_parent_domain.value = ""
+            if closest_child_domain := self._sanitized_map.get(
+                closest_child_domain, ""
+            ):
+                self.responses[-1].extractions.closest_child_domain.value = (
+                    closest_child_domain
+                )
+                listed_domains.add(closest_child_domain)
+
+            if closest_sibling_domain := self._sanitized_map.get(
+                closest_sibling_domain, ""
+            ):
+                self.responses[-1].extractions.closest_sibling_domain.value = (
+                    closest_sibling_domain
+                )
+                listed_domains.add(closest_sibling_domain)
 
             for domains in (
                 self.responses[-1].extractions.semantically_equivalent_domains,
@@ -94,11 +130,11 @@ class State:
                 self.responses[-1].extractions.sibling_domains,
                 self.responses[-1].extractions.unrelated_domains,
             ):
-                for i, domain in enumerate(domains):
-                    if domain := self._sanitized_map.get(domain, ""):
-                        listed_domains.add(domain)
+                for domain in domains:
+                    if _domain := self._sanitized_map.get(domain.value, ""):
+                        listed_domains.add(_domain)
 
-                    domains[i].value = domain
+                    domain.value = _domain
 
             missing = (
                 set(self._sanitized_map[domain] for domain in self._other_domains)
@@ -115,6 +151,17 @@ class State:
 
     def push_response(self, response: Response):
         self.responses.append(response)
+
+    def make_response(
+        self, paper_name: str, words: int, analysis: Analysis, usage: dict
+    ):
+        return Response(
+            paper=paper_name,
+            words=words,
+            extractions=analysis,
+            usage=usage,
+            query_data=self._queries_data[-1],
+        )
 
     def get_response_cls(self):
         return Response

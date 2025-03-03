@@ -54,6 +54,38 @@ Example:
 """
 
 
+def which_hatch() -> str:
+    for hatch in subprocess.run(
+        [
+            "which",
+            "-a",
+            "hatch",
+        ],
+        capture_output=True,
+        check=True,
+        text=True,
+    ).stdout.splitlines():
+        try:
+            subprocess.run(
+                [hatch, "--help"],
+                capture_output=True,
+                check=True,
+            )
+        except subprocess.CalledProcessError as e:
+            logger.debug(
+                f"{hatch} failed with error: {e}",
+                exc_info=True,
+            )
+            continue
+        return hatch
+
+    else:
+        return None
+
+
+_HATCH = which_hatch()
+
+
 def paperoni_download(paper_data: dict, cache_dir: Path):
     paper = Paper(paper_data)
 
@@ -86,9 +118,11 @@ def paperoni_download(paper_data: dict, cache_dir: Path):
 
             subprocess.run(
                 [
-                    "hatch",
-                    "run",
-                    "paperoni:paperoni",
+                    *(
+                        (_HATCH, "run", "paperoni:paperoni")
+                        if _HATCH
+                        else ("paperoni",)
+                    ),
                     "download",
                     "--config",
                     _f.name,
@@ -223,6 +257,7 @@ def main(argv=None):
     parser.add_argument(
         "--paperoni",
         metavar="JSON",
+        nargs="+",
         type=Path,
         help="Paperoni json output of papers to download and convert pdfs -> txts",
     )
@@ -254,8 +289,11 @@ def main(argv=None):
     completed = []
     failed = []
 
+    papers = sum(
+        [json.loads(paperoni.read_text()) for paperoni in options.paperoni], []
+    )
+
     with ThreadPool(processes=8) as pool:
-        papers = json.loads(options.paperoni.read_text() if options.paperoni else "{}")
         for paper_id, text_file, link_types in pool.starmap(
             paperoni_download,
             ((paper, options.cache_dir) for paper in papers),

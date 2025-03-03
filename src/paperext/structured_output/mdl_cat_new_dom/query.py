@@ -5,6 +5,7 @@ from datetime import datetime
 import hashlib
 import json
 import logging
+import math
 from pathlib import Path
 
 from instructor.exceptions import InstructorRetryException
@@ -25,6 +26,7 @@ from paperext.sanitize_categorization import (
 from paperext.structured_output.mdl.stats.build_domains_tree import (
     any_remainings,
     build_domains_dataframe,
+    get_domain,
     get_proposition,
 )
 from paperext.structured_output.mdl.stats.stats import load_analysis
@@ -114,11 +116,13 @@ def main(argv: list = None):
     sanitized_map = _make_sanitized_map(set(list_domains(papers)))
     _update_sanitized_map(
         sanitized_map,
-        *set(_flatten_dict(domains["abstract_research_topics"])),
-        *set(_flatten_dict(domains["application_domains"])),
-        *accronyms_map.keys(),
-        *accronyms_map.values(),
-        *set(analysis["attrs"]["research_fields"].explode()),
+        *(
+            set(_flatten_dict(domains["abstract_research_topics"]))
+            | set(_flatten_dict(domains["application_domains"]))
+            | set(accronyms_map.keys())
+            | set(accronyms_map.values())
+            | set(analysis["attrs"]["research_fields"].explode())
+        ),
     )
     accronyms_map = {
         sanitized_map[k]: sanitized_map[v] for k, v in accronyms_map.items()
@@ -126,19 +130,23 @@ def main(argv: list = None):
     sanitized_map = {
         k: accronyms_map.get(sanitized_map[k], v) for k, v in sanitized_map.items()
     }
-    domains = {
-        k.replace(" ", "_"): v
-        for k, v in sanitize_categories(domains, accronyms_map, sanitized_map).items()
-    }
+    # domains = {
+    #     k.replace(" ", "_"): v
+    #     for k, v in sanitize_categories(domains, accronyms_map, sanitized_map).items()
+    # }
 
     for research_fields in analysis["attrs"]["research_fields"]:
         research_fields[:] = map(lambda x: sanitized_map[x], research_fields)
 
+    skipped = []
     df = build_domains_dataframe(domains)
-    remainings = any_remainings(df, analysis, [])
+    remainings = any_remainings(df, analysis, skipped)
 
     model = SentenceTransformer("all-MiniLM-L6-v2")
-    entries = sorted(set(remainings) | set(df["domain"]))
+    entries = sorted(
+        (set(remainings) | set(df["domain"]))
+        - set(["abstract_research_topics", "application_domains"])
+    )
     embeddings = model.encode(entries)
     embeddings = embeddings / np.linalg.norm(embeddings, axis=1, keepdims=True)
     similarities = model.similarity(embeddings, embeddings)
@@ -147,6 +155,14 @@ def main(argv: list = None):
         for i, domain in enumerate(entries)
         for j, other in enumerate(entries)
     }
+
+    Path(options.categorized_domains).with_suffix(".tmp").write_text(
+        json.dumps(domains, indent=2, sort_keys=True)
+    )
+
+    domains_pool = set(df["domain"]) - set(
+        ["abstract_research_topics", "application_domains"]
+    )
 
     with Config.push():
         # CFG.platform.select = "ollama"
@@ -163,14 +179,18 @@ def main(argv: list = None):
 
         client = PLATFORMS[CFG.platform.select]()
 
-        for _ in tqdm.tqdm(
-            list(range(len(remainings))), desc="Finding accronyms/abbreviations"
-        ):
-            distances = get_proposition(
-                remainings, domains, k=20, df=df, similarities=similarities
+        for _ in tqdm.tqdm(list(range(len(remainings))), desc="Categorizing domains"):
+            all_distances = get_proposition(
+                remainings,
+                domains,
+                k=20,
+                df=df,
+                similarities=similarities,
+                exclude=["abstract_research_topics", "application_domains"],
+                domains_pool=domains_pool,
             )
 
-            subject, *propositions = distances[0][1:]
+            subject, *propositions = all_distances[0][1:]
 
             _filename_prefix = "".join(
                 [subject[0]] + sorted(set(domain[0] for domain in sorted(propositions)))
@@ -213,39 +233,108 @@ def main(argv: list = None):
                 _update_sanitized_map(
                     sanitized_map, r.extractions.closest_parent_domain.value
                 )
-
-                for domains in (
-                    r.extractions.semantically_equivalent_domains,
-                    r.extractions.parent_domains,
-                    r.extractions.child_domains,
-                    r.extractions.sibling_domains,
-                    r.extractions.unrelated_domains,
-                ):
-                    for i, domain in enumerate(domains):
-                        _update_sanitized_map(sanitized_map, domain)
-
-            for r in responses:
-                closest_parent_domain = sanitized_map[
-                    r.extractions.closest_parent_domain.value
-                ]
-
-                equivalent_match = next(
-                    (
-                        sanitized_map[_d.value]
-                        for _d in r.extractions.semantically_equivalent_domains
-                        if sanitized_map[subject] == sanitized_map[_d.value]
-                    )
+                _update_sanitized_map(
+                    sanitized_map, r.extractions.closest_child_domain.value
+                )
+                _update_sanitized_map(
+                    sanitized_map, r.extractions.closest_sibling_domain.value
                 )
 
-                for domains in (
+                for r_domains in (
                     r.extractions.semantically_equivalent_domains,
                     r.extractions.parent_domains,
                     r.extractions.child_domains,
                     r.extractions.sibling_domains,
                     r.extractions.unrelated_domains,
                 ):
-                    for i, domain in enumerate(domains):
-                        domain = sanitized_map[domain]
+                    for domain in r_domains:
+                        _update_sanitized_map(sanitized_map, domain.value)
+
+            _propositions_map = {
+                sanitized_map[domain]: (i, sanitized_map[domain])
+                for i, domain in enumerate(propositions)
+            }
+
+            selection = None
+            equivalent_matches = []
+            parent_matches = []
+            child_matches = []
+            sibling_matches = []
+
+            for r in responses:
+                _equivalent_matches = (
+                    sorted(
+                        _propositions_map[_d.value]
+                        for _d in r.extractions.semantically_equivalent_domains
+                    )
+                    if len(r.extractions.semantically_equivalent_domains)
+                    / len(propositions)
+                    <= 0.2
+                    else []
+                )
+
+                if _equivalent_matches:
+                    equivalent_matches.extend(_equivalent_matches)
+                    break
+
+                if (
+                    _parent_match := _propositions_map.get(
+                        r.extractions.closest_parent_domain.value, None
+                    )
+                ) is not None:
+                    parent_matches.append(_parent_match)
+
+                if (
+                    _child_match := _propositions_map.get(
+                        r.extractions.closest_parent_domain.value, None
+                    )
+                ) is not None:
+                    child_matches.append(_child_match)
+
+                if (
+                    _sibling_match := _propositions_map.get(
+                        r.extractions.closest_sibling_domain.value, None
+                    )
+                ) is not None:
+                    sibling_matches.append(_sibling_match)
+
+            equivalent_match = next(iter(sorted(equivalent_matches)), (math.inf, None))
+            parent_match = next(iter(sorted(parent_matches)), (math.inf, None))
+            child_match = next(iter(sorted(child_matches)), (math.inf, None))
+            sibling_match = next(iter(sorted(sibling_matches)), (math.inf, None))
+
+            if equivalent_match[1]:
+                selection = equivalent_match
+            else:
+                selection = sorted((parent_match, child_match, sibling_match))[0]
+
+            if selection[1] is None:
+                skipped.append(subject)
+            elif selection in (equivalent_match, parent_match):
+                get_domain(selection[1], domains, df)[subject] = {}
+            elif selection is child_match:
+                parent = df[df["domain"] == selection[1]]["parent1"].iloc[0]
+                parent_group = get_domain(parent, domains, df)
+                chosen_group = parent_group.pop(selection[1])
+                parent_group[subject] = {selection[1]: chosen_group}
+            elif selection is sibling_match:
+                parent = df[df["domain"] == selection[1]]["parent1"].iloc[0]
+                get_domain(parent, domains, df)[subject] = {}
+
+            df = build_domains_dataframe(domains)
+            remainings = any_remainings(df, analysis, skipped)
+
+            Path(options.categorized_domains).with_suffix(".tmp").write_text(
+                json.dumps(domains, indent=2, sort_keys=True)
+            )
+
+            domains_pool = set(
+                sum(
+                    (domain_distances[2:] for domain_distances in all_distances[1:]),
+                    [],
+                )
+                + ([subject] if subject not in skipped else [])
+            )
 
 
 if __name__ == "__main__":
