@@ -209,19 +209,19 @@ async def batch_queries(
                 f.parent.mkdir(parents=True, exist_ok=True)
 
                 try:
-                    response = state.get_response_cls()(
-                        paper=paper_name,
+                    response = state.make_response(
+                        paper_name=paper_name,
                         words=count,
-                        extractions=extractions,
+                        analysis=extractions,
                         usage=usage,
                     )
                     f.write_text(response.model_dump_json(indent=2))
 
                 except pydantic_core._pydantic_core.PydanticSerializationError:
-                    response = state.get_response_cls()(
-                        paper=paper_name,
+                    response = state.make_response(
+                        paper_name=paper_name,
                         words=count,
-                        extractions=extractions,
+                        analysis=extractions,
                         usage=None,
                     )
                     f.write_text(response.model_dump_json(indent=2))
@@ -247,11 +247,11 @@ async def ignore_exceptions(
             raise
         except Exception as e:
             logger.error(
-                f"Failed to extract paper information from {paper.name}: {e}",
+                f"Failed to extract paper information from {paper[1].name}: {e}",
                 exc_info=True,
             )
             logging.error(
-                f"Failed to extract paper information from {paper.name}: {e}",
+                f"Failed to extract paper information from {paper[1].name}: {e}",
                 exc_info=True,
             )
 
@@ -289,7 +289,7 @@ def main(argv=None):
     )
     options = parser.parse_args(argv)
 
-    CFG.platform.select = options.platform
+    CFG.platform.select = options.platform or CFG.platform.select
 
     if options.paperoni:
         papers = [Paper(p) for p in json.loads(options.paperoni.read_text())]

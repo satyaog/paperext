@@ -1,6 +1,7 @@
 import argparse
 
 import pandas as pd
+import pydantic_core
 from paperext.config import CFG
 from paperext.structured_output import get_struct_module
 
@@ -17,7 +18,13 @@ def main(argv: list = None):
         "cost_output",
         type=float,
         metavar="FLOAT",
-        help=f"Cost per {1e6} input tokens",
+        help=f"Cost per {1e6} output tokens",
+    )
+    parser.add_argument(
+        "--projection",
+        type=int,
+        metavar="INT",
+        help=f"Number of projected queries",
     )
     options = parser.parse_args(argv)
 
@@ -26,15 +33,24 @@ def main(argv: list = None):
 
     in_tokens = []
     out_tokens = []
+    retries = []
 
     for response in (
         CFG.dir.data / CFG.platform.struct / "queries" / CFG.platform.select
     ).glob("*.json"):
-        response = get_struct_module(
-            CFG.platform.struct
-        ).model.Response.model_validate_json(response.read_text())
-        in_tokens.append(response.usage["prompt_tokens"])
-        out_tokens.append(response.usage["completion_tokens"])
+        try:
+            *_, index = response.stem.split("_")
+            retries.append(response)
+            response = get_struct_module(
+                CFG.platform.struct
+            ).model.Response.model_validate_json(response.read_text())
+            in_tokens.append(response.usage["prompt_tokens"])
+            out_tokens.append(response.usage["completion_tokens"])
+            if int(index) == 0:
+                retries.pop()
+        except pydantic_core._pydantic_core.ValidationError:
+            retries.pop()
+            continue
 
     sum_input = sum(in_tokens) * cost_input
     sum_output = sum(out_tokens) * cost_output
@@ -45,13 +61,30 @@ def main(argv: list = None):
         f"{sum(out_tokens)} output token(s) @{options.cost_output:.2f}$/1M": [
             sum_output
         ],
-        f"Average": [(sum_input + sum_output) / len(in_tokens)],
+        f"Average ({len(in_tokens)})": [
+            (sum_input + sum_output) / (len(in_tokens) or 1)
+        ],
+        f"Average w/o retries ({len(in_tokens) - len(retries)})": [
+            (sum_input + sum_output) / ((len(in_tokens) or 1) - len(retries))
+        ],
         f"{sum(in_tokens) / len(in_tokens):.2f} input token(s) @{options.cost_input:.2f}$/1M": [
-            sum_input / len(in_tokens)
+            sum_input / (len(in_tokens) or 1)
         ],
         f"{sum(out_tokens) / len(in_tokens):.2f} output token(s) @{options.cost_output:.2f}$/1M": [
-            sum_output / len(in_tokens)
+            sum_output / (len(in_tokens) or 1)
         ],
+        **{
+            f"Projection ({options.projection})": [
+                options.projection * (sum_input + sum_output) / (len(in_tokens) or 1)
+            ],
+            f"Projection w/ retry ({options.projection * len(in_tokens) / (len(in_tokens) - len(retries)):.2f})": [
+                options.projection
+                * len(in_tokens)
+                / (len(in_tokens) - len(retries))
+                * (sum_input + sum_output)
+                / (len(in_tokens) or 1)
+            ],
+        },
     }
     df = pd.DataFrame(data).round(3)
 

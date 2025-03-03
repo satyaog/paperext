@@ -5,6 +5,7 @@
 import argparse
 import copy
 import json
+from multiprocessing.pool import Pool
 import os
 from collections import defaultdict
 from pathlib import Path
@@ -69,16 +70,30 @@ def levenshtein_for_sequence(remaining, domain):
     return sum(dists)
 
 
+# def _get_proposition(remaining, domains_pool, similarities, k=10):
+#     distances = sorted(
+#         [(1 - similarities[remaining, domain], domain) for domain in domains_pool]
+#     )
+#     return [distances[0][0], remaining] + [d[1] for d in distances[:k]]
+
+
 def get_proposition(
     remainings,
     domains,
     k=10,
     df=None,
     similarities: dict[tuple[str, str], float] = None,
+    exclude: set = None,
+    domains_pool: set = None,
 ):
+    if df is None:
+        df = build_domains_dataframe(domains)
+
+    exclude = set(exclude or [])
+
     if not similarities:
         model = SentenceTransformer("all-MiniLM-L6-v2")
-        all_entries = sorted(set(remainings) | set(df["domain"]))
+        all_entries = sorted((set(remainings) | set(df["domain"])) - set(exclude))
         embeddings = model.encode(all_entries, show_progress_bar=False)
         embeddings = embeddings / np.linalg.norm(embeddings, axis=1, keepdims=True)
         similarities = model.similarity(embeddings, embeddings)
@@ -88,27 +103,34 @@ def get_proposition(
             for j, other in enumerate(all_entries)
         }
 
-    if df is None:
-        df = build_domains_dataframe(domains)
+    if domains_pool is None:
+        domains_pool = set(df["domain"])
+
+    domains_pool = domains_pool - set(exclude)
+
     propositions = []
     for remaining in remainings:
-        remaining_domain_is_probably_an_acronym = is_probably_an_acronym(remaining)
-        distances = []
-        for domain in set(df["domain"]):
-            if remaining_domain_is_probably_an_acronym and not is_probably_an_acronym(
-                domain
-            ):
-                distance = 1 - similarities[remaining, domain]
-            elif remaining_domain_is_probably_an_acronym:
-                continue
-            else:
-                distance = 1 - similarities[remaining, domain]
+        # remaining_domain_is_probably_an_acronym = is_probably_an_acronym(remaining)
+        # distances = []
+        # for domain in domains_pool - set(exclude):
+        #     if (
+        #         remaining_domain_is_probably_an_acronym
+        #         and not is_probably_an_acronym(domain)
+        #     ):
+        #         distance = 1 - similarities[remaining, domain]
+        #     elif remaining_domain_is_probably_an_acronym:
+        #         continue
+        #     else:
+        #         distance = 1 - similarities[remaining, domain]
 
-            distances.append((distance, domain))
+        #     distances.append((distance, domain))
 
-        distances = sorted(distances)
+        # distances = sorted(distances)
+        distances = sorted(
+            [(1 - similarities[remaining, domain], domain) for domain in domains_pool]
+        )
         propositions.append(
-            (distances[0][0], remaining) + tuple(d[1] for d in distances[:k])
+            [distances[0][0], remaining] + [d[1] for d in distances[:k]]
         )
 
     # longest_first = [p for p in propositions if len(p[1]) > 4]
