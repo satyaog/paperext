@@ -6,7 +6,7 @@ from . import (
     mdl_cat_new_dom as _mdl_cat_new_dom,
     mdl_clus_dom as _mdl_clus_dom,
     mdl_find_acr as _mdl_find_acr,
-    mdl_sort_dom as _mdl_sort_dom,
+    # mdl_sort_dom as _mdl_sort_dom,
 )
 
 
@@ -26,7 +26,7 @@ def get_struct_module(struct: str):
             return _mdl_clus_dom
         case "mdl_find_acr":
             return _mdl_find_acr
-        case "mdl_sort_dom":
-            return _mdl_sort_dom
+        # case "mdl_sort_dom":
+        #     return _mdl_sort_dom
         case _:
             raise ValueError(f"Invalid structureed output {struct}")

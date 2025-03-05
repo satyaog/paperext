@@ -30,17 +30,19 @@ def load_categorisation_tree():
     with (CFG.dir.data / "ai4h_categorization.csv").open() as f:
         reader = csv.DictReader(f)
         for row in reader:
-            _category = row["Category"] or _category
-            _sub_category = row["Sub-Category"] or _sub_category
-            _application = row["AI APPLICATION"]
-            _example = row["Paper Example"]
+            _category = row["Category"].strip() or _category
+            _sub_category = row["Sub-Category"].strip() or _sub_category
+            _application = row["AI APPLICATION"].strip()
+            _example = (row["Paper Example"] or "").strip()
 
             category = categorisation_tree.setdefault(_category, {})
             sub_category = category.setdefault(_sub_category, {})
             applications = sub_category.setdefault(_APPLICATIONS_KEY, [])
             exemples = sub_category.setdefault(_PAPERS_EXAMPLES_KEY, [])
-            applications.append(_application)
-            exemples.append(_example)
+            if _application and _application not in ("TBD",):
+                applications.append(_application)
+            if _example:
+                exemples.append(_example)
 
     return categorisation_tree
 
@@ -78,11 +80,15 @@ FIRST_MESSAGE = (
     + "\n".join(
         f"* {category}:\n"
         + "\n".join(
-            f"  * {sub_category}:\n"
-            + "\n".join(f"    * {application}" for application in applications)
-            for sub_category, applications in sub_categories.items()
+            f"  * {sub_category}"
+            + (":\n" if get_applications(category, sub_category) else "")
+            + "\n".join(
+                f"    * {application}"
+                for application in get_applications(category, sub_category)
+            )
+            for sub_category in get_sub_categories(category)
         )
-        for category, sub_categories in CATEGORISATION_TREE.items()
+        for category in CATEGORISATION_TREE
         if category != "N/A"
     )
     + "\n\n"

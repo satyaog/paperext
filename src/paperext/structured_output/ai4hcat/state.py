@@ -25,6 +25,16 @@ class State:
     def push_response(self, response: "State.response_type"):
         self.responses.append(response)
 
+    def make_response(
+        self, paper_name: str, words: int, analysis: PaperExtractions, usage: dict
+    ):
+        return Response(
+            paper=paper_name,
+            words=words,
+            extractions=analysis,
+            usage=usage,
+        )
+
     def get_response_cls(self):
         return Response
 

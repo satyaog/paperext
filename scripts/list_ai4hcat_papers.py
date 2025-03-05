@@ -8,11 +8,9 @@
 import argparse
 import json
 from pathlib import Path
-import sys
 
 from paperext.config import CFG
 from paperext.structured_output import get_struct_module
-import paperext.structured_output.mdl.model as structured_output
 from paperext.log import logger
 from paperext.utils import Paper
 
@@ -68,6 +66,7 @@ for p in sum([json.loads(paperoni.read_text()) for paperoni in options.paperoni]
         paper.queries,
     ):
         data.setdefault(p["title"], {})
+        data[p["title"]]["id"] = p["paper_id"]
         data[p["title"]]["description"] = response.extractions.description
 
         data[p["title"]]["category"] = response.extractions.primary_category.value.value
@@ -115,22 +114,28 @@ for p in sum([json.loads(paperoni.read_text()) for paperoni in options.paperoni]
 header = [
     "paper title",
     *"category;sub-category;ai application;examples".split(";")[:-1],
+    "id",
     "urls",
 ]
 lines = []
 print(*header, sep=";")
-for title, paper_data in sorted(data.items()):
+for title, paper_data in sorted(
+    data.items(),
+    key=(lambda x: (x[1]["category"], x[1]["sub-category"], x[0])),
+):
     line1 = (
         title,
         paper_data["category"],
         paper_data["sub-category"],
         "",
+        paper_data["id"],
         *paper_data["urls"],
     )
     line2 = (
-        paper_data["description"],
-        paper_data["category_justification"],
-        paper_data["sub-category_justification"],
+        paper_data["description"].replace(";", " _ "),
+        paper_data["category_justification"].replace(";", " _ "),
+        paper_data["sub-category_justification"].replace(";", " _ "),
+        "",
         "",
         "",
     )
@@ -165,16 +170,26 @@ for title, paper_data in sorted(data.items()):
         )
         line1 = (
             " " * len(title),
-            category,
-            sub_category,
-            application,
+            category.replace(";", " _ "),
+            sub_category.replace(";", " _ "),
+            application.replace(";", " _ "),
+            "",
             "",
         )
         line2 = (
             " " * len(title),
-            paper_data["secondary_categories"][i][1] if category else "",
-            paper_data["secondary_sub-categories"][i][1] if sub_category else "",
-            paper_data["applications"][i][1] if application else "",
+            (
+                paper_data["secondary_categories"][i][1].replace(";", " _ ")
+                if category
+                else ""
+            ),
+            (
+                paper_data["secondary_sub-categories"][i][1].replace(";", " _ ")
+                if sub_category
+                else ""
+            ),
+            paper_data["applications"][i][1].replace(";", " _ ") if application else "",
+            "",
             "",
         )
         print(*line1, sep=";")

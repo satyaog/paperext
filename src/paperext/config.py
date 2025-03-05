@@ -13,9 +13,7 @@ logger.setLevel(logging.WARNING)
 
 _PREFIX = "PAPEREXT"
 _CFG_VARENV = f"{_PREFIX}_CFG"
-CONFIG_FILE = os.environ.get(
-    _CFG_VARENV, Path(__file__).parent.parent.parent / "config.mdl.ini"
-)
+CONFIG_FILE = os.environ.get(_CFG_VARENV, "")
 
 
 def config_to_dict(config):
@@ -44,7 +42,7 @@ class Config:
             )
             assert _config.read(
                 config_file
-            ), f"Could not read config file [{config_file}]"
+            ), f"Could not read config file from [{config_file}]"
 
             self._config = config_to_dict(_config)
 
