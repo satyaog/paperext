@@ -1,12 +1,18 @@
 from __future__ import annotations
 
 import logging
+from packaging.version import Version
 import typing
 from typing import Any, Generic, Optional, TypeVar
 
-from pydantic import BaseModel, Field
+from pydantic import AliasChoices, BaseModel, Field
 
 from paperext.sanitize_categorization import split_words
+from paperext.structured_output._base import (
+    BaseModel,
+    BaseResponse,
+    ResponseMetadata,
+)
 from paperext.utils import str_normalize
 
 logging.basicConfig(level=logging.DEBUG)
@@ -105,11 +111,11 @@ class Analysis(BaseModel):
         populate_by_name = False
 
 
-class Response(BaseModel):
-    paper: str
-    words: int
-    extractions: Analysis
-    usage: Optional[Any]
+class Response(BaseResponse):
+    analysis: Analysis = Field(validation_alias=AliasChoices("analysis", "extractions"))
+    metadata: Optional[ResponseMetadata] = ResponseMetadata(
+        model_version=Version("1.0.0")
+    )
 
 
 def _is_base(cls, other):
@@ -140,11 +146,14 @@ def _empty_fields(model_cls: BaseModel):
 
 def empty_model(model_cls):
     empty_fields = _empty_fields(model_cls)
-    empty_fields["type"]["value"] = "empirical"
-    empty_fields["models"][0]["is_contributed"]["value"] = False
-    empty_fields["models"][0]["is_executed"]["value"] = False
-    empty_fields["models"][0]["is_compared"]["value"] = False
-    empty_fields["datasets"][0]["role"] = "referenced"
-    empty_fields["libraries"][0]["role"] = "referenced"
+
+    return model_cls(**empty_fields)
+
+
+def empty_response(model_cls):
+    empty_fields = _empty_fields(model_cls)
+    empty_fields["words"] = 0
+    empty_fields["query_data"] = None
+    empty_fields["metadata"] = None
 
     return model_cls(**empty_fields)

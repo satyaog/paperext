@@ -34,7 +34,7 @@ def list_domains(papers: list[dict | Paper]):
             extractions = (
                 get_struct_module(CFG.platform.struct)
                 .model.Response.model_validate_json(query.read_text())
-                .extractions
+                .analysis
             )
 
             for research_field in (
@@ -48,22 +48,20 @@ def list_domains(papers: list[dict | Paper]):
 def main(argv: list = None):
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "--papers",
+        "paperoni",
         nargs="*",
         type=Path,
-        default=[],
         help="Paperoni json report of papers to analyse",
     )
     parser.add_argument(
         "--categorized-terms",
         type=Path,
-        default=CFG.dir.data / "mdl/categorized_domains.json",
         help="Path to categorized terms",
     )
     options = parser.parse_args(argv)
 
     papers = []
-    for papers_json_path in options.papers:
+    for papers_json_path in options.paperoni:
         papers.extend(json.loads(papers_json_path.read_text()))
 
     categorised_terms = json.loads(options.categorized_terms.read_text().lower())
@@ -93,7 +91,7 @@ def main(argv: list = None):
     model = SentenceTransformer("all-MiniLM-L6-v2")
     terms = _sort_categories(model, terms)
 
-    acronyms_or_abbreviations: dict[str, list[str]] = {}
+    acronyms: dict[str, list[str]] = {}
     left_overs = set()
 
     with Config.push():
@@ -111,7 +109,7 @@ def main(argv: list = None):
 
         client = PLATFORMS[CFG.platform.select]()
 
-        for term in tqdm.tqdm(terms, desc="Finding accronyms/abbreviations"):
+        for term in tqdm.tqdm(terms, desc="Finding acronyms/abbreviations"):
             papers_exploded = papers.explode("research_fields")
             term_aliases = [k for k, v in sanitized_map.items() if v == term]
             titles = list(
@@ -163,9 +161,9 @@ def main(argv: list = None):
                 except InstructorRetryException:
                     continue
 
-            _acronyms_or_abbreviations = {}
+            _acronyms = {}
 
-            for acr_abb in (acr for r in responses for acr in r.extractions.acronyms):
+            for acr_abb in (acr for r in responses for acr in r.analysis.acronyms):
                 acr, full_form = (
                     acr_abb.acronym_abbreviation.value,
                     acr_abb.full_form.value,
@@ -180,7 +178,7 @@ def main(argv: list = None):
                     logger.warning(
                         f"Model "
                         f"{CFG.platform.select}:{CFG[CFG.platform.select].model} "
-                        f"identified an accronym [{acr}:{full_form}] that is "
+                        f"identified an acronym [{acr}:{full_form}] that is "
                         f"missing from the concurrent terms list. Provided terms "
                         f"are {concurrent_terms}. Ignoring"
                     )
@@ -190,7 +188,7 @@ def main(argv: list = None):
                     logger.warning(
                         f"Model "
                         f"{CFG.platform.select}:{CFG[CFG.platform.select].model} "
-                        f"identified a single char accronym [{acr}:{full_form}] "
+                        f"identified a single char acronym [{acr}:{full_form}] "
                         f"from the concurrent terms list. Provided terms are "
                         f"{concurrent_terms}. Ignoring"
                     )
@@ -200,7 +198,7 @@ def main(argv: list = None):
                     logger.warning(
                         f"Model "
                         f"{CFG.platform.select}:{CFG[CFG.platform.select].model} "
-                        f"identified an accronym [{acr}:{full_form}] that stands "
+                        f"identified an acronym [{acr}:{full_form}] that stands "
                         f"for the same term. Provided terms are "
                         f"{concurrent_terms}. Ignoring"
                     )
@@ -212,14 +210,14 @@ def main(argv: list = None):
                 acr = sanitized_map[acr]
                 full_form = sanitized_map[full_form]
 
-                _acronyms_or_abbreviations.setdefault(acr, set())
-                _acronyms_or_abbreviations[acr].add(full_form)
+                _acronyms.setdefault(acr, set())
+                _acronyms[acr].add(full_form)
 
-            for k, v in _acronyms_or_abbreviations.items():
-                acronyms_or_abbreviations.setdefault(k, [])
-                acronyms_or_abbreviations[k].extend(v)
+            for k, v in _acronyms.items():
+                acronyms.setdefault(k, [])
+                acronyms[k].extend(v)
 
-        acronyms_or_abbreviations = {
+        acronyms = {
             sanitized_map[k]: sorted(
                 (
                     (
@@ -234,33 +232,18 @@ def main(argv: list = None):
                 ),
                 reverse=True,
             )
-            for k, v in acronyms_or_abbreviations.items()
+            for k, v in acronyms.items()
         }
 
-        with (
-            CFG.dir.data
-            / Path(__file__).parent.name
-            / "acronyms_or_abbreviations_domains.json"
-        ).open("wt") as _f:
-            json.dump(
-                {k: v[0][1] for k, v in acronyms_or_abbreviations.items()},
-                _f,
+        options.categorized_terms.with_stem(
+            f"{options.categorized_terms.stem}_acronyms"
+        ).write_text(
+            json.dumps(
+                {k: v[0][1] for k, v in acronyms.items()},
                 indent=2,
                 sort_keys=True,
             )
-
-        print(
-            *sorted(
-                {
-                    v[0][1]
-                    for v in acronyms_or_abbreviations.values()
-                    if v[0][1] in acronyms_or_abbreviations
-                }
-            ),
-            sep="\n",
         )
-
-    # print(acronyms_or_abbreviations)
 
 
 if __name__ == "__main__":

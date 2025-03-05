@@ -6,6 +6,7 @@ from paperext.sanitize_categorization import (
     default_sanitize_key,
 )
 from paperext.log import logger
+from paperext.structured_output._base import BaseState
 from paperext.utils import Paper
 from paperext.structured_output.mdl_cat_new_dom.model import (
     FIRST_MESSAGE,
@@ -16,7 +17,10 @@ from paperext.structured_output.mdl_cat_new_dom.model import (
 )
 
 
-class State:
+class State(BaseState):
+    AnalysisCls: Analysis = Analysis
+    ResponseCls: Response = Response
+
     def __init__(
         self,
         paper: Paper,
@@ -24,22 +28,21 @@ class State:
         domain: str,
         other_domains: list,
         sanitized_map: dict[str, str],
+        **kwargs,
     ):
-        self._paper = paper
-        self._pdf_txt = pdf_txt
+        super().__init__(
+            paper=paper,
+            pdf_txt=pdf_txt,
+            domain=domain,
+            other_domains=other_domains,
+            sanitized_map=sanitized_map,
+            **kwargs,
+        )
         self._domain = domain
         self._other_domains = other_domains
         self._sanitized_map = sanitized_map.copy()
 
-        self._queries_data: list[Response] = []
-        self.responses: list[Response] = []
-
-    @property
-    def categories_refs(self):
-        return self._categories_refs
-
     def format_messages(self) -> Generator[list[dict[str:str]], None, None]:
-        _messages = []
         listed_domains = set()
         missing = None
 
@@ -58,7 +61,7 @@ class State:
         ]
 
         while missing is None or (len(missing) / len(self._other_domains)) > 0.1:
-            self._queries_data.append(
+            self._query_data.append(
                 {
                     "domain": self._domain,
                     "domain_pool": self._other_domains,
@@ -148,23 +151,3 @@ class State:
                     "\n".join([f'"{d}"' for d in missing]),
                 ),
             }
-
-    def push_response(self, response: Response):
-        self.responses.append(response)
-
-    def make_response(
-        self, paper_name: str, words: int, analysis: Analysis, usage: dict
-    ):
-        return Response(
-            paper=paper_name,
-            words=words,
-            extractions=analysis,
-            usage=usage,
-            query_data=self._queries_data[-1],
-        )
-
-    def get_response_cls(self):
-        return Response
-
-    def get_response_model(self):
-        return Analysis

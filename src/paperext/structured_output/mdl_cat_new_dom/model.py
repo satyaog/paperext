@@ -1,12 +1,18 @@
 from __future__ import annotations
 
 import logging
+from packaging.version import Version
 import typing
 from typing import Any, Generic, Optional, TypeVar
 
-from pydantic import BaseModel, Field
+from pydantic import AliasChoices, BaseModel, Field
 
 from paperext.sanitize_categorization import split_words
+from paperext.structured_output._base import (
+    BaseModel,
+    BaseResponse,
+    ResponseMetadata,
+)
 from paperext.utils import str_normalize
 
 logging.basicConfig(level=logging.DEBUG)
@@ -120,13 +126,12 @@ class Analysis(BaseModel):
         populate_by_name = False
 
 
-class Response(BaseModel):
-    paper: str
-    words: int
-    extractions: Analysis
-    usage: Optional[Any]
-    query_data: Optional[dict]
-    metadata: dict = Field(default={"model_version": "1.0.0"})
+class Response(BaseResponse):
+    analysis: Analysis = Field(validation_alias=AliasChoices("analysis", "extractions"))
+    query_data: dict
+    metadata: Optional[ResponseMetadata] = ResponseMetadata(
+        model_version=Version("1.0.0")
+    )
 
 
 def _is_base(cls, other):

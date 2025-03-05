@@ -2,13 +2,19 @@ from __future__ import annotations
 
 import csv
 import enum
+from packaging.version import Version
 import typing
 from typing import Any, Generic, List, Optional, TypeVar
 
-from pydantic import BaseModel, Field
+from pydantic import AliasChoices, BaseModel, Field
 
 from paperext import CFG
 from paperext.log import logger
+from paperext.structured_output._base import (
+    BaseModel,
+    BaseResponse,
+    ResponseMetadata,
+)
 from paperext.utils import str_normalize
 
 _APPLICATIONS_KEY = "applications"
@@ -166,7 +172,7 @@ class Explained(BaseModel, Generic[T]):
         return str_normalize(str(self.value)) < str_normalize(str(other.value))
 
 
-class PaperExtractions(BaseModel):
+class Analysis(BaseModel):
     title: Explained[str] = Field(
         description="Title of the paper",
     )
@@ -196,11 +202,11 @@ class PaperExtractions(BaseModel):
     )
 
 
-class Response(BaseModel):
-    paper: str
-    words: int
-    extractions: PaperExtractions
-    usage: Optional[Any]
+class Response(BaseResponse):
+    analysis: Analysis = Field(validation_alias=AliasChoices("analysis", "extractions"))
+    metadata: Optional[ResponseMetadata] = ResponseMetadata(
+        model_version=Version("1.0.0")
+    )
 
 
 def _is_base(cls, other):
@@ -233,7 +239,7 @@ def _empty_fields(model_cls: BaseModel):
 def empty_model(model_cls):
     empty_fields = _empty_fields(model_cls)
     empty_fields["primary_category"]["value"] = Category.NA.value
-    empty_fields["seconday_categories"][0]["value"] = Category.NA.value
+    empty_fields["secondary_categories"][0]["value"] = Category.NA.value
     empty_fields["primary_sub_category"]["value"] = SubCategory.NA.value
     empty_fields["secondary_sub_categories"][0]["value"] = SubCategory.NA.value
 

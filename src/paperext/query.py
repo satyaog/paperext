@@ -151,7 +151,7 @@ async def query(
     while True:
         try:
             result = client.chat.completions.create_with_completion(
-                response_model=state.get_response_model(),
+                response_model=state.AnalysisCls,
                 messages=messages,
             )
 
@@ -195,7 +195,7 @@ async def batch_queries(
             f = f.with_stem(f"{f.stem}_{i:02}").with_suffix(".json")
 
             try:
-                response = state.get_response_cls().model_validate_json(f.read_text())
+                response = state.ResponseCls.model_validate_json(f.read_text())
 
             except (
                 FileNotFoundError,

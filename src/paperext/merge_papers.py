@@ -20,7 +20,7 @@ from paperext import CFG
 from paperext.log import logger
 from paperext.structured_output.mdl.model import (
     Response,
-    PaperExtractions,
+    Analysis,
     empty_model,
 )
 from paperext.structured_output.utils import (
@@ -200,8 +200,8 @@ def write_content(filename: str, content: str, edit=True):
 
 
 def _validate_field(
-    model_dump: dict | PaperExtractions,
-    model_cls: PaperExtractions.__class__ | None,
+    model_dump: dict | Analysis,
+    model_cls: Analysis.__class__ | None,
     filename: str,
     content: str,
 ):
@@ -243,7 +243,7 @@ def _validate_field(
             content = write_content(filename, content)
 
 
-def _update_progession(merged_extractions: PaperExtractions, merged_file: Path):
+def _update_progession(merged_extractions: Analysis, merged_file: Path):
     # Load content of previous field merge in case the user updated the content
     _update = merged_extractions.model_dump()
 
@@ -266,9 +266,7 @@ def _update_progession(merged_extractions: PaperExtractions, merged_file: Path):
 
     for tmpfile in fields:
         tmpfile = Path(tmpfile)
-        _update = _validate_field(
-            _update, PaperExtractions, tmpfile.stem, tmpfile.read_text()
-        )
+        _update = _validate_field(_update, Analysis, tmpfile.stem, tmpfile.read_text())
 
     _update = merged_extractions.model_validate(_update)
     merged_file.write_text(model_dump_yaml(_update))
@@ -323,15 +321,13 @@ def _merge_list(
 def merge_paper_extractions(
     paper_id,
     paper,
-    merged_extractions: PaperExtractions,
-    *all_extractions: List[PaperExtractions],
+    merged_extractions: Analysis,
+    *all_extractions: List[Analysis],
 ):
     f: Path = CFG.dir.merged / paper_id
     f = f.with_suffix(".yaml")
 
-    for keys_values in zip(
-        empty_model(PaperExtractions), merged_extractions, *all_extractions
-    ):
+    for keys_values in zip(empty_model(Analysis), merged_extractions, *all_extractions):
         merged_extractions = _update_progession(merged_extractions, f)
 
         empty_value, merged_value, *values = [v for _, v in keys_values]
@@ -475,11 +471,11 @@ def main(argv=None):
         f = f.with_suffix(".yaml")
         f.parent.mkdir(parents=True, exist_ok=True)
 
-        merged_extractions = empty_model(PaperExtractions)
+        merged_extractions = empty_model(Analysis)
 
         if f.exists() or f.with_suffix(".json").exists():
             try:
-                merged_extractions = PaperExtractions.model_validate_json(
+                merged_extractions = Analysis.model_validate_json(
                     f.with_suffix(".json").read_text()
                 )
             except FileNotFoundError:
@@ -490,17 +486,13 @@ def main(argv=None):
                 continue
 
             try:
-                merged_extractions = model_validate_yaml(
-                    PaperExtractions, f.read_text()
-                )
+                merged_extractions = model_validate_yaml(Analysis, f.read_text())
             except FileNotFoundError:
                 merged_extractions = convert_model_json_to_yaml(
-                    PaperExtractions, merged_extractions.model_dump_json()
+                    Analysis, merged_extractions.model_dump_json()
                 )
                 f.write_text(merged_extractions)
-                merged_extractions = model_validate_yaml(
-                    PaperExtractions, merged_extractions
-                )
+                merged_extractions = model_validate_yaml(Analysis, merged_extractions)
                 f.with_suffix(".json").unlink()
             except ValidationError as e:
                 logger.error(e, exc_info=True)

@@ -6,6 +6,7 @@ from paperext.sanitize_categorization import (
     default_sanitize_key,
 )
 from paperext.log import logger
+from paperext.structured_output._base import BaseState
 from paperext.utils import Paper
 from paperext.structured_output.mdl_find_acr.model import (
     FIRST_MESSAGE,
@@ -15,14 +16,25 @@ from paperext.structured_output.mdl_find_acr.model import (
 )
 
 
-class State:
+class State(BaseState):
+    AnalysisCls: Analysis = Analysis
+    ResponseCls: Response = Response
+
     def __init__(
         self,
         paper: Paper,
         pdf_txt: Path,
         terms: list,
-        sanitized_map: dict["str", "str"],
+        sanitized_map: dict[str, str],
+        **kwargs,
     ):
+        super().__init__(
+            paper=paper,
+            pdf_txt=pdf_txt,
+            terms=terms,
+            sanitized_map=sanitized_map,
+            **kwargs,
+        )
         self._paper = paper
         self._pdf_txt = pdf_txt
         self._terms = terms
@@ -35,6 +47,9 @@ class State:
         return self._categories_refs
 
     def format_messages(self) -> Generator[list[dict[str:str]], None, None]:
+        terms = set()
+        missing = None
+
         _messages = [
             {
                 "role": "system",
@@ -48,11 +63,14 @@ class State:
             },
         ]
 
-        success = False
+        while missing is None:
+            self._query_data.append(
+                {
+                    "terms": self._terms,
+                    "missing": missing,
+                }
+            )
 
-        terms = set()
-
-        while not success:
             yield _messages[:]
 
             for acr in self.responses[-1].extractions.acronyms:
@@ -95,13 +113,4 @@ class State:
                     )
                     terms.add(term)
 
-            success = not (set(self._terms) - terms)
-
-    def push_response(self, response: Response):
-        self.responses.append(response)
-
-    def get_response_cls(self):
-        return Response
-
-    def get_response_model(self):
-        return Analysis
+            missing = set(self._terms) - terms

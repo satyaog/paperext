@@ -298,16 +298,16 @@ def main(argv=None):
     )
     parser.add_argument(
         "--accronyms",
+        metavar="PATH",
         type=Path,
-        default=CFG.dir.data / "mdl_find_acr/acronyms_or_abbreviations_domains.json",
-        help="Path to categorized domains",
+        help="Path to accronyms",
     )
     parser.add_argument(
         "--out",
         metavar="PATH",
         type=Path,
         default=None,
-        help="Path to sanitized categorization JSON file",
+        help="Path to sanitized categorization JSON file (defaults to `categorization`)",
     )
     options = parser.parse_args(argv)
     options.out = options.out or options.categorization
