@@ -1,12 +1,22 @@
+import os
 import shutil
 
 import pytest
 
-from paperext.config import Config
-
 from . import CONFIG_FILE
 
-Config.apply_global_config(Config(str(CONFIG_FILE)))
+os.environ["PAPEREXT_CFG"] = str(CONFIG_FILE)
+
+from paperext.config import Config
+
+with Config.push() as cfg:
+    # Correctly load files from project's data directory
+    # TODO: use a path from the config file instead of assuming the file is
+    # located in the config's data dir
+    cfg.dir.data = cfg.dir.root / "../data"
+    import paperext.structured_output as _
+
+
 _CFG = Config.get_global_config()
 _CFG.dir.log.mkdir(exist_ok=True)
 _TMPDIR = _CFG.dir.root / "tmp"
@@ -37,9 +47,5 @@ _clean_up()
 
 @pytest.fixture(scope="function", autouse=True)
 def cfg():
-    Config.apply_global_config(Config(str(CONFIG_FILE)))
-
     with Config.push() as config:
         yield config
-
-    assert Config.get_global_config() == Config(str(CONFIG_FILE))

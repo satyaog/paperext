@@ -1,16 +1,14 @@
+from pathlib import Path
 from unittest.mock import MagicMock
 
 import pytest
 
 import paperext.query
-from paperext.query import (
-    get_extraction_response,
-    get_first_message,
-    get_paper_extractions,
-    main,
-)
-from paperext.structured_output import STRUCT_MODULES
-from paperext.structured_output.mdl.model import PaperExtractions
+from paperext.query import get_state_cls, main
+from paperext.structured_output import ai4hcat, mdl
+from paperext.structured_output.mdl.model import Analysis
+
+from .mock.structured_output import test as test_struct_module
 
 
 @pytest.fixture(autouse=True)
@@ -26,17 +24,43 @@ def clean_up(cfg):
         query_file.unlink(missing_ok=True)
 
 
-@pytest.mark.parametrize("model_struct", ["ai4hcat", "mdl"])
-def test_model_struct_from_cfg(cfg, model_struct):
+@pytest.mark.parametrize(
+    ("model_struct", "state_cls"),
+    [("ai4hcat", ai4hcat.state.State), ("mdl", mdl.state.State)],
+)
+def test_model_struct_from_cfg(cfg, model_struct, state_cls):
     cfg.platform.struct = model_struct
 
-    assert get_first_message() is STRUCT_MODULES[model_struct].FIRST_MESSAGE
-    assert get_extraction_response() is STRUCT_MODULES[model_struct].ExtractionResponse
-    assert get_paper_extractions() is STRUCT_MODULES[model_struct].PaperExtractions
+    assert get_state_cls() is state_cls
+
+
+def test_query(monkeypatch, tmp_path: Path, cfg):
+    assert cfg.platform.select == "ollama"
+
+    def get_struct_module(struct: str):
+        match struct:
+            case "test":
+                return test_struct_module
+            case _:
+                raise ValueError(f"Invalid structureed output {struct}")
+
+    cfg.platform.struct = "test"
+    cfg.dir.queries = tmp_path / "queries"
+
+    monkeypatch.setattr(paperext.query, f"get_struct_module", get_struct_module)
+
+    # 5 times should be enough for the small model to return a valid JSON
+    for _ in range(5):
+        main(["--papers", "2401.14487"])
+
+    response = test_struct_module.model.Response.model_validate_json(
+        list(cfg.dir.queries.glob("**/2401.14487_00.json"))[0].read_text()
+    )
+    assert response.metadata.llm_model == cfg.ollama.model
 
 
 @pytest.mark.parametrize("platform", ["openai", "vertexai"])
-def test_query(
+def test_query_mock(
     platform, monkeypatch: pytest.MonkeyPatch, caplog: pytest.LogCaptureFixture
 ):
     """Test that the query function:
@@ -60,7 +84,7 @@ def test_query(
     if platform == "openai":
 
         async def create_with_completion(*_a, **_kwa):
-            magicmock = MagicMock(spec=PaperExtractions)
+            magicmock = MagicMock(spec=Analysis)
             magicmock.models = []
             magicmock.datasets = []
             magicmock.libraries = []
@@ -69,7 +93,7 @@ def test_query(
     elif platform == "vertexai":
 
         def create_with_completion(*_a, **_kwa):
-            magicmock = MagicMock(spec=PaperExtractions)
+            magicmock = MagicMock(spec=Analysis)
             magicmock.models = []
             magicmock.datasets = []
             magicmock.libraries = []

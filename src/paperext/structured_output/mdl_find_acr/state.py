@@ -35,12 +35,8 @@ class State(BaseState):
             sanitized_map=sanitized_map,
             **kwargs,
         )
-        self._paper = paper
-        self._pdf_txt = pdf_txt
         self._terms = terms
         self._sanitized_map = sanitized_map.copy()
-
-        self.responses: list[Response] = []
 
     @property
     def categories_refs(self):

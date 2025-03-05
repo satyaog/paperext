@@ -4,7 +4,7 @@ from typing import Any, Generator, Optional
 from packaging.version import Version
 from pathlib import Path
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, field_serializer, model_validator
 
 from paperext.config import CFG
 from paperext.log import logger
@@ -15,24 +15,20 @@ class ResponseMetadata(BaseModel):
     model_version: Version
     llm_model: Optional[str] = None
 
-    # Serialize Version to string
-    @classmethod
-    def parse_model_version(cls, v: str) -> Version:
-        return Version(v)
+    @model_validator(mode="before")
+    def parse_model_version(cls, values):
+        # Convert the model_version from string to Version if it is a string
+        if "model_version" in values and isinstance(values["model_version"], str):
+            values["model_version"] = Version(values["model_version"])
+        return values
 
-    # Deserialize Version from string
-    @classmethod
-    def serialize_model_version(cls, v: Version) -> str:
-        return str(v)
+    @field_serializer("model_version")
+    def serialize_model_version(self, model_version: Version):
+        return str(model_version)
 
     model_config = ConfigDict(
         arbitrary_types_allowed=True,
         extra="allow",
-        # Override Pydantic's `.json()` method to handle serialization of
-        # Version type
-        json_encoders={
-            Version: lambda v: str(v)  # Custom serialization logic for Version
-        },
     )
 
 

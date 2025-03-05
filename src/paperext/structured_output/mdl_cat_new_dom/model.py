@@ -5,7 +5,7 @@ from packaging.version import Version
 import typing
 from typing import Any, Generic, Optional, TypeVar
 
-from pydantic import AliasChoices, BaseModel, Field
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field
 
 from paperext.sanitize_categorization import split_words
 from paperext.structured_output._base import (
@@ -121,9 +121,9 @@ class Analysis(BaseModel):
             cleaned_obj["_".join(key_words)] = value
         return super().model_validate(cleaned_obj)
 
-    class Config:
-        # This allows the model to use the cleaned keys for validation
-        populate_by_name = False
+    model_config = ConfigDict(
+        populate_by_name=False,
+    )
 
 
 class Response(BaseResponse):

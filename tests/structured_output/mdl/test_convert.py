@@ -2,6 +2,8 @@ import json
 
 import pytest
 
+from paperext.config import CFG, Config
+
 from paperext.structured_output.mdl import model, model_v1, model_v2, model_v3
 from paperext.structured_output.mdl.convert import (
     _model_dump,
@@ -13,9 +15,9 @@ from paperext.structured_output.mdl.convert import (
 def test_model_dump(cfg):
     """Test that _model_dump produces a valid pydantic model dump."""
 
-    assert model.ExtractionResponse.model_validate_json(
+    assert model.Response.model_validate_json(
         (cfg.dir.queries / "openai/2401.14487_00.json").read_text()
-    ) == model.ExtractionResponse(
+    ) == model.Response(
         **_model_dump(
             json.loads((cfg.dir.queries / "openai/2401.14487_00.json").read_text())
         )
@@ -30,7 +32,7 @@ def test_model_dump(cfg):
         ["2402.04821_00", 2, 3],
     ],
 )
-def test_convert_model(cfg, query_file: str, from_version: int, dest_version: int):
+def test_convert_model(query_file: str, from_version: int, dest_version: int):
     """Test that the model can be converted from a version to the next version."""
 
     match from_version:
@@ -45,13 +47,15 @@ def test_convert_model(cfg, query_file: str, from_version: int, dest_version: in
         case _:
             raise ValueError(f"Unknown version: {from_version}")
 
-    m = from_model.ExtractionResponse.model_validate_json(
-        (cfg.dir.queries / f"v{from_version}/{query_file}.json").read_text()
-    )
+    with Config.push():
+        CFG.platform.select = "openai"
+        m = from_model.Response.model_validate_json(
+            (CFG.dir.queries / f"v{from_version}/{query_file}.json").read_text()
+        )
 
-    assert (
-        convert_model(m.extractions)
-        == dest_model.ExtractionResponse.model_validate_json(
-            (cfg.dir.queries / f"v{dest_version}/{query_file}.json").read_text()
-        ).extractions
-    )
+        assert (
+            convert_model(m.analysis)
+            == dest_model.Response.model_validate_json(
+                (CFG.dir.queries / f"v{dest_version}/{query_file}.json").read_text()
+            ).analysis
+        )
