@@ -160,7 +160,7 @@ def main(argv: list = None):
         json.dumps(domains, indent=2, sort_keys=True)
     )
 
-    domains_pool = set(df["domain"]) - set(
+    domains_pool = set((d for d in df["domain"] if d.strip())) - set(
         ["abstract_research_topics", "application_domains"]
     )
 
@@ -251,7 +251,7 @@ def main(argv: list = None):
                         _update_sanitized_map(sanitized_map, domain.value)
 
             _propositions_map = {
-                sanitized_map[domain]: (i, sanitized_map[domain])
+                sanitized_map[domain]: (i, domain)
                 for i, domain in enumerate(propositions)
             }
 
@@ -266,6 +266,7 @@ def main(argv: list = None):
                     sorted(
                         _propositions_map[_d.value]
                         for _d in r.extractions.semantically_equivalent_domains
+                        if _d.value in _propositions_map
                     )
                     if len(r.extractions.semantically_equivalent_domains)
                     / len(propositions)
@@ -286,7 +287,7 @@ def main(argv: list = None):
 
                 if (
                     _child_match := _propositions_map.get(
-                        r.extractions.closest_parent_domain.value, None
+                        r.extractions.closest_child_domain.value, None
                     )
                 ) is not None:
                     child_matches.append(_child_match)
@@ -335,6 +336,8 @@ def main(argv: list = None):
                 )
                 + ([subject] if subject not in skipped else [])
             )
+
+    options.categorized_domains.with_suffix(".tmp").rename(options.categorized_domains)
 
 
 if __name__ == "__main__":
