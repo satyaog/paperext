@@ -1,5 +1,6 @@
 import os
 import shutil
+from unittest.mock import MagicMock
 
 import pytest
 
@@ -15,6 +16,8 @@ with Config.push() as cfg:
     # located in the config's data dir
     cfg.dir.data = cfg.dir.root / "../data"
     import paperext.structured_output as _
+
+import paperext.query
 
 
 _CFG = Config.get_global_config()
@@ -49,3 +52,46 @@ _clean_up()
 def cfg():
     with Config.push() as config:
         yield config
+
+
+@pytest.fixture()
+def no_query(monkeypatch):
+    mm = MagicMock(autospec=True)
+    create_with_completion: MagicMock = mm.chat.completions.create_with_completion
+
+    def _MagicMock(*_args, **_kwargs):
+        def _create_with_completion(*_a, **_kwa):
+            return MagicMock(autospec=True), MagicMock(autospec=True)
+
+        create_with_completion.side_effect = (
+            create_with_completion.side_effect or _create_with_completion
+        )
+
+        if not isinstance(mm.chat.completions.create_with_completion, MagicMock):
+            # .chat.completions.create_with_completion has been wrap within a
+            # _wrap function. Reset to represent a new object
+            mm.chat.completions.create_with_completion = create_with_completion
+
+        return mm
+
+    def _AsyncMagicMock(*_args, **_kwargs):
+        async def _create_with_completion(*_a, **_kwa):
+            return MagicMock(autospec=True), MagicMock(autospec=True)
+
+        create_with_completion.side_effect = (
+            create_with_completion.side_effect or _create_with_completion
+        )
+
+        return _MagicMock(*_args, **_kwargs)
+
+    def from_(client, *_args, **_kwargs):
+        return client
+
+    monkeypatch.setattr(paperext.query, "AsyncOpenAI", _AsyncMagicMock)
+    monkeypatch.setattr(paperext.query, "GenerativeModel", _MagicMock)
+    monkeypatch.setattr(paperext.query.instructor, f"from_openai", from_)
+    monkeypatch.setattr(paperext.query.instructor, f"from_vertexai", from_)
+
+    yield mm
+
+    create_with_completion.assert_called()
