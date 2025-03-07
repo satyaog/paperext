@@ -324,7 +324,7 @@ def main(argv: list = None):
 
                 if (
                     _child_match := _propositions_map.get(
-                        sanitized_map[r.analysis.closest_parent_domain.value], None
+                        sanitized_map[r.analysis.closest_child_domain.value], None
                     )
                 ) is not None:
                     child_matches.append(_child_match)
