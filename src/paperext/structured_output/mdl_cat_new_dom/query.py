@@ -76,13 +76,40 @@ def hierarchical_clustering(categories: list):
     return categories
 
 
+def _update_sorted_propositions(
+    last_propositions: list,
+    similarities,
+    skipped,
+    k=20,
+):
+    new_domain = last_propositions[0][1]
+
+    if new_domain in skipped:
+        return last_propositions[1:]
+
+    propositions = []
+
+    for proposition in last_propositions[1:]:
+        remaining = proposition[1]
+        distances = sorted(
+            [
+                (1 - similarities[remaining, domain], domain)
+                for domain in proposition[2:] + [new_domain]
+            ]
+        )
+        propositions.append(
+            [distances[0][0], remaining] + [d[1] for d in distances[:k]]
+        )
+
+    return sorted(propositions)
+
+
 def main(argv: list = None):
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "--papers",
+        "paperoni",
         nargs="*",
         type=Path,
-        default=[],
         help="Paperoni json report of papers to analyse",
     )
     parser.add_argument(
@@ -105,10 +132,10 @@ def main(argv: list = None):
     if options.accronyms:
         accronyms_map = json.loads(options.accronyms.read_text().lower())
     else:
-        accronyms_map = None
+        accronyms_map = {}
 
     papers = []
-    for papers_json_path in options.papers:
+    for papers_json_path in options.paperoni:
         papers.extend(json.loads(Path(papers_json_path).read_text()))
 
     analysis, _ = load_analysis(papers, CFG.dir.queries / CFG.platform.select)
@@ -130,10 +157,10 @@ def main(argv: list = None):
     sanitized_map = {
         k: accronyms_map.get(sanitized_map[k], v) for k, v in sanitized_map.items()
     }
-    # domains = {
-    #     k.replace(" ", "_"): v
-    #     for k, v in sanitize_categories(domains, accronyms_map, sanitized_map).items()
-    # }
+    domains = {
+        k.replace(" ", "_"): v
+        for k, v in sanitize_categories(domains, accronyms_map, sanitized_map).items()
+    }
 
     for research_fields in analysis["attrs"]["research_fields"]:
         research_fields[:] = map(lambda x: sanitized_map[x], research_fields)
@@ -160,7 +187,7 @@ def main(argv: list = None):
         json.dumps(domains, indent=2, sort_keys=True)
     )
 
-    domains_pool = set(df["domain"]) - set(
+    domains_pool = set((d for d in df["domain"] if d.strip())) - set(
         ["abstract_research_topics", "application_domains"]
     )
 
@@ -179,16 +206,26 @@ def main(argv: list = None):
 
         client = PLATFORMS[CFG.platform.select]()
 
+        all_distances = get_proposition(
+            remainings,
+            domains,
+            k=20,
+            df=df,
+            similarities=similarities,
+            exclude=["abstract_research_topics", "application_domains"],
+            domains_pool=domains_pool,
+        )
+
         for _ in tqdm.tqdm(list(range(len(remainings))), desc="Categorizing domains"):
-            all_distances = get_proposition(
-                remainings,
-                domains,
-                k=20,
-                df=df,
-                similarities=similarities,
-                exclude=["abstract_research_topics", "application_domains"],
-                domains_pool=domains_pool,
-            )
+            # all_distances = get_proposition(
+            #     remainings,
+            #     domains,
+            #     k=20,
+            #     df=df,
+            #     similarities=similarities,
+            #     exclude=["abstract_research_topics", "application_domains"],
+            #     domains_pool=domains_pool,
+            # )
 
             subject, *propositions = all_distances[0][1:]
 
@@ -231,27 +268,27 @@ def main(argv: list = None):
 
             for r in responses:
                 _update_sanitized_map(
-                    sanitized_map, r.extractions.closest_parent_domain.value
+                    sanitized_map, r.analysis.closest_parent_domain.value
                 )
                 _update_sanitized_map(
-                    sanitized_map, r.extractions.closest_child_domain.value
+                    sanitized_map, r.analysis.closest_child_domain.value
                 )
                 _update_sanitized_map(
-                    sanitized_map, r.extractions.closest_sibling_domain.value
+                    sanitized_map, r.analysis.closest_sibling_domain.value
                 )
 
                 for r_domains in (
-                    r.extractions.semantically_equivalent_domains,
-                    r.extractions.parent_domains,
-                    r.extractions.child_domains,
-                    r.extractions.sibling_domains,
-                    r.extractions.unrelated_domains,
+                    r.analysis.semantically_equivalent_domains,
+                    r.analysis.parent_domains,
+                    r.analysis.child_domains,
+                    r.analysis.sibling_domains,
+                    r.analysis.unrelated_domains,
                 ):
                     for domain in r_domains:
                         _update_sanitized_map(sanitized_map, domain.value)
 
             _propositions_map = {
-                sanitized_map[domain]: (i, sanitized_map[domain])
+                sanitized_map[domain]: (i, domain)
                 for i, domain in enumerate(propositions)
             }
 
@@ -264,10 +301,11 @@ def main(argv: list = None):
             for r in responses:
                 _equivalent_matches = (
                     sorted(
-                        _propositions_map[_d.value]
-                        for _d in r.extractions.semantically_equivalent_domains
+                        _propositions_map[sanitized_map[_d.value]]
+                        for _d in r.analysis.semantically_equivalent_domains
+                        if sanitized_map[_d.value] in _propositions_map
                     )
-                    if len(r.extractions.semantically_equivalent_domains)
+                    if len(r.analysis.semantically_equivalent_domains)
                     / len(propositions)
                     <= 0.2
                     else []
@@ -279,21 +317,21 @@ def main(argv: list = None):
 
                 if (
                     _parent_match := _propositions_map.get(
-                        r.extractions.closest_parent_domain.value, None
+                        sanitized_map[r.analysis.closest_parent_domain.value], None
                     )
                 ) is not None:
                     parent_matches.append(_parent_match)
 
                 if (
                     _child_match := _propositions_map.get(
-                        r.extractions.closest_parent_domain.value, None
+                        sanitized_map[r.analysis.closest_child_domain.value], None
                     )
                 ) is not None:
                     child_matches.append(_child_match)
 
                 if (
                     _sibling_match := _propositions_map.get(
-                        r.extractions.closest_sibling_domain.value, None
+                        sanitized_map[r.analysis.closest_sibling_domain.value], None
                     )
                 ) is not None:
                     sibling_matches.append(_sibling_match)
@@ -335,6 +373,12 @@ def main(argv: list = None):
                 )
                 + ([subject] if subject not in skipped else [])
             )
+
+            all_distances = _update_sorted_propositions(
+                all_distances, similarities, skipped, k=20
+            )
+
+    options.categorized_domains.with_suffix(".tmp").rename(options.categorized_domains)
 
 
 if __name__ == "__main__":
