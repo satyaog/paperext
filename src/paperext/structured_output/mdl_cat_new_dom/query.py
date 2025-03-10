@@ -216,7 +216,9 @@ def main(argv: list = None):
             domains_pool=domains_pool,
         )
 
-        for _ in tqdm.tqdm(list(range(len(remainings))), desc="Categorizing domains"):
+        for _ in tqdm.tqdm(
+            list(range(len(all_distances))), desc="Categorizing domains"
+        ):
             # all_distances = get_proposition(
             #     remainings,
             #     domains,

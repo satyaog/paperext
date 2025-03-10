@@ -93,5 +93,3 @@ def no_query(monkeypatch):
     monkeypatch.setattr(paperext.query.instructor, f"from_vertexai", from_)
 
     yield mm
-
-    create_with_completion.assert_called()

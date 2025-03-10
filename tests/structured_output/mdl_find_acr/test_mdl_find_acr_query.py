@@ -5,10 +5,7 @@ import pytest
 
 from paperext.config import CFG, Config
 from paperext.structured_output.mdl_find_acr.model import (
-    Acronym,
-    Explained,
     Response,
-    empty_model,
     empty_response,
 )
 import paperext.structured_output.mdl_find_acr.query
@@ -53,15 +50,11 @@ def test_query(monkeypatch, tmp_path, data_regression, cfg: Config):
             )
         )
 
-    # magicmock = MagicMock()
-    # magicmock.return_value = 100
     monkeypatch.setattr(
         paperext.structured_output.mdl_find_acr.query, "batch_queries", batch_queries
     )
 
-    categorized_domains_minimal = (
-        cfg.dir.root / "data/mdl/categorized_domains_minimal.json"
-    )
+    categorized_domains_minimal = cfg.dir.data / "mdl/minimal_categorized_domains.json"
 
     with Config.push(Config(cfg.dir.root / "../config.mdl.ini")):
         CFG.platform.select = "openai"
@@ -113,15 +106,11 @@ def test_query_in_concurrent_terms(
         acr.full_form.value = full_term
         return [response.model_copy()]
 
-    # magicmock = MagicMock()
-    # magicmock.return_value = 100
     monkeypatch.setattr(
         paperext.structured_output.mdl_find_acr.query, "batch_queries", batch_queries
     )
 
-    categorized_domains_minimal = (
-        cfg.dir.root / "data/mdl/categorized_domains_minimal.json"
-    )
+    categorized_domains_minimal = cfg.dir.data / "mdl/minimal_categorized_domains.json"
 
     with Config.push(Config(cfg.dir.root / "../config.mdl.ini")):
         CFG.platform.select = "openai"

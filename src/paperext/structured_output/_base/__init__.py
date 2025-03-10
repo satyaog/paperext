@@ -1,6 +1,7 @@
 import copy
 import json
 from typing import Any, Generator, Optional
+import typing
 from packaging.version import Version
 from pathlib import Path
 
@@ -9,6 +10,8 @@ from pydantic import BaseModel, ConfigDict, field_serializer, model_validator
 from paperext.config import CFG
 from paperext.log import logger
 from paperext.utils import Paper
+
+_EMPTY_FLAG = "__EMPTY__"
 
 
 class ResponseMetadata(BaseModel):
@@ -72,3 +75,41 @@ class BaseState:
         )
         response.metadata.llm_model = CFG[CFG.platform.select].model
         return response
+
+
+def _is_base(cls, other):
+    try:
+        return cls.__base__ == other
+    except AttributeError:
+        return False
+
+
+def _empty_fields(model_cls: BaseModel, explained_cls: BaseModel):
+    try:
+        iter_fields = model_cls.model_fields.items()
+    except AttributeError:
+        if typing.get_origin(model_cls) == list:
+            return [_empty_fields(model_cls.__args__[0], explained_cls)]
+        else:
+            return _EMPTY_FLAG
+
+    if _is_base(model_cls, explained_cls):
+        fields = {
+            k: (_empty_fields(v, explained_cls) if k == "value" else "")
+            for k, v in iter_fields
+        }
+    else:
+        fields = {}
+        for k, field in iter_fields:
+            fields[k] = _empty_fields(field.annotation, explained_cls)
+
+    return fields
+
+
+def empty_response(model_cls: BaseResponse, explained_cls: BaseModel):
+    empty_fields = _empty_fields(model_cls, explained_cls)
+    empty_fields["words"] = 0
+    empty_fields["query_data"] = {}
+    empty_fields["metadata"] = None
+
+    return model_cls(**empty_fields)
