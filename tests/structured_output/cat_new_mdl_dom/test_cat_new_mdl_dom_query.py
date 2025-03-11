@@ -233,7 +233,7 @@ def test_query(
 
         main(
             [
-                str(cfg.dir.root / "data/paperoni_mdl_find_acr.json"),
+                str(cfg.dir.root / "data/paperoni_find_acr_mdl_dom.json"),
                 "--categorized-domains",
                 str(tmp_path / domains_filename),
             ]

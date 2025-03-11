@@ -15,7 +15,7 @@ from paperext.structured_output.cat_new_el.query import categorise_new_element
 from paperext.structured_output.mdl.stats.stats import load_analysis
 from paperext.structured_output.cat_new_mdl_dom.state import State
 from paperext.structured_output.cat_new_mdl_dom.model import Response
-from paperext.structured_output.mdl_find_acr.query import list_domains
+from paperext.structured_output.find_acr_mdl_dom.query import list_domains
 
 
 def parse_response(response: Response):
@@ -44,7 +44,6 @@ def main(argv: list = None):
     parser.add_argument(
         "--accronyms",
         type=Path,
-        default=CFG.dir.data / "mdl_find_acr/acronyms_or_abbreviations_domains.json",
         help="Path to categorized domains",
     )
 

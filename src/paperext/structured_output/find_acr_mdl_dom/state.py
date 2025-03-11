@@ -8,7 +8,7 @@ from paperext.sanitize_categorization import (
 from paperext.log import logger
 from paperext.structured_output._base import BaseState
 from paperext.utils import Paper
-from paperext.structured_output.mdl_find_acr.model import (
+from paperext.structured_output.find_acr_mdl_dom.model import (
     FIRST_MESSAGE,
     SYSTEM_MESSAGE,
     Analysis,

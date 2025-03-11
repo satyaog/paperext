@@ -4,12 +4,12 @@ import pytest
 
 
 from paperext.config import CFG, Config
-from paperext.structured_output.mdl_find_acr.model import (
+from paperext.structured_output.find_acr_mdl_dom.model import (
     Response,
     empty_response,
 )
-import paperext.structured_output.mdl_find_acr.query
-from paperext.structured_output.mdl_find_acr.query import list_domains, main
+import paperext.structured_output.find_acr_mdl_dom.query
+from paperext.structured_output.find_acr_mdl_dom.query import list_domains, main
 
 
 def test_list_domains(data_regression, cfg: Config):
@@ -23,7 +23,7 @@ def test_list_domains(data_regression, cfg: Config):
                     list_domains(
                         json.loads(
                             (
-                                cfg.dir.root / "data/paperoni_mdl_find_acr.json"
+                                cfg.dir.root / "data/paperoni_find_acr_mdl_dom.json"
                             ).read_text()
                         )
                     )
@@ -51,7 +51,9 @@ def test_query(monkeypatch, tmp_path, data_regression, cfg: Config):
         )
 
     monkeypatch.setattr(
-        paperext.structured_output.mdl_find_acr.query, "batch_queries", batch_queries
+        paperext.structured_output.find_acr_mdl_dom.query,
+        "batch_queries",
+        batch_queries,
     )
 
     categorized_domains_minimal = cfg.dir.data / "mdl/minimal_categorized_domains.json"
@@ -66,7 +68,7 @@ def test_query(monkeypatch, tmp_path, data_regression, cfg: Config):
 
         main(
             [
-                str(cfg.dir.root / "data/paperoni_mdl_find_acr.json"),
+                str(cfg.dir.root / "data/paperoni_find_acr_mdl_dom.json"),
                 "--categorized-terms",
                 str(tmp_path / categorized_domains_minimal.name),
             ]
@@ -107,7 +109,9 @@ def test_query_in_concurrent_terms(
         return [response.model_copy()]
 
     monkeypatch.setattr(
-        paperext.structured_output.mdl_find_acr.query, "batch_queries", batch_queries
+        paperext.structured_output.find_acr_mdl_dom.query,
+        "batch_queries",
+        batch_queries,
     )
 
     categorized_domains_minimal = cfg.dir.data / "mdl/minimal_categorized_domains.json"
@@ -122,7 +126,7 @@ def test_query_in_concurrent_terms(
 
         main(
             [
-                str(cfg.dir.root / "data/paperoni_mdl_find_acr.json"),
+                str(cfg.dir.root / "data/paperoni_find_acr_mdl_dom.json"),
                 "--categorized-terms",
                 str(tmp_path / categorized_domains_minimal.name),
             ]

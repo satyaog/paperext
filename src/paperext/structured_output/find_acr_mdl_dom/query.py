@@ -20,8 +20,8 @@ from paperext.sanitize_categorization import (
 from paperext.structured_output import get_struct_module
 from paperext.structured_output.mdl.stats.stats import load_analysis
 from paperext.structured_output.mdl_clus_dom.state import _sort_categories
-from paperext.structured_output.mdl_find_acr.model import Response
-from paperext.structured_output.mdl_find_acr.state import State
+from paperext.structured_output.find_acr_mdl_dom.model import Response
+from paperext.structured_output.find_acr_mdl_dom.state import State
 from paperext.utils import Paper
 
 
