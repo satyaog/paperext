@@ -62,7 +62,6 @@ def main(argv: list = None):
         accronyms_map = {}
 
     analysis, _ = load_analysis(papers, CFG.dir.queries / CFG.platform.select)
-
     sanitized_map = _make_sanitized_map(set(list_domains(papers)))
     _update_sanitized_map(
         sanitized_map,
@@ -74,6 +73,7 @@ def main(argv: list = None):
             | set(analysis["attrs"]["research_fields"].explode())
         ),
     )
+
     accronyms_map = {
         sanitized_map[k]: sanitized_map[v] for k, v in accronyms_map.items()
     }
@@ -87,7 +87,10 @@ def main(argv: list = None):
         ).items()
     }
 
-    all_domains = set(_flatten_dict(categorized_domains))
+    for research_fields in analysis["attrs"]["research_fields"]:
+        research_fields[:] = map(lambda x: sanitized_map[x], research_fields)
+
+    all_domains = set(analysis["attrs"]["research_fields"].explode())
 
     Path(options.categorized_domains).with_suffix(".tmp").write_text(
         json.dumps(categorized_domains, indent=2, sort_keys=True)

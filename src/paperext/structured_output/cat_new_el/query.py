@@ -58,7 +58,7 @@ def get_proposition(
             [(1 - similarities[remaining, domain], domain) for domain in pool]
         )
         propositions.append(
-            [distances[0][0], remaining] + [d[1] for d in distances[:k]]
+            [distances[0][0], remaining] + [d[1] for d in distances[1 : k + 1]]
         )
 
     return sorted(propositions)
