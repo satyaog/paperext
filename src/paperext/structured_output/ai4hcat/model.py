@@ -3,17 +3,16 @@ from __future__ import annotations
 import csv
 import enum
 from packaging.version import Version
-import typing
-from typing import Any, Generic, List, Optional, TypeVar
+from typing import Generic, List, Optional, TypeVar
 
 from pydantic import AliasChoices, BaseModel, Field
 
 from paperext import CFG
-from paperext.log import logger
 from paperext.structured_output._base import (
     BaseModel,
     BaseResponse,
     ResponseMetadata,
+    _base_empty_fields,
 )
 from paperext.utils import str_normalize
 
@@ -102,7 +101,6 @@ FIRST_MESSAGE = (
     "The paper to analyze is as follows:\n\n"
     "{}"
 )
-_EMPTY_FLAG = "__EMPTY__"
 
 
 class Category(str, enum.Enum):
@@ -209,31 +207,8 @@ class Response(BaseResponse):
     )
 
 
-def _is_base(cls, other):
-    try:
-        return cls.__base__ == other
-    except AttributeError as e:
-        logger.debug(f"{cls} is not based on {other}: {e}", exc_info=True)
-        return False
-
-
 def _empty_fields(model_cls: BaseModel):
-    try:
-        iter_fields = model_cls.model_fields.items()
-    except AttributeError:
-        if typing.get_origin(model_cls) == list:
-            return [_empty_fields(model_cls.__args__[0])]
-        else:
-            return _EMPTY_FLAG
-
-    if _is_base(model_cls, Explained):
-        fields = {k: (_empty_fields(v) if k == "value" else "") for k, v in iter_fields}
-    else:
-        fields = {}
-        for k, field in iter_fields:
-            fields[k] = _empty_fields(field.annotation)
-
-    return fields
+    return _base_empty_fields(model_cls, Explained)
 
 
 def empty_model(model_cls):

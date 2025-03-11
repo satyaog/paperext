@@ -8,13 +8,12 @@ from sentence_transformers import SentenceTransformer
 
 from paperext.config import CFG, Config
 from paperext.sanitize_categorization import _flatten_dict
-from paperext.structured_output._base import empty_response
 from paperext.structured_output.mdl.stats.build_domains_tree import (
     build_domains_dataframe,
     get_proposition,
 )
 from paperext.structured_output.mdl.stats.stats import load_analysis
-from paperext.structured_output.mdl_cat_new_dom.model import Response, Explained
+from paperext.structured_output.mdl_cat_new_dom.model import Response, empty_response
 import paperext.structured_output.mdl_cat_new_dom.query
 from paperext.structured_output.mdl_cat_new_dom.query import (
     _update_sorted_propositions,
@@ -177,7 +176,7 @@ def test_query(
                     break
 
     async def batch_queries(*_, **__):
-        response: Response = empty_response(Response, Explained)
+        response: Response = empty_response(Response)
         _empty_dom = response.analysis.closest_parent_domain.model_copy()
 
         response.analysis.semantically_equivalent_domains = []

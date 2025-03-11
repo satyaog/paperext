@@ -2,8 +2,7 @@ from __future__ import annotations
 
 import logging
 from packaging.version import Version
-import typing
-from typing import Any, Generic, Optional, TypeVar
+from typing import Generic, Optional, TypeVar
 
 from pydantic import AliasChoices, BaseModel, ConfigDict, Field
 
@@ -12,6 +11,8 @@ from paperext.structured_output._base import (
     BaseModel,
     BaseResponse,
     ResponseMetadata,
+    _base_empty_fields,
+    _base_empty_response,
 )
 from paperext.utils import str_normalize
 
@@ -34,8 +35,6 @@ RETRY_MESSAGE = (
     """Your previous selection "{}" is not an exact match for any expressions in the provided list and must be rejected. You must choose from the list only, without introducing new domains or categories. """
     + FIRST_MESSAGE
 )
-
-_EMPTY_FLAG = "__EMPTY__"
 
 
 T = TypeVar("T")
@@ -118,30 +117,8 @@ class Response(BaseResponse):
     )
 
 
-def _is_base(cls, other):
-    try:
-        return cls.__base__ == other
-    except AttributeError:
-        return False
-
-
 def _empty_fields(model_cls: BaseModel):
-    try:
-        iter_fields = model_cls.model_fields.items()
-    except AttributeError:
-        if typing.get_origin(model_cls) == list:
-            return [_empty_fields(model_cls.__args__[0])]
-        else:
-            return _EMPTY_FLAG
-
-    if _is_base(model_cls, Explained):
-        fields = {k: (_empty_fields(v) if k == "value" else "") for k, v in iter_fields}
-    else:
-        fields = {}
-        for k, field in iter_fields:
-            fields[k] = _empty_fields(field.annotation)
-
-    return fields
+    return _base_empty_fields(model_cls, Explained)
 
 
 def empty_model(model_cls):
@@ -151,9 +128,4 @@ def empty_model(model_cls):
 
 
 def empty_response(model_cls):
-    empty_fields = _empty_fields(model_cls)
-    empty_fields["words"] = 0
-    empty_fields["query_data"] = None
-    empty_fields["metadata"] = None
-
-    return model_cls(**empty_fields)
+    return _base_empty_response(model_cls, Explained)

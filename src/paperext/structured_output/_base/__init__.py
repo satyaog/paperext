@@ -1,5 +1,3 @@
-import copy
-import json
 from typing import Any, Generator, Optional
 import typing
 from packaging.version import Version
@@ -8,7 +6,6 @@ from pathlib import Path
 from pydantic import BaseModel, ConfigDict, field_serializer, model_validator
 
 from paperext.config import CFG
-from paperext.log import logger
 from paperext.utils import Paper
 
 _EMPTY_FLAG = "__EMPTY__"
@@ -84,30 +81,30 @@ def _is_base(cls, other):
         return False
 
 
-def _empty_fields(model_cls: BaseModel, explained_cls: BaseModel):
+def _base_empty_fields(model_cls: BaseModel, explained_cls: BaseModel):
     try:
         iter_fields = model_cls.model_fields.items()
     except AttributeError:
         if typing.get_origin(model_cls) == list:
-            return [_empty_fields(model_cls.__args__[0], explained_cls)]
+            return [_base_empty_fields(model_cls.__args__[0], explained_cls)]
         else:
             return _EMPTY_FLAG
 
     if _is_base(model_cls, explained_cls):
         fields = {
-            k: (_empty_fields(v, explained_cls) if k == "value" else "")
+            k: (_base_empty_fields(v, explained_cls) if k == "value" else "")
             for k, v in iter_fields
         }
     else:
         fields = {}
         for k, field in iter_fields:
-            fields[k] = _empty_fields(field.annotation, explained_cls)
+            fields[k] = _base_empty_fields(field.annotation, explained_cls)
 
     return fields
 
 
-def empty_response(model_cls: BaseResponse, explained_cls: BaseModel):
-    empty_fields = _empty_fields(model_cls, explained_cls)
+def _base_empty_response(model_cls: BaseResponse, explained_cls: BaseModel):
+    empty_fields = _base_empty_fields(model_cls, explained_cls)
     empty_fields["words"] = 0
     empty_fields["query_data"] = {}
     empty_fields["metadata"] = None
