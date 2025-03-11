@@ -69,8 +69,6 @@ RETRY_MESSAGE = (
 {}"""
 )
 
-_EMPTY_FLAG = "__EMPTY__"
-
 
 T = TypeVar("T")
 

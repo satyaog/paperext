@@ -8,21 +8,23 @@ from sentence_transformers import SentenceTransformer
 
 from paperext.config import CFG, Config
 from paperext.sanitize_categorization import _flatten_dict
+from paperext.structured_output._base import _EMPTY_FLAG
+from paperext.structured_output.cat_new_el.query import _update_sorted_propositions
 from paperext.structured_output.mdl.stats.build_domains_tree import (
     build_domains_dataframe,
     get_proposition,
 )
 from paperext.structured_output.mdl.stats.stats import load_analysis
-from paperext.structured_output.mdl_cat_new_dom.model import Response, empty_response
-import paperext.structured_output.mdl_cat_new_dom.query
-from paperext.structured_output.mdl_cat_new_dom.query import (
-    _update_sorted_propositions,
+from paperext.structured_output.cat_new_mdl_dom.model import Response, empty_response
+import paperext.structured_output.cat_new_el.query
+import paperext.structured_output.cat_new_mdl_dom.query
+from paperext.structured_output.cat_new_mdl_dom.query import (
     main,
 )
 
 
 def gen_categorized_domains():
-    categorized_domains = {}
+    categorized_domains = {"ignore": {"0:ignore": {}, "1:ignore": {}}}
 
     for i in ["abstract_research_topics", "application_domains"]:
         cat = {}
@@ -32,6 +34,8 @@ def gen_categorized_domains():
             cat[f"{i.replace('_', ' ')}:{j}:entry"] = sub_cat
             for k in range(1):
                 sub_cat[f"{i.replace('_', ' ')}:{j}:{k}:entry"] = {}
+        # Hack to register _EMPTY_FLAG in the sanitized_map
+        cat[_EMPTY_FLAG] = {}
 
     return categorized_domains
 
@@ -194,11 +198,11 @@ def test_query(
         return [response.model_copy()]
 
     monkeypatch.setattr(
-        paperext.structured_output.mdl_cat_new_dom.query, "batch_queries", batch_queries
+        paperext.structured_output.cat_new_el.query, "batch_queries", batch_queries
     )
 
     monkeypatch.setattr(
-        paperext.structured_output.mdl_cat_new_dom.query,
+        paperext.structured_output.cat_new_el.query,
         "get_proposition",
         lambda *_, **__: (
             [
@@ -211,7 +215,7 @@ def test_query(
                     ),
                 ),
                 *sem_equ_domains,
-                *["__EMPTY__"] * (7 - len(sem_equ_domains)),
+                *[_EMPTY_FLAG] * (7 - len(sem_equ_domains)),
             ],
         ),
     )
@@ -223,7 +227,7 @@ def test_query(
         CFG.platform.struct = "mdl"
 
         (tmp_path / domains_filename).write_text(
-            json.dumps(gen_categorized_domains()), encoding="utf8"
+            json.dumps(gen_categorized_domains(), indent=2, sort_keys=True),
         )
 
         main(
@@ -263,80 +267,71 @@ def test_query(
             assert new_domain not in set(_flatten_dict(categorized_domains))
 
 
-# @pytest.mark.usefixtures("no_query")
-# def test_query(monkeypatch, tmp_path, data_regression, cfg: Config):
-#     async def batch_queries(*args, **_kwargs):
-#         _, filename = args[1][0]
-#         return list(
-#             map(
-#                 lambda x: Response.model_validate_json(x.read_text()),
-#                 sorted(
-#                     (
-#                         cfg.dir.root
-#                         / "../data"
-#                         / CFG.platform.struct
-#                         / "queries"
-#                         / CFG.platform.select
-#                     ).glob(f"{filename}_*.json")
-#                 ),
-#             )
-#         )
+@pytest.mark.usefixtures("no_query")
+def test_query_full_pipeline(monkeypatch, tmp_path, data_regression, cfg: Config):
+    async def batch_queries(*args, **_kwargs):
+        _, filename = args[1][0]
+        return list(
+            map(
+                lambda x: Response.model_validate_json(x.read_text()),
+                sorted(
+                    (
+                        cfg.dir.root
+                        / "../data"
+                        / CFG.platform.struct
+                        / "queries"
+                        / CFG.platform.select
+                    ).glob(f"{filename}_*.json")
+                ),
+            )
+        )
 
-#     # magicmock = MagicMock()
-#     # magicmock.return_value = 100
-#     monkeypatch.setattr(
-#         paperext.structured_output.mdl_cat_new_dom.query, "batch_queries", batch_queries
-#     )
-#     monkeypatch.setattr(
-#         paperext.structured_output.mdl_cat_new_dom.query,
-#         "sanitize_categories",
-#         lambda x, *args, **kwargs: x,
-#     )
-#     monkeypatch.setattr(
-#         paperext.structured_output.mdl_cat_new_dom.query,
-#         "_make_sanitized_map",
-#         lambda *args, **kwargs: json.loads(sanitized_map.read_text()),
-#     )
+    monkeypatch.setattr(
+        paperext.structured_output.cat_new_el.query, "batch_queries", batch_queries
+    )
+    monkeypatch.setattr(
+        paperext.structured_output.cat_new_mdl_dom.query,
+        "sanitize_categories",
+        lambda x, *args, **kwargs: x,
+    )
+    monkeypatch.setattr(
+        paperext.structured_output.cat_new_mdl_dom.query,
+        "_make_sanitized_map",
+        lambda *args, **kwargs: json.loads(sanitized_map.read_text()),
+    )
 
-#     paperoni = (
-#         Path(__file__).parent / "paperoni-2022-01-01-2025-01-01-PR_2025-02-05.json"
-#     )
-#     categorized_domains = Path(__file__).parent / "categorized_domains.json"
-#     acronyms_domains = Path(__file__).parent / "acronyms_domains.json"
-#     sanitized_map = Path(__file__).parent / "sanitized_map.json"
+    paperoni = (
+        Path(__file__).parent / "paperoni-2022-01-01-2025-01-01-PR_2025-02-05.json"
+    )
+    categorized_domains = Path(__file__).parent / "categorized_domains.json"
+    acronyms_domains = Path(__file__).parent / "acronyms_domains.json"
+    sanitized_map = Path(__file__).parent / "sanitized_map.json"
 
-#     with Config.push(Config(cfg.dir.root / "../config.mdl.ini")):
-#         CFG.platform.select = "openai"
-#         CFG.platform.struct = "mdl"
+    with Config.push(Config(cfg.dir.root / "../config.mdl.ini")):
+        CFG.platform.select = "openai"
+        CFG.platform.struct = "mdl"
 
-#         (tmp_path / paperoni.name).write_text(paperoni.read_text(), encoding="utf8")
-#         (tmp_path / categorized_domains.name).write_text(
-#             categorized_domains.read_text(), encoding="utf8"
-#         )
-#         (tmp_path / acronyms_domains.name).write_text(
-#             acronyms_domains.read_text(), encoding="utf8"
-#         )
+        (tmp_path / paperoni.name).write_text(paperoni.read_text(), encoding="utf8")
+        (tmp_path / categorized_domains.name).write_text(
+            categorized_domains.read_text(), encoding="utf8"
+        )
+        (tmp_path / acronyms_domains.name).write_text(
+            acronyms_domains.read_text(), encoding="utf8"
+        )
 
-#         main(
-#             [
-#                 str(tmp_path / paperoni.name),
-#                 "--categorized-domains",
-#                 str(tmp_path / categorized_domains.name),
-#                 "--accronyms",
-#                 str(tmp_path / acronyms_domains.name),
-#             ]
-#         )
+        main(
+            [
+                str(tmp_path / paperoni.name),
+                "--categorized-domains",
+                str(tmp_path / categorized_domains.name),
+                "--accronyms",
+                str(tmp_path / acronyms_domains.name),
+            ]
+        )
 
-#         data_regression.check(
-#             json.loads(
-#                 (
-#                     tmp_path
-#                     / categorized_domains_minimal.with_stem(
-#                         f"{categorized_domains_minimal.stem}_acronyms"
-#                     ).name
-#                 ).read_text(encoding="utf8")
-#             )
-#         )
+        data_regression.check(
+            json.loads((tmp_path / categorized_domains.name).read_text(encoding="utf8"))
+        )
 
 
 # @pytest.mark.parametrize(

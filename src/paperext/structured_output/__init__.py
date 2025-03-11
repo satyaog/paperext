@@ -3,7 +3,7 @@ from . import (
     mdl as _mdl,
     mdl_dom as _mdl_dom,
     mdl_cat_dom as _mdl_cat_dom,
-    mdl_cat_new_dom as _mdl_cat_new_dom,
+    cat_new_mdl_dom as _mdl_cat_new_dom,
     mdl_clus_dom as _mdl_clus_dom,
     mdl_find_acr as _mdl_find_acr,
 )
