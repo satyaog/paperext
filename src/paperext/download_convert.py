@@ -1,13 +1,17 @@
 import argparse
+from datetime import datetime
 import hashlib
 import json
 import os
 import subprocess
 import sys
 import tempfile
+from time import sleep
+from typing import Any
 import urllib.request
 from multiprocessing.pool import ThreadPool
 from pathlib import Path
+from xml.etree import ElementTree
 
 import yaml
 
@@ -247,6 +251,63 @@ def download_and_convert_paper(
     return text, sorted(set(link_types))
 
 
+def _iter_list(key: str, dictionary: dict[str, Any]):
+    unique_tag = key
+    index = 1
+    while unique_tag in dictionary:
+        yield dictionary[unique_tag]
+        unique_tag = f"{key}:{index}"
+        index += 1
+
+
+def _unique_key(key: str, dictionary: dict[str, Any]):
+    unique_tag = key
+    index = -1
+    for index, _ in enumerate(_iter_list(key, dictionary)):
+        pass
+    if index + 1:
+        unique_tag = f"{key}:{index + 1}"
+    return unique_tag
+
+
+def parse_element(element: ElementTree.Element):
+    parsed = {}
+    passed = set()
+
+    for field in element.iter():
+        if field == element or field in passed:
+            continue
+
+        passed.add(field)
+
+        clean_tag = field.tag.split("}")[-1]
+        unique_tag = _unique_key(clean_tag, parsed)
+
+        text = (field.text or "").strip()
+        text = " ".join(
+            [split for split in text.replace("\n", " ").split(" ") if split.strip()]
+        )
+
+        sub_element, _passed = parse_element(field)
+        passed.update(_passed)
+
+        sub_element = {**sub_element, **field.attrib}
+
+        assert not text or not sub_element
+        parsed[unique_tag] = text or sub_element
+
+    for k in list(parsed):
+        if len(_list := list(_iter_list(k, parsed))) > 1:
+            assert f"{k}:list" not in parsed
+            parsed[f"{k}:list"] = _list
+
+    return parsed, passed
+
+
+def date_type(string: str):
+    return datetime.strptime(string, "%Y-%m-%d")
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(
         prog=PROG,
@@ -282,6 +343,52 @@ def main(argv=None):
         default=CFG.dir.cache,
         help="Directory to store downloaded and converted pdfs -> txts",
     )
+
+    # Create a subparser for "arxiv"
+    subparsers = parser.add_subparsers(dest="src", help="arXiv commands")
+
+    # arXiv subparser
+    arxiv_parser = subparsers.add_parser(
+        "arxiv", help="Options for arXiv-related operations"
+    )
+
+    arxiv_parser.add_argument(
+        "--query",
+        metavar="STR",
+        help="arXiv query to fetch papers",
+    )
+    arxiv_parser.add_argument(
+        "--cat",
+        metavar="STR",
+        help="arXiv category to filter papers",
+    )
+    arxiv_parser.add_argument(
+        "--au",
+        metavar="STR",
+        help="arXiv author to filter papers",
+    )
+    arxiv_parser.add_argument(
+        "--start",
+        metavar="YYYY-MM-DD",
+        default=datetime.fromtimestamp(0),
+        type=date_type,
+        help="arXiv start date to filter papers",
+    )
+    arxiv_parser.add_argument(
+        "--end",
+        metavar="YYYY-MM-DD",
+        default=datetime(datetime.now().year + 100, 1, 1),
+        type=date_type,
+        help="arXiv end date to filter papers",
+    )
+    arxiv_parser.add_argument(
+        "--max-result",
+        metavar="INT",
+        default=100,
+        type=int,
+        help="arXiv max number of papers to fetch",
+    )
+
     options = parser.parse_args(argv)
 
     options.cache_dir.mkdir(parents=True, exist_ok=True)
@@ -290,7 +397,7 @@ def main(argv=None):
     failed = []
 
     papers = sum(
-        [json.loads(paperoni.read_text()) for paperoni in options.paperoni], []
+        [json.loads(paperoni.read_text()) for paperoni in (options.paperoni or [])], []
     )
 
     with ThreadPool(processes=8) as pool:
@@ -303,13 +410,65 @@ def main(argv=None):
             else:
                 failed.append((paper_id, text_file, link_types))
 
+    entries = []
+    entry_elements = None
+    start = 0
+    search_query = " AND ".join(
+        [
+            *([f"cat:{options.cat}"] if options.cat else []),
+            *([f"au:{options.au}"] if options.au else []),
+            *([f"all:{options.query}"] if options.query else []),
+        ]
+    )
+    while (
+        (entry_elements is None or entry_elements)
+        and search_query
+        and len(entries) <= options.max_result
+        and start <= 1000
+    ):
+        params = {
+            "search_query": search_query,
+            "start": start,
+            "max_results": 100,
+            "sortBy": "relevance",
+        }
+        encoded_params = urllib.parse.urlencode(params)
+        url = f"http://export.arxiv.org/api/query?{encoded_params}"
+        data = urllib.request.urlopen(url)
+        data = data.read().decode("utf-8")
+
+        entry_elements = ElementTree.fromstring(data).findall(
+            "{http://www.w3.org/2005/Atom}entry"
+        )
+
+        for entry in entry_elements:
+            start += 1
+            parsed, _ = parse_element(entry)
+
+            if not (
+                options.start
+                <= datetime.strptime(parsed["updated"], "%Y-%m-%dT%H:%M:%SZ")
+                <= options.end
+            ):
+                continue
+
+            if [p for p in entries if p["id"] == parsed["id"]]:
+                break
+
+            entries.append(parsed)
+
+        sleep(5)
+
     urls = [
         (
             f"https://arxiv.org/pdf/{arxiv_id}",
             options.cache_dir / f"arxiv/{arxiv_id}.pdf",
             "arxiv",
         )
-        for arxiv_id in options.arxiv
+        for arxiv_id in [entry["id"].split("/")[-1].split("v")[0] for entry in entries][
+            : options.max_result
+        ]
+        + list(options.arxiv)
     ]
 
     for url, pdf_file, link_type in urls + [
