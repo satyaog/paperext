@@ -7,6 +7,8 @@ from pathlib import Path
 from pprint import pprint
 from typing import Any
 
+import tqdm
+
 from paperext.config import CFG
 from paperext.log import logger
 from paperext.utils import split_entry
@@ -76,7 +78,7 @@ def _debug_msg_merge_dict(key: str | list, first: dict, other: dict):
 
 
 def _update_sanitized_map(sanitized_map: dict[str, str], *keys, return_bare=False):
-    for key in keys:
+    for key in tqdm.tqdm(keys, desc="Updating sanitized map"):
         if key in sanitized_map:
             continue
 
@@ -115,11 +117,7 @@ def _make_sanitized_map(dict_or_list: dict[str, dict] | set[str]):
 
     sanitized_key_map = {}
 
-    while keys:
-        if (key := keys.pop(0)) in sanitized_key_map:
-            continue
-
-        _update_sanitized_map(sanitized_key_map, key)
+    _update_sanitized_map(sanitized_key_map, *keys)
 
     return sanitized_key_map
 
@@ -156,7 +154,7 @@ def default_sanitize_key(key: str, replace="_"):
 
 
 def bare_sanitize_key(key: str):
-    return default_sanitize_key(key, replace="-_").replace(" ", "")
+    return key.replace("-", " ").replace("_", " ").replace(" ", "")
 
 
 def _eq_keys(
