@@ -2,11 +2,17 @@ from __future__ import annotations
 
 import enum
 import logging
+from packaging.version import Version
 import typing
 from typing import Any, Generic, List, Optional, TypeVar
 
 from pydantic import BaseModel, Field
 
+from paperext.structured_output._base import (
+    BaseModel,
+    BaseResponse,
+    ResponseMetadata,
+)
 from paperext.utils import str_normalize
 
 logging.basicConfig(level=logging.DEBUG)
@@ -204,7 +210,7 @@ class ResearchField(BaseModel):
         return False
 
 
-class PaperExtractions(BaseModel):
+class Analysis(BaseModel):
     title: Explained[str] = Field(
         description="Title of the paper",
     )
@@ -233,11 +239,11 @@ class PaperExtractions(BaseModel):
 # PaperExtractions = fix_explained_fields()
 
 
-class Response(BaseModel):
-    paper: str
-    words: int
-    extractions: PaperExtractions
-    usage: Optional[Any]
+class Response(BaseResponse):
+    analysis: Analysis = Field(alias="extractions")
+    metadata: Optional[ResponseMetadata] = ResponseMetadata(
+        model_version=Version("2.0.0")
+    )
 
 
 def _is_base(cls, other):

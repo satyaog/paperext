@@ -2,11 +2,17 @@ from __future__ import annotations
 
 import enum
 import logging
-import typing
-from typing import Any, Generic, List, Optional, TypeVar
+from packaging.version import Version
+from typing import Generic, List, Optional, TypeVar
 
-from pydantic import BaseModel, Field
+from pydantic import AliasChoices, BaseModel, Field
 
+from paperext.structured_output._base import (
+    BaseModel,
+    BaseResponse,
+    ResponseMetadata,
+    _base_empty_fields,
+)
 from paperext.utils import str_normalize
 
 logging.basicConfig(level=logging.DEBUG)
@@ -34,7 +40,6 @@ RETRY_MESSAGE = (
     "Models, Datasets and Libraries in the same research paper:\n"
     "{}"
 )
-_EMPTY_FLAG = "__EMPTY__"
 
 
 class ResearchType(str, enum.Enum):
@@ -211,7 +216,7 @@ class ResearchField(BaseModel):
         return False
 
 
-class PaperExtractions(BaseModel):
+class Analysis(BaseModel):
     title: Explained[str] = Field(
         description="Title of the paper",
     )
@@ -240,37 +245,15 @@ class PaperExtractions(BaseModel):
 # PaperExtractions = fix_explained_fields()
 
 
-class Response(BaseModel):
-    paper: str
-    words: int
-    extractions: PaperExtractions
-    usage: Optional[Any]
-
-
-def _is_base(cls, other):
-    try:
-        return cls.__base__ == other
-    except AttributeError:
-        return False
+class Response(BaseResponse):
+    analysis: Analysis = Field(validation_alias=AliasChoices("analysis", "extractions"))
+    metadata: Optional[ResponseMetadata] = ResponseMetadata(
+        model_version=Version("3.0.0")
+    )
 
 
 def _empty_fields(model_cls: BaseModel):
-    try:
-        iter_fields = model_cls.model_fields.items()
-    except AttributeError:
-        if typing.get_origin(model_cls) == list:
-            return [_empty_fields(model_cls.__args__[0])]
-        else:
-            return _EMPTY_FLAG
-
-    if _is_base(model_cls, Explained):
-        fields = {k: (_empty_fields(v) if k == "value" else "") for k, v in iter_fields}
-    else:
-        fields = {}
-        for k, field in iter_fields:
-            fields[k] = _empty_fields(field.annotation)
-
-    return fields
+    return _base_empty_fields(model_cls, Explained)
 
 
 def empty_model(model_cls):

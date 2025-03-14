@@ -2,13 +2,18 @@ from __future__ import annotations
 
 import csv
 import enum
-import typing
-from typing import Any, Generic, List, Optional, TypeVar
+from packaging.version import Version
+from typing import Generic, List, Optional, TypeVar
 
-from pydantic import BaseModel, Field
+from pydantic import AliasChoices, BaseModel, Field
 
 from paperext import CFG
-from paperext.log import logger
+from paperext.structured_output._base import (
+    BaseModel,
+    BaseResponse,
+    ResponseMetadata,
+    _base_empty_fields,
+)
 from paperext.utils import str_normalize
 
 _APPLICATIONS_KEY = "applications"
@@ -96,7 +101,6 @@ FIRST_MESSAGE = (
     "The paper to analyze is as follows:\n\n"
     "{}"
 )
-_EMPTY_FLAG = "__EMPTY__"
 
 
 class Category(str, enum.Enum):
@@ -166,7 +170,7 @@ class Explained(BaseModel, Generic[T]):
         return str_normalize(str(self.value)) < str_normalize(str(other.value))
 
 
-class PaperExtractions(BaseModel):
+class Analysis(BaseModel):
     title: Explained[str] = Field(
         description="Title of the paper",
     )
@@ -196,44 +200,21 @@ class PaperExtractions(BaseModel):
     )
 
 
-class Response(BaseModel):
-    paper: str
-    words: int
-    extractions: PaperExtractions
-    usage: Optional[Any]
-
-
-def _is_base(cls, other):
-    try:
-        return cls.__base__ == other
-    except AttributeError as e:
-        logger.debug(f"{cls} is not based on {other}: {e}", exc_info=True)
-        return False
+class Response(BaseResponse):
+    analysis: Analysis = Field(validation_alias=AliasChoices("analysis", "extractions"))
+    metadata: Optional[ResponseMetadata] = ResponseMetadata(
+        model_version=Version("1.0.0")
+    )
 
 
 def _empty_fields(model_cls: BaseModel):
-    try:
-        iter_fields = model_cls.model_fields.items()
-    except AttributeError:
-        if typing.get_origin(model_cls) == list:
-            return [_empty_fields(model_cls.__args__[0])]
-        else:
-            return _EMPTY_FLAG
-
-    if _is_base(model_cls, Explained):
-        fields = {k: (_empty_fields(v) if k == "value" else "") for k, v in iter_fields}
-    else:
-        fields = {}
-        for k, field in iter_fields:
-            fields[k] = _empty_fields(field.annotation)
-
-    return fields
+    return _base_empty_fields(model_cls, Explained)
 
 
 def empty_model(model_cls):
     empty_fields = _empty_fields(model_cls)
     empty_fields["primary_category"]["value"] = Category.NA.value
-    empty_fields["seconday_categories"][0]["value"] = Category.NA.value
+    empty_fields["secondary_categories"][0]["value"] = Category.NA.value
     empty_fields["primary_sub_category"]["value"] = SubCategory.NA.value
     empty_fields["secondary_sub_categories"][0]["value"] = SubCategory.NA.value
 

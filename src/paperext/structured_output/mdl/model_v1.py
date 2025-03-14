@@ -1,9 +1,16 @@
 from __future__ import annotations
 
 import enum
+from packaging.version import Version
 from typing import Any, Generic, List, Optional, TypeVar
 
 from pydantic import BaseModel, Field
+
+from paperext.structured_output._base import (
+    BaseModel,
+    BaseResponse,
+    ResponseMetadata,
+)
 
 SYSTEM_MESSAGE = (
     f"Your role is to extract Deep Learning Models, Datasets and Deep Learning "
@@ -175,7 +182,7 @@ class Library(BaseModel):
     #     return Role(v) or v
 
 
-class PaperExtractions(BaseModel):
+class Analysis(BaseModel):
     title: Explained[str] = Field(
         description="Title of the paper",
     )
@@ -212,11 +219,11 @@ class PaperExtractions(BaseModel):
 # PaperExtractions = fix_explained_fields()
 
 
-class Response(BaseModel):
-    paper: str
-    words: int
-    extractions: PaperExtractions
-    usage: Optional[Any]
+class Response(BaseResponse):
+    analysis: Analysis = Field(alias="extractions")
+    metadata: Optional[ResponseMetadata] = ResponseMetadata(
+        model_version=Version("1.0.0")
+    )
 
 
 def empty_paperextractions():
@@ -228,7 +235,7 @@ def empty_paperextractions():
     empty_explained_researchtype = Explained[ResearchType](**empty_explained_kwargs)
     empty_explained_role = Explained[Role](**empty_explained_kwargs)
 
-    return PaperExtractions(
+    return Analysis(
         description=_EMPTY_FLAG,
         title=empty_explained_str,
         type=empty_explained_researchtype,

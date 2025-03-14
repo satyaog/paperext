@@ -36,13 +36,13 @@ Example:
 PLATFORMS = {}
 
 try:
-    import openai
+    from openai import AsyncOpenAI, RateLimitError
     from openai.types.chat.chat_completion import CompletionUsage
 
     def _client():
         model = CFG.openai.model
         client = instructor.from_openai(
-            openai.AsyncOpenAI(),
+            AsyncOpenAI(),
             mode=instructor.Mode.TOOLS_STRICT,
         )
         _create_with_completion = client.chat.completions.create_with_completion
@@ -111,13 +111,13 @@ except ModuleNotFoundError as e:
     logging.info(e, exc_info=True)
 
 try:
-    import openai
+    from openai import AsyncOpenAI, RateLimitError
     from openai.types.chat.chat_completion import CompletionUsage
 
     def _client():
         model = CFG.ollama.model
         client = instructor.from_openai(
-            openai.AsyncOpenAI(
+            AsyncOpenAI(
                 base_url=CFG.ollama.url,
                 api_key="ollama",  # required, but unused
             ),
@@ -151,7 +151,7 @@ async def query(
     while True:
         try:
             result = client.chat.completions.create_with_completion(
-                response_model=state.get_response_model(),
+                response_model=state.AnalysisCls,
                 messages=messages,
             )
 
@@ -162,7 +162,7 @@ async def query(
 
             return extractions, usage
 
-        except openai.RateLimitError as e:
+        except RateLimitError as e:
             asyncio.sleep(60)
             if retries:
                 retries.pop()
@@ -195,7 +195,7 @@ async def batch_queries(
             f = f.with_stem(f"{f.stem}_{i:02}").with_suffix(".json")
 
             try:
-                response = state.get_response_cls().model_validate_json(f.read_text())
+                response = state.ResponseCls.model_validate_json(f.read_text())
 
             except (
                 FileNotFoundError,
@@ -204,7 +204,7 @@ async def batch_queries(
                 logger.error(e, exc_info=True)
                 logging.error(e, exc_info=True)
 
-                extractions, usage = await query(client, state, messages)
+                analysis, usage = await query(client, state, messages)
 
                 f.parent.mkdir(parents=True, exist_ok=True)
 
@@ -212,7 +212,7 @@ async def batch_queries(
                     response = state.make_response(
                         paper_name=paper_name,
                         words=count,
-                        analysis=extractions,
+                        analysis=analysis,
                         usage=usage,
                     )
                     f.write_text(response.model_dump_json(indent=2))
@@ -221,7 +221,7 @@ async def batch_queries(
                     response = state.make_response(
                         paper_name=paper_name,
                         words=count,
-                        analysis=extractions,
+                        analysis=analysis,
                         usage=None,
                     )
                     f.write_text(response.model_dump_json(indent=2))

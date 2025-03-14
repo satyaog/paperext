@@ -1,16 +1,21 @@
 from pathlib import Path
 from typing import Generator
+from paperext.structured_output._base import BaseState
 from paperext.utils import Paper
-from .model import FIRST_MESSAGE, SYSTEM_MESSAGE, Response, PaperExtractions
+from .model import FIRST_MESSAGE, SYSTEM_MESSAGE, Response, Analysis
 
 
-class State:
-    def __init__(self, paper: Paper, pdf_txt: Path):
-        self._paper = paper
-        self._pdf_txt = pdf_txt
-        self.responses: list[Response] = []
+class State(BaseState):
+    AnalysisCls: Analysis = Analysis
+    ResponseCls: Response = Response
+
+    def __init__(self, paper: Paper, pdf_txt: Path, **kwargs):
+        super().__init__(paper=paper, pdf_txt=pdf_txt, **kwargs)
+        self.responses: list[Response]
 
     def format_messages(self) -> Generator[list[dict[str:str]], None, None]:
+        self._query_data.append({})
+
         yield [
             {
                 "role": "system",
@@ -21,12 +26,3 @@ class State:
                 "content": FIRST_MESSAGE.format(self._pdf_txt.read_text()),
             },
         ]
-
-    def push_response(self, response: "State.response_type"):
-        self.responses.append(response)
-
-    def get_response_cls(self):
-        return Response
-
-    def get_response_model(self):
-        return PaperExtractions

@@ -25,7 +25,7 @@ def _model_dump(m):
     return m
 
 
-def convert_model_v1(extractions: model_v1.PaperExtractions):
+def convert_model_v1(extractions: model_v1.Analysis):
     from paperext.structured_output.mdl import model_v2 as dest_model
 
     fields = {}
@@ -154,10 +154,10 @@ def convert_model_v1(extractions: model_v1.PaperExtractions):
                     f"{l.name.value} are: ({name}, {aliases})"
                 )
 
-    return dest_model.PaperExtractions(**{k: _model_dump(v) for k, v in fields.items()})
+    return dest_model.Analysis(**{k: _model_dump(v) for k, v in fields.items()})
 
 
-def convert_model_v2(extractions: model_v2.PaperExtractions):
+def convert_model_v2(extractions: model_v2.Analysis):
     from paperext.structured_output.mdl import model as dest_model
 
     def convert_enum(enum_cls, value):
@@ -246,7 +246,7 @@ def convert_model_v2(extractions: model_v2.PaperExtractions):
                 )
                 fields[field_name].append(l)
 
-    return dest_model.PaperExtractions(**{k: _model_dump(v) for k, v in fields.items()})
+    return dest_model.Analysis(**{k: _model_dump(v) for k, v in fields.items()})
 
 
 CONVERT_MODEL = {
@@ -283,7 +283,7 @@ if __name__ == "__main__":
             model_data = yaml.safe_load(model_data)
 
         for model_cls in (
-            *[m.PaperExtractions for m in (dest_model, src_model)],
+            *[m.Analysis for m in (dest_model, src_model)],
             *[m.Response for m in (dest_model, src_model)],
         ):
             try:
@@ -303,10 +303,10 @@ if __name__ == "__main__":
             response: src_model.Response = extractions
             extractions = response.extractions
         except AttributeError:
-            # extractions is of type [dest_model | src_model].PaperExtractions
+            # extractions is of type [dest_model | src_model].Analysis
             response = None
 
-        if isinstance(extractions, dest_model.PaperExtractions):
+        if isinstance(extractions, dest_model.Analysis):
             logging.info(f"Model {path.relative_to(CFG.dir.root)} already updated")
             continue
 

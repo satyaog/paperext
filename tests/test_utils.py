@@ -15,8 +15,6 @@ from paperext.utils import (
 
 
 def test_paper(cfg: Config):
-    arxiv_id = "2302.00999"
-
     def _test(
         paper: Paper, expected_id: str, expected_query_files: list, expected_pdf: Path
     ):
@@ -27,8 +25,12 @@ def test_paper(cfg: Config):
         for _f in expected_query_files:
             assert _f.exists()
 
+    arxiv_id = "2302.00999"
+
+    cfg.platform.select = "openai"
+
     for p in json.loads(
-        (cfg.dir.data / "paperoni-2023-2024-PR_2024-09-30.json").read_text()
+        (cfg.dir.root / "../data/paperoni-2023-2024-PR_2024-09-30.json").read_text()
     ):
         if list(filter(lambda l: l.get("link", None) == arxiv_id, p["links"])):
             paper = Paper(p)
@@ -97,11 +99,16 @@ def test_paper(cfg: Config):
     _test(Paper(p), expected_id, expected_query_files, expected_pdf)
 
 
-def test_multiple_sources(cfg: Config):
+def test_multiple_sources(tmp_path, cfg: Config):
     # Test that multiple downloaded pdf files from multiple sources (e.g. arxiv
     # and/or openreview) do not end up in multiple query files
     arxiv_id = "2304.07193"
     openreview_id = "a68SUt6zFt"
+
+    cfg.platform.select = "openai"
+
+    arxiv_cfg = copy.deepcopy(cfg)
+    openreview_cfg = copy.deepcopy(cfg)
 
     def _cp(src: Path, dest: Path):
         dest.parent.mkdir(parents=True, exist_ok=True)
@@ -109,7 +116,7 @@ def test_multiple_sources(cfg: Config):
 
     def _get_papers():
         for p in json.loads(
-            (cfg.dir.data / "paperoni-2023-2024-PR_2024-09-30.json").read_text()
+            (cfg.dir.root / "../data/paperoni-2023-2024-PR_2024-09-30.json").read_text()
         ):
             if list(filter(lambda l: l.get("link", None) == arxiv_id, p["links"])):
                 paper = Paper(p)
@@ -121,13 +128,8 @@ def test_multiple_sources(cfg: Config):
 
         return (paper, arxiv_paper, openreview_paper)
 
-    arxiv_cfg = copy.deepcopy(cfg)
-    openreview_cfg = copy.deepcopy(cfg)
-
     for _cfg in (arxiv_cfg, openreview_cfg):
-        _cfg.dir.data = Path(
-            tempfile.TemporaryDirectory(dir=str(cfg.dir.root / "tmp")).name
-        )
+        _cfg.dir.data = Path(tempfile.TemporaryDirectory(dir=str(tmp_path)).name)
         _cfg.dir.cache = _cfg.dir.data / "cache"
         _cfg.dir.merged = _cfg.dir.data / "merged"
         _cfg.dir.queries = _cfg.dir.data / "queries"

@@ -10,4 +10,4 @@ from paperext.structured_output.mdl import model_v3 as mdl_model_v3
     [ai4hcat_model_v1, mdl_model_v2, mdl_model_v3],
 )
 def test_empty_model(structured_output_module):
-    structured_output_module.empty_model(structured_output_module.PaperExtractions)
+    structured_output_module.empty_model(structured_output_module.Analysis)

@@ -5,7 +5,7 @@ import re
 import typing
 from typing import Any, Generic, Optional, TypeVar
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 from paperext.utils import str_normalize
 
@@ -141,9 +141,9 @@ class GenericDomain(BaseModel):
         }
         return super().model_validate(cleaned_obj)
 
-    class Config:
-        # This allows the model to use the cleaned keys for validation
-        populate_by_name = False
+    model_config = ConfigDict(
+        populate_by_name=False,
+    )
 
 
 class Response(BaseModel):
