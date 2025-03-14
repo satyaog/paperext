@@ -38,6 +38,8 @@ class State(BaseState):
         self._terms = terms
         self._sanitized_map = sanitized_map.copy()
 
+        self.responses: list[Response]
+
     @property
     def categories_refs(self):
         return self._categories_refs
@@ -69,44 +71,49 @@ class State(BaseState):
 
             yield _messages[:]
 
-            for acr in self.responses[-1].extractions.acronyms:
-                _acr, _full_form = default_sanitize_key(
-                    acr.acronym_abbreviation.value
-                ), default_sanitize_key(acr.full_form.value)
-                _acr, _full_form = (
-                    (_acr, _full_form)
-                    if len(_acr) <= len(_full_form) or not _full_form
-                    else (_full_form, _acr)
+            for acr_abb in self.responses[-1].analysis.acronyms:
+                acr, full_form = (
+                    acr_abb.acronym_abbreviation.value,
+                    acr_abb.full_form.value,
                 )
 
-                if _acr not in self._terms:
+                _update_sanitized_map(self._sanitized_map, acr)
+                _update_sanitized_map(self._sanitized_map, full_form)
+
+            for term in self.responses[-1].analysis.not_acronyms:
+                term = term.value
+                _update_sanitized_map(self._sanitized_map, term)
+
+            sanitized_terms = [self._sanitized_map[_term] for _term in self._terms]
+
+            for acr_abb in self.responses[-1].analysis.acronyms:
+                acr, full_form = (
+                    self._sanitized_map[acr_abb.acronym_abbreviation.value],
+                    self._sanitized_map[acr_abb.full_form.value],
+                )
+
+                acr, full_form = (
+                    (acr, full_form)
+                    if len(acr) <= len(full_form) or not full_form
+                    else (full_form, acr)
+                )
+
+                if acr not in sanitized_terms:
                     logger.warning(
-                        f"Model identified an accronym [{_acr}:{_full_form}] "
+                        f"Model identified an accronym [{acr}:{full_form}] "
                         f"that is missing from the terms list. Provided terms are "
-                        f"{self._terms}."
+                        f"{sanitized_terms}."
                     )
                     continue
 
-                if _acr:
-                    _update_sanitized_map(self._sanitized_map, _acr)
-                    acr.acronym_abbreviation.value = self._sanitized_map[_acr]
-                    terms.add(_acr)
+                terms.add(acr)
 
-                else:
-                    continue
+                if full_form:
+                    terms.add(full_form)
 
-                if _full_form:
-                    _update_sanitized_map(self._sanitized_map, _full_form)
-                    acr.full_form.value = self._sanitized_map[_full_form]
-                    terms.add(_full_form)
-
-            for i, term in enumerate(self.responses[-1].extractions.not_acronyms):
-                term = default_sanitize_key(term.value)
+            for term in self.responses[-1].analysis.not_acronyms:
+                term = self._sanitized_map.get(term.value, None)
                 if term:
-                    _update_sanitized_map(self._sanitized_map, term)
-                    self.responses[-1].extractions.not_acronyms[i].value = (
-                        self._sanitized_map[term]
-                    )
                     terms.add(term)
 
-            missing = set(self._terms) - terms
+            missing = set(sanitized_terms) - terms

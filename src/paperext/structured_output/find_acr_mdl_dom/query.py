@@ -96,7 +96,7 @@ def main(argv: list = None):
         help="Paperoni json report of papers to analyse",
     )
     parser.add_argument(
-        "--categorized-terms",
+        "--categorized-domains",
         type=Path,
         help="Path to categorized terms",
     )
@@ -107,11 +107,15 @@ def main(argv: list = None):
         papers.extend(json.loads(Path(papers_json_path).read_text()))
 
     acronyms_data = DomainAcronymsData(
-        json.loads(options.categorized_terms.read_text()),
+        json.loads(options.categorized_domains.read_text()),
         load_analysis(papers, CFG.dir.queries / CFG.platform.select)[0],
     )
 
     sanitized_map = _make_sanitized_map(acronyms_data.list_paper_terms())
+
+    for research_fields in acronyms_data.papers_data["attrs"]["research_fields"]:
+        research_fields[:] = map(lambda x: sanitized_map[x], research_fields)
+
     _update_sanitized_map(
         sanitized_map,
         *set(acronyms_data.iter_categorized_terms()),
@@ -124,9 +128,6 @@ def main(argv: list = None):
         ).items()
     }
 
-    for research_fields in acronyms_data.papers_data["attrs"]["research_fields"]:
-        research_fields[:] = map(lambda x: sanitized_map[x], research_fields)
-
     with Config.push():
         CFG.platform.struct = Path(__file__).parent.name
 
@@ -136,20 +137,20 @@ def main(argv: list = None):
             state_cls=State,
         )
 
-    if options.categorized_terms.with_stem(
-        f"{options.categorized_terms.stem}_acronyms"
+    if options.categorized_domains.with_stem(
+        f"{options.categorized_domains.stem}_acronyms"
     ).exists():
         acronyms = {
             **json.loads(
-                options.categorized_terms.with_stem(
-                    f"{options.categorized_terms.stem}_acronyms"
+                options.categorized_domains.with_stem(
+                    f"{options.categorized_domains.stem}_acronyms"
                 ).read_text()
             ),
             **acronyms,
         }
 
-    options.categorized_terms.with_stem(
-        f"{options.categorized_terms.stem}_acronyms"
+    options.categorized_domains.with_stem(
+        f"{options.categorized_domains.stem}_acronyms"
     ).write_text(
         json.dumps(
             {k: v[0][1] for k, v in acronyms.items()},

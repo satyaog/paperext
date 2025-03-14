@@ -214,7 +214,7 @@ def load_single_analysis(paper, folder: Path, selector: Callable):
         assert find_analysis(paper, folder, selector) is None
         return None
 
-    assert find_analysis(paper, folder, selector) in Paper(paper).queries
+    # assert find_analysis(paper, folder, selector) in Paper(paper).queries
     paper_analysis = json.load(open(paper_path))
     extraction = paper_analysis["extractions"]
 

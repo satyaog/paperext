@@ -45,7 +45,9 @@ def identify_terms_acronyms(
     state_cls,
 ):
     model = SentenceTransformer("all-MiniLM-L6-v2")
-    terms = _sort_categories(model, acronyms_data.iter_categorized_terms())
+    terms = _sort_categories(
+        model, [_term for _term in acronyms_data.list_paper_terms() if _term.strip()]
+    )
 
     acronyms: dict[str, list[str]] = {}
     left_overs = set()
@@ -54,12 +56,14 @@ def identify_terms_acronyms(
 
     for term in tqdm.tqdm(terms, desc="Finding acronyms/abbreviations"):
         term_aliases = [k for k, v in sanitized_map.items() if v == term]
-        concurrent_terms = acronyms_data.concurrent_terms(term_aliases)
-        if not len(concurrent_terms):
+        concurrent_terms = [
+            _term
+            for _term in acronyms_data.concurrent_terms(term_aliases)
+            if _term.strip()
+        ]
+        if len(concurrent_terms) < 2:
             continue
-        concurrent_terms = set(
-            sanitized_map[_term] for _term in concurrent_terms if _term.strip()
-        )
+
         concurrent_terms = _sort_categories(model, concurrent_terms)
 
         _filename_prefix = "".join(
@@ -93,7 +97,7 @@ def identify_terms_acronyms(
             except InstructorRetryException:
                 continue
 
-        _acronyms = {}
+        _acronyms: dict[str, set] = {}
 
         for acr_abb in (acr for r in responses for acr in r.analysis.acronyms):
             acr, full_form = (
@@ -101,12 +105,42 @@ def identify_terms_acronyms(
                 acr_abb.full_form.value,
             )
 
-            if (acr in concurrent_terms) != (full_form in concurrent_terms):
+            _update_sanitized_map(sanitized_map, acr)
+            _update_sanitized_map(sanitized_map, full_form)
+
+        for not_acr in (
+            not_acr for r in responses for not_acr in r.analysis.not_acronyms
+        ):
+            not_acr = not_acr.value
+            _update_sanitized_map(sanitized_map, not_acr)
+
+        sanitized_concurrent_terms = [
+            sanitized_map[_term] for _term in concurrent_terms
+        ]
+
+        for acr_abb in (acr for r in responses for acr in r.analysis.acronyms):
+            acr, full_form = (
+                sanitized_map[acr_abb.acronym_abbreviation.value],
+                sanitized_map[acr_abb.full_form.value],
+            )
+
+            acr, full_form = (
+                (acr, full_form)
+                if len(acr) <= len(full_form) or not full_form
+                else (full_form, acr)
+            )
+
+            if (acr in sanitized_concurrent_terms) != (
+                full_form in sanitized_concurrent_terms
+            ):
                 left_overs.add(
                     (tuple(sorted((acr, full_form))), tuple(concurrent_terms))
                 )
 
-            if acr not in concurrent_terms or full_form not in concurrent_terms:
+            if (
+                acr not in sanitized_concurrent_terms
+                or full_form not in sanitized_concurrent_terms
+            ):
                 logger.warning(
                     f"Model "
                     f"{CFG.platform.select}:{CFG[CFG.platform.select].model} "
@@ -135,12 +169,6 @@ def identify_terms_acronyms(
                     f"{concurrent_terms}. Ignoring"
                 )
                 continue
-
-            _update_sanitized_map(sanitized_map, acr)
-            _update_sanitized_map(sanitized_map, full_form)
-
-            acr = sanitized_map[acr]
-            full_form = sanitized_map[full_form]
 
             _acronyms.setdefault(acr, set())
             _acronyms[acr].add(full_form)
