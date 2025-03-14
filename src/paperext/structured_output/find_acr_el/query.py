@@ -4,6 +4,7 @@ import hashlib
 from pathlib import Path
 
 from instructor.exceptions import InstructorRetryException
+import numpy as np
 import pandas as pd
 from sentence_transformers import SentenceTransformer
 import tqdm
@@ -15,7 +16,6 @@ from paperext.sanitize_categorization import (
     _update_sanitized_map,
 )
 from paperext.structured_output.mdl_clus_dom.state import _sort_categories
-from paperext.structured_output.find_acr_el.model import Response
 
 
 @dataclass
@@ -29,13 +29,13 @@ class AcronymsData:
     def list_paper_terms(self) -> list[str]:
         raise NotImplemented()
 
-    def explode_paper_terms(self) -> pd.DataFrame:
-        raise NotImplemented()
+    # def explode_paper_terms(self) -> pd.DataFrame:
+    #     raise NotImplemented()
 
-    def match_terms(self, terms) -> pd.DataFrame:
-        raise NotImplemented()
+    # def match_terms(self, terms) -> pd.DataFrame:
+    #     raise NotImplemented()
 
-    def concurrent_terms(self, terms) -> pd.DataFrame:
+    def concurrent_terms(self, terms) -> np.ndarray:
         raise NotImplemented()
 
 
@@ -81,7 +81,7 @@ def identify_terms_acronyms(
         )
         while True:
             try:
-                responses: list[Response] = asyncio.run(
+                responses: list = asyncio.run(
                     batch_queries(
                         client,
                         [(None, Path(_filename))],

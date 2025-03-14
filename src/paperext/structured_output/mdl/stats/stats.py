@@ -37,10 +37,7 @@ import unicodedata
 import pandas as pd
 import plotly.graph_objects as go
 
-from paperext.sanitize_categorization import (
-    _update_sanitized_map,
-    default_sanitize_key as sanitize_category,
-)
+from paperext.sanitize_categorization import _update_sanitized_map, default_sanitize_key
 from paperext.utils import Paper, split_entry
 
 # Load json of papers to select
@@ -122,6 +119,12 @@ def normalize_category_research_field(research_field):
     return next(_update_sanitized_map({}, research_field, return_bare=True))
 
 
+normalize_research_fields = lambda string: [
+    default_sanitize_key(split)
+    for split in split_entry(default_sanitize_key(string), sep_left="(", sep_right=")")
+]
+
+
 def normalize_model_name(model):
     model = model.lower()
     replacements = [
@@ -144,16 +147,9 @@ def normalize_model_name(model):
     return model
 
 
-normalize_model_name = lambda string: [
-    re.sub(
-        pattern=r"[\s/_\.\(\),\[\]\{\}-]",
-        string=sanitize_category(
-            unicodedata.normalize("NFKC", split).lower(),
-        ),
-        repl="",
-    )
-    for split in split_entry(string, sep_left="(", sep_right=")")
-]
+normalize_model_name = normalize_research_fields
+
+# normalize_model_name = sanitize_category
 
 
 def normalize_dataset_name(dataset):
@@ -228,14 +224,18 @@ def load_single_analysis(paper, folder: Path, selector: Callable):
             "paper_id": paper["paper_id"],
             "title": extraction["title"]["value"],
             "type": normalize_paper_type(extraction["type"]["value"]),
-            "primary_research_field": sanitize_category(
+            "primary_research_field": normalize_research_fields(
                 extraction["primary_research_field"]["name"]["value"]
-            ),
-            "research_fields": [extraction["primary_research_field"]["name"]["value"]]
+            )[0],
+            "research_fields": normalize_research_fields(
+                extraction["primary_research_field"]["name"]["value"]
+            )
             + sum(
                 [
-                    [sanitize_category(field["name"]["value"])]
-                    + [sanitize_category(al) for al in field["aliases"]]
+                    normalize_research_fields(field["name"]["value"])
+                    + sum(
+                        [normalize_research_fields(al) for al in field["aliases"]], []
+                    )
                     for field in extraction["sub_research_fields"]
                 ],
                 [],
@@ -247,7 +247,7 @@ def load_single_analysis(paper, folder: Path, selector: Callable):
             "name": normalize_model_name(model["name"]["value"])[0],
             "aliases": (
                 normalize_model_name(model["name"]["value"])[1:]
-                + sum([normalize_model_name(alias) for alias in model["aliases"]], []),
+                + sum([normalize_model_name(alias) for alias in model["aliases"]], [])
             ),
             "is_contributed": model["is_contributed"]["value"],
             "is_executed": model["is_executed"]["value"],

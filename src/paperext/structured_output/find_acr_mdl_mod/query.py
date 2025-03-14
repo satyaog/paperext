@@ -12,61 +12,55 @@ from paperext.sanitize_categorization import (
     _update_sanitized_map,
     sanitize_categories,
 )
-from paperext.structured_output import get_struct_module
 from paperext.structured_output.find_acr_el.query import (
     AcronymsData,
     identify_terms_acronyms,
 )
 from paperext.structured_output.mdl.stats.stats import load_analysis
 from paperext.structured_output.find_acr_mdl_dom.state import State
-from paperext.utils import Paper
-
-
-def list_domains(papers: list[dict | Paper]):
-    for paper in papers:
-        if not isinstance(paper, Paper):
-            paper = Paper(paper)
-
-        for query in paper.queries:
-            extractions = (
-                get_struct_module(CFG.platform.struct)
-                .model.Response.model_validate_json(query.read_text())
-                .analysis
-            )
-
-            for research_field in (
-                extractions.primary_research_field,
-                *extractions.sub_research_fields,
-            ):
-                yield research_field.name.value
-                yield from research_field.aliases
 
 
 @dataclass
 class DomainAcronymsData(AcronymsData):
     def iter_categorized_terms(self):
-        yield from _flatten_dict(self.categorized_terms["abstract_research_topics"])
-        yield from _flatten_dict(self.categorized_terms["application_domains"])
+        yield from _flatten_dict(self.categorized_terms["algorithms"])
+        yield from _flatten_dict(self.categorized_terms["classic_ml"])
+        yield from _flatten_dict(self.categorized_terms["neural networks"])
+        yield from _flatten_dict(self.categorized_terms["others"])
 
     def list_paper_terms(self) -> list[str]:
-        return self.papers_data["attrs"]["research_fields"].explode()
-
-    def concurrent_terms(self, terms) -> np.ndarray:
-        papers_exploded = self.papers_data["attrs"].explode("research_fields")
-        titles = list(
-            papers_exploded[papers_exploded["research_fields"].isin(terms)][
-                "title"
-            ].unique()
+        return pd.concat(
+            [
+                self.papers_data["models"]["name"],
+                self.papers_data["models"]["aliases"].explode().dropna(),
+            ]
         )
 
-        if not titles:
-            return pd.DataFrame()
+    def concurrent_terms(self, terms) -> np.ndarray:
+        papers_name_exploded = self.papers_data["models"]
+        papers_aliases_exploded = self.papers_data["models"].explode("aliases")
+        titles = pd.concat(
+            [
+                papers_name_exploded[papers_name_exploded["name"].isin(terms)]["title"],
+                papers_aliases_exploded[papers_aliases_exploded["aliases"].isin(terms)][
+                    "title"
+                ],
+            ],
+        ).unique()
 
-        related_papers = self.papers_data["attrs"][
-            self.papers_data["attrs"]["title"].isin(titles)
+        if not titles:
+            return pd.Series().unique()
+
+        related_papers = self.papers_data["models"][
+            self.papers_data["models"]["title"].isin(titles)
         ]
 
-        return related_papers["research_fields"].explode().unique()
+        return pd.concat(
+            [
+                related_papers["name"],
+                related_papers["aliases"].explode().dropna(),
+            ]
+        ).unique()
 
 
 def main(argv: list = None):
@@ -78,7 +72,7 @@ def main(argv: list = None):
         help="Paperoni json report of papers to analyse",
     )
     parser.add_argument(
-        "--categorized-domains",
+        "--categorized-models",
         type=Path,
         help="Path to categorized terms",
     )
@@ -89,14 +83,17 @@ def main(argv: list = None):
         papers.extend(json.loads(Path(papers_json_path).read_text()))
 
     acronyms_data = DomainAcronymsData(
-        json.loads(options.categorized_domains.read_text()),
+        json.loads(options.categorized_models.read_text()),
         load_analysis(papers, CFG.dir.queries / CFG.platform.select)[0],
     )
 
     sanitized_map = _make_sanitized_map(acronyms_data.list_paper_terms())
 
-    for research_fields in acronyms_data.papers_data["attrs"]["research_fields"]:
-        research_fields[:] = map(lambda x: sanitized_map[x], research_fields)
+    acronyms_data.papers_data["models"]["name"][:] = list(
+        map(lambda x: sanitized_map[x], acronyms_data.papers_data["models"]["name"])
+    )
+    for model_aliases in acronyms_data.papers_data["models"]["aliases"]:
+        model_aliases[:] = map(lambda x: sanitized_map[x], model_aliases)
 
     _update_sanitized_map(
         sanitized_map,
@@ -119,20 +116,20 @@ def main(argv: list = None):
             state_cls=State,
         )
 
-    if options.categorized_domains.with_stem(
-        f"{options.categorized_domains.stem}_acronyms"
+    if options.categorized_models.with_stem(
+        f"{options.categorized_models.stem}_acronyms"
     ).exists():
         acronyms = {
             **json.loads(
-                options.categorized_domains.with_stem(
-                    f"{options.categorized_domains.stem}_acronyms"
+                options.categorized_models.with_stem(
+                    f"{options.categorized_models.stem}_acronyms"
                 ).read_text()
             ),
             **acronyms,
         }
 
-    options.categorized_domains.with_stem(
-        f"{options.categorized_domains.stem}_acronyms"
+    options.categorized_models.with_stem(
+        f"{options.categorized_models.stem}_acronyms"
     ).write_text(
         json.dumps(
             {k: v[0][1] for k, v in acronyms.items()},

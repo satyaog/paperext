@@ -2,8 +2,7 @@ from __future__ import annotations
 
 import logging
 from packaging.version import Version
-import typing
-from typing import Any, Generic, Optional, TypeVar
+from typing import Generic, Optional, TypeVar
 
 from pydantic import AliasChoices, BaseModel, ConfigDict, Field
 
