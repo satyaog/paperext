@@ -67,17 +67,16 @@ def get_applications(category: str, sub_category: str):
 
 
 SYSTEM_MESSAGE = (
-    """Your role is to analyze a Deep Learning scientific paper. Your primary goals are to:
-
-1. **Assign an eco-responsible category** and **sub-category** that are a central topic in the paper.
-2. If applicable, **extract any eco-responsible applications** discussed in the paper.
-3. Additionally, try to identify **secondary categories** and **sub-categories** related to the paper.
-
-Your classification should be based on the predefined hierarchical list below. If you cannot find a suitable match, feel free to suggest a new category or select 'N/A' if the paper is not relevant to eco-responsible AI.
-
-Below is a hierarchical list of eco-responsible categories, sub-categories, and applications to guide your classification:
-
-"""
+    "Your role is to analyze the a Deep Learning scientific paper, assign it an "
+    "eco-responsible category and sub-category, and, if possible, extract any "
+    "applications discussed in the paper."
+)
+FIRST_MESSAGE = (
+    "Your main task is to analyze the a Deep Learning scientific paper, assign it "
+    "an eco-responsible category and sub-category, and, if possible, extract any "
+    "applications discussed in the paper. Here is a hierarchical list of "
+    "predefined categories, sub-categories, and applications to guide your "
+    "classification:\n\n"
     + "\n".join(
         f"* {category}:\n"
         + "\n".join(
@@ -92,17 +91,17 @@ Below is a hierarchical list of eco-responsible categories, sub-categories, and 
         for category in CATEGORISATION_TREE
         if category != "N/A"
     )
-    + """
-
-If the paper does not fit into any predefined category, please select the most appropriate option or suggest a new category or sub-category.
-
-If eco-responsiblility is not a central topic in the paper, please choose 'N/A' as the category and sub-category."""
+    + "\n\n"
+    "Additionnaly:\n\n"
+    "* If you determine that the paper does not fit into any of the provided "
+    "  categories or sub-categories, please select the most appropriate option "
+    "  and feel free to suggest a new category or sub-category in the designated "
+    "  field\n"
+    "* If the paper is unrelated to eco-responsible AI, choose the 'N/A' category "
+    "  and sub-category\n\n"
+    "The paper to analyze is as follows:\n\n"
+    "{}"
 )
-
-FIRST_MESSAGE = """The paper to analyze is:
-
-{}"""
-
 _EMPTY_FLAG = "__EMPTY__"
 
 

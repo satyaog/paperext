@@ -96,7 +96,7 @@ Below is a hierarchical list of eco-responsible categories, sub-categories, and 
 
 If the paper does not fit into any predefined category, please select the most appropriate option or suggest a new category or sub-category.
 
-If eco-responsiblility is not a central topic in the paper, please choose 'N/A' as the category and sub-category."""
+If the paper is not directly related to eco-responsible AI, please choose 'N/A' as the category and sub-category."""
 )
 
 FIRST_MESSAGE = """The paper to analyze is:

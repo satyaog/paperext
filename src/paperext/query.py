@@ -170,11 +170,19 @@ async def query(
             raise e
 
 
+def _additional_attempts(state, force=tuple()):
+    yield from state.format_messages()
+
+    while force:
+        yield from state.format_messages()
+
+
 async def batch_queries(
     client: instructor.client.Instructor | instructor.client.AsyncInstructor,
     papers_w_pdf_txt: List[Path],
     destination: Path = CFG.dir.queries,
     state_cls=None,
+    force=False,
 ) -> List:
     state_cls = state_cls or get_state_cls()
     destination.mkdir(parents=True, exist_ok=True)
@@ -190,7 +198,9 @@ async def batch_queries(
 
         state = state_cls(paper, pdf_txt)
 
-        for i, messages in enumerate(state.format_messages()):
+        force = [True] * force
+
+        for i, messages in enumerate(_additional_attempts(state, force=force)):
             f = destination / paper_name
             f = f.with_stem(f"{f.stem}_{i:02}").with_suffix(".json")
 
@@ -203,6 +213,8 @@ async def batch_queries(
             ) as e:
                 logger.error(e, exc_info=True)
                 logging.error(e, exc_info=True)
+
+                force.pop()
 
                 extractions, usage = await query(client, state, messages)
 
@@ -287,6 +299,19 @@ def main(argv=None):
         default=None,
         help="Paperoni json output of papers to query on converted pdfs -> txts",
     )
+    parser.add_argument(
+        "--paperoni-ids",
+        metavar="TXT",
+        type=Path,
+        default=None,
+        help="Paperoni json output of papers to query on converted pdfs -> txts",
+    )
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        default=False,
+        help="Paperoni json output of papers to query on converted pdfs -> txts",
+    )
     options = parser.parse_args(argv)
 
     CFG.platform.select = options.platform or CFG.platform.select
@@ -296,6 +321,12 @@ def main(argv=None):
         papers = [
             (p, p.get_link_id_pdf()) for p in papers if p.get_link_id_pdf() is not None
         ]
+        if options.paperoni_ids:
+            paperoni_ids = set(options.paperoni_ids.read_text().splitlines())
+            papers = [
+                (p, pdf_text) for p, pdf_text in papers if p._paper_id in paperoni_ids
+            ]
+            assert set(p._paper_id for p, _ in papers) == paperoni_ids
     elif options.input:
         papers = [
             (None, Path(paper.strip()))
@@ -331,8 +362,12 @@ def main(argv=None):
     asyncio.run(
         ignore_exceptions(
             client,
-            [(paper, pdf_txt.absolute()) for paper, pdf_txt in papers],
+            [
+                (paper, pdf_txt.absolute())
+                for paper, pdf_txt in sorted(papers, key=lambda x: x[0]._paper_id)
+            ],
             destination=CFG.dir.queries / CFG.platform.select,
+            force=options.force,
         )
     )
 
