@@ -67,17 +67,25 @@ def get_applications(category: str, sub_category: str):
 
 
 SYSTEM_MESSAGE = (
-    """Your role is to Analyze and classify a Deep Learning scientific paper based on its relevance to Sustainable Development.
-    
-Your primary goals are to:
-1. Identify the primary sustainable development category and sub-category that are central to the paper’s focus.
-2. Extract and highlight any specific sustainable development applications mentioned or discussed in the paper, if applicable.
-3. Identify any secondary categories or sub-categories related to the paper’s themes, if relevant.
+    """Your task is to analyze and classify a Deep Learning scientific paper based on its relevance to Sustainable Development. Follow the steps below:
+
+* Assess Relevance to Sustainable Development:
+  * Determine if Sustainable Development is a central theme of the paper.
+
+* Identify Sustainable Development Categories and Sub-Categories:
+  * Primary Goal: Based on the content of the paper, identify the primary Sustainable Development category and sub-category it aligns with.
+  * If the paper covers multiple Sustainable Development areas, choose the most relevant primary category.
+
+* Secondary Sustainable Development Categories and Sub-Categories:
+  * If the paper addresses secondary Sustainable Development themes (i.e., other categories or sub-categories apart from the primary one), list them as well.
+
+* Highlight Specific Applications:
+  * Extract and highlight any specific Sustainable Development applications mentioned in the paper.
 
 Classification Guidelines:
-Use the predefined list of categories and sub-categories below to guide your classification. If no appropriate match is found, suggest a new category or sub-category, or select 'N/A' if the paper is not directly related to sustainable development.
+Use the list of predefined Sustainable Development categories, sub-categories, and applications below to guide your classification. If you find no relevant match, suggest a new category or use 'N/A' if the paper is not directly related to Sustainable Development.
 
-Hierarchical List of Sustainable Development Categories, Sub-categories, and Applications:
+Hierarchical List of Sustainable Development Categories, Sub-Categories, and Applications:
 """
     + "\n".join(
         f"* {category}:\n"
@@ -96,12 +104,10 @@ Hierarchical List of Sustainable Development Categories, Sub-categories, and App
     + """
 
 Additional Instructions:
-* If the paper doesn’t fit into any of the listed categories, please suggest a new category or select 'N/A' if it is not relevant to sustainable development.
-* Ensure your classification is as accurate and specific as possible. If the sustainable development focus is only a minor aspect, classify it as a secondary category."""
+* Ensure your classification is as accurate and specific as possible."""
 )
 
 FIRST_MESSAGE = """The paper to analyze is:
-
 {}"""
 
 _EMPTY_FLAG = "__EMPTY__"
@@ -185,26 +191,29 @@ class PaperExtractions(BaseModel):
     description: str = Field(
         description="Short description of the paper",
     )
+    sustainable_development_is_central: Explained[bool] = Field(
+        description="Is Sustainable Development a central theme of the paper",
+    )
     primary_category: Explained[Category] = Field(
-        description="Primary eco-responsible category of the paper",
+        description="Primary Sustainable Development category of the paper",
     )
     secondary_categories: List[Explained[Category]] = Field(
-        description="List of secondary eco-responsible categories of the paper",
+        description="List of secondary Sustainable Development categories of the paper",
     )
     primary_sub_category: Explained[SubCategory] = Field(
-        description="Primary eco-responsible sub-category of the paper",
+        description="Primary Sustainable Development sub-category of the paper",
     )
     secondary_sub_categories: List[Explained[SubCategory]] = Field(
-        description="List of secondary eco-responsible sub-category of the paper",
+        description="List of secondary Sustainable Development sub-category of the paper",
     )
     applications: List[Explained[str]] = Field(
-        description="List of eco-responsible applications discussed in the paper",
+        description="List of Sustainable Development applications discussed in the paper",
     )
     new_primary_category: Explained[str] = Field(
-        description="New eco-responsible category if none of the listed categories fit the paper",
+        description="New Sustainable Development category if none of the listed categories fit the paper",
     )
     new_primary_sub_category: Explained[str] = Field(
-        description="New eco-responsible sub-category if none of the listed sub-categories fit the paper",
+        description="New Sustainable Development sub-category if none of the listed sub-categories fit the paper",
     )
 
 
