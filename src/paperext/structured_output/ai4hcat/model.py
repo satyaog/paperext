@@ -67,16 +67,17 @@ def get_applications(category: str, sub_category: str):
 
 
 SYSTEM_MESSAGE = (
-    """Your role is to analyze a Deep Learning scientific paper. Your primary goals are to:
+    """Your role is to Analyze and classify a Deep Learning scientific paper based on its relevance to Sustainable Development.
+    
+Your primary goals are to:
+1. Identify the primary sustainable development category and sub-category that are central to the paper’s focus.
+2. Extract and highlight any specific sustainable development applications mentioned or discussed in the paper, if applicable.
+3. Identify any secondary categories or sub-categories related to the paper’s themes, if relevant.
 
-1. **Assign an eco-responsible category** and **sub-category** that are a central topic in the paper.
-2. If applicable, **extract any eco-responsible applications** discussed in the paper.
-3. Additionally, try to identify **secondary categories** and **sub-categories** related to the paper.
+Classification Guidelines:
+Use the predefined list of categories and sub-categories below to guide your classification. If no appropriate match is found, suggest a new category or sub-category, or select 'N/A' if the paper is not directly related to sustainable development.
 
-Your classification should be based on the predefined hierarchical list below. If you cannot find a suitable match, feel free to suggest a new category or select 'N/A' if the paper is not relevant to eco-responsible AI.
-
-Below is a hierarchical list of eco-responsible categories, sub-categories, and applications to guide your classification:
-
+Hierarchical List of Sustainable Development Categories, Sub-categories, and Applications:
 """
     + "\n".join(
         f"* {category}:\n"
@@ -94,9 +95,9 @@ Below is a hierarchical list of eco-responsible categories, sub-categories, and 
     )
     + """
 
-If the paper does not fit into any predefined category, please select the most appropriate option or suggest a new category or sub-category.
-
-If eco-responsiblility is not a central topic in the paper, please choose 'N/A' as the category and sub-category."""
+Additional Instructions:
+* If the paper doesn’t fit into any of the listed categories, please suggest a new category or select 'N/A' if it is not relevant to sustainable development.
+* Ensure your classification is as accurate and specific as possible. If the sustainable development focus is only a minor aspect, classify it as a secondary category."""
 )
 
 FIRST_MESSAGE = """The paper to analyze is:
@@ -127,13 +128,15 @@ class SubCategory(str, enum.Enum):
     AGRICULTURE = "Agriculture"
     CARBON_REMOVAL = "Carbon Removal"
     CARBON_CAPTURE_AND_STORAGE_CCS = "Carbon Capture and Storage (CCS)"
-    MONITORING_REPORTING_AND_VERIFICATION = "Monitoring, Reporting, and Verification"
+    MONITORING_REPORTING_AND_VERIFICATION = "Monitoring, Reporting and Verification"
     CLIMATE_RISKS_MODELING = "Climate Risks Modeling"
     FOOD_SECURITY = "Food Security"
     RELIEF_EFFORTS = "Relief Efforts"
     FARMERS_SUPPORT = "Farmers Support"
     MIGRATION_SUPPORT = "Migration Support"
-    GHG_MEASUREMENT_AND_TRACKING = "GHG Measurement and Tracking"
+    GREENHOUSE_GASES_MEASUREMENT_AND_TRACKING = (
+        "Greenhouse Gases Measurement and Tracking"
+    )
     CLIMATE_MODELING_AND_PREDICTIONS = "Climate Modeling and Predictions"
     FOREST_MANAGEMENT = "Forest Management"
     BIODIVERSITY = "Biodiversity"
@@ -142,13 +145,15 @@ class SubCategory(str, enum.Enum):
     AIR_POLLUTION = "Air Pollution"
     CHEMICAL_POLLUTION = "Chemical Pollution"
     # WASTE = "Waste"
-    ESG_AND_DISCLOSURES = "ESG and Disclosures"
+    ENVIRONMENTAL_SOCIAL_AND_GOVERNANCE_ESG_AND_DISCLOSURES = (
+        "Environmental, Social and Governance (ESG) and Disclosures"
+    )
     CLIMATE_FINANCE_IMPACT_AND_THEMATIC_INVESTMENTS = (
         "Climate Finance (impact and thematic investments)"
     )
     CLIMATE_DATA = "Climate Data"
     POLICY_ADVICE_AND_KNOWLEDGE_SHARING = "Policy Advice and Knowledge Sharing"
-    SUPPORT_RE_DEPLOYMENT = "Support RE Deployment"
+    SUPPORT_RENEWABLE_ENERGY_DEPLOYMENT = "Support Renewable Energy Deployment"
     NA = "N/A"
 
 

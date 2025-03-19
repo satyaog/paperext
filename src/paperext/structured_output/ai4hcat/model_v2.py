@@ -127,13 +127,15 @@ class SubCategory(str, enum.Enum):
     AGRICULTURE = "Agriculture"
     CARBON_REMOVAL = "Carbon Removal"
     CARBON_CAPTURE_AND_STORAGE_CCS = "Carbon Capture and Storage (CCS)"
-    MONITORING_REPORTING_AND_VERIFICATION = "Monitoring, Reporting, and Verification"
+    MONITORING_REPORTING_AND_VERIFICATION = "Monitoring, Reporting and Verification"
     CLIMATE_RISKS_MODELING = "Climate Risks Modeling"
     FOOD_SECURITY = "Food Security"
     RELIEF_EFFORTS = "Relief Efforts"
     FARMERS_SUPPORT = "Farmers Support"
     MIGRATION_SUPPORT = "Migration Support"
-    GHG_MEASUREMENT_AND_TRACKING = "GHG Measurement and Tracking"
+    GREENHOUSE_GASES_MEASUREMENT_AND_TRACKING = (
+        "Greenhouse Gases Measurement and Tracking"
+    )
     CLIMATE_MODELING_AND_PREDICTIONS = "Climate Modeling and Predictions"
     FOREST_MANAGEMENT = "Forest Management"
     BIODIVERSITY = "Biodiversity"
@@ -142,13 +144,15 @@ class SubCategory(str, enum.Enum):
     AIR_POLLUTION = "Air Pollution"
     CHEMICAL_POLLUTION = "Chemical Pollution"
     # WASTE = "Waste"
-    ESG_AND_DISCLOSURES = "ESG and Disclosures"
+    ENVIRONMENTAL_SOCIAL_AND_GOVERNANCE_ESG_AND_DISCLOSURES = (
+        "Environmental, Social and Governance (ESG) and Disclosures"
+    )
     CLIMATE_FINANCE_IMPACT_AND_THEMATIC_INVESTMENTS = (
         "Climate Finance (impact and thematic investments)"
     )
     CLIMATE_DATA = "Climate Data"
     POLICY_ADVICE_AND_KNOWLEDGE_SHARING = "Policy Advice and Knowledge Sharing"
-    SUPPORT_RE_DEPLOYMENT = "Support RE Deployment"
+    SUPPORT_RENEWABLE_ENERGY_DEPLOYMENT = "Support Renewable Energy Deployment"
     NA = "N/A"
 
 

@@ -214,7 +214,8 @@ async def batch_queries(
                 logger.error(e, exc_info=True)
                 logging.error(e, exc_info=True)
 
-                force.pop()
+                if force:
+                    force.pop()
 
                 extractions, usage = await query(client, state, messages)
 

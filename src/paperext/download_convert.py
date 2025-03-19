@@ -343,6 +343,13 @@ def main(argv=None):
         default=CFG.dir.cache,
         help="Directory to store downloaded and converted pdfs -> txts",
     )
+    parser.add_argument(
+        "--no-sort",
+        dest="sort",
+        default=True,
+        action="store_false",
+        help="arXiv max number of papers to fetch",
+    )
 
     # Create a subparser for "arxiv"
     subparsers = parser.add_subparsers(dest="src", help="arXiv commands")
@@ -388,7 +395,6 @@ def main(argv=None):
         type=int,
         help="arXiv max number of papers to fetch",
     )
-
     options = parser.parse_args(argv)
 
     options.cache_dir.mkdir(parents=True, exist_ok=True)
@@ -499,7 +505,11 @@ def main(argv=None):
         else:
             failed.append((url, text_file, [link_type]))
 
-    print(*sorted(str(text_file) for _, text_file, _ in completed), sep="\n")
+    completed_list = [str(text_file) for _, text_file, _ in completed]
+    if options.sort:
+        completed_list.sort()
+
+    print(*completed_list, sep="\n")
 
     logger.info(
         f"Successfully downloaded and converted {len(completed)} out of "
