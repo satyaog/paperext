@@ -301,7 +301,7 @@ def main(argv=None):
         help="Paperoni json output of papers to query on converted pdfs -> txts",
     )
     parser.add_argument(
-        "--paperoni-ids",
+        "--paper-ids",
         metavar="TXT",
         type=Path,
         default=None,
@@ -322,20 +322,21 @@ def main(argv=None):
         papers = [
             (p, p.get_link_id_pdf()) for p in papers if p.get_link_id_pdf() is not None
         ]
-        if options.paperoni_ids:
-            paperoni_ids = set(options.paperoni_ids.read_text().splitlines())
-            papers = [
-                (p, pdf_text) for p, pdf_text in papers if p._paper_id in paperoni_ids
-            ]
-            assert set(p._paper_id for p, _ in papers) == paperoni_ids
+        if options.paper_ids:
+            paper_ids = set(options.paper_ids.read_text().splitlines())
+            papers = [(p, pdf_text) for p, pdf_text in papers if p.id in paper_ids]
+            assert set(p.id for p, _ in papers) == paper_ids
+
     elif options.input:
         papers = [
             (None, Path(paper.strip()))
             for paper in Path(options.input).read_text().splitlines()
             if paper.strip()
         ]
+
     elif options.papers:
         papers = [(None, Path(paper)) for paper in options.papers if paper.strip()]
+
     else:
         papers = [
             (None, Path(paper)) for paper in build_validation_set() if paper.strip()
