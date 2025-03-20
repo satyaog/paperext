@@ -323,9 +323,24 @@ def main(argv=None):
             (p, p.get_link_id_pdf()) for p in papers if p.get_link_id_pdf() is not None
         ]
         if options.paper_ids:
-            paper_ids = set(options.paper_ids.read_text().splitlines())
-            papers = [(p, pdf_text) for p, pdf_text in papers if p.id in paper_ids]
-            assert set(p.id for p, _ in papers) == paper_ids
+            paper_ids = set(
+                [
+                    pid
+                    for pid in options.paper_ids.read_text().splitlines()
+                    if pid.strip()
+                ]
+            )
+            papers = [
+                (p, pdf_text)
+                for p, pdf_text in papers
+                if set([p.id, p._paper_id]) ^ paper_ids
+            ]
+            for p, _ in papers:
+                if p.id in paper_ids:
+                    paper_ids.remove(p.id)
+                if p._paper_id in paper_ids:
+                    paper_ids.remove(p._paper_id)
+            assert not paper_ids
 
     elif options.input:
         papers = [

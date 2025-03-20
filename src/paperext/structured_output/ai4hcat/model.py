@@ -67,25 +67,25 @@ def get_applications(category: str, sub_category: str):
 
 
 SYSTEM_MESSAGE = (
-    """Your task is to analyze and classify a Deep Learning scientific paper based on its relevance to Sustainable Development. Follow the steps below:
+    """You are a Sustainable Development Expert. Your task is to analyze and classify a Deep Learning scientific paper based on its relevance to Climate or Ecological Sustainable Development. Follow the steps below:
 
-* Assess Relevance to Sustainable Development:
-  * Determine if Sustainable Development is a central theme of the paper.
+* Assess Relevance to Climate or Ecological Sustainable Development:
+  * Evaluate whether Climate or Ecological Sustainable Development is a central theme of the paper.
 
-* Identify Sustainable Development Categories and Sub-Categories:
-  * Primary Goal: Based on the content of the paper, identify the primary Sustainable Development category and sub-category it aligns with.
-  * If the paper covers multiple Sustainable Development areas, choose the most relevant primary category.
+* Identify Climate or Ecological Sustainable Development Categories and Sub-Categories:
+  * Primary Goal: Based on the content of the paper, identify the primary Climate or Ecological Sustainable Development category and the most specific sub-category the paper aligns with.
+  * If the paper covers multiple Climate or Ecological Sustainable Development areas, choose the most relevant primary category.
 
-* Secondary Sustainable Development Categories and Sub-Categories:
-  * If the paper addresses secondary Sustainable Development themes (i.e., other categories or sub-categories apart from the primary one), list them as well.
+* Secondary Climate or Ecological Sustainable Development Categories and Sub-Categories:
+  * If the paper addresses secondary Climate or Ecological Sustainable Development themes (i.e., other categories or sub-categories apart from the primary one), list them as well.
 
 * Highlight Specific Applications:
-  * Extract and highlight any specific Sustainable Development applications mentioned in the paper.
+  * Extract and highlight any specific Climate or Ecological Sustainable Development applications mentioned in the paper.
 
 Classification Guidelines:
-Use the list of predefined Sustainable Development categories, sub-categories, and applications below to guide your classification. If you find no relevant match, suggest a new category or use 'N/A' if the paper is not directly related to Sustainable Development.
+Use the list of predefined Climate or Ecological Sustainable Development categories, sub-categories, and applications below to guide your classification. If you find no relevant match, suggest a new category or use 'N/A' if the paper is not directly related to Climate or Ecological Sustainable Development.
 
-Hierarchical List of Sustainable Development Categories, Sub-Categories, and Applications:
+Hierarchical List of Climate or Ecological Sustainable Development Categories, Sub-Categories, and Applications:
 """
     + "\n".join(
         f"* {category}:\n"
@@ -104,8 +104,11 @@ Hierarchical List of Sustainable Development Categories, Sub-Categories, and App
     + """
 
 Additional Instructions:
-* Ensure your classification is as accurate and specific as possible."""
+* Ensure your classification is as accurate and specific as possible.
+* Keywords/Phrases: Be on the lookout for keywords such as "climate change," "ecological impact," "sustainability," "renewable energy," "biodiversity," "green technology," "carbon footprint," "waste management," etc. These will help in accurate categorization.
+"""
 )
+# * Use Sustainable Development Goals Framework: Where possible, classify papers according to the United Nations Sustainable Development Goals (SDGs) as a global standard.
 
 FIRST_MESSAGE = """The paper to analyze is:
 {}"""
@@ -192,28 +195,28 @@ class PaperExtractions(BaseModel):
         description="Short description of the paper",
     )
     sustainable_development_is_central: Explained[bool] = Field(
-        description="Is Sustainable Development a central theme of the paper",
+        description="Is Climate or Ecological Sustainable Development a central theme of the paper",
     )
     primary_category: Explained[Category] = Field(
-        description="Primary Sustainable Development category of the paper",
+        description="Primary Climate or Ecological Sustainable Development category of the paper",
     )
     secondary_categories: List[Explained[Category]] = Field(
-        description="List of secondary Sustainable Development categories of the paper",
+        description="List of secondary Climate or Ecological Sustainable Development categories of the paper",
     )
     primary_sub_category: Explained[SubCategory] = Field(
-        description="Primary Sustainable Development sub-category of the paper",
+        description="Primary Climate or Ecological Sustainable Development sub-category of the paper",
     )
     secondary_sub_categories: List[Explained[SubCategory]] = Field(
-        description="List of secondary Sustainable Development sub-category of the paper",
+        description="List of secondary Climate or Ecological Sustainable Development sub-category of the paper",
     )
     applications: List[Explained[str]] = Field(
-        description="List of Sustainable Development applications discussed in the paper",
+        description="List of Climate or Ecological Sustainable Development applications discussed in the paper",
     )
     new_primary_category: Explained[str] = Field(
-        description="New Sustainable Development category if none of the listed categories fit the paper",
+        description="New Climate or Ecological Sustainable Development category if none of the listed categories fit the paper",
     )
     new_primary_sub_category: Explained[str] = Field(
-        description="New Sustainable Development sub-category if none of the listed sub-categories fit the paper",
+        description="New Climate or Ecological Sustainable Development sub-category if none of the listed sub-categories fit the paper",
     )
 
 
