@@ -1,30 +1,33 @@
 from . import (
-    ai4hcat as _ai4hcat,
-    mdl as _mdl,
-    mdl_dom as _mdl_dom,
-    mdl_cat_dom as _mdl_cat_dom,
-    cat_new_mdl_dom as _mdl_cat_new_dom,
-    mdl_clus_dom as _mdl_clus_dom,
-    find_acr_mdl_dom as _mdl_find_acr,
+    ai4hcat,
+    mdl,
+    mdl_dom,
+    mdl_cat_dom,
+    cat_new_mdl_dom,
+    mdl_clus_dom,
+    find_acr_mdl_dom,
+    find_acr_mdl_mod,
 )
 
 
 def get_struct_module(struct: str):
     match struct:
         case "ai4hcat":
-            return _ai4hcat
+            return ai4hcat
         case "mdl":
-            return _mdl
+            return mdl
         case "mdl_dom":
-            return _mdl_dom
+            return mdl_dom
         case "mdl_cat_dom":
-            return _mdl_cat_dom
-        case "mdl_cat_new_dom":
-            return _mdl_cat_new_dom
+            return mdl_cat_dom
+        case "cat_new_mdl_dom":
+            return cat_new_mdl_dom
         case "mdl_clus_dom":
-            return _mdl_clus_dom
-        case "mdl_find_acr":
-            return _mdl_find_acr
+            return mdl_clus_dom
+        case "find_acr_mdl_dom":
+            return find_acr_mdl_dom
+        case "find_acr_mdl_mod":
+            return find_acr_mdl_mod
         case "mdl_sort_dom":
             return _mdl_sort_dom
         case _:

@@ -17,7 +17,7 @@ from paperext.structured_output.find_acr_el.query import (
     identify_terms_acronyms,
 )
 from paperext.structured_output.mdl.stats.stats import load_analysis
-from paperext.structured_output.find_acr_mdl_dom.state import State
+from paperext.structured_output.find_acr_mdl_mod.state import State
 
 
 @dataclass
@@ -48,7 +48,7 @@ class DomainAcronymsData(AcronymsData):
             ],
         ).unique()
 
-        if not titles:
+        if not len(titles):
             return pd.Series().unique()
 
         related_papers = self.papers_data["models"][
@@ -100,12 +100,12 @@ def main(argv: list = None):
         *set(acronyms_data.iter_categorized_terms()),
     )
 
-    acronyms_data.categorized_terms = {
-        k.replace(" ", "_"): v
-        for k, v in sanitize_categories(
-            acronyms_data.categorized_terms, None, sanitized_map
-        ).items()
-    }
+    acronyms_data.categorized_terms = sanitize_categories(
+        acronyms_data.categorized_terms, None, sanitized_map
+    )
+    acronyms_data.categorized_terms["classic_ml"] = acronyms_data.categorized_terms.pop(
+        "classic ml"
+    )
 
     with Config.push():
         CFG.platform.struct = Path(__file__).parent.name
@@ -135,6 +135,7 @@ def main(argv: list = None):
             {k: v[0][1] for k, v in acronyms.items()},
             indent=2,
             sort_keys=True,
+            ensure_ascii=False,
         )
     )
 

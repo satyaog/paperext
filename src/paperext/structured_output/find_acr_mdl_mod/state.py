@@ -69,7 +69,12 @@ class State(BaseState):
                 }
             )
 
-            yield _messages[:]
+            _messages[0] = {
+                "role": "system",
+                "content": SYSTEM_MESSAGE,
+            }
+
+            yield _messages
 
             for acr_abb in self.responses[-1].analysis.acronyms:
                 acr, full_form = (
@@ -80,8 +85,8 @@ class State(BaseState):
                 _update_sanitized_map(self._sanitized_map, acr)
                 _update_sanitized_map(self._sanitized_map, full_form)
 
-            for term in self.responses[-1].analysis.not_acronyms:
-                term = term.value
+            for not_acr in self.responses[-1].analysis.not_acronyms:
+                term = not_acr.value
                 _update_sanitized_map(self._sanitized_map, term)
 
             sanitized_terms = [self._sanitized_map[_term] for _term in self._terms]
@@ -102,7 +107,7 @@ class State(BaseState):
                     logger.warning(
                         f"Model identified an accronym [{acr}:{full_form}] "
                         f"that is missing from the terms list. Provided terms are "
-                        f"{sanitized_terms}."
+                        f"{self._terms}."
                     )
                     continue
 
@@ -111,8 +116,8 @@ class State(BaseState):
                 if full_form:
                     terms.add(full_form)
 
-            for term in self.responses[-1].analysis.not_acronyms:
-                term = self._sanitized_map.get(term.value, None)
+            for not_acr in self.responses[-1].analysis.not_acronyms:
+                term = self._sanitized_map.get(not_acr.value, None)
                 if term:
                     terms.add(term)
 

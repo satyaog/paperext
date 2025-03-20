@@ -92,7 +92,7 @@ def main(argv: list = None):
     all_domains = set(analysis["attrs"]["research_fields"].explode())
 
     Path(options.categorized_domains).with_suffix(".tmp").write_text(
-        json.dumps(categorized_domains, indent=2, sort_keys=True)
+        json.dumps(categorized_domains, indent=2, sort_keys=True, ensure_ascii=False)
     )
 
     with Config.push():
@@ -116,7 +116,9 @@ def main(argv: list = None):
             excludes=set(["abstract_research_topics", "application_domains"]),
         ):
             Path(options.categorized_domains).with_suffix(".tmp").write_text(
-                json.dumps(categorized_domains, indent=2, sort_keys=True)
+                json.dumps(
+                    categorized_domains, indent=2, sort_keys=True, ensure_ascii=False
+                )
             )
 
     options.categorized_domains.with_suffix(".tmp").rename(options.categorized_domains)

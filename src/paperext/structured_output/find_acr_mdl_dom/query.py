@@ -138,6 +138,7 @@ def main(argv: list = None):
             {k: v[0][1] for k, v in acronyms.items()},
             indent=2,
             sort_keys=True,
+            ensure_ascii=False,
         )
     )
 

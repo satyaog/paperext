@@ -322,7 +322,7 @@ def main(argv=None):
     }
 
     (options.out.write_text if str(options.out) != "-" else print)(
-        json.dumps(categories, indent=2, sort_keys=True)
+        json.dumps(categories, indent=2, sort_keys=True, ensure_ascii=False)
     )
 
 

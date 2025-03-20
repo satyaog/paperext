@@ -553,7 +553,7 @@ def main(argv=None):
         remainings = any_remainings(df, analysis, skipped)
 
         options.categorized_domains.with_suffix(".tmp").write_text(
-            json.dumps(domains, indent=2, sort_keys=True)
+            json.dumps(domains, indent=2, sort_keys=True, ensure_ascii=False)
         )
 
     if options.categorized_domains.with_suffix(".tmp").exists():

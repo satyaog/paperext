@@ -69,7 +69,12 @@ class State(BaseState):
                 }
             )
 
-            yield _messages[:]
+            _messages[0] = {
+                "role": "system",
+                "content": SYSTEM_MESSAGE,
+            }
+
+            yield _messages
 
             for acr_abb in self.responses[-1].analysis.acronyms:
                 acr, full_form = (
