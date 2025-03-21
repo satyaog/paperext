@@ -59,6 +59,7 @@ options = parser.parse_args()
 data = {}
 for p in sum([json.loads(paperoni.read_text()) for paperoni in options.paperoni], []):
     paper = Paper(p)
+
     for response in map(
         lambda q: get_struct_module(
             CFG.platform.struct
@@ -69,6 +70,12 @@ for p in sum([json.loads(paperoni.read_text()) for paperoni in options.paperoni]
         data[p["title"]]["id"] = p["paper_id"]
         data[p["title"]]["description"] = response.extractions.description
 
+        data[p["title"]][
+            "sustainable_development_is_central"
+        ] = response.extractions.sustainable_development_is_central.value
+        data[p["title"]][
+            "sustainable_development_is_central_justification"
+        ] = response.extractions.sustainable_development_is_central.justification
         data[p["title"]]["category"] = response.extractions.primary_category.value.value
         data[p["title"]][
             "category_justification"
@@ -113,6 +120,7 @@ for p in sum([json.loads(paperoni.read_text()) for paperoni in options.paperoni]
 
 header = [
     "paper title",
+    "sustainable development is central",
     *"category;sub-category;ai application;examples".split(";")[:-1],
     "id",
     "urls",
@@ -125,6 +133,7 @@ for title, paper_data in sorted(
 ):
     line1 = (
         title,
+        str(paper_data["sustainable_development_is_central"]),
         paper_data["category"],
         paper_data["sub-category"],
         "",
@@ -133,6 +142,7 @@ for title, paper_data in sorted(
     )
     line2 = (
         paper_data["description"].replace(";", " _ "),
+        paper_data["sustainable_development_is_central_justification"],
         paper_data["category_justification"].replace(";", " _ "),
         paper_data["sub-category_justification"].replace(";", " _ "),
         "",
@@ -170,6 +180,7 @@ for title, paper_data in sorted(
         )
         line1 = (
             " " * len(title),
+            " " * len(str(paper_data["sustainable_development_is_central"])),
             category.replace(";", " _ "),
             sub_category.replace(";", " _ "),
             application.replace(";", " _ "),
@@ -178,6 +189,7 @@ for title, paper_data in sorted(
         )
         line2 = (
             " " * len(title),
+            " " * len(str(paper_data["sustainable_development_is_central"])),
             (
                 paper_data["secondary_categories"][i][1].replace(";", " _ ")
                 if category

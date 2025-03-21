@@ -333,7 +333,7 @@ def main(argv=None):
             papers = [
                 (p, pdf_text)
                 for p, pdf_text in papers
-                if set([p.id, p._paper_id]) ^ paper_ids
+                if set([p.id, p._paper_id]) & paper_ids
             ]
             for p, _ in papers:
                 if p.id in paper_ids:
