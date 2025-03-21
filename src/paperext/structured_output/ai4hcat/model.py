@@ -67,25 +67,25 @@ def get_applications(category: str, sub_category: str):
 
 
 SYSTEM_MESSAGE = (
-    """You are a Sustainable Development Expert. Your task is to analyze and classify a Deep Learning scientific paper based on its relevance to Climate or Ecological Sustainable Development. Follow the steps below:
+    """You are a Sustainable Development Expert. Your task is to analyze and classify a Deep Learning scientific paper based on its relevance to Climate or Ecologically-Related Sustainable Development. Follow the steps below:
 
-* Assess Relevance to Climate or Ecological Sustainable Development:
-  * Evaluate whether Climate or Ecological Sustainable Development is a central theme of the paper.
+* Assess Relevance to Climate or Ecologically-Related Sustainable Development:
+  * Evaluate whether Climate or Ecologically-Related Sustainable Development is a central theme of the paper.
 
-* Identify Climate or Ecological Sustainable Development Categories and Sub-Categories:
-  * Primary Goal: Based on the content of the paper, identify the primary Climate or Ecological Sustainable Development category and the most specific sub-category the paper aligns with.
-  * If the paper covers multiple Climate or Ecological Sustainable Development areas, choose the most relevant primary category.
+* Identify Climate or Ecologically-Related Sustainable Development Categories and Sub-Categories:
+  * Primary Goal: Based on the content of the paper, identify the primary Climate or Ecologically-Related Sustainable Development category and the most specific sub-category the paper aligns with.
+  * If the paper covers multiple Climate or Ecologically-Related Sustainable Development areas, choose the most relevant primary category.
 
-* Secondary Climate or Ecological Sustainable Development Categories and Sub-Categories:
-  * If the paper addresses secondary Climate or Ecological Sustainable Development themes (i.e., other categories or sub-categories apart from the primary one), list them as well.
+* Secondary Climate or Ecologically-Related Sustainable Development Categories and Sub-Categories:
+  * If the paper addresses secondary Climate or Ecologically-Related Sustainable Development themes (i.e., other categories or sub-categories apart from the primary one), list them as well.
 
 * Highlight Specific Applications:
-  * Extract and highlight any specific Climate or Ecological Sustainable Development applications mentioned in the paper.
+  * Extract and highlight any specific Climate or Ecologically-Related Sustainable Development applications mentioned in the paper.
 
 Classification Guidelines:
-Use the list of predefined Climate or Ecological Sustainable Development categories, sub-categories, and applications below to guide your classification. If you find no relevant match, suggest a new category or use 'N/A' if the paper is not directly related to Climate or Ecological Sustainable Development.
+Use the list of predefined Climate or Ecologically-Related Sustainable Development categories, sub-categories, and applications below to guide your classification. If you find no relevant match, suggest a new category or use 'N/A' if the paper is not directly related to Climate or Ecologically-Related Sustainable Development.
 
-Hierarchical List of Climate or Ecological Sustainable Development Categories, Sub-Categories, and Applications:
+Hierarchical List of Climate or Ecologically-Related Sustainable Development Categories, Sub-Categories, and Applications:
 """
     + "\n".join(
         f"* {category}:\n"
@@ -195,28 +195,28 @@ class PaperExtractions(BaseModel):
         description="Short description of the paper",
     )
     sustainable_development_is_central: Explained[bool] = Field(
-        description="Is Climate or Ecological Sustainable Development a central theme of the paper",
+        description="Is Climate or Ecologically-Related Sustainable Development a central theme of the paper",
     )
     primary_category: Explained[Category] = Field(
-        description="Primary Climate or Ecological Sustainable Development category of the paper",
+        description="Primary Climate or Ecologically-Related Sustainable Development category of the paper",
     )
     secondary_categories: List[Explained[Category]] = Field(
-        description="List of secondary Climate or Ecological Sustainable Development categories of the paper",
+        description="List of secondary Climate or Ecologically-Related Sustainable Development categories of the paper",
     )
     primary_sub_category: Explained[SubCategory] = Field(
-        description="Primary Climate or Ecological Sustainable Development sub-category of the paper",
+        description="Primary Climate or Ecologically-Related Sustainable Development sub-category of the paper",
     )
     secondary_sub_categories: List[Explained[SubCategory]] = Field(
-        description="List of secondary Climate or Ecological Sustainable Development sub-category of the paper",
+        description="List of secondary Climate or Ecologically-Related Sustainable Development sub-category of the paper",
     )
     applications: List[Explained[str]] = Field(
-        description="List of Climate or Ecological Sustainable Development applications discussed in the paper",
+        description="List of Climate or Ecologically-Related Sustainable Development applications discussed in the paper",
     )
     new_primary_category: Explained[str] = Field(
-        description="New Climate or Ecological Sustainable Development category if none of the listed categories fit the paper",
+        description="New Climate or Ecologically-Related Sustainable Development category if none of the listed categories fit the paper",
     )
     new_primary_sub_category: Explained[str] = Field(
-        description="New Climate or Ecological Sustainable Development sub-category if none of the listed sub-categories fit the paper",
+        description="New Climate or Ecologically-Related Sustainable Development sub-category if none of the listed sub-categories fit the paper",
     )
 
 
