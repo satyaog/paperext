@@ -47,16 +47,80 @@ def iter_pdf_urls(paper: dict):
             yield pdf_link
 
 
+def format_reponses(response):
+    data = {}
+    data["description"] = response.extractions.description
+
+    data["sustainable_development_is_central"] = (
+        response.extractions.sustainable_development_is_central.value
+    )
+    data["sustainable_development_is_central_justification"] = (
+        response.extractions.sustainable_development_is_central.justification
+    )
+    data["category"] = response.extractions.primary_category.value.value
+    data["category_justification"] = response.extractions.primary_category.justification
+    data["sub-category"] = response.extractions.primary_sub_category.value.value
+    data["sub-category_justification"] = (
+        response.extractions.primary_sub_category.justification
+    )
+
+    data["secondary_categories"] = [
+        (category.value.value, category.justification)
+        for category in response.extractions.secondary_categories
+    ]
+
+    data["secondary_sub-categories"] = [
+        (sub_category.value.value, sub_category.justification)
+        for sub_category in response.extractions.secondary_sub_categories
+    ]
+
+    data["applications"] = [
+        (application.value, application.justification)
+        for application in response.extractions.applications
+    ]
+
+    data["new_category"] = response.extractions.new_primary_category.value
+    data["new_category_justification"] = (
+        response.extractions.new_primary_category.justification
+    )
+    data["new_primary_sub-category"] = (
+        response.extractions.new_primary_sub_category.value
+    )
+    data["new_primary_sub-category_justification"] = (
+        response.extractions.new_primary_sub_category.justification
+    )
+
+    return data
+
+
 parser = argparse.ArgumentParser()
 parser.add_argument(
-    "paperoni",
+    "--paperoni",
     metavar="JSON",
     nargs="+",
+    default=[],
+    type=Path,
+)
+parser.add_argument(
+    "--papers",
+    nargs="+",
+    default=[],
     type=Path,
 )
 options = parser.parse_args()
 
 data = {}
+
+for response_file in map(Path, options.papers):
+    response = get_struct_module(
+        CFG.platform.struct
+    ).model.Response.model_validate_json(response_file.read_text())
+    id = "_".join(response_file.stem.split("_")[:-1])
+    parsed_response = format_reponses(response)
+    parsed_response["id"] = id
+    parsed_response["urls"] = [f"https://arxiv.org/pdf/{id}"]
+    data[response.extractions.title.value] = parsed_response
+
 for p in sum([json.loads(paperoni.read_text()) for paperoni in options.paperoni], []):
     paper = Paper(p)
 
@@ -66,57 +130,10 @@ for p in sum([json.loads(paperoni.read_text()) for paperoni in options.paperoni]
         ).model.Response.model_validate_json(q.read_text()),
         paper.queries,
     ):
-        data.setdefault(p["title"], {})
-        data[p["title"]]["id"] = p["paper_id"]
-        data[p["title"]]["description"] = response.extractions.description
-
-        data[p["title"]][
-            "sustainable_development_is_central"
-        ] = response.extractions.sustainable_development_is_central.value
-        data[p["title"]][
-            "sustainable_development_is_central_justification"
-        ] = response.extractions.sustainable_development_is_central.justification
-        data[p["title"]]["category"] = response.extractions.primary_category.value.value
-        data[p["title"]][
-            "category_justification"
-        ] = response.extractions.primary_category.justification
-        data[p["title"]][
-            "sub-category"
-        ] = response.extractions.primary_sub_category.value.value
-        data[p["title"]][
-            "sub-category_justification"
-        ] = response.extractions.primary_sub_category.justification
-
-        data[p["title"]]["secondary_categories"] = [
-            (category.value.value, category.justification)
-            for category in response.extractions.secondary_categories
-        ]
-
-        data[p["title"]]["secondary_sub-categories"] = [
-            (sub_category.value.value, sub_category.justification)
-            for sub_category in response.extractions.secondary_sub_categories
-        ]
-
-        data[p["title"]]["applications"] = [
-            (application.value, application.justification)
-            for application in response.extractions.applications
-        ]
-
-        data[p["title"]][
-            "new_category"
-        ] = response.extractions.new_primary_category.value
-        data[p["title"]][
-            "new_category_justification"
-        ] = response.extractions.new_primary_category.justification
-        data[p["title"]][
-            "new_primary_sub-category"
-        ] = response.extractions.new_primary_sub_category.value
-        data[p["title"]][
-            "new_primary_sub-category_justification"
-        ] = response.extractions.new_primary_sub_category.justification
-
-        data[p["title"]]["urls"] = list(iter_pdf_urls(p))
-
+        parsed_response = format_reponses(response)
+        parsed_response["id"] = p["paper_id"]
+        parsed_response["urls"] = list(iter_pdf_urls(p))
+        data[p["title"]] = parsed_response
 
 header = [
     "paper title",

@@ -381,7 +381,9 @@ def main(argv=None):
             client,
             [
                 (paper, pdf_txt.absolute())
-                for paper, pdf_txt in sorted(papers, key=lambda x: x[0]._paper_id)
+                for paper, pdf_txt in sorted(
+                    papers, key=lambda x: x[0]._paper_id if x[0] else ""
+                )
             ],
             destination=CFG.dir.queries / CFG.platform.select,
             force=options.force,
