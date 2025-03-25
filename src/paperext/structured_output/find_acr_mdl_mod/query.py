@@ -21,7 +21,7 @@ from paperext.structured_output.find_acr_mdl_mod.state import State
 
 
 @dataclass
-class DomainAcronymsData(AcronymsData):
+class ModelAcronymsData(AcronymsData):
     def iter_categorized_terms(self):
         yield from _flatten_dict(self.categorized_terms["algorithms"])
         yield from _flatten_dict(self.categorized_terms["classic_ml"])
@@ -82,7 +82,7 @@ def main(argv: list = None):
     for papers_json_path in options.paperoni:
         papers.extend(json.loads(Path(papers_json_path).read_text()))
 
-    acronyms_data = DomainAcronymsData(
+    acronyms_data = ModelAcronymsData(
         json.loads(options.categorized_models.read_text()),
         load_analysis(papers, CFG.dir.queries / CFG.platform.select)[0],
     )

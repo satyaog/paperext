@@ -3,7 +3,6 @@ from typing import Generator
 
 from paperext.sanitize_categorization import (
     _update_sanitized_map,
-    default_sanitize_key,
 )
 from paperext.log import logger
 from paperext.structured_output._base import BaseState

@@ -30,7 +30,7 @@ SYSTEM_MESSAGE = """You are an Expert in Deep Learning Research. Your task is to
 - Closest Child Domain: The Closest Child Domain is the Child Domain that is the closest semantically to the Given Domain. There can only be a single Closest Child Domain.
 - Sibling Domain: A Sibling Domain is a Deep Learning Research Domain that is not a Semantically Equivalent Domain and not a Child Domain but should still fall under the Closest Parent Domain. There can be multiple Sibling Domains.
 - Closest Sibling Domain: The Closest Sibling Domain is the Sibling Domain that is the closest semantically to the Given Domain. There can only be a single Closest Sibling Domain.
-- Unrelated Domain: An Unrelated Domain is a Deep Learning Research Domain that is not not related to the Given Domain.
+- Unrelated Domain: An Unrelated Domain is a Deep Learning Research Domain that is not related to the Given Domain.
 
 ### Instructions:
 1.  Thoroughly examine the definitions above

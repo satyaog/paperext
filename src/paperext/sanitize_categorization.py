@@ -13,6 +13,21 @@ from paperext.config import CFG
 from paperext.log import logger
 from paperext.utils import split_entry
 
+TRANSLATION_TABLE = str.maketrans(
+    {
+        # Handle curly quotes and other punctuation marks
+        "’": "'",  # right single quote (curly quote)
+        "‘": "'",  # left single quote (curly quote)
+        "“": '"',  # left double quote
+        "”": '"',  # right double quote
+        "«": '"',  # left angle quote
+        "»": '"',  # right angle quote
+        # Handle different types of dashes
+        "–": "-",  # en dash
+        "—": "-",  # em dash
+    }
+)
+
 
 def _dict_heads(
     dictionary: dict[Any, dict],
@@ -150,10 +165,12 @@ def split_words(key: str, separators=" "):
 
 
 def default_sanitize_key(key: str, replace="_"):
+    key = key.translate(TRANSLATION_TABLE)
     return " ".join(split_words(key.lower(), separators=replace))
 
 
 def bare_sanitize_key(key: str):
+    key = key.translate(TRANSLATION_TABLE)
     return key.replace("-", " ").replace("_", " ").replace(" ", "")
 
 
@@ -265,14 +282,18 @@ def sanitize_categories(
     }
 
     ignore.update(
-        **{k: {} for k in accronyms.keys()},
-        **_sanitize_categories(
-            categories,
-            sanitize_key=lambda key: sanitized_map[key],
-        ),
+        **{
+            **{k: {} for k in accronyms.keys()},
+            **_sanitize_categories(
+                categories,
+                sanitize_key=lambda key: sanitized_map[key],
+            ),
+        },
     )
 
-    ignore = {k: v for k, v in ignore.items() if k not in sanitized_map}
+    _categories = set(_flatten_dict(categories))
+
+    ignore = {k: v for k, v in ignore.items() if k not in _categories}
 
     if ignore:
         _sanitized_ignore_map = _make_sanitized_map(ignore)

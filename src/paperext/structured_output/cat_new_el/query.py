@@ -113,7 +113,7 @@ def categorise_new_element(
     df = build_dataframe(categorized_elements)
     remainings = any_remainings(df, all_elements, skipped)
 
-    pool = set((d for d in all_elements if d.strip())) - excludes
+    pool = set((d for d in all_elements if d.strip())) - excludes - set(remainings)
 
     model = SentenceTransformer("all-MiniLM-L6-v2")
     entries = sorted((set(remainings) | all_elements) - excludes)
@@ -188,12 +188,19 @@ def categorise_new_element(
                 parse_response(r)
             )
 
-            for el in semantically_equivalents + [
-                closest_parent,
-                closest_child,
-                closest_sibling,
-            ]:
-                _update_sanitized_map(sanitized_map, el)
+            list(
+                _update_sanitized_map(
+                    sanitized_map,
+                    *(
+                        semantically_equivalents
+                        + [
+                            closest_parent,
+                            closest_child,
+                            closest_sibling,
+                        ]
+                    ),
+                )
+            )
 
         _propositions_map = {
             sanitized_map[domain]: (i, domain) for i, domain in enumerate(propositions)
