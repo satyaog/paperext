@@ -5,6 +5,7 @@ import unicodedata
 from pathlib import Path
 
 from paperext import CFG
+from paperext.config import Config
 from paperext.log import logger
 
 ROOT_FOLDER = Path(__file__).resolve().parent.parent
@@ -13,7 +14,7 @@ PAPERS_TO_IGNORE = {
 }
 
 
-class Paper:
+class PaperBase:
     # Original form of the converted pdf to txt. eg data/cache/*/ARXIV_ID.txt
     LINK_ID_TEMPLATE = "*/{link_id}.txt"
     # Extended form of the converted pdf to txt. eg data/cache/*/PAPER_ID.txt
@@ -118,6 +119,63 @@ class Paper:
             link_id_pdf.hardlink_to(self.pdf)
 
         return link_id_pdf
+
+
+class PaperMD(PaperBase):
+    # Original form of the converted pdf to txt. eg data/cache/*/ARXIV_ID.txt
+    LINK_ID_TEMPLATE = "*/{link_id}.md"
+    # Extended form of the converted pdf to txt. eg data/cache/*/PAPER_ID.txt
+    PAPER_ID_TEMPLATE = LINK_ID_TEMPLATE.format(link_id="{paper_id}")
+    # The the up-to-date form of the converted pdf (by paperoni)
+    # eg data/cache/fulltext/PAPER_ID/fulltext.txt
+    PAPER_ID_FULLTEXT_TEMPLATE = "fulltext/{paper_id}/fulltext.md"
+
+
+class PaperTxt(PaperBase):
+    # Original form of the converted pdf to txt. eg data/cache/*/ARXIV_ID.txt
+    LINK_ID_TEMPLATE = "*/{link_id}.txt"
+    # Extended form of the converted pdf to txt. eg data/cache/*/PAPER_ID.txt
+    PAPER_ID_TEMPLATE = LINK_ID_TEMPLATE.format(link_id="{paper_id}")
+    # The the up-to-date form of the converted pdf (by paperoni)
+    # eg data/cache/fulltext/PAPER_ID/fulltext.txt
+    PAPER_ID_FULLTEXT_TEMPLATE = "fulltext/{paper_id}/fulltext.txt"
+
+
+class Paper(PaperMD):
+    def __init__(self, paper: dict):
+        super().__init__(paper)
+        paper_txt = PaperTxt(paper)
+
+        with Config.push() as cfg:
+            cfg.platform.select = "llamaparse"
+            cfg.platform.struct = "parse_doc"
+            cfg.dir.queries = cfg.dir.data / CFG.platform.struct / "queries"
+            paper_md = PaperMD(paper)
+
+        if self._selected_id is None or self._selected_id == self._paper_id:
+            self._selected_id = paper_txt.id
+
+        pdf = next(iter(self._pdfs + paper_txt.pdfs), None)
+
+        if pdf is not None:
+            pdf = pdf.with_suffix(".md")
+
+            if paper_md.queries and not pdf.exists():
+                from paperext.structured_output.parse_doc.model import Response
+
+                markdown = "\n---\n".join(
+                    Response.model_validate_json(
+                        paper_md.queries[0].read_text()
+                    ).analysis.pages
+                )
+                pdf.write_text(markdown)
+
+            if pdf.exists() and pdf not in self._pdfs:
+                self._pdfs.append(pdf)
+
+        assert not (set(self._pdfs) & set(paper_txt.pdfs))
+
+        self._pdfs.extend(paper_txt.pdfs)
 
 
 def build_validation_set(seed=42):

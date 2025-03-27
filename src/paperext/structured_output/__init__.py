@@ -8,6 +8,7 @@ from . import (
     mdl_clus_dom,
     find_acr_mdl_dom,
     find_acr_mdl_mod,
+    parse_doc,
 )
 
 
@@ -31,7 +32,7 @@ def get_struct_module(struct: str):
             return find_acr_mdl_dom
         case "find_acr_mdl_mod":
             return find_acr_mdl_mod
-        case "mdl_sort_dom":
-            return _mdl_sort_dom
+        case "parse_doc":
+            return parse_doc
         case _:
             raise ValueError(f"Invalid structureed output {struct}")

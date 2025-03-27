@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Any, List, Tuple
 
 import instructor
+from pydantic import BaseModel
 import pydantic_core
 
 from paperext import CFG
@@ -135,6 +136,63 @@ try:
         return client
 
     PLATFORMS["ollama"] = _client
+
+except ModuleNotFoundError as e:
+    logger.info(e, exc_info=True)
+    logging.info(e, exc_info=True)
+
+try:
+    from llama_cloud_services import LlamaParse
+    from llama_index.core import SimpleDirectoryReader
+
+    def _client():
+        model = CFG.llamaparse.model
+
+        class Mock:
+            def __getattribute__(self, name: str):
+                try:
+                    return object.__getattribute__(self, name)
+
+                except AttributeError:
+                    self.__dict__[name] = Mock()
+
+                return object.__getattribute__(self, name)
+
+        llama_parse_args = {"result_type": "markdown"}
+        match model:
+            case "balance":
+                pass
+            case "fast":
+                llama_parse_args["fast_mode"] = True
+                llama_parse_args["result_type"] = "text"
+            case "premium":
+                llama_parse_args["premium_mode"] = True
+            case _:
+                llama_parse_args["parse_mode"] = model
+
+        client = Mock()
+
+        async def create_with_completion(
+            *args, response_model: BaseModel, messages: list[dict], **kwargs
+        ):
+            assert len(messages) == 1
+            parser = LlamaParse(**llama_parse_args)
+            file_extractor = {".pdf": parser}
+            documents = await SimpleDirectoryReader(
+                input_files=[m["pdf"] for m in messages],
+                file_extractor=file_extractor,
+            ).aload_data()
+            analysis = response_model(pages=[d.text for d in documents])
+            return analysis, {
+                "metadata": documents[0].metadata,
+                "doc_id": [d.doc_id for d in documents],
+            }
+
+        client.chat.completions.create_with_completion = create_with_completion
+
+        return client
+
+    PLATFORMS["llamaparse"] = _client
 
 except ModuleNotFoundError as e:
     logger.info(e, exc_info=True)
