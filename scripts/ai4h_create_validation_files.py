@@ -53,7 +53,7 @@ def iter_subcategories(subcategories: list[str]):
 
 def main():
     paperoni = Path(CFG.dir.data / "paperoni-2022-01-01-2023-01-01-PR_2025-02-28.json")
-    _file = Path(CFG.dir.data / "ai4hcat/export_02.csv")
+    _file = Path(CFG.dir.data / "ai4hcat/export_03.csv")
 
     data: dict[str:dict] = {}
     lines = list(csv.reader(_file.read_text().splitlines()))
@@ -85,6 +85,7 @@ def main():
 
     CFG.dir.merged.mkdir(exist_ok=True)
 
+    paper_ids = set()
     for p in json.loads(paperoni.read_text()):
         paper = Paper(p)
 
@@ -154,14 +155,16 @@ def main():
         analysis.new_primary_sub_category.justification = ""
         analysis.new_primary_sub_category.quote = ""
 
+        paper_id = "_".join(response.stem.split("_")[:-1])
         (
-            CFG.dir.merged
-            / response.with_stem("_".join(response.stem.split("_")[:-1]))
-            .with_suffix(".yaml")
-            .name
+            CFG.dir.merged / response.with_stem(paper_id).with_suffix(".yaml").name
         ).write_text(model_dump_yaml(analysis))
 
+        paper_ids.add(paper_id)
+
     assert not data
+
+    print(*sorted(paper_ids), sep="\n")
 
 
 if __name__ == "__main__":
