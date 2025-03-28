@@ -52,8 +52,8 @@ def iter_subcategories(subcategories: list[str]):
 
 
 def main():
-    paperoni = Path(CFG.dir.data / "paperoni-2022-01-01-2023-01-01-PR_2025-02-28.json")
-    _file = Path(CFG.dir.data / "ai4hcat/export_03.csv")
+    paperoni = Path(CFG.dir.data / "paperoni-2022-01-01-2023-01-01_2025-03-01.json")
+    _file = Path(CFG.dir.data / "ai4hcat/export_04.csv")
 
     data: dict[str:dict] = {}
     lines = list(csv.reader(_file.read_text().splitlines()))
