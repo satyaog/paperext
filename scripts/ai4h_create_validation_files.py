@@ -21,7 +21,7 @@ def iter_categories(categories: list[str]):
             cat = Category(cat)
 
         except ValueError:
-            assert cat.lower() in ("", "ko/check")
+            assert cat.lower() in ("", "ko/check"), f"Invalid [{cat.lower()}] category"
             cat = Category.NA
 
         if cat not in pool:
@@ -40,7 +40,10 @@ def iter_subcategories(subcategories: list[str]):
             subcat = SubCategory(subcat)
 
         except ValueError:
-            assert subcat.lower() in ("", "ko/check")
+            assert subcat.lower() in (
+                "",
+                "ko/check",
+            ), f"Invalid [{subcat.lower()}] category"
             subcat = SubCategory.NA
 
         if subcat not in pool:
@@ -53,9 +56,11 @@ def iter_subcategories(subcategories: list[str]):
 
 def main():
     paperoni = (
-        None  # Path(CFG.dir.data / "paperoni-2022-01-01-2023-01-01_2025-03-01.json")
+        # None
+        Path(CFG.dir.data / "paperoni-2022-01-01-2023-01-01-PR_2025-02-28.json")
+        # Path(CFG.dir.data / "paperoni-2022-01-01-2023-01-01_2025-03-01.json")
     )
-    _file = Path(CFG.dir.data / "ai4hcat/export_05.csv")
+    _file = Path(CFG.dir.data / "ai4hcat/export_01.csv")
 
     data: dict[str:dict] = {}
     lines = list(csv.reader(_file.read_text().splitlines()))
@@ -95,7 +100,10 @@ def main():
             lambda x: next(iter_subcategories([x])), (subcat, subcat_verif)
         )
 
-        if cat_verif == Category.NA and subcat_verif == SubCategory.NA:
+        if not (
+            set((cat, cat_verif, subcat, subcat_verif))
+            - set((Category.NA, SubCategory.NA))
+        ):
             continue
 
         data.setdefault(paper_id, {"cat": [], "subcat": []})
