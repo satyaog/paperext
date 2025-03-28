@@ -22,14 +22,14 @@ def iter_categories(categories: list[str]):
 
         except ValueError:
             assert cat.lower() in ("", "ko/check")
-            cat = Category("N/A")
+            cat = Category.NA
 
         if cat not in pool:
             yield cat
             pool.add(cat)
 
     if not pool:
-        yield Category("N/A")
+        yield Category.NA
 
 
 def iter_subcategories(subcategories: list[str]):
@@ -41,33 +41,46 @@ def iter_subcategories(subcategories: list[str]):
 
         except ValueError:
             assert subcat.lower() in ("", "ko/check")
-            subcat = SubCategory("N/A")
+            subcat = SubCategory.NA
 
         if subcat not in pool:
             yield subcat
             pool.add(subcat)
 
     if not pool:
-        yield SubCategory("N/A")
+        yield SubCategory.NA
 
 
 def main():
-    paperoni = Path(CFG.dir.data / "paperoni-2022-01-01-2023-01-01_2025-03-01.json")
-    _file = Path(CFG.dir.data / "ai4hcat/export_04.csv")
+    paperoni = (
+        None  # Path(CFG.dir.data / "paperoni-2022-01-01-2023-01-01_2025-03-01.json")
+    )
+    _file = Path(CFG.dir.data / "ai4hcat/export_05.csv")
 
     data: dict[str:dict] = {}
     lines = list(csv.reader(_file.read_text().splitlines()))
     while lines:
         line = lines.pop(0)
 
-        if not lines[0][5]:
+        try:
+            next_cat_verif = next(iter_categories([lines[0][2]]))
+        except AssertionError:
+            next_cat_verif = Category.NA
+
+        try:
+            next_subcat_verif = next(iter_subcategories([lines[0][4]]))
+        except AssertionError:
+            next_subcat_verif = Category.NA
+
+        if (
+            not lines[0][5]
+            and next_cat_verif == Category.NA
+            and next_subcat_verif == SubCategory.NA
+        ):
             lines.pop(0)
 
         _title, cat, cat_verif, subcat, subcat_verif, _paper_id, *_ = line
         assert not _
-
-        if cat == "N/A" and subcat == "N/A":
-            continue
 
         if _paper_id:
             paper_id = _paper_id
@@ -77,33 +90,60 @@ def main():
         if subcat_verif == "OK":
             subcat_verif = subcat
 
+        cat, cat_verif = map(lambda x: next(iter_categories([x])), (cat, cat_verif))
+        subcat, subcat_verif = map(
+            lambda x: next(iter_subcategories([x])), (subcat, subcat_verif)
+        )
+
+        if cat_verif == Category.NA and subcat_verif == SubCategory.NA:
+            continue
+
         data.setdefault(paper_id, {"cat": [], "subcat": []})
-        if cat != "N/A" or not data[paper_id]["cat"]:
+        if (
+            next(iter_categories([cat_verif])) != Category.NA
+            or not data[paper_id]["cat"]
+        ):
             data[paper_id]["cat"].append(cat_verif)
-        if subcat != "N/A" or not data[paper_id]["subcat"]:
+        if (
+            next(iter_subcategories([subcat_verif])) != SubCategory.NA
+            or not data[paper_id]["subcat"]
+        ):
             data[paper_id]["subcat"].append(subcat_verif)
 
     CFG.dir.merged.mkdir(exist_ok=True)
 
     paper_ids = set()
-    for p in json.loads(paperoni.read_text()):
-        paper = Paper(p)
 
-        if paper._paper_id not in data:
-            continue
+    papers_queries = []
+    if paperoni:
+        for p in json.loads(paperoni.read_text()):
+            paper = Paper(p)
 
-        assert paper.queries
+            if paper._paper_id not in data:
+                continue
 
-        paper_data = data.pop(paper._paper_id)
+            assert paper.queries
+
+            papers_queries.append((paper._paper_id, paper.queries[0]))
+
+    else:
+        for paper_id in data:
+            query_file = sorted(
+                (CFG.dir.queries / CFG.platform.select).glob(f"{paper_id}_*.json")
+            )[0]
+
+            papers_queries.append((paper_id, query_file))
+
+    for paper_id, response in papers_queries:
+        paper_data = data.pop(paper_id)
         categories = list(iter_categories(paper_data["cat"]))
         subcategories = list(iter_subcategories(paper_data["subcat"]))
 
-        response = paper.queries[0]
         analysis = Response.model_validate_json(response.read_text()).extractions
 
         if analysis.sustainable_development_is_central.value != (
-            any(c != Category("N/A") for c in categories)
-            or any(sc != SubCategory("N/A") for sc in subcategories)
+            any(c != Category.NA for c in categories)
+            or any(sc != SubCategory.NA for sc in subcategories)
         ):
             analysis.sustainable_development_is_central.value = (
                 not analysis.sustainable_development_is_central.value
@@ -121,10 +161,10 @@ def main():
             analysis.primary_sub_category.quote = ""
 
         analysis.secondary_categories += [
-            Explained(value=Category("N/A"), justification="", quote="")
+            Explained(value=Category.NA, justification="", quote="")
         ] * (len(categories[1:]) - len(analysis.secondary_categories))
         analysis.secondary_sub_categories += [
-            Explained(value=SubCategory("N/A"), justification="", quote="")
+            Explained(value=SubCategory.NA, justification="", quote="")
         ] * (len(subcategories[1:]) - len(analysis.secondary_sub_categories))
 
         i = -1
