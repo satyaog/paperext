@@ -24,7 +24,7 @@ def iter_categories(categories: list[str]):
             assert cat.lower() in ("", "ko/check"), f"Invalid [{cat}] category"
             cat = Category.NA
 
-        if cat not in pool:
+        if cat != Category.NA and cat not in pool:
             yield cat
             pool.add(cat)
 
@@ -46,7 +46,7 @@ def iter_subcategories(subcategories: list[str]):
             ), f"Invalid [{subcat}] category"
             subcat = SubCategory.NA
 
-        if subcat not in pool:
+        if subcat != SubCategory.NA and subcat not in pool:
             yield subcat
             pool.add(subcat)
 
