@@ -19,7 +19,7 @@ pd.set_option("display.float_format", "{:.1f}".format)
 
 
 def main():
-    validation_set = CFG.dir.data / "ai4hcat/validation_set.txt"
+    validation_set = CFG.dir.data / "ai4hcat/validation_set_pr.txt"
 
     objectives = {}
     for cat in CATEGORISATION_TREE:
@@ -42,15 +42,21 @@ def main():
     validation_files_objective = sum(
         objectives[cat, cat]["objective"] for cat in CATEGORISATION_TREE
     )
-    validation_files_cnt = 0
+    validation_files = set()
     for validation_file in validation_set.read_text().splitlines():
+        if not validation_file.strip():
+            continue
+
+        if validation_file in validation_files:
+            continue
+
+        validation_files.add(validation_file)
+
         validation_file = CFG.dir.merged / f"{validation_file}.yaml"
 
         validation: PaperExtractions = model_validate_yaml(
             PaperExtractions, validation_file.read_text()
         )
-
-        validation_files_cnt += 1
 
         categories = set()
         categories_pairs = set()
@@ -87,7 +93,7 @@ def main():
                 {
                     ("validation_files_cnt", ""): {
                         "objective": validation_files_objective,
-                        "cnt": validation_files_cnt,
+                        "cnt": len(validation_files),
                     }
                 }
             ).transpose(),

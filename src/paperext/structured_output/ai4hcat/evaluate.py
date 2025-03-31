@@ -1,6 +1,5 @@
 import argparse
 from pathlib import Path
-from typing import List
 
 try:
     import numpy as np
@@ -29,6 +28,8 @@ from paperext.structured_output.ai4hcat.model import (
     Response,
     PaperExtractions,
     SubCategory,
+    get_categories,
+    get_sub_categories,
 )
 from paperext.structured_output.utils import model_validate_yaml
 from paperext.utils import build_validation_set
@@ -67,41 +68,25 @@ def _csv_fn(stem: str, index: int) -> str:
     return stem + f"_{index:02}.csv"
 
 
-def _append_left_indices(df: pd.DataFrame, indices: List[tuple]):
-    df = df.copy(True)
-    if df.empty:
-        return df
+def _cm(
+    annotations: pd.DataFrame, predictions: pd.DataFrame, classes: pd.DataFrame = None
+):
+    if classes is None:
+        classes = pd.concat([annotations, predictions])
 
-    try:
-        index_names = list(range(len(df.index.levels)))
-        df.index.names = index_names
-        df.reset_index(inplace=True)
-    except AttributeError:
-        index_names = list(range(df.index.nlevels - 1))
-        if index_names:
-            df.index.names = index_names
-
-    inds = [ind for ind, _ in indices]
-    for ind, val in indices:
-        df.loc[:, ind] = val
-
-    df.set_index([*inds, *index_names], inplace=True)
-    df.index.names = [None] * (len(inds) + len(index_names))
-
-    return df
-
-
-def _cm(annotations: pd.DataFrame, predictions: pd.DataFrame):
-    classes = pd.concat([annotations, predictions])
-    classes.sort_values(inplace=True, ignore_index=True)
+    classes = classes.sort_values(ignore_index=True)
     classes.drop_duplicates(inplace=True, ignore_index=True)
 
     return confusion_matrix(annotations, predictions, labels=classes), classes
 
 
-def _mlcm(annotations: pd.DataFrame, predictions: pd.DataFrame):
-    classes = pd.concat(list(annotations) + list(predictions))
-    classes.sort_values(inplace=True, ignore_index=True)
+def _mlcm(
+    annotations: pd.DataFrame, predictions: pd.DataFrame, classes: pd.DataFrame = None
+):
+    if classes is None:
+        classes = pd.concat(list(annotations) + list(predictions))
+
+    classes = classes.sort_values(ignore_index=True)
     classes.drop_duplicates(inplace=True, ignore_index=True)
 
     _ann, _pred = (
@@ -168,28 +153,59 @@ def _evaluate_precision(papers: list):
     _analysis_dir = CFG.dir.evaluation / CFG.platform.select
     _analysis_dir.mkdir(parents=True, exist_ok=True)
 
-    for label in ("category", "subcategory"):
+    for label, classes in (
+        ("category", pd.DataFrame(get_categories())[0]),
+        (
+            "subcategory",
+            pd.DataFrame(
+                sum([get_sub_categories(cat) for cat in get_categories()], [])
+            )[0],
+        ),
+    ):
         mat, classes = _cm(
             annotated[label].apply(lambda x: x[0]),
             predictions[label].apply(lambda x: x[0]),
+            classes,
         )
 
-        (_analysis_dir / _csv_fn(label, i)).write_text(
-            pd.DataFrame(mat, index=classes, columns=classes).to_csv()
-        )
+        df = pd.DataFrame(mat, index=classes, columns=classes)
+        na_row = df.loc[["N/A"]]
+        df.drop("N/A", inplace=True)
+        df = pd.concat([df, na_row], axis=0)
 
-    for label in ("category", "subcategory"):
-        (conf_mat, normal_conf_mat), classes = _mlcm(
-            annotated[label], predictions[label]
-        )
+        na_col = df.pop("N/A")
+        df["N/A"] = na_col
 
-        (_analysis_dir / _csv_fn(f"{label}_mlcm", i)).write_text(
+        (_analysis_dir / _csv_fn(label, i)).write_text(df.to_csv())
+
+    for label, classes in (
+        ("category", pd.DataFrame(get_categories())[0]),
+        (
+            "subcategory",
             pd.DataFrame(
-                conf_mat,
-                index=[*classes, "No True Label"],
-                columns=[*classes, "No Predicted Label"],
-            ).to_csv()
+                sum([get_sub_categories(cat) for cat in get_categories()], [])
+            )[0],
+        ),
+    ):
+        (conf_mat, normal_conf_mat), classes = _mlcm(
+            annotated[label], predictions[label], classes
         )
+
+        df = pd.DataFrame(
+            conf_mat,
+            index=[*classes, "No True Label"],
+            columns=[*classes, "No Predicted Label"],
+        )
+        na_plus_row = df.loc[["N/A", "No True Label"]]
+        df.drop(["N/A", "No True Label"], inplace=True)
+        df = pd.concat([df, na_plus_row], axis=0)
+
+        na_col = df.pop("N/A")
+        np_col = df.pop("No Predicted Label")
+        df["N/A"] = na_col
+        df["No Predicted Label"] = np_col
+
+        (_analysis_dir / _csv_fn(f"{label}_mlcm", i)).write_text(df.to_csv())
         logger.debug(
             "\n".join(
                 [
@@ -224,7 +240,7 @@ def main(argv=None):
 
     if options.input:
         with open(options.input, "r") as f:
-            papers = list(map(Path, [l.strip() for l in f.readlines()]))
+            papers = list(map(Path, [l.strip() for l in f.readlines() if l.strip()]))
     elif options.papers:
         papers = list(map(Path, options.papers))
     else:
