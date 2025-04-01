@@ -93,7 +93,7 @@ def _debug_msg_merge_dict(key: str | list, first: dict, other: dict):
 
 
 def _update_sanitized_map(sanitized_map: dict[str, str], *keys, return_bare=False):
-    for key in tqdm.tqdm(keys, desc="Updating sanitized map"):
+    for key in tqdm.tqdm(keys, desc="Updating sanitized map", disable=len(keys) < 50):
         if key in sanitized_map:
             continue
 

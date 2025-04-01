@@ -24,7 +24,7 @@ from sklearn.metrics import confusion_matrix
 
 from paperext import CFG
 from paperext.log import logger
-from paperext.structured_output.mdl.model import Response, PaperExtractions
+from paperext.structured_output.mdl.model import Response, Analysis
 from paperext.structured_output.mdl.utils import model2df
 from paperext.structured_output.utils import model_validate_yaml
 from paperext.utils import build_validation_set
@@ -108,7 +108,7 @@ def _mlcm(annotations: pd.DataFrame, predictions: pd.DataFrame):
     return mlcm.cm(_ann, _pred), classes
 
 
-def _evaluate_precision(papers: list):
+def _evaluate_precision(papers: list[Path]):
     """Analyse the performance of the LLM on the given papers though confusion
     matrices and multi-label confusion matrices"""
     annotated = [[], []]
@@ -123,7 +123,7 @@ def _evaluate_precision(papers: list):
             "pred": [[], []],
         }
         logger.info(f"Fetching data from {f}")
-        model = model_validate_yaml(PaperExtractions, f.read_text())
+        model = model_validate_yaml(Analysis, f.read_text())
         paper_attr, paper_refs = map(
             lambda m: _append_left_indices(m, [("paper_id", f.stem)]),
             model2df(model),
@@ -135,7 +135,7 @@ def _evaluate_precision(papers: list):
         queries_dir = CFG.dir.queries / CFG.platform.select
         for i, query_f in enumerate(sorted(queries_dir.glob(f"{f.stem}*.json"))):
             logger.info(f"Fetching data from {query_f}")
-            model = Response.model_validate_json(query_f.read_text()).extractions
+            model = Response.model_validate_json(query_f.read_text()).analysis
 
             paper_attr, paper_refs = map(
                 lambda m: _append_left_indices(
@@ -203,13 +203,23 @@ def _evaluate_precision(papers: list):
                 [_pred.drop_duplicates() for _pred in pred],
             )
 
-            (_analysis_dir / _csv_fn(label, i)).write_text(
-                pd.DataFrame(
-                    conf_mat,
-                    index=[*classes, "No True Label"],
-                    columns=[*classes, "No Predicted Label"],
-                ).to_csv()
+            df = pd.DataFrame(
+                conf_mat,
+                index=[*classes, "No True Label"],
+                columns=[*classes, "No Predicted Label"],
             )
+
+            if "ignore" in df:
+                na_plus_row = df.loc[["ignore", "No True Label"]]
+                df.drop(["ignore", "No True Label"], inplace=True)
+                df = pd.concat([df, na_plus_row], axis=0)
+
+                na_col = df.pop("ignore")
+                np_col = df.pop("No Predicted Label")
+                df["ignore"] = na_col
+                df["No Predicted Label"] = np_col
+
+            (_analysis_dir / _csv_fn(label, i)).write_text(df.to_csv())
             logger.debug(
                 "\n".join(
                     [
@@ -253,13 +263,23 @@ def _evaluate_precision(papers: list):
                 [_pred[col] for _pred in pred_per_paper],
             )
 
-            (_analysis_dir / _csv_fn(f"{group}.{col}", i)).write_text(
-                pd.DataFrame(
-                    conf_mat,
-                    index=[*names, "No True Label"],
-                    columns=[*names, "No Predicted Label"],
-                ).to_csv()
+            df = pd.DataFrame(
+                conf_mat,
+                index=[*names, "No True Label"],
+                columns=[*names, "No Predicted Label"],
             )
+
+            if "ignore" in df:
+                na_plus_row = df.loc[["ignore", "No True Label"]]
+                df.drop(["ignore", "No True Label"], inplace=True)
+                df = pd.concat([df, na_plus_row], axis=0)
+
+                na_col = df.pop("ignore")
+                np_col = df.pop("No Predicted Label")
+                df["ignore"] = na_col
+                df["No Predicted Label"] = np_col
+
+            (_analysis_dir / _csv_fn(f"{group}.{col}", i)).write_text(df.to_csv())
 
             logger.debug(
                 "\n".join(
@@ -279,13 +299,23 @@ def _evaluate_precision(papers: list):
                 [_pred[col].drop_duplicates() for _pred in pred_per_paper],
             )
 
-            (_analysis_dir / _csv_fn(f"{group}.{col}", i)).write_text(
-                pd.DataFrame(
-                    conf_mat,
-                    index=[*names, "No True Label"],
-                    columns=[*names, "No Predicted Label"],
-                ).to_csv()
+            df = pd.DataFrame(
+                conf_mat,
+                index=[*names, "No True Label"],
+                columns=[*names, "No Predicted Label"],
             )
+
+            if "ignore" in df:
+                na_plus_row = df.loc[["ignore", "No True Label"]]
+                df.drop(["ignore", "No True Label"], inplace=True)
+                df = pd.concat([df, na_plus_row], axis=0)
+
+                na_col = df.pop("ignore")
+                np_col = df.pop("No Predicted Label")
+                df["ignore"] = na_col
+                df["No Predicted Label"] = np_col
+
+            (_analysis_dir / _csv_fn(f"{group}.{col}", i)).write_text(df.to_csv())
 
             logger.debug(
                 "\n".join(

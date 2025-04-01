@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 import json
 import logging
 import re
@@ -10,6 +11,7 @@ import pandas as pd
 from pydantic import BaseModel
 
 from paperext.config import CFG
+from paperext.sanitize_categorization import _update_sanitized_map, default_sanitize_key
 from paperext.structured_output.mdl.model import Explained
 
 logger = logging.getLogger(__name__)
@@ -25,16 +27,22 @@ def str_normalize(string):
 def _refs_category_map(categories_refs_file: Path, categories_selections_file: Path):
     categories_selection = categories_selections_file.read_text().splitlines()
     categories_selection = [
-        ".".join(map(str_normalize, field.split(".")))
+        field.strip()
         for field in categories_selection
         if field.strip() and not field.startswith("#")
     ]
+    # categories_selection = [
+    #     ".".join(map(str_normalize, field.split(".")))
+    #     for field in categories_selection
+    #     if field.strip() and not field.startswith("#")
+    # ]
 
     categories_refs = json.loads(categories_refs_file.read_text())
 
     def list_refs(categories: dict):
         for name, sub_cat in categories.items():
-            name = str_normalize(name)
+            name = name.replace(".", "")
+            # name = str_normalize(name)
             for sub_name in list_refs(sub_cat):
                 yield f"{name}.{sub_name}"
 
@@ -105,10 +113,31 @@ def _models_category_map():
             )
 
 
-_DOMAINS_CATEGORY_MAP = {
-    domain: category for domain, category in _domains_category_map()
-}
-_MODELS_CATEGORY_MAP = {model: category for model, category in _models_category_map()}
+@dataclass
+class CategoryMap:
+    category_map: dict
+    sanitize_map: dict
+
+    def __init__(self, category_map: dict):
+        self.category_map = category_map
+        self.sanitize_map = {}
+        _update_sanitized_map(
+            self.sanitize_map,
+            *self.category_map,
+        )
+
+    def __getitem__(self, element: str):
+        return self.category_map[
+            next(_update_sanitized_map(self.sanitize_map, element.replace(".", "")))
+        ]
+
+
+_DOMAINS_CATEGORY_MAP = CategoryMap(
+    {domain: category for domain, category in _domains_category_map()}
+)
+_MODELS_CATEGORY_MAP = CategoryMap(
+    {model: category for model, category in _models_category_map()}
+)
 
 
 def _get_value(entry: Explained):
@@ -126,7 +155,7 @@ def _aliases(entry: dict):
     ):
         return entry
 
-    entry["name"] = str_normalize(entry["name"])
+    entry["name"] = default_sanitize_key(entry["name"])
     return entry
 
 
@@ -206,6 +235,8 @@ def model2df(model: BaseModel):
 
                     paper_references_df[entry_k][(k, i)] = entry_v
 
+    map_error = None
+
     # Refactor the generalization of category maps (_MODELS_CATEGORY_MAP and
     # _DOMAINS_CATEGORY_MAP) to reduce code cuplication
     categories = []
@@ -229,8 +260,6 @@ def model2df(model: BaseModel):
         categories.append(category)
 
         paper_1d_df["research_fields_categories"].append(category_with_cnt)
-
-    map_error = None
 
     for group in (
         "models",
