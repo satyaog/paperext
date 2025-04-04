@@ -8,6 +8,7 @@ from . import (
     mdl_clus_dom,
     find_acr_mdl_dom,
     find_acr_mdl_mod,
+    papaff,
     parse_doc,
 )
 
@@ -32,6 +33,8 @@ def get_struct_module(struct: str):
             return find_acr_mdl_dom
         case "find_acr_mdl_mod":
             return find_acr_mdl_mod
+        case "papaff":
+            return papaff
         case "parse_doc":
             return parse_doc
         case _:
