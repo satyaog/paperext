@@ -39,6 +39,10 @@ dependencies = [
   "tiktoken",
 ]
 [project.optional-dependencies]
+llamacloud = [
+  "llama-cloud-services",
+  "llama-index-core"
+]
 openai = [
   "openai",
 ]
@@ -72,6 +76,11 @@ PAPEREXT_CFG = "{env:PAPEREXT_CFG:{root:real}/config.mdl.ini}"
 # ImportError: cannot import name '_message' from 'google.protobuf.pyext'
 PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION = "upb"
 
+[tool.hatch.envs.llamacloud]
+extra-dependencies = [
+  "paperext[llamacloud]",
+]
+
 [tool.hatch.envs.openai]
 extra-dependencies = [
   "paperext[openai]",
@@ -90,6 +99,7 @@ dependencies = [
 
 [tool.hatch.envs.tests]
 extra-dependencies = [
+  "paperext[llamacloud]",
   "paperext[openai]",
   "paperext[vertexai]",
   "pytest",

@@ -166,7 +166,7 @@ class Paper(PaperMD):
                 markdown = "\n---\n".join(
                     Response.model_validate_json(
                         paper_md.queries[0].read_text()
-                    ).analysis.pages
+                    ).analysis.pages_md
                 )
                 pdf.write_text(markdown)
 

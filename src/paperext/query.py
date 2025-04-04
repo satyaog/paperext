@@ -158,7 +158,7 @@ try:
 
                 return object.__getattribute__(self, name)
 
-        llama_parse_args = {"result_type": "markdown"}
+        llama_parse_args = {"ignore_errors": False, "result_type": "markdown"}
         match model:
             case "balance":
                 pass
@@ -177,16 +177,13 @@ try:
         ):
             assert len(messages) == 1
             parser = LlamaParse(**llama_parse_args)
-            file_extractor = {".pdf": parser}
-            documents = await SimpleDirectoryReader(
-                input_files=[m["pdf"] for m in messages],
-                file_extractor=file_extractor,
-            ).aload_data()
-            analysis = response_model(pages=[d.text for d in documents])
-            return analysis, {
-                "metadata": documents[0].metadata,
-                "doc_id": [d.doc_id for d in documents],
-            }
+            documents = await parser.aget_json(messages[0]["pdf"])
+            analysis = response_model(
+                pages_md=[p["md"] for p in documents[0]["pages"]],
+                pages_txt=[p["text"] for p in documents[0]["pages"]],
+            )
+            usage = documents[0]["job_metadata"]
+            return analysis, usage
 
         client.chat.completions.create_with_completion = create_with_completion
 

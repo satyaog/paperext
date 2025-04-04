@@ -16,7 +16,8 @@ logging.basicConfig(level=logging.DEBUG)
 
 
 class Analysis(BaseModel):
-    pages: list[str]
+    pages_md: list[str]
+    pages_txt: list[str]
 
 
 class Response(BaseResponse):
