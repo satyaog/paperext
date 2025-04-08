@@ -4,6 +4,7 @@ import logging
 import os
 from contextlib import contextmanager
 from pathlib import Path
+import threading
 from typing import Any, Generator, Union
 
 from paperext.log import logger as main_logger
@@ -31,7 +32,8 @@ def config_to_dict(config):
 
 
 class Config:
-    _instance: "Config" = None
+    _main_instance: "Config" = None
+    _instance = threading.local()
 
     def __init__(self, config_file: str = CONFIG_FILE, config: dict = None) -> None:
         """Create a Config object from a config file or a dictionary."""
@@ -131,17 +133,19 @@ class Config:
     @staticmethod
     def get_global_config() -> "Config":
         """Returns the global instance of Config."""
-        if Config._instance is None:
-            Config._instance = Config()
+        try:
+            Config._instance.value
+        except AttributeError:
             Config.apply_global_config(
-                Config._instance
+                copy.deepcopy(Config._main_instance)
             )  # Set env vars and logging level
-        return copy.deepcopy(Config._instance)
+
+        return copy.deepcopy(Config._instance.value)
 
     @staticmethod
     def apply_global_config(config: "Config") -> None:
         """Apply the global instance of Config."""
-        Config._instance = config
+        Config._instance.value = config
 
         try:
             main_logger.setLevel(config._config["logging"]["level"])
@@ -155,7 +159,7 @@ class Config:
     @staticmethod
     def push(config: "Config" = None) -> Generator["Config", None, None]:
         """Context manager to temporarily change the global config."""
-        _config = Config._instance
+        _config: Config = Config._instance.value
 
         try:
             if config is None:
@@ -166,7 +170,7 @@ class Config:
             yield config
 
         finally:
-            Config._instance = _config
+            Config._instance.value = _config
 
 
 class GlobalConfigProxy(Config):
@@ -175,8 +179,11 @@ class GlobalConfigProxy(Config):
 
     @property
     def _config(self) -> dict:
-        assert Config._instance
-        return Config._instance._config
+        self.get_global_config()
+        return Config._instance.value._config
 
+
+if Config._main_instance is None:
+    Config._main_instance = Config()
 
 CFG = GlobalConfigProxy()
