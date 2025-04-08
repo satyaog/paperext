@@ -4,6 +4,7 @@ import bdb
 import json
 import logging
 from datetime import datetime
+import os
 from pathlib import Path
 from typing import Any, List, Tuple
 
@@ -35,6 +36,147 @@ Example:
 """
 
 PLATFORMS = {}
+
+try:
+    from llama_cloud_services import LlamaParse
+
+    def _client():
+        model = CFG.llamaparse.model
+
+        llama_parse_args = {"ignore_errors": False, "result_type": "markdown"}
+        match model:
+            case "balance":
+                pass
+            case "fast":
+                llama_parse_args["fast_mode"] = True
+                llama_parse_args["result_type"] = "text"
+            case "premium":
+                llama_parse_args["premium_mode"] = True
+            case _:
+                llama_parse_args["parse_mode"] = model
+
+        parser = LlamaParse(**llama_parse_args)
+
+        class Mock:
+            def __getattribute__(self, name: str):
+                try:
+                    return object.__getattribute__(self, name)
+
+                except AttributeError:
+                    self.__dict__[name] = Mock()
+
+                return object.__getattribute__(self, name)
+
+        client = Mock()
+
+        async def create_with_completion(
+            *args, response_model: BaseModel, messages: list[dict], **kwargs
+        ):
+            assert len(messages) == 1
+            documents = await parser.aget_json(messages[0]["pdf"])
+            analysis = response_model(
+                pages_md=[p["md"] for p in documents[0]["pages"]],
+                pages_txt=[p["text"] for p in documents[0]["pages"]],
+            )
+            usage = documents[0]["job_metadata"]
+            return analysis, usage
+
+        client.chat.completions.create_with_completion = create_with_completion
+
+        return client
+
+    PLATFORMS["llamaparse"] = _client
+
+except ModuleNotFoundError as e:
+    logger.info(e, exc_info=True)
+    logging.info(e, exc_info=True)
+
+try:
+    from mistralai import Mistral
+
+    def _client():
+        model = CFG.mistralai.model
+        mistral_client = Mistral(api_key=CFG.env.mistral_api_key)
+
+        class Mock:
+            def __getattribute__(self, name: str):
+                try:
+                    return object.__getattribute__(self, name)
+
+                except AttributeError:
+                    self.__dict__[name] = Mock()
+
+                return object.__getattribute__(self, name)
+
+        client = Mock()
+
+        async def create_with_completion(
+            *args, response_model: BaseModel, messages: list[dict], **kwargs
+        ):
+            assert len(messages) == 1
+
+            uploaded_pdf = mistral_client.files.upload(
+                file={
+                    "file_name": Path(messages[0]["pdf"]).name,
+                    "content": Path(messages[0]["pdf"]).read_bytes(),
+                },
+                purpose="ocr",
+            )
+            signed_url = mistral_client.files.get_signed_url(file_id=uploaded_pdf.id)
+            ocr_response = mistral_client.ocr.process(
+                model=model,
+                document={
+                    "type": "document_url",
+                    "document_url": signed_url.url,
+                },
+            )
+
+            analysis = response_model(
+                pages_md=[p.markdown for p in ocr_response.pages],
+                pages_txt=[],
+            )
+            usage = ocr_response.usage_info
+            return analysis, usage
+
+        client.chat.completions.create_with_completion = create_with_completion
+
+        return client
+
+    PLATFORMS["mistralai"] = _client
+
+except ModuleNotFoundError as e:
+    logger.info(e, exc_info=True)
+    logging.info(e, exc_info=True)
+
+try:
+    from openai import AsyncOpenAI, RateLimitError
+    from openai.types.chat.chat_completion import CompletionUsage
+
+    def _client():
+        model = CFG.ollama.model
+        client = instructor.from_openai(
+            AsyncOpenAI(
+                base_url=CFG.ollama.url,
+                api_key="ollama",  # required, but unused
+            ),
+            mode=instructor.Mode.JSON,
+        )
+        _create_with_completion = client.chat.completions.create_with_completion
+
+        async def _wrap(*args, **kwargs):
+            extractions, completion = await _create_with_completion(
+                model=model, *args, **{"max_retries": 2, **kwargs}
+            )
+            return extractions, completion.usage
+
+        client.chat.completions.create_with_completion = _wrap
+        return client
+
+    PLATFORMS["ollama"] = _client
+
+except ModuleNotFoundError as e:
+    logger.info(e, exc_info=True)
+    logging.info(e, exc_info=True)
 
 try:
     from openai import AsyncOpenAI, RateLimitError
@@ -106,90 +248,6 @@ try:
         return client
 
     PLATFORMS["vertexai"] = _client
-
-except ModuleNotFoundError as e:
-    logger.info(e, exc_info=True)
-    logging.info(e, exc_info=True)
-
-try:
-    from openai import AsyncOpenAI, RateLimitError
-    from openai.types.chat.chat_completion import CompletionUsage
-
-    def _client():
-        model = CFG.ollama.model
-        client = instructor.from_openai(
-            AsyncOpenAI(
-                base_url=CFG.ollama.url,
-                api_key="ollama",  # required, but unused
-            ),
-            mode=instructor.Mode.JSON,
-        )
-        _create_with_completion = client.chat.completions.create_with_completion
-
-        async def _wrap(*args, **kwargs):
-            extractions, completion = await _create_with_completion(
-                model=model, *args, **{"max_retries": 2, **kwargs}
-            )
-            return extractions, completion.usage
-
-        client.chat.completions.create_with_completion = _wrap
-        return client
-
-    PLATFORMS["ollama"] = _client
-
-except ModuleNotFoundError as e:
-    logger.info(e, exc_info=True)
-    logging.info(e, exc_info=True)
-
-try:
-    from llama_cloud_services import LlamaParse
-    from llama_index.core import SimpleDirectoryReader
-
-    def _client():
-        model = CFG.llamaparse.model
-
-        class Mock:
-            def __getattribute__(self, name: str):
-                try:
-                    return object.__getattribute__(self, name)
-
-                except AttributeError:
-                    self.__dict__[name] = Mock()
-
-                return object.__getattribute__(self, name)
-
-        llama_parse_args = {"ignore_errors": False, "result_type": "markdown"}
-        match model:
-            case "balance":
-                pass
-            case "fast":
-                llama_parse_args["fast_mode"] = True
-                llama_parse_args["result_type"] = "text"
-            case "premium":
-                llama_parse_args["premium_mode"] = True
-            case _:
-                llama_parse_args["parse_mode"] = model
-
-        client = Mock()
-
-        async def create_with_completion(
-            *args, response_model: BaseModel, messages: list[dict], **kwargs
-        ):
-            assert len(messages) == 1
-            parser = LlamaParse(**llama_parse_args)
-            documents = await parser.aget_json(messages[0]["pdf"])
-            analysis = response_model(
-                pages_md=[p["md"] for p in documents[0]["pages"]],
-                pages_txt=[p["text"] for p in documents[0]["pages"]],
-            )
-            usage = documents[0]["job_metadata"]
-            return analysis, usage
-
-        client.chat.completions.create_with_completion = create_with_completion
-
-        return client
-
-    PLATFORMS["llamaparse"] = _client
 
 except ModuleNotFoundError as e:
     logger.info(e, exc_info=True)
