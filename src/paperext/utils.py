@@ -24,8 +24,8 @@ class PaperBase:
     PAPER_ID_FULLTEXT_TEMPLATE = "fulltext/{paper_id}/fulltext.txt"
 
     def __init__(self, paper: dict) -> None:
+        self._paper = paper
         self._selected_id = None
-        self._paper_id = paper["paper_id"]
         self._pdfs = []
         link_ids = [self._paper_id]
         pdfs = []
@@ -102,6 +102,10 @@ class PaperBase:
             iter(self.pdfs),
             None,
         )
+
+    @property
+    def _paper_id(self):
+        return self._paper["paper_id"]
 
     def get_link_id_pdf(self):
         """Return a hardlink, with selected id as name, to the pdf.  Currently,

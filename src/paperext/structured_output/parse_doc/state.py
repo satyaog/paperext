@@ -28,14 +28,17 @@ class State(BaseState):
         self.responses: list[Response]
 
     def format_messages(self) -> Generator[list[dict[str:str]], None, None]:
-        for pdf in (
-            [self._pdf_txt, *self._paper.pdfs] if self._paper else [self._pdf_txt]
-        ):
-            if pdf.with_suffix(".pdf").exists():
-                pdf = pdf.with_suffix(".pdf")
+        pdfs = list(
+            map(
+                lambda x: x.with_suffix(".pdf"),
+                [self._pdf_txt, *self._paper.pdfs] if self._paper else [self._pdf_txt],
+            )
+        )
+        for pdf in pdfs:
+            if pdf.exists():
                 break
         else:
-            return
+            raise ValueError(f"Could not find a pdf within {pdfs}")
 
         _messages = [{"pdf": str(pdf)}]
         self._query_data.append(_messages[0])

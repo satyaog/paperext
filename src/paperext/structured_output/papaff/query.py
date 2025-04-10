@@ -26,7 +26,7 @@ def main(argv: list = None):
     paperoni = sum([json.loads(_p.read_text()) for _p in options.papers], [])
 
     with Config.push():
-        CFG.platform.select = "llamaparse"
+        CFG.platform.select = "mistralai"
         CFG.platform.struct = "parse_doc"
         CFG.dir.queries = CFG.dir.data / CFG.platform.struct / "queries"
 

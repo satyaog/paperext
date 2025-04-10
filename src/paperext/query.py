@@ -286,8 +286,12 @@ async def query(
 def _additional_attempts(state, force=tuple()):
     yield from state.format_messages()
 
-    while force:
-        yield from state.format_messages()
+    stop = False
+    while force and not stop:
+        stop = True
+        for message in state.format_messages():
+            stop = False
+            yield message
 
 
 async def batch_queries(

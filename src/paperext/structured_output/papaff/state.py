@@ -1,6 +1,8 @@
 from pathlib import Path
 from typing import Generator
 
+import regex as re
+
 from paperext.structured_output._base import BaseState
 from paperext.utils import Paper
 from paperext.structured_output.papaff.model import (
@@ -32,9 +34,19 @@ class State(BaseState):
 
     def format_messages(self) -> Generator[list[dict[str:str]], None, None]:
         parsed_doc = self._paper.queries[-1]
-        first_page = ParsedDocResponse.model_validate_json(
+        analysis = ParsedDocResponse.model_validate_json(
             parsed_doc.read_text()
-        ).analysis.pages_txt[0]
+        ).analysis
+
+        pages = analysis.pages_txt or analysis.pages_md
+        for i, page in enumerate(pages[:10]):
+            if (
+                re.search(r"(^|[^a-zA-Z])abstract($|[^a-zA-Z])", page.lower())
+                is not None
+            ):
+                break
+
+        first_pages = pages[: i + 1]
 
         _messages = [
             {
@@ -43,7 +55,7 @@ class State(BaseState):
             },
             {
                 "role": "user",
-                "content": FIRST_MESSAGE.format(first_page),
+                "content": FIRST_MESSAGE.format("\n---\n".join(first_pages)),
             },
         ]
 

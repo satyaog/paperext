@@ -21,7 +21,7 @@ SYSTEM_MESSAGE = """You are an expert in Deep Learning Research. Your task is to
 - Identify the corresponding affiliations for each author.
 - Correctly associate the affiliations with each author, ensuring accuracy."""
 
-FIRST_MESSAGE = """### The first pages of the scientific paper:
+FIRST_MESSAGE = """### The first page of the scientific paper:
 {}"""
 
 _EMPTY_FLAG = "__EMPTY__"
@@ -32,7 +32,7 @@ T = TypeVar("T")
 
 class Explained(BaseModel, Generic[T]):
     value: T
-    reasoning: str = Field(
+    justification: str = Field(
         description="A detailed explanation for the choice of the value.",
     )
     quote: str = Field(
@@ -60,14 +60,7 @@ class AuthorAffiliations(BaseModel):
 
 
 class Analysis(BaseModel):
-    authors_affiliations: list[AuthorAffiliations] = Field(
-        description=(
-            "List of authors found in the Deep Learning scientific paper with theirs affiliations"
-        )
-    )
-    affiliations: list[Explained[str]] = Field(
-        description=("List of affiliations found in the Deep Learning scientific paper")
-    )
+    authors_affiliations: list[AuthorAffiliations]
 
     @classmethod
     def parse_obj(cls, obj: dict) -> "Analysis":
@@ -86,7 +79,7 @@ class Analysis(BaseModel):
 class Response(BaseResponse):
     analysis: Analysis
     metadata: Optional[ResponseMetadata] = ResponseMetadata(
-        model_version=Version("2.0.0")
+        model_version=Version("1.0.0")
     )
 
 
