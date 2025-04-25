@@ -8,20 +8,41 @@ from typing import Generic, Optional, TypeVar
 from pydantic import BaseModel, ConfigDict, Field
 
 from paperext.sanitize_categorization import split_words
-from paperext.structured_output._base import BaseResponse, ResponseMetadata
+from paperext.structured_output._base import (
+    BaseResponse,
+    ResponseMetadata,
+    _base_empty_fields,
+)
 from paperext.utils import str_normalize
 
 logging.basicConfig(level=logging.DEBUG)
 
-
-SYSTEM_MESSAGE = """You are an expert in Deep Learning Research. Your task is to identify all the authors of a scientific paper along with their respective affiliations, ensuring that each author is correctly associated with the relevant institution(s). An author can have multiple affiliations.
+SYSTEM_MESSAGE = """You are a Deep Learning expert specializing in scientific text analysis. Your task is to extract the authors and their corresponding affiliations from the provided scientific paper. Ensure that all affiliations are accurately associated with each author, especially when authors have multiple affiliations. Pay attention to symbols, superscripts, or any references that indicate institutional connections.
 
 ### Instructions:
-- Identify all authors listed in the paper.
-- Identify the corresponding affiliations for each author.
-- Correctly associate the affiliations with each author, ensuring accuracy."""
+
+- Extract Author Names:
+  - Identify and list all author names in full (e.g., first and last name).
+- Extract Affiliations:
+  - For each author, extract all institutions they are affiliated with.
+  - Authors may have multiple affiliations, so ensure all are captured.
+- Associate Authors with Institutions:
+  - Match each author with their correct institution(s).
+  - Handle superscript symbols or numbers that indicate institutional affiliation, ensuring accuracy in matching authors to institutions.
+- Affiliation Matching:
+  - Verify that all authors are paired with the correct number of affiliations (as indicated by superscripts or numeric references in the text).
+  - Ensure no author or institution is missed, even if multiple affiliations are provided.
+- Check Completeness:
+  - Ensure no author is omitted from the list.
+  - Ensure all affiliations are listed correctly for each author.
+
+### Key Considerations:
+
+Some authors may have multiple affiliations. Pay special attention to superscripts or numbers that may link authors to different institutions.
+Each affiliation should be captured and accurately paired with the corresponding author."""
 
 FIRST_MESSAGE = """### The first pages of the scientific paper:
+
 {}"""
 
 _EMPTY_FLAG = "__EMPTY__"
@@ -50,11 +71,11 @@ class Explained(BaseModel, Generic[T]):
 
 class AuthorAffiliations(BaseModel):
     author: Explained[str] = Field(
-        description=("An author found in the Deep Learning scientific paper")
+        description=("An author present in the Deep Learning scientific paper")
     )
     affiliations: list[Explained[str]] = Field(
         description=(
-            "List of the author affiliations found in the Deep Learning scientific paper"
+            "List of the author's affiliations present in the Deep Learning scientific paper"
         )
     )
 
@@ -62,11 +83,13 @@ class AuthorAffiliations(BaseModel):
 class Analysis(BaseModel):
     authors_affiliations: list[AuthorAffiliations] = Field(
         description=(
-            "List of authors found in the Deep Learning scientific paper with theirs affiliations"
+            "List of all authors present in the Deep Learning scientific paper with theirs affiliations"
         )
     )
     affiliations: list[Explained[str]] = Field(
-        description=("List of affiliations found in the Deep Learning scientific paper")
+        description=(
+            "List of all affiliations present in the Deep Learning scientific paper"
+        )
     )
 
     @classmethod
@@ -90,39 +113,11 @@ class Response(BaseResponse):
     )
 
 
-def _is_base(cls, other):
-    try:
-        return cls.__base__ == other
-    except AttributeError:
-        return False
-
-
-def _empty_fields(model_cls: BaseModel):
-    try:
-        iter_fields = model_cls.model_fields.items()
-    except AttributeError:
-        if typing.get_origin(model_cls) == list:
-            return [_empty_fields(model_cls.__args__[0])]
-        else:
-            return _EMPTY_FLAG
-
-    if _is_base(model_cls, Explained):
-        fields = {k: (_empty_fields(v) if k == "value" else "") for k, v in iter_fields}
-    else:
-        fields = {}
-        for k, field in iter_fields:
-            fields[k] = _empty_fields(field.annotation)
-
-    return fields
+def _empty_fields(model_cls: type[BaseModel]):
+    return _base_empty_fields(model_cls, Explained)
 
 
 def empty_model(model_cls):
     empty_fields = _empty_fields(model_cls)
-    empty_fields["type"]["value"] = "empirical"
-    empty_fields["models"][0]["is_contributed"]["value"] = False
-    empty_fields["models"][0]["is_executed"]["value"] = False
-    empty_fields["models"][0]["is_compared"]["value"] = False
-    empty_fields["datasets"][0]["role"] = "referenced"
-    empty_fields["libraries"][0]["role"] = "referenced"
 
     return model_cls(**empty_fields)

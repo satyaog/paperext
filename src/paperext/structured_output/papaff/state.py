@@ -46,7 +46,7 @@ class State(BaseState):
             ):
                 break
 
-        first_pages = pages[: i + 1]
+        first_pages = pages[: i + 2]
 
         _messages = [
             {
