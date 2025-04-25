@@ -4,6 +4,7 @@ import logging
 import os
 from contextlib import contextmanager
 from pathlib import Path
+import tempfile
 import threading
 from typing import Any, Generator, Union
 
@@ -41,16 +42,23 @@ class Config:
             self._config = config
 
         else:
-            _config = configparser.ConfigParser(
-                interpolation=configparser.ExtendedInterpolation()
-            )
-            assert _config.read(
-                config_file
-            ), f"Could not read config file [{config_file}]"
+            # Parse and apply environment variables to config prior loading it
+            with tempfile.NamedTemporaryFile("wt") as tmp_file:
+                _config = configparser.ConfigParser()
+                assert _config.read(
+                    config_file
+                ), f"Could not read config file [{config_file}]"
+                _config = self._parse_env_vars(_config)
+                _config.write(tmp_file.file)
+                tmp_file.flush()
+
+                _config = configparser.ConfigParser(
+                    interpolation=configparser.ExtendedInterpolation()
+                )
+                _config.read(tmp_file.name)
 
             self._config = config_to_dict(_config)
 
-            self._parse_env_vars()
             self._resolve(config_file)
 
     def __deepcopy__(self, memo):
@@ -100,7 +108,19 @@ class Config:
     def __iter__(self):
         return iter(self._config)
 
-    def _parse_env_vars(self):
+    def _resolve(self, config_file: str):
+        config_parent = Path(config_file).resolve().parent
+
+        for k, v in self._config["dir"].items():
+            v = Path(v)
+            if not v.is_absolute():
+                v = config_parent / v
+            self._config["dir"][k] = v
+
+    @classmethod
+    def _parse_env_vars(
+        cls, config: configparser.ConfigParser
+    ) -> configparser.ConfigParser:
         for envvar, value in os.environ.items():
             if not envvar.startswith(f"{_PREFIX}_") or envvar == _CFG_VARENV:
                 continue
@@ -108,7 +128,7 @@ class Config:
             conf_key = envvar.lower().split("_")[1:]
 
             try:
-                section = self._config[conf_key.pop(0)]
+                section = config[conf_key.pop(0)]
 
                 option = "_".join(conf_key)
                 # Do not create options
@@ -121,14 +141,7 @@ class Config:
                     f"Could not find env var {envvar} in config", exc_info=True
                 )
 
-    def _resolve(self, config_file: str):
-        config_parent = Path(config_file).resolve().parent
-
-        for k, v in self._config["dir"].items():
-            v = Path(v)
-            if not v.is_absolute():
-                v = config_parent / v
-            self._config["dir"][k] = v
+        return config
 
     @staticmethod
     def get_global_config() -> "Config":
