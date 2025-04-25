@@ -109,9 +109,9 @@ def _find_in_paper(string: str, paper: str):
 def _model_dump(paper_id, paper, model: BaseModel):
     _WARNING = f"WARNING: Could not find the quote in the paper {paper_id}"
 
-    model_dump_json = model.model_dump_json(indent=2)
+    model_dump_json = model.model_dump_json()
     model_dump_yaml = yaml.safe_dump(
-        json.loads(model_dump_json), sort_keys=False, width=120
+        json.loads(model_dump_json), allow_unicode=True, sort_keys=False, width=120
     )
 
     lines = model_dump_yaml.splitlines()
@@ -144,7 +144,14 @@ def _input_option(question: str, options: list):
     return select
 
 
-def _select(key: str, *options: List[str], edit=False):
+def _select(
+    key: str,
+    *options: List[str],
+    empty_template=None,
+    message="",
+    edit=False,
+    stop=False,
+):
     is_equal = not edit
     for i, v in enumerate(options):
         for o in options[i + 1 :]:
@@ -153,11 +160,16 @@ def _select(key: str, *options: List[str], edit=False):
     if is_equal:
         return options[0]
 
+    options: list = list(options)
+
     short_options = [f"{i+1}" for i, _ in enumerate(options)]
     long_options = short_options[:]
     if edit:
         short_options.append("e")
         long_options.append("edit")
+    if stop:
+        short_options.append("s")
+        long_options.append("stop")
     separator = "=" * max(0, 0, *map(len, sum([o.splitlines() for o in options], [])))
     separator = separator[: get_terminal_width()]
 
@@ -173,16 +185,24 @@ def _select(key: str, *options: List[str], edit=False):
     for entry in editable_content:
         print(highlight(entry, YamlLexer(), TerminalTrueColorFormatter()), end="")
 
+    if message:
+        print(message)
+
     selected = _input_option(f"Select {' or '.join(long_options)}", short_options)
     edit = False
     try:
-        selected = options[int(selected) - 1]
+        selected = options.pop(int(selected) - 1)
     except ValueError:
-        # selected == "e"
-        selected = "\n".join(editable_content)
-        edit = True
+        match selected:
+            case "e":
+                selected = "\n".join(
+                    [*editable_content, "", f"## {key} template", empty_template, ""]
+                )
+                edit = True
+            case "s":
+                return None, options
 
-    return write_content(key, selected, edit=edit)
+    return write_content(key, selected, edit=edit), options
 
 
 def write_content(filename: str, content: str, edit=True):
@@ -247,7 +267,9 @@ def _update_progession(merged_extractions: Analysis, merged_file: Path):
     # Load content of previous field merge in case the user updated the content
     _update = merged_extractions.model_dump()
 
-    fields = list(Path(_TMPDIR.name).glob("*.yaml"))
+    fields = list(
+        Path(_TMPDIR.name).glob(f"{merged_extractions.__class__.__name__}*.yaml")
+    )
 
     if fields:
         fields = subprocess.run(
@@ -266,7 +288,9 @@ def _update_progession(merged_extractions: Analysis, merged_file: Path):
 
     for tmpfile in fields:
         tmpfile = Path(tmpfile)
-        _update = _validate_field(_update, Analysis, tmpfile.stem, tmpfile.read_text())
+        _update = _validate_field(
+            _update, merged_extractions.__class__, tmpfile.stem, tmpfile.read_text()
+        )
 
     _update = merged_extractions.model_validate(_update)
     merged_file.write_text(model_dump_yaml(_update))
@@ -404,7 +428,9 @@ def get_papers_from_file(
             .lower()
             .replace("\n", " ")
         )
-        responses = list((CFG.dir.queries / "openai").glob(f"{paper_id}_[0-9]*.json"))
+        responses = list(
+            (CFG.dir.queries / CFG.platform.select).glob(f"{paper_id}_[0-9]*.json")
+        )
         if not responses:
             logger.info(f"No responses found for {paper_id}\nSkipping...")
             continue
@@ -418,7 +444,7 @@ def get_papers_from_file(
 
 
 def get_papers_from_folder() -> List[Tuple[str, Path, Response]]:
-    responses = (CFG.dir.queries / "openai").glob("*.json")
+    responses = (CFG.dir.queries / CFG.platform.select).glob("*.json")
 
     extractions_tuple = []
     for response_path in responses:

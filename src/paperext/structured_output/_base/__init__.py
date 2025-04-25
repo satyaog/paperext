@@ -81,7 +81,7 @@ def _is_base(cls, other):
         return False
 
 
-def _base_empty_fields(model_cls: BaseModel, explained_cls: BaseModel):
+def _base_empty_fields(model_cls: type[BaseModel], explained_cls: type[BaseModel]):
     try:
         iter_fields = model_cls.model_fields.items()
     except AttributeError:
@@ -103,7 +103,7 @@ def _base_empty_fields(model_cls: BaseModel, explained_cls: BaseModel):
     return fields
 
 
-def _base_empty_response(model_cls: BaseResponse, explained_cls: BaseModel):
+def _base_empty_response(model_cls: type[BaseResponse], explained_cls: type[BaseModel]):
     empty_fields = _base_empty_fields(model_cls, explained_cls)
     empty_fields["words"] = 0
     empty_fields["query_data"] = {}
