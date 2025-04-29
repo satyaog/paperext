@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import logging
 from packaging.version import Version
-import typing
 from typing import Generic, Optional, TypeVar
 
 from pydantic import BaseModel, ConfigDict, Field
@@ -22,14 +21,15 @@ SYSTEM_MESSAGE = """You are a Deep Learning expert specializing in scientific te
 ### Instructions:
 
 - Extract Author Names:
-  - Identify and list all author names in full (e.g., first and last name).
+  - Identify and list all author names in full (e.g., first and last names). Ensure you account for any middle initials or multi-part names (e.g., "John Doe Smith").
 - Extract Affiliations:
-  - For each author, extract all institutions they are affiliated with.
-  - Authors may have multiple affiliations, so ensure all are captured.
+  - For each author, extract all affiliated institutions.
+  - If an author has multiple affiliations, capture each institution accurately.
 - Associate Authors with Institutions:
-  - Match each author with their correct institution(s).
-  - Handle superscript symbols or numbers that indicate institutional affiliation, ensuring accuracy in matching authors to institutions.
-- Affiliation Matching:
+  - Correctly pair each author with their corresponding affiliation(s).
+  - Pay attention to superscript numbers, symbols (e.g., †), or any other references that indicate specific institutional ties.
+  - Some affiliations might be explicitly stated near the author’s name without superscripts—be sure to capture those as well.
+- Affiliation Accuracy:
   - Verify that all authors are paired with the correct number of affiliations (as indicated by superscripts or numeric references in the text).
   - Ensure no author or institution is missed, even if multiple affiliations are provided.
 - Check Completeness:
@@ -38,14 +38,13 @@ SYSTEM_MESSAGE = """You are a Deep Learning expert specializing in scientific te
 
 ### Key Considerations:
 
-Some authors may have multiple affiliations. Pay special attention to superscripts or numbers that may link authors to different institutions.
-Each affiliation should be captured and accurately paired with the corresponding author."""
+- Multiple Affiliations: Be vigilant when an author has more than one affiliation. These should be accurately paired with the corresponding institution(s) and clearly noted.
+- Superscripts or Symbols: Pay careful attention to superscripts, asterisks, or other symbols that indicate affiliation links. Ensure these are handled correctly when matching authors with institutions.
+- Affiliation Clarity: Ensure all affiliations are clearly listed and paired with the corresponding author, even if the affiliation is explicitly listed without a superscript."""
 
 FIRST_MESSAGE = """### The first pages of the scientific paper:
 
 {}"""
-
-_EMPTY_FLAG = "__EMPTY__"
 
 
 T = TypeVar("T")
@@ -109,7 +108,7 @@ class Analysis(BaseModel):
 class Response(BaseResponse):
     analysis: Analysis
     metadata: Optional[ResponseMetadata] = ResponseMetadata(
-        model_version=Version("2.0.0")
+        model_version=Version("3.0.0")
     )
 
 
