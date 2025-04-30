@@ -26,7 +26,6 @@ from paperext.merge_papers import (
     # _merge_list,
     _model_dump,
     _open,
-    _remove_duplicates,
     _select,
     _update_progession,
     write_content,
@@ -70,10 +69,16 @@ def _merge_list(
         return None
 
     options_str = []
+    # seen is a list instead of a set as a dirty workaround to avoid
+    # TypeError: unhashable type: 'Explained[str]'
+    seen = list()
     for _list in (*merged_value, options):
         concat = []
         for entry in _list:
+            if entry in seen:
+                continue
             concat.append(_dump_list_entry(_model_dump(paper_id, paper, entry)))
+            seen.append(entry)
         options_str.extend(concat)
 
     empty_template = _dump_list_entry(
