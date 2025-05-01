@@ -128,16 +128,14 @@ def _merge_list(
         if pop_merged_value:
             options_str = _options_str
 
-    selection, _ = (
-        _select(
-            attribute,
-            "\n".join(selection),
-            *(["\n".join(options_str)] * bool(options_str)),
-            empty_template=empty_template,
-            edit=True,
-        )
-        or "[]"
+    selection, _ = _select(
+        attribute,
+        "\n".join(selection),
+        *(["\n".join(options_str)] * bool(options_str)),
+        empty_template=empty_template,
+        edit=True,
     )
+    selection = selection or "[]"
 
     yield selection
 
@@ -288,7 +286,7 @@ def main(argv=None):
         if [_paper for (_paper, _, _) in done if _paper == paper]:
             continue
 
-        logger.info(f"Merging {paper.id}")
+        logger.info(f"Merging {paper._paper['title']}:{paper.id}")
 
         f: Path = CFG.dir.merged / f"{paper.id}.yaml"
         f.parent.mkdir(parents=True, exist_ok=True)
@@ -331,12 +329,13 @@ def main(argv=None):
             urllib.request.urlretrieve(url, str(pdf))
             _open(str(pdf))
 
+        logger.debug(f"queries:\n  " + "\n  ".join([str(_f) for _f in paper.queries]))
         merged_extractions = merge_paper_extractions(
             paper, paper_txt, merged_extractions, *all_extractions
         )
         done.append((paper, paper_txt, merged_extractions))
 
-        # Clean-up tmp files:
+        # Clean-up tmp files
         for tmpfile in Path(_TMPDIR.name).glob("*.yaml"):
             tmpfile.unlink()
 
