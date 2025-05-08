@@ -41,7 +41,7 @@ class State(BaseState):
         pages = analysis.pages_txt or analysis.pages_md
         for i, page in enumerate(pages[:10]):
             if (
-                re.search(r"(^|[^a-zA-Z])abstract($|[^a-zA-Z])", page.lower())
+                re.search(r"(^|[^a-zA-Z])(abstract|summary)($|[^a-zA-Z])", page.lower())
                 is not None
             ):
                 break

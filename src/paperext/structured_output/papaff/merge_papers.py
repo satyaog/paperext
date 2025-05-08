@@ -61,7 +61,7 @@ def _merge_list(
     empty_value: BaseModel,
     merged_value: list,
     values: list[BaseModel],
-    pop_merged_value: bool = True,
+    pop_merged_index: bool = True,
 ):
     try:
         options: List[BaseModel] = sum(values, [])
@@ -120,13 +120,20 @@ def _merge_list(
         if last is None:
             break
 
-        for entry in yaml.safe_load(last or "[]"):
+        for entry in yaml.safe_load(last) or []:
             entry = empty_value.model_validate(entry)
             yield entry
             selection.append(_dump_list_entry(_model_dump(paper_id, paper, entry)))
 
-        if pop_merged_value:
+        if pop_merged_index:
             options_str = _options_str
+
+        else:
+            # Avoid collision with the whole group of authors_affiliations
+            options_str = [
+                option_str if option_str in _options_str else ""
+                for option_str in options_str
+            ]
 
     selection, _ = _select(
         attribute,
@@ -180,7 +187,7 @@ def _merge_authors_affiliations(
             empty_value.affiliations[0],
             [],
             _affiliations + [author_affiliations.affiliations],
-            pop_merged_value=False,
+            pop_merged_index=False,
         ):
             pass
 

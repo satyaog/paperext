@@ -202,7 +202,7 @@ def _select(
             case "s":
                 return None, options
 
-    return write_content(key, selected, edit=edit), options
+    return write_content(key, selected.strip(), edit=edit), options
 
 
 def write_content(filename: str, content: str, edit=True):
