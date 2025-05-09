@@ -10,12 +10,13 @@ import urllib.request
 from pathlib import Path
 from time import sleep
 from typing import List, Tuple
-
 import yaml
+
 from pydantic import BaseModel, ValidationError
 from pygments import highlight
 from pygments.formatters import TerminalTrueColorFormatter
 from pygments.lexers.data import YamlLexer
+from tqdm import tqdm
 
 from paperext import CFG
 from paperext.config import Config
@@ -131,8 +132,12 @@ def _merge_list(
         else:
             # Avoid collision with the whole group of authors_affiliations
             options_str = [
-                option_str if option_str in _options_str else ""
-                for option_str in options_str
+                (
+                    option_str
+                    if option_str in _options_str
+                    else "\n".join(["# " + l for l in option_str.splitlines()])
+                )
+                for i, option_str in enumerate(options_str)
             ]
 
     selection, _ = _select(
@@ -289,7 +294,7 @@ def main(argv=None):
             papers.append((paper, str_normalize(pdf), response.analysis))
 
     done = []
-    for i, (paper, paper_txt, _) in enumerate(papers):
+    for i, (paper, paper_txt, _) in tqdm(enumerate(papers)):
         if [_paper for (_paper, _, _) in done if _paper == paper]:
             continue
 
