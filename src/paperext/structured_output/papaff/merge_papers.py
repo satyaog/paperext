@@ -294,7 +294,7 @@ def main(argv=None):
             papers.append((paper, str_normalize(pdf), response.analysis))
 
     done = []
-    for i, (paper, paper_txt, _) in tqdm(enumerate(papers)):
+    for i, (paper, paper_txt, _) in enumerate(tqdm(papers)):
         if [_paper for (_paper, _, _) in done if _paper == paper]:
             continue
 

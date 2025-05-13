@@ -13,7 +13,10 @@ def convert_model_json_to_yaml(model_cls: BaseModel, json_data: str, **kwargs):
 
 def model_dump_yaml(model: BaseModel, **kwargs):
     return yaml.safe_dump(
-        model.model_dump(**kwargs, mode="json"), sort_keys=False, width=120
+        model.model_dump(**kwargs, mode="json"),
+        width=120,
+        allow_unicode=True,
+        sort_keys=False,
     )
 
 
