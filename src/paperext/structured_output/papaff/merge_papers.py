@@ -121,8 +121,25 @@ def _merge_list(
         if last is None:
             break
 
-        for entry in yaml.safe_load(last) or []:
-            entry = empty_value.model_validate(entry)
+        while True:
+            try:
+                last = [
+                    empty_value.model_validate(entry)
+                    for entry in yaml.safe_load(last) or []
+                ]
+                break
+            except ValidationError as e:
+                print(e)
+                print("There was an error parsing the yaml. Please fix the error")
+                last = write_content(
+                    attribute,
+                    "\n".join(
+                        [last, "", f"## {attribute} template", empty_template, ""]
+                    ),
+                    edit=True,
+                )
+
+        for entry in last:
             yield entry
             selection.append(_dump_list_entry(_model_dump(paper_id, paper, entry)))
 

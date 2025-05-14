@@ -53,7 +53,7 @@ def main(argv: list = None):
                     for paper, pdf_txt in sorted(
                         papers, key=lambda x: x[0]._paper_id if x[0] else ""
                     )
-                ][:10],
+                ],
                 destination=CFG.dir.data
                 / CFG.platform.struct
                 / "queries"
