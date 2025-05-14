@@ -131,7 +131,7 @@ def test_multiple_sources(tmp_path, cfg: Config):
     for _cfg in (arxiv_cfg, openreview_cfg):
         _cfg.dir.data = Path(tempfile.TemporaryDirectory(dir=str(tmp_path)).name)
         _cfg.dir.cache = _cfg.dir.data / "cache"
-        _cfg.dir.merged = _cfg.dir.data / "merged"
+        _cfg.dir.validated = _cfg.dir.data / "validated"
         _cfg.dir.queries = _cfg.dir.data / "queries"
 
         (_cfg.dir.cache / "arxiv/").mkdir(parents=True, exist_ok=True)

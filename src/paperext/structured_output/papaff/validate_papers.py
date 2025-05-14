@@ -1,15 +1,10 @@
 import argparse
 import copy
 import json
-import os
-import platform
-import shutil
 import subprocess
-import tempfile
 import urllib.request
 from pathlib import Path
-from time import sleep
-from typing import List, Tuple
+from typing import List
 import yaml
 
 from pydantic import BaseModel, ValidationError
@@ -21,10 +16,9 @@ from tqdm import tqdm
 from paperext import CFG
 from paperext.config import Config
 from paperext.log import logger
-from paperext.merge_papers import (
+from paperext.validate_papers import (
     _TMPDIR,
     _input_option,
-    # _merge_list,
     _model_dump,
     _open,
     _select,
@@ -39,8 +33,6 @@ from paperext.structured_output.papaff.model import (
 )
 from paperext.structured_output.parse_doc.model import Response as ParsedDocResponse
 from paperext.structured_output.utils import (
-    convert_model_json_to_yaml,
-    model_dump_yaml,
     model_validate_yaml,
 )
 from paperext.utils import Paper, str_normalize
@@ -230,7 +222,7 @@ def merge_paper_extractions(
     merged_extractions: Analysis,
     *all_extractions: List[Analysis],
 ):
-    f: Path = CFG.dir.merged / f"{paper.id}.yaml"
+    f: Path = CFG.dir.validated / f"{paper.id}.yaml"
 
     keys_values_store = {}
 
@@ -317,14 +309,14 @@ def main(argv=None):
 
         logger.info(f"Merging {paper._paper['title']}:{paper.id}")
 
-        f: Path = CFG.dir.merged / f"{paper.id}.yaml"
+        f: Path = CFG.dir.validated / f"{paper.id}.yaml"
         f.parent.mkdir(parents=True, exist_ok=True)
 
-        merged_extractions = empty_model(Analysis)
+        validated_analysis = empty_model(Analysis)
 
         if f.exists():
             try:
-                merged_extractions = model_validate_yaml(Analysis, f.read_text())
+                validated_analysis = model_validate_yaml(Analysis, f.read_text())
             except ValidationError as e:
                 logger.error(e, exc_info=True)
                 logger.info(f"Invalid extraction file... Consider deleting [{f}].")
@@ -332,13 +324,13 @@ def main(argv=None):
 
             if (
                 _input_option(
-                    f"The paper {paper.id} has already been merged. Do you wish to "
+                    f"The paper {paper.id} has already been validated. Do you wish to "
                     f"redo the merge?",
                     ("y", "n"),
                 )
                 == "n"
             ):
-                done.append((paper, paper_txt, merged_extractions))
+                done.append((paper, paper_txt, validated_analysis))
                 continue
 
         all_extractions = [
@@ -359,10 +351,10 @@ def main(argv=None):
             _open(str(pdf))
 
         logger.debug(f"queries:\n  " + "\n  ".join([str(_f) for _f in paper.queries]))
-        merged_extractions = merge_paper_extractions(
-            paper, paper_txt, merged_extractions, *all_extractions
+        validated_analysis = merge_paper_extractions(
+            paper, paper_txt, validated_analysis, *all_extractions
         )
-        done.append((paper, paper_txt, merged_extractions))
+        done.append((paper, paper_txt, validated_analysis))
 
         # Clean-up tmp files
         for tmpfile in Path(_TMPDIR.name).glob("*.yaml"):
@@ -374,7 +366,7 @@ def main(argv=None):
         ):
             subprocess.run(cmd, check=check)
 
-        logger.info(f"Merged paper saved to {f}")
+        logger.info(f"Validated paper saved to {f}")
 
 
 if __name__ == "__main__":

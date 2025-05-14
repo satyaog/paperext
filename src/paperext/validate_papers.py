@@ -323,7 +323,8 @@ def _merge_list(
             concat.append("")
         options_str.append("\n".join(concat))
 
-    selection = _select(attribute, *options_str, edit=True) or "[]"
+    selection, _ = _select(attribute, *options_str, edit=True)
+    selection = selection or "[]"
     # write_content(attribute, selection, edit=False)
     # while True:
     #     try:
@@ -348,7 +349,7 @@ def merge_paper_extractions(
     merged_extractions: Analysis,
     *all_extractions: List[Analysis],
 ):
-    f: Path = CFG.dir.merged / paper_id
+    f: Path = CFG.dir.validated / paper_id
     f = f.with_suffix(".yaml")
 
     for keys_values in zip(empty_model(Analysis), merged_extractions, *all_extractions):
@@ -493,7 +494,7 @@ def main(argv=None):
 
         logger.info(f"Merging {paper_id}")
 
-        f: Path = CFG.dir.merged / paper_id
+        f: Path = CFG.dir.validated / paper_id
         f = f.with_suffix(".yaml")
         f.parent.mkdir(parents=True, exist_ok=True)
 
@@ -527,7 +528,7 @@ def main(argv=None):
 
             if (
                 _input_option(
-                    f"The paper {paper_id} has already been merged. Do you wish to "
+                    f"The paper {paper_id} has already been validated. Do you wish to "
                     f"redo the merge?",
                     ("y", "n"),
                 )
@@ -568,7 +569,7 @@ def main(argv=None):
         ):
             subprocess.run(cmd, check=check)
 
-        logger.info(f"Merged paper saved to {f}")
+        logger.info(f"Validated paper saved to {f}")
 
 
 if __name__ == "__main__":

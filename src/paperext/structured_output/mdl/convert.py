@@ -270,7 +270,7 @@ if __name__ == "__main__":
                         *p.glob(f"*/*.yaml"),
                     ]
                 ),
-                [CFG.dir.merged, CFG.dir.queries],
+                [CFG.dir.validated, CFG.dir.queries],
             ),
             [],
         )

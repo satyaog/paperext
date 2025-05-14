@@ -356,12 +356,12 @@ def main(argv=None):
         papers = list(map(Path, options.papers))
     else:
         papers = [
-            CFG.dir.merged / paper.with_suffix(".yaml").name
+            CFG.dir.validated / paper.with_suffix(".yaml").name
             for paper in build_validation_set()
         ]
 
     if not any(map(lambda p: p.exists(), papers)):
-        papers = [CFG.dir.merged / f"{paper}.yaml" for paper in papers]
+        papers = [CFG.dir.validated / f"{paper}.yaml" for paper in papers]
 
     assert any(map(lambda p: p.exists(), papers))
 

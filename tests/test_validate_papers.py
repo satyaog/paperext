@@ -4,9 +4,9 @@ from pathlib import Path
 import pytest
 import yaml
 
-import paperext.merge_papers
+import paperext.validate_papers
 from paperext.config import Config
-from paperext.merge_papers import _select, _update_progession, _validate_field
+from paperext.validate_papers import _select, _update_progession, _validate_field
 from paperext.structured_output.mdl.model import Analysis, empty_model
 from paperext.structured_output.utils import model_dump_yaml, model_validate_yaml
 
@@ -15,7 +15,7 @@ from paperext.structured_output.utils import model_dump_yaml, model_validate_yam
 def merge_papers_tmpdir(tmp_path: Path, monkeypatch: pytest.MonkeyPatch):
     _tmpdir = tempfile.TemporaryDirectory(dir=str(tmp_path))
 
-    monkeypatch.setattr(paperext.merge_papers, "_TMPDIR", _tmpdir)
+    monkeypatch.setattr(paperext.validate_papers, "_TMPDIR", _tmpdir)
 
     with _tmpdir as _tmpdir:
         yield Path(_tmpdir)
@@ -23,7 +23,7 @@ def merge_papers_tmpdir(tmp_path: Path, monkeypatch: pytest.MonkeyPatch):
 
 @pytest.fixture(scope="function", autouse=True)
 def merged_extractions(cfg: Config):
-    merged_file: Path = cfg.dir.merged / "2401.14487.yaml"
+    merged_file: Path = cfg.dir.validated / "2401.14487.yaml"
     merged_extractions: Analysis = model_validate_yaml(
         Analysis, merged_file.read_text()
     )
@@ -40,7 +40,9 @@ def merged_extractions(cfg: Config):
     ],
 )
 def test_find_in_paper(string: str, paper: str, expected: bool):
-    assert bool(list(paperext.merge_papers._find_in_paper(string, paper))) == expected
+    assert (
+        bool(list(paperext.validate_papers._find_in_paper(string, paper))) == expected
+    )
 
 
 @pytest.mark.parametrize(
@@ -54,7 +56,7 @@ def test_find_in_paper(string: str, paper: str, expected: bool):
 )
 def test_remove_duplicates(l: list, expected: list):
     expected = expected or l
-    cleaned_list = list(paperext.merge_papers._remove_duplicates(l))
+    cleaned_list = list(paperext.validate_papers._remove_duplicates(l))
     assert cleaned_list[:1] == l[:1]
     assert cleaned_list == expected
 
@@ -80,7 +82,7 @@ def test_model_dump():
     quote_cnt = _flag_quote(model_dump)
     assert quote_cnt
 
-    _model_dump = paperext.merge_papers._model_dump(
+    _model_dump = paperext.validate_papers._model_dump(
         "ANYTHING", "", Analysis.model_validate(model_dump)
     )
     assert (
@@ -90,7 +92,7 @@ def test_model_dump():
         == quote_cnt
     )
 
-    _model_dump = paperext.merge_papers._model_dump(
+    _model_dump = paperext.validate_papers._model_dump(
         "ANYTHING",
         QUOTE_FLAG.replace("_", "").lower(),
         Analysis.model_validate(model_dump),
@@ -118,7 +120,7 @@ def test_input_option(inputs: list, remaining: list, monkeypatch: pytest.MonkeyP
     options = list(map(str, range(10)))
 
     try:
-        select = paperext.merge_papers._input_option("ANYTHING", options)
+        select = paperext.validate_papers._input_option("ANYTHING", options)
         assert select == inputs[-1]
         assert _inputs == remaining
 
@@ -149,7 +151,7 @@ def test_select(monkeypatch: pytest.MonkeyPatch, merge_papers_tmpdir: Path):
         assert list(merge_papers_tmpdir.glob("ANYTHING*"))
 
     with monkeypatch.context() as ctx:
-        ctx.setattr(paperext.merge_papers, "_open_editor", lambda *_a, **_kwa: None)
+        ctx.setattr(paperext.validate_papers, "_open_editor", lambda *_a, **_kwa: None)
         inputs = ["e", "y"]
         ctx.setattr("builtins.input", lambda *_a, **_kwa: inputs.pop(0))
 
@@ -195,9 +197,9 @@ def test_update_progession(
     merged_file: Path
     merged_extractions: Analysis
 
-    new_merged_file = cfg.dir.merged / f"new_{merged_file.name}"
+    new_merged_file = cfg.dir.validated / f"new_{merged_file.name}"
 
-    # Make sure the new merged extractions starts with empty data
+    # Make sure the new validated extractions starts with empty data
     assert not new_merged_file.exists()
     new_merged_extractions = _update_progession(empty_extractions, new_merged_file)
 
@@ -207,7 +209,7 @@ def test_update_progession(
 
     model_dump = yaml.safe_load(model_dump_yaml(merged_extractions))
 
-    # Fake merged data and test that only the merged fields are updated
+    # Fake validated data and test that only the validated fields are updated
     for field in model_dump.keys():
         assert getattr(new_merged_extractions, field) == getattr(
             empty_extractions, field
@@ -221,7 +223,7 @@ def test_update_progession(
             merged_extractions, field
         )
 
-        # Test that previously edited files are merged into new_merged_file
+        # Test that previously edited files are validated into new_merged_file
         field_content = yaml.safe_dump(model_dump[field], sort_keys=False)
         field_file = merge_papers_tmpdir / f"COULD_BE_ANYTHING.{field}.yaml"
 
