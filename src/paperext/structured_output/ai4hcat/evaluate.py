@@ -53,6 +53,9 @@ pd.set_option("display.max_rows", None)  # Show all rows
 pd.set_option("display.max_columns", None)  # Show all columns
 pd.set_option("display.width", 1024)  # No line width limit
 pd.set_option("display.max_colwidth", None)  # Show full content of each cell
+pd.set_option(
+    "display.float_format", "{:.2f}".format
+)  # Format floats with 2 decimal places
 
 
 def _csv_fn(stem: str, index: int) -> str:
@@ -78,6 +81,74 @@ def _cm(
     classes.drop_duplicates(inplace=True, ignore_index=True)
 
     return confusion_matrix(annotations, predictions, labels=classes), classes
+
+
+def _calculate_metrics(df: pd.DataFrame) -> pd.DataFrame:
+    """Calculate TP, TN, FP, FN, Precision, and Recall for each class."""
+    metrics = pd.DataFrame(index=df.index)
+
+    for idx in df.index:
+        # Get the row and column for this class
+        row = df.loc[idx]
+        if idx == "No True Label":
+            col = df["No Predicted Label"]
+        else:
+            col = df[idx]
+
+        # Calculate metrics
+        tp = col[idx]  # True positives are on the diagonal
+        fp = col.sum() - tp  # False positives are sum of column minus TP
+        fn = row.sum() - tp  # False negatives are sum of row minus TP
+        tn = df.values.sum() - (tp + fp + fn)  # True negatives are all other cells
+
+        # Calculate precision and recall
+        if idx == "No True Label":
+            precision = ""
+            recall = ""
+        else:
+            precision = tp / (tp + fp) if (tp + fp) > 0 else ""
+            recall = tp / (tp + fn) if (tp + fn) > 0 else ""
+
+        # Add to metrics DataFrame
+        metrics.loc[idx, "TP"] = tp
+        metrics.loc[idx, "TN"] = tn
+        metrics.loc[idx, "FP"] = fp
+        metrics.loc[idx, "FN"] = fn
+
+        metrics.loc[idx, "Precision"] = precision
+        metrics.loc[idx, "Recall"] = recall
+
+    # Set proper dtypes in metrics dataframe
+    metrics["TP"] = metrics["TP"].astype("int32")
+    metrics["TN"] = metrics["TN"].astype("int32")
+    metrics["FP"] = metrics["FP"].astype("int32")
+    metrics["FN"] = metrics["FN"].astype("int32")
+
+    return metrics
+
+
+def reorder_special_labels(
+    df: pd.DataFrame, indices: list[str], columns: list[str]
+) -> pd.DataFrame:
+    """Reorder special labels (like 'N/A' and 'No * Label') to the end of the DataFrame.
+
+    Args:
+        df: DataFrame to reorder
+        indices: List of indices to move to the end
+        columns: List of columns to move to the end
+
+    Returns:
+        DataFrame with special labels at the end
+    """
+    special_rows = df.loc[indices]
+    df = df.drop(indices)
+    df = pd.concat([df, special_rows], axis=0)
+
+    for col in columns:
+        special_col = df.pop(col)
+        df[col] = special_col
+
+    return df
 
 
 def _mlcm(
@@ -120,19 +191,23 @@ def _evaluate_precision(papers: list):
             logger.info(f"Fetching data from {query_f}")
             model = Response.model_validate_json(query_f.read_text()).extractions
 
-            cat_choices = [
-                model.primary_category.value.value,
-                *map(lambda x: x.value.value, model.secondary_categories),
-            ]
+            cat_choices = list(
+                map(
+                    lambda x: x.value.value,
+                    [model.primary_category] + model.secondary_categories,
+                ),
+            )
             cat_choices[1:] = [
                 cat for cat in cat_choices if cat != Category("N/A").value
             ][1:]
             stage["pred"][0].append(cat_choices)
 
-            subcat_choices = [
-                model.primary_sub_category.value.value,
-                *map(lambda x: x.value.value, model.secondary_sub_categories),
-            ]
+            subcat_choices = list(
+                map(
+                    lambda x: x.value.value,
+                    [model.primary_sub_category] + model.secondary_sub_categories,
+                ),
+            )
             subcat_choices[1:] = [
                 subcat
                 for subcat in subcat_choices
@@ -169,12 +244,14 @@ def _evaluate_precision(papers: list):
         )
 
         df = pd.DataFrame(mat, index=classes, columns=classes)
-        na_row = df.loc[["N/A"]]
-        df.drop("N/A", inplace=True)
-        df = pd.concat([df, na_row], axis=0)
+        df = reorder_special_labels(df, ["N/A"], ["N/A"])
 
-        na_col = df.pop("N/A")
-        df["N/A"] = na_col
+        # Calculate and append metrics
+        metrics = _calculate_metrics(df)
+        df = pd.concat([df, metrics], axis=1)
+
+        print(label, i)
+        print(metrics)
 
         (_analysis_dir / _csv_fn(label, i)).write_text(df.to_csv())
 
@@ -196,14 +273,16 @@ def _evaluate_precision(papers: list):
             index=[*classes, "No True Label"],
             columns=[*classes, "No Predicted Label"],
         )
-        na_plus_row = df.loc[["N/A", "No True Label"]]
-        df.drop(["N/A", "No True Label"], inplace=True)
-        df = pd.concat([df, na_plus_row], axis=0)
+        df = reorder_special_labels(
+            df, ["N/A", "No True Label"], ["N/A", "No Predicted Label"]
+        )
 
-        na_col = df.pop("N/A")
-        np_col = df.pop("No Predicted Label")
-        df["N/A"] = na_col
-        df["No Predicted Label"] = np_col
+        # Calculate and append metrics
+        metrics = _calculate_metrics(df)
+        df = pd.concat([df, metrics], axis=1)
+
+        print(f"{label}_mlcm", i)
+        print(metrics)
 
         (_analysis_dir / _csv_fn(f"{label}_mlcm", i)).write_text(df.to_csv())
         logger.debug(
