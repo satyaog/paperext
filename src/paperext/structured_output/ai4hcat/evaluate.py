@@ -191,18 +191,32 @@ def _evaluate_precision(papers: list):
             logger.info(f"Fetching data from {query_f}")
             model = Response.model_validate_json(query_f.read_text()).extractions
 
-            cat_choices = list(
+            cat_choices = (
+                [Category("N/A").value]
+                if not model.climate_change_is_central.value
+                # Make sure model.sustainable_development_is_central comes from
+                # an LLM response and not a conversion from older version
+                and model.climate_change_is_central.justification
+                else []
+            ) + list(
                 map(
                     lambda x: x.value.value,
                     [model.primary_category] + model.secondary_categories,
                 ),
             )
             cat_choices[1:] = [
-                cat for cat in cat_choices if cat != Category("N/A").value
-            ][1:]
+                cat for cat in cat_choices[1:] if cat != Category("N/A").value
+            ]
             stage["pred"][0].append(cat_choices)
 
-            subcat_choices = list(
+            subcat_choices = (
+                [SubCategory("N/A").value]
+                if not model.climate_change_is_central.value
+                # Make sure model.sustainable_development_is_central comes from
+                # an LLM response and not a conversion from older version
+                and model.climate_change_is_central.justification
+                else []
+            ) + list(
                 map(
                     lambda x: x.value.value,
                     [model.primary_sub_category] + model.secondary_sub_categories,
@@ -210,9 +224,9 @@ def _evaluate_precision(papers: list):
             )
             subcat_choices[1:] = [
                 subcat
-                for subcat in subcat_choices
+                for subcat in subcat_choices[1:]
                 if subcat != SubCategory("N/A").value
-            ][1:]
+            ]
             stage["pred"][1].append(subcat_choices)
 
         annotated["category"].append(pd.Series(stage["ann"][0]).drop_duplicates())
@@ -285,7 +299,7 @@ def _evaluate_precision(papers: list):
             metrics = _calculate_metrics(df)
             df = pd.concat([df, metrics], axis=1)
 
-            print(label, i)
+            print(f"{label}_{name}", i)
             print(metrics)
 
             (_analysis_dir / _csv_fn(f"{label}_{name}", i)).write_text(df.to_csv())
