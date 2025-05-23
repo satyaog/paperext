@@ -217,10 +217,27 @@ def _evaluate_precision(papers: list):
 
         annotated["category"].append(pd.Series(stage["ann"][0]).drop_duplicates())
         annotated["subcategory"].append(pd.Series(stage["ann"][1]).drop_duplicates())
-        predictions["category"].append(pd.Series(stage["pred"][0][0]).drop_duplicates())
-        predictions["subcategory"].append(
-            pd.Series(stage["pred"][1][0]).drop_duplicates()
+        predictions["category"].append(
+            pd.Series(stage["pred"][0][-1]).drop_duplicates()
         )
+        predictions["subcategory"].append(
+            pd.Series(stage["pred"][1][-1]).drop_duplicates()
+        )
+
+        # Check for mismatches and log them
+        if stage["ann"][0][0] not in stage["pred"][0][-1]:
+            logger.warning(
+                f"Category mismatch for paper\t{f.stem}\n"
+                + f"  Expected:\t{stage['ann'][0]}\n"
+                + f"  Got:     \t{stage['pred'][0][-1]}"
+            )
+
+        if stage["ann"][1][0] not in stage["pred"][1][-1]:
+            logger.warning(
+                f"Subcategory mismatch for paper\t{f.stem}\n"
+                + f"  Expected:\t{stage['ann'][1]}\n"
+                + f"  Got:     \t{stage['pred'][1][-1]}"
+            )
 
     annotated = pd.DataFrame(annotated)
     predictions = pd.DataFrame(predictions)
