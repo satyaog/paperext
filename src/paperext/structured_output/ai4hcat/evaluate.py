@@ -237,23 +237,41 @@ def _evaluate_precision(papers: list):
             )[0],
         ),
     ):
+        # Top 1
         mat, classes = _cm(
             annotated[label].apply(lambda x: x[0]),
             predictions[label].apply(lambda x: x[0]),
             classes,
         )
 
-        df = pd.DataFrame(mat, index=classes, columns=classes)
-        df = reorder_special_labels(df, ["N/A"], ["N/A"])
+        # One of predictions is correct
+        ann_pred = pd.concat(
+            [annotated[label], predictions[label]], keys=["ann", "pred"], axis=1
+        )
+        pred_one_of = ann_pred.apply(
+            lambda x: (
+                x["ann"][0] if (x["pred"] == x["ann"][0]).any() else x["pred"][0]
+            ),
+            axis=1,
+        )
+        mat_one_of, classes = _cm(
+            annotated[label].apply(lambda x: x[0]),
+            pred_one_of,
+            classes,
+        )
 
-        # Calculate and append metrics
-        metrics = _calculate_metrics(df)
-        df = pd.concat([df, metrics], axis=1)
+        for m, name in zip([mat, mat_one_of], ["top1", "oneof"]):
+            df = pd.DataFrame(m, index=classes, columns=classes)
+            df = reorder_special_labels(df, ["N/A"], ["N/A"])
 
-        print(label, i)
-        print(metrics)
+            # Calculate and append metrics
+            metrics = _calculate_metrics(df)
+            df = pd.concat([df, metrics], axis=1)
 
-        (_analysis_dir / _csv_fn(label, i)).write_text(df.to_csv())
+            print(label, i)
+            print(metrics)
+
+            (_analysis_dir / _csv_fn(f"{label}_{name}", i)).write_text(df.to_csv())
 
     for label, classes in (
         ("category", pd.DataFrame(get_categories())[0]),
