@@ -187,7 +187,7 @@ def _evaluate_precision(papers: list):
         ]
 
         queries_dir = CFG.dir.queries / CFG.platform.select
-        for i, query_f in enumerate(sorted(queries_dir.glob(f"{f.stem}*.json"))):
+        for query_f in sorted(queries_dir.glob(f"{f.stem}*.json")):
             logger.info(f"Fetching data from {query_f}")
             model = Response.model_validate_json(query_f.read_text()).extractions
 
@@ -299,10 +299,10 @@ def _evaluate_precision(papers: list):
             metrics = _calculate_metrics(df)
             df = pd.concat([df, metrics], axis=1)
 
-            print(f"{label}_{name}", i)
+            print(f"{label}_{name}")
             print(metrics)
 
-            (_analysis_dir / _csv_fn(f"{label}_{name}", i)).write_text(df.to_csv())
+            (_analysis_dir / _csv_fn(f"{label}_{name}", 0)).write_text(df.to_csv())
 
     for label, classes in (
         ("category", pd.DataFrame(get_categories())[0]),
@@ -330,10 +330,10 @@ def _evaluate_precision(papers: list):
         metrics = _calculate_metrics(df)
         df = pd.concat([df, metrics], axis=1)
 
-        print(f"{label}_mlcm", i)
+        print(f"{label}_mlcm")
         print(metrics)
 
-        (_analysis_dir / _csv_fn(f"{label}_mlcm", i)).write_text(df.to_csv())
+        (_analysis_dir / _csv_fn(f"{label}_mlcm", 0)).write_text(df.to_csv())
         logger.debug(
             "\n".join(
                 [

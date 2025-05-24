@@ -201,15 +201,15 @@ def main():
 
         analysis = Response.model_validate_json(response.read_text()).extractions
 
-        if analysis.sustainable_development_is_central.value != (
+        if analysis.climate_change_is_central.value != (
             any(c != Category.NA for c in categories)
             or any(sc != SubCategory.NA for sc in subcategories)
         ):
-            analysis.sustainable_development_is_central.value = (
-                not analysis.sustainable_development_is_central.value
+            analysis.climate_change_is_central.value = (
+                not analysis.climate_change_is_central.value
             )
-            analysis.sustainable_development_is_central.justification = ""
-            analysis.sustainable_development_is_central.quote = ""
+            analysis.climate_change_is_central.justification = ""
+            analysis.climate_change_is_central.quote = ""
 
         if analysis.primary_category.value != categories[0]:
             analysis.primary_category.value = categories[0]
