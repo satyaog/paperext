@@ -5,6 +5,7 @@ import json
 import logging
 from datetime import datetime
 from pathlib import Path
+import time
 from typing import Any, List, Tuple
 
 import instructor
@@ -267,6 +268,12 @@ async def ignore_exceptions(
                 f"Failed to extract paper information from {paper[1].name}: {e}",
                 exc_info=True,
             )
+            if "tokens per min" in str(e):
+                logger.warning(
+                    f"Rate limit exceeded for tokens per minute. Waiting 60 seconds before retrying...",
+                    exc_info=True,
+                )
+                time.sleep(60.0)
 
 
 def main(argv=None):
