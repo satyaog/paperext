@@ -684,9 +684,8 @@ def main(argv: Optional[List[str]] = None):
         return
 
     # Calculate summary statistics
+    total = stats["total"]
     authors_total = stats["authors_total"]
-    affiliations_total = stats["affiliations_total"]
-    author_affiliations_total = stats["author_affiliations_total"]
     missing_authors = stats["missing_authors"]
     wrong_affiliations = stats["wrong_affiliations"]
     missing_affiliations = stats["missing_affiliations"]
@@ -695,7 +694,7 @@ def main(argv: Optional[List[str]] = None):
     missing_author_affiliations = stats["missing_author_affiliations"]
     extra_author_affiliations = stats["extra_author_affiliations"]
     summary = {
-        "total_papers": stats["total"],
+        "total_papers": total,
         "authors_order_pass_rate": (
             f"{stats['authors_order_pass'] / (stats['authors_order_pass'] + stats['authors_order_fail']):.4f}"
             if (stats["authors_order_pass"] + stats["authors_order_fail"]) > 0
@@ -712,13 +711,13 @@ def main(argv: Optional[List[str]] = None):
             > 0
             else "N/A"
         ),
-        "avg_missing_authors": f"{missing_authors / authors_total:.4f}",
-        "avg_wrong_affiliations": f"{wrong_affiliations / affiliations_total:.4f}",
-        "avg_missing_affiliations": f"{missing_affiliations / affiliations_total:.4f}",
-        "avg_extra_affiliations": f"{extra_affiliations / affiliations_total:.4f}",
-        "avg_wrong_author_affiliations": f"{wrong_author_affiliations / author_affiliations_total:.4f}",
-        "avg_missing_author_affiliations": f"{missing_author_affiliations / author_affiliations_total:.4f}",
-        "avg_extra_author_affiliations": f"{extra_author_affiliations / author_affiliations_total:.4f}",
+        "avg_missing_authors": f"{missing_authors / total:.4f}",
+        "avg_wrong_affiliations": f"{wrong_affiliations / total:.4f}",
+        "avg_missing_affiliations": f"{missing_affiliations / total:.4f}",
+        "avg_extra_affiliations": f"{extra_affiliations / total:.4f}",
+        "avg_wrong_author_affiliations": f"{wrong_author_affiliations / authors_total:.4f}",
+        "avg_missing_author_affiliations": f"{missing_author_affiliations / authors_total:.4f}",
+        "avg_extra_author_affiliations": f"{extra_author_affiliations / authors_total:.4f}",
         "error_files": stats["error"],
         **{k: stats[k] for k in sorted(stats.keys())},
     }
