@@ -1,0 +1,321 @@
+{
+  "paper": "80a635463e3e7e08ff5927342e8f6016.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "HalluciDet: Hallucinating RGB Modality for Person Detection Through Privileged Information",
+      "justification": "The title is directly mentioned in the paper as its main focus and it is part of the document header.",
+      "quote": "HalluciDet: Hallucinating RGB Modality for Person Detection Through\nPrivileged Information"
+    },
+    "description": "The paper introduces HalluciDet, a novel approach that enhances person detection in infrared (IR) images by leveraging pre-trained RGB detectors to guide the translation process from IR to RGB modality. The proposed model enhances object detection performance by using hallucinated RGB representations that incorporate privileged information from pre-trained models in the RGB domain. This model is empirically compared against existing image translation and IR tuning methods, demonstrating improved detection accuracy.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents empirical comparisons and experimental results using IR-RGB datasets, demonstrating the effectiveness of the proposed HalluciDet model.",
+      "quote": "We empirically compare our approach against state-of-the-art methods for image translation and\nfor fine-tuning on IR, and show that our HalluciDet improves detection accuracy in most cases by exploiting the privileged information encoded in a pre-trained RGB detector."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The paper is centered around visual recognition models and image translation, which are primary concerns in the field of Computer Vision.",
+        "quote": "In this paper, we propose HalluciDet, an IR-RGB image translation model for object detection."
+      },
+      "aliases": [
+        "CV"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Object Detection",
+          "justification": "The focus of the paper is on improving detection accuracy of objects (persons) in infrared images using models pre-trained on RGB images.",
+          "quote": "Our translation approach relies on an annotated IR dataset and an RGB detector to\nidentify the appropriate representation space. The ultimate goal is to find a translation model, hereafter referred to as the Hallucination network, capable of translating IR images into meaningful representation to achieve accurate detections with an RGB detector."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Image Translation",
+          "justification": "The paper discusses a model based on IR-RGB image translation to enhance object detection performance.",
+          "quote": "We propose HalluciDet, a novel approach that leverages privileged information from pre-trained detectors in the RGB modality to guide end-to-end image-to-image translation for the IR modality."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Domain Adaptation",
+          "justification": "The approach involves adapting a model trained on RGB images to perform effectively on IR images, which is a domain adaptation problem.",
+          "quote": "In this work, we provided a framework that uses privileged information of an RGB detector to perform the image-to-image translation from IR."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "HalluciDet",
+          "justification": "The paper introduces a model named HalluciDet specifically for translating IR to RGB images for detection tasks.",
+          "quote": "In this paper, we propose HalluciDet, an IR-RGB image translation model for object detection."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "HalluciDet is introduced in this paper as a novel approach.",
+          "quote": "In this paper, we propose HalluciDet, a novel approach that leverages\nprivileged information from pre-trained detectors in the RGB modality to guide end-to-end image-to-image translation for the IR modality."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper includes experimental results from running HalluciDet on specific datasets.",
+          "quote": "We empirically compare our approach against state-of-the-art methods for image translation and for fine-tuning on IR, and show that our HalluciDet improves detection accuracy in most cases."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "HalluciDet is empirically compared with existing methods such as FastCUT and CycleGAN in terms of detection performance.",
+          "quote": "Through experiments conducted on two challeng-\ning IR-RGB datasets (LLVIP and FLIR ADAS), we compare HalluciDet against various image-to-image trans-\nlation and traditional pixel manipulation methods."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "HalluciDet is introduced in this paper itself, hence it does not reference another paper specifically for the model.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "Faster R-CNN",
+          "justification": "Faster R-CNN is mentioned as one of the detectors used for evaluation in the experiments.",
+          "quote": "The most significant enhancement was ob-\nserved in Faster R-CNN, where our proposal exhibited a remarkable 17% improvement compared to pixel inversion."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Faster R-CNN is an existing model used for comparison.",
+          "quote": "Different from classification tasks, in\nwhich we want only to classify the object category, in ob-\nject detection, additionally, the task is to know specific po-\nsitions of the objects... One commonly used two-stage detector is the Faster R-CNN proposed by [27]."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Faster R-CNN was used in experiments as one of the comparison models in the study.",
+          "quote": "As seen in Table 2, in all cases, the fine-tuned IR model\noutperformed the RGB detector over the IR modality, as ex-\npected. In the tables, we also observe a significant improve-\nment in the performance of HalluciDet compared to the per-\nformance achieved through fine-tuning for Faster R-CNN."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Faster R-CNN was compared against HalluciDet and other models in terms of detection accuracy.",
+          "quote": "The most significant enhancement was ob-\nserved in Faster R-CNN, where our proposal exhibited a remarkable 17% improvement compared to pixel inversion."
+        },
+        "referenced_paper_title": {
+          "value": "Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks",
+          "justification": "The paper references Faster R-CNN, citing its original contribution to the field.",
+          "quote": "Different from classification tasks, in\nwhich we want only to classify the object category, in ob-\nject detection, additionally, the task is to know specific po-\nsitions of the objects... One commonly used two-stage detector is the Faster R-CNN proposed by [27]."
+        }
+      },
+      {
+        "name": {
+          "value": "CycleGAN",
+          "justification": "CycleGAN is mentioned as a generative model used for comparison in image-to-image translation tasks.",
+          "quote": "Furthermore, we included Cy-\ncleGAN, which is a more powerful generative model com-\npared with UNet."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "CycleGAN is an existing model used for comparison and was not contributed by this paper.",
+          "quote": "Given that our final goal is object detection, we se-\nlected FCOS, RetinaNet, and Faster R-CNN, each repre-\nsenting distinct categories within the universe of detection\nnetworks."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "CycleGAN was executed as part of the experiments for benchmarking against HalluciDet.",
+          "quote": "It is important to mention that training\nthe CycleGAN is computationally more demanding than the\nHallucidet. Additionally, due to the adversarial nature of\nthe method, it does not ensure reliable convergence for the\nsubsequent detection task."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "CycleGAN was compared with HalluciDet to evaluate effectiveness in achieving detection precision.",
+          "quote": "Furthermore, we included Cy-\ncleGAN, which is a more powerful generative model com-\npared with UNet. It is important to mention that training\nthe CycleGAN is computationally more demanding than the\nHallucidet."
+        },
+        "referenced_paper_title": {
+          "value": "Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks",
+          "justification": "The referenced paper title of CycleGAN was cited in the paper.",
+          "quote": "None of these methods provides an end-to-end way to\ndirectly train the image translation methods for detection\napplications. Furthermore, traditionally, they require more\nthan one kind of data set composed of the original domain\nand the target domain. For instance, CycleGAN is based on\nadversarial loss, and U-net is based on reconstruction loss."
+        }
+      },
+      {
+        "name": {
+          "value": "FCOS (Fully Convolutional One-Stage Object Detection)",
+          "justification": "FCOS is mentioned as one of the object detection models used for baseline comparisons in the study.",
+          "quote": "For instance, the Fully Con-\nvolutional One-Stage Object Detection (FCOS) is one of\nthese models that, due to its nature, reduces all complicated\ncomputation related to anchor boxes."
+        },
+        "aliases": [
+          "FCOS"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "FCOS is an existing model, not a contribution of this paper.",
+          "quote": "For instance, the Fully Con-\nvolutional One-Stage Object Detection (FCOS) is one of\nthese models that, due to its nature, reduces all complicated\ncomputation related to anchor boxes, which can lead to an\nincrease in inference time."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "FCOS was used as a baseline for comparisons in the experimental analysis.",
+          "quote": "Given that our final goal is object detection, we se-\nlected FCOS, RetinaNet, and Faster R-CNN, each repre-\nsenting distinct categories within the universe of detection\nnetworks."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "FCOS was compared against HalluciDet and other detection models in terms of performance.",
+          "quote": "Given that our final goal is object detection, we se-\nlected FCOS, RetinaNet, and Faster R-CNN, each repre-\nsenting distinct categories within the universe of detection\nnetworks."
+        },
+        "referenced_paper_title": {
+          "value": "Fully Convolutional One-Stage Object Detection",
+          "justification": "The referenced title was mentioned in the scope of this paper for FCOS.",
+          "quote": "The one-stage detectors mainly focus on end-to-end train-\ning and real-time inference speed of the object detectors. In\nthis scenario, the object detector has a single neural network\nto extract the features for the regression of the bounding box\nand give the class probabilities without an auxiliary network\nfor the region proposals."
+        }
+      },
+      {
+        "name": {
+          "value": "RetinaNet",
+          "justification": "RetinaNet is another model mentioned as one of the baselines evaluated alongside HalluciDet.",
+          "quote": "Given that our final goal is object detection, we se-\nlected FCOS, RetinaNet, and Faster R-CNN, each repre-\nsenting distinct categories within the universe of detection\nnetworks."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "RetinaNet is an existing object detection model and not contributed by this paper.",
+          "quote": "Given that our final goal is object detection, we se-\nlected FCOS, RetinaNet, and Faster R-CNN, each repre-\nsenting distinct categories within the universe of detection\nnetworks."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "RetinaNet was used in the experimental phase for performance evaluation against HalluciDet.",
+          "quote": "Given that our final goal is object detection, we se-\nlected FCOS, RetinaNet, and Faster R-CNN, each repre-\nsenting distinct categories within the universe of detection\nnetworks."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "RetinaNet was used as a baseline for performance comparisons against HalluciDet and other models.",
+          "quote": "Given that our final goal is object detection, we se-\nlected FCOS, RetinaNet, and Faster R-CNN, each repre-\nsenting distinct categories within the universe of detection\nnetworks."
+        },
+        "referenced_paper_title": {
+          "value": "Focal Loss for Dense Object Detection",
+          "justification": "RetinaNet's foundational paper is commonly known when discussing anchor-free and dense object detections.",
+          "quote": "The one-stage detectors mainly focus on end-to-end train-\ning and real-time inference speed of the object detectors."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "LLVIP",
+          "justification": "The LLVIP dataset is one of the primary datasets used for evaluating the proposed model.",
+          "quote": "The LLVIP dataset is composed of 30, 976\nimages, in which 24, 050 (12, 025 IR and 12, 025 RGB\npaired images) are used for training and 6, 926 for testing\n(3, 463 IR and 3, 463 RGB paired images)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "LLVIP: A Visible-Infrared Paired Dataset for Low-Light Vision",
+          "justification": "The referenced paper presents the LLVIP dataset which is used in this study for evaluations.",
+          "quote": "To ensure\nfairness we trained the detectors under the same conditions,\ni.e., data order, augmentations, etc. All the code is available\nat GitHub for the reproducibility of the experiments."
+        }
+      },
+      {
+        "name": {
+          "value": "FLIR ADAS",
+          "justification": "The FLIR ADAS dataset is another dataset used to test the performance of HalluciDet.",
+          "quote": "As for the FLIR dataset, we\nonly used the person category. Initially, we have the RGB\ndetector trained on the datasets using 5 different seeds."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "FLIR Thermal Dataset for Algorithm Training",
+          "justification": "The FLIR ADAS dataset mentioned in the paper is primarily known in the context of autonomous vehicle research.",
+          "quote": "The LLVIP dataset is composed of 30, 976\nimages, in which 24, 050 (12, 025 IR and 12, 025 RGB\npaired images) are used for training and 6, 926 for testing\n(3, 463 IR and 3, 463 RGB paired images). For the FLIR,\nwe used the sanitized and aligned paired sets provided by\nZhang et al."
+        }
+      },
+      {
+        "name": {
+          "value": "COCO",
+          "justification": "COCO dataset is used for pre-training detectors before applying to HalluciDet experiments.",
+          "quote": "It’s worth noting that this model starts with pre-trained weights\nfrom COCO [19]."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Microsoft COCO: Common Objects in Context",
+          "justification": "The COCO dataset is a well-known benchmark in object detection and context analysis, and it's referenced in the paper.",
+          "quote": "It’s worth noting that this model starts with pre-trained weights\nfrom COCO [19]."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Torchvision",
+          "justification": "Torchvision is explicitly mentioned as part of the toolchain used for model implementation in the experiments.",
+          "quote": "To\ndevelop the code, we used Torchvision models for the de-\ntectors and PyTorch Segmentation Models [14] for the U-\nNet architecture of the hallucination network."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Torchvision: The Machine Vision Platform",
+          "justification": "Torchvision is commonly referenced as a utility supporting model architectures like those used in this research.",
+          "quote": "To\ndevelop the code, we used Torchvision models for the de-\ntectors and PyTorch Segmentation Models [14] for the U-\nNet architecture of the hallucination network."
+        }
+      },
+      {
+        "name": {
+          "value": "PyTorch Lightning",
+          "justification": "PyTorch Lightning is cited as the training framework used in the experiments.",
+          "quote": "Additionally,\nwe trained with PyTorch Lightning [5] training framework."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch Lightning: The Lightweight PyTorch Wrapper for High-performance AI Research",
+          "justification": "PyTorch Lightning is a well-known library for simplifying the complexity of PyTorch code, referenced explicitly in the context of this paper's methodology.",
+          "quote": "Additionally,\nwe trained with PyTorch Lightning [5] training framework."
+        }
+      },
+      {
+        "name": {
+          "value": "WandB (Weights and Biases)",
+          "justification": "WandB is mentioned as a logging tool employed for tracking experiments in the paper.",
+          "quote": "W\nandB [1] logging tool."
+        },
+        "aliases": [
+          "Weights and Biases"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Experiment Tracking with Weights and Biases",
+          "justification": "WandB is a recognized experiment tracking tool, cited in the paper for experiment logging purposes.",
+          "quote": "and logged all ex-\nperiments with WandB [1] logging tool."
+        }
+      },
+      {
+        "name": {
+          "value": "TorchMetrics",
+          "justification": "TorchMetrics is mentioned as a library used for evaluating Average Precision (AP) in experiments.",
+          "quote": "and logged all ex-\nperiments with WandB [1] logging tool."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "TorchMetrics-Measuring Reproducibility in PyTorch",
+          "justification": "TorchMetrics is used for metric evaluation, specifically for calculating AP in this research, and is referenced accordingly.",
+          "quote": "evaluated the AP with TorchMetrics [4]"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 3550,
+    "prompt_tokens": 13827,
+    "total_tokens": 17377,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

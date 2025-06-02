@@ -1,0 +1,147 @@
+{
+  "paper": "b048f2884f68e397a734212cfa64e5d2.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "LF-PPL: A Low-Level First Order Probabilistic Programming Language for Non-Differentiable Models",
+      "justification": "The title clearly indicates the development of a new probabilistic programming language called LF-PPL for non-differentiable models.",
+      "quote": "LF-PPL: A Low-Level First Order Probabilistic Programming Language for Non-Differentiable Models"
+    },
+    "description": "This paper introduces a novel probabilistic programming language, LF-PPL, which is designed for handling models with non-differentiable densities. The language supports efficient inference in such models by automatically detecting discontinuities and providing necessary information for implementing inference algorithms like Discontinuous Hamiltonian Monte Carlo (DHMC). LF-PPL aims to facilitate the integration of specialized inference algorithms in probabilistic programming contexts.",
+    "type": {
+      "value": "theoretical",
+      "justification": "The paper is primarily focused on the theoretical development of a new programming language and its underlying framework for handling non-differentiable models.",
+      "quote": "Our story so far was developed by introducing a low-level first-order probabilistic programming language (LF-PPL) and its accompanying compilation scheme."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Probabilistic Programming",
+        "justification": "The paper develops a low-level first-order probabilistic programming language designed specifically for probabilistic models with non-differentiable densities.",
+        "quote": "In the context of probabilistic programming [3, 4, 5, 6] such densities are often induced via branching, i.e. if-else statements, where the predicates depend upon the latent variables of the model."
+      },
+      "aliases": [
+        "PPL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Bayesian Inference",
+          "justification": "The paper's proposed programming language LF-PPL incorporates Bayesian inference methods for handling models with discontinuities.",
+          "quote": "LF-PPL enables one to incorporate a broader class of specialized inference techniques as automated inference engines. In doing so, it removes the burden from the user of manually establishing which variables the target is not differentiable with respect to."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Stochastic Inference",
+          "justification": "The paper implements Discontinuous Hamiltonian Monte Carlo (DHMC), a stochastic inference algorithm, as part of the framework.",
+          "quote": "We realize this potential by implementing Discontinuous HMC (DHMC) [8] as an inference engine in LF-PPL, allowing for efficient, automated, HMC-based inference in models with a mixture of continuous and discontinuous variables."
+        },
+        "aliases": [
+          ""
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Discontinuous Hamiltonian Monte Carlo (DHMC)",
+          "justification": "The paper discusses the implementation of DHMC as an inference engine within LF-PPL, showcasing its suitability for models with non-differentiable densities.",
+          "quote": "We realize this potential by implementing Discontinuous HMC (DHMC) [8] as an inference engine in LF-PPL, allowing for efficient, automated, HMC-based inference in models with a mixture of continuous and discontinuous variables."
+        },
+        "aliases": [
+          "DHMC"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The DHMC is not a new model contribution of this paper, but its implementation within LF-PPL is highlighted.",
+          "quote": "Similarly, many variants of HMC have been proposed in recent years ... We realize this potential by implementing Discontinuous HMC (DHMC) [8] as an inference engine in LF-PPL."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper describes running DHMC as an inference engine within the LF-PPL framework.",
+          "quote": "We realize this potential by implementing Discontinuous HMC (DHMC) [8] as an inference engine in LF-PPL, allowing for efficient, automated, HMC-based inference in models with a mixture of continuous and discontinuous variables."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares the results of the implemented DHMC with PyMC3 NUTS with Metropolis-within-Gibbs for performance analysis.",
+          "quote": "We compared the Mean Squared Error (MSE) of the posterior estimates for the cluster means of both an unoptimized version of DHMC and an optimized implementation of NUTS with Metropolis-within-Gibbs (MwG) in PyMC3 [22]."
+        },
+        "referenced_paper_title": {
+          "value": "Discontinuous Hamiltonian Monte Carlo for Sampling Discrete Parameters",
+          "justification": "The paper references the development of DHMC for sampling discrete parameters as the underlying inspiration for its implementation in LF-PPL.",
+          "quote": "The discontinuous HMC (DHMC) algorithm was proposed by [8]."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Gaussian Mixture Model",
+          "justification": "The Gaussian Mixture Model (GMM) dataset is used as an example within the paper for demonstrating the functionality of LF-PPL.",
+          "quote": "In our first example, we demonstrate how a classic model, namely a Gaussian mixture model, can be encoded in LF-PPL."
+        },
+        "aliases": [
+          "GMM"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "BUGS 0.5: Bayesian Inference Using Gibbs Sampling Manual (version ii)",
+          "justification": "Though GMM is a standard model, it has been referenced in various Bayesian contexts including BUGS, providing background support for its use.",
+          "quote": "In our first example, we demonstrate how a classic model, namely a Gaussian mixture model, can be encoded in LF-PPL. The density of the GMM contains a mixture of continuous and discrete variables, where the discrete variables lead to discontinuities in the density."
+        }
+      },
+      {
+        "name": {
+          "value": "Heavy Tail Piecewise Model",
+          "justification": "The Heavy Tail Piecewise Model is used in the paper to showcase the handling of non-differentiable densities using LF-PPL.",
+          "quote": "In our next example we show how the efficiency of DHMC improves, relative to vanilla HMC, on discontinuous target distributions as the dimensionality of the problem increases."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Reflection, Refraction, and Hamiltonian Monte Carlo",
+          "justification": "This model relates to discussions around Hamiltonian Monte Carlo methods in probabilistic programming settings.",
+          "quote": "... using LF-PPL as a compilation target. This satisfies the necessary requirement of DHMC that the target density being piecewise smooth with discontinuities of measure zero."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyMC3",
+          "justification": "PyMC3 is referenced as a comparative tool to assess the performance of the DHMC implementation in LF-PPL against established methods.",
+          "quote": "We compared the Mean Squared Error (MSE) of the posterior estimates for the cluster means of both an unoptimized version of DHMC and an optimized implementation of NUTS with Metropolis-within-Gibbs (MwG) in PyMC3 [22]."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Probabilistic Programming in Python Using PyMC3",
+          "justification": "PyMC3 is used as a reference in the context of NUTS with Metropolis-within-Gibbs as a comparative inference implementation.",
+          "quote": "... NUTS with Metropolis-within-Gibbs (MwG) in PyMC3 [22], with the same computation budget."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1485,
+    "prompt_tokens": 18393,
+    "total_tokens": 19878,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

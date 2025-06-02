@@ -1,0 +1,465 @@
+{
+  "paper": "b3d62fa9aba9c3e36f1f030dbcbbc50d.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "The Surprising Performance of Simple Baselines for Misinformation Detection",
+      "justification": "The title is taken directly from the beginning of the document.",
+      "quote": "The Surprising Performance of Simple Baselines for Misinformation Detection"
+    },
+    "description": "The paper studies the effectiveness of transformer-based language models for misinformation detection, comparing them with state-of-the-art methods. It proposes a framework for evaluating misinformation detection techniques using simple baselines.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves practical experiments with various datasets and language models to draw conclusions about their performance in misinformation detection.",
+      "quote": "In this paper, we examine the use of modern pre-trained language models for classifying content... we show that these models are competitive with and can even significantly outperform recently proposed state-of-the-art methods."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The research focuses on using pre-trained language models for information and misinformation detection through text classification, which is a subfield of NLP.",
+        "quote": "As social media becomes increasingly prominent in our day to day lives, it is increasingly important to detect informative content and prevent the spread of disinformation and unverified rumours. While many sophisticated and successful models have been proposed in the literature, they are often compared with older NLP baselines such as SVMs, CNNs, and LSTMs."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Misinformation Detection",
+          "justification": "The specific application of language models in this paper involves detecting misinformation in social media posts.",
+          "quote": "To summarize, the main contributions of this paper are threefold: • We show that recent pretrained LMs are competitive with and sometimes even substantially better than SOTA models in common benchmarks for misinformation detection."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Social Media Analysis",
+          "justification": "Since the datasets and misinformation detection involve analyzing data from platforms like Twitter, social media analysis is a pertinent subfield.",
+          "quote": "The invention of word embeddings was a fundamental breakthrough leading towards today’s language models... These models are easily accessible through packages such as [93], and with hundreds of versions to choose from, as Xia et al. suggests the hardest question may be which one to use."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "BERT",
+          "justification": "The paper examines BERT as part of its model evaluations for misinformation detection.",
+          "quote": "BERT (bert-base-uncased) [24]. Bidirectional Encoder Representations from Transformers, or BERT for short, is a large pre-trained bidirectional transformer."
+        },
+        "aliases": [
+          "bert-base-uncased"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "BERT is not newly proposed in this paper, but is evaluated as part of existing models.",
+          "quote": "BERT... is a large pre-trained bidirectional transformer."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper implements BERT to be evaluated against other models and tasks.",
+          "quote": "We evaluate a variety of language models... BERT (bert-base-uncased)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "BERT's performance is compared to other state-of-the-art models to evaluate its efficacy on misinformation detection.",
+          "quote": "we show that with basic fine-tuning, these models are competitive with and can even significantly outperform recently proposed state-of-the-art methods."
+        },
+        "referenced_paper_title": {
+          "value": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "justification": "The paper references BERT in relation to its performance on certain tasks, which is consistent with its widely-recognized paper in the AI community.",
+          "quote": "BERT (bert-base-uncased) [24]."
+        }
+      },
+      {
+        "name": {
+          "value": "RoBERTa",
+          "justification": "The paper evaluates RoBERTa as part of its analysis.",
+          "quote": "RoBERTa (roberta-large) [48]. RoBERTa follows a similar architecture to BERT but removes the next-sentence prediction pre-training objective."
+        },
+        "aliases": [
+          "roberta-large"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "RoBERTa is an existing model being evaluated, not a contribution of this paper.",
+          "quote": "RoBERTa follows a similar architecture to BERT but removes the next-sentence prediction pre-training objective."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "RoBERTa is executed and assessed based on its performance in comparison to other models.",
+          "quote": "We evaluate a variety of language models... RoBERTa (roberta-large)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "RoBERTa is compared to other models to assess its performance in misinformation detection tasks.",
+          "quote": "we show that these models are competitive with and can even significantly outperform recently proposed state-of-the-art methods."
+        },
+        "referenced_paper_title": {
+          "value": "RoBERTa: A Robustly Optimized BERT Pretraining Approach",
+          "justification": "The evaluation mentions RoBERTa which is a well-known extension of BERT, referenced in transformative NLP studies.",
+          "quote": "RoBERTa (roberta-large) [48]."
+        }
+      },
+      {
+        "name": {
+          "value": "BERT-Tiny",
+          "justification": "The paper evaluates BERT-Tiny as part of its model investigation.",
+          "quote": "BERT-Tiny (bert_uncased_L-2_H-128_A-2) [88]. BERT-Tiny is the smallest of several pre-trained language models that follow the same pre-training procedure as BERT."
+        },
+        "aliases": [
+          "bert_uncased_L-2_H-128_A-2"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "BERT-Tiny is not a new model introduced in this paper but one of the models evaluated.",
+          "quote": "BERT-Tiny is the smallest of several pre-trained language models that follow the same pre-training procedure as BERT."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "BERT-Tiny is tested for its effectiveness in the detection tasks.",
+          "quote": "Each model is trained on an RTX8000 GPU using mixed precision with a batch size of 32. and learning rate of 1e-5."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of BERT-Tiny is compared with larger models for its efficacy on misinformation tasks.",
+          "quote": "Even the smallest 4 million parameter BERT-Tiny can approach or beat state-of-the-art in some cases."
+        },
+        "referenced_paper_title": {
+          "value": "Well-Read Students Learn Better: On the Importance of Pre-training Compact Models",
+          "justification": "The paper uses BERT-Tiny from known literature on fine-tuning compact language models.",
+          "quote": "BERT-Tiny (bert_uncased_L-2_H-128_A-2) [88]."
+        }
+      },
+      {
+        "name": {
+          "value": "ALBERT",
+          "justification": "The ALBERT model's evaluation is part of the methodology in the paper.",
+          "quote": "ALBERT (albert-large-v2) [44]. ALBERT adds an additional pre-training objective while incorporating two methods that reduce the number of parameters."
+        },
+        "aliases": [
+          "albert-large-v2"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "ALBERT is evaluated but not developed in this paper.",
+          "quote": "ALBERT (albert-large-v2) [44]."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "ALBERT is executed and its performance measured on the given tasks.",
+          "quote": "We evaluate a variety of language models... ALBERT (albert-large-v2)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The ALBERT model is used for comparative analysis with other models in the framework.",
+          "quote": "we show that these models are competitive with and can even significantly outperform recently proposed state-of-the-art methods."
+        },
+        "referenced_paper_title": {
+          "value": "ALBERT: A Lite BERT for Self-supervised Learning of Language Representations",
+          "justification": "The ALBERT model is widely recognized and referenced in the pre-training model literature like the paper mentions.",
+          "quote": "ALBERT (albert-large-v2) [44]."
+        }
+      },
+      {
+        "name": {
+          "value": "BERTweet",
+          "justification": "BERTweet is among the evaluated models mentioned in the paper, following a training procedure similar to RoBERTa.",
+          "quote": "BERTweet (bertweet-base) [62]. BERTweet follows an identical training procedure to RoBERTa, and is pre-trained on 850 million tweets."
+        },
+        "aliases": [
+          "bertweet-base"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "BERTweet is evaluated as an existing model in the study.",
+          "quote": "BERTweet follows an identical training procedure to RoBERTa, and is pre-trained on 850 million tweets."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "BERTweet is evaluated for its performance in misinformation detection tasks.",
+          "quote": "We evaluate a variety of language models... BERTweet (bertweet-base)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "BERTweet is compared with other models for performance on various datasets, part of the paper's methodology.",
+          "quote": "we show that these models are competitive with and can even significantly outperform recently proposed state-of-the-art methods."
+        },
+        "referenced_paper_title": {
+          "value": "BERTweet: A pre-trained language model for English Tweets",
+          "justification": "BERTweet is an established model with pre-training on tweet data, referenced accurately in the given analysis.",
+          "quote": "BERTweet (bertweet-base) [62]."
+        }
+      },
+      {
+        "name": {
+          "value": "COVID-Twitter-BERT (CT-BERT)",
+          "justification": "The paper examines COVID-Twitter-BERT for its role in misinformation detection related to COVID-19.",
+          "quote": "COVID-Twitter-BERT (covid-twitter-bert-v2) [60]. COVID-Twitter-BERT follows an identical training procedure to BERT, and the latest version is pre-trained on 1.2 billion training examples generated from 97 million tweets."
+        },
+        "aliases": [
+          "covid-twitter-bert-v2"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "COVID-Twitter-BERT is one of the transformer models used for evaluation, not a new development of this paper.",
+          "quote": "COVID-Twitter-BERT (covid-twitter-bert-v2) [60]."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "COVID-Twitter-BERT's performance is tested as part of the experiments conducted in the paper.",
+          "quote": "We evaluate a variety of language models... COVID-Twitter-BERT (covid-twitter-bert-v2)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of COVID-Twitter-BERT is compared with other models to assess its effectiveness.",
+          "quote": "we show that these models are competitive with and can even significantly outperform recently proposed state-of-the-art methods."
+        },
+        "referenced_paper_title": {
+          "value": "COVID-Twitter-BERT: A Natural Language Processing Model to Analyze COVID-19 Content on Twitter",
+          "justification": "CT-BERT is cited with respect to its specialized training for COVID-19 discussions, as noted in its full reference paper title.",
+          "quote": "COVID-Twitter-BERT (covid-twitter-bert-v2) [60]."
+        }
+      },
+      {
+        "name": {
+          "value": "DeCLUTR",
+          "justification": "DeCLUTR is one of the models evaluated for sentence embeddings within the paper's scope.",
+          "quote": "DeCLUTR (declutr-base) [26]. DeCLUTR is a transformer-based language model that proposes a contrastive, self-supervised method for learning general purpose sentence embeddings."
+        },
+        "aliases": [
+          "declutr-base"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "DeCLUTR is an existing model referenced for its embedding expertise.",
+          "quote": "DeCLUTR is a transformer-based language model that proposes a contrastive, self-supervised method for learning general purpose sentence embeddings."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "It's indicated that DeCLUTR is evaluated through execution on the datasets listed in the paper.",
+          "quote": "We evaluate a variety of language models... DeCLUTR (declutr-base)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "DeCLUTR's performance is analyzed against other models in terms of sentence embedding tasks.",
+          "quote": "The model is trained with a masked language modelling objective as well as with contrastive loss using both easy and hard negatives."
+        },
+        "referenced_paper_title": {
+          "value": "DeCLUTR: Deep Contrastive Learning for Unsupervised Textual Representations",
+          "justification": "The DeCLUTR evaluation mentions it as a basis for unsupervised textual representation, linking back to its core contributions.",
+          "quote": "DeCLUTR (declutr-base) [26]."
+        }
+      },
+      {
+        "name": {
+          "value": "Funnel Transformer",
+          "justification": "The paper evaluates the Funnel Transformer for its efficiency in the contextualized learning field through pooling operations.",
+          "quote": "Funnel Transformer (xlarge-base) [22]. The Funnel Transformer improves the efficiency of bidirectional transformer models by applying a pooling operation after each layer, akin to convolutional neural networks."
+        },
+        "aliases": [
+          "xlarge-base"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The Funnel Transformer is mentioned as an existing model and examined.",
+          "quote": "The Funnel Transformer improves the efficiency of bidirectional transformer models."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The execution of Funnel Transformer is implied within the experimental evaluation process of the paper.",
+          "quote": "We evaluate a variety of language models... Funnel Transformer (xlarge-base)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "This model is part of the comparative analysis on different datasets used in the study.",
+          "quote": "we show that these models are competitive with and can even significantly outperform recently proposed state-of-the-art methods."
+        },
+        "referenced_paper_title": {
+          "value": "Funnel-Transformer: Filtering out Sequential Redundancy for Efficient Language Processing",
+          "justification": "The Funnel-Transformer is cited in context with its efficiency in transformer model processing, resonating with the referenced work.",
+          "quote": "Funnel Transformer (xlarge-base) [22]."
+        }
+      },
+      {
+        "name": {
+          "value": "ELMo",
+          "justification": "The evaluation of ELMo is explicitly mentioned in the implementation strategy of the paper.",
+          "quote": "ELMo (Original) [68]. ELMo is one of the first large-scale pre-trained language models."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "ELMo is referenced as a core model from previous literature, not as a new contribution.",
+          "quote": "ELMo (Original) [68]. ELMo is one of the first large-scale pre-trained language models."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was executed as part of the comparisons drawn in the research framework.",
+          "quote": "We evaluate a variety of language models... ELMo (Original)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "ELMo is used as a benchmark in several analysis contexts shown in the results.",
+          "quote": "These SOTA methods are usually much more complex and in many cases incorporate more information beyond the content."
+        },
+        "referenced_paper_title": {
+          "value": "Deep contextualized word representations",
+          "justification": "The referenced paper relates to its foundational work in contextualized embeddings explored in broader NLP tasks.",
+          "quote": "ELMo (Original) [68]."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "PHEME",
+          "justification": "PHEME dataset is extensively discussed and evaluated in different configurations in the research, emphasizing its role.",
+          "quote": "3.2.1 PHEME. The PHEME dataset [41, 102] contains 6425 tweets about 9 newsworthy events."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Analysing how people orient to and spread rumours in social media by looking at conversational threads",
+          "justification": "The PHEME dataset is associated with annotations and structural categorization in social media, referenced in the cited research.",
+          "quote": "The PHEME dataset [41, 102] contains 6425 tweets about 9 newsworthy events."
+        }
+      },
+      {
+        "name": {
+          "value": "FakeNewsNet",
+          "justification": "FakeNewsNet is used to conduct and analyze misinformation detection performance in several experimental settings.",
+          "quote": "3.2.2 FakeNewsNet. The FakeNewsNet dataset [79, 81, 82] contains articles fact-checked by PolitiFact or GossipCop, and related tweets."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "FakeNewsNet: A Data Repository with News Content, Social Context and Dynamic Information for Studying Fake News on Social Media",
+          "justification": "The dataset is highlighted regarding its use in studying fake news dynamics referred by the associated paper.",
+          "quote": "The FakeNewsNet dataset [79, 81, 82] contains articles fact-checked by PolitiFact or GossipCop, and related tweets."
+        }
+      },
+      {
+        "name": {
+          "value": "Twitter15",
+          "justification": "Twitter15 is analyzed in terms of potential data leakage based on tweet IDs and misinformation performance.",
+          "quote": "3.2.3 Twitter15 and Twitter16. These datasets contain tweets related to stories from fact-checking websites and random tweets."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Fake news: Fundamental theories, detection strategies and challenges",
+          "justification": "Twitter15's inclusion in datasets for evaluation headers ties back to its associated referencing regarding fundamental analyses.",
+          "quote": "3.2.3 Twitter15 and Twitter16. These datasets [47, 51, 52] contain tweets related to stories from fact-checking websites and random tweets."
+        }
+      },
+      {
+        "name": {
+          "value": "Twitter16",
+          "justification": "This dataset's evaluation emphasizes potential confounds and relevance in misinformation studies in the research context.",
+          "quote": "3.2.3 Twitter15 and Twitter16. These datasets contain tweets related to stories from fact-checking websites and random tweets."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Fake news: Fundamental theories, detection strategies and challenges",
+          "justification": "Twitter16 is aligned with its reference mention focused on assessing fake news detection methodologies.",
+          "quote": "3.2.3 Twitter15 and Twitter16. These datasets [47, 51, 52] contain tweets related to stories from fact-checking websites and random tweets."
+        }
+      },
+      {
+        "name": {
+          "value": "WNUT-2020",
+          "justification": "The WNUT-2020 dataset provides a clear benchmark for informative tweets, stabilizing comparisons in various NLP tasks.",
+          "quote": "3.2.5 WNUT-2020. This dataset was created for a shared task in WNUT-2020 on classifying tweets as “informative” or “uninformative”."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "WNUT-2020 Task 2: Identification of Informative COVID-19 English Tweets",
+          "justification": "It addresses COVID-19 tweet classification relevance as part of broader studies on informativeness articulated in the cited literature.",
+          "quote": "This dataset was created for a shared task in WNUT-2020 on classifying tweets as “informative” or “uninformative”."
+        }
+      },
+      {
+        "name": {
+          "value": "CoAID",
+          "justification": "CoAID is highlighted for its applicability in unaddressed experimentation facets for misinformation tackling, linking it to COVID-19 misinformation.",
+          "quote": "3.2.6 CoAID. The CoAID dataset [19] is a misinformation dataset related to COVID-19."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "CoAID: COVID-19 Healthcare Misinformation Dataset",
+          "justification": "The CoAID dataset is identified through reference as a significant corpus examined to determine misinformation effects in COVID studies.",
+          "quote": "The CoAID dataset is a misinformation dataset related to COVID-19."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Huggingface Transformers",
+          "justification": "Numerous specified models are implemented and referenced in relation to the Huggingface library materials.",
+          "quote": "Where available, we use the implementations and pre-trained weights provided by the Huggingface Transformers library."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "HuggingFace’s Transformers: State-of-the-art Natural Language Processing",
+          "justification": "The library is deliberated regarding its role in offering state-of-the-art NLP tools, aligned with known Huggingface contributions.",
+          "quote": "Huggingface Transformers library [93], and train using PyTorch [64] and AllenNLP [25]."
+        }
+      },
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The paper indicates training of models is performed utilizing PyTorch as a foundational tool.",
+          "quote": "We evaluate a variety of language models, using the implementations and pre-trained weights provided by the Huggingface Transformers library, and train using PyTorch and AllenNLP."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Automatic differentiation in PyTorch",
+          "justification": "PyTorch is validated with respect to its importance in handling NLP model training as outlined within referenced technical documentation.",
+          "quote": "train using PyTorch [64]"
+        }
+      },
+      {
+        "name": {
+          "value": "AllenNLP",
+          "justification": "AllenNLP is explicitly mentioned in the methodological frameworks as part of significant NLP resource utilities for processing language models.",
+          "quote": "We evaluate a variety of language models, using the implementations and pre-trained weights provided by the Huggingface Transformers library, and train using PyTorch and AllenNLP [25]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "AllenNLP: A Deep Semantic Natural Language Processing Platform",
+          "justification": "AllenNLP's association further acknowledges its relevance in establishing semantic NLP functionalities, underscored in milestone research documents.",
+          "quote": "train using PyTorch and AllenNLP [25]."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 4474,
+    "prompt_tokens": 18624,
+    "total_tokens": 23098,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

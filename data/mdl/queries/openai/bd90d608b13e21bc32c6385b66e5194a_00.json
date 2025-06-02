@@ -1,0 +1,191 @@
+{
+  "paper": "bd90d608b13e21bc32c6385b66e5194a.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Mitigating Goal Misgeneralization via Minimax Regret",
+      "justification": "The title is clear from the beginning of the document and repeated multiple times throughout.",
+      "quote": "Mitigating Goal Misgeneralization via Minimax Regret"
+    },
+    "description": "This paper addresses the problem of goal misgeneralization in reinforcement learning, where a learned policy might pursue a proxy goal instead of the intended goal due to distribution shifts. It explores the use of minimax expected regret as an objective to mitigate such misgeneralization, both theoretically and empirically. The study finds that while commonly used maximum expected value objectives can lead to misgeneralization, minimax expected regret presents a more robust alternative.",
+    "type": {
+      "value": "theoretical",
+      "justification": "The paper is theoretical as it introduces new theoretical frameworks and proves results regarding goal misgeneralization and minimax expected regret.",
+      "quote": "In this paper, we theoretically investigate the possibility of goal misgeneralization under maximum expected value (MEV) and minimax expected regret (MMER) objectives, and empirically validate our results."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Reinforcement Learning",
+        "justification": "The paper discusses reinforcement learning, mentioning reinforcement learning terminology and problems such as goals, reward functions, and environment design.",
+        "quote": "Safe generalization in reinforcement learning requires not only that a learned policy acts capably in new situations, but also that it uses its capabilities towards the pursuit of the designer’s intended goal."
+      },
+      "aliases": [
+        "RL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "AI Safety",
+          "justification": "Goal misgeneralization is considered a specific type of failure in achieving AI Safety, focusing on ensuring that AI systems’ goals align with intended outcomes.",
+          "quote": "A particular challenge arises when incomplete coverage of the environment space during training creates a proxy goal."
+        },
+        "aliases": [
+          "AI Alignment"
+        ]
+      },
+      {
+        "name": {
+          "value": "Unsupervised Environment Design",
+          "justification": "The paper explores methods to design environments without supervision to better train agents against misgeneralization.",
+          "quote": "For MMER, we use two methods of regret-based unsupervised environment design (UED; Dennis et al., 2020)."
+        },
+        "aliases": [
+          "UED"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Domain Randomization",
+          "justification": "Domain Randomization is used as a training method to examine its susceptibility to goal misgeneralization.",
+          "quote": "Theorem 1 says that if the proportion of distinguishing levels in the fixed training distribution is small enough, then approximately optimizing MEV possibly leads to goal misgeneralization. Our experiments show that DR, an MEV-based training method, indeed exhibits goal misgeneralization when the proportion of distinguishing levels in the training distribution is small enough."
+        },
+        "aliases": [
+          "DR"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Domain Randomization is discussed as a pre-existing method rather than a contribution of this paper.",
+          "quote": "This is a nontrivial identity that does not hold for partially observable underspecified environments in which the level is not observable to the policy."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper conducts experiments to examine Domain Randomization's performance, suggesting it was executed.",
+          "quote": "Our experiments show that DR, an MEV-based training method, indeed exhibits goal misgeneralization when the proportion of distinguishing levels in the training distribution is small enough."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Domain Randomization is compared to other methods like MMER-based methods in terms of their effectiveness in handling goal misgeneralization.",
+          "quote": "We see generally that the more advanced UED methods are more robust to goal misgeneralization (Section 7.3). In KEYS AND CHESTS , MEV outperforms ACCEL with max-latest regret estimation, underscoring reliable regret estimation as a particular challenge for future work on MMER-based training (Section 7.4)."
+        },
+        "referenced_paper_title": {
+          "value": "Domain randomization for transferring deep neural networks from simulation to the real world",
+          "justification": "The referenced paper is mentioned multiple times for its use of domain randomization as implemented in this research.",
+          "quote": "Compared to the techniques such as (a) domain randomization (Tobin et al., 2017)."
+        }
+      },
+      {
+        "name": {
+          "value": "Maximin Expected Value",
+          "justification": "Maximin Expected Value is analyzed in the context of its failure to induce robustness in reinforcement learning models.",
+          "quote": "In this section, we discuss an alternative strategy to minimax expected regret for selecting robust policies. Namely, we consider the maximin expected value (MMEV) training objective."
+        },
+        "aliases": [
+          "MMEV"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The model is analyzed theoretically, not introduced as a new proposition in this paper.",
+          "quote": "Rather than modeling inductive bias, we characterize the possibility of goal misgeneralization."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The section discusses the theoretical aspects and drawbacks of MMEV, but does not detail any empirical execution.",
+          "quote": "This is because the agent has no incentive to improve performance in any level above the maximum performance in worst-case levels."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Theorems in the paper compare MMEV to MMER for their susceptibility to goal misgeneralization.",
+          "quote": "Dennis et al. (2020) argues that the MMEV objective fails to induce robustness in an environment where the optimal value of each level varies within the level space."
+        },
+        "referenced_paper_title": {
+          "value": "Emergent complexity and zero-shot transfer via unsupervised environment design",
+          "justification": "This referenced paper is cited in the context of discussing the drawbacks of MMEV.",
+          "quote": "Moreover, we show empirically that MMEV-based training methods fail to mitigate goal misgeneralization in our environments. Indeed, they fail to produce policies that perform capably in any levels."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "OpenAI ProcGen Coin Run",
+          "justification": "The ProcGen Coin Run environment is cited as a reference for setups where goal misgeneralization was demonstrated.",
+          "quote": "Moreover, Langosco et al. (2022) demonstrated that for a modified version of OpenAI ProcGen’s COIN RUN environment (Cobbe et al., 2019; 2020), training with α = 2e-2 (2%) prevents goal misgeneralization."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Leveraging procedural generation to benchmark reinforcement learning",
+          "justification": "This paper is one of the sources cited for the ProcGen Coin Run environment.",
+          "quote": "Karl Cobbe, Chris Hesse, Jacob Hilton, and John Schulman. Leveraging procedural generation to benchmark reinforcement learning."
+        }
+      },
+      {
+        "name": {
+          "value": "OpenAI ProcGen Maze",
+          "justification": "The ProcGen Maze environment is used as a basis for some of the experiments concerning goal misgeneralization.",
+          "quote": "Origin: CHEESE IN THE CORNER is an interpretation of the MAZE I environment from Langosco et al. (2022). Langosco et al. (2022) originally implemented the environment as a modification of the MAZE environment from OpenAI ProcGen (Cobbe et al., 2020)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Leveraging procedural generation to benchmark reinforcement learning",
+          "justification": "This paper is the referenced source for the ProcGen Maze environment.",
+          "quote": "Karl Cobbe, Chris Hesse, Jacob Hilton, and John Schulman. Leveraging procedural generation to benchmark reinforcement learning."
+        }
+      },
+      {
+        "name": {
+          "value": "OpenAI ProcGen Heist",
+          "justification": "The ProcGen Heist environment is used as a background for new interpretations in experiments conducted on KEYS AND CHESTS.",
+          "quote": "This environment is an interpretation of the KEYS AND CHESTS environment from Langosco et al. (2022). Langosco et al. (2022) originally implemented the environment as a modification of the HEIST environment from OpenAI ProcGen."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Leveraging procedural generation to benchmark reinforcement learning",
+          "justification": "The paper references the ProcGen Heist environment using the same source.",
+          "quote": "Origin. This environment is an interpretation of the KEYS AND CHESTS environment from Langosco et al. (2022). Langosco et al. (2022) originally implemented the environment as a modification of the HEIST environment from OpenAI ProcGen."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "JAX",
+          "justification": "JAX is mentioned as the framework within which several grid-world environments were implemented for the research.",
+          "quote": "For each environment, we construct two procedural level generators Λ Ambig. , Λ Distg. ∈ ∆(Θ), approximately concentrated on ambiguous and distinguishing levels, respectively. From these, we define training distributions Λ Trainᵦ= (1 − α)Λ Ambig. + αΛ Distg. where α is the proportion of distinguishing levels. In our experiments, we vary α between 10 −5 to 10 −1 , with α ∈ {0, 1} as baselines. We evaluate on Λ Deploy= Λ Distg. , approximating a proxy-distinguishing distribution shift."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "JAX: composable transformations of Python+NumPy programs",
+          "justification": "The JAX library used is a known tool for executing machine learning models efficiently, referenced to indicate its use in implementing the environment.",
+          "quote": "James Bradbury, Roy Frostig, Peter Hawkins, Matthew James Johnson, Chris Leary, Dougal Maclaurin, George Necula, Adam Paszke, Jake VanderPlas, Skye Wanderman-Milne, and Qiao Zhang. JAX: composable transformations of Python+NumPy programs, 2018. URL http://github.com/jax-ml/jax."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2042,
+    "prompt_tokens": 42247,
+    "total_tokens": 44289,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

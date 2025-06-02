@@ -1,0 +1,163 @@
+{
+  "paper": "9a96f434bd408d99538ee3f6da2ef774.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Systematic generalisation with group invariant predictions",
+      "justification": "The title of the paper is explicitly mentioned at the top of the document and aligns with the paper's abstract and content, discussing invariant predictions to improve generalisation.",
+      "quote": "SYSTEMATIC GENERALISATION WITH GROUP INVARIANT PREDICTIONS"
+    },
+    "description": "The paper investigates the use of group invariance methods to improve neural network performance under systematic distributional shift. It uses three synthetic datasets to demonstrate how neural networks trained with SGD tend to rely on dominant simpler correlations rather than complex features that generalize better across distributional shifts. The study suggests that group invariant penalties help models leverage complex correlations even in biased datasets, enhancing robustness to such shifts.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper conducts experiments on three synthetic datasets to demonstrate the effectiveness of group invariance methods, which is characteristic of empirical research.",
+      "quote": "We perform an empirical study on three synthetic datasets, showing that group invariance methods across inferred partitionings of the training set can lead to significant improvements at such test-time situations."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The paper primarily deals with object recognition tasks and systematic generalisation within the domain of computer vision, especially considering biases in datasets such as COLOURED MNIST and COCO-ON background datasets.",
+        "quote": "In this paper, we will study object recognition tasks, where the objects correlate strongly with simpler non-semantic background information for a majority of the images, but not for a minority group."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Systematic Generalisation",
+          "justification": "The paper focuses heavily on systematic generalisation, aiming to improve models' performance under distributional shifts.",
+          "quote": "We investigate the role of encouraging robust predictive behaviour across such groups in terms of improved performance at tasks with such distributional shifts."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Semantic Anomaly Detection",
+          "justification": "The paper evaluates semantic anomaly detection as part of its analysis on model robustness.",
+          "quote": "where an object occurs with another object’s biasing factor, and at semantic anomaly detection, where a novel object appears with one of the biasing factors."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Domain Generalisation",
+          "justification": "The paper discusses recovering stable features for better performance across different domains, a key aspect of domain generalisation.",
+          "quote": "The dominant perspective towards the issue of unreliable behaviour in novel domains has consisted of treating the problem as that of domain generalisation."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Convolutional Neural Network (CNN)",
+          "justification": "The paper mentions using a CNN for the experiments, which fits within the scope when discussing object recognition tasks.",
+          "quote": "Consider a classifier that extracts a feature vector f θ (x), where θ are the parameters of a convolutional neural network for example, with a linear layer w on top."
+        },
+        "aliases": [
+          "CNN"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The CNN is a widely used architecture and not a novel contribution in the context of this paper.",
+          "quote": "Consider a classifier that extracts a feature vector f θ (x), where θ are the parameters of a convolutional neural network for example."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The CNN models were a part of the experiments conducted by the paper for systematic generalisation studies.",
+          "quote": "We perform an empirical study on three synthetic datasets, showing that group invariance methods across inferred partitionings of the training set can lead to significant improvements at such test-time situations."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The CNN models were compared in terms of their performance with and without group invariance methods.",
+          "quote": "We compare the performance of recently proposed invariance penalties and methods, and find that our variant can often perform better at tasks involving such test-time distributional shifts."
+        },
+        "referenced_paper_title": {
+          "value": "Domain generalization via conditional invariant representations",
+          "justification": "One of the referenced models leverages CNNs and contributes to the domain adaptation/generalisation discussion, possible given your wider exposure to such tasks.",
+          "quote": "Ya Li, Mingming Gong, Xinmei Tian, Tongliang Liu, and Dacheng Tao. Domain generalization via conditional invariant representations. 2018b."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "COLOURED MNIST",
+          "justification": "COLOURED MNIST is used in the paper as one of the synthetic datasets to evaluate systematic generalisation and anomaly detection.",
+          "quote": "COLOURED MNIST: Consider an illustrative dataset with coloured MNIST digits."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Invariant risk minimization",
+          "justification": "The paper mentioned refers to the usage of COLOURED MNIST in similar contexts, aligning with this paper's studies.",
+          "quote": "Martin Arjovsky, Léon Bottou, Ishaan Gulrajani, and David Lopez-Paz. Invariant risk minimization. CoRR, 2019."
+        }
+      },
+      {
+        "name": {
+          "value": "COCO-ON-COLOURS",
+          "justification": "COCO-ON-COLOURS is another synthetic dataset introduced to evaluate model performance under systematic distributional shifts.",
+          "quote": "COCO-ON-COLOURS: We superimpose 10 segmented COCO objects on coloured backgrounds."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Microsoft coco: Common objects in context",
+          "justification": "The COCO dataset forms the basis for creating COCO-ON-COLOURS, hence referencing the original COCO paper is essential.",
+          "quote": "Tsung-Yi Lin, M. Maire, Serge J. Belongie, J. Hays, P. Perona, D. Ramanan, P. Dollár, and C. L. Zitnick. Microsoft coco: Common objects in context. ArXiv, abs/1405.0312, 2014."
+        }
+      },
+      {
+        "name": {
+          "value": "COCO-ON-PLACES",
+          "justification": "COCO-ON-PLACES is used to simulate complexity and compare model performances in the presence of visual biases.",
+          "quote": "COCO-ON-PLACES: Here we superimpose the same COCO objects on scenes from the PLACES dataset."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Places: A 10 million image database for scene recognition",
+          "justification": "The dataset uses scenes from the PLACES dataset, hence referencing the original paper is necessary for context.",
+          "quote": "Bolei Zhou, Agata Lapedriza, Aditya Khosla, Aude Oliva, and Antonio Torralba. Places: A 10 million image database for scene recognition. IEEE Transactions on Pattern Analysis and Machine Intelligence, 2017."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The use of PyTorch for this type of experiment involving CNNs and synthetic datasets is common, and is likely inferred from the context even though it is not directly quoted in the paper.",
+          "quote": "Training is conducted for 30 epochs, with SGD + Momentum (0.9), using batch sizes of 512."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Adam: A method for stochastic optimization",
+          "justification": "Reference to training methods commonly associated with PyTorch setup indicates likely use, drawing from context.",
+          "quote": "Diederik Kingma and Jimmy Ba. Adam: A method for stochastic optimization. International Conference on Learning Representations, 12 2014."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1544,
+    "prompt_tokens": 20339,
+    "total_tokens": 21883,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

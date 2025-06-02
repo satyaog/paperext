@@ -1,0 +1,197 @@
+{
+  "paper": "b2a256b2c9d72bb97bb2ab89b65d339f.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "On Adversarial Mixup Resynthesis",
+      "justification": "It's clearly the title shown at the beginning of the paper just after the authors names.",
+      "quote": "On Adversarial Mixup Resynthesis"
+    },
+    "description": "The paper explores new models combining auto-encoders' learned representations, focusing on resynthesizing inputs to fool adversarial discriminators. It delves into interpolating hidden states for semi-supervised learning and demonstrates the impact of these methods on tasks like classification.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper focuses on experiments and demonstrations of the proposed models in various tasks, utilizing datasets to evaluate accuracy and performance, thus falling under empirical study.",
+      "quote": "We show quantitative and qualitative evidence that such a formulation is an interesting avenue of research."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Machine Learning",
+        "justification": "The paper deals with designing models to learn auto-encoder representations and adversarial mixup techniques, which are common themes in machine learning.",
+        "quote": "In this paper, we explore new approaches to combining information encoded within the learned representations of auto-encoders."
+      },
+      "aliases": [
+        "ML"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Semi-Supervised Learning",
+          "justification": "The paper clearly indicates its application within semi-supervised learning contexts, particularly mixing latent states consistent with class labels.",
+          "quote": "Furthermore, we explore the use of such an architecture in the context of semi-supervised learning."
+        },
+        "aliases": [
+          "SSL"
+        ]
+      },
+      {
+        "name": {
+          "value": "Adversarial Learning",
+          "justification": "The paper involves using adversarial discriminators to improve the resynthesis process.",
+          "quote": "...a resynthesised output is trained to fool an adversarial discriminator for real versus synthesised data."
+        },
+        "aliases": [
+          ""
+        ]
+      },
+      {
+        "name": {
+          "value": "Auto-Encoders",
+          "justification": "The main technique discussed involves the use of auto-encoders, a popular unsupervised learning model.",
+          "quote": "The auto-encoder is a fundamental building block in unsupervised learning."
+        },
+        "aliases": [
+          ""
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "AE + GAN",
+          "justification": "The paper references a baseline model called ‘AE + GAN’ which combines auto-encoders with adversarial learning.",
+          "quote": "we call this ‘AE + GAN’"
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "AE + GAN is referenced as a baseline model, thus not a contribution of this paper.",
+          "quote": "we call this ‘AE + GAN’, which can be written as: ..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model is executed as a baseline in experiments within the paper.",
+          "quote": "This formulation serves as our baseline..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "AE + GAN is used as a point of comparison against the new models developed in the paper.",
+          "quote": "AE+GAN = adversarial reconstruction auto-encoder (Equation 2); AMR = adversarial mixup resynthesis (ours);"
+        },
+        "referenced_paper_title": {
+          "value": "Autoencoding beyond pixels using a learned similarity metric",
+          "justification": "This is the paper where the AE + GAN approach is formalized and discussed.",
+          "quote": "Because auto-encoders that are trained by pixel-space reconstruction produce low quality images (characterized by blurriness), we augment this baseline by adding an adversarial game to the reconstruction (as done in Larsen et al. (2016))."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "MNIST",
+          "justification": "MNIST is a common dataset used for performance evaluation and known for handwritten digits.",
+          "quote": "We employ the following datasets for classification: MNIST (Deng, 2012)..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The mnist database of handwritten digit images for machine learning research [best of the web]",
+          "justification": "The paper references MNIST for evaluating model performance.",
+          "quote": "We employ the following datasets for classification: MNIST (Deng, 2012)..."
+        }
+      },
+      {
+        "name": {
+          "value": "KMNIST",
+          "justification": "KMNIST is mentioned as one of the classification datasets used.",
+          "quote": "We employ the following datasets for classification:...KMNIST (Clanuwat et al., 2018),"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Deep learning for classical japanese literature",
+          "justification": "KMNIST is referenced for evaluating model performance in classification tasks.",
+          "quote": "We employ the following datasets for classification:...KMNIST (Clanuwat et al., 2018)."
+        }
+      },
+      {
+        "name": {
+          "value": "SVHN",
+          "justification": "The Street View House Numbers (SVHN) dataset is mentioned as one of the benchmarks for classification.",
+          "quote": "We employ the following datasets for classification:... SVHN (Netzer et al., 2011)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Reading digits in natural images with unsupervised feature learning",
+          "justification": "SVHN is used for evaluating the proposed models' accuracy on classification tasks.",
+          "quote": "We employ the following datasets for classification:... SVHN (Netzer et al., 2011)."
+        }
+      },
+      {
+        "name": {
+          "value": "DSprite",
+          "justification": "DSprite is used for disentanglement experiments as noted in the paper.",
+          "quote": "Lastly, we run experiments on the DSprite (Matthey et al., 2017) dataset..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "dsprites: Disentanglement testing sprites dataset",
+          "justification": "DSprite was utilized to test disentanglement in the paper's proposed models.",
+          "quote": "Lastly, we run experiments on the DSprite (Matthey et al., 2017) dataset..."
+        }
+      },
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "CIFAR-10 is used to evaluate model performance and compare results.",
+          "quote": "Lastly, in Table 3 we evaluate AMR in a higher dimensional setting, ... and CIFAR10"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Cutmix: Regularization strategy to train strong classifiers with localizable features",
+          "justification": "CIFAR-10 is frequently used as a benchmark in classification tasks, mentioned in approximate context to this reference.",
+          "quote": "Lastly, in Table 3 we evaluate AMR in a higher dimensional setting,... and CIFAR10"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "Though not explicitly mentioned in the extracted content, the code repository and references imply its usage.",
+          "quote": "4 The architectures we used were based off a public PyTorch reimplementation of ACAI, which may not be exactly the same as the original implemented in TensorFlow."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Understanding and improving interpolation in autoencoders via an adversarial regularizer",
+          "justification": "The libraries' role is indirectly referenced by mentioning the implementation of related algorithms.",
+          "quote": "4 The architectures we used were based off a public PyTorch reimplementation of ACAI, which may not be exactly the same as the original implemented in TensorFlow."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1465,
+    "prompt_tokens": 13407,
+    "total_tokens": 14872,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

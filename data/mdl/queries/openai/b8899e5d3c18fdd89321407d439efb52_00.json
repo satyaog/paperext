@@ -1,0 +1,202 @@
+{
+  "paper": "b8899e5d3c18fdd89321407d439efb52.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Learning Speaker Representations with Mutual Information",
+      "justification": "The title is clearly stated at the beginning of the paper.",
+      "quote": "Learning Speaker Representations with Mutual Information"
+    },
+    "description": "This paper introduces a method for learning speaker embeddings by maximizing mutual information (MI) between encoded representations of speech. The approach uses the SincNet architecture to transform raw speech into features and employs a discriminator in an encoder-discriminator framework, similar to GANs, to optimize MI. The effectiveness of the method is demonstrated on tasks such as speaker identification and verification, showing promising results in both unsupervised and semi-supervised settings. The proposed system, called Local Info Max (LIM), uses randomly sampled local speech chunks and is implemented using the PyTorch-Kaldi toolkit.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper reports on experiments conducted to evaluate the performance of the proposed speaker representation learning method.",
+      "quote": "We report experiments showing that this approach effectively learns useful speaker representations, leading to promising results on speaker identification and verification tasks."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Speaker Recognition",
+        "justification": "The primary focus of the paper is on learning speaker representations to improve speaker recognition tasks.",
+        "quote": "Index Terms: Deep Learning, Speaker Recognition, Mutual Information, Unsupervised Learning, SincNet."
+      },
+      "aliases": [
+        "Speaker ID",
+        "Speaker Verification"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Unsupervised Learning",
+          "justification": "The paper discusses learning representations in an unsupervised manner using mutual information.",
+          "quote": "Even though the mutual information between two random variables is hard to measure directly in high dimensional spaces, some recent studies have shown that an implicit optimization of MI can be achieved with an encoder-discriminator architecture similar to that of Generative Adversarial Networks (GANs)."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Generative Adversarial Networks",
+          "justification": "The encoder-discriminator architecture used in the paper is similar to that of Generative Adversarial Networks (GANs).",
+          "quote": "some recent studies have shown that an implicit optimization of MI can be achieved with an encoder-discriminator architecture similar to that of Generative Adversarial Networks (GANs)."
+        },
+        "aliases": [
+          "GANs"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Local Info Max (LIM)",
+          "justification": "Local Info Max (LIM) is the model proposed in the paper to learn speaker representations.",
+          "quote": "We called our approach Local Info Max (LIM) to highlight the fact that it is simply based on randomly sampled local speech chunks."
+        },
+        "aliases": [
+          "LIM"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "LIM is the model proposed and contributed by the paper.",
+          "quote": "We called our approach Local Info Max (LIM) to highlight the fact that it is simply based on randomly sampled local speech chunks."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper discusses experimental results achieved by executing LIM on specific datasets.",
+          "quote": "We report experiments showing that this approach effectively learns useful speaker representations, leading to promising results on speaker identification and verification tasks."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "LIM was compared against other models using different objective functions such as BCE, MINE, and NCE.",
+          "quote": "Our experiments are conducted in both unsupervised and semi-supervised settings and compare different objective functions for the discriminator."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "There is no specific reference to a paper title for the LIM model as it is contributed by this paper.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "SincNet",
+          "justification": "SincNet is used as the encoder architecture for processing raw audio data.",
+          "quote": "The proposed encoder relies on the SincNet architecture and transforms raw speech waveform into a compact feature vector."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "SincNet is used as part of the model architecture but was not introduced in this paper.",
+          "quote": "Our encoder is based on SincNet [21,22], which efficiently processes the raw input waveforms with learnable band-pass filters based on sinc functions."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The experimental setup involves executing SincNet as the encoder to process data.",
+          "quote": "Our encoder is based on SincNet [21,22], which efficiently processes the raw input waveforms with learnable band-pass filters based on sinc functions."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of SincNet was compared to a standard CNN in the experiments.",
+          "quote": "The table also shows that SincNet outperforms a standard CNN."
+        },
+        "referenced_paper_title": {
+          "value": "Speaker Recognition from raw waveform with SincNet",
+          "justification": "The referenced papers of SincNet are indicated in the bibliography (references [21, 22]).",
+          "quote": "\"Speaker Recognition from raw waveform with SincNet,\" in Proc. of SLT, 2018."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "TIMIT",
+          "justification": "TIMIT is one of the datasets used in the experimental evaluation of the proposed method.",
+          "quote": "This paper considered the TIMIT (462 spks, train chunk) [34]"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "DARPA TIMIT Acoustic Phonetic Continuous Speech Corpus CDROM",
+          "justification": "The referenced paper for the TIMIT dataset is indicated in the bibliography (reference [34]).",
+          "quote": "“DARPA TIMIT Acoustic Phonetic Continuous Speech Corpus CDROM,” 1993."
+        }
+      },
+      {
+        "name": {
+          "value": "Librispeech",
+          "justification": "Librispeech is another dataset used to evaluate the method's performance on speaker identity tasks.",
+          "quote": "Librispeech (2484 spks)"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The paper does not provide a specific reference title for the Librispeech dataset, only mentioning its usage.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "VoxCeleb1",
+          "justification": "VoxCeleb1 is used as a dataset to evaluate speaker recognition and verification.",
+          "quote": "To study our approach using a more standard speaker recognition dataset, we also employed the VoxCeleb1 corpus (using the provided lists)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Voxceleb: a large-scale speaker identification dataset",
+          "justification": "The referenced paper for the VoxCeleb1 dataset is indicated in the bibliography (reference [35]).",
+          "quote": "“Voxceleb: a large-scale speaker identification dataset,” in Proc. of Interspech, 2017."
+        }
+      },
+      {
+        "name": {
+          "value": "DIRHA",
+          "justification": "DIRHA dataset is used for experimenting in reverberant conditions with clean signals convoluted with its impulse response.",
+          "quote": "all the clean signals were convoluted with a different impulse response, that was sampled from the DIRHA dataset [36, 37]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The DIRHA-ENGLISH corpus and related tasks for distant-speech recognition in domestic environments",
+          "justification": "The referenced paper for the DIRHA dataset is indicated in the bibliography (reference [36, 37]).",
+          "quote": "“The DIRHA-ENGLISH corpus and related tasks for distant-speech recognition in domestic environments,” in Proc. of ASRU 2015, pp. 275–282."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch-Kaldi",
+          "justification": "The paper mentions the use of PyTorch-Kaldi for the implementation of LIM.",
+          "quote": "We release the code of LIM within the PyTorch-Kaldi toolkit [23]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The PyTorch-Kaldi Speech Recognition Toolkit",
+          "justification": "The referenced paper for PyTorch-Kaldi is indicated in the bibliography (reference [23]).",
+          "quote": "“The PyTorch-Kaldi Speech Recognition Toolkit,” in Submitted to ICASSP, 2019."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1658,
+    "prompt_tokens": 9565,
+    "total_tokens": 11223,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

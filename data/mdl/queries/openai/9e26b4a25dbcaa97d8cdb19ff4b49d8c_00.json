@@ -1,0 +1,232 @@
+{
+  "paper": "9e26b4a25dbcaa97d8cdb19ff4b49d8c.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Flexible Diffusion Modeling of Long Videos",
+      "justification": "The title is stated on the first page of the document, clearly identifying the focus of the paper.",
+      "quote": "Flexible Diffusion Modeling of Long Videos"
+    },
+    "description": "This paper presents a framework for video modeling using denoising diffusion probabilistic models, capable of producing long-duration video completions. The flexible generative model, referred to as Flexible Diffusion Model (FDM), allows arbitrary sampling of video frames conditioned on other frames. It introduces a new autonomous driving video dataset and evaluates video modeling over prior work using this and other datasets.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves creating a new framework for video modeling and testing it empirically on several datasets. It demonstrates improved video modeling over prior work through experiments.",
+      "quote": "We demonstrate improved video modeling over prior work on a number of datasets and sample temporally coherent videos over 25 minutes in length."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The paper focuses on video modeling, a significant area within Computer Vision, especially in generating photorealistic videos.",
+        "quote": "Generative modeling of photo-realistic videos is at the frontier of what is possible with deep learning on currently-available hardware."
+      },
+      "aliases": [
+        "CV"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Video Processing",
+          "justification": "The paper focuses specifically on the generation and modeling of long-duration videos.",
+          "quote": "We present a framework for video modeling based on denoising diffusion probabilistic models that produces long-duration video completions."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Generative Models",
+          "justification": "The paper introduces a generative model for producing videos using diffusion processes.",
+          "quote": "We propose a flexible architecture based on the denoising diffusion probabilistic model (DDPM) framework."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Flexible Diffusion Model",
+          "justification": "The FDM is the central contribution of the paper, introduced to flexibly sample and model long-duration videos.",
+          "quote": "We call it a Flexible Diffusion Model, or FDM."
+        },
+        "aliases": [
+          "FDM"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The FDM is a new model introduced as the main contribution of the paper.",
+          "quote": "Contributions (1) At the highest level, we claim to have concurrently developed one of the first denoising diffusion probabilistic model (DDPM)-based video generative models."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model is described and its execution includes sampling procedures that involve GPU computation, particularly for generating long videos.",
+          "quote": "Ideas for making sampling faster by decreasing the number of integration steps could be applied to our video model."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The FDM's performance is compared to other models like VDM, CWVAE, and TATS in terms of video quality metrics like FVD and others.",
+          "quote": "Both the diffusion-based methods, FDM and VDM, achieve significantly higher FVD scores than TATS and CWVAE."
+        },
+        "referenced_paper_title": {
+          "value": "Denoising Diffusion Probabilistic Models",
+          "justification": "The FDM is based on the DDPM framework, as mentioned extensively in its design and structure.",
+          "quote": "We propose a flexible architecture based on the denoising diffusion probabilistic model (DDPM) framework."
+        }
+      },
+      {
+        "name": {
+          "value": "Clockwork Variational Autoencoders",
+          "justification": "CWVAE is used as a comparison baseline in the experiments for video prediction, showcasing how FDM outperforms it.",
+          "quote": "We compare against the clockwork VAE (CWVAE) model."
+        },
+        "aliases": [
+          "CWVAE"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "While used in the paper's experiments, the CWVAE is not introduced or contributed by this paper.",
+          "quote": "Clockwork VAE (CWVAE), a VAE-based model specifically designed to maintain long-range dependencies within video."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "It's used as a benchmark in the experiments, necessitating its execution.",
+          "quote": "We train CWVAE using the official implementation and use hyperparameters as close as possible to those used in the implementation by Saxena et al."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Its results are compared to the proposed FDM model's results in terms of metrics like FVD and others.",
+          "quote": "Both the diffusion-based methods, FDM and VDM, achieve significantly higher FVD scores than TATS and CWVAE."
+        },
+        "referenced_paper_title": {
+          "value": "Clockwork Variational Autoencoders",
+          "justification": "Mentioned in the experiments sections as being a model designed for maintaining long-range dependencies within video.",
+          "quote": "Clockwork VAE (CWVAE), a VAE-based model specifically designed to maintain long-range dependencies within video."
+        }
+      },
+      {
+        "name": {
+          "value": "Time-Agnostic VQGAN with Time-Sensitive Transformer",
+          "justification": "The TATS model is mentioned as a comparison in the experiments for video generation.",
+          "quote": "We also compare against TATS which embeds videos into a discrete latent space before modelling them with a transformers."
+        },
+        "aliases": [
+          "TATS"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "TATS is only used as a baseline for comparison in the paper's experiments, not introduced by this paper.",
+          "quote": "In keeping with Saxena et al., we condition on the first 36 frames of each video and sample the remainder."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Used as a comparison model in the empirical evaluation, implying its execution on video datasets.",
+          "quote": "We host non-cherry-picked video samples (both conditional and unconditional) from FDM and all baselines online."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "TATS's performance serves as a benchmark against which the proposed FDM's performance is measured.",
+          "quote": "Both the diffusion-based methods, FDM and VDM, achieve significantly higher FVD scores than TATS and CWVAE."
+        },
+        "referenced_paper_title": {
+          "value": "Long video generation with time-agnostic VQGAN and time-sensitive transformer",
+          "justification": "This paper evaluates the TATS model as a baseline in their experimental setup.",
+          "quote": "We also compare against TATS which embeds videos into a discrete latent space before modelling them with a transformers."
+        }
+      },
+      {
+        "name": {
+          "value": "Video Diffusion Model",
+          "justification": "VDM is evaluated against in the comparative analysis of the FDM's video generation capabilities.",
+          "quote": "Both the diffusion-based methods, FDM and VDM, achieve significantly higher FVD scores than TATS and CWVAE."
+        },
+        "aliases": [
+          "VDM"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The VDM is not contributed by this paper but is used as a benchmark in experiments to evaluate FDM's performance.",
+          "quote": "The related work most relevant to ours is the concurrent work of Ho et al., who model 64-frame videos using two trained DDPMs."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "VDM is employed in the comparative analyses, requiring execution as part of the experiments.",
+          "quote": "We emphasize that a central benefit of FDM is that it can be used at test-time with different sampling schemes without retraining... We train both a 'frameskip-4' and a 'frameskip-1' model with architectures identical to our own."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "VDM serves as a key comparison point for the effectiveness of the proposed FDM, especially in terms of improvement over existing work for video models.",
+          "quote": "Both the diffusion-based methods, FDM and VDM, achieve significantly higher FVD scores than TATS and CWVAE."
+        },
+        "referenced_paper_title": {
+          "value": "Video Diffusion Models",
+          "justification": "The VDM is specifically referenced as a significant related work in evaluating long-duration video modeling capabilities.",
+          "quote": "The related work most relevant to ours is the concurrent work of Ho et al., who model 64-frame videos using two trained DDPMs."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CARLA Town01 Dataset",
+          "justification": "The CARLA Town01 dataset is introduced in this paper as a new autonomous driving video dataset, used to demonstrate the FDM's capabilities.",
+          "quote": "We release a new autonomous driving video dataset along with a new video generative model performance metric that captures semantics more directly than the visual quality and comparison metrics currently in widespread use."
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "CARLA: An open urban driving simulator",
+          "justification": "The CARLA simulator is used to generate the Town01 dataset for video modeling tasks, as explained in the implementation details.",
+          "quote": "The dataset consists of videos of a car driving with a first-person view, produced using the CARLA autonomous driving simulator."
+        }
+      },
+      {
+        "name": {
+          "value": "MineRL",
+          "justification": "The paper uses MineRL dataset as part of the experiments for evaluating the video generation quality of FDM and baseline models.",
+          "quote": "We present results on three datasets: GQN-Mazes, MineRL Navigate, which we will from now on refer to as simply MineRL."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "MineRL: A large-scale dataset of Minecraft demonstrations",
+          "justification": "MineRL is a commonly referenced dataset in reinforcement learning and video modeling, used here for video generation comparisons.",
+          "quote": "In MineRL the video was generated by agents that were trained to explore novel Minecraft worlds to find a goal block approximately 64 meters away."
+        }
+      },
+      {
+        "name": {
+          "value": "GQN-Mazes",
+          "justification": "GQN-Mazes is utilized in the experimental comparisons of different sampling schemes in modeling videos, helping to benchmark FDM's performance.",
+          "quote": "We present results on three datasets: GQN-Mazes, in which videos are 300 frames long."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Neural Scene Representation and Rendering",
+          "justification": "This dataset relates to neural representation and rendering tasks often associated with GQN, which is indicated in the paper and connected to the dataset in application.",
+          "quote": "We present results on three datasets: GQN-Mazes, in which videos are 300 frames long."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 2122,
+    "prompt_tokens": 20039,
+    "total_tokens": 22161,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

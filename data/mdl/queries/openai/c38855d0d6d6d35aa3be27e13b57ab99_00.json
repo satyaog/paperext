@@ -1,0 +1,192 @@
+{
+  "paper": "c38855d0d6d6d35aa3be27e13b57ab99.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Post-Editing Extractive Summaries by Definiteness Prediction",
+      "justification": "The title is explicitly mentioned at the top of the paper and reflects the main focus of the research.",
+      "quote": "Post-Editing Extractive Summaries by Definiteness Prediction"
+    },
+    "description": "This paper presents a method to improve extractive summaries by post-editing them with a definiteness prediction model that determines whether noun phrases should be modified to enhance coherence and readability.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper conducts both human evaluation studies and automatic evaluation studies to demonstrate the effectiveness of their method.",
+      "quote": "We conduct human evaluation studies that show that human expert judges substantially prefer the output of our proposed system over the original summaries. Moreover, based on an automatic evaluation study, we provide evidence for our system’s ability to generate linguistic decisions that lead to improved extractive summaries."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Text Summarization",
+        "justification": "The paper is primarily focused on extractive text summarization and improving it through post-editing methods.",
+        "quote": "Extractive summarization has been the mainstay of automatic summarization for decades. Despite all the progress, extractive summarizers still suffer from shortcomings..."
+      },
+      "aliases": [
+        "Automatic Summarization",
+        "Extractive Summarization"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Natural Language Processing",
+          "justification": "The research field is clearly within the realm of Natural Language Processing given the focus on text summarization and definiteness prediction.",
+          "quote": "Natural Language Processing methods are employed in the paper, particularly in tasks like definiteness prediction and text summarization."
+        },
+        "aliases": [
+          "NLP"
+        ]
+      },
+      {
+        "name": {
+          "value": "Definiteness Prediction",
+          "justification": "A specific focus of the paper revolves around definiteness prediction in noun phrases within extractive summaries.",
+          "quote": "In our work, we adopt this model as the basis for the proposed post-editing step."
+        },
+        "aliases": [
+          "Article Prediction"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "LSTM-based definiteness prediction model",
+          "justification": "The paper refers to their use of an LSTM-based model for predicting definiteness among noun phrases.",
+          "quote": "For the second step of predicting the definiteness of NPs, we adopt the methodology of Kabbara et al. (2016) in which they present an LSTM-based (Hochreiter and Schmidhuber, 1997) learning model for definiteness prediction."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The model adopted is based on a pre-existing methodology by Kabbara et al. (2016) and thus is not an original contribution of this paper.",
+          "quote": "In our work, we adopt this model as the basis for the proposed post-editing step."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model is utilized and evaluated in the experiments of the paper, indicating it was executed.",
+          "quote": "For the LSTM model, we use a vocabulary of size 30,000 and we initialize the word embeddings with GloVe vectors..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of the LSTM model is compared against other models like a logistic regression classifier and a BERT-based model in the paper.",
+          "quote": "The results across the different combinations of summarizers and datasets and for the different training sets."
+        },
+        "referenced_paper_title": {
+          "value": "Capturing pragmatic knowledge in article usage prediction using LSTMs",
+          "justification": "This is the reference for the LSTM-based model used in the paper.",
+          "quote": "The most recent work (Kabbara et al., 2016) presents an attention-based RNN that achieves state of the art on definiteness prediction and investigates, among other factors, the effect of having a local or wider context."
+        }
+      },
+      {
+        "name": {
+          "value": "BERT-based definiteness prediction model",
+          "justification": "The model is mentioned as being used for definiteness prediction, leveraging a BERT pre-trained model followed by GRU layers.",
+          "quote": "In the BERT-based model, a sequence of input tokens is fed into a pre-trained BERT Model which produces representations that are passed to a number of stacked GRU layers."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The BERT-based model is built on the established BERT architecture, thus not a new contribution.",
+          "quote": "We use the bert-base-uncased implementation by HuggingFace..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "This model was executed as part of the experiment in the study.",
+          "quote": "During training, we freeze the weights of the BERT part of the corresponding model."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The BERT-based model is compared to the LSTM and logistic regression models in the experimental evaluations.",
+          "quote": "Figure 4: Performance of the learning models..."
+        },
+        "referenced_paper_title": {
+          "value": "BERT: Pre-training of deep bidirectional transformers for language understanding",
+          "justification": "This provides the foundational model upon which their BERT-based definiteness prediction is built.",
+          "quote": "We use the bert-base-uncased implementation by HuggingFace (Wolf et al., 2019) which implements a 12-layer 768-hidden 12-head 110M-parameter version of the model that was trained on lower-cased English text."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CNN/DailyMail",
+          "justification": "The dataset is extensively used for training and evaluating the performance of the summarization models in this study.",
+          "quote": "In our work, we use two datasets: CNN/DailyMail (Hermann et al., 2015) and PubMed (Cohan et al., 2018)."
+        },
+        "aliases": [
+          "CNNDM"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Teaching machines to read and comprehend",
+          "justification": "This is the initial work providing the CNN/DailyMail dataset used in this paper.",
+          "quote": "In our work, we use two datasets: CNN/DailyMail (Hermann et al., 2015) and PubMed (Cohan et al., 2018)."
+        }
+      },
+      {
+        "name": {
+          "value": "PubMed",
+          "justification": "PubMed is used for benchmarking the summarization models and assessing their performance in the biomedical domain.",
+          "quote": "In our work, we use two datasets: CNN/DailyMail (Hermann et al., 2015) and PubMed (Cohan et al., 2018)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "A discourse-aware attention model for abstractive summarization of long documents",
+          "justification": "The reference provides the context and development of the PubMed dataset used.",
+          "quote": "In our work, we use two datasets: CNN/DailyMail (Hermann et al., 2015) and PubMed (Cohan et al., 2018)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The paper explicitly mentions the use of PyTorch for implementing neural models used in their experiments.",
+          "quote": "Both neural models are implemented in PyTorch (Paszke et al., 2019)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An imperative style, high-performance deep learning library",
+          "justification": "The reference provides the foundational paper for the PyTorch library as mentioned in the document.",
+          "quote": "PyTorch: An imperative style, high-performance deep learning library. In Advances in Neural Information Processing Systems 32, pages 8024–8035. Curran Associates, Inc."
+        }
+      },
+      {
+        "name": {
+          "value": "HuggingFace Transformers",
+          "justification": "The paper mentions using the HuggingFace Transformers library for the BERT implementation.",
+          "quote": "We use the bert-base-uncased implementation by HuggingFace (Wolf et al., 2019)..."
+        },
+        "aliases": [
+          "Transformers"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Huggingface’s transformers: State-of-the-art natural language processing",
+          "justification": "This paper is cited when discussing the HuggingFace Transformers library used in the BERT-based model.",
+          "quote": "Huggingface’s transformers: State-of-the-art natural language processing. ArXiv, abs/1910.03771."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1693,
+    "prompt_tokens": 11589,
+    "total_tokens": 13282,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

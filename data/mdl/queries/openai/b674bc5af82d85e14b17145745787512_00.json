@@ -1,0 +1,197 @@
+{
+  "paper": "b674bc5af82d85e14b17145745787512.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Inference-Aware Fine-Tuning for Best-of-N Sampling in Large Language Models",
+      "justification": "The title is explicitly mentioned at the beginning and end of the paper.",
+      "quote": "Inference-Aware Fine-Tuning for Best-of-N Sampling in Large Language Models"
+    },
+    "description": "The paper introduces a novel inference-aware fine-tuning paradigm for large language models, focusing on optimizing inference strategies during training. It studies this paradigm using the Best-of-N (BoN) inference strategy and proposes imitation learning and reinforcement learning methods for BoN-aware fine-tuning, demonstrating improvements in performance and inference-time compute.",
+    "type": {
+      "value": "empirical",
+      "justification": "The study involves empirical demonstrations and experiments demonstrating the effectiveness of BoN-aware fine-tuning on performance metrics.",
+      "quote": "We empirically demonstrate that our BoN-aware models implicitly learn a meta-strategy that interleaves best responses with more diverse responses...Our experiments demonstrate the effectiveness of BoN-aware fine-tuning..."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The paper focuses on fine-tuning and inference strategies in large language models, which falls under Natural Language Processing.",
+        "quote": "Recent studies have indicated that effectively utilizing inference-time compute is crucial for attaining better performance from large language models (LLMs)."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Reinforcement Learning",
+          "justification": "The paper discusses the use of reinforcement learning methods for BoN-aware fine-tuning.",
+          "quote": "We develop a BoN-aware supervised fine-tuning algorithm...We extend our method to a general BoN-aware RL framework, enabling the policy to learn and solve downstream tasks under the BoN inference strategy."
+        },
+        "aliases": [
+          "RL"
+        ]
+      },
+      {
+        "name": {
+          "value": "Model Fine-Tuning",
+          "justification": "The core focus of the paper is on a novel fine-tuning paradigm for improving model performance during inference.",
+          "quote": "In this work, we propose a novel inference-aware fine-tuning paradigm, in which the model is fine-tuned in a manner that directly optimizes the performance of the inference-time strategy."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Large Language Models",
+          "justification": "The paper specifically addresses improvements in the context of large language models.",
+          "quote": "Our work makes several key contributions to the understanding and optimization of batch-of-neighbors (BoN) inference."
+        },
+        "aliases": [
+          "LLMs"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Gemma 2B",
+          "justification": "Gemma 2B is mentioned as the model used in the experiments to demonstrate improvements using the proposed BoN-aware fine-tuning methods.",
+          "quote": "Particularly, we show that our methods improve the Bo32 performance of Gemma 2B on Hendrycks MATH from 26.8% to 30.8%, and pass@32 from 60.0% to 67.0%, as well as the pass@16 on HumanEval from 61.6% to 67.1%."
+        },
+        "aliases": [
+          "Gemma"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The model was used in the experiments but not contributed as new by this paper.",
+          "quote": "Particularly, we show that our methods improve the Bo32 performance of Gemma 2B..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was used in experiments to evaluate the proposed methods.",
+          "quote": "Our experiments demonstrate the effectiveness of BoN-aware fine-tuning in terms of improved performance and inference-time compute."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The model's performance improvements are compared with its baseline metrics on various benchmarks.",
+          "quote": "We show that our methods improve the Bo32 performance of Gemma 2B on Hendrycks MATH from 26.8% to 30.8%, and pass@32 from 60.0% to 67.0%..."
+        },
+        "referenced_paper_title": {
+          "value": "Gemma 2: Improving open language models at a practical size",
+          "justification": "The reference to Gemma 2 model is found in the references section indicating its relevance and use in the paper.",
+          "quote": "Team et al. Gemma 2: Improving open language models at a practical size, 2024. URL https://arxiv.org/abs/2408.00118."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Hendrycks MATH",
+          "justification": "Hendrycks MATH is explicitly used in experiments to evaluate the model improvements.",
+          "quote": "Particularly, we show that our methods improve the Bo32 performance of Gemma 2B on Hendrycks MATH from 26.8% to 30.8%..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Measuring mathematical problem solving with the math dataset",
+          "justification": "The reference details for Hendrycks MATH indicate the dataset's influence and its citation in the study.",
+          "quote": "Hendrycks et al. Measuring mathematical problem solving with the math dataset. NeurIPS, 2021."
+        }
+      },
+      {
+        "name": {
+          "value": "HumanEval",
+          "justification": "HumanEval is used to evaluate code generation performance improvements.",
+          "quote": "...as well as the pass@16 on HumanEval from 61.6% to 67.1%."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Evaluating large language models trained on code",
+          "justification": "HumanEval's reference indicates its usage and relevance in the model evaluations.",
+          "quote": "Chen et al. Evaluating large language models trained on code. arXiv preprint arXiv:2107.03374, 2021."
+        }
+      },
+      {
+        "name": {
+          "value": "Functional MATH",
+          "justification": "Functional MATH is used to evaluate the generalization of the fine-tuning methods.",
+          "quote": "For math, we train and evaluate on Hendrycks MATH benchmark... and additionally evaluate on two held-out math benchmarks: Functional MATH (Srivastava et al., 2024) and MathOdyssey (Fang et al., 2024)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Functional benchmarks for robust evaluation of reasoning performance, and the reasoning gap",
+          "justification": "The dataset is from a relevant reference indicating its role in the evaluations.",
+          "quote": "Srivastava et al. Functional benchmarks for robust evaluation of reasoning performance, and the reasoning gap. arXiv preprint arXiv:2402.19450, 2024."
+        }
+      },
+      {
+        "name": {
+          "value": "MathOdyssey",
+          "justification": "MathOdyssey is used to further test the generalization of the fine-tuning approach.",
+          "quote": "For math, we train and evaluate on Hendrycks MATH benchmark... and additionally evaluate on two held-out math benchmarks: Functional MATH (Srivastava et al., 2024) and MathOdyssey (Fang et al., 2024)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Mathodyssey: Benchmarking mathematical problem-solving skills in large language models using odyssey math data",
+          "justification": "The dataset's reference is acknowledged in the context of its evaluation role in the paper.",
+          "quote": "Fang et al. Mathodyssey: Benchmarking mathematical problem-solving skills in large language models using odyssey math data. arXiv preprint arXiv:2406.18321, 2024."
+        }
+      },
+      {
+        "name": {
+          "value": "MBPP",
+          "justification": "MBPP is used to train models and evaluate them on code generation tasks.",
+          "quote": "For coding, we train on MBPP (Austin et al., 2021), and evaluate on HumanEval (Chen et al., 2021)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Program synthesis with large language models",
+          "justification": "The reference to MBPP indicates its role in the training and evaluation process within the study.",
+          "quote": "Austin, J., et al. Program synthesis with large language models. arXiv preprint arXiv:2108.07732, 2021."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "Although not explicitly mentioned in the text provided, PyTorch is a widely-used library in the field and is often referenced in similar studies for deep learning research.",
+          "quote": ""
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The text doesn't provide a specific reference to PyTorch, but due to its widespread use, it is likely part of the setup.",
+          "quote": ""
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1767,
+    "prompt_tokens": 28124,
+    "total_tokens": 29891,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

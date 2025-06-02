@@ -1,0 +1,249 @@
+{
+  "paper": "95153f397c6c00528b1b7ac4ec62c3fc.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Learning Problem-agnostic Speech Representations from Multiple Self-supervised Tasks",
+      "justification": "The title accurately reflects the content and purpose of the paper, which is to explore a method for learning speech representations that are not specific to a particular problem, using multiple self-supervised tasks.",
+      "quote": "Learning Problem-agnostic Speech Representations from Multiple Self-supervised Tasks"
+    },
+    "description": "This paper proposes a self-supervised learning method for speech representations, using a single neural encoder with multiple workers that solve different tasks to discover general, robust, and transferable speech representations.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves experiments that assess the quality of learned representations on various supervised problems, indicating that the research includes empirical evaluation.",
+      "quote": "Experiments show that the proposed approach can learn transferable, robust, and problem-agnostic features that carry on relevant information from the speech signal."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Speech Representation Learning",
+        "justification": "The research paper's focus is on learning representations from speech data in a self-supervised manner.",
+        "quote": "This paper proposes an improved self-supervised method, where a single neural encoder is followed by multiple workers that jointly solve different self-supervised tasks."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Self-supervised Learning",
+          "justification": "The method proposed in the paper heavily relies on self-supervised tasks.",
+          "quote": "This paper proposes an improved self-supervised method, where a single neural encoder is followed by multiple workers that jointly solve different self-supervised tasks."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Transfer Learning",
+          "justification": "The research focuses on creating representations that are transferable to other tasks, a key concept in transfer learning.",
+          "quote": "Experiments show that the proposed approach can learn transferable, robust, and problem-agnostic features that carry on relevant information from the speech signal."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Speech Processing",
+          "justification": "The research focuses primarily on processing speech data to extract meaningful representations.",
+          "quote": "Learning good representations without supervision is still an open issue in machine learning, and is particularly challenging for speech signals, which are often characterized by long sequences with a complex hierarchical structure."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Problem-agnostic Speech Encoder (PASE)",
+          "justification": "PASE is the main model proposed in the paper to achieve domain-agnostic speech representations.",
+          "quote": "To highlight the latter property, we call our proposed architecture the problem-agnostic speech encoder (PASE)."
+        },
+        "aliases": [
+          "PASE"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The paper introduces PASE as a novel method for deriving robust speech representations.",
+          "quote": "Our approach is more likely to learn general, robust, and transferable features, ...our proposed architecture the problem-agnostic speech encoder (PASE)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper describes the model's experimental setup, indicating execution on tasks.",
+          "quote": "Our experiments suggest that PASE is able to discover robust representations from the raw speech waveform directly."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper provides comparisons of performance against other standard features and models, including MFCC and FBANK.",
+          "quote": "PASE features provide most of the times a performance better than MFCCs and FBANKs, even when freezing the encoder (PASE-Frozen)."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The model PASE is a novel contribution of this paper, so there's no external reference paper title associated with it.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "SincNet",
+          "justification": "SincNet is mentioned as a part of the PASE model's architecture for processing raw input waveforms.",
+          "quote": "The first layer of the encoder is based on the recently-proposed SincNet model."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "SincNet itself is not a novel contribution of this paper, but is used as a component within PASE.",
+          "quote": "The first layer of the encoder is based on the recently-proposed SincNet model."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "SincNet was used in the encoder part of PASE, which was executed in experimental settings.",
+          "quote": "The first layer of the encoder is based on the recently-proposed SincNet model."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "SincNet is a component of the PASE model and was not standalone compared to other models.",
+          "quote": ""
+        },
+        "referenced_paper_title": {
+          "value": "Speaker recognition from raw waveform with SincNet",
+          "justification": "The title of the reference paper is found in the reference list related to SincNet.",
+          "quote": "The first layer of the encoder is based on the recently-proposed SincNet model [21]."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "LibriSpeech",
+          "justification": "LibriSpeech dataset is mentioned as part of the self-supervised training of PASE.",
+          "quote": "The self-supervised training of PASE is performed with the portion of the LibriSpeech dataset used in [17]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Librispeech: An ASR corpus based on public domain audio books",
+          "justification": "The reference for LibriSpeech is given in the reference section.",
+          "quote": "Librispeech: An ASR corpus based on public domain audio books [32]"
+        }
+      },
+      {
+        "name": {
+          "value": "VCTK Corpus",
+          "justification": "The VCTK dataset is used for evaluating speaker identification performance.",
+          "quote": "For speaker identification, we use the VCTK dataset, which contains 109 speakers with different English accents."
+        },
+        "aliases": [
+          "VCTK"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "CSTR VCTK corpus: English multi-speaker corpus for CSTR voice cloning toolkit",
+          "justification": "The reference for the VCTK corpus is given in the reference section.",
+          "quote": "CSTR VCTK corpus: English multi-speaker corpus for CSTR voice cloning toolkit [33]"
+        }
+      },
+      {
+        "name": {
+          "value": "INTERFACE dataset",
+          "justification": "The INTERFACE dataset is used for evaluating emotion recognition tasks.",
+          "quote": "For emotion recognition, we use the English utterances of the INTERFACE dataset."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Interface databases: Design and collection of a multilingual emotional speech database",
+          "justification": "The reference for the INTERFACE dataset is provided in the reference section.",
+          "quote": "Interface databases: Design and collection of a multilingual emotional speech database. [34]"
+        }
+      },
+      {
+        "name": {
+          "value": "TIMIT",
+          "justification": "TIMIT is mentioned for automatic speech recognition evaluation.",
+          "quote": "To evaluate the capability of PASE to learn phoneme representations, a first set of ASR experiments is performed with the standard TIMIT dataset."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "DARPA TIMIT Acoustic Phonetic Continuous Speech Corpus CDROM",
+          "justification": "The reference for the TIMIT dataset is mentioned in the references.",
+          "quote": "DARPA TIMIT Acoustic Phonetic Continuous Speech Corpus CDROM [35]"
+        }
+      },
+      {
+        "name": {
+          "value": "DIRHA dataset",
+          "justification": "DIRHA dataset is used for testing under noisy and reverberant conditions for ASR.",
+          "quote": "Finally, we study the exportability of PASE to acoustic conditions that are very different from the clean one used to train it. Table 3 reports the results obtained with the DIRHA dataset."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The DIRHA-ENGLISH corpus and related tasks for distant-speech recognition in domestic environments",
+          "justification": "The reference for the DIRHA dataset is in the references section.",
+          "quote": "The DIRHA-ENGLISH corpus and related tasks for distant-speech recognition in domestic environments [36]"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch-Kaldi",
+          "justification": "PyTorch-Kaldi is mentioned for conducting ASR experiments with the DNN-HMM framework.",
+          "quote": "ASR experiments are performed with the PyTorch-Kaldi toolkit and are based on the DNN-HMM framework."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The PyTorch-Kaldi Speech Recognition Toolkit",
+          "justification": "The reference title for PyTorch-Kaldi is mentioned in the references section.",
+          "quote": "The PyTorch-Kaldi Speech Recognition Toolkit [37]"
+        }
+      },
+      {
+        "name": {
+          "value": "librosa",
+          "justification": "Librosa is utilized in extracting features like MFCC for regression workers in the proposed model.",
+          "quote": "Features are extracted with librosa and pysptk using default parameters, if not stated otherwise."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "librosa/librosa: 0.6.3",
+          "justification": "The reference title for librosa is specified in the paper.",
+          "quote": "B. McFee et al., “librosa/librosa: 0.6.3,” Feb. 2019. [Online]. Available: https://doi.org/10.5281/zenodo.2564164"
+        }
+      },
+      {
+        "name": {
+          "value": "pysptk",
+          "justification": "Pysptk is used for feature extraction alongside librosa.",
+          "quote": "Features are extracted with librosa and pysptk using default parameters, if not stated otherwise."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "r9y9/pysptk: 0.1.14",
+          "justification": "The reference for pysptk is clearly cited in the references.",
+          "quote": "R. Yamamoto, J. Felipe, and M. Blaauw, “r9y9/pysptk: 0.1.14,” Jan. 2019."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2023,
+    "prompt_tokens": 9663,
+    "total_tokens": 11686,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

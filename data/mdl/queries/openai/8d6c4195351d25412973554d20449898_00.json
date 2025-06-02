@@ -1,0 +1,173 @@
+{
+  "paper": "8d6c4195351d25412973554d20449898.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "An Analysis of Dataset Overlap on Winograd-Style Tasks",
+      "justification": "The title is clearly mentioned at the beginning of the paper and reflects the main focus of the research.",
+      "quote": "An Analysis of Dataset Overlap on Winograd-Style Tasks"
+    },
+    "description": "This paper investigates the overlap between training corpora and test instances in Winograd Schema Challenge (WSC) and similar tasks. The authors analyze the effects of these overlaps on model performance and introduce the KNOWREF-60K dataset, which has a significantly lower proportion of overlaps. The study aims to reveal models’ reasoning capabilities and improve training strategies for common-sense reasoning models.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper employs experiments to analyze the overlap impact on model performance and introduces a new dataset based on empirical findings.",
+      "quote": "In this paper, we analyze the effects of varying degrees of overlap between these training corpora and the test instances in WSC-style tasks."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The paper focuses on language comprehension tasks such as the Winograd Schema Challenge, which is a natural language understanding task.",
+        "quote": "The Winograd Schema Challenge (WSC) and variants inspired by it have become important benchmarks for common-sense reasoning (CSR)."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Common Sense Reasoning",
+          "justification": "The paper is centered around the Winograd Schema Challenge which is a benchmark for evaluating common-sense reasoning in AI.",
+          "quote": "have become important benchmarks for common-sense reasoning (CSR)."
+        },
+        "aliases": [
+          "CSR"
+        ]
+      },
+      {
+        "name": {
+          "value": "Coreference Resolution",
+          "justification": "The study involves pronoun disambiguation tasks which are part of coreference resolution in NLP.",
+          "quote": "we develop the K NOWREF -60 K dataset, which consists of over 60k pronoun disambiguation problems"
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "BERT",
+          "justification": "BERT is mentioned as a neural language model used for pretraining to achieve high performance in WSC tasks.",
+          "quote": "the advent of deep bidirectional transformers (e.g., BERT (Devlin et al., 2019)), pretrained on massive amounts of data has led to near-human-level performance"
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "BERT is not introduced by this paper but is used as a pre-existing model for experiments.",
+          "quote": "the advent of deep bidirectional transformers (e.g., BERT (Devlin et al., 2019))"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper conducts experiments using BERT models to fine-tune and test on datasets.",
+          "quote": "We finetune BERT by splitting the input sentence into a context and an option component"
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "BERT's performance is compared against other models like RoBERTa in the experimentation results.",
+          "quote": "Table 5 shows an increase in accuracy between 3% and 10% for both models"
+        },
+        "referenced_paper_title": {
+          "value": "BERT: Pre-training of deep bidirectional transformers for language understanding",
+          "justification": "The authors refer to the original BERT paper to discuss its use and performance capabilities.",
+          "quote": "the advent of deep bidirectional transformers (e.g., BERT (Devlin et al., 2019))"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "KnowRef",
+          "justification": "The KnowRef dataset is used as part of the experiments for WSC-style coreference problems.",
+          "quote": "KnowRef introduces over 8k WSC-style coreference resolution problems"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The KnowRef coreference corpus: Removing gender and number cues for difficult pronominal anaphora resolution",
+          "justification": "The paper by Emami et al. is referenced forming the context for using KnowRef in this study.",
+          "quote": "KnowRef (Emami et al., 2019)"
+        }
+      },
+      {
+        "name": {
+          "value": "KNOWREF-60K",
+          "justification": "KNOWREF-60K is developed and contributed by the authors for this study to improve upon previous datasets.",
+          "quote": "Based on these results, we develop the K NOWREF -60 K dataset, consisting of 64,301 difficult pronoun disambiguation problems."
+        },
+        "aliases": [
+          "K NOWREF -60 K"
+        ],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "As a newly introduced dataset in this paper, there is no earlier reference paper for KNOWREF-60K.",
+          "quote": "Based on these results, we develop the K NOWREF -60 K dataset, consisting of 64,301 difficult pronoun disambiguation problems."
+        }
+      },
+      {
+        "name": {
+          "value": "Winogrande",
+          "justification": "The Winogrande dataset is referenced as a larger variant of the WSC with less bias.",
+          "quote": "Winogrande (Sakaguchi et al., 2020), a scaled WSC-variant debiased against RoBERTa"
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Winogrande: An adversarial winograd schema challenge at scale",
+          "justification": "The paper by Sakaguchi et al. is referenced in relation to the Winogrande dataset's characteristics and use.",
+          "quote": "Winogrande (Sakaguchi et al., 2020)"
+        }
+      },
+      {
+        "name": {
+          "value": "WSC",
+          "justification": "The Winograd Schema Challenge is the primary task this paper investigates regarding dataset overlap.",
+          "quote": "The Winograd Schema Challenge (WSC) and variants inspired by it have become important benchmarks for common-sense reasoning (CSR)."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "The winograd schema challenge",
+          "justification": "This is the seminal paper introducing the WSC and is cited to explain the benchmark requirements.",
+          "quote": "The Winograd Schema Challenge... serve as an alternative Turing test to evaluate an automatic system’s capacity for common-sense inference (Levesque et al., 2011)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Whoosh",
+          "justification": "Whoosh is utilized as a library for indexing corpora and scoring overlap using BM25 retrieval function.",
+          "quote": "We use the Python package Whoosh (Chaput, 2017), which has methods to index pretraining corpora, to generate customized queries, and to score these based on the BM25 retrieval function."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Whoosh: Fast pure-python full text indexing, search and spell checking library",
+          "justification": "The official Whoosh library documentation or description is referenced for background on the tool used.",
+          "quote": "We use the Python package Whoosh (Chaput, 2017)"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1408,
+    "prompt_tokens": 11403,
+    "total_tokens": 12811,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

@@ -1,0 +1,167 @@
+{
+  "paper": "b4c8fc1bb2d07a9ae4fc291a5db889c5.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Abg-CoQA: Clarifying Ambiguity in Conversational Question Answering",
+      "justification": "The paper focuses on the Abg-CoQA dataset which aims to clarify ambiguity in conversational question answering.",
+      "quote": "In this paper, we introduce Abg-CoQA, a dataset for clarifying the ambiguity in Conversational Question Answering."
+    },
+    "description": "The paper introduces Abg-CoQA, a dataset to study and generate effective clarification questions in conversational question answering. It evaluates strong language generation models and conversational question answering models on their ability to detect ambiguities, generate clarification questions, and answer questions after clarification.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves practical evaluations of models on a newly introduced dataset, Abg-CoQA, and reports performance metrics, indicating it is empirical.",
+      "quote": "We evaluate strong language generation models and conversational question answering models on Abg-CoQA..."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Conversational Question Answering",
+        "justification": "The primary focus of the paper is to clarify ambiguity in conversational question answering systems.",
+        "quote": "This paper aims at studying the extent to which the state of the art neural generation models can generate effective clarification questions in conversational question answering."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Natural Language Generation",
+          "justification": "The paper deals with generating clarification questions, indicating a focus on generating natural language.",
+          "quote": "...the state of the art neural generation models can generate effective clarification questions..."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Dialogue Systems",
+          "justification": "The paper relates to dialogue systems by addressing the ability to request clarification and handle ambiguities in conversation.",
+          "quote": "The ability to request clarification of utterance in dialogue has been extensively studied in dialogue research..."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "BERT",
+          "justification": "BERT is used in the paper as a baseline model for task evaluation in conversational settings.",
+          "quote": "...a baseline model which has a BERT-based architecture with answer verification..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "BERT was utilized but not introduced or modified significantly in this paper.",
+          "quote": "We use the uncased-base BERT model as the backbone."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "BERT-based models were executed in the experiments as reported in the performance tables.",
+          "quote": "The model trained on Abg-CoQA achieves an F1 score equal to 31.4% for BERT-based..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "BERT's performance is compared to other models like XLNET and GPT-2.",
+          "quote": "We observe that the XLNET+AnsType baseline has a higher precision while the BERT+AnsType model has a higher recall."
+        },
+        "referenced_paper_title": {
+          "value": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "justification": "The authors used BERT model referring to its original contribution paper.",
+          "quote": "...BERT-based architecture with answer verification on the CoQA training dataset..."
+        }
+      },
+      {
+        "name": {
+          "value": "XLNET",
+          "justification": "XLNET is used in the paper as another baseline model alongside BERT.",
+          "quote": "We observe that the XLNET+AnsType baseline has a higher precision..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "XLNET was used but not introduced or modified significantly within this paper.",
+          "quote": "...a generative models on zero-shot prediction. Its performance decreases more than 40 points comparing to the reported F1 score..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "XLNET-based models were executed and their performance is documented.",
+          "quote": "...45.5% for XLNET-based."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "XLNET is directly compared with BERT and GPT-2 in performance.",
+          "quote": "The model built upon XLNET achieves the best performance, but still 35.1% behind the human performance..."
+        },
+        "referenced_paper_title": {
+          "value": "XLNet: Generalized Autoregressive Pretraining for Language Understanding",
+          "justification": "The authors used XLNET model referring to its original contribution paper.",
+          "quote": "We adapt the XLNET extension toolkit: https://github.com/stevezheng23/xlnet_extension_tf"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Abg-CoQA",
+          "justification": "Abg-CoQA is the main dataset introduced in this study for the purpose of clarifying ambiguities.",
+          "quote": "We introduce Abg-CoQA, a novel crowdsourced dataset for clarifying ambiguities in conversational question answering systems."
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "CoQA: A Conversational Question Answering Challenge",
+          "justification": "CoQA is a referenced dataset and basis from which Abg-CoQA was developed.",
+          "quote": "We construct Abg-CoQA based on the CoQA dataset [Reddy et al., 2019]."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "BART",
+          "justification": "BART is used as a baseline model for generating clarification questions.",
+          "quote": "We fine tune a strong model for text generation – BART [Lewis et al., 2020] on our corpus as the baseline model for generating clarification questions."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "BART: Denoising Sequence-to-Sequence Pre-training for Natural Language Generation, Translation, and Comprehension",
+          "justification": "The authors used BART model referring to its original contribution paper.",
+          "quote": "We fine tune a strong model for text generation – BART [Lewis et al., 2020]..."
+        }
+      },
+      {
+        "name": {
+          "value": "GPT-2",
+          "justification": "GPT-2 is executed for zero-shot prediction, being one of the baselines compared for question answering after clarification.",
+          "quote": "We also run GPT-2 as a representative of generative models on zero-shot prediction..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Language Models are Unsupervised Multitask Learners",
+          "justification": "The authors used GPT-2 model referring to its original paper.",
+          "quote": "We also run GPT-2 as a representative of generative models on zero-shot prediction."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1285,
+    "prompt_tokens": 12696,
+    "total_tokens": 13981,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

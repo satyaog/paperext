@@ -1,0 +1,301 @@
+{
+  "paper": "b10967587c5a13cfea4017773b39422a.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Sparse Decomposition of Graph Neural Networks",
+      "justification": "The title is explicitly mentioned as 'Sparse Decomposition of Graph Neural Networks' in the header of the paper.",
+      "quote": "Sparse Decomposition of Graph Neural Networks"
+    },
+    "description": "The paper addresses the high inference cost of Graph Neural Networks (GNNs) due to large node aggregation. It proposes a sparse decomposition approach called SDGNN to efficiently approximate node representations using sparsely weighted sums of transformed features from selected subsets of nodes. This reduces complexity to be linear with average node degree and layers. The method is shown to improve inference speed and accuracy in tasks like node classification and spatio-temporal forecasting.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper conducts extensive experiments demonstrating that their proposed method outperforms other models in terms of accuracy and speedup, indicating an empirical study.",
+      "quote": "We demonstrate via extensive experiments that our method outperforms other baselines designed for inference speedup, achieving significant accuracy gains with comparable inference times"
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Graph Neural Networks",
+        "justification": "The paper is centered around enhancing the efficiency of Graph Neural Network models through sparse decomposition techniques.",
+        "quote": "Graph Neural Networks (GNN) exhibit superior performance in graph representation learning, but their inference cost can be high due to an aggregation operation."
+      },
+      "aliases": [
+        "GNN"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Node Classification",
+          "justification": "The study extensively experiments with node classification tasks, aiming to demonstrate the efficacy of their method in reducing inference time while maintaining accuracy.",
+          "quote": "We validate SDGNN’s approximation power and inference efficiency through node classification tasks in the transductive setting."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Spatio-temporal Forecasting",
+          "justification": "The method is applied in spatio-temporal forecasting tasks as part of the study, demonstrating its practical applications beyond node classification.",
+          "quote": "We verify the approximation power of SDGNN and the scalability of our algorithm on seven node classification datasets and demonstrate how SDGNN can be effectively applied under the online prediction setting with two spatio-temporal forecasting datasets."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Graph Convolutional Network (GCN)",
+          "justification": "The paper uses GCN as parts of its baseline comparisons and target models for the approximation with SDGNN.",
+          "quote": "We adopt the time-then-graph framework with the GRU-GCN model from Gao & Ribeiro (2022)."
+        },
+        "aliases": [
+          "GCN"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "GCN is a well-known existing model and not an original contribution of the paper.",
+          "quote": "As for the target GNN model, we adopt the time-then-graph framework with the GRU-GCN model from Gao & Ribeiro (2022)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "GCN was used in experiments to evaluate the performance of SDGNN.",
+          "quote": "We adopt the time-then-graph framework with the GRU-GCN model from Gao & Ribeiro (2022)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The model is used to compare the performance of the proposed SDGNN model in the experiments.",
+          "quote": "We verify the approximation power of SDGNN and the scalability of our algorithm on seven node classification datasets and demonstrate how SDGNN can be effectively applied..."
+        },
+        "referenced_paper_title": {
+          "value": "On the equivalence between temporal and static equivariant graph representations",
+          "justification": "This references the work from Gao & Ribeiro (2022) for the GRU-GCN model used as a comparison benchmark.",
+          "quote": "We adopt the time-then-graph framework with the GRU-GCN model from Gao & Ribeiro (2022)."
+        }
+      },
+      {
+        "name": {
+          "value": "GraphSAGE",
+          "justification": "GraphSAGE is utilized as a base model in the experimental setup to evaluate the SDGNN method.",
+          "quote": "Regarding the targeted GNN models, we include GraphSAGE (Hamilton et al., 2017) with mean aggregator."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "GraphSAGE is not a contribution of the paper but an existing model used for comparison.",
+          "quote": "Regarding the targeted GNN models, we include GraphSAGE (Hamilton et al., 2017) with mean aggregator."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "GraphSAGE is executed in experiments for performance evaluation of SDGNN.",
+          "quote": "We include GraphSAGE (Hamilton et al., 2017) with mean aggregator."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "SDGNN's performance is compared against GraphSAGE during experiments.",
+          "quote": "We include GraphSAGE (Hamilton et al., 2017) with mean aggregator."
+        },
+        "referenced_paper_title": {
+          "value": "Inductive Representation Learning on Large Graphs",
+          "justification": "GraphSAGE is referenced from Hamilton et al. (2017) which is its original paper.",
+          "quote": "Regarding the targeted GNN models, we include GraphSAGE (Hamilton et al., 2017) with mean aggregator."
+        }
+      },
+      {
+        "name": {
+          "value": "SGC (Simplified Graph Convolution)",
+          "justification": "SGC is one of the baseline methods used in the paper for comparison.",
+          "quote": "SGC and PPRGo adopt the heuristic of selecting a critical subset of nodes and assigning aggregation weights."
+        },
+        "aliases": [
+          "SGC"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "SGC is not a novel contribution but an existing model referenced for comparison.",
+          "quote": "SGC and PPRGo adopt the heuristic of selecting a critical subset of nodes and assigning aggregation weights."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "SGC is part of the experimental evaluations for comparing SDGNN's performance.",
+          "quote": "SGC and PPRGo adopt the heuristic of selecting a critical subset of nodes and assigning aggregation weights."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares the performance of SDGNN with SGC in experiments.",
+          "quote": "SGC and PPRGo adopt the heuristic of selecting a critical subset of nodes and assigning aggregation weights."
+        },
+        "referenced_paper_title": {
+          "value": "Simplifying Graph Convolutional Networks",
+          "justification": "SGC is referenced from Wu et al., 2019, which is its founding paper.",
+          "quote": "SGC and PPRGo adopt the heuristic of selecting a critical subset of nodes and assigning aggregation weights."
+        }
+      },
+      {
+        "name": {
+          "value": "SDGNN (Sparse Decomposition of Graph Neural Networks)",
+          "justification": "SDGNN is the novel method contributed by the paper for efficiently approximating node representations in GNNs.",
+          "quote": "We propose sparse decomposition for graph neural networks (SDGNN), an approximation to any target GNN models that can infer node representations efficiently and effectively."
+        },
+        "aliases": [
+          "SDGNN"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "SDGNN is the main novel contribution of the paper.",
+          "quote": "We propose sparse decomposition for graph neural networks (SDGNN), an approximation to any target GNN models."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "SDGNN is the primary model executed and evaluated in experiments throughout the paper.",
+          "quote": "We propose sparse decomposition for graph neural networks (SDGNN), an approximation..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "SDGNN's performance is evaluated and compared with other models like GraphSAGE and GCN.",
+          "quote": "We demonstrate via extensive experiments that our method outperforms other baselines."
+        },
+        "referenced_paper_title": {
+          "value": "This paper",
+          "justification": "As SDGNN is the central proposal of the paper, it inherently refers back to this paper itself.",
+          "quote": "We propose sparse decomposition for graph neural networks (SDGNN)..."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Cora",
+          "justification": "The paper uses Cora as one of the benchmark datasets to validate the performance of SDGNN.",
+          "quote": "Following Zhang et al. (2021) and Tian et al. (2023), we conduct experiments on five widely used benchmark datasets from Shchur et al. (2018), namely, Cora, Citeseer, Pubmed, Computer and Photo."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Pitfalls of Graph Neural Network Evaluation",
+          "justification": "The paper references Shchur et al. (2018) as the source of the Cora dataset used.",
+          "quote": "Following Zhang et al. (2021) and Tian et al. (2023), we conduct experiments on five widely used benchmark datasets from Shchur et al. (2018), namely, Cora, Citeseer, Pubmed, Computer and Photo."
+        }
+      },
+      {
+        "name": {
+          "value": "Citeseer",
+          "justification": "The paper uses Citeseer as one of the evaluation benchmarks for its experiments.",
+          "quote": "Following Zhang et al. (2021) and Tian et al. (2023), we conduct experiments on five widely used benchmark datasets from Shchur et al. (2018), namely, Cora, Citeseer, Pubmed, Computer and Photo."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Pitfalls of Graph Neural Network Evaluation",
+          "justification": "The reference to Citeseer comes from Shchur et al. (2018) which provided the dataset.",
+          "quote": "Following Zhang et al. (2021) and Tian et al. (2023), we conduct experiments on five widely used benchmark datasets from Shchur et al. (2018), namely, Cora, Citeseer, Pubmed, Computer and Photo."
+        }
+      },
+      {
+        "name": {
+          "value": "Pubmed",
+          "justification": "Pubmed is used in the paper to evaluate the performance of SDGNN.",
+          "quote": "Following Zhang et al. (2021) and Tian et al. (2023), we conduct experiments on five widely used benchmark datasets from Shchur et al. (2018), namely, Cora, Citeseer, Pubmed, Computer and Photo."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Pitfalls of Graph Neural Network Evaluation",
+          "justification": "The paper references Shchur et al. (2018) for the Pubmed dataset.",
+          "quote": "Following Zhang et al. (2021) and Tian et al. (2023), we conduct experiments on five widely used benchmark datasets from Shchur et al. (2018), namely, Cora, Citeseer, Pubmed, Computer and Photo."
+        }
+      },
+      {
+        "name": {
+          "value": "Computer",
+          "justification": "The Computer dataset is used for validation of the proposed model in experiments.",
+          "quote": "Following Zhang et al. (2021) and Tian et al. (2023), we conduct experiments on five widely used benchmark datasets from Shchur et al. (2018), namely, Cora, Citeseer, Pubmed, Computer and Photo."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Pitfalls of Graph Neural Network Evaluation",
+          "justification": "The paper references Shchur et al. (2018) as providing the Computer dataset.",
+          "quote": "Following Zhang et al. (2021) and Tian et al. (2023), we conduct experiments on five widely used benchmark datasets from Shchur et al. (2018), namely, Cora, Citeseer, Pubmed, Computer and Photo."
+        }
+      },
+      {
+        "name": {
+          "value": "Photo",
+          "justification": "Photo dataset is another benchmark dataset used in the paper's experiments.",
+          "quote": "Following Zhang et al. (2021) and Tian et al. (2023), we conduct experiments on five widely used benchmark datasets from Shchur et al. (2018), namely, Cora, Citeseer, Pubmed, Computer and Photo."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Pitfalls of Graph Neural Network Evaluation",
+          "justification": "The dataset is cited to be from Shchur et al. (2018) as well.",
+          "quote": "Following Zhang et al. (2021) and Tian et al. (2023), we conduct experiments on five widely used benchmark datasets from Shchur et al. (2018), namely, Cora, Citeseer, Pubmed, Computer and Photo."
+        }
+      },
+      {
+        "name": {
+          "value": "Arxiv",
+          "justification": "Arxiv is used in the paper as a large-scale dataset for evaluating SDGNN.",
+          "quote": "We also examine performance on two large-scale datasets, Arxiv and Products, from the OGB benchmarks (Hu et al., 2020)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Open Graph Benchmark: Datasets for Machine Learning on Graphs",
+          "justification": "The Arxiv dataset is taken from Hu et al. (2020) as stated in the paper.",
+          "quote": "We also examine performance on two large-scale datasets, Arxiv and Products, from the OGB benchmarks (Hu et al., 2020)."
+        }
+      },
+      {
+        "name": {
+          "value": "Products",
+          "justification": "The Products dataset is included as a benchmark in evaluating the SDGNN model under study.",
+          "quote": "We also examine performance on two large-scale datasets, Arxiv and Products, from the OGB benchmarks (Hu et al., 2020)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Open Graph Benchmark: Datasets for Machine Learning on Graphs",
+          "justification": "The product dataset reference comes from Hu et al. (2020) as used in the experiments.",
+          "quote": "We also examine performance on two large-scale datasets, Arxiv and Products, from the OGB benchmarks (Hu et al., 2020)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is mentioned in the context of model implementations and could likely be the framework for their model development.",
+          "quote": "Implementation of model runs using PyTorch on NVIDIA Tesla V100 GPUs."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "-",
+          "justification": "The paper doesn't provide a specific paper reference for PyTorch as it is a well-known framework.",
+          "quote": "Implementation of model runs using PyTorch on NVIDIA Tesla V100 GPUs."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2952,
+    "prompt_tokens": 25058,
+    "total_tokens": 28010,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

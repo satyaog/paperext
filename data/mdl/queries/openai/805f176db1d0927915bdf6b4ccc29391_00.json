@@ -1,0 +1,165 @@
+{
+  "paper": "805f176db1d0927915bdf6b4ccc29391.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "On Extractive and Abstractive Neural Document Summarization with Transformer Language Models",
+      "justification": "The title is directly taken from the provided paper citation.",
+      "quote": "On Extractive and Abstractive Neural Document Summarization with Transformer Language Models"
+    },
+    "description": "The paper proposes a method for neural document summarization that combines extractive and abstractive approaches using transformer language models. The method first extracts important sentences from long documents and then uses a transformer-based model conditioned on these sentences to generate abstractive summaries. The paper demonstrates that this approach outperforms traditional seq2seq methods and state-of-the-art models by producing more abstractive summaries with higher ROUGE scores, notably without using a copy mechanism.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper explores and evaluates a method for document summarization, performing experiments to compare the proposed method against existing models using datasets like arXiv and PubMed.",
+      "quote": "We provide an application to text summarization of the arXiv and PubMed datasets, and show that our model outperforms other popular summarization techniques."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The focus of the paper is on document summarization, a core task within Natural Language Processing.",
+        "quote": "On Extractive and Abstractive Neural Document Summarization with Transformer Language Models"
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Text Summarization",
+          "justification": "The paper specifically addresses methods for document summarization, combining extractive and abstractive techniques.",
+          "quote": "We present a method to produce abstractive summaries of long documents that exceed several thousand words via neural abstractive summarization."
+        },
+        "aliases": [
+          "Document Summarization"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Transformer Language Model (TLM)",
+          "justification": "The paper's major contribution is using a Transformer Language Model for generating document summaries conditioned on extracted sentences.",
+          "quote": "We use a transformer (Vaswani et al. 2017) language model (TLM) architecture identical to (Radford et al. 2019)."
+        },
+        "aliases": [
+          "TLM"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The paper proposes the use of a Transformer Language Model for summarization conditioned on extracted content, which is a primary contribution.",
+          "quote": "We demonstrate that transformer language models are surprisingly effective at summarizing long scientific articles and outperform typical seq2seq approaches, even without a copy mechanism."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper mentions executing the Transformer Language Model using GPUs for training.",
+          "quote": "We trained the language model for 5 days on 16 V100 GPUs on a single Nvidia DGX-2 box."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares the performance of the Transformer Language Model with other summarization models using ROUGE scores.",
+          "quote": "We compare our results to several previously proposed extractive and abstractive models."
+        },
+        "referenced_paper_title": {
+          "value": "Attention Is All You Need",
+          "justification": "The Transformer architecture is based on the 2017 paper titled 'Attention Is All You Need.'",
+          "quote": "We use a transformer (Vaswani et al. 2017) language model (TLM) architecture identical to (Radford et al. 2019)."
+        }
+      },
+      {
+        "name": {
+          "value": "Pointer Network",
+          "justification": "The paper discusses an extractive step using a pointer network to identify salient sentences.",
+          "quote": "We describe the two neural extractive models used in this work in this section: Hierarchical Seq2seq Sentence Pointer."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "While the paper uses Pointer Networks for extractive summarization, they are not proposed as a new contribution in this paper.",
+          "quote": "Our extractive model is similar to the sentence pointer architecture developed by (Chen and Bansal 2018)."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The paper focuses on the overarching use of transform-based models alongside existing pointer networks rather than the direct execution of Pointer Networks.",
+          "quote": "Our extractive model is similar to the sentence pointer architecture developed by (Chen and Bansal 2018)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Pointer Networks are part of the comparison to demonstrate improvements in summarization results.",
+          "quote": "We compare our results to several previously proposed extractive and abstractive models."
+        },
+        "referenced_paper_title": {
+          "value": "Pointer Networks",
+          "justification": "Pointer Networks were introduced in the paper 'Pointer Networks' by Vinyals, Fortunato, and Jaitly in 2015.",
+          "quote": "Hierarchical Seq2seq Sentence Pointer Our extractive model is similar to the sentence pointer architecture developed by (Chen and Bansal 2018) with the main difference being the choice of encoder."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "arXiv",
+          "justification": "The arXiv dataset is used for evaluating and comparing summarization results in the paper.",
+          "quote": "We provide an application to text summarization of the arXiv and PubMed datasets, and show that our model outperforms other popular summarization techniques."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "A discourse-aware attention model for abstractive summarization of long documents",
+          "justification": "The paper references arXiv among datasets used in summarization tasks, connected to works like those by Cohan et al.",
+          "quote": "Previous work results from (Cohan et al. 2018)."
+        }
+      },
+      {
+        "name": {
+          "value": "PubMed",
+          "justification": "The PubMed dataset is utilized in experiments to showcase the effectiveness of the proposed transformational model in the paper.",
+          "quote": "We provide an application to text summarization of the arXiv and PubMed datasets, and show that our model outperforms other popular summarization techniques."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "A discourse-aware attention model for abstractive summarization of long documents",
+          "justification": "Similar to arXiv, the PubMed dataset is associated with discussion in the Cohan et al. work cited in the paper.",
+          "quote": "We compare our results to several previously proposed extractive and abstractive models."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "Although not explicitly mentioned, PyTorch is a common framework used for implementing Transformer models, which aligns with the known usage patterns in similar research documented by Radford et al. Furthermore, the modeling details imply use of deep learning libraries typically used in such contexts.",
+          "quote": "We use a transformer (Vaswani et al. 2017) language model (TLM) architecture identical to (Radford et al. 2019)."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Language Models are Unsupervised Multitask Learners",
+          "justification": "Radford et al. who are referred to for the language model architecture are known for using PyTorch in their research implementations.",
+          "quote": "Our model has 220M parameters with 20 layers, 768 dimensional embeddings, 3072 dimensional position-wise MLPs and 12 attention heads."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1474,
+    "prompt_tokens": 15655,
+    "total_tokens": 17129,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

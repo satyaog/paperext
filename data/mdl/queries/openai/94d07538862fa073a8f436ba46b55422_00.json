@@ -1,0 +1,271 @@
+{
+  "paper": "94d07538862fa073a8f436ba46b55422.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "The KITMUS Test: Evaluating Knowledge Integration from Multiple Sources",
+      "justification": "The paper introduces the KITMUS test suite, which evaluates the integration of knowledge from multiple sources in coreference resolution tasks.",
+      "quote": "We propose KITMUS , 1 a diagnostic test suite. The KITMUS tests evaluate K nowledge I n T egration from MU ltiple S ources."
+    },
+    "description": "This paper presents the KITMUS test suite designed to evaluate the ability of Natural Language Understanding (NLU) models to integrate and reason over knowledge available from multiple sources. It focuses particularly on coreference resolution tasks using both entity-specific and background knowledge. By varying the distribution of knowledge types across pretrain-time and inference-time, the study examines how existing state-of-the-art models perform in integrating these knowledge sources, especially using fictional knowledge that models would not have pretrained knowledge about.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents experimental results evaluating the performance of existing NLU models on the KITMUS test suite.",
+      "quote": "We evaluate state-of-the-art coreference resolution models on our dataset."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The KITMUS test is a tool for evaluating NLU models, which falls under the broader field of Natural Language Processing.",
+        "quote": "Many state-of-the-art natural language understanding (NLU) models are based on pretrained neural language models."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Coreference Resolution",
+          "justification": "The paper's main focus is on evaluating models' performance in coreference resolution, particularly with knowledge integration.",
+          "quote": "We evaluate state-of-the-art coreference resolution models on the KITMUS."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Knowledge Integration",
+          "justification": "The paper evaluates how well models can integrate knowledge from pretrain-time and inference-time to perform NLU tasks.",
+          "quote": "The KITMUS tests evaluate Knowledge Integration from Multiple Sources."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "BERT4Coref",
+          "justification": "BERT4Coref was used and evaluated in multiple experiments throughout the paper.",
+          "quote": "With task-specific training, two models—BERT4Coref (Joshi et al., 2019) and C2F (Lee et al., 2018)—demonstrate the ability to reason over both knowledge observed at pre-train time and at inference time."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "BERT4Coref was not introduced or significantly modified in this paper but was used as a reference model in the study.",
+          "quote": "We include BERT4Coref (Joshi et al., 2019) as an example of a state-of-the-art models on CoNLL 2012."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper includes experimental results from running BERT4Coref on the KITMUS dataset.",
+          "quote": "With task-specific training, two models—BERT4Coref (Joshi et al., 2019) and C2F (Lee et al., 2018)—demonstrate the ability to reason over both knowledge observed at pre-train time and at inference time."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "BERT4Coref is compared against other models regarding performance on the KITMUS dataset.",
+          "quote": "The high performance of BERT4Coref and C2F on the BACKGROUND-PRETRAIN variant suggests that both models have the ability to draw background knowledge from their parameters."
+        },
+        "referenced_paper_title": {
+          "value": "BERT for coreference resolution: Baselines and analysis",
+          "justification": "The referenced paper for BERT4Coref is clearly provided in the body of the paper.",
+          "quote": "BERT4Coref (Joshi et al., 2019)"
+        }
+      },
+      {
+        "name": {
+          "value": "C2F",
+          "justification": "C2F was one of the main models evaluated in the paper on its capability to integrate pretrain-time and inference-time knowledge.",
+          "quote": "With task-specific training, two models—BERT4Coref (Joshi et al., 2019) and C2F (Lee et al., 2018)—demonstrate the ability to reason over both knowledge observed at pre-train time and at inference time."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "C2F was an existing model used in the study; it was not contributed by this paper.",
+          "quote": "We include C2F (Lee et al., 2018), which is the direct successor to the first end-to-end neural coreference resolution model (Lee et al., 2017)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper involves executing the C2F model in different experimental setups to test its performance on the KITMUS dataset.",
+          "quote": "With task-specific training... C2F (Lee et al., 2018)—demonstrate the ability to reason over both knowledge observed at pre-train time and at inference time."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "C2F's performance is analyzed and compared against BERT4Coref and other models in the study.",
+          "quote": "The performance of all models we experimented with generally decreases as the number of entities increases..."
+        },
+        "referenced_paper_title": {
+          "value": "Higher-order coreference resolution with coarse-to-fine inference",
+          "justification": "The reference for C2F is provided within the text when discussing the models.",
+          "quote": "C2F (Lee et al., 2018)"
+        }
+      },
+      {
+        "name": {
+          "value": "Stanford Neural Coreference Model",
+          "justification": "The Stanford Neural model is mentioned as one of the general coreference resolution models used in the experiments.",
+          "quote": "We include Stanford’s statistical (Clark and Manning, 2015) and neural (Clark and Manning, 2016) models."
+        },
+        "aliases": [
+          "Stanford Neural"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The Stanford Neural Coreference Model is referenced as an existing model, not as a contribution of this paper.",
+          "quote": "We include Stanford’s statistical (Clark and Manning, 2015) and neural (Clark and Manning, 2016) models."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model is executed during the evaluation of existing models against the KITMUS test.",
+          "quote": "We include Stanford’s statistical (Clark and Manning, 2015) and neural (Clark and Manning, 2016) models."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Its performance is compared with other models like BERT4Coref and C2F.",
+          "quote": "Some models exhibit below random performance, indicating they may fail to recognize and choose the correct mentions that could be antecedents."
+        },
+        "referenced_paper_title": {
+          "value": "Deep reinforcement learning for mention-ranking coreference models",
+          "justification": "This is cited when introducing the Stanford Neural Coreference Model in the text.",
+          "quote": "Stanford’s statistical (Clark and Manning, 2016) models."
+        }
+      },
+      {
+        "name": {
+          "value": "GREP",
+          "justification": "GREP was referenced as a strong performer in the GAP competition, included in the experimental setup.",
+          "quote": "We include GREP (Attree, 2019), the winner of the GAP Kaggle competition."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "GREP is used as an existing model in the experiments; it is not claimed as a contribution by this paper.",
+          "quote": "We include GREP (Attree, 2019), the winner of the GAP Kaggle competition."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "GREP was executed as part of the experiments on the KITMUS dataset, particularly for two-entity subtasks.",
+          "quote": "We include GREP (Attree, 2019), the winner of the GAP Kaggle competition."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "GREP's performance is compared to other models like PeTra in the study.",
+          "quote": "Models that operate on input in the GAP format which only allows for the annotation of two entities."
+        },
+        "referenced_paper_title": {
+          "value": "Gendered ambiguous pronouns shared task: Boosting model confidence by evidence pooling",
+          "justification": "This is the reference for GREP provided during the introduction of models.",
+          "quote": "GREP (Attree, 2019), the winner of the GAP Kaggle competition"
+        }
+      },
+      {
+        "name": {
+          "value": "PeTra",
+          "justification": "PeTra model is mentioned as an efficient memory-augmented model used for pronoun coreference resolution tasks.",
+          "quote": "PeTra (Toshniwal et al., 2020), an efficient memory-augmented model."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "PeTra was utilized from existing literature, not introduced by this paper.",
+          "quote": "We include GREP (Attree, 2019), the winner of the GAP Kaggle competition and PeTra (Toshniwal et al., 2020), an efficient memory-augmented model."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The PeTra model was part of the experiment evaluation on the KITMUS dataset.",
+          "quote": "We include GREP (Attree, 2019), the winner of the GAP Kaggle competition and PeTra (Toshniwal et al., 2020), an efficient memory-augmented model."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "PeTra was compared against other models in the experimental evaluation of the KITMUS dataset.",
+          "quote": "We train the GAP-based models—PeTra and GREP—only on the two entity subtasks."
+        },
+        "referenced_paper_title": {
+          "value": "PeTra: A Sparsely Supervised Memory Model for People Tracking",
+          "justification": "PeTra's reference is provided when discussing the models involved in the evaluation.",
+          "quote": "PeTra (Toshniwal et al., 2020), an efficient memory-augmented model."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "KITMUS",
+          "justification": "KITMUS is the central dataset introduced and used in the study to evaluate knowledge integration in coreference tasks.",
+          "quote": "To this end, we introduce a coreference resolution task designed to probe models’ ability to draw on knowledge available in different sources."
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "The KITMUS Test: Evaluating Knowledge Integration from Multiple Sources",
+          "justification": "The KITMUS dataset is introduced and central to the experiment; it's the focal contribution of the research.",
+          "quote": "We propose KITMUS , 1 a diagnostic test suite. The KITMUS tests evaluate Knowledge Integration from Multiple Sources."
+        }
+      },
+      {
+        "name": {
+          "value": "GAP Corpus",
+          "justification": "The GAP corpus is mentioned as a dataset related to pronoun coreference resolution, used to align models for comparison.",
+          "quote": "Models that focus on pronoun coreference resolution are trained on the smaller GAP dataset in the GAP format (Webster et al., 2018)."
+        },
+        "aliases": [
+          "GAP"
+        ],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Mind the GAP: A balanced corpus of gendered ambiguous pronouns",
+          "justification": "The GAP corpus is mentioned as part of the methodology explanation for some models.",
+          "quote": "Models that focus on pronoun coreference resolution are trained on the smaller GAP dataset in the GAP format (Webster et al., 2018)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "GPT-2",
+          "justification": "GPT-2 was used for generating noise sentences in the dataset creation process.",
+          "quote": "These sentences are generated using GPT-2 (Radford et al., 2019), and then manually verified by the authors not to include cues related to any entity or occupation."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Language models are unsupervised multitask learners",
+          "justification": "The library's reference is acknowledged when discussing dataset creation tools.",
+          "quote": "These sentences are generated using GPT-2 (Radford et al., 2019), and then manually verified by the authors not to include cues related to any entity or occupation."
+        }
+      },
+      {
+        "name": {
+          "value": "LAMA",
+          "justification": "LAMA is used for probing the presence of background knowledge in pretrained models.",
+          "quote": "Given the template 'The work of a [MASK] is [SITUATION].', we compared the probabilities the LMs assigned to all single-token occupation names used in KITMUS (probing for multi-token words is not supported by LAMA)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "How context affects language models’ factual predictions",
+          "justification": "LAMA's reference is included as it was employed in testing contextual knowledge predictions.",
+          "quote": "Given the template “The work of a [MASK] is [SITUATION].”, we compared the probabilities the LMs assigned to all single-token occupation names used in KITMUS (probing for multi-token words is not supported by LAMA)."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2705,
+    "prompt_tokens": 20997,
+    "total_tokens": 23702,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

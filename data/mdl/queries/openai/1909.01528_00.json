@@ -1,0 +1,161 @@
+{
+  "paper": "1909.01528.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Referring Expression Generation Using Entity Profiles",
+      "justification": "The title of the paper is clear from the provided metadata and the repeated emphasis on 'entity profiles' in the context of 'referring expression generation'.",
+      "quote": "Referring Expression Generation Using Entity Profiles Meng Cao"
+    },
+    "description": "This paper introduces a novel REG model, 'PROFILE REG', designed to generate referring expressions that can generalize to unseen entities by utilizing entity profiles. The study introduces new task setups to evaluate the model’s performance on unseen entities and performs experiments using the WebNLG dataset. Extensive evaluations show the model's superiority over previous approaches.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves the proposal of a new model (PROFILE REG), which is experimentally evaluated using the WebNLG dataset, indicating empirical research.",
+      "quote": "We evaluate our model on the WebNLG corpus (Gardent et al., 2017a). Experimental results show that our model is capable of handling unseen entities that prior work simply cannot handle in our new evaluation setups, while also outperforming them in the original setting."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The research focuses on generating referring expressions, which is a task under Natural Language Processing, particularly involving text generation and understanding.",
+        "quote": "Referring expression generation (REG) can be broken into two steps."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Referring Expression Generation",
+          "justification": "The specific task the paper addresses is Referring Expression Generation, indicating it as a subfield.",
+          "quote": "Referring Expression Generation (REG) is the task of generating contextually appropriate references to entities."
+        },
+        "aliases": [
+          "REG"
+        ]
+      },
+      {
+        "name": {
+          "value": "Text Generation",
+          "justification": "The paper involves generating text in the form of referring expressions, indicating text generation as another important aspect.",
+          "quote": "Our model, PROFILE REG, uses a learned switch variable to decide whether to generate a token from a fixed vocabulary, generate a pronoun, or use information from the profile in order to generate appropriate referring expressions in context."
+        },
+        "aliases": [
+          "Natural Language Generation"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "PROFILE REG",
+          "justification": "PROFILE REG is introduced as the novel model in the paper, designed to generate referring expressions by utilizing entity profiles.",
+          "quote": "Second, we propose a profile-based deep neural network model, PROFILE REG, which encodes both the local context and an external profile of the entity to generate reference realizations."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "The paper introduces PROFILE REG as a new model specifically developed for the tasks addressed.",
+          "quote": "Second, we propose a new REG model, PROFILE REG, which outperforms existing REG models in all tested settings according to automatic and human evaluation measures."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The experimental results section implies that PROFILE REG was executed and evaluated.",
+          "quote": "We evaluate our model on the WebNLG corpus (Gardent et al., 2017a). Experimental results show that our model is capable of handling unseen entities"
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper states that PROFILE REG outperforms competitive baselines, indicating comparative evaluation.",
+          "quote": "Our model generates tokens by learning to choose between generating pronouns, generating from a fixed vocabulary, or copying a word from the profile. We evaluate our model on three different splits of the WebNLG dataset, and show that it outperforms competitive baselines in all settings according to automatic and human evaluations."
+        },
+        "referenced_paper_title": {
+          "value": "NeuralREG: An end-to-end approach to referring expression generation",
+          "justification": "NeuralREG is referenced as a baseline model against which PROFILE REG is compared.",
+          "quote": "The other is the NeuralREG model proposed by Ferreira et al. (2018), an end-to-end system that predicts both the form and content of the referring expression."
+        }
+      },
+      {
+        "name": {
+          "value": "NeuralREG",
+          "justification": "NeuralREG is referenced as an existing model used for comparison with PROFILE REG in the paper.",
+          "quote": "The other is the NeuralREG model proposed by Ferreira et al. (2018), an end-to-end system that predicts both the form and content of the referring expression."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "NeuralREG is used as a baseline comparison and not contributed by this paper.",
+          "quote": "The other is the NeuralREG model proposed by Ferreira et al. (2018), an end-to-end system that predicts both the form and content of the referring expression."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "It is stated as one of the models evaluated for the REG task within the context of the paper's experiments.",
+          "quote": "We compared our model against three baselines... Our third baseline is the NeuralREG model proposed by Ferreira et al. (2018)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper clearly uses NeuralREG as a baseline for comparison to PROFILE REG.",
+          "quote": "and show that it outperforms competitive baselines in all settings according to automatic and human evaluations."
+        },
+        "referenced_paper_title": {
+          "value": "NeuralREG: An end-to-end approach to referring expression generation",
+          "justification": "NeuralREG is directly referenced as a model used for comparison purposes in the experiments.",
+          "quote": "The other is the NeuralREG model proposed by Ferreira et al. (2018), an end-to-end system that predicts both the form and content of the referring expression."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "WebNLG",
+          "justification": "The WebNLG dataset is used extensively in the paper for training and evaluating the proposed model.",
+          "quote": "We evaluate our model on the WebNLG corpus (Gardent et al., 2017a)."
+        },
+        "aliases": [
+          "Web Natural Language Generation"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The WebNLG challenge: Generating text from RDF data",
+          "justification": "The WebNLG dataset used in the study links back to the WebNLG challenge organized by Gardent et al.",
+          "quote": "The WebNLG corpus (Gardent et al., 2017a) was initially introduced in the WebNLG challenge."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "GloVe",
+          "justification": "The paper mentions using pre-trained GloVe vectors for initializing word embeddings in the model.",
+          "quote": "We initialize the word embeddings using pre-trained GloVe vectors (Pennington et al., 2014)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "GloVe: Global vectors for word representation",
+          "justification": "The GloVe library is referenced in context of using its pre-trained vectors for word embeddings.",
+          "quote": "We initialize the word embeddings using pre-trained GloVe vectors (Pennington et al., 2014)."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1413,
+    "prompt_tokens": 10691,
+    "total_tokens": 12104,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

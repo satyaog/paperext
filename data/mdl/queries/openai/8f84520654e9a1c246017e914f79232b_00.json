@@ -1,0 +1,163 @@
+{
+  "paper": "8f84520654e9a1c246017e914f79232b.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Inferring disease subtypes from clusters in explanation space",
+      "justification": "The title 'Inferring disease subtypes from clusters in explanation space' is directly mentioned at the top of the research paper, representing the main focus of the paper as it explores the clustering approach in the explanation space to identify disease subtypes.",
+      "quote": "Inferring disease subtypes\nfrom clusters in explanation space"
+    },
+    "description": "This paper introduces a novel approach for discovering latent disease subtypes by analyzing instance-wise explanations of a diagnostic classifier's decisions, rather than the original dataset features. The approach is compared to classical clustering on various datasets, showing improved subtype recovery in explanation space.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper is empirical as it conducts experiments on multiple datasets, including UK Biobank brain imaging data and Cancer Genome Atlas data, to demonstrate the efficacy of clustering in explanation space for disease subtype discovery.",
+      "quote": "In multiple datasets with\nknown ground-truth subclasses, particularly on UK Biobank brain imaging data and transcriptome\ndata from the Cancer Genome Atlas, we show that cluster analysis on model explanations\nsubstantially outperforms the classical approach."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Precision Medicine",
+        "justification": "The focus of the paper is on improving clinical diagnosis and treatment selection by identifying disease subtypes, which falls under the domain of Precision Medicine.",
+        "quote": "Identification of disease subtypes and corresponding biomarkers can substantially improve clinical diagnosis and treatment selection."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Explainable AI",
+          "justification": "The paper utilizes instance-wise explanations from a diagnostic classifier, essentially leveraging explainable AI to create an explanation space for better subtype discovery.",
+          "quote": "Recent interest in explaining the output of complex machine learning models has been characterized by a wide range of approaches, most of them focused on providing an instance-wise explanation of a model’s output."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Clustering",
+          "justification": "The paper employs clustering methods on the explanation space to discover disease subtypes, emphasizing the use of clustering techniques.",
+          "quote": "The search for biologically grounded subtypes is frequently carried out by means of cluster analysis to identify groups of subjects with similar disease phenotypes."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Biomedical Data Analysis",
+          "justification": "The analysis of biomedical datasets, such as UK Biobank brain imaging and Cancer Genome Atlas data, for disease subtypes classifies the paper's sub-field as Biomedical Data Analysis.",
+          "quote": "In both the Cancer Genome Atlas and the UK Biobank brain imaging data, task-conditioned explanations proved to be highly informative."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Random Forest classifier",
+          "justification": "The paper explicitly mentions the use of a Random Forest classifier for transforming feature space into explanation space through Shapley Additive Explanations.",
+          "quote": "A Random Forest ­classifier was trained on the binary classification problem and SHapley Additive Explana­tions (SHAP) were used to generate instance-wise explanations for the predictions of the classifier."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The Random Forest classifier is a widely known model outside the scope of this paper, thus it is not a contribution of the paper.",
+          "quote": "A Random Forest ­classifier was trained on the binary classification problem and SHapley Additive Explana­tions (SHAP) were used to generate instance-wise explanations for the predictions of the classifier."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The Random Forest classifier is used in the empirical study conducted in the paper, demonstrating its execution.",
+          "quote": "A Random Forest ­classifier was trained on the binary classification problem and SHapley Additive Explana­tion (SHAP) were used to generate instance-wise explanations for the predictions of the classifier."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "The Random Forest classifier itself is not compared numerically, but rather the clusters resulting from using the classifier's explanation space are compared with those from feature space.",
+          "quote": "We compare our ability to recover subtypes via cluster analysis on model explanations to classical cluster analysis on the original data."
+        },
+        "referenced_paper_title": {
+          "value": "Random forests",
+          "justification": "The reference to Breiman, L. in the context of Random Forest indicates this is related to the foundational paper 'Random forests'.",
+          "quote": "Breiman, L. Random forests. Mach. Learn. 45(1), 5–32 (2001)."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "UK Biobank",
+          "justification": "The paper mentions using data from the UK Biobank to demonstrate clustering in explanation space, making it a dataset used for the study.",
+          "quote": "Brain imaging data was provided by the UK Biobank, cancer transcriptome data from the Cancer Genome Atlas."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Multimodal population brain imaging in the uk biobank prospective epidemiological study",
+          "justification": "The reference to Miller et al. concerning UK Biobank brain imaging data is related to the paper 'Multimodal population brain imaging in the uk biobank prospective epidemiological study'.",
+          "quote": "Miller, K.L, Alfaro-Almagro, F., Bangerter, N.K, Thomas, D.L, et al. Multimodal population brain imaging in the uk biobank prospective epidemiological study. Nature Neurosci., 19(11), 1523 (2016)."
+        }
+      },
+      {
+        "name": {
+          "value": "Cancer Genome Atlas (TCGA)",
+          "justification": "The cancer transcriptome data from the Cancer Genome Atlas is utilized to analyze the effectiveness of clustering in explanation space, indicating its use.",
+          "quote": "Brain imaging data was provided by the UK Biobank, cancer transcriptome data from the Cancer Genome Atlas."
+        },
+        "aliases": [
+          "TCGA"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The cancer genome atlas pan-cancer analysis project",
+          "justification": "The reference to Weinstein et al. concerning TCGA data is related to the paper 'The cancer genome atlas pan-cancer analysis project'.",
+          "quote": "Weinstein, J. N, Collisson, E.A, Mills, G.B, Shaw, K.R., Mills, O., et al. The cancer genome atlas pan-cancer analysis project. Nature Genetics, 45(10), 1113 (2013)."
+        }
+      },
+      {
+        "name": {
+          "value": "Fashion-MNIST",
+          "justification": "Fashion-MNIST is mentioned explicitly as a dataset used for benchmarking machine learning algorithms in the study.",
+          "quote": "Zalando provides Fashion-MNIST as a more challenging drop-in replacement for MNIST, with the same dimensionality (782) and sample size (70,000)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Fashion-mnist: a novel image dataset for benchmarking machine learning algorithms",
+          "justification": "Fashion-MNIST is a specific dataset referenced as a replacement for MNIST within the study.",
+          "quote": "Xiao, H., Rasul, K., & Vollgraf, R. Fashion-mnist: a novel image dataset for benchmarking machine learning algorithms. arXiv preprint arXiv:​1708.​07747, (2017)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "scikit-learn",
+          "justification": "The paper mentions using scikit-learn's implementation for generating synthetic data, indicating its use as a library.",
+          "quote": "The scikit-learn ­implementation of the generative algorithm was used to create a variation with 16 classes, 50 features, and data points distributed in one cluster per class on the vertices of a four-dimensional hypercube."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Scikit-learn: machine learning in Python",
+          "justification": "The reference to Pedregosa et al. relates to the foundational reference for the scikit-learn library.",
+          "quote": "Pedregosa, F. et al. Scikit-learn: machine learning in Python. J. Mach. Learn. Res. 12, 2825–2830 (2011)."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1649,
+    "prompt_tokens": 8088,
+    "total_tokens": 9737,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

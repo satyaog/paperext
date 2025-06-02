@@ -1,0 +1,255 @@
+{
+  "paper": "924892f7dfb519f42298de08186a1293.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Conditional Image Generation by Conditioning Variational Auto-Encoders",
+      "justification": "The title of the paper directly from the first page of the PDF document.",
+      "quote": "Conditional Image Generation by Conditioning Variational Auto-Encoders"
+    },
+    "description": "This paper proposes a new method for conditional image generation utilizing a pre-trained unconditional variational auto-encoder (VAE). The authors focus on image inpainting and demonstrate their model's ability to outperform state-of-the-art GAN-based methods in certain respects, particularly in representing inherent uncertainty. The approach highlights a method to convert pretrained VAEs into conditional VAEs, enabling faster and more efficient training processes. Moreover, the paper explores an application in Bayesian experimental design, showcasing practical implementations of their architecture.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper contains empirical experiments that demonstrate the effectiveness of the proposed method on various tasks such as image completion on datasets like CIFAR-10, ImageNet-64, and FFHQ-256.",
+      "quote": "We demonstrate our approach on tasks including image inpainting, for which it outperforms state-of-the-art GAN-based approaches at faithfully representing the inherent uncertainty."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The research work primarily deals with issues related to image data and proposes solutions involving image inpainting, a well-known problem in the field of computer vision.",
+        "quote": "We focus on the problem of conditional generative modelling: given an input (e.g. a partially blanked-out image), we wish to map to a distribution over outputs (e.g. plausible completions of the image)."
+      },
+      "aliases": [
+        "CV"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Image Generation",
+          "justification": "The main focus of the paper is on the development of a conditional image generation model using VAEs.",
+          "quote": "We present a conditional variational auto-encoder (VAE)... We demonstrate our approach on tasks including image inpainting, for which it outperforms state-of-the-art GAN-based approaches at faithfully representing the inherent uncertainty."
+        },
+        "aliases": [
+          "Conditional Image Generation",
+          "CIG"
+        ]
+      },
+      {
+        "name": {
+          "value": "Bayesian Experimental Design",
+          "justification": "The paper discusses the use of their approach in Bayesian experimental design, specifically to guide sensor operations.",
+          "quote": "We conclude by describing a possible application of our inpainting model, in which it is used to perform Bayesian experimental design for the purpose of guiding a sensor."
+        },
+        "aliases": [
+          "BOED"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Conditional Variational Auto-Encoder (VAE)",
+          "justification": "The paper introduces a conditional version of VAEs as a primary contribution and demonstrates their application in conditional image generation tasks.",
+          "quote": "We present a conditional variational auto-encoder (VAE)...to leverage a foundation model in the form of a pretrained unconditional VAE."
+        },
+        "aliases": [
+          "Conditional VAE",
+          "CVAE"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The model is a novel contribution of the paper, introduced and developed by the authors.",
+          "quote": "We present a conditional variational auto-encoder (VAE)..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was executed in various experiments showing image inpainting performance.",
+          "quote": "We demonstrate our approach on tasks including image inpainting..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper includes comparisons of the conditional VAE model with GANs and other state-of-the-art models for image generation.",
+          "quote": "We compare against four baselines: Co-Modulated Generative Adversarial Networks (CoModGAN), Pluralistic Image Completion (PIC), Context Encoders (CE), and Attentive Neural Processes (ANP)."
+        },
+        "referenced_paper_title": {
+          "value": "Variational Autoencoder with Arbitrary Conditioning",
+          "justification": "The chosen title aligns with the base technique upon which the paper builds its methodology.",
+          "quote": "(Sohn et al., 2015; Ivanov et al., 2018) are applicable to this problem, with the same disparity in training times that we described for their unconditional counterparts."
+        }
+      },
+      {
+        "name": {
+          "value": "Unconditional Variational Auto-Encoder (VAE)",
+          "justification": "The paper discusses the use of pretrained unconditional VAEs as the basis for building conditional VAEs.",
+          "quote": "We design the architecture so that we can incorporate pretrained unconditional VAEs."
+        },
+        "aliases": [
+          "VAE"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Unconditional VAEs themselves are not a contribution of the paper; it builds on existing models.",
+          "quote": "The unconditional VAE need not have been (pre-)trained on the same dataset as the conditional model; we show un- conditional models trained on ImageNet are suitable for later use with various photo datasets."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "While the weights from these models are utilized, the model itself is not directly executed as a part of the paper's primary experiments.",
+          "quote": "Most of the unconditional VAEs in our experiments use publicly- available pretrained weights released by Child (2020)."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "The unconditional VAEs are not directly compared to other models; rather, their pretrained weights are used to enhance conditional VAEs.",
+          "quote": "While requiring an existing pretrained model is a limitation, we note that: (I) The unconditional VAE need not have been (pre-)trained on the same dataset as the conditional model; we show un- conditional models trained on ImageNet are suitable for later use with various photo datasets."
+        },
+        "referenced_paper_title": {
+          "value": "Very Deep VAEs Generalize Autoregressive Models and Can Outperform Them on Images",
+          "justification": "This paper provides the pre-trained weights that the current study uses to construct its methodology.",
+          "quote": "Most of the unconditional VAEs in our experiments use publicly-available pretrained weights released by Child (2020)."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "The paper utilizes the CIFAR-10 dataset for evaluating the proposed conditional VAE model.",
+          "quote": "IPA takes 115 GPU-hours to train on CIFAR-10."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Multiple Layers of Features from Tiny Images",
+          "justification": "CIFAR-10 is a well-known dataset with an established reference paper.",
+          "quote": "Krizhevsky et al., 2009"
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet-64",
+          "justification": "The paper includes evaluations on ImageNet-64 as part of its experiments.",
+          "quote": "We demonstrate our approach on several conditional generation tasks in the image domain but focus in particular on stochastic image completion."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ImageNet: A Large-Scale Hierarchical Image Database",
+          "justification": "This is the reference for the ImageNet dataset.",
+          "quote": "Deng et al., 2009"
+        }
+      },
+      {
+        "name": {
+          "value": "FFHQ-256",
+          "justification": "The paper performs evaluations on the FFHQ-256 dataset especially regarding image completion tasks.",
+          "quote": "Training a state-of-the-art VAE (Vahdat & Kautz, 2020; Child, 2020) on the 256 × 256 FFHQ dataset"
+        },
+        "aliases": [
+          "Flickr-Faces-HQ"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "A Style-Based Generator Architecture for Generative Adversarial Networks",
+          "justification": "The referenced paper discusses the FFHQ dataset.",
+          "quote": "Karras et al., 2019"
+        }
+      },
+      {
+        "name": {
+          "value": "Edges2Shoes",
+          "justification": "The paper describes experiments using the Edges2Shoes dataset for conditional image generation tasks.",
+          "quote": "We provide an additional demonstration of IPA on the Edges2Shoes and Edges2Handbags datasets"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Image-to-Image Translation with Conditional Adversarial Networks",
+          "justification": "The cited paper introduces the Edges2Shoes dataset.",
+          "quote": "Isola et al., 2016"
+        }
+      },
+      {
+        "name": {
+          "value": "Edges2Handbags",
+          "justification": "The Edges2Handbags dataset is used to demonstrate the effectiveness of the proposed model in conditional image generation tasks.",
+          "quote": "We provide an additional demonstration of IPA on the Edges2Shoes and Edges2Handbags datasets"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Image-to-Image Translation with Conditional Adversarial Networks",
+          "justification": "This work introduces the Edges2Handbags dataset.",
+          "quote": "Isola et al., 2016"
+        }
+      },
+      {
+        "name": {
+          "value": "NIH Chest X-ray 14",
+          "justification": "The NIH Chest X-ray14 dataset is applied to demonstrate a practical application of the proposed model in guiding sensor acquisition processes.",
+          "quote": "We experiment on the NIH Chest X-ray 14 dataset (Wang et al., 2017) at 256 × 256 resolution."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ChestX-ray8: Hospital-Scale Chest X-ray Database and Benchmarks on Weakly-Supervised Classification and Localization of Common Thorax Diseases",
+          "justification": "This paper represents the introduction of the NIH Chest X-ray14 dataset.",
+          "quote": "Wang et al., 2017"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "VD-VAE",
+          "justification": "VD-VAE is referenced in context of architectures and pre-trained models serving as a foundation for developing conditional VAEs.",
+          "quote": "Most of the unconditional VAEs in our experiments use publicly-available pretrained weights released by Child (2020)."
+        },
+        "aliases": [
+          "Very Deep VAE"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Very Deep VAEs Generalize Autoregressive Models and Can Outperform Them on Images",
+          "justification": "This paper, which releases VD-VAE, provides the pre-trained models used in the study.",
+          "quote": "Most of the unconditional VAEs in our experiments use publicly-available pretrained weights released by Child (2020)."
+        }
+      },
+      {
+        "name": {
+          "value": "Weights & Biases",
+          "justification": "Weights & Biases was used for experiment tracking within the study.",
+          "quote": "We use the Weights & Biases (Biewald, 2020) experiment-tracking infrastructure."
+        },
+        "aliases": [
+          "wandb"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Experiment Tracking with Weights and Biases",
+          "justification": "This referenced paper introduces and discusses the Weights & Biases tool.",
+          "quote": "Biewald, 2020."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2162,
+    "prompt_tokens": 33308,
+    "total_tokens": 35470,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

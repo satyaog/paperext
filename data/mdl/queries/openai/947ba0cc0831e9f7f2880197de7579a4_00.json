@@ -1,0 +1,217 @@
+{
+  "paper": "947ba0cc0831e9f7f2880197de7579a4.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Stochastic Polyak Step-size for SGD: An Adaptive Learning Rate for Fast Convergence",
+      "justification": "The title was explicitly mentioned multiple times throughout the paper, such as at the beginning and in the conclusion.",
+      "quote": "Stochastic Polyak Step-size for SGD: An Adaptive Learning Rate for Fast Convergence"
+    },
+    "description": "The paper proposes a novel adaptive learning rate called the stochastic Polyak step-size (SPS) for Stochastic Gradient Descent (SGD). The SPS is a variant of the classical Polyak step-size adapted to the stochastic setting, which provides fast convergence rates without needing problem-dependent constants or additional computational overhead. The authors provide theoretical convergence guarantees for SPS-equipped SGD in various contexts including convex, non-convex, and strongly-convex problems. Additionally, the paper discusses the efficacy of SPS in training over-parameterized models and validates the theoretical results through experiments on synthetic and real datasets.",
+    "type": {
+      "value": "theoretical",
+      "justification": "The paper extensively provides theoretical analysis and convergence guarantees for the stochastic Polyak step-size in different mathematical settings such as convex, non-convex, and strongly-convex contexts, which indicates a theoretical contribution.",
+      "quote": "We provide theoretical guarantees for the convergence of SGD with SPS in different scenarios including strongly convex, convex and non-convex smooth functions."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Optimization methods for machine learning",
+        "justification": "The research primarily contributes to the field of optimization in machine learning by proposing an adaptive learning rate method for SGD, which is a core optimization technique in this field.",
+        "quote": "Stochastic gradient descent (SGD) (Robbins and Monro, 1951; Nemirovski and Yudin, 1978, 1983; Shalev-Shwartz et al., 2007; Nemirovski et al., 2009; Hardt et al., 2016), is the workhorse for training supervised machine learning problems."
+      },
+      "aliases": [
+        "Stochastic Gradient Descent",
+        "Adaptive Learning Rate"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Deep Learning",
+          "justification": "The paper discusses the effectiveness of the proposed learning rate method in training deep neural networks, and includes experiments on deep learning architectures, implying its relevance to the deep learning field.",
+          "quote": "More recently, adaptive methods (Duchi et al., 2011; Liu et al., 2019; Kingma and Ba, 2015; Bengio, 2015; Vaswani et al., 2019b; Li and Orabona, 2019; Ward et al., 2019) that adjust the step-size on the fly have become wide-spread and are particularly beneficial when training deep neural networks."
+        },
+        "aliases": [
+          "Neural Networks"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "SGD with Stochastic Polyak Step-size (SPS)",
+          "justification": "The paper introduces the stochastic Polyak step-size (SPS), a modification of SGD, as its main contribution and extensively analyzes its theoretical properties.",
+          "quote": "We propose a novel adaptive learning rate for SGD. The proposed step-size is a natural extension of the Polyak step-size to the stochastic setting. We name it stochastic Polyak step-size (SPS)."
+        },
+        "aliases": [
+          "SPS for SGD",
+          "Stochastic Polyak Step-size"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The SPS is the central proposed method of the paper, constituting a new contribution to the field of optimization in machine learning.",
+          "quote": "We propose a novel adaptive learning rate for SGD."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "While the theoretical aspects of SPS are presented, there is no specific mention of the model being executed on GPU or CPU within the context of the paper.",
+          "quote": "We propose a novel adaptive learning rate for SGD."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares the performance of SGD with SPS against other state-of-the-art optimization methods, including numerical comparisons in experiments.",
+          "quote": "We experimentally validate our theoretical results via experiments on synthetic and real datasets. We demonstrate the strong performance of SGD with SPS compared to state-of-the-art optimization methods when training over-parameterized models."
+        },
+        "referenced_paper_title": {
+          "value": "Introduction to optimization",
+          "justification": "The original Polyak step-size is a foundational concept referenced in the paper, which the SPS is based upon and extended from.",
+          "quote": "Inspired by the classical Polyak step-size (Polyak, 1987) commonly used with the deterministic subgradient method"
+        }
+      },
+      {
+        "name": {
+          "value": "Stochastic Line Search (SLS)",
+          "justification": "SLS is mentioned as a competitive method in the context of comparing various optimization techniques against SPS.",
+          "quote": "We compare the convergence rate in Corollary 3.2 to that of stochastic line search (SLS) proposed in Vaswani et al. (2019b)."
+        },
+        "aliases": [
+          "SLS"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Stochastic Line Search was not a contribution of this paper but rather a reference point for comparisons.",
+          "quote": "We compare the convergence rate in Corollary 3.2 to that of stochastic line search (SLS) proposed in Vaswani et al. (2019b)."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The execution of SLS on specific hardware is not discussed in the paper; it is used mainly for theoretical and qualitative comparison.",
+          "quote": "We compare the convergence rate in Corollary 3.2 to that of stochastic line search (SLS) proposed in Vaswani et al. (2019b)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of SPS is compared to SLS in the analysis of convergence rates.",
+          "quote": "We compare the convergence rate in Corollary 3.2 to that of stochastic line search (SLS) proposed in Vaswani et al. (2019b)."
+        },
+        "referenced_paper_title": {
+          "value": "Painless stochastic gradient: Interpolation, line-search, and convergence rates",
+          "justification": "This paper by Vaswani et al. (2019b) on stochastic line search is explicitly mentioned as a reference point for comparison in theoretical discussions.",
+          "quote": "We compare the convergence rate in Corollary 3.2 to that of stochastic line search (SLS) proposed in Vaswani et al. (2019b)."
+        }
+      },
+      {
+        "name": {
+          "value": "ALI-G Algorithm",
+          "justification": "The ALI-G algorithm is mentioned as an alternate method for comparisons to evaluate the SPS performance.",
+          "quote": "In Berrada et al. (2020), ALI-G is analyzed under the strong assumption that all functions f i are μ-strongly convex and L-smooth."
+        },
+        "aliases": [
+          "ALI-G"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "ALI-G was not introduced in this paper but is used for purposes of comparison.",
+          "quote": "In Berrada et al. (2020), ALI-G is analyzed under the strong assumption that all functions f i are μ-strongly convex and L-smooth."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The execution specifics of the ALI-G algorithm are not detailed; the focus is on theoretical comparison.",
+          "quote": "In Berrada et al. (2020), ALI-G is analyzed under the strong assumption that all functions f i are μ-strongly convex and L-smooth."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper uses ALI-G as a benchmark to evaluate and compare the performance of the proposed SPS method.",
+          "quote": "In Berrada et al. (2020), ALI-G is analyzed under the strong assumption that all functions f i are μ-strongly convex and L-smooth."
+        },
+        "referenced_paper_title": {
+          "value": "Training Neural Networks for and by Interpolation",
+          "justification": "The ALI-G algorithm is discussed in the context of its reference paper by Berrada et al. (2020) for theoretical comparison with SPS.",
+          "quote": "In Berrada et al. (2020), ALI-G is analyzed under the strong assumption that all functions f i are μ-strongly convex and L-smooth."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "The CIFAR-10 dataset is used in experiments for evaluating the performance of the proposed SPS method.",
+          "quote": "We benchmark the convergence rate and generalization performance of SPS methods on standard deep learning experiments...We experiment with the standard image-classification architectures: ResNet-34 (He et al., 2016) and DenseNet-121 (Huang et al., 2017)."
+        },
+        "aliases": [
+          "CIFAR10"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Deep residual learning for image recognition",
+          "justification": "The dataset is tied to studies and models built around ResNet, as referenced in the experiments section.",
+          "quote": "We experiment with the standard image-classification architectures: ResNet-34 (He et al., 2016) and DenseNet-121 (Huang et al., 2017)."
+        }
+      },
+      {
+        "name": {
+          "value": "CIFAR-100",
+          "justification": "The CIFAR-100 dataset is part of the experimental setup to evaluate the efficacy of SPS in deep learning.",
+          "quote": "We benchmark the convergence rate and generalization performance of SPS methods on standard deep learning experiments...For CIFAR10 and CIFAR100, we experiment with the standard image-classification architectures: ResNet-34 (He et al., 2016) and DenseNet-121 (Huang et al., 2017)."
+        },
+        "aliases": [
+          "CIFAR100"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Densely Connected Convolutional Networks",
+          "justification": "The reference is connected with the experiments using DenseNet, which are conducted on the CIFAR-100 dataset.",
+          "quote": "For CIFAR10 and CIFAR100, we experiment with the standard image-classification architectures: ResNet-34 (He et al., 2016) and DenseNet-121 (Huang et al., 2017)."
+        }
+      },
+      {
+        "name": {
+          "value": "MNIST",
+          "justification": "MNIST is used as a dataset in experiments to evaluate the performance of the proposed SPS approach.",
+          "quote": "Further experiments on Multi-class classification using deep networks. Setting: CIFAR10-DenseNet121, CIFAR100-DenseNet121 and MNIST."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Gradient-Based Learning Applied to Document Recognition",
+          "justification": "The use of MNIST as an evaluation dataset can be tied to this foundational paper in machine learning, especially in character recognition.",
+          "quote": "Further experiments on Multi-class classification using deep networks. Setting: CIFAR10-DenseNet121, CIFAR100-DenseNet121 and MNIST."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is likely used for implementing the deep learning models described in the experiments, given its wide use and the nature of the experiments.",
+          "quote": "The code to reproduce our results can be found at https://github.com/IssamLaradji/sps."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Automatic differentiation in PyTorch",
+          "justification": "PyTorch's capabilities related to automatic differentiation make it a suitable library for implementing algorithms like SPS in modern machine learning.",
+          "quote": "The code to reproduce our results can be found at https://github.com/IssamLaradji/sps."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2373,
+    "prompt_tokens": 36784,
+    "total_tokens": 39157,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

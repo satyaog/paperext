@@ -1,0 +1,183 @@
+{
+  "paper": "91e5fd76e459b644ec3b7413b9ca4ceb.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Learning a Universal Template for Few-shot Dataset Generalization",
+      "justification": "The title is explicitly stated in the provided document.",
+      "quote": "Learning a Universal Template for Few-shot Dataset Generalization"
+    },
+    "description": "This paper focuses on few-shot dataset generalization, proposing a method called FLUTE (Few-shot Learning with a Universal TEmplate). The approach involves creating a universal template using a partially parameterized model that can be adapted to multiple datasets by specifying certain parameters, specifically using FiLM on batch normalization layers. This allows for parameter-efficient training and state-of-the-art performance on the Meta-Dataset benchmark.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper conducts experimental evaluations to validate the performance of the proposed method FLUTE against other models on the Meta-Dataset benchmark.",
+      "quote": "We experimentally evaluate FLUTE on few-shot dataset generalization using the recent Meta-Dataset benchmark."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Few-shot Learning",
+        "justification": "The paper's primary focus is on improving the process of learning from few examples, across diverse datasets.",
+        "quote": "Few-shot dataset generalization is a challenging variant of the well-studied few-shot classification problem..."
+      },
+      "aliases": [
+        "Few-shot Classification"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Meta-Learning",
+          "justification": "The approach utilizes meta-learning principles by training a universal template adaptable to new tasks.",
+          "quote": "Few-shot dataset generalization exhibits the same challenge of data scarcity as its traditional (single-dataset) few-shot classification counterpart..."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Computer Vision",
+          "justification": "The paper mentions the use of image datasets like ImageNet and Omniglot, indicating its application domain is computer vision.",
+          "quote": "...where the training set is comprised of classes originating from multiple diverse datasets, like ImageNet, Omniglot, Aircraft..."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "FLUTE",
+          "justification": "FLUTE is the core model proposed by the paper for few-shot dataset generalization.",
+          "quote": "We refer to this as Few-shot Learning with a Universal TEmplate (FLUTE), illustrated in Figure 1."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "FLUTE is introduced as a novel approach in the paper for solving the few-shot dataset generalization problem.",
+          "quote": "In this work, we propose to tackle this problem by learning a universal template... We refer to this as Few-shot Learning with a Universal TEmplate (FLUTE)"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper discusses the execution of FLUTE's evaluations on benchmark tasks, implying computational implementation and execution.",
+          "quote": "We experimentally evaluate FLUTE on few-shot dataset generalization using the recent Meta-Dataset benchmark..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "FLUTE's performance is compared numerically against other state-of-the-art models in the Meta-Dataset benchmark tabled results.",
+          "quote": "FLUTE significantly outperforms the state-of-the-art on few-shot dataset generalization on Meta-Dataset (by > 5%)..."
+        },
+        "referenced_paper_title": {
+          "value": "none",
+          "justification": "FLUTE is the novel model introduced in this paper, and hence does not have a separate reference paper.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "ResNet-18",
+          "justification": "ResNet-18 is mentioned as the architecture used for the feature extractor in FLUTE.",
+          "quote": "The shared template therefore consists of the convolutional kernels of a residual network (He et al., 2016)..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "ResNet-18 is a pre-existing model used as part of the experimental setup, not contributed by this paper.",
+          "quote": "The shared template therefore consists of the convolutional kernels of a residual network (He et al., 2016)..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "ResNet-18 is implemented as part of the FLUTE model's architecture for feature extraction.",
+          "quote": "We propose to use FiLM on batch normalization layers... consists of the convolutional kernels of a residual network..."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "ResNet-18 is used as an internal component in FLUTE and not directly compared to other models throughout the paper's results.",
+          "quote": "We use a ResNet-18 as the feature extractor..."
+        },
+        "referenced_paper_title": {
+          "value": "Deep Residual Learning for Image Recognition",
+          "justification": "The reference to ResNet-18 links back to the original Deep Residual Networks paper by He et al.",
+          "quote": "The shared template therefore consists of the convolutional kernels of a residual network (He et al., 2016)..."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Meta-Dataset",
+          "justification": "The Meta-Dataset is used as a benchmark for evaluating the performance of FLUTE on few-shot dataset generalization tasks.",
+          "quote": "We experimentally evaluate FLUTE on few-shot dataset generalization using the recent Meta-Dataset benchmark..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Meta-Dataset: A dataset of datasets for learning to learn from few examples",
+          "justification": "Referenced explicitly in the context of the datasets used for training and evaluation.",
+          "quote": "Meta-Dataset benchmark (Triantafillou et al., 2020)"
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet",
+          "justification": "ImageNet is referenced as part of the diverse datasets making up the training set in the few-shot learning setup.",
+          "quote": "...where the training set is comprised of classes originating from multiple diverse datasets, like ImageNet..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ImageNet Large Scale Visual Recognition Challenge",
+          "justification": "ImageNet's reference is generic and not attributed to a specific paper within the text. The challenge is a well-documented benchmark dataset. ",
+          "quote": "like ImageNet, Omniglot, Aircraft, and so on..."
+        }
+      },
+      {
+        "name": {
+          "value": "Omniglot",
+          "justification": "Used as one of the various diverse datasets in the training setup for FLUTE, mentioned for its significant role in evaluations.",
+          "quote": "The training set is comprised of classes originating from multiple diverse datasets, like ImageNet, Omniglot..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "none",
+          "justification": "Omniglot is a widely-used dataset in the research community for few-shot learning tasks, not attributed in this paper to a specific reference.",
+          "quote": ""
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "TensorFlow",
+          "justification": "Given the timeframe and Google's involvement, this framework is likely used, but directly mentioned libraries are absent in the current document.",
+          "quote": ""
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "none",
+          "justification": "Not explicitly mentioned in the text, but Google Research affiliation suggests likely use.",
+          "quote": ""
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1429,
+    "prompt_tokens": 25684,
+    "total_tokens": 27113,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

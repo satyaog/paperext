@@ -1,0 +1,396 @@
+{
+  "paper": "551078a591e586658505e18c76feb833.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "McGill NLP Group Submission to the MRL 2024 Shared Task: Ensembling Enhances Effectiveness of Multilingual Small LMs",
+      "justification": "The title explicitly presents the focus of the paper on a submission to the MRL 2024 Shared Task, emphasizing the use of ensembling for enhancing multilingual models.",
+      "quote": "McGill NLP Group Submission to the MRL 2024 Shared Task: Ensembling Enhances Effectiveness of Multilingual Small LMs"
+    },
+    "description": "This paper discusses the methods and systems developed by the McGill NLP Group for the MRL 2024 Shared Task, focusing on multilingual information retrieval tasks. The authors utilize various transformer-based, pre-trained language models like XLM-RoBERTa and mT5, fine-tuned for specific tasks such as Named Entity Recognition, Free-form Question Answering, and Multiple-choice Question Answering across five languages. The paper highlights the benefits of ensembling model predictions to improve robustness and effectiveness, especially in scenarios with limited target language data.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper details experimental setups, model fine-tuning, and performance evaluation on specific tasks, showcasing an empirical approach to testing model enhancements.",
+      "quote": "Our experimental results show that a more bal-anced dataset would yield better results."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The research focuses on language models for NLP tasks such as Named Entity Recognition and Question Answering, which are core NLP applications.",
+        "quote": "These models, with their large number of parameters and pre-training on vast datasets, have proven to be highly effective in ex-tracting and representing information possessed by input sequences."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Named Entity Recognition",
+          "justification": "The paper addresses the task of Named Entity Recognition specifically and discusses models fine-tuned for this purpose.",
+          "quote": "Named Entity Recognition NER is an NLP task that focuses on identifying and categorizing specific tokens or phrases in a text as belonging to pre-defined entity types."
+        },
+        "aliases": [
+          "NER"
+        ]
+      },
+      {
+        "name": {
+          "value": "Question Answering",
+          "justification": "The paper discusses two forms of question answering tasks: Free-form Question Answering and Multiple-choice Question Answering.",
+          "quote": "Free-form Question Answering FFQA involves providing answers to natural language questions based on the information given."
+        },
+        "aliases": [
+          "QA",
+          "FFQA",
+          "MCQA"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "AfroXLMR",
+          "justification": "AfroXLMR is mentioned as a variant of XLM-RoBERTa model tailored for African languages.",
+          "quote": "Afro-XLMR AfroXLMR (Alabi et al., 2022) is a variant of the XLM-RoBERTa model specifically tailored for African languages."
+        },
+        "aliases": [
+          "Afro-XLMR large",
+          "afro-xlmr-large"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper uses AfroXLMR but does not contribute it as a new model; it is based on prior work.",
+          "quote": "Afro-XLMR AfroXLMR (Alabi et al., 2022) is a variant of the XLM-RoBERTa model specifically tailored for African languages."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "AfroXLMR is mentioned among the models that were fine-tuned for specific tasks.",
+          "quote": "We fine-tuned three models for the NER task: xlm-roberta-large, afro-xlmr-large, and afro-xlmr-large-76L."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "AfroXLMR's performance is discussed in the empirical results section, comparing its effectiveness to other models.",
+          "quote": "For the tokens in the test set, we gathered predictions from each model and applied majority voting."
+        },
+        "referenced_paper_title": {
+          "value": "Adapting pre-trained language models to African languages via multilingual adaptive fine-tuning",
+          "justification": "This referenced paper provides the adaptation methodology and evaluation for AfroXLMR.",
+          "quote": "Afro-XLMR AfroXLMR (Alabi et al., 2022) is a variant of the XLM-RoBERTa model specifically tailored for African languages."
+        }
+      },
+      {
+        "name": {
+          "value": "mT5",
+          "justification": "The mT5 model is highlighted as a variant of T5 used for multilingual tasks.",
+          "quote": "The mT5 (Multilingual Text-to-Text Transfer Transformer) (Xue et al., 2021) is a variant of the T5 architecture."
+        },
+        "aliases": [
+          "mT5 Large"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "mT5 is a known variant of the T5 architecture, leveraged but not newly proposed in this paper.",
+          "quote": "The mT5 (Multilingual Text-to-Text Transfer Transformer) (Xue et al., 2021) is a variant of the T5 architecture."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The mT5 model was used for fine-tuning in the Free-form Question Answering task.",
+          "quote": "We fine-tuned two models for the Free-form Question Answering task: mT5 Large and AfriTeVa V2 Large."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares mT5’s performance against other models in the experimental results.",
+          "quote": "Among the individual models we fine-tuned, mT5 large performed the best with an average accuracy of 0.876."
+        },
+        "referenced_paper_title": {
+          "value": "mT5: A massively multilingual pre-trained text-to-text transformer",
+          "justification": "The paper references mT5 as part of its investigation into multilingual models for NLP tasks.",
+          "quote": "The mT5 (Multilingual Text-to-Text Transfer Transformer) (Xue et al., 2021) is a variant of the T5 architecture."
+        }
+      },
+      {
+        "name": {
+          "value": "mT0",
+          "justification": "The mT0 model is another iteration on T5 extended for multilingual scenarios.",
+          "quote": "The mT0 (Multilingual T0) (Muennighoff et al., 2023) is a variant of the T0 model, designed to extend its zero-shot and few-shot learning capabilities to a multilingual context."
+        },
+        "aliases": [
+          "mT0 Large"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The mT0 model is based on existing frameworks and is not introduced as a novel model by this paper.",
+          "quote": "The mT0 (Multilingual T0) (Muennighoff et al., 2023) is a variant of the T0 model, designed to extend its zero-shot and few-shot learning capabilities to a multilingual context."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The mT0 model was fine-tuned for the Multiple-choice Question Answering task.",
+          "quote": "We finetuned 3 models for the Multiple-choice Question Answering task: mT5 Large, mT0 Large and AfriTeVa V2 Large."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of mT0 is compared with other models in terms of accuracy across tasks.",
+          "quote": "Among the individual models we fine-tuned, mT5 large performed the best with an average accuracy of 0.876, closely followed by mT0 large at 0.869."
+        },
+        "referenced_paper_title": {
+          "value": "Crosslingual generalization through multitask finetuning",
+          "justification": "mT0's development as cited in the paper refers to practices in crosslingual model transfer and evaluation.",
+          "quote": "The mT0 (Multilingual T0) (Muennighoff et al., 2023) is a variant of the T0 model, designed to extend its zero-shot and few-shot learning capabilities to a multilingual context."
+        }
+      },
+      {
+        "name": {
+          "value": "AfriTeVa V2",
+          "justification": "AfriTeVa V2 is a derivative of T5, specifically adapted for African languages, highlighted for its utility in the tasks.",
+          "quote": "AfriTeVa V2 AfriTeVa V2 (Oladipo et al., 2023) is a multilingual sequence-to-sequence model derived from the T5 architecture, designed to support African languages."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper deploys AfriTeVa V2 but does not introduce it as a novel contribution, rather it is based on prior research.",
+          "quote": "AfriTeVa V2 AfriTeVa V2 (Oladipo et al., 2023) is a multilingual sequence-to-sequence model derived from the T5 architecture, designed to support African languages."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "AfriTeVa V2 is actively utilized and fine-tuned for the Free-form Question Answering and Multiple-choice Question Answering tasks in the research.",
+          "quote": "We fine-tuned two models for the Free-form Question Answering task: mT5 Large and AfriTeVa V2 Large."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares the effectiveness of AfriTeVa V2 against other models in different languages.",
+          "quote": "Our ensemble system outperformed all of our individual fine-tuned models, demonstrating the effectiveness of the ensemble approach."
+        },
+        "referenced_paper_title": {
+          "value": "Better quality pre-training data and T5 models for African languages",
+          "justification": "This is the relevant reference which provides background on the capabilities and design of AfriTeVa V2.",
+          "quote": "AfriTeVa V2 AfriTeVa V2 (Oladipo et al., 2023) is a multilingual sequence-to-sequence model derived from the T5 architecture, designed to support African languages."
+        }
+      },
+      {
+        "name": {
+          "value": "XLM-RoBERTa",
+          "justification": "XLM-RoBERTa is extensively used in the paper for multilingual representational tasks, cited as a successful transformer-based model.",
+          "quote": "These models, with their large number of parameters and pre-training on vast datasets, have proven to be highly effective in ex-tracting and representing information possessed by input sequences."
+        },
+        "aliases": [
+          "xlm-roberta-large"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "XLM-RoBERTa is a known model from prior research, not a new contribution of this paper.",
+          "quote": "These models, with their large number of parameters and pre-training on vast datasets, have proven to be highly effective."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The research uses XLM-RoBERTa for fine-tuning specific tasks, as described in the processes outlined.",
+          "quote": "We fine-tuned three models for the NER task: xlm-roberta-large, afro-xlmr-large, and afro-xlmr-large-76L."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "XLM-RoBERTa's performance is evaluated in comparison with other models used in this research task.",
+          "quote": "For the tokens in the test set, we gathered predictions from each model and applied majority voting."
+        },
+        "referenced_paper_title": {
+          "value": "Unsupervised cross-lingual representation learning at scale",
+          "justification": "The paper refers to XLM-RoBERTa's prior evaluations and its design for multilingual tasks.",
+          "quote": "These models, with their large number of parameters and pre-training on vast datasets, have proven to be highly effective."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "MasakhaNER 2.0",
+          "justification": "The paper uses the MasakhaNER 2.0 dataset for NER tasks, specifically highlighting its applicability to African languages.",
+          "quote": "MasakhaNER 2.0 MasakhaNER 2.0 (Adelani et al., 2022) is a human-annotated NER dataset for 20 African languages."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "MasakhaNER 2.0: Africa-centric transfer learning for named entity recognition",
+          "justification": "The dataset's reference supports its use for African language NER, which aligns with the paper's research scope.",
+          "quote": "MasakhaNER 2.0 MasakhaNER 2.0 (Adelani et al., 2022) is a human-annotated NER dataset for 20 African languages."
+        }
+      },
+      {
+        "name": {
+          "value": "XTREME-UP",
+          "justification": "XTREME-UP is utilized as a benchmark for tasks with scarce data across numerous languages included in this study.",
+          "quote": "XTREME-UP XTREME-UP (Ruder et al., 2023) is a benchmark focus on the scarce data across 88 languages and 9 tasks."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "XTREME-UP: A user-centric scarce-data benchmark for under-represented languages",
+          "justification": "The reference cited for XTREME-UP provides context on its design for low-resource language tasks.",
+          "quote": "XTREME-UP XTREME-UP (Ruder et al., 2023) is a benchmark focus on the scarce data across 88 languages and 9 tasks."
+        }
+      },
+      {
+        "name": {
+          "value": "MLQA",
+          "justification": "The MLQA dataset is used for cross-lingual extractive question answering tasks within the paper's exploration of multilingual processing.",
+          "quote": "MLQA MLQA (Lewis et al., 2019) is an extractive QA evaluation benchmark contain across 7 languages."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "MLQA: Evaluating cross-lingual extractive question answering",
+          "justification": "This paper provides benchmark context and results related to MLQA's use.",
+          "quote": "MLQA MLQA (Lewis et al., 2019) is an extractive QA evaluation benchmark contain across 7 languages."
+        }
+      },
+      {
+        "name": {
+          "value": "XQuAD",
+          "justification": "XQuAD is mentioned as an integral dataset for testing cross-lingual question answering, part of the multilingual tasks described.",
+          "quote": "XQuAD XQuaAD (Artetxe et al., 2019) is a cross-lingual question answering dataset composed of paragraphs and question-answer pairs selected from SQuAD v1.1 (Rajpurkar et al., 2016) translated into ten languages."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "On the cross-lingual transferability of monolingual representations",
+          "justification": "This citation backs the use of XQuAD for evaluating cross-lingual multilingual QA capabilities.",
+          "quote": "XQuAD XQuaAD (Artetxe et al., 2019) is a cross-lingual question answering dataset."
+        }
+      },
+      {
+        "name": {
+          "value": "CoNLL03",
+          "justification": "The CoNLL03 dataset is employed for NER training in English and German, supporting multilingual approaches discussed.",
+          "quote": "CoNLL03 CoNLL03 (Tjong Kim Sang and De Meulder, 2003) consists of annotations of NER tags across English and German languages."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Introduction to the CoNLL-2003 shared task: Language-independent named entity recognition",
+          "justification": "The paper refers CoNLL03 for its extensive use in language-independent NER experimentation.",
+          "quote": "CoNLL03 CoNLL03 (Tjong Kim Sang and De Meulder, 2003) consists of annotations of NER tags across English and German languages."
+        }
+      },
+      {
+        "name": {
+          "value": "Turkish Wiki NER Dataset",
+          "justification": "This dataset is used for training NER models in Turkish, highlighting its role in multilingual task execution.",
+          "quote": "Turkish Wiki NER dataset (Altinok, 2023) is an NER dataset which contains 20,000 manually annotated sentences selected from TWNERTC dataset (Sahin et al., 2017)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "A diverse set of freely available linguistic resources for Turkish",
+          "justification": "The reference points out the dataset's context and breadth for NER in Turkish and multilingual use.",
+          "quote": "Turkish Wiki NER dataset (Altinok, 2023) is an NER dataset which contains 20,000 manually annotated sentences."
+        }
+      },
+      {
+        "name": {
+          "value": "Belebele",
+          "justification": "Belebele is utilized as a dataset for both multiple-choice and free-form question answering in a multilingual context, essential to the paper's experiments.",
+          "quote": "Belebele Belebele (Bandarkar et al., 2024) is a multilingual multiple-choice machine reading comprehension dataset."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The Belebele benchmark: A parallel reading comprehension dataset in 122 language variants",
+          "justification": "The referenced paper provides the dataset's structure and utility for diverse language comprehension tasks, fitting the research scope.",
+          "quote": "Belebele Belebele (Bandarkar et al., 2024) is a multilingual multiple-choice machine reading comprehension dataset."
+        }
+      },
+      {
+        "name": {
+          "value": "NaijaRC",
+          "justification": "NaijaRC is used for multiple-choice reading comprehension tailored for Nigerian languages, enhancing the multilingual test scenarios in the paper.",
+          "quote": "NaijaRC NaijaRC (Aremu et al., 2024) is a multiple-choice reading comprehension dataset consisting of questions from high school reading comprehension exams in three native Nigerian languages."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "NaijaRC: A multi-choice reading comprehension dataset for Nigerian languages",
+          "justification": "This reference describes the data's cultural specificity and its role in language models' evaluation in Nigerian contexts.",
+          "quote": "NaijaRC NaijaRC (Aremu et al., 2024) is a multiple-choice reading comprehension dataset."
+        }
+      },
+      {
+        "name": {
+          "value": "RACE",
+          "justification": "RACE is included for large-scale testing of reading comprehension models, underpinning the setup of multiple-choice evaluation.",
+          "quote": "RACE RACE (Lai et al., 2017) is a large-scale reading comprehension dataset in English."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "RACE: Large-scale ReAding comprehension dataset from examinations",
+          "justification": "The extensive use and structure of RACE as referenced validates its inclusion for comprehensive language model training.",
+          "quote": "RACE RACE (Lai et al., 2017) is a large-scale reading comprehension dataset."
+        }
+      },
+      {
+        "name": {
+          "value": "UZNER",
+          "justification": "UZNER is explicitly used for training models focused on NER in the Uzbek language, supporting cross-lingual aims in the research.",
+          "quote": "UZNER UZNER(Yusufu et al., 2023) is a benchmark manually dataset specifically designed for NER tasks in the Uzbek language."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "UZNER: A benchmark for named entity recognition in Uzbek",
+          "justification": "This reference supports the dataset's utility in extending NER tasks to the Uzbek language, as explored in the paper.",
+          "quote": "UZNER UZNER(Yusufu et al., 2023) is a benchmark manually dataset specifically designed for NER tasks in the Uzbek language."
+        }
+      },
+      {
+        "name": {
+          "value": "Cosmos QA",
+          "justification": "The Cosmos QA dataset is employed for its focus on commonsense reasoning in English multiple-choice contexts, integrated into multilingual tasks.",
+          "quote": "Cosmos QA Cosmos QA (Huang et al., 2019) is a commonsense-based reading comprehension dataset in English."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Cosmos QA: Machine reading comprehension with contextual commonsense reasoning",
+          "justification": "Cosmos QA's citation reflects its focus on commonsense reasoning within reading comprehension, suitable for the paper's needs.",
+          "quote": "Cosmos QA Cosmos QA (Huang et al., 2019) is a commonsense-based reading comprehension dataset."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Hugging Face Transformers",
+          "justification": "The library is used for fine-tuning models, a crucial component of the research's experimental setup.",
+          "quote": "We used the Trainer of huggingface transformers to fine-tune all the models."
+        },
+        "aliases": [
+          "Transformers"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Transformers: State-of-the-Art Natural Language Processing",
+          "justification": "The library's role in providing state-of-the-art tools and APIs for model training and fine-tuning aligns with the paper's applications.",
+          "quote": "We used the Trainer of huggingface transformers to fine-tune all the models."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 4260,
+    "prompt_tokens": 12100,
+    "total_tokens": 16360,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

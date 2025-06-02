@@ -1,0 +1,289 @@
+{
+  "paper": "b597218d7ab1d83c5741cdd9b11fb3db.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Learning to Dequantise with Truncated Flows",
+      "justification": "The title clearly specifies the focus of the study, which is about learning dequantisation techniques using truncated flows in machine learning models.",
+      "quote": "LEARNING TO DEQUANTISE WITH TRUNCATED FLOWS"
+    },
+    "description": "This paper introduces a novel flow-based model called Truncated Flows (TRUFL) that is used to learn dequantisation schemes for categorical data. The model aims to transform discrete data into a continuous form to fit density-based models while allowing for bounded and non-overlapping support distributions. The paper discusses the benefits of their approach over previous methods like Argmax Flow and Categorical Normalizing Flows (CatNF), and provides experimental results demonstrating its effectiveness in tasks such as constrained generation.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper benchmarks TRUFL on tasks like constrained generation, indicating an empirical study that involves experimentation and observation of the model's performance.",
+      "quote": "Experimentally, we benchmark TRUFL on constrained generation tasks, and find that it outperforms prior approaches."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Deep Generative Models",
+        "justification": "The focus is on generative models aiming to handle discrete to continuous space transformations for data sampling and synthesis.",
+        "quote": "Deep generative models aim to model a distribution of high-dimensional natural data."
+      },
+      "aliases": [
+        "Generative Models"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Flow-based Models",
+          "justification": "The research involves creating and using flow-based models specifically with truncated flows.",
+          "quote": "...using variational inference with TRUncated FLows (TRUFL) — a novel flow-based model that allows the dequantiser..."
+        },
+        "aliases": [
+          "Normalizing Flows"
+        ]
+      },
+      {
+        "name": {
+          "value": "Variational Inference",
+          "justification": "Variational inference is mentioned as the method for learning the dequantisation scheme in the TRUFL model.",
+          "quote": "We learn such a dequantisation scheme q(z|x), using variational inference with TRUncated FLows..."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Discrete Data to Continuous Spaces",
+          "justification": "The core challenge addressed is transforming discrete data into continuous spaces, typical in generative model preprocessing.",
+          "quote": "Dequantisation refers to the process of embedding discrete-valued data into a continuous space..."
+        },
+        "aliases": [
+          "Dequantisation"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Truncated Flows (TRUFL)",
+          "justification": "The paper presents TRUFL as a novel model contributing to the field of learning dequantisation schemes.",
+          "quote": "We learn such a dequantisation scheme q(z|x), using variational inference with TRUncated FLows (TRUFL)..."
+        },
+        "aliases": [
+          "TRUFL"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "TRUFL is explicitly introduced as a novel aspect of the research.",
+          "quote": "...using variational inference with TRUncated FLows (TRUFL) — a novel flow-based model..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper discusses benchmarking TRUFL and executing it in experiments to analyze performance.",
+          "quote": "...we benchmark TRUFL on constrained generation tasks..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "TRUFL is compared against prior approaches like Argmax Flow and CatNF to demonstrate its effectiveness.",
+          "quote": "...we find that it outperforms prior approaches."
+        },
+        "referenced_paper_title": {
+          "value": "None",
+          "justification": "The model TRUFL is new and introduced within this paper, hence no external reference paper is applicable.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "Argmax Flow",
+          "justification": "Argmax Flow is mentioned as an existing method that TRUFL is compared against.",
+          "quote": "Argmax Flow makes minimal assumptions on the topology of the data..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper refers to Argmax Flow as a pre-existing method that is used as a comparative benchmark.",
+          "quote": "Argmax Flow makes minimal assumptions on the topology of the data..."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "Argmax Flow is mentioned for comparison purposes but not necessarily executed by the authors of this paper.",
+          "quote": "These methods may not be directly applied..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Argmax Flow serves as a baseline to criticize and compare the benefits of TRUFL.",
+          "quote": "Argmax Flow makes minimal assumptions on the topology of the data..."
+        },
+        "referenced_paper_title": {
+          "value": "Argmax flows and multinomial diffusion: Towards non-autoregressive language models",
+          "justification": "This is the paper title from which Argmax Flow is referenced, indicating where the model was originally introduced.",
+          "quote": "...Argmax Flow (Hoogeboom et al., 2021)..."
+        }
+      },
+      {
+        "name": {
+          "value": "Categorical Normalizing Flows (CatNF)",
+          "justification": "CatNF is discussed as a method similar in context but distinct in its limitations compared to TRUFL.",
+          "quote": "Categorical Normalizing Flows (CatNF; Lippe & Gavves 2020) can learn a more compact representation of the input category..."
+        },
+        "aliases": [
+          "CatNF"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper uses CatNF for comparative purposes but was originally developed by Lippe & Gavves 2020.",
+          "quote": "Categorical Normalizing Flows (CatNF; Lippe & Gavves 2020) can learn..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "CatNF is likely used in comparisons as execution results are detailed in their analyses.",
+          "quote": "CatNF learns a dequantiser that can 'softly' partition the space."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "CatNF is used as a basis of comparison to highlight the advantages of TRUFL.",
+          "quote": "CatNF learns a dequantiser that can 'softly' partition the space."
+        },
+        "referenced_paper_title": {
+          "value": "Categorical Normalizing Flows via Continuous Transformations",
+          "justification": "This is the referenced paper for CatNF authored by Lippe & Gavves.",
+          "quote": "Categorical Normalizing Flows (CatNF; Lippe & Gavves 2020) can learn..."
+        }
+      },
+      {
+        "name": {
+          "value": "Recurrent Neural Network (RNN)",
+          "justification": "RNN is used as part of the graphical comparison for approaches in the experiments.",
+          "quote": "RNN+Largest first"
+        },
+        "aliases": [
+          "RNN"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "RNN is a standard model used for comparison and not a contribution of this paper.",
+          "quote": "RNN+Largest first"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The RNN model is part of the empirical comparisons in model performance.",
+          "quote": "RNN+Largest first"
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The text compares the effectiveness of different graphical model approaches using RNN models as benchmarks.",
+          "quote": "RNN+Largest first"
+        },
+        "referenced_paper_title": {
+          "value": "None",
+          "justification": "RNN is a classical model and doesn't require a specific paper reference for its inclusion.",
+          "quote": ""
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "ZINC250k",
+          "justification": "The dataset is explicitly used in experiments for molecule generation benchmarking.",
+          "quote": "Molecule generation is another task commonly used as a generative modelling benchmark (Jin et al., 2018; Shi et al., 2020; Ma et al., 2018; Madhawa et al., 2019)."
+        },
+        "aliases": [
+          "ZINC"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ZINC: A Free Tool to Discover Chemistry for Biology",
+          "justification": "The ZINC dataset is referenced for information regarding its utilization in chemical and biological modeling.",
+          "quote": "Performance on molecule generation trained on Zinc250k (Irwin et al., 2012)..."
+        }
+      },
+      {
+        "name": {
+          "value": "Penn Treebank (PTB)",
+          "justification": "PTB is utilized in character-level experiments for language modeling tasks.",
+          "quote": "For the character level experiments on the Penn Treebank (PTB; Marcus et al. 1993), we use the setup in CatNF..."
+        },
+        "aliases": [
+          "PTB"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Building a Large Annotated Corpus of English: The Penn Treebank",
+          "justification": "This is the foundational paper reference that describes the development and application of the Penn Treebank.",
+          "quote": "Penn Treebank (PTB; Marcus et al. 1993)..."
+        }
+      },
+      {
+        "name": {
+          "value": "Text8",
+          "justification": "Text8 is used in experiments for assessing language modeling performance.",
+          "quote": "For text8 (Mikolov et al., 2014), we use the Argmax flow codebase..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Longer Memory in Recurrent Neural Networks",
+          "justification": "This is the foundational paper reference associated with the Text8 dataset.",
+          "quote": "Text8 (Mikolov et al., 2014)..."
+        }
+      },
+      {
+        "name": {
+          "value": "Wikitext103",
+          "justification": "Wikitext103 is employed in word-level language modeling tasks as evaluated in the setup used in CatNF.",
+          "quote": "For word level experiments on Wikitext103 (Merity et al., 2016), we use the setting provided by CatNF..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Pointer Sentinel Mixture Models",
+          "justification": "The reference gives a detailed overview and application of the Wikitext103 dataset used in language modeling.",
+          "quote": "Wikitext103 (Merity et al., 2016)..."
+        }
+      },
+      {
+        "name": {
+          "value": "Graph Coloring",
+          "justification": "The graph coloring problem is used as a validation task for evaluating model performance and learning constraints.",
+          "quote": "We first consider the graph colouring problem (Bondy et al., 1976)..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Graph Theory with Applications",
+          "justification": "This reference is for understanding the graph coloring problem domain within graph theory, emphasizing the computational challenges and algorithmic solutions.",
+          "quote": "The graph colouring problem (Bondy et al., 1976)..."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "GloVe",
+          "justification": "GloVe word embeddings are employed in word-level experiments on language modeling, indicating its use in the paper.",
+          "quote": "...and initialises the word embeddings using GloVe (Pennington et al., 2014)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "GloVe: Global Vectors for Word Representation",
+          "justification": "The foundational reference of the GloVe library is mentioned, indicating its relevance and contribution to word representation.",
+          "quote": "GloVe: Global vectors for word representation."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2252,
+    "prompt_tokens": 15998,
+    "total_tokens": 18250,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "paper": "ba7f75f3ceb047d81f595e0af23a9722.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Prediction of Disease Progression in Multiple Sclerosis Patients using Deep Learning Analysis of MRI Data",
+      "justification": "The title is explicitly stated at the beginning of the paper.",
+      "quote": "Prediction of Disease Progression in Multiple Sclerosis Patients using\nDeep Learning Analysis of MRI Data"
+    },
+    "description": "The paper presents an automatic end-to-end deep learning framework for predicting future disability progression in Multiple Sclerosis (MS) patients using multi-modal brain MRI data. The model employs a deep 3D CNN inspired by the Inception network, and it aims to predict a significant increase in disability within a year based on MRI scans at baseline. It uses proprietary datasets of RRMS patients, utilizes Monte Carlo dropout for uncertainty estimation, and offers better accuracy by incorporating lesion label masks.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves experiments and results based on real datasets, which is indicative of empirical research.",
+      "quote": "We evaluate the ability of the model learned by our approach to predict clinical progression in MS patients through a series of experiments."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Medical Image Analysis",
+        "justification": "The paper uses MRI data to analyze and predict disease progression, which falls under the domain of medical image analysis.",
+        "quote": "In this work, we present the first automatic, end-to-end deep learning framework for the prediction of future patient disability progression based on multi-modal brain MRI of patients with MS."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Deep Learning",
+          "justification": "The study uses deep learning techniques such as 3D CNNs, referenced architectures (e.g., Inception net), and uncertainty measures using Monte Carlo dropout.",
+          "quote": "The model uses parallel convolutional pathways, an idea introduced by the popular Inception net..."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "3D CNN with parallel convolutional pathways inspired by Inception net",
+          "justification": "The paper discusses the design and use of a 3D CNN model inspired by Inception network architecture for its primary analysis.",
+          "quote": "We use a deep 3D CNN with parallel convolutional pathways, an architecture inspired by the popular Inception net (Szegedy et al., 2015)."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "The framework is presented as a novel approach for predicting MS progression.",
+          "quote": "In this work, we present the first automatic, end-to-end deep learning framework for the prediction of future patient disability progression..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The training was executed on a GPU which indicates that the model was indeed executed for experiments.",
+          "quote": "Training took approximately 10 hours on a V100 GPU with 16GB of memory."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The model's performance was compared against VGG-like 3D CNN.",
+          "quote": "We compare the results of the proposed network to a 3D version of the popular VGG model (Simonyan and Zisserman, 2014) with a similar number of parameters."
+        },
+        "referenced_paper_title": {
+          "value": "Going deeper with convolutions",
+          "justification": "The inception network, which inspired the paper's model architecture, was originally described in this work.",
+          "quote": "We use a deep 3D CNN with parallel convolutional pathways, an architecture inspired by the popular Inception net (Szegedy et al., 2015)."
+        }
+      },
+      {
+        "name": {
+          "value": "VGG-like 3D CNN",
+          "justification": "The paper explicitly mentions using a VGG-like 3D CNN for comparative analysis with their proposed model.",
+          "quote": "We compare the results of the proposed network to a 3D version of the popular VGG model (Simonyan and Zisserman, 2014) with a similar number of parameters."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The VGG-like model is used for comparison purposes, not as a new contribution.",
+          "quote": "We compare the results of the proposed network to a 3D version of the popular VGG model..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The VGG-like model was used in actual experiments to compare results.",
+          "quote": "Both experiments performed significantly better than the baseline, which had an AUC of 0.615 ± 0.053."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares the performance of the VGG-like 3D CNN model against the proposed 3D CNN.",
+          "quote": "Both experiments performed significantly better than the baseline, which had an AUC of 0.615 ± 0.053."
+        },
+        "referenced_paper_title": {
+          "value": "Very deep convolutional networks for large-scale image recognition",
+          "justification": "The VGG model originates from this paper by Simonyan and Zisserman.",
+          "quote": "We compare the results of the proposed network to a 3D version of the popular VGG model (Simonyan and Zisserman, 2014)..."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Proprietary clinical trial datasets of RRMS patients",
+          "justification": "The paper uses two proprietary datasets focusing on Relapsing-Remitting Multiple Sclerosis patients.",
+          "quote": "The data used for our experiments are drawn from two large proprietary, multi-scanner, multi-center, clinical trial MRI volumes acquired from patients with Relapsing-Remitting MS (RRMS)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "The datasets are proprietary and not derived from another publication, hence no referenced paper title is applicable.",
+          "quote": "The data used for our experiments are drawn from two large proprietary, multi-scanner, multi-center, clinical trial MRI volumes acquired from patients with Relapsing-Remitting MS (RRMS)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "RMSProp optimizer",
+          "justification": "The RMSProp optimizer is explicitly mentioned as a tool used in training the model.",
+          "quote": "We trained our network using the RMSProp optimizer with the cross-entropy loss objective (Hinton, 2016)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Neural networks for machine learning",
+          "justification": "The RMSProp optimizer used in the paper can be traced back to Hinton's course notes.",
+          "quote": "We trained our network using the RMSProp optimizer with the cross-entropy loss objective (Hinton, 2016)."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1327,
+    "prompt_tokens": 8108,
+    "total_tokens": 9435,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

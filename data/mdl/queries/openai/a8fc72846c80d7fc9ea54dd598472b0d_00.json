@@ -1,0 +1,236 @@
+{
+  "paper": "a8fc72846c80d7fc9ea54dd598472b0d.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Bag of Tricks for Fully Test-Time Adaptation",
+      "justification": "The title is explicitly mentioned at the top of the paper.",
+      "quote": "Bag of Tricks for Fully Test-Time Adaptation"
+    },
+    "description": "This research paper presents an analysis of different techniques for Fully Test-Time Adaptation (Fully TTA), aiming to adapt models to data drifts. It categorizes selected orthogonal TTA techniques and evaluates their impact on model accuracy, computational requirements, and model complexity under various scenarios. The study also highlights the synergies that arise when combining different techniques, establishing new state-of-the-art results.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper describes experiments conducted with various models and techniques to improve Fully Test-Time Adaptation, focusing on classification accuracy and computational efficiency.",
+      "quote": "Our experimental results show that those techniques are already boosting the performance at test time when used alone, but that combining all of them leads to the best classification accuracy compared to a vanilla Tent method and 2 recent state-of-the-art methods on 4 different datasets."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Test-Time Adaptation",
+        "justification": "The paper primarily focuses on Fully Test-Time Adaptation, a subset of test-time adaptation techniques for adapting models when test and training data distributions differ.",
+        "quote": "Test-Time Adaptation (TTA) aims at addressing this problem by adapting a model pre-trained on source data to make better predictions on shifted target data."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Source-Free Domain Adaptation",
+          "justification": "The paper discusses methods related to test-time training and domain adaptation without access to source domain data, aligning with Source-Free Domain Adaptation (SFDA).",
+          "quote": "TTA shares important motivations and similarities with earlier or concurrent settings that are source-free domain adaptation (SFDA)."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Batch Normalization Techniques",
+          "justification": "The paper analyzes the role of various normalization techniques in performance improvement during test-time adaptation.",
+          "quote": "Batch normalization parameters are updated using a combination of the mini-batch statistics and moving averages of these statistics."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Tent/ResNet50-BN",
+          "justification": "The model Tent/ResNet50-BN was explicitly discussed and evaluated in the experiments.",
+          "quote": "Tent performance on architectures with batch-agnostic normalization layers such as GroupNorm or LayerNorm is more stable."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Tent/ResNet50-BN is a pre-existing model referenced in the paper, utilized for evaluation.",
+          "quote": "Tent: Fully Test-Time Adaptation by entropy minimization."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model Tent/ResNet50-BN was executed during the experiments as part of the paper's evaluation of techniques.",
+          "quote": "Accuracy of Tent method on ImageNet-C using ResNet50-BN shows effectiveness under small batch sizes."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper evaluates and compares the performance of Tent/ResNet50-BN with other models and techniques.",
+          "quote": "In the context of test-time adaptation, Tent showed competitive accuracy against other methods."
+        },
+        "referenced_paper_title": {
+          "value": "Tent: Fully Test-Time Adaptation by Entropy Minimization",
+          "justification": "The reference for the Tent method is explicitly mentioned, providing the context for its usage in the paper.",
+          "quote": "Tent was introduced in 'Tent: Fully Test-Time Adaptation by Entropy Minimization'."
+        }
+      },
+      {
+        "name": {
+          "value": "SAR/ResNet50-BN",
+          "justification": "SAR/ResNet50-BN is discussed and used as a comparison model in the paper's studies.",
+          "quote": "SAR [22] is a state-of-the-art method in Fully TTA."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "This model is referenced as a state-of-the-art method and was not newly introduced in this paper.",
+          "quote": "SAR [22] is a state-of-the-art method in Fully TTA."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "SAR/ResNet50-BN was one of the models tested and evaluated in the paper's experiments.",
+          "quote": "SAR performance was measured using ResNet50-BN architecture."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of SAR/ResNet50-BN was compared against other adaptation methods in the experiments.",
+          "quote": "SAR was compared with other adaptation methods like Delta and Tent."
+        },
+        "referenced_paper_title": {
+          "value": "Towards Stable Test-Time Adaptation in Dynamically Changing Environments",
+          "justification": "SAR is referenced as a previous method in the literature, aimed at solving test-time adaptation issues.",
+          "quote": "SAR [22] is a state-of-the-art method in Fully TTA."
+        }
+      },
+      {
+        "name": {
+          "value": "Delta/ResNet50-BN",
+          "justification": "Delta/ResNet50-BN is one of the methods evaluated in the paper for Fully TTA.",
+          "quote": "Delta [36] is also a state-of-the-art method in Fully TTA."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Delta/ResNet50-BN is not a new contribution but an existing method evaluated in this context.",
+          "quote": "Delta is referenced as a state-of-the-art method and not a new contribution of this paper."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model Delta/ResNet50-BN was executed during the studies presented in the paper.",
+          "quote": "Delta performance was assessed using the ResNet50-BN architecture in experiments."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Delta/ResNet50-BN's performance is compared with other models and methods discussed in the paper.",
+          "quote": "Delta was evaluated in comparison to Tent and other fully TTA methods."
+        },
+        "referenced_paper_title": {
+          "value": "DELTA: Degradation-Free Fully Test-Time Adaptation",
+          "justification": "The Delta method is linked to a specific publication focus outlined in its cited reference.",
+          "quote": "Delta [36] is also a state-of-the-art method in Fully TTA."
+        }
+      },
+      {
+        "name": {
+          "value": "BoT/ResNet50-BN",
+          "justification": "BoT/ResNet50-BN is a model configuration analyzed in the paper to achieve new state-of-the-art results.",
+          "quote": "In our experimental setup, we call BoT the model combining the best tricks."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "The BoT/ResNet50-BN model represents a new finding within the study, utilizing combinations of methods for improved results.",
+          "quote": "BoT model combines the best performing tricks under analysis in this paper."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "BoT/ResNet50-BN was an actively executed model in experiments conducted throughout the paper.",
+          "quote": "Performance was improved through the execution of the BoT/ResNet50-BN model in tests."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "BoT/ResNet50-BN served as a key model for performance comparison with other TTA methods.",
+          "quote": "BoT was compared to standard Tent, SAR, and Delta under similar conditions."
+        },
+        "referenced_paper_title": {
+          "value": "Bag of Tricks for Fully Test-Time Adaptation",
+          "justification": "The BoT model configuration is specifically conceptualized and contributed within this paper.",
+          "quote": "BoT model derives its approach based on combinations reviewed in Bag of Tricks for Fully Test-Time Adaptation."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "ImageNet-C",
+          "justification": "ImageNet-C is used extensively for testing and evaluating different models within the experiments in the paper.",
+          "quote": "We evaluate the different methods on several datasets used by prior SFDA or TTA studies: (i) ImageNet-C [10]"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Benchmarking Neural Network Robustness to Common Corruptions and Perturbations",
+          "justification": "ImageNet-C is a known benchmark dataset for evaluating model robustness to common data corruptions.",
+          "quote": "ImageNet-C is used for robustness testing to common corruptions, as per 'Benchmarking neural network robustness to common corruptions and perturbations'."
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet-Rendition",
+          "justification": "The dataset ImageNet-Rendition was used to evaluate model performance beyond ImageNet-C in the experiments.",
+          "quote": "ImageNet-Rendition consists of 30,000 images distributed in 200 Imagenet classes."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The Many Faces of Robustness: A Critical Analysis of Out-of-Distribution Generalization",
+          "justification": "The context for ImageNet-Rendition is derived from an analysis of out-of-distribution generalization efforts.",
+          "quote": "ImageNet-Rendition dataset insights are referenced from 'The many faces of robustness: A critical analysis of out-of-distribution generalization.'"
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet-Sketch",
+          "justification": "The dataset ImageNet-Sketch was also part of the analysis to test model adaptations to sketch-style inputs.",
+          "quote": "ImageNet-Sketch is a dataset of 50,000 images distributed in all ImageNet classes."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Robust Global Representations by Penalizing Local Predictive Power",
+          "justification": "ImageNet-Sketch evaluation strategies have been previously documented, referenced within related literature.",
+          "quote": "ImageNet-Sketch datasets provide diverse challenges as shown in 'Learning robust global representations by penalizing local predictive power.'"
+        }
+      },
+      {
+        "name": {
+          "value": "VisDA2017",
+          "justification": "VisDA2017 dataset was part of the experiments to assess adaptation across synthetic and real domain images.",
+          "quote": "Finally, VisDA2017 [24] is a dataset of over 72K images distributed in 12 ImageNet classes and containing a mix of synthetic and real domain images."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "VisDA: The Visual Domain Adaptation Challenge",
+          "justification": "VisDA2017 presented a benchmark challenge for domain adaptation, critical to the experiments conducted.",
+          "quote": "The context for VisDA2017 originates from 'VisDA: The visual domain adaptation challenge.'"
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 2119,
+    "prompt_tokens": 16505,
+    "total_tokens": 18624,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

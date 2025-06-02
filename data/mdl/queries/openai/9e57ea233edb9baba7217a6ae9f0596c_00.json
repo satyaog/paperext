@@ -1,0 +1,173 @@
+{
+  "paper": "9e57ea233edb9baba7217a6ae9f0596c.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "VCR: A Task for Pixel-Level Complex Reasoning in Vision Language Models via Restoring Occluded Text",
+      "justification": "This title accurately represents the paper's main focus, which is to introduce a novel task that challenges vision-language models to restore obscured text from images using pixel-level reasoning.",
+      "quote": "VCR: A T ASK FOR P IXEL -L EVEL C OMPLEX R EASONING IN V ISION L ANGUAGE M ODELS VIA R ESTORING O CCLUDED T EXT"
+    },
+    "description": "The paper introduces Visual Caption Restoration (VCR), a vision-language task that involves restoring obscured text in images using pixel-level hints. It presents a new dataset, VCR-WIKI, constructed using images and captions from Wikipedia. The task is designed to challenge current vision-language models, as they rely significantly on text processing rather than the intricate synthesis of vision and embedded text. The paper evaluates the performance of state-of-the-art models and highlights the gap in performance between these models and humans, suggesting the need for innovative model architectures and training methods.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper's approach involves creating a benchmark dataset and conducting experiments to evaluate the performance of existing models on a newly proposed task.",
+      "quote": "Our results reveal that current vision language models significantly lag behind human performance in the VCR task, and merely fine-tuning the models on our dataset does not lead to notable improvements."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Vision-Language Integration",
+        "justification": "The paper's primary focus is on integrating vision and language processing to understand and interpret complex multimedia content, particularly in the context of text restoration from images.",
+        "quote": "Recent advances in large language models, such as ChatGPT\n(OpenAI et al., 2023) and Llama (Touvron et al., 2023), have\nspurred significant interest and progress in the field of vision-\nlanguage models (VLMs)."
+      },
+      "aliases": [
+        "VLMs"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Visual Question Answering (VQA)",
+          "justification": "The paper compares VCR to VQA and OCR tasks, highlighting the novel aspect of text restoration within images as a more complex form of visual question answering.",
+          "quote": "The Visual Question Answering (VQA) task (Antol et al., 2015; Wang et al., 2018; Mishra et al., 2019b; Singh et al., 2019) has been a popular benchmark in assessing how well models align and interpret visual and linguistic information."
+        },
+        "aliases": [
+          "VQA"
+        ]
+      },
+      {
+        "name": {
+          "value": "Optical Character Recognition (OCR)",
+          "justification": "The paper discusses the limitations of OCR in the context of the VCR task, emphasizing that simple text recognition is insufficient for the tasks proposed.",
+          "quote": "For example, in extreme cases, models rely on existing Optical Character Recognition (OCR) system to extract text from documents."
+        },
+        "aliases": [
+          "OCR"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "InternLM-XComposer2-VL",
+          "justification": "InternLM-XComposer2-VL is specifically mentioned as an evaluated model in the experiments.",
+          "quote": "InternLM-XComposer2-VL-4K, despite its higher resolution, demonstrates significantly lower performance on the VCR EN, EASY setting compared to its lower-resolution counterparts."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "This model is used for evaluation rather than being newly introduced or significantly modified in this paper.",
+          "quote": "In this section, we report the experimental results of existing state-of-the-art vision-language models on both VCR-WIKI and the VCR-HIDDEN hidden test."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was executed in experiments to evaluate its performance on the new VCR task.",
+          "quote": "We fine-tune CogVLM2-Llama3-19B-Chat, MiniCPM-Llama3-V2.5, and Qwen2-VL-7B-Instruct in the English Hard configuration."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The model's performance is explicitly compared to other models and human benchmarks in the context of the VCR task.",
+          "quote": "Despite high-performing models like Qwen2-VL excelling in VCR EN, EASY and VCR EN, HARD settings, most recent models struggle significantly."
+        },
+        "referenced_paper_title": {
+          "value": "InternLM-XComposer2: Mastering free-form text-image composition and comprehension in vision-language large model",
+          "justification": "The referenced paper title is listed in the references as a work related to the InternLM-XComposer2-VL model.",
+          "quote": "Xiaoyi Dong, Pan Zhang, Yuhang Zang, Yuhang Cao, Bin Wang, Linke Ouyang, Songyang Zhang, Haodong Duan, Wenwei Zhang, Yining Li, Hang Yan, Yang Gao, Zhe Chen, Xinyue Zhang, Wei Li, Jingwen Li, Wenhai Wang, Kai Chen, Conghui He, Xingcheng Zhang, Jifeng Dai, Yu Qiao, Dahua Lin, and Jiaqi Wang. Internlm-xcomposer2: Mastering free-form text-image composition and comprehension in vision-language large model."
+        }
+      },
+      {
+        "name": {
+          "value": "CogVLM2-Llama3-19B-Chat",
+          "justification": "CogVLM2-Llama3-19B-Chat is explicitly named and utilized in fine-tuning experiments within the paper, indicating its significance.",
+          "quote": "We fine-tune CogVLM2-Llama3-19B-Chat, MiniCPM-Llama3-V2.5, and Qwen2-VL-7B-Instruct in the English Hard configuration."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The model is used for experiments but not introduced as a new or modified model in this paper.",
+          "quote": "In this section, we report the experimental results of existing state-of-the-art vision-language models on both VCR-WIKI and the VCR-HIDDEN hidden test."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was executed in fine-tuning experiments to test its ability to learn the VCR task.",
+          "quote": "Fine-tuned Models. To test whether VLMs can learn to conduct VCR via fine-tuning, we select three models from the open-sourced models: CogVLM2-Llama3-19B-Chat, MiniCPM-Llama3-V2.5, and Qwen2-VL-7B-Instruct"
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The model's performance is compared against other models in fine-tuning tasks and in relation to human performance benchmarks.",
+          "quote": "Figure 5 compares our fine-tuned models against base models across all VCR settings."
+        },
+        "referenced_paper_title": {
+          "value": "CogVLM: Visual Expert for Pretrained Language Models",
+          "justification": "The referenced paper for CogVLM is identified, detailing its capabilities as a visual expert for language models.",
+          "quote": "CogVLM2-19B (Hong et al., 2024),"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "VCR-WIKI",
+          "justification": "VCR-WIKI is introduced as a new dataset tailored for the VCR task, comprising images and captions specifically designed to test models' ability to restore occluded text.",
+          "quote": "With this pipeline, we construct VCR-WIKI for VCR using Wikipedia images with captions, including 2.11M English and 346K Chinese training entities."
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "VCR-WIKI is a newly introduced dataset in this paper, and there is no prior publication or reference for it.",
+          "quote": "We release VCR-WIKI and its construction code to stimulate further research."
+        }
+      },
+      {
+        "name": {
+          "value": "VCR-HIDDEN",
+          "justification": "VCR-HIDDEN is introduced as a hidden test set designed to prevent overfitting on the VCR-WIKI and is used for evaluating models understanding of the restored text in more challenging scenarios.",
+          "quote": "We also make a hidden test set VCR-HIDDEN to avoid potential over-fitting on VCR-WIKI."
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "VCR-HIDDEN is a newly introduced dataset in this paper, specific to the experiments conducted by the authors.",
+          "quote": "We release VCR-WIKI and its construction code to stimulate further research of developing models that can more adeptly navigate the nuanced landscape of the restoration of text embedded in images to bridge the gap between human and machine perception."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "spaCy",
+          "justification": "spaCy is explicitly mentioned as a tool used for selecting 5-grams in captions for masking, which is an essential part of the VCR-WIKI dataset creation process.",
+          "quote": "We use spaCy to randomly select 5-grams in the caption for masking."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "spaCy is a well-known NLP library and is used for processing in this paper. It is not accompanied by a referenced academic paper as it is standard software.",
+          "quote": "We use spaCy to randomly select 5-grams in the caption for masking."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1931,
+    "prompt_tokens": 52456,
+    "total_tokens": 54387,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

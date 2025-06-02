@@ -1,0 +1,169 @@
+{
+  "paper": "b3c67a9ef55bf665e20b3a58a92e4700.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Fairwashing: the risk of rationalization",
+      "justification": "The title is clearly stated at the beginning of the paper.",
+      "quote": "Fairwashing: the risk of rationalization"
+    },
+    "description": "This paper introduces 'fairwashing', which involves promoting the false perception that a machine learning model respects ethical values, even if it doesn't. The paper presents a technique called LaundryML, which uses a regularized rule list enumeration algorithm to approximate unfair black-box models with fairer ones while maintaining high fidelity to the original model.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves empirical evaluation through experiments on real-world datasets to demonstrate the possibility of fairwashing by using rationalization techniques with machine learning models.",
+      "quote": "We empirically evaluate our rationalization technique on black-box models trained on real-world datasets and show that one can obtain rule lists with high fidelity to the black-box model while being considerably less unfair at the same time."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Machine Learning",
+        "justification": "The paper is focused on machine learning models and the risk of misusing model explanations to present them as fair when they are not.",
+        "quote": "Black-box explanation is the problem of explaining how a machine learning model – whose internal logic is hidden to the auditor and generally complex – produces its outcomes."
+      },
+      "aliases": [
+        "ML"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Fairness in Machine Learning",
+          "justification": "The paper focuses primarily on the fairness of machine learning models and the potential for performing fairwashing.",
+          "quote": "...raising the awareness of this issue, which we believe to be a serious concern related to the use of black-box explanation..."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Interpretability in Machine Learning",
+          "justification": "The paper deals with the interpretability of machine learning models, specifically through an explanation of black-box models.",
+          "quote": "Examples of such interfaces include linear models (Ribeiro et al., 2016), decision trees (Breiman, 2017), rule lists (Rivest, 1987; Letham et al., 2015; Angelino et al., 2018) and rule sets (Li et al., 2002)."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "CORELS",
+          "justification": "The paper references CORELS as a supervised machine learning algorithm used as part of the LaundryML algorithm for rule list enumeration.",
+          "quote": "CORELS (Angelino et al., 2018) is a supervised machine learning algorithm which takes as input a training set with n predictor variables, all assumed to be binary."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "CORELS itself is not contributed by this paper but is used within the proposed LaundryML algorithm.",
+          "quote": "CORELS (Angelino et al., 2018) is a supervised machine learning algorithm..."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "CORELS is discussed in the context of the algorithm but there is no specific mention of execution hardware like GPU or CPU for this model within the text.",
+          "quote": "CORELS (Angelino et al., 2018) is a supervised machine learning algorithm..."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "The paper does not provide numerical comparisons of CORELS with other models; it is described as part of the methodology.",
+          "quote": "CORELS selects the rule list that minimizes the objective function."
+        },
+        "referenced_paper_title": {
+          "value": "Learning certifiably optimal rule lists for categorical data",
+          "justification": "The referenced paper provides the foundational work for the CORELS algorithm as cited in this paper.",
+          "quote": "CORELS (Angelino et al., 2018) is a supervised machine learning algorithm..."
+        }
+      },
+      {
+        "name": {
+          "value": "Random Forest",
+          "justification": "Random Forest is one of the black-box models used to evaluate the fairness and fidelity of the proposed rationalization technique.",
+          "quote": "In practice for both datasets, we rely on a model trained using random forest to play the role of the black-box models."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Random Forest is a well-established model and not contributed by this paper.",
+          "quote": "In practice for both datasets, we rely on a model trained using random forest..."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "There is no discussion regarding specific execution details on GPU or CPU for the Random Forest model in the context of this study.",
+          "quote": "In practice for both datasets, we rely on a model trained using random forest..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The Random Forest model's performance is compared against other models generated by the algorithm for fidelity and fairness.",
+          "quote": "After learning the black-box models on the training sets, we apply them to label the suing groups, which in turn are used to train the interpretable surrogate models."
+        },
+        "referenced_paper_title": {
+          "value": "Breiman, L. Classification and regression trees. Routledge, 2017.",
+          "justification": "The method of Random Forest falls under the category of ensemble methods involving decision trees as referenced by Breiman (2017).",
+          "quote": "Random Forest is utilized as part of the experimental setup to train the black-box models."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Adult Income",
+          "justification": "The Adult Income dataset is used to evaluate the rationalization technique presented in the paper.",
+          "quote": "The Adult Income dataset gathers information about individuals from the 1994 U.S. census..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Dheeru, D. and Karra Taniskidou, E. UCI machine learning repository. University of California, Irvine, School of Information and Computer Sciences, 2017.",
+          "justification": "The reference is from the standard UCI repository where the Adult Income dataset is hosted.",
+          "quote": "The Adult Income dataset... referred to UCI machine learning repository."
+        }
+      },
+      {
+        "name": {
+          "value": "ProPublica Recidivism",
+          "justification": "The ProPublica Recidivism dataset is used as part of the empirical evaluation of the proposed methodology.",
+          "quote": "The ProPublica Recidivism dataset gathers criminal offenders records in Florida..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Angwin, J., Larson, J., Mattu, S., and Kirchner, L. Machine bias. ProPublica, May, 23, 2016.",
+          "justification": "The dataset is commonly associated with the ProPublica article on bias which is heavily referenced.",
+          "quote": "The ProPublica Recidivism dataset..."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "FairML",
+          "justification": "FairML is explicitly used in the paper for auditing black-box models to determine feature importance.",
+          "quote": "In a nutshell, FairML is an automated tool requiring black-box access to a classifier to determine the relative importance of each attribute into the prediction outcome."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Adebayo, J. A. Fairml: Toolbox for diagnosing bias in predictive modeling. Master’s thesis, Massachusetts Institute of Technology, 2016.",
+          "justification": "The reference is directly associated with the work by Adebayo on the FairML toolkit for bias detection.",
+          "quote": "In a nutshell, FairML is an automated tool... (Adebayo, 2016)."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1512,
+    "prompt_tokens": 15379,
+    "total_tokens": 16891,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

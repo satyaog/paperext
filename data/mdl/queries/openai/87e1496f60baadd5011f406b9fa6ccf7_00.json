@@ -1,0 +1,171 @@
+{
+  "paper": "87e1496f60baadd5011f406b9fa6ccf7.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "A learning-based algorithm to quickly compute good primal solutions for Stochastic Integer Programs",
+      "justification": "The title explicitly captures the main contribution of the paper, which is developing a learning-based algorithm for Stochastic Integer Programming.",
+      "quote": "A learning-based algorithm to quickly compute\ngood primal solutions for Stochastic Integer\nPrograms"
+    },
+    "description": "This paper presents a supervised learning approach to find near-optimal primal solutions for two-stage stochastic integer programming (2SIP) problems. The proposed method emphasizes predicting a representative scenario (RS) that ensures first-stage feasibility and potentially second-stage feasibility under certain conditions. Computational testing is performed on a stochastic facility location problem, where the approach is compared to traditional solvers.",
+    "type": {
+      "value": "theoretical",
+      "justification": "The paper proposes a novel approach and a conjecture for solving Stochastic Integer Programs using machine learning, making it primarily a theoretical study.",
+      "quote": "In this section, we discuss the algorithmic contribution of the paper."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Stochastic Integer Programming",
+        "justification": "The paper focuses on developing solutions specifically for stochastic integer programming problems, as evidenced by its title and recurrent discussion throughout the document.",
+        "quote": "A learning-based algorithm to quickly compute\ngood primal solutions for Stochastic Integer\nPrograms"
+      },
+      "aliases": [
+        "2SIP",
+        "Stochastic Programming"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Machine Learning",
+          "justification": "The paper utilizes supervised learning techniques to find solutions for stochastic integer programming, thus intersecting with the field of machine learning.",
+          "quote": "In this paper we are interested in using machine learning (ML) to obtain good primal solutions to 2SIP."
+        },
+        "aliases": [
+          "ML",
+          "Supervised Learning"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Linear Regression",
+          "justification": "Linear Regression is used as a method to minimize the mean squared error between the true and predicted representative scenarios in their experiments.",
+          "quote": "We use linear regression (LR) and artificial neural network (ANN) to minimize the MSE between the true and predicted RS."
+        },
+        "aliases": [
+          "LR"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Linear Regression is a well-established model and is not newly introduced by this paper.",
+          "quote": "We use linear regression (LR) and artificial neural network (ANN) to minimize the MSE between the true and predicted RS."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Linear Regression was implemented and evaluated in their computational study.",
+          "quote": "We use linear regression (LR) and artificial neural network (ANN) to minimize the MSE between the true and predicted RS."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of Linear Regression is compared against other methods such as ANN and Gurobi.",
+          "quote": "We compare these predictions against (i) Solution obtained using Gurobi by solving (2) (GRB) (ii) a solution obtained..."
+        },
+        "referenced_paper_title": {
+          "value": "Learning a classification of mixed-integer quadratic programming problems",
+          "justification": "The paper cites methods and techniques related to machine learning application in optimization problems which might include Linear Regression.",
+          "quote": "Pierre Bonami, Andrea Lodi, and Giulia Zarpellon. Learning a classification of mixed-integer quadratic programming problems."
+        }
+      },
+      {
+        "name": {
+          "value": "Artificial Neural Network",
+          "justification": "Artificial Neural Network (ANN) is used as part of the methodology for learning to predict representative scenarios.",
+          "quote": "We use linear regression (LR) and artificial neural network (ANN) to minimize the MSE between the true and predicted RS."
+        },
+        "aliases": [
+          "ANN"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Artificial Neural Networks are established techniques and not introduced by this paper.",
+          "quote": "We use linear regression (LR) and artificial neural network (ANN) to minimize the MSE between the true and predicted RS."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Artificial Neural Network was applied and tested as part of their computational study.",
+          "quote": "We use linear regression (LR) and artificial neural network (ANN) to minimize the MSE between the true and predicted RS"
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of ANN is compared against Linear Regression and other optimization methods.",
+          "quote": "LR and ANN perform almost as good as GRB (in terms of quality of the objective value) in a fraction of the time..."
+        },
+        "referenced_paper_title": {
+          "value": "Learning fast optimizers for contextual stochastic integer programs",
+          "justification": "The reference to other algorithmic approaches in stochastic programming includes the use of advanced models like ANN.",
+          "quote": "Vinod Nair, Dj Dvijotham, Iain Dunning, and Oriol Vinyals. Learning fast optimizers for contextual stochastic integer programs."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Two-stage Stochastic Capacitated Facility Location Problem Instances",
+          "justification": "The computational study involved generating a large number of two-stage stochastic facility location problem instances.",
+          "quote": "Generate instances. We generate 50K instances of S-CFLP, with 10 facilities, 10 clients and 50 scenarios."
+        },
+        "aliases": [
+          "S-CFLP Instances"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "A branch-and-price algorithm for multi-stage stochastic integer programming with application to stochastic batch-sizing problems",
+          "justification": "The generation of S-CFLP instances follows typical methodologies in stochastic integer programming research, which might be referenced in the context of similar types of problems.",
+          "quote": "Guglielmo Lulli and Suvrajeet Sen. A branch-and-price algorithm for multi-stage stochastic integer programming with application to stochastic batch-sizing problems."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Gurobi",
+          "justification": "Gurobi is mentioned as the solver used for obtaining near-optimal solutions for comparison in computational tests.",
+          "quote": "The generated instances are solved using Gurobi, running 2 threads, to at most 2% gap or 10 min time limit."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The empirical behavior of sampling methods for stochastic programming",
+          "justification": "Gurobi's usage as a solver fits methods typically discussed in optimization literature, referenced alongside similar studies or methods.",
+          "quote": "Jeff Linderoth, Alexander Shapiro, and Stephen Wright. The empirical behavior of sampling methods for stochastic programming."
+        }
+      },
+      {
+        "name": {
+          "value": "SCIP",
+          "justification": "SCIP was referenced as a general-purpose mixed-integer programming solver used in related work.",
+          "quote": "...the algorithm provided solutions much faster for some classes of problems compared to an open-source general-purpose mixed-integer programming (MIP) solver, in their case, SCIP."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "The SCIP Optimization Suite 6.0",
+          "justification": "SCIP is a well-known solver referenced for its use in related algorithms and approaches in optimization.",
+          "quote": "Ambros Gleixner, Michael Bastubbe, Leon Eifler, Tristan Gally, Gerald Gamrath, Robert Lion Gottwald, Gregor Hendel, Christopher Hojny, Thorsten Koch, Marco E. Lübbecke, Stephen J. Maher, Matthias Miltenberger, Benjamin Müller, Marc E. Pfetsch, Christian Puchert, Daniel Rehfeldt, Franziska Schlösser, Christoph Schubert, Felipe Serrano, Yuji Shinano, Jan Merlin Viernickel, Matthias Walter, Fabian Wegscheider, Jonas T. Witt, and Jakob Witzig. The SCIP Optimization Suite 6.0."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1550,
+    "prompt_tokens": 9863,
+    "total_tokens": 11413,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

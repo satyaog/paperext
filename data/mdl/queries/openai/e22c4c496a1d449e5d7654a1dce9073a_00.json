@@ -1,0 +1,231 @@
+{
+  "paper": "e22c4c496a1d449e5d7654a1dce9073a.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Minimax and Neyman–Pearson Meta-Learning for Outlier Languages",
+      "justification": "The title is explicitly mentioned at the end of the paper's details and also in the arXiv reference.",
+      "quote": "Minimax and Neyman–Pearson Meta-Learning for Outlier Languages"
+    },
+    "description": "This paper proposes two variants of Model-Agnostic Meta-Learning (MAML) for addressing issues in cross-lingual NLP, focusing on outlier languages that are often not well represented during training. The two variants, Minimax MAML and Neyman–Pearson MAML, are designed to be robust to uncertain language distributions and aim to improve performance in zero- and few-shot settings. The paper also introduces a new adaptive optimizer to approximate Nash equilibrium in these settings.",
+    "type": {
+      "value": "theoretical",
+      "justification": "The paper primarily deals with theoretical frameworks and introduces new criteria for meta-learning (Minimax and Neyman–Pearson) in decision theory, reframing the MAML approach for outlier languages in cross-lingual NLP.",
+      "quote": "In this work, we interpret meta-learning within a decision-theoretic framework (Bickel and Doksum, 2015)."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The paper addresses cross-lingual Natural Language Processing tasks, specifically part-of-speech tagging and question answering, which are core NLP tasks.",
+        "quote": "We evaluate both model variants on two popular NLP tasks, part-of-speech tagging and question answering."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Cross-Lingual Transfer Learning",
+          "justification": "The paper is focused on transferring knowledge between resource-rich and resource-poor languages, a fundamental aspect of cross-lingual transfer learning.",
+          "quote": "MAML has come to the fore as a promising paradigm: it explicitly trains neural models that adapt to new languages quickly by extrapolating from just a few annotated data points."
+        },
+        "aliases": [
+          "Cross-Lingual Learning"
+        ]
+      },
+      {
+        "name": {
+          "value": "Meta-learning",
+          "justification": "The research extends the model-agnostic meta-learning strategy by proposing the Minimax and Neyman–Pearson variants which are key components of meta-learning.",
+          "quote": "Model-agnostic meta-learning (MAML) has been recently put forth as a strategy to learn resource-poor languages in a sample-efficient fashion."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Model-Agnostic Meta-Learning (MAML)",
+          "justification": "The paper bases its research on refining the MAML strategy and compares its variants against the standard MAML approach.",
+          "quote": "Model-agnostic meta-learning (MAML) has been recently put forth as a strategy to learn resource-poor languages in a sample-efficient fashion."
+        },
+        "aliases": [
+          "MAML"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "MAML itself is not a contribution of the paper, but is the baseline model the paper aims to improve upon with its proposed variants.",
+          "quote": "MAML, we show, minimises the expected risk across languages found in the training distribution."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper conducts experiments using MAML for comparison against its proposed approaches, indicating it was executed.",
+          "quote": "We report gains for their average and minimum performance across low-resource languages in zero- and few-shot settings, compared to joint multi-source transfer and vanilla MAML."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "MAML is used as a baseline for comparison with the proposed Minimax and Neyman-Pearson MAML models.",
+          "quote": "We report gains for their average and minimum performance across low-resource languages in zero- and few-shot settings, compared to joint multi-source transfer and vanilla MAML."
+        },
+        "referenced_paper_title": {
+          "value": "Model-agnostic meta-learning for fast adaptation of deep networks",
+          "justification": "Finn et al.'s work is the foundational paper on MAML and is cited to refer to the basic model the study builds upon.",
+          "quote": "Model-Agnostic Meta-Learning (MAML; Finn et al., 2017)"
+        }
+      },
+      {
+        "name": {
+          "value": "Minimax MAML",
+          "justification": "Minimax MAML is explicitly introduced in the paper as one of the proposed new variants of MAML.",
+          "quote": "The first criterion we propose, Minimax MAML, is designed to be robust to worst-case-scenario out-of-distribution transfer: it minimises the maximum risk by learning an adversarial language distribution."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "Minimax MAML is a novel contribution specifically introduced in this paper.",
+          "quote": "To increase its robustness to outlier languages, we create two variants of MAML based on alternative criteria: Minimax MAML ..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper includes experiments where Minimax MAML is applied to NLP tasks.",
+          "quote": "We evaluate both model variants on two popular NLP tasks, part-of-speech tagging and question answering."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Minimax MAML is compared against the original MAML and the Neyman–Pearson MAML models in the study.",
+          "quote": "We report gains for their average and minimum performance across low-resource languages in zero- and few-shot settings, compared to joint multi-source transfer and vanilla MAML."
+        },
+        "referenced_paper_title": {
+          "value": "Model-agnostic meta-learning for fast adaptation of deep networks",
+          "justification": "The Minimax MAML is a variant developed from the MAML framework initially proposed by Finn et al.",
+          "quote": "Model-Agnostic Meta-Learning (MAML; Finn et al., 2017)"
+        }
+      },
+      {
+        "name": {
+          "value": "Neyman–Pearson MAML",
+          "justification": "Neyman–Pearson MAML is explicitly introduced as another proposed variant for achieving robustness in learning outlier languages.",
+          "quote": "The second criterion, Neyman–Pearson MAML, upper-bounds the risk for an arbitrary subset of languages via Lagrange multipliers, such that it does not exceed a predetermined threshold."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "Neyman–Pearson MAML is specially developed and introduced within this paper.",
+          "quote": "To increase its robustness to outlier languages, we create two variants of MAML based on alternative criteria: ... Neyman–Pearson MAML ..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The experiments for NLP tasks conducted in the paper involve the application of Neyman–Pearson MAML.",
+          "quote": "We evaluate both model variants on two popular NLP tasks, part-of-speech tagging and question answering."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The Neyman–Pearson MAML is compared with Minimax MAML and the vanilla MAML approach within the experiments.",
+          "quote": "We report gains for their average and minimum performance across low-resource languages in zero- and few-shot settings, compared to joint multi-source transfer and vanilla MAML."
+        },
+        "referenced_paper_title": {
+          "value": "Model-agnostic meta-learning for fast adaptation of deep networks",
+          "justification": "The Neyman–Pearson MAML extends from the concepts developed in the original MAML framework.",
+          "quote": "Model-Agnostic Meta-Learning (MAML; Finn et al., 2017)"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Universal Dependencies",
+          "justification": "The Universal Dependencies dataset is explicitly referenced as a source for data in the experiments involving part-of-speech tagging.",
+          "quote": "We run experiments on Universal Dependencies (Zeman et al., 2020) for part-of-speech (POS) tagging."
+        },
+        "aliases": [
+          "UD"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Universal dependencies 2.6",
+          "justification": "The reference paper describes the Universal Dependencies dataset's framework and guidelines which the paper uses.",
+          "quote": "Zeman, D., et al. Universal dependencies 2.6."
+        }
+      },
+      {
+        "name": {
+          "value": "TyDiQA",
+          "justification": "TyDiQA is mentioned as the dataset used for question answering tasks within the experiments.",
+          "quote": "and TyDiQA (Clark et al., 2020) for question answering (QA)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "TyDi QA: A benchmark for information-seeking question answering in typologically diverse languages",
+          "justification": "This referenced paper provides a detailed overview and setup of the TyDiQA dataset used for cross-lingual question answering in the experiments.",
+          "quote": "Clark, J., et al. (2020). \"TyDi QA: A benchmark for information-seeking question answering in typologically diverse languages.\""
+        }
+      },
+      {
+        "name": {
+          "value": "Glottolog",
+          "justification": "Glottolog is used as a reference for the number of language families during the discussion of language distribution.",
+          "quote": "First, out of 245 families attested in the world according to Glottolog (Hammarström et al., 2016), UD covers only 18."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Glottolog 2.7",
+          "justification": "Glottolog 2.7 by Hammarström et al. is cited to provide background about linguistic diversity and family distribution.",
+          "quote": "Hammarström, H., et al. Glottolog 2.7."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "learn2learn",
+          "justification": "The paper mentions the use of the learn2learn library to implement Meta-SGD for the experiments.",
+          "quote": "We implement Meta-SGD with the learn2learn package (Arnold et al., 2020)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "learn2learn: A library for meta-learning research",
+          "justification": "The reference provides details about the library's capabilities and support for meta-learning applications used in the experiments.",
+          "quote": "Arnold, S. M. R., et al. (2020). \"learn2learn: A library for meta-learning research.\""
+        }
+      },
+      {
+        "name": {
+          "value": "Adam",
+          "justification": "Adam is mentioned as a baseline optimizer used for comparisons in some variants of the proposed methods.",
+          "quote": "Our starting point is Adam (Kingma and Ba, 2015)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Adam: A method for stochastic optimization",
+          "justification": "The Adam optimizer by Kingma and Ba is a well-known method, referenced to explain the optimization strategies used in the research.",
+          "quote": "Kingma, D. P., & Ba, J. (2015). \"Adam: A method for stochastic optimization.\""
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2197,
+    "prompt_tokens": 24307,
+    "total_tokens": 26504,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

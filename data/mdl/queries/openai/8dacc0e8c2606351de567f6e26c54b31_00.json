@@ -1,0 +1,158 @@
+{
+  "paper": "8dacc0e8c2606351de567f6e26c54b31.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Safety Representations for Safer Policy Learning",
+      "justification": "The title reflects the core focus of the paper on developing safety representations to enable safe policy learning in reinforcement learning.",
+      "quote": "Specifically, we present Safety Representations for Policy Learning (SRPL), a framework that augments an RL agent’s state representation by integrating a state-conditioned safety representation derived from the agent’s experiences during the learning process."
+    },
+    "description": "The paper introduces Safety Representations for Policy Learning (SRPL), a framework designed to improve the safety and efficiency of reinforcement learning (RL) agents. The method involves integrating state-conditioned safety representations into RL agents' state representations to encourage safer exploration without being excessively conservative. The approach is evaluated across various environments, demonstrating significant improvements in task performance and reduced constraint violations during training.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper includes empirical evaluations across diverse environments to demonstrate the effectiveness of the proposed SRPL method.",
+      "quote": "Empirical evaluations across diverse environments show that our method significantly improves task performance while reducing constraint violations during training, underscoring its effectiveness in balancing exploration with safety."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Reinforcement Learning",
+        "justification": "The main focus of the paper is on improving reinforcement learning techniques by introducing safety representations.",
+        "quote": "Reinforcement learning (RL) has achieved notable success across various domains, from game playing (Shao et al., 2019) to robotics (Zhang & Mo, 2021; Singh et al., 2022). However, training RL agents directly in safety-critical environments remains challenging partly due to the presence of failure events that are deemed undesirable or unacceptable both during training and deployment."
+      },
+      "aliases": [
+        "RL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Safety in Reinforcement Learning",
+          "justification": "The paper specifically addresses safety within reinforcement learning by integrating safety representations into the learning process.",
+          "quote": "To address this, we introduce a method that explicitly learns state-conditioned safety representations. By augmenting the state features with these safety representations, our approach naturally encourages safer exploration without being excessively cautious."
+        },
+        "aliases": [
+          "Safe RL"
+        ]
+      },
+      {
+        "name": {
+          "value": "Robotics",
+          "justification": "The paper includes evaluations on simulated robotic tasks such as manipulation, navigation, and locomotion, highlighting its relevance to robotics.",
+          "quote": "We evaluate SRPL agents on several simulated robotic tasks, including manipulation, navigation, and locomotion."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Steps-to-Cost (S2C) model",
+          "justification": "The Steps-to-Cost (S2C) model is introduced as a part of the safety representations framework and is central to the paper's methodology.",
+          "quote": "The safety representation is captured by a steps-to-cost (S2C) model, which for any given state estimates the distribution over the proximity to unsafe or cost-inducing states."
+        },
+        "aliases": [
+          "S2C model"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The S2C model is a novel contribution introduced within the SRPL framework to learn safety representations.",
+          "quote": "To learn the state-centric safety representation , we train a neural network, referred to as the 'steps-to-cost' or the S2C model, which takes the state as input and outputs the corresponding safety representation."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model is executed as part of the SRPL framework for reinforcement learning tasks across various environments.",
+          "quote": "The output of the S2C model S^ν (s) is incorporated into the agent’s state by augmenting the original state with the learned safety representation."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "The paper discusses the model's integration into the SRPL framework but does not detail numerical comparisons with other models.",
+          "quote": "The paper describes the S2C model's integration into the SRPL framework but lacks explicit comparison to other standalone models."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "No reference paper title is provided as the model is introduced in this paper.",
+          "quote": "The Steps-to-Cost (S2C) model is introduced here as a novel methodology and does not have an external reference paper title."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Island Navigation",
+          "justification": "The Island Navigation environment is used as a demonstration for the usefulness of state-centric safety representations in the paper.",
+          "quote": "To demonstrate the usefulness of state-centric safety representations, we perform experiments on Island Navigation (Leike et al., 2017), a grid world environment designed for evaluating safe exploration approaches."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "AI safety gridworlds",
+          "justification": "The Island Navigation environment is part of AI Safety Gridworlds as per Leike et al., 2017.",
+          "quote": "To motivate the benefit of learning state-conditioned safety representations in safety-critical applications, we perform experiments on the Island Navigation environment Leike et al. (2017)."
+        }
+      },
+      {
+        "name": {
+          "value": "Safety Gym",
+          "justification": "Safety Gym is used to evaluate the SRPL method on tasks such as PointGoal1 and PointButton1, emphasizing safety in exploration.",
+          "quote": "Finally, we evaluate our method on the Safety Gym (Ray et al., 2019) environment on tasks PointGoal1 and PointButton1."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Benchmarking Safe Exploration in Deep Reinforcement Learning",
+          "justification": "Safety Gym by Ray et al., 2019 is referenced as a source for evaluating safe exploration in deep reinforcement learning.",
+          "quote": "Safety-Gym (Ray et al., 2019) is a navigation environment, we evaluate SRPL on PointGoal1 and PointButton1 tasks."
+        }
+      },
+      {
+        "name": {
+          "value": "AdroitHandPen",
+          "justification": "AdroitHandPen is used to demonstrate the SRPL framework in a manipulation task involving a 24-degree of freedom Shadow Hand agent.",
+          "quote": "First is a manipulation task AdroitHandPen (Rajeswaran et al., 2017) where a 24-degree of freedom Shadow Hand agent needs to learn to manipulate a pen from a start orientation to a randomly sampled goal orientation."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Complex Dexterous Manipulation with Deep Reinforcement Learning and Demonstrations",
+          "justification": "AdroitHandPen is based on work by Rajeswaran et al., 2017 addressing complex dexterous manipulation.",
+          "quote": "First is a manipulation task AdroitHandPen (Rajeswaran et al., 2017) where a 24-degree of freedom Shadow Hand agent needs to learn to manipulate a pen from a start orientation to a randomly sampled goal orientation."
+        }
+      },
+      {
+        "name": {
+          "value": "SafeMetaDrive",
+          "justification": "SafeMetaDrive is used in evaluating SRPL's impact on simulated driving scenarios with cost considerations.",
+          "quote": "Next, we have an autonomous driving environment SafeMetaDrive (Li et al., 2022), where an RL agent is learning to drive on the road while avoiding traffic, each collision incurs a cost and the cost threshold is set to 1."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Composing Diverse Driving Scenarios for Generalizable Reinforcement Learning",
+          "justification": "SafeMetaDrive by Li et al., 2022 is referenced for creating diverse and generalizable driving scenarios.",
+          "quote": "SafeMetaDrive (Li et al., 2022) is used to evaluate the SRPL framework in an autonomous driving environment."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1538,
+    "prompt_tokens": 18032,
+    "total_tokens": 19570,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

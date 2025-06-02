@@ -1,0 +1,189 @@
+{
+  "paper": "a1e38892b6acf52cdc59076f6bbe26c8.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Handling Delay in Real-Time Reinforcement Learning",
+      "justification": "The title is clearly stated at the top of the provided paper text, and it reflects the core content discussed throughout the document, thus justifying its selection as the paper title.",
+      "quote": "H ANDLING D ELAY IN R EAL -T IME R EINFORCEMENT L EARNING"
+    },
+    "description": "This paper addresses the challenges of real-time reinforcement learning, particularly focusing on the delay caused by the neural network's computation time. It proposes a solution that uses temporal skip connections and history-augmented observations to tackle observational delays and improve performance across various environments. The effectiveness of these methods is evaluated through experiments, demonstrating significant improvements in inference speed and policy performance.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves experimental evaluations of different models and architectures in various environments, such as Mujoco and MinAtar, to assess performance improvements from the proposed solutions.",
+      "quote": "We perform our main experiments on Mujoco (Todorov et al., 2012), MiniAtar (Young & Tian, 2019) and MiniGrid (Chevalier-Boisvert et al., 2023) environments."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Reinforcement Learning",
+        "justification": "The paper focuses on challenges and solutions specifically related to reinforcement learning in real-time environments.",
+        "quote": "Real-time reinforcement learning (RL) introduces several challenges. First, policies are constrained to a fixed number of actions per second due to hardware limitations."
+      },
+      "aliases": [
+        "RL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Real-Time Systems",
+          "justification": "The paper specifically deals with the real-time execution and challenges in reinforcement learning, making it a relevant sub-field.",
+          "quote": "Real-time reinforcement learning (RL) introduces several challenges. First, policies are constrained to a fixed number of actions per second due to hardware limitations."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Computer Vision",
+          "justification": "Computer Vision techniques like convolutional neural networks (CNNs) and LSTMs are employed in the architectures discussed in the paper.",
+          "quote": "We explore the following architectures within the parallel computation framework: Default architectures: three-layer MLP or five-layer Convolutional Neural Network (CNN);"
+        },
+        "aliases": [
+          "CV"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "MLP with Skip Connections",
+          "justification": "The MLP with Skip Connections is evaluated and mentioned as a model with enhanced performance due to the incorporation of skip connections.",
+          "quote": "Our findings show that adding skip connections to default MLP/CNN architectures significantly enhances performance."
+        },
+        "aliases": [
+          "MLP w/ skip connections"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The use of skip connections in the MLP architecture is presented as a novel contribution intended to reduce delay and improve performance in real-time reinforcement learning tasks.",
+          "quote": "To overcome this, we propose using temporal skip connections."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model is executed and tested across various tasks such as Mujoco and MinAtar, with results reported in the experimental section.",
+          "quote": "Our findings show that adding skip connections to default MLP/CNN architectures significantly enhances performance."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The MLP model with skip connections is compared to several baselines and other architectures, particularly in its performance with reduced delay and improved expressivity.",
+          "quote": "Our findings show that adding skip connections to default MLP/CNN architectures significantly enhances performance, aligning with Propositions 1 and 2."
+        },
+        "referenced_paper_title": {
+          "value": "Enabling Realtime Reinforcement Learning at Scale with Staggered Asynchronous Inference",
+          "justification": "The paper provides a theoretical foundation that is used to support the proposed solution of using skip connections to handle delays.",
+          "quote": "Following the lower bound on delay regret established in (Riemer et al., 2024), the delay regret depends on the number of stochastic environment steps between an action and the input used to produce it."
+        }
+      },
+      {
+        "name": {
+          "value": "CNN with Skip Connections",
+          "justification": "CNN with Skip Connections is specifically mentioned and evaluated for its performance in reinforcement learning tasks described within the paper.",
+          "quote": "The CNN with skip connections shows that the skip connections provide significant performance improvements in certain environments."
+        },
+        "aliases": [
+          "CNN w/ skip connections"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The adaptation of CNN models to include skip connections is proposed and evaluated as a novel contribution to enhance performance in real-time RL tasks.",
+          "quote": "To overcome this, we propose using temporal skip connections."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The execution of CNN with Skip Connections is evident from the experiments conducted on various environments within the paper.",
+          "quote": "Adding skip connections to default MLP/CNN architectures significantly enhances performance."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The effectiveness of CNN with Skip Connections is compared against other neural network configurations and baselines, as shown in experimental results.",
+          "quote": "Our findings show that adding skip connections to default MLP/CNN architectures significantly enhances performance."
+        },
+        "referenced_paper_title": {
+          "value": "Deep Residual Learning for Image Recognition",
+          "justification": "The concept of skip connections, initially proposed by Kaiming He et al. for CNNs, is adapted and referenced in the paper.",
+          "quote": "Ronneberger et al., 2015; He et al., 2016."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Mujoco",
+          "justification": "Mujoco is mentioned as one of the environments used for evaluating the proposed reinforcement learning architectures.",
+          "quote": "Performance is averaged across the following environments: HalfCheetah-v4, Walker2d-v4, Ant-v4 and Hopper-v4 on Mujoco."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Mujoco: A physics engine for model-based control",
+          "justification": "Mujoco is cited as the environment used for experiments, with a reference to its seminal paper.",
+          "quote": "Todorov et al., 2012."
+        }
+      },
+      {
+        "name": {
+          "value": "MinAtar",
+          "justification": "MinAtar is used in the paper to test the performance of reinforcement learning models with skip connections.",
+          "quote": "We train our agents using SAC for Mujoco and PPO (Schulman et al., 2017) for MiniGrid and MinAtar."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "MinAtar: An Atari-inspired Testbed for More Efficient Reinforcement Learning Experiments",
+          "justification": "MinAtar is used as a testing environment in the paper, which is why it is referenced.",
+          "quote": "Young & Tian, 2019."
+        }
+      },
+      {
+        "name": {
+          "value": "MiniGrid",
+          "justification": "The MiniGrid environment is mentioned and used for testing the reinforcement learning models in different configurations.",
+          "quote": "Tested these architectures on all six MinAtar environments and two toy MiniGrid environments."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "MiniGrid & Miniworld: Modular & Customizable Reinforcement Learning Environments for Goal-Oriented Tasks",
+          "justification": "MiniGrid is used as a test environment, and its reference paper is cited.",
+          "quote": "Chevalier-Boisvert et al., 2023."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is used for model implementation and experimentation in the paper, particularly in the context of neural network and GPU acceleration.",
+          "quote": "Speed-up on GPU is achieved using default Pytorch software and widely accessible Nvidia GPU."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An Imperative Style, High-Performance Deep Learning Library",
+          "justification": "PyTorch is referenced as the library used for implementing the models and accelerating computations on GPU.",
+          "quote": "PyTorch, utilizing PyTorch’s sparse tensor representations and sparse matrix multiplication."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1619,
+    "prompt_tokens": 21820,
+    "total_tokens": 23439,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

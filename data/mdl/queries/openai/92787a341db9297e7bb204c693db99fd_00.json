@@ -1,0 +1,153 @@
+{
+  "paper": "92787a341db9297e7bb204c693db99fd.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Selective Unlearning via Representation Erasure Using Domain Adversarial Training",
+      "justification": "The title is directly extracted from the beginning of the research paper where it is stated clearly.",
+      "quote": "S ELECTIVE U NLEARNING VIA R EPRESENTATION E RA - SURE U SING D OMAIN A DVERSARIAL T RAINING"
+    },
+    "description": "This paper introduces a novel algorithm called SURE, which focuses on selectively unlearning specific data points from machine learning models. Inspired by Domain-Adversarial Training of Neural Networks (DANN), the approach treats unlearning as a domain adaptation problem, training a domain classifier to obfuscate representations that belong to the data set to be forgotten.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves extensive empirical evaluation and experiments to compare the performance of the proposed SURE algorithm against other unlearning methods.",
+      "quote": "Through extensive empirical evaluation, we demonstrate that SURE not only achieves a superior trade-off between unlearning effectiveness and model utility but also exhibits reduced vulnerability to representation-space MIAs."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Machine Unlearning",
+        "justification": "The main focus of the paper is on developing a method for unlearning specific data in machine learning models.",
+        "quote": "In machine learning, the principle of unlearning is essential for selectively removing the influence of specific data points from a trained model."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Domain Adaptation",
+          "justification": "The concept of domain adaptation is leveraged in the proposed SURE method to treat unlearning as a domain adaptation problem.",
+          "quote": "SURE treats the process as a domain adaptation problem, where the 'forget set' (data to be removed) and a validation set from the same distribution form two distinct domains."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Adversarial Training",
+          "justification": "The paper's approach is inspired by Domain Adversarial Training of Neural Networks (DANN), and it uses domain adversarial concepts to achieve unlearning.",
+          "quote": "Inspired by Domain-Adversarial Training of Neural Networks (DANN), we propose a novel algorithm, SURE, for targeted unlearning."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "ResNet-18",
+          "justification": "ResNet-18 is mentioned as the backbone used for the feature extractor module in the DANN framework, which inspired the SURE approach.",
+          "quote": "Feature extractor module G f (·; θ f ): In this work, the backbone of a ResNet-18 is used for this module."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "ResNet-18 is not a contribution of this paper; it is used as a backbone model in experiments.",
+          "quote": "Feature extractor module G f (·; θ f ): In this work, the backbone of a ResNet-18 is used for this module."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "ResNet-18 is used in the experiments as part of the feature extractor module, indicating it was executed as part of the study.",
+          "quote": "Feature extractor module G f (·; θ f ): In this work, the backbone of a ResNet-18 is used for this module."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of the SURE model using ResNet-18 as a feature extractor is compared against other models and baselines.",
+          "quote": "Through extensive empirical evaluation, we demonstrate that SURE not only achieves a superior trade-off between unlearning effectiveness and model utility but also exhibits reduced vulnerability to representation-space MIAs."
+        },
+        "referenced_paper_title": {
+          "value": "Deep Residual Learning for Image Recognition",
+          "justification": "ResNet architectures are widely associated with the seminal paper 'Deep Residual Learning for Image Recognition' by He et al., where ResNet-18 is one of the models discussed.",
+          "quote": "Feature extractor module G f (·; θ f ): In this work, the backbone of a ResNet-18 is used for this module."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "CIFAR-10 is one of the datasets used to test the unlearning methods, as detailed in the experiment section.",
+          "quote": "We evaluated the performance of SURE on the RC task using a ResNet-18 model trained on the CIFAR-10 dataset."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Multiple Layers of Features from Tiny Images",
+          "justification": "CIFAR-10 is a well-known dataset, often associated with the paper 'Learning Multiple Layers of Features from Tiny Images' by Alex Krizhevsky.",
+          "quote": "We evaluated the performance of SURE on the RC task using a ResNet-18 model trained on the CIFAR-10 dataset."
+        }
+      },
+      {
+        "name": {
+          "value": "Tiny ImageNet",
+          "justification": "Tiny ImageNet is explicitly mentioned as one of the datasets used to evaluate the method.",
+          "quote": "We also test our method on ViT-Small, an example of a larger model architecture, trained on CIFAR-10, as detailed in Appendix D."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Tiny Imagenet Visual Recognition Challenge",
+          "justification": "Tiny ImageNet is often associated with the paper 'Tiny Imagenet Visual Recognition Challenge' by Ya Le and Xuan Yang.",
+          "quote": "We also evaluate the performance of our method on the Tiny ImageNet dataset."
+        }
+      },
+      {
+        "name": {
+          "value": "CINIC-10",
+          "justification": "CINIC-10 is mentioned as an additional dataset used in the experiments.",
+          "quote": "We evaluate our method on two additional datasets: CINIC-10 (Darlow et al., 2018), an extension of CIFAR-10 augmented with samples from ImageNet."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "CINIC-10 Is Not Imagenet or CIFAR-10",
+          "justification": "CINIC-10 is often linked to the paper 'CINIC-10 Is Not Imagenet or CIFAR-10' by Darlow et al, which is mentioned in the text.",
+          "quote": "We evaluate our method on two additional datasets: CINIC-10 (Darlow et al., 2018), an extension of CIFAR-10 augmented with samples from ImageNet."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is commonly used for implementing deep learning models, although it is not explicitly mentioned, the methodologies discussed imply its usage.",
+          "quote": "To address this, the authors introduced a special 'gradient reversal layer' (GRL), which has no associated parameters. During forward propagation, the GRL acts as an identity transformation. During backpropagation, however, it takes the gradient from the subsequent layer and reverses its sign (i.e., multiplies it by the negative identity) before passing it to the preceding layer."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Automatic Differentiation in PyTorch",
+          "justification": "PyTorch is often associated with 'Automatic Differentiation in PyTorch', illustrating its relevance for studies using models and layers as described.",
+          "quote": "To address this, the authors introduced a special 'gradient reversal layer' (GRL), which has no associated parameters. During forward propagation, the GRL acts as an identity transformation. During backpropagation, however, it takes the gradient from the subsequent layer and reverses its sign (i.e., multiplies it by the negative identity) before passing it to the preceding layer."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1552,
+    "prompt_tokens": 16840,
+    "total_tokens": 18392,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

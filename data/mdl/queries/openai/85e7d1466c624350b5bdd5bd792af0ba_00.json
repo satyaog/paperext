@@ -1,0 +1,146 @@
+{
+  "paper": "85e7d1466c624350b5bdd5bd792af0ba.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Combating False Negatives in Adversarial Imitation Learning (Student Abstract)",
+      "justification": "The title is explicitly mentioned in the first few lines of the paper.",
+      "quote": "Combating False Negatives in Adversarial Imitation Learning (Student Abstract)"
+    },
+    "description": "The paper focuses on the \"False Negatives\" problem in adversarial imitation learning, particularly with the Generative Adversarial Imitation Learning (GAIL) approach. It introduces a new method called \"Fake Conditioning\" to address this problem and demonstrates its effectiveness on tasks in the BabyAI environment. The method aims to improve sample efficiency and task success rates by ensuring that trajectory-instruction pairs used for training are genuine negative examples.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves experimental validation of the proposed method, Fake Conditioning, and compares its performance with baseline GAIL and other methods using empirical data.",
+      "quote": "Fake Conditioning proves to be very effective in solving all tasks using an order of magnitude fewer demonstrations than BC. Even when 64 times fewer demos are used, its performance (≈ 90%) is satisfactory and much better than the GAIL baseline (≈ 50%)."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Reinforcement Learning",
+        "justification": "The paper is primarily focused on improving the efficacy of adversarial imitation learning, which is a subset of reinforcement learning.",
+        "quote": "Progress in grounded language learning using Deep Reinforcement Learning is impeded by the necessity of hand-crafting reward functions."
+      },
+      "aliases": [
+        "RL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Imitation Learning",
+          "justification": "The work specifically addresses the issues in imitation learning methods like GAIL and involves methods to improve these processes.",
+          "quote": "Instead of using a reward to judge the quality of performance, Imitation Learning (IL) trains an agent using expert demonstrations to mimic a presented policy."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Natural Language Processing",
+          "justification": "The paper involves tasks that are conditioned on language instructions, placing it in the realm of NLP as well.",
+          "quote": "We investigate the FN problem within the case of jointly learning to understand language which specifies task objectives."
+        },
+        "aliases": [
+          "NLP"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Generative Adversarial Imitation Learning (GAIL)",
+          "justification": "The model GAIL is central to the discussion, being the method that the authors are trying to improve upon by solving the False Negatives problem.",
+          "quote": "Another IL method, Generative Adversarial Imitation Learning (GAIL) (Ho and Ermon 2016), has yielded some success by jointly learning reward functions and training policies."
+        },
+        "aliases": [
+          "GAIL"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "GAIL is not a new contribution of this paper but an existing model being improved upon.",
+          "quote": "Another IL method, Generative Adversarial Imitation Learning (GAIL) (Ho and Ermon 2016), has yielded some success by jointly learning reward functions and training policies."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "GAIL is implemented and its performance is practically evaluated in the experiments section.",
+          "quote": "Our experiments show that addressing the FN problem is crucial for achieving good performance when training by adversarial imitation learning."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "GAIL's performance is compared with that of the Fake Conditioning method and other approaches.",
+          "quote": "Fake Conditioning proves to be very effective in solving all tasks using an order of magnitude fewer demonstrations than BC. Even when 64 times fewer demos are used, its performance (≈ 90%) is satisfactory and much better than the GAIL baseline (≈ 50%)."
+        },
+        "referenced_paper_title": {
+          "value": "Generative adversarial imitation learning",
+          "justification": "The paper by Ho and Ermon (2016) on GAIL is cited as the original work on this model.",
+          "quote": "Another IL method, Generative Adversarial Imitation Learning (GAIL) (Ho and Ermon 2016), has yielded some success by jointly learning reward functions and training policies."
+        }
+      },
+      {
+        "name": {
+          "value": "Behavioral Cloning",
+          "justification": "Behavioral Cloning is mentioned as one of the baseline IL methods against which new methods are tested.",
+          "quote": "The simplest version of IL, Behavioral Cloning (BC) (Bain and Sammut 1995), trains a policy to regress expert actions from demonstrations in a supervised setup."
+        },
+        "aliases": [
+          "BC"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Behavioral Cloning is not a new contribution of this paper but an established method being used for comparison.",
+          "quote": "The simplest version of IL, Behavioral Cloning (BC) (Bain and Sammut 1995), trains a policy to regress expert actions from demonstrations in a supervised setup."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Behavioral Cloning is implemented and its performance is practically evaluated.",
+          "quote": "To make a fair comparison, we use exactly the same policy architecture. We report all our experimental results in Table 1."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of BC is directly compared to other models like Fake Conditioning and GAIL.",
+          "quote": "Fake Conditioning proves to be very effective in solving all tasks using an order of magnitude fewer demonstrations than BC."
+        },
+        "referenced_paper_title": {
+          "value": "A framework for behavioural cloning",
+          "justification": "The paper refers to Bain and Sammut (1995) for Behavioral Cloning as the original work.",
+          "quote": "The simplest version of IL, Behavioral Cloning (BC) (Bain and Sammut 1995), trains a policy to regress expert actions from demonstrations in a supervised setup."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "BabyAI",
+          "justification": "The BabyAI platform is used for testing the proposed method and is a central aspect of the experimental setup.",
+          "quote": "We focus on three levels of increasing difficulty on the BabyAI platform (Chevalier-Boisvert et al. 2018) and show that a naive application of GAIL is not able to solve any level due to the aforementioned problem."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "BabyAI: A platform to study the sample efficiency of grounded language learning",
+          "justification": "The dataset is referenced with respect to its introduction and use in Chevalier-Boisvert et al. (2018).",
+          "quote": "We focus on three levels of increasing difficulty on the BabyAI platform (Chevalier-Boisvert et al. 2018) and show that a naive application of GAIL is not able to solve any level due to the aforementioned problem."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1377,
+    "prompt_tokens": 3735,
+    "total_tokens": 5112,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

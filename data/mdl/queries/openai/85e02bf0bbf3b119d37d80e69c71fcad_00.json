@@ -1,0 +1,192 @@
+{
+  "paper": "85e02bf0bbf3b119d37d80e69c71fcad.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Dynamics of SGD with Stochastic Polyak Stepsizes: Truly Adaptive Variants and Convergence to Exact Solution",
+      "justification": "This is the title provided at the beginning of the paper.",
+      "quote": "Dynamics of SGD with Stochastic Polyak Stepsizes: Truly Adaptive Variants and Convergence\nto Exact Solution"
+    },
+    "description": "This paper discusses modifications to the stochastic gradient descent (SGD) using stochastic Polyak stepsizes (SPS) to address the limitations of previous formulations, specifically in non-over-parameterized regimes. The new variants aim to ensure convergence to the exact minimizer without requiring prior knowledge of optimal mini-batch losses. The authors propose DecSPS, which is a novel modification that guarantees convergence to the exact solution, especially for strongly-convex optimization problems. The paper includes theoretical contributions as well as empirical validations through experiments.",
+    "type": {
+      "value": "theoretical",
+      "justification": "The paper primarily presents a theoretical analysis of the dynamics and convergence properties of SGD with new variants of SPS, particularly focusing on convergence proofs and theoretical improvements over existing methods.",
+      "quote": "In this work, we study the dynamics and the convergence properties of SGD equipped with new\nvariants of the stochastic Polyak stepsize and provide solutions to both drawbacks of the original SPS."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Optimization in Machine Learning",
+        "justification": "The paper focuses on optimization techniques for machine learning, specifically involving stochastic gradient descent and real-time adaptation of stepsizes for convergence in optimization problems.",
+        "quote": "A promising new direction in the adaptive stepsizes literature is based on the idea of Polyak stepsizes,\nintroduced by [25] in the context of deterministic convex optimization. Recently [22] successfully\nadapted Polyak stepsizes to the stochastic setting, and provided convergence rates matching fine-\ntuned SGD"
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Stochastic Optimization",
+          "justification": "The primary subject of the paper is stochastic optimization methods, as it discusses stochastic gradient descent and the stochastic Polyak stepsize.",
+          "quote": "To start, we remind the reader that problem (1) is said to be interpolated if there exists a problem\nsolution x^{∗} ∈ X^{∗} such that inf x∈R d f i (x) = f i (x^{∗} ) for all i ∈ [n]."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Adaptive Methods",
+          "justification": "The paper introduces DecSPS, an adaptive method for selecting step sizes in SGD to achieve better convergence.",
+          "quote": "As we already mentioned, in the non-interpolated setting SPS max has the following issues:... To fix this issue, we propose DecSPS, a novel modification of SPS, which guarantees convergence to the exact minimizer - without a priori knowledge of the problem parameters."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Convex Optimization",
+          "justification": "The paper addresses issues related to solving general convex optimization problems using its proposed variants of SPS.",
+          "quote": "In this work, we study the dynamics and the convergence properties of SGD equipped with new\nvariants of the stochastic Polyak stepsize for solving general convex optimization problems."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Stochastic Polyak Stepsize (SPS)",
+          "justification": "The paper discusses the conditions and performance of the Stochastic Polyak Stepsize (SPS) and its variants.",
+          "quote": "Even if the stochastic Polyak stepsize (SPS) [22] comes with strong convergence guarantees, it has two\nmain drawbacks when it is used in non-over-parameterized regimes."
+        },
+        "aliases": [
+          "SPS"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "SPS was proposed in previous works and is analyzed further in this paper.",
+          "quote": "Recently Loizou et al. [22], proposed and analyzed stochastic gradient descent\n(SGD) with stochastic Polyak stepsize (SPS)."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The paper appears to focus on the theoretical aspects and does not explicitly mention running SPS on specific hardware during the main text.",
+          "quote": "The results especially shines in the overparameterized strongly convex\nsetting, where linear convergence to x^{∗} is shown."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "SPS is numerically compared to other optimization step sizes in terms of its performance and convergence characteristics.",
+          "quote": "Even if the stochastic Polyak stepsize (SPS) [22] comes with strong convergence guarantees, it has two\nmain drawbacks when it is used in non-over-parameterized regimes:..."
+        },
+        "referenced_paper_title": {
+          "value": "Stochastic Polyak step-size for SGD: An adaptive learning rate for fast convergence",
+          "justification": "This specific model and its application to SGD were discussed in the referred paper [22] by Loizou et al.",
+          "quote": "Recently Loizou et al. [22], proposed and analyzed stochastic gradient descent\n(SGD) with stochastic Polyak stepsize (SPS)."
+        }
+      },
+      {
+        "name": {
+          "value": "Decreasing Stochastic Polyak Stepsize (DecSPS)",
+          "justification": "The paper proposes DecSPS as a novel modification of the SPS that ensures convergence to the exact minimizer.",
+          "quote": "To fix this issue, we propose DecSPS, a novel modification of SPS, which guarantees convergence to the exact minimizer."
+        },
+        "aliases": [
+          "DecSPS"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "DecSPS is a new variant proposed in this paper to overcome specific issues with the original SPS.",
+          "quote": "In this work, we study the dynamics and the convergence properties of SGD equipped with new\nvariants of the stochastic Polyak stepsize and provide solutions to both drawbacks of the original SPS."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Experimental results and numerical evaluations involving DecSPS are provided in the paper, indicating execution.",
+          "quote": "In §6, we corroborate our theoretical results with experimental testing."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares DecSPS with other optimization methods like AdaGrad and shows numerical results.",
+          "quote": "Comparison with AdaGrad stepsizes. Last, we compare DecSPS with another adaptive coordinate-\nindependent stepsize with strong theoretical guarantees: the norm version of AdaGrad (a.k.a. AdaGrad-\nNorm, AdaNorm), which guarantees the exact solution at the same asymptotic rate as\nDecSPS [32]."
+        },
+        "referenced_paper_title": {
+          "value": "This paper is one of the first to introduce and discuss DecSPS, no reference paper available",
+          "justification": "DecSPS is presented in this paper as a novel contribution, and there is no prior work in the references associated with its introduction.",
+          "quote": "We propose DecSPS, a novel modification of SPS, which guarantees convergence to the exact minimizer."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "A1A Dataset",
+          "justification": "The paper utilizes the A1A dataset for empirical evaluations of their proposed methods.",
+          "quote": "We study performance on three datasets: (1) a Synthetic Dataset, (2) The A1A dataset [6] and (3) the\nBreast Cancer dataset"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "LIBSVM: a library for support vector machines",
+          "justification": "The A1A dataset is introduced in association with the LIBSVM reference.",
+          "quote": "A1A dataset (standard normalization) from [6], consisting in 1605 datapoints in 123 dimensions."
+        }
+      },
+      {
+        "name": {
+          "value": "Breast Cancer Dataset",
+          "justification": "The Breast Cancer dataset is mentioned as one of the datasets used for experimental evaluation.",
+          "quote": "We study performance on three datasets: (1) a Synthetic Dataset, (2) The A1A dataset [6] and (3) the\nBreast Cancer dataset"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "UCI machine learning repository",
+          "justification": "The Breast Cancer dataset comes from the UCI machine learning repository.",
+          "quote": "Breast Cancer dataset (standard normalization) [10], consisting in 569 datapoints in 39 dimensions."
+        }
+      },
+      {
+        "name": {
+          "value": "Synthetic Dataset",
+          "justification": "The authors created a synthetic dataset for testing their proposed methods.",
+          "quote": "We study performance on three datasets: (1) a Synthetic Dataset, (2) The A1A dataset [6] and (3) the\nBreast Cancer dataset"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "No specific reference paper because it is generated as part of the experimental design",
+          "justification": "As it's a synthetic dataset created by the researchers for their experiments, it doesn't have an associated reference paper.",
+          "quote": "We evaluate the performance of DecSPS\n√\nwith c k = c 0 k + 1 on binary classification tasks, with\nP\nn\nλ\nd\n2\nregularized logistic loss f (x) = n ^{1} i=1 log(1+exp(y i · a ⊤ i x)) + 2 ∥x∥ , where a i ∈ R is the"
+        }
+      },
+      {
+        "name": {
+          "value": "LIBSVM",
+          "justification": "The LIBSVM is associated with the A1A dataset which is used for benchmarking the models in the paper.",
+          "quote": "A1A dataset (standard normalization) from [6], consisting in 1605 datapoints in 123 dimensions."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "LIBSVM: a library for support vector machines",
+          "justification": "The A1A dataset is associated with the LIBSVM library, as noted in the paper.",
+          "quote": "C.-C. Chang. LIBSVM: a library for support vector machines. ACM Transactions on Intelligent\nSystems and Technology, 2011."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 2038,
+    "prompt_tokens": 39631,
+    "total_tokens": 41669,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

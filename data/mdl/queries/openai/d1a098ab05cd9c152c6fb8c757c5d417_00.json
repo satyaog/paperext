@@ -1,0 +1,327 @@
+{
+  "paper": "d1a098ab05cd9c152c6fb8c757c5d417.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "FAITH DIAL: A Faithful Benchmark for Information-Seeking Dialogue",
+      "justification": "The title 'FAITH DIAL: A Faithful Benchmark for Information-Seeking Dialogue' accurately reflects the main focus of the paper, which is to introduce a benchmark (FAITH DIAL) that aims for truthful information-seeking dialogue by mitigating hallucinations in conversational AI.",
+      "quote": "F AITH D IAL : A Faithful Benchmark for Information-Seeking Dialogue"
+    },
+    "description": "The paper introduces FAITH DIAL, a benchmark designed to enhance faithfulness in information-seeking dialogues by editing and correcting hallucinated responses in existing datasets. It compares various state-of-the-art models on this benchmark and proposes methods to improve the faithfulness of dialogue responses.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents a new dataset, evaluates several state-of-the-art models using empirical methods, and provides quantitative results from both automated metrics and human evaluations.",
+      "quote": "In this work, we adopt instead a data-centric solution to address hallucinations and create F AITH D IAL , a new benchmark for faithful knowledge-grounded dialogue."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The paper focuses on dialogue systems, a subfield of NLP, and addresses the hallucination problem in dialogue generation using empirical analysis and data benchmarking.",
+        "quote": "The goal of information-seeking dialogue is to respond to seeker queries with natural language utterances that are grounded on knowledge sources."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Dialogue Systems",
+          "justification": "The creation of FAITH DIAL specifically targets dialogue systems, focusing on enhancing their ability to produce faithful and grounded responses.",
+          "quote": "These works focus on either devising automatic metrics to identify when hallucination occurs or finding possible causes for this degenerate behaviour... Existing work aims predominantly to address hallucinations via engineering loss functions or enforcing consistency constraints...."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Conversational AI",
+          "justification": "The development and evaluation of FAITH DIAL directly contribute to improving conversational AI by mitigating hallucinations in dialogue generation, making interactions more reliable.",
+          "quote": "Hallucination in knowledge-grounded neural dialogue generation is an emergent research problem."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "T5 (Text-to-Text Transfer Transformer)",
+          "justification": "T5 is referenced multiple times in the results section as a baseline state-of-the-art dialogue model which was evaluated for its faithfulness when trained on FAITH DIAL.",
+          "quote": "We benchmark a series of state-of-the-art models (Radford et al., 2019; Roller et al., 2021; Raffel et al., 2020; Rashkin et al., 2021b) on dialogue generation."
+        },
+        "aliases": [
+          "T5"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "T5 is not an original contribution of this paper but a previously existing model employed for evaluation purposes.",
+          "quote": "We benchmark a series of state-of-the-art models (Radford et al., 2019; Roller et al., 2021; Raffel et al., 2020; Rashkin et al., 2021b) on dialogue generation."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The T5 model was executed as part of the benchmarking process on the FAITH DIAL dataset.",
+          "quote": "We benchmark a series of state-of-the-art models... on dialogue generation."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "T5 was compared with other models in the evaluation section to assess its performance in terms of reducing hallucinations.",
+          "quote": "We compare models that are designed specifically to alleviate hallucination."
+        },
+        "referenced_paper_title": {
+          "value": "Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer",
+          "justification": "The referenced paper for T5 is 'Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer'.",
+          "quote": "Raffel et al., 2020."
+        }
+      },
+      {
+        "name": {
+          "value": "GPT-2",
+          "justification": "GPT-2 is used as a model in the benchmark comparison to evaluate its effectiveness in generating faithful dialogues on FAITH DIAL.",
+          "quote": "We find that training on FAITH DIAL yields a substantial reduction in hallucination... T5 trained on FAITH DIAL decreases hallucination by 42.2% according to the Critic and increases the faithfulness score (Q2-NLI) by 4.3% compared to T5 trained on W O W.  This corroborates the prominence of data quality compared to the data quantity (FAITH DIAL is one third of W O W)."
+        },
+        "aliases": [
+          "GPT-2"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "GPT-2 is not an original contribution of this paper but rather a pre-existing model utilized in the study.",
+          "quote": "We benchmark a series of state-of-the-art models (Radford et al., 2019..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "GPT-2 was executed in the experiments as indicated by its benchmarking results presented in the paper.",
+          "quote": "The T5 model was executed as part of the benchmarking process on the FAITH DIAL dataset."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "GPT-2 was included in the performance comparison with other models in terms of hallucination reduction.",
+          "quote": "Contrasting models trained on W O W and FAITH D IAL, we find that FAITH D IAL reduces hallucination by a large margin..."
+        },
+        "referenced_paper_title": {
+          "value": "Language Models are Unsupervised Multitask Learners",
+          "justification": "The referenced paper for GPT-2 is 'Language Models are Unsupervised Multitask Learners'.",
+          "quote": "Radford et al., 2019."
+        }
+      },
+      {
+        "name": {
+          "value": "DoHA (Document-grounded Hierarchical Attention)",
+          "justification": "The DoHA model is mentioned as one of the baseline methods specifically designed for document-grounded generation and compared on the FAITH DIAL dataset.",
+          "quote": "D O HA augments BART (Lewis et al., 2020) with a two-view attention mechanism that separately handles the knowledge document and the dialogue history during generation."
+        },
+        "aliases": [
+          "DoHA"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "DoHA is not developed in this paper, it is an existing model used for evaluation.",
+          "quote": "D O HA augments BART (Lewis et al., 2020) with a two-view attention mechanism..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was executed during the evaluations of the FAITH DIAL dataset.",
+          "quote": "DoHA augments BART... handles the knowledge document and the dialogue history..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "DoHA was compared to other models as part of the paper’s experimental analysis.",
+          "quote": "Contrasting models trained on W O W and FAITH D IAL, we find that FAITH D IAL reduces hallucination by a large margin..."
+        },
+        "referenced_paper_title": {
+          "value": "Focused Attention Improves Document-Grounded Generation",
+          "justification": "The referenced paper for DoHA is 'Focused Attention Improves Document-Grounded Generation'.",
+          "quote": "Prabhumoye et al., 2021."
+        }
+      },
+      {
+        "name": {
+          "value": "DIALOGPT",
+          "justification": "DIALOGPT is considered as one of the state-of-the-art models received comparison for its dialogue response generation capabilities in the context of FAITH DIAL.",
+          "quote": "GPT2, D IALOGPT, T5-CTRL, T5-L OSS T RUNCATION..."
+        },
+        "aliases": [
+          "DIALOGPT"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "DIALOGPT is another external model explored in the experiments, not a new model contributed by this paper.",
+          "quote": "GPT2, D IALOGPT, T5-CTRL, T5-L OSS T RUNCATION... are used in evaluation."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The use of DIALOGPT was included as part of the experiment setups for evaluations in the paper.",
+          "quote": "we measure the degree of hallucination of generated responses with respect to knowledge... measure the overlap of words and phrases between generated response and grounding knowledge..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "It was compared as part of evaluating various models against hallucinatory response rates and other metrics.",
+          "quote": "models trained on FAITH DIAL are far more faithful than the models trained on in-domain data despite the distribution shift."
+        },
+        "referenced_paper_title": {
+          "value": "DIALOGPT : Large-scale Generative Pre-training for Conversational Response Generation",
+          "justification": "The paper references DIALOGPT as another state of the art conversational model.",
+          "quote": "Zhang et al., 2020b."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "FAITH DIAL",
+          "justification": "FAITH DIAL is the primary dataset introduced and contributed by the authors in the paper to improve faithfulness in dialogue systems.",
+          "quote": "create F AITH D IAL , a new benchmark for faithful knowledge-grounded dialogue."
+        },
+        "aliases": [
+          "FAITH DIAL"
+        ],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "NA",
+          "justification": "There is no separate referenced paper as FAITH DIAL is newly introduced by this article.",
+          "quote": "NA"
+        }
+      },
+      {
+        "name": {
+          "value": "Wizard of Wikipedia (WoW)",
+          "justification": "WoW is an existing dataset referenced in this study, used as a basis for addressing hallucination problems that FAITH DIAL aims to solve.",
+          "quote": "by editing hallucinated responses in the Wizard of Wikipedia (W O W) benchmark."
+        },
+        "aliases": [
+          "WoW"
+        ],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Wizard of Wikipedia: Knowledge-powered Conversational Agents",
+          "justification": "Referenced as the dataset used for information-grounded dialogues which FAITH DIAL uses to train and compare.",
+          "quote": "Dinan et al., 2019."
+        }
+      },
+      {
+        "name": {
+          "value": "BEGIN",
+          "justification": "The paper uses BEGIN as a benchmark to assess hallucination detection and faithfulness evaluation in dialogue models.",
+          "quote": "a hallucination critic, which discriminates whether an utterance is faithful or not, and boosts the performance by 12.8 F1 score on the BEGIN benchmark."
+        },
+        "aliases": [
+          "BEGIN"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Evaluating Attribution in Dialogue Systems: The BEGIN Benchmark",
+          "justification": "BEGIN is used as a point of comparison for evaluating hallucination detection systems, thus referenced.",
+          "quote": "Dziri et al., 2022b."
+        }
+      },
+      {
+        "name": {
+          "value": "CMU-DoG",
+          "justification": "The CMU-DoG dataset was mentioned as a dataset F AITH D IAL is compatible with, particularly in zero-shot settings for generalizability.",
+          "quote": "the benefits of F AITH D IAL generalize to zero-shot transfer on other datasets, such as CMU-Dog and TopicalChat."
+        },
+        "aliases": [
+          "CMU Document Grounded Conversations"
+        ],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "A Dataset for Document Grounded Conversations",
+          "justification": "Referenced as a comparable dataset for zero-shot transfer learning evaluation in different dataset settings from F AITH D IAL.",
+          "quote": "Zhou et al., 2018."
+        }
+      },
+      {
+        "name": {
+          "value": "TopicalChat",
+          "justification": "TopicalChat is mentioned in terms of performance assessments in the study to evaluate generalization performance of dialogue models trained with FAITH DIAL.",
+          "quote": "The benefits of F AITH D IAL generalize to zero-shot transfer on other datasets, such as CMU-Dog and TopicalChat."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Topical-Chat: Towards Knowledge-Grounded Open-Domain Conversations",
+          "justification": "Referenced as a benchmark for assessing generalization in dialogue systems built with FAITH D IAL.",
+          "quote": "Gopalakrishnan et al., 2019."
+        }
+      },
+      {
+        "name": {
+          "value": "DECODE",
+          "justification": "DECODE is used for training critics and evaluated to its capabilities to transfer learned faithfulness to new dialogue scenarios compared to F AITH D IAL.",
+          "quote": "We compare the performance of models trained on F AITH - C RITIC against models trained on two dialogue inference datasets —DNLI (Welleck et al., 2019b) and DECODE (Nie et al., 2021)—and on a well-known natural language inference (NLI) dataset, MNLI (Williams et al., 2018)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "I Like Fish, Especially Dolphins: Addressing Contradictions in Dialogue Modeling",
+          "justification": "DECODE dataset referenced as part of comparative testing for criticism-issued experiments.",
+          "quote": "Nie et al., 2021."
+        }
+      },
+      {
+        "name": {
+          "value": "DNLI",
+          "justification": "DNLI is used as a contrasting dataset in experiments to determine faithfulness improvements from FAITH DIAL, employed in dialogue model training for critiques.",
+          "quote": "We compare the performance of models trained on F AITH - C RITIC against models trained on two dialogue inference datasets —DNLI (Welleck et al., 2019b) and DECODE (Nie et al., 2021)..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Dialogue Natural Language Inference",
+          "justification": "Referenced as being used when F AITH D IAL tested against alternative datasets to benchmark dialogue critic efficiency.",
+          "quote": "Welleck et al., 2019b."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Huggingface Transformers",
+          "justification": "Huggingface Transformers library is used for implementation of the models and experiments conducted in the paper.",
+          "quote": "We implement all the baselines using the Huggingface Transformers library (Wolf et al., 2020)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Transformers: State-of-the-Art Natural Language Processing",
+          "justification": "The library is directly referenced for implementing transformer models part of the analysis.",
+          "quote": "Wolf et al., 2020."
+        }
+      },
+      {
+        "name": {
+          "value": "Pytorch-lightning",
+          "justification": "Pytorch-lightning library is used for structured training of models as part of the experimental setup.",
+          "quote": "We implement all the baselines using the Huggingface Transformers library (Wolf et al., 2020) and the Pytorch-lightning library."
+        },
+        "aliases": [
+          "Pytorch-lightning"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "NA",
+          "justification": "No specific reference paper is given; library usage is declared within the text for its role.",
+          "quote": "NA"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 3048,
+    "prompt_tokens": 22336,
+    "total_tokens": 25384,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

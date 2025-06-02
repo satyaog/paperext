@@ -1,0 +1,226 @@
+{
+  "paper": "880a35f56fd02ca565f662d2ba775a1a.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Can Subnetwork Structure be the Key to Out-of-Distribution Generalization?",
+      "justification": "The paper extensively discusses the potential role of subnetwork structures in achieving better out-of-distribution (OOD) generalization in deep learning models.",
+      "quote": "Can Subnetwork Structure be the Key to Out-of-Distribution Generalization?"
+    },
+    "description": "This paper investigates whether specific subnetwork structures within neural networks can improve out-of-distribution (OOD) generalization. It introduces the functional lottery ticket hypothesis, suggesting that a full network contains a subnetwork that can achieve better OOD performance. The paper proposes an algorithm called Modular Risk Minimization (MRM) to identify these subnetworks and demonstrates its effectiveness in various OOD tasks.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper includes experiments on datasets and evaluates the performance of proposed methods, indicating its empirical nature.",
+      "quote": "Experiments on various OOD generalization tasks corroborate the effectiveness of our method."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Out-of-Distribution Generalization",
+        "justification": "The paper focuses on enhancing model performance on OOD tasks through subnetwork discovery and regularization techniques.",
+        "quote": "The goal of out-of-distribution (OOD) generalization problem is to learn a model that solves..."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Neural Network Structures",
+          "justification": "The paper explores how subnetwork structures within neural networks can influence generalization across different data distributions.",
+          "quote": "We demonstrate that even in biased models... there still exist unbiased functional subnetworks."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Modular Learning",
+          "justification": "The concept of modular learning is discussed through the idea of subnetwork probing and modularity probing methods.",
+          "quote": "We apply the modularity probing method to diagnose given pretrained models."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "ERM",
+          "justification": "ERM (Empirical Risk Minimization) is used as a baseline model in experiments to compare its performance with other algorithms.",
+          "quote": "The goal of out-of-distribution (OOD) generalization problem is to learn a model that solves..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "ERM is a standard baseline algorithm used for comparison in the paper.",
+          "quote": "ERM (Empirical Risk Minimization) is used as a baseline for comparison in OOD tasks."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "ERM is executed in experiments as a baseline for comparison.",
+          "quote": "ERM algorithm on FULL COLORED MNIST."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "ERM is compared to other algorithms like MRM, IRM, etc. in terms of OOD performance.",
+          "quote": "Figure 1. OOD performance of models with different structures when trained with ERM algorithm on FULL COLORED MNIST."
+        },
+        "referenced_paper_title": {
+          "value": "An overview of statistical learning theory",
+          "justification": "ERM is a classical method referenced in many machine learning papers, often pointing back to Vapnik's foundational works.",
+          "quote": "Vapnik, V. N. An overview of statistical learning theory."
+        }
+      },
+      {
+        "name": {
+          "value": "IRM",
+          "justification": "IRM (Invariant Risk Minimization) is explicitly mentioned and analyzed in the context of OOD generalization in the paper.",
+          "quote": "We also use IRM... to evaluate OOD generalization capability."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "IRM is not a contribution of the paper but is a method used for comparison.",
+          "quote": "We study four OOD generalization algorithms in this paper: Empirical Risk Minimization (ERM), Invariant Risk Minimization (IRM)..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "IRM is executed and compared in the context of various OOD tasks regardless of not being a novel contribution.",
+          "quote": "IRM (Invariant Risk Minimization) is used as a comparative method in out-of-distribution tasks."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "IRM's performance is compared against other methods like ERM, REx, and MRM.",
+          "quote": " Figure 2(a) plots the generalization performance of these algorithms w.r.t. the training process... IRM (59.55%) only gets slightly better results than ERM (58.04 %)."
+        },
+        "referenced_paper_title": {
+          "value": "Invariant Risk Minimization",
+          "justification": "IRM is specifically referenced as a significant method in the context of the study.",
+          "quote": "Arjovsky, M., Bottou, L., Gulrajani, I., and Lopez-Paz, D. Invariant risk minimization."
+        }
+      },
+      {
+        "name": {
+          "value": "REx",
+          "justification": "REx (Risk Extrapolation) is used and analyzed to improve OOD performance, as evident from its prevalence in the paper.",
+          "quote": "REx (76.17%) and DRO (78.56%) methods surpass ERM baseline by a large margin."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "REx is an existing algorithm analyzed in the study but is not an original contribution of this paper.",
+          "quote": "REx, referred to as Risk Extrapolation, is employed and evaluated in a similar context to IRM."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "REx is utilized in experiments to assess its efficacy in OOD tasks.",
+          "quote": "REx (Risk Extrapolation) is used in the experiments conducted in the paper."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "REx's performance is compared against other models such as ERM and IRM.",
+          "quote": "Figure 2(a) plots the generalization performance of these algorithms w.r.t. the training process... REx (76.17%) and DRO (78.56%) methods surpass ERM baseline by a large margin."
+        },
+        "referenced_paper_title": {
+          "value": "Out-of-distribution generalization via risk extrapolation (rex)",
+          "justification": "It is cited as part of the comparison portfolio in the study.",
+          "quote": "Krueger, D., Caballero, E., Jacobsen, J., Zhang, A., Binas, J., Priol, R. L., and Courville, A. C. Out-of-distribution generalization via risk extrapolation (rex)."
+        }
+      },
+      {
+        "name": {
+          "value": "Modular Risk Minimization (MRM)",
+          "justification": "MRM is proposed as a new method in the paper to improve OOD generalization.",
+          "quote": "We then propose Modular Risk Minimization to solve the subnetwork selection problem."
+        },
+        "aliases": [
+          "MRM"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The paper introduces and proposes MRM as a new method for better OOD generalization.",
+          "quote": "We propose a novel functional lottery ticket hypothesis... and Modular Risk Minimization (MRM), a straightforward and effective algorithm to improve OOD generalization."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "MRM is implemented in experiments to validate its proposed advantages.",
+          "quote": "Our algorithm learns the subnetwork structure from a given dataset, and can be combined with any other OOD regularization methods. Experiments... corroborate the effectiveness of our method."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "MRM is directly compared against other models like ERM, IRM, and REx.",
+          "quote": "Figure 1 and 4(b) show the OOD and in-distribution generalization results... MRM significantly surpasses the performance of full network and several baselines."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "No external reference is provided for MRM as it is a contribution of this paper.",
+          "quote": "MRM is a contribution of this paper."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "FULL COLORED MNIST",
+          "justification": "FULL COLORED MNIST specifically designed with biases to test OOD generalization, as detailed in the experiments.",
+          "quote": "Figure 1 and 4(b) show the OOD and in-distribution generalization results for these subnetworks with ERM training on the FULL COLORED MNIST dataset respectively."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Gradient-based learning applied to document recognition",
+          "justification": "The original MNIST dataset by LeCun et al. is referenced as the base for creating the FULL COLORED MNIST variant used in this study.",
+          "quote": "The digit shape semantics are considered as Z inv while color semantics as Z sp . We choose ten different kinds of color and define a one-to-one corresponding bias relationship with ten digit class... from the original MNIST dataset (LeCun et al., 1998)."
+        }
+      },
+      {
+        "name": {
+          "value": "MSCOCO",
+          "justification": "Data samples have been extracted from the MSCOCO dataset for building biased object-oriented datasets like COLORED OBJECT and SCENE OBJECT used in the experiments.",
+          "quote": "We take inspiration from Ahmed et al. (2021) to build this biased dataset together with the following SCENE OBJECT one. Ten classes of objects extracted from MSCOCO dataset (Lin et al., 2014) are put onto ten kinds of color backgrounds."
+        },
+        "aliases": [
+          "COCO"
+        ],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Microsoft coco: Common objects in context",
+          "justification": "MSCOCO dataset is mentioned as a source for extracting object classes to construct new datasets for experimentation.",
+          "quote": "Lin, T. Y., Maire, M., Belongie, S., Hays, J., and Zitnick, C. L. Microsoft coco: Common objects in context. In European Conference on Computer Vision, 2014."
+        }
+      },
+      {
+        "name": {
+          "value": "Places",
+          "justification": "The dataset serves as a source for scenic backgrounds in constructing the SCENE OBJECT dataset for the experiments described.",
+          "quote": "Backgrounds are scenery based, sourced from the Places dataset as mentioned for building SCENE OBJECT dataset."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Places: A 10 million image database for scene recognition",
+          "justification": "Places dataset is referenced in the creation of the SCENE OBJECT environment for experimental purposes.",
+          "quote": "Zhou, B., Lapedriza, A., Khosla, A., Oliva, A., and Torralba, A. Places: A 10 million image database for scene recognition."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 2138,
+    "prompt_tokens": 24105,
+    "total_tokens": 26243,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

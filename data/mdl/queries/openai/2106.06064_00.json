@@ -1,0 +1,313 @@
+{
+  "paper": "2106.06064.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "RNN with Particle Flow for Probabilistic Spatio-temporal Forecasting",
+      "justification": "The title is mentioned at the beginning of the paper and accurately describes the content of the research.",
+      "quote": "RNN with Particle Flow for Probabilistic Spatio-temporal Forecasting"
+    },
+    "description": "This paper discusses the use of RNNs with particle flow for probabilistic spatio-temporal forecasting, focusing on the modeling of time-series data as a random realization from a nonlinear state-space model. The approach combines Graph Convolutional Recurrent architectures with particle flow to approximate the posterior distribution of states for better prediction accuracy and uncertainty characterization, tested on various real-world time-series datasets.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper focuses on experimentation with real world datasets to demonstrate the effectiveness of their approach, which is characteristic of empirical research.",
+      "quote": "Thorough experimentation on several real world time-series datasets demonstrates that our approach provides better characterization of uncertainty..."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Time-Series Forecasting",
+        "justification": "The primary focus of the paper is on improving time-series forecasting methods using a combination of RNN, GNN, and particle flow techniques.",
+        "quote": "In this work, we consider the time-series data as a random realization from a nonlinear state-space model..."
+      },
+      "aliases": [
+        "Spatio-temporal Forecasting"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Graph Neural Networks",
+          "justification": "The paper extensively discusses the use of Graph Neural Networks in modeling spatial dependencies in time-series.",
+          "quote": "...these approaches can effectively learn and exploit spatial relationships among the time-series using various Graph Neural Networks (GNNs)..."
+        },
+        "aliases": [
+          "GNNs"
+        ]
+      },
+      {
+        "name": {
+          "value": "Probabilistic Forecasting",
+          "justification": "The paper emphasizes probabilistic forecasting by focusing on prediction uncertainty and using Bayesian inference for hidden states.",
+          "quote": "...target Bayesian inference of the hidden states for probabilistic forecasting..."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "DeepAR",
+          "justification": "DeepAR is mentioned in the paper as one of the existing models for probabilistic forecasting.",
+          "quote": "These include DeepAR (Salinas et al., 2020)..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "DeepAR is not introduced as a new contribution but is used as a reference model in the paper.",
+          "quote": "These include DeepAR (Salinas et al., 2020)..."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The paper does not mention executing DeepAR as part of its experiments, but only references it.",
+          "quote": "Although these algorithms can characterize uncertainty via confidence intervals..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "DeepAR is compared to the proposed method as part of illustrating improvements in uncertainty characterization.",
+          "quote": "Comparison of GRU+flow with the DeepAR model reveals that even without a sophisticated RNN architecture, the particle flow based approach shows better characterization of prediction uncertainty..."
+        },
+        "referenced_paper_title": {
+          "value": "DeepAR: Probabilistic forecasting with autoregressive recurrent networks",
+          "justification": "The referenced paper on DeepAR provides the foundation for its mention in this research as a related work.",
+          "quote": "These include DeepAR (Salinas et al., 2020)..."
+        }
+      },
+      {
+        "name": {
+          "value": "DeepState",
+          "justification": "DeepState is noted in the paper as another model used for probabilistic multivariate time-series forecasting.",
+          "quote": "...and DeepState (Rangapuram et al., 2018)..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "DeepState is used as a reference model and not contributed in this paper.",
+          "quote": "Although these algorithms can characterize uncertainty via confidence intervals..."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "There is no indication that DeepState was executed in this study as the focus was on a new method.",
+          "quote": "We observe that in most cases, the proposed flow based algorithms outperform the competitors..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "DeepState serves as a benchmark to measure the effectiveness of the new method.",
+          "quote": "In particular, comparison of GRU+flow with the DeepAR model reveals that ..."
+        },
+        "referenced_paper_title": {
+          "value": "Deep State Space Models for Time Series Forecasting",
+          "justification": "The paper by Rangapuram et al. is referenced when discussing DeepState, acknowledging it as prior work.",
+          "quote": "...DeepState (Rangapuram et al., 2018)..."
+        }
+      },
+      {
+        "name": {
+          "value": "DeepFactors",
+          "justification": "DeepFactors is referred to in the paper as an existing model for forecasting.",
+          "quote": "DeepFactors (Wang et al., 2019), ..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper references DeepFactors as an existing model, not as a new contribution.",
+          "quote": "DeepFactors (Wang et al., 2019), ..."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "DeepFactors is mentioned for comparison but not executed within this research.",
+          "quote": "...results for probabilistic forecasting. We observe that in most cases, the proposed flow based algorithms outperform the competitors."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "DeepFactors is compared with the proposed model to evaluate performance improvements.",
+          "quote": "We observe that in most cases, the proposed flow based algorithms outperform the competitors."
+        },
+        "referenced_paper_title": {
+          "value": "Deep Factors for Forecasting",
+          "justification": "The paper on DeepFactors by Wang et al. is cited as related previous work.",
+          "quote": "DeepFactors (Wang et al., 2019), ..."
+        }
+      },
+      {
+        "name": {
+          "value": "MQRNN",
+          "justification": "MQRNN is mentioned in the paper as a model relevant to the work's focus on forecasting.",
+          "quote": "...the Multi-horizon Quantile RNN (MQRNN) (Wen et al., 2017)..."
+        },
+        "aliases": [
+          "Multi-horizon Quantile RNN"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "MQRNN was cited as an existing approach, not newly introduced in the paper.",
+          "quote": "...the Multi-horizon Quantile RNN (MQRNN) (Wen et al., 2017)..."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The paper does not discuss the execution of MQRNN but mentions it as a related model.",
+          "quote": "Although these algorithms can characterize uncertainty via confidence intervals..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares its novel approach with MQRNN among others for benchmarking purposes.",
+          "quote": "We observe that most of the spatio-temporal models perform better than graph agnostic baselines..."
+        },
+        "referenced_paper_title": {
+          "value": "A Multi-Horizon Quantile Recurrent Forecaster",
+          "justification": "The MQRNN model is referenced in context with its original publication by Wen et al.",
+          "quote": "...the Multi-horizon Quantile RNN (MQRNN) (Wen et al., 2017)..."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "PeMSD3",
+          "justification": "The dataset is explicitly mentioned as one of the evaluation datasets.",
+          "quote": "We evaluate our proposed algorithm on four publicly available traffic datasets, namely PeMSD3..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Freeway performance measurement system: Mining loop detector data",
+          "justification": "PeMS datasets are associated with Caltrans Performance Measurement System, referenced in prior works.",
+          "quote": "These are obtained from the Caltrans Performance Measurement System (PeMS) (Chen et al., 2000)..."
+        }
+      },
+      {
+        "name": {
+          "value": "PeMSD4",
+          "justification": "PeMSD4 is one of the datasets used for evaluating the proposed method.",
+          "quote": "We evaluate our proposed algorithm on four publicly available traffic datasets, namely PeMSD3, PeMSD4, PeMSD7 and PeMSD8."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Freeway performance measurement system: Mining loop detector data",
+          "justification": "The dataset originates from PeMS, as indicated by reference to prior methodologies.",
+          "quote": "These are obtained from the Caltrans Performance Measurement System (PeMS) (Chen et al., 2000)..."
+        }
+      },
+      {
+        "name": {
+          "value": "PeMSD7",
+          "justification": "The paper mentions using PeMSD7 as part of its experimental evaluations.",
+          "quote": "...four publicly available traffic datasets, namely PeMSD3, PeMSD4, PeMSD7 and PeMSD8."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Freeway performance measurement system: Mining loop detector data",
+          "justification": "The PeMS traffic datasets are historically associated with the PeMS system referenced here.",
+          "quote": "These are obtained from the Caltrans Performance Measurement System (PeMS) (Chen et al., 2000)..."
+        }
+      },
+      {
+        "name": {
+          "value": "PeMSD8",
+          "justification": "PeMSD8 is indicated as one of the datasets for evaluating the technique introduced in the paper.",
+          "quote": "...PeMSD3, PeMSD4, PeMSD7 and PeMSD8."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Freeway performance measurement system: Mining loop detector data",
+          "justification": "The dataset is part of the PeMS suite, noted to be used for analysis in previous studies.",
+          "quote": "These are obtained from the Caltrans Performance Measurement System (PeMS) (Chen et al., 2000)..."
+        }
+      },
+      {
+        "name": {
+          "value": "Electricity",
+          "justification": "The Electricity dataset is mentioned as a multivariate non-graph dataset evaluated in the paper.",
+          "quote": "In non-graph setting, we use Electricity..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "UCI Machine Learning Repository",
+          "justification": "The dataset is sourced from a recognized repository for machine learning research.",
+          "quote": "...we use Electricity (Dua & Graff, 2017)..."
+        }
+      },
+      {
+        "name": {
+          "value": "Traffic",
+          "justification": "Traffic is cited as one of the non-graph datasets used in this study.",
+          "quote": "...Traffic (Dua & Graff, 2017) (hourly occupancy rate, of different car lanes in San Francisco)..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "UCI Machine Learning Repository",
+          "justification": "The paper cites the UCI Machine Learning Repository as the source of this dataset.",
+          "quote": "...Traffic (Dua & Graff, 2017)..."
+        }
+      },
+      {
+        "name": {
+          "value": "Taxi",
+          "justification": "The Taxi dataset is a dataset used in the experiments described in the paper.",
+          "quote": "...the Taxi (Salinas et al., 2019), and Wikipedia... datasets."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Deep Factors for Forecasting",
+          "justification": "The Taxi dataset was used in prior forecasting research by Salinas et al.",
+          "quote": "...and the Taxi (Salinas et al., 2019)..."
+        }
+      },
+      {
+        "name": {
+          "value": "Wikipedia",
+          "justification": "This dataset is used for evaluating multi-variate forecasting methods as per the document.",
+          "quote": "...and Wikipedia (Salinas et al., 2019) (count of clicks to different web links) datasets."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Deep Factors for Forecasting",
+          "justification": "The prior research utilized this dataset for forecasting, as referenced in Salinas et al.",
+          "quote": "...and Wikipedia (Salinas et al., 2019)..."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "As deep learning models such as GRU and GNNs are involved, it's common to use PyTorch for implementation.",
+          "quote": "Code to reproduce our experiments is available at https://github.com/networkslab/rnn_flow"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "NA",
+          "justification": "The codebase is mentioned but no specific reference titles were provided for the library itself.",
+          "quote": "Code to reproduce our experiments is available at https://github.com/networkslab/rnn_flow"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2514,
+    "prompt_tokens": 40347,
+    "total_tokens": 42861,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

@@ -1,0 +1,170 @@
+{
+  "paper": "b04cb4ac338a6c418d95061758689fb0.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Beyond FVD: An Enhanced Metric for Evaluating Video Generation Distribution Quality",
+      "justification": "The title explicitly mentions the focus on advancing beyond the Fréchet Video Distance (FVD) with a new metric for video generation quality evaluation.",
+      "quote": "B EYOND FVD: A N E NHANCED M ETRIC FOR E VALUAT - ING V IDEO G ENERATION D ISTRIBUTION Q UALITY"
+    },
+    "description": "The paper critiques the limitations of the Fréchet Video Distance (FVD) as a metric for evaluating video generation quality and proposes a new metric, JEDi, leveraging features from a Joint Embedding Predictive Architecture and the Maximum Mean Discrepancy method to provide improved evaluation accuracy and efficiency.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves experiments and comparisons with other metrics on video datasets to validate the proposed JEDi metric's effectiveness.",
+      "quote": "Our experiments on multiple open-source datasets show clear evidence that it is a superior alternative to the widely used FVD metric, requiring only 16% of the samples to reach its steady value, while increasing alignment with human evaluation by 34%, on average."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Video Generation Evaluation",
+        "justification": "The research is directly tied to evaluating the quality and performance of video generation methods, focusing on how distributional quality is measured.",
+        "quote": "Recent video distance metrics focus on assessing both temporal and spatial qualities, as well as diversity, by measuring distances in distribution with respect to the real videos."
+      },
+      "aliases": [
+        "Video Quality Measurement"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Computer Vision",
+          "justification": "Video generation and evaluation falls under the broader category of computer vision research.",
+          "quote": "Video generation research has experienced a significant surge recently, yielding cutting-edge models that produce high-quality videos."
+        },
+        "aliases": [
+          "CV"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Inflated 3D ConvNet (I3D)",
+          "justification": "I3D is mentioned as a key model used for extracting features in the context of evaluating video distributions using the FVD metric.",
+          "quote": "The Fréchet Inception Distance (FID) and Fréchet Video Distance (FVD) correspond to the above equations, but the distance is applied in the space of InceptionV3 and I3D network features, respectively."
+        },
+        "aliases": [
+          "I3D"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "I3D is used as a reference model for feature extraction, not developed as part of this research.",
+          "quote": "Inflated 3D ConvNet: The Inflated 3D ConvNet (I3D) is a convolutional neural network model based on the pre-trained Inception-v1."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The research explicitly uses this model to extract features for evaluating video metrics, implying execution of the model.",
+          "quote": "FVD evaluates the FD between the generated and data distributions in the Inflated 3D ConvNet (I3D)’s feature space."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "I3D features are evaluated against other models and architectures in terms of their efficacy in metric evaluations.",
+          "quote": "A comprehensive study on FVD was conducted by Ge et al. (2024), which compares Fréchet distances of features extracted by the I3D network."
+        },
+        "referenced_paper_title": {
+          "value": "Quo Vadis, Action Recognition? A New Model and the Kinetics Dataset",
+          "justification": "This paper by Carreira and Zisserman discusses the I3D model, which is referenced in the research for understanding its implementation and relevance.",
+          "quote": "The Inflated 3D ConvNet (I3D) (Carreira & Zisserman, 2018) is a convolutional neural network model based on the pre-trained Inception-v1."
+        }
+      },
+      {
+        "name": {
+          "value": "V-JEPA",
+          "justification": "V-JEPA is proposed as the new model to enhance video distribution evaluation, forming the basis for the newly introduced metric, JEDi.",
+          "quote": "JEDi, the feature space of a V-JEPA model (V-JEPA SSv2 ) in combination with a Maximum Mean Discrepancy (MMD) metric, is a vastly more efficient framework for evaluating distributions of generated videos than conventional methods."
+        },
+        "aliases": [
+          "Video Joint Embedding Predictive Architecture"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The V-JEPA model is introduced as part of the paper's contribution to improve video generation metric accuracy.",
+          "quote": "Video Joint Embedding Predictive Architecture: Video Joint Embedding Predictive Architecture (V-JEPA) is a self-supervised training paradigm that learns by predicting missing or masked parts of a video in an abstract representation space."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The V-JEPA model is actively used in the experiments to evaluate the JEDi metric's performance.",
+          "quote": "We employ both (1) the pre-trained variant of the model trained with the self-supervised objective, V-JEPA PT , as well as (2) a version that was fine-tuned on Something-something-v2..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The model's feature space is compared with other models like I3D and VideoMAE to demonstrate its superior alignment with human evaluations.",
+          "quote": "JEDi leverages the robust representations of a V-JEPA model, which are found to be more aligned with human evaluations compared to FVD."
+        },
+        "referenced_paper_title": {
+          "value": "Revisiting Feature Prediction for Learning Visual Representations from Video",
+          "justification": "This reference discusses the V-JEPA model architecture in the context of improving video representation learning, relevant to its application in the study.",
+          "quote": "Video Joint Embedding Predictive Architecture: Video Joint Embedding Predictive Architecture (V-JEPA) (Bardes et al., 2024) is a self-supervised training paradigm that learns by predicting missing or masked parts of a video in an abstract representation space."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "UCF-101",
+          "justification": "The UCF-101 dataset is mentioned as a primary dataset used for metric evaluation and convergence studies.",
+          "quote": "Comparing the number of samples that Fréchet Distance (FD), Energy, and MMD POLY need to converge against its alignment with human evaluation on the UCF-101 dataset."
+        },
+        "aliases": [
+          "UCF101"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "UCF101: A Dataset of 101 Human Actions Classes From Videos in The Wild",
+          "justification": "The UCF-101 dataset is well-known and cited for video recognition tasks, as used in this research.",
+          "quote": "...has demonstrated excellent classification performance on UCF-101, HMDB-51, and Kinetics datasets."
+        }
+      },
+      {
+        "name": {
+          "value": "HMDB-51",
+          "justification": "HMDB-51 is used as part of the analysis and experimentation on different video generation metrics.",
+          "quote": "The Inflated 3D ConvNet (I3D), pre-trained on Kinetics, has demonstrated excellent classification performance on UCF-101, HMDB-51 (Kuehne et al., 2011), and Kinetics datasets."
+        },
+        "aliases": [
+          "HMDB51"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "HMDB: A Large Video Database for Human Motion Recognition",
+          "justification": "The dataset is cited in the context of evaluating video recognition models and is relevant for this study's experiments.",
+          "quote": "HMDB-51 (Kuehne et al., 2011), a large video database for human action recognition."
+        }
+      },
+      {
+        "name": {
+          "value": "Kinetics",
+          "justification": "Kinetics is a widely used dataset for video action recognition that is used in conjunction with models like I3D, as mentioned in the study.",
+          "quote": "Inflated 3D ConvNet: The Inflated 3D ConvNet (I3D), pre-trained on Kinetics, has demonstrated excellent classification performance on UCF-101,..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The Kinetics Human Action Video Dataset",
+          "justification": "Kinetics is referenced as a foundational dataset for training models like I3D used in the study.",
+          "quote": "...trained on the Kinetics dataset (Kay et al., 2017)."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1736,
+    "prompt_tokens": 27895,
+    "total_tokens": 29631,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

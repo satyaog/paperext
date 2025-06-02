@@ -1,0 +1,273 @@
+{
+  "paper": "d02fbbacbe75c89e02a9c713f28602ef.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "QBSUM: a Large-Scale Query-Based Document Summarization Dataset from Real-world Applications",
+      "justification": "The title is explicitly stated at the beginning of the paper and in the document header.",
+      "quote": "QBSUM: a Large-Scale Query-Based Document Summarization Dataset from Real-world Applications"
+    },
+    "description": "The paper introduces QBSUM, a high-quality large-scale dataset for Chinese query-based document summarization, containing 49,000+ data samples. It details the dataset's construction, annotation, and offers three proposed solutions to the summarization task, including unsupervised and BERT-based models. The performance of these models is evaluated using both offline experiments and online A/B testing, showing significant improvement over baselines.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper conducts experiments and presents data analysis, making it empirical.",
+      "quote": "We also propose multiple unsupervised and supervised solutions to the task and demonstrate their high-speed inference and superior performance via both offline experiments and online A/B tests."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The paper is centered on text summarization, a key sub-field of NLP.",
+        "quote": "Query-based document summarization aims to extract or generate a summary of a document which directly answers or is relevant to the search query."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Document Summarization",
+          "justification": "The focus is on query-based document summarization.",
+          "quote": "Query-based document summarization aims to produce a compact and fluent summary of a given document which answers or is relevant to the search query."
+        },
+        "aliases": [
+          "Summarization"
+        ]
+      },
+      {
+        "name": {
+          "value": "Information Retrieval",
+          "justification": "The paper discusses summarization in the context of improving search engine efficiency.",
+          "quote": "Query-based document summarization is a critical task for search engines… improving the search efficiency."
+        },
+        "aliases": [
+          "IR"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "BERT-based summarization model",
+          "justification": "The paper proposes a BERT-based model for query-based summarization and evaluates it.",
+          "quote": "We propose a simple BERT-based model with a pre-trained BERT of 110M parameters as encoder, and perform S-Q text-pair classification to determine whether each text piece S belongs to the summary Y."
+        },
+        "aliases": [
+          "BERT for summarization"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "A BERT-based model is specifically proposed and evaluated in the paper.",
+          "quote": "We propose a simple BERT-based model..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was implemented and tested as part of the research.",
+          "quote": "The architecture of the model is shown in Fig.5. ...evaluated the performance..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The BERT-based model's performance is compared with multiple baselines.",
+          "quote": "In this section, we evaluate our approaches for query-based document summarization and make comparisons with multiple baselines."
+        },
+        "referenced_paper_title": {
+          "value": "BERT: Pre-training of deep bidirectional transformers for language understanding",
+          "justification": "BERT is mentioned specifically as the basis for the proposed model.",
+          "quote": "based on BERT [7]"
+        }
+      },
+      {
+        "name": {
+          "value": "Rank-DualAttn model",
+          "justification": "The Rank-DualAttn model is introduced as an online unsupervised summarization model in the paper.",
+          "quote": "Our online Rank-DualAttn model achieves better performance within acceptable inference time, making it the most suitable model for real-world applications."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "The Rank-DualAttn model is designed and evaluated in the paper.",
+          "quote": "We use different weights to combine the above feature scores where the weights are tuned as hyper-parameters, and derive an unsupervised model that ranks the scores of each S belonging to the output summary Y."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The Rank-DualAttn model is deployed for evaluation and in real-world applications.",
+          "quote": "The Rank-DualAttn model is deployed into QQ browser..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "This model's performance is compared with other summarization methods.",
+          "quote": "Our online Rank-DualAttn model achieves better performance within acceptable inference time, making it the most suitable model for real-world applications."
+        },
+        "referenced_paper_title": {
+          "value": "Attention is all you need",
+          "justification": "The use of dual attention mechanisms suggests inspiration from Transformer models.",
+          "quote": "The self-attention mechanism adopted in BERT..."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "QBSUM",
+          "justification": "QBSUM is the main dataset introduced and used throughout this paper for query-based summarization.",
+          "quote": "In this paper, we present QBSUM, a high-quality large-scale dataset consisting of 49,000+ data samples for the task of Chinese query-based document summarization."
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "QBSUM is newly contributed in this paper and does not reference an existing paper.",
+          "quote": "To the best of our knowledge, QBSUM is the first large-scale high-quality Chinese query-based summarization dataset."
+        }
+      },
+      {
+        "name": {
+          "value": "DUC 2005",
+          "justification": "The dataset is mentioned as a comparison to QBSUM within the context of query-based summarization tasks.",
+          "quote": "datasets created to date for this task are often of a tiny scale such as DUC 2005 [6]"
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Overview of duc 2005",
+          "justification": "DUC 2005 is explicitly mentioned in the reference section of the paper.",
+          "quote": "DUC 2005 [6]"
+        }
+      },
+      {
+        "name": {
+          "value": "DUC 2006",
+          "justification": "The dataset is used as a baseline for comparison with QBSUM.",
+          "quote": "QBSUM is two orders of magnitude larger than DUC2005 and DUC2006."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Overview of duc 2005",
+          "justification": "DUC 2006 is mentioned along with DUC 2005, referring to the DUC conferences, typically covered under a single reference.",
+          "quote": "DUC 2006"
+        }
+      },
+      {
+        "name": {
+          "value": "CNN/Daily Mail",
+          "justification": "This dataset is used as a reference point for text summarization tasks.",
+          "quote": "CNN / Daily Mail question answering dataset [14] is originally introduced as a Cloze-style QA dataset, but also widely adopted on generic document summarization."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Teaching machines to read and comprehend",
+          "justification": "Referenced in context with summarization and MRC tasks.",
+          "quote": "CNN / Daily Mail [14]"
+        }
+      },
+      {
+        "name": {
+          "value": "NEWSROOM",
+          "justification": "Mentioned as a comparison point for document summarization datasets.",
+          "quote": "The New York Times Corpus [33], CNN / Daily Mail [14], and NEWSROOM [12]"
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Newsroom: A dataset of 1.3 million summaries with diverse extractive strategies",
+          "justification": "Explicitly cited in the section of comparison.",
+          "quote": "NEWSROOM [12]"
+        }
+      },
+      {
+        "name": {
+          "value": "Gigaword",
+          "justification": "Provides context as an existing resource used for generic text summarization.",
+          "quote": "A number of diverse datasets have been developed, including Gigaword [11]."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "English Gigaword",
+          "justification": "Cited as a known dataset for text summarization.",
+          "quote": "Gigaword [11]"
+        }
+      },
+      {
+        "name": {
+          "value": "LCSTS",
+          "justification": "Referenced as a prominent Chinese dataset for summarization tasks.",
+          "quote": "LCSTS [15] is a Chinese short text summarization dataset collected from Weibo."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "LCSTS: A large scale Chinese short text summarization dataset",
+          "justification": "The referenced paper title is explicitly mentioned in the list of references.",
+          "quote": "LCSTS [15]"
+        }
+      },
+      {
+        "name": {
+          "value": "New York Times Annotated Corpus",
+          "justification": "Referenced as an earlier significant dataset for text summarization, comparing its size and quality.",
+          "quote": "The New York Times Annotated Corpus [33] is a collection of over 1.8 million articles from the New York Times magazine between 1987 and 2007, with manually written and tagged summaries."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "The New York Times Annotated Corpus",
+          "justification": "The referenced paper corresponding to this dataset is mentioned within the paper.",
+          "quote": "New York Times Annotated Corpus [33]"
+        }
+      },
+      {
+        "name": {
+          "value": "CAT",
+          "justification": "Presented as an example of a query-based summarization dataset for tasks, though limited in scale and access.",
+          "quote": "CAT have proposed several query-based summarization task in the past years..."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "CAT is acknowledged but without details being linked to a single reference.",
+          "quote": "CAT have proposed several query-based summarization task in the past years"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "BERT",
+          "justification": "BERT is mentioned as the core of the proposed model for performing machine learning tasks.",
+          "quote": "We propose a simple BERT-based model with a pre-trained BERT of 110M parameters as encoder."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "BERT: Pre-training of deep bidirectional transformers for language understanding",
+          "justification": "This paper, referenced in the citations, describes BERT, which is central to the paper's model.",
+          "quote": "BERT [7]"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2053,
+    "prompt_tokens": 12822,
+    "total_tokens": 14875,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

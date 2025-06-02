@@ -1,0 +1,237 @@
+{
+  "paper": "a488d4c413969cf6a5793b1687500dad.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Multi-agent cooperation through learning-aware policy gradients",
+      "justification": "The title is explicitly mentioned at the beginning and throughout the document as the research paper's focus.",
+      "quote": "Multi-agent cooperation through learning-aware policy gradients"
+    },
+    "description": "The paper presents a new approach to achieving cooperation among self-interested, independent learning agents through a novel policy gradient algorithm that is unbiased and higher-derivative-free. This involves leveraging sequence models to condition behavior on long observation histories and analyzing how learning-aware reinforcement learning can lead to cooperative behavior and higher returns in social dilemmas like the iterated prisoner's dilemma.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves empirical analysis, experimentation with various methods, and comparison of performance using numerical results.",
+      "quote": "We train a long-context sequence policy π^{i} ( a^{i,b} | h^{i,b}; φ^{i} ) with the COALA-PG rule to play the (finite) iterated prisoner’s dilemma, see Appendix B."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Multi-agent Reinforcement Learning",
+        "justification": "The research focuses on multi-agent learning specifically within reinforcement learning setups involving cooperation among agents.",
+        "quote": "our work builds upon recent efforts that are based on adding a meta level to the multi-agent POSG... leading us to derive novel efficient learning-aware reinforcement learning algorithms"
+      },
+      "aliases": [
+        "MARL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Reinforcement Learning",
+          "justification": "The paper is about reinforcement learning in multi-agent environments, focusing on policy gradients and other RL techniques.",
+          "quote": "multi-agent reinforcement learning comes with significant challenges...In this paper, we join a promising line of work on 'learning awareness' that has been shown to improve cooperation."
+        },
+        "aliases": [
+          "RL"
+        ]
+      },
+      {
+        "name": {
+          "value": "Policy Gradient Methods",
+          "justification": "The paper introduces a specific policy gradient method for learning-aware reinforcement learning.",
+          "quote": "we introduce a new learning-aware reinforcement learning rule derived as a policy gradient estimator."
+        },
+        "aliases": [
+          "Policy Gradients"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "COALA-PG (Co-agent Learning-Aware Policy Gradients)",
+          "justification": "The model COALA-PG is the novel contribution of the paper, providing a learning-aware policy gradient approach.",
+          "quote": "Take the expected shaping return J^{̄}(φ^{i})=EP̄φ ^{1}B ∑ bB=1∑lMT=0 rl , with P the distribution induced by the environment dynamics."
+        },
+        "aliases": [
+          "COALA-PG"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "COALA-PG is introduced as a new method developed in this paper.",
+          "quote": "we present the first unbiased, higher-derivative-free policy gradient algorithm for learning-aware reinforcement learning."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model is empirically tested within the study.",
+          "quote": "We train a long-context sequence policy π^{i} ( a^{i,b} | h^{i,b}; φ^{i} ) with the COALA-PG rule to play the (finite) iterated prisoner’s dilemma, see Appendix B."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "COALA-PG is compared against previous methods such as M-FOS and Shaper in empirical tests.",
+          "quote": "we compare to this method in Section 3.1, after we derive our meta reinforcement learning algorithm."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "There is no explicit reference to a previous paper for COALA-PG as it is a contribution of this paper.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "Hawk Recurrent Neural Network",
+          "justification": "Hawk RNN is used as a policy backbone in the experiments.",
+          "quote": "We choose a Hawk recurrent neural network as the policy backbone (De et al., 2024)."
+        },
+        "aliases": [
+          "Hawk RNN"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Hawk RNN is not introduced in this paper; it is used as a method within its experiments.",
+          "quote": "We choose a Hawk recurrent neural network as the policy backbone (De et al., 2024)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The Hawk RNN is used in the experiments reported in the paper.",
+          "quote": "Agents trained by COALA-PG play iterated prisoner’s dilemma. We choose a Hawk recurrent neural network as the policy backbone."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "The Hawk RNN is not explicitly compared with other models.",
+          "quote": "Hawk models achieve transformer-level performance at scale, but with time and memory costs that grow only linearly with sequence length."
+        },
+        "referenced_paper_title": {
+          "value": "Griffin: mixing gated linear recurrences with local attention for efficient language models",
+          "justification": "The Hawk RNN reference is clearly provided in the paper.",
+          "quote": "We choose a Hawk recurrent neural network as the policy backbone (De et al., 2024)."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CleanUp-lite",
+          "justification": "CleanUp-lite is a key experimental environment discussed in the paper.",
+          "quote": "Finally, we consider CleanUp-lite , a simplified two-player version of the CleanUp game, which is part of the Melting Pot suite."
+        },
+        "aliases": [
+          "CleanUp"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Melting Pot 2.0",
+          "justification": "CleanUp-lite is part of the Melting Pot suite, and reference to this suite is clearly indicated.",
+          "quote": "Finally, we consider CleanUp-lite , a simplified two-player version of the CleanUp game, which is part of the Melting Pot suite of multi-agent environments (Agapiou et al., 2023)."
+        }
+      },
+      {
+        "name": {
+          "value": "Melting Pot",
+          "justification": "The Melting Pot environment provides a base for CleanUp-lite and is part of the experimental setup.",
+          "quote": "we show that efficient learning-aware learning suffices to reach cooperation in a challenging sequential social dilemma involving temporally extended actions (Leibo et al., 2017) that we adapt from the Melting Pot suite (Agapiou et al., 2023)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Melting Pot 2.0",
+          "justification": "Referenced as part of their experiments.",
+          "quote": "Melting Pot suite of multi-agent environments (Agapiou et al., 2023)."
+        }
+      },
+      {
+        "name": {
+          "value": "Iterated Prisoner's Dilemma (IPD)",
+          "justification": "The paper utilizes IPD as a primary experimental framework for analysis.",
+          "quote": "Our analysis uncovers a novel mechanism for the emergence of cooperation through learning awareness, and explains why the seminal learning with opponent-learning awareness algorithm due to Foerster et al. (2018a) led to cooperation in the IPD."
+        },
+        "aliases": [
+          "IPD"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The evolution of cooperation",
+          "justification": "The dataset/environment is foundational for the experiments regarding cooperation debates.",
+          "quote": "Our analysis uncovers a novel mechanism for the emergence of cooperation through learning awareness, and explains why the seminal learning with opponent-learning awareness algorithm due to Foerster et al. (2018a) led to cooperation in the IPD."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "JAX",
+          "justification": "JAX is mentioned as part of the software used for experiments.",
+          "quote": "We used the Python programming language together with the Google JAX (Bradbury et al., 2018) framework."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "JAX: composable transformations of Python+NumPy programs",
+          "justification": "JAX is indicated with its source reference in the paper.",
+          "quote": "JAX (Bradbury et al., 2018)"
+        }
+      },
+      {
+        "name": {
+          "value": "NumPy",
+          "justification": "NumPy is mentioned as part of the software used for experiments.",
+          "quote": "The results reported in this paper were produced with open-source software. We used the Python programming language together with the Google JAX (Bradbury et al., 2018) framework, and the NumPy (Harris et al., 2020)"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Array programming with NumPy",
+          "justification": "The use of NumPy is clearly attributed with a reference.",
+          "quote": "NumPy (Harris et al., 2020)"
+        }
+      },
+      {
+        "name": {
+          "value": "Flax",
+          "justification": "Flax is mentioned as part of the library ecosystem used in the research.",
+          "quote": "We used the Python programming language together with the Google JAX (Bradbury et al., 2018) framework, and the NumPy (Harris et al., 2020), Matplotlib (Hunter, 2007), Flax (Heek et al., 2024) and Optax (Babuschkin et al., 2020) packages."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Flax: A neural network library and ecosystem for JAX",
+          "justification": "The use of Flax is clearly mentioned with a reference within the document.",
+          "quote": "Flax (Heek et al., 2024)"
+        }
+      },
+      {
+        "name": {
+          "value": "Optax",
+          "justification": "Optax is mentioned as part of the library ecosystem used in the research.",
+          "quote": "We used the Python programming language together with the Google JAX (Bradbury et al., 2018) framework, and the NumPy (Harris et al., 2020), Matplotlib (Hunter, 2007), Flax (Heek et al., 2024) and Optax (Babuschkin et al., 2020) packages."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The DeepMind JAX Ecosystem",
+          "justification": "Optax use is cited with its relative reference early in the document.",
+          "quote": "Optax (Babuschkin et al., 2020)"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2065,
+    "prompt_tokens": 32780,
+    "total_tokens": 34845,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

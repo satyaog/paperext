@@ -1,0 +1,158 @@
+{
+  "paper": "b8a132db8872b28dba6ab04de7b7a164.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Training Language Models to Self-Correct via Reinforcement Learning",
+      "justification": "The title is explicitly mentioned several times, such as in the introduction and figure descriptions.",
+      "quote": "Training Language Models to Self-Correct via Reinforcement Learning"
+    },
+    "description": "The paper presents a method called SCoRe, which uses reinforcement learning to improve the self-correction capabilities of large language models (LLMs). The novel approach addresses distribution shift and behavior collapse in previous supervised fine-tuning methods by training on self-generated data, enhancing model performance on reasoning tasks such as MATH and HumanEval.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper is empirical because it includes experimentation and quantitative evaluation on tasks like MATH and HumanEval to demonstrate the effectiveness of the proposed SCoRe method.",
+      "quote": "Our main contribution is SCoRe, a multi-turn RL approach for teaching LLMs how to correct their own mistakes. To the best of our knowledge, SCoRe is the first approach to attain significantly positive intrinsic self-correction."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The primary focus of the paper is enhancing the capabilities of large language models through self-correction, a key task in Natural Language Processing.",
+        "quote": "Self-correction is a highly desirable capability of large language models (LLMs)... we study a special instance of training LLMs to perform self-correction to fix their mistakes “on-the-fly”."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Reinforcement Learning",
+          "justification": "The paper utilizes reinforcement learning as the core method for improving self-correction capabilities in language models.",
+          "quote": "To develop SCoRe, we start by analyzing the shortcomings of SFT-based approaches (e.g., STaR (Zelikman et al., 2022)) and naïve RL that optimizes final response correctness for teaching self-correction."
+        },
+        "aliases": [
+          "RL"
+        ]
+      },
+      {
+        "name": {
+          "value": "Mathematics Problem Solving",
+          "justification": "Mathematical problem solving is a test field used to evaluate the self-correction capabilities of the refined language models.",
+          "quote": "Relative to base Gemini models, our method attains an absolute 15.6% gain on self-correction for reasoning problems from MATH..."
+        },
+        "aliases": [
+          "MATH"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Gemini 1.0 Pro",
+          "justification": "The paper uses Gemini 1.0 Pro as one of the base models to evaluate the self-correction capability improvement through SCoRe.",
+          "quote": "With Gemini 1.0 Pro and 1.5 Flash models, we find that SCoRe achieves state-of-the-art self-correction performance."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The model itself is not contributed by the paper; rather, it is used as part of the experimental setup to test SCoRe.",
+          "quote": "For all of our experiments on coding problems, we fine-tune Gemini 1.0 Pro and for MATH, we fine-tune Gemini 1.5 Flash."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was actively executed as part of the experiments to demonstrate the efficacy of SCoRe.",
+          "quote": "For all of our experiments on coding problems, we fine-tune Gemini 1.0 Pro and for MATH, we fine-tune Gemini 1.5 Flash."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper provides comparative results showing improvements in self-correction using Gemini models enhanced with SCoRe.",
+          "quote": "Relative to the base model Gemini 1.5 Flash, SCoRe improves Δ (t1, t2) by 15.6%, and Accuracy@t2 by 23.0%, and over the next best prior approach, Pair-SFT, by 10.2% and 2.6% respectively."
+        },
+        "referenced_paper_title": {
+          "value": "Beyond human data: Scaling self-training for problem-solving with language models, 2024",
+          "justification": "This matches the style of referring to research contributing models or methods.",
+          "quote": "Singh, et al., 2024"
+        }
+      },
+      {
+        "name": {
+          "value": "Gemini 1.5 Flash",
+          "justification": "The paper employs Gemini 1.5 Flash to evaluate the SCoRe method's effectiveness in enhancing self-correction.",
+          "quote": "With Gemini 1.0 Pro and 1.5 Flash models, we find that SCoRe achieves state-of-the-art self-correction performance."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The model is not an original contribution of the paper, but it is utilized for testing the SCoRe method.",
+          "quote": "For all of our experiments on coding problems, we fine-tune Gemini 1.0 Pro and for MATH, we fine-tune Gemini 1.5 Flash."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was used in performing experiments related to self-correction enhancement.",
+          "quote": "For all of our experiments on coding problems, we fine-tune Gemini 1.0 Pro and for MATH, we fine-tune Gemini 1.5 Flash."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Performance improvements of the Gemini models with and without SCoRe were compared.",
+          "quote": "Relative to the base model Gemini 1.5 Flash, SCoRe improves Δ (t1, t2) by 15.6%, and Accuracy@t2 by 23.0%, and over the next best prior approach, Pair-SFT, by 10.2% and 2.6% respectively."
+        },
+        "referenced_paper_title": {
+          "value": "Beyond human data: Scaling self-training for problem-solving with language models, 2024",
+          "justification": "This falls in line with typical citations referring to foundational work behind used models.",
+          "quote": "Singh, et al., 2024"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "MATH",
+          "justification": "MATH is one of the primary datasets used for evaluating self-correction improvements brought by SCoRe.",
+          "quote": "...our method attains an absolute 15.6% gain on self-correction for reasoning problems from MATH..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Measuring mathematical problem solving with the math dataset",
+          "justification": "The dataset accompanies citations discussing its use and reference.",
+          "quote": "Relative to base Gemini models, our method attains an absolute 15.6% gain on self-correction for reasoning problems from MATH (Hendrycks et al., 2021)"
+        }
+      },
+      {
+        "name": {
+          "value": "HumanEval",
+          "justification": "HumanEval is used to test the improvement in self-correction ability of the models with SCoRe applied.",
+          "quote": "...and an absolute 9.1% gain on coding problems from HumanEval."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Evaluating large language models trained on code",
+          "justification": "The dataset is cited with a reference to its foundational paper.",
+          "quote": "...coding problems from HumanEval (Chen et al., 2021)."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1485,
+    "prompt_tokens": 24713,
+    "total_tokens": 26198,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

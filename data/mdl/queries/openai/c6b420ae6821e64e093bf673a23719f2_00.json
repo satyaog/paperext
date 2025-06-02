@@ -1,0 +1,299 @@
+{
+  "paper": "c6b420ae6821e64e093bf673a23719f2.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "How Should We Extract Discrete Audio Tokens from Self-Supervised Models?",
+      "justification": "The title is directly stated at the beginning of the paper and indicates the focus on extracting discrete audio tokens from self-supervised models.",
+      "quote": "How Should We Extract Discrete Audio Tokens from Self-Supervised Models?"
+    },
+    "description": "This paper explores the optimal configuration of semantic tokens across discriminative and generative tasks, proposing a scalable vocoder and an attention mechanism to enhance the adaptability and performance of semantic tokens in diverse audio applications.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves practical exploration and evaluation of different techniques for discrete audio token extraction in various tasks, as evidenced by experimental results and comparisons.",
+      "quote": "This paper addresses this gap by evaluating the effects of different heuristics required to derive semantic tokens for several discriminative and generative tasks."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Speech Processing",
+        "justification": "The primary focus is on audio and speech processing, exploring discrete audio tokens and their application in speech-related tasks.",
+        "quote": "Learning effective, efficient, and robust representations is a core problem in modern audio and speech processing systems."
+      },
+      "aliases": [
+        "Audio Processing",
+        "Speech Recognition"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Representation Learning",
+          "justification": "A significant aspect of the paper is the exploration of representations extracted from self-supervised models.",
+          "quote": "Discrete audio tokens have recently gained attention for their potential to bridge the gap between audio and language processing."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Automatic Speech Recognition",
+          "justification": "ASR is one of the discriminative tasks highlighted in the paper for the application of discrete tokens.",
+          "quote": "Semantic tokens primarily capture coarse information such as phonetic, semantics, and syntactic details."
+        },
+        "aliases": [
+          "ASR"
+        ]
+      },
+      {
+        "name": {
+          "value": "Speech Synthesis",
+          "justification": "The paper discusses generative tasks like text-to-speech, which is a component of speech synthesis.",
+          "quote": "we focus on text-to-speech and speech enhancement."
+        },
+        "aliases": [
+          "Text-to-Speech",
+          "TTS"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Wav2Vec2",
+          "justification": "Wav2Vec2 is mentioned as one of the SSL models from which representations are derived for tokenization.",
+          "quote": "Over the past few years, continuous representations learned by large self-supervised models such as Wav2Vec2 [2], WavLM [3], and HuBERT [4] have achieved unprecedented performance."
+        },
+        "aliases": [
+          "W2V2"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Wav2Vec2 is not a contribution of this paper but referenced for its SSL capabilities.",
+          "quote": "Over the past few years, continuous representations learned by large self-supervised models such as Wav2Vec2 [2]..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper discusses using representations from models like Wav2Vec2 in experiments, indicating execution.",
+          "quote": "This paper addresses this gap by evaluating the effects of different heuristics required to derive semantic tokens for several discriminative and generative tasks."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Wav2Vec2 is compared as part of evaluating different tokenization strategies across tasks.",
+          "quote": "Our results show that the scalable vocoder outperforms all vocoders trained on every specific layer."
+        },
+        "referenced_paper_title": {
+          "value": "wav2vec 2.0: A framework for self-supervised learning of speech representations",
+          "justification": "The referenced paper title is explicitly provided in the references section of the paper.",
+          "quote": "A. Baevski, Y. Zhou, A. Mohamed, and M. Auli, “wav2vec 2.0: A framework for self-supervised learning of speech representations.”"
+        }
+      },
+      {
+        "name": {
+          "value": "WavLM",
+          "justification": "WavLM is cited as one of the self-supervised models used for acquiring audio representations.",
+          "quote": "Over the past few years, continuous representations learned by large self-supervised models such as WavLM [3]..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "WavLM is an existing model used in the study but not contributed by this research.",
+          "quote": "Over the past few years, continuous representations learned by large self-supervised models such as... WavLM [3]..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper conducts experiments using representations from WavLM, indicating its execution.",
+          "quote": "For quantization, we cluster five layers taken from two pre-trained SSL models using the k-means algorithm independently for each layer. We consider two widely-used models: WavLM-large ^{2} and HuBERT-large ^{3}..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "WavLM is compared with other models in the context of evaluating different task performances.",
+          "quote": "Fig. 2 depicts the average weights assigned to different layers in the WavLM model across various downstream tasks..."
+        },
+        "referenced_paper_title": {
+          "value": "Wavlm: Large-scale self-supervised pre-training for full stack speech processing",
+          "justification": "The title of the referenced paper for WavLM is provided in the references section of the paper.",
+          "quote": "S. Chen et al., “Wavlm: Large-scale self-supervised pre-training for full stack speech processing.”"
+        }
+      },
+      {
+        "name": {
+          "value": "HuBERT",
+          "justification": "HuBERT is identified as another self-supervised model from which representations are derived in the study.",
+          "quote": "Over the past few years, continuous representations learned by large self-supervised models such as... HuBERT [4]..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "HuBERT is a model used in the analysis but was not developed by this research.",
+          "quote": "Over the past few years, continuous representations learned by large self-supervised models such as... HuBERT [4]..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The execution of HuBERT is indicated by the experiments involving its use for token extraction.",
+          "quote": "For quantization, we cluster five layers taken from two pre-trained SSL models using the k-means algorithm independently for each layer. We consider two widely-used models: WavLM-large ^{2} and HuBERT-large ^{3}..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "HuBERT is numerically compared in the study evaluating speech processing performances.",
+          "quote": "SV-Hubert-1000\nSV-Wavlm-2000"
+        },
+        "referenced_paper_title": {
+          "value": "HuBERT: Self-supervised speech representation learning by masked prediction of hidden units",
+          "justification": "The reference to this paper confirms its use as a baseline for HuBERT.",
+          "quote": "W.-N. Hsu, B. Bolte, Y.-H. H. Tsai, K. Lakhotia, R. Salakhutdinov, and A. Mohamed, “Hubert: Self-supervised speech representation learning by masked prediction of hidden units.”"
+        }
+      },
+      {
+        "name": {
+          "value": "HiFi-GAN",
+          "justification": "HiFi-GAN is adapted for use as a scalable vocoder in the paper's experiments.",
+          "quote": "To train such a model, we modify HiFi-GAN [16] to accept a variable number of multi-layer discrete tokens as input."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "HiFi-GAN is an existing model that was modified for the study, not newly contributed.",
+          "quote": "To train such a model, we modify HiFi-GAN [16] to accept a variable number of multi-layer discrete tokens as input."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "HiFi-GAN's adaptation and use as a vocoder in experiments reflect its execution.",
+          "quote": "This approach is achieved through a layer dropout training scheme, inspired by the bitrate scalability mechanism used in SoundStream."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "HiFi-GAN's performance is compared to other vocoders in the study.",
+          "quote": "Our results cover findings from two distinct setups: 1) a scalable vocoder trained across five layers, and 2) a vocoder trained on a single layer."
+        },
+        "referenced_paper_title": {
+          "value": "HiFi-GAN: Generative adversarial networks for efficient and high fidelity speech synthesis",
+          "justification": "The reference paper title for HiFi-GAN used for its adaptation is provided in the reference section.",
+          "quote": "Kong, J. Kim, and J. Bae, “Hifi-gan: generative adversarial networks for efficient and high fidelity speech synthesis."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "LJSpeech",
+          "justification": "LJSpeech is referenced as the dataset used for training tokenizers and vocoders in the experiments.",
+          "quote": "We train all models on the LJSpeech dataset."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The LJ speech dataset",
+          "justification": "As cited in the paper, this is the reference for the LJSpeech dataset.",
+          "quote": "K. Ito, “The LJ speech dataset,” https://keithito.com/LJ-Speech-Dataset/, 2017."
+        }
+      },
+      {
+        "name": {
+          "value": "Librispeech",
+          "justification": "Librispeech is mentioned as another dataset used for training and evaluation.",
+          "quote": "We consider two CTC-based speech recognition tasks. The first one is English ASR using Librispeech train-clean-100 for training and test-clean, test-other for testing."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "LibriSpeech: A corpus of read English speech.",
+          "justification": "The LibriSpeech dataset, known for its use in ASR tasks, is identified in the reference section of the paper.",
+          "quote": "R. Ardila, M. Branson, K. Davis, M. Kohler, J. Meyer, M. Hen-retty, R. Morais, L. Saunders, F. Tyers, and G. Weber, “Common voice: A massively-multilingual speech corpus.”"
+        }
+      },
+      {
+        "name": {
+          "value": "IEMOCAP",
+          "justification": "IEMOCAP is mentioned in the context of emotion recognition tasks.",
+          "quote": "Emotion Recognition (ER): We use ECAPA-TDNN for emotion recognition on the IEMOCAP dataset."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "IEMOCAP: Interactive emotional dyadic motion capture database",
+          "justification": "The paper references this dataset for the emotion recognition task, and it's cited in the references.",
+          "quote": "C. Busso, M. Bulut, C.-C. Lee, A. Kazemzadeh, E. Mower, S. Kim, J. N. Chang, S. Lee, and S. S. Narayanan, “IEMOCAP: Interactive emotional dyadic motion capture database.”"
+        }
+      },
+      {
+        "name": {
+          "value": "VoxCeleb1",
+          "justification": "VoxCeleb1 is used for speaker identification tasks in the research.",
+          "quote": "Speaker Identification (SID): We employ an ECAPA-TDNN model to determine the speaker identity of each utterance. The widely used VoxCeleb1 is adopted."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "VoxCeleb: A large-scale speaker identification dataset",
+          "justification": "This dataset is mentioned for speaker identification, and its reference is present in the document.",
+          "quote": "A. Nagrani, J. S. Chung, and A. Zisserman, “Voxceleb: a large-scale speaker identification dataset.”"
+        }
+      },
+      {
+        "name": {
+          "value": "CommonVoice",
+          "justification": "CommonVoice is used for the French ASR tasks as mentioned in the paper.",
+          "quote": "The second one uses French data coming from the CommonVoice (CV) 16.1 Corpus."
+        },
+        "aliases": [
+          "CV"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Common voice: A massively-multilingual speech corpus",
+          "justification": "The CommonVoice dataset is cited for ASR tasks, which is confirmed by the reference section.",
+          "quote": "R. Ardila, M. Branson, K. Davis, M. Kohler, J. Meyer, M. Hen-retty, R. Morais, L. Saunders, F. Tyers, and G. Weber, “Common voice: A massively-multilingual speech corpus.”"
+        }
+      },
+      {
+        "name": {
+          "value": "WHAM!",
+          "justification": "The WHAM! dataset is used to create noisy samples for speech enhancement tasks.",
+          "quote": "Noisy samples are generated by mixing clean samples from LJSpeech with noise from WHAM!."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "WHAM!: Extending speech separation to noisy environments",
+          "justification": "The use of the WHAM! dataset for generating noisy samples is mentioned in the paper and supported by its reference.",
+          "quote": "G. Wichern et al., “WHAM!: Extending speech separation to noisy environments.”"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "SpeechBrain",
+          "justification": "The paper mentions that their code is built on the SpeechBrain toolkit for reproducibility.",
+          "quote": "For reproducibility and to encourage further research, we release the code, built on the popular SpeechBrain toolkit, and pretrained models publicly."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "SpeechBrain: A general-purpose speech toolkit",
+          "justification": "SpeechBrain is explicitly cited as a toolkit used in the research, as shown in the reference section.",
+          "quote": "T. P. Mirco Ravanelli et al., “SpeechBrain: A general-purpose speech toolkit.”"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2832,
+    "prompt_tokens": 9577,
+    "total_tokens": 12409,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

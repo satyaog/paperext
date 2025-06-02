@@ -1,0 +1,181 @@
+{
+  "paper": "bbb040b9769deda6eb86a9e86ffe7b84.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Tell, Draw, and Repeat: Generating and Modifying Images Based on Continual Linguistic Instruction",
+      "justification": "The title is explicitly mentioned at the beginning of the article, right after the list of authors and their affiliations.",
+      "quote": "Tell, Draw, and Repeat: Generating and Modifying Images Based on Continual Linguistic Instruction"
+    },
+    "description": "This paper presents a model for generating and modifying images based on continual linguistic instruction. It introduces a new task called Generative Neural Visual Artist (GeNeVA), which involves iterative image generation based on linguistic instructions. The paper also introduces a recurrent GAN architecture for this task and evaluates its performance using synthetic datasets, namely CoDraw and i-CLEVR.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves developing a model and evaluating its performance on datasets, which characterizes empirical research.",
+      "quote": "Our experiments on the CoDraw and i-CLEVR datasets show that our model is capable of generating images that incrementally build upon the previously generated images and follow the provided instructions."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Conditional Text-to-Image Generation",
+        "justification": "The paper focuses on generating images from textual descriptions or instructions, which falls under the domain of conditional text-to-image generation.",
+        "quote": "Conditional text-to-image generation is an active area of research, with many possible applications."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Generative Adversarial Networks",
+          "justification": "The paper discusses a recurrent GAN architecture for iterative image generation, which is a specific application of GANs.",
+          "quote": "We present a recurrent image generation model..."
+        },
+        "aliases": [
+          "GANs"
+        ]
+      },
+      {
+        "name": {
+          "value": "Natural Language Processing",
+          "justification": "The task involves generating images conditioned on continual linguistic input, a clear application of NLP.",
+          "quote": "Instead of constructing images given a caption, we focus on learning to iteratively generate images based on continual linguistic input."
+        },
+        "aliases": [
+          "NLP"
+        ]
+      },
+      {
+        "name": {
+          "value": "Computer Vision",
+          "justification": "The entire paper revolves around generating and modifying images, which is a core topic in computer vision.",
+          "quote": "Vision is one of the most important ways in which humans experience..."
+        },
+        "aliases": [
+          "CV"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "GeNeVA-GAN",
+          "justification": "A specific model introduced and referred to multiple times throughout the paper, particularly named in Figure 1.",
+          "quote": "We present the Generative Neural Visual Artist (GeNeVA) task. Starting from an empty canvas, a Drawer (GeNeVA-GAN) iteratively constructs a scene based on a series of instructions and feedback from a Teller."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "GeNeVA-GAN is introduced as a novel architecture in this paper, indicating it is a contribution of their research.",
+          "quote": "We introduce the GeNeVA task and propose a novel recurrent GAN architecture..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper describes experiments executed using GeNeVA-GAN on datasets, implying it was run on either CPU or GPU for computations.",
+          "quote": "Our experiments on the CoDraw and i-CLEVR datasets show that our model is capable..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The model's results are compared to a non-iterative baseline and other variations in an ablation study, indicating numerical comparison.",
+          "quote": "We demonstrate the importance of iterative generation for complex scenes by showing that our approach outperforms the non-iterative baseline."
+        },
+        "referenced_paper_title": {
+          "value": "Generative Adversarial Text to Image Synthesis",
+          "justification": "The paper makes use of GAN architectures which have historical roots in the work of generic GANs.",
+          "quote": "Generative Adversarial Networks (GANs) are currently state-of-the-art."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CoDraw",
+          "justification": "The paper uses CoDraw extensively for experiments related to the GeNeVA task.",
+          "quote": "Our experiments on the CoDraw and i-CLEVR datasets show that our model is capable of generating images that incrementally build upon the previously generated images and follow the provided instructions."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "CoDraw: Collaborative Drawing as a Testbed for Grounded Goal-Driven Communication",
+          "justification": "The CoDraw dataset reference is provided in the text, connecting it back to its originating paper.",
+          "quote": "The most similar task to GeNeVA is the task proposed by the CoDraw [8] authors."
+        }
+      },
+      {
+        "name": {
+          "value": "i-CLEVR",
+          "justification": "The i-CLEVR dataset is introduced in this paper as a modified version of CLEVR for evaluating iterative image generation.",
+          "quote": "We introduce the i-CLEVR dataset, a sequential version of CLEVR with associated linguistic descriptions for constructing each CLEVR scene..."
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "Inferring and Executing Programs for Visual Reasoning",
+          "justification": "The i-CLEVR dataset is based on the CLEVR dataset, for which the original reference is given.",
+          "quote": "CLEVR [9] is a programmatically generated dataset that is popular in the Visual Question Answering (VQA) community."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "GloVe",
+          "justification": "The GloVe library is used for word embeddings as part of the model's language encoding process.",
+          "quote": "Each instruction q t is encoded using a bi-directional Gated Recurrent Unit (GRU) on top of GloVe word embeddings [15]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "GloVe: Global Vectors for Word Representation",
+          "justification": "The reference for GloVe is provided related to its application in the paper.",
+          "quote": "GloVe word embeddings [15]"
+        }
+      },
+      {
+        "name": {
+          "value": "Pytorch",
+          "justification": "The implementation of the project is done using PyTorch, as explicitly mentioned in the appendix.",
+          "quote": "The code for this project was implemented in PyTorch [25]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Automatic differentiation in PyTorch",
+          "justification": "The citation for PyTorch is standard across papers that use it for implementation.",
+          "quote": "Automatic differentiation in PyTorch"
+        }
+      },
+      {
+        "name": {
+          "value": "Adam Optimizer",
+          "justification": "The Adam optimizer is mentioned as being used for the GAN and text encoder training.",
+          "quote": "We use the Adam [23] optimizer for the GAN, with learning rates of 0.0004 for the discriminator and the 0.0001 for the generator, trained with an equal number of updates."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Adam: A method for stochastic optimization",
+          "justification": "The optimizer's reference is typically included when discussing training methods in deep learning papers.",
+          "quote": "Adam [23]."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1421,
+    "prompt_tokens": 21352,
+    "total_tokens": 22773,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

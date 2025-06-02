@@ -1,0 +1,226 @@
+{
+  "paper": "c080a312ceb432480a7a79ba241e8bc9.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Recursive Top-Down Production for Sentence Generation with Latent Trees",
+      "justification": "The title is derived from the top of the document, which is clearly marked as the title.",
+      "quote": "Recursive Top-Down Production for Sentence Generation with Latent Trees"
+    },
+    "description": "The paper proposes a dynamic programming algorithm that marginalizes over latent binary tree structures to compute the likelihood of token sequences, training a recursive neural function. The model is tested on synthetic tasks such as SCAN and English question formation, and on the Multi30K dataset for German-English translation.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents experimental results on various datasets, indicating practical implementation and testing of the proposed model.",
+      "quote": "We demonstrate performance on two synthetic tasks: SCAN... and English question formation... We also present experimental results on German-English translation on the Multi30k dataset."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The paper focuses on sentence generation, translation tasks, and the use of syntactic structures, which are core topics in Natural Language Processing.",
+        "quote": "Given the hierarchical nature of natural language, tree structures have long been considered a fundamental part of natural language understanding."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Sentence Generation",
+          "justification": "The paper centers on models and algorithms to recursively generate sentences using latent tree structures.",
+          "quote": "We present a dynamic programming algorithm that marginalises over latent binary tree structures with N leaves, allowing us to compute the likelihood of a sequence of N tokens under a latent tree model, which we maximise to train a recursive neural function."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Machine Translation",
+          "justification": "The paper includes an experimental section on German-English translation using the Multi30K dataset.",
+          "quote": "We also present experimental results on German-English translation on the Multi30k dataset (Elliott et al., 2016)."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Recursive Top-Down Neural Network",
+          "justification": "This model is described as the generative model proposed in the paper, used for sentence generation using recursive top-down production of latent trees.",
+          "quote": "Our generative model is a recursive top-down neural network that recursively splits a root node embedding with some node-dependent probability."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "The model is a new contribution described in this paper for sequence-to-sequence tasks using latent trees.",
+          "quote": "In this work, we propose a tree-based probabilistic decoder model for sequence-to-sequence tasks."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper describes experiments using this model on multiple datasets, implying execution of the model.",
+          "quote": "We demonstrate performance on two synthetic tasks: SCAN... and English question formation... We also present experimental results on German-English translation."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of the model is compared to other baselines and sequential models in the experiments section.",
+          "quote": "We apply our model to the 4 experimentation settings and compare our model with the baselines in the literature."
+        },
+        "referenced_paper_title": {
+          "value": "Recursive Top-Down Production for Sentence Generation with Latent Trees",
+          "justification": "The model is the main focus and contribution of the paper itself.",
+          "quote": "In this work, we propose a tree-based probabilistic decoder model for sequence-to-sequence tasks."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "SCAN",
+          "justification": "SCAN is explicitly mentioned as a dataset used for testing the model's performance on systematic generalization tasks.",
+          "quote": "We demonstrate performance on two synthetic tasks: SCAN (Lake and Baroni, 2017), where it outperforms previous models on the LENGTH split."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Generalization without systematicity: On the compositional skills of sequence-to-sequence recurrent networks",
+          "justification": "The dataset is originally introduced by Lake and Baroni (2017), as indicated in the text.",
+          "quote": "SCAN (Lake and Baroni, 2017)"
+        }
+      },
+      {
+        "name": {
+          "value": "Multi30K",
+          "justification": "The dataset is mentioned as a source for German-English translation experiments.",
+          "quote": "We also present experimental results on German-English translation on the Multi30k dataset (Elliott et al., 2016)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Multi30k: Multilingual English-German image descriptions",
+          "justification": "The dataset is referenced with Elliott et al. (2016), indicating its original publication.",
+          "quote": "Multi30k dataset (Elliott et al., 2016)"
+        }
+      },
+      {
+        "name": {
+          "value": "English Question Formation",
+          "justification": "The English Question Formation dataset is used to test the model on hierarchical inductive biases to form English questions.",
+          "quote": "One such task is the formation of English questions: the zebra does chuckle → does the zebra chuckle?."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Does syntax need to grow on trees? sources of hierarchical inductive bias in sequence-to-sequence networks",
+          "justification": "The dataset is taken from McCoy et al. (2020), as cited in the text.",
+          "quote": "English question formation (McCoy et al., 2020)"
+        }
+      },
+      {
+        "name": {
+          "value": "Ordered Memory",
+          "justification": "Ordered Memory (OM) is used as the encoder in the model's testing, though not a traditional dataset, it is used as part of the data processing pipeline.",
+          "quote": "Unless otherwise stated, we are using the Ordered Memory (OM) (Shen et al., 2019) as our encoder."
+        },
+        "aliases": [
+          "OM"
+        ],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Ordered Neurons: Integrating Tree Structures into Recurrent Neural Networks",
+          "justification": "The OM encoder is referenced based on Shen et al. (2019).",
+          "quote": "Ordered Memory (OM) (Shen et al., 2019)"
+        }
+      },
+      {
+        "name": {
+          "value": "Synthetic Tasks",
+          "justification": "The paper mentions using synthetic tasks to test model capabilities, but does not specify if they are standard datasets or custom created for the study.",
+          "quote": "We present a dynamic programming algorithm... We demonstrate performance on two synthetic tasks."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "The synthetic tasks are not attributed to another paper, suggesting they might be tailored for this study.",
+          "quote": "synthetic tasks"
+        }
+      },
+      {
+        "name": {
+          "value": "Synthetic Tasks: LENGTH Split",
+          "justification": "The LENGTH split is a specific configuration in the SCAN dataset used to test generalization to longer sequences.",
+          "quote": "where it outperforms previous models on the LENGTH split"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Generalization without systematicity: On the compositional skills of sequence-to-sequence recurrent networks",
+          "justification": "Referred to as part of the SCAN dataset proposed by Lake and Baroni (2017).",
+          "quote": "LENGTH split"
+        }
+      },
+      {
+        "name": {
+          "value": "Synthetic Tasks: TURN LEFT Split",
+          "justification": "The TURN LEFT split is a version of the SCAN dataset that excludes turn left examples in training, testing generalization.",
+          "quote": "The TURN LEFT split partitions the data so that while jump left, and turn right would be examples present in the training set, turn left are not."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Generalization without systematicity: On the compositional skills of sequence-to-sequence recurrent networks",
+          "justification": "Referred to as part of the SCAN dataset proposed by Lake and Baroni (2017).",
+          "quote": "TURN LEFT split"
+        }
+      },
+      {
+        "name": {
+          "value": "Synthetic Tasks: JUMP Split",
+          "justification": "The JUMP split is another specific setup in the SCAN dataset where the token jump appears alone during training.",
+          "quote": "In JUMP, the input token jump only appears alone during training and the model has to learn to use it in different contexts during testing."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Generalization without systematicity: On the compositional skills of sequence-to-sequence recurrent networks",
+          "justification": "Referred to as part of the SCAN dataset proposed by Lake and Baroni (2017).",
+          "quote": "JUMP"
+        }
+      },
+      {
+        "name": {
+          "value": "Synthetic Tasks: SIMPLE Split",
+          "justification": "The SIMPLE split refers to a version of the SCAN dataset with identical data distribution between train and test sets.",
+          "quote": "The SIMPLE split has the same data distribution for both the training set and test set."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Generalization without systematicity: On the compositional skills of sequence-to-sequence recurrent networks",
+          "justification": "Referred to as part of the SCAN dataset proposed by Lake and Baroni (2017).",
+          "quote": "SIMPLE split"
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1844,
+    "prompt_tokens": 16594,
+    "total_tokens": 18438,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

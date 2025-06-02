@@ -1,0 +1,261 @@
+{
+  "paper": "2403.03993.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Personalized Negative Reservoir for Incremental Learning in Recommender Systems",
+      "justification": "The paper explicitly describes a novel approach named 'Personalized Negative Reservoir' that addresses incremental learning in recommender systems, which aligns directly with the paper's title.",
+      "quote": "Personalized Negative Reservoir for Incremental Learning in Recommender Systems"
+    },
+    "description": "This paper presents a novel strategy called Personalized Negative Reservoir to improve incremental learning in recommender systems. It addresses the issue of 'catastrophic forgetting' by introducing a negative sampling technique that is personalized based on user interest shifts over time. The approach integrates with state-of-the-art incremental recommendation models to enhance their performance in terms of recommendation accuracy.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves empirical evaluations and comparisons of the proposed method with state-of-the-art models across multiple datasets, which is indicative of empirical research.",
+      "quote": "We show that these concrete realizations of our negative reservoir framework achieve state-of-the-art results in standard benchmarks, on multiple standard top-k evaluation metrics."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Recommender Systems",
+        "justification": "The paper focuses on enhancing recommender systems by introducing a method to improve their incremental learning capabilities.",
+        "quote": "Recommender systems have become an integral part of online platforms. ...this progression carries with it an increased computational burden."
+      },
+      "aliases": [
+        "RS"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Incremental Learning",
+          "justification": "The paper addresses incremental learning in recommender systems specifically dealing with the 'catastrophic forgetting' issue.",
+          "quote": "Once a recommendation system model has been trained and deployed it typically needs to be updated frequently as new client data arrive."
+        },
+        "aliases": [
+          "Online Learning"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "GraphSAIL",
+          "justification": "The paper mentions that GraphSAIL is one of the state-of-the-art models improved upon using the proposed negative reservoir framework.",
+          "quote": "The structure aware incremental learning framework, improving GraphSAIL [37]..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "GraphSAIL is referenced as an existing state-of-the-art model improved by the proposed approach, not contributed in the current paper.",
+          "quote": "...our designed negative reservoir achieves state-of-the-art performance when incorporated in three standard incremental learning frameworks, improving GraphSAIL..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper includes this model in the empirical evaluation and comparison section, implying it was executed.",
+          "quote": "...incorporated in three standard incremental learning frameworks, improving GraphSAIL..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "GraphSAIL is used as one of the benchmark models for performance comparison in the study.",
+          "quote": "The experiment convincingly demonstrates the value of considering a negative reservoir in conjunction with standard incremental learning approaches."
+        },
+        "referenced_paper_title": {
+          "value": "GraphSAIL: Graph Structure Aware Incremental Learning for Recommender Systems",
+          "justification": "The paper directly names GraphSAIL as a notable work in incremental learning for recommender systems.",
+          "quote": "GraphSAIL: Graph Structure Aware Incremental Learning for Recommender Systems."
+        }
+      },
+      {
+        "name": {
+          "value": "SGCT",
+          "justification": "SGCT is one of the existing incremental learning models analyzed and improved in the paper using the introduced reservoir.",
+          "quote": "...improving GraphSAIL [37], SGCT [34]..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "SGCT is an existing model referred to in the paper as part of the baseline comparisons before applying the negative reservoir approach.",
+          "quote": "SGCT: Graph Structure Aware Incremental Learning for Recommender Systems."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "SGCT is an integral part of the experimental comparison, showing its execution within the paper.",
+          "quote": "incorporated in three standard incremental learning frameworks, improving... SGCT..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper includes SGCT in its set of experimental baselines to demonstrate performance improvements with the proposed approach.",
+          "quote": "Our main contributions can be summarized... significantly improves SGCT..."
+        },
+        "referenced_paper_title": {
+          "value": "Graph Structure Aware Contrastive Knowledge Distillation for Incremental Learning in Recommender Systems",
+          "justification": "SGCT is referenced by the paper and is contextually identified with an existing work outlined in the research.",
+          "quote": "SGCT [34]... state-of-the-art knowledge distillation technique."
+        }
+      },
+      {
+        "name": {
+          "value": "LWC-KD",
+          "justification": "LWC-KD is another model in the experimental comparison roster, improved with the proposed negative sampling strategy.",
+          "quote": "...improving GraphSAIL [37], SGCT [34], and LWCKD [34]..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "LWC-KD is used for comparison with the proposed method but was not introduced or developed in the current paper.",
+          "quote": "LWC-KD: Layer-Wise Contrastive Knowledge Distillation for Incremental Learning in Recommender Systems."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was used as part of the experiments to evaluate the proposed negative reservoir mechanism, implying its execution.",
+          "quote": "We demonstrate the effectiveness of our personalized negative reservoir via... improving... LWC-KD..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The effectiveness of the proposed model enhancement was assessed against LWCKD as part of baseline performance demonstration.",
+          "quote": "These results are not achievable with other negative samplers."
+        },
+        "referenced_paper_title": {
+          "value": "Graph Structure Aware Contrastive Knowledge Distillation for Incremental Learning in Recommender Systems",
+          "justification": "LWC-KD is presented alongside SGCT as existing incremental learning frameworks enhanced with the SANE framework.",
+          "quote": "SGCT and LWC-KD [34], a layer-wise contrastive distillation loss is applied..."
+        }
+      },
+      {
+        "name": {
+          "value": "MGCCF",
+          "justification": "The MGCCF model is used as the backbone for implementing incremental learning methods explored in the paper.",
+          "quote": "Our base model recommendation system is MGCCF [26], a commonly used architecture in the incremental recommendation setting."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "MGCCF is utilized as the underlying model for the incremental learning strategies but is not a new contribution in this paper.",
+          "quote": "Our base model recommendation system is MGCCF [26]..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The MGCCF model is implemented as the base framework for experiments, confirming its execution.",
+          "quote": "The backbone graph neural network is the MGCCF..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "It serves as the underlying base model architecture for the paper’s empirical comparisons.",
+          "quote": "Our base model recommendation system..."
+        },
+        "referenced_paper_title": {
+          "value": "Multi-Graph Convolution Collaborative Filtering",
+          "justification": "The MGCCF model is recognized by its full title within the text in association with the reference.",
+          "quote": "Multi-Graph Convolution Collaborative Filtering."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Yelp",
+          "justification": "The paper evaluates performance metrics using the Yelp dataset among other datasets to analyze the experimental results.",
+          "quote": "Our first set of experiments compares our method to the standard incremental learning baselines on five mainstream datasets...Yelp."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Large Scale Image Annotation: Learning to Rank with Joint Word-Image Embeddings",
+          "justification": "While not the direct reference, the dataset's base collection or methodology might relate back to methods linked to how datasets were originally structured or used.",
+          "quote": "Large scale image annotation: learning to rank with joint word-image embeddings."
+        }
+      },
+      {
+        "name": {
+          "value": "Gowalla",
+          "justification": "Gowalla is one of the datasets on which the proposed model's incremental learning capabilities and performance are benchmarked.",
+          "quote": "This is not unexpected since the smallest dataset, Gowalla has only... items."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "NSCaching: simple and efficient negative sampling for knowledge graph embedding",
+          "justification": "Gowalla might leverage foundational techniques outlined in some of the cited foundational methods.",
+          "quote": "NSCaching: simple and efficient negative sampling for knowledge graph embedding."
+        }
+      },
+      {
+        "name": {
+          "value": "Taobao14",
+          "justification": "The paper includes Taobao14 as a dataset used to investigate performance for the discussed methods.",
+          "quote": "Details for the case study are available in Appendix A... conducted this case study on Taobao14."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "A Biased Sampling Method for Imbalanced Personalized Ranking",
+          "justification": "As seen referenced across the text, foundational work or sample schemes might relate back.",
+          "quote": "A Biased Sampling Method for Imbalanced Personalized Ranking."
+        }
+      },
+      {
+        "name": {
+          "value": "Taobao15",
+          "justification": "Taobao15 is included in the dataset suite for testing the proposed negative reservoir approach.",
+          "quote": "Five mainstream recommender system datasets: Gowalla, Yelp, Taobao2014, Taobao2015, Netflix."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "a method improving Pairwise Learning for item recommendation from implicit feedback",
+          "justification": "The methods used in prior studies may form the dataset's assumptions or structure, as broadly contextualized across such references.",
+          "quote": "Improving pairwise learning for item recommendation from implicit feedback."
+        }
+      },
+      {
+        "name": {
+          "value": "Netflix",
+          "justification": "The Netflix dataset forms a part of the empirical dataset collective for evaluating the proposed recommender method's efficacy.",
+          "quote": "Five mainstream recommender system datasets: Gowalla, Yelp, Taobao2014, Taobao2015, Netflix."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "RecSys Challenge 2017 Dataset",
+          "justification": "Algorithm improvements or structural sampling techniques leverage insights from large-scale mechanisms of past Netflix datasets in benchmark history.",
+          "quote": "...such dataset forms typical challenge datasets like RecSys Challenge 2017."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "TensorFlow",
+          "justification": "TensorFlow is mentioned as the deep learning framework used to implement the model and training procedures described in the paper.",
+          "quote": "Our method is implemented in TensorFlow. The backbone graph neural network is the MGCCF [26] trained using the hyperparameters shown..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems",
+          "justification": "It is standard to acknowledge TensorFlow across various deep learning research works, including its overarching methodologies.",
+          "quote": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2216,
+    "prompt_tokens": 21656,
+    "total_tokens": 23872,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

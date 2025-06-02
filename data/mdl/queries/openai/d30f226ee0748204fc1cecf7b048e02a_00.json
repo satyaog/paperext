@@ -1,0 +1,239 @@
+{
+  "paper": "d30f226ee0748204fc1cecf7b048e02a.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Do Neural Dialog Systems Use the Conversation History Effectively? An Empirical Study",
+      "justification": "The title is clearly stated at the beginning of the paper and is reiterated in the abstract, summarizing the main focus of the research.",
+      "quote": "Do Neural Dialog Systems Use the Conversation History Effectively? An Empirical Study"
+    },
+    "description": "The paper investigates how neural generative models, specifically recurrent and transformer-based sequence-to-sequence models, utilize available dialog history. By subjecting these models to various artificial perturbations in dialog histories during testing, it finds that these models are often insensitive to changes suggesting minimal exploitation of dialog history.",
+    "type": {
+      "value": "empirical",
+      "justification": "The study involves empirical observations of model behavior in response to artificial perturbations in dialog history, thus classifying it as an empirical study.",
+      "quote": "In this work, we take an empirical approach to understanding how these models use the available dialog history by studying the sensitivity of the models to artificially introduced unnatural changes or perturbations to their context at test time."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The focus is on neural dialog systems, which falls under the domain of Natural Language Processing.",
+        "quote": "Neural generative models have been become increasingly popular when building conversational agents."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Conversational AI",
+          "justification": "The paper specifically addresses conversational agents using neural dialog systems.",
+          "quote": "Neural generative models have been become increasingly popular when building conversational agents."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Sequence-to-Sequence Models",
+          "justification": "The study compares the effectiveness of recurrent and transformer-based sequence-to-sequence models in using dialog history.",
+          "quote": "We then empirically observe how recurrent (Sutskever et al., 2014) and transformer-based (Vaswani et al., 2017) sequence-to-sequence (seq2seq) models respond to these changes."
+        },
+        "aliases": [
+          "seq2seq"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "seq2seq LSTM",
+          "justification": "Seq2seq LSTM is used in the experiments to analyze its sensitivity to perturbations.",
+          "quote": "We trained a seq2seq (seq2seq lstm) model where the encoder and decoder are parameterized as LSTMs (Hochreiter and Schmidhuber, 1997)."
+        },
+        "aliases": [
+          "seq2seq LSTM"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The model is not new but used for analysis in the study.",
+          "quote": "While the models considered in this work might not be state-of-the-art..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model is evaluated for sensitivity to perturbations, indicating execution.",
+          "quote": "All data loading, model implementations and evaluations were done using the ParlAI framework."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Changes in model performance indicating comparative analysis were reported in the study.",
+          "quote": "Table 2 reports the perplexities of different models on test set."
+        },
+        "referenced_paper_title": {
+          "value": "Sequence to sequence learning with neural networks",
+          "justification": "The reference corresponds to the foundational paper on seq2seq LSTM models.",
+          "quote": "We trained a seq2seq (seq2seq lstm) model where the encoder and decoder are parameterized as LSTMs (Hochreiter and Schmidhuber, 1997)."
+        }
+      },
+      {
+        "name": {
+          "value": "seq2seq LSTM with Attention",
+          "justification": "An attention mechanism is used in the seq2seq LSTM model for the experiments.",
+          "quote": "We also experiment with using decoders that use an attention mechanism (seq2seq lstm att)."
+        },
+        "aliases": [
+          "seq2seq LSTM att"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The use of attention in LSTMs is not new but part of the experimental setup.",
+          "quote": "seq2seq lstm att are the most sensitive models 24/40 times."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model's performance was evaluated and discussed in relation to perturbations.",
+          "quote": "All data loading, model implementations and evaluations were done using the ParlAI framework."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Perplexity changes with this model were compared to others in the study's results section.",
+          "quote": "seq2seq lstm att are the most sensitive models 24/40 times."
+        },
+        "referenced_paper_title": {
+          "value": "Neural machine translation by jointly learning to align and translate",
+          "justification": "The paper is frequently referenced in the context of attention mechanisms in seq2seq models.",
+          "quote": "(Bahdanau et al., 2015)"
+        }
+      },
+      {
+        "name": {
+          "value": "Transformer",
+          "justification": "The Transformer model is explicitly used and studied for its sensitivity in this research.",
+          "quote": "Transformer Our transformer (Vaswani et al., 2017) model uses 300 dimensional embeddings and hidden states, 2 layers and 2 attention heads with no dropout."
+        },
+        "aliases": [
+          "Transformer"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Transformer is an existing model used as part of the study, not an innovation.",
+          "quote": "While the models considered in this work might not be state-of-the-art..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "It was executed and its performance evaluated throughout the experiments.",
+          "quote": "All data loading, model implementations and evaluations were done using the ParlAI framework."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Transformer model performance is reported and compared in the tables.",
+          "quote": "Test PPL....transformer"
+        },
+        "referenced_paper_title": {
+          "value": "Attention is all you need",
+          "justification": "The reference is to the foundational Transformer model paper.",
+          "quote": "(Vaswani et al., 2017) Attention is all you need."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "bAbI dialog",
+          "justification": "bAbI dialog is one of the datasets used in this empirical study.",
+          "quote": "bAbI dialog is a synthetic goal-oriented multi-turn dataset (Bordes and Weston, 2016)."
+        },
+        "aliases": [
+          "bAbI"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning end-to-end goal-oriented dialog",
+          "justification": "The dataset is referenced in the context of its development and typical use cases.",
+          "quote": "bAbI dialog is a synthetic goal-oriented multi-turn dataset (Bordes and Weston, 2016)."
+        }
+      },
+      {
+        "name": {
+          "value": "Persona Chat",
+          "justification": "Persona Chat is utilized as one of the dialog datasets in their experiments.",
+          "quote": "Persona Chat is an open domain dataset (Zhang et al., 2018) with multi-turn chit-chat conversations."
+        },
+        "aliases": [
+          "Persona-Chat"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Personalizing dialogue agents: I have a dog, do you have pets too?",
+          "justification": "The dataset is referenced with the paper detailing its initial release and structure.",
+          "quote": "Persona Chat is an open domain dataset (Zhang et al., 2018)."
+        }
+      },
+      {
+        "name": {
+          "value": "Dailydialog",
+          "justification": "Dailydialog is a dataset used in the experiments, as detailed.",
+          "quote": "Dailydialog is an open domain dataset (Li et al., 2017)..."
+        },
+        "aliases": [
+          "DailyDialog"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Dailydialog: A manually labelled multi-turn dialogue dataset",
+          "justification": "The paper corresponds to the dataset used in the research.",
+          "quote": "Dailydialog is an open domain dataset (Li et al., 2017)."
+        }
+      },
+      {
+        "name": {
+          "value": "MutualFriends",
+          "justification": "MutualFriends dataset is listed as utilized for model testing and evaluation.",
+          "quote": "MutualFriends is a multi-turn goal-oriented dataset (He et al., 2017)..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Symmetric Collaborative Dialogue Agents with Dynamic Knowledge Graph Embeddings",
+          "justification": "The reference corresponds to the design and typical utilization of the dataset.",
+          "quote": "MutualFriends is a multi-turn goal-oriented dataset (He et al., 2017) where two agents must..."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "ParlAI",
+          "justification": "The ParlAI framework is used for model implementation and evaluation in the study.",
+          "quote": "All data loading, model implementations and evaluations were done using the ParlAI framework."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "None",
+          "justification": "While used, no specific reference paper is listed for ParlAI in the document.",
+          "quote": "All data loading, model implementations and evaluations were done using the ParlAI framework."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1798,
+    "prompt_tokens": 7845,
+    "total_tokens": 9643,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

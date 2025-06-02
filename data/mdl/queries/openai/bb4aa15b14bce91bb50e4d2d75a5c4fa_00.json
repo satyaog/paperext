@@ -1,0 +1,185 @@
+{
+  "paper": "bb4aa15b14bce91bb50e4d2d75a5c4fa.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Compositional generalization by factorizing alignment and translation",
+      "justification": "The title of the paper is explicitly mentioned at the beginning of the document.",
+      "quote": "Compositional generalization by factorizing alignment and translation"
+    },
+    "description": "The paper explores an approach to improve compositional generalization in neural machine translation models by separating syntactic alignment from semantic translation, inspired by concepts from cognitive science. The authors propose a modification to the existing attention mechanism to enforce this separation and demonstrate improved performance on the SCAN dataset, a benchmark for compositional generalization.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents empirical results and evaluates the proposed model on datasets, including specific experiments for performance analysis.",
+      "quote": "The Syntactic Attention model achieves high compositional generalization performance on the standard seq2seq SCAN dataset (see table 1). The table shows results (mean test accuracy (%) ± standard deviation) on the test splits of the dataset."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The research focuses on neural machine translation and compositional generalization, which are key aspects of Natural Language Processing.",
+        "quote": "Recent work has shown that standard deep learning methods in natural language processing fail to capture this important property: when tested on unseen combinations of known elements, standard models fail to generalize."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Neural Machine Translation",
+          "justification": "The paper revolves around improving compositional generalization in neural machine translation.",
+          "quote": "Inspired by work in cognitive science suggesting a functional distinction between systems for syntactic and semantic processing, we implement a modification to an existing approach in neural machine translation, imposing an analogous separation between alignment and translation."
+        },
+        "aliases": [
+          "NMT"
+        ]
+      },
+      {
+        "name": {
+          "value": "Compositional Generalization",
+          "justification": "The paper specifically addresses the issue of compositional generalization in sequence-to-sequence models.",
+          "quote": "Our work suggests that learning to align and to translate in separate modules may be a useful heuristic for capturing compositional structure."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Syntactic Attention",
+          "justification": "The Syntactic Attention model is the main contribution of the paper and is referenced multiple times throughout the text with details on its design and performance.",
+          "quote": "We show that this modification achieves substantially improved compositional generalization performance over the original architecture on the SCAN dataset."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "The paper explicitly states the development and testing of the Syntactic Attention model as a new architecture to improve compositional generalization.",
+          "quote": "We show that this modification achieves substantially improved compositional generalization performance over the original architecture on the SCAN dataset."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was executed as part of the experimental evaluation.",
+          "quote": "Our best model used LSTMs, with 2 layers and 200 hidden units in the encoder, and 1 layer and 400 hidden units in the decoder, and 120-dimensional vectors for the mj."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper includes comparisons of the Syntactic Attention model against other models in their empirical results, as presented in the tables.",
+          "quote": "The Syntactic Attention model achieves high compositional generalization performance on the standard seq2seq SCAN dataset (see table 1). The table shows results (mean test accuracy (%) ± standard deviation) on the test splits of the dataset."
+        },
+        "referenced_paper_title": {
+          "value": "Neural machine translation by jointly learning to align and translate",
+          "justification": "The newly designed Syntactic Attention model builds upon the attention mechanism proposed by Bahdanau et al. 2015.",
+          "quote": "First, we notice a connection between syntactic structure and the correct alignment of words in the source sequence to meanings in the target. In our model, alignment is accomplished with an attention mechanism (Bahdanau et al., 2015) that determines the relevance of each word in the source to the translation of the next word in the target."
+        }
+      },
+      {
+        "name": {
+          "value": "LSTM + attn",
+          "justification": "Referenced in the context of performance comparison against the proposed model in the machine translation experiments.",
+          "quote": "BLEU scores on the test set for the best learning rate (0.00015 for both models) are shown in the table below, with comparison to previously reported results using basic recurrent architectures. Our model performs comparably in neural MT, validating it in a more naturalistic setting."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "This model was not contributed by this paper, but is rather used as a comparison in performance benchmarks.",
+          "quote": "BLEU scores on the test set for the best learning rate (0.00015 for both models) are shown in the table below, with comparison to previously reported results using basic recurrent architectures."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The paper does not mention executing LSTM + attn as part of their experiments, only compares it against reported results.",
+          "quote": "BLEU scores on the test set for the best learning rate (0.00015 for both models) are shown in the table below, with comparison to previously reported results using basic recurrent architectures."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The LSTM + attn model's reported performance in literature is used as a benchmark against which the Syntactic Attention's performance is compared.",
+          "quote": "BLEU scores on the test set for the best learning rate (0.00015 for both models) are shown in the table below, with comparison to previously reported results using basic recurrent architectures."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "There is no specific reference or paper title provided for the LSTM + attn model within this paper.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "GRU + attn",
+          "justification": "This model is one of the previous models compared with the Syntactic Attention model as recorded in the results section.",
+          "quote": "GRU augmented with an attention mechanism (“+ attn”), and either with or without a dependence in the decoder on the previous target (“- dep”) (Bastings et al., 2018)."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "This model was referenced from previous studies for comparison, not contributed by this research.",
+          "quote": "GRU augmented with an attention mechanism (“+ attn”), and either with or without a dependence in the decoder on the previous target (“- dep”) (Bastings et al., 2018)."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "It is mentioned as a benchmark; there is no indication that it was executed during this study's experiments.",
+          "quote": "GRU augmented with an attention mechanism (“+ attn”), and either with or without a dependence in the decoder on the previous target (“- dep”) (Bastings et al., 2018)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The GRU + attn model's results are part of the comparative analysis of the Syntactic Attention model.",
+          "quote": "GRU augmented with an attention mechanism (“+ attn”), and either with or without a dependence in the decoder on the previous target (“- dep”) (Bastings et al., 2018)."
+        },
+        "referenced_paper_title": {
+          "value": "Jump to better conclusions: SCAN both left and right",
+          "justification": "The reference for the GRU + attn model is cited from a work focusing on compositional generalization and attention mechanisms.",
+          "quote": "GRU augmented with an attention mechanism (“+ attn”), and either with or without a dependence in the decoder on the previous target (“- dep”) (Bastings et al., 2018)."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "SCAN",
+          "justification": "The SCAN dataset is a key focus of the research, utilized extensively for testing the model's compositional generalization.",
+          "quote": "The SCAN ^{1} dataset was specifically designed to test compositional generalization..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Generalization without Systematicity: On the Compositional Skills of Sequence-to-Sequence Recurrent Networks",
+          "justification": "The paper references SCAN in the context of previous work that developed and evaluated challenges in compositional generalization using this dataset.",
+          "quote": "The SCAN dataset (Lake and Baroni, 2018) is composed of sequences of instructions that must be mapped to sequences of actions (see Figure 3)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The paper mentions the use of PyTorch for implementing the experiments and models.",
+          "quote": "All experiments were implemented in PyTorch."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "There is no specific reference paper title provided for PyTorch within this paper.",
+          "quote": ""
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1846,
+    "prompt_tokens": 12417,
+    "total_tokens": 14263,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

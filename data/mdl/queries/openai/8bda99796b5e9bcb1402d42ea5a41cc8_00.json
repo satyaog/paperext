@@ -1,0 +1,151 @@
+{
+  "paper": "8bda99796b5e9bcb1402d42ea5a41cc8.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "A PRINCIPLED APPROACH FOR GENERATING ADVERSARIAL IMAGES UNDER NON-SMOOTH DISSIMILARITY METRICS",
+      "justification": "The title is explicitly stated in the provided text and encapsulates the main focus of the paper, which is on generating adversarial images under various dissimilarity metrics.",
+      "quote": "A PRINCIPLED APPROACH FOR GENERATING ADVERSARIAL IMAGES UNDER NON-SMOOTH DISSIMILARITY METRICS"
+    },
+    "description": "The paper proposes an attack methodology for generating adversarial images using a variety of dissimilarity metrics, beyond the typical smooth lp norms. This includes metrics like total variation and the l0 counting 'norm', which address local pixel changes and true sparsity, respectively. The proposed method, ProxLogBarrier, is applied to the MNIST, CIFAR10, and ImageNet-1k datasets, demonstrating improved adversarial attack capabilities over existing methods, particularly for non-smooth metrics.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper demonstrates an empirical study by proposing a new method for adversarial attacks and experimentally verifying its performance on several datasets compared to existing methods.",
+      "quote": "We demonstrate our algorithm, ProxLogBarrier, on the MNIST, CIFAR10, and ImageNet-1k datasets. We consider undefended and defended models, and show that our algorithm easily transfers to various datasets."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Adversarial Attacks",
+        "justification": "The paper focuses on generating adversarial images, a common theme in adversarial attacks, by using a new methodology for attack under various dissimilarity metrics.",
+        "quote": "The purpose of this work is adversarial image generation for a broad class of (possibly non-differentiable) dissimilarity metrics for both undefended and defended networks."
+      },
+      "aliases": [
+        "Adversarial Image Generation"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Computer Vision",
+          "justification": "The paper operates within the domain of computer vision by addressing changes to visual data (images) and evaluating performance on standard image datasets.",
+          "quote": "We demonstrate our algorithm, ProxLogBarrier, on the MNIST, CIFAR10, and ImageNet-1k datasets."
+        },
+        "aliases": [
+          "CV"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "ProxLogBarrier",
+          "justification": "ProxLogBarrier is introduced as a new adversarial attack methodology developed in this paper, extending previous methods to handle non-smooth metrics.",
+          "quote": "Our algorithm, ProxLogBarrier, uses the proximal gradient method for generating adversarial perturbations."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "The paper presents ProxLogBarrier as a novel contribution for generating adversarial attacks under various dissimilarity metrics.",
+          "quote": "Our approach is a natural extension of a recent adversarial attack method, and eliminates the differentiability requirement of the metric."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper includes empirical evaluation of the ProxLogBarrier method using GPU execution, as evidenced by runtime considerations and comparison with existing method runtimes.",
+          "quote": "We strove to implement ProxLogBarrier so that it could be run in a reasonable amount of time. For that reason, ProxLogBarrier was implemented to work over a batch of images. Using one consumer grade GPU..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "ProxLogBarrier's performance is evaluated against existing adversarial attack methods, demonstrating its advantages across various datasets.",
+          "quote": "We demonstrate our attack on MNIST, CIFAR10, and ImageNet-1k datasets. ProxLogBarrier shows significant improvement over both the LogBarrier attack, and over the other attacks we considered."
+        },
+        "referenced_paper_title": {
+          "value": "The logbarrier adversarial attack: making effective use of decision boundary information",
+          "justification": "The ProxLogBarrier is described as an extension to the LogBarrier attack method, which is a reference for furthering the work done in this paper.",
+          "quote": "Our approach adopts the relaxation structure of the recently proposed LogBarrier attack [15], which required differentiable metrics."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "MNIST",
+          "justification": "The MNIST dataset is explicitly mentioned as one of the datasets used to demonstrate the algorithm.",
+          "quote": "We demonstrate our algorithm, ProxLogBarrier, on the MNIST, CIFAR10, and ImageNet-1k datasets."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Object recognition with gradient-based learning",
+          "justification": "The MNIST paper by Yann LeCun et al. is a foundational reference in the field for this dataset's first introduction.",
+          "quote": "Yann LeCun, Patrick Haffner, Léon Bottou, and Yoshua Bengio. Object recognition with gradient-based learning. In Shape, Contour and Grouping in Computer Vision."
+        }
+      },
+      {
+        "name": {
+          "value": "CIFAR10",
+          "justification": "The CIFAR10 dataset is explicitly mentioned as one of the datasets used to demonstrate the algorithm.",
+          "quote": "We demonstrate our algorithm, ProxLogBarrier, on the MNIST, CIFAR10, and ImageNet-1k datasets."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning multiple layers of features from tiny images",
+          "justification": "This is the original paper that introduced the CIFAR10 dataset, referenced in the context of dataset usage",
+          "quote": "Alex Krizhevsky and Geoffrey Hinton. Learning multiple layers of features from tiny images."
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet-1k",
+          "justification": "The ImageNet-1k dataset is explicitly mentioned as one of the datasets used to demonstrate the algorithm.",
+          "quote": "We demonstrate our algorithm, ProxLogBarrier, on the MNIST, CIFAR10, and ImageNet-1k datasets."
+        },
+        "aliases": [
+          "ImageNet"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Imagenet: A large-scale hierarchical image database",
+          "justification": "The ImageNet dataset introduced in this paper is a standard benchmark in image classification tasks, referenced here in the context of dataset usage.",
+          "quote": "Jia Deng, Wei Dong, Richard Socher, Li-Jia Li, Kai Li, and Fei-Fei Li. Imagenet: A large-scale hierarchical image database."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "FoolBox",
+          "justification": "FoolBox is explicitly used for comparing the ProxLogBarrier attack with other adversarial attacks available within this library, emphasizing its utilization in the paper.",
+          "quote": "We compare the ProxLogBarrier attack with a wide range of attack algorithms that are available through the FoolBox adversarial attack library."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Foolbox v0.8.0: A python toolbox to benchmark the robustness of machine learning models",
+          "justification": "The paper mentions FoolBox as the library used for benchmarking other adversarial models.",
+          "quote": "Jonas Rauber, Wieland Brendel, and Matthias Bethge. Foolbox v0.8.0: A python toolbox to benchmark the robustness of machine learning models."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1470,
+    "prompt_tokens": 12203,
+    "total_tokens": 13673,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

@@ -1,0 +1,432 @@
+{
+  "paper": "9e0b51160b981d47c4ebfac8a602b4bf.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Synbols: Probing Learning Algorithms with Synthetic Datasets",
+      "justification": "The title is explicitly stated in the provided research paper text.",
+      "quote": "Synbols: Probing Learning Algorithms with\nSynthetic Datasets"
+    },
+    "description": "The paper introduces Synbols, a tool for generating synthetic datasets with diverse latent features for probing machine learning algorithms across various paradigms. Synbols aims to provide a dynamic resource for testing specific properties and limitations of learning algorithms by enabling customizable dataset generation.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper primarily deals with the development and testing of the Synbols tool for dataset generation, along with experimental results from various machine learning paradigms, indicating empirical research.",
+      "quote": "To expose the versatility of Synbols, we explore the behavior of learning algorithms\nacross a variety of machine-learning paradigms."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Synthetic Data Generation for Machine Learning",
+        "justification": "The paper's main contribution is the Synbols tool for generating synthetic datasets to probe learning algorithms, which directly relates to the field of synthetic data generation for machine learning.",
+        "quote": "We introduce Synbols, an easy to use dataset generator with a rich composition of latent features for lower-resolution images."
+      },
+      "aliases": [
+        "Synthetic Dataset Generation"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Machine Learning Paradigms",
+          "justification": "The paper tests learning algorithms across various machine learning paradigms using the Synbols dataset.",
+          "quote": "Experiments probing the behavior of popular learning algorithms in various machine- learning settings including: the robustness of supervised learning and unsupervised representation-learning approaches w.r.t. changes in latent-data attributes..."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Computer Vision",
+          "justification": "The paper references datasets and models associated with computer vision, such as MNIST and SVHN, and discusses image classification tasks.",
+          "quote": "...MNIST has been the hallmark of small scale image classification, it offers very minor challenges and it cannot showcase the strength of new learning algorithms."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "MLP",
+          "justification": "MLP is listed among the models compared in the experiments conducted in the paper.",
+          "quote": "MLP: A three-layer MLP with hidden size 256 and leaky ReLU non-linearities (72k parameters)."
+        },
+        "aliases": [
+          "Multi-Layer Perceptron"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The MLP is a well-known model and was not proposed by this paper, but rather used for comparison in experiments.",
+          "quote": "MLP: A three-layer MLP with hidden size 256 and leaky ReLU non-linearities (72k parameters)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The MLP was executed in several of the experiments, as indicated by the results tables.",
+          "quote": "Table 1 shows the experiment results. The MNIST column exposes the lack of\ndiscriminative power of this dataset, where an MLP obtains 98.5% accuracy."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of the MLP is numerically compared against other models in the experiments.",
+          "quote": "MLP: A three-layer MLP with hidden size 256 and leaky ReLU non-linearities (72k parameters)."
+        },
+        "referenced_paper_title": {
+          "value": "Gradient-based learning applied to document recognition",
+          "justification": "Based on the common knowledge of the model's historical context, likely referring to the foundational work of LeCun et al. on MLPs for document recognition.",
+          "quote": "Y. Lecun, L. Bottou, Y. Bengio, and P. Haffner. Gradient-based learning applied to document recognition. Proceedings of the IEEE, 86(11):2278–2324, 1998."
+        }
+      },
+      {
+        "name": {
+          "value": "Conv-4",
+          "justification": "Conv-4 is listed as one of the models analyzed in the experiments discussed in the paper.",
+          "quote": "Conv4 Flat: A four-layer CNN with 64 channels per layer with flattening instead of GAP, as described by [54] (138k parameters)."
+        },
+        "aliases": [
+          "Conv4",
+          "4-layer CNN"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The Conv-4 model is used as a baseline for comparison and not introduced as a new contribution.",
+          "quote": "Conv4 Flat: A four-layer CNN with 64 channels per layer with flattening instead of GAP, as described by [54] (138k parameters)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The Conv-4 model is executed in the experiments, as is evidenced by its appearance in the results tables.",
+          "quote": "Conv4 Flat: A four-layer CNN with 64 channels per layer with flattening instead of GAP, as described by [54] (138k parameters)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The Conv-4 model's performance is numerically compared with other models' performances in the results tables.",
+          "quote": "Table 1 shows the experiment results. The MNIST column exposes the lack of\ndiscriminative power of this dataset, where an MLP obtains 98.5% accuracy."
+        },
+        "referenced_paper_title": {
+          "value": "Prototypical Networks for Few-shot Learning",
+          "justification": "The model design is commonly linked with few-shot learning literature, particularly the prototypical networks.",
+          "quote": "Jake Snell, Kevin Swersky, and Richard Zemel. Prototypical networks for few-shot learning. In\nAdvances in neural information processing systems, pages 4077–4087, 2017."
+        }
+      },
+      {
+        "name": {
+          "value": "ResNet-12",
+          "justification": "ResNet-12 is cited as one of the models being tested in the context of the Synbols dataset.",
+          "quote": "Resnet-12: A residual network with 12 layers (8M parameters)."
+        },
+        "aliases": [
+          "Residual Network 12"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "ResNet-12 is a known variation of the ResNet designed for deep learning and not introduced in this paper as a new development.",
+          "quote": "Resnet-12: A residual network with 12 layers (8M parameters)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "ResNet-12 is executed in various experimental setups as referenced in the tables and text.",
+          "quote": "...the total training time on datasets of size 100k is about 3 minutes for most models (including ResNet-12) on a Tesla V100 GPU."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The ResNet-12 model's performance is evaluated and compared against other models in the study.",
+          "quote": "Resnet-12: A residual network with 12 layers (8M parameters)."
+        },
+        "referenced_paper_title": {
+          "value": "Deep Residual Learning for Image Recognition",
+          "justification": "The referenced work corresponds with the foundational paper introducing ResNet, which includes various depths, likely encompassing the 12-layer version as a derivative model application.",
+          "quote": "Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun. Deep Residual Learning for Image\nRecognition. In CVPR, pages 770–778, 2016."
+        }
+      },
+      {
+        "name": {
+          "value": "WRN-28-4",
+          "justification": "The Wide Residual Network (WRN-28-4) is explicitly mentioned as part of the models used in experiments.",
+          "quote": "WRN: A wide residual network with 28 layers and a channel multiplier of 4 (5.8M parameters)."
+        },
+        "aliases": [
+          "Wide Residual Network"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "WRN-28-4 is a pre-existing architecture that was not introduced by this paper but used as a part of the experiments.",
+          "quote": "WRN: A wide residual network with 28 layers and a channel multiplier of 4 (5.8M parameters)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The WRN-28-4 model is executed during experiments, which is evidenced by the results sections of the paper.",
+          "quote": "WRN-28-4: The wide residual network shows varied accuracy across different datasets."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The WRN-28-4 is compared against other models as indicated by the results and tables in the paper.",
+          "quote": "Table 1 shows the experiment results. The MNIST column exposes the lack of\ndiscriminative power of this dataset, where an MLP obtains 98.5% accuracy."
+        },
+        "referenced_paper_title": {
+          "value": "Wide Residual Networks",
+          "justification": "This paper likely pertains to the introduction of wide residual networks, which this model WRN-28-4 is based on.",
+          "quote": "Sergey Zagoruyko and Nikos Komodakis. Wide residual networks. arXiv preprint arXiv:1605.07146, 2016."
+        }
+      },
+      {
+        "name": {
+          "value": "VAE ResNet",
+          "justification": "The VAE with ResNet architecture is analyzed in the context of unsupervised representation learning.",
+          "quote": "VAE ResNet"
+        },
+        "aliases": [
+          "Variational Autoencoder with ResNet"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Various configurations of VAE models with ResNet backbones are not novel to this paper but part of the experimental setup to test algorithms.",
+          "quote": "VAE ResNet"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The mentioned models are executed in experimental setups as a part of the unsupervised learning evaluations in the paper.",
+          "quote": "VAE ResNet"
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Used in comparisons related to learning algorithms' robustness to changes in datasets.",
+          "quote": "VAE ResNet"
+        },
+        "referenced_paper_title": {
+          "value": "Auto-Encoding Variational Bayes",
+          "justification": "A fundamental paper that describes the VAE model, which is used as a base model in this paper.",
+          "quote": "Diederik P Kingma and Max Welling. Auto-encoding variational bayes. arXiv preprint\narXiv:1312.6114, 2013."
+        }
+      },
+      {
+        "name": {
+          "value": "HVAE (2 level) ResNet",
+          "justification": "HVAE with ResNet backbone is one of the tested models in unsupervised representation learning.",
+          "quote": "HVAE (2 level) ResNet"
+        },
+        "aliases": [
+          "Hierarchical VAE with ResNet"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The HVAE with ResNet is an existing complex model configuration not unique to this paper but employed in experiments conducted.",
+          "quote": "HVAE (2 level) ResNet"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The HVAE (2 level) ResNet was executed as part of the representation learning experiments shown in the paper.",
+          "quote": "HVAE (2 level) ResNet"
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The model's performance and outputs were analyzed and compared against other techniques like Deep Infomax as shown in the paper.",
+          "quote": "HVAE (2 level) ResNet"
+        },
+        "referenced_paper_title": {
+          "value": "Learning Hierarchical Features from Deep Generative Models",
+          "justification": "This paper contextualizes the hierarchical VAE approach the model is based on.",
+          "quote": "Zhao, S., Song, J., and Ermon, S. Learning hierarchical features from deep generative models. In\nICML, pages 4091–4099. JMLR. org, 2017."
+        }
+      },
+      {
+        "name": {
+          "value": "LCFCN",
+          "justification": "LCFCN is referenced in the context of object counting using a fully convolutional network.",
+          "quote": "LCFCN [35] uses a fully convolutional neural network and a\ndetection-based loss function that encourages the model to output a single blob per object."
+        },
+        "aliases": [
+          "Location-based Fully Convolutional Network"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "LCFCN is used as a reference model for comparison in object counting but is not a contribution of this particular study.",
+          "quote": "LCFCN [35] uses a fully convolutional neural network and a\ndetection-based loss function that encourages the model to output a single blob per object."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The LCFCN model is employed in the object counting experiments as indicated in the research discussion.",
+          "quote": "LCFCN [35] uses a fully convolutional neural network..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "LCFCN is compared in terms of its performance on object counting with other models in the experiments conducted.",
+          "quote": "The paper compares between an FCN8 that uses the LCFCN loss and one that uses the density\nloss function."
+        },
+        "referenced_paper_title": {
+          "value": "Where are the Blobs: Counting by Localization with Point Supervision",
+          "justification": "The reference to LCFCN aligns with the foundational work on this model in context of minimal supervision for counting tasks.",
+          "quote": "Laradji, I. H., Rostamzadeh, N., Pinheiro, P. O., Vazquez, D., and Schmidt, M. Where are the blobs: Counting by localization with point supervision. ECCV, 2018."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "MNIST",
+          "justification": "MNIST is referenced as a common dataset used for comparison in various experiments in the paper.",
+          "quote": "MNIST has been the hallmark of small scale image classification"
+        },
+        "aliases": [
+          "Modified National Institute of Standards and Technology"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Gradient-based learning applied to document recognition",
+          "justification": "MNIST was first introduced in the frequently cited paper by LeCun et al. for digit classification tasks.",
+          "quote": "Y. Lecun, L. Bottou, Y. Bengio, and P. Haffner. Gradient-based learning applied to document recognition. Proceedings of the IEEE, 86(11):2278–2324, 1998."
+        }
+      },
+      {
+        "name": {
+          "value": "SVHN",
+          "justification": "SVHN is cited multiple times in the paper as a point of comparison for benchmarks in image classification tasks.",
+          "quote": "Other datasets such as SVHN offer more diversity but still lack discriminative power."
+        },
+        "aliases": [
+          "Street View House Numbers"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Reading Digits in Natural Images with Unsupervised Feature Learning",
+          "justification": "The SVHN dataset is linked to the work that establishes it as a benchmark for natural image numbers recognition.",
+          "quote": "Yuval Netzer, Tao Wang, Adam Coates, Alessandro Bissacco, Bo Wu, and Andrew Y Ng. Reading digits in natural images with unsupervised feature learning. 2011."
+        }
+      },
+      {
+        "name": {
+          "value": "Synbols",
+          "justification": "Synbols is the newly introduced dataset generation tool in this paper, used extensively for experiments across various learning paradigms.",
+          "quote": "Synbols, an easy to use dataset generator with a rich composition of latent features for lower-resolution images."
+        },
+        "aliases": [
+          "Synthetic Symbols"
+        ],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "Synbols is directly contributed by the paper as a new dataset generation toolkit.",
+          "quote": "We introduce Synbols — Synthetic Symbols — a tool for rapidly generating new datasets..."
+        }
+      },
+      {
+        "name": {
+          "value": "CIFAR",
+          "justification": "CIFAR is used as a baseline dataset for comparison in testing various models.",
+          "quote": "Most experiments are conducted in 32 × 32 pixels, a resolution comparable to most small resolution datasets (e.g., MNIST, SVHN, CIFAR)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Multiple Layers of Features from Tiny Images",
+          "justification": "CIFAR dataset is often used in experiments related to multiple layers of image features, as introduced by Alex Krizhevsky.",
+          "quote": "Alex Krizhevsky. Learning multiple layers of features from tiny images. Master’s thesis, University of Toronto, Canada, 2009."
+        }
+      },
+      {
+        "name": {
+          "value": "Korean dataset",
+          "justification": "The paper highlights the challenges of using the Korean language dataset in experiments, noting unique symbol compositions.",
+          "quote": "The Korean dataset is obtained by sampling uniformly from the first 1000 symbols."
+        },
+        "aliases": [
+          "Korean Hangul dataset"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "This is derived from the Synbols tool introduced in this paper, no specific previous paper is referenced.",
+          "quote": "The Korean dataset is obtained by sampling uniformly from the first 1000 symbols."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Pycairo",
+          "justification": "Pycairo is explicitly mentioned as being used for rendering symbols within the Synbols tool.",
+          "quote": "Synbols uses Pycairo, a 2D vector graphics library, to render UTF-8 symbols with a variety of fonts and patterns."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "Pycairo is a well-known library, and its use doesn't require a reference to a particular prior paper.",
+          "quote": "Synbols uses Pycairo, a 2D vector graphics library, to render UTF-8 symbols with a variety of fonts and patterns."
+        }
+      },
+      {
+        "name": {
+          "value": "BaaL",
+          "justification": "The BaaL library is mentioned as being employed in active learning experiments.",
+          "quote": "Our active learning loop is implemented using the BaaL [5] library."
+        },
+        "aliases": [
+          "Bayesian Active Learning"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Baal, a bayesian active learning library",
+          "justification": "This reference title pertains directly to the introduction of BaaL as an active learning library, aligning it within the scope of the Synbols application.",
+          "quote": "Parmida Atighehchian, Frederic Branchaud-Charron, Jan Freyberg, Rafael Pardinas, and Lorne\nSchell. Baal, a bayesian active learning library. https://github.com/ElementAI/baal/, 2019."
+        }
+      },
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is mentioned as the library used for implementing few-shot learning algorithms in their experiments.",
+          "quote": "All the methods are implemented using the PyTorch library."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Automatic differentiation in PyTorch",
+          "justification": "This references the primary paper that introduces PyTorch as a dynamic computational graph library, which is used in Synbols experiments.",
+          "quote": "Adam Paszke, Sam Gross, Soumith Chintala, Gregory Chanan, Edward Yang, Zachary DeVito, Zeming Lin, Alban Desmaison, Luca Antiga, and Adam Lerer. Automatic differentiation in\npytorch."
+        }
+      },
+      {
+        "name": {
+          "value": "Docker",
+          "justification": "Docker is used to ensure reproducibility of datasets generated by Synbols.",
+          "quote": "We also use a combination of Docker, Git versioning, and random seed fixing to make sure that the same dataset can be recreated."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "Docker is a standard tool for containerization and does not require a specific reference paper within the context of this research.",
+          "quote": "We also use a combination of Docker, Git versioning, and random seed fixing to make sure that the same dataset can be recreated."
+        }
+      },
+      {
+        "name": {
+          "value": "Git",
+          "justification": "Git is mentioned as one of the tools used to ensure the versioning of datasets for reproducibility.",
+          "quote": "We also use a combination of Docker, Git versioning, and random seed fixing to make sure that the same dataset can be recreated."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "Git is a ubiquitous version control system, which is standardly used without requiring citation.",
+          "quote": "We also use a combination of Docker, Git versioning, and random seed fixing to make sure that the same dataset can be recreated."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 4168,
+    "prompt_tokens": 17916,
+    "total_tokens": 22084,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

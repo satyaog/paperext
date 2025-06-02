@@ -1,0 +1,147 @@
+{
+  "paper": "b6bc3085639f7c2faaae938c5b44ebf4.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "A Unifying Framework for Action-Conditional Self-Predictive Reinforcement Learning",
+      "justification": "The title explicitly mentioned in the paper matches the one given.",
+      "quote": "Title: A Unifying Framework for Action-Conditional Self-Predictive Reinforcement Learning"
+    },
+    "description": "The research paper focuses on bridging the gap between theoretical analysis and practical implementations of self-predictive learning algorithms in reinforcement learning (RL) by introducing action-conditional objectives. It presents a novel BYOL-VAR objective and unifies various BYOL objectives through model-based and model-free perspectives. Empirical results highlight that the BYOL-AC objective performs better in different settings.",
+    "type": {
+      "value": "theoretical",
+      "justification": "The paper primarily focuses on theoretical insights into self-predictive representation learning algorithms using an ODE framework and presents a variance-like action-conditional objective based on these theoretical foundations.",
+      "quote": "In this work, we take a step towards bridging the gap between theory and practice by analyzing an action-conditional self-predictive objective (BYOL-AC) using the ODE framework."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Reinforcement Learning",
+        "justification": "The research paper focuses on reinforcement learning (RL) agents and self-predictive learning within the RL context.",
+        "quote": "Learning a meaningful representation and a useful model of the world are among the key challenges in reinforcement learning (RL)."
+      },
+      "aliases": [
+        "RL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Self-Predictive Learning",
+          "justification": "The paper is centered around self-predictive learning objectives like BYOL-AC and BYOL-VAR in reinforcement learning.",
+          "quote": "Learning a good representation is a crucial challenge for Reinforcement Learning (RL) agents. Self-predictive learning provides means to jointly learn a latent representation and dynamics model by bootstrapping from future latent representations."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Ordinary Differential Equations in Machine Learning",
+          "justification": "The analysis in the research involves using ODE dynamics to understand the learning process of self-predictive objectives.",
+          "quote": "We consider the ODEs systems with certain dynamics that make them not the same as traditional optimization problems."
+        },
+        "aliases": [
+          "ODE in ML"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Bootstrap Your Own Latent - Action Conditional (BYOL-AC)",
+          "justification": "BYOL-AC is a key model introduced and analyzed in the paper, contributing to the research field by using action-conditioned objectives in self-predictive learning.",
+          "quote": "In this work, we take a step towards bridging the gap between theory and practice by analyzing an action-conditional self-predictive objective (BYOL-AC) using the ODE framework."
+        },
+        "aliases": [
+          "BYOL-AC"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "BYOL-AC is developed and thoroughly explored in the paper, indicating it is a contribution to the field.",
+          "quote": "In this work, we take a step towards bridging the gap between theory and practice by analyzing an action-conditional self-predictive objective (BYOL-AC) using the ODE framework."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper describes empirical investigations using BYOL-AC across different settings, indicating execution of the model.",
+          "quote": "Our empirical investigations, encompassing both linear function approximation and Deep RL environments, demonstrate that BYOL-AC is better overall in a variety of different settings."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "BYOL-AC is compared to other objectives like BYOL-Π in both theoretical frameworks and empirical investigations.",
+          "quote": "Our empirical investigations, encompassing both linear function approximation and Deep RL environments, demonstrate that BYOL-AC is better overall in a variety of different settings."
+        },
+        "referenced_paper_title": {
+          "value": "BYOL-Explore: Exploration by bootstrapped prediction",
+          "justification": "The BYOL-AC objective builds upon concepts from the original BYOL method.",
+          "quote": "The bootstrap-your-own-latent [BYOL] framework ... together with its RL variant (Guo et al., 2020) [BYOL-RL] ... offers a self-predictive paradigm for learning representations"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Minigrid",
+          "justification": "Minigrid is explicitly mentioned as one of the domains used for testing the BYOL-AC objectives.",
+          "quote": "Finally, we compare the three representations in deep RL with Minigrid, and classic control domains, using a policy-gradient, online algorithm V-MPO (Song et al., 2020) and..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Minigrid & Miniworld: Modular & customizable reinforcement learning environments for goal-oriented tasks",
+          "justification": "The Minigrid dataset/environment is notably referenced in related works.",
+          "quote": "...in Minigrid (Chevalier-Boisvert et al., 2023)..."
+        }
+      },
+      {
+        "name": {
+          "value": "Classic Control Datasets",
+          "justification": "Classic control environments from OpenAI Gym, such as CartPole, MountainCar, and Acrobot, are used for testing the models in the scope of the paper.",
+          "quote": "We consider open-AI gym’s (Brockman et al., 2016) classic control environments (Sutton and Barto, 2018), namely, CartPole-v1, MountainCar-v0, and Acrobot-v1."
+        },
+        "aliases": [
+          "OpenAI Gym Classic Control"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "OpenAI gym",
+          "justification": "OpenAI Gym environments are frequently used benchmarks in RL studies.",
+          "quote": "We consider open-AI gym’s (Brockman et al., 2016) classic control environments (Sutton and Barto, 2018), namely, CartPole-v1, MountainCar-v0, and Acrobot-v1."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "JAX",
+          "justification": "JAX is listed as one of the libraries used for implementing experiments in the paper.",
+          "quote": "All experiments were conducted using either TPU-V2 or L4 GPU instances. Libraries that enabled this work, include ... JAX (DeepMind et al., 2020)..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The DeepMind JAX Ecosystem",
+          "justification": "The paper provides enough detail to imply that JAX is part of the referenced implementation toolset for experimentations.",
+          "quote": "Libraries that enabled this work, include ... JAX (DeepMind et al., 2020)..."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1340,
+    "prompt_tokens": 30039,
+    "total_tokens": 31379,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

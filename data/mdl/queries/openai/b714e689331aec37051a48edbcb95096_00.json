@@ -1,0 +1,209 @@
+{
+  "paper": "b714e689331aec37051a48edbcb95096.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "PETRA: PARALLEL END-TO-END TRAINING OF REVERSIBLE ARCHITECTURES",
+      "justification": "The title of the paper is clearly stated at the beginning of the document as \"PETRA: PARALLEL END-TO-END TRAINING OF REVERSIBLE ARCHITECTURES.\"",
+      "quote": "Published as a conference paper at ICLR 2025\n\nPETRA: PARALLEL END-TO-END TRAINING OF REVERSIBLE ARCHITECTURES"
+    },
+    "description": "This paper introduces PETRA, a novel training technique for reversible architectures, aimed at addressing the challenges associated with parallelizing deep model training. PETRA allows gradient computations to be parallelized, optimizing for memory efficiency and minimizing communication overhead. The technique is tested on datasets like CIFAR-10, ImageNet32, and ImageNet, and is found to provide comparable accuracies to backpropagation while utilizing models like ResNet-18, ResNet-34, and ResNet-50.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper describes and tests a new method (PETRA) for training deep models, specifically reversible architectures. It includes numerical experiments and comparisons of PETRA with backpropagation on various datasets, demonstrating its practical application and effectiveness, which classifies the study as empirical.",
+      "quote": "We develop a custom autograd-like training framework for PETRA, and we demonstrate its effectiveness on CIFAR-10, ImageNet32, and ImageNet, achieving competitive accuracies comparable to backpropagation using ResNet-18, ResNet-34, and ResNet-50 models."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Deep Learning",
+        "justification": "The paper focuses on improving techniques for training deep learning models, specifically addressing challenges in parallelizing training through reversible architectures and comparing them with existing models like ResNets.",
+        "quote": "Reversible architectures have been shown to be capable of performing on par with their non-reversible architectures, being applied in deep learning for memory savings and generative modeling."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Model Parallelism",
+          "justification": "The paper addresses the parallelization of deep learning training and introduces the PETRA method to execute gradient computations in parallel across different stages of the model.",
+          "quote": "PETRA facilitates effective model parallelism by enabling stages (i.e., a set of layers) to compute independently on different devices, while only needing to communicate activations and gradients between each other."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Reversible Architectures",
+          "justification": "The central focus of the paper is on reversible architectures that allow for memory savings and efficient gradient computation during training.",
+          "quote": "We introduce PETRA, a novel method designed to parallelize gradient computations within reversible architectures with minimal computational overhead."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "ResNet-18",
+          "justification": "ResNet-18 is one of the models used for evaluating the PETRA method, and it is explicitly mentioned in the paper.",
+          "quote": "...using ResNet-18, ResNet-34, and ResNet-50 models."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "ResNet-18 itself is not contributed by this paper, as it is an existing architecture used for comparison.",
+          "quote": "...comparable to backpropagation using ResNet-18, ResNet-34, and ResNet-50 models."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "ResNet-18 is executed using the PETRA method to test its efficacy, as mentioned in the numerical experiments section.",
+          "quote": "We validate the efficacy of PETRA through rigorous testing on benchmark datasets such as CIFAR-10, ImageNet-32, and ImageNet... using ResNet-18, ResNet-34, and ResNet-50 models."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "ResNet-18 is used as a benchmark to compare the performance of the PETRA method against standard backpropagation.",
+          "quote": "...achieving competitive accuracies comparable to backpropagation using ResNet-18, ResNet-34, and ResNet-50 models."
+        },
+        "referenced_paper_title": {
+          "value": "Deep Residual Learning for Image Recognition",
+          "justification": "The referenced paper title for ResNet-18 falls under the well-known work 'Deep Residual Learning for Image Recognition' by Kaiming He et al. which introduced ResNet models.",
+          "quote": "Reference to ResNet architectures generally brings up the foundational work by He et al. on deep residual learning."
+        }
+      },
+      {
+        "name": {
+          "value": "ResNet-34",
+          "justification": "ResNet-34 is one of the models used to evaluate the PETRA method.",
+          "quote": "...using ResNet-18, ResNet-34, and ResNet-50 models."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "ResNet-34 is an existing model used within the paper for comparison and not a new contribution.",
+          "quote": "...comparable to backpropagation using ResNet-18, ResNet-34, and ResNet-50 models."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "ResNet-34 is executed using the PETRA method for performance testing, as mentioned in the numerical experiments.",
+          "quote": "We validate the efficacy of PETRA through rigorous testing on benchmark datasets such as CIFAR-10, ImageNet-32, and ImageNet... using ResNet-18, ResNet-34, and ResNet-50 models."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "ResNet-34 is used to compare the performance of PETRA against backpropagation.",
+          "quote": "...achieving competitive accuracies comparable to backpropagation using ResNet-18, ResNet-34, and ResNet-50 models."
+        },
+        "referenced_paper_title": {
+          "value": "Deep Residual Learning for Image Recognition",
+          "justification": "This is inferred based on the common reference for ResNet architectures, specifically the paper by Kaiming He et al. that introduced them.",
+          "quote": "Reference to ResNet architectures generally brings up the foundational work by He et al. on deep residual learning."
+        }
+      },
+      {
+        "name": {
+          "value": "ResNet-50",
+          "justification": "ResNet-50 is frequently mentioned alongside other ResNet models in evaluating the PETRA method within the paper.",
+          "quote": "...using ResNet-18, ResNet-34, and ResNet-50 models."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "ResNet-50 is a known model used as a comparison point, not a new contribution within this paper.",
+          "quote": "...comparable to backpropagation using ResNet-18, ResNet-34, and ResNet-50 models."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The execution of ResNet-50 with PETRA is described as part of the experiments conducted to demonstrate the method's effectiveness.",
+          "quote": "We validate the efficacy of PETRA through rigorous testing on benchmark datasets such as CIFAR-10, ImageNet-32, and ImageNet... using ResNet-18, ResNet-34, and ResNet-50 models."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "ResNet-50's performance using PETRA is compared against traditional backpropagation methods.",
+          "quote": "...achieving competitive accuracies comparable to backpropagation using ResNet-18, ResNet-34, and ResNet-50 models."
+        },
+        "referenced_paper_title": {
+          "value": "Deep Residual Learning for Image Recognition",
+          "justification": "The standard reference for ResNet models is the paper by Kaiming He et al. describing deep residual learning.",
+          "quote": "Reference to ResNet architectures generally brings up the foundational work by He et al. on deep residual learning."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "CIFAR-10 is explicitly listed as one of the datasets used for testing the PETRA method.",
+          "quote": "We validate the efficacy of PETRA through rigorous testing on benchmark datasets such as CIFAR-10, ImageNet-32, and ImageNet..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Multiple Layers of Features from Tiny Images",
+          "justification": "CIFAR-10 is usually referenced to the paper \"Learning Multiple Layers of Features from Tiny Images\" by Alex Krizhevsky.",
+          "quote": "CIFAR-10 is referenced generally by its original introduction by Alex Krizhevsky."
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet32",
+          "justification": "ImageNet32 is used as a benchmark dataset for evaluating the PETRA method.",
+          "quote": "We validate the efficacy of PETRA through rigorous testing on benchmark datasets such as CIFAR-10, ImageNet-32, and ImageNet..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "A Downsampled Variant of ImageNet as an Alternative to the CIFAR Datasets",
+          "justification": "ImageNet32 is based on a downsampled variant and typically linked to the paper by Patryk Chrabaszcz et al.",
+          "quote": "The reference for ImageNet32 aligns with the adaptation by Patryk Chrabaszcz et al."
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet",
+          "justification": "ImageNet is used for testing the effectiveness of PETRA in large-scale classification tasks.",
+          "quote": "We validate the efficacy of PETRA through rigorous testing on benchmark datasets such as CIFAR-10, ImageNet-32, and ImageNet..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ImageNet: A Large-Scale Hierarchical Image Database",
+          "justification": "ImageNet's reference is commonly associated with the paper \"ImageNet: A Large-Scale Hierarchical Image Database\" by Jia Deng et al.",
+          "quote": "ImageNet is referenced by its foundational contribution to visual data as described in Jia Deng et al.'s work."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The paper mentions adapting the autograd system in PyTorch for their framework, indicating its use in their experiments.",
+          "quote": "We provide a flexible reimplementation of the autograd system in PyTorch, specifically tailored for our experimental setup..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An Imperative Style, High-Performance Deep Learning Library",
+          "justification": "The reference paper for PyTorch is often considered to be \"PyTorch: An Imperative Style, High-Performance Deep Learning Library.\"",
+          "quote": "PyTorch as referenced typically aligns with its foundational paper detailing its system and usage."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2178,
+    "prompt_tokens": 22433,
+    "total_tokens": 24611,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

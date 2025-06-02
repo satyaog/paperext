@@ -1,0 +1,151 @@
+{
+  "paper": "8a71548d967ffd70bdd1724b90cc7140.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Generative Compositional Augmentations for Scene Graph Prediction",
+      "justification": "The title directly reflects the focus of the paper on generative augmentations for improving scene graph prediction.",
+      "quote": "Generative Compositional Augmentations for Scene Graph Prediction"
+    },
+    "description": "The paper tackles the issue of compositional generalization in scene graph prediction, where current models fail to predict zero- and few-shot compositions of objects and relations. The authors propose a method that uses conditional GANs to generate plausible, diverse scene graphs by perturbing real ones, thus improving training distribution diversity. Evaluated on Visual Genome, this approach shows consistent improvements in zero- and few-shot predictions.",
+    "type": {
+      "value": "empirical",
+      "justification": "The research includes empirical evaluations on the Visual Genome dataset and compares the proposed methods against baselines to demonstrate their effectiveness.",
+      "quote": "We propose a method to synthesize rare yet plausible scene graphs by perturbing real ones. We then propose and empirically study a model... When evaluated on the Visual Genome dataset, our approach yields marginal, but consistent improvements in zero- and few-shot metrics."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Scene Graph Generation",
+        "justification": "The paper directly addresses the task of scene graph generation, focusing on improving compositional generalization in this area by using GANs for data augmentation.",
+        "quote": "Predicting compositions of objects and the relationships between them from images is part of the scene graph generation (SGG) task."
+      },
+      "aliases": [
+        "SGG"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Computer Vision",
+          "justification": "The task of scene graph prediction involves understanding scenes through visual data, making it a topic within Computer Vision.",
+          "quote": "Inferring objects and their relationships from an image in the form of a scene graph is useful in many applications at the intersection of vision and language."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Iterative Message Passing (IMP+)",
+          "justification": "The paper uses Iterative Message Passing (IMP+) as a baseline and for extended experiments, evaluating its capabilities for compositional generalization.",
+          "quote": "We use Iterative Message Passing (IMP+) [74, 82] and Neural Motifs (NM) [82]. IMP+ shows strong compositional generalization capabilities..."
+        },
+        "aliases": [
+          "IMP+"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Although heavily used as a baseline, IMP+ is not a contribution of this paper but referenced for its prior development and application.",
+          "quote": "We use Iterative Message Passing (IMP+) [74, 82] and Neural Motifs (NM) [82]. IMP+ shows strong compositional generalization capabilities..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was executed as part of the baseline and comparative experiments with the proposed GAN-based model.",
+          "quote": "We use a publicly available SGG codebase for evaluation and baseline model implementations."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "IMP+ is explicitly used to compare performance against the introduced GAN-based methods, forming part of the empirical study.",
+          "quote": "We evaluate the models on a standard split of VG [38], with the 150 most frequent object classes and 50 predicate classes."
+        },
+        "referenced_paper_title": {
+          "value": "Scene graph generation by iterative message passing",
+          "justification": "The reference for IMP+ used in the paper is 'Scene graph generation by iterative message passing'.",
+          "quote": "We use Iterative Message Passing (IMP+) [74, 82]..."
+        }
+      },
+      {
+        "name": {
+          "value": "Neural Motifs",
+          "justification": "The paper implements and evaluates Neural Motifs as part of the SGG model suite used to measure the effectiveness of their approach.",
+          "quote": "We use Iterative Message Passing (IMP+) [74, 82] and Neural Motifs (NM) [82]. ... and Neural Motifs is explored to some extent in our study."
+        },
+        "aliases": [
+          "NM"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Neural Motifs is not introduced as a new contribution of this paper.",
+          "quote": "Neural Motifs (NM) [82]..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Neural Motifs is used within the experiments to establish comparative performance benchmarks.",
+          "quote": "For the model F , we use Iterative Message Passing (IMP+) [74, 82] and Neural Motifs (NM) [82]."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper involves comparison of Neural Motifs performance against other models including their generative augmentation method.",
+          "quote": "First, we compare the baseline IMP++ to our GAN-based model trained without and with perturbation methods. Even without any perturbations, the GAN-based model significantly outperforms IMP++."
+        },
+        "referenced_paper_title": {
+          "value": "Neural motifs: Scene graph parsing with global context",
+          "justification": "The reference paper for Neural Motifs describes its development and original context.",
+          "quote": "We use Iterative Message Passing (IMP+) [74, 82] and Neural Motifs (NM) [82]."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Visual Genome",
+          "justification": "The Visual Genome dataset is central to the experiments as it is used to train and evaluate the models on scene graph generation tasks.",
+          "quote": "When evaluated on the Visual Genome dataset, our approach yields marginal, but consistent improvements in zero- and few-shot metrics."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Visual genome: Connecting language and vision using crowdsourced dense image annotations",
+          "justification": "The paper lists Visual Genome as the dataset for evaluating their approach, referencing it properly.",
+          "quote": "... the Visual Genome dataset, our approach yields marginal, but consistent improvements in zero- and few-shot metrics."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The paper mentions using PyTorch as part of the experimental setup, specifically for model training and execution.",
+          "quote": "We use PyTorch 1.5+ to train all models."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The paper references usage but does not specify a paper for PyTorch, as it is a commonly known library.",
+          "quote": "We use PyTorch 1.5+ to train all models."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1285,
+    "prompt_tokens": 28089,
+    "total_tokens": 29374,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

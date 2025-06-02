@@ -1,0 +1,176 @@
+{
+  "paper": "cca43d4f37758f035c3631a9597d9ae2.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Understanding the Behaviour of Neural Abstractive Summarizers using Contrastive Examples",
+      "justification": "The title explicitly states the main focus of the research paper, which is examining neural abstractive summarization via contrastive examples.",
+      "quote": "Understanding the Behaviour of Neural Abstractive Summarizers using  Contrastive Examples"
+    },
+    "description": "This paper investigates how neural abstractive summarization systems perform by using contrastive examples that are perturbed versions of human-written summaries. It evaluates the systems' abilities to prioritize human-written summaries over contrastive, incorrect ones by analyzing their performance on different datasets. The research aims to determine whether these systems truly understand the syntactic and semantic structures they process.",
+    "type": {
+      "value": "empirical",
+      "justification": "The research involves practical testing and evaluation of existing neural abstractive summarization models with concrete datasets to assess their performance.",
+      "quote": "We generate a set of contrastive summaries which are perturbed, deficient versions of human-written summaries, and test whether existing neural summarizers score them more highly than the human-written summaries."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The paper addresses techniques in Natural Language Processing, specifically focusing on text summarization which is a key NLP task.",
+        "quote": "Open-domain abstractive summarization is a long-standing goal of the field of automatic summarization..."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Summarization",
+          "justification": "The specific focus of the paper is on neural abstractive summarization, a subfield within NLP.",
+          "quote": "Open-domain abstractive summarization is a long-standing goal of the field of automatic summarization."
+        },
+        "aliases": [
+          "Abstractive Summarization"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "ABS+",
+          "justification": "The ABS+ model is explicitly mentioned and described in the paper as one of the evaluated models.",
+          "quote": "The ABS+ system uses an attention-based neural language model as an encoder and a feed-forward neural network for decoding, and is trained on the Gigaword corpus."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The ABS+ model was not contributed by the authors but used as a reference for evaluation.",
+          "quote": "We analyze and evaluate three state-of-the-art neural abstractive summarization systems: ABS+ (Rush et al., 2015)..."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "There is no specific mention of the execution environment (like CPU or GPU) for the ABS+ model in the context of this paper.",
+          "quote": ""
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The ABS+ model was explicitly compared to other models in terms of summary dodging statistics.",
+          "quote": "We summarize our results in Table 4, and report rule-wise results in Table 3."
+        },
+        "referenced_paper_title": {
+          "value": "A neural attention model for abstractive sentence summarization",
+          "justification": "The reference paper for ABS+ is specifically mentioned to provide context for this model's implementation and usage.",
+          "quote": "The ABS+ system uses an attention-based neural language model as an encoder and a feed-forward neural network for decoding, and is trained on the Gigaword corpus."
+        }
+      },
+      {
+        "name": {
+          "value": "GTP",
+          "justification": "The GTP model is discussed and evaluated in the paper as one of the state-of-the-art summarization models.",
+          "quote": "GTP system is a seq2seq model with attention on the encoder and a pointer-generator mechanism to choose words from the source in the decoder and, is trained on the CNN/Dailymail corpus."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The GTP model was not a contribution of the paper; it was a subject of evaluation and analysis.",
+          "quote": "We analyze and evaluate three state-of-the-art neural abstractive summarization systems: ABS+ (Rush et al., 2015), GTP (See et al., 2017)..."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The paper does not describe a specific execution environment like GPU or CPU for the GTP model.",
+          "quote": ""
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The GTP model was numerically compared to other models, as seen in the evaluation results.",
+          "quote": "The FAS model performs worse than GTP model, this might be because the abstraction model only observes one sentence..."
+        },
+        "referenced_paper_title": {
+          "value": "Get to the point: Summarization with pointer-generator networks",
+          "justification": "The original paper on GTP provides context and background for its implementation, as mentioned in the current paper.",
+          "quote": "GTP system is a seq2seq model with attention on the encoder and a pointer-generator mechanism."
+        }
+      },
+      {
+        "name": {
+          "value": "FAS",
+          "justification": "The FAS model is another summarization model investigated in the paper.",
+          "quote": "FAS uses reinforcement learning algorithm to extract the most important sentences from the source text..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The model was analyzed in the paper but not introduced by the authors.",
+          "quote": "We analyze and evaluate three state-of-the-art neural abstractive summarization systems..."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The execution detail such as if FAS was run on CPU or GPU is not provided.",
+          "quote": ""
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The model is compared to others as part of their evaluation process, evident in the performance analysis tables.",
+          "quote": "FAS system, for each extracted sentence we generate all sentences in the gold summary..."
+        },
+        "referenced_paper_title": {
+          "value": "Fast abstractive summarization with reinforce-selected sentence rewriting",
+          "justification": "The paper where FAS was originally described and implemented is referenced for context.",
+          "quote": "FAS uses reinforcement learning algorithm to extract the most important sentences from the source text."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CNN/Dailymail Corpus",
+          "justification": "The dataset is used for evaluating long summary tasks and is explicitly named in the paper.",
+          "quote": "We use the CNN/Dailymail corpus, where the highlights of the articles are used as the gold summary (Hermann et al., 2015)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Teaching machines to read and comprehend",
+          "justification": "The CNN/Dailymail corpus was introduced in this reference, providing necessary context for its use.",
+          "quote": "We use the CNN/Dailymail corpus, where the highlights of the articles are used as the gold summary (Hermann et al., 2015)."
+        }
+      },
+      {
+        "name": {
+          "value": "Gigaword Corpus",
+          "justification": "The Gigaword Corpus was utilized for short summarization tasks and is explicitly mentioned in the paper.",
+          "quote": "We experimented on two datasets, for two abstractive summarization tasks...We use the scripts provided by Rush et al. (2015) to process the Gigaword corpus."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "English gigaword, linguistic data consortium",
+          "justification": "The dataset was utilized as processed according to the described reference, substantiating its relevance.",
+          "quote": "Graff, Junbo Kong, Ke Chen, and Kazuaki Maeda. 2011. English gigaword, linguistic data consorium."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1507,
+    "prompt_tokens": 7262,
+    "total_tokens": 8769,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

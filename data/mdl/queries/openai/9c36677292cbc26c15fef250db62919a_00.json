@@ -1,0 +1,164 @@
+{
+  "paper": "9c36677292cbc26c15fef250db62919a.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Wasserstein Dependency Measure for Representation Learning",
+      "justification": "The paper's title is mentioned multiple times throughout the document, especially in the header and conclusion sections.",
+      "quote": "Wasserstein Dependency Measure for Representation Learning"
+    },
+    "description": "The paper addresses the limitations of mutual information maximization in unsupervised representation learning by introducing the Wasserstein dependency measure. The authors provide an empirical analysis demonstrating that mutual information-based approaches often fail to learn complete representations, especially in tasks with high mutual information like video understanding or reinforcement learning. They propose using the Wasserstein distance as a substitute, claiming this approach yields more complete representations by overcoming the fundamental limitations of KL divergence used in mutual information estimators. Theoretical motivations and practical approximations through Lipschitz constraint techniques from GAN literature are discussed and evaluated across several tasks.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper provides empirical demonstrations and experiments comparing the model's performance across various tasks and datasets.",
+      "quote": "In this work, we empirically demonstrate that mutual information-based representation learning approaches do fail to learn complete representations on a number of designed and real-world tasks. To mitigate these problems, we introduce the Wasserstein dependency measure."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Unsupervised Representation Learning",
+        "justification": "The paper focuses on learning effective representations in the unsupervised learning setting, particularly overcoming challenges associated with mutual information estimators.",
+        "quote": "representation learning in the unsupervised setting, without hand-specified labels, becomes significantly more challenging: although much more data is available for learning, this data lacks the clear learning signal that would be provided by human-specified semantic labels. Nevertheless, unsupervised representation learning has made significant progress recently"
+      },
+      "aliases": [
+        "Unsupervised Learning"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Self-supervised Learning",
+          "justification": "The paper mentions and evaluates self-supervised learning techniques as part of its scope and comparisons.",
+          "quote": "Self-supervised learning techniques have demonstrated state-of-the-art performance in speech and image understanding (van den Oord et al., 2018; Hjelm et al., 2018), reinforcement learning (Jaderberg et al., 2016; Dwibedi et al., 2018; Kim et al., 2018), imitation learning (Sermanet et al., 2017; Aytar et al., 2018), and natural language processing (Devlin et al., 2018; Radford et al.)"
+        },
+        "aliases": [
+          "SSL",
+          "Self-supervision"
+        ]
+      },
+      {
+        "name": {
+          "value": "Generative Adversarial Networks",
+          "justification": "The paper uses GAN literature techniques for Lipschitz constraint methods to develop practical approximations to the proposed solution.",
+          "quote": "constructed using Lipschitz constraint techniques from the GAN literature, achieves substantially improved results on tasks where incomplete representations are a major challenge."
+        },
+        "aliases": [
+          "GANs"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Wasserstein Predictive Coding (WPC)",
+          "justification": "The paper introduces Wasserstein Predictive Coding as an approximation to the theoretical Wasserstein dependency measure and evaluates its effectiveness in empirical tasks.",
+          "quote": "We propose a new objective, which is a lower bound on both contrastive predictive coding and the dual Wasserstein dependency measure, by keeping both the Lipschitz class of functions and the log exp, which we call Wasserstein predictive coding (WPC)."
+        },
+        "aliases": [
+          "WPC"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "WPC is introduced as a new method within the paper to improve representation learning outcomes where previous methods failed.",
+          "quote": "We propose a new objective, which is a lower bound on both contrastive predictive coding and the dual Wasserstein dependency measure."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Experiments involving WPC are reported, demonstrating its application in practice.",
+          "quote": "Figures 4(a), and 5(a) show the performance of CPC and WPC as we vary the dataset size."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "WPC's performance is compared against Contrastive Predictive Coding (CPC) throughout the experiments section.",
+          "quote": "Figures 4(a), and 5(a) show the performance of CPC and WPC as we vary the dataset size."
+        },
+        "referenced_paper_title": {
+          "value": "Representation Learning with Contrastive Predictive Coding",
+          "justification": "The paper compares WPC with CPC as part of its experimental evaluations.",
+          "quote": "van den Oord et al. (2018)"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Omniglot",
+          "justification": "The Omniglot dataset is used in constructing the SpatialMultiOmniglot and StackedMultiOmniglot tasks evaluated in the paper.",
+          "quote": "We used the Omniglot dataset (Lake et al., 2015) as a base dataset to construct Spatial-MultiOmniglot and StackedMultiOmniglot."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Lake, B. M., Salakhutdinov, R., and Tenenbaum, J. B. Human-level concept learning through probabilistic program induction. Science, 350(6266):1332–1338, 2015.",
+          "justification": "The paper cites this work as the source of the Omniglot dataset.",
+          "quote": "Lake et al., 2015"
+        }
+      },
+      {
+        "name": {
+          "value": "Shapes3D",
+          "justification": "The Shapes3D dataset is used to create the MultiviewShapes3D task to evaluate representation learning techniques.",
+          "quote": "Shapes3D (Kim & Mnih, 2018) is a dataset of images of a single object in a room."
+        },
+        "aliases": [
+          "3D Shapes"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Disentangling by Factorising",
+          "justification": "Reference to Shapes3D dataset sourced from this paper.",
+          "quote": "Kim & Mnih, 2018"
+        }
+      },
+      {
+        "name": {
+          "value": "CelebA",
+          "justification": "The CelebA dataset is used for the SplitCelebA task, assessing model performance on facial attribute learning.",
+          "quote": "CelebA (Liu et al., 2015) is a dataset consisting of celebrity faces. The SplitCelebA task uses samples from this dataset split into left and right halves."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Deep Learning Face Attributes in the Wild",
+          "justification": "The paper references this work as the source of the CelebA dataset.",
+          "quote": "Liu et al., 2015"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "TensorFlow",
+          "justification": "TensorFlow is typically used in deep learning experiments like the ones being performed in the paper, though it isn't specified, libraries mentioned alongside authors involved in TensorFlow such as Google Brain, often imply its use.",
+          "quote": "Google Brain"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "tensorflow",
+          "justification": "By convention, TensorFlow is often implied when experiments are conducted by teams from Google Brain although it is not explicit in this document.",
+          "quote": "Google Brain"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1459,
+    "prompt_tokens": 12106,
+    "total_tokens": 13565,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

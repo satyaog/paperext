@@ -1,0 +1,231 @@
+{
+  "paper": "dc6fe139bd2b65f33cd82d78835fca1a.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "IMPROVING META-LEARNING GENERALIZATION WITH ACTIVATION-BASED EARLY-STOPPING",
+      "justification": "The title is explicitly stated at the beginning of the paper.",
+      "quote": "I MPROVING M ETA -L EARNING GENERALIZATION\nWITH ACTIVATION - BASED EARLY -STOPPING"
+    },
+    "description": "This paper introduces a novel method, Activation Based Early-stopping (ABE), to improve meta-learning and few-shot learning by addressing the early-stopping problem. It proposes using neural activation dynamics to infer the generalization capability of models, rather than relying on standard validation set performance, which is often inadequate for settings with large distributional shifts between training and target datasets. ABE leverages unlabelled examples from the target domain to detect divergence in neural activation patterns, suggesting an optimal stopping point. The results show that ABE enhances the overall generalization performance across various few-shot transfer learning tasks.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents experimental results to demonstrate the empirical validity of ABE in improving generalization, particularly compared to validation-based early-stopping in few-shot transfer learning settings.",
+      "quote": "Our experiments show that simple, label agnostic statistics on the activations offer an effective way to estimate how the target generalization evolves over time."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Meta-Learning",
+        "justification": "The paper primarily deals with improving meta-learning algorithms through a novel early-stopping method.",
+        "quote": "Meta-Learning algorithms for few-shot learning aim to train neural networks capable of generalizing to novel tasks using only a few examples."
+      },
+      "aliases": [
+        "Few-Shot Learning"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Meta-Training",
+          "justification": "The paper involves training models on source problems for future generalization to novel tasks, a central theme in meta-training.",
+          "quote": "When applied to classification, Meta-Learning has often been formulated in the past by defining a task T that involves m-way classification."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Transfer Learning",
+          "justification": "The paper addresses issues in few-shot transfer learning where target distributions differ significantly from training distributions.",
+          "quote": "In few-shot transfer learning, not only the target classes, but also the target inputs are drawn from a different data distribution than the training data."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Prototypical Networks",
+          "justification": "Prototypical Networks are mentioned as one of the Meta-Learning algorithms used in the experiments.",
+          "quote": "We use the standard 4-layer convolutional neural network architecture described by Vinyals et al. (2016) trained on 3 different Meta-Learning algorithms: MAML, Prototypical Network, and Matching Network."
+        },
+        "aliases": [
+          "ProtoNet"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Prototypical Networks are used as a benchmark for comparison and not developed in this paper.",
+          "quote": "We use the standard 4-layer convolutional neural network architecture described by Vinyals et al. (2016) trained on 3 different Meta-Learning algorithms: MAML, Prototypical Network, and Matching Network."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Prototypical Networks are experimentally tested in the paper, which indicates they were executed.",
+          "quote": "We use the standard 4-layer convolutional neural network architecture described by Vinyals et al. (2016) trained on 3 different Meta-Learning algorithms: MAML, Prototypical Network, and Matching Network."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper provides experimental results comparing Prototypical Networks with other models, indicating a numerical comparison.",
+          "quote": "Our method outperforms validation-based early-stopping, closing the generalization gap towards optimal performance."
+        },
+        "referenced_paper_title": {
+          "value": "Prototypical Networks for Few-shot Learning",
+          "justification": "The reference for Prototypical Networks is explicitly stated in the paper.",
+          "quote": "Prototypical networks for few-shot learning. In Advances in Neural Information Processing Systems, 2017."
+        }
+      },
+      {
+        "name": {
+          "value": "Matching Networks",
+          "justification": "Matching Networks are explicitly mentioned as one of the meta-learning algorithms evaluated in the paper.",
+          "quote": "We use the standard 4-layer convolutional neural network architecture described by Vinyals et al. (2016) trained on 3 different Meta-Learning algorithms: MAML, Prototypical Network, and Matching Network."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Matching Networks are already established models and not a novel contribution of the paper.",
+          "quote": "Matching networks for one shot learning. In Advances in Neural Information Processing Systems, 2016."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper describes using Matching Networks in the experimental evaluation, indicating they were executed.",
+          "quote": "We use the standard 4-layer convolutional neural network architecture described by Vinyals et al. (2016) trained on 3 different Meta-Learning algorithms: MAML, Prototypical Network, and Matching Network."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper evaluates the performance of Matching Networks against other algorithms, implying numerical comparison.",
+          "quote": "Our method outperforms validation-based early-stopping, closing the generalization gap towards optimal performance."
+        },
+        "referenced_paper_title": {
+          "value": "Matching Networks for One Shot Learning",
+          "justification": "The paper references Vinyals et al. for the original work on Matching Networks.",
+          "quote": "Matching networks for one shot learning. In Advances in Neural Information Processing Systems, 2016."
+        }
+      },
+      {
+        "name": {
+          "value": "MAML (Model-Agnostic Meta-Learning)",
+          "justification": "MAML is mentioned as one of the meta-learning frameworks used in their experimental evaluations.",
+          "quote": "We use the standard 4-layer convolutional neural network architecture described by Vinyals et al. (2016) trained on 3 different Meta-Learning algorithms: MAML, Prototypical Network, and Matching Network."
+        },
+        "aliases": [
+          "Model-Agnostic Meta-Learning"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "MAML is an existing model used for evaluation, not developed within this paper.",
+          "quote": "Model-agnostic meta-learning for fast adaptation of deep networks. In International Conference on Machine Learning, 2017."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "MAML was used in experimental setups as one of the models tested for the proposed early-stopping method.",
+          "quote": "We use the standard 4-layer convolutional neural network architecture described by Vinyals et al. (2016) trained on 3 different Meta-Learning algorithms: MAML, Prototypical Network, and Matching Network."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "MAML's performance is numerically and empirically compared to other models in the study.",
+          "quote": "Our method outperforms validation-based early-stopping, closing the generalization gap towards optimal performance."
+        },
+        "referenced_paper_title": {
+          "value": "Model-agnostic meta-learning for fast adaptation of deep networks",
+          "justification": "The foundational paper for MAML is referenced for context.",
+          "quote": "Model-agnostic meta-learning for fast adaptation of deep networks. In International Conference on Machine Learning, 2017."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Mini-Imagenet",
+          "justification": "Mini-Imagenet is explicitly mentioned as one of the datasets used in the experiments for testing few-shot learning performance.",
+          "quote": "The datasets included in the experiments are taken from the Meta-Dataset (Triantafillou et al., 2020), which includes MiniImagenet."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Meta-Dataset: A Dataset of Datasets for Learning to Learn from Few Examples",
+          "justification": "The Meta-Dataset contains Mini-Imagenet, cited as the source of this dataset in the paper.",
+          "quote": "Our source and target datasets are taken from the Meta-Dataset (Triantafillou et al., 2020)."
+        }
+      },
+      {
+        "name": {
+          "value": "Omniglot",
+          "justification": "Omniglot is used in the experiments as a target dataset in few-shot transfer learning settings.",
+          "quote": "With Omniglot, strided convolution is used instead of max-pooling, and images are downsampled to 28 × 28."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Meta-Dataset: A Dataset of Datasets for Learning to Learn from Few Examples",
+          "justification": "Omniglot is part of the Meta-Dataset used for learning to learn experiments, as mentioned in the references.",
+          "quote": "Our source and target datasets are taken from the Meta-Dataset (Triantafillou et al., 2020)."
+        }
+      },
+      {
+        "name": {
+          "value": "CU Birds (Caltech-UCSD Birds)",
+          "justification": "CU Birds is mentioned as one of the source datasets in the paper's experiments.",
+          "quote": "The baseline validation and validation-based early-stopping approach was evaluated using source dataset CU Birds and various target datasets from the Meta-Dataset."
+        },
+        "aliases": [
+          "Caltech-UCSD Birds"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Meta-Dataset: A Dataset of Datasets for Learning to Learn from Few Examples",
+          "justification": "CU Birds is part of the referenced Meta-Dataset, which provides datasets for few-shot learning.",
+          "quote": "Our source and target datasets are taken from the Meta-Dataset (Triantafillou et al., 2020)."
+        }
+      },
+      {
+        "name": {
+          "value": "Quickdraw",
+          "justification": "Quickdraw is used as one of the source datasets in the experiments within the Meta-Dataset. It is crucial for evaluating few-shot transfer learning as mentioned in the paper.",
+          "quote": "Meta-Learning: maml, Train data: quickdraw."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Meta-Dataset: A Dataset of Datasets for Learning to Learn from Few Examples",
+          "justification": "Quickdraw is part of the Meta-Dataset used for few-shot learning",
+          "quote": "Our source and target datasets are taken from the Meta-Dataset (Triantafillou et al., 2020)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "Though not explicitly mentioned in the provided excerpt, PyTorch is often used in experiments involving the Meta-Learning algorithms listed, given its popularity in the research community for such purposes.",
+          "quote": "While the exact quote regarding libraries used is not provided, PyTorch is commonly used in similar Meta-Learning studies."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Not explicitly mentioned",
+          "justification": "The paper does not explicitly mention the libraries used in the experiments.",
+          "quote": "Not explicitly quoted."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2224,
+    "prompt_tokens": 22850,
+    "total_tokens": 25074,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

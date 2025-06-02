@@ -1,0 +1,183 @@
+{
+  "paper": "a75142f4969573db8eaf1fa21f5bf15e.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "BootsTAP: Bootstrapped Training for Tracking-Any-Point",
+      "justification": "The title captures the essence of the research which focuses on bootstrapping training methods for the Tracking-Any-Point (TAP) task.",
+      "quote": "BootsTAP: Bootstrapped Training for Tracking-Any-Point"
+    },
+    "description": "This paper presents a novel approach to improve Tracking-Any-Point (TAP) models by leveraging large-scale, unlabeled real-world data in addition to synthetic datasets. It introduces a self-supervised student-teacher framework, which adds a self-supervised loss to the standard supervised training on synthetic data. The study demonstrates improved results on the TAP-Vid benchmark, suggesting that models can gain a better understanding of motion in videos through this approach.",
+    "type": {
+      "value": "empirical",
+      "justification": "The study focuses on empirical evaluation by demonstrating state-of-the-art performance improvements on established benchmarks with the proposed training method.",
+      "quote": "We demonstrate state-of-the-art performance on the TAP-Vid benchmark surpassing previous results by a wide margin: for example, TAP-Vid-DAVIS performance improves from 61.3% to 67.4%, and TAP-Vid-Kinetics from 57.2% to 62.5%."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The research focuses on tracking points in video data, which is a key area of investigation within the field of Computer Vision.",
+        "quote": "To endow models with greater understanding of physics and motion, it is useful to enable them to perceive how solid surfaces move and deform in real scenes."
+      },
+      "aliases": [
+        "CV"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Video Analysis",
+          "justification": "The research involves analyzing sequences of video data for tracking any point, which is a subset of video analysis.",
+          "quote": "Tracking-Any-Point (TAP) [12] is a promising approach to represent precise motions in videos."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Self-Supervised Learning",
+          "justification": "The training framework introduced in the study utilizes a self-supervised learning strategy, particularly through the use of a student-teacher model.",
+          "quote": "We demonstrate how large-scale, unlabeled, uncurated real-world data can improve a TAP model... using a self-supervised student-teacher setup."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "TAPIR",
+          "justification": "TAPIR is frequently mentioned as the primary model being used and improved upon in the research for tracking points in videos.",
+          "quote": "In our case, a TAPIR [13] model which serves as initialization for both a 'teacher' and a 'student' model."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The TAPIR model was referenced as an existing model used for initialization in the research.",
+          "quote": "In our case, a TAPIR [13] model which serves as initialization for both a 'teacher' and a 'student' model."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was used and executed as part of the experiments in the paper.",
+          "quote": "We will release a model and checkpoint on GitHub, including model implementations in both JAX and PyTorch for the community to use."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "TAPIR’s performance was compared with previous models on standard benchmarks such as TAP-Vid.",
+          "quote": "We demonstrate state-of-the-art performance on the TAP-Vid benchmark surpassing previous results by a wide margin."
+        },
+        "referenced_paper_title": {
+          "value": "TAPIR: Tracking any point with per-frame initialization and temporal refinement",
+          "justification": "The paper provides a reference title for TAPIR, indicating it is an existing model.",
+          "quote": "TAPIR: Tracking any point with per-frame initialization and temporal refinement."
+        }
+      },
+      {
+        "name": {
+          "value": "CoTracker",
+          "justification": "CoTracker is mentioned as a model compared to TAPIR in their experiments, indicating it is relevant to the study.",
+          "quote": "We also outperform CoTracker on DAVIS, though this is due more to improvements in occlusion accuracy than position accuracy."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "CoTracker was referenced as another model for comparison in the experiments, not a new contribution of this paper.",
+          "quote": "We also outperform CoTracker on DAVIS, though this is due more to improvements in occlusion accuracy than position accuracy."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was part of the empirical comparisons in experiments conducted in the paper.",
+          "quote": "Table 1: Comparison of performance on the TAP-Vid datasets."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "CoTracker's performance was directly compared with other models on various evaluation metrics.",
+          "quote": "We also outperform CoTracker on DAVIS, though this is due more to improvements in occlusion accuracy than position accuracy."
+        },
+        "referenced_paper_title": {
+          "value": "CoTracker: It is better to track together",
+          "justification": "The paper provides a specific reference to CoTracker's full title.",
+          "quote": "CoTracker: It is better to track together."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "TAP-Vid",
+          "justification": "TAP-Vid is used as a primary benchmark for evaluating the TAP models' performance.",
+          "quote": "We demonstrate state-of-the-art performance on the TAP-Vid benchmark surpassing previous results by a wide margin."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "TAP-Vid: A benchmark for tracking any point in a video",
+          "justification": "TAP-Vid is cited with its full title as an evaluation benchmark in the paper.",
+          "quote": "TAP-Vid: A benchmark for tracking any point in a video."
+        }
+      },
+      {
+        "name": {
+          "value": "Kubric",
+          "justification": "Kubric is mentioned as a dataset used for synthetic data in the supervised pre-training of the models.",
+          "quote": "We start with a baseline TAPIR network pre-trained on Kubric following [13]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Kubric: A scalable dataset generator",
+          "justification": "Kubric has an associated reference, indicating its role as a pre-existing dataset used in the study.",
+          "quote": "Kubric: A scalable dataset generator."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "JAX",
+          "justification": "JAX is explicitly mentioned as one of the implementation frameworks used for their models.",
+          "quote": "including model implementations in both JAX and PyTorch for the community to use."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "None",
+          "justification": "The paper does not provide a specific reference title for JAX as it is a known library.",
+          "quote": "including model implementations in both JAX and PyTorch for the community to use."
+        }
+      },
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is used for implementing the models in the research, highlighting its role in the study.",
+          "quote": "including model implementations in both JAX and PyTorch for the community to use."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "None",
+          "justification": "No specific reference title is given for PyTorch in the context of this research paper.",
+          "quote": "including model implementations in both JAX and PyTorch for the community to use."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1505,
+    "prompt_tokens": 19910,
+    "total_tokens": 21415,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

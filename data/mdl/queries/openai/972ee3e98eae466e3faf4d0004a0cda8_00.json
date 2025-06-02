@@ -1,0 +1,151 @@
+{
+  "paper": "972ee3e98eae466e3faf4d0004a0cda8.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Coping With Simulators That Don’t Always Return",
+      "justification": "The title is explicitly mentioned at the beginning and throughout the paper.",
+      "quote": "Coping With Simulators That Don’t Always Return"
+    },
+    "description": "The paper addresses computational inefficiencies in deterministic simulators that don't return values for certain inputs due to state perturbations and proposes a method using conditional normalizing flows to improve computational efficiency by reducing simulator failures.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents experiments and real-world applications such as with bouncing balls and robotics simulator MuJoCo to demonstrate the efficacy of the proposed methods.",
+      "quote": "We first demonstrate our approach on a toy problem...Our second example uses a simulator of balls bouncing elastically...We now apply our method to the popular robotics simulator MuJoCo [Todorov et al., 2012]."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Machine Learning",
+        "justification": "The paper primarily deals with improving simulation processes, which is an aspect of machine learning where simulations are used to model and predict outcomes.",
+        "quote": "Proceedings of the 23 rd International Conference on Artificial Intelligence and Statistics (AISTATS) 2020,"
+      },
+      "aliases": [
+        "ML"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Probabilistic Models",
+          "justification": "The paper discusses probabilistic approaches and model selection through Bayesian inference methods.",
+          "quote": "Probabilistic models are ultimately deployed to make inferences about the world."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Bayesian Inference",
+          "justification": "The paper talks about the application of Bayesian model selection and inference methods.",
+          "quote": "SMC provides such an estimate, referred to as a pseudo-marginal evidence, denoted in Algorithm 1 as L M . This pseudo-marginal evidence is calculated (in log space)..."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Simulation",
+          "justification": "The paper focuses significantly on tackling issues related to simulators that fail under certain conditions.",
+          "quote": "We believe this work has readily transferable practical contributions to not just the machine learning community, but the wider scientific community where such naively modified simulation platforms are widely deployed."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Conditional Autoregressive Flow",
+          "justification": "The paper proposes using Conditional Autoregressive Flow for learning state-dependent density of perturbations to improve simulator efficiencies.",
+          "quote": "We train an autoregressive flow to fit this density (§3.3), and describe how this can be used in inference."
+        },
+        "aliases": [
+          "q_φ"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "This model is a contribution by the authors to address failures in simulators.",
+          "quote": "We train an autoregressive flow to fit this density..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The authors executed models during experiments for validation.",
+          "quote": "We then use the learned q φ as the perturbation proposal in an SMC sweep..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper discusses comparisons using variance reductions as metrics.",
+          "quote": "A paired t-test evaluating the difference in variance returns a p-value of less than 0.0001, indicating a strong statistical difference between the performance under p and q φ , confirming that using q φ increases the fidelity of inference for a fixed sample budget."
+        },
+        "referenced_paper_title": {
+          "value": "Hypernetworks",
+          "justification": "The paper builds on previous work with autoregressive flows and neural network conditioning, referencing the foundation for using such models.",
+          "quote": "We implement conditioning through the use of a hypernetwork [Ha et al., 2016], which outputs the parameters of..."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "MuJoCo",
+          "justification": "The paper uses the MuJoCo simulator in experiments to validate methods for handling stochastic simulation failures.",
+          "quote": "We now apply our method to the popular robotics simulator MuJoCo [Todorov et al., 2012]..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "MuJoCo: A physics engine for model-based control",
+          "justification": "MuJoCo is a well-known reference in robotics simulations, used as a basis in this paper for experimental validation.",
+          "quote": "MuJoCo: A physics engine for model-based control. In 2012 IEEE/RSJ International Conference on Intelligent Robots and Systems."
+        }
+      },
+      {
+        "name": {
+          "value": "WormSim",
+          "justification": "WormSim is used as an experimental platform in the research for neuroscience simulations.",
+          "quote": "WormSim, presented by Boyle et al. [2012], is a simulator of the locomotion of the worm..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Gait modulation in C. elegans: an integrated neuromechanical model",
+          "justification": "The WormSim reference is acknowledged for the modeling of neurological and mechanical integration.",
+          "quote": "J. H. Boyle, S. Berri, and N. Cohen. Gait modulation in c. elegans: an integrated neuromechanical model."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The paper mentions the implementation of neural networks using PyTorch, a popular deep learning framework.",
+          "quote": "The networks are implemented in PyTorch [Paszke et al., 2017] and are optimized using ADAM [Kingma and Ba, 2014]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Automatic differentiation in PyTorch",
+          "justification": "The citation provides evidence that PyTorch is the chosen library for implementing and training models in the study.",
+          "quote": "A. Paszke, S. Gross, S. Chintala, G. Chanan... Automatic differentiation in PyTorch. In NIPS Autodiff Workshop, 2017."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1184,
+    "prompt_tokens": 13567,
+    "total_tokens": 14751,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

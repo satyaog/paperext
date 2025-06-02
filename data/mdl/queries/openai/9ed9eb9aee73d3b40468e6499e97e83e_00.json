@@ -1,0 +1,207 @@
+{
+  "paper": "9ed9eb9aee73d3b40468e6499e97e83e.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "ComplexDataLab at WNUT-2020 Task 2: Detecting Informative COVID-19 Tweets by Attending over Linked Documents",
+      "justification": "The title is explicitly mentioned at the very beginning of the paper.",
+      "quote": "ComplexDataLab at WNUT-2020 Task 2: Detecting Informative COVID-19 Tweets by Attending over Linked Documents"
+    },
+    "description": "The paper presents G APFORMER, a model that classifies tweets as informative or not by reformulating the problem as a graph classification task, utilizing not only the tweet but also connected web pages and entities. It leverages a pre-trained language model and connections between nodes to learn a pooled representation, outperforming several baselines in the identification of informative COVID-19 related tweets.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves experiments and comparisons of the proposed model against several baselines, indicating that it is empirical research.",
+      "quote": "We show it outperforms several competitive baselines and present ablation studies supporting the benefit of the linked information."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The paper deals with processing tweets and other related text data to classify them based on their informativeness, which falls under Natural Language Processing.",
+        "quote": "Given the global scale of COVID-19 and the flood of social media content related to it, how can we find informative discussions?"
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Graph Neural Networks",
+          "justification": "The paper discusses the use of graph structures and GraphSAGE convolutions in its methodology, which is a key component of Graph Neural Networks.",
+          "quote": "We reformulate the task as graph classification, where each instance is a single graph comprised of one tweet as well as the extracted entities and documents."
+        },
+        "aliases": [
+          "GNN"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "G APFORMER",
+          "justification": "G APFORMER is the main model being proposed and discussed in the paper.",
+          "quote": "We present here G APFORMER, which combines multiple sources of information - the tweet, content of linked web pages, and information about named entities related to the tweet - to improve detection of informative content."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "G APFORMER is introduced in this paper as a new model for the specific task.",
+          "quote": "We present G APFORMER, which detects informative Covid-19 tweets, using a graph classification system that leverages articles and entities."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper discusses experiments conducted using G APFORMER, which implies execution.",
+          "quote": "Our experiments show G APFORMER outperforms 7 baselines."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The model is compared against several baselines as part of the empirical study.",
+          "quote": "We show it outperforms several competitive baselines and present ablation studies supporting the benefit of the linked information."
+        },
+        "referenced_paper_title": {
+          "value": "Transformer-XH: Multi-Evidence Reasoning with Extra Hop Attention",
+          "justification": "The paper mentions building on the work of Transformer-XH for leveraging network structure alongside a pre-trained model.",
+          "quote": "In particular, Transformer-XH proposes a way to leverage the network structure of documents alongside a pre-trained model for a classification task. G APFORMER builds on this line of work."
+        }
+      },
+      {
+        "name": {
+          "value": "COVID-Twitter-BERT (CTBERT)",
+          "justification": "CTBERT is mentioned as a BERT language model fine-tuned on COVID-19 specific Twitter data, which was used in experiments.",
+          "quote": "COVID-Twitter-BERT (CTBERT) (Müller et al., 2020). This is BERT but fine-tuned on COVID-19 twitter data."
+        },
+        "aliases": [
+          "CTBERT"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "CTBERT is an existing model used for comparative purposes, not contributed by the paper.",
+          "quote": "COVID-Twitter-BERT (CTBERT) (Müller et al., 2020). This is BERT but fine-tuned on COVID-19 twitter data."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "CTBERT was used in experiments as mentioned in the paper.",
+          "quote": "For G APFORMER, we find CTBERT to be the most effective pre-trained language model, and use it in all experiments."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "CTBERT is compared to G APFORMER and other models in the study.",
+          "quote": "We compare our model with several baselines... COVID-Twitter-BERT (CTBERT) (Müller et al., 2020)."
+        },
+        "referenced_paper_title": {
+          "value": "Covid-twitter-bert: A natural language processing model to analyse covid-19 content on twitter",
+          "justification": "The CTBERT model refers to the paper by Müller et al. (2020).",
+          "quote": "COVID-Twitter-BERT (CTBERT) (Müller et al., 2020)"
+        }
+      },
+      {
+        "name": {
+          "value": "BERTweet",
+          "justification": "BERTweet is cited as a baseline model fine-tuned on Twitter data and is used for comparison with G APFORMER.",
+          "quote": "BERTweet (Dat Quoc Nguyen and Nguyen, 2020), a BERT model fine-tuned on twitter data."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "BERTweet is not a new contribution; it's a pre-existing model used for comparison.",
+          "quote": "BERTweet (Dat Quoc Nguyen and Nguyen, 2020). This is a BERT model fine-tuned on twitter data."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "BERTweet was used in the experiments as mentioned in the paper.",
+          "quote": "Our implementation fine-tuned the weights provided by the authors with training identical to Base BERT."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "BERTweet is compared with G APFORMER and other models as part of the study.",
+          "quote": "We compare our model with several baselines... BERTweet (Dat Quoc Nguyen and Nguyen, 2020)."
+        },
+        "referenced_paper_title": {
+          "value": "BERTweet: A pre-trained language model for English Tweets",
+          "justification": "The BERTweet model refers to the paper by Dat Quoc Nguyen and Nguyen (2020).",
+          "quote": "BERTweet (Dat Quoc Nguyen and Nguyen, 2020)."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "WNUT-2020 Task 2 Dataset",
+          "justification": "The specific dataset described for use in this task is identified as originating from the WNUT-2020 Task 2 competition.",
+          "quote": "WNUT-2020 Task 2 (Nguyen et al., 2020)...on a particular twitter dataset."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "WNUT-2020 Task 2: Identification of Informative COVID-19 English Tweets",
+          "justification": "The dataset usage is linked to the task setup as per the reference to Nguyen et al. (2020).",
+          "quote": "The dataset provided for this task (Nguyen et al., 2020) consists of ten thousand tweets, labeled “informative” and “uninformative.”"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "FLAIR",
+          "justification": "FLAIR is mentioned as a tool used for Named Entity Recognition in the methodology.",
+          "quote": "We use the Python packages FLAIR (Akbik et al., 2019) for named entity recognition."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Flair: An easy-to-use framework for state-of-the-art nlp",
+          "justification": "FLAIR, as referenced, is linked to Akbik et al. (2019) for Named Entity Recognition.",
+          "quote": "We use the Python packages FLAIR (Akbik et al., 2019) for named entity recognition."
+        }
+      },
+      {
+        "name": {
+          "value": "BLINK",
+          "justification": "BLINK is used for entity linking within the methodology.",
+          "quote": "We use the Python packages...BLINK (Wu et al., 2019) for entity linking."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Zero-shot entity linking with dense entity retrieval",
+          "justification": "BLINK refers to the paper by Wu et al. (2019) for entity linking.",
+          "quote": "BLINK (Wu et al., 2019) for entity linking."
+        }
+      },
+      {
+        "name": {
+          "value": "newspaper3k",
+          "justification": "The newspaper3k package is utilized for retrieving article summaries as part of the methodology.",
+          "quote": "We use the newspaper3k Python package (Lucas Ou-Yang, 2013) to retrieve the summaries for each article."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Newspaper3k",
+          "justification": "newspaper3k refers to the work by Lucas Ou-Yang (2013) used for article summarization.",
+          "quote": "We use the newspaper3k Python package (Lucas Ou-Yang, 2013) to retrieve the summaries for each article."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1908,
+    "prompt_tokens": 7582,
+    "total_tokens": 9490,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

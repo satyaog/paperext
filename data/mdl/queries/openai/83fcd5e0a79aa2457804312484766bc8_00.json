@@ -1,0 +1,193 @@
+{
+  "paper": "83fcd5e0a79aa2457804312484766bc8.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "scMoE: single-cell mixture of experts for learning hierarchical, cell-type-specific, and interpretable representations from heterogeneous scRNA-seq data",
+      "justification": "The title of the paper is explicitly mentioned at the beginning of the document.",
+      "quote": "scMoE: single-cell mixture of experts for learning hierarchical, cell-type-specific, and interpretable representations from heterogeneous scRNA-seq data."
+    },
+    "description": "The paper introduces scMoE, a novel hierarchical mixture of experts model focused on single-cell RNA sequencing (scRNA-seq) data. It addresses challenges in integrating large-scale and heterogeneous scRNA-seq data, providing highly interpretable, cell-type-specific models. The scMoE model includes cell-type-specific experts that leverage hierarchical cell-type lineages and domain knowledge for improved clustering, deconvolution, and gene set enrichment analysis. It has been benchmarked against existing methods using various datasets, demonstrating its efficiency in predicting meaningful cell-type distributions and enabling differential expression analysis in bulk RNA-seq and spatial transcriptomics contexts.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper conducts empirical analysis by benchmarking the scMoE model against existing models using actual datasets and performing various experiments to demonstrate its effectiveness.",
+      "quote": "We benchmarked our scMoE’s performance on 9 single-cell RNA-seq datasets for clustering and 3 simulated spatial datasets for spatial deconvolution."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Single-cell Transcriptomics",
+        "justification": "The work primarily deals with single-cell RNA sequencing (scRNA-seq) data and developing models to analyze such data.",
+        "quote": "Advancements in single-cell transcriptomics methods have resulted in a wealth of single-cell RNA sequencing (scRNA-seq) data."
+      },
+      "aliases": [
+        "scRNA-seq"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Spatial Transcriptomics",
+          "justification": "The paper also involves spatial deconvolution using spatial transcriptomics data.",
+          "quote": "we simulated bulk spatial data using MERFISH single-cell resolution spatial data"
+        },
+        "aliases": [
+          "ST"
+        ]
+      },
+      {
+        "name": {
+          "value": "Gene Set Enrichment Analysis",
+          "justification": "The paper includes methods for performing gene set enrichment analysis as a part of its approach.",
+          "quote": "Gene set enrichment analysis (GSEA) was performed using the gseapy [24] python library."
+        },
+        "aliases": [
+          "GSEA"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "scMoE",
+          "justification": "scMoE is introduced as the main model developed in the paper.",
+          "quote": "We present single-cell Mixture of Experts (scMoE), a highly interpretable, flexible method for single-cell modeling."
+        },
+        "aliases": [
+          "Single-cell Mixture of Experts"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "scMoE is the main contribution of the paper in terms of novel modeling techniques.",
+          "quote": "We present single-cell Mixture of Experts (scMoE), a highly interpretable, flexible method for single-cell modeling."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper describes experiments and benchmarking performed using the scMoE model, indicating its execution.",
+          "quote": "We benchmarked our scMoE’s performance on 9 single-cell RNA-seq datasets for clustering and 3 simulated spatial datasets for spatial deconvolution."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "scMoE is benchmarked against other models as part of the experimentation and evaluation process.",
+          "quote": "We benchmarked scMoE against three existing single-cell modeling methods – scVI, scANVI, and LDVAE."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "No specific reference paper for scMoE is mentioned as it is a new contribution by the authors.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "scETM",
+          "justification": "scETM is discussed as a foundational model that scMoE extends upon.",
+          "quote": "Each expert unit consists of a single-cell embedded topic model (scETM)."
+        },
+        "aliases": [
+          "Single-cell Embedded Topic Model"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "scETM is mentioned as an existing model that is extended in this work.",
+          "quote": "scMoE consists of two extensions to the scETM model proposed by Zhao et al. [16]."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "While scETM serves as a foundation for scMoE, its execution isn't explicitly detailed in the experiments section of this paper as a standalone model.",
+          "quote": ""
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "The comparison primarily involves scMoE against other models, and scETM is not listed in the comparative analysis results.",
+          "quote": ""
+        },
+        "referenced_paper_title": {
+          "value": "Learning interpretable cellular and gene signature embeddings from single-cell transcriptomic data",
+          "justification": "The referenced paper is cited for scETM.",
+          "quote": "scMoE consists of two extensions to the scETM model proposed by Zhao et al. [16]."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "The Cancer Genome Atlas (TCGA)",
+          "justification": "TCGA datasets are commonly used bulk RNA-seq datasets mentioned in the paper.",
+          "quote": "bulk RNA-seq datasets widely available for researchers, such as The Cancer Genome Atlas (TCGA)."
+        },
+        "aliases": [
+          "TCGA"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The cancer genome atlas pan-cancer analysis project",
+          "justification": "The reference is likely to be the original TCGA publication given the context.",
+          "quote": "John N Weinstein, Eric A Collisson, ... The cancer genome atlas pan-cancer analysis project. Nature genetics, 45(10):1113–1120, 2013."
+        }
+      },
+      {
+        "name": {
+          "value": "MERFISH",
+          "justification": "MERFISH datasets are used for simulating and benchmarking spatial transcriptomics analysis.",
+          "quote": "we simulated bulk spatial data using MERFISH single-cell resolution spatial data."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Spatially resolved, highly multiplexed rna profiling in single cells",
+          "justification": "The reference text identifies the foundational paper for the MERFISH method.",
+          "quote": "Kok Hao Chen, ... Spatially resolved, highly multiplexed rna profiling in single cells. Science, 348(6233):aaa6090, 2015."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is mentioned as the framework used for implementing the models and training.",
+          "quote": "The Negative ELBO was minimized using the Adam optimizer [30] as implemented in PyTorch."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Adam: A method for stochastic optimization",
+          "justification": "The reference text associated with PyTorch is related to the Adam optimizer used in the implementation, not the framework itself.",
+          "quote": "Diederik P Kingma and Jimmy Ba. Adam: A method for stochastic optimization. arXiv preprint arXiv:1412.6980, 2014."
+        }
+      },
+      {
+        "name": {
+          "value": "gseapy",
+          "justification": "gseapy is used for performing gene set enrichment analysis (GSEA) as mentioned in the paper.",
+          "quote": "Gene set enrichment analysis (GSEA) was performed using the gseapy [24] python library."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Gseapy: a comprehensive package for performing gene set enrichment analysis in python",
+          "justification": "The reference is directly related to the library used.",
+          "quote": "Zhuoqing Fang, Xinyuan Liu, and Gary Peltz. Gseapy: a comprehensive package for performing gene set enrichment analysis in python. Bioinformatics, 39(1):btac757, 2023."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1583,
+    "prompt_tokens": 17511,
+    "total_tokens": 19094,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

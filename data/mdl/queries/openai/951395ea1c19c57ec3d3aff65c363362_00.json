@@ -1,0 +1,141 @@
+{
+  "paper": "951395ea1c19c57ec3d3aff65c363362.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "SYNFLOWNET: DESIGN OF DIVERSE AND NOVEL MOLECULES WITH SYNTHESIS CONSTRAINTS",
+      "justification": "The title is explicitly mentioned in the introduction and the abstract of the paper.",
+      "quote": "To address this, we introduce SynFlowNet, a GFlowNet model whose action space uses chemical reactions and purchasable reactants to sequentially build new molecules."
+    },
+    "description": "This paper introduces SynFlowNet, a Generative Flow Network (GFlowNet) model that incorporates synthesis constraints into the molecule generation process. By utilizing chemical reactions and purchasable reactants, the model aims to generate novel and diverse molecules that are synthesizable, bridging the gap between in silico molecular generation and real-world synthesis capabilities. The paper evaluates SynFlowNet on diverse measures, including rewards related to synthesizability and diversity, and compares it to other models.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents experimental results obtained from the application of the SynFlowNet model to generate molecules under synthesis constraints and evaluates its performance.",
+      "quote": "We evaluate our approach using synthetic accessibility scores and an independent retrosynthesis tool to assess the synthesizability of our compounds, and motivate the choice of GFlowNets through considerable improvement in sample diversity compared to baselines."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Generative Models for Molecule Design",
+        "justification": "The paper focuses on using generative models, specifically SynFlowNet, for the purpose of molecule design with synthesis constraints.",
+        "quote": "Generative models see increasing use in computer-aided drug design. However, while performing well at capturing distributions of molecular motifs, they often produce synthetically inaccessible molecules."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Molecular Design",
+          "justification": "The paper discusses the design of diverse and novel molecules using SynFlowNet, which is a focus on molecular design.",
+          "quote": "Generative models have lead to a renaissance in de novo molecular design."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Chemical Synthesis Planning",
+          "justification": "The paper integrates synthesis pathways into the generative model to ensure that the generated molecules are synthesizable.",
+          "quote": "Our main contributions are: We train a GFlowNet using an action space defined by documented chemical reactions and purchasable starting materials to generate synthesizable molecules."
+        },
+        "aliases": [
+          "Synthetic Accessibility"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "SynFlowNet",
+          "justification": "The paper revolves around the introduction and evaluation of the SynFlowNet model.",
+          "quote": "To address this, we introduce SynFlowNet, a GFlowNet model whose action space uses chemical reactions and purchasable reactants to sequentially build new molecules."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "SynFlowNet is introduced by the authors as a novel contribution for generating diverse and synthesizable molecules.",
+          "quote": "In this work, we introduce SynFlowNet, a GFlowNet specifically trained to generate molecules from documented chemical reactions and purchasable starting materials."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The experiments conducted in the paper involve the execution of the SynFlowNet model to generate and evaluate molecules.",
+          "quote": "Our results support a number of claims: (i) a reaction-based MDP greatly improves the synthesisability of generated molecules..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The SynFlowNet model is compared with other models such as REINVENT, SyntheMol, and SynNet in terms of various metrics including diversity, synthesizability, and reward optimization.",
+          "quote": "Comparisons to state-of-the-art baselines emphasised that SynFlowNet explores novel regions of the chemical space."
+        },
+        "referenced_paper_title": {
+          "value": "Flow Network based Generative Models for Non-Iterative Diverse Candidate Generation",
+          "justification": "The SynFlowNet model is a type of GFlowNet, which builds upon the concepts introduced in the referenced paper by Bengio et al. (2021).",
+          "quote": "GFlowNets (Bengio et al., 2021) are a class of probabilistic models that learn a stochastic policy to generate objects x through a sequence of actions, with probability proportional to a reward R(x)."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Enamine REAL Space",
+          "justification": "The Enamine REAL Space is used as a source of building blocks in the experiments conducted in the paper.",
+          "quote": "Enamine assembled a molecular space called the REAL space, which is a vast catalogue of 48B purchasable compounds."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Thompson sampling–an efficient method for searching ultralarge synthesis on demand databases",
+          "justification": "The Enamine REAL Space dataset is referred to in the context of ultralarge synthesis databases.",
+          "quote": "Note: this dataset contains a single tri-molecular reaction which has been removed here for simplicity"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "RDKit",
+          "justification": "RDKit is used in reaction template encoding and chemical computations within the SynFlowNet framework.",
+          "quote": "We encode reaction templates using RDKit reaction SMARTS."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "RDKit: Open-source cheminformatics",
+          "justification": "RDKit is a well-known cheminformatics library referenced for its utility in handling chemical information.",
+          "quote": "We encode reaction templates using RDKit reaction SMARTS."
+        }
+      },
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is used as the backend for the matrix operations within the model's forward pass.",
+          "quote": "Instead of the weight matrix of the mapping from hidden units to logits associated with BBs to be randomly initialized, it is fixed to be the matrix of binary Morgan fingerprints (Rogers & Hahn, 2010)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An Imperative Style, High-Performance Deep Learning Library",
+          "justification": "PyTorch is acknowledged for being utilized in performing matrix operations critical to the study's setup.",
+          "quote": "To compute clusters of available building blocks for Figures 6E-F, we use BitBIRCH (Jung et al., 2024), a recent adaptation of Balanced Iterative Reducing and Clustering using Hierarchies (BIRCH) algorithm (Zhang et al., 1996), recently proposed for efficient clustering of large molecular libraries."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1316,
+    "prompt_tokens": 23849,
+    "total_tokens": 25165,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "paper": "924ee8ee288b2dfe4f2dda8d7434b164.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Learning self‐supervised molecular representations for drug–drug interaction prediction",
+      "justification": "The title is derived directly from the paper's first page and abstract where it clearly states the focus on learning molecular representations for drug–drug interaction prediction.",
+      "quote": "Learning self‐supervised molecular representations for drug–drug interaction prediction"
+    },
+    "description": "The paper presents SMR-DDI, a self-supervised framework that uses contrastive learning to predict drug-drug interactions. It pre-trains on a large unlabeled molecular dataset to generate robust drug representations, which are then fine-tuned for DDI prediction. This method aims to improve the prediction accuracy despite the scarcity of high-quality labeled DDI data by leveraging self-supervised pre-training.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves performing experiments with data, model training, and evaluation, and discusses results from these empirical experiments.",
+      "quote": "We then transfer the learned representations for the downstream prediction of DDI. Experiments show that the new feature space has comparable expressivity to state-of-the-art molecular representations and achieved competitive DDI prediction results while training on less data."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Drug-Drug Interaction Prediction",
+        "justification": "The entire study is focused on the prediction of drug-drug interactions using machine learning models.",
+        "quote": "Drug–drug interactions (DDI) are a critical concern in healthcare due to their potential to cause adverse effects and compromise patient safety."
+      },
+      "aliases": [
+        "DDI Prediction"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Self-Supervised Learning",
+          "justification": "The paper employs self-supervised learning techniques for pre-training molecular representations.",
+          "quote": "We present SMR–DDI, a self-supervised framework that leverages contrastive learning to embed drugs into a scaffold-based feature space."
+        },
+        "aliases": [
+          "Contrastive Learning"
+        ]
+      },
+      {
+        "name": {
+          "value": "Molecular Representation Learning",
+          "justification": "The work revolves around learning and developing robust molecular representations for better drug-drug interaction prediction.",
+          "quote": "Deep learning-based methods have shown great potential to improve the accuracy of DDI prediction by learning more informative and discriminative features directly from the raw molecular structures."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "SMR-DDI",
+          "justification": "SMR-DDI is the model proposed by the paper specifically for predicting drug-drug interactions.",
+          "quote": "we present SMR–DDI, a self-supervised framework that leverages contrastive learning to embed drugs into a scaffold-based feature space."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "The model is a major contribution of the paper, developed and proposed as a novel framework for DDI prediction.",
+          "quote": "Inspired by recent advances in computer vision, we present SMR–DDI, a self-supervised framework..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The execution of SMR-DDI is discussed in terms of training on GPUs with PyTorch.",
+          "quote": "The model was trained on a single NVIDIA GeForce GPU with a batch of size 512. We used PyTorch Lightning to train the model."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of SMR-DDI is compared to baseline models in the paper.",
+          "quote": "SMR-DDI performs similarly well to Mol2vec and MACCs Keys and outperforms ChemGPT-1 and ChemGPT-4, emphasizing the relevance of the captured features."
+        },
+        "referenced_paper_title": {
+          "value": "Not specified",
+          "justification": "The paper does not reference another work for SMR-DDI since it is introduced in this paper.",
+          "quote": "We present a novel self-supervised molecular representation for DDI prediction, SMR-DDI."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "ChEMBL22",
+          "justification": "ChEMBL22 is one of the datasets used in pre-training the SMR-DDI model.",
+          "quote": "We have obtained a dataset of drug-like molecules in SMILES format from the ChEMBL database (version 22.0)."
+        },
+        "aliases": [
+          "ChEMBL"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Not specified",
+          "justification": "The dataset is used directly but no specific reference paper is mentioned.",
+          "quote": "We have obtained a dataset of drug-like molecules in SMILES format from the ChEMBL database (version 22.0)."
+        }
+      },
+      {
+        "name": {
+          "value": "Drugbank",
+          "justification": "Drugbank is used as the evaluation dataset for DDI prediction, containing detailed interaction information.",
+          "quote": "Drugbank is a comprehensive online database containing drug targets, interactions, and metabolism information."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Not specified",
+          "justification": "Drugbank is mentioned as a source without a specific reference to a paper.",
+          "quote": "Drugbank is a comprehensive online database...downloaded from Therapeutics Data Commons (TDC)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is used to train the SMR-DDI model and manage the deep learning workflow.",
+          "quote": "We used PyTorch Lightning to train the model with DataParallel in a distributed manner."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Not specified",
+          "justification": "There is no specific cited paper for PyTorch within the text.",
+          "quote": "We used PyTorch Lightning to train the model with DataParallel in a distributed manner."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1106,
+    "prompt_tokens": 20619,
+    "total_tokens": 21725,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

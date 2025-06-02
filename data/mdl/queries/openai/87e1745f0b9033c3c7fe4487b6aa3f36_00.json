@@ -1,0 +1,186 @@
+{
+  "paper": "87e1745f0b9033c3c7fe4487b6aa3f36.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Inferring Metabolic States from Single Cell Transcriptomic Data via Geometric Deep Learning",
+      "justification": "The title directly reflects the main focus of the paper, which is to infer metabolic states using geometric deep learning based on single-cell transcriptomic data.",
+      "quote": "Inferring Metabolic States from Single Cell Transcriptomic Data via Geometric Deep Learning"
+    },
+    "description": "The paper introduces GEFMAP, a method based on geometric deep learning, to predict metabolic flux using single-cell transcriptomic data. It leverages the natural graph structure of metabolic networks to estimate relative flux rates in a global metabolic network, focusing particularly on scRNAseq data.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves experiments on synthetic and real-world datasets to validate the proposed method's efficacy, indicating an empirical study.",
+      "quote": "Experiments on synthetic and complex real-world data sets show the ability of GEFMAP to determine the metabolic objective and estimate the flux rate with high accuracy."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computational Biology",
+        "justification": "The research field pertains to the intersection of computational methods and biological data, specifically focusing on transcriptomics and metabolomics.",
+        "quote": "To address these challenges, we present GEFMAP (Gene Expression-based Flux Mapping and Metabolic Pathway Prediction), a method based on geometric deep learning for predicting flux through reactions in a global metabolic network using transcriptomics data."
+      },
+      "aliases": [
+        "Computational Genomics",
+        "Biological Data Science"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Transcriptomics",
+          "justification": "The study is primarily concerned with single-cell transcriptomic data for predicting metabolic states.",
+          "quote": "Predicting metabolic network activity from scRNAseq data."
+        },
+        "aliases": [
+          "scRNAseq",
+          "RNA sequencing"
+        ]
+      },
+      {
+        "name": {
+          "value": "Geometric Deep Learning",
+          "justification": "The paper utilizes geometric deep learning to analyze and process graph-structured data from metabolic networks.",
+          "quote": "GEFMAP leverages the natural graph structure of metabolic networks to learn both a biological objective for each cell and estimate a mass-balanced relative flux rate for each reaction in each cell using novel deep learning models."
+        },
+        "aliases": [
+          "Graph Neural Networks",
+          "Geometric Learning"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "GEFMAP",
+          "justification": "GEFMAP is the primary model introduced in the paper for predicting metabolic flux using transcriptomic data.",
+          "quote": "To address these challenges, we present GEFMAP (Gene Expression-based Flux Mapping and Metabolic Pathway Prediction), a method based on geometric deep learning for predicting flux through reactions in a global metabolic network using transcriptomics data."
+        },
+        "aliases": [
+          "Gene Expression-based Flux Mapping and Metabolic Pathway Prediction"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "GEFMAP is a new model proposed and developed in the paper as a novel approach to solve the problems posed.",
+          "quote": "GEFMAP is a two-part neural network where the first sub-network is a geometric scattering-based GNN that finds a large highly connected subnetwork with high levels of gene expression."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The experiments conducted in the research paper validate the execution of GEFMAP.",
+          "quote": "Experiments using on synthetic and complex real-world data sets show the ability of GEFMAP to determine the metabolic objective and estimate the flux rate with high accuracy."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "GEFMAP is compared against baseline models like GCN, MagNet, and MLP in terms of performance.",
+          "quote": "The results in Table 1 show the mean ± standard deviation PCC of the models, run five times on each data set, employing different random states each time during the train-test split process."
+        },
+        "referenced_paper_title": {
+          "value": "Can hybrid geometric scattering networks help solve the maximum clique problem?",
+          "justification": "This referenced paper contributes to the theoretical foundation of GEFMAP's approach using geometric scattering networks.",
+          "quote": "Our approach is based on [18], which used a GNN to find the maximum clique (largest fully connected subgraph) in a given graph."
+        }
+      },
+      {
+        "name": {
+          "value": "Flux Balance Analysis (FBA)",
+          "justification": "FBA is used in the methodology for testing GEFMAP's predictive capacity.",
+          "quote": "We next used FBA, with an off-the-shelf linear solver, to estimate reaction flux rates across the network that maximized either flux through the relaxed max clique or, as a comparison, maximized biomass accumulation."
+        },
+        "aliases": [
+          "FBA"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "FBA is a pre-existing method used as part of the analysis in the paper.",
+          "quote": "FBA, a common method for predicting metabolic network activity."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "FBA is executed as part of comparison and analysis of the network activity predictions.",
+          "quote": "We next used FBA, with an off-the-shelf linear solver, to estimate reaction flux rates across the network."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "FBA's output is compared with the predictions from GEFMAP to analyze differences and strengths in predictions.",
+          "quote": "When optimizing for biomass, there are a number of samples for which we are able to find transcriptionally-constrained flux solutions that predict high levels of biomass increase despite the fact that the measured growth rates are low."
+        },
+        "referenced_paper_title": {
+          "value": "What is flux balance analysis?",
+          "justification": "This provides the foundational concepts of FBA employed for model comparison.",
+          "quote": "A common method for predicting metabolic network activity is flux balance analysis (FBA)[22]."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "E. coli Data Set",
+          "justification": "The dataset comprises gene expression data from E. coli cultured under various conditions, used to test GEFMAP's objective function.",
+          "quote": "We first test our methods using gene expression from E. coli cultured under various conditions [25]."
+        },
+        "aliases": [
+          "E. coli Gene Expression Data"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The Escherichia coli transcriptome mostly consists of independently regulated modules.",
+          "justification": "Provides background and data used for generating the synthetic datasets for testing GEFMAP.",
+          "quote": "We first test our methods using gene expression from E. coli cultured under various conditions [25]."
+        }
+      },
+      {
+        "name": {
+          "value": "Human Embryoid Body Data Set",
+          "justification": "This human scRNAseq dataset is used to apply and test the GEFMAP model on real-world data.",
+          "quote": "To test the strength of GEFMAP on real-world data, we use a previously published scRNAseq data set of human embryonic stem cells (hESCs) gathered at 5 timepoints over 27 days [20]."
+        },
+        "aliases": [
+          "scRNAseq Human Embryonic Stem Cells Data"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Visualizing structure and transitions in high-dimensional biological data.",
+          "justification": "This paper provides the source data which is used in experimentation with GEFMAP.",
+          "quote": "To test the strength of GEFMAP on real-world data, we use a previously published scRNAseq data set of human embryonic stem cells (hESCs) gathered at 5 timepoints over 27 days [20]."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "COBRA Toolbox",
+          "justification": "COBRA Toolbox is referenced for parsing genome-scale metabolic models necessary for GEFMAP's applications.",
+          "quote": "Tools such as constraint-based reconstruction and analysis (COBRA) [8] include methods to parse GSMM, however, we require a non-standard method of mapping gene expression to reactions."
+        },
+        "aliases": [
+          "Constraint-based Reconstruction and Analysis Toolbox"
+        ],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Creation and analysis of biochemical constraint-based models using the COBRA toolbox v.3.0",
+          "justification": "This toolkit is used commonly in the field for handling genome-scale models, referenced for its utility though not utilized directly in GEFMAP's computation.",
+          "quote": "Tools such as constraint-based reconstruction and analysis (COBRA) [8] include methods to parse GSMM."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1647,
+    "prompt_tokens": 15591,
+    "total_tokens": 17238,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

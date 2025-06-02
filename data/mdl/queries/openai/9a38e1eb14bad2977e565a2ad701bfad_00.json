@@ -1,0 +1,166 @@
+{
+  "paper": "9a38e1eb14bad2977e565a2ad701bfad.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "BIGDOCS: An Open Dataset for Training Multimodal Models on Document and Code Tasks",
+      "justification": "The title directly references the key contributions and focus of the paper, which is the introduction of a large-scale dataset named BigDocs designed for training multimodal models on document and code tasks.",
+      "quote": "In this work, we present BigDocs (https://bigdocs.github.io), a large-scale and open dataset, benchmark suite, and models specifically designed for user-facing document-related tasks."
+    },
+    "description": "This paper introduces BigDocs-7.5M, an open-access dataset of multimodal documents intended to train and improve multimodal AI models for document understanding and code generation tasks. It compares the new dataset with existing models and datasets and emphasizes its open accessibility and licensing. Moreover, it provides a benchmark suite, BigDocs-Bench, with novel tasks to enhance document reasoning and structured output generation. The paper demonstrates that training with BigDocs significantly improves performance compared to existing models like GPT-4o.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves experimental results showcasing the performance improvements when using the BigDocs dataset in training models, with comparative evaluations against other datasets and models.",
+      "quote": "Our experimental results demonstrate that models trained on the BigDocs suite outperform those trained on existing datasets like DocStruct4M..."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Multimodal Machine Learning",
+        "justification": "The research explicitly deals with multimodal models that handle document and code tasks involving both visual and textual data.",
+        "quote": "In this work, we present BigDocs, a large-scale and open dataset, benchmark suite, and models specifically designed for user-facing document-related tasks."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Document Understanding",
+          "justification": "A significant portion of the paper focuses on enhancing document reasoning and structured output like HTML generation, which are core to document understanding.",
+          "quote": "Multimodal AI has the potential to significantly enhance document-understanding tasks, such as processing receipts, understanding workflows, extracting data from documents, and summarizing reports."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Code Generation",
+          "justification": "The paper discusses code generation from images as one of the novel tasks in BigDocs-Bench, emphasizing structured output tasks requiring code generation capabilities.",
+          "quote": "... in generating long-format, structured outputs, such as JSON and HTML, which are valuable in real-world applications."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Phi 3.5 Vision",
+          "justification": "The paper evaluates the performance of models trained with BigDocs against other models, including Phi 3.5 Vision.",
+          "quote": "Phi3.5 Vision, originally optimized for reasoning tasks, achieves an average score of 60.80% when finetuned on BigDocs..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The Phi 3.5 Vision model is used as a benchmark for evaluating the BigDocs dataset and is not introduced as a novel model in this paper.",
+          "quote": "... DocOwl1.5 (Hu et al., 2024), and DocLLM (Wang et al., 2023a), have also gained traction, particularly for commercial applications."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The experiments involving this model were executed using high-performance computing resources, indicating execution on GPU clusters.",
+          "quote": "We conduct all experiments using 8 nodes of 8 H100 GPUs, using Fully Sharded Data Parallel (FSDP) for distributed training."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares the performance of Phi 3.5 Vision after finetuning on BigDocs with other models and datasets.",
+          "quote": "Overall, BigDocs models consistently outperform both open and closed models on most tasks..."
+        },
+        "referenced_paper_title": {
+          "value": "Phi-3 technical report: A highly capable language model locally on your phone",
+          "justification": "Phi 3.5 Vision is referenced through its technical report to establish its baseline capabilities compared to models trained on BigDocs.",
+          "quote": "Marah Abdin, Sam Ade Jacobs, Ammar Ahmad Awan, Jyoti Aneja, Ahmed Awadallah, Hany Awadalla, Nguyen Bach, Amit Bahree, Arash Bakhtiari, Harkirat Behl, et al. Phi-3 technical report: A highly capable language model locally on your phone. arXiv preprint arXiv:2404.14219, 2024."
+        }
+      },
+      {
+        "name": {
+          "value": "Qwen2-VL",
+          "justification": "Qwen2-VL is discussed as one of the state-of-the-art models for multimodal tasks, and its performance after BigDocs training is analyzed.",
+          "quote": "Qwen2-VL (Bai et al., 2023b) processes images at native resolutions..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Qwen2-VL is used for evaluation purposes and is not an original contribution of this paper.",
+          "quote": "Qwen2-VL, an interesting pattern emerges..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was executed during experiments to measure its performance on BigDocs against other datasets.",
+          "quote": "We conduct all experiments using 8 nodes of 8 H100 GPUs..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Comparisons are made between Qwen2-VL performance on BigDocs and its capabilities without this new dataset.",
+          "quote": "For Qwen2-VL, an interesting pattern emerges..."
+        },
+        "referenced_paper_title": {
+          "value": "Qwen-VL: A versatile vision-language model for understanding, localization, text reading, and beyond",
+          "justification": "Qwen2-VL's performance is analyzed based on its documented capabilities in multimodal model benchmarks.",
+          "quote": "Jinze Bai, Shuai Bai, Shusheng Yang, Shijie Wang, Sinan Tan, Peng Wang, Junyang Lin, Chang Zhou, and Jingren Zhou. Qwen-vl: A versatile vision-language model for understanding, localization, text reading, and beyond. arXiv preprint arXiv:2308.12966, 2023b."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "BigDocs-7.5M",
+          "justification": "BigDocs-7.5M is the central contribution of the paper, providing a large-scale, open dataset for training multimodal models on document tasks.",
+          "quote": "To address these limitations, we introduce BigDocs-7.5M, a high-quality, open-access dataset comprising 7.5 million multimodal documents across 30 tasks."
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "Not Applicable",
+          "justification": "This dataset is an original contribution of the current paper, so there is no external reference for it.",
+          "quote": "In this work, we present BigDocs (https://bigdocs.github.io), a large-scale and open dataset, benchmark suite, and models specifically designed for user-facing document-related tasks."
+        }
+      },
+      {
+        "name": {
+          "value": "BigDocs-Bench",
+          "justification": "BigDocs-Bench is introduced as a benchmark suite for evaluating novel tasks developed using the BigDocs dataset.",
+          "quote": "To further advance document intelligence, BigDocs-Bench offers 10 novel downstream tasks, each with four splits: train, validation, test, and hidden test."
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "Not Applicable",
+          "justification": "BigDocs-Bench is a new benchmark suite introduced in this paper, thus no prior references exist.",
+          "quote": "Additionally, we introduce BigDocs-Bench, a benchmark suite with 10 novel tasks where we create datasets that reflect real-world use cases..."
+        }
+      },
+      {
+        "name": {
+          "value": "DocStruct4M",
+          "justification": "DocStruct4M is referenced in comparative analysis with BigDocs-7.5M for performance evaluations.",
+          "quote": "... models trained on the BigDocs suite outperform those trained on existing datasets like DocStruct4M (Hu et al., 2024)..."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "MPLUG-DocOwl 1.5: Unified Structure Learning for OCR-Free Document Understanding",
+          "justification": "DocStruct4M is referenced to evaluate similar datasets and their contribution towards document understanding.",
+          "quote": "Anwen Hu, Haiyang Xu, Jiabo Ye, Ming Yan, Liang Zhang, Bo Zhang, Chen Li, Ji Zhang, Qin Jin, Fei Huang, and Jingren Zhou. mplug-docowl 1.5: unified structure learning for ocr-free document understanding. arXiv preprint arXiv:2403.12895, 2024."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1793,
+    "prompt_tokens": 52301,
+    "total_tokens": 54094,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

@@ -1,0 +1,179 @@
+{
+  "paper": "cf362f55ebdb0484918ec83d49cc52f8.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Handling Black Swan Events in Deep Learning with Diversely Extrapolated Neural Networks",
+      "justification": "The title is explicitly provided in the beginning of the paper.",
+      "quote": "To avoid this pitfall, we introduce DENN, an ensemble approach building a set of Diversely Extrapolated Neural Networks..."
+    },
+    "description": "This paper introduces DENN, an ensemble approach to improve prediction uncertainty in neural networks when encountering out-of-distribution (OOD) data, commonly referred to as black swan events. The method involves adding a diversity term in the loss function and is tested on regression, classification, and safe imitation learning tasks.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper describes empirical experiments and comparisons of the proposed method with existing approaches on regression, classification, and safe imitation learning tasks.",
+      "quote": "An empirical study of the proposed approach applied to NNs on regression, classification and anomaly detection for safe imitation learning tasks (Sec. 4)."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Uncertainty Estimation in Deep Learning",
+        "justification": "The primary focus of the research is on estimating and handling predictive uncertainty in neural networks, particularly in the context of unexpected or 'black swan' events.",
+        "quote": "...models tend to be extremely “surprised” by rare events, leading to potentially disastrous consequences..."
+      },
+      "aliases": [
+        "Predictive Uncertainty",
+        "Black Swan Events"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Ensemble Methods",
+          "justification": "The research heavily focuses on ensemble methods to improve uncertainty estimation.",
+          "quote": "Ensembles of NNs are a useful solution to this issue. They are a collection of several NNs, each initialized differently."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Anomaly Detection",
+          "justification": "The paper discusses the application of the method to anomaly detection in classification tasks.",
+          "quote": "Then, we show how the loss can be adapted to tackle anomaly detection during classification, as well as safe imitation learning problems."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Imitation Learning",
+          "justification": "Safe imitation learning tasks are mentioned as one of the application areas for the proposed method.",
+          "quote": "Then, we show how the loss can be adapted to tackle anomaly detection during classification, as well as safe imitation learning problems."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "DENN (Diversely Extrapolated Neural Networks)",
+          "justification": "DENN is the central model proposed in the paper to address the problem of uncertainty in deep learning.",
+          "quote": "To avoid this pitfall, we introduce DENN, an ensemble approach building a set of Diversely Extrapolated Neural Networks..."
+        },
+        "aliases": [
+          "DENN"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The paper introduces DENN as a new approach to address black swan events in deep learning.",
+          "quote": "The main contributions of this work are: • A novel way to enforce diversity in ensembles..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper mentions experiments and evaluations carried out using DENN on different tasks.",
+          "quote": "In this section, we apply the proposed loss function to different tasks and compare the results..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "DENN is compared to existing ensemble methods across various experiments in the paper.",
+          "quote": "We compare DENN (Alg. 1) with popular ensemble methods: anchoring [Pearce et al., 2018], input bootstrap [Efron, 1982], bootstrap prior [Osband et al., 2018] and MC dropout [Gal and Ghahramani, 2016]."
+        },
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "Since DENN is introduced in this paper, there is no prior reference paper dedicated solely to it.",
+          "quote": "N/A"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "MNIST",
+          "justification": "MNIST is used as a benchmark dataset for evaluating classification tasks.",
+          "quote": "We also compare ourselves to Outlier Exposure (OE) using the authors’ code to train a single MLP constrained to output uniform predictions OOD (also accessed using an external dataset)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "MNIST is a widely used dataset and does not require explicit referencing.",
+          "quote": "N/A"
+        }
+      },
+      {
+        "name": {
+          "value": "notMNIST",
+          "justification": "notMNIST is used as an out-of-distribution dataset for evaluating predictive uncertainty.",
+          "quote": "We evaluate the methods’ accuracy and predictive uncertainty on the MNIST test set... with notMNIST."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "notMNIST is a known dataset and may not have a specific referencing paper.",
+          "quote": "N/A"
+        }
+      },
+      {
+        "name": {
+          "value": "KMNIST",
+          "justification": "KMNIST is used as an out-of-distribution dataset for evaluating predictive uncertainty.",
+          "quote": "... and Japanese characters with KMNIST."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "KMNIST is a known dataset and may not have a specific referencing paper.",
+          "quote": "N/A"
+        }
+      },
+      {
+        "name": {
+          "value": "FashionMNIST",
+          "justification": "FashionMNIST is used for sampling repulsive locations in ensemble model evaluation.",
+          "quote": "DENN and OE are trained with repulsive locations drawn from FashionMNIST."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "FashionMNIST is a well-known benchmark dataset similar to MNIST in usage and availability.",
+          "quote": "N/A"
+        }
+      },
+      {
+        "name": {
+          "value": "EMNIST",
+          "justification": "EMNIST is used to compute the histogram of predictive entropies to select hyperparameters.",
+          "quote": "All hyperparameters are chosen by cross-validation by computing the histogram of predictive entropies over... EMNIST."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "The EMNIST dataset is well-known as an extension of the MNIST dataset and it might not have a specific citing paper.",
+          "quote": "N/A"
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1266,
+    "prompt_tokens": 12884,
+    "total_tokens": 14150,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

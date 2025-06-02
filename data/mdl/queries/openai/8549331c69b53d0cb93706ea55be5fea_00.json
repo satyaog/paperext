@@ -1,0 +1,249 @@
+{
+  "paper": "8549331c69b53d0cb93706ea55be5fea.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Multi-Source Domain Adaptation for Object Detection with Prototype-based Mean-teacher",
+      "justification": "The title is explicitly mentioned multiple times throughout the paper, including in the introductory sections and references.",
+      "quote": "Multi-Source Domain Adaptation for Object Detection with Prototype-based Mean-teacher"
+    },
+    "description": "The paper presents a novel method for multi-source domain adaptation in object detection called Prototype-based Mean Teacher (PMT). The PMT method uses class prototypes instead of domain-specific subnets to encode domain-specific information, optimizing memory usage and reducing overfitting. Empirical results show improved performance over existing methods on various datasets.",
+    "type": {
+      "value": "empirical",
+      "justification": "The research involves experimental results demonstrating the proposed method's performance on object detection datasets, comparing it with baseline models.",
+      "quote": "Empirical studies indicate that PMT outperforms state-of-the-art MSDA methods on several challenging object detection datasets."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The paper focuses on object detection, a fundamental task within the field of computer vision.",
+        "quote": "Object detection (OD), one of the fundamental tasks in computer vision, has made significant progress in recent years."
+      },
+      "aliases": [
+        "CV"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Domain Adaptation",
+          "justification": "The paper addresses the problem of adapting object detection models to new domains, specifically focusing on multi-source domain adaptation.",
+          "quote": "For adaptation, existing MSDA methods learn domain-invariant and domain-specific parameters (for each source domain)."
+        },
+        "aliases": [
+          "DA"
+        ]
+      },
+      {
+        "name": {
+          "value": "Object Detection",
+          "justification": "The primary problem addressed is object detection, which is explicitly mentioned and tackled using novel domain adaptation techniques.",
+          "quote": "Adapting visual object detectors to operational target domains is a challenging task, commonly achieved using unsupervised domain adaptation (UDA) methods."
+        },
+        "aliases": [
+          "OD"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Faster-RCNN",
+          "justification": "Faster-RCNN is mentioned as a baseline model for object detection against which the proposed method is compared.",
+          "quote": "Among the state-of-art UDA strategies for OD, feature alignment [3,41] and pseudo-labeling of target data [12,13] are the most common."
+        },
+        "aliases": [
+          "FRCNN"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Faster-RCNN is used as a baseline and is not introduced as a novel contribution of this paper.",
+          "quote": "Although our PMT method is independent of the OD model, this paper focuses on FRCNN as our base detector for SOTA comparison."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper executed Faster-RCNN models as part of its experimental evaluation.",
+          "quote": "Among the state-of-art UDA strategies for OD, feature alignment [3,41] and pseudo-labeling of target data [12,13] are the most common."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Faster-RCNN is compared with the proposed PMT method to demonstrate improved performance.",
+          "quote": "Although our PMT method is independent of the OD model, this paper focuses on FRCNN as our base detector for SOTA comparison."
+        },
+        "referenced_paper_title": {
+          "value": "Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks.",
+          "justification": "The reference to the original Faster-RCNN is provided to highlight its role as a benchmark.",
+          "quote": "Among the state-of-art UDA strategies for OD, feature alignment [3,41] and pseudo-labeling of target data [12,13] are the most common."
+        }
+      },
+      {
+        "name": {
+          "value": "Prototype-based Mean Teacher (PMT)",
+          "justification": "This is the model proposed by the authors for Multi-Source Domain Adaptation in Object Detection.",
+          "quote": "This paper proposes a novel MSDA method called Prototype-based Mean Teacher (PMT)."
+        },
+        "aliases": [
+          "PMT"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "PMT is the main contribution of the study, offering a new approach to domain adaptation.",
+          "quote": "This paper proposes a novel MSDA method called Prototype-based Mean Teacher (PMT)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Empirical studies and experiments were conducted using the PMT method.",
+          "quote": "Empirical studies indicate that PMT outperforms state-of-the-art MSDA methods on several challenging object detection datasets."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "PMT is compared against baseline models and other domain adaptation methods to demonstrate its efficacy.",
+          "quote": "This paper proposes a novel MSDA method called Prototype-based Mean Teacher (PMT)."
+        },
+        "referenced_paper_title": {
+          "value": "Mean teachers are better role models: Weight-averaged consistency targets improve semi-supervised deep learning results",
+          "justification": "This reference is provided in relation to the mean-teacher framework used in the adaptation of PMT.",
+          "quote": "Recently, impressive results were obtained by combining both strategies, where the popular mean-teacher [25] framework is used to pseudo-label target domain images."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "BDD100K",
+          "justification": "The BDD100K dataset is specifically mentioned as being used for evaluating the proposed PMT method.",
+          "quote": "The performance of our method in this setting is evaluated on the BDD100K [36] dataset."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "BDD100K: A Diverse Driving Dataset for Heterogeneous Multitask Learning",
+          "justification": "The referenced title provides information about the dataset's source and primary attributes.",
+          "quote": "The performance of our method in this setting is evaluated on the BDD100K [36] dataset."
+        }
+      },
+      {
+        "name": {
+          "value": "MS COCO",
+          "justification": "MS COCO is mentioned as part of the experimental setup for evaluating multi-source domain adaptation.",
+          "quote": "Object detection (OD), one of the fundamental tasks in computer vision, has made significant progress in recent years [2, 26, 40]. However, this progress, typically measured by performance on curated benchmark datasets such as MS-COCO [16] or Pascal VOC [6]."
+        },
+        "aliases": [
+          "COCO"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Microsoft COCO: Common objects in context",
+          "justification": "The referenced paper provides foundational information about the dataset.",
+          "quote": "Object detection (OD), one of the fundamental tasks in computer vision, has made significant progress in recent years [2, 26, 40]. However, this progress, typically measured by performance on curated benchmark datasets such as MS-COCO [16]."
+        }
+      },
+      {
+        "name": {
+          "value": "Pascal VOC",
+          "justification": "Pascal VOC is indicated as a benchmark for assessing performance in object detection.",
+          "quote": "Object detection (OD), one of the fundamental tasks in computer vision, has made significant progress in recent years [2, 26, 40]. However, this progress, typically measured by performance on curated benchmark datasets such as MS-COCO [16] or Pascal VOC [6]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The pascal visual object classes (VOC) challenge",
+          "justification": "Provides foundational data and context about the Pascal VOC dataset that supports OD research.",
+          "quote": "Object detection (OD), one of the fundamental tasks in computer vision, has made significant progress in recent years [2, 26, 40]. However, this progress, typically measured by performance on curated benchmark datasets such as MS-COCO [16] or Pascal VOC [6]."
+        }
+      },
+      {
+        "name": {
+          "value": "Cityscapes",
+          "justification": "Cityscapes is used as one of the source domains in the experimental setup for domain adaptation.",
+          "quote": "In this setting BDD100K [36], Cityscape [4], and Kitty [8] datasets are used."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The cityscapes dataset for semantic urban scene understanding",
+          "justification": "The reference provides foundational details and context for using the Cityscapes dataset in semantic understanding, relevant to OD applications.",
+          "quote": "In this setting BDD100K [36], Cityscape [4], and Kitty [8] datasets are used."
+        }
+      },
+      {
+        "name": {
+          "value": "KITTI",
+          "justification": "KITTI is mentioned as an experimental dataset used as one of the source domains.",
+          "quote": "For our experiments, we used Cityscape and Kitty as the source domains, while the Daytime domain of BDD100k was used as the target domain."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Are we ready for autonomous driving? the kitti vision benchmark suite",
+          "justification": "The reference helps establish the relevance and importance of KITTI in autonomous driving and object detection tasks.",
+          "quote": "For our experiments, we used Cityscape and Kitty as the source domains, while the Daytime domain of BDD100k was used as the target domain."
+        }
+      },
+      {
+        "name": {
+          "value": "Synscapes",
+          "justification": "Synscapes is used as part of the experimental setup as one of the source domains for the adaptation tests.",
+          "quote": "For training and evaluation, we only employ the images having 7 common object categories between the datasets."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Synscapes: A photorealistic synthetic dataset for street scene parsing",
+          "justification": "The reference outlines the usage and benefits of Synscapes in street scene parsing, aligning with domain adaptation studies.",
+          "quote": "For training and evaluation, we only employ the images having 7 common object categories between the datasets."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is explicitly mentioned as the deep learning library used for implementing the PMT method.",
+          "quote": "Our approach was implemented using Pytorch [20] and Detectron2 [30]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Pytorch: An imperative style, high-performance deep learning library",
+          "justification": "The library's significance and role in implementing the PMT method is established with this reference.",
+          "quote": "Our approach was implemented using Pytorch [20] and Detectron2 [30]."
+        }
+      },
+      {
+        "name": {
+          "value": "Detectron2",
+          "justification": "Detectron2 was used in conjunction with PyTorch to implement the approach, specifically for object detection tasks.",
+          "quote": "Our approach was implemented using Pytorch [20] and Detectron2 [30]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Detectron2",
+          "justification": "Detectron2 is mentioned as a framework supplementing PyTorch in object detection tasks.",
+          "quote": "Our approach was implemented using Pytorch [20] and Detectron2 [30]."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2204,
+    "prompt_tokens": 14915,
+    "total_tokens": 17119,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

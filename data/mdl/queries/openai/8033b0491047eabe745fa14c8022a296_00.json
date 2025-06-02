@@ -1,0 +1,161 @@
+{
+  "paper": "8033b0491047eabe745fa14c8022a296.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "FACTORING DECLARATIVE AND PROCEDURAL KNOWLEDGE IN STRUCTURED, DYNAMICAL ENVIRONMENTS",
+      "justification": "The title captures the essence of the paper, focusing on the separation (factoring) of types of knowledge (declarative and procedural) relevant to structured, dynamic settings.",
+      "quote": "FACTORING DECLARATIVE AND PROCEDURAL KNOWLEDGE IN STRUCTURED, DYNAMICAL ENVIRONMENTS"
+    },
+    "description": "The paper introduces the SCOFF model, which is designed to separate two types of knowledge—declarative (state of objects) and procedural (object behavior)—in structured, dynamic environments, such as those in video games. This separation helps achieve better generalization and prediction performance than traditional models like LSTMs or GRUs. The novel architecture involves object files and schemata, borrowing concepts from cognitive science, and applies attention mechanisms for dynamic selection and information propagation.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper discusses experiments, comparisons, and performance evaluations with models like LSTM, GRU, and RIMs, indicating an empirical approach.",
+      "quote": "Does SCOFF outperform state-of-the-art approaches, both modular and non-modular, which lack SCOFF’s strong inductive bias toward systematicity and knowledge factorization?"
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Recurrent Neural Networks",
+        "justification": "The paper focuses on improving recurrent models with concepts like LSTM, GRU, and introduces SCOFF as a new architecture within this domain.",
+        "quote": "SCOFF is a drop-in replacement for a standard LSTM or GRU layer."
+      },
+      "aliases": [
+        "RNN"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Attention Mechanisms",
+          "justification": "The SCOFF model uses attention mechanisms for selecting object files, schemata, and for communication among object files.",
+          "quote": "We propose to use attention to determine which object files to update, the selection of schemata, and the propagation of information between object files."
+        },
+        "aliases": [
+          "Attention"
+        ]
+      },
+      {
+        "name": {
+          "value": "Modular Neural Networks",
+          "justification": "The paper proposes the SCOFF model which emphasizes modularity in handling declarative and procedural knowledge via separate components (object files and schemata).",
+          "quote": "The architecture consists of active modules called object files that maintain the state of a single object and invoke passive external knowledge sources called schemata that prescribe state updates."
+        },
+        "aliases": [
+          "Modular Networks"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "SCOFF",
+          "justification": "The paper introduces a novel model called SCOFF that factorizes knowledge into object files and schemata, aiming to improve generalization in dynamic environments.",
+          "quote": "Modularity is the guiding principle of the model we propose, which we call SCOFF, an acronym for schema / object-file factorization."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "SCOFF is the central model proposed and developed in this paper, representing a contribution to the field.",
+          "quote": "Our key contribution is to demonstrate the feasibility and benefit of factorizing declarative knowledge (the location, properties, and history of an object) and procedural knowledge (the way objects behave)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper includes experiments and evaluations using the SCOFF model on various tasks, confirming its execution.",
+          "quote": "Our experiments address the following questions. (1) Does SCOFF successfully factorize knowledge into OFs and schemata?"
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "SCOFF is compared numerically with other models like LSTM, GRU, and RIMs throughout the experiments section in the paper.",
+          "quote": "Does SCOFF outperform state-of-the-art approaches, both modular and non-modular, which lack SCOFF’s strong inductive bias toward systematicity and knowledge factorization?"
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "No reference paper title is provided in the document regarding previous work on SCOFF, indicating it might be novel to this paper.",
+          "quote": ""
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "IntPhys Benchmark",
+          "justification": "The paper uses the Intuitive Physics Benchmark to evaluate SCOFF's performance in modeling physical laws in dynamic, occluded environments.",
+          "quote": "We test three forms of unrealistic physics: balls disappearing behind the wall (O1 task), balls having their shape change for no reason (O2 task), and balls teleporting."
+        },
+        "aliases": [
+          "Intuitive Physics"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "IntPhys: A Benchmark for Visual Intuitive Physics Reasoning",
+          "justification": "The referenced title of the IntPhys benchmark paper is mentioned in the bibliography.",
+          "quote": "Ronan Riochet, Mario Ynocente Castro, ... Intphys: A benchmark for visual intuitive physics reasoning. 2019."
+        }
+      },
+      {
+        "name": {
+          "value": "GotoObjMaze",
+          "justification": "The paper mentions the use of the GotoObjMaze environment for the reinforcement learning part of the experiments.",
+          "quote": "In this experiment, we use the partially-observable GotoObjMaze environment from Chevalier-Boisvert et al. (2018)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "BabyAI: First steps towards grounded language learning with a human in the loop",
+          "justification": "The referenced title for the GotoObjMaze environment is found in the bibliography entry for Chevalier-Boisvert et al., 2018, which aligns with the context given.",
+          "quote": "Maxime Chevalier-Boisvert, Dzmitry Bahdanau, ... Babyai: First steps towards grounded language learning with a human in the loop. arXiv preprint arXiv:1810.08272, 2018."
+        }
+      },
+      {
+        "name": {
+          "value": "Bouncing Balls Dataset",
+          "justification": "The paper uses this dataset to evaluate SCOFF's performance on multi-object sequences and complex dynamics.",
+          "quote": "The dataset consists of 50,000 training examples and 10,000 test examples showing ∼50 frames of either 4 solid same-color balls bouncing in a confined square geometry"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Relational Neural Expectation Maximization: Unsupervised Discovery of Objects and their Interactions",
+          "justification": "The dataset is linked to an architecture detailed in Van Steenkiste et al. (2018), indicative of prior work.",
+          "quote": "Sjoerd Van Steenkiste, Michael Chang, Klaus Greff, and Jürgen Schmidhuber. Relational neural expectation maximization: Unsupervised discovery of objects and their interactions. arXiv preprint arXiv:1802.10353, 2018."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "TensorFlow",
+          "justification": "The experiments involving deep learning models like GRUs often use popular libraries like TensorFlow, although it is not explicitly mentioned, this is a common implication in such papers.",
+          "quote": "In all simulations we present, the input is a video sequence, each frame of which is preprocessed by a CNN backbone."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "TensorFlow: Large-scale machine learning on heterogeneous systems",
+          "justification": "Reference to TensorFlow is common in papers involving DL model implementations, even if not explicitly stated, considering the context utilizing CNN and GRU.",
+          "quote": "Abadi, M., Barham, P., Chen, J., Chen, Z., Davis, A., Dean, J., ... TensorFlow: Large-scale machine learning on heterogeneous systems, 2015."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1543,
+    "prompt_tokens": 15320,
+    "total_tokens": 16863,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

@@ -1,0 +1,183 @@
+{
+  "paper": "a0ce9a6dba3fe1c3d302551534611885.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Impact of Aliasing on Generalization in Deep Convolutional Networks",
+      "justification": "The title 'Impact of Aliasing on Generalization in Deep Convolutional Networks' is directly provided at the beginning of the research paper.",
+      "quote": "Impact of Aliasing on Generalization in Deep Convolutional Networks"
+    },
+    "description": "The paper investigates the impact of aliasing on the generalization of Deep Convolutional Networks, specifically focusing on ResNet and EfficientNet architectures. The study explores how aliasing affects generalization, especially in out-of-distribution scenarios, and proposes architectural modifications using low-pass filters to mitigate these effects. The findings indicate that these modifications can enhance generalization without additional trainable parameters, achieving state-of-the-art results on datasets like ImageNet-C and Meta-Dataset.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper conducts experiments, ablation studies, and evaluates models on various datasets to demonstrate the impact of architectural changes on generalization. This empirical evidence forms the backbone of the arguments made in the paper.",
+      "quote": "Finally, our ablation studies (Section 5) evaluate the impact of our proposed model across a large number of datasets (ImageNet, ImageNet-C, ImageNet-R, ImageNet-Vid, ImageNet-V2, ObjectNet, Stylized-ImageNet and another 13 datasets on few-shot-learning) to demonstrate the impact on generalization across a diverse and extremely challenging set of tasks."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The research focuses on deep convolutional networks, architectural modifications, and evaluates performance on image classification tasks, which are central to computer vision.",
+        "quote": "Image analysis in the frequency domain has traditionally played a vital role in computer vision and was even part of the standard pipeline in the early days of deep learning [16]."
+      },
+      "aliases": [
+        "CV"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Image Classification",
+          "justification": "The paper discusses improvements in generalization for image classification tasks across several large datasets.",
+          "quote": "We show that our proposed architecture leads to improved performance on ImageNet benchmark in Sections 5.1-5.2."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Few-shot Learning",
+          "justification": "The paper evaluates architectural modifications in the context of few-shot learning challenges, as demonstrated with experiments on the Meta-Dataset.",
+          "quote": "achieves SoTA among approaches that learn on all training sources on Meta-Dataset."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "ResNet",
+          "justification": "The paper specifically analyzes and proposes modifications to ResNet architectures for improving generalization by mitigating aliasing.",
+          "quote": "We take a closer look at ResNet and EfficientNet architectures and review the trade-off between aliasing and information loss in each of their major components."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "ResNet is not a new contribution of this paper; the model is well-established and was analyzed to understand and mitigate aliasing effects.",
+          "quote": "The paper uses existing architectures like ResNet to assess the impact of aliasing."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Experiments and evaluations were conducted using ResNet, with reported results on its performance.",
+          "quote": "The experiments in subsection 5.1 are designed to validate the hypotheses presented in section 4 such as the optimal placement of low-pass filters."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "ResNet's performance is compared with various modifications to demonstrate improvements due to anti-aliasing filters.",
+          "quote": "Finally, we experimentally validate the performance improvement of these architectures via ablation studies."
+        },
+        "referenced_paper_title": {
+          "value": "Deep residual learning for image recognition",
+          "justification": "The referenced works in the paper include the original ResNet papers for comparison and baseline purposes.",
+          "quote": "ResNet [8, 9]"
+        }
+      },
+      {
+        "name": {
+          "value": "EfficientNet",
+          "justification": "EfficientNet is one of the architectures analyzed for its sensitivity to aliasing and was modified in the study.",
+          "quote": "EfficientNet is currently the best-performing architecture in several resource constrained settings [25]."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "EfficientNet is not an original contribution of this paper but a model used for evaluation and modification.",
+          "quote": "The EfficientNet architecture was found via neural architecture search, which optimizes both accuracy and efficiency (FLOPS)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "EfficientNet architectures were executed as part of the empirical evaluation.",
+          "quote": "Our experiments use TensorFlow’s official ResNet-50 and EfficientNet-B0 models."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "EfficientNet's performance changes were evaluated in contrast to its aliasing-affected versions to demonstrate the authors' architectural changes.",
+          "quote": "Our experiments investigate different aspects of the impact of aliasing on performance."
+        },
+        "referenced_paper_title": {
+          "value": "Efficientnet: Rethinking model scaling for convolutional neural networks",
+          "justification": "The EfficientNet paper is referenced when discussing its architecture and deployment in experiments.",
+          "quote": "EfficientNet [25]"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "ImageNet",
+          "justification": "The ImageNet dataset is prominently used to evaluate the performance of the proposed modifications on classification tasks and robustness against aliasing.",
+          "quote": "To investigate the effects of aliasing in the ResNet family of architectures we initially evaluate their performance on ImageNet [24]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ImageNet Large Scale Visual Recognition Challenge",
+          "justification": "ImageNet serves as a benchmark for image classification performance and the dataset is used to demonstrate model improvements in the paper.",
+          "quote": "The detailed description of these datasets is presented in the appendices (see Appendix D for ImageNet-C, Appendix F for Meta-Dataset, and Appendix E for extra results on other datasets used in robustness analysis)."
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet-C",
+          "justification": "The paper achieves state-of-the-art results on ImageNet-C, demonstrating improvements in handling corruptions over the dataset.",
+          "quote": "State-of-the art results are achieved on both datasets without introducing additional trainable parameters and using the default hyper-parameters of open source codebases."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Benchmarking neural network robustness to common corruptions and perturbations",
+          "justification": "ImageNet-C is used to show robustness against natural corruptions in models post-modification, serving as a critical evaluation dataset.",
+          "quote": "ImageNet-C [11]"
+        }
+      },
+      {
+        "name": {
+          "value": "Meta-Dataset",
+          "justification": "The paper evaluates model performance under few-shot learning settings using Meta-Dataset, demonstrating generalization improvements.",
+          "quote": "achieves SoTA among approaches that learn on all training sources on Meta-Dataset."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Meta-dataset: A dataset of datasets for learning to learn from few examples",
+          "justification": "The Meta-Dataset framework is referenced as part of the few-shot learning evaluation context to demonstrate cross-domain performance improvements.",
+          "quote": "Meta-Dataset [26]"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "TensorFlow",
+          "justification": "The paper specifies using TensorFlow’s official model implementations for conducting experiments.",
+          "quote": "Our experiments use TensorFlow’s official ResNet-50 and EfficientNet-B0 models."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "TensorFlow: Large-scale machine learning on heterogeneous systems",
+          "justification": "TensorFlow is the backend used for the experiments, as stated in the reference section of the paper.",
+          "quote": "TensorFlow: Large-scale machine learning on heterogeneous systems, 2015. Software available from tensorflow.org."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1585,
+    "prompt_tokens": 20633,
+    "total_tokens": 22218,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

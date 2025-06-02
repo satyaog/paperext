@@ -1,0 +1,374 @@
+{
+  "paper": "874621575f82bbfe9f173697336f400f.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Multi-XScience: A Large-scale Dataset for Extreme Multi-document Summarization of Scientific Articles",
+      "justification": "The title is clearly listed at the beginning of the paper, reflecting the main contribution, which is the Multi-XScience dataset designed for multi-document summarization.",
+      "quote": "Multi-XScience: A Large-scale Dataset for Extreme Multi-document Summarization of Scientific Articles"
+    },
+    "description": "The paper introduces Multi-XScience, a large-scale multi-document summarization dataset from scientific articles. The dataset aims to assist in the task of writing related-work sections of papers based on their abstracts and referenced articles. It emphasizes the utility of abstractive models given the high level of text abstractiveness in its summarization task.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves the creation of a large-scale dataset and conducts empirical tests with several state-of-the-art summarization models to validate its utility and challenge.",
+      "quote": "Descriptive statistics and empirical results—using several state-of-the-art models trained on the Multi-XScience dataset—reveal that Multi-XScience is well suited for abstractive models."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The paper is focused on summarization, a key area within Natural Language Processing, particularly dealing with multi-document summarization tasks.",
+        "quote": "Multi-document summarization is a challenging task for which there exists little large-scale datasets."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Summarization",
+          "justification": "The core task discussed in the paper is summarization, specifically multi-document summarization, which is clearly a subfield of NLP.",
+          "quote": "We propose Multi-XScience, a large-scale multi-document summarization dataset created from scientific articles."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Pointer-Generator",
+          "justification": "Pointer-Generator is mentioned as a model utilized in the evaluation of the dataset.",
+          "quote": "Pointer-Generator incorporates attention over source texts as a copy mechanism to aid the generation."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Pointer-Generator is referenced as a pre-existing model used for testing the dataset, not a novel contribution of this paper.",
+          "quote": "In addition, we apply existing state-of-the-art single-document summarization models, including Pointer-Generator (See et al., 2017)"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper reports empirical results using the Pointer-Generator model, indicating it was executed as part of their tests.",
+          "quote": "When comparing abstractive models to extractive ones, we first observe that almost all abstractive models outperform the unsupervised extractive models—TextRank and LexRank—by wide margins."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Pointer-Generator's performance is compared to other models in terms of abstractive summarization achieved on the dataset.",
+          "quote": "To our surprise, Pointer-Generator outperforms self-pretrained abstractive summarization models, such as BART and BertABS."
+        },
+        "referenced_paper_title": {
+          "value": "Get to the point: Summarization with pointer-generator networks",
+          "justification": "The original paper for the Pointer-Generator model is referenced to provide context for its implementation.",
+          "quote": "Pointer-Generator (See et al., 2017)"
+        }
+      },
+      {
+        "name": {
+          "value": "BART",
+          "justification": "BART is included as one of the tested models on the Multi-XScience dataset, being a well-known sequence-to-sequence model used in NLP tasks.",
+          "quote": "BART is a sequence-to-sequence model with an encoder that is pre-trained with the denosing auto-encoder objective."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "BART is a well-established model referenced for evaluation in the paper, not a new contribution by the authors.",
+          "quote": "In addition, we apply existing state-of-the-art single-document summarization models, including... BART (Lewis et al., 2019)"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The evaluation section specifies the execution of BART on the dataset as part of their empirical analysis.",
+          "quote": "BART is highly extractive with the lowest novel n-gram among all approaches."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares BART's performance with other models like Pointer-Generator and BertABS in terms of ROUGE scores.",
+          "quote": "To our surprise, Pointer-Generator outperforms self-pretrained abstractive summarization models, such as BART and BertABS."
+        },
+        "referenced_paper_title": {
+          "value": "Bart: Denoising sequence-to-sequence pre-training for natural language generation, translation, and comprehension",
+          "justification": "This is the title of the paper where BART was initially introduced and is referenced here for its usage and results in the current paper's tests.",
+          "quote": "BART (Lewis et al., 2019)"
+        }
+      },
+      {
+        "name": {
+          "value": "BertABS",
+          "justification": "BertABS is tested on the Multi-XScience dataset, being a known model in the summarization task involving BERT as an encoder.",
+          "quote": "BertABS uses a pretrained BERT (Devlin et al., 2019) as the encoder and trains a randomly initialized transformer decoder for abstractive summarization."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "BertABS is not introduced in this paper as a new model but used as an existing one for validation purposes.",
+          "quote": "In addition, we apply existing state-of-the-art single-document summarization models, including... BertABS (Liu and Lapata, 2019b)"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Its performance results on the Multi-XScience dataset are reported, confirming its execution.",
+          "quote": "Our analyses (Table 7) reveal that this model performs highly abstractive summaries on our dataset."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper provides comparative results for BertABS, particularly against other models like Pointer-Generator and BART.",
+          "quote": "To our surprise, Pointer-Generator outperforms self-pretrained abstractive summarization models, such as BART and BertABS."
+        },
+        "referenced_paper_title": {
+          "value": "Text summarization with pretrained encoders",
+          "justification": "The referenced paper forms the basis of BertABS's mechanism, as stated in the research paper.",
+          "quote": "BertABS (Liu and Lapata, 2019b)"
+        }
+      },
+      {
+        "name": {
+          "value": "SciBERT",
+          "justification": "SciBERT is explicitly mentioned as part of the BertABS variation tested on scientific datasets.",
+          "quote": "We also report the performance of BertABS with an encoder (SciBert) pretrained on scientific articles."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "SciBERT itself is used in the context of a specific configuration of BertABS and is not a contribution of this paper.",
+          "quote": "BertABS with an encoder (SciBert) pretrained on scientific articles (Beltagy et al., 2019)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "SciBERT, as part of BertABS, was executed to assess its performance on scientific summarization.",
+          "quote": "In addition, the large number of parameters in the transformer-based decoders require massive supervised domain-specific training data."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares results from using SciBERT against other models to showcase its scientific relevance and performance.",
+          "quote": "BART is highly extractive with the lowest novel n-gram among all approaches... since the performance of SciBertAbs is much higher in terms of ROUGE-L."
+        },
+        "referenced_paper_title": {
+          "value": "Scibert: Pretrained contextualized embeddings for scientific text",
+          "justification": "This paper originally presented SciBERT, utilized here for evaluation in a particular model setup.",
+          "quote": "SciBert) pretrained on scientific articles (Beltagy et al., 2019)."
+        }
+      },
+      {
+        "name": {
+          "value": "HiMAP",
+          "justification": "HiMAP is specifically mentioned as one of the models evaluated on the Multi-XScience dataset, focusing on multi-document summarization.",
+          "quote": "For supervised abstractive models, we test state-of-the-art multi-document summarization models HiMAP (Fabbri et al., 2019)"
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "HiMAP is not introduced as a contribution of this paper but is used to validate the dataset.",
+          "quote": "For supervised abstractive models, we test state-of-the-art multi-document summarization models HiMAP (Fabbri et al., 2019)"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper discusses the empirical performance of HiMAP, indicating it was executed as part of their tests.",
+          "quote": "HiMAP adapts a pointer-generator model with maximal marginal relevance to compute weights over multi-document inputs."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "HiMAP's performance is compared against other state-of-the-art models within the dataset evaluations.",
+          "quote": "We conduct human evaluation on ext-oracle, HiMAP, and Pointer-Generator, since each outperforms others in their respective section of Table 6."
+        },
+        "referenced_paper_title": {
+          "value": "Multi-News: A Large-scale Multi-document Summarization Dataset and Abstractive Hierarchical Model",
+          "justification": "This reference discusses HiMAP model as it was used in evaluations in the paper.",
+          "quote": "HiMAP (Fabbri et al., 2019)"
+        }
+      },
+      {
+        "name": {
+          "value": "HierSumm",
+          "justification": "HierSumm is tested as a model handling multi-document inputs, specifically mentioned under the empirical evaluations section.",
+          "quote": "HierSumm (Liu and Lapata, 2019a) uses a passage ranker that selects the most important document as the input to the hierarchical transformer-based generation model."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper employs HierSumm as an existing model for conducting experiments, not a new contribution.",
+          "quote": "For supervised abstractive models, we test state-of-the-art multi-document summarization models HiMAP (Fabbri et al., 2019) and HierSumm (Liu and Lapata, 2019a)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "HierSumm's evaluation in the paper indicates that it was run on the dataset.",
+          "quote": "HierSumm (Liu and Lapata, 2019a) uses a passage ranker that selects the most important document as the input to the hierarchical transformer-based generation model."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "While HierSumm is listed among evaluated models, specific detailed comparison quotes are not explicitly provided in the text like for some other models.",
+          "quote": "For supervised abstractive models, we test state-of-the-art multi-document summarization models HiMAP and HierSumm."
+        },
+        "referenced_paper_title": {
+          "value": "Hierarchical Transformers for Multi-Document Summarization",
+          "justification": "The reference to the HierSumm model comes from this paper in evaluations carried out.",
+          "quote": "HierSumm (Liu and Lapata, 2019a)."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Multi-XScience",
+          "justification": "The dataset is a primary contribution of the paper, introduced and described in detail for multi-document summarization tasks.",
+          "quote": "We propose Multi-XScience, a large-scale multi-document summarization dataset created from scientific articles."
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "Multi-XScience: A Large-scale Dataset for Extreme Multi-document Summarization of Scientific Articles",
+          "justification": "The current paper contributes the Multi-XScience dataset as a key part of its research.",
+          "quote": "We propose Multi-XScience, a large-scale multi-document summarization dataset created from scientific articles."
+        }
+      },
+      {
+        "name": {
+          "value": "CNN/DailyMail",
+          "justification": "CSV/DS-related values or comparison statistics are shown between this dataset and the new one being proposed, contextualizing its design and purpose.",
+          "quote": "We construct the dataset with care to maximize its usefulness. The construction protocol includes... cleaning iterations of the resulting data records interleaved with rounds of human verification."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Teaching machines to read and comprehend",
+          "justification": "This is the reference paper of CNN/DailyMail, mentioned for comparison in terms of dataset design and purpose.",
+          "quote": "Single document summarization is the focus of most current summarization research thanks to the availability of large-scale single-document summarization datasets spanning multiple fields, including news (CNN/DailyMail (Hermann et al., 2015)."
+        }
+      },
+      {
+        "name": {
+          "value": "NYT",
+          "justification": "The NYT dataset is mentioned as part of the landscape of available large-scale summarization datasets used for comparative purposes.",
+          "quote": "Single document summarization is the focus of most current summarization research thanks to the availability of large-scale single-document summarization datasets spanning multiple fields, including news (CNN/DailyMail (Hermann et al., 2015), NYT (Sandhaus, 2008)."
+        },
+        "aliases": [
+          "New York Times"
+        ],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "The New York Times Annotated Corpus",
+          "justification": "This reference paper for the NYT dataset is used for comparison and situating the new dataset within the broader summarization dataset context.",
+          "quote": "NYT (Sandhaus, 2008)"
+        }
+      },
+      {
+        "name": {
+          "value": "Newsroom",
+          "justification": "Referenced in comparison with existing summarization dataset for providing context and differentiation.",
+          "quote": "Single document summarization is the focus of most current summarization research thanks to the availability of large-scale single-document summarization datasets spanning multiple fields,... Newsroom (Grusky et al., 2018)."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Newsroom: A Dataset of 1.3 Million Summaries with Diverse Extractive Strategies",
+          "justification": "It's the reference for the Newsroom dataset mentioned in relation to the new dataset being created, providing context.",
+          "quote": "Newsroom (Grusky et al., 2018)"
+        }
+      },
+      {
+        "name": {
+          "value": "XSum",
+          "justification": "XSum is continuously referenced especially because its protocol inspired the new Multi-XScience dataset creation process.",
+          "quote": "Multi-XScience is inspired by the XSum dataset and can be seen as a multi-document version of extreme summarization (Narayan et al., 2018b)."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Don't Give Me the Details, Just the Summary! Topic-Aware Convolutional Neural Networks for Extreme Summarization",
+          "justification": "The XSum dataset is referenced as influential and part of their dataset design choices, motivating the abstractive direction of the Multi-XScience dataset.",
+          "quote": "Multi-XScience is inspired by the XSum dataset... (Narayan et al., 2018b)."
+        }
+      },
+      {
+        "name": {
+          "value": "BigPatent",
+          "justification": "Mentioned for context and differentiation among other summarization datasets from various domains.",
+          "quote": "Single document summarization is the focus of most current summarization research thanks to the availability of large-scale single-document summarization datasets spanning multiple fields,... BigPatent (Sharma et al., 2019)"
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "BigPatent: A Large-Scale Dataset for Abstractive and Coherent Summarization",
+          "justification": "This reference title is noted as part of the BigPatent cited as another comprehensible dataset within the summarization task domain.",
+          "quote": "BigPatent (Sharma et al., 2019)"
+        }
+      },
+      {
+        "name": {
+          "value": "ArXiv and PubMed",
+          "justification": "Recognized for the scientific domain within single document summarization datasets, showcasing diversity in summarization data sources.",
+          "quote": "Single document summarization is the focus of most current summarization research thanks to the availability of large-scale single-document summarization datasets spanning multiple fields,... and even science (ArXiv and PubMed (Cohan et al., 2018))"
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "A Discourse-Aware Attention Model for Abstractive Summarization of Long Documents",
+          "justification": "Referential connection for use and situating existing datasets in utility assessments over summarization capabilities.",
+          "quote": "ArXiv and PubMed (Cohan et al., 2018)"
+        }
+      },
+      {
+        "name": {
+          "value": "Multi-News",
+          "justification": "Presented as one of the few existing large-scale multi-document summarization datasets, it serves as a point of comparison.",
+          "quote": "Research on the task of multi-document summarization (MDS)... has not progressed as much... There are only two available large-scale multi-document summarization datasets: Multi-News (Fabbri et al., 2019) and WikiSum (Liu et al., 2018)."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Multi-News: A Large-scale Multi-document Summarization Dataset and Abstractive Hierarchical Model",
+          "justification": "The comparison to Multi-News positions the relevance and need for Multi-XScience as a more applicable dataset for abstractive summarization.",
+          "quote": "There are only two available large-scale multi-document summarization datasets: Multi-News (Fabbri et al., 2019) and WikiSum (Liu et al., 2018)."
+        }
+      },
+      {
+        "name": {
+          "value": "WikiSum",
+          "justification": "Highlighted in discussions for large-scale multi-document summarization, providing context and a basis for comparison.",
+          "quote": "There are only two available large-scale multi-document summarization datasets: Multi-News (Fabbri et al., 2019) and WikiSum (Liu et al., 2018)."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Generating Wikipedia by Summarizing Long Sequences",
+          "justification": "This is referenced to establish the existing landscape of MDS datasets which the paper aims to enhance with their contribution.",
+          "quote": "and WikiSum (Liu et al., 2018)."
+        }
+      },
+      {
+        "name": {
+          "value": "Microsoft Academic Graph (MAG)",
+          "justification": "MAG is cited as a crucial data source for aligning various scientific articles, an integral part of their dataset creation process.",
+          "quote": "Our dataset is created by combining information from two sources: arXiv.org and the Microsoft Academic Graph (MAG) (Sinha et al., 2015)."
+        },
+        "aliases": [
+          "MAG"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "An Overview of Microsoft Academic Service (MAS) and Applications",
+          "justification": "This paper presents MAG, one of the foundational resources used for creating the Multi-XScience dataset.",
+          "quote": "Our dataset is created by combining information from two sources: arXiv.org and the Microsoft Academic Graph (MAG) (Sinha et al., 2015)"
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 3896,
+    "prompt_tokens": 9048,
+    "total_tokens": 12944,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

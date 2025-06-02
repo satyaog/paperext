@@ -1,0 +1,196 @@
+{
+  "paper": "9987266ae29a01c740cd4b837cb48ca3.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Countering Language Drift with Seeded Iterated Learning",
+      "justification": "The title is explicitly mentioned multiple times in the paper, such as in the introduction and contributions sections.",
+      "quote": "Countering Language Drift with Seeded Iterated Learning"
+    },
+    "description": "This paper addresses the issue of language drift in goal-oriented dialogue agents by proposing a method called Seeded Iterated Learning (SIL). SIL is designed to counter language drift, which occurs when agents lose syntactic and semantic language properties due to task-focused training. The approach involves periodically refining a pretrained student agent using data from a newly generated teacher agent, which is finetuned to maximize task completion. SIL is task-agnostic and does not require external syntactic constraints or semantic knowledge, maintaining language properties while enhancing task completion. The paper evaluates SIL in two scenarios: the Lewis Game and a translation game, demonstrating its effectiveness in reducing language drift and enhancing task success compared to baseline methods.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves experiments and practical evaluations of the proposed Seeded Iterated Learning (SIL) method on tasks like the Lewis Game and translation games, thus demonstrating its empirical nature.",
+      "quote": "We provide empirical evidence towards understanding the algorithm mechanisms."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The paper focuses on language drift in dialogue systems and translations, which are core aspects of Natural Language Processing.",
+        "quote": "Pretraining on human corpus and then finetuning in a simulator has become a standard pipeline for training a goal-oriented dialogue agent."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Dialogue Systems",
+          "justification": "The paper discusses dialogues agents and their training processes, making it relevant to Dialogue Systems.",
+          "quote": "Pretraining on human corpus and then finetuning in a simulator has become a standard pipeline for training a goal-oriented dialogue agent."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Machine Translation",
+          "justification": "The translation game used in the paper is a typical machine translation task to evaluate language drift.",
+          "quote": "We demonstrate the practical viability of Seeded Iterated Learning on the French-German translation game that was specifically designed to assess natural language drift."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Reinforcement Learning",
+          "justification": "The paper utilizes reinforcement learning techniques like policy gradient and imitation learning, aligning with the reinforcement learning field.",
+          "quote": "training it to generate grammatically valid sentences. Ideally, such training would incorporate human interaction (Skantze & Hjalmars-son, 2010; Li et al., 2016a), but doing so quickly faces sample-complexity and reproducibility issues."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Gumbel Softmax Straight-Through Estimator",
+          "justification": "The estimator is discussed as being used for finetuning the models to maximize task completion while dealing with language drift.",
+          "quote": "or Gumbel softmax straight-through estimator (Jang et al., 2017; Maddison et al., 2017)."
+        },
+        "aliases": [
+          "GSTE"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The Gumbel Softmax Straight-Through Estimator was referenced from other works and not developed in this paper.",
+          "quote": "Gumbel softmax straight-through estimator (Jang et al., 2017; Maddison et al., 2017)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The estimator is part of the methods used within the experimental setup, suggesting execution during experiments.",
+          "quote": "Gumbel softmax straight-through estimator"
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares this estimator's performance with other methods like policy gradient.",
+          "quote": "compared to baselines."
+        },
+        "referenced_paper_title": {
+          "value": "Categorical Reparameterization with Gumbel-Softmax",
+          "justification": "The referenced paper by Jang et al., 2017 is cited for Gumbel Softmax Straight-Through Estimator.",
+          "quote": "(Jang et al., 2017; Maddison et al., 2017)"
+        }
+      },
+      {
+        "name": {
+          "value": "Supervised-2-selfPlay (S2P)",
+          "justification": "S2P is directly referenced as a baseline for SIL, which suggests it's a recognized model in the literature.",
+          "quote": "the S2P approach has shown impressive resistance to language drift"
+        },
+        "aliases": [
+          "S2P"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "S2P is used as a benchmark for comparison in this study, indicating it pre-existed this research.",
+          "quote": "it can be considered a strong baseline for SIL."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "S2P was used as a baseline to compare with the proposed SIL method, indicating its execution in the experiments.",
+          "quote": "compared to baselines."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "S2P is explicitly used for comparison against the SIL method to demonstrate advantages in handling language drift.",
+          "quote": "empirically demonstrate its effectiveness in countering language drift."
+        },
+        "referenced_paper_title": {
+          "value": "Seeded Self-Play for Language Learning",
+          "justification": "The reference comes from Gupta et al., 2019, used to introduce S2P in the context of this paper's comparative analysis.",
+          "quote": "Empirically, the S2P approach has shown impressive resistance to language drift and, being relatively task-agnostic, it can be considered a strong baseline for SIL."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Multi30k",
+          "justification": "The dataset is used for evaluating translation games as part of the paper's experiments.",
+          "quote": "Multi30k dataset (Elliott et al., 2016), which contains 30k images with the same caption translated in French, English, and German."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Multi30K: Multilingual English-German Image Descriptions",
+          "justification": "The original paper by Elliott et al., 2016 is cited for this dataset.",
+          "quote": "(Elliott et al., 2016)"
+        }
+      },
+      {
+        "name": {
+          "value": "IWSLT",
+          "justification": "This is used to pretrain the translation models before finetuning, indicating it is part of the dataset repertoire for training.",
+          "quote": "First, they are independently pretrained on the IWSLT dataset (Cettolo et al., 2012) to learn the initial language distribution."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "WIT3: Web Inventory of Transcribed and Translated Talks",
+          "justification": "This reference is acknowledged in the dataset description, pointing to Cettolo et al., 2012.",
+          "quote": "(Cettolo et al., 2012)"
+        }
+      },
+      {
+        "name": {
+          "value": "COCO",
+          "justification": "Although primarily a visual dataset, it is mentioned for its captions in training language models, relevant in some parts of the research.",
+          "quote": "Our language model is trained with captions from MSCOCO (Lin et al., 2014)."
+        },
+        "aliases": [
+          "Microsoft COCO"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Microsoft COCO: Common Objects in Context",
+          "justification": "The dataset is referenced in the context of captioning and its use aligns with descriptions dated Lin et al., 2014.",
+          "quote": "(Lin et al., 2014)"
+        }
+      },
+      {
+        "name": {
+          "value": "Lewis Game",
+          "justification": "Used as one of the experimental setups, the Lewis Game is largely a referential game in research model evaluation.",
+          "quote": "we study core Seeded Iterated Learning properties on the one-turn Sender-Receiver version of the Lewis Game."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Natural Language Does Not Emerge ‘Naturally’ in Multi-Agent Dialog",
+          "justification": "The referenced paper acknowledged, Kottur et al., 2017, is mentioned in the setup description of the Lewis Game.",
+          "quote": "In the language drift setting, both models are trained toward identity map while solving the reconstruction task."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1664,
+    "prompt_tokens": 20444,
+    "total_tokens": 22108,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "paper": "c13a7953fd2450d4575adf1c28983093.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Probabilistic Planning with Sequential Monte Carlo Methods",
+      "justification": "The paper focuses on a novel approach to planning by framing it as a probabilistic inference problem, utilizing Sequential Monte Carlo methods, as explicitly stated in the introduction and throughout the paper.",
+      "quote": "In this work, we propose a novel formulation of planning which views it as a probabilistic inference problem over future optimal trajectories."
+    },
+    "description": "This research paper proposes a novel approach to planning by framing it as a probabilistic inference problem. It introduces the Sequential Monte Carlo Planning (SMCP) algorithm, which leverages Sequential Monte Carlo and Bayesian smoothing in control as inference to tackle planning in continuous domains, capturing multimodal policies and accelerating learning in continuous control tasks.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper describes experiments conducted on standard benchmark environments like Mujoco to empirically evaluate the performance of the proposed Sequential Monte Carlo Planning algorithm, indicating its empirical nature.",
+      "quote": "We investigate how our method empirically compares with existing model-based methods and a strong model-free baseline on the standard benchmark Mujoco (Todorov et al., 2012)."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Reinforcement Learning",
+        "justification": "The paper's main contribution is towards improving planning and control strategies using reinforcement learning techniques. The introduction and several sections focus on control as inference, linking directly to reinforcement learning.",
+        "quote": "We introduce a novel planning strategy based on the SMC class of algorithms, in which we treat the policy as the proposed distribution to be learned."
+      },
+      "aliases": [
+        "RL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Probabilistic Inference",
+          "justification": "The entire premise of the paper is built around framing planning as a probabilistic inference problem, which is discussed extensively throughout the paper.",
+          "quote": "This enables us to use sampling methods, and thus, tackle planning in continuous domains using a fixed computational budget."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Control Theory",
+          "justification": "Sections of the paper discuss connections to traditional control theory methods like Model Predictive Control, highlighting its relevance as a subfield.",
+          "quote": "A typical way to mitigate this issue and be more robust to model errors is to re-plan at each time step; this technique is called Model Predictive Control (MPC) and is commonplace in control theory."
+        },
+        "aliases": [
+          "MPC"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Sequential Monte Carlo Planning (SMCP)",
+          "justification": "The paper introduces and revolves around the development and empirical testing of the Sequential Monte Carlo Planning algorithm.",
+          "quote": "We design a new algorithm, Sequential Monte Carlo Planning, by leveraging classical methods in Sequential Monte Carlo and Bayesian smoothing in the context of control as inference."
+        },
+        "aliases": [
+          "SMCP"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The Sequential Monte Carlo Planning algorithm is a novel contribution by the authors as explicitly stated in the paper.",
+          "quote": "We introduce a novel planning strategy based on the SMC class of algorithms."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper discusses running experiments and comparisons using the SMCP algorithm, indicating it was executed in simulations.",
+          "quote": "Our results suggest that SMCP does not learn as fast as CEM and RS initially."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper presents a comparison of SMCP's performance with other methods like CEM and RS, showing it was numerically evaluated against them.",
+          "quote": "We investigate how our method empirically compares with existing model-based methods and a strong model-free baseline on the standard benchmark Mujoco."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The SMCP is introduced in this paper, thus there is no external referenced paper title provided.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "Soft Actor-Critic",
+          "justification": "Soft Actor-Critic is mentioned as a part of the empirical baseline and for policy and value function proposals within SMCP simulations.",
+          "quote": "We use SAC (Haarnoja et al., 2018) for the policy and value function, but any other Maximum Entropy policy can be used for the proposal distribution."
+        },
+        "aliases": [
+          "SAC"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "SAC is used as a comparative baseline and a component of SMCP rather than being a contribution of this paper.",
+          "quote": "Furthermore, we included SAC (Haarnoja et al., 2018), a model-free RL algorithm, since i) it has currently one of the highest performances on Mujoco tasks."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper conducts experiments using SAC as a strong baseline for comparison, implying it was executed.",
+          "quote": "Sequential Monte Carlo Planning both with resampling (SIR) (pink) and without (SIS) (orange) learns faster than the Soft Actor-Critic model-free baseline (blue)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "SAC is used as a strong baseline to compare the learning performance of the SMCP algorithm in the experiments.",
+          "quote": "We test the hypothesis that our mean return on the last 100k steps is higher than the one obtained by SAC."
+        },
+        "referenced_paper_title": {
+          "value": "Soft Actor-Critic: Off-Policy Maximum Entropy Deep Reinforcement Learning with a Stochastic Actor",
+          "justification": "The paper references the work on Soft Actor-Critic by Haarnoja et al. for comparison and usage in the experiments.",
+          "quote": "We use SAC (Haarnoja et al., 2018) for the policy and value function, but any other Maximum Entropy policy can be used for the proposal distribution."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Mujoco",
+          "justification": "Mujoco is used as a standard benchmark to empirically evaluate the proposed SMCP algorithm.",
+          "quote": "We investigate how our method empirically compares with existing model-based methods and a strong model-free baseline on the standard benchmark Mujoco (Todorov et al., 2012)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Mujoco: A physics engine for model-based control",
+          "justification": "The paper uses Mujoco environments for experimental evaluation, referencing Todorov et al.'s work on this engine.",
+          "quote": "The experiments were conducted on the Open AI Gym Mujoco benchmark suite (Brockman et al., 2016; Todorov et al., 2012)."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1316,
+    "prompt_tokens": 16515,
+    "total_tokens": 17831,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

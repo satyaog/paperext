@@ -1,0 +1,150 @@
+{
+  "paper": "85904fd151dc06675114ff4623f4e43d.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Leveraging Observations in Bandits: Between Risks and Benefits",
+      "justification": "The title is explicitly mentioned at the beginning of the document.",
+      "quote": "Leveraging Observations in Bandits: Between Risks and Benefits"
+    },
+    "description": "The paper explores the concept of observational learning in the context of multi-armed bandits, proposing a new optimism modifier called Target-UCB that leverages actions observed from a target policy, even when associated rewards are not visible. The study provides theoretical analysis and empirical results to show both advantages and limitations of this approach.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper conducts experiments and provides empirical results to validate the proposed model, indicating that it is empirical research.",
+      "quote": "We provide empirical results showing both great benefits as well as certain limitations inherent to observational learning in the multi-armed bandit setting."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Reinforcement Learning",
+        "justification": "The paper focuses on bandits, a common problem setting within reinforcement learning, and discusses learning from observations, which is a reinforcement learning concept.",
+        "quote": "In this work, we study the observational learning problem in the context of bandits, the simplest setting for studying the explore-exploit trade-off faced by an agent in an unknown environment."
+      },
+      "aliases": [
+        "RL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Multi-Armed Bandit",
+          "justification": "The paper specifically addresses the observational learning problem within the context of multi-armed bandits, using algorithms like Upper Confidence Bound.",
+          "quote": "In this work, we study the observational learning problem in the context of bandits, the simplest setting for studying the explore-exploit trade-off faced by an agent in an unknown environment."
+        },
+        "aliases": [
+          "Bandits"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Target-UCB",
+          "justification": "Target-UCB is the main model introduced and analyzed in the paper to incorporate observational learning into the UCB algorithm.",
+          "quote": "By adding target optimism (Equation 2) to the UCB algorithm, we obtain a new variant: Target-UCB."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "The paper introduces Target-UCB as a new contribution, specifically modifying the UCB algorithm for the study.",
+          "quote": "By adding target optimism (Equation 2) to the UCB algorithm, we obtain a new variant: Target-UCB."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper includes empirical results and experiments conducted using the Target-UCB model.",
+          "quote": "We provide empirical results showing both great benefits as well as certain limitations inherent to observational learning in the multi-armed bandit setting."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Target-UCB is compared to a baseline algorithm and other strategies to highlight its performance advantages and limitations.",
+          "quote": "We also notice that the greedy follower baseline performs even better. This is not surprising as the considered target (UCB) is good (and improving)."
+        },
+        "referenced_paper_title": {
+          "value": "Finite-time analysis of the multiarmed bandit problem",
+          "justification": "The referenced paper relates to the foundational UCB algorithm, which Target-UCB modifies for this study.",
+          "quote": "(Auer, Cesa-Bianchi, and Fischer 2002)"
+        }
+      },
+      {
+        "name": {
+          "value": "Upper Confidence Bound (UCB)",
+          "justification": "UCB is a foundational model discussed throughout the paper and compared with Target-UCB, playing a key role in the observational learning strategy proposed.",
+          "quote": "The standard UCB (Auer, Cesa-Bianchi, and Fischer 2002) policy for reward distributions with support in [0, 1] plays each action once and then selects action..."
+        },
+        "aliases": [
+          "UCB"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "UCB is a well-known algorithm that is not introduced in this paper but used as a basis for comparison.",
+          "quote": "In this work, we study observational learning bandits by introducing a new factor, which we denominate target optimism."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "UCB is employed in the experiments for comparison with the newly proposed Target-UCB model.",
+          "quote": "We therefore have two agents: one UCB, who is learning solely from the environment, and one learner, who is using observational data from its target (the UCB) as well as its own rewards to shape its policy."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "UCB is used as a baseline for performance comparison against Target-UCB to highlight the efficacy of the new model.",
+          "quote": "UCB has the term 8 ln T /∆ a . Therefore, Target-UCB necessarily outperforms UCB when the target policy is good."
+        },
+        "referenced_paper_title": {
+          "value": "Finite-time analysis of the multiarmed bandit problem",
+          "justification": "The seminal paper on UCB is referenced explicitly to provide foundational knowledge for the Target-UCB model comparisons.",
+          "quote": "(Auer, Cesa-Bianchi, and Fischer 2002)"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Real psychology dataset",
+          "justification": "The dataset is mentioned as a motivation for the research study, involving teens observing peers' behaviors.",
+          "quote": "Specifically, our work was motivated by a real psychology dataset in which teens can observe the behaviour of peers (such as consuming certain soft drinks) but cannot observe the actual reward (enjoyment) directly."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Observational learning by reinforcement learning",
+          "justification": "The dataset serves as an inspiration and reference to contextualize the observational learning problem discussed in the paper.",
+          "quote": "(Schlag 1998; Rendell et al. 2010; Toyokawa, Kim, and Kameda 2014)"
+        }
+      },
+      {
+        "name": {
+          "value": "Human Bandit Dataset",
+          "justification": "A dataset involving human subjects playing a bandit problem was created during the experiments conducted by the authors.",
+          "quote": "The resulting dataset can be found at: https://github.com/lupuandr/Target-UCB/tree/master/Human%20bandit%20dataset."
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The dataset was created for the study and does not have a reference paper associated with it.",
+          "quote": "The resulting dataset can be found at: https://github.com/lupuandr/Target-UCB/tree/master/Human%20bandit%20dataset."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1325,
+    "prompt_tokens": 11084,
+    "total_tokens": 12409,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

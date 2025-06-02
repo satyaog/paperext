@@ -1,0 +1,203 @@
+{
+  "paper": "9710267835a8bee661c147d098b257d7.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "An Addendum to NeBula: Towards Extending TEAM CoSTAR’s Solution to Larger Scale Environments",
+      "justification": "The title is explicitly mentioned at the top of the paper.",
+      "quote": "An Addendum to NeBula: Towards Extending TEAM CoSTAR’s Solution to Larger Scale Environments"
+    },
+    "description": "This paper presents an extension to NeBula's original autonomy solution, focusing on enhancing various components such as hardware, software, and algorithms to enable exploration in larger environments. Specifically, it discusses enhancements in large-scale mapping, adaptive positioning systems, traversability analysis, motion planning, networking, mission planning, and multi-modal exploration capabilities. The application of these enhanced systems is demonstrated in challenging underground environments including limestone mines and DARPA's Subterranean Challenge.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper details applications and implementations of the NeBula extensions in real-world settings like limestone mines and the DARPA Subterranean Challenge, indicating practical testing and analysis.",
+      "quote": "We demonstrate the application and deployment of the presented systems and solutions in various large-scale underground environments, including limestone mine exploration scenarios as well as deployment in the DARPA Subterranean challenge."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Robotics",
+        "justification": "The paper primarily deals with autonomous robotic systems, emphasizing enhancements in robotic exploration and autonomy for challenging environments.",
+        "quote": "This paper presents an appendix to the original NeBula autonomy solution developed by the TEAM CoSTAR (Collaborative SubTerranean Autonomous Robots), participating in the DARPA Subterranean Challenge."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Autonomous Exploration",
+          "justification": "The paper discusses enhancements to NeBula's exploration capabilities, focusing on large-scale environments and autonomous mission execution.",
+          "quote": "Specifically, this paper presents extensions to NeBula’s hardware, software, and algorithmic components that focus on increasing the range and scale of the exploration environment."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Multi-robot Systems",
+          "justification": "The research extensively covers the deployment of multiple robotic units in coordination, highlighting improvements in multi-robot networking and mission management.",
+          "quote": "We present these solutions and their deployment results in the context of multi-robot deployment in large underground environments."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Mapping and Localization",
+          "justification": "The paper includes enhancements in 3D mapping and localization through systems like LAMP 2.0, crucial for effective exploration.",
+          "quote": "LAMP 2.0 is designed specifically to accommodate systems of over 8 heterogeneous agents exploring over many kilometers of distance in a scalable, prioritized and real-time manner."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "HeRO",
+          "justification": "HeRO (Heterogeneous and Resilient Odometry Estimation) is described as a sensor fusion architecture used within the NeBula system.",
+          "quote": "HeRO [Santamaria-Navarro et al., 2019] sensor fusion architecture, shown in Fig. 4, considers resiliency and heterogeneity in both sensing and estimation algorithms."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The HeRO model is referenced in the context of being used within NeBula's framework, indicating it is not a novel contribution of this paper.",
+          "quote": "We briefly describe our heterogeneous and resilient odometry estimation scheme (HeRO) [Santamaria-Navarro et al., 2019] with particularities of the estimation engines."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "HeRO is implemented as part of the NeBula 2.0 system's state estimation, indicating it was executed in the context of this work.",
+          "quote": "Our solution considers software-synchronized sensors (common clock synchronization after initialization), with extrinsic calibrations roughly obtained from the robot model designs and fine tuned used optimization approaches."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "The paper does not provide specific numerical comparisons of HeRO against other models.",
+          "quote": "The output of the fusion block includes the state-estimate and a quality-report for each single estimation method and sensor input."
+        },
+        "referenced_paper_title": {
+          "value": "Heterogeneous and Resilient Odometry Estimation",
+          "justification": "The referenced paper title for HeRO is given in the citation list to provide context for the methodology used in this paper.",
+          "quote": "HeRO [Santamaria-Navarro et al., 2019] sensor fusion architecture."
+        }
+      },
+      {
+        "name": {
+          "value": "LOCUS 2.0",
+          "justification": "LOCUS 2.0 is a LiDAR odometry solution utilized for robust localizing within the NeBula framework, according to the text.",
+          "quote": "We update our LiDAR odometry solution LOCUS [Palieri et al., 2020] and present LOCUS 2.0 [Reinke et al., 2022] as a multi-sensor LiDAR-centric solution."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "LOCUS 2.0 is presented as an update to the LOCUS model with enhanced features, indicating it as a contributed model in this research.",
+          "quote": "To overcome these challenges, we update our LiDAR odometry solution LOCUS [Palieri et al., 2020] and present LOCUS 2.0."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "LOCUS 2.0 is executed within the NeBula architecture as part of its state estimation module, demonstrating its application in this research.",
+          "quote": "LOCUS 2.0 is a multi-sensor LiDAR-centric solution for high-definition odometry and 3D mapping in real-time with enhanced computational efficiency and decreased memory demand."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares the performance of LOCUS 2.0 against its preceding version and other metrics, indicating a comparison study.",
+          "quote": "First, we report in Fig. 6 results on computational efficiency enhancement provided with the proposed GICP from normals with respect to the standard GICP formulation."
+        },
+        "referenced_paper_title": {
+          "value": "LOCUS: LiDAR Odometry for Consistent, Accurate Ranking",
+          "justification": "The referenced paper title helps clarify the foundation from which LOCUS 2.0 improves, as noted in the document.",
+          "quote": "We update our LiDAR odometry solution LOCUS [Palieri et al., 2020] and present LOCUS 2.0 [Reinke et al., 2022]."
+        }
+      },
+      {
+        "name": {
+          "value": "LAMP 2.0",
+          "justification": "LAMP 2.0 is introduced as a multi-robot SLAM module, crucial for large-scale mapping and positioning in the improved NeBula system.",
+          "quote": "LAMP 2.0 (Large-scale Autonomous Mapping and Positioning) [Chang et al., 2022] is designed specifically to accommodate systems of over 8 heterogeneous agents."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "LAMP 2.0 is a significant advancement over previous SLAM approaches, indicating a novel contribution in this paper.",
+          "quote": "LAMP 2.0 is an evolution from LAMP 1.0, with the main enhancements being in scalability and robustness."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "LAMP 2.0 was deployed during field tests, such as those in underground environments, proving its execution in practice.",
+          "quote": "Fig. 12 shows the benefit of performing multi-robot SLAM, and the effectiveness of LAMP 2.0, including errors below 2 m over multiple kilometers of traverse."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The effectiveness of LAMP 2.0 is evaluated by comparing its performance to previous versions and present benchmarks.",
+          "quote": "Table 2 shows the improvement in average trajectory error of LAMP 2.0 compared to LAMP 1.0 in four datasets."
+        },
+        "referenced_paper_title": {
+          "value": "Large-scale Autonomous Mapping and Positioning",
+          "justification": "The paper references earlier versions of LAMP, providing foundational insights into the development of LAMP 2.0.",
+          "quote": "In this section we outline how LAMP 2.0 is designed to accommodate heterogenous robot teams for robust large-scale exploration."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "NeBula odometry dataset",
+          "justification": "The NeBula odometry dataset is explicitly used for evaluating the performance of LOCUS 2.0 among other systems.",
+          "quote": "We test the performance of LOCUS 2.0 gathering the data collected by wheeled rovers Husky robots from Clearpath Robotics and legged Spot robots from Boston Dynamics in a variety of real-world environments which was released as the Nebula odometry dataset in [Reinke et al., 2022]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "LOCUS: LiDAR Odometry for Consistent, Accurate Ranking",
+          "justification": "This referenced paper provides context about the use and characteristics of the collected data, used to validate LOCUS 2.0.",
+          "quote": "We test the performance of LOCUS 2.0 gathering the data collected by ... released as the Nebula odometry dataset in [Reinke et al., 2022]."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "ROS",
+          "justification": "The Robotics Operating System (ROS) is used as part of the NeBula framework for communication and control of the autonomous systems.",
+          "quote": "Despite its popularity, previous work has shown that ROS is not well-suited for networks of robots subject to intermittent connectivity [Sikand et al., 2021]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Robust Coordination of Multi-Robot Fleets for Exploration",
+          "justification": "ROS is mentioned in various works addressing its role in multi-robot systems, as explained in the paper.",
+          "quote": "Despite its popularity, previous work has shown that ROS is not well-suited for networks of robots subject to intermittent connectivity [Sikand et al., 2021]."
+        }
+      },
+      {
+        "name": {
+          "value": "ROS2",
+          "justification": "ROS2 provides significant improvements over ROS with better quality of service options, leveraged in the communication protocols of NeBula.",
+          "quote": "With the addition of Data Distribution Service (DDS), ROS2 provides significant improvements including configurable Quality of Service (QoS) parameters."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Data Distribution Service: Towards New Applications in Distributed Systems",
+          "justification": "The enhancements associated with ROS2 are referenced in conjunction with the mentioned advantages in the paper.",
+          "quote": "With the addition of Data Distribution Service (DDS), ROS2 provides significant improvements including configurable Quality of Service (QoS) parameters."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2213,
+    "prompt_tokens": 54663,
+    "total_tokens": 56876,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

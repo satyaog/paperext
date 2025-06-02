@@ -1,0 +1,137 @@
+{
+  "paper": "2402.18762.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Disentangling the Causes of Plasticity Loss in Neural Networks Preprint",
+      "justification": "The title explicitly addresses the core focus of the paper, which is to analyze the causes of plasticity loss in neural networks.",
+      "quote": "Disentangling the Causes of Plasticity Loss in Neural Networks Preprint"
+    },
+    "description": "This paper addresses the problem of plasticity loss in neural networks, particularly in nonstationary environments, by analyzing its mechanisms and proposing mitigation strategies. It demonstrates that plasticity loss can stem from multiple mechanisms which can be independently studied and suggests that combining interventions on several mechanisms can significantly improve network trainability.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper provides empirical analysis of plasticity loss by conducting various experiments on neural networks, testing different hypotheses and solutions through observed data.",
+      "quote": "We proceed to take these insights to develop a ‘Swiss cheese model’ of mitigation strategies."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Deep Learning",
+        "justification": "The paper focuses on neural networks' training dynamics, a core aspect of Deep Learning.",
+        "quote": "Disentangling the Causes of Plasticity Loss in Neural Networks."
+      },
+      "aliases": [
+        "DL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Deep Reinforcement Learning",
+          "justification": "A significant portion of the paper discusses plasticity issues within the context of Reinforcement Learning environments.",
+          "quote": "We show that a combination of layer normalization and weight decay is highly effective at maintaining plasticity in a variety of synthetic nonstationary learning tasks, and further demonstrate its effectiveness on naturally arising nonstationarities, including reinforcement learning in the Arcade Learning Environment."
+        },
+        "aliases": [
+          "RL"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "DQN",
+          "justification": "The DQN model is mentioned as being used in experiments related to reinforcement learning tasks.",
+          "quote": "We claim that it is this deceptively simple structure to the nonstationarity which drove the optimization difficulties encountered by this agent, i.e. that the nonstationarity increases the target mean, rather than the existence of nonstationarity in the first place."
+        },
+        "aliases": [
+          "Deep Q-Network"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper does not introduce DQN as a new model; it employs it as part of the empirical studies.",
+          "quote": "...by training a DQN agent on such a task is highly structured and essentially amounts to regressing on one-hot image labels and periodically adding a constant offset to the regression targets."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper includes execution and results on specific tasks with DQN.",
+          "quote": "We claim that it is this deceptively simple structure to the nonstationarity which drove the optimization difficulties encountered by this agent..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "DQN's performance is compared in terms of plasticity and network adaptation.",
+          "quote": "...resulting nonstationarity induced by training a DQN agent on such a task..."
+        },
+        "referenced_paper_title": {
+          "value": "Human-level control through deep reinforcement learning",
+          "justification": "Cited classic work where DQN was originally introduced.",
+          "quote": "In the contextual bandit tasks, we train a reinforcement learning agent on a stationary environment using Q-learning with target networks as in DQN [Mnih et al., 2015]."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "MNIST",
+          "justification": "The MNIST dataset is explicitly used in experiments related to understanding plasticity loss in neural networks.",
+          "quote": "To do so, we construct a fixed regression problem consisting of random output targets offset by some fixed constant, using as input images from the MNIST dataset."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Yann LeCun, Corinna Cortes, and Christopher J. C. Burges. \"The MNIST database of handwritten digits.\" 1998.",
+          "justification": "Standard reference for the MNIST dataset.",
+          "quote": "...using as input images from the MNIST dataset."
+        }
+      },
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "CIFAR-10 is employed in experiments to assess model performance and plasticity.",
+          "quote": "We use three activation functions, ReLU, GeLU, and Leaky ReLU (with negative slope equal to 0.01)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Krizhevsky, Alex, and Geoffrey Hinton. \"Learning multiple layers of features from tiny images.\" PhD thesis, University of Toronto, 2009.",
+          "justification": "Standard reference for the CIFAR-10 dataset.",
+          "quote": "...training a CNN (architecture details in Appendix B) on a sequence of randomly generated labels of the CIFAR-10 image classification dataset."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is commonly used for its flexible architecture and efficient GPU support in neural network training, and while it's not explicitly stated, the paper's context makes it a likely tool.",
+          "quote": "Training is carried out by randomly sampling initial values of the parameters..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Paszke, Adam, et al. \"PyTorch: An imperative style, high-performance deep learning library.\" Advances in Neural Information Processing Systems 32 (2019): 8026-8037.",
+          "justification": "Common reference for the PyTorch framework.",
+          "quote": "Training is carried out by randomly sampling initial values of the parameters..."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1121,
+    "prompt_tokens": 34568,
+    "total_tokens": 35689,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

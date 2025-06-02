@@ -1,0 +1,188 @@
+{
+  "paper": "c5f8cb501f25f1fede349209d315359e.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Manifold Mixup: Better Representations by Interpolating Hidden States",
+      "justification": "The title of the paper is clearly stated at the beginning and throughout the document.",
+      "quote": "Manifold Mixup: Better Representations by Interpolating Hidden States"
+    },
+    "description": "This paper introduces Manifold Mixup, a regularization technique designed to improve the generalization and robustness of deep neural networks. It achieves this by training networks on interpolations of hidden representations, which leads to smoother decision boundaries and flatter representations. The paper includes theoretical justification, empirical validation, and a comparison with other regularization methods.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper includes empirical experiments and comparisons with other methods, focusing on practical applications of the proposed technique.",
+      "quote": "Throughout a wide variety of experiments, we demonstrate four substantial benefits of Manifold Mixup..."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Deep Learning",
+        "justification": "The paper discusses improvements in neural network training through a novel regularization technique, which is a core topic in Deep Learning.",
+        "quote": "Deep neural networks excel at learning the train- ing data, but often provide incorrect and confident predictions when evaluated on slightly different test examples."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Regularization in Deep Learning",
+          "justification": "The main focus of the paper is on Manifold Mixup, a new regularization method for improving neural network training.",
+          "quote": "To address these issues, we propose Manifold Mixup, a sim- ple regularizer that encourages neural networks to predict less confidently on interpolations of hidden representations."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Adversarial Robustness",
+          "justification": "The paper discusses the robustness of neural networks to adversarial attacks as one of the aspects that Manifold Mixup improves.",
+          "quote": "Improved robustness to single-step adversarial attacks. This is evidence Manifold Mixup pushes the decision boundary away from the data in some directions (Section 5.3)."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Generalization in Neural Networks",
+          "justification": "The paper focuses on generalization improvements as a result of using Manifold Mixup.",
+          "quote": "More specifically, Manifold Mixup improves generalization in deep neural networks because it: ..."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "PreActResNet18",
+          "justification": "PreActResNet18 is mentioned as one of the architectures used in the experiments.",
+          "quote": "On the dataset CIFAR-10 and using a PreActResNet18, this led to a 4.33% test error..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "PreActResNet18 is not a new model introduced in this paper but is used for evaluation.",
+          "quote": "We train a variety of residual networks (He et al., 2016) using different regularizers..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper reports experimental results using this model, indicating it was executed as part of the study.",
+          "quote": "...using a PreActResNet18, this led to a 4.33% test error..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "PreActResNet18's results are compared against other models and methods in terms of accuracy and robustness.",
+          "quote": "We train a variety of residual networks (He et al., 2016) using different regularizers: no regularization, AdaMix, Input Mixup, and Manifold Mixup."
+        },
+        "referenced_paper_title": {
+          "value": "Identity mappings in deep residual networks",
+          "justification": "This is the reference paper for the PreActResNet model.",
+          "quote": "We train a variety of residual networks (He et al., 2016)..."
+        }
+      },
+      {
+        "name": {
+          "value": "WideResNet-28-10",
+          "justification": "WideResNet-28-10 is mentioned in the experiments with specific results.",
+          "quote": "Wide-Resnet-28-10..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "WideResNet-28-10 is not a contribution of this paper but used for comparison.",
+          "quote": "Wide-Resnet-28-10..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper includes experimental results using this model, indicating it was executed.",
+          "quote": "Wide-Resnet-28-10..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of WideResNet-28-10 is compared against other models in the context of the regularization techniques studied.",
+          "quote": "Wide-Resnet-28-10..."
+        },
+        "referenced_paper_title": {
+          "value": "Improved Training of Wasserstein GANs",
+          "justification": "This is a placeholder as the specific reference for WideResNet is not detailed. However, the model is a known architecture often used in comparison studies.",
+          "quote": "In Advances in Neural Information Processing Systems, pp. 5769–5779, 2017."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "CIFAR-10 is mentioned as a dataset used in the experiments for evaluating the performance of Manifold Mixup.",
+          "quote": "We show results for the CIFAR-10 (Table 1a)..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Multiple Layers of Features from Tiny Images",
+          "justification": "CIFAR-10 is a well-known dataset introduced in this reference, commonly used in image classification research.",
+          "quote": "Table 1: Classification errors on (a) CIFAR-10 and (b) CIFAR-100..."
+        }
+      },
+      {
+        "name": {
+          "value": "CIFAR-100",
+          "justification": "CIFAR-100 is utilized in the experiments for testing the proposed method's effectiveness.",
+          "quote": "Table 1: Classification errors on (a) CIFAR-10 and (b) CIFAR-100..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Multiple Layers of Features from Tiny Images",
+          "justification": "CIFAR-100, like CIFAR-10, is derived from the same source.",
+          "quote": "Table 1: Classification errors on (a) CIFAR-10 and (b) CIFAR-100..."
+        }
+      },
+      {
+        "name": {
+          "value": "SVHN",
+          "justification": "SVHN is discussed as part of the empirical evaluation of Manifold Mixup.",
+          "quote": "Table 2: Classification errors and neg-log-likelihoods on SVHN..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Reading Digits in Natural Images with Unsupervised Feature Learning",
+          "justification": "The reference paper introduces the SVHN dataset, which is used in this study.",
+          "quote": "Table 2: Classification errors and neg-log-likelihoods on SVHN..."
+        }
+      },
+      {
+        "name": {
+          "value": "TinyImageNet",
+          "justification": "TinyImageNet is mentioned as one of the datasets used for evaluation purposes.",
+          "quote": "We show results for the CIFAR-10 (Table 1a), CIFAR-100 (Table 1b), SVHN (Table 2), and TinyImageNET (Table 3) datasets."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ImageNet: A large-scale hierarchical image database",
+          "justification": "While not explicitly referenced, TinyImageNet is a subset of ImageNet, commonly used in benchmarking.",
+          "quote": "We show results for the CIFAR-10 (Table 1a), CIFAR-100 (Table 1b), SVHN (Table 2), and TinyImageNET (Table 3) datasets."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1573,
+    "prompt_tokens": 12361,
+    "total_tokens": 13934,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "paper": "ccd89a7d3af08198abe991ed6919c7c0.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Modeling Event Plausibility with Consistent Conceptual Abstraction",
+      "justification": "Title is directly taken from the top of the document where the authors and their affiliations are mentioned.",
+      "quote": "Modeling Event Plausibility with Consistent Conceptual Abstraction\n\nIan Porada ^{1} , Kaheer Suleman ^{2} , Adam Trischler ^{2} , and Jackie Chi Kit Cheung ^{1}"
+    },
+    "description": "The paper addresses the challenge of modeling event plausibility using Transformer-based models, specifically focusing on the inconsistency in conceptual abstraction within these models. It introduces methods to enforce consistency by leveraging lexical hierarchies, evaluating models' alignment with human judgments, and proposing improvements in plausibility prediction over lexical hierarchies.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves experiments using Transformer models (like RoBERTa) and evaluates their performance on tasks that require human-like plausibility judgments, indicating empirical research.",
+      "quote": "In this work, we show that Transformer-based plausibility models are markedly inconsistent across the conceptual classes of a lexical hierarchy, inferring that “a person breathing” is plausible while “a dentist breathing” is not, for example. We find this inconsistency persists even when models are softly injected with lexical knowledge, and we present a simple post-hoc method of forcing model consistency that improves correlation with human plausibility judgements."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The paper is focused on semantic plausibility in natural language understanding, which is a key area of study within Natural Language Processing.",
+        "quote": "Understanding natural language requires common sense, one aspect of which is the ability to discern the plausibility of events."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Commonsense Reasoning",
+          "justification": "The paper specifically deals with event plausibility which forms part of commonsense reasoning, exploring how models can align with human judgement in understanding commonsense knowledge.",
+          "quote": "such as conditional commonsense inference (Gordon et al., 2011; Zhang et al., 2017), abductive commonsense reasoning (Bhagavatula et al., 2020), and commonsense knowledge acquisition (Zhang et al., 2020a; Hwang et al., 2020)."
+        },
+        "aliases": [
+          "Cognitive Modeling"
+        ]
+      },
+      {
+        "name": {
+          "value": "Lexical Semantics",
+          "justification": "The work involves leveraging lexical hierarchies and analyzing semantic plausibility which falls under lexical semantics.",
+          "quote": "we evaluate models by correlation with two datasets of human plausibility judgements. Our models build off of RoBERTa (Liu et al., 2019), a pre-trained Transformer masked language model. ^{1} We use WordNet 3.1 (Miller, 1995) hypernymy relations as a lexical hierarchy."
+        },
+        "aliases": [
+          "Semantic Analysis"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "RoBERTa",
+          "justification": "The RoBERTa model is explicitly mentioned as the baseline and an integral part of the study to assess plausibility.",
+          "quote": "We find this inconsistency persists even when models are softly injected with lexical knowledge, and we present a simple post-hoc method of forcing model consistency that improves correlation with human plausibility judgements. Our models build off of RoBERTa (Liu et al., 2019), a pre-trained Transformer masked language model."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper uses RoBERTa as a foundation but does not contribute this model as part of its own development.",
+          "quote": "Our models build off of RoBERTa (Liu et al., 2019), a pre-trained Transformer masked language model."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "RoBERTa is used and fine-tuned for evaluating event plausibility within the scope of the paper.",
+          "quote": "Our fine-tuned RoBERTa baseline follows this approach."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "RoBERTa is used as a baseline to compare with proposed methods like CONCEPT INJECT and CONCEPT MAX in plausibility tasks.",
+          "quote": "Our fine-tuned RoBERTa baseline follows this approach."
+        },
+        "referenced_paper_title": {
+          "value": "RoBERTa: A Robustly Optimized BERT Pretraining Approach",
+          "justification": "The reference to RoBERTa is tied to this research paper by Liu et al., 2019.",
+          "quote": "Our models build off of RoBERTa (Liu et al., 2019), a pre-trained Transformer masked language model."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "P EP -3 K",
+          "justification": "Explicitly mentioned as a dataset used to evaluate the plausible and implausible events, forming a key part of the experiment.",
+          "quote": "P EP -3 K , the crowdsourced Physical Event Plausbility ratings of Wang et al. (2018), consists of 3,062 events rated as physically plausible or implausible by five crowdsourced workers."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Modeling semantic plausibility by injecting world knowledge",
+          "justification": "The paper by Wang et al., 2018 is referenced in connection with the P EP -3 K dataset.",
+          "quote": "P EP -3 K , the crowdsourced Physical Event Plausbility ratings of Wang et al. (2018), consists of 3,062 events rated as physically plausible or implausible by five crowdsourced workers."
+        }
+      },
+      {
+        "name": {
+          "value": "20 Questions commonsense dataset",
+          "justification": "The dataset is explicitly mentioned as a commonsense dataset for evaluating plausibility in s-v-o triples.",
+          "quote": "The 20 Questions commonsense dataset is a collection of 20 Questions style games played by crowdsourced workers."
+        },
+        "aliases": [
+          "20Q"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Proceedings of The Web Conference 2020",
+          "justification": "The dataset is referenced as part of common datasets used for evaluating semantic models like the ones being studied in this paper.",
+          "quote": "The 20 Questions commonsense dataset is a collection of 20 Questions style games played by crowdsourced workers. We format this dataset as plausibility judgments of s-v-o triples similar to PEP-3K."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "HuggingFace Transformers",
+          "justification": "The library is used for implementing RoBERTa within the paper.",
+          "quote": "We use the HuggingFace Transformers library PyTorch implementation of RoBERTa-base with 16-bit floating point precision (Wolf et al., 2020)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Transformers: State-of-the-art Natural Language Processing",
+          "justification": "The library is a key component in the implementation and experimentation using Transformer models which is central to the paper's research.",
+          "quote": "We use the HuggingFace Transformers library PyTorch implementation of RoBERTa-base with 16-bit floating point precision (Wolf et al., 2020)."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1464,
+    "prompt_tokens": 14632,
+    "total_tokens": 16096,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

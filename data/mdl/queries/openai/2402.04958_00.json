@@ -1,0 +1,166 @@
+{
+  "paper": "2402.04958.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Channel-Selective Normalization for Label-Shift Robust Test-Time Adaptation",
+      "justification": "The title is clearly stated at the beginning of the research paper.",
+      "quote": "Channel-Selective Normalization for Label-Shift Robust Test-Time Adaptation"
+    },
+    "description": "This paper proposes a novel method for enhancing the robustness of test-time adaptation (TTA) in deep neural networks against label distribution shifts, specifically by selectively adapting channels within the network's batch normalization layers. The method is empirically validated on tasks including CIFAR10-C, Imagenet-C, and fatty liver diagnosis.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper conducts experiments on datasets such as CIFAR10-C, Imagenet-C, and a medical ultrasound dataset to validate their proposed method, indicating an empirical approach.",
+      "quote": "Experiments on three different datasets demonstrate that our method can be applied on a range of classification tasks, in particular for highly imbalanced target data."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The paper is situated within the context of improving the robustness of deep learning models for tasks typically associated with computer vision, such as image classification.",
+        "quote": "Deep learning models have shown excellent performance on a wide variety of tasks in computer vision research, such as image classification."
+      },
+      "aliases": [
+        "CV"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Image Classification",
+          "justification": "The paper focuses on classification tasks as evidenced by the datasets CIFAR10-C, Imagenet-C, and fatty liver diagnosis being used for evaluation, which are common benchmarks for image classification.",
+          "quote": "We apply the proposed technique to three classification tasks, including CIFAR10-C, Imagenet-C, and diagnosis of fatty liver."
+        },
+        "aliases": [
+          ""
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Test-time batch normalization (TTN)",
+          "justification": "TTN is frequently referenced as a standard or baseline method against which the new proposed method is compared throughout the paper.",
+          "quote": "Test-time batch normalization (TTN) is an approach which replaces batch normalization statistics estimated as running averages on the training set with the statistics of the test data batch."
+        },
+        "aliases": [
+          "TTN"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper uses TTN as a baseline to compare their newly proposed channel-selective method.",
+          "quote": "Test-time batch normalization (TTN) is an approach which replaces batch normalization statistics estimated as running averages on the training set with the statistics of the test data batch."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Experiments in the paper show TTN being executed as part of the comparisons.",
+          "quote": "We first illustrate the potential pitfalls of TTN on several examples of label distribution shift. Using the CIFAR-10 dataset we show the effect on TTN of an extreme version of label distribution shift."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "TTN is used as a comparison baseline throughout the paper, showing the effectiveness and weaknesses of the newly proposed method.",
+          "quote": "We demonstrate that Hybrid-TTN can provide a good trade-off in being able to adapt to covariate shift without experiencing catastrophic failure due to label distribution shift."
+        },
+        "referenced_paper_title": {
+          "value": "Evaluating prediction-time batch normalization for robustness under covariate shift.",
+          "justification": "The TTN model description cites works focused on TTN's application and impact, indicating the foundational reference for this model.",
+          "quote": "Test-time batch normalization is closely related to the unsupervised domain adaptation method AdaBN [5, 24]."
+        }
+      },
+      {
+        "name": {
+          "value": "DELTA",
+          "justification": "The paper describes DELTA as one of the existing methods for addressing label distribution shifts at test time, which is compared against their proposed method.",
+          "quote": "DELTA uses test-time batch renormalization and dynamic online reweighting in an online manner to avoid mini-batch bias."
+        },
+        "aliases": [
+          ""
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "DELTA is used for comparative evaluation in the paper, not as a contribution by the authors.",
+          "quote": "DELTA uses test-time batch renormalization and dynamic online reweighting in an online manner to avoid mini-batch bias."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "DELTA is executed as part of the paper's experiments to compare its performance to that of the proposed method.",
+          "quote": "DELTA can present severe decreases in performance depending on the label distribution."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "DELTA is compared to the proposed method along with other models like TENT and LAME.",
+          "quote": "We observe that Hybrid-TTN can provide a good trade-off in being able to adapt to covariate shift without experiencing catastrophic failure due to label distribution shift."
+        },
+        "referenced_paper_title": {
+          "value": "DELTA: degradation-free fully test-time adaptation.",
+          "justification": "DELTA's development and details are found in another referenced work, which the paper uses for comparison.",
+          "quote": "DELTA uses test-time batch renormalization and dynamic online reweighting in an online manner to avoid mini-batch bias."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CIFAR10-C",
+          "justification": "The paper uses CIFAR10-C to evaluate the effectiveness of the proposed method under image corruption conditions.",
+          "quote": "We apply the proposed method to classification of two well-known benchmark natural image datasets (CIFAR-10 [21] and ImageNet-1K [9]), and finally on adaptation from a private medical dataset [42] to a publicly available one [6]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Benchmarking neural network robustness to common corruptions and perturbations.",
+          "justification": "The paper references CIFAR10-C and uses it in evaluations to test robustness under corruption, linking to its associated literature.",
+          "quote": "We use the CIFAR-10 [20] dataset along with CIFAR-10-C [15]."
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet-1K-C",
+          "justification": "The dataset is used in experiments as a benchmark for robustness against covariate shifts, validating the proposed method.",
+          "quote": "We use the ImageNet-1K [10] dataset along with ImageNet-1K-C [15]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Benchmarking neural network robustness to common corruptions and perturbations.",
+          "justification": "ImageNet-1K-C is employed in similar conditions as CIFAR10-C, and its reference is connected to an earlier study.",
+          "quote": "We use the ImageNet-1K [10] dataset along with ImageNet-1K-C [15]."
+        }
+      },
+      {
+        "name": {
+          "value": "Liver Ultrasound Dataset",
+          "justification": "The dataset is used to test the method's application in a medical setting, adding to the generalizability of the method across different domains.",
+          "quote": "We use, as the training data, a dataset of ultrasound abdominal images collected at a liver transplantation center from patients under suspicion of fatty liver disease [42]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Transfer learning with deep convolutional neural network for liver steatosis assessment in ultrasound images.",
+          "justification": "The dataset's source and detailed description are attributed to a specific study focusing on ultrasound imaging and pathology.",
+          "quote": "...a publicly available dataset collected at a different institution [6], with 550 images."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1515,
+    "prompt_tokens": 20245,
+    "total_tokens": 21760,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

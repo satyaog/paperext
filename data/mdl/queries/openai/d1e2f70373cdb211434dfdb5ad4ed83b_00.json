@@ -1,0 +1,437 @@
+{
+  "paper": "d1e2f70373cdb211434dfdb5ad4ed83b.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "GMNN: Graph Markov Neural Networks",
+      "justification": "The title is explicitly provided at the beginning of the paper.",
+      "quote": "GMNN: Graph Markov Neural Networks"
+    },
+    "description": "The paper introduces Graph Markov Neural Networks (GMNN), a novel method that integrates conditional random fields with graph neural networks for semi-supervised object classification, link classification, and unsupervised node representation learning. GMNN employs a variational EM algorithm to model and infer the dependencies between object labels in relational data.",
+    "type": {
+      "value": "theoretical",
+      "justification": "The paper is primarily focused on proposing a novel theoretical framework that combines graph neural networks with statistical relational learning methods.",
+      "quote": "In this paper, we propose a new approach called the Graph Markov Neural Network (GMNN), which combines the advantages of both statistical relational learning and graph neural networks."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Graph Neural Networks",
+        "justification": "The main focus of the paper is on extending graph neural networks by combining them with conditional random fields to improve modeling of label dependencies.",
+        "quote": "Another closely related research area is that of graph neural networks (Dai et al., 2016; Kipf & Welling, 2017; Hamilton et al., 2017; Gilmer et al., 2017; Veličković et al., 2018), which can learn useful object representations for predicting object labels."
+      },
+      "aliases": [
+        "GNN"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Statistical Relational Learning",
+          "justification": "The paper discusses extending statistical relational learning methods with graph neural networks to model label dependencies more effectively.",
+          "quote": "Statistical relational learning methods can effectively model the dependency of object labels through conditional random fields for collective classification."
+        },
+        "aliases": [
+          "SRL"
+        ]
+      },
+      {
+        "name": {
+          "value": "Conditional Random Fields",
+          "justification": "Conditional Random Fields are used in the paper as part of the GMNN approach to model the joint distribution of object labels.",
+          "quote": "We use a conditional random field as in Eq. (1) to model the joint distribution of object labels conditioned on object attributes."
+        },
+        "aliases": [
+          "CRF"
+        ]
+      },
+      {
+        "name": {
+          "value": "Semi-supervised Learning",
+          "justification": "The paper addresses semi-supervised object classification by proposing a method that can learn from both labeled and unlabeled data.",
+          "quote": "Many of these applications can be boiled down to the fundamental problem of semi-supervised object classification (Taskar et al., 2007)."
+        },
+        "aliases": [
+          "SSL"
+        ]
+      },
+      {
+        "name": {
+          "value": "Link Prediction",
+          "justification": "The paper reformulates link prediction as an object classification problem and applies GMNN to this task.",
+          "quote": "Specifically, we reformulate link classification as an object classification problem."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Unsupervised Node Representation Learning",
+          "justification": "The paper mentions the application of GMNN to unsupervised learning of node representations without labeled data.",
+          "quote": "Though GMNN is designed to learn node representations for semi-supervised node classification, it can be naturally extended to learn node representation without any labeled nodes."
+        },
+        "aliases": [
+          "NRL"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Graph Convolutional Network (GCN)",
+          "justification": "The GCN model is mentioned in context with GMNN as it uses graph convolutional layers.",
+          "quote": "For GMNN, p φ and q θ are composed of two graph convolutional layers with 16 hidden units and ReLU activation (Nair & Hinton, 2010), followed by the softmax function, as in Kipf & Welling (2017)."
+        },
+        "aliases": [
+          "GCN"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "GCN is known as an existing model used in the experiments as a benchmark, not a contribution of this paper.",
+          "quote": "Graph Convolutional Network (Kipf & Welling, 2017)"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The GCN is executed in experiments to compare its performance with the proposed GMNN.",
+          "quote": "For object classification, we mainly compare with the recently-proposed Graph Convolutional Network (Kipf & Welling, 2017)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of GCN is compared against GMNN and other models in the experiments.",
+          "quote": "For object classification, GMNN significantly outperforms all the SRL methods. The performance gain is from two folds."
+        },
+        "referenced_paper_title": {
+          "value": "Semi-supervised classification with graph convolutional networks",
+          "justification": "The referenced paper is explicitly mentioned when discussing the GCN model.",
+          "quote": "Graph Convolutional Network (Kipf & Welling, 2017)"
+        }
+      },
+      {
+        "name": {
+          "value": "Graph Attention Network (GAT)",
+          "justification": "GAT is cited as an existing model used for performance comparison in the experiments.",
+          "quote": "Graph Attention Network (Veličković et al., 2018)."
+        },
+        "aliases": [
+          "GAT"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "GAT is used for comparison purposes and is not introduced as a contribution of this paper.",
+          "quote": "Graph Attention Network (Veličković et al., 2018)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "GAT is executed in the experiments for comparative study.",
+          "quote": "However, GAT cannot scale up to both datasets in the link classification task, so the performance is not reported."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The GAT model is directly compared against GMNN in experiments assessing effectiveness in various tasks.",
+          "quote": "Compared with GAT, which uses a much more complicated architecture, GMNN significantly outperforms GCN, and the performance gain mainly comes from the capability of modeling label dependencies."
+        },
+        "referenced_paper_title": {
+          "value": "Graph Attention Networks",
+          "justification": "The referenced paper for GAT is cited in context with experimental methodologies.",
+          "quote": "Graph Attention Network (Veličković et al., 2018)."
+        }
+      },
+      {
+        "name": {
+          "value": "Graph Markov Neural Network (GMNN)",
+          "justification": "The GMNN is the primary contribution of the paper and is extensively detailed throughout the text.",
+          "quote": "This paper studies semi-supervised object classification in relational data, which is a fundamental problem in relational data modeling."
+        },
+        "aliases": [
+          "GMNN"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "GMNN is introduced in this paper as a new method integrating GNN and CRF for improved object classification.",
+          "quote": "In this paper, we propose a new approach called the Graph Markov Neural Network (GMNN), which combines the advantages of both statistical relational learning and graph neural networks."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The GMNN was executed in experiments to validate its performance against other models.",
+          "quote": "Experiment results show that GMNNs achieve state-of-the-art results on object classification and unsupervised node representation learning, as well as very competitive results on link classification."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The GMNN is compared numerically with various models including GCN and GAT to demonstrate its superiority.",
+          "quote": "Experiments on object classification, link classification, and unsupervised node representation learning show that GMNN achieves state-of-the-art results."
+        },
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "GMNN is a novel model introduced in this paper, so there is no referenced paper for it.",
+          "quote": "N/A"
+        }
+      },
+      {
+        "name": {
+          "value": "DeepWalk",
+          "justification": "DeepWalk is utilized in the comparison of unsupervised node representation learning tasks.",
+          "quote": "Besides, we also compare with DeepWalk (Perozzi et al., 2014) and Planetoid (Yang et al., 2016)."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "DeepWalk is cited from existing literature as a baseline model for comparison purposes.",
+          "quote": "DeepWalk (Perozzi et al., 2014)"
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "DeepWalk is mentioned for comparison but not explicitly executed in the paper's experiments.",
+          "quote": "We compare with DeepWalk (Perozzi et al., 2014)"
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "DeepWalk's performance is used as a comparison point for evaluating the performance of GMNN.",
+          "quote": "Besides, we also compare with DeepWalk (Perozzi et al., 2014) and Planetoid (Yang et al., 2016)."
+        },
+        "referenced_paper_title": {
+          "value": "DeepWalk: Online Learning of Social Representations",
+          "justification": "The cited work is explicitly named in reference to DeepWalk in the comparisons discussed.",
+          "quote": "DeepWalk (Perozzi et al., 2014)"
+        }
+      },
+      {
+        "name": {
+          "value": "Probabilistic Relational Model (PRM)",
+          "justification": "The PRM is cited in comparison with GMNN concerning semi-supervised object classification and statistical relational learning.",
+          "quote": "For SRL methods, we compare with the Probabilistic Relational Model (Koller & Pfeffer, 1998)"
+        },
+        "aliases": [
+          "PRM"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "PRM is an existing approach referenced for comparison akin to semi-supervised learning tasks.",
+          "quote": "Probabilistic Relational Model (Koller & Pfeffer, 1998)"
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "PRM is mentioned as a comparison model, but its execution is not detailed in the paper's experiment.",
+          "quote": "For SRL methods, we compare with the Probabilistic Relational Model (Koller & Pfeffer, 1998)"
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "PRM is compared against GMNN and other models to demonstrate GMNN's effectiveness.",
+          "quote": "For SRL methods, we compare with the Probabilistic Relational Model (Koller & Pfeffer, 1998)"
+        },
+        "referenced_paper_title": {
+          "value": "Probabilistic Frame-Based Systems",
+          "justification": "The comparative reference to PRM indicates prior work cited from Koller & Pfeffer.",
+          "quote": "Probabilistic Relational Model (Koller & Pfeffer, 1998)"
+        }
+      },
+      {
+        "name": {
+          "value": "Relational Markov Network (RMN)",
+          "justification": "RMN is mentioned as part of statistical relational learning methods and is used to compare with GMNN.",
+          "quote": "The relational Markov network (RMN) (Taskar et al., 2002) is a SRL method used for comparison."
+        },
+        "aliases": [
+          "RMN"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "RMN is used as a benchmarking method to highlight the benefits of the GMNN approach.",
+          "quote": "The relational Markov network (RMN) (Taskar et al., 2002) is a SRL method used for comparison."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The paper discusses RMN in the context of theoretical comparison rather than active execution.",
+          "quote": "The relational Markov network (RMN) (Taskar et al., 2002) is a SRL method used for comparison."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "RMN is compared against GMNN to emphasize improvements over traditional statistical relational learning.",
+          "quote": "The relational Markov network (RMN) (Taskar et al., 2002) is a SRL method used for comparison."
+        },
+        "referenced_paper_title": {
+          "value": "Discriminative Probabilistic Models for Relational Data",
+          "justification": "The RMN paper is referenced to provide a theoretical foundation for comparisons made.",
+          "quote": "The relational Markov network (RMN) (Taskar et al., 2002) is a SRL method used for comparison."
+        }
+      },
+      {
+        "name": {
+          "value": "Markov Logic Network (MLN)",
+          "justification": "MLN is listed under SRL methods and compared against the GMNN approach in the work.",
+          "quote": "The Markov Logic Network (Richardson & Domingos, 2006) is used as a baseline for comparison against GMNN."
+        },
+        "aliases": [
+          "MLN"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "MLN is employed as an existing model to establish a baseline for GMNN's improvements.",
+          "quote": "The Markov Logic Network (Richardson & Domingos, 2006) is used as a baseline for comparison against GMNN."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "MLN is part of the comparative discussion rather than being actively executed within the paper's scope.",
+          "quote": "The Markov Logic Network (Richardson & Domingos, 2006) is used as a baseline for comparison against GMNN."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "MLN serves as a comparison model to denote GMNN's advantage over existing statistical neural approaches.",
+          "quote": "The Markov Logic Network (Richardson & Domingos, 2006) is used as a baseline for comparison against GMNN."
+        },
+        "referenced_paper_title": {
+          "value": "Markov Logic Networks",
+          "justification": "The MLN was referenced explicitly tying the theory to Richardson & Domingos' work.",
+          "quote": "The Markov Logic Network (Richardson & Domingos, 2006) is used as a baseline for comparison against GMNN."
+        }
+      },
+      {
+        "name": {
+          "value": "Planetoid",
+          "justification": "Planetoid is used within the paper's experiments to compare node representation learning tasks against GMNN.",
+          "quote": "Besides, we also compare with DeepWalk (Perozzi et al., 2014) and Planetoid (Yang et al., 2016)."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Planetoid is an existing, cited method for establishing baselines in node representation learning.",
+          "quote": "Planetoid (Yang et al., 2016)"
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "Planetoid is used for theoretical comparison instead of being executed during this study.",
+          "quote": "We compare with DeepWalk (Perozzi et al., 2014) and Planetoid (Yang et al., 2016)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Planetoid's use stems from its role as a benchmark for network embedding discussions, compared against GMNN.",
+          "quote": "Besides, we also compare with DeepWalk (Perozzi et al., 2014) and Planetoid (Yang et al., 2016)."
+        },
+        "referenced_paper_title": {
+          "value": "Revisiting Semi-supervised Learning with Graph Embeddings",
+          "justification": "Planetoid's theoretical framework is cited and juxtaposed against GMNN's applications.",
+          "quote": "Planetoid (Yang et al., 2016)"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Cora",
+          "justification": "Cora is stated as a benchmark dataset for evaluating GMNN's performance in object and node classification tasks.",
+          "quote": "For object classification, we follow existing studies (Yang et al., 2016; Kipf & Welling, 2017; Veličković et al., 2018) and use three benchmark datasets from Sen et al. (2008) for evaluation, including Cora."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Collective Classification in Network Data",
+          "justification": "Cora's data origin is tied to Sen et al. (2008) and acts as a classical benchmark.",
+          "quote": "For object classification, we follow existing studies (Yang et al., 2016; Kipf & Welling, 2017; Veličković et al., 2018) and use three benchmark datasets from Sen et al. (2008) for evaluation, including Cora."
+        }
+      },
+      {
+        "name": {
+          "value": "Citeseer",
+          "justification": "Citeseer is one of the datasets used to assess object classification, unsupervised node representation learning, and link classification in GMNN.",
+          "quote": "For object classification, we follow existing studies (Yang et al., 2016; Kipf & Welling, 2017; Veličković et al., 2018) and use three benchmark datasets from Sen et al. (2008) for evaluation, including Citeseer."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Collective Classification in Network Data",
+          "justification": "The paper cites the original source for the Citeseer dataset, providing the context for its usage.",
+          "quote": "For object classification, we follow existing studies (Yang et al., 2016; Kipf & Welling, 2017; Veličković et al., 2018) and use three benchmark datasets from Sen et al. (2008) for evaluation, including Citeseer."
+        }
+      },
+      {
+        "name": {
+          "value": "Pubmed",
+          "justification": "The dataset is employed in experiments to evaluate the effectiveness of the GMNN for various tasks including object classification.",
+          "quote": "For object classification, we follow existing studies (Yang et al., 2016; Kipf & Welling, 2017; Veličković et al., 2018) and use three benchmark datasets from Sen et al. (2008) for evaluation, including Pubmed."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Collective Classification in Network Data",
+          "justification": "Pubmed is sourced from Sen et al. (2008) and is a well-cited example in related literature for node tasks.",
+          "quote": "For object classification, we follow existing studies (Yang et al., 2016; Kipf & Welling, 2017; Veličković et al., 2018) and use three benchmark datasets from Sen et al. (2008) for evaluation, including Pubmed."
+        }
+      },
+      {
+        "name": {
+          "value": "Bitcoin Alpha",
+          "justification": "Bitcoin Alpha is utilized for link classification experiments within GMNN to explore link prediction tasks.",
+          "quote": "For link classification, we construct two datasets from the Bitcoin Alpha and the Bitcoin OTC datasets (Kumar et al., 2016; 2018) respectively."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Rev2: Fraudulent User Prediction in Rating Platforms",
+          "justification": "Bitcoin Alpha's role as a dataset is tied to a study by Kumar et al., focusing on graph-based user interactions.",
+          "quote": "For link classification, we construct two datasets from the Bitcoin Alpha and the Bitcoin OTC datasets (Kumar et al., 2016; 2018) respectively."
+        }
+      },
+      {
+        "name": {
+          "value": "Bitcoin OTC",
+          "justification": "The dataset Bitcoin OTC is employed to assess link classification in GMNN experiments, involving trust-based user interactions.",
+          "quote": "For link classification, we construct two datasets from the Bitcoin Alpha and the Bitcoin OTC datasets (Kumar et al., 2016; 2018) respectively."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Edge Weight Prediction in Weighted Signed Networks",
+          "justification": "Bitcoin OTC's sourced referenced paper by Kumar et al. underlines this dataset's statistical importance.",
+          "quote": "In this paper, we construct two datasets from the Bitcoin Alpha and the Bitcoin OTC datasets (Kumar et al., 2016; 2018) respectively."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "RMSProp",
+          "justification": "RMSProp is cited as the optimization technique used in GMNN for object classification tasks.",
+          "quote": "We use the RMSProp optimizer (Tieleman & Hinton, 2012) during training."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Lecture 6.5-rmsprop: Divide the gradient by a running average of its recent magnitude",
+          "justification": "The paper directly references the origin of the RMSProp optimizer from Hinton's lecture series.",
+          "quote": "We use the RMSProp optimizer (Tieleman & Hinton, 2012) during training."
+        }
+      },
+      {
+        "name": {
+          "value": "Adam",
+          "justification": "Adam is acknowledged as an optimizer in the training of GMNN for node representation and link classification tasks.",
+          "quote": "The Adam SGD optimizer (Kingma & Ba, 2014) is used for training, with initial learning rate as 0.1 and weight decay as 0.0005."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Adam: A Method for Stochastic Optimization",
+          "justification": "The reference to Kingma & Ba details the source methodology of the Adam optimizer.",
+          "quote": "The Adam SGD optimizer (Kingma & Ba, 2014) is used for training, with initial learning rate as 0.1 and weight decay as 0.0005."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 4265,
+    "prompt_tokens": 16945,
+    "total_tokens": 21210,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

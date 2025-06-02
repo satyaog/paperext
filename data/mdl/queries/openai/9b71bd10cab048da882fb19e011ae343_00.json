@@ -1,0 +1,448 @@
+{
+  "paper": "9b71bd10cab048da882fb19e011ae343.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "SAFT: Towards Out-of-Distribution Generalization in Fine-Tuning",
+      "justification": "The title is identified at the top of the document, encapsulating the main focus of the paper, which is the SAFT method aimed at improving out-of-distribution generalization during fine-tuning.",
+      "quote": "SAFT: Towards Out-of-Distribution Generalization in Fine-Tuning"
+    },
+    "description": "This paper introduces Sparse Adaptation for Fine-Tuning (SAFT), a method for improving out-of-distribution (OOD) generalization when fine-tuning pre-trained models, specifically vision-language models like CLIP. SAFT aims to minimize parameter updates, enhancing model robustness against distribution shifts while preserving OOD capabilities by efficiently selecting important parameters for downstream tasks.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper introduces a novel method (SAFT) and demonstrates its effectiveness through experiments.",
+      "quote": "Extensive experiments show that with only 0.1% of the model parameters, SAFT can significantly improve the performance of CLIP."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The main focus of the paper is on fine-tuning vision-language models and improving their generalization in tasks related to distribution shifts, which is a topic within the domain of computer vision.",
+        "quote": "Handling distribution shifts from training data, known as out-of-distribution (OOD) generalization, poses a significant challenge in the field of machine learning... a pre-trained vision-language model like CLIP has demonstrated remarkable zero-shot performance."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Transfer Learning",
+          "justification": "The paper discusses fine-tuning methods, a subset of transfer learning, focusing on adapting pre-trained models for new tasks without overfitting.",
+          "quote": "To fully leverage VLP capability for a specific downstream task, it is crucial to apply a form of adaptation... Two common adaptation techniques include fine-tuning, which involves optimizing the model parameters."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Natural Language Processing",
+          "justification": "Although the primary field is Computer Vision, there are notable evaluations of SAFT in NLP tasks as well.",
+          "quote": "We further extend our evaluation to language models applied to natural language processing (NLP) tasks"
+        },
+        "aliases": [
+          "NLP"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "CLIP",
+          "justification": "The paper uses the CLIP model extensively for demonstrating the proposed SAFT method.",
+          "quote": "a pre-trained vision-language model like CLIP has demonstrated remarkable zero-shot performance"
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "CLIP is not introduced by this paper, but it is used as a baseline to apply the SAFT method.",
+          "quote": "We conduct experiments of fine-tuning CLIP [42] on common benchmarks"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Experimental evaluations with CLIP are performed to show the effectiveness of SAFT.",
+          "quote": "We conduct experiments of fine-tuning CLIP [42] on common benchmarks..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "CLIP's performance is compared with and without the application of SAFT alongside other models.",
+          "quote": "SAFT demonstrates comparable performance to state-of-the-art methods on ID data, while achieving the best OOD performance on average, highlighting its strong generalization capabilities."
+        },
+        "referenced_paper_title": {
+          "value": "Learning transferable visual models from natural language supervision",
+          "justification": "The original paper of CLIP is referenced as it is extensively used in the experiments.",
+          "quote": "CLIP [42] was one of the early methods that employed contrastive learning [38] to align image and text."
+        }
+      },
+      {
+        "name": {
+          "value": "LoRA",
+          "justification": "LoRA is mentioned and compared in terms of model performance when fine-tuning.",
+          "quote": "low-rank adaptation [23] (LoRA)"
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "LoRA is referenced and used for performance comparison but is not introduced or modified in the paper.",
+          "quote": "SAFT outperforms Low-rank Adapter [23] (LoRA) in four out of five tasks in terms of OOD performance."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "LoRA is used in the paper for performance comparison on various tasks, indicating it was executed.",
+          "quote": "In particular, SAFT outperforms Low-rank Adapter [23] (LoRA) in four out of five tasks in terms of OOD performance."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "LoRA's performance is directly compared with SAFT and other methods.",
+          "quote": "SAFT outperforms Low-rank Adapter [23] (LoRA) in four out of five tasks in terms of OOD performance."
+        },
+        "referenced_paper_title": {
+          "value": "LoRA: Low-Rank Adaptation of Large Language Models",
+          "justification": "The original paper on LoRA is cited for comparative analysis.",
+          "quote": "Low-rank Adapter [23] (LoRA)"
+        }
+      },
+      {
+        "name": {
+          "value": "WiSE-FT",
+          "justification": "WiSE-FT is mentioned in the context of comparing its performance with SAFT.",
+          "quote": "WiSE-FT [55] and CLIPood [47] are methods that rely on parameter ensembling."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "WiSE-FT is used for comparative analysis in experiments but is not a contribution of this paper.",
+          "quote": "More recent fine-tuning methods include WiSE-FT [55] and CLIPood [47], which rely on parameter ensembling."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "WiSE-FT is used and experimented with in comparison to SAFT.",
+          "quote": "Moreover, our method achieves superior results even compared to the competitive ensemble method WiSE-FT."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "WiSE-FT is directly compared with SAFT in terms of performance outcomes.",
+          "quote": "Moreover, our method achieves superior results even compared to the competitive ensemble method WiSE-FT."
+        },
+        "referenced_paper_title": {
+          "value": "Robust Fine-tuning of Zero-Shot Models",
+          "justification": "Referenced to analyze and compare the performance in terms of fine-tuning approaches.",
+          "quote": "Robust fine-tuning of zero-shot models [55]."
+        }
+      },
+      {
+        "name": {
+          "value": "CoOp",
+          "justification": "CoOp is mentioned as a prompt-tuning method compared to SAFT.",
+          "quote": "prompt-tuning methods, including CoOp [65]"
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "CoOp is utilized for comparison but was not developed in this paper.",
+          "quote": "prompt-tuning methods, including CoOp [65], CoCoOp [64], and MaPLE [26]."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "CoOp is discussed in theoretical comparison but actual performance results or experiments within this paper are not specified.",
+          "quote": "prompt-tuning methods, including CoOp [65], CoCoOp [64], and MaPLE [26]."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "CoOp's performance metrics are discussed in relation to SAFT's.",
+          "quote": "CoOp [65], CoCoOp [64], and MaPLE [26]."
+        },
+        "referenced_paper_title": {
+          "value": "Learning to Prompt for Vision-Language Models",
+          "justification": "CoOp's principle work is cited for an understanding of prompt-tuning against the backdrop of SAFT comparisons.",
+          "quote": "prompt-tuning methods, including CoOp [65]"
+        }
+      },
+      {
+        "name": {
+          "value": "CoCoOp",
+          "justification": "CoCoOp serves as an advanced prompt-tuning method mentioned along with SAFT.",
+          "quote": "prompt-tuning methods, including CoOp [65], CoCoOp [64]"
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "It is presented in terms of comparisons but not contributed in this paper.",
+          "quote": "prompt-tuning methods, including CoOp [65], CoCoOp [64]"
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "There is no direct evidence of executing CoCoOp in practical experiments within this paper, but it's mentioned for performance comparison discussion.",
+          "quote": "prompt-tuning methods, including CoOp [65], CoCoOp [64]"
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "CoCoOp is referenced and discussed in the practical performance analysis spectrum of this paper.",
+          "quote": "prompt-tuning methods, including CoOp [65], CoCoOp [64]"
+        },
+        "referenced_paper_title": {
+          "value": "Conditional Prompt Learning for Vision-Language Models",
+          "justification": "CoCoOp’s principal research work is drawn upon for comparative results.",
+          "quote": "CoCoOp [64], and MaPLE [26]."
+        }
+      },
+      {
+        "name": {
+          "value": "SAFT",
+          "justification": "SAFT is the primary subject of the research and a proposed method for improving OOD generalization during fine-tuning.",
+          "quote": "This paper introduces Sparse Adaptation for Fine-Tuning (SAFT), a method that prevents fine-tuning from forgetting the general knowledge in the pre-trained model."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "SAFT is introduced in this paper as a novel contribution.",
+          "quote": "We introduce SAFT, a simple and effective method for adapting VLP models, that can achieve better OOD performance than conventional fine-tuning"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "SAFT is implemented and tested extensively within the scope of the paper across various tasks.",
+          "quote": "Extensive experiments show that with only 0.1% of the model parameters, SAFT can significantly improve the performance of CLIP."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "SAFT's performance is measured against other models like LoRA, WiSE-FT, CoOp, and CoCoOp for validation of its effectiveness.",
+          "quote": "In summary, this paper makes the following contributions... (i) We introduce SAFT, a simple and effective method for adapting VLP models, that can achieve better OOD performance than conventional fine-tuning..."
+        },
+        "referenced_paper_title": {
+          "value": "SAFT: Towards Out-of-Distribution Generalization in Fine-Tuning",
+          "justification": "SAFT is introduced within this document as the focus of the research paper.",
+          "quote": "This paper introduces Sparse Adaptation for Fine-Tuning (SAFT)..."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "ImageNet",
+          "justification": "The dataset is clearly referenced multiple times as a standard benchmark for validation of OOD generalization.",
+          "quote": "We consider the following benchmark, where ImageNet [7] is used for fine-tuning."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ImageNet Large Scale Visual Recognition Challenge",
+          "justification": "The referenced source of the ImageNet dataset is cited, providing context for its usage in the research.",
+          "quote": "ImageNet [7] is a large-scale visual dataset containing over 1 million labeled images spanning thousands of object categories."
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet-V2",
+          "justification": "ImageNet-V2 is specified as one of the datasets used to test the effectiveness of the SAFT method in achieving OOD performance.",
+          "quote": "ImageNet-V2 [44], which are ImageNet-Sketch [52], ImageNet-A [20], and ImageNet-R [19]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Do ImageNet Classifiers Generalize to ImageNet?",
+          "justification": "ImageNet-V2 is identified as a variant source in validation and its relevant publication is recognized.",
+          "quote": "ImageNet-V2 [44]"
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet-Sketch",
+          "justification": "ImageNet-Sketch is cited as one of the datasets for testing OOD generalization performance.",
+          "quote": "ImageNet-Sketch [52], ImageNet-A [20], and ImageNet-R [19]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Robust Global Representations by Penalizing Local Predictive Power",
+          "justification": "ImageNet-Sketch's role is validated with a citation pointing to its origin.",
+          "quote": "ImageNet-Sketch [52]"
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet-A",
+          "justification": "ImageNet-A serves as one of the test datasets in measuring SAFT's OOD performance.",
+          "quote": "ImageNet-A [20], and ImageNet-R [19]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Natural Adversarial Examples",
+          "justification": "The paper's description validates ImageNet-A’s use, as indicated by the reference to the dataset's foundational publication.",
+          "quote": "ImageNet-A [20]"
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet-R",
+          "justification": "The use of ImageNet-R as a benchmark is specified to demonstrate SAFT's generalization capabilities.",
+          "quote": "ImageNet-R [19]"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The Many Faces of Robustness: A Critical Analysis of Out-of-Distribution Generalization",
+          "justification": "The citation is given for ImageNet-R, validating its use in the paper.",
+          "quote": "ImageNet-R [19]"
+        }
+      },
+      {
+        "name": {
+          "value": "Caltech101",
+          "justification": "Caltech101 is used for evaluating fine-tuning tasks, showing SAFT's application to different datasets.",
+          "quote": "Caltech101 [9] for generic object classification"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Generative Visual Models from Few Training Examples: An Incremental Bayesian Approach Tested on 101 Object Categories",
+          "justification": "Caltech101 dataset reference is disclosed clearly within the context of detailed explanations.",
+          "quote": "Caltech101 [9]"
+        }
+      },
+      {
+        "name": {
+          "value": "OxfordPets",
+          "justification": "OxfordPets is utilized as a part of the comprehensive benchmark to test the effectiveness of SAFT.",
+          "quote": "OxfordPets [39], StanfordCars [29], Flowers102 [37], Food101 [3]"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Cats and Dogs",
+          "justification": "The respective reference is clearly mentioned for OxfordPets, identifying its origin.",
+          "quote": "OxfordPets [39]"
+        }
+      },
+      {
+        "name": {
+          "value": "StanfordCars",
+          "justification": "StanfordCars is included as a benchmark dataset to examine SAFT's performance.",
+          "quote": "StanfordCars [29], Flowers102 [37], Food101 [3], FGVCAircraft [34]"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "3D Object Representations for Fine-Grained Categorization",
+          "justification": "The StanfordCars dataset source is pointed out clearly among other datasets cited.",
+          "quote": "StanfordCars [29]"
+        }
+      },
+      {
+        "name": {
+          "value": "Flowers102",
+          "justification": "Flowers102 is part of a suite of datasets employed to evaluate SAFT.",
+          "quote": "Flowers102 [37], Food101 [3], FGVCAircraft [34], SUN397 [57]"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Automated Flower Classification over a Large Number of Classes",
+          "justification": "The paper references the dataset's formal description to provide clarity on its participation in these experiments.",
+          "quote": "Flowers102 [37]"
+        }
+      },
+      {
+        "name": {
+          "value": "Food101",
+          "justification": "Food101 is specified as one of the datasets for evaluating the effectiveness of the SAFT method alongside others.",
+          "quote": "Food101 [3], FGVCAircraft [34], SUN397 [57], UCF101 [48]"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Food-101 - Mining Discriminative Components with Random Forests",
+          "justification": "The Food101 dataset source is properly referenced.",
+          "quote": "Food101 [3]"
+        }
+      },
+      {
+        "name": {
+          "value": "FGVCAircraft",
+          "justification": "FGVCAircraft is listed among the datasets being used for testing SAFT in fine-grained tasks",
+          "quote": "FGVCAircraft [34], SUN397 [57], UCF101 [48], DTD [6]"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Fine-grained Visual Classification of Aircraft",
+          "justification": "The dataset reference is given context in the comprehensive evaluation layout for SAFT.",
+          "quote": "FGVCAircraft [34]"
+        }
+      },
+      {
+        "name": {
+          "value": "SUN397",
+          "justification": "SUN397 represents one of the datasets used in evaluating the generalization performance of SAFT.",
+          "quote": "SUN397 [57], UCF101 [48], DTD [6], EuroSAT [18]"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "SUN Database: Large-scale Scene Recognition from Abbey to Zoo",
+          "justification": "Referenced correctly to depict the dataset's inclusion and its roles.",
+          "quote": "SUN397 [57]"
+        }
+      },
+      {
+        "name": {
+          "value": "UCF101",
+          "justification": "UCF101 is utilized within the experimental setup to measure SAFT's capability across different tasks.",
+          "quote": "UCF101 [48], DTD [6], EuroSAT [18], and others"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "UCF101: A Dataset of 101 Human Actions Classes from Videos in the Wild",
+          "justification": "Citing the UCF101 paper gives insight into the pedigree of the dataset used for diverse task evaluations.",
+          "quote": "UCF101 [48]"
+        }
+      },
+      {
+        "name": {
+          "value": "DTD",
+          "justification": "DTD is included in the plethora of datasets to esteem the robustness of SAFT across tasks.",
+          "quote": "DTD [6], EuroSAT [18]"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Describing Textures in the Wild",
+          "justification": "Positioning DTD within influences by this dataset's associated reference supports inclusion rationale.",
+          "quote": "DTD [6]"
+        }
+      },
+      {
+        "name": {
+          "value": "EuroSAT",
+          "justification": "EuroSAT represents one of the designated datasets for conducting transfer learning evaluations of SAFT.",
+          "quote": "EuroSAT [18]"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "EuroSAT: A Novel Dataset and Deep Learning Benchmark for Land Use and Land Cover Classification",
+          "justification": "EuroSAT's primary reference is employed to validate the use and expected output from SAFT evaluations.",
+          "quote": "EuroSAT [18]"
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 3797,
+    "prompt_tokens": 25116,
+    "total_tokens": 28913,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

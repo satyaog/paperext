@@ -1,0 +1,210 @@
+{
+  "paper": "a55501563cfd003edc581365f2b0c784.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Functional Labeled Optimal Partitioning",
+      "justification": "The title is explicitly mentioned at the beginning of the document.",
+      "quote": "Functional Labeled Optimal Partitioning"
+    },
+    "description": "This paper introduces a new dynamic programming algorithm called FLOPART, designed for peak detection in sequential data analysis. It addresses limitations of existing algorithms by considering both train and test sets with zero train label errors, while maintaining accuracy. The empirical analysis shows FLOPART is more accurate compared to existing algorithms like GFPOP, LOPART, and BINSEG, offering similar time complexity but with improved accuracy in train and test label errors.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper provides an empirical analysis showing the accuracy and runtime of the proposed algorithm, FLOPART, compared to existing algorithms like GFPOP and LOPART.",
+      "quote": "We provide an empirical analysis that shows FLOPART has a similar time complexity while being more accurate than the existing algorithms in terms of train and test label errors."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Machine Learning",
+        "justification": "The paper focuses on developing a machine learning algorithm (FLOPART) for changepoint detection and peak detection in sequential data.",
+        "quote": "Changepoint detection models have become a prominent solution for fields... Newer pruning methods have allowed the algorithm to decrease the number of changepoints assessed, which lowers the time complexity to O(n log n)."
+      },
+      "aliases": [
+        "ML"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Changepoint Detection",
+          "justification": "The paper addresses the problem of changepoint detection by introducing an improved algorithm, FLOPART, which is based on dynamic programming.",
+          "quote": "We propose to resolve these issues by creating a new dynamic programming algorithm, FLOPART, that has zero train label errors, and is able to provide highly accurate predictions on the test set."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Peak Detection",
+          "justification": "The primary application of the proposed algorithm is peak detection in sequential data.",
+          "quote": "Peak detection is the problem of differentiating regions with higher counts (peaks) from areas with lower counts (background noise)."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "FLOPART",
+          "justification": "FLOPART is the proposed dynamic programming algorithm introduced in the paper for peak detection and changepoint detection with constraints.",
+          "quote": "We propose to resolve these issues by creating a new dynamic programming algorithm, FLOPART, that has zero train label errors, and is able to provide highly accurate predictions on the test set."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "The algorithm FLOPART is introduced as a new contribution in this paper.",
+          "quote": "We propose to resolve these issues by creating a new dynamic programming algorithm, FLOPART..."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The paper does not mention the use of GPUs or specific hardware acceleration for executing the FLOPART algorithm.",
+          "quote": "We ran all the experiments using a MacBook Pro with the 8-core CPU M1 chip and 16GB of unified memory."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "FLOPART is compared with other algorithms like GFPOP, BINSEG, and LOPART in terms of accuracy and performance.",
+          "quote": "We provide an empirical analysis that shows FLOPART has a similar time complexity while being more accurate than the existing algorithms in terms of train and test label errors."
+        },
+        "referenced_paper_title": {
+          "value": "This paper",
+          "justification": "The reference to FLOPART is this paper itself, so the title is 'This paper'.",
+          "quote": "FLOPART... (Table 1)."
+        }
+      },
+      {
+        "name": {
+          "value": "GFPOP",
+          "justification": "GFPOP is mentioned as an existing algorithm used as a baseline for comparison with FLOPART.",
+          "quote": "The current fastest constrained algorithm, GFPOP [Runge et al., 2020], can be considered unsupervised because the algorithm does not use the labels in the train set, allowing for train errors."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "GFPOP is discussed as an existing baseline algorithm, not a contribution of this paper.",
+          "quote": "The current fastest constrained algorithm, GFPOP [Runge et al., 2020],..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper discusses executing GFPOP as part of the experiments comparing with FLOPART.",
+          "quote": "FLOPART uses a similar algorithm as GFPOP (dynamic programming using functional pruning)..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "GFPOP is directly compared to FLOPART in terms of time complexity and accuracy.",
+          "quote": "Our empirical accuracy analysis using best case penalties in ChIP-seq data showed that for a train set, FLOPART is always at least as accurate as of the GFPOP..."
+        },
+        "referenced_paper_title": {
+          "value": "Runge et al. [2020]",
+          "justification": "The reference for GFPOP is cited as Runge et al. [2020].",
+          "quote": "gfpop: an r package for univariate graph-constrained change-point detection, 2020. URL https://arxiv.org/abs/2002.03646."
+        }
+      },
+      {
+        "name": {
+          "value": "LOPART",
+          "justification": "LOPART is mentioned as an existing algorithm that is improved upon by FLOPART.",
+          "quote": "In contrast, changepoint models that currently utilize labels are all unconstrained models (no constraints between adjacent segment means), including the LOPART algorithm [Hocking and Srivastava, 2020]... our new Functional Labeled Optimal PARTitioning (FLOPART) algorithm, which incorporates the label constraint ideas from LOPART."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "LOPART is an existing algorithm evaluated against the newly proposed FLOPART.",
+          "quote": "In contrast, changepoint models that currently utilize labels are all unconstrained models (no constraints between adjacent segment means), including the LOPART algorithm [Hocking and Srivastava, 2020]..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "LOPART is used in the experiments for comparison purposes.",
+          "quote": "To examine the changepoint prediction accuracy of FLOPART, we performed the following experiments using real ChIP-seq peak detection data sets. For baseline algorithms, we considered GFPOP [Runge et al., 2020], BINSEG [Scott and Knott, 1974], and LOPART [Hocking and Srivastava, 2020]."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "LOPART is compared with FLOPART regarding performance and accuracy.",
+          "quote": "Our empirical accuracy analysis using best case penalties in ChIP-seq data showed that for a train set, FLOPART is always at least as accurate as of the GFPOP, LOPART, and BINSEG baselines."
+        },
+        "referenced_paper_title": {
+          "value": "Hocking and Srivastava [2020]",
+          "justification": "The reference for LOPART is cited as Hocking and Srivastava [2020].",
+          "quote": "Labeled optimal partitioning. Preprint arXiv:2006.13967, 2020."
+        }
+      },
+      {
+        "name": {
+          "value": "BINSEG",
+          "justification": "BINSEG is another existing algorithm used as a baseline for comparison.",
+          "quote": "Binary segmentation is a classic heuristic algorithm which is often employed to reduce computation times, but it is not guaranteed to compute a set of changepoints with optimal loss [Scott and Knott, 1974]."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "BINSEG is used as an existing baseline for comparison in the research.",
+          "quote": "Binary segmentation is a classic heuristic algorithm which is often employed to reduce computation times..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "BINSEG is part of the experiments comparing its performance with FLOPART and other models.",
+          "quote": "FLOPART shows log-linear time complexity, much faster than the previous quadratic time LOPART algorithm."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "BINSEG is compared with FLOPART for various metric evaluations.",
+          "quote": "Our empirical accuracy analysis using best case penalties in ChIP-seq data showed that for a train set, FLOPART is always at least as accurate as of the GFPOP, LOPART, and BINSEG baselines."
+        },
+        "referenced_paper_title": {
+          "value": "Scott and Knott [1974]",
+          "justification": "BINSEG is referenced to Scott and Knott's work from 1974.",
+          "quote": "A cluster analysis method for grouping means in the analysis of variance. Biometrics, 30:507–512, 1974."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "ChIP-seq",
+          "justification": "The dataset used for empirical validation and evaluation of the algorithm is the ChIP-seq genomic data.",
+          "quote": "...we performed the following experiments using real ChIP-seq peak detection data sets."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Barski et al. [2007]",
+          "justification": "ChIP-seq data is associated with the study by Barski et al. from 2007 as referenced in the paper.",
+          "quote": "Peak detection in ChIP-seq data [Barski et al., 2007]."
+        }
+      },
+      {
+        "name": {
+          "value": "H3K4me3 and H3K36me3",
+          "justification": "These datasets are mentioned as specific ChIP-seq data types used to evaluate FLOPART.",
+          "quote": "The data consists of seven labeled ChIP-seq split by two peak types, H3K4me3 (sharp peak pattern) and H3K36me3 (broad peak pattern)..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Greer and Shi, 2012",
+          "justification": "These datasets are associated with the work by Greer and Shi as the genomic regions with active genes are of interest.",
+          "quote": "Each peak is of interest as they indicate genomic regions with active genes [Greer and Shi, 2012]."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 2081,
+    "prompt_tokens": 11247,
+    "total_tokens": 13328,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

@@ -1,0 +1,169 @@
+{
+  "paper": "a2c59a7437b70d9fe09463d101971f53.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "DiPS: Discriminative Pseudo-Label Sampling with Self-Supervised Transformers for Weakly Supervised Object Localization",
+      "justification": "The title reflects the core contribution of the paper, which is the introduction of the Discriminative Pseudo-Label Sampling (DiPS) method for improving weakly supervised object localization using self-supervised transformers.",
+      "quote": "In this paper, Discriminative Pseudo-label Sampling (DiPS) is introduced to leverage these class-agnostic maps for weakly-supervised object localization (WSOL), where only image-class labels are available."
+    },
+    "description": "This paper introduces DiPS, a method that leverages self-supervised vision transformers to improve weakly supervised object localization by generating discriminative pseudo-labels. The approach aims to optimize both classification and localization tasks using class-agnostic attention maps from SSTs, which are processed using a pre-trained classifier to identify discriminative regions. These identified regions are used as pseudo-labels for training a new transformer-based model.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper focuses on the empirical evaluation of DiPS, comparing it against state-of-the-art methods on several datasets, highlighting improved performance in weakly supervised object localization tasks.",
+      "quote": "Experimental results on the challenging CUB, ILSVRC, OpenImages, and TelDrone datasets indicate that our architecture, in combination with our transformer-based proposals, can yield better localization performance than state-of-the-art methods."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The work primarily deals with object localization, which is a key area within the field of computer vision.",
+        "quote": "Self-supervised vision transformers (SSTs) have shown great potential to yield rich localization maps that highlight different objects in an image."
+      },
+      "aliases": [
+        "Vision Computing"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Weakly Supervised Object Localization",
+          "justification": "The focus of the paper is on improving weakly supervised object localization by using self-supervised transformers.",
+          "quote": "In this paper, Discriminative Pseudo-label Sampling (DiPS) is introduced to leverage these class-agnostic maps for weakly-supervised object localization (WSOL), where only image-class labels are available."
+        },
+        "aliases": [
+          "WSOL"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Self-Supervised Transformer (SST)",
+          "justification": "The model is central to the method proposed in the paper, serving as the backbone for generating attention maps used in weakly supervised object localization.",
+          "quote": "Recently, self-supervised transformers (SSTs) have come to constitute a strong competitor to CNN-based models."
+        },
+        "aliases": [
+          "SST"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "SSTs are not newly introduced models in this paper but are used as a basis for the authors' method.",
+          "quote": "Recently, self-supervised transformers (SSTs)...Without any supervision, they can produce good attention maps for different objects in an image."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The SST model is executed to generate the attention maps that are crucial for the proposed method.",
+          "quote": "These maps highlight all objects in a scene as they are trained without any class information."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of models using SSTs is compared with various baseline models in the experimental results.",
+          "quote": "Experimental results on the challenging CUB, ILSVRC, OpenImages, and TelDrone datasets indicate that our architecture...can yield better localization performance than state-of-the-art methods."
+        },
+        "referenced_paper_title": {
+          "value": "Emerging properties in self-supervised vision transformers",
+          "justification": "The SST model cited in the paper refers to a known model in the field, which aligns with the referenced work on self-supervised transformers.",
+          "quote": "Recently, self-supervised transformers (SSTs) [24] have come to constitute a strong competitor to CNN-based models."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CUB-200-2011",
+          "justification": "The CUB-200-2011 dataset is explicitly mentioned as one of the datasets used to validate the proposed method's effectiveness.",
+          "quote": "(iii) CUB200-2011 consists of 11, 788 images distributed across 200 categories, with 5, 994 designated for training and 5, 794 for testing [63]."
+        },
+        "aliases": [
+          "CUB"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Caltech-UCSD Birds 200",
+          "justification": "The CUB-200-2011 dataset is cited with a reference indicating its original publication as a dataset for fine-grained bird species classification.",
+          "quote": "(iii) CUB200-2011 consists of 11, 788 images distributed across 200 categories, with 5, 994 designated for training and 5, 794 for testing [63]."
+        }
+      },
+      {
+        "name": {
+          "value": "ILSVRC",
+          "justification": "ILSVRC, a standard benchmark for object detection and classification, is used to evaluate the localization performance of the DiPS method.",
+          "quote": "(ii) ILSVRC includes approximately 1.2 million images spanning over 1, 000 classes."
+        },
+        "aliases": [
+          "ImageNet Large Scale Visual Recognition Challenge"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ImageNet Large Scale Visual Recognition Challenge",
+          "justification": "ILSVRC is cited in the paper with its original definition, showing its use as a standard benchmark dataset.",
+          "quote": "(ii) ILSVRC includes approximately 1.2 million images spanning over 1, 000 classes."
+        }
+      },
+      {
+        "name": {
+          "value": "OpenImages",
+          "justification": "OpenImages is used as a benchmark dataset to test the proposed DiPS method's efficacy in object localization.",
+          "quote": "(i) OpenImages [2, 62] is a dataset comprising 37, 319 images divided into 100 classes."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Large-scale interactive object segmentation with human annotators",
+          "justification": "The dataset is referenced by its creators, adding precision to the context of its use within this paper.",
+          "quote": "(i) OpenImages [2, 62] is a dataset comprising 37, 319 images divided into 100 classes."
+        }
+      },
+      {
+        "name": {
+          "value": "TelDrone",
+          "justification": "TelDrone is a proprietary dataset specifically mentioned as one of the test environments for the proposed method, showcasing localization capabilities using drone-captured images.",
+          "quote": "(iv) TelDrone is a private dataset, which is owned by Ericsson Inc."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "As TelDrone is a proprietary dataset, there isn't a formal publication referenced in the paper.",
+          "quote": "(iv) TelDrone is a private dataset, which is owned by Ericsson Inc."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is commonly used for implementing deep learning models, including transformers and attention mechanisms illustrated in the paper.",
+          "quote": "Our code is available: https://github.com/shakeebmurtaza/dips"
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "An open source machine learning framework for accelerating AI research",
+          "justification": "While not explicitly stated, the methodologies typically implemented using PyTorch suggest that it is the underlying library used.",
+          "quote": "Our code is available: https://github.com/shakeebmurtaza/dips"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1537,
+    "prompt_tokens": 18345,
+    "total_tokens": 19882,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

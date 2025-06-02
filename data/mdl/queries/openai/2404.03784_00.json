@@ -1,0 +1,182 @@
+{
+  "paper": "2404.03784.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Layerwise Early Stopping for Test Time Adaptation",
+      "justification": "The title is explicitly stated multiple times throughout the paper including the first page and matches the theme of the research which focuses on a new method for test time adaptation called LEAST.",
+      "quote": "Layerwise Early Stopping for Test Time Adaptation"
+    },
+    "description": "The paper introduces Layerwise Early Stopping (LEAST), a novel approach to Test Time Adaptation (TTA) which aims to address distribution shifts by dynamically stopping adaptation in individual layers of a pretrained model when the features being learned do not contribute positively to the new domain. The technique employs a gradient-based metric to inform stopping decisions without requiring supervised labels, thereby balancing adaptation and retention of previously learned features. Extensive experiments reveal LEAST's superior performance and efficiency across multiple datasets, domain shifts, model architectures, and loss functions.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper includes extensive experiments to demonstrate the effectiveness of the LEAST method, indicating an empirical approach.",
+      "quote": "Through extensive experiments, we demonstrate that Layerwise Early Stopping improves the performance of existing TTA approaches across multiple datasets, domain shifts, model architectures, and TTA losses."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Test Time Adaptation",
+        "justification": "The research primarily focuses on improving Test Time Adaptation methods, as explicitly mentioned in the abstract and throughout the paper.",
+        "quote": "Test Time Adaptation (TTA) addresses the problem of distribution shift by enabling pretrained models to learn new features on an unseen domain at test time."
+      },
+      "aliases": [
+        "TTA"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Parameter Efficient Adaptation",
+          "justification": "The paper discusses a parameter-efficient adaptation method through layerwise early stopping.",
+          "quote": "Keywords: test time adaptation · parameter efficient adaptation"
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Domain Generalization",
+          "justification": "The paper is concerned with adapting models to new domains effectively, which is a typical goal of domain generalization strategies.",
+          "quote": "LEAST outperforms standard ERM (no adaptation), all layers baselines, and other layer selection baselines (i.e., AutoRGN and AutoSNR [15]) for TTA."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "ResNet-18",
+          "justification": "The ResNet-18 model is used in the experiments to assess LEAST's performance.",
+          "quote": "We consider two backbones: ResNet-18 and ResNet-50, with batch normalization layers and two adaptation losses: pseudo-labeling (PL) [14] and SHOT [18]."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "ResNet-18 is a pre-existing model used to test the proposed LEAST method, not a contribution of the paper.",
+          "quote": "We consider two backbones: ResNet-18 and ResNet-50, with batch normalization layers and two adaptation losses: pseudo-labeling (PL) [14] and SHOT [18]."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was executed in the experiments as a backbone for testing LEAST's performance.",
+          "quote": "We consider two backbones: ResNet-18 and ResNet-50, with batch normalization layers and two adaptation losses: pseudo-labeling (PL) [14] and SHOT [18]."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares ResNet-18 with other models using different test time adaptation strategies, showing its performance improvements.",
+          "quote": "Tab. 1 shows that LEAST outperforms ERM (no adaptation) and all layers TTA adaptation baselines across all losses, backbones, and datasets."
+        },
+        "referenced_paper_title": {
+          "value": "Deep Residual Learning for Image Recognition",
+          "justification": "The ResNet models, including ResNet-18, are based on the original ResNet paper.",
+          "quote": "ResNet [14] is one of the widely used architectures investigated in this paper."
+        }
+      },
+      {
+        "name": {
+          "value": "ResNet-50",
+          "justification": "ResNet-50 is also employed in the study for assessing LEAST's effectiveness.",
+          "quote": "We consider two backbones: ResNet-18 and ResNet-50, with batch normalization layers and two adaptation losses: pseudo-labeling (PL) [14] and SHOT [18]."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "ResNet-50 is a well-established model utilized in the experiments, not a new model introduced by this paper.",
+          "quote": "We consider two backbones: ResNet-18 and ResNet-50, with batch normalization layers and two adaptation losses: pseudo-labeling (PL) [14] and SHOT [18]."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The experiments involved executing the ResNet-50 model to evaluate adaptation methods.",
+          "quote": "We consider two backbones: ResNet-18 and ResNet-50, with batch normalization layers and two adaptation losses: pseudo-labeling (PL) [14] and SHOT [18]."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "ResNet-50 is used in comparison with other models to analyze the benefit of LEAST.",
+          "quote": "LEAST outperforms both full model early stopping and selective layer adaptation without stopping [15], supporting our hypothesis that layers adapt independently, at varying rates."
+        },
+        "referenced_paper_title": {
+          "value": "Deep Residual Learning for Image Recognition",
+          "justification": "ResNet-50 originates from the same foundational paper on ResNet models.",
+          "quote": "ResNet [14] is one of the widely used architectures investigated in this paper."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "PACS",
+          "justification": "PACS is one of the datasets employed to evaluate Test Time Adaptation methods like LEAST.",
+          "quote": "This benchmark evaluates performance on four datasets: PACS [16], VLCS [7], Terra Incognita [3], and Office-Home [26]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Deeper, Broader and Artier Domain Generalization",
+          "justification": "The PACS dataset is originally from this paper, which focuses on domain generalization benchmarks.",
+          "quote": "This benchmark evaluates performance on four datasets: PACS [16], VLCS [7], Terra Incognita [3], and Office-Home [26]."
+        }
+      },
+      {
+        "name": {
+          "value": "VLCS",
+          "justification": "This dataset was used for evaluating the effectiveness of the adaptation strategies presented in the paper.",
+          "quote": "This benchmark evaluates performance on four datasets: PACS [16], VLCS [7], Terra Incognita [3], and Office-Home [26]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Unbiased Metric Learning: On the Utilization of Multiple Datasets and Web Images for Softening Bias",
+          "justification": "The VLCS dataset, used in this study, is from the referenced work on unbiased metric learning.",
+          "quote": "This benchmark evaluates performance on four datasets: PACS [16], VLCS [7], Terra Incognita [3], and Office-Home [26]."
+        }
+      },
+      {
+        "name": {
+          "value": "Terra Incognita",
+          "justification": "Terra Incognita is utilized in the paper to perform experiments related to domain adaptation.",
+          "quote": "This benchmark evaluates performance on four datasets: PACS [16], VLCS [7], Terra Incognita [3], and Office-Home [26]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Recognition in Terra Incognita",
+          "justification": "The Terra Incognita dataset's reference is consistent with the paper that introduced these experiments in unknown territories.",
+          "quote": "This benchmark evaluates performance on four datasets: PACS [16], VLCS [7], Terra Incognita [3], and Office-Home [26]."
+        }
+      },
+      {
+        "name": {
+          "value": "Office-Home",
+          "justification": "Office-Home is another dataset used in the LEAST model evaluation to test TTA methods under domain shifts.",
+          "quote": "This benchmark evaluates performance on four datasets: PACS [16], VLCS [7], Terra Incognita [3], and Office-Home [26]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Deep Hashing Network for Unsupervised Domain Adaptation",
+          "justification": "The use of Office-Home dataset is based on the unsupervised domain adaptation work that introduced this dataset.",
+          "quote": "This benchmark evaluates performance on four datasets: PACS [16], VLCS [7], Terra Incognita [3], and Office-Home [26]."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1779,
+    "prompt_tokens": 12596,
+    "total_tokens": 14375,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "paper": "b40727c5329ea1aba7f5b3f8da39d06e.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "THE JOURNEY MATTERS: AVERAGE PARAMETER COUNT OVER PRE-TRAINING UNIFIES SPARSE AND DENSE SCALING LAWS",
+      "justification": "The title of the paper captures the main idea explored in the research, which is about unifying sparse and dense scaling laws through average parameter count over pre-training.",
+      "quote": "T HE J OURNEY M ATTERS : A VERAGE P ARAMETER C OUNT OVER P RE - TRAINING U NIFIES S PARSE AND D ENSE S CALING L AWS"
+    },
+    "description": "This paper explores the optimal configurations for sparse pre-training of large language models (LLMs), revealing that initiating pruning at 25% and concluding at 75% of the total training compute achieves near-optimal evaluation loss. It proposes a scaling law that uses average parameter count during pre-training to model evaluation loss for both sparse and dense LLMs, offering computational savings by maintaining model quality while reducing model size.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents empirical results from testing over 80 configurations of sparse pre-training schedules and validates the proposed scaling laws through empirical data and experiments.",
+      "quote": "To validate this approach, we evaluate over 80 combinations of sparse pre-training schedules, sparsity levels, and training durations."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The paper focuses on adapting pre-training techniques for large language models, which is a core area of research in natural language processing.",
+        "quote": "Sparse pre-training integrates neural network pruning into pre-training and offers a promising solution to these challenges by activating only a subset of parameters during both training and inference, reducing computational costs; it gained prominence when Lottery Ticket Hypothesis presented compelling evidence for its feasibility."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Neural Network Pruning",
+          "justification": "The paper discusses various techniques related to neural network pruning, specifically for large language models, and how they relate to sparse and dense scaling laws.",
+          "quote": "Pruning eliminates unnecessary parameters in neural networks; it offers a promising solution to the growing computational demands of large language models (LLMs)."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Scaling Laws",
+          "justification": "The paper presents a new scaling law that incorporates average parameter count to unify sparse and dense scaling laws for LLMs, highlighting its importance in the research.",
+          "quote": "We unify sparse and dense scaling laws by modifying the parameter count term in the Chinchilla model and extending it to model sparse pre-training."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "LLaMA 2",
+          "justification": "The paper explicitly mentions using the LLaMA 2 base model architecture for training large language models during experiments.",
+          "quote": "We use the LLaMA 2 base model architecture."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper uses LLaMA 2 as a baseline and does not claim any modifications or contributions to this model.",
+          "quote": "For each unique model size, we train two versions: one using over 10x the number of tokens corresponding to Chinchilla optimal, and the other using over 20x Chinchilla optimal. We train substantially past Chinchilla-optimal dataset size, following prevailing practice."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper describes experiments conducted with the LLaMA 2 model on hardware such as TPUv4 and TPUv5, indicating that the model was executed.",
+          "quote": "Software and hardware. Our work uses TPUv4 and TPUv5 hardware for training LLMs. We modify MaxText to support sparse pre-training of LLMs."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The LLaMA 2 models are used in comparisons as the paper examines sparse versus dense pre-training configurations to evaluate model performance.",
+          "quote": "In Figure 1, we demonstrated that sparse and dense pre-training runs, starting with 138 million prunable parameters models and matching average parameter counts, achieve similar perplexity."
+        },
+        "referenced_paper_title": {
+          "value": "Llama 2: Open foundation and fine-tuned chat models",
+          "justification": "The LLaMA 2 model is a known model, and the reference supports the specific architecture used in the experiments detailed in the paper.",
+          "quote": "We use the LLaMA 2 (Touvron et al., 2023) base model architecture."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "C4 dataset",
+          "justification": "The paper specifies the use of the 'en' partition of the C4 dataset for tokenization and model training.",
+          "quote": "Dataset. We use the ‘en’ partition of the C4 dataset (Raffel et al., 2020)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Exploring the limits of transfer learning with a unified text-to-text transformer",
+          "justification": "The paper explicitly mentions the C4 dataset and references the appropriate work where it was originally described.",
+          "quote": "Dataset. We use the ‘en’ partition of the C4 dataset (Raffel et al., 2020)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "MaxText",
+          "justification": "The paper mentions that MaxText is used as a framework for modifying and supporting sparse pre-training of LLMs in the experiments.",
+          "quote": "Software and hardware. Our work uses TPUv4 and TPUv5 hardware for training LLMs. We modify MaxText (Davidow et al., 2024) to support sparse pre-training of LLMs."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Maxtext: A framework for training large language models",
+          "justification": "The paper refers to the specific MaxText framework used and cites its relevant documentation.",
+          "quote": "Software and hardware. Our work uses TPUv4 and TPUv5 hardware for training LLMs. We modify MaxText (Davidow et al., 2024) to support sparse pre-training of LLMs."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1238,
+    "prompt_tokens": 19178,
+    "total_tokens": 20416,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

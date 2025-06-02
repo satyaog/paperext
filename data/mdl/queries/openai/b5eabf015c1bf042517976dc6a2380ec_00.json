@@ -1,0 +1,177 @@
+{
+  "paper": "b5eabf015c1bf042517976dc6a2380ec.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Predicting Infectiousness for Proactive Contact Tracing",
+      "justification": "The paper primarily focuses on predicting infectiousness using proactive contact tracing methods.",
+      "quote": "P REDICTING I NFECTIOUSNESS FOR P ROACTIVE C ONTACT T RACING"
+    },
+    "description": "This research paper presents a proactive contact tracing (PCT) method using deep learning to predict COVID-19 infectiousness based on contact history and other relevant information. It aims to provide personalized recommendations to individuals while ensuring strong privacy constraints. By utilizing features from smartphones, the method improves accuracy over traditional binary contact tracing methods, potentially reducing disease spread with lower mobility restrictions.",
+    "type": {
+      "value": "empirical",
+      "justification": "The study involves experiments and simulations to evaluate the effectiveness of the proposed proactive contact tracing method.",
+      "quote": "In this paper, we use a recently-proposed COVID-19 epidemiological simulator to develop and test methods..."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Machine Learning for Epidemic Modeling",
+        "justification": "The paper uses deep learning models to predict and manage the spread of COVID-19, aligning with machine learning applications in epidemic modeling.",
+        "quote": "...a deep-learning based PCT method which improves over BCT for equivalent average mobility..."
+      },
+      "aliases": [
+        "Epidemic Modeling"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Digital Contact Tracing",
+          "justification": "The research focuses on deploying methods for digital contact tracing to manage COVID-19 spread.",
+          "quote": "Digital contact tracing (DCT), a technique to track the spread of the virus among individuals in a population using smartphones, is an attractive potential solution..."
+        },
+        "aliases": [
+          "DCT"
+        ]
+      },
+      {
+        "name": {
+          "value": "Privacy-Preserving Machine Learning",
+          "justification": "A significant concern in the paper is maintaining privacy while using machine learning for contact tracing.",
+          "quote": "...ensuring inference models are appropriate for legacy smartphones... enforcing strong privacy constraints."
+        },
+        "aliases": [
+          "Privacy ML"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Deep Sets",
+          "justification": "The paper describes the use of Deep Sets model as one of the deep learning architectures to predict infectiousness.",
+          "quote": "We embed two recently proposed networks, namely Deep Sets (Zaheer et al., 2017)..."
+        },
+        "aliases": [
+          "DS-PCT"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The Deep Sets model was used as part of the methodology but was not developed as a new contribution in this paper.",
+          "quote": "We embed two recently proposed networks, namely Deep Sets (Zaheer et al., 2017)..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was executed as part of the experiments to evaluate the method.",
+          "quote": "We find deep learning based methods to be consistently able to reduce the spread of the disease..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Deep Sets model is compared to other prediction models in the simulation tests.",
+          "quote": "We evaluate the proposed PCT methods, ST-PCT and DS-PCT, and benchmark them against..."
+        },
+        "referenced_paper_title": {
+          "value": "Deep Sets",
+          "justification": "The referenced paper 'Deep Sets' provides the foundational architecture used in this study.",
+          "quote": "We embed two recently proposed networks, namely Deep Sets (Zaheer et al., 2017)..."
+        }
+      },
+      {
+        "name": {
+          "value": "Set Transformers",
+          "justification": "The paper discusses Set Transformers as another model architecture used for predictions.",
+          "quote": "and Set Transformers (Lee et al., 2018)..."
+        },
+        "aliases": [
+          "ST-PCT"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The Set Transformers model was utilized, not newly developed for this paper.",
+          "quote": "We embed two recently proposed networks... and Set Transformers (Lee et al., 2018)..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was run as part of the experimental methodologies.",
+          "quote": "We find deep learning based methods to be consistently able to reduce the spread of the disease..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Set Transformers is compared alongside Deep Sets and other methods.",
+          "quote": "We evaluate the proposed PCT methods, ST-PCT and DS-PCT, and benchmark them against..."
+        },
+        "referenced_paper_title": {
+          "value": "Set Transformer: A Framework for Attention-based Permutation-Invariant Neural Networks",
+          "justification": "The 'Set Transformer' paper is cited as the source of the model architecture used in this study.",
+          "quote": "Set Transformers (Lee et al., 2018)..."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "COVIsim",
+          "justification": "The dataset is generated using the COVIsim simulator specifically for training purposes in this paper.",
+          "quote": "We use a recently proposed COVID-19 agent-based simulation testbed (Gupta et al., 2020) called COVIsim..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "COVIsim: An Agent-Based Model for Evaluating Methods of Digital Contact Tracing",
+          "justification": "COVIsim is specified as the simulation environment for generating datasets.",
+          "quote": "We use a recently proposed COVID-19 agent-based simulation testbed (Gupta et al., 2020) called COVIsim..."
+        }
+      },
+      {
+        "name": {
+          "value": "Simulations Dataset",
+          "justification": "Generated datasets from the COVIsim simulation are used for training deep learning models.",
+          "quote": "With the simulator, we generate large datasets of O(10^7) samples comprising the input and target variables defined in sections 2.1 and 3.1."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "COVIsim: An Agent-Based Model for Evaluating Methods of Digital Contact Tracing",
+          "justification": "Simulations Dataset refers back to the COVIsim model as detailed in the paper.",
+          "quote": "We use a recently proposed COVID-19 agent-based simulation testbed (Gupta et al., 2020) called COVIsim..."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is commonly used for developing deep learning models and likely used given the scope and requirements of implementing deep learning architectures.",
+          "quote": "The choice of ML predictor is informed by several factors... requires the predictor to be easily deployable on edge devices like legacy smartphones."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An Imperative Style, High-Performance Deep Learning Library",
+          "justification": "The paper points to the use of common deep learning libraries like PyTorch for implementing models.",
+          "quote": "The choice of ML predictor is informed by several factors... requires the predictor to be easily deployable on edge devices like legacy smartphones."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1366,
+    "prompt_tokens": 19186,
+    "total_tokens": 20552,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

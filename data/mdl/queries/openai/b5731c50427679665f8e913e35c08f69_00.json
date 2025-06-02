@@ -1,0 +1,185 @@
+{
+  "paper": "b5731c50427679665f8e913e35c08f69.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Active Domain Randomization",
+      "justification": "The title is explicitly mentioned at the beginning and throughout the paper.",
+      "quote": "Active Domain Randomization"
+    },
+    "description": "The paper introduces Active Domain Randomization (ADR), a novel algorithm that aims to improve agent generalization in domain transfer tasks by optimizing the sampling strategy of environment parameters. Through empirical experiments, it demonstrates that ADR can enhance the robustness and consistency of policies compared to traditional Uniform Domain Randomization (UDR), particularly in zero-shot transfer settings. ADR focuses on challenging parameter settings and leverages the discrepancies in policy rollouts to train agents more effectively.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper is empirical as it presents experiments and evaluates the performance of the proposed ADR method against baseline methods in various simulated and real robotic tasks.",
+      "quote": "In this work, we empirically examine the effects of domain randomization on agent generalization."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Reinforcement Learning",
+        "justification": "The paper is centered around domain randomization and active learning techniques for reinforcement learning agents, which falls directly under the Reinforcement Learning field.",
+        "quote": "Domain randomization is a popular technique for improving domain transfer, often used in a zero-shot setting when the target domain is unknown or cannot easily be used for training. In this work, we empirically examine the effects of domain randomization on agent generalization."
+      },
+      "aliases": [
+        "RL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Sim2Real Transfer",
+          "justification": "The study addresses sim2real challenges by using domain randomization to improve transfer effectiveness from simulations to real-world environments.",
+          "quote": "Keywords: sim2real, domain randomization, reinforcement learning"
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Robotics",
+          "justification": "The experiments include physics-based simulations and real-robot tasks, directly relating to the field of robotics.",
+          "quote": "Our experiments across various physics-based simulated and real-robot tasks show that this enhancement leads to more robust, consistent policies."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Stein Variational Policy Gradient (SVPG)",
+          "justification": "The paper specifically mentions using the Stein Variational Policy Gradient as part of their ADR approach.",
+          "quote": "We cast this active search as a Reinforcement Learning (RL) problem where the ADR sampling policy is parameterized with Stein Variational Policy Gradient (SVPG)."
+        },
+        "aliases": [
+          "SVPG"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "SVPG is not the primary contribution of this paper but a method employed in the ADR framework.",
+          "quote": "Recently, Liu et al. [3] proposed SVPG, which learns an ensemble of policies μ φ in a maximum-entropy RL framework."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "SVPG is actively used as part of the experiments to parameterize the ADR sampling policy.",
+          "quote": "We cast this active search as a Reinforcement Learning (RL) problem where the ADR sampling policy is parameterized with Stein Variational Policy Gradient (SVPG)."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "SVPG is used within the ADR framework but not directly compared against other models as standalone methods.",
+          "quote": "We cast this active search as a Reinforcement Learning (RL) problem where the ADR sampling policy is parameterized with Stein Variational Policy Gradient (SVPG)."
+        },
+        "referenced_paper_title": {
+          "value": "Stein variational policy gradient, 2017",
+          "justification": "The reference for SVPG is mentioned when discussing its implementation in ADR.",
+          "quote": "Recently, Liu et al. [3] proposed SVPG, which learns an ensemble of policies μ φ in a maximum-entropy RL framework [5]."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "LunarLander-v2",
+          "justification": "LunarLander-v2 is explicitly mentioned as an experimental testbed within the paper.",
+          "quote": "We consider the LunarLander-v2 environment, where the agent’s task is to ground a lander in a designated zone and reward is based on the quality of landing."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "OpenAI Gym, 2016",
+          "justification": "The reference to OpenAI Gym covers the standard environments including LunarLander-v2.",
+          "quote": "To test ADR, we experiment on OpenAI Gym environments [10] across various tasks, both simulated and real: (a) LunarLander-v2, a 2 degrees of freedom (DoF) environment."
+        }
+      },
+      {
+        "name": {
+          "value": "Pusher-3DOF-v0",
+          "justification": "The Pusher-3DOF-v0 environment is used in the paper's experiments to test ADR capabilities.",
+          "quote": "(b) Pusher-3DOF-v0, a 3 DoF arm from Haarnoja et al. [11] that has to push a puck to a target."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Composable deep reinforcement learning for robotic manipulation, 2018",
+          "justification": "The referenced paper is about the environment Composable deep reinforcement learning for robotic manipulation which Pusher-3DOF-v0 was derived from.",
+          "quote": "Pusher-3DOF-v0, a 3 DoF arm from Haarnoja et al. [11]."
+        }
+      },
+      {
+        "name": {
+          "value": "ErgoReacher-v0",
+          "justification": "ErgoReacher-v0 is utilized in the experiments for testing ADR and observing its effects on generalization.",
+          "quote": "(c) ErgoReacher-v0, a 4 DoF arm from Golemo et al. [13] which has to touch a goal with its end effector."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Sim-to-real transfer with neural-augmented robot simulation, 2018",
+          "justification": "The referenced paper discusses the environment used, linking it to the work by Golemo et al., which includes ErgoReacher-v0.",
+          "quote": "ErgoReacher-v0, a 4 DoF arm from Golemo et al. [13]."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "OpenAI Gym",
+          "justification": "The paper utilizes OpenAI Gym environments for testing ADR across various tasks.",
+          "quote": "To test ADR, we experiment on OpenAI Gym environments [10] across various tasks, both simulated and real."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "OpenAI Gym, 2016",
+          "justification": "OpenAI Gym is referenced as the platform providing the standard environments used in experiments.",
+          "quote": "Openai gym, 2016."
+        }
+      },
+      {
+        "name": {
+          "value": "Mujoco",
+          "justification": "Mujoco is mentioned as the physics engine used for simulating one of the test environments in the paper.",
+          "quote": "Pusher-3DOF-v0, a 3 DoF arm from... implemented in Mujoco [12]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Mujoco: A physics engine for model-based control, 2012",
+          "justification": "The referenced paper provides details about the Mujoco physics engine.",
+          "quote": "Mujoco: A physics engine for model-based control, in IROS [12], 2012."
+        }
+      },
+      {
+        "name": {
+          "value": "Bullet Physics",
+          "justification": "The paper uses the Bullet Physics Engine for the simulation of some environments tested with ADR.",
+          "quote": "ErgoReacher-v0, a 4 DoF arm from Golemo et al. [13] which has to touch a goal with its end effector, implemented in the Bullet Physics Engine [14]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Bullet physics simulation, SIGGRAPH 2015",
+          "justification": "The Bullet Physics engine is referenced as part of the environment setup used in experiments.",
+          "quote": "E. Coumans. Bullet physics simulation. In ACM SIGGRAPH 2015 Courses, SIGGRAPH ’15, New York, NY, USA, 2015. ACM."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1650,
+    "prompt_tokens": 12268,
+    "total_tokens": 13918,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

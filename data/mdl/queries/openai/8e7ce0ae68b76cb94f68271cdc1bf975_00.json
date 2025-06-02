@@ -1,0 +1,221 @@
+{
+  "paper": "8e7ce0ae68b76cb94f68271cdc1bf975.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "An Empirical Study of Example Forgetting During Deep Neural Network Learning",
+      "justification": "The title of the paper is 'An Empirical Study of Example Forgetting During Deep Neural Network Learning' as it appears at the beginning of the document.",
+      "quote": "A N E MPIRICAL S TUDY OF E XAMPLE F ORGETTING\nDURING D EEP N EURAL N ETWORK L EARNING"
+    },
+    "description": "The paper investigates the dynamics of example forgetting during the training of deep neural networks on single classification tasks. It examines how and why certain examples are consistently forgotten and the impact that has on the learning process. The paper also explores the potential benefits of removing certain training examples based on their forgetting dynamics.",
+    "type": {
+      "value": "empirical",
+      "justification": "The research paper is classified as empirical because it conducts experiments on multiple datasets (such as MNIST and CIFAR) to study the phenomenon of example forgetting in deep neural networks, rather than focusing on theoretical formulations.",
+      "quote": "Our purpose is to study this phenomenon from an empirical standpoint and characterize its prevalence in different datasets and across different model architectures."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Deep Learning",
+        "justification": "The paper discusses learning dynamics in neural networks, a core topic in deep learning research.",
+        "quote": "Many machine learning models, in particular neural networks, cannot perform continual learning."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Continual Learning",
+          "justification": "The research draws inspiration from the phenomenon of catastrophic forgetting, a central problem in continual learning.",
+          "quote": "Many machine learning models, in particular neural networks, cannot perform continual learning.\nThey have a tendency to forget previously learnt information when trained on new tasks, a phe-\nnomenon usually called catastrophic forgetting."
+        },
+        "aliases": [
+          "catastrophic forgetting"
+        ]
+      },
+      {
+        "name": {
+          "value": "Computer Vision",
+          "justification": "The experiments in the paper involve computer vision datasets such as CIFAR-10 and MNIST.",
+          "quote": "Our experimental evaluation on three datasets of increasing complexity: MNIST (LeCun et al., 1999), permuted MNIST – a version of MNIST that has the same fixed permutation applied to the pixels of all examples, and CIFAR-10 (Krizhevsky, 2009)."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Meta-learning",
+          "justification": "The paper mentions meta-learning in the context of increasing data efficiency and identifying important training examples.",
+          "quote": "It is a timely problem that has been the recent focus of few-shot learning approaches via meta-learning (Finn et al., 2017; Ravi & Larochelle, 2017)."
+        },
+        "aliases": [
+          "few-shot learning"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "ResNet",
+          "justification": "The paper explains that the CIFAR-10 experiments used a ResNet model, particularly for performance comparison.",
+          "quote": "For CIFAR-10, we use a ResNet with cutout (De-Vries & Taylor, 2017) trained using SGD and momentum with a particular learning rate schedule."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "ResNet is a well-known existing neural network architecture widely used for image classification tasks and was used in this paper for conducting experiments.",
+          "quote": "For CIFAR-10, we use a ResNet..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper discusses the implementation and results of experiments conducted using the ResNet model, indicating it was executed as part of the study.",
+          "quote": "For CIFAR-10, we use a ResNet with cutout (De-Vries & Taylor, 2017) trained using SGD and momentum with a particular learning rate schedule."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The experiments are explicitly used to compare forgetting dynamics using ResNet and assessing generalization performance after removing certain training examples.",
+          "quote": "In Fig. 5 (Left), we show the evolution of the generalization performance in CIFAR-10 when we artificially remove examples from the training dataset."
+        },
+        "referenced_paper_title": {
+          "value": "Improved regularization of convolutional neural networks with cutout",
+          "justification": "The reference paper by DeVries & Taylor (2017) is mentioned as the source describing the ResNet with cutout methodology used in this study.",
+          "quote": "For CIFAR-10, we use a ResNet with cutout (De-Vries & Taylor, 2017)."
+        }
+      },
+      {
+        "name": {
+          "value": "WideResNet",
+          "justification": "WideResNet is used in experiments to validate findings across neural network architectures.",
+          "quote": "The second one is a WideResNet (Zagoruyko & Komodakis, 2016), with a depth of 28 and a widen factor of 10."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "WideResNet is an existing network architecture mentioned in the context of carrying out the paper's experiments but was not introduced by this paper.",
+          "quote": "The second one is a WideResNet (Zagoruyko & Komodakis, 2016)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was implemented as per the discussion of its use in experiments as part of validating findings across architectures.",
+          "quote": "We train a WideResNet (Zagoruyko & Komodakis, 2016) on truncated data sets..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "WideResNet performance is compared when removing parts of the dataset based on ResNet's example ordering to check generalization.",
+          "quote": "We plot WideResNet’s generalization performance using the ordering obtained by ResNet18."
+        },
+        "referenced_paper_title": {
+          "value": "Wide residual networks",
+          "justification": "The paper by Zagoruyko & Komodakis (2016) on WideResNet is referenced for detailed architecture and implementation used in this study.",
+          "quote": "The second one is a WideResNet (Zagoruyko & Komodakis, 2016)."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "MNIST",
+          "justification": "MNIST dataset is commonly used in deep learning experiments, particularly for benchmarking image classification tasks, and is discussed in the context of analyzing example forgetting dynamics.",
+          "quote": "The histograms of forgetting events computed from one seed are shown in Figure 1. There are 55,012, 45,181 and 15,628 unforgettable examples common across 5 seeds, they represent respectively 91.7%, 75.3%, and 31.3% of the corresponding training sets."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The MNIST database of handwritten digits",
+          "justification": "The reference to the original MNIST paper serves to give credit for the dataset source used in experiments.",
+          "quote": "We perform our experimental evaluation on three datasets of increasing complexity: MNIST (LeCun et al., 1999)..."
+        }
+      },
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "CIFAR-10 is used in multiple experiments throughout the paper, particularly in the analysis of forgetting dynamics.",
+          "quote": "We perform our experimental evaluation on three datasets of increasing complexity: MNIST (LeCun et al., 1999), permuted MNIST – a version of MNIST that has the same fixed permutation applied to the pixels of all examples, and CIFAR-10 (Krizhevsky, 2009)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning multiple layers of features from tiny images",
+          "justification": "The reference gives context to the CIFAR-10 dataset used in the paper, supporting its inclusion in the research.",
+          "quote": "We perform our experimental evaluation on three datasets of increasing complexity... and CIFAR-10 (Krizhevsky, 2009)."
+        }
+      },
+      {
+        "name": {
+          "value": "permuted MNIST",
+          "justification": "Discusses the use of the permuted MNIST dataset which adds complexity for network training compared to standard MNIST.",
+          "quote": "We perform our experimental evaluation on three datasets of increasing complexity: MNIST (LeCun et al., 1999), permuted MNIST – a version of MNIST that has the same fixed permutation applied to the pixels of all examples..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The MNIST database of handwritten digits",
+          "justification": "permuted MNIST is a variant of the MNIST dataset and hence the original MNIST reference applies.",
+          "quote": "We perform our experimental evaluation on three datasets of increasing complexity: MNIST (LeCun et al., 1999), permuted MNIST..."
+        }
+      },
+      {
+        "name": {
+          "value": "CIFAR-100",
+          "justification": "Used in discussions related to complex learning tasks and catastrophic forgetting.",
+          "quote": "We perform the same removal experiments we presented in Figure 5 for CIFAR-100. The results are shown in Figure 18. Just like with CIFAR-10, we are able to remove all unforgettable examples..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning multiple layers of features from tiny images",
+          "justification": "CIFAR-100 expands upon CIFAR-10 and originates from the same research source, thus attributing the same reference.",
+          "quote": "We perform our experimental evaluation on CIFAR-100... and CIFAR-10 (Krizhevsky, 2009)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Cutout",
+          "justification": "Cutout is used as a regularization technique in the network architectures implemented for CIFAR-10 experiments.",
+          "quote": "For CIFAR-10, we use a ResNet with cutout (De-Vries & Taylor, 2017)..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Improved regularization of convolutional neural networks with cutout",
+          "justification": "The library and its function in regularization techniques referenced through the DeVries & Taylor (2017) paper are cited in regards to its use.",
+          "quote": "With cutout (De-Vries & Taylor, 2017)..."
+        }
+      },
+      {
+        "name": {
+          "value": "Adam",
+          "justification": "Adam is mentioned as an optimization method used for training certain models in the experiments.",
+          "quote": "The WideResNet is trained using Adam (Kingma & Ba, 2014) and a learning rate of 0.001."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Adam: A method for stochastic optimization",
+          "justification": "The reference is provided for a well-known optimizer actively used in deep learning model trainings.",
+          "quote": "The WideResNet is trained using Adam (Kingma & Ba, 2014)..."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2196,
+    "prompt_tokens": 15389,
+    "total_tokens": 17585,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

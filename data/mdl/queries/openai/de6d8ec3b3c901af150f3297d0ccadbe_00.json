@@ -1,0 +1,155 @@
+{
+  "paper": "de6d8ec3b3c901af150f3297d0ccadbe.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "SCIsegV2: A Universal Tool for Segmentation of Intramedullary Lesions in Spinal Cord Injury",
+      "justification": "The title clearly reflects the primary contribution of the paper, which is proposing a tool called SCIsegV2 for segmentation of intramedullary lesions in spinal cord injury.",
+      "quote": "In this work, we propose (i) a universal tool for the automatic segmentation of intramedullary SCI lesions, dubbed SCIsegV2."
+    },
+    "description": "The paper presents SCIsegV2, a deep learning-based tool for the automatic segmentation of intramedullary lesions in spinal cord injury (SCI). The tool is validated on a diverse dataset from multiple sites and etiology types. Additionally, it proposes a method for automatic computation of tissue bridge width, associated with functional recovery in SCI. The tool is integrated into the open-source Spinal Cord Toolbox for widespread accessibility and application.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper conducts experiments to test SCIsegV2 with different datasets and compares its performance with existing models to draw conclusions, indicative of empirical research.",
+      "quote": "We divided our experiments into 3 categories to investigate the effects of input types, data augmentation strategies and SCI etiology-specific models."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The research focuses on image segmentation, a typical area within Computer Vision, specifically applied to MRI imaging for SCI lesions.",
+        "quote": "Identifying MRI biomarkers in SCI automatically is challenging due to the varying size and location of lesions across patients and injury phases."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Medical Imaging",
+          "justification": "The paper deals with segmentation of medical images (MRI scans) specifically targeting spinal cord injuries.",
+          "quote": "Imaging biomarkers obtained from magnetic resonance imaging (MRI) scans can predict the functional recovery of individuals with SCI."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Image Segmentation",
+          "justification": "The core contribution involves a segmentation tool (SCIsegV2) which is used to automatically segment lesions from MRI images.",
+          "quote": "We present a comprehensive tool for the automatic segmentation of intramedullary SCI lesions, dubbed SCIsegV2."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "nnUNet",
+          "justification": "The paper uses nnUNet as the backbone architecture for the SCI lesion segmentation model.",
+          "quote": "We used nnUNet [10] as the backbone architecture for the SCI lesion segmentation model."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper uses nnUNet as a backbone for their tool but doesn't introduce as a novel contribution.",
+          "quote": "We used nnUNet [10] as the backbone architecture for the SCI lesion segmentation model."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper mentions the execution of the nnUNet model through training and validation on different types of datasets.",
+          "quote": "The model was trained for 1000 epochs with 5-fold cross-validation, using a batch size of 2 and the stochastic gradient descent optimizer with a polynomial learning rate scheduler."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares SCIsegV2, which is based on nnUNet, with other segmentation models in terms of performance.",
+          "quote": "We noticed that the models’ performance depends heavily on the specific SCI phases and etiologies."
+        },
+        "referenced_paper_title": {
+          "value": "nnU-Net: a self-adapting framework for U-Net-based medical image segmentation",
+          "justification": "The paper directly references nnUNet for their implementation and credits it accordingly.",
+          "quote": "We used nnUNet [10] as the backbone architecture for the SCI lesion segmentation model."
+        }
+      },
+      {
+        "name": {
+          "value": "SCIsegV2",
+          "justification": "SCIsegV2 is the main model proposed by the researchers for segmentation tasks in spinal cord injuries.",
+          "quote": "In this work, we propose (i) a universal tool for the automatic segmentation of intramedullary SCI lesions, dubbed SCIsegV2."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "The authors introduced SCIsegV2 as their primary contribution to advance spinal cord injury segmentation methods.",
+          "quote": "In this work, we propose (i) a universal tool for the automatic segmentation of intramedullary SCI lesions, dubbed SCIsegV2."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The SCIsegV2 model was executed and evaluated using various datasets for validation and testing purposes.",
+          "quote": "While SCIsegV1 [14] was trained on a dataset of 3 sites predominantly consisting of traumatic SCI, it outperforms SCIsegV2 models in sites 4 and 7."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The model's performance is compared with prior models in segmentation tasks regarding different spinal cord injury types.",
+          "quote": "Table 1 shows the comparison of lesion-wise metrics for SCIsegV1 and various SCIsegV2 models (with aggressiveDA) across the 5 testing sites."
+        },
+        "referenced_paper_title": {
+          "value": "SCISEG: Automatic segmentation of T2-weighted intramedullary lesions in spinal cord injury",
+          "justification": "The reference to SCIsegV1 is cited as the predecessor whose comparisons are made with SCIsegV2.",
+          "quote": "While SCIsegV1 [14] was trained on a dataset of 3 sites predominantly consisting of traumatic SCI, it outperforms SCIsegV2 models in sites 4 and 7."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Site-specific SCI Dataset",
+          "justification": "The paper aggregated a dataset from seven different sites, each contributing to spinal cord injury data under various conditions for model training and testing.",
+          "quote": "We used T2-weighted (T2w) MRI images with heterogeneous image resolutions (isotropic, sagittal, and axial) and magnetic field strengths (1.0T, 1.5T, and 3.0T) from seven sites."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "SCISEG: Automatic segmentation of T2-weighted intramedullary lesions in spinal cord injury",
+          "justification": "The dataset used in SCIsegV2 is an extension of what was previously gathered and used in SCIseg, the referenced model.",
+          "quote": "Details about the training strategy can be found in [14]."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Spinal Cord Toolbox (SCT)",
+          "justification": "The SCIsegV2 tool and the automatic tissue bridges computation are integrated into Spinal Cord Toolbox.",
+          "quote": "Both SCIsegV2 and the automatic tissue bridges computation are open-source and available in Spinal Cord Toolbox (v6.4 and above)."
+        },
+        "aliases": [
+          "SCT"
+        ],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "SCISEG: Automatic segmentation of T2-weighted intramedullary lesions in spinal cord injury",
+          "justification": "The integration of SCIsegV2 to the Spinal Cord Toolbox appears as a detailed note in conjunction with the predecessor SCIseg model.",
+          "quote": "SCIsegV2 and the automatic tissue bridges computation are open-source and available in Spinal Cord Toolbox"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1470,
+    "prompt_tokens": 9783,
+    "total_tokens": 11253,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

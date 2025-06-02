@@ -1,0 +1,207 @@
+{
+  "paper": "a5fd86478fd0adee17461d34bb06afab.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Deep Discourse Analysis for Generating Personalized Feedback in Intelligent Tutor Systems",
+      "justification": "The title is explicitly mentioned at the beginning of the paper.",
+      "quote": "Deep Discourse Analysis for Generating Personalized Feedback in Intelligent Tutor Systems"
+    },
+    "description": "This paper presents a novel system that automates the generation of personalized feedback in intelligent tutoring systems by leveraging deep learning-based discourse analysis. The system decomposes students' answers using discourse segmentation and classification techniques to create a relational graph that guides feedback generation. The method improves feedback quality and student learning gains by identifying correct and incorrect concepts in student responses.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper includes experimentation with the proposed method in a real-world intelligent tutoring system, as well as comparisons with baseline models.",
+      "quote": "We test our method in a dialogue-based ITS and demonstrate that our approach results in high-quality feedback and significantly improved student learning gains."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The primary focus of the paper is on discourse analysis, which is a subfield of Natural Language Processing (NLP).",
+        "quote": "In this paper, we present a novel, automated feedback system based on deep learning approaches to discourse."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Discourse Analysis",
+          "justification": "The paper specifically deals with discourse segmentation and classification which are central to discourse analysis.",
+          "quote": "Our approach involves decomposing students answers using neural discourse segmentation and classification techniques."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Intelligent Tutoring Systems",
+          "justification": "The research applies discourse analysis techniques to improve feedback mechanisms in Intelligent Tutoring Systems (ITS).",
+          "quote": "We explore creating automated, personalized feedback in an intelligent tutoring system (ITS)."
+        },
+        "aliases": [
+          "ITS"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "RoBERTa",
+          "justification": "RoBERTa is used as an encoder in the discourse segmentation and classification models.",
+          "quote": "The input text is tokenized and encoded with RoBERTa. The embeddings are then classified using a linear classifier."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "RoBERTa is a known model and is used in this paper, not introduced.",
+          "quote": "A binary logistic classifier then classifies each encoding h i : ŷ i = σ(w s ^{T} h i + b s ) where w s and b s are learnable parameters."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "RoBERTa is executed as part of the discourse segmentation and classification tasks.",
+          "quote": "For the student input text “I think it’s a classification task because we are choosing between continuous values”, the segmenter should predict 1 for tokens I, it’s, and because, and 0 for all other tokens."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The results of RoBERTa's applications are compared to other models and baselines in performance metrics.",
+          "quote": "Our model outperforms Lukasik et al. (2020)’s model, despite using a much simpler model formulation."
+        },
+        "referenced_paper_title": {
+          "value": "RoBERTa: A Robustly Optimized BERT Pretraining Approach",
+          "justification": "The paper references RoBERTa, which is an established model from prior work.",
+          "quote": "Liu, Y.; Ott, M.; Goyal, N.; Du, J.; Joshi, M.; Chen, D.; Levy, O.; Lewis, M.; Zettlemoyer, L.; and Stoyanov, V. 2019. RoBERTa: A Robustly Optimized BERT Pretraining Approach. ArXiv abs/1907.11692."
+        }
+      },
+      {
+        "name": {
+          "value": "SBERT",
+          "justification": "SBERT is used for semantic textual similarity tasks in the paper.",
+          "quote": "We use the open-source Sentence Transformers library (SBERT) from Reimers and Gurevych (2019)."
+        },
+        "aliases": [
+          "Sentence Transformers"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "SBERT is not contributed by this paper; it is used in the context of the research.",
+          "quote": "Given raw text, SBERT produces a vector representing semantic content."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "SBERT is used for computing embeddings for semantic similarity assessments as part of the model's functioning.",
+          "quote": "SBERT produces a vector representing semantic content. This vector can then be compared to other SBERT outputs using their cosine similarity."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "SBERT's outputs are used within the model but are not directly compared against other specific models in the results.",
+          "quote": "This vector can then be compared to other SBERT outputs using their cosine similarity. A high similarity score indicates the two texts are highly semantically related, while low or negative scores imply orthogonal or opposite meaning."
+        },
+        "referenced_paper_title": {
+          "value": "Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks",
+          "justification": "The referenced paper for SBERT is cited in the context of its usage for semantic text similarity.",
+          "quote": "Reimers, N.; and Gurevych, I. 2019. Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "RST Discourse Treebank (RST-DT)",
+          "justification": "The dataset is used for training the discourse segmentation model based on the Rhetorical Structure Theory framework.",
+          "quote": "We follow the Rhetorical Structure Theory (RST) framework for modelling discourse structure (Mann and Thompson 1988) and use the RST Discourse Treebank (RST-DT) as our training data (Carlson, Marcu, and Okurovsky 2001)."
+        },
+        "aliases": [
+          "RST-DT"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Building a Discourse-Tagged Corpus in the Framework of Rhetorical Structure Theory",
+          "justification": "The dataset's reference is correctly cited in relation to its original publication.",
+          "quote": "Carlson, L.; Marcu, D.; and Okurovsky, M. E. 2001. Building a Discourse-Tagged Corpus in the Framework of Rhetorical Structure Theory."
+        }
+      },
+      {
+        "name": {
+          "value": "Penn Discourse Treebank 2.0 (PDTB 2.0)",
+          "justification": "The dataset is used for training discourse classification tasks.",
+          "quote": "We follow relations defined in the PDTB 2.0 dataset (Prasad et al. 2008), which groups discourse relations into four top-level categories..."
+        },
+        "aliases": [
+          "PDTB 2.0"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The Penn Discourse TreeBank 2.0",
+          "justification": "The dataset's reference is correctly cited with its original work.",
+          "quote": "Prasad, R.; Dinesh, N.; Lee, A.; Miltsakaki, E.; Robaldo, L.; Joshi, A.; and Webber, B. 2008. The Penn Discourse TreeBank 2.0. In Proceedings of the Sixth International Conference on Language Resources and Evaluation (LREC’08)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "HuggingFace Transformers",
+          "justification": "The paper uses HuggingFace's 'roberta-base' implementation for experiments.",
+          "quote": "For all experiments using RoBERTa, we use the pre-trained HuggingFace ‘roberta-base’ implementation (Wolf et al. 2019)."
+        },
+        "aliases": [
+          "Transformers"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "HuggingFace’s Transformers: State-of-the-art Natural Language Processing",
+          "justification": "This reference is correctly related to the use of HuggingFace's implementation for models in the paper.",
+          "quote": "Wolf, T.; Debut, L.; Sanh, V.; Chaumond, J.; Delangue, C.; Moi, A.; Cistac, P.; Rault, T.; Louf, R.; Funtowicz, M.; Davison, J.; Shleifer, S.; von Platen, P.; Ma, C.; Jernite, Y.; Plu, J.; Xu, C.; Scao, T. L.; Gugger, S.; Drame, M.; Lhoest, Q.; and Rush, A. M. 2019. HuggingFace's Transformers: State-of-the-art Natural Language Processing. ArXiv abs/1910.03771."
+        }
+      },
+      {
+        "name": {
+          "value": "scikit-learn",
+          "justification": "The paper mentions using scikit-learn's DBSCAN implementation for clustering tasks.",
+          "quote": "All graphs are created using scikit-learn’s DBSCAN implementation (Pedregosa et al. 2011), with ε = 0.15 and min samples = 2."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Scikit-learn: Machine Learning in Python",
+          "justification": "The library's reference is cited to acknowledge its role in implementing clustering techniques.",
+          "quote": "Pedregosa, F.; Varoquaux, G.; Gramfort, A.; Michel, V.; Thirion, B.; Grisel, O.; Blondel, M.; Prettenhofer, P.; Weiss, R.; Dubourg, V.; Vanderplas, J.; Passos, A.; Cournapeau, D.; Brucher, M.; Perrot, M.; and Duchesnay, E. 2011. Scikit-learn: Machine Learning in Python. Journal of Machine Learning Research 12: 2825–2830."
+        }
+      },
+      {
+        "name": {
+          "value": "Sentence Transformers (SBERT)",
+          "justification": "The library is mentioned for its usage in computing semantic similarities.",
+          "quote": "We use the open-source Sentence Transformers library (SBERT) from Reimers and Gurevych (2019)."
+        },
+        "aliases": [
+          "SBERT"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks",
+          "justification": "The library's implementation is based on this referenced paper.",
+          "quote": "Reimers, N.; and Gurevych, I. 2019. Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2132,
+    "prompt_tokens": 15832,
+    "total_tokens": 17964,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

@@ -1,0 +1,228 @@
+{
+  "paper": "87ccab8f4ab0ba507dd8abb7888138a1.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Cross-Validation for Training and Testing Co-occurrence Network Inference Algorithms",
+      "justification": "The title directly reflects the central topic of the paper, which is introducing a new method for training and testing network inference algorithms using cross-validation.",
+      "quote": "Cross-Validation for Training and Testing Co-occurrence Network Inference Algorithms"
+    },
+    "description": "The paper proposes a novel cross-validation method for evaluating co-occurrence network inference algorithms in microbial ecological data, focusing on the hyper-parameter selection and comparison of algorithm quality. It introduces new methods for applying existing algorithms to predict on test data, specifically in the context of microbial networks.",
+    "type": {
+      "value": "empirical",
+      "justification": "The study includes empirical testing and analysis of different algorithms using real microbiome datasets, demonstrating the application of the proposed cross-validation methods to infer network associations.",
+      "quote": "Our empirical study shows that the proposed method is useful for hyper-parameter selection (training) and comparing the quality of the inferred networks between different algorithms (testing)."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computational Biology",
+        "justification": "The research focuses on computational methods for analyzing biological data, specifically microbial communities, which falls under Computational Biology.",
+        "quote": "Understanding the ecological interactions that occur in microbial communities is very crucial in maintaining a well-functioning ecosystem."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Microbial Ecology",
+          "justification": "The focus is on understanding the interactions and associations within microbial communities using computational methods.",
+          "quote": "Co-occurrence network inference algorithms help us understand the complex associations of micro-organisms, especially bacteria."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Machine Learning",
+          "justification": "The paper deals with machine learning techniques such as cross-validation and algorithms like LASSO and GGM for network inference.",
+          "quote": "Cross-validation is a standard algorithm in machine learning used for selection, evaluation and estimation of performance of models."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "LASSO",
+          "justification": "LASSO is frequently mentioned as one of the algorithms used for co-occurrence network inference and is explicitly described in its application and comparison.",
+          "quote": "LASSO uses the degree of L1 regularization, typically selected using cross-validation to determine the sparsity of the network."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper does not claim to have developed LASSO but uses it as part of their comparative study and application to test new methods.",
+          "quote": "Cross-validation has been used previously in training LASSO using validation error."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "LASSO is explicitly described in the analysis and execution as part of the validation and testing against microbiome data.",
+          "quote": "We specifically utilized the LassoCV...to implement the LASSO algorithm and estimate the precision matrix for the GGM respectively."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "LASSO is compared numerically with other algorithms throughout the paper, including GGM and correlation methods.",
+          "quote": "The LASSO outperformed the other algorithms on the iOral data set."
+        },
+        "referenced_paper_title": {
+          "value": "Regression Shrinkage and Selection Via the Lasso",
+          "justification": "This is the classic reference title for LASSO cited throughout the research field to refer to the original method.",
+          "quote": "Tibshirani, R. Regression Shrinkage and Selection Via the Lasso, 1996."
+        }
+      },
+      {
+        "name": {
+          "value": "Gaussian Graphical Model (GGM)",
+          "justification": "GGM is frequently analyzed and leveraged for inference of microbial ecological interactions and is prominently discussed in the methods and results.",
+          "quote": "The GGM outperformed the other algorithms on the iOral data set."
+        },
+        "aliases": [
+          "GGM"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "GGM itself is not contributed by the paper; it is used as an existing model to test new methodologies.",
+          "quote": "Similarly, it has also been used in training Gaussian Graphical Models(GGM) for inferring a sparse inverse covariance matrix."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper employs GGM for empirical analysis and network inference testing in the context of microbiome data.",
+          "quote": "The GGM outperformed the other algorithms on the iOral data set."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares GGM with other network inference algorithms as part of their study.",
+          "quote": "For the Amgut1 data set, GGM achieved the highest accuracy from 10 to 20 sample size."
+        },
+        "referenced_paper_title": {
+          "value": "Conditional Dependence Network Inference for Compositional Data",
+          "justification": "The GGM method is generally linked to works that discuss graphical models for compositional and network data, as cited in the work.",
+          "quote": "Fang, H.; Huang, C.; Zhao, H.; Deng, M. gCoda: Conditional Dependence Network Inference for Compositional Data. Journal of Computational Biology, 2017."
+        }
+      },
+      {
+        "name": {
+          "value": "Pearson/Spearman correlation",
+          "justification": "These correlation methods are specifically proposed for prediction on test data and training with cross-validation in the paper.",
+          "quote": "Introducing new techniques for leveraging well-established algorithms such as Pearson/Spearman correlation."
+        },
+        "aliases": [
+          "Pearson",
+          "Spearman"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "While Pearson and Spearman correlation themselves are established methods, their novel application using the new cross-validation technique presented in the paper is a contribution.",
+          "quote": "We propose training the optimum correlation threshold in correlation-based algorithms with cross-validation."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Pearson and Spearman correlations are applied in the empirical analysis as described in the methods and results sections.",
+          "quote": "Implemented the Spearman algorithm by converting the data into ranks adopting the Pearson Correlation algorithm to predict the ranks."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "These methods are compared with others like LASSO and GGM to analyze performance metrics.",
+          "quote": "From the graph, we can infer that the Pearson mostly has more number of edges than Spearman."
+        },
+        "referenced_paper_title": {
+          "value": "Inferring Correlation Networks from Genomic Survey Data",
+          "justification": "The research relies on the methodologies developed in the referenced papers for Pearson/Spearman application.",
+          "quote": "Friedman, J.; Alm, E.J. Inferring Correlation Networks from Genomic Survey Data, 2012."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Amgut2",
+          "justification": "Amgut2 is referred to multiple times as a dataset used for empirical testing of the proposed methods.",
+          "quote": "The Amgut2 real microbiome dataset undergoes the Yeo-Johnson transformation and standard scaling before we conduct the cross-validation analysis."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "American Gut: an Open Platform for Citizen Science Microbiome Research",
+          "justification": "This dataset is associated with the American Gut project, which is well-documented in research studies on microbiome.",
+          "quote": "McDonald, D.; Hyde, E.; Debelius, J.W.; et al. American Gut: an Open Platform for Citizen Science Microbiome Research."
+        }
+      },
+      {
+        "name": {
+          "value": "crohns",
+          "justification": "The crohns dataset is specifically mentioned and used in the empirical analysis for validating network inference methods.",
+          "quote": "Results from Figure 4 show that the accuracy of the algorithms generally improved upon increasing the number of total samples using crohns dataset."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "MDiNE: a model to estimate differential co-occurrence networks in microbiome studies",
+          "justification": "Referenced paper is specifically cited in the context of the crohns dataset.",
+          "quote": "McGregor, K.; Labbe, A.; Greenwood, C.M.T. MDiNE: a model to estimate differential co-occurrence networks in microbiome studies."
+        }
+      },
+      {
+        "name": {
+          "value": "iOral",
+          "justification": "The dataset iOral is used within the empirical testing framework and mentioned in the context of algorithm comparison.",
+          "quote": "The GGM outperformed the other algorithms on the iOral data set."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Compositional zero-inflated network estimation for microbiome data",
+          "justification": "The iOral dataset is used in conjunction with referenced methods on zero-inflated models.",
+          "quote": "Ha, M.J.; Kim, J.; Galloway-Peña, J.; Do, K.A.; Peterson, C.B. Compositional zero-inflated network estimation for microbiome data."
+        }
+      },
+      {
+        "name": {
+          "value": "Amgut1",
+          "justification": "Amgut1 is one of the real microbiome datasets used to demonstrate the application of the proposed cross-validation methods.",
+          "quote": "In this study, we conducted a real microbiome composition data analysis on Amgut1."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Sparse and Compositionally Robust Inference of Microbial Ecological Networks",
+          "justification": "The dataset is associated with methodologies for sparse robust inference in microbial networks.",
+          "quote": "Kurtz, Z.D.; Müller, C.L.; Miraldi, E.R.; et al. Sparse and Compositionally Robust Inference of Microbial Ecological Networks."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "scikit-learn",
+          "justification": "The library is explicitly mentioned as being used for implementing LASSO and GGM via their respective classes.",
+          "quote": "We specifically utilized the LassoCV and GraphicalLassoCV classes from scikit-learn package."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Scikit-learn: Machine Learning in Python",
+          "justification": "This is the standard reference for the scikit-learn library, cited in a wide range of academic papers when discussing implementations based on this library.",
+          "quote": "Pedregosa, F.; Varoquaux, G.; Gramfort, A.; et al. Scikit-learn: Machine Learning in Python."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2072,
+    "prompt_tokens": 12864,
+    "total_tokens": 14936,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

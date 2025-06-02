@@ -1,0 +1,366 @@
+{
+  "paper": "84816e1d7b87d913026c2cb63d4cccee.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "LANGUAGE GANS FALLING SHORT",
+      "justification": "The title is explicitly stated at the top of the paper.",
+      "quote": "LANGUAGE GANs FALLING SHORT"
+    },
+    "description": "The paper evaluates the performance of various generative adversarial networks (GANs) for natural language generation (NLG) and compares them with maximum likelihood estimation (MLE) models. It concludes that MLE models outperform GANs in terms of quality-diversity trade-off, challenging the assumption that exposure bias in NLG, which GANs can theoretically address, is a significant problem. The study suggests that temperature sweeping can be an effective method to evaluate NLG models by controlling quality and diversity.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper is based on experiments comparing GANs and MLE models using various datasets and evaluating their performance.",
+      "quote": "Using our evaluation approach (Section 3), we examine several recent GAN text generation models and compare against an MLE baseline."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The paper focuses on natural language generation, which is a subfield of Natural Language Processing (NLP).",
+        "quote": "Generating fluent natural language is a central aim in Natural Language Processing (NLP)."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Natural Language Generation",
+          "justification": "The core focus of the paper is on comparing models for their effectiveness in generating natural language text.",
+          "quote": "Traditional natural language generation (NLG) models are trained using maximum likelihood estimation (MLE)..."
+        },
+        "aliases": [
+          "NLG"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "SeqGAN",
+          "justification": "The model is explicitly named as one of the GAN variants being evaluated in the study.",
+          "quote": "Our RL-GAN benchmark is superior to the official SeqGAN and LeakGAN implementations."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "SeqGAN is being evaluated, not introduced or modified as part of the paper's contributions.",
+          "quote": "Our RL-GAN benchmark is superior to the official SeqGAN and LeakGAN implementations."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "SeqGAN is included in the empirical experiments comparing GANs and MLE models.",
+          "quote": "We report SeqGAN and LeakGAN results in the synthetic data experiment."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper includes SeqGAN in the performance comparison against other models using quality-diversity metrics.",
+          "quote": "SeqGAN and LeakGAN results in the synthetic data experiment."
+        },
+        "referenced_paper_title": {
+          "value": "SeqGAN: Sequence Generative Adversarial Nets with Policy Gradient",
+          "justification": "The paper refers to Yu et al. 2017, which corresponds to the SeqGAN reference.",
+          "quote": "SeqGAN (Yu et al., 2017)"
+        }
+      },
+      {
+        "name": {
+          "value": "LeakGAN",
+          "justification": "LeakGAN is explicitly named and evaluated as part of the study.",
+          "quote": "Our RL-GAN benchmark is superior to the official SeqGAN and LeakGAN implementations."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "LeakGAN is included as a model for evaluation, not as a new contribution from this paper.",
+          "quote": "Our RL-GAN benchmark is superior to the official SeqGAN and LeakGAN implementations."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "LeakGAN's results are part of the experimental evaluation in the paper.",
+          "quote": "We report SeqGAN and LeakGAN results in the synthetic data experiment."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "LeakGAN is part of the comparative analysis among different GAN models and MLE models for NLG.",
+          "quote": "SeqGAN and LeakGAN results in the synthetic data experiment."
+        },
+        "referenced_paper_title": {
+          "value": "Long Text Generation via Adversarial Training with Leaked Information",
+          "justification": "The paper attributes LeakGAN to Guo et al. 2017, which is the known LeakGAN reference.",
+          "quote": "LeakGAN (Guo et al., 2017)"
+        }
+      },
+      {
+        "name": {
+          "value": "FM-GAN",
+          "justification": "FM-GAN is mentioned as one of the GAN models being evaluated.",
+          "quote": "MLE outperforms FM-GAN, the state-of-the-art non-RL Language GAN."
+        },
+        "aliases": [
+          "Feature-Mover GAN"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "FM-GAN is included in the study as an existing model for comparison, not as a new contribution.",
+          "quote": "MLE outperforms FM-GAN, the state-of-the-art non-RL Language GAN."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "FM-GAN is tested in experiments concerning its quality-diversity performance compared to MLE.",
+          "quote": "FM-GAN results were obtained with the best performing model that was provided by the authors."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares FM-GAN with other models using quality and diversity metrics.",
+          "quote": "MLE outperforms FM-GAN, the state-of-the-art non-RL Language GAN."
+        },
+        "referenced_paper_title": {
+          "value": "Adversarial Text Generation via Feature-Mover's Distance",
+          "justification": "The paper attributes FM-GAN to Chen et al. 2018, which is the known FM-GAN reference.",
+          "quote": "Feature mover GAN (FM-GAN) Chen et al. (2018)"
+        }
+      },
+      {
+        "name": {
+          "value": "CoT (Cooperative Training)",
+          "justification": "CoT is explicitly referenced and evaluated in the context of GANs for text generation.",
+          "quote": "CoT achieves similar performance to MLE, but with dramatically increased algorithmic complexity."
+        },
+        "aliases": [
+          "CoT"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "CoT is referenced as an existing approach, not developed by the paper's authors.",
+          "quote": "CoT achieves similar performance to MLE, but with dramatically increased algorithmic complexity."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "CoT’s performance is evaluated in terms of its quality and diversity compared to MLE and other GANs.",
+          "quote": "CoT achieves similar performance to MLE, but with dramatically increased algorithmic complexity."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The study includes CoT in the comparison of different models' performance on quality-diversity metrics.",
+          "quote": "CoT achieves similar performance to MLE, but with dramatically increased algorithmic complexity."
+        },
+        "referenced_paper_title": {
+          "value": "CoT: Cooperative Training for Generative Modeling",
+          "justification": "The CoT reference aligns with Lu et al. 2018a as mentioned in the paper.",
+          "quote": "CoT (Lu et al., 2018a)"
+        }
+      },
+      {
+        "name": {
+          "value": "RankGAN",
+          "justification": "RankGAN is included in the discussion as one of the existing approaches for text generation with GANs.",
+          "quote": "RankGAN (Lin et al., 2017)"
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "RankGAN is mentioned as part of the landscape of existing GAN models for evaluation, not new in this paper.",
+          "quote": "RankGAN (Lin et al., 2017)"
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "While mentioned, there is no specific data about executing RankGAN directly in experiments; it appears to be referenced data.",
+          "quote": "RankGAN and MaliGAN results in Figure 4a are taken from (Lu et al., 2018b)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper includes RankGAN in comparative discussions of GAN effectiveness against MLE.",
+          "quote": "RankGAN (Lin et al., 2017)"
+        },
+        "referenced_paper_title": {
+          "value": "Adversarial Ranking for Language Generation",
+          "justification": "RankGAN is related to Lin et al. 2017, noted in the reference.",
+          "quote": "RankGAN (Lin et al., 2017)"
+        }
+      },
+      {
+        "name": {
+          "value": "MaliGAN",
+          "justification": "MaliGAN is mentioned as part of the discourse on various GAN methods.",
+          "quote": "RankGAN and MaliGAN results in Figure 4a are taken from (Lu et al., 2018b)."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "MaliGAN is considered as a reference in GAN literature, not an innovation in this study.",
+          "quote": "MaliGAN (Che et al., 2017)"
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "MaliGAN results seem to be referenced from past literature, not directly executed by the current study.",
+          "quote": "MaliGAN results in Figure 4a are taken from (Lu et al., 2018b)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Comparisons with MaliGAN have been made in the paper as part of evaluating different GAN models.",
+          "quote": "MaliGAN (Che et al., 2017)"
+        },
+        "referenced_paper_title": {
+          "value": "Maximum-Likelihood Augmented Discrete Generative Adversarial Networks",
+          "justification": "The MaliGAN model ascribed to Che et al. 2017 is the known reference for the method.",
+          "quote": "MaliGAN (Che et al., 2017)"
+        }
+      },
+      {
+        "name": {
+          "value": "IRL-GAN",
+          "justification": "IRL-GAN is mentioned as part of various GAN models existing in the NLG domain.",
+          "quote": "IRL-GAN (Shi et al., 2018)"
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper references IRL-GAN as part of the prior works in GAN for text generation, not a contribution here.",
+          "quote": "IRL (Shi et al., 2018)"
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The specific execution of IRL-GAN isn't detailed in the experiments, suggesting it is used for performance contextualization.",
+          "quote": "IRL (Shi et al., 2018)"
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "IRL-GAN is discussed in relation to comparisons made between GANs and MLE models.",
+          "quote": "IRL (Shi et al., 2018)"
+        },
+        "referenced_paper_title": {
+          "value": "Towards Diverse Text Generation with Inverse Reinforcement Learning",
+          "justification": "The IRL-GAN approach corresponds to Shi et al. 2018 as mentioned in the paper.",
+          "quote": "IRL (Shi et al., 2018)"
+        }
+      },
+      {
+        "name": {
+          "value": "RL-GAN",
+          "justification": "RL-GAN is discussed as a benchmark model developed by the authors for evaluating against other GANs and MLE.",
+          "quote": "Our RL-GAN benchmark is superior to the official SeqGAN and LeakGAN implementations."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "The RL-GAN mentioned appears to be a unique combination of features from existing GANs devised by the paper's authors.",
+          "quote": "We refer to this model as RL-GAN. It is based on SeqGAN (Yu et al., 2017) with additional improvements."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "RL-GAN is involved in the experimental comparisons presented in the paper.",
+          "quote": "We implemented our own language GAN, including improvements/functionalities proposed in several text GAN papers."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper uses RL-GAN for direct comparison against MLE and other GANs in performance analysis.",
+          "quote": "Our RL-GAN benchmark is superior to the official SeqGAN and LeakGAN implementations."
+        },
+        "referenced_paper_title": {
+          "value": "**Original Contribution (Not directly associated with a prior titled paper)**",
+          "justification": "RL-GAN as discussed combines features and modifications particular to this paper and not previously classified under one reference.",
+          "quote": "We implemented our own language GAN, including improvements/functionalities proposed in several text GAN papers."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "EMNLP2017 News",
+          "justification": "This dataset is specifically mentioned as the basis for experiments in the study.",
+          "quote": "Results on the EMNLP 2017 News dataset."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "**The dataset is well-known and referred to as EMNLP2017 News without a specific reference paper**",
+          "justification": "EMNLP2017 News is a standard dataset in the field and used widely.",
+          "quote": "Results on the EMNLP 2017 News dataset."
+        }
+      },
+      {
+        "name": {
+          "value": "Image COCO",
+          "justification": "The dataset is named when describing the experiments, specifically for generating shorter sentences.",
+          "quote": "In this experiment, we used the Image COCO dataset."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Microsoft COCO: Common Objects in Context",
+          "justification": "The reference aligns with Lin et al. 2014, which introduced the COCO dataset.",
+          "quote": "We used the Image COCO dataset (Lin et al., 2014) in order to generate shorter sentences as well."
+        }
+      },
+      {
+        "name": {
+          "value": "Synthetic data of fixed LSTM oracle Yu et al. 2017",
+          "justification": "The paper uses synthetic data based on a specified hyperparameter-defined LSTM model designed for testing.",
+          "quote": "In the synthetic experiment, we learn a generative model of data produced from a fixed LSTM oracle."
+        },
+        "aliases": [
+          "Synthetic LSTM oracle data"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "SeqGAN: Sequence Generative Adversarial Nets with Policy Gradient",
+          "justification": "The LSTM oracle setup comes from the SeqGAN paper by Yu et al. 2017 which is being used as a basis here.",
+          "quote": "Synthetic data experiment using a generative model of data produced from a fixed LSTM oracle Yu et al. (2017)"
+        }
+      },
+      {
+        "name": {
+          "value": "IMDB movie reviews",
+          "justification": "Though only presented as part of further studies, it's clear from the context that the dataset is used to validate findings by other works using MLE versus GANs.",
+          "quote": "Further results on this dataset as well as on the IMDB movie reviews (Maas et al., 2011)"
+        },
+        "aliases": [
+          "IMDB"
+        ],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Learning Word Vectors for Sentiment Analysis",
+          "justification": "Maas et al. 2011 is well-known for the introduction and use of the IMDB dataset in sentiment analysis.",
+          "quote": "Further results on this dataset as well as on the IMDB movie reviews (Maas et al., 2011)"
+        }
+      },
+      {
+        "name": {
+          "value": "WikiText-103",
+          "justification": "The dataset is used for comparative analyses in independent follow-up works cited in this paper.",
+          "quote": "Further results on this dataset as well as on the...WikiText-103 (Merity et al., 2016) datasets are presented in independent follow-up works."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Pointer Sentinel Mixture Models",
+          "justification": "Merity et al. 2016 is the known reference for introducing WikiText-103.",
+          "quote": "Further results on this dataset as well as on the...WikiText-103 (Merity et al., 2016) datasets are presented in independent follow-up works."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 3143,
+    "prompt_tokens": 15776,
+    "total_tokens": 18919,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

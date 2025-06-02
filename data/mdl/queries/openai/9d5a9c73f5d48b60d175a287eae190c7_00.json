@@ -1,0 +1,191 @@
+{
+  "paper": "9d5a9c73f5d48b60d175a287eae190c7.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Your head is there to move you around: Goal-driven models of the primate dorsal pathway",
+      "justification": "The title of the paper directly reflects the main focus and hypothesis explored in the paper, concerning goal-driven modeling of the dorsal visual stream with emphasis on the role of self-motion.",
+      "quote": "Your head is there to move you around: Goal-driven models of the primate dorsal pathway"
+    },
+    "description": "This paper investigates the modeling of the dorsal visual pathway by training a 3D ResNet, named DorsalNet, to predict self-motion parameters from visual stimuli in a simulated environment. The study reveals that representations learned by DorsalNet resemble those found in primate dorsal stream neurons, outperforming other networks trained on action recognition. Through this research, the paper demonstrates that self-motion estimation can be a key underlying objective explaining the properties of the dorsal stream.",
+    "type": {
+      "value": "empirical",
+      "justification": "The study involves training neural network models and empirically validating their performance against neuronal data from the dorsal stream, highlighting the empirical nature of the research.",
+      "quote": "We trained a 3D ResNet to predict the parameters of simulated self-motion...We found that this network, dubbed DorsalNet, learned motion representations that were qualitatively similar to those found in the dorsal visual stream."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Neuroscience",
+        "justification": "The paper is focused on modeling neuronal pathways, specifically the dorsal visual stream, using deep learning models.",
+        "quote": "Neurons in the dorsal visual pathway of the mammalian brain are selective for motion stimuli...To test this hypothesis, we trained a 3D ResNet to predict an agent’s self-motion parameters from visual stimuli."
+      },
+      "aliases": [
+        "Neurological Machine Learning"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Computational Neuroscience",
+          "justification": "The paper integrates neural networks to simulate biological visual pathways, aligning with computational neuroscience.",
+          "quote": "We found that the responses in this network accounted well for the selectivity of neurons in a large database of single-neuron recordings from the dorsal visual stream of non-human primates."
+        },
+        "aliases": [
+          "Neuroinformatics"
+        ]
+      },
+      {
+        "name": {
+          "value": "Computer Vision",
+          "justification": "The training of networks using visual stimuli aligns with the domain of Computer Vision.",
+          "quote": "In contrast, ANNs trained on an action recognition dataset through supervised or self-supervised learning..."
+        },
+        "aliases": [
+          "Vision AI"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "3D ResNet",
+          "justification": "The primary deep learning model used in the study to predict self-motion parameters and analyze the dorsal visual stream.",
+          "quote": "we trained a 3D ResNet to predict an agent’s self-motion parameters from visual stimuli in a simulated environment."
+        },
+        "aliases": [
+          "DorsalNet",
+          "ResNet"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The paper contributes a customized 3D ResNet, referred to as DorsalNet, specifically tailored for modeling the dorsal visual stream.",
+          "quote": "We trained a 3D ResNet to predict the parameters of simulated self-motion...We found that this network, dubbed DorsalNet..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model is executed and its representations are compared with primate dorsal stream neuron selectivity.",
+          "quote": "We trained a 3D ResNet to predict the parameters of simulated self-motion...We found that this network, dubbed DorsalNet, learned motion representations..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "DorsalNet's performance is quantitatively compared to other models and its neural alignment is evaluated.",
+          "quote": "We found that DorsalNet consistently outperformed 3D ResNets trained on action recognition in a supervised manner."
+        },
+        "referenced_paper_title": {
+          "value": "Representation Learning with Contrastive Predictive Coding",
+          "justification": "One of the models being compared, CPC, is referenced and related to the methods used in the paper.",
+          "quote": "We tested the ability of contrastive predictive coding (CPC) networks [30] to account for responses in the dorsal stream when trained over different stimulus ensembles."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "AirSim",
+          "justification": "AirSim is the dataset used to simulate the self-motion videos for training the 3D ResNet model.",
+          "quote": "Training network for self-motion We generated a dataset consisting of short videos (10 frames) of self-motion in AirSim, a package for drone and land vehicle simulations in Unreal Engine [48]."
+        },
+        "aliases": [
+          "AirSimNH, TrapCamera"
+        ],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "AirSim: High-Fidelity Visual and Physical Simulation for Autonomous Vehicles",
+          "justification": "AirSim's detailed capacity for simulation is utilized, highlighting its foundational paper.",
+          "quote": "We generated a dataset consisting of short videos (10 frames) of self-motion in AirSim..."
+        }
+      },
+      {
+        "name": {
+          "value": "crcns-mt1",
+          "justification": "The dataset is used for benchmarking neural responses against the model outputs, particularly for MT neurons.",
+          "quote": "MT cells are also known to be selective for stimulus speed, which is the ratio of temporal to spatial frequencies [59]. A similar kind of selectivity emerged in layer 2 of the model..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Spiking activity in area MT of awake adult macaques in response to complex motion features",
+          "justification": "The crcns-mt1 dataset is sourced from prior research with documented methodology.",
+          "quote": "crcns-mt1 [44, 67]"
+        }
+      },
+      {
+        "name": {
+          "value": "pvc1",
+          "justification": "This dataset covers neural responses in the V1 area and is used for model benchmarking.",
+          "quote": "V1\ncrcns-pvc1 [62, 63]"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Precise alignment of micromachined electrode arrays with V1 functional maps",
+          "justification": "The dataset referencing V1 neural activities is cited for its research context.",
+          "quote": "crcns-pvc1 [62, 63]"
+        }
+      },
+      {
+        "name": {
+          "value": "packlab-mst",
+          "justification": "The dataset provides neural data for the MST area, critical for validating the model's advanced motion selectivity components.",
+          "quote": "packlab-mst [47]"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Hierarchical processing of complex motion along the primate dorsal visual pathway",
+          "justification": "The dataset packlab-mst's relevance is functionally explained through reference to its comprehensive exploration within the publication.",
+          "quote": "packlab-mst [47]"
+        }
+      },
+      {
+        "name": {
+          "value": "crcns-mt2",
+          "justification": "This dataset examines MT cell activity and is employed in the study for understanding complex motion features.",
+          "quote": "crcns-mt2 [46, 68]"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Extracellular recordings from area MT of awake macaques in response to naturalistic movies",
+          "justification": "The crcns-mt2 dataset source is cited within the study, ensuring informed benchmarking.",
+          "quote": "crcns-mt2 [46, 68]"
+        }
+      },
+      {
+        "name": {
+          "value": "crcns-pvc4",
+          "justification": "Used for V1 neural selectivity evaluation, supplementing the research's depth in neural encoding.",
+          "quote": "crcns-pvc4 [64, 65, 66]"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Sparse coding and decorrelation in primary visual cortex during natural vision",
+          "justification": "The cited study provides context for pvc4's application in analyzing V1 responses.",
+          "quote": "crcns-pvc4 [64, 65, 66]"
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1589,
+    "prompt_tokens": 19915,
+    "total_tokens": 21504,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

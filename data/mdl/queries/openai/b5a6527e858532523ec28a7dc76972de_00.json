@@ -1,0 +1,152 @@
+{
+  "paper": "b5a6527e858532523ec28a7dc76972de.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "S PIKE - BASED CAUSAL INFERENCE FOR WEIGHT ALIGNMENT",
+      "justification": "The title of the paper is clearly mentioned in the header of the document.",
+      "quote": "S PIKE - BASED CAUSAL INFERENCE FOR WEIGHT ALIGNMENT"
+    },
+    "description": "The paper proposes a novel algorithm for aligning feedback and feedforward weights in spiking neural networks using regression discontinuity design (RDD) principles. The method aims to solve the weight transport problem by leveraging spiking discontinuities, leading to better gradient estimation and improved learning performance over feedback alignment on various datasets.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper includes empirical evaluations where the proposed method is tested on datasets like Fashion-MNIST, SVHN, CIFAR-10, and VOC, showing performance improvements.",
+      "quote": "We show empirically that this algorithm rapidly makes the backward weights approximate the forward weights. As the backward weights become correct, this improves learning performance over feedback alignment on tasks such as Fashion-MNIST, SVHN, CIFAR-10 and VOC."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Neurocomputing",
+        "justification": "The work focuses on biologically plausible algorithms for neural networks, which is a subfield of neurocomputing.",
+        "quote": "These results demonstrate the potential power of RDD as a means for solving the weight transport problem in biologically plausible deep learning models."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Spiking Neural Networks",
+          "justification": "The paper centers around using spiking neural networks for weight alignment through the estimation of causal impacts using spiking discontinuities.",
+          "quote": "The resulting algorithm is a special case of an estimator used for causal inference in econometrics, regression discontinuity design."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Deep Learning",
+          "justification": "The paper discusses weight alignment algorithms in the context of deep learning and compares its approach with traditional deep learning strategies like gradient descent.",
+          "quote": "Finally, we demonstrated that our algorithm allows deep neural networks to achieve better learning performance than feedback alignment on Fashion-MNIST and CIFAR-10 (Figure 5)."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Regression Discontinuity Design (RDD)",
+          "justification": "The paper introduces a special case of the RDD algorithm in spiking neural networks for weight alignment.",
+          "quote": "Our algorithm takes advantage of a neuron’s spiking discontinuity to infer the causal effect of its spiking on the activity of downstream neurons."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "The paper introduces the use of RDD in spiking neural networks to improve weight alignment as a novel contribution.",
+          "quote": "Our algorithm takes advantage of a neuron’s spiking discontinuity to infer the causal effect of its spiking on the activity of downstream neurons."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was empirically tested and executed in the paper as part of the spiking neural network framework for feedback weight alignment.",
+          "quote": "To perform these updates, we simulate a separate network of leaky integrate-and-fire (LIF) neurons."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of the RDD-based algorithm was compared against other models like feedback alignment.",
+          "quote": "Compared to feedback alignment, the addition of an RDD feedback training phase greatly increases the sign alignment between feedback and feedforward weights for all layers in the network."
+        },
+        "referenced_paper_title": {
+          "value": "Spiking allows neurons to estimate their causal effect",
+          "justification": "The referenced work by Lansdell & Kording (2019) is indicated as the basis for the RDD approach in the paper.",
+          "quote": "Indeed, it has been shown that the RDD approach can produce unbiased estimators of causal effects in a system of spiking neurons Lansdell & Kording (2019)."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Fashion-MNIST",
+          "justification": "The dataset is one of the key datasets used to demonstrate the effectiveness of the proposed algorithm.",
+          "quote": "As the backward weights become correct, this improves learning performance over feedback alignment on tasks such as Fashion-MNIST, SVHN, CIFAR-10 and VOC."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Fashion-MNIST: a Novel Image Dataset for Benchmarking Machine Learning Algorithms",
+          "justification": "Fashion-MNIST is an established dataset used for benchmarking, and it's commonly referenced in papers utilizing it.",
+          "quote": "We demonstrate that this learning weight symmetry rule improves training and test accuracy over feedback alignment, approaching gradient-descent-level performance on Fashion-MNIST, SVHN, CIFAR-10 and VOC in deeper networks."
+        }
+      },
+      {
+        "name": {
+          "value": "SVHN",
+          "justification": "The dataset was employed to show the improvement of the proposed method over traditional techniques.",
+          "quote": "We show empirically that this algorithm rapidly makes the backward weights approximate the forward weights. As the backward weights become correct, this improves learning performance over feedback alignment on tasks such as Fashion-MNIST, SVHN, CIFAR-10 and VOC."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Read digits in natural images with unsupervised feature learning",
+          "justification": "SVHN is an established dataset used for evaluating models, commonly referenced in research papers.",
+          "quote": "We trained the same network architecture (see Appendix A.3) on the Fashion-MNIST, SVHN, CIFAR-10 and VOC datasets using standard autograd techniques (backprop), feedback alignment and our RDD feedback training phase."
+        }
+      },
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "CIFAR-10 is actively used in the paper to measure the learning improvements of their method.",
+          "quote": "Fashion-MNIST, SVHN, CIFAR-10 and VOC are datasets used to empirically validate the method proposed in the paper."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Multiple Layers of Features from Tiny Images",
+          "justification": "CIFAR-10 is a benchmark dataset commonly referenced for validating machine learning models.",
+          "quote": "Figure 3: A. Evolution of sign alignment (the percent of feedforward and feedback weights that have the same sign) for each fully-connected layer in the network when trained on CIFAR-10 using RDD feedback training (blue), using the algorithm proposed by Akrout et al. (2019) (purple), and using feedback alignment (red)."
+        }
+      },
+      {
+        "name": {
+          "value": "VOC",
+          "justification": "VOC is used in the empirical evaluation of the proposed model showcasing its broad application.",
+          "quote": "We trained the same network architecture (see Appendix A.3) on the Fashion-MNIST, SVHN, CIFAR-10 and VOC datasets using standard autograd techniques (backprop), feedback alignment and our RDD feedback training phase."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The PASCAL Visual Object Classes (VOC) Challenge",
+          "justification": "VOC is a well-known dataset for image classification tasks, frequently referenced in machine learning literature.",
+          "quote": "We demonstrate that this learning weight symmetry rule improves training and test accuracy over feedback alignment, approaching gradient-descent-level performance on Fashion-MNIST, SVHN, CIFAR-10 and VOC in deeper networks."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1498,
+    "prompt_tokens": 9258,
+    "total_tokens": 10756,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

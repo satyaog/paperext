@@ -1,0 +1,191 @@
+{
+  "paper": "c11aba7536338fc0fa2c145665402196.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Reinforcement Learning with Competitive Ensembles of Information-Constrained Primitives",
+      "justification": "The title is directly stated in the first page of the paper.",
+      "quote": "Reinforcement Learning with Competitive Ensembles of Information-Constrained Primitives"
+    },
+    "description": "The paper proposes a method for reinforcement learning that structures policy into primitives without using a high-level meta-policy. Instead, each primitive decides based on the information it needs from the state, and a competition mechanism selects the most information-requesting primitive to act. This decentralized decision-making is shown to enhance generalization compared to both flat and hierarchical policies.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper includes experimental demonstrations and comparisons with other methods, suggesting it is based on empirical studies.",
+      "quote": "We experiment with both fixed and variable sets of primitives and show that our method allows for primitives to be added or removed during training, or recombined in new ways. Each primitive is represented by a differentiable, parameterized function approximator, such as a neural network."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Reinforcement Learning",
+        "justification": "The paper focuses on teaching agents through reinforcement learning frameworks and experiments.",
+        "quote": "Our goal is to learn a policy, composed of multiple primitive sub-policies, to maximize average returns over T-step interactions for a distribution of tasks."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Hierarchical Reinforcement Learning",
+          "justification": "The paper presents an alternative to hierarchical reinforcement learning approaches by proposing decentralized decision-making primitives.",
+          "quote": "However, hierarchical approaches rely on some form of learned high-level controller, which decides when to activate different components in the hierarchy."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Option Critic",
+          "justification": "Option Critic is mentioned as a baseline model for comparison in the experiments section.",
+          "quote": "We compare our proposed method to the following baselines: a) Option Critic [4] – We extended the author’s implementation of the Option Critic architecture."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Option Critic is used as a baseline model for comparison purposes in the research.",
+          "quote": "Option Critic [4] – We extended the author’s implementation of the Option Critic architecture."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "Option Critic is referenced as a baseline and not as a model executed for new experiments or contributions in the paper.",
+          "quote": "Option Critic [4] – We extended the author’s implementation of the Option Critic architecture."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Option Critic is used for baseline comparisons to evaluate the performance of the proposed method.",
+          "quote": "We compare our proposed method to the following baselines: a) Option Critic [4]"
+        },
+        "referenced_paper_title": {
+          "value": "The option-critic architecture",
+          "justification": "The reference title is inferred from the citation corresponding to Option Critic used for baseline.",
+          "quote": "Option Critic [4] – We extended the author’s implementation of the Option Critic architecture."
+        }
+      },
+      {
+        "name": {
+          "value": "MLSH (Meta-Learning Shared Hierarchies)",
+          "justification": "MLSH is compared as a baseline method within the experiments to demonstrate the effectiveness of the proposed method.",
+          "quote": "b) MLSH (Meta-Learning Shared Hierarchy) [13] – This method uses meta-learning to learn sub-policies shared across tasks."
+        },
+        "aliases": [
+          "Meta-Learning Shared Hierarchies"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "MLSH is utilized in an already established form for comparison.",
+          "quote": "MLSH (Meta-Learning Shared Hierarchy) [13] – This method uses meta-learning to learn sub-policies that are shared across tasks."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "MLSH is utilized as a comparison model, not a new execution in the paper's experiments.",
+          "quote": "MLSH (Meta-Learning Shared Hierarchy) [13] – This method uses meta-learning to learn sub-policies that are shared across tasks."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "MLSH is explicitly compared with the proposed approach as a baseline method.",
+          "quote": "MLS];}h (Meta-Learning Shared Hierarchy) [13] – This method uses meta-learning to learn sub-policies that are shared across tasks. We use the MLSH implementation provided by the authors."
+        },
+        "referenced_paper_title": {
+          "value": "Meta Learning Shared Hierarchies",
+          "justification": "The paper title is derived from citation reference used in context with MLSH in the experimentation section.",
+          "quote": "b) MLSH (Meta-Learning Shared Hierarchy) [13]"
+        }
+      },
+      {
+        "name": {
+          "value": "A2C (Advantage Actor-Critic)",
+          "justification": "A2C is used and improved as part of the implementation and experimental evaluations.",
+          "quote": "specifically A2C [25] (unless otherwise noted)"
+        },
+        "aliases": [
+          "Advantage Actor-Critic"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "A2C is part of the implemented base techniques but not a new contribution.",
+          "quote": "specifically A2C [25]"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "A2C forms part of the policy sampling approach used in the experiments.",
+          "quote": "While our approach is compatible with any RL method, we maximize J(θ) computed on-policy from the sampled trajectories using a score function estimator specifically A2C [25]"
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "A2C is not used for comparative purposes as a baseline or benchmark with others.",
+          "quote": "specifically A2C [25]"
+        },
+        "referenced_paper_title": {
+          "value": "Asynchronous Methods for Deep Reinforcement Learning",
+          "justification": "The title of the referenced paper for A2C is derived from the citation in the text.",
+          "quote": "specifically A2C [25]"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Minigrid",
+          "justification": "Minigrid is used as an environment for test and evaluation of the proposed method.",
+          "quote": "We evaluate our model in a partially-observable 2D multi-task environment called Minigrid, similar to the one introduced in [6]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Minimalistic Gridworld Environment for OpenAI Gym",
+          "justification": "This title corresponds to the reference cited associated with the use of Minigrid environment.",
+          "quote": "Minimalistic Gridworld Environment for OpenAI Gym. https://github.com/maximecb/gym-minigrid, 2018."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is explicitly mentioned for the implementation of the reinforcement learning models.",
+          "quote": "All the models (proposed as well as the baselines) are implemented in Pytorch 1.1 unless stated otherwise. [27]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Automatic Differentiation in PyTorch",
+          "justification": "The title corresponds to the reference provided in the context of PyTorch utilization.",
+          "quote": "Automatic differentiation in PyTorch. In NIPS Autodiff Workshop, 2017."
+        }
+      },
+      {
+        "name": {
+          "value": "OpenAI Gym",
+          "justification": "OpenAI Gym is mentioned as the framework compatible with the experimentation environment used (Minigrid).",
+          "quote": "It provides a family of customizable reinforcement learning environments that are compatible with the OpenAI Gym framework [5]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "OpenAI Gym",
+          "justification": "The title is derived from the citation reference for OpenAI Gym in the paper.",
+          "quote": "OpenAI Gym, 2016."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1586,
+    "prompt_tokens": 16642,
+    "total_tokens": 18228,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

@@ -1,0 +1,239 @@
+{
+  "paper": "804c34d3db58f15e94569032b8e32b5d.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "S MALL -GAN: S PEEDING UP GAN T RAINING USING C ORE -S ETS",
+      "justification": "The title precisely reflects the content and innovation presented in the paper, specifically focusing on speeding up GAN training using Core-Set techniques.",
+      "quote": "S MALL -GAN: S PEEDING UP GAN T RAINING USING C ORE -S ETS"
+    },
+    "description": "The paper introduces a method to accelerate the training of Generative Adversarial Networks (GANs) by employing Core-set selection to simulate large batch training without the associated computational costs. This technique shows improved efficiency in GAN training and applicability to various GAN architectures, promoting faster and more memory-efficient training processes.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper provides experimental results on several datasets demonstrating the effectiveness of the proposed method. It conducts experiments across different types of GANs and datasets, showcasing empirical improvements in speed and efficiency.",
+      "quote": "We conduct experiments showing that this technique substantially reduces training time and memory usage for modern GAN variants..."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Generative Adversarial Networks (GANs)",
+        "justification": "The core invention and experiments in this paper revolve around improving the training process of GANs, aligning directly with the field of Generative Adversarial Networks.",
+        "quote": "Generative Adversarial Networks (GANs) (Goodfellow et al., 2014) have become a popular research topic."
+      },
+      "aliases": [
+        "GANs"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Computer Vision",
+          "justification": "GANs are primarily applied here in the context of image generation tasks, which falls under the Computer Vision research field.",
+          "quote": "...we apply our technique to GAN-based anomaly detection (Kumar et al., 2019) and significantly improve on prior results."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Anomaly Detection",
+          "justification": "The paper evaluates the GAN technique's ability in anomaly detection, showing improved results in this sub-field.",
+          "quote": "...we apply our technique to GAN-based anomaly detection (Kumar et al., 2019) and significantly improve on prior results."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Machine Learning Theory",
+          "justification": "The theoretical aspect of using Core-set selection connects the empirical findings with machine learning theoretical frameworks.",
+          "quote": "This technique uses Core-set selection..."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "SN-GAN",
+          "justification": "Spectral Normalization GAN is explicitly mentioned as a model used in experimental comparisons.",
+          "quote": "We use Spectral Normalization-GAN (Miyato et al., 2018) and Self Attention-GAN (Zhang et al., 2018)"
+        },
+        "aliases": [
+          "Spectral Normalization-GAN"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The model is used for comparative experimental purposes, not introduced as a new contribution of this paper.",
+          "quote": "For evaluation, we measured the FID scores (Heusel et al., 2017) of 50,000 generated samples from the trained models."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The execution of SN-GAN is indicated by the extensive experiment descriptions and results reported.",
+          "quote": "...the time added by performing Core-Set sampling is only 0.024 seconds."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "SN-GAN is compared in the context of experiments both with and without Core-set sampling.",
+          "quote": "We compare the performance using SN-GANs with and without Core-set selection across progressively doubling batch sizes."
+        },
+        "referenced_paper_title": {
+          "value": "Spectral normalization for generative adversarial networks",
+          "justification": "The Spectral Normalization-GAN (SN-GAN) is referenced with its main paper by Miyato et al., 2018.",
+          "quote": "We use Spectral Normalization-GAN (Miyato et al., 2018)"
+        }
+      },
+      {
+        "name": {
+          "value": "SAGAN",
+          "justification": "Self-Attention GAN is explicitly mentioned as a model used in experimental comparisons.",
+          "quote": "We see similar results when experimenting with Self Attention GANs (SAGAN) (Zhang et al., 2018)"
+        },
+        "aliases": [
+          "Self-Attention GAN"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The model is used for experimental validation, not an original contribution of this paper.",
+          "quote": "...experimenting with Self Attention GANs (SAGAN)..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The execution of SAGAN is indicated by its involvement in various experiments as detailed in the paper.",
+          "quote": "Simply adding Coreset selection to the existing SAGAN code materially improved the FID."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper provides FID score comparisons between SAGAN with and without Core-set sampling.",
+          "quote": "We see similar results when experimenting with Self Attention GANs (SAGAN) (Zhang et al., 2018)"
+        },
+        "referenced_paper_title": {
+          "value": "Self-attention generative adversarial networks",
+          "justification": "The Self-Attention GAN (SAGAN) is referenced to the work done by Zhang et al., 2018.",
+          "quote": "We see similar results when experimenting with Self Attention GANs (SAGAN) (Zhang et al., 2018)"
+        }
+      },
+      {
+        "name": {
+          "value": "BiGAN",
+          "justification": "The model is used in experiments to compare its anomaly detection capabilities.",
+          "quote": "We think it’s likely that similar improvements could be achieved by using Core-set selection with BiGANs."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The model was already existing and used for comparison; it is not a contribution of this paper.",
+          "quote": "... adding Core-set selection to MEG substantially improves the results. By performing these experiments..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "BiGAN execution is confirmed through detailed results in anomaly detection.",
+          "quote": "...results close to the state-of-the-art technique for GAN-based anomaly detection (Zenati et al., 2018)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "BiGAN is compared in the experiments along with other GAN architectures for anomaly detection tasks.",
+          "quote": "...achieving results close to the state-of-the-art technique for GAN-based anomaly detection."
+        },
+        "referenced_paper_title": {
+          "value": "Efficient gan-based anomaly detection",
+          "justification": "This is inferred by the context and nature of the performance evaluation described in the paper, noting Zenati et al., 2018.",
+          "quote": "...results close to the state-of-the-art technique for GAN-based anomaly detection (Zenati et al., 2018)."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "The CIFAR-10 dataset is used extensively for evaluating the GAN models discussed in the paper.",
+          "quote": "We observe a similar effect to Brock et al. (2018) just by increasing the mini-batch size by a factor of 4, from 128 to 512, we are able to improve the FID scores..."
+        },
+        "aliases": [
+          "CIFAR"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning multiple layers of features from tiny images",
+          "justification": "The CIFAR-10 dataset's reference is given by citing Krizhevsky et al., 2009.",
+          "quote": "...on the CIFAR (Krizhevsky et al., 2009) and LSUN (Yu et al., 2015) datasets, respectively."
+        }
+      },
+      {
+        "name": {
+          "value": "LSUN",
+          "justification": "LSUN is used as one of the major datasets for evaluating GAN performance in image synthesis tasks.",
+          "quote": "We see similar results when experimenting with Self Attention GANs on the LSUN dataset (Yu et al., 2015)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "LSUN: Construction of a large-scale image dataset using deep learning with humans in the loop",
+          "justification": "The reference to the LSUN dataset is clearly indicated by citing Yu et al., 2015.",
+          "quote": "...and LSUN (Yu et al., 2015) datasets, respectively."
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet",
+          "justification": "ImageNet is employed in large scale experiments to validate the applicability of the proposed method in real-world settings.",
+          "quote": "We ran an experiment on the ImageNet data set"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ImageNet: A Large-Scale Hierarchical Image Database",
+          "justification": "Although not explicitly referenced in the text provided, ImageNet is conventionally cited originating from Deng et al. 2009.",
+          "quote": "We ran an experiment on the ImageNet data set."
+        }
+      },
+      {
+        "name": {
+          "value": "MNIST",
+          "justification": "MNIST was used for evaluating anomaly detection improvements when using Core-set sampling with GANs.",
+          "quote": "The results are reported in Table 2, which provides clear evidence in favor of our above hypothesis: for all digits tested, adding Core-set selection to MEG substantially improves the results."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Maximum entropy generators for energy-based models",
+          "justification": "The referencing of MNIST in the paper corresponds to the work by Kumar et al., 2019 as it details experiments based on this dataset.",
+          "quote": "We follow the experimental set-up from Kumar et al. (2019) by training the MEG with all samples from a chosen MNIST digit left-out during training."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is used as the evaluation framework for measuring the performance of models, specifically FID scores in this research.",
+          "quote": "Note that we measure the performance of all the models using the PyTorch version of FID scores, and not the official Tensorflow one."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An Imperative Style, High-Performance Deep Learning Library",
+          "justification": "The context suggests PyTorch being the assumed framework for deep learning model evaluation. Typically, it would be Lampe et al., 2019 attributed, though not cited here.",
+          "quote": "...using the PyTorch version of FID scores, and not the official Tensorflow one."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2124,
+    "prompt_tokens": 12541,
+    "total_tokens": 14665,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

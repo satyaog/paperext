@@ -1,0 +1,173 @@
+{
+  "paper": "8e72ae453380692b069edd71f00c63cb.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Mixed Patch Visible-Infrared Modality Agnostic Object Detection",
+      "justification": "The title clearly states the focus of the paper is on modality agnostic detection using mixed patches from visible and infrared spectrums.",
+      "quote": "Mixed Patch Visible-Infrared Modality Agnostic Object Detection"
+    },
+    "description": "This paper introduces a novel training technique called MiPa that leverages RGB and IR modalities using a common transformer-based object detection vision encoder. The proposed method seeks to handle modality imbalance and enable efficient multimodal learning with a single modality inference. The paper demonstrates competitive results on RGB/IR benchmarks using this approach.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper provides experimental results and comparative analysis with other methods on RGB/IR datasets to establish the effectiveness of their approach.",
+      "quote": "Our work provides empirical results alongside a theoretical explanation based on information theory describing the benefits of using MiPa with transformer-based backbones."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The research focuses on object detection and the integration of RGB and IR modalities, which is typically within the domain of Computer Vision.",
+        "quote": "For instance, the combination of visible (RGB) and infrared (IR) has been shown to improve object detection tasks, which are part of computer vision applications."
+      },
+      "aliases": [
+        "CV"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Multimodal Learning",
+          "justification": "Utilizing both RGB and IR modalities to improve performance indicates the application of multimodal learning techniques.",
+          "quote": "exploring patch-based architectures to build a powerful and yet simple training technique to create an RGB/IR modality agnostic vision encoder for object detection. Such approaches have been promising for multimodal learning."
+        },
+        "aliases": [
+          "MML"
+        ]
+      },
+      {
+        "name": {
+          "value": "Object Detection",
+          "justification": "The paper deals with object detection specifically using RGB and IR data through a novel method.",
+          "quote": "In real-world scenarios, using multiple modalities like visible (RGB) and infrared (IR) can greatly improve the performance of a predictive task such as Object Detection (OD)."
+        },
+        "aliases": [
+          "OD"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "DINO",
+          "justification": "DINO is a transformer-based object detection model mentioned as one of the models used for evaluation.",
+          "quote": "Furthermore, MiPa can simply be applied to different transformer-based detectors, such as DINO [46] and Deformable DETR [48]."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper uses DINO as part of their evaluation but it is not introduced as a novel model within this paper.",
+          "quote": "Furthermore, MiPa can simply be applied to different transformer-based detectors, such as DINO [46] and Deformable DETR [48]."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper discusses applying MiPa on DINO to achieve competitive results, indicating the actual execution of the model.",
+          "quote": "Implementation details. All our detectors were trained on an A100 NVIDIA GPU and were implemented using PyTorch."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares results obtained using DINO with other baselines and modeling strategies, discussing its performance.",
+          "quote": "MiPa demonstrates superior performance compared to using both modalities jointly and other baselines across different datasets."
+        },
+        "referenced_paper_title": {
+          "value": "DINO: Detr with Improved Denoising Anchor Boxes for End-to-End Object Detection",
+          "justification": "The reference for DINO is clearly mentioned in the context of comparative evaluation for this paper.",
+          "quote": "Furthermore, MiPa can simply be applied to different transformer-based detectors, such as DINO [46] and Deformable DETR [48]."
+        }
+      },
+      {
+        "name": {
+          "value": "Deformable DETR",
+          "justification": "Deformable DETR is mentioned alongside DINO as one of the transformer-based models evaluated with the proposed method.",
+          "quote": "Furthermore, MiPa can simply be applied to different transformer-based detectors, such as DINO [46] and Deformable DETR [48]."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Deformable DETR is used as part of the evaluation to test the proposed MiPa method, not as a contribution from this paper.",
+          "quote": "Furthermore, MiPa can simply be applied to different transformer-based detectors, such as DINO [46] and Deformable DETR [48]."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Deformable DETR is part of the evaluation process with MiPa.",
+          "quote": "Implementation details. All our detectors were trained on an A100 NVIDIA GPU and were implemented using PyTorch."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Performance of Deformable DETR using MiPa is compared to other benchmarks and baselines in the paper.",
+          "quote": "MiPa demonstrates superior performance compared to using both modalities jointly and other baselines across different datasets."
+        },
+        "referenced_paper_title": {
+          "value": "Deformable DETR: Deformable Transformers for End-to-End Object Detection",
+          "justification": "The reference for Deformable DETR is provided in context with its application for this research.",
+          "quote": "Furthermore, MiPa can simply be applied to different transformer-based detectors, such as DINO [46] and Deformable DETR [48]."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "LLVIP",
+          "justification": "LLVIP is explicitly mentioned as one of the datasets used for evaluating the method proposed in the paper.",
+          "quote": "We empirically demonstrate that the proposed method can also be used to improve the overall performance of detection when utilized as regularization for the strongest modality and achieve competitive results on two traditional RGB/IR benchmarks: LLVIP and FLIR."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Towards Robust Infrared Visible Person Re-Identification",
+          "justification": "The reference to LLVIP is clearly indicated as a source dataset for the evaluations performed in this paper.",
+          "quote": "We empirically demonstrate that the proposed method can also be used to improve the overall performance of detection when utilized as regularization for the strongest modality and achieve competitive results on two traditional RGB/IR benchmarks: LLVIP and FLIR."
+        }
+      },
+      {
+        "name": {
+          "value": "FLIR",
+          "justification": "FLIR dataset is used for testing the proposed object detection methods in multimodal learning context.",
+          "quote": "Furthermore, MiPa can simply be applied to different transformer-based detectors, such as DINO [46] and Deformable DETR [48]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Multispectral Pedestrian Detection: Benchmark Dataset and Baseline",
+          "justification": "The paper situates FLIR as one of the main datasets experimented on, likely using specifications from this reference.",
+          "quote": "Furthermore, we report competitive results on LLVIP and FLIR, which indicate robust testing environments for such models."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is mentioned as the deep learning framework used for implementing and training the models discussed in the paper.",
+          "quote": "Implementation details. All our detectors were trained on an A100 NVIDIA GPU and were implemented using PyTorch."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An Imperative Style, High-Performance Deep Learning Library",
+          "justification": "The paper acknowledges PyTorch as the framework used which aligns with the description of the library as per its reference.",
+          "quote": "Implementation details. All our detectors were trained on an A100 NVIDIA GPU and were implemented using PyTorch."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1547,
+    "prompt_tokens": 18762,
+    "total_tokens": 20309,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

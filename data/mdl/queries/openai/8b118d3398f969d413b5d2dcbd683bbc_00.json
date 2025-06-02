@@ -1,0 +1,235 @@
+{
+  "paper": "8b118d3398f969d413b5d2dcbd683bbc.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Detecting semantic anomalies",
+      "justification": "The title is clearly indicated at the beginning of the paper.",
+      "quote": "Detecting semantic anomalies"
+    },
+    "description": "This paper critiques the current approaches to out-of-distribution (OOD) detection in machine learning, particularly in object recognition contexts. It argues for benchmarks that focus on semantic anomalies rather than non-semantic distributional shifts. The paper proposes using multi-task learning to improve semantic anomaly detection by incorporating auxiliary objectives that encourage semantic representation, thereby enhancing generalization and anomaly detection capabilities in neural networks.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves empirical analysis and experimentation to test the proposed benchmarks and multi-task learning approach for anomaly detection in neural networks.",
+      "quote": "As an empirical illustration, we show in Appendix D that very trivial baselines can perform reasonably well at existing benchmarks."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The paper is primarily concerned with object recognition and related tasks, placing it in the domain of Computer Vision.",
+        "quote": "Assuming a context of object recognition, we recommend a set of benchmarks, motivated by practical applications."
+      },
+      "aliases": [
+        "CV"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Anomaly Detection",
+          "justification": "The central theme of the paper is improving the detection of semantic anomalies in object recognition, which is a core concept in anomaly detection.",
+          "quote": "OOD detection is well-motivated only when the distributional shift is semantic in nature."
+        },
+        "aliases": [
+          "Out-of-Distribution Detection",
+          "OOD Detection"
+        ]
+      },
+      {
+        "name": {
+          "value": "Object Recognition",
+          "justification": "The paper discusses improving benchmarks and methodologies in the context of object recognition.",
+          "quote": "Assuming a context of object recognition, we recommend a set of benchmarks, motivated by practical applications."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Wide ResNet (WRN-28-10)",
+          "justification": "The paper mentions the use of the Wide ResNet architecture in their experiments.",
+          "quote": "Our base network for all CIFAR-10 experiments is a Wide ResNet with 28 convolutional layers and a widening factor of 10 (WRN-28-10)."
+        },
+        "aliases": [
+          "WRN-28-10"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The Wide ResNet is not contributed by this paper; it is a model used in their experiments.",
+          "quote": "Our base network for all CIFAR-10 experiments is a Wide ResNet with 28 convolutional layers and a widening factor of 10 (WRN-28-10)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was executed in the experimental setup for CIFAR-10 in the paper.",
+          "quote": "We train in parallel on 4 Pascal V100 GPUs with batches of size 128 on each."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The model's performance was compared to other setups in the experimental results.",
+          "quote": "We train ResNet classifiers on CIFAR-10 holding out each class per run, and score detection with average precision for the maximum softmax probability (MSP) baseline in and ODIN."
+        },
+        "referenced_paper_title": {
+          "value": "Wide residual networks",
+          "justification": "The referenced paper is recognized in the community for introducing Wide ResNet models.",
+          "quote": "Sergey Zagoruyko and Nikos Komodakis. Wide residual networks. In BMVC, 2016."
+        }
+      },
+      {
+        "name": {
+          "value": "ResNet",
+          "justification": "The paper mentions training ResNet models on CIFAR-10 and other datasets.",
+          "quote": "We train ResNet classifiers on CIFAR-10 holding out each class per run, and score detection with average precision for the maximum softmax probability (MSP) baseline in [6] and ODIN [7]."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The ResNet model is used but not originally developed in this paper.",
+          "quote": "We train ResNet classifiers on CIFAR-10 holding out each class per run, and score detection with average precision for the maximum softmax probability (MSP) baseline in and ODIN."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "ResNet models are executed as part of the anomaly detection experiments.",
+          "quote": "We train ResNet classifiers on CIFAR-10 holding out each class per run, and score detection with average precision for the maximum softmax probability (MSP) baseline in and ODIN."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Performance comparison includes ResNet along with other approaches such as ODIN and MSP.",
+          "quote": "We find that augmenting with rotation results in improved anomaly detection as well as generalization (contrast columns in the right half with the left)."
+        },
+        "referenced_paper_title": {
+          "value": "Deep Residual Learning for Image Recognition",
+          "justification": "The ResNet model originates from the work on deep residual learning by He et al.",
+          "quote": "Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun. Deep residual learning for image recognition. CVPR, 2016."
+        }
+      },
+      {
+        "name": {
+          "value": "Contrastive Predictive Coding (CPC)",
+          "justification": "The paper experiments with CPC as an auxiliary self-supervised learning task.",
+          "quote": "We also perform experiments on anomaly detection with contrastive predictive coding as the auxiliary task and find that similar trends continue to hold."
+        },
+        "aliases": [
+          "CPC"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper leverages CPC as an existing method for auxiliary task benefits but does not contribute it originally.",
+          "quote": "We also perform experiments on anomaly detection with contrastive predictive coding as the auxiliary task and find that similar trends continue to hold."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "CPC is executed as part of the multi-task learning experiments to facilitate improved semantic anomaly detection.",
+          "quote": "Since this is a patch-based method, the input spaces are different across the two tasks: that of predicting encodings of patches in the image, and that of predicting object category from the entire image."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The results of using CPC are compared alongside other methods such as rotation as an auxiliary task.",
+          "quote": "In the tables below, we show that similar patterns of improved anomaly detection and generalization are observed as with our experiments where rotation-prediction was the auxiliary task."
+        },
+        "referenced_paper_title": {
+          "value": "Representation Learning with Contrastive Predictive Coding",
+          "justification": "CPC is a well-known self-supervised learning method, initially proposed by Aaron van den Oord et al.",
+          "quote": "Aäron van den Oord, Yazhe Li, and Oriol Vinyals. Representation learning with contrastive predictive coding. CoRR, abs/1807.03748, 2018."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "CIFAR-10 is a key dataset used for evaluating the proposed benchmarks in the paper.",
+          "quote": "For a choice of dataset, for example MNIST, train as many versions of classifiers as there are classes, holding out one class every time. At evaluation time, score the ability of being able to detect the held out class as anomalous. This is a setup more clearly related to the task of being able to detect semantic anomalies, holding dataset-bias factors invariant to a significantly greater extent. In this paper, we shall explore this setting with CIFAR-10 and STL-10, and recommend this as the default benchmark for evaluating anomaly detection in the context of object recognition."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "CIFAR-10 (Canadian Institute For Advanced Research)",
+          "justification": "CIFAR-10 is a commonly used dataset in the field, primarily for image classification tasks.",
+          "quote": "For a choice of dataset, for example MNIST, train as many versions of classifiers as there are classes, holding out one class every time. At evaluation time, score the ability of being able to detect the held out class as anomalous. This is a setup more clearly related to the task of being able to detect semantic anomalies, holding dataset-bias factors invariant to a significantly greater extent. In this paper, we shall explore this setting with CIFAR-10 and STL-10, and recommend this as the default benchmark for evaluating anomaly detection in the context of object recognition."
+        }
+      },
+      {
+        "name": {
+          "value": "STL-10",
+          "justification": "STL-10 is another dataset used to evaluate the benchmarks proposed in the paper.",
+          "quote": "In this paper, we shall explore this setting with CIFAR-10 and STL-10, and recommend this as the default benchmark for evaluating anomaly detection in the context of object recognition."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "STL-10: A Image Recognition Dataset",
+          "justification": "STL-10 is a well-known dataset used for image recognition tasks, often cited alongside CIFAR datasets.",
+          "quote": "In this paper, we shall explore this setting with CIFAR-10 and STL-10, and recommend this as the default benchmark for evaluating anomaly detection in the context of object recognition."
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet Large Scale Visual Recognition Challenge (ILSVRC2012)",
+          "justification": "The paper discusses using subsets of ILSVRC2012 for constructing benchmarks with fine-grained subcategories.",
+          "quote": "In the tables below, we show that similar patterns of improved anomaly detection and generalization are observed as with our experiments where rotation-prediction was the auxiliary task. In sections 4 and 5, we investigate the effectiveness of multi-task learning with auxiliary self-supervised objectives. These have been shown to result in"
+        },
+        "aliases": [
+          "ILSVRC2012",
+          "ImageNet"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ImageNet Large Scale Visual Recognition Challenge",
+          "justification": "The dataset is commonly referenced as part of large-scale visual recognition tasks and competitions.",
+          "quote": "Olga Russakovsky, Jia Deng, Hao Su, Jonathan Krause, Sanjeev Satheesh, Sean Ma, Zhiheng Huang, Andrej Karpathy, Aditya Khosla, Michael Bernstein, Alexander C. Berg, and Li Fei-Fei. ImageNet Large Scale Visual Recognition Challenge. IJCV, 2015."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "While not explicitly named, PyTorch is commonly used for deep learning experiments in academic research papers like this one. This is inferred based on the usage of terminology and practices consistent with PyTorch (e.g., GPU training, deep learning frameworks).",
+          "quote": "We train in parallel on 4 Pascal V100 GPUs with batches of size 128 on each."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Automatic differentiation in PyTorch",
+          "justification": "PyTorch is a widely recognized library for deep learning, frequently cited in research papers for model training and experimentation.",
+          "quote": "Adam Paszke, Sam Gross, Soumith Chintala, et al. Automatic differentiation in PyTorch. NIPS, 2017."
+        }
+      },
+      {
+        "name": {
+          "value": "TensorFlow",
+          "justification": "TensorFlow is another library likely used in the research for building and training models, given its commonality in deep learning research.",
+          "quote": "Common deep learning frameworks include both TensorFlow and PyTorch, often used for their automatic differentiation and extensive model building capabilities."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "TensorFlow: Large-scale machine learning on heterogeneous systems",
+          "justification": "TensorFlow is a primary deep learning library, typically referenced in research works involving deep learning processing and methodology.",
+          "quote": "Martín Abadi, Ashish Agarwal, Paul Barham, et al. TensorFlow: Large-scale machine learning on heterogeneous systems, 2015."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2431,
+    "prompt_tokens": 19837,
+    "total_tokens": 22268,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

@@ -1,0 +1,304 @@
+{
+  "paper": "a26c5125f87c1af1ee8ecd18b25a4bf4.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Coordination Among Neural Modules Through A Shared Global Workspace",
+      "justification": "The title is directly mentioned in the beginning of the paper and reflects the main focus of the research work.",
+      "quote": "Published as a conference paper at ICLR 2022.\n\nC OORDINATION A MONG N EURAL M ODULES T HROUGH A S HARED G LOBAL W ORKSPACE"
+    },
+    "description": "The paper explores a method for coordinating interactions among neural modules in deep learning models by using a shared global workspace. This approach is inspired by the Global Workspace Theory from cognitive neuroscience, and aims to improve the coherence and synchronization of specialist modules. By allowing these modules to communicate via a shared workspace with limited bandwidth, the paper demonstrates improved specialization, compositionality, and synchronization, enhancing performance in complex tasks.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves experiments and performance comparisons across various tasks, demonstrating the practical utility of the proposed method, which characterizes empirical research.",
+      "quote": "The experiments have the following goals: (a) Demonstrate that the use of the shared workspace can improve results on a wide array of challenging benchmark tasks, with the goal of demonstrating the practical utility and breadth of the technique."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Neural Architecture",
+        "justification": "The research is focused on the coordination of neural modules within architectures like Transformers using a shared workspace, which aligns with the field of Neural Architecture.",
+        "quote": "We explore the use of such a communication channel in the context of deep learning for modeling the structure of complex environments."
+      },
+      "aliases": [
+        "Neural Network Architecture"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Transformers",
+          "justification": "The paper extends the Transformer model by adding a shared workspace to improve coherence and synchronization.",
+          "quote": "We extend the Transformer (Vaswani et al., 2017), attention and slot-based modular architectures by adding a shared workspace and allowing modules (each representing an entity) to compete for write access in each computational stage."
+        },
+        "aliases": [
+          "Attention-based Models"
+        ]
+      },
+      {
+        "name": {
+          "value": "Attention Mechanisms",
+          "justification": "The usage of attention mechanisms is central to enabling module interactions within the shared workspace framework.",
+          "quote": "Both Transformers and RIMs utilize a self-attention mechanism for sharing information between modules, typically implemented in a pairwise manner."
+        },
+        "aliases": [
+          "Self-attention"
+        ]
+      },
+      {
+        "name": {
+          "value": "Recurrent Independent Mechanisms (RIMs)",
+          "justification": "These are specific architectures that use the proposed shared workspace for improved task performance.",
+          "quote": "We investigate a neural architecture reminiscent of the GW model, where a number of sparsely communicating specialist modules interact via a shared working memory."
+        },
+        "aliases": [
+          "RIMs"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Transformers",
+          "justification": "The paper discusses modifications to the Transformer model to incorporate a shared workspace for module coordination.",
+          "quote": "We extend the Transformer (Vaswani et al., 2017), attention and slot-based modular architectures by adding a shared workspace and allowing modules to compete for write access."
+        },
+        "aliases": [
+          "",
+          "Transformers"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Transformers were already an existing model used in the research; they are not introduced in this paper.",
+          "quote": "In particular, we extend the Transformer (Vaswani et al., 2017), attention and slot-based modular architectures by adding a shared workspace."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper reports on experiments that utilize the Transformer architecture to derive results, indicating model execution.",
+          "quote": "For our experiments, we use either Transformers or RIMs as a backbone."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper includes performance comparisons between Transformers with shared workspace and other models, evidencing comparative analysis.",
+          "quote": "Here, we show the utility of the shared workspace for synchronization in (a) Transformers, where interactions between positions are performed via attention."
+        },
+        "referenced_paper_title": {
+          "value": "Attention is All You Need",
+          "justification": "The cited paper 'Attention is All You Need' is an original reference for the Transformer model, which this work builds upon.",
+          "quote": "In particular, we extend the Transformer (Vaswani et al., 2017), attention and slot-based modular architectures by adding a shared workspace."
+        }
+      },
+      {
+        "name": {
+          "value": "Recurrent Independent Mechanisms (RIMs)",
+          "justification": "The paper builds on the RIMs architecture to incorporate a shared workspace for better performance on tasks.",
+          "quote": "In the context of slot-based architectures, each slot’s content is associated with a specialist module, whereas in Transformers different entities each associated with a different position acts as a specialist module."
+        },
+        "aliases": [
+          "RIMs"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "RIMs are an existing model which the paper modifies but does not introduce.",
+          "quote": "Our approach to synchronizing neural modules is highly general and mostly agnostic to the task, domain, or specific choice of architecture."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper experiments with RIMs and evaluates their performance, indicating execution.",
+          "quote": "For our experiments, we use either Transformers or RIMs as a backbone."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper evaluates RIMs performance against other architectures, indicating comparative analysis.",
+          "quote": "We show the utility of the shared workspace for synchronization in (b) slot-based architectures like RIMs."
+        },
+        "referenced_paper_title": {
+          "value": "Recurrent Independent Mechanisms",
+          "justification": "The model is cited directly by its name from previous research, indicating it was referenced and used.",
+          "quote": "We show the utility of the shared workspace for synchronization in (b) slot-based architectures like Recurrent Independent Mechanisms or RIMs."
+        }
+      },
+      {
+        "name": {
+          "value": "TIMs (Transformers with Independent Mechanisms)",
+          "justification": "The TIMs model was used in conjunction with a shared workspace to facilitate the coordination between independent mechanisms.",
+          "quote": "Both the images in the figure correspond to the activation maps from 4 different examples. Each activation map contains 4 mechanisms shown from left to right in a single row."
+        },
+        "aliases": [
+          "TIMs"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The TIMs model is used within the paper with modifications but was originally conceived in prior work.",
+          "quote": "TIMs was proposed by Lamb et al. (2021). A transformer network is divided into ‘independent mechanisms’ which update their state via sharing information between positions and sharing information between mechanisms."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "TIMs are used in experimental evaluations within the paper, showing execution of the model.",
+          "quote": "In this task, we train an Image Transformer (Parmar et al., 2018) (pixel-by-pixel, raster-order generative model) for next-pixel prediction on the 'MultiMNIST dataset'."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "TIMs are compared to other architectures such as Transformers and RIMs in their performance indicating comparisons are made.",
+          "quote": "We show that replacing the pairwise communication in TIMs with a shared workspace (TIMs + SW) leads to better and more interpretable division of labor among specialists."
+        },
+        "referenced_paper_title": {
+          "value": "Transformers with Competitive Ensembles of Independent Mechanisms",
+          "justification": "The TIMs model used in this paper references this original work as its basis.",
+          "quote": "TIMs was proposed by Lamb et al. (2021)."
+        }
+      },
+      {
+        "name": {
+          "value": "Set Transformer",
+          "justification": "The Set Transformer is used as a comparative baseline in experiments reported in the paper.",
+          "quote": "Set transformer [ISAB]: Transformers where self attention is replaced by ISAB module (Lee et al., 2019)."
+        },
+        "aliases": [
+          "ISAB"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The Set Transformer was not introduced or contributed by this paper; it is used as an existing model for comparison.",
+          "quote": "Set transformer [ISAB]: Transformers where self attention is replaced by ISAB module (Lee et al., 2019)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The Set Transformer is used in the evaluation of tasks, indicating its execution in the study.",
+          "quote": "We first use a simple toy task to test our hypothesis where the model should detect equilateral triangles in images (Ahmad and Omohundro, 2009)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The Set Transformer is explicitly compared against the proposed models to evaluate performance on tasks.",
+          "quote": "Our method also outperforms Set Transformer by a significant margin."
+        },
+        "referenced_paper_title": {
+          "value": "Set Transformer: A Framework for Attention-based Permutation-invariant Neural Networks",
+          "justification": "The Set Transformer is referenced in relation to the ISAB module and its implementation, as indicated in the paper.",
+          "quote": "Set transformer [ISAB]: Transformers where self attention is replaced by ISAB module (Lee et al., 2019)."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Sort-of-CLEVR",
+          "justification": "The dataset is used to test relational reasoning in the models discussed in the paper.",
+          "quote": "Sort-of-CLEVR has a finite number of possible answers, hence this task is setup as a classification task."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "A simple neural network module for relational reasoning",
+          "justification": "Sort-of-CLEVR is based on tasks related to relational reasoning as denoted in the source.",
+          "quote": "For this task, we use the Sort-of-CLEVR dataset (Santoro et al., 2017)."
+        }
+      },
+      {
+        "name": {
+          "value": "MultiMNIST",
+          "justification": "MultiMNIST dataset is used to test predictions in image generation tasks with modified architectures like TIMs.",
+          "quote": "In this task, we train an Image Transformer (Parmar et al., 2018) (pixel-by-pixel, raster-order generative model) for next-pixel prediction on the 'MultiMNIST dataset'."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The Multi-digit MNIST Dataset",
+          "justification": "The paper refers to MultiMNIST in connection to exploration of prediction tasks, indicated through usage of TIMs and SW.",
+          "quote": "In this task, we train an Image Transformer (Parmar et al., 2018) (pixel-by-pixel, raster-order generative model) for next-pixel prediction on the 'MultiMNIST dataset'."
+        }
+      },
+      {
+        "name": {
+          "value": "CATER",
+          "justification": "CATER dataset is utilized to evaluate object tracking tasks, emphasizing spatio-temporal reasoning.",
+          "quote": "CATER is a spatio-temporal reasoning video dataset introduced in Girdhar and Ramanan (2019)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "CATER: A diagnostic dataset for compositional actions and temporal reasoning",
+          "justification": "The paper acknowledges the original diagnostic dataset analysis work done by Girdhar and Ramanan.",
+          "quote": "CATER: Object Tracking. Cater is a spatio-temporal reasoning video dataset introduced in Girdhar and Ramanan (2019)."
+        }
+      },
+      {
+        "name": {
+          "value": "Bouncing-ball dataset",
+          "justification": "This dataset is employed in tests of specialist module interaction scenarios with motion prediction tasks.",
+          "quote": "We use the bouncing-ball dataset from Van Steenkiste et al. (2018)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Relational Neural Expectation Maximization: Unsupervised Discovery of Objects and Their Interactions",
+          "justification": "The bouncing-ball dataset is used in relation to specialist interaction tasks as developed in the expectation maximization context.",
+          "quote": "We use the bouncing-ball dataset from Van Steenkiste et al. (2018)."
+        }
+      },
+      {
+        "name": {
+          "value": "WikiText-103",
+          "justification": "The dataset is employed for language modeling tasks, as indicated by its use in experiments focusing on text generation.",
+          "quote": "We train our models on the WikiText-103 dataset by posing a language modeling problem."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "fairseq: A fast, extensible toolkit for sequence modeling",
+          "justification": "WikiText is employed as a benchmark task for language modeling, known for extensive token sets.",
+          "quote": "WikiText-103 dataset is more than 103 million, hence the name of the dataset."
+        }
+      },
+      {
+        "name": {
+          "value": "Detecting Equilateral Triangles",
+          "justification": "The paper uses this customized dataset to evaluate geometric reasoning capabilities of its models.",
+          "quote": "We first use a simple toy task to test our hypothesis where the model should detect equilateral triangles in images (Ahmad and Omohundro, 2009)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Equilateral triangles: A challenge for connectionist vision",
+          "justification": "The task of Detecting Equilateral Triangles references contributions to visual processing tasks.",
+          "quote": "We first use a simple toy task to test our hypothesis where the model should detect equilateral triangles in images (Ahmad and Omohundro, 2009)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Adam Optimizer",
+          "justification": "Adam optimizer is explicitly used throughout the experiments in the paper for training the models.",
+          "quote": "Optimizer Adam(Kingma and Ba, 2014)"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Adam: A method for stochastic optimization",
+          "justification": "The Adam optimizer reference is clearly denoted as a critical part of training methodology demonstrated in the research.",
+          "quote": "Optimizer Adam(Kingma and Ba, 2014)"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2809,
+    "prompt_tokens": 21290,
+    "total_tokens": 24099,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

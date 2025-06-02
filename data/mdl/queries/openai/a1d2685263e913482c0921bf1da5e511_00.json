@@ -1,0 +1,153 @@
+{
+  "paper": "a1d2685263e913482c0921bf1da5e511.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Building Robust Ensembles via Margin Boosting",
+      "justification": "The title of the paper is explicitly mentioned at the beginning and in several other sections such as the abstract and the contribution section of the paper.",
+      "quote": "Building Robust Ensembles via Margin Boosting"
+    },
+    "description": "This paper addresses the problem of adversarial robustness of neural networks by proposing a margin-boosting framework that constructs robust ensembles of classifiers. It introduces a new margin-maximizing cross-entropy (MCE) loss and a computationally efficient algorithm, MRBOOST, for learning such ensembles. The study shows that the proposed approach outperforms existing ensemble techniques and large end-to-end trained models on benchmark datasets.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves extensive empirical evaluation on benchmark datasets to demonstrate the effectiveness of the proposed algorithm (MRBOOST) and the margin-maximizing cross-entropy (MCE) loss in improving adversarial robustness.",
+      "quote": "Through extensive empirical evaluation on benchmark datasets, we show that our algorithm not only outperforms existing ensembling techniques, but also large models trained in an end-to-end fashion."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Adversarial Robustness",
+        "justification": "The paper is concerned with constructing neural network ensembles that are robust to adversarial attacks, addressing their vulnerability to adversarial perturbations.",
+        "quote": "In the context of adversarial robustness, a single model does not usually have enough power to defend against all possible adversarial attacks, and as a result, has sub-optimal robustness."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Ensemble Learning",
+          "justification": "The paper discusses constructing ensembles of neural networks to improve adversarial robustness, leveraging multiple base classifiers.",
+          "quote": "Consequently, an emerging line of work has focused on learning an ensemble of neural networks to defend against adversarial attacks."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Boosting",
+          "justification": "The paper employs a boosting strategy, specifically margin-boosting, to create robust classifiers.",
+          "quote": "We view this problem from the perspective of margin-boosting and develop an algorithm for learning an ensemble with maximum margin."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "MRBOOST.NN",
+          "justification": "MRBOOST.NN is a model that was derived from the margin-boosting framework and is implemented in the study.",
+          "quote": "We derive a computationally efficient algorithm (MRBOOST.NN) from our margin-boosting framework."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "The paper presents MRBOOST.NN as a novel contribution aimed at constructing robust ensembles for adversarial defense.",
+          "quote": "We derive a computationally efficient algorithm (MRBOOST.NN) from our margin-boosting framework."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was empirically evaluated using benchmark datasets, which implies that it was executed.",
+          "quote": "Through extensive empirical evaluation on benchmark datasets, we show that our algorithm not only outperforms existing ensembling techniques, but also large models trained in an end-to-end fashion."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "MRBOOST.NN is compared to existing ensembling techniques and large end-to-end trained models to show its effectiveness.",
+          "quote": "Through extensive empirical evaluation on benchmark datasets, we show that our algorithm not only outperforms existing ensembling techniques, but also large models trained in an end-to-end fashion."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "The paper does not cite another paper specifically for MRBOOST.NN, as it is introduced in this paper itself.",
+          "quote": ""
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "CIFAR-10 is used as a benchmark dataset to evaluate the robustness and performance of the model and techniques proposed in the paper.",
+          "quote": "We use CIFAR-10 dataset and use a nine-layer convolutional neural network as the base classifier."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Multiple Layers of Features from Tiny Images",
+          "justification": "The CIFAR-10 dataset is often attributed to this paper by Alex Krizhevsky, which is one of the original papers describing the dataset.",
+          "quote": "A. Krizhevsky, Learning Multiple Layers of Features from Tiny Images, University of Toronto."
+        }
+      },
+      {
+        "name": {
+          "value": "SVHN",
+          "justification": "SVHN is used as a dataset in the experimental evaluation of the proposed techniques in the paper.",
+          "quote": "We consider three datasets: SVHN, CIFAR-10 and CIFAR-100."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Reading Digits in Natural Images with Unsupervised Feature Learning",
+          "justification": "The SVHN dataset is typically associated with this work by Yuval Netzer et al., 2011, citing its original introduction and use.",
+          "quote": "Y. Netzer, T. Wang, A. Coates, A. Bissacco, B. Wu, A. Y. Ng, 'Reading Digits in Natural Images with Unsupervised Feature Learning', NIPS Workshop on Deep Learning and Unsupervised Feature Learning 2011."
+        }
+      },
+      {
+        "name": {
+          "value": "CIFAR-100",
+          "justification": "CIFAR-100 is used as a benchmark dataset to evaluate the robustness and performance of the proposed models and techniques.",
+          "quote": "We consider three datasets: SVHN, CIFAR-10 and CIFAR-100."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning Multiple Layers of Features from Tiny Images",
+          "justification": "Like CIFAR-10, CIFAR-100 is attributed to the paper by Alex Krizhevsky, which describes the dataset.",
+          "quote": "A. Krizhevsky, Learning Multiple Layers of Features from Tiny Images, University of Toronto."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is mentioned as the framework used to implement the pseudocode for the algorithm presented in the paper.",
+          "quote": "We provide a PyTorch-style pseudocode of our algorithm for training a single network."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Automatic Differentiation in PyTorch",
+          "justification": "This paper by Paszke et al. is commonly cited when referencing the PyTorch library, particularly in research contexts.",
+          "quote": "A. Paszke, S. Gross, S. Chintala, G. Chanan, Z. Lin, E. Yang, Z. DeVito, Z. Harris, T. Killeen, A. Desmaison, L. Antiga, A. Lerer, ‘Automatic differentiation in PyTorch’."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1378,
+    "prompt_tokens": 29659,
+    "total_tokens": 31037,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

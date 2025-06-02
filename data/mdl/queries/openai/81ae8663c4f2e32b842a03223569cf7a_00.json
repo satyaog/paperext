@@ -1,0 +1,222 @@
+{
+  "paper": "81ae8663c4f2e32b842a03223569cf7a.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Domain Generalization by Rejecting Extreme Augmentations",
+      "justification": "The title is explicitly mentioned in the paper right at the beginning.",
+      "quote": "Domain Generalization by Rejecting Extreme Augmentations"
+    },
+    "description": "This paper proposes a new training procedure for domain generalization through data augmentation. It focuses on enhancing performance by rejecting extreme transformations that may harm training, using a reward function to assess the quality of augmentations. The method achieves results comparable to state-of-the-art methods on benchmark datasets.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents experiments and results on various benchmark datasets, indicating an empirical approach.",
+      "quote": "With this procedure, our data augmentation scheme achieves a level of accuracy that is comparable to or better than state-of-the-art methods on benchmark domain generalization datasets."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Domain Generalization in Machine Learning",
+        "justification": "The primary focus of the paper is on improving domain generalization through better data augmentation strategies.",
+        "quote": "In order to tackle this problem, domain generalization (DG) aims to predict well data distributions different from those seen during training."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Data Augmentation",
+          "justification": "The paper extensively discusses data augmentation techniques and develops a novel method for selecting appropriate augmentations in domain generalization.",
+          "quote": "Data augmentation is one of the most effective techniques for regularizing deep learning models and improving their recognition performance in a variety of tasks and domains."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Computer Vision",
+          "justification": "The datasets and techniques mentioned in the paper, such as CIFAR-10, ImageNet, etc., indicate a focus on computer vision tasks.",
+          "quote": "Horizontal flips and random cropping or translations of images are commonly used for natural image datasets such as CIFAR-10 and ImageNet."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "ERM (Empirical Risk Minimization)",
+          "justification": "ERM is mentioned as a baseline method compared against the proposed method.",
+          "quote": "As a baseline optimization problem, we consider the simple empirical risk minimization (ERM), which minimizes the average loss."
+        },
+        "aliases": [
+          "ERM"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "ERM is used as a standard baseline for comparison, indicating it is not a novel contribution of this paper.",
+          "quote": "As a result, Arjovsky et al. [2] propose to enforce the optimal classifier for different domains. [...] these methods are either too strong to optimize reliably or too weak to achieve their goals."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper involves executing ERM as part of the experiments to benchmark the proposed method.",
+          "quote": "As a baseline optimization problem, we consider the simple empirical risk minimization (ERM)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "ERM serves as a baseline for comparison with the proposed method, as well as other advanced techniques.",
+          "quote": "These methods are either too strong to optimize reliably or too weak to achieve their goals. [...] ERM achieves competitive performance."
+        },
+        "referenced_paper_title": {
+          "value": "Principles of risk minimization for learning theory",
+          "justification": "ERM is a well-established concept often associated with Vapnik.",
+          "quote": "ERM as in [44]"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "PACS dataset",
+          "justification": "PACS is explicitly mentioned as one of the datasets used for evaluating the proposed methods.",
+          "quote": "PACS: [25] is a 7-way object classification task with 4 domains and 9,991 samples."
+        },
+        "aliases": [
+          "PACS"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Deeper, broader and artier domain generalization",
+          "justification": "This paper is referenced in relation to the PACS dataset.",
+          "quote": "PACS: [25] is a 7-way object classification task with 4 domains and 9,991 samples."
+        }
+      },
+      {
+        "name": {
+          "value": "VLCS dataset",
+          "justification": "VLCS is noted as one of the benchmark datasets for processing and evaluation.",
+          "quote": "VLCS: [11] is a 5-way classification task with 4 domains and 10,729 samples."
+        },
+        "aliases": [
+          "VLCS"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Unbiased metric learning: On the utilization of multiple datasets and web images for softening bias",
+          "justification": "The paper VLCS is referenced for its use as a benchmark dataset.",
+          "quote": "VLCS: [11] is a 5-way classification task with 4 domains and 10,729 samples."
+        }
+      },
+      {
+        "name": {
+          "value": "OfficeHome dataset",
+          "justification": "OfficeHome dataset is utilized within the research for testing domain generalization methods.",
+          "quote": "OfficeHome: [45] is a 65-way classification task depicting everyday objects with 4 domains and a total of 15,588 samples."
+        },
+        "aliases": [
+          "OfficeHome"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Deep hashing network for unsupervised domain adaptation",
+          "justification": "The paper references this title for the use of the OfficeHome dataset.",
+          "quote": "OfficeHome: [45] is a 65-way classification task depicting everyday objects with 4 domains and a total of 15,588 samples."
+        }
+      },
+      {
+        "name": {
+          "value": "TerraIncognita dataset",
+          "justification": "TerraIncognita is included as one of the evaluation datasets for domain generalization tasks.",
+          "quote": "TerraIncognita: [4] is a 10-way classification problem of animals in wildlife cameras, where the 4 domains are different locations."
+        },
+        "aliases": [
+          "TerraIncognita"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Recognition in terra incognita",
+          "justification": "The referenced paper for the TerraIncognita dataset is mentioned in relation to its use in the study.",
+          "quote": "TerraIncognita: [4] is a 10-way classification problem of animals in wildlife cameras, where the 4 domains are different locations."
+        }
+      },
+      {
+        "name": {
+          "value": "DomainNet dataset",
+          "justification": "DomainNet is used as a large-scale evaluation dataset to validate the proposed approach.",
+          "quote": "DomainNet: [36] is a 345-way object classification task with 6 domains."
+        },
+        "aliases": [
+          "DomainNet"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Moment matching for multi-source domain adaptation",
+          "justification": "This dataset is cited with reference to its original paper, outlining its role and statistics.",
+          "quote": "DomainNet: [36] is a 345-way object classification task with 6 domains."
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet",
+          "justification": "ImageNet is mentioned as a dataset used for pre-training in the experiments.",
+          "quote": "PACS: [25] is a 7-way object classification task with 4 domains and 9,991 samples."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ImageNet large scale visual recognition challenge",
+          "justification": "ImageNet is referenced as a well-established dataset in computer vision tasks.",
+          "quote": "ResNet-50 [17] pre-trained on the ImageNet [38] as default."
+        }
+      },
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "CIFAR-10 is mentioned in the context of standard data augmentation techniques in computer vision tasks.",
+          "quote": "Horizontal flips and random cropping or translations of images are commonly used for natural image datasets such as CIFAR-10 [23]."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Learning multiple layers of features from tiny images",
+          "justification": "CIFAR-10 is mentioned in its common context, which relates to the referenced paper.",
+          "quote": "Horizontal flips and random cropping or translations of images are commonly used for natural image datasets such as CIFAR-10 [23]."
+        }
+      },
+      {
+        "name": {
+          "value": "MNIST dataset",
+          "justification": "MNIST is used to exemplify standard practices in data augmentation for deep learning.",
+          "quote": "elastic distortions and scalings are more common on MNIST dataset"
+        },
+        "aliases": [
+          "MNIST"
+        ],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "Image data augmentation for deep learning: A survey",
+          "justification": "The survey paper is indirectly referenced in context of mentioning dataset augmentation.",
+          "quote": "elastic distortions and scalings are more common on MNIST dataset [49]."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1712,
+    "prompt_tokens": 22270,
+    "total_tokens": 23982,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

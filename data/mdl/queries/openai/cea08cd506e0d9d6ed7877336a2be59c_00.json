@@ -1,0 +1,146 @@
+{
+  "paper": "cea08cd506e0d9d6ed7877336a2be59c.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "A Computational Framework for Solving Wasserstein Lagrangian Flows",
+      "justification": "The title is directly given in the document provided.",
+      "quote": "A Computational Framework for Solving Wasserstein Lagrangian Flows"
+    },
+    "description": "The paper proposes a novel deep learning-based framework for solving variational problems related to optimal transport. This framework leverages the dual formulation of Lagrangians and doesn't require simulation or backpropagation through learned dynamics. The framework is versatile and outperforms previous approaches in single-cell trajectory inference by incorporating prior knowledge into the dynamics. The focus is on interpolating the evolution of cell distributions and modeling full trajectories at the cellular level through Wasserstein Lagrangian Flows.",
+    "type": {
+      "value": "theoretical",
+      "justification": "The paper develops a theoretical framework using Lagrangians to solve variational problems related to optimal transport and demonstrates mathematical derivations of dual objectives.",
+      "quote": "We propose a novel deep learning based framework approaching all of these problems from a unified perspective. Leveraging the dual formulation of the Lagrangians, our method does not require simulating or backpropagating through the trajectories of the learned dynamics, and does not need access to optimal couplings."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Optimal Transport",
+        "justification": "The paper discusses the framework for solving multiple variational problems related to optimal transport using Wasserstein Lagrangian Flows.",
+        "quote": "The dynamical formulation of the optimal transport can be extended through various choices of the underlying geometry (kinetic energy), and the regularization of density paths (potential energy)."
+      },
+      "aliases": [
+        "OT"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Variational Inference",
+          "justification": "The paper's focus on solving variational problems using dual formulations relates closely to variational inference techniques.",
+          "quote": "We propose a novel deep learning based framework approaching all of these problems from a unified perspective. Leveraging the dual formulation of the Lagrangians..."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Single-cell Trajectory Inference",
+          "justification": "The paper applies its proposed framework to outperform previous methods in single-cell trajectory inference, a specific application domain.",
+          "quote": "We showcase the versatility of the proposed framework by outperforming previous approaches for the single-cell trajectory inference, where incorporating prior knowledge into the dynamics is crucial for correct predictions."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [],
+    "datasets": [
+      {
+        "name": {
+          "value": "Embryoid body (EB) dataset",
+          "justification": "The EB dataset is mentioned as used in single-cell RNA sequencing trajectory inference experiments in the paper.",
+          "quote": "We apply our methods for trajectory inference of single-cell RNA sequencing data, including the Embryoid body (EB) dataset"
+        },
+        "aliases": [
+          "EB"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Visualizing structure and transitions in high-dimensional biological data",
+          "justification": "The referenced paper by Moon et al. (2019) is where the EB dataset is originally from.",
+          "quote": "The Embryoid body (EB) dataset is a scRNA-seq dataset of human embryonic stem cells used to observe differentiation of cell lineages (Moon et al., 2019)."
+        }
+      },
+      {
+        "name": {
+          "value": "CITE-seq",
+          "justification": "The CITE-seq dataset is mentioned as part of the experiments conducted using the proposed framework.",
+          "quote": "We apply our methods for trajectory inference of single-cell RNA sequencing data, including the...CITE-seq...datasets (Burkhardt et al., 2022)"
+        },
+        "aliases": [
+          "Cite"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Multimodal single-cell integration across time, individuals, and batches.",
+          "justification": "The referenced paper by Burkhardt et al. (2022) is related to the preprocessing and source of the CITE-seq dataset.",
+          "quote": "...Cite and Multi datasets are taken from the Multimodal Single-cell Integration challenge at NeurIPS 2022 (Burkhardt et al., 2022)."
+        }
+      },
+      {
+        "name": {
+          "value": "Multiome dataset",
+          "justification": "The Multiome dataset is mentioned as used in the single-cell trajectory inference experiments in the paper.",
+          "quote": "We apply our methods for trajectory inference of single-cell RNA sequencing data, including the...Multiome...datasets (Burkhardt et al., 2022)"
+        },
+        "aliases": [
+          "Multi"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Multimodal single-cell integration across time, individuals, and batches.",
+          "justification": "The referenced paper by Burkhardt et al. (2022) is related to the preprocessing and source of the Multiome dataset.",
+          "quote": "The Cite and Multi datasets are taken from the Multimodal Single-cell Integration challenge at NeurIPS 2022 (Burkhardt et al., 2022)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "U-Net",
+          "justification": "The U-Net architecture is explicitly used in the image generation experiments as mentioned in the paper.",
+          "quote": "For the image generation experiments, we follow common practices of training the diffusion models (Song et al., 2020), i.e. the vector field model s t (x, θ) uses the U-net architecture (Ronneberger et al., 2015)..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "U-Net: Convolutional Networks for Biomedical Image Segmentation",
+          "justification": "The referenced paper by Ronneberger et al. (2015) is the original paper on U-Net.",
+          "quote": "...uses the U-net architecture (Ronneberger et al., 2015)..."
+        }
+      },
+      {
+        "name": {
+          "value": "OPT",
+          "justification": "The OPT (Python Optimal Transport) library is used in reproducing results for comparison.",
+          "quote": "For OT-CFM, we reproduce the results using a larger model to match the performance of the exact OT solver (Flamary et al., 2021)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "POT: Python Optimal Transport",
+          "justification": "The referenced paper by Flamary et al. (2021) describes the Python Optimal Transport (POT/OPT) library used in the experiments.",
+          "quote": "For OT-CFM, we reproduce the results using a larger model to match the performance of the exact OT solver (Flamary et al., 2021)."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1298,
+    "prompt_tokens": 32662,
+    "total_tokens": 33960,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

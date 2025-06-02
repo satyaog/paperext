@@ -1,0 +1,189 @@
+{
+  "paper": "a1dccd659d3f27c6cb262a65af162e0a.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Attention-based Class-Conditioned Alignment for Multi-Source Domain Adaptation of Object Detectors",
+      "justification": "The title is clearly stated at the beginning of the paper, and it reflects the main focus of the research, which is about developing an attention-based class-conditioned method for multi-source domain adaptation in object detectors.",
+      "quote": "Attention-based Class-Conditioned Alignment for Multi-Source Domain Adaptation of Object Detectors"
+    },
+    "description": "The paper proposes an attention-based class-conditioned alignment method for multi-source domain adaptation (MSDA) in object detection. It addresses feature alignment challenges across domains by using an attention module combined with an adversarial domain classifier. The proposed method outperforms state-of-the-art approaches on various MSDA benchmarks, showing robustness to class imbalance. The model focuses on aligning instances of each object category between different domains.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents experimental results on multiple benchmark datasets to demonstrate the effectiveness of the proposed method, indicating an empirical nature of the study.",
+      "quote": "Experimental results on multiple benchmarking MSDA datasets indicate that our method outperforms state-of-the-art methods and exhibits robustness to class imbalance."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The paper deals with object detection, a common task within the field of computer vision, and addresses domain adaptation challenges specific to this area.",
+        "quote": "Domain adaptation methods for object detection (OD) strive to mitigate the impact of distribution shifts by promoting feature alignment across source and target domains."
+      },
+      "aliases": [
+        "CV"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Domain Adaptation",
+          "justification": "The research specifically addresses the problem of domain adaptation by proposing a method for aligning features across different domains, which is a crucial aspect of domain adaptation.",
+          "quote": "Multi-source domain adaptation (MSDA) allows leveraging multiple annotated source datasets and unlabeled target data to improve the accuracy and robustness of the detection model."
+        },
+        "aliases": [
+          "DA"
+        ]
+      },
+      {
+        "name": {
+          "value": "Object Detection",
+          "justification": "The study focuses on object detection and uses MSDA for improving detection accuracy across different domains.",
+          "quote": "Domain adaptation methods for object detection (OD) strive to mitigate the impact of distribution shifts by promoting feature alignment across source and target domains."
+        },
+        "aliases": [
+          "OD"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Prototype Mean Teacher (PMT)",
+          "justification": "PMT is mentioned as one of the existing methods for MSDA of object detectors, which the proposed method is compared against.",
+          "quote": "Later, PMT [3] was proposed that uses prototypes for class-conditioned alignment."
+        },
+        "aliases": [
+          "PMT"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "PMT is cited as an existing method in the paper's related work section, not introduced as a contribution of this paper.",
+          "quote": "Only three methods have been proposed for MSDA of OD - Divide and Merge Spindle Network (DMSN) [37], Target Relevant Knowledge Preservation (TRKP) [34], and Prototype Mean Teacher (PMT) [3]."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The paper does not provide specific computational details about executing PMT, focusing instead on its comparison with other methods, including the proposed ACIA model.",
+          "quote": "Later, PMT [3] was proposed that uses prototypes for class-conditioned alignment."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "PMT is compared with the new ACIA method proposed in the paper.",
+          "quote": "ACIA outperforms PMT [3] by 2.6 mAP."
+        },
+        "referenced_paper_title": {
+          "value": "Multi-source domain adaptation for object detection with prototype-based mean teacher",
+          "justification": "The referenced title fits PMT as it is specifically mentioned in association with Multi-source domain adaptation for object detection, and is cited in the paper.",
+          "quote": "Later, PMT [3] was proposed that uses prototypes for class-conditioned alignment."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "BDD100K",
+          "justification": "BDD100K is a dataset used in the experiments to evaluate the proposed method on different settings, such as cross-time adaptation.",
+          "quote": "For our experiments we use 5 different datasets with various objects and different domains and capturing conditions: BDD100K [38], Cityscapes [9], KITTI [12], MS COCO [19] and Synscapes [33]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "BDD100K: A diverse driving dataset for heterogeneous multitask learning",
+          "justification": "The paper references BDD100K as a dataset used in experiments, and this title references the original source of the dataset.",
+          "quote": "BDD100k - The BDD100K [38] is a large-scale diverse driving dataset."
+        }
+      },
+      {
+        "name": {
+          "value": "Cityscapes",
+          "justification": "Cityscapes is mentioned as one of the datasets used for source domains in the cross-camera adaptation setting.",
+          "quote": "Cityscapes [9] is an autonomous driving research dataset with images captured from urban street scenes."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The Cityscapes Dataset for Semantic Urban Scene Understanding",
+          "justification": "The paper references Cityscapes in the context of its dataset usage, matching this title as the original source of the dataset.",
+          "quote": "Cityscapes - Cityscapes [9] is an autonomous driving research dataset."
+        }
+      },
+      {
+        "name": {
+          "value": "KITTI",
+          "justification": "KITTI is used as a source domain dataset for experiments in cross-camera adaptation, as mentioned in the paper.",
+          "quote": "The KITTI [12] dataset is a self-driving dataset."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Are we ready for autonomous driving? The KITTI vision benchmark suite",
+          "justification": "This title is well known as the source for the KITTI dataset, which is used in the paper.",
+          "quote": "The KITTI [12] dataset is a self-driving dataset."
+        }
+      },
+      {
+        "name": {
+          "value": "MS COCO",
+          "justification": "MS COCO is one of the datasets used in the mixed domain adaptation experiments mentioned in the paper.",
+          "quote": "MS COCO - MS COCO [19] is one of the most widely used benchmark datasets in computer vision."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Microsoft COCO: Common Objects in Context",
+          "justification": "The paper uses COCO as part of the datasets for domain adaptation, and this title corresponds to the original dataset paper.",
+          "quote": "MS COCO - MS COCO [19] is one of the most widely used benchmark datasets in computer vision."
+        }
+      },
+      {
+        "name": {
+          "value": "Synscapes",
+          "justification": "Synscapes is noted as one of the datasets used to provide variability in testing the proposed method in the mixed domain adaptation setting.",
+          "quote": "Synscapes - Synscapes [33] is a synthetic autonomous driving dataset."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Synscapes: A Photorealistic Synthetic Dataset for Street Scene Parsing",
+          "justification": "The usage of Synscapes is supported by the reference to it as a dataset, aligning with its original publication title.",
+          "quote": "Synscapes - Synscapes [33] is a synthetic autonomous driving dataset."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The paper describes implementing the ACIA method and it is common to use PyTorch in computer vision research for deep learning model training and evaluation, although PyTorch is not explicitly mentioned.",
+          "quote": "All experiments were executed on 4 NVIDIA A100 GPUs, with a batch size of 8 and a learning rate of 0.2."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "PyTorch is widely used in the field for implementation of deep learning models and experiments like those in this paper.",
+          "quote": ""
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1621,
+    "prompt_tokens": 17918,
+    "total_tokens": 19539,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

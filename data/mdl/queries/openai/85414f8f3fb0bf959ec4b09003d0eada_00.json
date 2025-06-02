@@ -1,0 +1,186 @@
+{
+  "paper": "85414f8f3fb0bf959ec4b09003d0eada.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "The functional specialization of visual cortex emerges from training parallel pathways with self-supervised predictive learning",
+      "justification": "The title directly addresses the main focus of the paper - understanding how functional specialization in the visual cortex can be achieved by training networks with self-supervised predictive learning.",
+      "quote": "The functional specialization of visual cortex emerges from training parallel pathways with self-supervised predictive learning"
+    },
+    "description": "This paper investigates the modeling of both ventral (\"what\") and dorsal (\"where\") pathways of the visual cortex using a single deep neural network trained with a self-supervised predictive loss function. It utilizes the Contrastive Predictive Coding (CPC) technique on an architecture with parallel pathways and evaluates its performance on datasets involving both mouse visual cortex and video-based tasks.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper focuses on computational experiments and models trained using neural data, particularly highlighting empirical results from comparing model predictions with brain recordings.",
+      "quote": "We show that when we train a deep neural network architecture with two parallel pathways using a self-supervised predictive loss function, we can outperform other models in fitting mouse visual cortex."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Neuroscience-inspired Vision Models",
+        "justification": "The research models visual processing in the cortex, leveraging insights from neuroscience to inform computational architectures and training techniques.",
+        "quote": "Our work demonstrates the importance of self-supervised predictive learning for generating ventral- and dorsal-like representations, showing an interaction between the architecture and learning rule."
+      },
+      "aliases": [
+        "Neuroscience-inspired Vision Models",
+        "Bio-inspired Visual Computing"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Self-supervised Learning",
+          "justification": "The paper specifically uses self-supervised predictive learning as a central paradigm for training the ANNs to model visual pathways.",
+          "quote": "Altogether, this work demonstrates that the two specialized pathways of visual cortex can be modelled with the same ANN if a self-supervised predictive loss function is applied to an architecture with parallel pathways."
+        },
+        "aliases": [
+          "SSL"
+        ]
+      },
+      {
+        "name": {
+          "value": "Contrastive Predictive Coding",
+          "justification": "This specific method of self-supervised learning is central to the paper's experiments.",
+          "quote": "We use the CPC loss function for self-supervised learning, which was developed for modeling sequential data, including video datasets."
+        },
+        "aliases": [
+          "CPC"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "ResNet-1p",
+          "justification": "The one-pathway version of the ResNet architecture used to evaluate single-pathway representation in visual processing.",
+          "quote": "The one-pathway ResNet (ResNet-1p) is a regular 3D ResNet (Figure 2a)."
+        },
+        "aliases": [
+          "ResNet-1p",
+          "One-pathway ResNet"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "This model configuration is analyzed and compared as part of the research findings on single-pathway specialization.",
+          "quote": "When we train a network with a single pathway, we find that it possesses more ventral-like representations."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model is executed and its results are analyzed with respect to its similarity to brain recordings.",
+          "quote": "...we compare the similarity of RSMs between ResNet-1p trained with CPC and the dorsal areas (VISam and VISal)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "ResNet-1p is compared for its representational fit against several other models including multi-pathway architectures.",
+          "quote": "Comparing the maximum representational similarities between models..."
+        },
+        "referenced_paper_title": {
+          "value": "Deep residual learning for image recognition",
+          "justification": "The ResNet model, including variants like ResNet-1p, is typically referenced back to the foundational ResNet paper.",
+          "quote": "For the ANNs trained on object categorization, we use ResNet-18 pretrained on the ImageNet database [25]."
+        }
+      },
+      {
+        "name": {
+          "value": "ResNet-2p",
+          "justification": "The two-pathway version of the ResNet architecture used to demonstrate specialization along visual processing pathways.",
+          "quote": "The two-pathway ResNet (ResNet-2p) is composed of two parallel ResNet branches, which split after a single convolutional layer."
+        },
+        "aliases": [
+          "ResNet-2p",
+          "Two-pathway ResNet"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "This specialized architecture is proposed and tested in the paper to show functional specialization in ANNs.",
+          "quote": "We choose this ResNet-2p architecture... to check whether ResNet-2p can learn both ventral- and dorsal-like representations."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Model execution underlies the empirical analysis and demonstration of ventral-dorsal specialization.",
+          "quote": "When we compare the RSMs of the two pathways... we can see that ResNet-1p has representations that are a better match."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The model's performance is analyzed and contrasted against other baseline and customized networks.",
+          "quote": "In terms of alignment with brain representations of video sequences, we compare the CPC trained ANNs with four other models."
+        },
+        "referenced_paper_title": {
+          "value": "Deep residual learning for image recognition",
+          "justification": "The underlying ResNet architecture, which ResNet-2p builds upon, is well-documented in the foundational ResNet papers.",
+          "quote": "The two-pathway ResNet (ResNet-2p) is composed of two parallel ResNet branches."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Allen Brain Observatory",
+          "justification": "This dataset provides physiological surveys and recordings that support the paper's neural comparisons.",
+          "quote": "We explore these issues using publicly available data from the Allen Brain Observatory [9], which provides recordings from a large number of areas in mouse visual cortex."
+        },
+        "aliases": [
+          "Allen Brain Observatory"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "A large-scale standardized physiological survey reveals functional organization of the mouse visual cortex",
+          "justification": "The use of this dataset is consistently backed by its reference to the Allen Brain Observatory.",
+          "quote": "More details about the dataset can be found in [9]."
+        }
+      },
+      {
+        "name": {
+          "value": "UCF101",
+          "justification": "A well-known video dataset employed in training for action recognition and self-supervised learning, relevant to the tasks in the paper.",
+          "quote": "For training the deep ANNs, we use the UCF101 dataset [56]."
+        },
+        "aliases": [
+          "UCF101"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "UCF101: A dataset of 101 human actions classes from videos in the wild",
+          "justification": "This reference highlights the pivotal role UCF101 plays in video-based learning studies like this one.",
+          "quote": "For training the deep ANNs, we use the UCF101 dataset [56]."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is specifically mentioned as the framework used for implementing and training the neural networks.",
+          "quote": "All the models are implemented with PyTorch 1.7 and trained on RTX8000 NVIDIA GPUs."
+        },
+        "aliases": [
+          "PyTorch"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Automatic differentiation in PyTorch",
+          "justification": "PyTorch's role in model training and implementation is fundamental and continuous with its use in deep learning research.",
+          "quote": "All the models are implemented with PyTorch 1.7 and trained on RTX8000 NVIDIA GPUs."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1509,
+    "prompt_tokens": 21063,
+    "total_tokens": 22572,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

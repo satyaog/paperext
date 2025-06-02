@@ -1,0 +1,144 @@
+{
+  "paper": "3327375e25e5514005099b2ce74a09b9.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Generative Escher Meshes",
+      "justification": "The title is clearly stated at the beginning of the paper and reiterated in multiple sections, including headers and footers.",
+      "quote": "Generative Escher Meshes"
+    },
+    "description": "This research paper introduces a novel, text-guided method for generating textured 2D meshes that tile the plane without gaps or overlaps, similar to the work of M.C. Escher. It leverages a differentiable framework built on top of orbifold Tutte embeddings, combined with a pre-trained image diffusion model, to create visually appealing and structurally valid non-square tiles that correspond to any given symmetry group.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves experiments and demonstrations of the proposed generative method, showcasing its application in various scenarios and comparing results.",
+      "quote": "Our experiments show that our method is able to generate tileable shapes for all the different wallpapers groups..."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Computer Vision",
+        "justification": "The paper focuses on generating 2D images (textured meshes) that are structurally valid for tiling, a central problem in computer vision.",
+        "quote": "This paper proposes a fully-automatic, text-guided generative method for producing perfectly-repeating, periodic, tile-able 2D imagery..."
+      },
+      "aliases": [
+        "CV"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Image Synthesis",
+          "justification": "The method proposed in the paper revolves around synthesizing images, specifically textured 2D meshes, based on textual descriptions.",
+          "quote": "Our method automatically generates a textured non-square 2D mesh that tiles the plane..."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Text-to-Image Generation",
+          "justification": "The paper's method is guided by textual prompts to generate corresponding images (tiles), fitting the scope of text-to-image generation.",
+          "quote": "This paper proposes a fully-automatic, text-guided generative method for producing..."
+        },
+        "aliases": [
+          "Text-guided Image Synthesis"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Score Distillation Sampling (SDS)",
+          "justification": "The paper uses the Score Distillation Sampling technique as part of its method to guide the tile appearance to match the text prompt.",
+          "quote": "The resulting render is fed to Score Distillation Sampling [Poole et al. 2022]..."
+        },
+        "aliases": [
+          "SDS"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The model is used as a part of the method, but not claimed as a new contribution by the authors.",
+          "quote": "The resulting render is fed to Score Distillation Sampling [Poole et al. 2022]..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper describes the execution of the model in generating the final tiled images.",
+          "quote": "We render the textured mesh via a differentiable renderer, and leverage a pre-trained image diffusion model..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares its results with results obtained using other methods, implying a numerical comparison.",
+          "quote": "Our experiments show that our method is able to generate tileable shapes... yielding significantly more impressive tiling results compared..."
+        },
+        "referenced_paper_title": {
+          "value": "DreamFusion: Text-to-3D using 2D Diffusion",
+          "justification": "The reference in the text corresponds to the work titled \"DreamFusion,\" which introduces SDS.",
+          "quote": "Score Distillation Sampling [Poole et al. 2022]"
+        }
+      }
+    ],
+    "datasets": [],
+    "libraries": [
+      {
+        "name": {
+          "value": "Pytorch",
+          "justification": "Pytorch is listed as one of the frameworks used for implementing the method.",
+          "quote": "We use Pytorch [Paszke et al. 2019] and Adam [Kingma and Ba 2014]..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An Imperative Style, High-Performance Deep Learning Library",
+          "justification": "The paper references Pytorch for implementation purposes.",
+          "quote": "We use Pytorch [Paszke et al. 2019]..."
+        }
+      },
+      {
+        "name": {
+          "value": "Nvdiffrast",
+          "justification": "Nvdiffrast is explicitly mentioned as the differentiable renderer used in the method.",
+          "quote": "We render the textured mesh using a differentiable renderer (Nvdiffrast [Laine et al. 2020])..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Modular Primitives for High-Performance Differentiable Rendering",
+          "justification": "The reference paper describes the Nvdiffrast library, which is also used in this research.",
+          "quote": "Nvdiffrast [Laine et al. 2020] for differentiable rendering..."
+        }
+      },
+      {
+        "name": {
+          "value": "Stable Diffusion",
+          "justification": "Stable Diffusion is mentioned as the diffusion model framework employed in the implementation of Score Distillation Sampling.",
+          "quote": "...the SDS implementation of Threestudio [Guo et al. 2023; von Platen et al. 2022] with Stable Diffusion [Rombach et al. 2021]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "High-Resolution Image Synthesis with Latent Diffusion Models",
+          "justification": "The paper lists Rombach et al.'s work which introduces Stable Diffusion as part of the resources used.",
+          "quote": "Stable Diffusion [Rombach et al. 2021]"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1126,
+    "prompt_tokens": 24663,
+    "total_tokens": 25789,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

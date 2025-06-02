@@ -1,0 +1,186 @@
+{
+  "paper": "a8c638553fa29d876c2a0144188a5302.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Saliency is a Possible Red Herring When Diagnosing Poor Generalization",
+      "justification": "The paper title is clearly stated at the beginning of the document as 'Saliency is a Possible Red Herring When Diagnosing Poor Generalization'.",
+      "quote": "Saliency is a Possible Red Herring When Diagnosing Poor Generalization"
+    },
+    "description": "The paper investigates the assumption that poor generalization in deep learning models can be diagnosed using saliency maps, a common approach in interpretation of model decisions. It explores if models that learn to predict target variables using spuriously correlated image features can be detected through attribution maps. Through a series of experiments on synthetic and real-world datasets, the authors study the effectiveness of methods that control feature attribution by enforcing domain knowledge using masks. The results challenge the notion that good attribution leads to good generalization, suggesting that reliance on saliency maps might be misleading.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper conducts experiments on synthetic and real-world datasets to evaluate the relationship between feature attribution and model generalization, making it an empirical study.",
+      "quote": "We evaluated the performance of multiple mitigation strategies on a synthetic dataset and two real-world datasets exhibiting covariate shift, using attribution priors in the form of a segmentation of the discriminative features."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Interpretable Machine Learning",
+        "justification": "The paper focuses on the use of saliency maps and attribution methods to interpret model generalization performance, which is a key aspect of interpretable machine learning.",
+        "quote": "We started this work under the same assumption only to find the contradictory evidence we present in this paper. In this work, we set out to test the hypothesis that models with good generalization properties have attribution maps which only utilize the class-discriminative features to make predictions."
+      },
+      "aliases": [
+        "Explainable AI",
+        "Model Interpretability"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Medical Imaging",
+          "justification": "The paper's experiments involve datasets related to medical images, such as X-rays, to evaluate generalization and feature attribution.",
+          "quote": "In medical imaging, poor generalization due to test-set distribution shifts are common and this problem is exacerbated by small cohorts."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Domain Adaptation",
+          "justification": "The study employs domain adaptation techniques to evaluate the invariance of models to hidden confounders in the data.",
+          "quote": "Leveraging ideas from domain adaptation, we introduce two methods designed to make the model invariant to features arising from outside of the attribution priors."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "ResNet-18",
+          "justification": "The ResNet-18 model is consistently mentioned as the backbone architecture used in all experiments in the paper.",
+          "quote": "The backbone of all experiments was the ResNet-18 model from Torchvision (He et al., 2016; Marcel & Rodriguez, 2010)."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "ResNet-18 is a well-known model architecture and not a contribution of this paper.",
+          "quote": "The backbone of all experiments was the ResNet-18 model from Torchvision (He et al., 2016; Marcel & Rodriguez, 2010)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper reports the use of ResNet-18 in the experimentation and evaluation, implying its execution.",
+          "quote": "The backbone of all experiments was the ResNet-18 model from Torchvision (He et al., 2016; Marcel & Rodriguez, 2010)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The results and behaviors using ResNet-18 are compared across different methods and datasets throughout the paper.",
+          "quote": "The backbone of all experiments was the ResNet-18 model from Torchvision (He et al., 2016; Marcel & Rodriguez, 2010)."
+        },
+        "referenced_paper_title": {
+          "value": "Deep Residual Learning for Image Recognition",
+          "justification": "The referenced paper for ResNet-18 by Kaiming He et al. is a well-known foundational paper on deep residual learning and is listed in the references.",
+          "quote": "The backbone of all experiments was the ResNet-18 model from Torchvision (He et al., 2016; Marcel & Rodriguez, 2010)."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "PadChest",
+          "justification": "PadChest is explicitly named as one of the datasets used for evaluating model performance under distribution shifts.",
+          "quote": "We introduced a covariate-shift into a joint dataset of X-Rays drawn from two different imaging centres: the PadChest (Bustos et al., 2019) sample and the NIH Chestx-Ray8 (Wang et al., 2017) sample."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PadChest: A large chest x-ray image dataset with multi-label annotated reports",
+          "justification": "The dataset's reference is cited in the context of its description and use in experiments.",
+          "quote": "PadChest: A large chest x-ray image dataset with multi-label annotated reports. arXiv e-prints, 2019 art. arXiv:1901.07441."
+        }
+      },
+      {
+        "name": {
+          "value": "NIH ChestX-ray8",
+          "justification": "NIH ChestX-ray8 is explicitly mentioned as a source of X-ray images for the study's experiments.",
+          "quote": "We introduced a covariate-shift into a joint dataset of X-Rays drawn from two different imaging centres: the PadChest (Bustos et al., 2019) sample and the NIH Chestx-Ray8 (Wang et al., 2017) sample."
+        },
+        "aliases": [
+          "ChestX-ray8"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Chestx-ray8: Hospital-scale chest x-ray database and benchmarks on weakly-supervised classification and localization of common thorax diseases",
+          "justification": "The paper cites a reference for NIH ChestX-ray8, indicating its role and background.",
+          "quote": "Chestx-ray8: Hospital-scale chest x-ray database and benchmarks on weakly-supervised classification and localization of common thorax diseases. In Proceedings of the IEEE conference on computer vision and pattern recognition, 2017."
+        }
+      },
+      {
+        "name": {
+          "value": "RSNA Pneumonia Detection Challenge",
+          "justification": "The RSNA dataset is mentioned as part of the experiments to introduce a covariate shift.",
+          "quote": "Here we made use of the RSNA Pneumonia challenge (Shih et al., 2019) dataset, which includes images taken from antero-posterior (AP) and posterior-anterior (PA) views, and where the task is to predict pneumonia."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Augmenting the National Institutes of Health Chest Radiograph Dataset with Expert Annotations of Possible Pneumonia",
+          "justification": "The paper references this title when describing the RSNA Pneumonia dataset, indicating its source and relevance.",
+          "quote": "Augmenting the National Institutes of Health Chest Radiograph Dataset with Expert Annotations of Possible Pneumonia. 2019 Radiology: Artificial Intelligence. doi: 10.1148/ryai.2019180041."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "TorchXRayVision",
+          "justification": "TorchXRayVision is explicitly named as a library used for medical data loading in the experiments.",
+          "quote": "For medical dataloaders we use the TorchXRayVision library (Cohen et al., 2020b;a)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "On the limits of cross-domain generalization in automated x-ray prediction",
+          "justification": "The reference for TorchXRayVision is provided in the context of discussing the datasets and models utilized.",
+          "quote": "On the limits of cross-domain generalization in automated x-ray prediction. In Medical Imaging with Deep Learning, 2020a."
+        }
+      },
+      {
+        "name": {
+          "value": "Torchvision",
+          "justification": "Torchvision is mentioned as the source for the ResNet-18 model used as the backbone in experiments.",
+          "quote": "The backbone of all experiments was the ResNet-18 model from Torchvision (He et al., 2016; Marcel & Rodriguez, 2010)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Torchvision the machine-vision package of torch",
+          "justification": "The library is referenced in context with the use of ResNet-18, indicating its source and contribution to the paper's implementation.",
+          "quote": "Torchvision the machine-vision package of torch. In Proceedings of the 18th ACM international conference on Multimedia, 2010."
+        }
+      },
+      {
+        "name": {
+          "value": "Captum",
+          "justification": "Captum is explicitly mentioned as the library used to implement attribution methods in the paper.",
+          "quote": "These methods were implemented using the Captum library (Kokhlikyan et al., 2020)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Captum: A unified and generic model interpretability library for pytorch",
+          "justification": "This library is cited in the context of implementing interpretability methods, indicating its reference.",
+          "quote": "Captum: A unified and generic model interpretability library for pytorch, 2020."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1902,
+    "prompt_tokens": 18464,
+    "total_tokens": 20366,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

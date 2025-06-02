@@ -1,0 +1,171 @@
+{
+  "paper": "ce025bbd78e91a1d89be9e82fd2d1e09.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "h-Detach: Modifying the LSTM Gradient Towards Better Optimization",
+      "justification": "The title captures the main focus of the paper, which is modifying the LSTM gradient to improve optimization.",
+      "quote": "h- DETACH : M ODIFYING THE LSTM G RADIENT T O -WARDS B ETTER O PTIMIZATION"
+    },
+    "description": "This paper introduces h-detach, a simple stochastic algorithm designed to improve the optimization of LSTMs by modifying the gradient flow. The method aims to address the notorious exploding and vanishing gradient problem in recurrent neural networks, particularly LSTMs, by preventing gradient components from being suppressed when LSTM weights are large. The authors demonstrate significant improvements in convergence speed and robustness using h-detach over vanilla LSTM training on various benchmark tasks.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper presents empirical results showing the performance improvements of h-detach over standard LSTM optimization on various tasks, highlighting it as an empirical study.",
+      "quote": "Using this method, we show improvements in convergence/generalization over vanilla LSTM optimization on the copying task, transfer copying task, sequential and permuted MNIST, and image captioning."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Recurrent Neural Networks",
+        "justification": "The paper focuses on improving the optimization of LSTMs, a type of Recurrent Neural Network used for sequential data.",
+        "quote": "Recurrent Neural Networks (RNNs) (Rumelhart et al. (1986); Elman (1990)) are a class of neural network architectures used for modeling sequential data."
+      },
+      "aliases": [
+        "RNN"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Optimization",
+          "justification": "The primary aim of the paper is to enhance the optimization of LSTMs by introducing the h-detach algorithm.",
+          "quote": "The goal of this paper is to introduce a simple trick that is specific to LSTM optimization and improves its training on tasks that involve long term dependencies."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Gradient Descent",
+          "justification": "The paper tackles the exploding and vanishing gradient problem of LSTMs by modifying the gradient descent process.",
+          "quote": "Recurrent neural networks are known for their notorious exploding and vanishing gradient problem (EVGP)."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "h-Detach",
+          "justification": "The paper introduces a new stochastic algorithm specific to LSTM optimization.",
+          "quote": "We introduce a simple stochastic algorithm (h-detach) that is specific to LSTM optimization and targeted towards addressing this problem."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "The h-detach algorithm is the novel contribution of this research paper to improve LSTM optimization.",
+          "quote": "To fix this problem, we introduce a simple stochastic algorithm... hence we call it h-detach."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper provides empirical evidence and results carried out using the h-detach model.",
+          "quote": "Using this method, we show improvements in convergence/generalization over vanilla LSTM optimization."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The h-detach algorithm is compared against the vanilla LSTM and several other methods showing its improvements.",
+          "quote": "We show improvements in convergence/generalization over vanilla LSTM optimization on the copying task..."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "No specific reference to a previous paper solely for h-detach as it is introduced in this paper itself.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "Vanilla LSTM",
+          "justification": "The paper uses Vanilla LSTM as a baseline model for comparison purposes.",
+          "quote": "We show significant improvements over vanilla LSTM gradient based training in terms of convergence speed, robustness to seed and learning rate, and generalization using our modification of LSTM gradient on various benchmark datasets."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Standard LSTM models are not this paper's contribution but are used for comparison.",
+          "quote": "We show significant improvements over vanilla LSTM gradient based training..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Empirical comparisons involve executing standard LSTM models for benchmarking against h-detach.",
+          "quote": "Using this method, we show improvements in convergence/generalization over vanilla LSTM optimization..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper specifically compares the performance of h-detach against Vanilla LSTM models to demonstrate improvements.",
+          "quote": "...improvements in convergence/generalization over vanilla LSTM optimization."
+        },
+        "referenced_paper_title": {
+          "value": "Long short-term memory",
+          "justification": "Vanilla LSTMs refer to the fundamental work by Hochreiter and Schmidhuber, 1997.",
+          "quote": "long short term memory (LSTM, Hochreiter & Schmidhuber (1997))"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Sequential MNIST",
+          "justification": "This dataset is used in the paper as a benchmark to evaluate the model's performance on sequential data tasks.",
+          "quote": "In the pMNIST task, we find that training LSTM with h-detach gives a test accuracy of 92.3% which is an improvement over the regular LSTM training which reaches an accuracy of 91.1%."
+        },
+        "aliases": [
+          "sMNIST",
+          "pMNIST"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "MNIST handwritten digit database",
+          "justification": "The sequential MNIST is a variant of the MNIST dataset.",
+          "quote": "This task is a sequential version of the MNIST classification task (LeCun & Cortes, 2010)."
+        }
+      },
+      {
+        "name": {
+          "value": "Copying Task Dataset",
+          "justification": "The paper uses a synthetic dataset for the copying task to evaluate long term dependencies capture by RNNs.",
+          "quote": "We follow the copying task setup identical to Arjovsky et al. (2016)..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Unitary Evolution Recurrent Neural Networks",
+          "justification": "The copying task setup is taken from Arjovsky et al.'s work on Unitary RNNs.",
+          "quote": "We follow the copying task setup identical to Arjovsky et al. (2016)..."
+        }
+      },
+      {
+        "name": {
+          "value": "MS COCO",
+          "justification": "Used for image captioning tasks to validate the performance of the h-detach model.",
+          "quote": "We use the Microsoft COCO dataset (Lin et al., 2014) which contains 82,783 training images and 40,504 validation images."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Microsoft COCO: Common Objects in Context",
+          "justification": "The reference is made to Lin et al., which originally describes the COCO dataset.",
+          "quote": "We use the Microsoft COCO dataset (Lin et al., 2014)..."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1397,
+    "prompt_tokens": 16202,
+    "total_tokens": 17599,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

@@ -1,0 +1,190 @@
+{
+  "paper": "d25074cdcf687325baf2ecf42475dac6.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "CATRO: CHANNEL PRUNING VIA CLASS-AWARE TRACE RATIO OPTIMIZATION",
+      "justification": "The title exactly matches the main topic and method described in the paper, focusing on a novel pruning method for neural networks.",
+      "quote": "CATRO: Channel Pruning via Class-Aware\nTrace Ratio Optimization"
+    },
+    "description": "The paper introduces CATRO, a novel channel pruning method for convolutional neural networks (CNNs). CATRO reduces the model's inference cost by optimizing channel selection based on class-aware trace ratio optimization, which considers channel dependencies and maintains accuracy while decreasing computational requirements. The paper provides theoretical guarantees and shows that CATRO outperforms current state-of-the-art pruning methods in accuracy and computational efficiency.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves experiments on various datasets, empirical comparisons with state-of-the-art methods, and practical evaluations.",
+      "quote": "Experimental results demonstrate that CATRO achieves higher accuracy with similar computation cost or lower computation cost with similar accuracy than other state-of-the-art channel pruning algorithms."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Model Compression",
+        "justification": "The research focuses on reducing the size and computational requirements of deep learning models through channel pruning.",
+        "quote": "pruning is an effective way to accelerate and compress deep networks by removing less important connections in the network."
+      },
+      "aliases": [
+        "Pruning",
+        "Compression"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Computer Vision",
+          "justification": "The methods and applications discussed, including image classification and traffic sign recognition, are within computer vision.",
+          "quote": "Deep convolution neural networks (CNNs) have achieved impressive performance in computer vision tasks, especially image classification."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "ResNet",
+          "justification": "The ResNet model is used as a benchmark for the channel pruning method proposed in the paper.",
+          "quote": "We demonstrate in extensive experiments that our method achieves superior performance compared to existing channel pruning methods by the efficiency and accuracy of the pruned networks."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "ResNet was used as a baseline for comparisons and not introduced as a new model in this paper.",
+          "quote": "We compared the classification performance of our proposed method with several state-of-the-art channel pruning approaches on CIFAR-10 and CIFAR-100 with ResNet-20/32/56/110."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "ResNet models were used in experiments to test CATRO's pruning effectiveness.",
+          "quote": "We compared the classification performance of our proposed method with several state-of-the-art channel pruning approaches on CIFAR-10 and CIFAR-100 with ResNet-20/32/56/110."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares the performance of CATRO-pruned ResNet models against other pruning approaches.",
+          "quote": "Results in Table I clearly demonstrate the superiority of our CATRO over other channel pruning approaches."
+        },
+        "referenced_paper_title": {
+          "value": "Deep residual learning for image recognition",
+          "justification": "ResNet's foundational paper by He et al. is typically the reference for using this model.",
+          "quote": "Deep residual learning for image recognition, in 2016 IEEE Conference on Computer Vision and Pattern Recognition. IEEE Computer Society, 2016, pp. 770–778."
+        }
+      },
+      {
+        "name": {
+          "value": "MobileNet-v2",
+          "justification": "The MobileNet-v2 model is used to evaluate CATRO's performance on compact models.",
+          "quote": "We further validated CATRO on the compact MobileNet-v2 models."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The MobileNet-v2 model is not introduced as a new model but used for validation of the pruning method.",
+          "quote": "We further validated CATRO on the compact MobileNet-v2 models."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Experiments were conducted using MobileNet-v2 to demonstrate CATRO's pruning capabilities.",
+          "quote": "MobileNet-v2: Results are present on Table II, and CATRO reduced 41.6% FLOPs with a notably high accuracy 94.27%."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares CATRO's performance on MobileNet-v2 with other pruning methods.",
+          "quote": "Results are present on Table II, and CATRO reduced 41.6% FLOPs with a notably high accuracy 94.27%."
+        },
+        "referenced_paper_title": {
+          "value": "Inverted Residuals and Linear Bottlenecks: Mobile Networks for Classification, Detection and Segmentation",
+          "justification": "MobileNet-v2's foundational concepts are typically associated with Sandler et al.'s paper that introduces the inverted residuals and linear bottlenecks.",
+          "quote": "Inverted residuals and linear bottlenecks: Mobile networks for classification, detection and segmentation, Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, 2018."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "CIFAR-10",
+          "justification": "CIFAR-10 is used extensively throughout the paper for both training and evaluation of proposed methods.",
+          "quote": "CIFAR-10 contains 50K training images and 10K test images, and they have 10 classes."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning multiple layers of features from tiny images",
+          "justification": "CIFAR-10 is a well-known dataset introduced by Alex Krizhevsky.",
+          "quote": "Learning multiple layers of features from tiny images, Citeseer, Tech. Rep., 2009."
+        }
+      },
+      {
+        "name": {
+          "value": "CIFAR-100",
+          "justification": "CIFAR-100 is used to test and evaluate the pruning methods compared to other datasets.",
+          "quote": "CIFAR-10 and CIFAR-100 contain 50K training images and 10K test images, and they have 100 classes."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning multiple layers of features from tiny images",
+          "justification": "CIFAR-100 was introduced along with CIFAR-10 by Alex Krizhevsky in the same technical report.",
+          "quote": "Learning multiple layers of features from tiny images, Citeseer, Tech. Rep., 2009."
+        }
+      },
+      {
+        "name": {
+          "value": "ImageNet",
+          "justification": "ImageNet is used for evaluating the pruning methods on large-scale datasets.",
+          "quote": "ImageNet contains 1.2M training images and 50K test images for 1000 classes."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ImageNet: A large-scale hierarchical image database",
+          "justification": "ImageNet's foundational paper is by Deng et al., which presents this extensive image dataset.",
+          "quote": "ImageNet: A large-scale hierarchical image database, in 2009 IEEE conference on computer vision and pattern recognition, pp. 248–255."
+        }
+      },
+      {
+        "name": {
+          "value": "GTSRB",
+          "justification": "The GTSRB dataset is used to benchmark pruning performances for specific classification tasks within the study.",
+          "quote": "GTSRB, which is used to evaluate pruning performance for classification subtasks, contains 39,209 training images and 12,630 test images..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Detection of traffic signs in real-world images: The German Traffic Sign Detection Benchmark",
+          "justification": "GTSRB was introduced by Houben et al., and the paper is referenced in the context of real-world application scenarios.",
+          "quote": "Detection of traffic signs in real-world images: The German Traffic Sign Detection Benchmark, in International Joint Conference on Neural Networks, 2013."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is used for training the models as mentioned in their implementation details.",
+          "quote": "The models are trained on GPU Tesla P40 using Pytorch."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Automatic differentiation in PyTorch",
+          "justification": "PyTorch is typically referenced through the foundational paper by Paszke et al. regarding its automatic differentiation.",
+          "quote": "Automatic differentiation in PyTorch, in Advances in neural information processing systems, 2017, pp. 8024–8035."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1685,
+    "prompt_tokens": 25090,
+    "total_tokens": 26775,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

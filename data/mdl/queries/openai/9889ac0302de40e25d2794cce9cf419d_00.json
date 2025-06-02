@@ -1,0 +1,135 @@
+{
+  "paper": "9889ac0302de40e25d2794cce9cf419d.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "MAD-TD: Model-Augmented Data Stabilizes High Update Ratio RL",
+      "justification": "The title is explicitly stated at the beginning of the paper.",
+      "quote": "MAD-TD: M ODEL -A UGMENTED D ATA STABILIZES H IGH U PDATE R ATIO RL"
+    },
+    "description": "The paper introduces MAD-TD, a reinforcement learning method that stabilizes high update-to-data ratio training by using model-augmented data to address instability issues. The paper empirically demonstrates how this approach can mitigate value function misgeneralization through model-generated data, improving the stability and performance of reinforcement learning algorithms on complex tasks like those in the DeepMind control suite.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves empirical experiments that demonstrate the performance and stability improvements of the MAD-TD method on the DeepMind Control Suite.",
+      "quote": "Our experiments further highlight the importance of employing a good model to generate data, MAD-TD’s ability to combat value overestimation, and its practical stability gains for continued learning."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Reinforcement Learning",
+        "justification": "The paper's primary focus is on improving reinforcement learning by stabilizing training using model-augmented data.",
+        "quote": "Building deep reinforcement learning (RL) agents that find a good policy with few samples has proven notoriously challenging."
+      },
+      "aliases": [
+        "RL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Model-Based Reinforcement Learning",
+          "justification": "The paper emphasizes using model-generated data to stabilize reinforcement learning, positioning it within model-based approaches.",
+          "quote": "Our method, Model-Augmented Data for Temporal Difference learning (MAD-TD) uses small amounts of generated data to stabilize high UTD training."
+        },
+        "aliases": [
+          ""
+        ]
+      },
+      {
+        "name": {
+          "value": "Deep Reinforcement Learning",
+          "justification": "The paper focuses on deep learning techniques applied within reinforcement learning, especially concerning neural networks and update-to-data ratios.",
+          "quote": "To achieve sample efficiency, recent work has explored updating neural networks with large numbers of gradient steps for every new sample."
+        },
+        "aliases": [
+          ""
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "MAD-TD (Model-Augmented Data for Temporal Difference learning)",
+          "justification": "The paper introduces and describes MAD-TD as its primary contribution to stabilize high update-to-data ratio training in reinforcement learning.",
+          "quote": "Our method, Model-Augmented Data for Temporal Difference learning (MAD-TD) uses small amounts of generated data to stabilize high UTD training."
+        },
+        "aliases": [
+          "MAD-TD"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "MAD-TD is the primary novel contribution introduced in this paper.",
+          "quote": "In this paper, we focus on one of the core difficulties of stable training with limited samples: the inability of learned value functions to generalize to unobserved on-policy actions."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model experiments were conducted using computational resources, indicating execution on GPUs or CPUs.",
+          "quote": "Resources used in preparing this research were provided, in part, by the Province of Ontario, the Government of Canada through CIFAR, and companies sponsoring the Vector Institute."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "MAD-TD is compared to other techniques to demonstrate its effectiveness in stabilization and performance improvement.",
+          "quote": "Our method performs on par or above previous methods, and strikingly it is able to achieve higher returns faster than both TD-MPC2 and BRO."
+        },
+        "referenced_paper_title": {
+          "value": "Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model",
+          "justification": "The referenced paper discusses a basis for the latent self-prediction models used in model-based reinforcement learning, which relates to MAD-TD's approach.",
+          "quote": "Previous investigations into model-based deep RL have focused on learning values fully in model roll-outs (Buckman et al., 2018; Janner et al., 2019; Hafner et al., 2020; Ghugare et al., 2023) and the associated challenges."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "DeepMind Control Suite (DMC)",
+          "justification": "The DeepMind Control Suite is the primary benchmarking environment used to demonstrate MAD-TD's performance improvements.",
+          "quote": "Our method, Model-Augmented Data for Temporal Difference learning (MAD-TD) mitigates the generalization issues of the value function in the hardest tasks of the DeepMind control (DMC) benchmark (Tunyasuvunakool et al., 2020b) and achieves strong and stable high UTD learning without resetting or redundant ensemble learning."
+        },
+        "aliases": [
+          "DMC"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "dm control: Software and tasks for continuous control",
+          "justification": "The dataset's primary reference is consistently cited for describing the tasks and benchmarking in the experiments.",
+          "quote": "Our method, Model-Augmented Data for Temporal Difference learning (MAD-TD) mitigates the generalization issues of the value function in the hardest tasks of the DeepMind control (DMC) benchmark (Tunyasuvunakool et al., 2020b) and achieves strong and stable high UTD learning."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "jax",
+          "justification": "The paper mentions its implementation in the jax library for experiment parallelization.",
+          "quote": "Our experiments are implemented in the jax library to allow for easy parallelization of multiple experiments across seeds."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Adam: A method for stochastic optimization",
+          "justification": "jax is used for efficient implementation and resource management, and Adam is specified as part of the infrastructure optimizing mechanism.",
+          "quote": "We use mish activation functions (Misra, 2020) and the Adam optimizer to train our models (Kingma & Ba, 2015). For reference, our code is available at https://github.com/adaptive-agents-lab/mad-td."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1207,
+    "prompt_tokens": 29972,
+    "total_tokens": 31179,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

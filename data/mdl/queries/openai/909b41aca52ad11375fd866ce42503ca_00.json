@@ -1,0 +1,169 @@
+{
+  "paper": "909b41aca52ad11375fd866ce42503ca.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "The Topic Confusion Task: A Novel Evaluation Scenario for Authorship Attribution",
+      "justification": "The title is clearly mentioned at the beginning of the document.",
+      "quote": "The Topic Confusion Task: A Novel Evaluation Scenario for Authorship Attribution"
+    },
+    "description": "The paper introduces a new evaluation scenario for authorship attribution called the 'topic confusion task,' which aims to better discern the influence of topic shifts versus writing style capture in authorship attribution errors. It examines how different features used in authorship attribution respond to topic changes by proposing a controlled switching of topics associated with authors between training and testing phases. It finds that word-level n-grams outperform language models like BERT and RoBERTa for this task and contributes a curated dataset to facilitate future research.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper reports on experimental results from authorship attribution models applied to new evaluation settings, demonstrating performance differences and analyzing error types.",
+      "quote": "We show that stylo-metric features with part-of-speech tags are the least susceptible to topic variations. We further show that combining them with other features leads to significantly lower topic confusion and higher attribution accuracy."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Authorship Attribution",
+        "justification": "The research extensively discusses authorship attribution, proposing a new evaluation task specific to this field and comparing models and features based on their performance in this context.",
+        "quote": "Authorship attribution is the problem of identifying the most plausible author of an anonymous text from a closed set of candidate authors."
+      },
+      "aliases": [
+        "AA"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Natural Language Processing",
+          "justification": "The work involves processing textual data to perform authorship attribution, which is a common task in Natural Language Processing.",
+          "quote": "Authorship attribution is the problem of identifying the most plausible author of an anonymous text from a closed set of candidate authors."
+        },
+        "aliases": [
+          "NLP"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "BERT",
+          "justification": "BERT is discussed as a model used for authorship attribution evaluation, compared against other methods in the topic confusion task.",
+          "quote": "We show that pretrained language models such as BERT and RoBERTa perform poorly on this task and are surpassed by simple features such as word-level n-grams."
+        },
+        "aliases": [
+          "Bidirectional Encoder Representations from Transformers"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "BERT is pre-existing, used for comparison, and is not a contribution of this paper.",
+          "quote": "We show that pretrained language models such as BERT and RoBERTa perform poorly on this task."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "BERT was applied in experiments comparing performance on the topic confusion task.",
+          "quote": "We evaluated both cases for the sake of completeness."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "BERT's performance is compared with that of n-grams and other models in the context of authorship attribution.",
+          "quote": "We show that pretrained language models such as BERT and RoBERTa perform poorly on this task and are surpassed by simple features such as word-level n-grams."
+        },
+        "referenced_paper_title": {
+          "value": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "justification": "The BERT model is referenced in the context of pretrained language models used in the comparative study.",
+          "quote": "pretrained language models BERT Devlin et al. (2019) and RoBERTa (Liu et al., 2019) followed by a pooling layer then a classification layer."
+        }
+      },
+      {
+        "name": {
+          "value": "RoBERTa",
+          "justification": "RoBERTa is referenced and evaluated in the empirical comparison of authorship attribution techniques.",
+          "quote": "We show that pretrained language models such as BERT and RoBERTa perform poorly on this task and are surpassed by simple features such as word-level n-grams."
+        },
+        "aliases": [
+          "Robustly optimized BERT approach"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "RoBERTa is a known model utilized for comparison, not specifically introduced or developed in this paper.",
+          "quote": "We show that pretrained language models such as BERT and RoBERTa perform poorly on this task."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model's performance on the proposed task is experimentally evaluated in the study.",
+          "quote": "We evaluated both cases for the sake of completeness."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "RoBERTa's effectiveness is directly compared with n-grams and other models.",
+          "quote": "We show that pretrained language models such as BERT and RoBERTa perform poorly on this task and are surpassed by simple features such as word-level n-grams."
+        },
+        "referenced_paper_title": {
+          "value": "RoBERTa: A Robustly Optimized BERT Pretraining Approach",
+          "justification": "RoBERTa is cited in reference to pretrained models examined in this research.",
+          "quote": "pretrained embeddings layer from the transformer-based non-autoregressive contextual language models BERT Devlin et al. (2019) and RoBERTa (Liu et al., 2019) followed by a pooling layer then a classification layer."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Guardian Dataset",
+          "justification": "The study presents an extended version of the Guardian dataset for use in authorship attribution experiments.",
+          "quote": "We present a cleaner, curated, and more balanced version of the Guardian dataset to be used for future work on both same-topic, and cross-topic authorship attribution."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "A transfer learning approach to cross-domain authorship attribution",
+          "justification": "The Guardian dataset is used as part of the experimental framework in the study, aligned with similar dataset usage in previous literature.",
+          "quote": "We present a cleaner, curated, and more balanced version of the Guardian dataset to be used for future work on both same-topic, and cross-topic authorship attribution."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "HuggingFace Transformers",
+          "justification": "The study uses HuggingFace's library for working with transformer models like BERT and RoBERTa.",
+          "quote": "We used the implementation provided by the HuggingFace (Wolf et al., 2019) library."
+        },
+        "aliases": [
+          "Transformers"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Huggingface’s Transformers: State-of-the-art Natural Language Processing",
+          "justification": "This library is explicitly mentioned as the source of BERT and RoBERTa implementation for the experiments.",
+          "quote": "We used the implementation provided by the HuggingFace (Wolf et al., 2019) library."
+        }
+      },
+      {
+        "name": {
+          "value": "scikit-learn",
+          "justification": "scikit-learn is mentioned in the context of its use for implementing SVM classifiers in the experiments.",
+          "quote": "We used Pedregosa et al. (2011)’s implementation of linear Support Vector Machines (SVM) as the classification algorithm."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Scikit-learn: Machine learning in Python",
+          "justification": "scikit-learn is referenced as the machine learning library used for SVM implementation.",
+          "quote": "We used Pedregosa et al. (2011)’s implementation of linear Support Vector Machines (SVM) as the classification algorithm."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1502,
+    "prompt_tokens": 15798,
+    "total_tokens": 17300,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

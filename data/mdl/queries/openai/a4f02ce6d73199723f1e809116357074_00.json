@@ -1,0 +1,173 @@
+{
+  "paper": "a4f02ce6d73199723f1e809116357074.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "The Variational Bandwidth Bottleneck: Stochastic Evaluation on an Information Budget",
+      "justification": "The title is explicitly mentioned at the beginning of the document as 'The Variational Bandwidth Bottleneck: Stochastic Evaluation on an Information Budget'.",
+      "quote": "THE VARIATIONAL BANDWIDTH BOTTLENECK: STOCHASTIC EVALUATION ON AN INFORMATION BUDGET"
+    },
+    "description": "This paper introduces the concept of the Variational Bandwidth Bottleneck (VBB), a method that decides for each example on the estimated value of privileged information before seeing it. This approach is applied to reinforcement learning tasks to improve generalization and reduce the access to costly information.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper provides experimental evaluations and applications of the proposed VBB method in reinforcement learning tasks, showing empirical results.",
+      "quote": "In this work, we propose the variational bandwidth bottleneck, which decides for each example on the estimated value of the privileged information before seeing it, i.e., only based on the standard input, and then accordingly chooses stochastically, whether to access the privileged input or not. We formulate a tractable approximation to this framework and demonstrate in a series of reinforcement learning experiments that it can improve generalization and reduce access to computationally costly information."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Reinforcement Learning",
+        "justification": "The primary focus of the paper is on applying the VBB method to reinforcement learning to construct agents that can dynamically decide when to use privileged information.",
+        "quote": "For example, in reinforcement learning, which is the primary subject of our experiments, the agent can be augmented with some privileged information in the form of a model based planner, or information which is the result of communication with another agent."
+      },
+      "aliases": [
+        "RL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Information Theory",
+          "justification": "The paper relies on concepts from information theory, such as the information bottleneck and mutual information, which are central to the development of the VBB method.",
+          "quote": "The information bottleneck method formalizes this as an information-theoretic optimization problem by maintaining an optimal tradeoff between compression (throwing away irrelevant input information), and predicting the target."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Multi-Agent Systems",
+          "justification": "The paper discusses applications of the VBB method in multi-agent communication scenarios.",
+          "quote": "Next, we consider multiagent communication, where in order to solve a task, agents must communicate with other agents."
+        },
+        "aliases": [
+          "MAS"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Variational Bandwidth Bottleneck (VBB)",
+          "justification": "The Variational Bandwidth Bottleneck is the central model introduced and discussed throughout the paper.",
+          "quote": "In this work, we propose the variational bandwidth bottleneck, which decides for each example on the estimated value of the privileged information before seeing it."
+        },
+        "aliases": [
+          "VBB"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The VBB is a novel approach introduced in this paper for handling privileged information in a more efficient way.",
+          "quote": "In this work, we propose the variational bandwidth bottleneck, which decides for each example on the estimated value of the privileged information."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model is executed in various reinforcement learning scenarios where it demonstrates improved generalization and decision-making.",
+          "quote": "We formulate a tractable approximation to this framework and demonstrate in a series of reinforcement learning experiments that it can improve generalization and reduce access to computationally costly information."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The VBB is compared to other methods such as the Conditional Variational Information Bottleneck and others in reinforcement learning setups.",
+          "quote": "We compare the proposed method to the following methods and baselines: • Randomly accessing goal (RAG)... Conditional Variational Information Bottleneck (VIB)..."
+        },
+        "referenced_paper_title": {
+          "value": "None",
+          "justification": "The VBB is a novel model introduced in this paper, so there is no prior reference paper for it.",
+          "quote": "In this work, we propose the variational bandwidth bottleneck"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "MultiroomNXSY",
+          "justification": "The MultiroomNXSY environment is used to test agent generalization and decision-making, illustrating how the VBB can be applied.",
+          "quote": "For RoomNXSY, we trained on RoomN2S4 (2 rooms of at most size 6), and evaluate on RoomN6S6 (6 rooms of at most size 6) and RoomN12S10 (12 rooms, of at most size 10)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Minimalistic gridworld environment for openai gym",
+          "justification": "The dataset/environment is part of the MiniGrid framework, an open source gridworld package for OpenAI Gym, referenced in the context of its use.",
+          "quote": "The MultiRoom environments used for this research are part of MiniGrid, which is an open source gridworld package. This package includes a family of reinforcement learning environments compatible with the OpenAI Gym framework."
+        }
+      },
+      {
+        "name": {
+          "value": "FindObjSY",
+          "justification": "The FindObjSY environment is used to evaluate the VBB model's performance, especially in goal-driven navigation tasks.",
+          "quote": "We also evaluate on the FindObjSY environment, which consists of 9 connected rooms of size Y − 2 × Y − 2 arranged in a grid."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "None",
+          "justification": "The environment does not have a direct reference paper in the context of this document, suggesting it might be a custom setup.",
+          "quote": "Experimental setup: To investigate if agents can generalize by selectively deciding when to access the goal information, we compare our method to InfoBot ((Goyal et al., 2019a))"
+        }
+      },
+      {
+        "name": {
+          "value": "Puddle World Navigation",
+          "justification": "The Puddle World Navigation is used in spatial reasoning tasks to test generalization in grid layouts.",
+          "quote": "We consider the Puddle World Navigation map as introduced in (Janner et al., 2018)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Representation learning for grounded spatial reasoning",
+          "justification": "The Puddle World Navigation is introduced in the context of a prior study on representation learning for spatial reasoning.",
+          "quote": "In order to study generalization across a wide variety of environmental conditions and linguistic inputs, (Janner et al., 2018) develop an extension of the puddle world reinforcement learning benchmark."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is a popular deep learning library likely used for implementing neural network models in the paper.",
+          "quote": "Our code is based on the following open source implementation of Neural Turing Machines. https://github.com/loudinthecloud/pytorch-ntm"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "None",
+          "justification": "There is no specific referenced paper for PyTorch in this context, as it's a widely used framework.",
+          "quote": "Our code is based on the following open source implementation of Neural Turing Machines. https://github.com/loudinthecloud/pytorch-ntm"
+        }
+      },
+      {
+        "name": {
+          "value": "RMSProp",
+          "justification": "RMSProp is referred to as an optimizer used in the experiments to train the models implemented, indicating its application in the methodology.",
+          "quote": "We use RMSProp with an initial learning rate of 0.0007 to train the models, for both InfoBot and the baseline for a fair comparison."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "None",
+          "justification": "RMSProp is an established optimization algorithm and doesn't require a specific reference in this context.",
+          "quote": "We use RMSProp with an initial learning rate of 0.0007 to train the models, for both InfoBot and the baseline for a fair comparison."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1634,
+    "prompt_tokens": 16949,
+    "total_tokens": 18583,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

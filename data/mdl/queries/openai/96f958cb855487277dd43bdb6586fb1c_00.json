@@ -1,0 +1,191 @@
+{
+  "paper": "96f958cb855487277dd43bdb6586fb1c.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Weakly Supervised Representation Learning with Sparse Perturbations",
+      "justification": "The title accurately reflects the paper's focus on proposing a methodology for representation learning using sparse perturbations with weak supervision signals.",
+      "quote": "Weakly Supervised Representation Learning with Sparse Perturbations"
+    },
+    "description": "The paper explores a method for representation learning whereby sparse perturbations are applied as weak supervision signals to identify latent variables in data. This approach seeks to relax distributional assumptions on latent variables and demonstrates identification is achievable under unknown continuous latent distributions. The paper provides both theoretical and experimental evidence to support its claims, focusing on low-dimensional synthetic and image-based experiments.",
+    "type": {
+      "value": "theoretical",
+      "justification": "The paper presents a theoretical framework and claims regarding representation learning under sparse perturbations, supported by proofs and theoretical analysis rather than empirical data alone.",
+      "quote": "The theory of representation learning aims to build methods that provably invert the data generating process with minimal domain knowledge or any source of supervision."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Representation Learning",
+        "justification": "The paper primarily deals with issues and methods related to representation learning, focusing on identifying latent variables through weak supervision and sparse perturbations.",
+        "quote": "if we know that actions have sparse effects on the latent factors of our system, can we use that knowledge as weak supervision to help disentangle these latent factors from pixel-level data?"
+      },
+      "aliases": [
+        "RepL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Causal Inference",
+          "justification": "The work leverages causal mechanisms to relate latent variables, aiming to bridge the gap between representation learning and causal inference.",
+          "quote": "To robustly generalize out of distribution, we need models that can infer the causal mechanisms that relate latent variables."
+        },
+        "aliases": [
+          "CI"
+        ]
+      },
+      {
+        "name": {
+          "value": "Image-Based Experiments",
+          "justification": "The paper includes image-based experiments to illustrate theoretical claims, using generated images with perturbed latent variables.",
+          "quote": "We leverage these results to propose a natural estimation procedure and experimentally illustrate the theoretical claims on low-dimensional synthetic and high-dimensional image-based data."
+        },
+        "aliases": [
+          "Image Experiments"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "ResNet-18",
+          "justification": "ResNet-18 is used in the image-based experiments as the encoder architecture.",
+          "quote": "The encoder f was an MLP with two hidden layers of size 100 for the low-dimensional synthetic experiments and a ResNet-18 (He et al., 2015) for the image-based experiments."
+        },
+        "aliases": [
+          "ResNet"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "ResNet-18 is a well-known existing model and not proposed as a novel contribution in this paper.",
+          "quote": "ResNet-18 (He et al., 2015)"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "ResNet-18 is explicitly used in the image-based experiments conducted in this paper.",
+          "quote": "a ResNet-18 (He et al., 2015) for the image-based experiments."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "The paper does not compare ResNet-18 numerically to other models; it is utilized as part of their experimental setup.",
+          "quote": "The encoder f was an MLP with two hidden layers of size 100 for the low-dimensional synthetic experiments and a ResNet-18 (He et al., 2015) for the image-based experiments."
+        },
+        "referenced_paper_title": {
+          "value": "Deep residual learning for image recognition",
+          "justification": "The original paper introducing ResNet-18 is cited when discussing its use for image-based experiments.",
+          "quote": "Deep residual learning for image recognition"
+        }
+      },
+      {
+        "name": {
+          "value": "GPT-3",
+          "justification": "GPT-3 is mentioned as a major achievement in self- and weakly-supervised learning approaches.",
+          "quote": "Self– and weakly-supervised learning approaches have made phenomenal progress in the last few years, with large-scale systems like GPT-3 (Brown et al., 2020) offering large improvements on all natural language benchmarks."
+        },
+        "aliases": [
+          "Generative Pre-trained Transformer 3"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "GPT-3 is an existing model mentioned for context and not introduced as a new contribution.",
+          "quote": "large-scale systems like GPT-3 (Brown et al., 2020)"
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "GPT-3 is not executed as part of this paper's studies; it is mentioned as a benchmark in wider literature.",
+          "quote": "large-scale systems like GPT-3 (Brown et al., 2020)"
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "The paper does not numerically compare its work to GPT-3; it mentions it as part of the background.",
+          "quote": "large-scale systems like GPT-3 (Brown et al., 2020)"
+        },
+        "referenced_paper_title": {
+          "value": "Language models are few-shot learners",
+          "justification": "The paper referenced for GPT-3 discusses its architecture and capabilities in few-shot learning.",
+          "quote": "large-scale systems like GPT-3 (Brown et al., 2020) offering large improvements on all natural language benchmarks."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "ImageNet",
+          "justification": "ImageNet is referenced as a benchmark dataset that has been outperformed by CLIP without labels, highlighting the advancement in self-supervised learning.",
+          "quote": "CLIP (Radford et al., 2021) outperforming state-of-the-art supervised models from six years ago (Szegedy et al., 2016) on the ImageNet challenge (Deng et al., 2009) without using any of the labels."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "ImageNet: A large-scale hierarchical image database",
+          "justification": "The referenced paper for ImageNet presents the dataset and its significance in computer vision.",
+          "quote": "CLIP (Radford et al., 2021) outperforming state-of-the-art supervised models from six years ago (Szegedy et al., 2016) on the ImageNet challenge (Deng et al., 2009)"
+        }
+      },
+      {
+        "name": {
+          "value": "MPI3D",
+          "justification": "MPI3D is mentioned as an example of data that can be modeled with sparse changes, suitable for experimentation with the paper's approach.",
+          "quote": "In the Appendix, we explain these downstream effects using structural causal models (See Section 7.2). We also explain the connection between the perturbations in equation (2) (based on Locatello et al. (2020)) and causal interventions. The above example is typical of a reinforcement learning environment, other examples include natural videos with sparse changes (e.g., MPI3D data (Gondal et al., 2019))."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "On the transfer of inductive bias from simulation to the real world: a new disentanglement dataset",
+          "justification": "The referenced paper for MPI3D introduces the dataset's purpose and application in disentanglement tasks.",
+          "quote": "other examples include natural videos with sparse changes (e.g., MPI3D data (Gondal et al., 2019))."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyGame",
+          "justification": "PyGame is used for rendering engines in the image-based experiments, suggesting its utilization in this paper.",
+          "quote": "For the image-based experiments we used PyGame (Shinners, 2011)’s rendering engine for g and generated 64 × 64 pixel images that look like those shown in Figure 1."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Pygame",
+          "justification": "The referenced paper provides information about PyGame as a Python library for game development and rendering.",
+          "quote": "For the image-based experiments we used PyGame (Shinners, 2011)’s rendering engine for g"
+        }
+      },
+      {
+        "name": {
+          "value": "Adam optimizer",
+          "justification": "The Adam optimizer is mentioned as a tool used during the training of models in experimental setups within the paper.",
+          "quote": "The encoder f was an MLP with two hidden layers of size 100 for the low-dimensional synthetic experiments and a ResNet-18 (He et al., 2015) for the image-based experiments. We used the Adam optimizer (Kingma and Ba, 2014) with a learning rate of 0.005"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Adam: A method for stochastic optimization",
+          "justification": "The paper referenced for the Adam optimizer describes its methodology and effectiveness in optimizing neural networks.",
+          "quote": "We used the Adam optimizer (Kingma and Ba, 2014) with a learning rate of 0.005"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1789,
+    "prompt_tokens": 24075,
+    "total_tokens": 25864,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

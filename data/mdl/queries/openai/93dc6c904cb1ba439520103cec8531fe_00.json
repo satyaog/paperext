@@ -1,0 +1,114 @@
+{
+  "paper": "93dc6c904cb1ba439520103cec8531fe.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "On-line Adaptative Curriculum Learning for GANs",
+      "justification": "The title of the paper is explicitly mentioned at the start.",
+      "quote": "On-line Adaptative Curriculum Learning for GANs Thang Doan ^{1,8} , João Monteiro ^{2} , Isabela Albuquerque ^{2} , Bogdan Mazoure ^{3} , Audrey Durand ^{4,5} , Joelle Pineau ^{4,5,6} , R Devon Hjelm ^{5,7}"
+    },
+    "description": "The paper introduces a novel framework for training a GAN generator against an ensemble of discriminator networks, utilizing an adversarial bandit framework to select discriminators for feedback during learning. This approach aims to address missing mode issues in GANs by using multiple discriminators with different strengths.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper conducts experiments to test the proposed GAN framework and compares it with existing methods, which is characteristic of an empirical study.",
+      "quote": "Finally, experimental results show that our approach improves samples quality and diversity over existing baselines by effectively learning a curriculum."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Generative Adversarial Networks (GANs)",
+        "justification": "The paper is focused on modifying GANs to overcome specific challenges related to their training and performance.",
+        "quote": "Generative Adversarial Networks (GANs, Goodfellow et al., 2014) have reshaped the state of machine learning in tasks that involve generating data."
+      },
+      "aliases": [
+        "GANs"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Curriculum Learning",
+          "justification": "The proposed framework draws inspiration from curriculum learning techniques, dynamically adapting the learning process of the GAN generator.",
+          "quote": "We show that the proposed approach leads to a curriculum learning characterized by successive phases of the generator prioritizing different discriminators."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Adversarial Bandit Theory",
+          "justification": "The paper employs the adversarial bandit framework to dynamically allocate training feedback from multiple discriminators.",
+          "quote": "This mixture-of-experts problem, where each discriminator plays the role of a teacher, can be tackled under the full-information adversarial bandit setting (Auer et al., 1995; Freund and Schapire, 1997; Littlestone and Warmuth, 1994)."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "acGAN (Adaptative Curriculum GAN)",
+          "justification": "The Adaptative Curriculum GAN (acGAN) is the main model proposed by the authors as a novel contribution.",
+          "quote": "Here we formulate the problem and approach for training a single generator on a target dataset using a curriculum over multiple discriminators, which we call Adaptative Curriculum GAN (acGAN)."
+        },
+        "aliases": [
+          "acGAN"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The acGAN is proposed as a new approach to train GANs more effectively.",
+          "quote": "To support the results of our theoretical work, we conducted a set of experiments which we describe below."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The acGAN model is experimentally tested as part of the research.",
+          "quote": "We then compare our proposed approach (acGAN) against existing methods from the literature."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "acGAN is compared numerically with other GAN training methods to validate its effectiveness.",
+          "quote": "Our results further verify our hypothesis that acGAN is a sensible approach to ensuring good mode coverage and sample quality."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "No external reference paper title is provided for acGAN since it is a novel contribution of this paper.",
+          "quote": "We propose to train the generator using a curriculum based on an on-line multi-armed bandit algorithm (Graves et al., 2017; Matiisen et al., 2017), dynamically changing the weight/resources allocated to each discriminator, which we show is crucial for achieving good results."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Stacked-MNIST",
+          "justification": "Stacked-MNIST is used as a dataset to test the robustness of the proposed GAN model against mode collapse.",
+          "quote": "Stacked-MNIST We use the Stacked-MNIST dataset (Srivastava et al., 2017b) to measure the mode coverage of our proposed approach."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "VEEGAN: Reducing Mode Collapse in GANs Using Implicit Variational Learning",
+          "justification": "The dataset's reference is associated with a study focused on mitigating mode collapse in GANs.",
+          "quote": "Stacked-MNIST We use the Stacked-MNIST dataset (Srivastava et al., 2017b) to measure the mode coverage of our proposed approach."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 988,
+    "prompt_tokens": 16403,
+    "total_tokens": 17391,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

@@ -1,0 +1,159 @@
+{
+  "paper": "e088aeda5100f83aad0a5441cd4e7a9b.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Planning as inference in epidemiological dynamics models",
+      "justification": "The title 'Planning as inference in epidemiological dynamics models' captures the essence of the research, focusing on using inference techniques within epidemiological models to aid policy-making.",
+      "quote": "'Our goal in this paper is to demonstrate how the “planning as inference” methodology at the intersection of Bayesian statistics and optimal control can directly aid policy-makers in assessing policy options and achieving policy goals...'"
+    },
+    "description": "The paper explores the use of inference techniques within epidemiological models to aid the policy-making process, specifically focusing on controlling infectious disease through simulation-based models and probabilistic programming. It highlights the application of Bayesian inference for policy analysis and recommendation, and how these techniques can improve public health preparedness by offering more precise policy prescriptions.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves empirical studies of models and simulations to demonstrate the effectiveness of inference techniques in policy-making for infectious disease control.",
+      "quote": "'In this work we introduce and apply a simple form of planning as inference in epidemiological models to automatically identify policy decisions that achieve a desired, high-level outcome.'"
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Epidemiological Dynamics",
+        "justification": "The paper primarily deals with epidemiological models and their dynamics, focusing on using these models for planning and inference.",
+        "quote": "'In this work we demonstrate how to automate parts of the infectious disease-control policy-making process via performing inference in existing epidemiological models.'"
+      },
+      "aliases": [
+        "Epidemiological Modeling"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Probabilistic Programming",
+          "justification": "The paper extensively discusses the use of probabilistic programming languages to perform inference in epidemiological models.",
+          "quote": "'Among other things, we illustrate the use of a probabilistic programming language that automates inference in existing simulators.'"
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Optimal Control",
+          "justification": "The paper links Bayesian inference with optimal control methods to aid in policy decisions.",
+          "quote": "'...planning as inference methodology at the intersection of Bayesian statistics and optimal control...'"
+        },
+        "aliases": [
+          "Control Theory"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "SEI3R Model",
+          "justification": "The SEI3R model is introduced as a key examination point in the paper to simulate infectious disease spread with additional compartments.",
+          "quote": "'We use an SEI^{3}R model, a variation on the standard SEIR model which allows additional modelling freedom.'"
+        },
+        "aliases": [
+          "SEIR Model"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The model isn't novel or a direct contribution of this paper; it's an existing model utilized within the study.",
+          "quote": "'We use an SEI^{3}R model,...' implying it's used rather than newly introduced."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The SEI3R model is executed to simulate infectious disease dynamics under varying control scenarios.",
+          "quote": "'...using the SEI^{3}R model, we aim to maintain the maximal infectious population proportion.'"
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares outcomes using this model under different control policies, although it doesn't compare numerically against other types of models.",
+          "quote": "'...limit the spread and impact of an infectious disease such as COVID-19.' suggests the application and comparison of various intervention scenarios."
+        },
+        "referenced_paper_title": {
+          "value": "Modeling COVID-19 spread vs healthcare capacity",
+          "justification": "This referenced paper uses the SEIR framework to model disease spread and is cited in the context of using the SEI3R Model.",
+          "quote": "'We have made some efforts on the latter point, in particular sourcing a COVID-19 adapted compartmental model [1, 2, 3]...'"
+        }
+      },
+      {
+        "name": {
+          "value": "FRED – Framework for Reconstructing Epidemiological Dynamics",
+          "justification": "FRED is discussed as one of the advanced agent-based models used in conjunction with probabilistic programming for outbreak simulations.",
+          "quote": "'FRED is an agent-based modeling language and execution platform for simulating changes in a population over time.'"
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "FRED is not developed in this work but is used as a part of the simulation exercises.",
+          "quote": "'FRED, like many stochastic simulators, includes the ability to write-out results of a run of the simulator...'"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "FRED is used to execute detailed simulations of infectious disease spread to determine effective intervention strategies.",
+          "quote": "'Using the model described in Section 4.2 and parameters as defined in this section, we used PyProb to perform automated inference over the policy parameters described in Table 1.'"
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "While FRED is used extensively as a simulation tool, the paper does not emphasize direct numerical comparisons with other models.",
+          "quote": "The focus is more on illustrating the application rather than comparing it with other models."
+        },
+        "referenced_paper_title": {
+          "value": "FRED (A Framework for Reconstructing Epidemic Dynamics): an open-source software system for modeling infectious diseases and control strategies using census-based populations.",
+          "justification": "The paper cites this as a key reference when discussing the FRED model's capabilities and applications in their simulations.",
+          "quote": "'FRED... an open-source software system for modeling infectious diseases and control strategies using census-based populations.'"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "U.S. Synthetic Population Data",
+          "justification": "The U.S. Synthetic Population Data is used as input for the FRED model to simulate pandemic scenarios.",
+          "quote": "'Our simulations presented here are on a synthetic population of Seattle metropolitan area...The synthetic population closely matches the 2010 census data.'"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Synthesized population databases: A US geospatial database for agent-based models",
+          "justification": "This paper is referenced as a source for the synthetic population data used for simulations in FRED.",
+          "quote": "‘The synthetic population closely matches the 2010 census data for the United States with high spatial resolution, differing by less than 1% for large counties.’"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyProb",
+          "justification": "PyProb library is used for probabilistic programming and Bayesian inference within the simulations, integrating easily with existing simulators like FRED.",
+          "quote": "'The FRED Modeling Language code for the COVID-19 model executed on the agent-based platform FRED, which has been interfaced to the probabilistic programming system PyProb.'"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Revisiting reweighted wake-sleep for models with stochastic control flow",
+          "justification": "This paper is cited as a key reference for the PyProb library utilized in the study's simulations.",
+          "quote": "PyProb is a PyTorch-based library for probabilistic programming and inference compilation..."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1403,
+    "prompt_tokens": 37640,
+    "total_tokens": 39043,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

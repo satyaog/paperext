@@ -1,0 +1,205 @@
+{
+  "paper": "98fb829282941d68e9ca2e34fce3794e.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Asking Questions the Human Way: Scalable Question-Answer Generation from Text Corpus",
+      "justification": "The title is directly given at the beginning of the paper and represents the main focus of the research, which is scalable question-answer generation from text corpus with a human-like approach.",
+      "quote": "Asking Questions the Human Way: Scalable Question-Answer Generation from Text Corpus"
+    },
+    "description": "The paper proposes a model called Answer-Clue-Style-aware Question Generation (ACS-QG) to generate high-quality question-answer pairs from unlabeled text corpus at scale. This approach mimics human question-asking behavior by automatically extracting and using information such as answers, clues, and question styles from the text corpus.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves experiments and evaluations of the proposed model, comparing its performance with other models and conducting human evaluations to assess the quality of the generated question-answer pairs. This empirical approach is evident in their extensive experiments and data generation evaluations.",
+      "quote": "We perform extensive experiments based on the SQuAD dataset [36] and Wikipedia, and compare our ACS-aware question generation model with different existing approaches."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The research focuses on generating questions and answers from text data, which falls under the domain of Natural Language Processing.",
+        "quote": "CCS CONCEPTS • Computing methodologies → Natural language processing; Natural language generation; Machine translation."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Natural Language Generation",
+          "justification": "The core of the research is on generating questions and answers from text, which aligns with Natural Language Generation.",
+          "quote": "The ability to ask questions is important in both human and machine intelligence."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Machine Reading Comprehension",
+          "justification": "The generated question-answer pairs are aimed to assist tasks like machine reading comprehension.",
+          "quote": "Many question-answering tasks such as machine reading comprehension and chatbots require a large amount of labeled samples for supervised training."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "ACS-QG",
+          "justification": "Answer-Clue-Style-aware Question Generation is the primary model proposed in the paper for generating question-answer pairs.",
+          "quote": "In this paper, we propose Answer-Clue-Style-aware Question Generation (ACS-QG)."
+        },
+        "aliases": [
+          "Answer-Clue-Style-aware Question Generation"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "ACS-QG is a novel approach introduced in this paper for scalable generation of question-answer pairs.",
+          "quote": "In this paper, we propose Answer-Clue-Style-aware Question Generation (ACS-QG)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper details the execution of ACS-QG including its experiments on datasets like SQuAD and Wikipedia.",
+          "quote": "We perform extensive experiments based on the SQuAD dataset [36] and Wikipedia, and compare our ACS-aware question generation model with different existing approaches."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "ACS-QG is compared with various state-of-the-art neural question generation models during evaluation.",
+          "quote": "We compare our question generation models with existing approaches."
+        },
+        "referenced_paper_title": {
+          "value": "Neural question generation from text: A preliminary study",
+          "justification": "The referenced paper is directly related to question generation, which is relevant to ACS-QG.",
+          "quote": "Zhou, Qingyu, Nan Yang, Furu Wei, Chuanqi Tan, Hangbo Bao, and Ming Zhou. \"Neural question generation from text: A preliminary study.\" In National CCF Conference on Natural Language Processing and Chinese Computing. Springer, 2017."
+        }
+      },
+      {
+        "name": {
+          "value": "GPT2",
+          "justification": "GPT2 is used as a fine-tuned model for question generation in the paper.",
+          "quote": "In the second model, we fine-tune a GPT2-small model [34]."
+        },
+        "aliases": [
+          "GPT-2"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "GPT2 is a pre-existing model that is fine-tuned for use in this research, but it is not originally contributed by this paper.",
+          "quote": "In the second model, we fine-tune a GPT2-small model [34]."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "GPT2 is fine-tuned and executed as part of the question generation model evaluation in the paper.",
+          "quote": "For GPT2-ACS model, we fine-tune the GPT2-small model using the SQuAD 1.1 training dataset from [53]."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of the fine-tuned GPT2 model is compared with the Seq2Seq-based model and other baselines in the paper.",
+          "quote": "Comparing GPT2-ACS with CS2S-VR-ACS, we can see that GPT2-ACS achieves better METEOR score."
+        },
+        "referenced_paper_title": {
+          "value": "Language models are unsupervised multitask learners",
+          "justification": "The GPT2 model referenced in the paper is a known unsupervised language model used for many NLP tasks including generation.",
+          "quote": "Radford, Alec, Jeffrey Wu, Rewon Child, David Luan, Dario Amodei, and Ilya Sutskever. \"Language models are unsupervised multitask learners.\" OpenAI Blog 1, 8 (2019)."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "SQuAD",
+          "justification": "The SQuAD dataset is extensively used for evaluating the question generation capabilities of the model.",
+          "quote": "We perform extensive experiments based on the SQuAD dataset [36] and Wikipedia."
+        },
+        "aliases": [
+          "Stanford Question Answering Dataset"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "SQuAD: 100,000+ questions for machine comprehension of text",
+          "justification": "The paper mentions the SQuAD dataset alongside its reference of origin.",
+          "quote": "Rajpurkar, Pranav, Jian Zhang, Konstantin Lopyrev, and Percy Liang. \"SQuAD: 100,000+ questions for machine comprehension of text.\" arXiv preprint arXiv:1606.05250 (2016)."
+        }
+      },
+      {
+        "name": {
+          "value": "Wikipedia",
+          "justification": "Wikipedia articles are used as the text corpus from which question-answer pairs are generated.",
+          "quote": "With models trained on 86, 635 of SQuAD data samples, we can automatically generate two large datasets containing 1.33 million and 1.45 million QA pairs from a corpus of top-ranked Wikipedia articles."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "Wikipedia is a well-known resource platform and generally doesn't have a single reference paper.",
+          "quote": "Wikipedia articles are used as the basis for generating QA pairs but no specific paper is referenced."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "spaCy",
+          "justification": "spaCy is used for dependency parsing and feature extraction in the research.",
+          "quote": "We utilize spaCy [29] to perform dependency parsing and extract lexical features for tokens."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "spaCy: Industrial-strength Natural Language Processing (NLP) with Python and Cython",
+          "justification": "The paper makes a direct reference to spaCy for its contributions in NLP.",
+          "quote": "Matthew Honnibal. 2015. spaCy: Industrial-strength Natural Language Processing (NLP) with Python and Cython. https://spacy.io. [Online; accessed 3-November-2018]."
+        }
+      },
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "The implementation of the proposed models is done using PyTorch.",
+          "quote": "We implement our models in PyTorch 1.1.0 [32] and Transformers 2.0.0 [48]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Pytorch: Tensors and dynamic neural networks in python with strong gpu acceleration",
+          "justification": "The paper uses PyTorch for deploying models indicating the reference to the PyTorch framework.",
+          "quote": "Paszke, Adam, Sam Gross, Soumith Chintala, and Gregory Chanan. 2017. Pytorch: Tensors and dynamic neural networks in python with strong gpu acceleration."
+        }
+      },
+      {
+        "name": {
+          "value": "Transformers Library by HuggingFace",
+          "justification": "The Transformers library is used for fine-tuning GPT models.",
+          "quote": "We implement our models in PyTorch 1.1.0 [32] and Transformers 2.0.0 [48]."
+        },
+        "aliases": [
+          "Transformers"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Transformers: State-of-the-art Natural Language Processing",
+          "justification": "The paper credits this library for facilitating state-of-the-art NLP tasks.",
+          "quote": "Thomas Wolf et al. 2019. Transformers: State-of-the-art Natural Language Processing. arXiv:cs.CL/1910.03771"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1838,
+    "prompt_tokens": 19319,
+    "total_tokens": 21157,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

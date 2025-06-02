@@ -1,0 +1,189 @@
+{
+  "paper": "8e86f4da8f62023994729165458a34b1.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "The KNOWREF Coreference Corpus: Removing Gender and Number Cues for Difficult Pronominal Anaphora Resolution",
+      "justification": "The title is clearly mentioned at the beginning of the paper, along with the list of authors and their affiliations.",
+      "quote": "The K NOW R EF Coreference Corpus: Removing Gender and Number Cues for Difficult Pronominal Anaphora Resolution"
+    },
+    "description": "The paper introduces the KNOWREF corpus, a new benchmark for coreference resolution that aims to challenge existing models by removing gender and number cues and requiring higher-level common sense and contextual understanding. The corpus contains 8,724 sentences designed to be more difficult for models to resolve than traditional datasets. This research is aimed at making model predictions rely more on context and world knowledge, rather than surface features.",
+    "type": {
+      "value": "empirical",
+      "justification": "The study involves empirical evaluations of existing models on the newly introduced corpus and observes their performance. It provides data-based insights and experimental results.",
+      "quote": "We present a corpus of over 8,000 annotated text passages with ambiguous pronominal anaphora... We show that various coreference systems... perform significantly worse on the task than humans."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "Coreference resolution, the primary focus of the paper, is a key task in Natural Language Processing.",
+        "quote": "Coreference resolution is one of the best known tasks in Natural Language Processing (NLP)."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Coreference Resolution",
+          "justification": "The entire paper revolves around the introduction and evaluation of a new coreference resolution task.",
+          "quote": "Coreference resolution is one of the best known tasks in Natural Language Processing (NLP)."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Common Sense Reasoning",
+          "justification": "The paper aims at using coreference resolution to improve models' use of common sense reasoning.",
+          "quote": "We introduce a new benchmark for coreference resolution and NLI, K NOW R EF , that targets common-sense understanding and world knowledge."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "End-to-End Neural Coreference Model",
+          "justification": "The paper mentions the usage of this model for evaluation on the KNOWREF dataset.",
+          "quote": "The current state-of-the-art result on the CoNLL 2012 task is by an end-to-end neural model from Lee et al, 2018."
+        },
+        "aliases": [
+          "E2E"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The model is used as a benchmark to compare against the proposed task, and is not a contribution of this paper.",
+          "quote": "E2E (CoNLL only)... The current state-of-the-art result on the CoNLL 2012 task is by an end-to-end neural model..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was used for empirical evaluation in the experiments section.",
+          "quote": "We also report the accuracy of the state-of-the-art model, E2E, after retraining on K NOW R EF and on K NOW R EF +CoNLL."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The model's performance was compared to other coreference models and human baselines.",
+          "quote": "The performance of the automatic systems pre-trained on CoNLL, at random or slightly above random, demonstrates that state-of-the-art coreference resolution systems are unable to solve the task."
+        },
+        "referenced_paper_title": {
+          "value": "Higher-order coreference resolution with coarse-to-fine inference",
+          "justification": "The referenced paper title corresponds with the state-of-the-art model discussed in this paper.",
+          "quote": "The current state-of-the-art result on the CoNLL 2012 task is by an end-to-end neural model from Lee et al., 2018."
+        }
+      },
+      {
+        "name": {
+          "value": "Bidirectional Encoder Representations from Transformers (BERT)",
+          "justification": "The paper mentions the use of fine-tuned BERT for the coreference resolution task on the KNOWREF dataset.",
+          "quote": "We find that a fine-tuned version of the recent large-scale language model, BERT (Devlin et al., 2018), performs significantly better than other methods on K NOW R EF."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "BERT was used as a tool for the experiments rather than being a newly proposed model.",
+          "quote": "We find that a fine-tuned version of the recent large-scale language model, BERT (Devlin et al., 2018), performs significantly better than other methods on K NOW R EF."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "BERT was fine-tuned and used in experiments for the KNOWREF task.",
+          "quote": "We train our task-specific BERT according to recent work on language models."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "BERT's performance was compared with other models and baselines on the KNOWREF task.",
+          "quote": "We show that antecedent switching yields promising results on other tasks as well: we use it to achieve state-of-the-art results on the GAP coreference task."
+        },
+        "referenced_paper_title": {
+          "value": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "justification": "The referenced paper is specific to the BERT model used in the study.",
+          "quote": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "KNOWREF",
+          "justification": "The paper introduces the KNOWREF Corpus specifically designed for challenging coreference resolution tasks.",
+          "quote": "We present a coreference resolution corpus called K NOW R EF that specifically targets the ability of systems to reason about a situation described in the context."
+        },
+        "aliases": [],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "Not Applicable",
+          "justification": "This is a newly introduced dataset in this paper, not found in external references.",
+          "quote": "The corpus, the code to scrape the sentences from the source texts, as well as the code to reproduce all of our experimental results are available at https://github.com/aemami1/KnowRef."
+        }
+      },
+      {
+        "name": {
+          "value": "CoNLL-2012 Shared Task",
+          "justification": "The CoNLL-2012 is used as a baseline to compare against the performance of models on KNOWREF.",
+          "quote": "The current state-of-the-art result on the CoNLL 2012 task is by an end-to-end neural model from Lee et al. (2018)."
+        },
+        "aliases": [
+          "CoNLL-2012"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "CoNLL-2012 Shared Task: Modeling Multilingual Unrestricted Coreference in OntoNotes",
+          "justification": "The referenced paper title corresponds with the usage of the CoNLL dataset.",
+          "quote": "Conll-2012 shared task: Modeling multilingual unrestricted coreference in ontonotes."
+        }
+      },
+      {
+        "name": {
+          "value": "GAP",
+          "justification": "This dataset is used to evaluate gender bias in coreference resolution.",
+          "quote": "Recently, Webster et al. (2018) presented a corpus called GAP that consists of about 4,000 unique binary coreference instances from English Wikipedia."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Mind the GAP: A Balanced Corpus of Gendered Ambiguous Pronouns",
+          "justification": "The referenced paper for GAP is mentioned in the discussion of gender bias and dataset usage.",
+          "quote": "GAP: A Balanced Corpus of Gendered Ambiguous Pronouns."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Stanford CoreNLP",
+          "justification": "The paper references the use of Stanford's tools for part-of-speech tagging as part of their preprocessing step.",
+          "quote": "On the remaining set of sentences, we use Stanford’s Maxent tagger (Toutanova et al., 2003) to infer a flat part-of-speech (POS) labeling."
+        },
+        "aliases": [
+          "Stanford’s Maxent tagger"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Feature-rich part-of-speech tagging with a cyclic dependency network",
+          "justification": "The reference corresponds to the Maxent POS tagger which is part of Stanford CoreNLP.",
+          "quote": "Feature-rich part-of-speech tagging with a cyclic dependency network."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1697,
+    "prompt_tokens": 11820,
+    "total_tokens": 13517,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

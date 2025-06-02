@@ -1,0 +1,182 @@
+{
+  "paper": "e94c3e23f3b274207a36fb5ee5f698be.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Learning Improvised Chatbots from Adversarial Modifications of Natural Language Feedback",
+      "justification": "The title is clearly stated at the beginning of the document.",
+      "quote": "Learning Improvised Chatbots from Adversarial Modifications of Natural Language Feedback"
+    },
+    "description": "The paper proposes a new method for improving chatbot performance by transforming noisy user feedback into plausible responses using a generative adversarial model called F EED 2R ESP. The model improves upon previous attempts by converting feedback into useful training samples without needing full supervision, demonstrating significant improvements particularly when integrated with strong chatbot models.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper provides experimental results showing the effectiveness of the proposed method in improving chatbot performance.",
+      "quote": "We show that augmenting original training data with these modified feedback responses improves the original chatbot performance from 69.94% to 75.96% in ranking correct responses on the P ERSONA C HAT dataset."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The paper focuses on chatbot performance and conversation handling, which falls under the NLP domain.",
+        "quote": "We use BART encoder-decoder initialized with pretrained weights as our generator since its denoising objective helps in copying from the input while also producing realistic sentences (Lewis et al., 2019)."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Conversational Agents",
+          "justification": "The focus of the paper is on improving chatbot performance via feedback handling.",
+          "quote": "We show that augmenting original training data with these modified feedback responses improves the original chatbot performance."
+        },
+        "aliases": [
+          "Chatbots",
+          "Dialogue Systems"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "F EED 2R ESP",
+          "justification": "F EED 2R ESP is the main model proposed in this paper for converting feedback into natural responses.",
+          "quote": "We introduce F EED 2R ESP , a text style transfer system that converts feedback to natural responses without full supervision."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "F EED 2R ESP is the novel contribution of this paper.",
+          "quote": "We introduce F EED 2R ESP, a text style transfer system."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "There is no specific mention of execution on a particular hardware (GPU or CPU).",
+          "quote": "The paper does not provide explicit information on the hardware used for model execution."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "F EED 2R ESP's performance is compared against other feedback handling techniques.",
+          "quote": "Naive and heuristic use of feedback results in marginal improvement or hurts performance, whereas F EED 2R ESP modified feedback gives large improvements."
+        },
+        "referenced_paper_title": {
+          "value": "Generative Adversarial Nets",
+          "justification": "The F EED 2R ESP model uses a GAN framework.",
+          "quote": "We utilize a GAN (Goodfellow et al., 2014) formulation where the generator modifies the feedback’s style."
+        }
+      },
+      {
+        "name": {
+          "value": "BART",
+          "justification": "BART is used as an encoder-decoder in the F EED 2R ESP model.",
+          "quote": "We use BART encoder-decoder initialized with pretrained weights as our generator since its denoising objective helps in copying from the input while also producing realistic sentences."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "BART is not a contribution of this paper, it is used as a base model for the generator.",
+          "quote": "We use BART encoder-decoder initialized with pretrained weights."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "BART is executed as the generator in the proposed model.",
+          "quote": "We use BART encoder-decoder initialized with pretrained weights as our generator since its denoising objective helps in copying from the input."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "BART's performance is not compared directly, it's part of the GAN setup used in F EED 2R ESP.",
+          "quote": "We use BART encoder-decoder initialized with pretrained weights as our generator."
+        },
+        "referenced_paper_title": {
+          "value": "BART: Denoising Sequence-to-Sequence Pre-training for Natural Language Generation, Translation, and Comprehension",
+          "justification": "The paper references the BART model for its encoder-decoder capabilities.",
+          "quote": "We use BART encoder-decoder initialized with pretrained weights as our generator since its denoising objective helps in copying from the input."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "PERSONA CHAT",
+          "justification": "PERSONA CHAT is used as the main evaluation dataset for the chatbot models.",
+          "quote": "We choose PersonaChat (Zhang et al., 2018) as the main evaluation dataset."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Personalizing Dialogue Agents: I have a Dog, Do you have Pets too?",
+          "justification": "The dataset is sourced from a previously referenced paper outlining its creation and use.",
+          "quote": "We choose PersonaChat (Zhang et al., 2018) as the main evaluation dataset."
+        }
+      },
+      {
+        "name": {
+          "value": "Feedback Data Collected by Hancock et al.",
+          "justification": "This dataset provides human-bot interaction feedback used for model training and evaluation.",
+          "quote": "We use the feedback data collected by Hancock et al. (2019) as this removes orthogonal factors such as differences in chatbot interfaces."
+        },
+        "aliases": [
+          "Human-Bot Feedback"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Learning from Dialogue after Deployment: Feed Yourself, Chatbot!",
+          "justification": "The dataset is derived from the research conducted by Hancock et al.",
+          "quote": "We use the feedback data collected by Hancock et al. (2019)."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "HuggingFace Transformers",
+          "justification": "The Transformers library by HuggingFace is used, specifically for implementing the BART model.",
+          "quote": "For the BART (Lewis et al., 2019) generator, we use the implementation from HuggingFace (Wolf et al., 2019)."
+        },
+        "aliases": [
+          "HF Transformers"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "HuggingFace’s Transformers: State-of-the-Art Natural Language Processing",
+          "justification": "The library is cited as being used for implementing BART in the study.",
+          "quote": "For the BART (Lewis et al., 2019) generator, we use the implementation from HuggingFace (Wolf et al., 2019)."
+        }
+      },
+      {
+        "name": {
+          "value": "ParlAI",
+          "justification": "ParlAI is used for chatbot models and evaluation tasks.",
+          "quote": "We use two implementations of dialog agents provided by ParlAI (Miller et al., 2017), B I E NCODER and P OLY E NCODER ."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "ParlAI: A Dialog Research Software Platform",
+          "justification": "ParlAI is acknowledged as the platform used for the experimented chatbot models.",
+          "quote": "We use two implementations of dialog agents provided by ParlAI (Miller et al., 2017), B I E NCODER and P OLY E NCODER ."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1483,
+    "prompt_tokens": 9434,
+    "total_tokens": 10917,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

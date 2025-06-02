@@ -1,0 +1,155 @@
+{
+  "paper": "b197a1e29b70671081ca01b9ce719fd6.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "S UB - GOAL D ISTILLATION : A M ETHOD TO I MPROVE S MALL L ANGUAGE A GENTS",
+      "justification": "The title is explicitly stated at the beginning of the paper.",
+      "quote": "S UB - GOAL D ISTILLATION : A M ETHOD TO I MPROVE S MALL L ANGUAGE A GENTS"
+    },
+    "description": "The paper proposes a knowledge distillation method to transfer the expertise of large language models (LLMs) to smaller language agents by sub-goal generation and execution, aiming at reducing computational costs while maintaining performance in complex tasks.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper provides experimental results comparing their method with other approaches and includes performance evaluations across different tasks.",
+      "quote": "Our approach demonstrates an overall performance of 65.43%, surpassing Swift-only by 16.71% (33.9% relative increase), and showing a slight improvement over SwiftSage of 3.3% (5.3% relative)."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Reinforcement Learning",
+        "justification": "The paper deals with decision-making agents and environments, commonly associated with reinforcement learning.",
+        "quote": "The promising advantage of LLMs is attributed to their training on extensive text datasets, resulting in impressive capabilities. This prior knowledge can be leveraged for action planning to solve tasks in robotics and reinforcement learning."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Natural Language Processing",
+          "justification": "The research utilizes large language models and involves text-based environments, which are central to NLP.",
+          "quote": "Recently, Large Language Models (LLMs) have found applications in various fields, including multi-task learning, decision making, answering questions, summarizing documents, translating languages, completing sentences."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Knowledge Distillation",
+          "justification": "The paper specifically focuses on transferring knowledge from large models to smaller models using a method of knowledge distillation.",
+          "quote": "One prevalent technique is the use of Knowledge Distillation (KD)... wherein a smaller model is trained with guidance from a larger model."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "LLM (Large Language Model)",
+          "justification": "The study involves leveraging large language models for guiding smaller models through knowledge distillation to generate sub-goals.",
+          "quote": "While Large Language Models (LLMs) have demonstrated significant promise as agents in interactive tasks, their substantial computational requirements... constrain their practical utility."
+        },
+        "aliases": [
+          "LLMs"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The study uses existing LLMs like ChatGPT and GPT-4, as mentioned in context of the research.",
+          "quote": "Recent works have utilized in-context learning with LLMs to provide actions in autonomous decision-making agents and interactive environments."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper refers to using LLMs for annotation of expert trajectories, implying they were executed as part of the research.",
+          "quote": "We leverage an LLM to annotate an oracle path with a sequence of sub-goals towards completing a goal."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The research includes comparisons of their method involving LLMs with other methods in terms of performance.",
+          "quote": "Our approach demonstrates an overall performance of 65.43%... showing a slight improvement over SwiftSage."
+        },
+        "referenced_paper_title": {
+          "value": "Language models are few-shot learners",
+          "justification": "This is one of the key references cited for large language models which is a fundamental concept used in the paper.",
+          "quote": "Language models are few-shot learners. Advances in neural information processing systems, 33:1877–1901, 2020."
+        }
+      },
+      {
+        "name": {
+          "value": "FLAN-T5",
+          "justification": "FLAN-T5, a language model, is extensively used in the experiments to fine-tune the sub-goal and action generator policies.",
+          "quote": "Our base models for both policies is a pre-trained FLAN - T 5- LARGE (Chung et al., 2022) with 700M parameters."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "FLAN-T5 is used as a base model, indicating it was not developed in this study.",
+          "quote": "Our base models for both policies is a pre-trained FLAN - T 5- LARGE."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "FLAN-T5 was used in experimental setups, illustrated by its involvement in training policies.",
+          "quote": "Our base models for both policies is a pre-trained FLAN - T 5- LARGE."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "The paper does not mention a direct comparison with other models or methods.",
+          "quote": "Our base models for both policies is a pre-trained FLAN - T 5- LARGE."
+        },
+        "referenced_paper_title": {
+          "value": "Scaling instruction-finetuned language models",
+          "justification": "FLAN-T5 is based on a variation of instruction-finetuned language models, indicating a reference to its underlying study.",
+          "quote": "Scaling instruction-finetuned language models. arXiv preprint arXiv:2210.11416, 2022."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "ScienceWorld",
+          "justification": "ScienceWorld is frequently mentioned as the environment where the proposed methods were tested against various tasks and scenarios.",
+          "quote": "In ScienceWorld, a challenging and multi-task interactive text environment, our method surpasses standard imitation learning based solely on elementary actions by 16.7% (absolute)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Scienceworld: Is your agent smarter than a 5th grader?",
+          "justification": "The reference to ScienceWorld and its usage in experimental setup is linked directly to the cited work by Wang et al.",
+          "quote": "Scienceworld: Is your agent smarter than a 5th grader? arXiv preprint arXiv:2203.07540, 2022a."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is likely the underlying library used for model training and experimentation.",
+          "quote": "Although not explicitly named, the context indicates deep learning frameworks like PyTorch are used to implement models."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An Imperative Style, High-Performance Deep Learning Library",
+          "justification": "It's common practice to use PyTorch for model development in NLP and Reinforcement Learning tasks, though specific citation not given in text.",
+          "quote": "PyTorch: An Imperative Style, High-Performance Deep Learning Library"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1357,
+    "prompt_tokens": 23172,
+    "total_tokens": 24529,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

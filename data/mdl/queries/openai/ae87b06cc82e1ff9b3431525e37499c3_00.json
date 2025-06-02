@@ -1,0 +1,256 @@
+{
+  "paper": "ae87b06cc82e1ff9b3431525e37499c3.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "UNIFYING LIKELIHOOD-FREE INFERENCE WITH BLACK-BOX OPTIMIZATION AND BEYOND",
+      "justification": "The title is stated clearly at the beginning of the paper and is consistent with the research content described.",
+      "quote": "U NIFYING L IKELIHOOD - FREE I NFERENCE WITH B LACK - BOX O PTIMIZATION AND B EYOND"
+    },
+    "description": "The paper proposes to unify likelihood-free inference and black-box optimization under a probabilistic framework that aids in the design of biological sequences. The authors introduce various new algorithms and demonstrate their empirical effectiveness on sequence design tasks.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves systematic experiments on various sequence design benchmarks to illustrate the effectiveness of the proposed methodology, which is typical of empirical studies.",
+      "quote": "To demonstrate the empirical effectiveness of our methods, we conduct systematical experiments to evaluate their performance on four in-silico sequence design benchmarks."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Biological Sequence Design",
+        "justification": "The research primarily focuses on designing biological sequences, viewed as a black-box optimization problem, under a probabilistic framework.",
+        "quote": "In this work, we focus on an important subdomain: de novo biological sequence design."
+      },
+      "aliases": [
+        "Sequence Design"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Likelihood-Free Inference",
+          "justification": "One of the main contributions of the paper is the unification of likelihood-free inference with black-box optimization.",
+          "quote": "We develop a probabilistic framework by reformulating the aforementioned black-box optimization target as a posterior modeling problem."
+        },
+        "aliases": [
+          "LFI"
+        ]
+      },
+      {
+        "name": {
+          "value": "Black-Box Optimization",
+          "justification": "The paper considers biological sequence design as a black-box optimization problem and unifies it with likelihood-free inference.",
+          "quote": "In this work, we deem sequence design to be a black-box optimization problem."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Feedback-Variational AutoEncoder (FB-VAE)",
+          "justification": "This model is mentioned as a sequence design algorithm corresponded to SMC-ABC in the likelihood-free inference context.",
+          "quote": "Interestingly, this is the proposed sequence design algorithm in Gupta & Zou (2019), where the authors name this kind of updating “feedback” because training of the parametric generator q φ (m) exploits feedback signals from the oracle. In this paper, we follow Brookes & Listgarten (2018) to crystallize q φ (m) to be a variational autoencoder (Kingma & Welling, 2014), and use the term Feedback-Variational AutoEncoder (FB-VAE) to refer to Algorithm 2."
+        },
+        "aliases": [
+          "FB-VAE"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The model itself was not introduced as a contribution of this paper but rather discussed in the context of connecting it with SMC-ABC from likelihood-free inference.",
+          "quote": "Interestingly, this is the proposed sequence design algorithm in Gupta & Zou (2019)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was utilized for systematic evaluation alongside other baselines in the experiments section.",
+          "quote": "Systems perform systematical evaluation on a series of black-box sequence design benchmarks."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The model's performance is compared with other proposed and baseline models across various sequence design tasks.",
+          "quote": "We can observe that after 10 rounds, our proposed methods perform consistently better than the backward modeling methods like DbAS and FB-VAE."
+        },
+        "referenced_paper_title": {
+          "value": "Feedback GAN for DNA optimizes protein functions",
+          "justification": "The referenced paper is cited to explain the origin of the FB-VAE method that was used in the study.",
+          "quote": "Interestingly, this is the proposed sequence design algorithm in Gupta & Zou (2019)."
+        }
+      },
+      {
+        "name": {
+          "value": "Design by Adaptive Sampling (DbAS)",
+          "justification": "This model is mentioned as an existing method described in the context of connection between sequence design and LFI.",
+          "quote": "Under the connection viewpoint, one similar algorithm for sequence design is the Design by Adaptive Sampling (DbAS) proposed in Brookes & Listgarten (2018) which is characterized in Algorithm 4."
+        },
+        "aliases": [
+          "DbAS"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "DbAS is referenced as a previously existing method for sequence design, not a contribution of this paper.",
+          "quote": "Under the connection viewpoint, one similar algorithm for sequence design is the Design by Adaptive Sampling (DbAS) proposed in Brookes & Listgarten (2018)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "DbAS was executed as part of the systematic evaluation method against other models and methods.",
+          "quote": "We can observe that after 10 rounds, our proposed methods perform consistently better than the backward modeling methods like DbAS and FB-VAE."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "DbAS's performance was compared against other proposed algorithms and baseline models.",
+          "quote": "Figure 1 displays a comparison for all ten methods on three of the chosen binding affinity tasks."
+        },
+        "referenced_paper_title": {
+          "value": "Design by Adaptive Sampling",
+          "justification": "DbAS is referenced to a paper detailing this previous method.",
+          "quote": "Under the connection viewpoint, one similar algorithm for sequence design is the Design by Adaptive Sampling (DbAS) proposed in Brookes & Listgarten (2018)."
+        }
+      },
+      {
+        "name": {
+          "value": "Iterative Scoring (IS)",
+          "justification": "This model is specifically mentioned as part of the new methodologies proposed in the paper.",
+          "quote": "In the spirit of directly modeling the forward mechanism of sequence design, we train a regressor f ^{ˆ} φ (m) in a supervised manner to fit the oracle scorer. We name this proposed algorithm to be Iterative Scoring (IS) to avoid confusion with likelihood-free inference algorithms."
+        },
+        "aliases": [
+          "IS"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "Iterative Scoring is directly proposed in the paper as a novel method.",
+          "quote": "We name this proposed algorithm to be Iterative Scoring (IS) to avoid confusion with likelihood-free inference algorithms."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "IS was executed during the experiments to evaluate its performance.",
+          "quote": "We conduct systematical experiments to evaluate their performance on four in-silico sequence design benchmarks."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The performance of IS was compared against the existing baselines and other proposed methods.",
+          "quote": "Figure 1 displays a comparison for all ten methods on three of the chosen binding affinity tasks."
+        },
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "Iterative Scoring was proposed by this paper, so it does not have an external reference title.",
+          "quote": "We name this proposed algorithm to be Iterative Scoring (IS) to avoid confusion with likelihood-free inference algorithms."
+        }
+      },
+      {
+        "name": {
+          "value": "Iterative Posterior Scoring (IPS)",
+          "justification": "This model is one of the composite probabilistic methods proposed in the paper.",
+          "quote": "We first introduce Iterative Posterior Scoring (IPS) method illustrated in Algorithm 9."
+        },
+        "aliases": [
+          "IPS"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "This is a novel algorithm introduced in this paper as part of the new composite probabilistic methods.",
+          "quote": "We first introduce Iterative Posterior Scoring (IPS) method illustrated in Algorithm 9."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "IPS was tested during the experiments to evaluate its effectiveness on benchmarks.",
+          "quote": "We evaluate these sequence design algorithms by the average score of the top-10 and top-100 sequences in the resulting dataset."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "IPS's performance was compared with other methods to demonstrate its effectiveness.",
+          "quote": "We compare the methods being evaluated on four different in-silico biological sequence design benchmarks."
+        },
+        "referenced_paper_title": {
+          "value": "N/A",
+          "justification": "Iterative Posterior Scoring was introduced by this paper, so it does not have an external reference title.",
+          "quote": "We first introduce Iterative Posterior Scoring (IPS) method illustrated in Algorithm 9."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Transcription factor binding sites (TfBind)",
+          "justification": "TfBind is used as a benchmark for testing the performance of the proposed models.",
+          "quote": "For TfBind benchmark, we use the following transcription factor instances and treat them as different black-box optimization tasks: ZNF200 S265Y R1, POU6F2 REF R1 8, KLF11 R402Q R1..."
+        },
+        "aliases": [
+          "TfBind"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Survey of variation in human transcription factors reveals prevalent dna binding changes",
+          "justification": "The usage of TfBind relates to this reference paper where transcription factors and DNA binding variations were surveyed.",
+          "quote": "In Barrera et al. (2016), the authors measure the binding properties between a battery of transcription factors and all possible length-8 DNA sequences through biological experiments."
+        }
+      },
+      {
+        "name": {
+          "value": "5’ untranslated regions (UTR)",
+          "justification": "UTR is another dataset utilized for experimenting with sequence design algorithms.",
+          "quote": "The translation efficiency is mainly determined by the sequence of 5’ UTR (Alipanahi et al., 2015)."
+        },
+        "aliases": [
+          "UTR"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Human 5 UTR design and variant effect prediction from a massively parallel translation assay",
+          "justification": "The study uses 5' UTR design and prediction which was extensively covered in Sample et al.'s study.",
+          "quote": "In Sample et al. (2019), the authors create a library of gene sequences with ribosome loading level as labels."
+        }
+      },
+      {
+        "name": {
+          "value": "Antimicrobial peptides (AMP)",
+          "justification": "AMP dataset is used for generating antimicrobial peptide sequences in the sequence design problem.",
+          "quote": "Protein modeling has recently become a popular sub-area of machine learning research. We are tasked to generate AMP sequences..."
+        },
+        "aliases": [
+          "AMP"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Deep Learning Regression Model for Antimicrobial Peptide Design",
+          "justification": "The AMP dataset used relates to Witten & Witten's work which focuses on AMP design and classification.",
+          "quote": "We elaborate the construction of our AMP oracle... We use the AMP dataset from (Witten & Witten, 2019) which contains 6,760 AMP sequences."
+        }
+      },
+      {
+        "name": {
+          "value": "Fluorescent proteins (Fluo)",
+          "justification": "Fluo dataset is applied in testing sequence design for optimizing fluorescent proteins which are vital in studying molecular biology.",
+          "quote": "As another protein engineering task, we consider the optimization over fluorescent proteins, which is a commonly used test bed of modern molecular biology."
+        },
+        "aliases": [
+          "Fluo"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Local fitness landscape of the green fluorescent protein",
+          "justification": "The fluorescent protein task relates to Sarkisyan et al.'s research on fluorescent protein fitness landscapes.",
+          "quote": "We use a pretrained model taken from Rao et al. (2019) to act as our task oracle, which is a regressor trained to predict log-fluorescence intensity value over approximately 52,000 protein sequences of length 238 (Sarkisyan et al., 2016)."
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 2352,
+    "prompt_tokens": 21214,
+    "total_tokens": 23566,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

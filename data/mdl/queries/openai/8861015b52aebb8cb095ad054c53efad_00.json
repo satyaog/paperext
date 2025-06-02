@@ -1,0 +1,146 @@
+{
+  "paper": "8861015b52aebb8cb095ad054c53efad.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Cohort Bias Adaptation in Aggregated Datasets for Lesion Segmentation",
+      "justification": "The title is explicitly mentioned at the beginning of the paper.",
+      "quote": "Cohort Bias Adaptation in Aggregated Datasets for Lesion Segmentation"
+    },
+    "description": "This paper addresses the challenge of cohort bias in automatic machine learning models used for pathology segmentation, particularly in aggregated datasets of different cohorts. The authors propose a generalized affine conditioning framework called Source-Conditioned Instance Normalization (SCIN) to account for cohort biases across multi-source datasets. By conducting experiments on multiple large-scale Multiple Sclerosis (MS) clinical trial MRI datasets, they demonstrate that SCIN can improve network performance on pooled datasets by learning specific cohort biases and quickly adapting to new cohorts with minimal labelled samples.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper involves extensive experimentation on multiple large-scale MRI datasets to evaluate the proposed SCIN method, hence it is empirical.",
+      "quote": "Through extensive experimentation on three different, large scale, multi-scanner, multi-centre Multiple Sclerosis (MS) clinical trial MRI datasets, we show that our cohort bias adaptation method improves performance."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Medical Image Segmentation",
+        "justification": "The paper focuses on methods to improve the generalizability of models for lesion segmentation in medical images, particularly MRI datasets.",
+        "quote": "A large number of deep learning (DL) models have been developed and successfully applied to the contexts of healthy structure and pathology segmentation (e.g. brain tumours), with good performance on a number of public datasets."
+      },
+      "aliases": [
+        "Medical Imaging",
+        "Lesion Segmentation",
+        "Pathology Segmentation"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Multiple Sclerosis Lesion Segmentation",
+          "justification": "The experiments and findings are specifically directed at improving segmentation models for multiple sclerosis lesions in medical images.",
+          "quote": "Experiments are performed on three different large-scale, multi-scanner, multi-center multiple sclerosis (MS) clinical trial datasets."
+        },
+        "aliases": [
+          "MS Lesion Segmentation"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Source-Conditioned Instance Normalization (SCIN)",
+          "justification": "SCIN is the primary model introduced and evaluated in the paper for addressing cohort biases.",
+          "quote": "In this paper, we propose a generalized affine conditioning framework to learn and account for cohort biases across multi-source datasets, which we call Source-Conditioned Instance Normalization (SCIN)."
+        },
+        "aliases": [
+          "SCIN"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "SCIN is the primary method introduced by the authors as a novel approach to handle cohort biases.",
+          "quote": "We propose a generalized affine conditioning framework to learn and account for cohort biases across multi-source datasets, which we call Source-Conditioned Instance Normalization (SCIN)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The SCIN model is executed during experiments on MRI datasets as detailed in the paper.",
+          "quote": "Through extensive experimentation on three different, large scale, multi-scanner, multi-centre Multiple Sclerosis (MS) clinical trial MRI datasets, we show that our cohort bias adaptation method improves performance."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "SCIN is compared with other models trained using naive pooling and single-trial methods across various experimental setups.",
+          "quote": "We train four different models on these datasets: (i) a model trained on only Trial-A, with Instance Norm (IN), (ii) a model trained on only Trial-B (with IN), (iii) a model trained on a naively pooled dataset consisting of Trial-A and Trial-B (with IN), and (iv) a model trained on both Trial-A and Trial-B using the SCIN approach."
+        },
+        "referenced_paper_title": {
+          "value": "A Learned Representation For Artistic Style",
+          "justification": "The Conditional Instance Normalization mechanism used in SCIN is based on the approach proposed by Vincent et al.",
+          "quote": "In this paper, we refer to the whole approach as Source-conditioned Instance Normalization (SCIN), and the conditioning mechanism proposed by Vincent et. al. as Conditional Instance Normalization (CIN)."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "MS Clinical Trial Datasets (Trial-A, Trial-B, Trial-C)",
+          "justification": "The paper details using these specific datasets for evaluating SCIN across various experiments.",
+          "quote": "We make use of a large proprietary MS dataset from three different clinical trials, where each trial contains multi-modal MR sequences of patients with different disease subtypes, and/or at different stages of disease. Specifically, Trial-A is a late-stage Secondary-Progressive (SPMS) dataset with 1000 patients, Trial-B is a Relapsing Remitting (RRMS) dataset with 1000 patients, and Trial-C is an early-stage SPMS dataset with 500 patients."
+        },
+        "aliases": [
+          "MS Datasets",
+          "Multiple Sclerosis Clinical Trial Datasets"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Objective evaluation of multiple sclerosis lesion segmentation using a data management and processing infrastructure",
+          "justification": "The referenced paper provides context on multiple sclerosis lesion segmentation used as basis for the datasets' evaluation.",
+          "quote": "Objective evaluation of multiple sclerosis lesion segmentation using a data management and processing infrastructure (Scientific reports 8.1, 2018) is referenced in context of evaluating lesion segmentation methods."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "nnUNet",
+          "justification": "The nnUNet library is modified and used for experiments in the research paper.",
+          "quote": "We utilize a modified version of nnUNet for MS T2-weighted lesion segmentation."
+        },
+        "aliases": [
+          "nnU-Net"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "No new-net",
+          "justification": "The nnUNet is based on a referenced approach detailed in 'No new-net'.",
+          "quote": "F. Isensee et al. 'No new-net'. In: International MICCAI Brainlesion Workshop. Springer. 2018, pp. 234–244."
+        }
+      },
+      {
+        "name": {
+          "value": "Conditional Instance Normalization (CIN)",
+          "justification": "CIN is an integral part of SCIN's implementation for handling cohort biases.",
+          "quote": "We employ the conditional instance normalization mechanism proposed by Vincent et al [4] to model cohort biases with source-specific parameters."
+        },
+        "aliases": [
+          "CIN"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "A Learned Representation For Artistic Style",
+          "justification": "The CIN implementation used for modeling biases references the cited approach by Vincent et al.",
+          "quote": "In practice, this involves scaling/shifting the normalized activations at each layer by using the set of affine parameters corresponding to a given sample’s source cohort during the forward pass."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1365,
+    "prompt_tokens": 7956,
+    "total_tokens": 9321,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

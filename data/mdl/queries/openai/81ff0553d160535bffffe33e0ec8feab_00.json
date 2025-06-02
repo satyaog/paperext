@@ -1,0 +1,254 @@
+{
+  "paper": "81ff0553d160535bffffe33e0ec8feab.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "LitLLMs, LLMs for Literature Review: Are we there yet?",
+      "justification": "The title is directly extracted from the beginning of the paper, indicating the focus on the use of Large Language Models (LLMs) for literature review.",
+      "quote": "LitLLMs, LLMs for Literature Review: Are we there yet?"
+    },
+    "description": "This paper explores the capabilities of recent Large Language Models (LLMs) in assisting with literature review tasks, specifically focusing on retrieval and writing of literature reviews from abstracts. It introduces a two-step search strategy combining LLM-based keyword extraction and document embedding for improved retrieval efficacy, and a planning-based generation approach to enhance the quality of literature reviews.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper performs empirical analysis on the performance of LLMs for tasks related to literature review, involving experiments with retrieval and generation strategies.",
+      "quote": "We then use this protocol to perform extensive retrieval and literature review generation experiments."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The paper deals with tasks concerning language models, keyword extraction, and text generation, which are core to the field of Natural Language Processing (NLP).",
+        "quote": "We explore the utility and potential of large language models (LLMs), in combination with retrieval mechanisms, to assist in generating comprehensive literature reviews for scientific papers."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Information Retrieval",
+          "justification": "The paper proposes methods to improve paper retrieval using LLMs for literature reviews, which is directly related to Information Retrieval.",
+          "quote": "first uses an LLM to extract meaningful keywords from the abstract of a paper and then retrieves potentially relevant papers by querying an external knowledge base."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Text Generation",
+          "justification": "The generation of literature review sections using LLMs highlights the study's focus on text generation.",
+          "quote": "To generate the literature review, we select top-k papers from the ranked list and prompt the LLM to generate the related work section based on the query abstract and the abstracts of the selected papers."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "GPT-3.5-turbo",
+          "justification": "The paper mentions using GPT-3.5-turbo in zero-shot and planned generation settings for the literature review.",
+          "quote": "GPT-3.5-turbo (No plan)"
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "GPT-3.5 is a well-established model known prior to this paper's publication and is not introduced by this paper.",
+          "quote": "Abstractive zero-shot baselines We use the zero-shot single-document abstractive summarizers FlanT5 (Chung et al., 2022) and LongT5 (Guo et al., 2022)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The paper demonstrates the execution of GPT-3.5-turbo in tasks related to literature review generation.",
+          "quote": "we use the closed-source models in combination with the different generation strategies (Per-cite, Sentence by sentence, plan-based, and learned plan)."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "GPT-3.5-turbo's performance is compared with other models like GPT-4 and Llama 2-Chat.",
+          "quote": "GPT-3.5-turbo achieve SOTA in the zero-shot setting."
+        },
+        "referenced_paper_title": {
+          "value": "Language Models are Few-Shot Learners",
+          "justification": "The referenced foundational paper for the GPT-3 model family.",
+          "quote": "Language models are few-shot learners, 2020."
+        }
+      },
+      {
+        "name": {
+          "value": "GPT-4",
+          "justification": "The paper extensively discusses the use of GPT-4 for literature review tasks, including comparison with other models.",
+          "quote": "GPT-4 achieve SOTA in the zero-shot setting."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "GPT-4 is a pre-existing model released by OpenAI, not contributed by this research.",
+          "quote": "OpenAI. GPT-4 technical report. arXiv, 2023."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model is implemented in various tasks including ranking and summarization.",
+          "quote": "we explore debate ranking significantly outperforming permutation ranking."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "GPT-4 is compared with other language models like Llama 2 and GPT-3.5 in the execution and performance evaluation in the paper.",
+          "quote": "Our work builds upon these prior efforts by exploring the zero-shot abilities of recent LLMs for the task of generating literature reviews."
+        },
+        "referenced_paper_title": {
+          "value": "Language Models are Few-Shot Learners",
+          "justification": "This paper is referred to in the context of LLMs including GPT-4's capabilities.",
+          "quote": "Language models are few-shot learners, 2020."
+        }
+      },
+      {
+        "name": {
+          "value": "Llama 2-Chat",
+          "justification": "The Llama 2-Chat models are used as baselines and compared for literature review generation.",
+          "quote": "Evaluate zero-shot both GPT-3.5-turbo and GPT-4 (OpenAI, 2023)."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Llama 2-Chat models are utilized but not introduced in this study.",
+          "quote": "Open and closed source models We use different chat versions (7B, 13B, 70B) of Llama 2-Chat (Touvron et al., 2023)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The Llama 2-Chat models are used in comparative experiments for literature review tasks.",
+          "quote": "We use different chat versions (7B, 13B, 70B) of Llama 2-Chat as zero-shot open-source LLM baselines."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "They are compared against other models such as GPT-3.5 and GPT-4 for performance evaluation.",
+          "quote": "Llama 2 models underperform the supervised Pointer-Generator baseline (except for 70B on ROUGE2) and their GPT counterparts."
+        },
+        "referenced_paper_title": {
+          "value": "Llama 2: Open Foundation and Fine-Tuned Chat Models",
+          "justification": "This reference holds as it details the primary Llama 2 characteristics relevant to the models discussed in the paper.",
+          "quote": "Hugo Touvron, Louis Martin, Kevin Stone, Peter Albert, Amjad Almahairi..."
+        }
+      },
+      {
+        "name": {
+          "value": "Galactica",
+          "justification": "Galactica is mentioned as a model developed for scientific tasks which is relevant to the context of this paper.",
+          "quote": "Additionally, Galactica has been developed to store, combine, and reason about scientific knowledge (Taylor et al., 2022)."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "The model exists independently of this paper's contributions.",
+          "quote": "However, the Galactica model was not developed to specifically address the problem of literature..."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The paper discusses Galactica's performance in scientific tasks but does not detail its execution within the study's scope.",
+          "quote": "we show that our dataset is well-suited for abstractive models, providing a valuable resource for researchers working in this area."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "While discussed, Galactica is not directly compared numerically with other models in this study.",
+          "quote": "we hope that these findings highlight the potential of language models as a new interface for scientific research."
+        },
+        "referenced_paper_title": {
+          "value": "Galactica: A Large Language Model for Science",
+          "justification": "The paper references Galactica's science-related capabilities, aligning with the model's purpose.",
+          "quote": "Ross Taylor, Marcin Kardas, Guillem Cucurull, Thomas Scialom, Anthony Hartshorn..."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Multi-XScience",
+          "justification": "This dataset is used for evaluating literature review generation from abstracts and articles related to them, as explored in the paper.",
+          "quote": "As in Lu et al. (2020), we report the performance of LexRank and TextRank."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Multi-XScience: A Large-Scale Multi-Document Summarization Dataset",
+          "justification": "The dataset is specifically used in the paper for evaluating the summarization and literature review generation tasks.",
+          "quote": "Yao Lu, Yue Dong, and Laurent Charlin. Multi-XScience: A large-scale dataset for extreme multi-document summarization of scientific articles."
+        }
+      },
+      {
+        "name": {
+          "value": "RollingEval",
+          "justification": "The dataset is novel to this study, used as a benchmark to emulate and test retrieval strategies from recent academic papers.",
+          "quote": "we create test sets from arXiv papers using a protocol designed for rolling use with newly released LLMs to avoid test set contamination in zero-shot evaluations."
+        },
+        "aliases": [
+          "RollingEval-Aug",
+          "RollingEval-Dec"
+        ],
+        "role": "contributed",
+        "referenced_paper_title": {
+          "value": "No specific referenced paper",
+          "justification": "RollingEval is an in-paper contribution and does not cite an external dataset reference.",
+          "quote": "We create two datasets to measure the efficacy of search using LLM-generated keywords - RollingEval-Aug and RollingEval-Dec."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "HuggingFace Transformers",
+          "justification": "This library is used for running various LLMs as mentioned in the experiments section.",
+          "quote": "We use HuggingFace Transformers (Wolf et al., 2019) and PyTorch (Paszke et al., 2017) for our experiments."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "HuggingFace’s Transformers: State-of-the-Art Natural Language Processing",
+          "justification": "The reference citing the library used aligns with the experiments detailed in the paper.",
+          "quote": "Thomas Wolf, Lysandre Debut, Victor Sanh..."
+        }
+      },
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "Used extensively for running experiments in the paper.",
+          "quote": "We use HuggingFace Transformers (Wolf et al., 2019) and PyTorch (Paszke et al., 2017) for our experiments."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Automatic Differentiation in PyTorch",
+          "justification": "The paper cites PyTorch, indicating its role in implementing experimental setups.",
+          "quote": "Adam Paszke, Sam Gross, Soumith Chintala..."
+        }
+      },
+      {
+        "name": {
+          "value": "OpenAI API",
+          "justification": "The paper uses OpenAI's API for experiments involving GPT-3.5-turbo and GPT-4.",
+          "quote": "We use OpenAI API to generate results for GPT-3.5-turbo and GPT-4."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "API infrastructure for GPT models",
+          "justification": "The API is not a distinct paper but an interface tool for accessing models.",
+          "quote": "Using OpenAI API, you can access endpoints for various model functionalities."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2293,
+    "prompt_tokens": 30169,
+    "total_tokens": 32462,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

@@ -1,0 +1,243 @@
+{
+  "paper": "c393b32b37a273fac0a63cbddfe93697.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "On Adversarial Mixup Resynthesis",
+      "justification": "The title is explicitly stated at the beginning of the document and is consistently referred to throughout the paper.",
+      "quote": "On Adversarial Mixup Resynthesis"
+    },
+    "description": "This paper explores new approaches to combining information encoded within learned representations of auto-encoders. It introduces models capable of combining attributes of multiple inputs that can fool an adversarial discriminator when synthesizing realistic outputs. The study focuses on semi-supervised learning by learning a mixing function to produce interpolations of latent representations. The formulation is examined through diverse mixup strategies, including continuous interpolations and genetically-inspired recombinations.",
+    "type": {
+      "value": "theoretical",
+      "justification": "The paper is primarily theoretical as it explores new methodologies for mixing latent representations in auto-encoders using adversarial training and discusses various potential mixup strategies and techniques.",
+      "quote": "Therefore, in this paper we explore the use of such a mechanism in the context of auto-encoders through an exploration of various mixing functions."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Unsupervised Learning",
+        "justification": "The research primarily centers around auto-encoders which are a key component of unsupervised learning frameworks.",
+        "quote": "The auto-encoder is a fundamental building block in unsupervised learning."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Semi-Supervised Learning",
+          "justification": "The paper applies its proposed methodologies in the context of semi-supervised learning, exploring the use of a mixing function consistent with class labels.",
+          "quote": "Furthermore, we explore the use of such an architecture in the context of semi-supervised learning, where we learn a mixing function."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Adversarial Training",
+          "justification": "The paper employs adversarial learning techniques to train models that can produce realistic outputs from mixed latent representations.",
+          "quote": "We leverage adversarial learning (Goodfellow et al., 2014), where here we train a discriminator to distinguish between decoded mixed and real data points."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Adversarial Mixup Resynthesis (AMR)",
+          "justification": "AMR is the primary model discussed within the paper, where it introduces this new strategy for mixing latent codes using auto-encoders and adversarial training.",
+          "quote": "With this in mind, we propose adversarial mixup resynthesis (AMR), where part of the auto-encoder’s objective is to produce mixes which, when decoded, are indistinguishable from real images."
+        },
+        "aliases": [
+          "AMR"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "The model is a novel contribution introduced and thoroughly explored within this paper.",
+          "quote": "we propose adversarial mixup resynthesis (AMR)"
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was executed as it includes quantitative results showcasing the model's performance.",
+          "quote": "In Table 1 we show results on relatively simple datasets – MNIST, KMNIST, and SVHN – with an encoding dimension of d_h = 32."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "AMR was compared to other models such as AE+GAN and ACAI in various tables and quantitative results sections.",
+          "quote": "The results we present generally show there are benefits to mixing. In Table 1 we obtain the best results across SVHN, with k = 3 mixup performing the best."
+        },
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "AMR is an original contribution of this paper and therefore does not have a referencing paper.",
+          "quote": ""
+        }
+      },
+      {
+        "name": {
+          "value": "ACAI (Adversarially Constrained Auto-encoder Interpolation)",
+          "justification": "ACAI is referenced multiple times as a comparison to the AMR model.",
+          "quote": "Similar to what was done in ACAI, we modify our training procedure by attaching a linear classification network to the output of the encoder and train it in unison with the other objectives."
+        },
+        "aliases": [
+          "ACAI"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The ACAI model is used for comparison purposes, not as a contribution of this paper.",
+          "quote": "ACAI = adversarially constrained auto-encoder interpolation (Berthelot* et al., 2019)."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "ACAI was executed as part of the comparative results for evaluating AMR.",
+          "quote": "AMR was compared against ACAI and AE+GAN with various datasets to analyze the performance of their proposed method."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "ACAI is consistently used as a benchmark for comparing the performance of the new AMR method outlined in this paper.",
+          "quote": "AMR was compared against ACAI and AE+GAN with various datasets to analyze the performance of their proposed method."
+        },
+        "referenced_paper_title": {
+          "value": "Understanding and improving interpolation in autoencoders via an adversarial regularizer",
+          "justification": "This title is listed in the references for ACAI which is frequently compared throughout the paper.",
+          "quote": "Berthelot*, David, Raffel*, Colin, Roy, Aurko, and Goodfellow, Ian. Understanding and improving interpolation in autoencoders via an adversarial regularizer. In International Conference on Learning Representations, 2019."
+        }
+      },
+      {
+        "name": {
+          "value": "Manifold Mixup",
+          "justification": "Manifold Mixup is discussed as a part of the mixing strategy that is used within AMR and its variations.",
+          "quote": "Manifold mixup (Verma et al., 2018) implements mixing in the hidden space through convex combinations: Mix_mixup (h_1, h_2) = αh_1 + (1 − α)h_2, where α ∈ [0, 1] is sampled from a Uniform(0, 1) distribution."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Manifold Mixup is an existing technique that the paper refers to and utilizes within their proposed framework.",
+          "quote": "In Verma et al. (2018), these random convex combinations are computed in the hidden space of the network."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "There is no specific mention in the paper of Manifold Mixup being executed as part of the experiments, rather it's referenced as a technique related to the proposed strategy.",
+          "quote": "Manifold Mixup is discussed as part of the context and surrounding techniques explored in implementing adversarial mixup resynthesis."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "It is discussed as a conceptual basis rather than being compared as a separate model.",
+          "quote": "Manifold Mixup is discussed as part of the context and surrounding techniques explored."
+        },
+        "referenced_paper_title": {
+          "value": "Manifold Mixup: Better Representations by Interpolating Hidden States",
+          "justification": "The title is listed in reference to the conceptual basis for some of AMR's methodology.",
+          "quote": "Verma, Vikas, Lamb, Alex, Beckham, Christopher, Najafi, Amir, Mitliagkas, Ioannis, Courville, Aaron, Lopez-Paz, David, and Bengio, Yoshua. Manifold Mixup: Better Representations by Interpolating Hidden States. arXiv e-prints, art. arXiv:1806.05236, Jun 2018."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "MNIST",
+          "justification": "The MNIST dataset is used in the experiments to evaluate the representation learning effectiveness of the model.",
+          "quote": "We employ the following datasets for classification: MNIST, KMNIST (Clanuwat et al., 2018), and SVHN."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "MNIST is a widely-known dataset and not attributed to a specific reference within the paper.",
+          "quote": "We employ the following datasets for classification: MNIST, KMNIST (Clanuwat et al., 2018), and SVHN."
+        }
+      },
+      {
+        "name": {
+          "value": "KMNIST",
+          "justification": "The KMNIST dataset is used alongside MNIST to evaluate the proposed model's performance.",
+          "quote": "We employ the following datasets for classification: MNIST, KMNIST (Clanuwat et al., 2018), and SVHN."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Deep learning for classical japanese literature",
+          "justification": "The referenced paper provides information about the KMNIST dataset used for the experiments.",
+          "quote": "Clanuwat, Tarin, Bober-Irizar, Mikel, Kitamoto, Asanobu, Lamb, Alex, Yamamoto, Kazuaki, and Ha, David. Deep learning for classical japanese literature, 2018."
+        }
+      },
+      {
+        "name": {
+          "value": "SVHN",
+          "justification": "SVHN is used to test model performance in a setting similar to MNIST and KMNIST.",
+          "quote": "We employ the following datasets for classification: MNIST, KMNIST (Clanuwat et al., 2018), and SVHN."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "SVHN is a widely-used dataset that typically doesn't require a specific reference paper, especially if referenced synonymously in the field.",
+          "quote": "We employ the following datasets for classification: MNIST, KMNIST (Clanuwat et al., 2018), and SVHN."
+        }
+      },
+      {
+        "name": {
+          "value": "DSprite",
+          "justification": "The DSprite dataset is used to evaluate disentanglement properties of latent representations induced by AMR.",
+          "quote": "Lastly, we run experiments on the DSprite (Matthey et al., 2017) dataset, a 2D sprite dataset whose images are generated with six known (ground truth) latent factors."
+        },
+        "aliases": [
+          "DSprites"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "dsprites: Disentanglement testing sprites dataset",
+          "justification": "Matthey et al., 2017 is listed for DSprite, providing a reference for it when mentioned in experiments.",
+          "quote": "Matthey, Loic, Higgins, Irina, Hassabis, Demis, and Lerchner, Alexander. dsprites: Disentanglement testing sprites dataset. https://github.com/deepmind/dsprites-dataset/, 2017."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "PyTorch",
+          "justification": "PyTorch is mentioned within the context of implementing the model for performing the experiments and comparisons.",
+          "quote": "The architectures we used were based off a public PyTorch reimplementation of ACAI."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "PyTorch is a well-known library in the machine learning community, frequently used and thus often cited implicitly.",
+          "quote": "The architectures we used were based off a public PyTorch reimplementation of ACAI."
+        }
+      },
+      {
+        "name": {
+          "value": "TensorFlow",
+          "justification": "TensorFlow is mentioned in contrast to PyTorch in terms of the implementation details for ACAI.",
+          "quote": "The architectures we used were based off a public PyTorch reimplementation of ACAI, which may not be exactly the same as the original implemented in TensorFlow."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "",
+          "justification": "TensorFlow is typically well-known and cited implicitly among many machine learning papers due to its broad usage.",
+          "quote": "The architectures we used were based off a public PyTorch reimplementation of ACAI, which may not be exactly the same as the original implemented in TensorFlow."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 2371,
+    "prompt_tokens": 14190,
+    "total_tokens": 16561,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

@@ -1,0 +1,229 @@
+{
+  "paper": "e37742a475c8a7f5da2e53693ea8b914.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Parameterizing Branch-and-Bound Search Trees to Learn Branching Policies",
+      "justification": "The title is explicitly stated at the very beginning of the paper, making it the formal title of the research paper.",
+      "quote": "Parameterizing Branch-and-Bound Search Trees to Learn Branching Policies"
+    },
+    "description": "This paper presents a framework for learning branching policies for Mixed-Integer Linear Programming (MILP) problems that generalizes across heterogeneous instances. A novel imitation learning framework is proposed, introducing new input features and architectures to represent branching decisions. The framework's policies modulate branching decisions by incorporating the explicit parameterization of the state of the branch-and-bound search tree, improving accuracy and reducing tree sizes in computational experiments compared to state-of-the-art methods.",
+    "type": {
+      "value": "empirical",
+      "justification": "The study involves computational experiments and the development of a novel model for empirical evaluation. It focuses on measurable improvements and comparisons with existing methods.",
+      "quote": "Experiments on MILP benchmark instances clearly show the advantages..."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Machine Learning for Combinatorial Optimization",
+        "justification": "The paper mainly deals with learning methods to optimize decision-making in combinatorial problems like MILP, falling squarely into the field of Machine Learning for Combinatorial Optimization.",
+        "quote": "Learning branching policies for MILP has become an active research area..."
+      },
+      "aliases": [
+        "ML for Combinatorial Optimization"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Optimization",
+          "justification": "The paper aims to solve optimization problems specifically related to MILP using branch-and-bound trees.",
+          "quote": "Branch and Bound (B&B) is the exact tree search method typically used to solve Mixed-Integer Linear Programming problems (MILPs)."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Deep Learning",
+          "justification": "The research introduces deep learning architectures for the purpose of learning branching decisions, showcasing its application in optimization.",
+          "quote": "The deep neural network (DNN) architecture that we propose learns a baseline branching policy..."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "TreeGate",
+          "justification": "TreeGate is introduced in the paper as a novel model for learning branching policies using the search tree as a parameter.",
+          "quote": "We contribute such tree-state parameterization, and incorporate it to the baseline architecture to provide context over the candidate variables at each given branching step. In the resulting policy (TreeGate) the tree state acts as a control mechanism..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "TreeGate is presented as a new model proposal by the authors.",
+          "quote": "By training in our hand-crafted input space, the signal-to-noise ratio of the high-level branching structure..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "Experiments using the model are conducted as part of the research, indicating it was executed.",
+          "quote": "Machine learning experimental results clearly show... the best TreeGate policy explores on average trees with 27% less nodes..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "TreeGate is compared to other models numerically in the experiments to demonstrate its efficiency.",
+          "quote": "Machine learning experimental results clearly show the advantage of the policy employing the tree state..."
+        },
+        "referenced_paper_title": {
+          "value": "None",
+          "justification": "TreeGate is a model introduced in this paper and not based directly on another paper. Hence, there is no referenced paper title associated with it.",
+          "quote": "By training in our hand-crafted input space, the signal-to-noise ratio of the high-level branching structure..."
+        }
+      },
+      {
+        "name": {
+          "value": "NoTree",
+          "justification": "NoTree is referred to as a baseline model in the paper for branching policy learning.",
+          "quote": "The deep neural network (DNN) architecture that we propose learns a baseline branching policy (NoTree) from the candidate variables’ representations..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": true,
+          "justification": "NoTree is presented and evaluated as a baseline model by the authors.",
+          "quote": "The deep neural network (DNN) architecture that we propose learns a baseline branching policy (NoTree)..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The execution of NoTree as part of the research's experiments is mentioned clearly.",
+          "quote": "When plugged in the solver, both learned policies compare well with state-of-the-art branching rules."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "NoTree is evaluated and compared to TreeGate and other methods in the experiments.",
+          "quote": "The Machine learning experimental results clearly show the advantage of the policy employing the tree state (TreeGate) over the baseline one (NoTree)..."
+        },
+        "referenced_paper_title": {
+          "value": "None",
+          "justification": "NoTree is not based on another specific paper and is introduced in this research itself.",
+          "quote": "The deep neural network (DNN) architecture that we propose learns a baseline branching policy..."
+        }
+      },
+      {
+        "name": {
+          "value": "Graph Convolutional Neural Network (GCNN)",
+          "justification": "The GCNN is used as a benchmark model for BVS policy comparison in the research.",
+          "quote": "The latest and state-of-the-art contribution to 'learning to branch' (Gasse et al. 2019) frames BVS as a classification problem..."
+        },
+        "aliases": [
+          "GCNN"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "GCNN is used as a benchmark, implying it is not newly introduced by this paper.",
+          "quote": "The latest and state-of-the-art contribution to 'learning to branch' (Gasse et al. 2019) frames BVS as a classification problem..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "GCNN is executed in experiments for benchmarking purposes.",
+          "quote": "...we also train the GCNN framework of Gasse et al. on our MILP dataset."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "GCNN is compared against the authors' models in numerical experiments.",
+          "quote": "The evaluation of the trained policies in the solver also supports our idea that representing B&B search trees enables learning to branch..."
+        },
+        "referenced_paper_title": {
+          "value": "Exact Combinatorial Optimization with Graph Convolutional Neural Networks",
+          "justification": "The referenced work for the GCNN model is indicated by a citation from Gasse et al. 2019.",
+          "quote": "The latest and state-of-the-art contribution to 'learning to branch' (Gasse et al. 2019) frames BVS as a classification problem on SB expert decisions..."
+        }
+      },
+      {
+        "name": {
+          "value": "relpscost",
+          "justification": "relpscost is used as the expert rule for imitation learning and comparisons.",
+          "quote": "We employ as expert rule relpscost, the default branching scheme of the optimization solver SCIP..."
+        },
+        "aliases": [
+          "SCIP relpscost"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Relpscost is a known method, specifically the default branching rule in SCIP.",
+          "quote": "We employ as expert rule relpscost, the default branching scheme of the optimization solver SCIP..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "This method is used in the experiments to serve as an expert rule, hence executed.",
+          "quote": "We perform imitation learning (IL) experiments on a curated dataset of heterogeneous instances from standard MILP benchmarks. We employ as expert rule relpscost..."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "This rule is used as a benchmark for comparisons with the learning models.",
+          "quote": "We employ as expert rule relpscost... compare well with state-of-the-art branching rules."
+        },
+        "referenced_paper_title": {
+          "value": "None",
+          "justification": "Relpscost is part of the SCIP solver and not a standalone paper.",
+          "quote": "We employ as expert rule relpscost, the default branching scheme of the optimization solver SCIP..."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "MIPLIB",
+          "justification": "The dataset MIPLIB is mentioned as a source of benchmark instances for experiments.",
+          "quote": "We perform imitation learning (IL) experiments on a curated dataset of heterogeneous instances from standard MILP benchmarks."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "None",
+          "justification": "MIPLIB is a known benchmark used in multiple papers, but no specific paper in the references mentions it.",
+          "quote": "We consider the standard benchmark libraries MIPLIB 3, 2010 and 2017 (Bixby et al. 1998; Koch et al. 2011; Gleixner et al. 2019)..."
+        }
+      },
+      {
+        "name": {
+          "value": "MILPLIB",
+          "justification": "MILPLIB is mentioned as part of the library used to curate the dataset of instances.",
+          "quote": "We consider the standard benchmark libraries MIPLIB 3, 2010 and 2017, together with the collection of Mittelmann. We assess the problems..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "None",
+          "justification": "MILPLIB is a reference to a collection by Mittelmann, not a specific paper that was cited.",
+          "quote": "together with the collection of Mittelmann. We assess the problems by analyzing B&B roll-outs of SCIP with its default branching rule"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "SCIP",
+          "justification": "SCIP is used as the optimization solver in the research for implementing branching rules.",
+          "quote": "We employ as expert rule relpscost, the default branching scheme of the optimization solver SCIP"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The SCIP Optimization Suite 6.0",
+          "justification": "The paper explicitly references the SCIP optimization suite for version 6.0 as it's utilized in their study.",
+          "quote": "We use SCIP 6.0.1. Modifying the solver configuration is common practice in BVS literature"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1999,
+    "prompt_tokens": 22624,
+    "total_tokens": 24623,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

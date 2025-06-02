@@ -1,0 +1,195 @@
+{
+  "paper": "963855afeb745ba2e7991037487d2480.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Enabling Realtime Reinforcement Learning at Scale with Staggered Asynchronous Inference",
+      "justification": "The title is clearly mentioned at the beginning of the paper.",
+      "quote": "E NABLING R EALTIME R EINFORCEMENT L EARNING AT S CALE WITH S TAGGERED A SYNCHRONOUS I NFERENCE"
+    },
+    "description": "This paper analyzes lower bounds on regret in realtime reinforcement learning environments, exploring the scalability of asynchronous compute. It proposes and tests novel algorithms for staggered asynchronous inference to ensure consistent action intervals, with applications to large-scale models, specifically in the context of realtime games like Pokémon and Tetris.",
+    "type": {
+      "value": "theoretical",
+      "justification": "The paper presents a theoretical analysis of lower bounds on regret in RL environments and proposes novel algorithms for staggered asynchronous inference.",
+      "quote": "We present an analysis of lower bounds on regret in realtime reinforcement learning (RL) environments... We propose novel algorithms for staggering asynchronous inference processes..."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Reinforcement Learning",
+        "justification": "The paper focuses on improving RL environments by proposing theoretical enhancements to regret minimization strategies and asynchronous learning methods.",
+        "quote": "We present an analysis of lower bounds on regret in realtime reinforcement learning (RL) environments..."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Realtime Systems",
+          "justification": "The research focuses on minimizing regret and addressing scalability issues in real-time environments, specifically for reinforcement learning.",
+          "quote": "...questions about their applicability in realtime systems where reaction time is crucial."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Scalable Compute",
+          "justification": "The paper discusses scaling reinforcement learning models through asynchronous methods, addressing compute scalability issues.",
+          "quote": "...enabling use of models that are multiple orders of magnitude larger than existing approaches..."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Deep Q-Network (DQN)",
+          "justification": "The paper mentions the implementation of the DQN learning algorithm within the asynchronous framework.",
+          "quote": "For our experiments, we implemented the Deep Q-Network (DQN) learning algorithm..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "DQN is a well-known existing model used for experimentation and not a novel contribution of the paper.",
+          "quote": "For our experiments, we implemented the Deep Q-Network (DQN) learning algorithm..."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was executed in the experiments related to realtime games, such as Pokémon and Tetris.",
+          "quote": "To show that our proposed method does indeed provide practical benefits for minimizing regret per second with large neural networks in realtime environments, we perform a suite of experiments..."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "The paper does not focus on numerically comparing DQN to other models, but rather on the performance of asynchronous inference strategies.",
+          "quote": "We propose novel methods for staggering asynchronous inference..."
+        },
+        "referenced_paper_title": {
+          "value": "Human-level control through deep reinforcement learning",
+          "justification": "The original DQN paper is typically referenced as such since it introduced this widely used algorithm.",
+          "quote": "Volodymyr Mnih, Koray Kavukcuoglu, David Silver, Andrei A Rusu, ... Human-level control through deep reinforcement learning."
+        }
+      },
+      {
+        "name": {
+          "value": "Rainbow",
+          "justification": "Rainbow is mentioned as part of the experiments conducted to evaluate learning performance in Atari environments.",
+          "quote": "We also provide results for three Atari games with agents trained for 2,000 episodes in the same setting (see Figure 10), demonstrating superior performance... using Rainbow learning..."
+        },
+        "aliases": [],
+        "is_contributed": {
+          "value": false,
+          "justification": "Rainbow is an existing model used to compare performance, especially focused on implementing improvements in deep RL.",
+          "quote": "We also provide results for three Atari games... showcasing the superior ability of staggered asynchronous inference to maintain performance... using Rainbow learning rather than DQN learning."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was executed in experiments to demonstrate RL capabilities using the paper's proposed frameworks.",
+          "quote": "We now also include results with Rainbow [26] used for learning rather than the DQN..."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "The model's performance is observed under the paper's framework without specific numerical comparisons to other models being the focus.",
+          "quote": "We now also include results with Rainbow [26] used for learning rather than the DQN..."
+        },
+        "referenced_paper_title": {
+          "value": "Rainbow: Combining improvements in deep reinforcement learning",
+          "justification": "This title is associated with Rainbow which is known for combining various improvements in deep reinforcement learning.",
+          "quote": "Matteo Hessel, Joseph Modayil, Hado Van Hasselt,... Rainbow: Combining improvements in deep reinforcement learning."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Game Boy Games Simulation",
+          "justification": "The paper refers to using a simulated version of Game Boy games like Pokémon for testing strategies.",
+          "quote": "...models that are orders of magnitude larger than existing approaches when learning from a realtime simulation of Game Boy games such as Pokémon and Tetris."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Gotta learn fast: A new benchmark for generalization in RL",
+          "justification": "The paper mentions the use of Gymnasium Retro project for Game Boy simulation in RL environments, which is based on the cited work.",
+          "quote": "To run a comprehensive set of scaling experiments that would not be feasible with real-world deployment, we need a simulation of a realistic realtime scenario. Towards this end, we considered two games from the Game Boy that are made available for simulation as RL environments through the Gymnasium Retro project [65]."
+        }
+      },
+      {
+        "name": {
+          "value": "Atari Environment Simulation",
+          "justification": "Atari environments, used as benchmarks in RL, were part of the experimental setup.",
+          "quote": "We also leveraged three Atari environments [7] run at 60 frames per second... These are ideal settings for addressing our core empirical questions."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The arcade learning environment: An evaluation platform for general agents",
+          "justification": "This is the classic paper discussing the use of Atari environments in RL research.",
+          "quote": "Marc G Bellemare, Yavar Naddaf, Joel Veness, ... The arcade learning environment: An evaluation platform for general agents."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "Pytorch",
+          "justification": "Pytorch is mentioned as the deep learning library used for multi-process computations in the experiments.",
+          "quote": "Models were deployed on multi-process CPUs using Pytorch multiprocessing library..."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "PyTorch: An Imperative Style, High-Performance Deep Learning Library",
+          "justification": "The original PyTorch library paper is typically cited this way, and the paper references this to indicate its use.",
+          "quote": "Adam Paszke, Sam Gross, Francisco Massa, ... PyTorch: An Imperative Style, High-Performance Deep Learning Library."
+        }
+      },
+      {
+        "name": {
+          "value": "Gymnasium",
+          "justification": "The Gymnasium library, formerly OpenAI Gym, is used for implementing the RL environments such as the Atari and Game Boy simulations.",
+          "quote": "We implemented a realtime version of the Game Boy ... through the Gymnasium Retro project [65]."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Gymnasium: A standard interface for reinforcement learning environments",
+          "justification": "The library referred as Gymnasium used for environment interface standardization is mentioned throughout the paper.",
+          "quote": "Mark Towers, Ariel Kwiatkowski, Jordan Terry, ... Gymnasium: A standard interface for reinforcement learning environments."
+        }
+      },
+      {
+        "name": {
+          "value": "NumPy",
+          "justification": "NumPy is a core library referenced for computational support in the experiments.",
+          "quote": "Our experiments leverage Numpy [24], which is publicly available following a BSD license."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Array programming with NumPy",
+          "justification": "The library's original array programming capability in scientific computing is discussed in this key paper.",
+          "quote": "Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, ... Array programming with NumPy."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1687,
+    "prompt_tokens": 26010,
+    "total_tokens": 27697,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

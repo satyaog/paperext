@@ -1,0 +1,177 @@
+{
+  "paper": "9051f98ae0ac1e99c274f05c7bc56836.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Inference and Prediction Diverge in Biomedicine",
+      "justification": "The title 'Inference and Prediction Diverge in Biomedicine' encapsulates the central theme of the paper, which is the examination of the differences between inference and prediction in biomedical research.",
+      "quote": "Article\n\nInference and Prediction Diverge in Biomedicine"
+    },
+    "description": "This paper systematically compares the results of common linear modeling practices for prediction and inference in biomedical data, highlighting how variable selection for significance and prediction can diverge.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper conducts empirical data simulations and uses real-world biomedical datasets to explore the scenarios of agreement and disagreement in variable selection for significance and prediction.",
+      "quote": "In systematic empirical data simulations and real-world biomedical datasets, we explore scenarios of agreement and disagreement between variables identified as statistically significant or variables identified as predictively relevant."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Biomedical Data Science",
+        "justification": "The primary focus of the paper is on the application of data science techniques in the biomedical field, especially concerning variable selection for inference and prediction.",
+        "quote": "In a future of single-patient prediction from big biomedical data, it may become central that modeling for inference and modeling for prediction are related but importantly different."
+      },
+      "aliases": []
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Precision Medicine",
+          "justification": "The paper discusses the implications of inference and prediction for precision medicine.",
+          "quote": "Understanding the inference-prediction dilemma is imperative for precision medicine"
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Lasso",
+          "justification": "Lasso is explicitly mentioned as one of the linear models used in the analysis.",
+          "quote": "For comparison with traditional linear regression, we chose an important recent modification of the linear model as a representative method for predictive pattern-learning algorithms. Lasso estimated a weighted combination of the input variables, but the analysis goal revolved around prediction."
+        },
+        "aliases": [
+          "least absolute shrinkage and selection operator"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Lasso is a well-known model and not contributed by this paper, as it has been previously established in literature.",
+          "quote": "For comparison with traditional linear regression, we chose an important recent modification of the linear model as a representative method for predictive pattern-learning algorithms."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The paper does not specify whether model executions were carried out on GPU or CPU.",
+          "quote": "The analyses required roughly 4 weeks of computation time and produced 2 Gb of modeling results."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "Lasso is compared numerically to OLS in terms of variable selection in the scope of the paper.",
+          "quote": "Using linear models, statistical significance and accurate predictions showed diverging patterns of success at detecting those variables that we knew were relevant for the outcome."
+        },
+        "referenced_paper_title": {
+          "value": "Regression shrinkage and selection via the lasso",
+          "justification": "This is the seminal paper for the Lasso regression model, which is referenced in the context of its application in the study.",
+          "quote": "Tibshirani, R. (1996). Regression shrinkage and selection via the lasso. J. R. Stat. Soc. Ser. B Methodol. 58, 267–288."
+        }
+      },
+      {
+        "name": {
+          "value": "Ordinary Least Squares",
+          "justification": "Ordinary Least Squares is used as one of the linear models to compare inference and prediction in the study.",
+          "quote": "Across the 113,400 synthetic datasets, our results show a variety of incongruencies in identifying important variables among a set of candidate variables. Using linear models, statistical significance and accurate predictions showed diverging patterns of success at detecting those variables that we knew were relevant for the outcome....We carried out the same direct comparison between explanatory modeling and predictive modeling in common real-world datasets...Statistically significant relationships were not in all examined cases a guarantee to also achieve successful predictions when applying the model to other individ?uals. "
+        },
+        "aliases": [
+          "OLS"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "Ordinary Least Squares is a standard statistical method, widely used and not contributed by this paper.",
+          "quote": "The relevance of the effects is computed based on the confidence intervals of the b coefficients. ^{43} We drew inferential conclusions by formally testing for deviance of the observed effects from the null hy? pothesis. This approach attempted to reject the null hypothesis that the b co? efficients were truly zero, that is, bear no coherent relation to the response variable y. Here, a non-significant b coefficient suggested that the variable at hand could be dropped from the model with little or no impact on explaining the output variable (which is, however, not explicitly evaluated)."
+        },
+        "is_executed": {
+          "value": false,
+          "justification": "The paper does not specify whether model executions were carried out on GPU or CPU.",
+          "quote": "The analyses required roughly 4 weeks of computation time and produced 2 Gb of modeling results."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "OLS is compared numerically to Lasso in terms of variable selection in the scope of the paper.",
+          "quote": "We observed disagreements especially for true-negative hits and false-positive errors... Lasso showed a specific tendency to commit more false-positive errors in the weak-sample regime, where OLS made fewer erroneous picks in variable detection."
+        },
+        "referenced_paper_title": {
+          "value": "Statistical Inference",
+          "justification": "OLS methods are typically covered in statistical inference literature and are foundational to the topics discussed in this paper.",
+          "quote": "Cox, D.R. (2006). Principles of Statistical Inference (Cambridge University Press)."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "UK Biobank",
+          "justification": "UK Biobank is cited as an example of a large-scale biomedical data resource used in the study.",
+          "quote": "There is growing momentum for the creation and curation of massive datasets. For instance, the UK Biobank has gathered genetic, behavioral, environmental, and lifestyle data for exten? sive phenotyping of 500,000 volunteers— currently the largest biomedical data resource of its kind (www.ukbiobank.org)."
+        },
+        "aliases": [],
+        "role": "referenced",
+        "referenced_paper_title": {
+          "value": "NA",
+          "justification": "The paper references the UK Biobank as an example without a specific paper citation.",
+          "quote": "For instance, the UK Biobank has gathered genetic, behavioral, environmental, and lifestyle data for exten? sive phenotyping of 500,000 volunteers— currently the largest biomedical data resource of its kind."
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "scikit-learn",
+          "justification": "scikit-learn is explicitly mentioned as a machine learning library used in the study for implementing models.",
+          "quote": "The scikit-learn package ^{41} provided efficient, unit-tested implementations for handling state-of-the-art machine-learning procedures (http://scikit-learn.org)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Scikit-learn: machine learning in Python",
+          "justification": "This is the reference for the scikit-learn library used in the study.",
+          "quote": "Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel, O., Blondel, M., Prettenhofer, P., Weiss, R., Dubourg, V., et al. (2011). Scikit-learn: machine learning in Python. J. Mach. Learn. Res. 12, 2825–2830."
+        }
+      },
+      {
+        "name": {
+          "value": "statsmodels",
+          "justification": "statsmodels is used for estimating OLS regression and corresponding p values in the study.",
+          "quote": "The statsmodels package was used to estimate OLS regression and corresponding p values (http://statsmodels.github.io)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Data Analysis Using Regression and Multi-Level Hierarchical Models",
+          "justification": "This book is a comprehensive resource for methods such as those in statsmodels and is often referenced for statistical analysis techniques.",
+          "quote": "Gelman, A., and Hill, J. (2007). Data Analysis Using Regression and Multi- Level Hierarchical Models (Cambridge University Press)."
+        }
+      },
+      {
+        "name": {
+          "value": "Python",
+          "justification": "Python is cited as the programming language used for scientific computing in the research.",
+          "quote": "Python was selected as the scientific computing engine. Capitalizing on its open-source ecosystem helps enhance replicability, reusability, and provenance tracking."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "NA",
+          "justification": "Python as a programming language doesn't typically require a reference paper.",
+          "quote": "Python was selected as the scientific computing engine."
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1786,
+    "prompt_tokens": 19210,
+    "total_tokens": 20996,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

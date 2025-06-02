@@ -1,0 +1,147 @@
+{
+  "paper": "ba37be4cc51eb036e2314d332e7465a2.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Tackling the Problem of Distributional Shifts: Correcting Misspecified, High-Dimensional Data-Driven Priors for Inverse Problems",
+      "justification": "The title was explicitly found at the beginning of the paper and encompasses the main theme of the study.",
+      "quote": "Tackling the Problem of Distributional Shifts: Correcting Misspecified, High-Dimensional Data-Driven Priors for Inverse Problems"
+    },
+    "description": "This paper addresses the issue of bias in Bayesian inference due to misspecified priors in high-dimensional inverse problems. The authors propose a method to iteratively update data-driven priors by retraining models with posterior samples, using score-based models as a framework. They demonstrate the effectiveness of their method in improving the alignment of the priors with the true population-level distributions, particularly in the context of strong gravitational lensing.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper primarily deals with empirical experiments and demonstrations of a proposed method to correct misspecified priors using score-based models in high-dimensional settings.",
+      "quote": "We provide empirical results in high-dimensional settings, showing that this method can forget artifacts present in the initial prior but absent from the true data-generating distribution."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Strong Gravitational Lensing",
+        "justification": "The paper applies its methods to the problem of strong gravitational lensing source reconstruction, which requires improving inference of latent parameters from observational data.",
+        "quote": "Here, we showcase our method on the problem of learning idealized brightness structures from noisy and partial observations in the inverse problem setting of strong gravitational lensing source reconstruction."
+      },
+      "aliases": [
+        "SGL"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Bayesian Inference",
+          "justification": "The study involves Bayesian inference techniques to adjust prior distributions based on new observational data.",
+          "quote": "Bayesian inference... provides a mathematical framework for inferring the probability distribution of latent parameters of interest."
+        },
+        "aliases": [
+          ""
+        ]
+      },
+      {
+        "name": {
+          "value": "Score-based Models",
+          "justification": "Score-based models are utilized as the framework for generative modeling in this study, especially for tackling high-dimensional data-driven priors.",
+          "quote": "To demonstrate our method, we use score-based models (SBM), as they have emerged as state-of-the-art generative models for images in recent years."
+        },
+        "aliases": [
+          "SBM"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Score-based Models",
+          "justification": "The paper extensively discusses the use of score-based models as a framework to train and adjust data-driven priors iteratively.",
+          "quote": "To demonstrate our method, we use score-based models (SBM), as they have emerged as state-of-the-art generative models for images in recent years."
+        },
+        "aliases": [
+          "SBM"
+        ],
+        "is_contributed": {
+          "value": false,
+          "justification": "The paper uses existing score-based models as a framework for its method but does not introduce a new model.",
+          "quote": "We use score-based models (SBM), as they have emerged as state-of-the-art generative models for images in recent years."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The score-based models are trained and retrained iteratively as part of the empirical method proposed.",
+          "quote": "We show empirically in sec. 4 that the procedure does converge to a prior close to the true underlying population distribution for the settings we explored."
+        },
+        "is_compared": {
+          "value": false,
+          "justification": "The paper focuses on the adjustment of priors using score-based models, not on comparing these models numerically against others.",
+          "quote": "We show empirically in sec. 4 that the procedure does converge to a prior close to the true underlying population distribution for the settings we explored."
+        },
+        "referenced_paper_title": {
+          "value": "Denoising Diffusion Probabilistic Models",
+          "justification": "The score-based models in the paper are likely built upon diffusion probabilistic models, a type of score-based generative model, widely referenced in similar research areas.",
+          "quote": "Song et al. 2021b"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "MNIST",
+          "justification": "MNIST, a dataset of handwritten digits, is commonly used for testing machine learning and was used in the experiments here.",
+          "quote": "We conduct experiments with galaxy images and with MNIST (Lecun et al. 1998), a dataset of handwritten digits with a 28 × 28 resolution."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Gradient-based learning applied to document recognition",
+          "justification": "The reference to MNIST is consistent with its original paper, which introduced it as a benchmark dataset for machine learning.",
+          "quote": "Lecun, Y., Bottou, L., Bengio, Y., & Haffner, P. 1998"
+        }
+      },
+      {
+        "name": {
+          "value": "SKIRT TNG",
+          "justification": "This synthetic dataset of simulated galaxy images is used as part of the experiments to represent the true prior distribution.",
+          "quote": "The spiral dataset is a synthetic dataset used as the true distribution for our experiments. It is taken from the SKIRT TNG dataset (Bottrell et al. 2024)"
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Synthetic galaxy images and spectra from the SKIRT radiative transfer code",
+          "justification": "The SKIRT TNG dataset is referenced as one of the sources for the experimental setup, consistent with its role in generating realistic synthetic data for astrophysics.",
+          "quote": "Bottrell, C., Yesuf, H. M., Popping, G., et al. 2024, MNRAS, 527, 6506, doi: 10.1093/mnras/stad2971"
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": {
+          "value": "score-models",
+          "justification": "The paper mentions using the score-models package for creating and training score-based models.",
+          "quote": "We use the score-models ^{1} package for creating and training the models s θ (x, t)."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The Twelve International Conference on Learning Representations",
+          "justification": "The use of score-models is consistent with its references, as indicated in the paper.",
+          "quote": "kingma et al. 2021"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "completion_tokens": 1273,
+    "prompt_tokens": 23936,
+    "total_tokens": 25209,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 1152
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}

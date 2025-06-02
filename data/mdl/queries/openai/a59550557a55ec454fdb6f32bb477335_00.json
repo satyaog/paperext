@@ -1,0 +1,146 @@
+{
+  "paper": "a59550557a55ec454fdb6f32bb477335.txt",
+  "words": 0,
+  "analysis": {
+    "title": {
+      "value": "Explicitly Modeling Syntax in Language Models with Incremental Parsing and a Dynamic Oracle",
+      "justification": "The title of the paper is clearly stated at the beginning of the document.",
+      "quote": "Explicitly Modeling Syntax in Language Models with Incremental Parsing and a Dynamic Oracle"
+    },
+    "description": "This paper proposes a new syntax-aware language model called Syntactic Ordered Memory (SOM), which incorporates an incremental parser and a dynamic oracle to explicitly model syntax in language tasks. The model aims to improve performance in language modeling, incremental parsing, and syntactic generalization while using fewer parameters than other models. The authors introduce a novel dynamic oracle to reduce exposure bias and demonstrate that joint learning of language modeling and parsing enhances the model's capabilities.",
+    "type": {
+      "value": "empirical",
+      "justification": "The paper conducts experiments to demonstrate the effectiveness of the proposed model, SOM, in language modeling, incremental parsing, and syntactic generalization tasks, indicating an empirical study.",
+      "quote": "Experiments show that SOM can achieve strong results in language modeling, incremental parsing and syntactic generalization tests, while using fewer parameters than other models."
+    },
+    "primary_research_field": {
+      "name": {
+        "value": "Natural Language Processing",
+        "justification": "The paper focuses on improving language models by incorporating syntax explicitly, which is a key area within Natural Language Processing.",
+        "quote": "Syntax is fundamental to our thinking about language. Failing to capture the structure of input language could lead to generalization problems and over-parametrization."
+      },
+      "aliases": [
+        "NLP"
+      ]
+    },
+    "sub_research_fields": [
+      {
+        "name": {
+          "value": "Syntax-aware Language Modeling",
+          "justification": "The main contribution is a syntax-aware model that integrates syntax into language models to improve performance.",
+          "quote": "In this work, we propose a new syntax-aware language model dubbed Syntactic Ordered Memory (SOM; Fig. 1), which jointly acts as a language model and an incremental parser."
+        },
+        "aliases": []
+      },
+      {
+        "name": {
+          "value": "Incremental Parsing",
+          "justification": "Incremental parsing is a significant aspect of the paper, as evidenced by the development and integration of an incremental parser with the language model.",
+          "quote": "At each time step, the model takes [M_t−1, M̂_t−1, π_t−1] and word embedding x_t as inputs, returning the outputs [M_t, M̂_t, π_t ]. To generate the new memory M_t, we combine M_t−1 and M̂_t−1 to match M̃_t−1."
+        },
+        "aliases": []
+      }
+    ],
+    "models": [
+      {
+        "name": {
+          "value": "Syntactic Ordered Memory (SOM)",
+          "justification": "The main model proposed in the paper, which explicitly integrates syntax into language modeling tasks.",
+          "quote": "In this work, we propose a new syntax-aware language model dubbed Syntactic Ordered Memory (SOM; Fig. 1), which jointly acts as a language model and an incremental parser."
+        },
+        "aliases": [
+          "SOM"
+        ],
+        "is_contributed": {
+          "value": true,
+          "justification": "SOM is introduced as a novel model in this paper.",
+          "quote": "We introduce SOM, a new syntax-augmented language model that learns an incremental parser and use its predictions to improve language modeling."
+        },
+        "is_executed": {
+          "value": true,
+          "justification": "The model was empirically tested through experiments as stated in the paper.",
+          "quote": "Experiments show that SOM can achieve strong results in language modeling, incremental parsing and syntactic generalization tests, while using fewer parameters than other models."
+        },
+        "is_compared": {
+          "value": true,
+          "justification": "The paper compares the performance of SOM with other models such as GPT-2 and RNNG in various tasks.",
+          "quote": "We compare SOM with existing methods that integrate syntax into language models."
+        },
+        "referenced_paper_title": {
+          "value": "Ordered Memory",
+          "justification": "The SOM model is an augmentation of the Ordered Memory model, as indicated in the references and the text.",
+          "quote": "SOM inherits the syntax representation used in Ordered Memory (OM; Shen et al. 2019) in which syntax trees are embedded in a grid-like memory representation."
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": {
+          "value": "Penn Treebank",
+          "justification": "The paper mentions using the Penn Treebank dataset for experimental validation of language modeling.",
+          "quote": "Penn Treebank has one million words of 1989 Wall Street Journal corpus annotated with constituency trees."
+        },
+        "aliases": [
+          "PTB"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "The Penn Treebank: Annotating Predicate Argument Structure",
+          "justification": "The referenced paper is known for introducing the Penn Treebank, which is used in the experiments of this study.",
+          "quote": "The penn treebank: annotating predicate argument structure."
+        }
+      },
+      {
+        "name": {
+          "value": "BLLIP 1987-89 Corpus",
+          "justification": "The paper refers to using splits from the BLLIP corpus for training and evaluation in experiments.",
+          "quote": "BLLIP is a large Penn Treebank-style parsed corpus of approximately 24 million sentences."
+        },
+        "aliases": [
+          "BLLIP"
+        ],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "BLLIP 1987-89 Corpus Release 1",
+          "justification": "The paper mentions using BLLIP in training, indicating the referenced resource.",
+          "quote": "BLLIP 1987-89 Corpus Release 1."
+        }
+      },
+      {
+        "name": {
+          "value": "Universal Dependencies Treebank",
+          "justification": "The use of universal dependency trees is discussed for constructing gold trees for training.",
+          "quote": "The universal dependency tree is converted into a constituency tree Γ through merging the head and its children into one single constituent."
+        },
+        "aliases": [],
+        "role": "used",
+        "referenced_paper_title": {
+          "value": "Universal Dependencies",
+          "justification": "The Universal Dependencies project provides the guidelines and datasets referenced in the paper for dependency parsing.",
+          "quote": "https://universaldependencies.org/"
+        }
+      }
+    ],
+    "libraries": []
+  },
+  "usage": {
+    "completion_tokens": 1170,
+    "prompt_tokens": 13377,
+    "total_tokens": 14547,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  },
+  "query_data": {},
+  "metadata": {
+    "model_version": "3.0.0",
+    "llm_model": "gpt-4o"
+  }
+}
