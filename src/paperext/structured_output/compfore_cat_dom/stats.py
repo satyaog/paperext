@@ -2,11 +2,76 @@ import json
 import csv
 from collections import Counter
 from pathlib import Path
-from statistics import mean
+import pprint
+from typing import Generator, Iterable
 
-from paperext.config import CFG, Config
-from paperext.sanitize_categorization import _flatten_dict
+import tqdm
+
+from paperext.config import CFG
+from paperext.sanitize_categorization import _flatten_dict, _update_sanitized_map
+from paperext.structured_output import get_struct_module
 from paperext.utils import Paper
+
+
+def iter_domains(
+    papers: list[dict | Paper], last_query_only=False, include_aliases=False
+) -> Generator[str, None, None]:
+    for paper in papers:
+        if not isinstance(paper, Paper):
+            paper = Paper(paper)
+
+        for query in paper.queries[-1:] if last_query_only else paper.queries:
+            analysis = (
+                get_struct_module(CFG.platform.struct)
+                .model.Response.model_validate_json(query.read_text())
+                .analysis
+            )
+
+            for research_field in (
+                analysis.primary_research_field,
+                *analysis.sub_research_fields,
+            ):
+                aliases = set()
+                if include_aliases:
+                    aliases.update(research_field.aliases)
+                yield [research_field.name.value] + sorted(
+                    aliases - {research_field.name.value}
+                )
+
+
+def reduce_domains(paper_domains: Iterable[list[str]]) -> list[str]:
+    """
+    Merge each sets that shares at least one domain then from each merged set,
+    keep the domain with the highest occurrence rate.
+
+    Args:
+        paper_domains: The list of domains
+
+    Returns:
+        The reduced list of domains
+    """
+    paper_domains = list(paper_domains)
+
+    domain_counter = Counter()
+    merged_domains: dict[str, set[str]] = {}
+
+    for domains in paper_domains:
+        domain_counter.update(domains)
+        for domain in domains:
+            merged_domains.setdefault(domain, set())
+            merged_domains[domain].update(domains)
+
+    for domain, domains in merged_domains.items():
+        for other_domain, other_domains in merged_domains.items():
+            if domains & other_domains:
+                domains.update(other_domains)
+                merged_domains[other_domain] = domains
+
+    return [
+        sorted(domains, key=lambda x: domain_counter[x], reverse=True)[0]
+        for _ in paper_domains
+        for domains in merged_domains[_[0]]
+    ]
 
 
 def json_to_txt(d: dict, indent: int = 0) -> str:
@@ -73,12 +138,87 @@ def analyze_category_locations(responses: list[dict]):
     return selected_locations, parent_locations
 
 
-if __name__ == "__main__":
+def analyse_domains_categorization(domains: list[str], categorization_map: dict):
+    # Counter for each domain including subcategories
+    domain_counter = Counter()
+    for domain in domains:
+        domain_counter[domain] += 1
+
+    def subcategories_counter(domain: str):
+        return domain_counter[domain] + sum(
+            subcategories_counter(subdomain) for subdomain in categorization_map[domain]
+        )
+
+    def add_counter_to_categorization_map(cat_map: dict):
+        result = {}
+        for domain, value in cat_map.items():
+            categorization = add_counter_to_categorization_map(value)
+            count = subcategories_counter(domain)
+            result[domain] = {
+                "categorization": categorization,
+                "count": count,
+                "percentage": count / sum(domain_counter.values()),
+            }
+
+        return result
+
+    return add_counter_to_categorization_map(categorization_map)
+
+
+def build_categorization_map(categorization: dict):
+    """
+    Build a map of domains to their subcategorization dictionary.
+
+    Args:
+        categorization: The categorization dictionary
+
+    Returns:
+        A dictionary mapping domains to their subcategorization dictionary
+    """
+    categorization_map = {}
+    for parent, children in categorization.items():
+        assert parent not in categorization_map
+
+        categorization_map[parent] = children
+        children_map = build_categorization_map(children)
+        # make sure we're not adding existing entries to the categorization map
+        assert not (
+            set(children_map) & set(categorization_map)
+        ), f"Existing entries in {children_map}: {set(children_map) & set(categorization_map)}"
+
+        categorization_map = {**categorization_map, **children_map}
+
+    return categorization_map
+
+
+def main():
     responses = []
     response_dir = Path("data/compfore_cat_dom/queries/")
     for response_json in response_dir.glob("*.json"):
         response = json.loads(response_json.read_text())
         responses.append(response)
+
+    categorization = json.loads(Path("data/mdl/categorized_domains.json").read_text())
+    categorization_map = build_categorization_map(categorization)
+
+    # paperoni = Path("data/paperoni-2022-01-01-2025-01-01-PR_2025-02-05.json")
+    paperoni = Path("data/paperoni-2023-2024-PR_2024-07-05.json")
+    paperoni = json.loads(paperoni.read_text())
+    domains = sum(
+        iter_domains(
+            tqdm.tqdm(
+                paperoni,
+                total=len(paperoni),
+                desc="Domains",
+            ),
+            last_query_only=True,
+        ),
+        [],
+    )
+
+    sanitized_map = {}
+    _update_sanitized_map(sanitized_map, *_flatten_dict(categorization))
+    domains = _update_sanitized_map(sanitized_map, *domains)
 
     # Analyze category locations
     selected_locations, parent_locations = analyze_category_locations(responses)
@@ -103,3 +243,107 @@ if __name__ == "__main__":
     for line10 in sorted(parent_stats.keys()):
         percentage = parent_stats[line10]
         print(f"{line10:03}: {percentage:.2f}%")
+
+    categorization_analysis = analyse_domains_categorization(
+        domains, categorization_map
+    )
+
+    def sort_categorization_analysis(
+        cat: dict, sort_by: str = None, filter_percentage: float = -1.0
+    ):
+        """
+        Sort the categorization analysis
+        Args:
+            cat: The categorization map
+            sort_by: The field to sort by
+            filter_percentage: The percentage to filter by
+
+        Returns:
+            A dictionary of the categorization analysis
+        """
+        if sort_by:
+            cat = {
+                k: v
+                for k, v in sorted(
+                    cat.items(),
+                    key=lambda x: categorization_analysis[x[0]][sort_by],
+                    reverse=True,
+                )
+            }
+
+        return {
+            k: sort_categorization_analysis(v, sort_by, filter_percentage)
+            for k, v in cat.items()
+            if categorization_analysis[k]["percentage"] > filter_percentage
+        }
+
+    def format_categorization_analysis(cat: dict):
+        """
+        Format the categorization analysis
+        Args:
+            cat: The categorization map
+            sort_by: The field to sort by
+            filter_percentage: The percentage to filter by
+
+        Returns:
+            A dictionary of the categorization analysis
+        """
+
+        def format_domain(domain_value: tuple[str, dict]):
+            domain, value = domain_value
+            return (
+                f"{domain} ({categorization_analysis[domain]['count']} / {categorization_analysis[domain]['percentage'] * 100:.2f}%)",
+                format_categorization_analysis(value),
+            )
+
+        return {domain: value for domain, value in map(format_domain, cat.items())}
+
+    # Print to file the categorization analysis
+    with Path("cat.out").open("wt") as _f:
+        pprint.pprint(
+            format_categorization_analysis(categorization),
+            _f,
+        )
+
+    # Print the categorization analysis sorted by count
+    with Path("cat.out.sorted").open("wt") as _f:
+        pprint.pprint(
+            format_categorization_analysis(
+                sort_categorization_analysis(categorization, "count")
+            ),
+            _f,
+            sort_dicts=False,
+        )
+
+    # Write a CSV that contains the sorted list of domains categorization paths, count and percentage filtered by percentage > 1%
+    def write_domains_csv(csv_writer: csv.writer, parents: list[str], cat: dict):
+        """
+        Write a CSV that contains the sorted list of domains categorization
+        paths, count and percentage filtered by percentage > 1%
+
+        Args:
+            csv_writer: The CSV writer
+            parents: The list of parents
+            cat: The categorization map
+        """
+        for domain, value in cat.items():
+            domain_path = parents + [domain]
+            csv_writer.writerow(
+                [
+                    ".".join(domain_path),
+                    categorization_analysis[domain]["count"],
+                    categorization_analysis[domain]["percentage"],
+                ]
+            )
+            write_domains_csv(csv_writer, domain_path, value)
+
+    with Path("domains.csv").open("wt") as _f:
+        writer = csv.writer(_f)
+        writer.writerow(["domain", "count", "percentage"])
+        write_domains_csv(
+            writer, [], sort_categorization_analysis(categorization, "count", 0.01)
+        )
+
+
+if __name__ == "__main__":
+    main()
