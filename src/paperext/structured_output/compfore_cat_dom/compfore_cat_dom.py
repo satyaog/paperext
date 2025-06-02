@@ -5,6 +5,8 @@ import hashlib
 import json
 import logging
 from pathlib import Path
+import random
+import sys
 
 from instructor.exceptions import InstructorRetryException
 from bs4 import BeautifulSoup
@@ -31,7 +33,6 @@ from paperext.structured_output.compfore_cat_dom.model_v1 import (
     RETRY_MESSAGE_PARENT,
     RETRY_MESSAGE_SELECTED,
 )
-from paperext.structured_output.compfore_cat_dom.state import State
 from paperext.structured_output.mdl_clus_dom.state import _sort_categories
 from paperext.utils import Paper
 
@@ -105,7 +106,10 @@ def insert_in_categories(selected: str, parent: str, categories: dict) -> dict:
             True if the domain was inserted, False otherwise
         """
         if parent in cats:
-            cats[parent] = {selected: {}}
+            assert (
+                selected not in cats[parent]
+            ), f"Domain {selected} already in {parent}: {sorted(cats[parent].keys())}"
+            cats[parent] = {**cats[parent], selected: {}}
             return True
 
         for value in cats.values():
@@ -160,7 +164,7 @@ def query(client: OpenAI, paper_id: str, categorization: dict, domains: list):
     # Convert categorization dict to TXT format
     def json_to_txt(d: dict, indent: int = 0) -> str:
         txt = []
-        for key, value in d.items():
+        for key, value in sorted(d.items()):
             _open = f"- {key}"
             if isinstance(value, dict):
                 _value = json_to_txt(value, indent + 1)
@@ -287,6 +291,11 @@ The exact parent category name from the hierarchical structure
 
         i += 1
 
+        if i > 10:
+            raise ValueError(
+                f"Failed to select a domain and parent category after {i} attempts"
+            )
+
 
 def main(argv: list[str] = None):
     parser = argparse.ArgumentParser()
@@ -308,6 +317,12 @@ def main(argv: list[str] = None):
         type=Path,
         default=None,
         help="Path to sanitized categorization JSON file (defaults to `categorization`)",
+    )
+    parser.add_argument(
+        "--seed",
+        type=int,
+        default=42,
+        help="Random seed",
     )
     options = parser.parse_args(argv)
     options.out = options.out or options.categorization
@@ -351,22 +366,31 @@ def main(argv: list[str] = None):
         )
 
         client = OpenAI()
+        # Something messes with the seed, so we pre-generated seeds
+        random.seed(options.seed)
+        sample_seeds = [random.randint(0, sys.maxsize) for _ in range(len(domains) * 2)]
 
-        for _ in tqdm.tqdm(domains, desc="Categorizing"):
+        for _ in tqdm.tqdm(range(len(domains)), desc="Categorizing"):
+            _categories = _dict_heads(categories, 0, 4)
+            _categories["ignore"] = {}
+
+            random.seed(sample_seeds.pop())
+            _domains = random.sample(domains, min(len(domains), 50))
+
             _filename_prefix = "".join(
-                sorted(set(_term[0] for _term in sorted(domains)))
+                sorted(set(_term[0] for _term in sorted(_domains)))
             )
             _filename = "_".join(
                 [
                     _filename_prefix,
-                    hashlib.sha256("".join(sorted(domains)).encode()).hexdigest(),
+                    hashlib.sha256("".join(sorted(_domains)).encode()).hexdigest(),
                 ]
             )
 
             while True:
                 try:
                     responses: list[Response] = list(
-                        query(client, _filename, categories, domains)
+                        query(client, _filename, _categories, _domains)
                     )
                     break
 

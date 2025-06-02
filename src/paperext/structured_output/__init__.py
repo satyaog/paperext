@@ -5,6 +5,7 @@ from . import (
     mdl_cat_dom,
     cat_new_mdl_dom,
     cat_new_mdl_mod,
+    compfore_cat_dom,
     mdl_clus_dom,
     find_acr_mdl_dom,
     find_acr_mdl_mod,
@@ -27,6 +28,8 @@ def get_struct_module(struct: str):
             return cat_new_mdl_dom
         case "cat_new_mdl_mod":
             return cat_new_mdl_mod
+        case "compfore_cat_dom":
+            return compfore_cat_dom
         case "mdl_clus_dom":
             return mdl_clus_dom
         case "find_acr_mdl_dom":

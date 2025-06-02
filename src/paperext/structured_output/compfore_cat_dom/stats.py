@@ -9,6 +9,22 @@ from paperext.sanitize_categorization import _flatten_dict
 from paperext.utils import Paper
 
 
+def json_to_txt(d: dict, indent: int = 0) -> str:
+    txt = []
+    for key, value in sorted(d.items()):
+        _open = f"- {key}"
+        if isinstance(value, dict):
+            _value = json_to_txt(value, indent + 1)
+        else:
+            _value = value
+
+        if not _value:
+            txt.append(f"{'  ' * indent}{_open}")
+        else:
+            txt.extend([f"{'  ' * indent}{entry}" for entry in (f"{_open}:", _value)])
+    return "\n".join([entry for entry in txt if entry.strip()])
+
+
 def analyze_category_locations(responses: list[dict]):
     """Analyze statistics about the location of selected and parent categories."""
     selected_locations = Counter()
@@ -26,33 +42,30 @@ def analyze_category_locations(responses: list[dict]):
             parent_category = parent_category["value"]
 
         categorization = response["query_data"]["categorization"]
+        categorization_lines = json_to_txt(categorization).splitlines()
         categorization_lines = [
-            line.strip()
-            .rstrip(",")
-            .replace(":", "")
-            .replace("{", "")
-            .replace("}", "")
-            .strip()
-            for line in json.dumps(categorization, indent=2).splitlines()
+            line.strip() for line in categorization_lines if line.strip()
         ]
-        categorization_lines = [line for line in categorization_lines if line]
 
         domains = response["query_data"]["domains"]
 
-        for i, line in enumerate(categorization_lines):
-            percent = int(i * 10 / len(categorization_lines)) * 10
-
-            if line.startswith(f'"{parent_category}"'):
-                parent_locations[percent] += 1
-                break
+        if parent_category == "ignore":
+            parent_locations[-1] += 1
         else:
-            assert parent_category not in set(_flatten_dict(categorization))
+            for i, line in enumerate(categorization_lines):
+                line10 = int(i / 20)
+
+                if line.strip().rstrip(":") == f"- {parent_category}":
+                    parent_locations[line10] += 1
+                    break
+            else:
+                assert parent_category not in set(_flatten_dict(categorization))
 
         for i, domain in enumerate(domains):
-            percent = int(i * 10 / len(domains)) * 10
+            line10 = int(i / 10)
 
             if domain == selected_domain:
-                selected_locations[percent] += 1
+                selected_locations[line10] += 1
                 break
         else:
             assert selected_domain not in domains
@@ -62,7 +75,7 @@ def analyze_category_locations(responses: list[dict]):
 
 if __name__ == "__main__":
     responses = []
-    response_dir = Path("data/compfore_cat_dom/queries/openai/v1")
+    response_dir = Path("data/compfore_cat_dom/queries/")
     for response_json in response_dir.glob("*.json"):
         response = json.loads(response_json.read_text())
         responses.append(response)
@@ -81,12 +94,12 @@ if __name__ == "__main__":
     print(f"Response directory: {response_dir.name}")
     print(f"Selected Category Locations ({sum(selected_locations.values())}):")
     print("-------------------------")
-    for percent in sorted(selected_stats.keys()):
-        percentage = selected_stats[percent]
-        print(f"{percent:02}%: {percentage:.2f}%")
+    for line10 in sorted(selected_stats.keys()):
+        percentage = selected_stats[line10]
+        print(f"{line10:03}: {percentage:.2f}%")
 
     print(f"\nParent Category Locations ({sum(parent_locations.values())}):")
     print("------------------------")
-    for percent in sorted(parent_stats.keys()):
-        percentage = parent_stats[percent]
-        print(f"{percent:02}%: {percentage:.2f}%")
+    for line10 in sorted(parent_stats.keys()):
+        percentage = parent_stats[line10]
+        print(f"{line10:03}: {percentage:.2f}%")

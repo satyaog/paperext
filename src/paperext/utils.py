@@ -1,3 +1,4 @@
+from functools import lru_cache
 import random
 import re
 import sys
@@ -12,6 +13,11 @@ ROOT_FOLDER = Path(__file__).resolve().parent.parent
 PAPERS_TO_IGNORE = {
     "arxiv/2404.09932.txt",
 }
+
+
+@lru_cache(maxsize=64)
+def _glob(path: str, *args, **kwargs):
+    return sorted(Path(path).glob(*args, **kwargs))
 
 
 class PaperBase:
@@ -35,16 +41,14 @@ class PaperBase:
             if link_id and link_id not in link_ids:
                 link_ids.append(link_id)
 
-                pdfs += sorted(
-                    CFG.dir.cache.glob(self.LINK_ID_TEMPLATE.format(link_id=link_id))
+                pdfs += _glob(
+                    str(CFG.dir.cache), self.LINK_ID_TEMPLATE.format(link_id=link_id)
                 )
 
         # Find existing queries and infer the paper id from them
         self._queries = sum(
             [
-                sorted(
-                    (CFG.dir.queries / CFG.platform.select).glob(f"{link_id}_*.json")
-                )
+                _glob(str(CFG.dir.queries / CFG.platform.select), f"{link_id}_*.json")
                 for link_id in link_ids
             ],
             [],
@@ -71,16 +75,14 @@ class PaperBase:
             self._selected_id = self._paper_id
 
         self._pdfs = (
-            sorted(CFG.dir.cache.glob(self.LINK_ID_TEMPLATE.format(link_id=self.id)))
-            + sorted(
-                CFG.dir.cache.glob(
-                    self.PAPER_ID_TEMPLATE.format(paper_id=self._paper_id)
-                )
+            _glob(str(CFG.dir.cache), self.LINK_ID_TEMPLATE.format(link_id=self.id))
+            + _glob(
+                str(CFG.dir.cache),
+                self.PAPER_ID_TEMPLATE.format(paper_id=self._paper_id),
             )
-            + sorted(
-                CFG.dir.cache.glob(
-                    self.PAPER_ID_FULLTEXT_TEMPLATE.format(paper_id=self._paper_id)
-                )
+            + _glob(
+                str(CFG.dir.cache),
+                self.PAPER_ID_FULLTEXT_TEMPLATE.format(paper_id=self._paper_id),
             )
         )
 

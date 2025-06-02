@@ -31,6 +31,8 @@ SYSTEM_MESSAGE = """You are an Expert in Deep Learning Research with extensive k
    - Carefully examine the provided hierarchical structure
    - Review the list of Deep Learning Research Domains to categorize
    - Consider both explicit and implicit relationships between domains
+   - Identify any potential ambiguities or edge cases
+   - Note any domains that might require special handling (e.g., acronyms, abbreviations)
 
 2. Categorization Process:
    - Select ONLY ONE domain from the provided list that you are most confident about its categorization within the hierarchical structure
@@ -46,6 +48,14 @@ SYSTEM_MESSAGE = """You are an Expert in Deep Learning Research with extensive k
    - Make selections based on highest confidence
    - Provide clear reasoning for your categorization
    - Maintain consistency with the existing hierarchical structure
+   - A domain that is only composed of a single acronym or abbreviation should be placed with confidence in the "ignore" category
+
+4. Output Format:
+   - Provide your response in a structured format
+   - Include the selected domain and its parent category
+   - Provide detailed reasoning for your categorization
+   - Explain any confidence levels or uncertainties
+   - Note any special considerations or edge cases
 
 ### The Hierarchical Structure:
 
