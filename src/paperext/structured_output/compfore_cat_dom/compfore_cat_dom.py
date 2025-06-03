@@ -7,6 +7,7 @@ import logging
 from pathlib import Path
 import random
 import sys
+from typing import Iterable
 
 from instructor.exceptions import InstructorRetryException
 from bs4 import BeautifulSoup
@@ -62,7 +63,7 @@ Now provide your answer:
 <explanation>"""
 
 
-def iter_domains(papers: list[dict | Paper]):
+def iter_domains(papers: Iterable[dict | Paper]):
     for paper in papers:
         if not isinstance(paper, Paper):
             paper = Paper(paper)
@@ -337,7 +338,9 @@ def main(argv: list[str] = None):
         CFG.platform.select = "openai"
         CFG.platform.struct = "mdl"
         CFG.dir.queries = CFG.dir.data / CFG.platform.struct / "queries"
-        domains = list(iter_domains(papers))
+        domains = list(
+            iter_domains(tqdm.tqdm(papers, total=len(papers), desc="Domains"))
+        )
 
     sanitized_map = {}
     domains = set(
@@ -366,16 +369,15 @@ def main(argv: list[str] = None):
         )
 
         client = OpenAI()
-        # Something messes with the seed, so we pre-generated seeds
-        random.seed(options.seed)
-        sample_seeds = [random.randint(0, sys.maxsize) for _ in range(len(domains) * 2)]
+        rng = random.Random(options.seed)
+        sample_rng = random.Random()
 
         for _ in tqdm.tqdm(range(len(domains)), desc="Categorizing"):
             _categories = _dict_heads(categories, 0, 4)
             _categories["ignore"] = {}
 
-            random.seed(sample_seeds.pop())
-            _domains = random.sample(domains, min(len(domains), 50))
+            sample_rng.seed(rng.randint(0, sys.maxsize))
+            _domains = sample_rng.sample(domains, min(len(domains), 50))
 
             _filename_prefix = "".join(
                 sorted(set(_term[0] for _term in sorted(_domains)))
