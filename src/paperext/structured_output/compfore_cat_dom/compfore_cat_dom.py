@@ -38,31 +38,6 @@ from paperext.structured_output.mdl_clus_dom.state import _sort_categories
 from paperext.utils import Paper
 
 
-PROMPT = """\
-Sanitize the institution names in the following XML. Each author
-is enclosed in <author> tags, and the institution is
-enclosed in <institution> tags. The institution names
-should be sanitized, and the authors should be
-grouped by institution. The output should be a list of
-<institution> tags, each containing a <institution-name> tag with the
-sanitized institution name, and a list of <author> tags
-with the authors' names in <author-name>. Authors may be affiliated with
-multiple institutions but the input XML will only contain
-one institution name per author. If the institution name contains
-multiple institutions, please split them and add the authors
-to the corresponding institution. The same institution may have
-multiple names, so please use the most common name. 
-
-Explain concisely the reasoning behind your choice of institution name in a 
-first <explanation> tag. Follow with the XML output enclosed in <institutions> tags.
-
-Here is the XML:
-{xml}
-
-Now provide your answer:
-<explanation>"""
-
-
 def iter_domains(papers: Iterable[dict | Paper]):
     for paper in papers:
         if not isinstance(paper, Paper):
@@ -313,6 +288,11 @@ def main(argv: list[str] = None):
         help="Path to categorization JSON file",
     )
     parser.add_argument(
+        "--reset-categories",
+        action="store_true",
+        help="Reset the categories to a 2 levels structure",
+    )
+    parser.add_argument(
         "--out",
         metavar="PATH",
         type=Path,
@@ -348,10 +328,14 @@ def main(argv: list[str] = None):
     )
     categories["ignore"] = {k: {} for k in _flatten_dict(categories["ignore"])}
 
-    def _(d: dict):
-        return {sanitized_map[k]: _(v) for k, v in d.items()}
+    def sanitize_categories(d: dict):
+        return {sanitized_map[k]: sanitize_categories(v) for k, v in d.items()}
 
-    categories = _(_dict_heads(categories, 0, 2))
+    categories = sanitize_categories(categories)
+
+    if options.reset_categories:
+        categories = _dict_heads(categories, 0, 2)
+
     domains = domains - set(_flatten_dict(categories))
 
     model = SentenceTransformer("all-MiniLM-L6-v2")

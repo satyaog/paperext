@@ -1,15 +1,25 @@
+import copy
 import json
 import csv
 from collections import Counter
+import math
 from pathlib import Path
+import pickle
 import pprint
 from typing import Generator, Iterable
 
+import numpy as np
 import tqdm
 
 from paperext.config import CFG
 from paperext.sanitize_categorization import _flatten_dict, _update_sanitized_map
 from paperext.structured_output import get_struct_module
+from paperext.structured_output.compfore_cat_dom.compfore_cat_dom_emb import (
+    build_cluster_tree,
+    cluster_domains,
+    get_domains_embeddings,
+    process_papers_context,
+)
 from paperext.utils import Paper
 
 
@@ -138,11 +148,91 @@ def analyze_category_locations(responses: list[dict]):
     return selected_locations, parent_locations
 
 
-def analyse_domains_categorization(domains: list[str], categorization_map: dict):
-    # Counter for each domain including subcategories
+# def analyse_domains_categorization(domains: list[str], categorization_map: dict):
+#     # Counter for each domain including subcategories
+#     domain_counter = Counter()
+#     for domain in domains:
+#         domain_counter[domain] += 1
+
+#     def subcategories_counter(domain: str):
+#         return domain_counter[domain] + sum(
+#             subcategories_counter(subdomain) for subdomain in categorization_map[domain]
+#         )
+
+#     def add_counter_to_categorization_map(cat_map: dict):
+#         result = {}
+#         for domain, value in cat_map.items():
+#             categorization = add_counter_to_categorization_map(value)
+#             count = subcategories_counter(domain)
+#             result[domain] = {
+#                 "categorization": categorization,
+#                 "count": count,
+#                 "percentage": (
+#                     count / sum(domain_counter.values())
+#                     if sum(domain_counter.values())
+#                     else 0
+#                 ),
+#             }
+
+#         return result
+
+#     return add_counter_to_categorization_map(categorization_map)
+
+
+def analyse_domains_categorization(
+    domains_embeddings: list[tuple[str, np.ndarray]],
+    domain_to_embedding: dict[str, np.ndarray],
+    categorization_map: dict[str, dict],
+):
+    """Analyze the categorization of domains. Add a count and percentage to each
+    entry in categorization_map. Count is a sum of cosine distance
+    between the domain embedding and the average embedding of the domain.
+
+    For each domain, take the 2 domains from domain_to_embedding for which the
+    cosine distance is the smallest. For these 2 domains, add distance to
+    the count of the domain in categorization_map.
+
+    Args:
+        domains_embeddings: The list of domains with their corresponding embeddings
+        domain_to_embedding: The dictionary of domains to their average embeddings
+        categorization_map: The categorization map
+
+    Returns:
+        The categorization analysis.
+    """
+
+    def _cosine_distance(embedding: np.ndarray, other: np.ndarray) -> float:
+        return 1 - np.dot(embedding, other) / (
+            np.linalg.norm(embedding) * np.linalg.norm(other)
+        )
+
+    # 45 deg
+    MIN_SIMILARITY = math.cos(math.pi / 4)
+    # 67.5 deg
+    LOWER_SCALING_BOUND = math.cos(math.pi * 3 / 8)
+
     domain_counter = Counter()
-    for domain in domains:
-        domain_counter[domain] += 1
+
+    for _, embedding in domains_embeddings:
+        min_distance_domains = sorted(
+            domain_to_embedding.items(),
+            key=lambda x: _cosine_distance(embedding, x[1]),
+        )
+
+        # upper_scaling_bound = 1 - _cosine_distance(
+        #     embedding, min_distance_domains[0][1]
+        # )
+        # lower_scaling_bound = MIN_SIMILARITY - (1 - upper_scaling_bound)
+
+        for other_domain, other_embedding in min_distance_domains:
+            similarity = 1 - _cosine_distance(embedding, other_embedding)
+            if similarity >= MIN_SIMILARITY:
+                # Add the scaled similarity
+                domain_counter[other_domain] += (similarity - LOWER_SCALING_BOUND) / (
+                    1 - LOWER_SCALING_BOUND
+                )
+            else:
+                break
 
     def subcategories_counter(domain: str):
         return domain_counter[domain] + sum(
@@ -153,11 +243,16 @@ def analyse_domains_categorization(domains: list[str], categorization_map: dict)
         result = {}
         for domain, value in cat_map.items():
             categorization = add_counter_to_categorization_map(value)
-            count = subcategories_counter(domain)
+            # count = subcategories_counter(domain)
+            count = domain_counter[domain]
             result[domain] = {
                 "categorization": categorization,
                 "count": count,
-                "percentage": count / sum(domain_counter.values()),
+                "percentage": (
+                    count / sum(domain_counter.values())
+                    if sum(domain_counter.values())
+                    else 0
+                ),
             }
 
         return result
@@ -193,32 +288,59 @@ def build_categorization_map(categorization: dict):
 
 def main():
     responses = []
-    response_dir = Path("data/compfore_cat_dom/queries/")
+    response_dir = Path("data/compfore_cat_dom/queries/openai/xml_01")
     for response_json in response_dir.glob("*.json"):
         response = json.loads(response_json.read_text())
         responses.append(response)
 
-    categorization = json.loads(Path("data/mdl/categorized_domains.json").read_text())
+    args_hash = "043bbea3ca955e478eaff0a60a7814ba7eed72ac7f7fad63ce357d5dd7aa41c4"
+    papers_embeddings = Path(f"papers_embeddings_{args_hash}.pkl")
+    with papers_embeddings.open("rb") as f:
+        papers_embeddings = pickle.load(f)
+
+    domain_to_embedding = get_domains_embeddings(
+        papers_embeddings, context_type="justification"
+    )
+
+    clusterer = cluster_domains(domain_to_embedding, metric="euclidean")
+    categorization = build_cluster_tree(clusterer, list(domain_to_embedding.keys()))
+
+    # categorization = json.loads(Path("data/mdl/categorized_domains.json").read_text())
     categorization_map = build_categorization_map(categorization)
 
     # paperoni = Path("data/paperoni-2022-01-01-2025-01-01-PR_2025-02-05.json")
     paperoni = Path("data/paperoni-2023-2024-PR_2024-07-05.json")
     paperoni = json.loads(paperoni.read_text())
-    domains = sum(
-        iter_domains(
-            tqdm.tqdm(
-                paperoni,
-                total=len(paperoni),
-                desc="Domains",
-            ),
-            last_query_only=True,
-        ),
+
+    # papers_context = process_papers_context(
+    #     tqdm.tqdm(paperoni, desc=f"Processing papers", unit="paper(s)"), n_queries=1
+    # )
+
+    # domains = sum(
+    #     iter_domains(
+    #         tqdm.tqdm(
+    #             paperoni,
+    #             total=len(paperoni),
+    #             desc="Domains",
+    #         ),
+    #         last_query_only=True,
+    #     ),
+    #     [],
+    # )
+
+    # sanitized_map = {}
+    # _update_sanitized_map(sanitized_map, *_flatten_dict(categorization))
+    # domains = _update_sanitized_map(sanitized_map, *domains)
+
+    domains_embeddings = sum(
+        [
+            [(domain, embedding) for embedding in embeddings]
+            for paper_embedding in papers_embeddings.values()
+            for analysis in paper_embedding["analyses"][-1:]
+            for domain, embeddings in analysis["domains"].items()
+        ],
         [],
     )
-
-    sanitized_map = {}
-    _update_sanitized_map(sanitized_map, *_flatten_dict(categorization))
-    domains = _update_sanitized_map(sanitized_map, *domains)
 
     # Analyze category locations
     selected_locations, parent_locations = analyze_category_locations(responses)
@@ -245,7 +367,7 @@ def main():
         print(f"{line10:03}: {percentage:.2f}%")
 
     categorization_analysis = analyse_domains_categorization(
-        domains, categorization_map
+        domains_embeddings, domain_to_embedding, categorization_map
     )
 
     def sort_categorization_analysis(
@@ -275,6 +397,7 @@ def main():
             k: sort_categorization_analysis(v, sort_by, filter_percentage)
             for k, v in cat.items()
             if categorization_analysis[k]["percentage"] > filter_percentage
+            or len(categorization_analysis[k]["categorization"])
         }
 
     def format_categorization_analysis(cat: dict):
