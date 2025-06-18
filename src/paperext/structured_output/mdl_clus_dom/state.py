@@ -90,7 +90,7 @@ def _find_min_max_threshold(model: SentenceTransformer, categories: list, **kwar
     clustering_model = AgglomerativeClustering(**kwargs)
     clustering_model.fit(embeddings)
 
-    min_tolerace, max_tolerace = 0.0, 1.0
+    min_tolerance, max_tolerance = 0.0, 1.0
 
     for tolerance in (i / 100 for i in range(100, 0, -1)):
         distance_threshold = 1 - math.cos(math.pi * (1 - tolerance))
@@ -101,12 +101,12 @@ def _find_min_max_threshold(model: SentenceTransformer, categories: list, **kwar
         )
 
         if count >= len(clustering_model.distances_) - 1:
-            min_tolerace = tolerance
+            min_tolerance = tolerance
             break
         elif count == 0:
-            max_tolerace = tolerance
+            max_tolerance = tolerance
 
-    return min_tolerace, max_tolerace
+    return min_tolerance, max_tolerance
 
 
 def cluster_categories(

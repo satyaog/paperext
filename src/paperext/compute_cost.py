@@ -44,8 +44,14 @@ def main(argv: list = None):
             response = get_struct_module(
                 CFG.platform.struct
             ).model.Response.model_validate_json(response.read_text())
-            in_tokens.append(response.usage["prompt_tokens"])
-            out_tokens.append(response.usage["completion_tokens"])
+            in_tokens.append(
+                response.usage.get("prompt_tokens", None)
+                or response.usage["input_tokens"]
+            )
+            out_tokens.append(
+                response.usage.get("completion_tokens", None)
+                or response.usage["output_tokens"]
+            )
             if int(index) == 0:
                 retries.pop()
         except pydantic_core._pydantic_core.ValidationError:

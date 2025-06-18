@@ -118,9 +118,9 @@ def _update_sanitized_map(sanitized_map: dict[str, str], *keys, return_bare=Fals
             }
         )
 
-    return (
+    return [
         (bare_sanitize_key(key) if return_bare else sanitized_map[key]) for key in keys
-    )
+    ]
 
 
 def _make_sanitized_map(dict_or_list: dict[str, dict] | set[str]):
@@ -217,6 +217,9 @@ def _sanitize_categories(
 
     keys = sorted(categories.keys())
 
+    for key in keys:
+        _sanitize_categories(categories[key], ignore, sanitize_key)
+
     while keys:
         key = keys.pop(0)
         sane_key = sanitize_key(key)
@@ -227,10 +230,10 @@ def _sanitize_categories(
         if _same_keys := [k for k in keys if _eq_keys(key, k, sanitize_key)]:
             logger.debug(f"Duplicates of [{key}] in {_same_keys}")
 
-        _sanitize_categories(categories[key], ignore, sanitize_key)
+        # _sanitize_categories(categories[key], ignore, sanitize_key)
 
         for other in keys:
-            _sanitize_categories(categories[other], ignore, sanitize_key)
+            # _sanitize_categories(categories[other], ignore, sanitize_key)
 
             if _eq_keys(key, other, sanitize_key):
                 logger.debug(

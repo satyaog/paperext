@@ -1,7 +1,5 @@
-from pathlib import Path
 from typing import Generator
 from paperext.structured_output._base import BaseState
-from paperext.utils import Paper
 from .model import (
     FIRST_MESSAGE,
     # RETRY_MESSAGE,

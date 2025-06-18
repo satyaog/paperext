@@ -108,7 +108,7 @@ class PaperBase:
         return self._paper["paper_id"]
 
     def get_link_id_pdf(self):
-        """Return a hardlink, with selected id as name, to the pdf.  Currently,
+        """Return a hardlink, with selected id as name, to the pdf. Currently,
         the pdf file name is used as an id to check if the query should be done
         or not. As the pdf file name changed with the up-to-date paperoni cache
         structure, a hardlink might be created and returned to avoid redoing the
@@ -251,7 +251,11 @@ def str_eq(string, other):
 
 
 def str_normalize(string):
-    string = unicodedata.normalize("NFKC", string).lower()
+    # Normalize to NFD (decomposed form) and filter out combining characters
+    # This converts accented characters to their base form (é -> e, ñ -> n, etc.)
+    string = unicodedata.normalize("NFD", string)
+    string = "".join(c for c in string if not unicodedata.combining(c))
+    string = string.lower()
     string = [_s.split("}}") for _s in string.split("{{")]
     string = sum(string, [])
     exclude = string[1:2]
